@@ -1,0 +1,1 @@
+Формат UNC (Universal Naming Convention)

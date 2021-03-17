@@ -1,0 +1,1 @@
+Формат TIFF (Tagged Image File Format)

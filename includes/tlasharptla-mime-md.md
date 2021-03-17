@@ -1,0 +1,1 @@
+Стандарт MIME (Multipurpose Internet Mail Extensions)

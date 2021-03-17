@@ -1,0 +1,1 @@
+функции размещения Windows Server AppFabric

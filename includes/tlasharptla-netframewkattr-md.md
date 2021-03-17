@@ -1,0 +1,1 @@
+Атрибут .NET Framework

@@ -1,0 +1,1 @@
+CAS (Code Access Security — безопасность доступа кода)

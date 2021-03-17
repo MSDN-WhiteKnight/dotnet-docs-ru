@@ -1,0 +1,1 @@
+Microsoft Internet Explorer 6 с пакетом обновления 2 (SP2)

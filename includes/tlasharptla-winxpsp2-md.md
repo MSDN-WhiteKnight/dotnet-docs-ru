@@ -1,0 +1,1 @@
+Microsoft Windows XP с пакетом обновления 2 (SP2)

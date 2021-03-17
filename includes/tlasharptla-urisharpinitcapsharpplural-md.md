@@ -1,0 +1,1 @@
+URI (uniform resource identifiers — универсальные коды ресурса)

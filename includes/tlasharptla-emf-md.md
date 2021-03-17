@@ -1,0 +1,1 @@
+EMF (Enhanced Metafile —расширенный метафайл)

@@ -1,0 +1,1 @@
+Формат PNG (Portable Network Graphics)
