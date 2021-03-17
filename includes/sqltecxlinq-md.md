@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 15e24a56a3d14b03e920fc30600c25cf4cb87462
-ms.sourcegitcommit: 7588136e355e10cbc2582f389c90c127363c02a5
+ms.openlocfilehash: da2a5ea2bdcdc6d7307a259694c4a0ca0a3bf1aa
+ms.sourcegitcommit: 16aefeb2d265e69c0d80967580365fabf0c5d39a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "65669124"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133367"
 ---
 LINQ to XML

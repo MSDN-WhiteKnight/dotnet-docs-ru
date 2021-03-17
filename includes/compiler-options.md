@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5c65574878fdecd7dd56485e71d7c0917c6edccb
-ms.sourcegitcommit: 5a28f8eb071fcc09b045b0c4ae4b96898673192e
-ms.translationtype: HT
+ms.openlocfilehash: 2439ea4e248c0db09d4e43acb33041644662be75
+ms.sourcegitcommit: 438919211260bb415fc8f96ca3eabc33cf2d681d
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73198557"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630561"
 ---
 
-Каждый параметр компилятора можно использовать в двух формах записи: **-параметр** или **/параметр**. В документации показана только форма -<параметр>.
+Каждый параметр компилятора можно использовать в двух формах записи: **-параметр** или **/параметр**. В документации показана только форма -<параметр>. 
