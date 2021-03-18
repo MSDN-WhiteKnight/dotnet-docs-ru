@@ -1,0 +1,1080 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1093;&#1086;&#1076;&#1072;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1093;&#1086;&#1076;&#1072;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="navigation-overview">Общие сведения о переходах</h1>
+
+<p>Windows Presentation Foundation (WPF) поддерживает навигацию в стиле браузера, можно использовать в приложениях двух типов: автономных приложениях и XAML-приложения браузера (XBAP). Чтобы упаковать содержимое для навигации WPF предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> класса. Можно переходить от одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в другой декларативно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, или программно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. WPF использует журнал, чтобы запоминать страницы, на которые был осуществлен переход и для перехода к ним.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>, и журнал образуют основу для поддержки навигации, предлагаемой WPF. В этом обзоре рассматриваются эти возможности подробно перед описанием расширенной поддержки переходов, включающий переход к свободным Язык XAML файлы, HTML файлы и объекты.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом разделе термин «браузер» относится только к браузерам, которые можно разместить WPF приложений, которые в настоящее время включает в себя Microsoft Internet Explorer и Firefox. Когда специфические WPF функции, поддерживаемые только одним определенным браузером, версия браузера.</p>
+</div>
+<h2 id="navigation-in-wpf-applications">Переходы в приложениях WPF</h2>
+<p>В этом разделе содержится обзор основных возможностей перехода в WPF. Эти возможности доступны для автономных приложениях и XBAP, несмотря на то, что в этом разделе они представлены в контексте XBAP.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом разделе не обсуждаются построение и развертывание XBAP. Дополнительные сведения о XBAP, см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a>.</p>
+</div>
+<p>В этом разделе объясняются и демонстрируются следующие аспекты переходов.</p>
+<ul>
+<li><p><a href="#CreatingAXAMLPage">Реализация страницы</a></p>
+</li>
+<li><p><a href="#Configuring_a_Start_Page">Настройка начальной страницы</a></p>
+</li>
+<li><p><a href="#ConfiguringAXAMLPage">Настройка заголовка, ширины и высоты основного окна</a></p>
+</li>
+<li><p><a href="#NavigatingBetweenXAMLPages">Переход по гиперссылке</a></p>
+</li>
+<li><p><a href="#FragmentNavigation">Переход к фрагменту</a></p>
+</li>
+<li><p><a href="#NavigationService">Служба переходов</a></p>
+</li>
+<li><p><a href="#Programmatic_Navigation_with_the_Navigation_Service">Программный переход с помощью службы переходов</a></p>
+</li>
+<li><p><a href="#Navigation_Lifetime">Время существования перехода</a></p>
+</li>
+<li><p><a href="#NavigationHistory">Запоминание перехода в журнале</a></p>
+</li>
+<li><p><a href="#PageLifetime">Время существования страницы и журнал</a></p>
+</li>
+<li><p><a href="#RetainingContentStateWithNavigationHistory">Сохранение состояния содержимого с помощью журнала переходов</a></p>
+</li>
+<li><p><a href="#Cookies">Файлы cookie</a></p>
+</li>
+<li><p><a href="#Structured_Navigation">Структурная навигация</a></p>
+</li>
+</ul>
+<p><a name="CreatingAXAMLPage"></a></p>
+<h3 id="implementing-a-page">Реализация страницы</h3>
+<p>В WPF, вы можете перейти к нескольким типам содержимого, включают объекты .NET Framework, пользовательских объектов, значений перечисления, пользовательские элементы управления, XAML файлы, и HTML файлы. Тем не менее, обнаружится, что наиболее распространенным и удобным способом упаковки содержимого является с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализует особые возможности перехода в целях улучшения их внешнего вида и упрощения разработки.</p>
+<p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, можно декларативно реализовать доступную для перехода страницу XAML содержимого с помощью разметки, как показано ниже.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page1XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; /&gt;
+</code></pre>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , реализованный в XAML имеет разметки <code>Page</code> качестве корневого элемента и требует WPFXML объявление пространства имен. <code>Page</code> Элемент содержит содержимое, которое вы хотите перейти и отобразить. Добавления содержимого задается <code>Page.Content</code> элемента свойства, как показано в следующем примере разметки.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page2XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
+  &lt;Page.Content&gt;
+    &lt;!-- Page Content --&gt;
+    Hello, Page!
+  &lt;/Page.Content&gt;
+&lt;/Page&gt;
+</code></pre>
+<p><code>Page.Content</code> может содержать только один дочерний элемент; в предыдущем примере, содержимым является отдельная строка «Hello, Page!» На практике обычно используется элемент управления макета как дочерний элемент (см. в разделе <a href="../advanced/layout.html">макета</a>) для создания и хранения вашего содержимого.</p>
+<p>Дочерние элементы <code>Page</code> считаются содержимым класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и, следовательно, не нужно использовать явное <code>Page.Content</code> объявления. Следующая разметка является декларативным эквивалентом предыдущего примера.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page3XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
+  &lt;!-- Page Content --&gt;
+  Hello, Page!
+&lt;/Page&gt;
+</code></pre>
+<p>В этом случае <code>Page.Content</code> автоматически задается вместе с дочерними элементами элемента <code>Page</code> элемент. Дополнительные сведения см. в разделе <a href="../controls/wpf-content-model.html">Модель содержимого WPF</a>.</p>
+<p>Только для разметки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> полезно для отображения содержимого. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> также может отображать элементы управления, позволяющие пользователям взаимодействовать со страницей, и он может отвечать на действия пользователя, выполняя обработку событий и вызывая логику приложения. Интерактивная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью комбинации разметки и кода программной части, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="XBAPAppDefSnippets#HomePageMARKUP">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.HomePage&quot;&gt;
+  Hello, from the XBAP HomePage!
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="XBAPAppDefSnippets#HomePageCODEBEHIND">using System.Windows.Controls;
+
+namespace SDKSample
+{
+    public partial class HomePage : Page
+    {
+        public HomePage()
+        {
+            InitializeComponent();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы разрешить совместную работу файла разметки и файла кода программной части, требуется следующая конфигурация.</p>
+<ul>
+<li><p>В разметке <code>Page</code> элемент должен включать <code>x:Class</code> атрибута. При построении приложения существование <code>x:Class</code> в разметке вызывает файл Microsoft Build Engine (MSBuild) для создания <code>partial</code> класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и имеет имя, которое задается параметром <code>x:Class</code> атрибута. Это требует добавления параметра XML объявление пространства имен для XAML схемы ( <code>xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</code> ). Созданный <code>partial</code> класс реализует <code>InitializeComponent</code>, который вызывается для регистрации событий и задания свойств, реализованных в разметке.</p>
+</li>
+<li><p>В коде программной части класс должен быть <code>partial</code> класс с тем же именем, который задается параметром <code>x:Class</code> атрибут в разметке и он должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Это позволяет файл кода должно быть связано с <code>partial</code> класса, созданного для файла разметки при построении приложения (см. в разделе <a href="building-a-wpf-application-wpf.html">построение приложения WPF</a>).</p>
+</li>
+<li><p>В коде программной части <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> класс должен реализовывать конструктор, который вызывает <code>InitializeComponent</code> метод. <code>InitializeComponent</code> реализуется разметки созданным файлом <code>partial</code> класс для регистрации событий и задания свойств, которые определены в разметке.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При добавлении нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в проект, использующий Microsoft Visual Studio, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью разметки и кода программной части и включает необходимую конфигурацию для создания связи между файлами разметки и кода как описанные здесь.</p>
+</div>
+<p>При наличии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, можно перейти к нему. Чтобы указать первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> переходит приложение, необходимо настроить начальную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+<p><a name="Configuring_a_Start_Page"></a></p>
+<h3 id="configuring-a-start-page">Настройка начальной страницы</h3>
+<p>XBAP требуется определенная инфраструктура приложений, размещенных в браузере. В WPF, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класс является частью определения приложения, которое устанавливает необходимую инфраструктуру приложений (см. в разделе <a href="application-management-overview.html">Общие сведения об управлении приложением</a>).</p>
+<p>Определение приложения обычно реализуется с помощью разметки и кода программной части с файл разметки настраивается как MSBuild<code>ApplicationDefinition</code> элемента. Ниже приведен определение приложения для XBAP.</p>
+<pre><code class="lang-xaml" name="XBAPAppDefSnippets#XBAPApplicationDefinitionMARKUP">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.App&quot; /&gt;
+</code></pre><pre><code class="lang-csharp" name="XBAPAppDefSnippets#XBAPApplicationDefinitionCODEBEHIND">using System.Windows;
+
+namespace SDKSample
+{
+    public partial class App : Application { }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>XBAP Можно использовать определение приложения, чтобы указать начальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , автоматически загружаемый при XBAP запускается. Это можно сделать, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> свойство с универсальный идентификатор ресурса (URI) для нужной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В большинстве случаев <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> скомпилированный или развертываются вместе с приложением. В этих случаях URI , идентифицирующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> — это пакет URI, который является URI соответствует <em>пакет</em> схемы. Пакет Идентификаторы URI рассматриваются далее в <a href="pack-uris-in-wpf.html">URI типа Pack в WPF</a>. Для перехода к содержимому можно также использовать схему HTTP, которая рассматривается далее.</p>
+</div>
+<p>Можно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> декларативно в разметке, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#XBAPApplicationDefinitionMARKUP">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.App&quot;
+    StartupUri=&quot;PageWithHyperlink.xaml&quot; /&gt;
+</code></pre>
+<p>В этом примере <code>StartupUri</code> относительный пакет установлен атрибут URI , определяющим HomePage.xaml. Когда XBAP является запуске HomePage.xaml автоматически переход и отображаются. Это показано на следующем рисунке, показывающий XBAP , запущенное с веб-сервера.</p>
+<p><img src="media/navigation-overview/xbap-launched-from-a-web-server.png" alt="XBAP-страница" title="это показывает, приложение XBAP, запускаемых из веб-сервера."></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о разработке и развертывании XBAP, см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a> и <a href="deploying-a-wpf-application-wpf.html">развертывание приложений WPF</a>.</p>
+</div>
+<p><a name="ConfiguringAXAMLPage"></a></p>
+<h3 id="configuring-the-host-windows-title-width-and-height">Настройка заголовка, ширины и высоты основного окна</h3>
+<p>Одно дело, вы могли заметить в предыдущем примере — что заголовком как браузера, так и панели вкладок является URI для XBAP. Заголовок не только длинный, но также не является ни привлекательным, ни информативным. По этой причине <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> предлагает способ для изменения заголовка, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowtitle">WindowTitle</a> свойство. Кроме того, можно настроить ширину и высоту окна браузера, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowwidth">WindowWidth</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowheight">WindowHeight</a>, соответственно.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowtitle">WindowTitle</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowwidth">WindowWidth</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowheight">WindowHeight</a> можно задать декларативно в разметке, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#HomePageMARKUP">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.HomePage&quot;
+    WindowTitle=&quot;Page Title&quot;
+    WindowWidth=&quot;500&quot;
+    WindowHeight=&quot;200&quot;&gt;
+  Hello, from the XBAP HomePage!
+&lt;/Page&gt;
+</code></pre>
+<p>Результат показан на примере ниже.</p>
+<p><img src="media/navigation-overview/window-title-width-height.png" alt="Заголовок окна, высота, ширина" title="отображается заголовок окна, высота и ширина, можно настроить."></p>
+<p><a name="NavigatingBetweenXAMLPages"></a></p>
+<h3 id="hyperlink-navigation">Переход по гиперссылке</h3>
+<p>Типичный XBAP состоит из нескольких страниц. Самый простой способ перехода от одной страницы к другой — для использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>. Можно декларативно добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с помощью <code>Hyperlink</code> элемент, который показан в следующем примере разметки.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML1">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page With Hyperlink&quot;
+  WindowWidth=&quot;250&quot;
+  WindowHeight=&quot;250&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML2">&lt;Hyperlink NavigateUri=&quot;UriOfPageToNavigateTo.xaml&quot;&gt;
+  Navigate to Another Page
+&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML3">&lt;/Page&gt;
+</code></pre>
+<p>Объект <code>Hyperlink</code> элемент требует следующего:</p>
+<ul>
+<li><p>Пакет URI из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> для перехода, определяемом параметрами <code>NavigateUri</code> атрибута.</p>
+</li>
+<li><p>Содержимого, что пользователь может щелкнуть для инициации перехода, например текст и изображения (для содержимого, <code>Hyperlink</code> элемент может содержать, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>).</p>
+</li>
+</ul>
+<p>На следующем рисунке показан XBAP с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>.</p>
+<p><img src="media/navigation-overview/xbap-with-a-page-with-a-hyperlink.png" alt="Страница с гиперссылкой" title="это показывает, приложение XBAP, страница с гиперссылкой."></p>
+<p>Как и следовало ожидать, щелкнув <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> вызывает XBAP для перехода к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , определяемому <code>NavigateUri</code> атрибута. Кроме того XBAP добавляет запись для предыдущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в список последних страниц в Internet Explorer. Это показано на следующем рисунке.</p>
+<p><img src="media/navigation-overview/back-and-forward-navigation.png" alt="&quot;И&quot; Назад кнопки" title="Навигация с помощью кнопок Назад и вперед."></p>
+<p>Помимо поддержки перехода от одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в другую, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> также поддерживает переход к фрагменту.</p>
+<p><a name="FragmentNavigation"></a></p>
+<h3 id="fragment-navigation">Переход к фрагменту</h3>
+<p><em>Переход к фрагменту</em> — это переход к фрагменту содержимого в любом текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> или другой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. В WPF, фрагмент содержимого представляет собой данные, содержащиеся в именованном элементе. Именованный элемент — элемент, имеющий его <code>Name</code> набором атрибутов. В следующей разметке показан именованный <code>TextBlock</code> элемент, содержащий фрагмент содержимого.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageWithContentFragmentsMARKUP1">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    WindowTitle=&quot;Page With Fragments&quot; &gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageWithContentFragmentsMARKUP2">&lt;!-- Content Fragment called &quot;Fragment1&quot; --&gt;
+&lt;TextBlock Name=&quot;Fragment1&quot;&gt;
+  Ea vel dignissim te aliquam facilisis ...
+&lt;/TextBlock&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageWithContentFragmentsMARKUP3">&lt;/Page&gt;
+</code></pre>
+<p>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> для перехода к фрагменту содержимого <code>NavigateUri</code> атрибут должен содержать следующее:</p>
+<ul>
+<li><p>URI Из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с для перехода к фрагменту содержимого.</p>
+</li>
+<li><p>Символ &quot;#&quot;.</p>
+</li>
+<li><p>Имя элемента на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , включающего фрагмент содержимого.</p>
+</li>
+</ul>
+<p>Фрагмент URI имеет следующий формат.</p>
+<p><em>URI_страницы</em> <code>#</code> <em>имя_элемента</em>.</p>
+<p>Ниже приведен пример <code>Hyperlink</code> , настроенной на переход к фрагменту содержимого.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageThatNavigatesXAML1">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page That Navigates To Fragment&quot; &gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageThatNavigatesXAML2">&lt;Hyperlink NavigateUri=&quot;PageWithFragments.xaml#Fragment1&quot;&gt;
+  Navigate To pack Fragment
+&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageThatNavigatesXAML3">&lt;/Page&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом разделе описывается реализация переходов фрагмента по умолчанию в WPF. WPF Кроме того, позволяет реализовать собственную схему переходов фрагмента, которая отчасти требует обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.fragmentnavigation">NavigationService.FragmentNavigation</a> событий.</p>
+</div>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Вы можете перейти к фрагментам на свободных XAML страниц (только для разметки XAML файлы с <code>Page</code> как корневой элемент) только в том случае, если страницы можно просмотреть с помощью HTTP.</p>
+<p>Тем не менее свободный XAML страницу можно перейти к своим собственным фрагментам.</p>
+</div>
+<p><a name="NavigationService"></a></p>
+<h3 id="navigation-service">Служба переходов</h3>
+<p>Хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> позволяет пользователю инициировать переход к конкретному <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, работа по поиску и загрузке страницы выполняется с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> класса. По сути <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> предоставляет возможность обработки запроса перехода со стороны клиентского кода, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> реализует поддержку более высокого уровня для отслеживания и влияние на запроса перехода.</p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> нажатии WPF вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">NavigationService.Navigate</a> для обнаружения и загрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в указанный пакет URI. Скачанный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> преобразуется в дерево объектов, корневой объект которого является экземпляром Скачанный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Ссылка на корневой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> объект хранится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.content">NavigationService.Content</a> свойство. Пакет URI для содержимого, к которому был осуществлен переход, сохраняется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.source">NavigationService.Source</a> свойство, хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.currentsource">NavigationService.CurrentSource</a> сохраняет пакет URI для последней страницы, к которому был осуществлен переход.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Существует возможность WPF приложению требуется более одного активного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. Дополнительные сведения см. в разделе <a href="#Navigation_Hosts">узлы переходов</a> далее в этом разделе.</p>
+</div>
+<p><a name="Programmatic_Navigation_with_the_Navigation_Service"></a></p>
+<h3 id="programmatic-navigation-with-the-navigation-service">Программный переход с помощью службы переходов</h3>
+<p>Не нужно знать о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> Если переход реализован декларативно в разметке с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> от вашего имени. Это означает, что пока прямой или непрямой родитель объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> является узлом перехода (см. в разделе <a href="#Navigation_Hosts">узлы переходов</a>), <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> будут иметь возможность находить и использовать службу переходов этого узла для обработки запрос навигации.</p>
+<p>Тем не менее, существуют ситуации, когда необходимо использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> напрямую, включая следующие:</p>
+<ul>
+<li><p>Если вам нужно создать экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с помощью конструктора не по умолчанию.</p>
+</li>
+<li><p>Если вам нужно задать свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> перед переходом к нему.</p>
+</li>
+<li><p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> что необходимо осуществлять переходы можно определить только во время выполнения.</p>
+</li>
+</ul>
+<p>В этих случаях необходимо написать код для программной инициации перехода посредством вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">Navigate</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> объекта. Для этого требуется получить ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>.</p>
+<h4 id="getting-a-reference-to-the-navigationservice">Получение ссылки на службу переходов</h4>
+<p>По причинам, охваченных <a href="#Navigation_Hosts">узлы переходов</a> разделе WPF приложение может иметь более одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. Это означает, что в коде необходимо предусмотреть способ поиска <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>, который обычно является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> , приводящую к текущему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Можно получить ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> путем вызова <code>static</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.getnavigationservice">NavigationService.GetNavigationService</a> метод. Чтобы получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> , переход к конкретному <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, передать ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в качестве аргумента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.getnavigationservice">GetNavigationService</a> метод. Следующий код показывает способ получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> для текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+<pre><code class="lang-csharp" name="NavigationOverviewSnippets#GetNSCODEBEHIND1">using System.Windows.Navigation;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#GetNSCODEBEHIND2">// Get a reference to the NavigationService that navigated to this Page
+NavigationService ns = NavigationService.GetNavigationService(this);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Как быстро найти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.navigationservice">NavigationService</a> свойство. Эти действия показаны в следующем примере.</p>
+<pre><code class="lang-csharp" name="NavigationOverviewSnippets#GetNSShortcutCODEBEHIND1">using System.Windows.Navigation;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#GetNSShortcutCODEBEHIND2">// Get a reference to the NavigationService that navigated to this Page
+NavigationService ns = this.NavigationService;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> может получить только ссылку на его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий.</p>
+</div>
+<h4 id="programmatic-navigation-to-a-page-object">Программный переход к объекту страницы</h4>
+<p>В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> осуществить программный переход к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Программный переход является обязательным, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> то есть, куда выполняется переход могут быть созданы только с помощью конструктора, единый, не по умолчанию. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> С нестандартным конструктором показан в следующей разметке и коде.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageWithNonDefaultConstructorXAML">&lt;Page
+    x:Class=&quot;SDKSample.PageWithNonDefaultConstructor&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;PageWithNonDefaultConstructor&quot;&gt;
+  
+  &lt;!-- Content goes here --&gt;
+  
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#PageWithNonDefaultConstructorCODEBEHIND">using System.Windows.Controls;
+
+namespace SDKSample
+{
+    public partial class PageWithNonDefaultConstructor : Page
+    {
+        public PageWithNonDefaultConstructor(string message)
+        {
+            InitializeComponent();
+
+            this.Content = message;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , Осуществляющий переход к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с нестандартным конструктором показан в следующей разметке и коде.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#NSNavigationPageXAML">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.NSNavigationPage&quot;&gt;
+
+  &lt;Hyperlink Click=&quot;hyperlink_Click&quot;&gt;
+    Navigate to Page with Non-Default Constructor
+  &lt;/Hyperlink&gt;
+
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#NSNavigationPageCODEBEHIND">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class NSNavigationPage : Page
+    {
+        public NSNavigationPage()
+        {
+            InitializeComponent();
+        }
+
+        void hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the page to navigate to
+            PageWithNonDefaultConstructor page = new PageWithNonDefaultConstructor(&quot;Hello!&quot;);
+
+            // Navigate to the page, using the NavigationService
+            this.NavigationService.Navigate(page);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>При <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> об этом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> является щелчке, запускается переход путем создания экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> перейдите к с помощью конструктора не по умолчанию и вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">NavigationService.Navigate</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">Navigate</a> принимает ссылку на объект, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> производится переход, типа pack URI.</p>
+<h4 id="programmatic-navigation-with-a-pack-uri">Программный переход с URI типа pack</h4>
+<p>Если вам необходимо создать в пакете URI программным образом (если только определения пакета URI во время выполнения, например), можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">NavigationService.Navigate</a> метод. Эти действия показаны в следующем примере.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#NSUriNavigationPageXAML">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.NSUriNavigationPage&quot;&gt;
+  &lt;Hyperlink Click=&quot;hyperlink_Click&quot;&gt;Navigate to Page by Pack URI&lt;/Hyperlink&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#NSUriNavigationPageCODEBEHIND">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class NSUriNavigationPage : Page
+    {
+        public NSUriNavigationPage()
+        {
+            InitializeComponent();
+        }
+
+        void hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            // Create a pack URI
+            Uri uri = new Uri(&quot;AnotherPage.xaml&quot;, UriKind.Relative);
+
+            // Get the navigation service that was used to
+            // navigate to this page, and navigate to
+            // AnotherPage.xaml
+            this.NavigationService.Navigate(uri);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="refreshing-the-current-page">Обновление текущей страницы</h4>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> не загружается, если он имеет тот же пакет URI пакета URI , хранящееся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.source">NavigationService.Source</a> свойство. Чтобы принудительно WPF попытку загрузить текущую страницу, можно последовательно вызвать методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.refresh">NavigationService.Refresh</a> метод, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#NSRefreshNavigationPageXAML1">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.NSRefreshNavigationPage&quot;&gt;
+ &lt;Hyperlink Click=&quot;hyperlink_Click&quot;&gt;Refresh this page&lt;/Hyperlink&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#NSRefreshNavigationPageCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class NSRefreshNavigationPage : Page
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="NavigationOverviewSnippets#NSRefreshNavigationPageCODEBEHIND2">        void hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            // Force WPF to download this page again
+            this.NavigationService.Refresh();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="Navigation_Lifetime"></a></p>
+<h3 id="navigation-lifetime">Время существования перехода</h3>
+<p>Как вы уже видели, существует множество способов инициации перехода. Когда переход инициирован и навигации во время выполнения, можно отслеживать и повлиять на него с помощью следующих событий, которые реализуются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigating">Navigating</a>. Появляется, когда запрошен новый переход. Можно использовать для отмены перехода.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigationprogress">NavigationProgress</a>. Происходит периодически во время загрузки, тем самым предоставляя информацию о ходе процесса навигации.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigated">Navigated</a>. Появляется, когда страница найдена и загружена.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigationstopped">NavigationStopped</a>. Происходит, когда переход остановлен (путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.stoploading">StopLoading</a>), или при запросе нового перехода во время выполнения текущего перехода.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigationfailed">NavigationFailed</a>. Появляется при возникновении ошибки во время перехода к запрошенному содержимому.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.loadcompleted">LoadCompleted</a>. Появляется, когда содержимое, к которому был осуществлен переход, загружено и проанализировано и начинается его отрисовка.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.fragmentnavigation">FragmentNavigation</a>. Появляется в начале перехода к фрагменту содержимого, который происходит:</p>
+<ul>
+<li><p>немедленно, если нужный фрагмент находится в текущем содержимом;</p>
+</li>
+<li><p>после загрузки исходного содержимого, если нужный фрагмент находится в другом содержимом.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>События перехода вызываются в порядке, который показан на следующем рисунке.</p>
+<p><img src="media/navigation-overview/order-of-navigation-events.png" alt="Таблица потока навигации страницы" title="блок-схема событий навигации страницы"></p>
+<p>В общем случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> не связан с этими событиями. Более вероятно, что приложение связано с ними, и по этой причине эти события также вызываются с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класса:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.navigating">Application.Navigating</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.navigationprogress">Application.NavigationProgress</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.navigated">Application.Navigated</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.navigationfailed">Application.NavigationFailed</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.navigationstopped">Application.NavigationStopped</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.loadcompleted">Application.LoadCompleted</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.fragmentnavigation">Application.FragmentNavigation</a></p>
+</li>
+</ul>
+<p>Каждый раз <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> возникает событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класс вызывает соответствующее событие. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> обеспечивают те же события, для обнаружения переходов в соответствующих областях.</p>
+<p>В некоторых случаях <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> могут заинтересовать эти события. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> может обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigating">NavigationService.Navigating</a> событие, чтобы определить необходимость отмены перехода. Эти действия показаны в следующем примере.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#CancelNavigationPageXAML">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.CancelNavigationPage&quot;&gt;
+  &lt;Button Click=&quot;button_Click&quot;&gt;Navigate to Another Page&lt;/Button&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#CancelNavigationPageCODEBEHIND">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class CancelNavigationPage : Page
+    {
+        public CancelNavigationPage()
+        {
+            InitializeComponent();
+
+            // Can only access the NavigationService when the page has been loaded
+            this.Loaded += new RoutedEventHandler(CancelNavigationPage_Loaded);
+            this.Unloaded += new RoutedEventHandler(CancelNavigationPage_Unloaded);
+        }
+
+        void button_Click(object sender, RoutedEventArgs e)
+        {
+            // Force WPF to download this page again
+            this.NavigationService.Navigate(new Uri(&quot;AnotherPage.xaml&quot;, UriKind.Relative));
+        }
+
+        void CancelNavigationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigating += new NavigatingCancelEventHandler(NavigationService_Navigating);
+        }
+
+        void CancelNavigationPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigating -= new NavigatingCancelEventHandler(NavigationService_Navigating);
+        }
+
+        void NavigationService_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            // Does the user really want to navigate to another page?
+            MessageBoxResult result;
+            result = MessageBox.Show(&quot;Do you want to leave this page?&quot;, &quot;Navigation Request&quot;, MessageBoxButton.YesNo);
+
+            // If the user doesn't want to navigate away, cancel the navigation
+            if (result == MessageBoxResult.No) e.Cancel = true;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если регистрируется обработчик с событием перехода из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, как предыдущий пример, необходимо также отменить регистрацию обработчика событий. Если этого не сделать, могут возникнуть побочные эффекты, как WPF запоминает переходы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с помощью журнала.</p>
+<p><a name="NavigationHistory"></a></p>
+<h3 id="remembering-navigation-with-the-journal">Запоминание перехода в журнале</h3>
+<p>WPF использует два стека для запоминания страниц, на которые был осуществлен переход: стек переходов назад и вперед. При переходе из текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> или вперед к существующему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, текущий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> добавляется <em>стек переходов назад</em>. При переходе из текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> вернитесь к предыдущему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, текущий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> добавляется <em>вперед</em>. Стек &quot;Назад&quot;, стек &quot;Вперед&quot; и функциональные возможности для управления ими в совокупности называются журналом. Каждый элемент в стеке переходов назад и вперед — это экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.journalentry">JournalEntry</a> класса и называется <em>записи журнала</em>.</p>
+<h4 id="navigating-the-journal-from-internet-explorer">Перемещение по журналу в браузере Internet Explorer</h4>
+<p>По существу, журнала работает так же, как <strong>обратно</strong> и <strong>вперед</strong> кнопки в Internet Explorer сделать. Это показано на следующем рисунке.</p>
+<p><img src="media/navigation-overview/back-and-forward-navigation.png" alt="&quot;И&quot; Назад кнопки" title="Навигация с помощью кнопок Назад и вперед."></p>
+<p>Для XBAP , размещаемых в Internet Explorer, WPF осуществляет интеграцию журнала в области навигации ИП из Internet Explorer. Это позволяет пользователям перемещаться по страницам в XBAP с помощью <strong>обратно</strong>, <strong>вперед</strong>, и <strong>последние страницы</strong> кнопки в Internet Explorer. Журнал не интегрирован в Microsoft Internet Explorer 6 таким же образом, что и для Internet Explorer 7 или Internet Explorer 8. Вместо этого WPF отображает навигации замените ИП.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>В Internet Explorer, при переходе со страницы и обратно XBAP, в журнале сохраняются только записи журнала для страниц, которые не поддерживались в активном состоянии. Обсуждение поддержки страниц в активном состоянии, см. в разделе <a href="#PageLifetime">время существования страницы и журнал</a> далее в этом разделе.</p>
+</div>
+<p>По умолчанию текст для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , отображаемый в <strong>последние страницы</strong> список Internet Explorer — URI для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. В большинстве случаев это не особенно важно для пользователя. К счастью можно изменить текст, используя следующие параметры.</p>
+<ol>
+<li><p>Вложенный <code>JournalEntry.Name</code> значение атрибута.</p>
+</li>
+<li><p><code>Page.Title</code> Значение атрибута.</p>
+</li>
+<li><p><code>Page.WindowTitle</code> Значение атрибута и URI для текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+</li>
+<li><p>Интерфейс URI для текущего объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. (Значение по умолчанию)</p>
+</li>
+</ol>
+<p>Порядок, в котором перечислены параметры, совпадает с порядком приоритета для поиска текста. Например если <code>JournalEntry.Name</code> не установлен, другие значения игнорируются.</p>
+<p>В следующем примере используется <code>Page.Title</code> атрибут, чтобы изменить текст, отображаемый в записи журнала.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageTitleMARKUP1">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.PageWithTitle&quot;
+    Title=&quot;This is the title of the journal entry for this page.&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#PageTitleMARKUP2">&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigationOverviewSnippets#PageTitleCODEBEHIND1">using System.Windows.Controls;
+
+namespace SDKSample
+{
+    public partial class PageWithTitle : Page
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="NavigationOverviewSnippets#PageTitleCODEBEHIND2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="navigating-the-journal-using-wpf">Перемещение по журналу с помощью WPF</h4>
+<p>Несмотря на то, что пользователь может перемещаться по журналу с помощью <strong>обратно</strong>, <strong>вперед</strong>, и <strong>последние страницы</strong> в Internet Explorer, можно также перейти по журналу с помощью обоих декларативные и программные механизмы, предоставляемые WPF. Одна из причин для этого — предоставление пользовательских переходов Пользовательские интерфейсы на страницах.</p>
+<p>Можно декларативно добавить поддержку журнального перехода с помощью команд перехода, предоставляемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands">NavigationCommands</a>. Следующий пример демонстрирует, как использовать <code>BrowseBack</code> команды перехода.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#NavigationCommandsPageXAML1">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.NavigationCommandsPage&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#NavigationCommandsPageXAML2">&lt;Hyperlink Command=&quot;NavigationCommands.BrowseBack&quot;&gt;Back&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#NavigationCommandsPageXAML3">&lt;Hyperlink Command=&quot;NavigationCommands.BrowseForward&quot;&gt;Forward&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#NavigationCommandsPageXAML4">&lt;/Page&gt;
+</code></pre>
+<p>Можно программно перемещаться по журналу с помощью одного из следующих членов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> класса:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.goback">GoBack</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.goforward">GoForward</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.cangoback">CanGoBack</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.cangoforward">CanGoForward</a></p>
+</li>
+</ul>
+<p>Журнал можно также управлять программным образом, как описано в <a href="#RetainingContentStateWithNavigationHistory">сохранение состояния содержимого с помощью журнала переходов</a> далее в этом разделе.</p>
+<p><a name="PageLifetime"></a></p>
+<h3 id="page-lifetime-and-the-journal">Время существования страницы и журнал</h3>
+<p>Рассмотрите возможность XBAP с несколькими страницами, которые содержат форматированное содержимое, включая графики, анимации и мультимедиа. Объем памяти для подобных страниц может быть довольно большим, особенно если используются видеоматериалы и звуковые файлы. Учитывая, что в журнале «запоминаются», которые были посещенные страницы XBAP может быстро расходовать значительный объем памяти.</p>
+<p>По этой причине, по умолчанию журнала выполняется для хранения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> метаданные в каждой записи журнала, а не ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> объекта. При переходе к записи журнала его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> метаданные используются для создания нового экземпляра указанного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Как следствие каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , к которому осуществляется переход имеет время существования, который показан на следующем рисунке.</p>
+<p><img src="media/navigation-overview/navigated-page-lifetime.png" alt="Время существования страницы" title="отображается время существования, при переходе со страницы."></p>
+<p>Хотя при использовании поведения журнала по умолчанию можно сэкономить потребление памяти, производительность отрисовки каждой страницы может уменьшиться; повторное создание экземпляров <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> может быть много времени, особенно в том случае, если он имеет много содержимого. Если необходимо сохранить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> экземпляра в журнале, можно рисовать на два способа это сделать. Во-первых, можно осуществить программный переход к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> путем вызова метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">NavigationService.Navigate</a> метод.</p>
+<p>Во-вторых, можно указать, что WPF сохранял экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в журнале, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.keepalive">KeepAlive</a> свойства <code>true</code> (по умолчанию используется <code>false</code>). Как показано в следующем примере, можно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.keepalive">KeepAlive</a> декларативно в разметке.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#KeepAlivePageXAML">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.KeepAlivePage&quot;
+    KeepAlive=&quot;True&quot;&gt;
+  
+  An instance of this page is stored in the journal.
+  
+&lt;/Page&gt;
+</code></pre>
+<p>Время существования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> это поддерживается в активном состоянии, немного отличается от другой — нет. В первый раз <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , остается активным осуществляется переход, так же, как создается экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , не сохраняется. Тем не менее так как экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> сохраняется в журнале, он никогда не инициализируется повторно для до тех пор, пока он остается в журнале. Следовательно Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> имеет логику инициализации, который должен вызываться каждый раз <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> к которому осуществляется переход, следует переместить ее из конструктора в обработчик для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий. Как показано на следующем рисунке, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unloaded">Unloaded</a> события по-прежнему вызываются каждый раз <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> осуществляется переход и обратно, соответственно.</p>
+<p><img src="media/navigation-overview/loaded-and-unloaded-events.png" alt="При возникновении событий загрузки и выгрузки" title="загрузки и выгрузки события, возникающие при переходе со страницы и обратно."></p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> — не поддерживается в активном состоянии, можно выполнять одно из следующих:</p>
+<ul>
+<li><p>Сохранять ссылку или любую его часть.</p>
+</li>
+<li><p>Регистрировать обработчики событий с событиями, которые не реализованы в объекте.</p>
+</li>
+</ul>
+<p>Выполнения любой из этих действий будут созданы ссылки, которые вынудят <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> должно храниться в памяти, даже в том случае, если он был удален из журнала.</p>
+<p>В общем случае следует отдавать предпочтение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> поведение не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> проверки активности. Однако при этом существуют реализации состояния, которые описаны в следующем разделе.</p>
+<p><a name="RetainingContentStateWithNavigationHistory"></a></p>
+<h3 id="retaining-content-state-with-navigation-history">Сохранение состояния содержимого с помощью журнала переходов</h3>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> не поддерживаться в рабочем состоянии, но имеет элементы управления, которые собирают данные от пользователя, что происходит с данными, если пользователь переходит с и обратно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>? С точки зрения пользователя следует ожидать появления ранее введенных данных. К сожалению так как новый экземпляр класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> создается при каждом переходе, элементы управления, что собранные данные, инициализируются заново и данные будут потеряны.</p>
+<p>К счастью, журнал обеспечивает запоминание данных через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> при переходах, включая данные элементов управления. В частности, записи журнала для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> действует как временный контейнер для связанного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> состояния. Ниже показано, как используется эта поддержка при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> перехода из:</p>
+<ol>
+<li><p>Запись для текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> добавляется в журнал.</p>
+</li>
+<li><p>Состояние <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> хранится в записи журнала для этой страницы, которая добавляется в стек переходов назад.</p>
+</li>
+<li><p>Новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , к которому осуществляется переход.</p>
+</li>
+</ol>
+<p>Если страницы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> будет осуществлен переход обратно, с помощью журнала, выполняются следующие действия:</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> Создается (самая верхняя запись журнала в стеке переходов назад).</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> Обновляется с состоянием, которое было сохранено в записи журнала для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> Выполняется переход к.</p>
+</li>
+</ol>
+<p>WPF автоматически использует эту поддержку, при использовании следующих элементов управления на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.expander">Expander</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.progressbar">ProgressBar</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabcontrol">TabControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a></p>
+</li>
+</ul>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> использует эти элементы управления, содержащиеся в них данные запоминаются при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> при переходах, как показано <strong>любимого цвета</strong> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> на следующем рисунке.</p>
+<p><img src="media/navigation-overview/data-remembered-across-page-navigations.png" alt="Страница с элементами управления, помнящими состояние" title="введенные данные запоминаются при переходах между страницами."></p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> имеет элементы управления, не упомянутые в предыдущем списке, или когда состояние сохраняется в пользовательских объектах, необходимо написать код для сохранения в журнале состояния <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> переходов.</p>
+<p>Если необходимо запомнить небольшие части состояния <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> при переходах, можно использовать свойства зависимостей (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>), настроенные с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.journal">FrameworkPropertyMetadata.Journal</a> флаг метаданных.</p>
+<p>Если состояние, ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> необходимо запомнить при переходах состоит из нескольких фрагментов данных, может оказаться меньше кода с большим объемом инкапсуляцию состояния в одном классе и реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.iprovidecustomcontentstate">IProvideCustomContentState</a> интерфейс.</p>
+<p>Если вам необходимо перейти по различным состояниям одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, не переходя с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.iprovidecustomcontentstate">IProvideCustomContentState</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.addbackentry">NavigationService.AddBackEntry</a>.</p>
+<p><a name="Cookies"></a></p>
+<h3 id="cookies">Файлы cookie</h3>
+<p>Другим образом, как WPF приложения могут хранить данные с помощью файлов cookie, которые создаются, обновляются и удалить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.setcookie">SetCookie</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcookie">GetCookie</a> методы. Файлы cookie, можно создать в WPF будут использовать другие виды веб-приложений это те же cookie; файлы cookie представляют собой произвольные фрагменты данных, которые хранятся в приложении на клиентском компьютере во время или между сеансами приложения. Данные файлов cookie обычно представлены в форме пары &quot;имя — значение&quot; в следующем формате.</p>
+<p><em>имя</em> <code>=</code> <em>значение</em></p>
+<p>При передаче данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.setcookie">SetCookie</a>, вместе с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> расположения, для которого задается файл cookie, файл cookie создается в памяти, и он доступен только в течение текущего сеанса приложения. Этот тип файла cookie называется <em>файл cookie сеанса</em>.</p>
+<p>Чтобы сохранить файл cookie на протяжении нескольких сеансов приложения, необходимо добавить в файл cookie дату окончания срока действия, используя следующий формат.</p>
+<p><em>ИМЯ</em> <code>=</code> <em>ЗНАЧЕНИЕ</em> <code>; expires=DAY, DD-MMM-YYYY HH:MM:SS GMT</code></p>
+<p>Файл cookie с датой окончания срока действия хранится в текущем Windows папке временных файлов Интернета для установки до истечения срока действия файла cookie. Такой файл cookie называется <em>постоянный файл cookie</em> так, как он сохраняется между сеансами приложения.</p>
+<p>Получить сеанс и постоянные файлы cookie, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcookie">GetCookie</a> , передавая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> расположения, где был задан файл cookie с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.setcookie">SetCookie</a> метод.</p>
+<p>Ниже приведены некоторые способы поддержки файлов cookie в WPF:</p>
+<ul>
+<li><p>WPF Автономные приложения и XBAP можно создать и управлении файлами cookie.</p>
+</li>
+<li><p>Файлы cookie, создаваемых с XBAP можно получить из браузера.</p>
+</li>
+<li><p>XBAP на том же домене можно создавать и совместно использовать файлы cookie.</p>
+</li>
+<li><p>XBAP и HTML страниц из одного домена можно создавать и совместно использовать файлы cookie.</p>
+</li>
+<li><p>Файлы cookie отправляются при XBAP и свободные XAML страниц создания веб-запросов.</p>
+</li>
+<li><p>Оба верхнего уровня XBAP и XBAP размещенные в IFRAMES доступны файлы cookie.</p>
+</li>
+<li><p>Поддержка файлов cookie в WPF одинаков для всех поддерживаемых браузерах.</p>
+</li>
+<li><p>В Internet Explorer, политика P3P, которая относится к файлам cookie, соблюдается системой WPF, особенно в отношении Майкрософт и сторонних XBAP.</p>
+</li>
+</ul>
+<p><a name="Structured_Navigation"></a></p>
+<h3 id="structured-navigation">Структурная навигация</h3>
+<p>Если вам нужно передать данные из одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в другую, можно передать данные как аргументы конструктора не по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Обратите внимание, что если вы используете этот способ, то необходимо поддерживать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> активном состоянии; Если нет, в следующий раз, перейдите к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, WPF заново создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с помощью конструктора по умолчанию.</p>
+<p>Кроме того ваши <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> можно реализовать свойства, заданные с данными, которые необходимо передать. Все усложняется тем не менее, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> требуется для передачи данных обратно в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , приводящую к нему. Проблема в том, что изначально переходы не поддерживают механизмы, гарантирующие, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> возвращается после перехода из него. По существу переходы не поддерживают семантику вызова/возврата. Чтобы решить эту проблему, WPF предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> класс, который можно использовать, чтобы убедиться, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> возвращается в прогнозируемом и структурированном виде. Дополнительные сведения см. в разделе <a href="structured-navigation-overview.html">Общие сведения о структурной навигации</a>.</p>
+<p><a name="The_NavigationWindow_Class"></a></p>
+<h2 id="the-navigationwindow-class">Класс NavigationWindow</h2>
+<p>К этому моменту мы рассмотрели целый ряд служб переходов, которые с наибольшей вероятностью будут использоваться для построения приложений с содержимым, допускающим переходы. Эти службы обсуждались в контексте XBAP, несмотря на то, что они не ограничиваются XBAP. Воспользуйтесь преимуществами опыт работы современных пользователей для включения навигации в стиле браузера в автономные приложения, современные операционные системы и приложений Windows. Вот наиболее распространенные примеры.</p>
+<ul>
+<li><p><strong>Word тезауруса</strong>: Переход по вариантам слов.</p>
+</li>
+<li><p><strong>Обозреватель файлов</strong>: Просмотр файлов и папок.</p>
+</li>
+<li><p><strong>Мастеры</strong>: Разбиение сложной задачи на несколько страниц, которые можно перемещаться. Например, мастер компонентов Windows, который обрабатывает добавление и удаление компонентов Windows.</p>
+</li>
+</ul>
+<p>Включение навигации в стиле браузера в автономных приложениях, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> класса. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и расширяет его такой же поддержкой навигации, XBAP предоставить. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> как главное окно автономного приложения или как дополнительное окно, например диалоговое окно.</p>
+<p>Для реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, как и в случае с классами самого верхнего уровня в WPF (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, и так далее), используйте комбинацию разметки и кода. Эти действия показаны в следующем примере.</p>
+<pre><code class="lang-xaml" name="IntroToNavNavigationWindowSnippets#NavigationWindowMARKUP">&lt;NavigationWindow
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.MainWindow&quot; 
+    Source=&quot;HomePage.xaml&quot;/&gt;
+</code></pre><pre><code class="lang-csharp" name="IntroToNavNavigationWindowSnippets#NavigationWindowCODEBEHIND">using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class MainWindow : NavigationWindow
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Этот код создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> , автоматически переходит к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> (HomePage.xaml) при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> открыт. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> является главное окно приложения, можно использовать <code>StartupUri</code> атрибут, чтобы запустить его. Это показано в следующем примере разметки.</p>
+<pre><code class="lang-xaml" name="IntroToNavNavigationWindowSnippets#AppLaunchNavWindow">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    StartupUri=&quot;MainWindow.xaml&quot; /&gt;
+</code></pre>
+<p>На следующем рисунке показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> как главное окно автономного приложения.</p>
+<p><img src="media/navigation-overview/navigation-window-as-main-window.png" alt="Главное окно" title="окно навигации, что и главное окно"></p>
+<p>Из рисунка, можно увидеть, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> имеет заголовок, несмотря на то, что он не задан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> реализации кода из предыдущего примера. Вместо этого заголовок задается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowtitle">WindowTitle</a> свойство, которое показано в следующем коде.</p>
+<pre><code class="lang-xaml" name="IntroToNavNavigationWindowSnippets#HomePageMARKUP1">&lt;Page 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    Title=&quot;Home Page&quot;
+    WindowTitle=&quot;NavigationWindow&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="IntroToNavNavigationWindowSnippets#HomePageMARKUP2">&lt;/Page&gt;
+</code></pre>
+<p>Установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowwidth">WindowWidth</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page.windowheight">WindowHeight</a> свойства также влияет на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>.</p>
+<p>Обычно вы реализуете собственный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> при необходимости настроить его поведение или внешний вид. Если вы этого не сделали, можно использовать команду быстрого вызова. Если указать пакет URI из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> в автономном приложении, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> автоматически создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> узел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. В следующем примере разметки показано, как это сделать.</p>
+<pre><code class="lang-xaml" name="IntroToNavNavigationWindowSnippets#AppLaunchPage">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    StartupUri=&quot;HomePage.xaml&quot; /&gt;
+</code></pre>
+<p>Если необходимо, чтобы дополнительное окно приложения например диалоговое окно, чтобы быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, чтобы открыть его, можно использовать код в следующем примере.</p>
+<pre><code class="lang-csharp" name="IntroToNavNavigationWindowSnippets#CreateNWDialogBox">// Open a navigation window as a dialog box
+NavigationWindowDialogBox dlg = new NavigationWindowDialogBox();
+dlg.Source = new Uri(&quot;HomePage.xaml&quot;, UriKind.Relative);
+dlg.Owner = this;
+dlg.ShowDialog();
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На рисунке ниже показан результат.</p>
+<p><img src="media/navigation-overview/navigation-window-as-dialog-box.png" alt="Диалоговое окно" title="окно навигации как диалоговое окно"></p>
+<p>Как вы видите, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> отображает Internet Explorer-стиль <strong>обратно</strong> и <strong>вперед</strong> кнопки, которые позволяют пользователям перемещаться по журналу. Эти кнопки предоставляют пользователям те же возможности, что показаны на следующем рисунке.</p>
+<p><img src="media/navigation-overview/back-and-forward-buttons-in-navigation-window.png" alt="&quot;И&quot; Назад кнопок в NavigationWindow" title="&quot;и&quot; Назад кнопки в окне навигации"></p>
+<p>Если страницы предоставляют свои собственные поддержку перемещения по журналу и пользовательский Интерфейс, можно скрыть <strong>обратно</strong> и <strong>вперед</strong> кнопок, отображаемых по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> , задав значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.showsnavigationui">ShowsNavigationUI</a> свойства <code>false</code>.</p>
+<p>Кроме того, можно использовать поддержку настройки в WPF для замены ИП из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> сам.</p>
+<p><a name="Frame_in_Standalone_Applications"></a></p>
+<h2 id="the-frame-class">Класс Frame</h2>
+<p>Как обозреватель так и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> представляют собой окна, предоставляющие содержимое. В некоторых случаях приложения имеют содержимое, которое не обязательно должно размещаться в целом окне. Такое содержимое помещается внутрь другого содержимого. Можно вставить содержимое с возможностью переходов в другое содержимое с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> класса. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> предоставляет такую же поддержку как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> и XBAP.</p>
+<p>В следующем примере показано, как добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> декларативно с помощью <code>Frame</code> элемент.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageXAML1">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page that Hosts a Frame&quot;
+  WindowWidth=&quot;250&quot;
+  WindowHeight=&quot;250&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageXAML2">&lt;Frame Source=&quot;FramePage1.xaml&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageXAML3">&lt;/Page&gt;
+</code></pre>
+<p>Эта разметка задает <code>Source</code> атрибут <code>Frame</code> элемент в пакет URI для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> должен перейти сначала. На следующем рисунке показан XBAP с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , осуществляющий переходы между несколькими страницами.</p>
+<p><img src="media/navigation-overview/frame-navigation-between-multiple-pages.png" alt="Фрейм, осуществивший несколько страниц" title="отобразится навигации по кадрам между несколькими страницами."></p>
+<p>Вы не обязательно использовать только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> внутри содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Обычно для размещения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> внутри содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> использует собственный журнал только при отсутствии другого журнала. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> является частью содержимого, которое размещено внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> или XBAP, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> использует журнал, который принадлежит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> или XBAP. Иногда Однако <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> может потребоваться отвечать за собственный журнал. Одна из причин для этого является необходимость разрешения переходов в журнале в этих страницах, расположенных на серверах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>. Это показано на следующем рисунке.</p>
+<p><img src="media/navigation-overview/journal-navigation-within-pages-hosted-by-a-frame.png" alt="Схема фрейма и страницы" title="отобразится журнал навигации в пределах страницы, размещенные во фрейме."></p>
+<p>В этом случае можно настроить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> с помощью параметра собственный журнал <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.journalownership">JournalOwnership</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.journalownership#System_Windows_Navigation_JournalOwnership_OwnsJournal">OwnsJournal</a>. Это показано в следующем примере разметки.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageOwnJournalXAML1">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page that Hosts a Frame&quot;
+  WindowWidth=&quot;250&quot;
+  WindowHeight=&quot;250&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageOwnJournalXAML2">&lt;Frame Source=&quot;FramePage1.xaml&quot; JournalOwnership=&quot;OwnsJournal&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageOwnJournalXAML3">&lt;/Page&gt;
+</code></pre>
+<p>На следующем рисунке показано влияние перехода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , использует собственный журнал.</p>
+<p><img src="media/navigation-overview/frame-uses-its-own-journal.png" alt="Кадр, который использует собственный журнал" title="это показано влияние перехода в пределах кадра, который использует собственный журнал."></p>
+<p>Обратите внимание, что записи журнала отображаются в области навигации ИП в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, а не с помощью Internet Explorer.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> является частью содержимого, размещенного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> использует собственный журнал и, следовательно, отображает собственный навигации ИП.</p>
+</div>
+<p>Если вам требуется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> для предоставления собственный журнал без отображения панели навигации ИП, можно скрыть навигации ИП , задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.navigationuivisibility">NavigationUIVisibility</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Hidden">Hidden</a>. Это показано в следующем примере разметки.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageHidesUIXAML1">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page that Hosts a Frame&quot;
+  WindowWidth=&quot;250&quot;
+  WindowHeight=&quot;250&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageHidesUIXAML2">&lt;Frame 
+  Source=&quot;FramePage1.xaml&quot; 
+  JournalOwnership=&quot;OwnsJournal&quot; 
+  NavigationUIVisibility=&quot;Hidden&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHostPageHidesUIXAML3">&lt;/Page&gt;
+</code></pre>
+<p><a name="Navigation_Hosts"></a></p>
+<h2 id="navigation-hosts">Узлы переходов</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> являются классами, которые известны как узлы переходов. Объект <em>узла навигации</em> является классом, который может перейти к содержимому и отобразить. В этой ситуации каждом узле переходов используются собственная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала. На следующем рисунке показана основная структура узла переходов.</p>
+<p><img src="media/navigation-overview/navigation-host-construction.png" alt="Схемы перехода" title="основная структура узла переходов"></p>
+<p>По сути, это позволяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> обеспечить такую же поддержку переходов, XBAP предоставляет при размещении в браузере.</p>
+<p>Помимо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала, узлы переходов реализуют те же члены, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> реализует. Это показано на следующем рисунке.</p>
+<p><img src="media/navigation-overview/navigation-window-and-frame.png" alt="Журнал во фрейме и в NavigationWindow" title="окно навигации и кадра"></p>
+<p>Это позволяет программировать поддержку переходов непосредственно с ними. Это можно использовать, если необходимо предоставить навигации ИП для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , размещенного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>. Кроме того, оба типа реализуют дополнительные, связанных с навигацией члены, включая <code>BackStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.backstack">NavigationWindow.BackStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.backstack">Frame.BackStack</a>) и <code>ForwardStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.forwardstack">NavigationWindow.ForwardStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.forwardstack">Frame.ForwardStack</a>), которые позволяют перебирать записи журнала в серверной части стек и переслать стека, соответственно.</p>
+<p>Как упоминалось ранее, в приложении может существовать несколько журналов. На следующем рисунке показано пример, когда это возможно.</p>
+<p><img src="media/navigation-overview/multiple-journals-in-one-application.png" alt="Несколько журналов в одном приложении" title="это пример более одного журнала в приложении."></p>
+<p><a name="Navigating_to_Content_Other_than_Pages"></a></p>
+<h2 id="navigating-to-content-other-than-xaml-pages">Переход к содержимому, отличному от страниц XAML</h2>
+<p>В этом разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и пакет XBAP использовался для демонстрируют различные возможности переходов WPF. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> то есть скомпилированный в приложение не является единственным типом содержимого, к которому можно осуществить переход и пакет XBAP — не единственный способ определения содержимого.</p>
+<p>Как показано в этом разделе, можно также осуществлять переходы к свободным XAML файлы, HTML файлы и объекты.</p>
+<p><a name="Navigating_to_Loose_XAML_Files"></a></p>
+<h3 id="navigating-to-loose-xaml-files">Переход к свободным файлам XAML</h3>
+<p>Свободный XAML файл является файлом со следующими характеристиками:</p>
+<ul>
+<li><p>Содержит только XAML (то есть без кода).</p>
+</li>
+<li><p>имеет объявление соответствующего пространства имен;</p>
+</li>
+<li><p>имя файла имеет расширение XAML.</p>
+</li>
+</ul>
+<p>Например, рассмотрим следующее содержимое, сохраненное как свободный XAML файле Person.xaml.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#LooseXAML">&lt;!-- Person.xaml --&gt;
+&lt;TextBlock xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
+  &lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Name:&lt;/TextBlock&gt;
+  &lt;TextBlock&gt;Nancy Davolio&lt;/TextBlock&gt;
+  &lt;LineBreak /&gt;
+  &lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Favorite Color:&lt;/TextBlock&gt;
+  &lt;TextBlock&gt;Yellow&lt;/TextBlock&gt;
+&lt;/TextBlock&gt;
+</code></pre>
+<p>Если дважды щелкнуть файл, браузер откроется, выполнит переход к содержимому и отобразит его. Это показано на следующем рисунке.</p>
+<p><img src="media/navigation-overview/contents-of-person-xaml-file.png" alt="Отображение содержимого в файле Person.XAML" title="показано содержимое файла Person.XAML."></p>
+<p>Можно отобразить свободный XAML файл из следующего:</p>
+<ul>
+<li><p>веб-узел на локальном компьютере, в интрасети или Интернете;</p>
+</li>
+<li><p>Объект Формат UNC (Universal Naming Convention) общую папку.</p>
+</li>
+<li><p>локальный диск.</p>
+</li>
+</ul>
+<p>Свободный XAML файл можно добавить в Избранное браузера или сделать домашней страницей браузера.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о публикации и запуске свободных XAML страниц, см. в разделе <a href="deploying-a-wpf-application-wpf.html">развертывание приложений WPF</a>.</p>
+</div>
+<p>Единственным ограничением в отношении свободных XAML является возможность размещения только содержимое, которое безопасно для запуска в режиме частичного доверия. Например <code>Window</code> не может быть корневым элементом свободного XAML файл. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p><a name="Navigating_to_HTML_Files_Using_Frame"></a></p>
+<h3 id="navigating-to-html-files-by-using-frame">Переход к файлам HTML элемента управления Frame</h3>
+<p>Как можно догадаться, можно также перейти к HTML. Необходимо просто предоставить URI , используется схема http. Например, следующая XAML показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , осуществляющий переход к HTML страницы.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHtmlNavMARKUP">&lt;Frame Source=&quot;http://www.microsoft.com/default.aspx&quot; /&gt;
+</code></pre>
+<p>Переход к HTML требуются специальные разрешения. Например, нельзя перейти из XBAP , запущенного в песочнице безопасности частичного доверия для зоны Интернета. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p><a name="Navigating_to_HTML_Files_Using_WebBrowser"></a></p>
+<h3 id="navigating-to-html-files-by-using-the-webbrowser-control">Переход к файлам HTML с помощью элемента управления WebBrowser</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> Управления поддерживает HTML размещение документов, навигации и скриптов и управляемого кода взаимодействия. Подробные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> управления, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a>.</p>
+<p>Как и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, переходе по адресу HTML с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> требуются специальные разрешения. Например, из приложений с частичным доверием можно перейти только к HTML расположенный на исходном узле. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p><a name="Navigating_to_Objects"></a></p>
+<h3 id="navigating-to-custom-objects">Переход к пользовательским объектам</h3>
+<p>Если у вас есть данные, которые хранятся в виде пользовательских объектов, один из способов отображения этих данных является создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с содержимым, привязанным к таким объектам (см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>). Если не требуется создание всей страницы только для отображения объектов, то можно перейти непосредственно к ним.</p>
+<p>Рассмотрите возможность <code>Person</code> класс, который реализуется в следующем коде.</p>
+<pre><code class="lang-csharp" name="NavigateToObjectSnippets#PersonClassCODE">using System.Windows.Media;
+
+namespace SDKSample
+{
+    public class Person
+    {
+        string name;
+        Color favoriteColor;
+
+        public Person() { }
+        public Person(string name, Color favoriteColor)
+        {
+            this.name = name;
+            this.favoriteColor = favoriteColor;
+        }
+
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+
+        public Color FavoriteColor
+        {
+            get { return this.favoriteColor; }
+            set { this.favoriteColor = value; }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Для перехода к нему вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.navigate">NavigationWindow.Navigate</a> метод, как показано в следующем примере кода.</p>
+<pre><code class="lang-xaml" name="NavigateToObjectSnippets#PageThatNavsToObject1">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;SDKSample.HomePage&quot;
+  WindowTitle=&quot;Page that Navigates to an Object&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigateToObjectSnippets#PageThatNavsToObject2">&lt;Hyperlink Name=&quot;hyperlink&quot; Click=&quot;hyperlink_Click&quot;&gt;
+  Navigate to Nancy Davolio
+&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigateToObjectSnippets#PageThatNavsToObject3">&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="NavigateToObjectSnippets#PageThatNavsToObjectCODEBEHIND">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace SDKSample
+{
+    public partial class HomePage : Page
+    {
+        public HomePage()
+        {
+            InitializeComponent();
+        }
+
+        void hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Person person = new Person(&quot;Nancy Davolio&quot;, Colors.Yellow);
+            this.NavigationService.Navigate(person);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На рисунке ниже показан результат.</p>
+<p><img src="media/navigation-overview/page-navigates-to-an-object.png" alt="Страница, осуществляющая переход в класс" title="ниже приведен пример страницы, который осуществляет переход к объекту."></p>
+<p>Из этого рисунка можно видеть, что ничего полезного не отобразилось. На самом деле, возвращаемое значение — это значение, которое отображается <code>ToString</code> метод <strong>Person</strong> объекта; по умолчанию это единственное значение, которое WPF можно использовать для представления объекта. Можно переопределить <code>ToString</code> метод для возврата более значимой информации, несмотря на то, что он будет по-прежнему быть только строковым значением. Один из методов, воспользуйтесь преимуществами возможностей представления WPF является использование шаблона данных. Можно реализовать шаблон данных, WPF можно связать с объектом определенного типа. В следующем коде показано шаблон данных для <code>Person</code> объекта.</p>
+<pre><code class="lang-xaml" name="NavigateToObjectSnippets#DataTemplateMARKUP">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:local=&quot;clr-namespace:SDKSample&quot; 
+    x:Class=&quot;SDKSample.App&quot;
+    StartupUri=&quot;HomePage.xaml&quot;&gt;
+
+  &lt;Application.Resources&gt;
+
+    &lt;!-- Data Template for the Person Class --&gt;
+    &lt;DataTemplate DataType=&quot;{x:Type local:Person}&quot;&gt;
+      &lt;TextBlock xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
+        &lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Name:&lt;/TextBlock&gt;
+        &lt;TextBlock Text=&quot;{Binding Path=Name}&quot; /&gt;
+        &lt;LineBreak /&gt;
+        &lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Favorite Color:&lt;/TextBlock&gt;
+        &lt;TextBlock Text=&quot;{Binding Path=FavoriteColor}&quot; /&gt;
+      &lt;/TextBlock&gt;
+    &lt;/DataTemplate&gt;
+    
+  &lt;/Application.Resources&gt;
+
+&lt;/Application&gt;
+</code></pre>
+<p>Здесь шаблон данных связан с <code>Person</code> типа с помощью <code>x:Type</code> расширение разметки в <code>DataType</code> атрибута. Затем шаблон данных привязывает <code>TextBlock</code> элементов (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>) к свойствам <code>Person</code> класса. На следующем рисунке показан обновленный внешний вид <code>Person</code> объекта.</p>
+<p><img src="media/navigation-overview/navigating-to-a-class.png" alt="Переход к классу с шаблоном данных" title="переход к классу, который содержит шаблон данных."></p>
+<p>Преимуществом этого способа является связность, которая обеспечивается возможностью повторного использования шаблона данных для согласованного отображения объектов в любом месте приложения.</p>
+<p>Дополнительные сведения о шаблонах данных см. в разделе <a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a>.</p>
+<p><a name="Security"></a></p>
+<h2 id="security">Безопасность</h2>
+<p>WPF Поддержка навигации позволяет XBAP осуществлять переходы через Интернет, а также позволяет приложениям сторонних размещения содержимого. Для защиты приложений и пользователей от опасных WPF предоставляет широкий набор функций безопасности, которые рассматриваются в <a href="../security-wpf.html">безопасности</a> и <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия WPF</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.setcookie">SetCookie</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcookie">GetCookie</a></li>
+<li><a href="application-management-overview.html">Общие сведения об управлении приложением</a></li>
+<li><a href="pack-uris-in-wpf.html">URI типа &quot;pack&quot; в WPF</a></li>
+<li><a href="structured-navigation-overview.html">Общие сведения о структурной навигации</a></li>
+<li><a href="navigation-topologies-overview.html">Общие сведения о топологии переходов</a></li>
+<li><a href="navigation-how-to-topics.html">Практические руководства</a></li>
+<li><a href="deploying-a-wpf-application-wpf.html">Развертывание приложения WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

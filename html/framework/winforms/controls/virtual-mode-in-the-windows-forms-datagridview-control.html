@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1080;&#1088;&#1090;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1088;&#1077;&#1078;&#1080;&#1084; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1080;&#1088;&#1090;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081; &#1088;&#1077;&#1078;&#1080;&#1084; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="virtual-mode-in-the-windows-forms-datagridview-control">Виртуальный режим элемента управления DataGridView в Windows Forms</h1>
+
+<p>Виртуальный режим можно управлять взаимодействием между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления и пользовательские данные кэша. Чтобы реализовать виртуальный режим, задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойства <code>true</code> и обрабатывать один или несколько событий, описанных в этом разделе. Как правило, будет обрабатывать по крайней мере <code>CellValueNeeded</code> событие, которое позволяет производить поиск значения в кэше данных элемента управления.</p>
+<h2 id="bound-mode-and-virtual-mode">Связанный и виртуальный режим</h2>
+<p>Виртуальный режим необходим, только в том случае, если вам нужно дополнить или заменить связанный режим. В режиме привязки задаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.datasource">DataSource</a> свойства и элемента управления автоматически загружает данные из указанного источника и передает, пользователь изменяет в него. Можно управлять, отображаемые привязанные столбцы, а сам источник данных, обычно обрабатывает операции, такие как сортировка.</p>
+<h2 id="supplementing-bound-mode">Расширение связанного режима</h2>
+<p>Связанный режим можно расширить путем отображения связанных и несвязанных столбцов. Это иногда называется «смешанный режим» и может использоваться для отображения таких операций, как вычисляемые значения или пользовательского интерфейса (UI) управляет.</p>
+<p>Поскольку непривязанные столбцы относятся к источнику данных, они игнорируются при операции сортировки источника данных. Таким образом, при использовании сортировки в смешанном режиме, необходимо управлять несвязанными данными в локальном кэше и реализовать виртуальный режим, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления взаимодействовать с ним.</p>
+<p>Дополнительные сведения об использовании виртуального режима для сохранения значений в несвязанных столбцов см. в примерах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcolumn.threestate">DataGridViewCheckBoxColumn.ThreeState</a> свойство и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcolumn">System.Windows.Forms.DataGridViewComboBoxColumn</a> класса справочные разделы.</p>
+<h2 id="replacing-bound-mode">Замещение связанного режима</h2>
+<p>Если связанный режим не удовлетворяет требованиям к производительности, вы можете управлять данными в пользовательском кэше посредством обработчиков событий в виртуальном режиме. Например, можно использовать виртуальный режим реализовать механизм, который извлекает только загрузки данных just-in-time столько данных из базы данных сети необходим для обеспечения оптимальной производительности. Этот сценарий является особенно полезна при работе с большими объемами данных через медленное сетевое подключение, так и с клиентскими компьютерами, которые имеют ограниченный объем оперативной памяти или дисковое пространство.</p>
+<p>Дополнительные сведения об использовании виртуального режима в сценарии just-in-time, см. в разделе <a href="implementing-virtual-mode-jit-data-loading-in-the-datagrid.html">реализация виртуального режима с JIT-загрузкой данных в элементе управления DataGridView Windows Forms</a>.</p>
+<h2 id="virtual-mode-events">Виртуальный режим события</h2>
+<p>Если ваши данные только для чтения, <code>CellValueNeeded</code> событий может быть единственным событием, вам потребуется обрабатывать. Дополнительные события виртуального режима позволяют включения определенных функций, таких как пользовательские изменения, добавления и удаления и строк транзакций на уровне строк.</p>
+<p>Некоторые стандартные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> события (например, события, происходящие при добавлении пользователей или удаления строк или значений ячеек редактировать, синтаксический анализ, проверять или в формате) полезны в виртуальном режиме. Также можно обрабатывать события, которые позволяют поддерживать значения, обычно не хранящиеся в связанного источника данных, таких как текст подсказки для ячейки, ячейки и текст ошибки строки, ячейки и строки контекстное меню данных и данных высоты строк.</p>
+<p>Дополнительные сведения о реализация виртуального режима для управления данными чтения и записи с областью фиксации на уровне строк, см. в разделе <a href="implementing-virtual-mode-wf-datagridview-control.html">Пошаговое руководство: Реализация виртуального режима в Windows Forms элемента управления DataGridView</a>.</p>
+<p>Пример реализации виртуального режима с областью фиксации на уровне ячейки, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойство справочном разделе.</p>
+<p>Следующие события возникают только при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойству <code>true</code>.</p>
+<table>
+<thead>
+<tr>
+<th>событие</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a></td>
+<td>Используется элементом управления, извлекаемого из кэша данных для отображения значения ячейки. Это событие происходит только для ячеек в несвязанных столбцов.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvaluepushed">CellValuePushed</a></td>
+<td>Используется элементом управления для сохранения введенного пользователем для ячейки в кэш данных. Это событие происходит только для ячеек в несвязанных столбцов.<br><br> Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.updatecellvalue">UpdateCellValue</a> метод при изменении кэшированное значение за пределами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvaluepushed">CellValuePushed</a> обработчик событий можно убедиться, что текущее значение отображается в элементе управления и применить любой режима автоматического изменения размеров в данный момент.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.newrowneeded">NewRowNeeded</a></td>
+<td>Используется элементом управления для указания необходимости для новой строки в кэше данных.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowdirtystateneeded">RowDirtyStateNeeded</a></td>
+<td>Используется элементом управления, чтобы определить, имеются ли в строке все незафиксированные изменения.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cancelrowedit">CancelRowEdit</a></td>
+<td>Используется элементом управления для указания, что строке должны быть возвращены значения из кэша.</td>
+</tr>
+</tbody>
+</table>
+<p>Следующие события полезны в виртуальном режиме, но может использоваться вне зависимости от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> значение свойства.</p>
+<table>
+<thead>
+<tr>
+<th>События</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.userdeletingrow">UserDeletingRow</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.userdeletedrow">UserDeletedRow</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsremoved">RowsRemoved</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsadded">RowsAdded</a></td>
+<td>Используется элементом управления, чтобы указать, когда строки удаляются или добавлен, что соответствующим образом обновить кэш данных.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellformatting">CellFormatting</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellparsing">CellParsing</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalidating">CellValidating</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalidated">CellValidated</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowvalidating">RowValidating</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowvalidated">RowValidated</a></td>
+<td>Используется элементом управления для форматирования значений ячеек для отображения, а также для анализа и проверки пользовательского ввода.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.celltooltiptextneeded">CellToolTipTextNeeded</a></td>
+<td>Используется элементом управления для извлечения текста всплывающей подсказки для ячейки при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.datasource">DataSource</a> свойству или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойство <code>true</code>.<br><br> Всплывающие подсказки для ячеек, отображаются только тогда, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.showcelltooltips">ShowCellToolTips</a> свойство имеет значение <code>true</code>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellerrortextneeded">CellErrorTextNeeded</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowerrortextneeded">RowErrorTextNeeded</a></td>
+<td>Используется элементом управления, чтобы получить текст ошибки ячейки или строки при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.datasource">DataSource</a> свойству или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойство <code>true</code>.<br><br> Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.updatecellerrortext">UpdateCellErrorText</a> метод или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.updaterowerrortext">UpdateRowErrorText</a> при изменении текст ошибки ячейки или строки, чтобы убедиться, что текущее значение отображается в элементе управления.<br><br> Глиф ошибки ячейки и строки отображаются при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.showcellerrors">ShowCellErrors</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.showrowerrors">ShowRowErrors</a> значений свойств, <code>true</code>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellcontextmenustripneeded">CellContextMenuStripNeeded</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowcontextmenustripneeded">RowContextMenuStripNeeded</a></td>
+<td>Используется элементом управления для извлечения ячейки или строки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> при управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.datasource">DataSource</a> свойству или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a> свойство <code>true</code>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheightinfoneeded">RowHeightInfoNeeded</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheightinfopushed">RowHeightInfoPushed</a></td>
+<td>Используется элементом управления для извлечения или сохранения сведений о высоте строки в кэше данных. Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.updaterowheightinfo">UpdateRowHeightInfo</a> метод при изменении сведений о высоте кэшированной строке за пределами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheightinfopushed">RowHeightInfoPushed</a> обработчик событий, чтобы убедиться, что текущее значение используется при отображении элемента управления.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="best-practices-in-virtual-mode">Рекомендации в виртуальном режиме</h2>
+<p>Если вы реализуете виртуального режима для эффективной работы с большими объемами данных, также требуется убедиться, что вы работаете эффективно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> самого элемента управления. Дополнительные сведения об эффективном использовании стилей для ячейки, автоматическое изменение размеров, выбранные параметры и общий доступ к строкам, см. в разделе <a href="best-practices-for-scaling-the-windows-forms-datagridview-control.html">масштабирование элемента управления DataGridView в Windows Forms</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a></li>
+<li><a href="performance-tuning-in-the-windows-forms-datagridview-control.html">Оптимизация производительности элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="best-practices-for-scaling-the-windows-forms-datagridview-control.html">Масштабирование элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="implementing-virtual-mode-wf-datagridview-control.html">Пошаговое руководство. Реализация виртуального режима для элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="implementing-virtual-mode-jit-data-loading-in-the-datagrid.html">Реализация виртуального режима с JIT-загрузкой данных для элемента управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

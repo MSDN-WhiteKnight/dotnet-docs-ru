@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1089;&#1087;&#1086;&#1079;&#1085;&#1072;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1076;&#1080;&#1085;&#1086;&#1095;&#1085;&#1099;&#1093; &#1080; &#1076;&#1074;&#1086;&#1081;&#1085;&#1099;&#1093; &#1097;&#1077;&#1083;&#1095;&#1082;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1089;&#1087;&#1086;&#1079;&#1085;&#1072;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1076;&#1080;&#1085;&#1086;&#1095;&#1085;&#1099;&#1093; &#1080; &#1076;&#1074;&#1086;&#1081;&#1085;&#1099;&#1093; &#1097;&#1077;&#1083;&#1095;&#1082;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-distinguish-between-clicks-and-double-clicks">Практическое руководство. Распознавание одиночных и двойных щелчков</h1>
+
+<p>Как правило, одиночное событие <em>щелчок</em> инициирует действие пользовательского интерфейса, а событие <em>двойной щелчок</em> расширяет его. Например, одним щелчком мыши обычно выбирается элемент, а двойным щелчком мыши этот элемент изменяется. Однако события щелчков Windows Forms непросто приспособить к сценарию, в котором щелчок и двойной щелчок выполняют несовместимые действия, поскольку действие, привязанное к событию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseclick">MouseClick</a>, выполняется перед действием, привязанным к событию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.doubleclick">DoubleClick</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedoubleclick">MouseDoubleClick</a>. В этом разделе показаны два способа решения этой проблемы. Одним из решений является обработка события двойного щелчка и откат действий при обработке события щелчка. В редких случаях может потребоваться имитировать поведение при одинарном и двойном щелчке при обработке событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> и с помощью свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicktime">DoubleClickTime</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicksize">DoubleClickSize</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation">SystemInformation</a>. Производится измерение времени между щелчками мышью и, если второе нажатие происходит до того, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicktime">DoubleClickTime</a> достигнет значения и кнопка мыши была нажата, когда курсор находился в прямоугольнике, заданном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicksize">DoubleClickSize</a>, то выполняется действие двойного щелчка; в противном случае выполняется действие щелчка.</p>
+<h3 id="to-roll-back-a-click-action">Выполнение отката щелчка кнопкой мыши</h3>
+<ul>
+<li><p>Убедитесь, что элемент управления, с которым вы работаете, имеет стандартное поведение при двойном щелчке мышью. В противном случае задействуйте элемент управления с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.setstyle">SetStyle</a>. Обработайте событие двойного щелчка и откат к одиночному щелчку кнопкой мыши, а также действие двойного щелчка. В следующем примере кода показано, как создать пользовательскую кнопку с включенным двойным щелчком мыши, а также как откатить к одиночному щелчку в коде обработки событий двойного щелчка.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.ButtonDoubleClick#1">using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace MouseRollBackSingleClick
+{
+    public class Form1 : Form
+    {
+        private DoubleClickButton button1;
+        private FormBorderStyle initialStyle;
+       
+        public Form1()
+        {
+            initialStyle = this.FormBorderStyle;
+            this.ClientSize = new System.Drawing.Size(292, 266);
+            button1 = new DoubleClickButton();
+            button1.Location = new Point (40,40);
+            button1.Click += new EventHandler(button1_Click);
+            button1.AutoSize = true;
+            this.AllowDrop = true;
+            button1.Text = &quot;Click or Double Click&quot;;
+            button1.DoubleClick += new EventHandler(button1_DoubleClick);
+            this.Controls.Add(button1);
+           
+        }
+
+        
+        // Handle the double click event.
+        void button1_DoubleClick(object sender, EventArgs e)
+        {
+            // Change the border style back to the initial style.
+            this.FormBorderStyle = initialStyle;
+            MessageBox.Show(&quot;Rolled back single click change.&quot;);
+        }
+
+        // Handle the click event.
+        void button1_Click(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+
+        
+    }
+    public class DoubleClickButton : Button
+    {
+        public DoubleClickButton() : base()
+        {
+            // Set the style so a double click event occurs.
+            SetStyle(ControlStyles.StandardClick | 
+                ControlStyles.StandardDoubleClick, true);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<h3 id="to-distinguish-between-clicks-in-the-mousedown-event">Различение щелчков в событии MouseDown</h3>
+<ul>
+<li><p>Обработайте событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> и определите расположение и временной интервал между щелчками с помощью соответствующего свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation">SystemInformation</a> и компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer">Timer</a>. Выполните необходимые действия в зависимости от того, имеет ли место щелчок или двойной щелчок кнопкой мыши. В следующем примере кода показано, как это сделать.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.SingleVersusDoubleClick#0">using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace SingleVersusDoubleClick
+{
+    class Form1 : Form
+    {
+        private Rectangle hitTestRectangle = new Rectangle();
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private TextBox textBox1 = new TextBox();
+        private Timer doubleClickTimer = new Timer();
+        private ProgressBar doubleClickBar = new ProgressBar();
+        private Label label1 = new Label();
+        private Label label2 = new Label();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+
+        [STAThread]
+        public static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+
+        public Form1()
+        {
+            label1.Location = new Point(30, 5);
+            label1.Size = new Size(100, 15);
+            label1.Text = &quot;Hit test rectangle:&quot;;
+
+            label2.Location = new Point(30, 70);
+            label2.Size = new Size(100, 15);
+            label2.Text = &quot;Double click timer:&quot;;
+
+            hitTestRectangle.Location = new Point(30, 20);
+            hitTestRectangle.Size = new Size(100, 40);
+
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick +=
+                new EventHandler(doubleClickTimer_Tick);
+
+            doubleClickBar.Location = new Point(30, 85);
+            doubleClickBar.Minimum = 0;
+            doubleClickBar.Maximum = SystemInformation.DoubleClickTime;
+
+            textBox1.Location = new Point(30, 120);
+            textBox1.Size = new Size(200, 100);
+            textBox1.AutoSize = false;
+            textBox1.Multiline = true;
+
+            this.Paint += new PaintEventHandler(Form1_Paint);
+            this.MouseDown += new MouseEventHandler(Form1_MouseDown);
+            this.Controls.AddRange(new Control[] { doubleClickBar, textBox1, 
+                label1, label2 });
+        }
+
+        // Detect a valid single click or double click.
+        void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Verify that the mouse click is in the main hit
+            // test rectangle.
+            if (!hitTestRectangle.Contains(e.Location))
+            {
+                return;
+            }
+
+            // This is the first mouse click.
+            if (isFirstClick)
+            {
+                isFirstClick = false;
+
+                // Determine the location and size of the double click 
+                // rectangle area to draw around the cursor point.
+                doubleClickRectangle = new Rectangle(
+                    e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                    e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                    SystemInformation.DoubleClickSize.Width,
+                    SystemInformation.DoubleClickSize.Height);
+                Invalidate();
+
+                // Start the double click timer.
+                doubleClickTimer.Start();
+            }
+
+            // This is the second mouse click.
+            else
+            {
+                // Verify that the mouse click is within the double click
+                // rectangle and is within the system-defined double 
+                // click period.
+                if (doubleClickRectangle.Contains(e.Location) &amp;&amp;
+                    milliseconds &lt; SystemInformation.DoubleClickTime)
+                {
+                    isDoubleClick = true;
+                }
+            }
+        }
+
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+            doubleClickBar.Increment(100);
+
+            // The timer has reached the double click time limit.
+            if (milliseconds &gt;= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    textBox1.AppendText(&quot;Perform double click action&quot;);
+                    textBox1.AppendText(Environment.NewLine);
+                }
+                else
+                {
+                    textBox1.AppendText(&quot;Perform single click action&quot;);
+                    textBox1.AppendText(Environment.NewLine);
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+                doubleClickBar.Value = 0;
+            }
+        }
+
+        // Paint the hit test and double click rectangles.
+        void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            // Draw the border of the main hit test rectangle.
+            e.Graphics.DrawRectangle(Pens.Black, hitTestRectangle);
+
+            // Fill in the double click rectangle.
+            e.Graphics.FillRectangle(Brushes.Blue, doubleClickRectangle);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этих примеров требуются:</p>
+<ul>
+<li>ссылки на сборки System, System.Drawing и System.Windows.Forms.</li>
+</ul>
+<p>Сведения о сборке этих примеров из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Следующие примеры в Visual Studio можно также создать, вставив код в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="mouse-input-in-a-windows-forms-application.html">Ввод данных мышью в приложении Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

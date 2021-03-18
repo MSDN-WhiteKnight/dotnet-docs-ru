@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Win32 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Win32 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-hosting-a-win32-control-in-wpf">Пошаговое руководство. Размещение элемента управления Win32 в WPF</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Тем не менее, при наличии значительных инвестиций в коде Win32, возможно, более эффективно использовать по крайней мере некоторые этого кода в приложении WPF, а не переписывать его заново. WPF предоставляет простой механизм для размещения окна Win32, на странице WPF.</p>
+<p>В этом разделе рассматриваются приложения, <a href="https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control">размещения элемента управления ListBox Win32 в WPF</a>, что узлы управления полем со списком Win32. Эта общая процедура может быть расширена для размещения любого окна Win32.</p>
+<p><a name="requirements"></a></p>
+<h2 id="requirements">Требования</h2>
+<p>В этом разделе предполагается Знакомство с программированием для WPF и Windows API. Основные сведения о программировании WPF, см. в разделе <a href="../getting-started/index.html">Приступая к работе</a>. Введение в программирование Windows API, см. в разделе любой из многочисленных книг по этой теме, в частности <em>программирования Windows</em> Чарльза Петцольда.</p>
+<p>Поскольку пример, используемый в этом разделе, реализован в C#, он позволяет использовать службы вызова платформы (PInvoke) для доступа к Windows API. Знакомство с PInvoke, желательно, но не обязательно.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот учебник включает ряд примеров кода из связанного примера. Однако для удобства чтения он не содержит полный пример кода. Можно получить или просмотреть полный код из <a href="https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control">размещения элемента управления ListBox Win32 в WPF</a>.</p>
+</div>
+<p><a name="basic_procedure"></a></p>
+<h2 id="the-basic-procedure">Основная процедура</h2>
+<p>В этом разделе рассматривается основная процедура размещения окна Win32 на странице WPF. В остальных разделах подробно описывается каждый шаг.</p>
+<p>Основная процедура размещения</p>
+<ol>
+<li><p>Реализация страницы WPF для размещения окна. Один из способов — создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент резервирующего раздел страницы для размещенного окна.</p>
+</li>
+<li><p>Реализация класса для размещения элемента управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>.</p>
+</li>
+<li><p>В этом классе переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> член класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.buildwindowcore">BuildWindowCore</a>.</p>
+</li>
+<li><p>Создайте размещенного окна в качестве дочернего окна, содержащего страницу WPF. Несмотря на то, что применяется в программировании WPF не требуется явно использовать, размещающая страница представляет собой окно с маркером (HWND). Вы получаете страницу HWND через <code>hwndParent</code> параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.buildwindowcore">BuildWindowCore</a> метод. Размещаемое окно необходимо создать в качестве дочернего объекта этого окна HWND.</p>
+</li>
+<li><p>Создав главное окно, верните HWND размещаемого окна. Если вы хотите разместить один или несколько элементов управления Win32, обычно создать главное окно как дочерний элемент HWND и дочерние элементы управления главного окна. Размещение элементов управления в главном окне предоставляет простой способ для страницы WPF для получения уведомлений от элементов управления, которое обрабатывает некоторые конкретные проблемы Win32 с уведомлениями за пределы HWND.</p>
+</li>
+<li><p>Обрабатывайте некоторые сообщения, которые отправляются в главное окно, например уведомления от дочерних элементов управления. Это можно сделать двумя способами.</p>
+<ul>
+<li><p>Если вы предпочитаете обрабатывать сообщения в классе размещения, переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класса.</p>
+</li>
+<li><p>Если вы предпочитаете заставить WPF обрабатывать сообщения, обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> событие в фоновом коде. Это событие возникает для каждого сообщения, получаемого размещаемым окном. Если выбран этот параметр, необходимо переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>, но требуется минимальная реализация.</p>
+</li>
+</ul>
+</li>
+<li><p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. Необходимо переопределить эти методы для удовлетворения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> контракт, но вам может потребоваться лишь минимальная реализация.</p>
+</li>
+<li><p>В файле кода программной части создайте экземпляр класса, размещающего элемент управления и дочернего элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент, который предназначен для размещения окна.</p>
+</li>
+<li><p>Обмениваться данными с размещенным окном, отправляя ему Microsoft Windows сообщения и обрабатывая сообщения из его дочерних окон, таких как уведомления, отправленные элементами управления.</p>
+</li>
+</ol>
+<p><a name="page_layout"></a></p>
+<h2 id="implement-the-page-layout">Реализация макета страницы</h2>
+<p>Макет для страницы WPF, на котором размещается элемент управления ListBox состоит из двух регионов. В левой части страницы содержит несколько элементов управления WPF, которые предоставляют пользовательский интерфейс , позволяющий работать с элементом управления Win32. В правом верхнем углу страницы имеется квадратная область для размещенного элемента управления ListBox.</p>
+<p>Код для реализации этого макета довольно прост. Корневой элемент — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> , имеет два дочерних элемента. Во-первых, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент, на котором размещается элемент управления ListBox. Он занимает квадрат размером 200 x 200 в верхнем правом углу страницы. Второй — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элемент, который содержит набор элементов управления WPF, отображающих сведения и позволяют работать с элементом управления ListBox, задав предоставленные свойства взаимодействия. Для каждого из элементов, являющихся потомками <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>, справочные материалы для различных элементов, о том, что эти элементы и их назначение, перечислены в следующем примере кода, но не будут описаны здесь (basic модели взаимодействия не требуются, они предоставлены для добавления интерактивности в пример).</p>
+<pre><code class="lang-xaml" name="WPFHostingWin32Control#WPFUI">&lt;Window
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;WPF_Hosting_Win32_Control.HostWindow&quot;
+  Name=&quot;mainWindow&quot;
+  Loaded=&quot;On_UIReady&quot;&gt;
+
+  &lt;DockPanel Background=&quot;LightGreen&quot;&gt;
+    &lt;Border Name=&quot;ControlHostElement&quot;
+    Width=&quot;200&quot;
+    Height=&quot;200&quot;
+    HorizontalAlignment=&quot;Right&quot;
+    VerticalAlignment=&quot;Top&quot;
+    BorderBrush=&quot;LightGray&quot;
+    BorderThickness=&quot;3&quot;
+    DockPanel.Dock=&quot;Right&quot;/&gt;
+    &lt;StackPanel&gt;
+      &lt;Label HorizontalAlignment=&quot;Center&quot;
+        Margin=&quot;0,10,0,0&quot;
+        FontSize=&quot;14&quot;
+        FontWeight=&quot;Bold&quot;&gt;Control the Control&lt;/Label&gt;
+      &lt;TextBlock Margin=&quot;10,10,10,10&quot; &gt;Selected Text: &lt;TextBlock  Name=&quot;selectedText&quot;/&gt;&lt;/TextBlock&gt;
+      &lt;TextBlock Margin=&quot;10,10,10,10&quot; &gt;Number of Items: &lt;TextBlock  Name=&quot;numItems&quot;/&gt;&lt;/TextBlock&gt;
+  
+      &lt;Line X1=&quot;0&quot; X2=&quot;200&quot;
+        Stroke=&quot;LightYellow&quot;
+        StrokeThickness=&quot;2&quot;
+        HorizontalAlignment=&quot;Center&quot;
+        Margin=&quot;0,20,0,0&quot;/&gt;
+  
+      &lt;Label HorizontalAlignment=&quot;Center&quot;
+        Margin=&quot;10,10,10,10&quot;&gt;Append an Item to the List&lt;/Label&gt;
+      &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+        &lt;Label HorizontalAlignment=&quot;Left&quot;
+          Margin=&quot;10,10,10,10&quot;&gt;Item Text&lt;/Label&gt;
+        &lt;TextBox HorizontalAlignment=&quot;Left&quot;
+          Name=&quot;txtAppend&quot;
+          Width=&quot;200&quot;
+          Margin=&quot;10,10,10,10&quot;&gt;&lt;/TextBox&gt;
+      &lt;/StackPanel&gt;
+  
+      &lt;Button HorizontalAlignment=&quot;Left&quot;
+        Click=&quot;AppendText&quot;
+        Width=&quot;75&quot;
+        Margin=&quot;10,10,10,10&quot;&gt;Append&lt;/Button&gt;
+
+      &lt;Line X1=&quot;0&quot; X2=&quot;200&quot;
+        Stroke=&quot;LightYellow&quot;
+        StrokeThickness=&quot;2&quot;
+        HorizontalAlignment=&quot;Center&quot;
+        Margin=&quot;0,20,0,0&quot;/&gt;
+  
+      &lt;Label HorizontalAlignment=&quot;Center&quot;
+        Margin=&quot;10,10,10,10&quot;&gt;Delete the Selected Item&lt;/Label&gt;
+  
+      &lt;Button Click=&quot;DeleteText&quot;
+        Width=&quot;125&quot;
+        Margin=&quot;10,10,10,10&quot;
+        HorizontalAlignment=&quot;Left&quot;&gt;Delete&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+  &lt;/DockPanel&gt;
+&lt;/Window&gt;  
+</code></pre>
+<p><a name="host_class"></a></p>
+<h2 id="implement-a-class-to-host-the-microsoft-win32-control">Реализация размещения элемента управления Microsoft Win32 в классе</h2>
+<p>Ядром этого образца является класс, который фактически размещает в себе элемент управления, ControlHost.cs. Он наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. Конструктор принимает два параметра, высоту и ширину, которые соответствуют высоте и ширине <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент, на котором размещается элемент управления ListBox. Эти значения используются Далее, чтобы убедиться, что размер элемента управления соответствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlHostClass">public class ControlHost : HwndHost
+{
+  IntPtr hwndControl;
+  IntPtr hwndHost;
+  int hostHeight, hostWidth;
+
+  public ControlHost(double height, double width)
+  {
+    hostHeight = (int)height;
+    hostWidth = (int)width;
+  }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Кроме того, имеется набор констант. Эти константы в основном берутся из файла Winuser.h и позволяют использовать обычные имена при вызове функции Win32.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlHostConstants">internal const int
+  WS_CHILD = 0x40000000,
+  WS_VISIBLE = 0x10000000,
+  LBS_NOTIFY = 0x00000001,
+  HOST_ID = 0x00000002,
+  LISTBOX_ID = 0x00000001,
+  WS_VSCROLL = 0x00200000,
+  WS_BORDER = 0x00800000;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="buildwindowcore"></a></p>
+<h3 id="override-buildwindowcore-to-create-the-microsoft-win32-window">Переопределение класса BuildWindowCore для создания окна Microsoft Win32</h3>
+<p>Можно переопределить этот метод для создания окна Win32, которое будет размещено на странице и создайте подключение между окном и страницей. Поскольку в этом примере также показано размещение элемента управления ListBox, создаются два окна. Первый — это окно, которое фактически размещено на странице WPF. Элемент управления ListBox создается в качестве дочернего элемента этого окна.</p>
+<p>Это делается для того, чтобы упростить получение уведомлений от элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> Класс позволяет обрабатывать сообщения, отправляемые в окно, на котором он размещен. Если напрямую управлять узла Win32, вы получите сообщения, отправленные внутренний цикл сообщений элемента управления. Можно отображать элемент управления и отправлять ему сообщения, но не получать уведомления, которые элемент управления отправляет своему родительскому окну. Это означает, среди прочего, что нет способа обнаружения взаимодействия пользователя с элементом управления. Вместо этого следует создать главное окно и сделать элемент управления дочерним элементом этого окна. Это позволит обрабатывать сообщения для главного окна, включая уведомления, отправляемые элементом управления. Для удобства, поскольку главное окно — это всего лишь программа-оболочка для элемента управления, мы будем называть этот пакет &quot;элементом управления ListBox&quot;.</p>
+<p><a name="create_the_window_and_listbox"></a></p>
+<h4 id="create-the-host-window-and-listbox-control">Создание главного окна и элемента управления ListBox</h4>
+<p>Можно использовать PInvoke для создания главного окна для элемента управления путем создания и регистрации класса окна и т. д. Однако гораздо проще создать окно с помощью готового &quot;статического&quot; класса окон. Это позволит реализовать в окне процедуру, необходимую для получения уведомлений из элемента управления, и требует минимальной работы с кодом.</p>
+<p>HWND элемента управления предоставляется через доступное только для чтения свойство, чтобы главная страница могла использовать его для отправки сообщения элементу управления.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#IntPtrProperty">public IntPtr hwndListBox
+{
+  get { return hwndControl; }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Элемент управления ListBox создается в качестве дочернего элемента главного окна. Высота и ширина обоих окон задается с помощью значений, передаваемых конструктору (см. выше). Это гарантирует, что размер главного окна и элемента управления идентичен размеру отведенной для них области на странице.  После создания окон образец возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.handleref">HandleRef</a> , содержащий HWND главного окна.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#BuildWindowCore">protected override HandleRef BuildWindowCore(HandleRef hwndParent)
+{
+  hwndControl = IntPtr.Zero;
+  hwndHost = IntPtr.Zero;
+
+  hwndHost = CreateWindowEx(0, &quot;static&quot;, &quot;&quot;,
+                            WS_CHILD | WS_VISIBLE,
+                            0, 0,
+                            hostWidth, hostHeight,
+                            hwndParent.Handle,
+                            (IntPtr)HOST_ID,
+                            IntPtr.Zero,
+                            0);
+
+  hwndControl = CreateWindowEx(0, &quot;listbox&quot;, &quot;&quot;,
+                                WS_CHILD | WS_VISIBLE | LBS_NOTIFY
+                                  | WS_VSCROLL | WS_BORDER,
+                                0, 0,
+                                hostWidth, hostHeight,
+                                hwndHost,
+                                (IntPtr) LISTBOX_ID,
+                                IntPtr.Zero,
+                                0);
+
+  return new HandleRef(this, hwndHost);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#BuildWindowCoreHelper">//PInvoke declarations
+[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;CreateWindowEx&quot;, CharSet = CharSet.Unicode)]
+internal static extern IntPtr CreateWindowEx(int dwExStyle,
+                                              string lpszClassName,
+                                              string lpszWindowName,
+                                              int style,
+                                              int x, int y,
+                                              int width, int height,
+                                              IntPtr hwndParent,
+                                              IntPtr hMenu,
+                                              IntPtr hInst,
+                                              [MarshalAs(UnmanagedType.AsAny)] object pvParam);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="destroywindow_wndproc"></a></p>
+<h3 id="implement-destroywindow-and-wndproc">Реализация классов DestroyWindow и WndProc</h3>
+<p>В дополнение к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.buildwindowcore">BuildWindowCore</a>, необходимо также переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. В этом примере сообщения для элемента управления обрабатываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> обработчик, поэтому реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> сводится к минимуму. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>, задайте <code>handled</code> для <code>false</code> указывают, что сообщение не было обработано и возвращают значение 0. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a>, достаточно уничтожить окно.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#WndProcDestroy">protected override IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+{
+  handled = false;
+  return IntPtr.Zero;
+}
+
+protected override void DestroyWindowCore(HandleRef hwnd)
+{
+  DestroyWindow(hwnd.Handle);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#WndProcDestroyHelper">[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;DestroyWindow&quot;, CharSet = CharSet.Unicode)]
+internal static extern bool DestroyWindow(IntPtr hwnd);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="host_the_control"></a></p>
+<h2 id="host-the-control-on-the-page">Размещение элемента управления на странице</h2>
+<p>Чтобы разместить элемент управления на странице, сначала создайте новый экземпляр класса <code>ControlHost</code> класса. Передайте значения высоты и ширины пограничного элемента, который содержит элемент управления (<code>ControlHostElement</code>) для <code>ControlHost</code> конструктор. Это позволит гарантировать, что ListBox имеет правильный размер. Затем необходимо разместить элемент управления на странице, назначив <code>ControlHost</code> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.decorator.child">Child</a> свойство узла <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>.</p>
+<p>Образец присоединяет обработчик к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> событие <code>ControlHost</code> для получения сообщений из элемента управления. Это событие вызывается для каждого сообщения, отправляемого в главное окно. В данном случае это сообщения, отправленные в окно, которое служит оболочкой текущего элемента управления ListBox, включая уведомления от элемента управления. В этом примере вызывается метод SendMessage, чтобы получать информацию от элемента управления и менять его содержимое. Подробные сведения о том, как страница обменивается данными с элементом управления, рассматриваются в следующем разделе.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Обратите внимание на то, что существует два объявления PInvoke для класса SendMessage. Это необходимо, поскольку один использует <code>wParam</code> параметр для передачи строки, а другой используется для передачи целое число. Необходимо отдельно объявить каждую сигнатуру, чтобы обеспечить правильный маршалинг данных.</p>
+</div>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#HostWindowClass">public partial class HostWindow : Window
+{
+int selectedItem;
+IntPtr hwndListBox;
+ControlHost listControl;
+Application app;
+Window myWindow;
+int itemCount;
+
+private void On_UIReady(object sender, EventArgs e)
+{
+  app = System.Windows.Application.Current;
+  myWindow = app.MainWindow;
+  myWindow.SizeToContent = SizeToContent.WidthAndHeight;
+  listControl = new ControlHost(ControlHostElement.ActualHeight, ControlHostElement.ActualWidth);
+  ControlHostElement.Child = listControl;
+  listControl.MessageHook += new HwndSourceHook(ControlMsgFilter);
+  hwndListBox = listControl.hwndListBox;
+  for (int i = 0; i &lt; 15; i++) //populate listbox
+  {
+    string itemText = &quot;Item&quot; + i.ToString();
+    SendMessage(hwndListBox, LB_ADDSTRING, IntPtr.Zero, itemText);
+  }
+  itemCount = SendMessage(hwndListBox, LB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
+  numItems.Text = &quot;&quot; +  itemCount.ToString();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlMsgFilterSendMessage">
+private IntPtr ControlMsgFilter(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+{
+  int textLength;
+
+  handled = false;
+  if (msg == WM_COMMAND)
+  {
+    switch ((uint)wParam.ToInt32() &gt;&gt; 16 &amp; 0xFFFF) //extract the HIWORD
+    {
+      case LBN_SELCHANGE : //Get the item text and display it
+        selectedItem = SendMessage(listControl.hwndListBox, LB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
+        textLength = SendMessage(listControl.hwndListBox, LB_GETTEXTLEN, IntPtr.Zero, IntPtr.Zero);
+        StringBuilder itemText = new StringBuilder();
+        SendMessage(hwndListBox, LB_GETTEXT, selectedItem, itemText);
+        selectedText.Text = itemText.ToString();
+        handled = true;
+        break;
+    }
+  }
+  return IntPtr.Zero;
+}
+internal const int
+  LBN_SELCHANGE = 0x00000001,
+  WM_COMMAND = 0x00000111,
+  LB_GETCURSEL = 0x00000188,
+  LB_GETTEXTLEN = 0x0000018A,
+  LB_ADDSTRING = 0x00000180,
+  LB_GETTEXT = 0x00000189,
+  LB_DELETESTRING = 0x00000182,
+  LB_GETCOUNT = 0x0000018B;
+
+[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;SendMessage&quot;, CharSet = CharSet.Unicode)]
+internal static extern int SendMessage(IntPtr hwnd,
+                                       int msg,
+                                       IntPtr wParam,
+                                       IntPtr lParam);
+
+[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;SendMessage&quot;, CharSet = CharSet.Unicode)]
+internal static extern int SendMessage(IntPtr hwnd,
+                                       int msg,
+                                       int wParam,
+                                       [MarshalAs(UnmanagedType.LPWStr)] StringBuilder lParam);
+
+[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;SendMessage&quot;, CharSet = CharSet.Unicode)]
+internal static extern IntPtr SendMessage(IntPtr hwnd,
+                                          int msg,
+                                          IntPtr wParam,
+                                          String lParam);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="communication"></a></p>
+<h2 id="implement-communication-between-the-control-and-the-page">Обмен данными между элементом управления и страницей</h2>
+<p>Управление элементом управления, отправляя ему сообщения Windows. Элемент управления уведомляет вас, когда пользователь взаимодействует с ним, отправляя уведомления в главное окно. <a href="https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control">Размещения элемента управления ListBox Win32 в WPF</a> пример включает в себя пользовательский Интерфейс, который содержит несколько примеров того, как это работает:</p>
+<ul>
+<li><p>Добавить элемент в список</p>
+</li>
+<li><p>Удалить выбранный элемент из списка</p>
+</li>
+<li><p>Отобразить текст выбранного в настоящее время элемента</p>
+</li>
+<li><p>Отобразить число элементов в списке</p>
+</li>
+</ul>
+<p>Пользователь может также выбрать элемент в поле со списком, щелкнув его, так же, как и для — в стандартном приложении Win32. Отображаемые данные обновляются каждый раз, когда пользователь меняет состояние списка, выбирая, добавляя или изменяя документы.</p>
+<p>Чтобы добавить элементы, отправьте списку <a href="/windows/desktop/Controls/lb-addstring"> <code>LB_ADDSTRING</code> сообщение</a>. Чтобы удалить элементы, отправьте <a href="/windows/desktop/Controls/lb-getcursel"> <code>LB_GETCURSEL</code> </a> необходимо получить индекс текущего выделенного фрагмента и затем <a href="/windows/desktop/Controls/lb-deletestring"> <code>LB_DELETESTRING</code> </a> для удаления элемента. Образец также отправляет <a href="/windows/desktop/Controls/lb-getcount"> <code>LB_GETCOUNT</code> </a>и использует возвращаемое значение для обновления экрана, показывающий количество элементов. Оба экземпляра <a href="/windows/desktop/api/winuser/nf-winuser-sendmessage"> <code>SendMessage</code> </a> использовать одно из объявлений PInvoke, рассмотренных в предыдущем подразделе.</p>
+<pre><code class="lang-csharp" name="WPFHostingWin32Control#AppendDeleteText">private void AppendText(object sender, EventArgs args)
+{
+  if (!string.IsNullOrEmpty(txtAppend.Text))
+  {
+    SendMessage(hwndListBox, LB_ADDSTRING, IntPtr.Zero, txtAppend.Text);
+  }
+  itemCount = SendMessage(hwndListBox, LB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
+  numItems.Text = &quot;&quot; + itemCount.ToString();
+}
+private void DeleteText(object sender, EventArgs args)
+{
+  selectedItem = SendMessage(listControl.hwndListBox, LB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
+  if (selectedItem != -1) //check for selected item
+  {
+    SendMessage(hwndListBox, LB_DELETESTRING, (IntPtr)selectedItem, IntPtr.Zero);
+  }
+  itemCount = SendMessage(hwndListBox, LB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
+  numItems.Text = &quot;&quot; + itemCount.ToString();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Когда пользователь выбирает элемент, или изменяет их выделение, элемент управления уведомляет главное окно, отправляя ему <a href="/windows/desktop/menurc/wm-command"> <code>WM_COMMAND</code> сообщение</a>, который вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> событий для страницы. Обработчик получает те же сведения, что и процедура главного окна в главном окне. Он также передает ссылку на логическое значение, равное <code>handled</code>. Можно задать <code>handled</code> для <code>true</code> для указания, что сообщение было обработано и дальнейшая обработка не требуется.</p>
+<p><a href="/windows/desktop/menurc/wm-command"><code>WM_COMMAND</code></a> отправляется по различным причинам, поэтому следует проанализировать идентификатор уведомления, чтобы определить, является ли это событие, которое вы хотите обрабатывать. Этот идентификатор содержится в старшем слове <code>wParam</code> параметра. Пример использует побитовые операторы для получения идентификатора. Если пользователь сделать выбор или изменил его, идентификатор будет <a href="/windows/desktop/Controls/lbn-selchange"> <code>LBN_SELCHANGE</code> </a>.</p>
+<p>Когда <a href="/windows/desktop/Controls/lbn-selchange"> <code>LBN_SELCHANGE</code> </a> — получено, пример кода также получает индекс выбранного элемента путем отправки элемента управления <a href="/windows/desktop/Controls/lb-getcursel"> <code>LB_GETCURSEL</code> сообщение</a>. Чтобы получить текст, сначала нужно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a>. Затем следует отправить элемент управления <a href="/windows/desktop/Controls/lb-gettext"> <code>LB_GETTEXT</code> сообщение</a>. Передайте пустой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a> объекта в виде <code>wParam</code> параметра. Когда <a href="/windows/desktop/api/winuser/nf-winuser-sendmessage"> <code>SendMessage</code> </a> возвращении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a> будет содержать текст выбранного элемента. Такое использование <a href="/windows/desktop/api/winuser/nf-winuser-sendmessage"> <code>SendMessage</code> </a> требует объявления еще один PInvoke.</p>
+<p>Наконец, установите <code>handled</code> для <code>true</code> для указания, что сообщение было обработано.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+<li><a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство. Создание классического приложения WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,647 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1099;&#1073;&#1086;&#1088; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072; &#1080;&#1079; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1099;&#1073;&#1086;&#1088; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072; &#1080;&#1079; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-select-ink-from-a-custom-control">Практическое руководство. Выбор рукописного ввода из пользовательского элемента управления</h1>
+
+<p>Добавив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> в элемент управления, вы можете включить элемент управления, чтобы пользователь мог выбрать рукописного ввода с помощью лассо, аналогично тому, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> выбирает рукописный ввод с помощью лассо.</p>
+<p>В этом примере предполагается, что вы умеете создавать пользовательский элемент управления, поддержкой рукописного ввода.  Чтобы создать пользовательский элемент управления, который принимает рукописный ввод, см. в разделе <a href="creating-an-ink-input-control.html">Создание элемента управления рукописным вводом</a>.</p>
+<h2 id="example">Пример</h2>
+<p>Когда пользователь рисует лассо, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> прогнозирует, какие штрихи будут в пределах границ пути лассо, как только пользователь завершит лассо.  Росчерки, которые определены как в пределах границ пути лассо может рассматриваться как выбранные.  Выделенные штрихи можно также снимается.  Например, если пользователь меняет направление при рисовании лассо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> может отменить выбор некоторых штрихов.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> Вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">SelectionChanged</a> событие, которое позволяет реагировать, пока пользователь рисует лассо пользовательского элемента управления.  Например можно изменить внешний вид штрихов, как пользователь выбирает и снимает выделение с них.</p>
+<h2 id="managing-the-ink-mode">Управление режимом рукописного ввода</h2>
+<p>Это полезными, если лассо отображается иначе, чем рукописные данные в элемент управления. Для этого пользовательского элемента управления должен хранить список ли пользователь запись или выбрав рукописного ввода. Самый простой способ это сделать, — для объявления перечисления с двумя значениями: один столбец указывает, что пользователь записывает рукописный ввод и один столбец указывает, что пользователь является выбор рукописного ввода.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#2">// Enum that keeps track of whether StrokeCollectionDemo is in ink mode
+// or select mode.
+public enum InkMode
+{
+    Ink, Select
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Добавьте два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> к классу: из них следует использовать, когда пользователь осуществляет рукописный ввод, из них следует использовать, когда пользователь выбирает рукописного ввода.  В конструкторе, инициализировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> и приложите оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.attributechanged">AttributeChanged</a> событий тот же обработчик событий. Затем установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.drawingattributes">DrawingAttributes</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> на рукописный ввод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a>.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#3">DrawingAttributes inkDA;
+DrawingAttributes selectDA;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="HowToSelectInk#4">// In the constructor.
+// Selection drawing attributes use dark gray ink.
+selectDA = new DrawingAttributes();
+selectDA.Color = Colors.DarkGray;
+
+// ink drawing attributes use default attributes
+inkDA = new DrawingAttributes();
+inkDA.Width = 5;
+inkDA.Height = 5;
+
+inkDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
+selectDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Добавьте свойство, которое предоставляет режим выделения. Когда пользователь изменяет режим выбора, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.drawingattributes">DrawingAttributes</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> к соответствующему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> объекта, а затем — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#5">// Property to indicate whether the user is inputting or
+// selecting ink.
+public InkMode Mode
+{
+    get
+    {
+        return mode;
+    }
+
+    set
+    {
+        mode = value;
+
+        // Set the DrawingAttributes of the DynamicRenderer
+        if (mode == InkMode.Ink)
+        {
+            renderer.DrawingAttributes = inkDA;
+        }
+        else
+        {
+            renderer.DrawingAttributes = selectDA;
+        }
+
+        // Reattach the visual of the DynamicRenderer to the InkPresenter.
+        presenter.DetachVisuals(renderer.RootVisual);
+        presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Предоставлять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> как свойства, чтобы приложения могли определить внешний вид рукописных штрихов и штрихов выделенного фрагмента.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#6">// Property to allow the user to change the pen's DrawingAttributes.
+public DrawingAttributes InkDrawingAttributes
+{
+    get
+    {
+        return inkDA;
+    }
+}
+
+// Property to allow the user to change the Selector'newStroke DrawingAttributes.
+public DrawingAttributes SelectDrawingAttributes
+{
+    get
+    {
+        return selectDA;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Когда свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> изменения, объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> необходимо повторно подключить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.  В обработчике событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.attributechanged">AttributeChanged</a> событий, снова присоедините <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#7">void DrawingAttributesChanged(object sender, PropertyDataChangedEventArgs e)
+{
+    // Reattach the visual of the DynamicRenderer to the InkPresenter
+    // whenever the DrawingAttributes change.
+    presenter.DetachVisuals(renderer.RootVisual);
+    presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="using-the-incrementallassohittester">С помощью IncrementalLassoHitTester</h2>
+<p>Создание и инициализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a> , содержащее выделенные штрихи.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#8">// StylusPointCollection that collects the stylus points from the stylus events.
+StylusPointCollection stylusPoints;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Когда пользователь начинает рисовать штрих, рукописного ввода или Лассо, снимите флажки для всех выделенных штрихов. Затем, если пользователь рисует лассо, создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.getincrementallassohittester">GetIncrementalLassoHitTester</a>, Подпишитесь на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">SelectionChanged</a> событий и вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementalhittester.addpoints">AddPoints</a>. Этот код может быть отдельный метод и вызывать из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusdown">OnStylusDown</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmousedown">OnMouseDown</a> методы.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#9">private void InitializeHitTester(StylusPointCollection collectedPoints)
+{
+    // Deselect any selected strokes.
+    foreach (Stroke selectedStroke in selectedStrokes)
+    {
+        selectedStroke.DrawingAttributes.Color = inkDA.Color;
+    }
+    selectedStrokes.Clear();
+
+    if (mode == InkMode.Select)
+    {
+        // Remove the previously drawn lasso, if it exists.
+        if (lassoPath != null)
+        {
+            presenter.Strokes.Remove(lassoPath);
+            lassoPath = null;
+        }
+
+        selectionTester =
+            presenter.Strokes.GetIncrementalLassoHitTester(80);
+        selectionTester.SelectionChanged +=
+            new LassoSelectionChangedEventHandler(selectionTester_SelectionChanged);
+        selectionTester.AddPoints(collectedPoints);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Добавление точки пера, которые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> пока пользователь рисует лассо.  Вызовите следующий метод из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusmove">OnStylusMove</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusup">OnStylusUp</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmousemove">OnMouseMove</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmouseleftbuttonup">OnMouseLeftButtonUp</a> методы.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#10">private void AddPointsToHitTester(StylusPointCollection collectedPoints)
+{
+
+    if (mode == InkMode.Select &amp;&amp;
+        selectionTester != null &amp;&amp;
+        selectionTester.IsValid)
+    {
+        // When the control is selecting strokes, add the
+        // stylus packetList to selectionTester.
+        selectionTester.AddPoints(collectedPoints);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">IncrementalLassoHitTester.SelectionChanged</a> событий, чтобы ответить, когда пользователь выбирает и отменяет выделение штрихов.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs">LassoSelectionChangedEventArgs</a> Класс имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs.selectedstrokes">SelectedStrokes</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs.deselectedstrokes">DeselectedStrokes</a> свойства, получающие штрихи, которые были выбраны и не выбрано, соответственно.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#11">void selectionTester_SelectionChanged(object sender,
+    LassoSelectionChangedEventArgs args)
+{
+    // Change the color of all selected strokes to red.
+    foreach (Stroke selectedStroke in args.SelectedStrokes)
+    {
+        selectedStroke.DrawingAttributes.Color = Colors.Red;
+        selectedStrokes.Add(selectedStroke);
+    }
+
+    // Change the color of all unselected strokes to
+    // their original color.
+    foreach (Stroke unselectedStroke in args.DeselectedStrokes)
+    {
+        unselectedStroke.DrawingAttributes.Color = inkDA.Color;
+        selectedStrokes.Remove(unselectedStroke);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Когда пользователь заканчивает рисование лассо, отменить подписку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">SelectionChanged</a> событий и вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementalhittester.endhittesting">EndHitTesting</a>.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#12">if (mode == InkMode.Select &amp;&amp; lassoPath == null)
+{
+    // Add the lasso to the InkPresenter and add the packetList
+    // to selectionTester.
+    lassoPath = newStroke;
+    lassoPath.DrawingAttributes = selectDA.Clone();
+    presenter.Strokes.Add(lassoPath);
+    selectionTester.SelectionChanged -= new LassoSelectionChangedEventHandler
+                    (selectionTester_SelectionChanged);
+    selectionTester.EndHitTesting();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="putting-it-all-together">Объединение.</h2>
+<p>Ниже приведен пользовательский элемент управления, позволяющий пользователю выбрать рукописный ввод с помощью лассо.</p>
+<pre><code class="lang-csharp" name="HowToSelectInk#1">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Input;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Ink;
+
+// Enum that keeps track of whether StrokeCollectionDemo is in ink mode
+// or select mode.
+public enum InkMode
+{
+    Ink, Select
+}
+
+// This control allows the user to input and select ink.  When the
+// user selects ink, the lasso remains visible until they erase, or clip
+// the selected strokes, or clear the selection.  When the control is
+// in selection mode, strokes that are selected turn red.
+public class InkSelector : Label
+{
+    InkMode mode;
+
+    DrawingAttributes inkDA;
+    DrawingAttributes selectDA;
+
+    InkPresenter presenter;
+    IncrementalLassoHitTester selectionTester;
+    StrokeCollection selectedStrokes = new StrokeCollection();
+
+    // StylusPointCollection that collects the stylus points from the stylus events.
+    StylusPointCollection stylusPoints;
+    // Stroke that represents the lasso.
+    Stroke lassoPath;
+
+    DynamicRenderer renderer;
+
+    public InkSelector()
+    {
+        mode = InkMode.Ink;
+
+        // Use an InkPresenter to display the strokes on the custom control.
+        presenter = new InkPresenter();
+        this.Content = presenter;
+
+        // In the constructor.
+        // Selection drawing attributes use dark gray ink.
+        selectDA = new DrawingAttributes();
+        selectDA.Color = Colors.DarkGray;
+
+        // ink drawing attributes use default attributes
+        inkDA = new DrawingAttributes();
+        inkDA.Width = 5;
+        inkDA.Height = 5;
+
+        inkDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
+        selectDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
+
+        // Add a DynmaicRenderer to the control so ink appears
+        // to &quot;flow&quot; from the tablet pen.
+        renderer = new DynamicRenderer();
+        renderer.DrawingAttributes = inkDA;
+        this.StylusPlugIns.Add(renderer);
+        presenter.AttachVisuals(renderer.RootVisual,
+            renderer.DrawingAttributes);
+    }
+
+    static InkSelector()
+    {
+        // Allow ink to be drawn only within the bounds of the control.
+        Type owner = typeof(InkSelector);
+        ClipToBoundsProperty.OverrideMetadata(owner,
+            new FrameworkPropertyMetadata(true));
+    }
+
+    // Prepare to collect stylus packets. If Mode is set to Select,
+    // get the IncrementalHitTester from the InkPresenter'newStroke
+    // StrokeCollection and subscribe to its StrokeHitChanged event.
+    protected override void OnStylusDown(StylusDownEventArgs e)
+    {
+        base.OnStylusDown(e);
+
+        Stylus.Capture(this);
+
+        // Create a new StylusPointCollection using the StylusPointDescription
+        // from the stylus points in the StylusDownEventArgs.
+        stylusPoints = new StylusPointCollection();
+        StylusPointCollection eventPoints = e.GetStylusPoints(this, stylusPoints.Description);
+
+        stylusPoints.Add(eventPoints);
+
+        InitializeHitTester(eventPoints);
+    }
+
+    protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+    {
+        base.OnMouseLeftButtonDown(e);
+
+        Mouse.Capture(this);
+
+        if (e.StylusDevice != null)
+        {
+            return;
+        }
+
+        Point pt = e.GetPosition(this);
+
+        StylusPointCollection collectedPoints = new StylusPointCollection(new Point[] { pt });
+
+        stylusPoints = new StylusPointCollection();
+
+        stylusPoints.Add(collectedPoints);
+
+        InitializeHitTester(collectedPoints);
+    }
+    private void InitializeHitTester(StylusPointCollection collectedPoints)
+    {
+        // Deselect any selected strokes.
+        foreach (Stroke selectedStroke in selectedStrokes)
+        {
+            selectedStroke.DrawingAttributes.Color = inkDA.Color;
+        }
+        selectedStrokes.Clear();
+
+        if (mode == InkMode.Select)
+        {
+            // Remove the previously drawn lasso, if it exists.
+            if (lassoPath != null)
+            {
+                presenter.Strokes.Remove(lassoPath);
+                lassoPath = null;
+            }
+
+            selectionTester =
+                presenter.Strokes.GetIncrementalLassoHitTester(80);
+            selectionTester.SelectionChanged +=
+                new LassoSelectionChangedEventHandler(selectionTester_SelectionChanged);
+            selectionTester.AddPoints(collectedPoints);
+        }
+    }
+
+    // Collect the stylus packets as the stylus moves.
+    protected override void OnStylusMove(StylusEventArgs e)
+    {
+        if (stylusPoints == null)
+        {
+            return;
+        }
+
+        StylusPointCollection collectedPoints = e.GetStylusPoints(this, stylusPoints.Description);
+        stylusPoints.Add(collectedPoints);
+        AddPointsToHitTester(collectedPoints);
+    }
+
+    protected override void OnMouseMove(MouseEventArgs e)
+    {
+
+        base.OnMouseMove(e);
+
+        if (e.StylusDevice != null)
+        {
+            return;
+        }
+
+        if (e.LeftButton == MouseButtonState.Released)
+        {
+            return;
+        }
+
+        stylusPoints ??= new StylusPointCollection();
+
+        Point pt = e.GetPosition(this);
+
+        StylusPointCollection collectedPoints = new StylusPointCollection(new Point[] { pt });
+
+        stylusPoints.Add(collectedPoints);
+
+        AddPointsToHitTester(collectedPoints);
+    }
+
+    private void AddPointsToHitTester(StylusPointCollection collectedPoints)
+    {
+
+        if (mode == InkMode.Select &amp;&amp;
+            selectionTester != null &amp;&amp;
+            selectionTester.IsValid)
+        {
+            // When the control is selecting strokes, add the
+            // stylus packetList to selectionTester.
+            selectionTester.AddPoints(collectedPoints);
+        }
+    }
+
+    // When the user lifts the stylus, create a Stroke from the
+    // collected stylus points and add it to the InkPresenter.
+    // When the control is selecting strokes, add the
+    // point data to the IncrementalHitTester.
+    protected override void OnStylusUp(StylusEventArgs e)
+    {
+        stylusPoints ??= new StylusPointCollection();
+        StylusPointCollection collectedPoints =
+            e.GetStylusPoints(this, stylusPoints.Description);
+
+        stylusPoints.Add(collectedPoints);
+        AddPointsToHitTester(collectedPoints);
+        AddStrokeToPresenter();
+        stylusPoints = null;
+
+        Stylus.Capture(null);
+    }
+
+    protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+    {
+
+        base.OnMouseLeftButtonUp(e);
+
+        if (e.StylusDevice != null) return;
+
+        if (stylusPoints == null) stylusPoints = new StylusPointCollection();
+
+        Point pt = e.GetPosition(this);
+
+        StylusPointCollection collectedPoints = new StylusPointCollection(new Point[] { pt });
+
+        stylusPoints.Add(collectedPoints);
+        AddPointsToHitTester(collectedPoints);
+        AddStrokeToPresenter();
+
+        stylusPoints = null;
+
+        Mouse.Capture(null);
+    }
+
+    private void AddStrokeToPresenter()
+    {
+        Stroke newStroke = new Stroke(stylusPoints);
+
+        if (mode == InkMode.Ink)
+        {
+            // Add the stroke to the InkPresenter.
+            newStroke.DrawingAttributes = inkDA.Clone();
+            presenter.Strokes.Add(newStroke);
+        }
+
+        if (mode == InkMode.Select &amp;&amp; lassoPath == null)
+        {
+            // Add the lasso to the InkPresenter and add the packetList
+            // to selectionTester.
+            lassoPath = newStroke;
+            lassoPath.DrawingAttributes = selectDA.Clone();
+            presenter.Strokes.Add(lassoPath);
+            selectionTester.SelectionChanged -= new LassoSelectionChangedEventHandler
+                            (selectionTester_SelectionChanged);
+            selectionTester.EndHitTesting();
+        }
+    }
+
+    void selectionTester_SelectionChanged(object sender,
+        LassoSelectionChangedEventArgs args)
+    {
+        // Change the color of all selected strokes to red.
+        foreach (Stroke selectedStroke in args.SelectedStrokes)
+        {
+            selectedStroke.DrawingAttributes.Color = Colors.Red;
+            selectedStrokes.Add(selectedStroke);
+        }
+
+        // Change the color of all unselected strokes to
+        // their original color.
+        foreach (Stroke unselectedStroke in args.DeselectedStrokes)
+        {
+            unselectedStroke.DrawingAttributes.Color = inkDA.Color;
+            selectedStrokes.Remove(unselectedStroke);
+        }
+    }
+
+    // Property to indicate whether the user is inputting or
+    // selecting ink.
+    public InkMode Mode
+    {
+        get
+        {
+            return mode;
+        }
+
+        set
+        {
+            mode = value;
+
+            // Set the DrawingAttributes of the DynamicRenderer
+            if (mode == InkMode.Ink)
+            {
+                renderer.DrawingAttributes = inkDA;
+            }
+            else
+            {
+                renderer.DrawingAttributes = selectDA;
+            }
+
+            // Reattach the visual of the DynamicRenderer to the InkPresenter.
+            presenter.DetachVisuals(renderer.RootVisual);
+            presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
+        }
+    }
+    void DrawingAttributesChanged(object sender, PropertyDataChangedEventArgs e)
+    {
+        // Reattach the visual of the DynamicRenderer to the InkPresenter
+        // whenever the DrawingAttributes change.
+        presenter.DetachVisuals(renderer.RootVisual);
+        presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
+    }
+
+    // Property to allow the user to change the pen's DrawingAttributes.
+    public DrawingAttributes InkDrawingAttributes
+    {
+        get
+        {
+            return inkDA;
+        }
+    }
+
+    // Property to allow the user to change the Selector'newStroke DrawingAttributes.
+    public DrawingAttributes SelectDrawingAttributes
+    {
+        get
+        {
+            return selectDA;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a></li>
+<li><a href="creating-an-ink-input-control.html">Создание элемента управления рукописным вводом</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

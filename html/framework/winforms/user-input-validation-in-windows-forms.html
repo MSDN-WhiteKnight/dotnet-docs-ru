@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1074;&#1074;&#1077;&#1076;&#1077;&#1085;&#1085;&#1099;&#1093; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1077;&#1084; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1074;&#1074;&#1077;&#1076;&#1077;&#1085;&#1085;&#1099;&#1093; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1077;&#1084; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="user-input-validation-in-windows-forms">Проверка введенных пользователем данных в Windows Forms</h1>
+
+<p>Когда пользователи вводят данные в приложение, может потребоваться убедитесь, что данные действителен, прежде чем приложение использует их. Вам может потребоваться, что некоторые текстовые поля не быть нулевой длины, что были отформатированы как номер телефона или другой тип данных, или что строка содержит небезопасных знаков, которые могут использоваться для нарушения безопасности базы данных. Windows Forms предоставляет несколько способов для проверки входных данных в приложении.</p>
+<h2 id="validation-with-the-maskedtextbox-control">Проверки в элементе управления MaskedTextBox</h2>
+<p>Если требуется, чтобы пользователи должны вводить данные в определенном формате, например номер телефона или номер части, то это можно сделать быстро и с минимальным использованием кода с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.maskedtextbox">MaskedTextBox</a> элемента управления. Объект <em>маска</em> представляет собой строку, состоящую из знаков языка масок, указывающее, какие символы можно вводить в любом месте в текстовом поле. Элемент управления отображает набор запросов, для пользователя. Если пользователь вводит неправильную запись, например, пользователь вводит букву, когда требуется цифра, элемент управления будет автоматически отклонять входные данные.</p>
+<p>Маскирование язык, используемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.maskedtextbox">MaskedTextBox</a> обладает большой гибкостью. Он позволяет указать обязательные символы, дополнительные символы, литеральных символов, такие как дефисы и круглые скобки, символы валют и разделители компонентов даты. Элемент управления также работает при привязке к источнику данных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.binding.format">Format</a> События привязки данных можно использовать чтобы переформатировать входящих данных в соответствии с маской и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.binding.parse">Parse</a> событий может использоваться для переформатирования выходных данных в соответствии со спецификациями поля данных.</p>
+<p>Дополнительные сведения см. в разделе <a href="controls/maskedtextbox-control-windows-forms.html">элементом управления MaskedTextBox</a>.</p>
+<h2 id="event-driven-validation">Проверка на основе событий</h2>
+<p>Если требуется полный программный контроль над проверкой, или необходимо выполнить сложную проверку, следует использовать события проверки, встроенные в большинство элементов управления Windows Forms. Каждый элемент управления ввода данных пользователем в свободной форме имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событие, которое будет выполняться каждый раз, когда элементу управления требуется проверка данных. В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> метод обработки событий, можно проверить пользовательский ввод несколькими способами. Например если у вас есть текстовое поле, которое должно содержать почтовый код, проверку можно выполнить одним из следующих способов:</p>
+<ul>
+<li><p>Если почтовый индекс должен принадлежать к определенной группе почтовых индексов, можно выполнить сравнения строк во входных данных для проверки введенных пользователем данных. Например если почтовый индекс должен быть в наборе {10001, 10002, 10003}, сравнения строк можно использовать для проверки данных.</p>
+</li>
+<li><p>Если почтовый индекс должен быть в конкретной форме можно использовать регулярные выражения для проверки введенных пользователем данных. Например, чтобы проверить формат <code>#####</code> или <code>#####-####</code>, можно использовать регулярное выражение <code>^(\d{5})(-\d{4})?$</code>. Чтобы проверить формат <code>A#A #A#</code>, можно использовать регулярное выражение <code>[A-Z]\d[A-Z] \d[A-Z]\d</code>. Дополнительные сведения о регулярных выражениях см. в разделе <a href="../../standard/base-types/regular-expressions.md">регулярные выражения .NET Framework</a> и <a href="../../standard/base-types/regular-expression-examples.md">Примеры регулярных выражений</a>.</p>
+</li>
+<li><p>Если почтовый индекс должен быть действительный почтовый индекс США, можно вызвать ZIP-код веб-службы для проверки введенных пользователем данных.</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> Событий передается объект типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs">CancelEventArgs</a>. Если выяснилось, что данные элемента управления не является допустимым, вы можете отменить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событий, установив этот объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs.cancel">Cancel</a> свойства <code>true</code>. Если вы не установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs.cancel">Cancel</a> , Windows Forms будет предполагать, что проверка выполнена успешно, для этого элемента управления и вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validated">Validated</a> событий.</p>
+<p>Пример кода, проверяющее адреса электронной почты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a>.</p>
+<h3 id="data-binding-and-event-driven-validation">Привязка данных и проверка на основе событий</h3>
+<p>Проверка очень полезна в случаях, когда элементы управления привязаны к источнику данных, например в таблице базы данных. С помощью проверки, можно гарантировать, что данные элемента управления, удовлетворяющий формат, требуемый источник данных, и что он не содержит специальные символы, такими как кавычки и символы косой черты, может быть небезопасным.</p>
+<p>При использовании привязки данных, синхронизации данных в элементе управления с источником данных во время выполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событий. Если вы отмените <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событий, данные не будут синхронизированы с источником данных.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>При наличии пользовательской проверки, выполняемого после <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событие, он не затрагивает привязки данных. Например, если у вас есть код <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validated">Validated</a> событие, которое пытается отменить привязку данных, по-прежнему происходит привязка данных. В данном случае для выполнения проверки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validated">Validated</a> событий, измените элемент управления <strong>режим обновления источника данных</strong> свойство (<strong>в группе (Databindings)</strong>\ <strong>(Дополнительно)</strong> ) из <strong>OnValidation</strong> для <strong>никогда</strong>и добавьте <em>управления</em><code>.DataBindings[&quot;</code><em>&lt;YOURFIELD &gt;</em>  <code>&quot;].WriteValue()</code> в код проверки.</p>
+</div>
+<h3 id="implicit-and-explicit-validation">Явная и неявная проверка</h3>
+<p>Если данных элемента управления получить проверку? Это до вас как разработчика. Можно использовать явную или неявную проверку, в зависимости от потребностей приложения.</p>
+<h4 id="implicit-validation">Неявная проверка</h4>
+<p>Неявная проверка данные проверяются как пользователь вводит его. Можно проверить данные, как данные, введенные в элемент управления путем чтения клавиш, как их нажатия или более часто всякий раз, когда пользователь принимает фокус ввода от одного элемента управления и переходит к следующему. Этот подход полезен в тех случаях, когда вы хотите предоставить отзывы пользователей о данных, так как они работают.</p>
+<p>Если вы хотите использовать неявную проверку для элемента управления, необходимо задать элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autovalidate">AutoValidate</a> свойства <code>true</code>. Если вы отмените <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Validating</a> событий, поведение элемента управления определяется значением назначенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autovalidate">AutoValidate</a>. Если вы назначили <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_EnablePreventFocusChange">EnablePreventFocusChange</a>, отменяющую событие вызовет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validated">Validated</a> события не возникают. Фокус ввода будет оставаться на текущий элемент управления, пока пользователь не данных допустимые данные. Если вы назначили <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_EnableAllowFocusChange">EnableAllowFocusChange</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validated">Validated</a> событие не происходит при отмене события, но фокус все равно перемещается к следующему элементу управления.</p>
+<p>Назначение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_Disable">Disable</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autovalidate">AutoValidate</a> свойство предотвращает неявная проверка полностью. Чтобы проверить элементы управления, необходимо использовать явную проверку.</p>
+<h4 id="explicit-validation">Явную проверку</h4>
+<p>При явной проверке проверяет данные за один раз. Можно проверить данные в ответ на действия пользователя, например нажатие кнопки Сохранить или следующей ссылки. Когда происходит действие пользователя, можно активировать явную проверку в одном из следующих способов:</p>
+<ul>
+<li><p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.validate">Validate</a> проверяемый последний элемент управления потерял фокус.</p>
+</li>
+<li><p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.validatechildren">ValidateChildren</a> для проверки всех дочерних элементов управления в форму или контейнерный элемент управления.</p>
+</li>
+<li><p>Вызовите пользовательский метод для проверки данных в элементах управления вручную.</p>
+</li>
+</ul>
+<h4 id="default-implicit-validation-behavior-for-windows-forms-controls">Неявная проверка по умолчанию для Windows Forms, элементы управления</h4>
+<p>Различные элементы управления Windows Forms имеют различные значения по умолчанию для их <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autovalidate">AutoValidate</a> свойство. В следующей таблице показаны наиболее распространенных элементов управления и их значения по умолчанию.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления</th>
+<th>Поведение проверки по умолчанию</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_Inherit">Inherit</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_EnableAllowFocusChange">EnableAllowFocusChange</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.propertygrid">PropertyGrid</a></td>
+<td>Свойство, не представлены в Visual Studio</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a></td>
+<td>Свойство, не представлены в Visual Studio</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.splitcontainer">SplitContainer</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_Inherit">Inherit</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autovalidate#System_Windows_Forms_AutoValidate_EnableAllowFocusChange">EnableAllowFocusChange</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="closing-the-form-and-overriding-validation">Закрытие формы и обход проверки</h2>
+<p>Если элемент управления сохраняет фокус, так как данные, содержащиеся в ней являются недопустимыми, вы не сможете закрыть родительскую форму одним из обычных способов:</p>
+<ul>
+<li><p>Щелкнув <strong>закрыть</strong> кнопки.</p>
+</li>
+<li><p>Выбрав <strong>закрыть</strong> в <strong>системы</strong> меню.</p>
+</li>
+<li><p>Путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.close">Close</a> метод программным способом.</p>
+</li>
+</ul>
+<p>Однако в некоторых случаях может потребоваться разрешить пользователю закрыть форму независимо от того, допустимы ли значения в элементах управления. Можно обойти проверку и закрыть форму, которая по-прежнему содержит недопустимые данные путем создания обработчика для формы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.closing">Closing</a> событий. В событии задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs.cancel">Cancel</a> свойства <code>false</code>. Это приводит к закрытию формы. Дополнительные сведения и пример см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.closing">Form.Closing</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если принудительно форму, чтобы закрыть таким образом, теряются все данные в элементы управления формы, который уже не был сохранен. Кроме того модальные формы не проверяют содержимое элементов управления при их закрытии. Проверку элемента управления по-прежнему можно использовать для блокировки фокус на элементе управления, но у вас нет причин беспокоиться о поведение, связанное с закрытием формы.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.validating">Control.Validating</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.closing">Form.Closing</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs">System.ComponentModel.CancelEventArgs</a></li>
+<li><a href="controls/maskedtextbox-control-windows-forms.html">Элемент управления MaskedTextBox</a></li>
+<li><a href="../../standard/base-types/regular-expression-examples.md">Примеры регулярных выражений</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

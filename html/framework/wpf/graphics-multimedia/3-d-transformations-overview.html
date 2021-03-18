@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1090;&#1088;&#1077;&#1093;&#1084;&#1077;&#1088;&#1085;&#1099;&#1093; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1090;&#1088;&#1077;&#1093;&#1084;&#1077;&#1088;&#1085;&#1099;&#1093; &#1087;&#1088;&#1077;&#1086;&#1073;&#1088;&#1072;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="3-d-transformations-overview">Общие сведения о трехмерных преобразованиях</h1>
+
+<p>В этом разделе описывается применение преобразований к трехмерным моделям в графической системе Windows Presentation Foundation (WPF). Преобразования позволяют разработчикам перемещать модели, изменять их размер и направление, при этом не затрагивая их базовые определяющие значения.</p>
+<h2 id="3-d-coordinate-space">Координаты трехмерного пространства</h2>
+<p>Трехмерное графическое содержимое в Windows Presentation Foundation (WPF) инкапсулировано в элементе, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a>, который может участвовать в структуре двумерного элемента. Графическая система рассматривает Viewport3D как двумерный визуальный элемент, подобный многим другим в Windows Presentation Foundation (WPF). Viewport3D функционирует как окно — окно просмотра — трехмерной сцены. Говоря точнее, это поверхность, на которую проецируется трехмерная сцена.  Хотя Viewport3D можно использовать с другими двумерными объектами рисования в том же графе сцены, двумерные объекты нельзя преобразовать в трехмерные внутри Viewport3D. В следующем обсуждении описанное координатное пространство расположено в элементе Viewport3D.</p>
+<p>Система координат Windows Presentation Foundation (WPF) для двумерной графики начинается в левом верхнем углу области отрисовки (обычно областью отрисовки является экран). В двумерной системе положительные значения оси X откладываются вправо, а оси Y — сверху вниз. В трехмерной системе координат начало располагается в центре отрисовываемой области, положительные значения оси X откладываются вправо, оси Y — снизу вверх, а оси Z — из центра к наблюдателю.</p>
+<p><img src="media/coordsystem-1.png" alt="Системы координат" title="CoordSystem-1"><br>
+Сравнение системы координат</p>
+<p>Пространство, определяемое этими осями, является стационарной системой отсчета координат для трехмерных объектов в приложении Windows Presentation Foundation (WPF). При построении моделей в этом пространстве и создании источников света и камер для их отображения необходимо отличать стационарную систему отсчета координат (&quot;мировую систему координат&quot;) от локальной системы отсчета, которая создается для каждой модели при применении к ней преобразований. Помните, что в зависимости от освещения и настроек камеры объекты в мировой системе координат могут выглядеть различным образом или быть полностью невидимыми. При этом положение камеры не изменяет расположения объектов в мировой системе координат.</p>
+<h2 id="transforming-models">Преобразование моделей</h2>
+<p>При создании моделей в сцене им задается определенное местоположение. Для поворота моделей, изменения их размера или перемещения внутри сцены не следует изменять вершины, определяющие сами модели. Вместо этого следует применять к моделям преобразования, как и в двумерных системах.</p>
+<p>Каждый объект модели имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.model3d.transform">Transform</a> свойства с помощью которого можно перемещать, повторно разобраться с функциональностью или изменении размера модели. При применении преобразования все точки модели фактически смещаются с помощью определенного вектора или значения, заданного преобразованием. Другими словами, выполняется преобразование координатного пространства, в котором определена модель (&quot;пространство модели&quot;), при этом значения, составляющие геометрию модели в системе координат всей сцены (&quot;мировое пространство&quot;), не изменяются.</p>
+<h2 id="translation-transformations">Преобразования перевода</h2>
+<p>Трехмерные преобразования наследуют от абстрактного базового класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.transform3d">Transform3D</a>; к ним относятся классы аффинного преобразования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.translatetransform3d">TranslateTransform3D</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.scaletransform3d">ScaleTransform3D</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d">RotateTransform3D</a>. Windows Presentation Foundation (WPF) Трехмерная система также предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.matrixtransform3d">MatrixTransform3D</a> класс, который позволяет указать те же преобразования в более коротких матричных операциях.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.translatetransform3d">TranslateTransform3D</a> перемещает все точки в Model3D в направлении выбранного вектора смещения указывается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.translatetransform3d.offsetx">OffsetX</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.translatetransform3d.offsety">OffsetY</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.translatetransform3d.offsetz">OffsetZ</a> свойства. Например, если задать вершине куба с координатами (2, 2, 2) вектор смещения (0, 1,6, 1), то вершина (2, 2, 2) будет перемещена в точку (2, 3,6, 3). В пространстве модели вершина куба останется в точке (2, 2, 2), но, поскольку связь пространства модели с мировым пространством изменилась, координата пространства модели (2, 2, 2) будет находиться в точке (2, 3,6, 3) мирового пространства.</p>
+<p><img src="media/transforms-translate.png" alt="Фигура перевода" title="перевод преобразований"><br>
+Перевод со смещением</p>
+<p>В следующем примере кода показано, как применить перевод.</p>
+<pre><code class="lang-xaml" name="animation3dgallery_snip#Translation3DAnimationExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; &gt;
+  &lt;DockPanel&gt;
+    &lt;Viewbox&gt;
+      &lt;Canvas Width=&quot;600&quot; Height=&quot;201&quot;&gt;
+
+        &lt;!-- The Viewport3D provides a rendering surface for 3-D visual content. --&gt;
+        &lt;Viewport3D Name=&quot;MyAnimatedObject&quot;
+          ClipToBounds=&quot;True&quot; Width=&quot;600&quot; Height=&quot;150&quot;
+          Canvas.Left=&quot;0&quot; Canvas.Top=&quot;10&quot;&gt;
+
+          &lt;!-- Defines the camera used to view the 3D object. --&gt;
+          &lt;Viewport3D.Camera&gt;
+            &lt;PerspectiveCamera x:Name=&quot;myPerspectiveCamera&quot; Position=&quot;0,0,2&quot; LookDirection=&quot;0,0,-1&quot; 
+             FieldOfView=&quot;60&quot; /&gt;
+          &lt;/Viewport3D.Camera&gt;
+
+          &lt;!-- The ModelVisual3D children contain the 3D models --&gt;
+          &lt;Viewport3D.Children&gt;
+
+            &lt;!-- This ModelVisual3D defines the light cast in the scene. Without light, the
+                 3D object cannot be seen. --&gt;
+            &lt;ModelVisual3D&gt;
+              &lt;ModelVisual3D.Content&gt;
+                &lt;DirectionalLight Color=&quot;#FFFFFF&quot; Direction=&quot;-0.612372,-0.5,-0.612372&quot; /&gt;
+              &lt;/ModelVisual3D.Content&gt;
+            &lt;/ModelVisual3D&gt;
+            &lt;ModelVisual3D&gt;
+              &lt;ModelVisual3D.Content&gt;
+                &lt;GeometryModel3D&gt;
+
+                  &lt;!-- The geometry specifes the shape of the 3D plane. In this case, a flat sheet is created. --&gt;
+                  &lt;GeometryModel3D.Geometry&gt;
+                    &lt;MeshGeometry3D
+                     TriangleIndices=&quot;0,1,2 3,4,5 &quot;
+                     Normals=&quot;0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 &quot;
+                     TextureCoordinates=&quot;0,0 1,0 1,1 1,1 0,1 0,0 &quot;
+                     Positions=&quot;-0.5,-0.5,0.5 0.5,-0.5,0.5 0.5,0.5,0.5 0.5,0.5,0.5 -0.5,0.5,0.5 -0.5,-0.5,0.5 &quot; /&gt;
+                  &lt;/GeometryModel3D.Geometry&gt;
+
+                  &lt;!-- The material specifies the material applied to the plane. In this case it is a linear gradient.--&gt;
+                  &lt;GeometryModel3D.Material&gt;
+                    &lt;MaterialGroup&gt;
+                      &lt;DiffuseMaterial&gt;
+                        &lt;DiffuseMaterial.Brush&gt;
+                          &lt;SolidColorBrush Color=&quot;Cyan&quot; Opacity=&quot;0.3&quot;/&gt;
+                        &lt;/DiffuseMaterial.Brush&gt;
+                      &lt;/DiffuseMaterial&gt;
+                    &lt;/MaterialGroup&gt;
+                  &lt;/GeometryModel3D.Material&gt;
+                  &lt;!-- The Transform specifies how to transform the 3D object. The OffsetX property is animated
+                       in the Storyboard below. --&gt;
+                  &lt;GeometryModel3D.Transform&gt;
+                    &lt;TranslateTransform3D x:Name=&quot;myTranslateTransform3D&quot; OffsetX=&quot;0&quot; OffsetY=&quot;0&quot; OffsetZ=&quot;0&quot; /&gt;
+                  &lt;/GeometryModel3D.Transform&gt;
+                &lt;/GeometryModel3D&gt;
+              &lt;/ModelVisual3D.Content&gt;
+            &lt;/ModelVisual3D&gt;
+          &lt;/Viewport3D.Children&gt;
+          &lt;!-- Trigger the TranslateTransform3D animation when the 3D object loads. --&gt;
+          &lt;Viewport3D.Triggers&gt;
+            &lt;EventTrigger RoutedEvent=&quot;Viewport3D.Loaded&quot;&gt;
+              &lt;BeginStoryboard&gt;
+                &lt;Storyboard&gt;
+
+                  &lt;!-- This animation animates the OffsetX property of the TranslateTransform3D. --&gt;
+                  &lt;DoubleAnimation
+                   Storyboard.TargetName=&quot;myTranslateTransform3D&quot; 
+                   Storyboard.TargetProperty=&quot;OffsetX&quot; 
+                   To=&quot;-0.8&quot; 
+                   AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+
+                  &lt;!-- If you want to animate OffsetY and/or OffsetZ, create similar DoubleAnimations
+                       respectively. --&gt;
+
+                &lt;/Storyboard&gt;
+              &lt;/BeginStoryboard&gt;
+            &lt;/EventTrigger&gt;
+          &lt;/Viewport3D.Triggers&gt;
+        &lt;/Viewport3D&gt;
+      &lt;/Canvas&gt;
+    &lt;/Viewbox&gt;
+  &lt;/DockPanel&gt;
+&lt;/Page&gt;
+</code></pre><h2 id="scale-transformations">Преобразования масштаба</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.scaletransform3d">ScaleTransform3D</a> изменяет масштаб модели с помощью указанного вектора масштаба относительно центральной точки. Укажите единый масштаб, который масштабирует модель по осям X, Y и Z для пропорционального изменения ее размера. Например, задание преобразования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scalex">ScaleX</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scaley">ScaleY</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.scaletransform3d.scalez">ScaleZ</a> свойства 0,5 уменьшению размера модели; значение 2 те же свойства удваивает его масштаб в всем трем осям.</p>
+<p><img src="media/threecubes-uniformscale-1.png" alt="Универсальный ScaleTransform3D" title="threecubes_uniformscale_1"><br>
+Пример ScaleVector</p>
+<p>Указание преобразования неоднородной шкалы (т. е. шкалы, значения X, Y и Z которой отличаются) может привести к растягиванию или сжатию модели в одном или двух измерениях без изменения по остальным. Например, установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scalex">ScaleX</a> 1, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scaley">ScaleY</a> 2, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.scaletransform3d.scalez">ScaleZ</a> 1 приведет к модели в дважды в высоту, но остаются неизменными по осям X и Z.</p>
+<p>По умолчанию ScaleTransform3D растягивает или сжимает вершины по отношению к началу координат (0, 0, 0). Но если преобразуемая модель строится не от начала координат, то при ее масштабировании от начала координат она будет находиться &quot;не на своем месте&quot; В то же время, если вершины модели умножаются на вектор масштабирования, операция масштабирования приведет и к преобразованию модели, и к ее масштабированию.</p>
+<p><img src="media/threecubes-scaledwithcenter-1.png" alt="Три куба, масштабированные с указанной центральной точкой" title="threecubes_scaledwithcenter_1"><br>
+Пример центра масштабирования</p>
+<p>Для масштабирования модели «на месте», укажите центр модели, установив свойства ScaleTransform3D <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.centerx">CenterX</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.centery">CenterY</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.scaletransform3d.centerz">CenterZ</a> свойства. Это гарантирует, что графической системе отмасштабировать пространство модели и затем преобразовать его к центру на указанном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.point3d">Point3D</a>. В обратном случае, если для построенной относительно начала координат модели указана другая центральная точка, модель будет преобразована из начала координат.</p>
+<h2 id="rotation-transformations">Преобразования поворота</h2>
+<p>Трехмерную модель можно поворачивать несколькими способами. При обычном преобразовании поворота указываются ось и угол поворота вокруг этой оси. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d">RotateTransform3D</a> Класс позволяет определить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotation3d">Rotation3D</a> с его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d.rotation">Rotation</a> свойство. Затем укажите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.axisanglerotation3d.axis">Axis</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.axisanglerotation3d.angle">Angle</a> свойства в Rotation3D, в данном случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.axisanglerotation3d">AxisAngleRotation3D</a>, для определения преобразования. В следующих примерах модель поворачивается на 60 градусов вокруг оси Y.</p>
+<pre><code class="lang-xaml" name="animation3dgallery_snip#Rotate3DUsingAxisAngleRotation3DExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; &gt;
+  &lt;DockPanel&gt;
+    &lt;Viewbox&gt;
+      &lt;Canvas Width=&quot;321&quot; Height=&quot;201&quot;&gt;
+
+        &lt;!-- The Viewport3D provides a rendering surface for 3-D visual content. --&gt;
+        &lt;Viewport3D Name=&quot;MyAnimatedObject&quot;
+          ClipToBounds=&quot;True&quot; Width=&quot;150&quot; Height=&quot;150&quot;
+          Canvas.Left=&quot;0&quot; Canvas.Top=&quot;10&quot;&gt;
+
+          &lt;!-- Defines the camera used to view the 3D object. --&gt;
+          &lt;Viewport3D.Camera&gt;
+            &lt;PerspectiveCamera x:Name=&quot;myPerspectiveCamera&quot; Position=&quot;0,0,2&quot; LookDirection=&quot;0,0,-1&quot; 
+             FieldOfView=&quot;60&quot; /&gt;
+          &lt;/Viewport3D.Camera&gt;
+
+          &lt;!-- The ModelVisual3D children contain the 3D models --&gt;
+          &lt;Viewport3D.Children&gt;
+
+            &lt;!-- Two ModelVisual3D define the lights cast in the scene. Without light, the
+                 3D object cannot be seen. Also, the direction of the lights affect shadowing. --&gt;
+            &lt;ModelVisual3D&gt;
+              &lt;ModelVisual3D.Content&gt;
+                &lt;DirectionalLight Color=&quot;#FFFFFF&quot; Direction=&quot;-0.612372,-0.5,-0.612372&quot; /&gt;
+              &lt;/ModelVisual3D.Content&gt;
+            &lt;/ModelVisual3D&gt;
+            &lt;ModelVisual3D&gt;
+              &lt;ModelVisual3D.Content&gt;
+                &lt;DirectionalLight Color=&quot;#FFFFFF&quot; Direction=&quot;0.612372,-0.5,-0.612372&quot; /&gt;
+              &lt;/ModelVisual3D.Content&gt;
+            &lt;/ModelVisual3D&gt;
+            &lt;ModelVisual3D&gt;
+              &lt;ModelVisual3D.Content&gt;
+                &lt;GeometryModel3D&gt;
+
+                  &lt;!-- The geometry specifes the shape of the 3D plane. In this case, a flat sheet is created. --&gt;
+                  &lt;GeometryModel3D.Geometry&gt;
+                    &lt;MeshGeometry3D
+                     TriangleIndices=&quot;0,1,2 3,4,5 &quot;
+                     Normals=&quot;0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 &quot;
+                     TextureCoordinates=&quot;0,0 1,0 1,1 1,1 0,1 0,0 &quot;
+                     Positions=&quot;-0.5,-0.5,0.5 0.5,-0.5,0.5 0.5,0.5,0.5 0.5,0.5,0.5 -0.5,0.5,0.5 -0.5,-0.5,0.5 &quot; /&gt;
+                  &lt;/GeometryModel3D.Geometry&gt;
+
+                  &lt;!-- The material specifies the material applied to the plane. In this case it is a linear gradient.--&gt;
+                  &lt;GeometryModel3D.Material&gt;
+                    &lt;MaterialGroup&gt;
+                      &lt;DiffuseMaterial&gt;
+                        &lt;DiffuseMaterial.Brush&gt;
+                          &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; EndPoint=&quot;1,0.5&quot;&gt;
+                            &lt;LinearGradientBrush.GradientStops&gt;
+                              &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0&quot; /&gt;
+                              &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;0.25&quot; /&gt;
+                              &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.75&quot; /&gt;
+                              &lt;GradientStop Color=&quot;LimeGreen&quot; Offset=&quot;1&quot; /&gt;
+                            &lt;/LinearGradientBrush.GradientStops&gt;
+                          &lt;/LinearGradientBrush&gt;
+                        &lt;/DiffuseMaterial.Brush&gt;
+                      &lt;/DiffuseMaterial&gt;
+                    &lt;/MaterialGroup&gt;
+                  &lt;/GeometryModel3D.Material&gt;
+
+                  &lt;!-- The Transform specifies how to transform the 3D object. The properties of the
+                        Rotation object are animated causing the 3D object to rotate and &quot;wobble&quot; (see Storyboard below).--&gt;
+                  &lt;GeometryModel3D.Transform&gt;
+                    &lt;RotateTransform3D&gt;
+                      &lt;RotateTransform3D.Rotation&gt;
+                        &lt;AxisAngleRotation3D x:Name=&quot;myAngleRotation&quot; Axis=&quot;0,3,0&quot; Angle=&quot;40&quot; /&gt;
+                      &lt;/RotateTransform3D.Rotation&gt;
+                    &lt;/RotateTransform3D&gt;
+                  &lt;/GeometryModel3D.Transform&gt;
+                &lt;/GeometryModel3D&gt;
+              &lt;/ModelVisual3D.Content&gt;
+            &lt;/ModelVisual3D&gt;
+          &lt;/Viewport3D.Children&gt;
+
+          &lt;!-- Trigger the rotation animation when the 3D object loads. --&gt;
+          &lt;Viewport3D.Triggers&gt;
+            &lt;EventTrigger RoutedEvent=&quot;Viewport3D.Loaded&quot;&gt;
+              &lt;BeginStoryboard&gt;
+                &lt;Storyboard&gt;
+
+                  &lt;!-- This animation animates the Angle property of the AxisAngleRotation3D
+                       making the 3D object rotate from -60 degrees to 60 degrees. --&gt;
+                  &lt;DoubleAnimation 
+                   Storyboard.TargetName=&quot;myAngleRotation&quot; 
+                   Storyboard.TargetProperty=&quot;Angle&quot; 
+                   From=&quot;-60&quot; To=&quot;60&quot; Duration=&quot;0:0:4&quot; AutoReverse=&quot;True&quot;  RepeatBehavior=&quot;Forever&quot;/&gt;
+
+                  &lt;!-- This animation animates the Axis property of the AxisAngleRotation3D
+                       making the 3D wobble as it rotates. --&gt;
+                  &lt;Vector3DAnimation 
+                   Storyboard.TargetName=&quot;myAngleRotation&quot; 
+                   Storyboard.TargetProperty=&quot;Axis&quot; 
+                   From=&quot;0,3,0&quot; To=&quot;1,0,1&quot; Duration=&quot;0:0:4&quot; AutoReverse=&quot;True&quot;  RepeatBehavior=&quot;Forever&quot;/&gt;
+
+                &lt;/Storyboard&gt;
+              &lt;/BeginStoryboard&gt;
+            &lt;/EventTrigger&gt;
+          &lt;/Viewport3D.Triggers&gt;
+        &lt;/Viewport3D&gt;
+      &lt;/Canvas&gt;
+
+    &lt;/Viewbox&gt;
+  &lt;/DockPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Примечание.Windows Presentation Foundation (WPF) Является правовинтовой системой, это означает, что положительного значения угла поворота приведет к повороту против часовой стрелки относительно оси.</p>
+<p>Осе угловой поворот предполагает Поворот относительно начала координат, если значение не указано для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d.centerx">CenterX</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d.centery">CenterY</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d.centerz">CenterZ</a> свойства в RotateTransform3D. Как и при масштабировании, следует помнить, что при повороте преобразуется все координатное пространство модели целиком. Если модель была создана не от начала координат или была преобразована ранее, то поворот может быть произведен относительно начала координат, а не относительно местоположения модели.</p>
+<p><img src="media/threecubes-rotationwithcenter-1.png" alt="Поворот с новой центральной точкой" title="threecubes_rotationwithcenter_1"><br>
+Поворот с указанием новой центральной точки</p>
+<p>Чтобы повернуть модель &quot;на месте&quot;, следует указать фактический центр модели в качестве центра поворота. Геометрия обычно моделируется от начала координат, поэтому для получения ожидаемого результата от набора преобразований необходимо вначале изменить размер модели (т. е. отмасштабировать), задать ее направление (повернуть), а затем перенести ее в нужное место (преобразовать).</p>
+<p><img src="media/twocubes-rotation2axes-1.png" alt="Поворот на 60 градусов в x- и y-осей" title="twocubes_rotation2axes_1"><br>
+Пример поворота</p>
+<p>Осе-угловой поворот подходит для статических преобразований и некоторых анимаций. Тем не менее рассмотрим поворот модели куба на 60 градусов вокруг оси X, а затем на 45 градусов вокруг оси Z. Это преобразование можно описать как два отдельных аффинных преобразования или как матрицу. Тем не менее плавно анимировать поворот, определенный таким образом, может быть достаточно трудно. Несмотря на то что начальные и конечные позиции вычисляемой модели совпадают, промежуточные положения модели не определены при вычислении. Кватернионы представляют собой альтернативный способ вычисления интерполяции между начальной и конечной точками поворота.</p>
+<p>Кватернион представляет ось в трехмерном пространстве и поворот вокруг этой оси. Например, кватернион может быть представлен осью (1, 1, 2) и поворотом на 50 градусов. Возможности определения поворотов с помощью кватернионов зависят от двух операций, которые могут быть выполнены над ними: композиции и интерполяции. Композиция из двух кватернионов, применяемая к геометрическому объекту, означает &quot;поворот геометрического объекта вокруг axis2 на угол rotation2, затем — вокруг axis1 на угол rotation1&quot;. С помощью композиции можно объединить два поворота геометрического объекта для получения одного квантериона, представляющего собой результат. Поскольку интерполяция кватернионов позволяет вычислить плавный и наиболее подходящий путь от одной оси и ориентацию относительно другой, разработчик может выполнить интерполяцию из исходного кватерниона в результирующий для достижения плавного перехода от одного к другому. Это позволит анимировать преобразование. Для моделей, которые вы хотите анимировать, можно указать целевой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.quaternion">Quaternion</a> для поворота с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.quaternionrotation3d">QuaternionRotation3D</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotatetransform3d.rotation">Rotation</a> свойство.</p>
+<h2 id="using-transformation-collections">Использование коллекции преобразований</h2>
+<p>При построении сцены обычно применяется несколько преобразований модели. Добавьте преобразования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.transform3dgroup.children">Children</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.transform3dgroup">Transform3DGroup</a> класса, чтобы сгруппировать их для удобства применения к различным моделям сцены. Часто удобно повторно использовать преобразование в нескольких различных группах (подобно повторному использованию модели путем применения разных наборов преобразований к экземплярам). Обратите внимание, что порядок добавления преобразований в коллекцию имеет значение: преобразования в коллекции применяются начиная с первого.</p>
+<h2 id="animating-transformations">Анимация преобразований</h2>
+<p>Трехмерная реализация Windows Presentation Foundation (WPF) участвует в той же системе анимации и времени, что и двумерная графика. Другими словами, для анимации трехмерной сцены необходимо анимировать свойства ее моделей. Можно непосредственно анимировать свойства примитивов, но обычно проще анимировать преобразования, изменяющие позицию или внешний вид моделей. Поскольку преобразования можно применить и к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.model3dgroup">Model3DGroup</a> объекты, а также отдельным моделям, это возможно применение одного набора анимаций к дочернему элементу Model3Dgroup, а другого набора — к группе объектов.  Дополнительные сведения о системе времени и анимации Windows Presentation Foundation (WPF) см. в разделах <a href="animation-overview.html">Общие сведения об эффектах анимации</a> и <a href="storyboards-overview.html">Общие сведения о Storyboard</a>.</p>
+<p>Для анимации объекта в приложении Windows Presentation Foundation (WPF) создайте временную шкалу, определите анимацию (которая изменяет значение некоторого свойства во времени) и укажите свойство, к которому применяется анимация. Это свойство должно быть свойством элемента FrameworkElement. Поскольку все объекты в трехмерной сцене являются дочерними для Viewport3D, то свойства, требуемые для анимации сцены, являются свойствами свойств Viewport3D. Важно правильно указать путь к свойству для анимации, так как синтаксис может быть подробным.</p>
+<p>Предположим, требуется повернуть объект на месте, а также применить качательное движение, чтобы лучше показать объект. Можно применить к модели класс RotateTransform3D и анимировать ее ось вращения от одного вектора к другому. В следующем примере кода демонстрируется применение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vector3danimation">Vector3DAnimation</a> к свойству Axis преобразования элемента Rotation3D, при условии, что RotateTransform3D будет одним из нескольких преобразований, применяемых к модели с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>.</p>
+<pre><code class="lang-csharp" name="3doverview#3DOverview3DN1">//Define a rotation
+RotateTransform3D myRotateTransform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 1));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="3doverview#3DOverview3DN3">Vector3DAnimation myVectorAnimation = new Vector3DAnimation(new Vector3D(-1, -1, -1), new Duration(TimeSpan.FromMilliseconds(5000)));
+myVectorAnimation.RepeatBehavior = RepeatBehavior.Forever;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Используйте аналогичный синтаксис для других свойств преобразования, чтобы переместить или отмасштабировать объект.  Например, можно применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.point3danimation">Point3DAnimation</a> к свойству ScaleCenter при преобразовании масштаба модели к плавной деформации ее формы.</p>
+<p>Несмотря на то, что предыдущих примерах происходило преобразование свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a>, можно также преобразовывать свойства других моделей сцены.  Например, применяя преобразования анимации к объектам Light, можно создать перемещение световых и теневых эффектов, которые могут значительным образом изменить внешний вид модели.</p>
+<p>Поскольку камеры также являются моделями, их свойства также могут быть преобразованы.  Хотя внешний вид сцены можно изменить путем преобразования местоположения камеры или расстояний на плоскости (т. е. преобразованием всей проекции сцены целиком), обратите внимание, что многие эффекты, созданные таким способом, не создадут такого же впечатления, как преобразования, примененные к расположению или положению моделей в сцене.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="3-d-graphics-overview.html">Обзор трехмерной графики</a></li>
+<li><a href="transforms-overview.html">Общие сведения о классах Transform</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=158252">Пример двумерных преобразований</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

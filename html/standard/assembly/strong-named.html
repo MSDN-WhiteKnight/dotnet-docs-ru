@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1073;&#1086;&#1088;&#1082;&#1080; &#1089;&#1086; &#1089;&#1090;&#1088;&#1086;&#1075;&#1080;&#1084;&#1080; &#1080;&#1084;&#1077;&#1085;&#1072;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1073;&#1086;&#1088;&#1082;&#1080; &#1089;&#1086; &#1089;&#1090;&#1088;&#1086;&#1075;&#1080;&#1084;&#1080; &#1080;&#1084;&#1077;&#1085;&#1072;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="strong-named-assemblies">Сборки со строгими именами</h1>
+
+<p>При задании строгого имени для сборки для нее создается уникальный идентификатор, что позволяет избежать конфликтов сборок.</p>
+<h2 id="what-makes-a-strong-named-assembly">Что такое сборка со строгим именем?</h2>
+<p>Сборка со строгим именем создается с помощью закрытого ключа, который соответствует открытому ключу, распространяемому со сборкой, и самой сборке. Сборка включает манифест сборки, который содержит имена и хэши всех файлов, из которых состоит сборка. Сборки с одинаковым строгим именем должны быть идентичны.</p>
+<p>Задавать строгие имена для сборок можно с помощью Visual Studio или программы командной строки. Дополнительные сведения см. в разделе <a href="sign-strong-name.html">Практическое руководство. Подписывание сборки строгим именем</a> и <a href="../../framework/tools/sn-exe-strong-name-tool.md">Sn.exe (средство создания строгих имен)</a>.</p>
+<p>При создании сборки со строгим именем она содержит простое текстовое имя сборки, номер версии, дополнительные сведения о языке и языковых параметрах, цифровую подпись и открытый ключ, который соответствует закрытому ключу, используемому для подписи.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Строгие имена не являются средством обеспечения безопасности. Они служат только для однозначной идентификации.</p>
+</div>
+<h2 id="why-strong-name-your-assemblies">Зачем присваивать сборкам строгие имена?</h2>
+<p>В .NET Framework сборки со строгими именами полезны в следующих сценариях:</p>
+<ul>
+<li><p>Необходимо обеспечить возможность ссылок на ваши сборки сборкам со строгими именами или предоставить доступ <code>friend</code> к вашим сборкам из других сборок со строгими именами.</p>
+</li>
+<li><p>Приложению требуется доступ к различным версиям одной и той же сборки. Это означает, что требуются разные версии сборки для параллельной загрузки в одном домене приложений без возникновения конфликтов. (например, если в сборках с одним простым именем существуют разные расширения API, назначение строгих имен обеспечивает однозначную идентификацию всех версий сборки);</p>
+</li>
+<li><p>Использование вашей сборки не должно отрицательно сказываться на производительности приложений, поэтому сборка должна быть нейтральной к доменам. Для этого требуется строгое именование, так как нейтральная к доменам сборка должна устанавливаться в глобальный кэш сборок.</p>
+</li>
+<li><p>Требуется применять централизованное обслуживание приложений с помощью политики издателя (это означает, что сборка должна устанавливаться в глобальном кэше сборок).</p>
+</li>
+</ul>
+<p>В .NET Core сборки со строгими именами не предоставляют материальных преимуществ.</p>
+<p>Если вы являетесь разработчиком открытого кода и хотите воспользоваться преимуществами идентификации, которые предоставляют сборки со строгими именами, для обеспечения лучшей совместимости с .NET Framework, рекомендуется возвращать закрытый ключ, связанный со сборкой, в систему управления версиями.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../framework/app-domains/gac.md">Глобальный кэш сборок</a></li>
+<li><a href="sign-strong-name.html">Практическое руководство. Подписание сборки строгим именем</a></li>
+<li><a href="../../framework/tools/sn-exe-strong-name-tool.md">Sn.exe (средство строгих имен)</a></li>
+<li><a href="create-use-strong-named.html">Создание и использование сборок со строгими именами</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,635 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="data-binding-overview">Общие сведения о привязке данных</h1>
+
+<p>Windows Presentation Foundation (WPF) Привязка данных обеспечивает простой и последовательный способ представления и взаимодействия с данными приложениях. Можно связывать элементы с данными из различных источников данных в виде объектов среда CLR и XML. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a> у встроенной возможностью включения гибких стилей для отдельных элементов данных и коллекций элементов данных. Представления сортировки, фильтрации и группировки могут быть организованы поверх данных.</p>
+<p>Функции привязки данных в WPF имеют несколько преимуществ перед традиционными моделями, включая широкий диапазон свойств, которые внутренне поддерживают привязку данных, гибкое представление данных ИП и четкое разделение бизнес-логики и ИП.</p>
+<p>В этом разделе сначала будут рассмотрены основные для понятия WPF привязки данных, а затем — использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класс и других возможностей привязки данных.</p>
+<p><a name="what_is_data_binding"></a></p>
+<h2 id="what-is-data-binding">Понятие привязки данных</h2>
+<p>Привязка данных — это процесс установки соединения между ИП приложения и бизнес-логикой. Если для привязки заданы правильные настройки, а изменения значений данных сопровождаются правильными уведомлениями, привязанные к данным элементы автоматически отражают изменения. Привязка данных может также означать, что, если внешнее представление данных в элементе изменяется, то базовые данные могут автоматически обновляться для отражения изменений. Например, если пользователь изменяет значение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элемент, базовое значение данных автоматически обновляется в соответствии с изменениями.</p>
+<p>Привязка к данным обычно используется для того, чтобы поместить серверный или локальные данные конфигурации в формы или другие элементы управления ИП. В WPF эта концепция расширяется и уже включает привязку широкого диапазона свойств к различным источникам данных. В WPF свойства зависимости элементов могут быть привязаны к объектам CLR (включая объекты ADO.NET или объекты, связанные с веб-службами и веб-свойства) и к данным XML.</p>
+<p>Привязку данных можно рассмотреть на примере следующего ИП приложения со страницы <a href="https://go.microsoft.com/fwlink/?LinkID=163703">примера привязки данных</a>.</p>
+<p><img src="media/databinding-databindingdemo.png" alt="Снимок экрана примера привязки данных" title="DataBinding_DataBindingDemo"></p>
+<p>Выше приведен ИП приложения, который отображает список лотов аукциона. Приложение демонстрирует следующие возможности привязки данных.</p>
+<ul>
+<li><p>Содержание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> привязан к коллекции <em>AuctionItem</em> объектов. Объект <em>AuctionItem</em> имеет такие свойства, как <em>Description</em>, <em>StartPrice</em>, <em>StartDate</em>, <em>Category</em>, <em>SpecialFeatures</em> и т. д.</p>
+</li>
+<li><p>Данные (<em>AuctionItem</em> объектов) в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> является шаблоном, чтобы описание и текущая цена были показаны для каждого элемента. Это делается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>. Кроме того, внешний вид каждого элемента зависит от значения <em>SpecialFeatures</em> отображаемого объекта <em>AuctionItem</em>. Если значением <em>SpecialFeatures</em> объекта <em>AuctionItem</em> является <em>Color</em>, элемент имеет синюю границу. Если значением является <em>Highlight</em>, элемент имеет оранжевые границы и помечается звездочкой. Раздел <a href="#data_templating">Создание шаблонов данных</a> содержит сведения о создании шаблонов данных.</p>
+</li>
+<li><p>Пользователя можно группировать, фильтровать или сортировать данные с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>предоставленных. На приведенном выше рисунке, «Группировать по категории» и «Сортировать по категориям и дате» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>выбраны. Можно увидеть, что данные группируются по категориям продуктов, а имена категорий приводятся в алфавитном порядке. Из рисунка трудно заметить, что элементы в каждой категории также сортируются по начальной дате. Это делается с помощью <em>представления коллекции</em>. Представления коллекций рассматриваются в разделе <a href="#binding_to_collections">Привязка к коллекциям</a>.</p>
+</li>
+<li><p>Когда пользователь выбирает элемент, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> отображает сведения о выбранного элемента. Это называется <em>Сценарий привязки &quot;основной-подробности&quot;</em>. Сведения об этом типе скрипта привязки см. в разделе <a href="#master_detail_scenario">Сценарий привязки &quot;основной-подробности&quot;</a>.</p>
+</li>
+<li><p>Тип <em>StartDate</em> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a>, который возвращает дату, включая время с точностью до миллисекунды. В этом приложении пользовательский преобразователь использовался для отображения даты в укороченном формате. Сведения о преобразователях см. в разделе <a href="#data_conversion">Преобразование данных</a>.</p>
+</li>
+</ul>
+<p>При нажатии кнопки <em>Добавить продукт</em> появляется следующая форма.</p>
+<p><img src="media/databinding-demo-addproductlisting.png" alt="Добавить страницу списка продуктов" title="DataBinding_Demo_AddProductListing"></p>
+<p>Пользователь может изменить поля формы, просмотреть список продуктов с помощью панелей краткого предварительного просмотра и подробного предварительного просмотра и нажать кнопку <em>Отправить</em>, для добавления данных нового продукта. К новой записи будут применимы все существующие функциональные возможности группировки, фильтрации и сортировки. В этом конкретном случае элемент, введенный на приведенном выше рисунке, будет отображаться как второй элемент в категории <em>Компьютер</em>.</p>
+<p>Не на этом рисунке приведена логика проверки, предоставленная в <em>Дата начала</em> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>. Если пользователь вводит недопустимую дату (недопустимый формат или прошедшую дату), пользователь будет уведомлен с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a> и красным восклицательным знаком рядом с полем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>. Сведения о создании логики проверки см. в разделе <a href="#data_validation">Проверка данных</a>.</p>
+<p>Прежде чем перейти к другим описанным выше возможностям связывания данных, в следующем разделе обсудим основные понятия, важные для понимания привязки данных WPF.</p>
+<h2 id="basic-data-binding-concepts">Основные понятия привязки данных</h2>
+<p>Независимо от того, какой элемент привязывается и какой источник данных используется, каждая привязка всегда соответствует модели, показанной на следующем рисунке.</p>
+<p><img src="media/data-binding-overview/basic-data-binding-diagram.png" alt="Схема, показывающая модель привязки данных."></p>
+<p>Как показано на приведенном выше рисунке, привязка данных является по существу мостом между целью привязки и источником привязки. На рисунке представлены следующие основные концепции привязки данных WPF.</p>
+<ul>
+<li><p>Как правило, каждая привязка имеет четыре компонента: объект цели привязки, свойство цели, источник привязки и путь к значению используемого источника привязки. Например, если требуется привязать содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> для <em>имя</em> свойство <em>сотрудника</em> объекта является целевым объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, целевым свойством является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a> свойство, используйте значение <em>имя</em>, и исходный объект является <em>сотрудника</em> объекта.</p>
+</li>
+<li><p>Целевое свойство должно быть свойством зависимостей. Большинство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> свойств являются свойствами зависимостей, и большинство свойств зависимостей, за исключением доступных только для чтения, по умолчанию поддерживает привязку данных. (Только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> типы могут определять свойства зависимостей и все <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>.)</p>
+</li>
+<li><p>Несмотря на то что это не указано на рисунке, следует отметить, что источник привязки не обязан быть пользовательским объектом CLR. WPF Привязка данных поддерживает данные в виде CLR объектов и XML. Представлены некоторые, возможно, источнике привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, любой объект списка CLR объекта, связанного с ADO.NET данных или веб-службы или XmlNode, содержащий ваш XML данных. Дополнительные сведения см. в разделе <a href="binding-sources-overview.html">Общие сведения об источниках привязки</a>.</p>
+</li>
+</ul>
+<p>В процессе чтения других разделов пакет средств разработки программного обеспечения (SDK) важно помнить, что при связывании цель привязки <em>привязывается к</em> источнику привязки. Например, при отображении некоторых базовых XML данные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> с использованием привязки данных, выполняется привязка к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> для XML данных.</p>
+<p>Чтобы установить привязку, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта. В остальной части этого раздела обсуждаются многие понятия, связанные с некоторые свойства и использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта.</p>
+<p><a name="direction_of_data_flow"></a></p>
+<h3 id="direction-of-the-data-flow">Направление потока данных</h3>
+<p>Как упоминалось ранее и как показывает стрелка на приведенном выше рисунке, поток данных привязки можно перейти от целевого объекта привязки к источнику привязки (например, исходное значение изменяется, когда пользователь редактирует значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>) и (или) от источника привязки целевой объект привязки (например, ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> содержимое обновляется с изменениями в источнике привязки), если источник привязки предоставляет соответствующие уведомления.</p>
+<p>Возможно, требуется, чтобы в приложении пользователи могли изменить данные и передать их обратно объекту источника. Или может потребоваться не предоставлять пользователям возможности обновления источника данных. Это можно управлять, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a> свойство вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта. На следующем рисунке показаны различные типы потоков данных.</p>
+<p><img src="media/databinding-dataflow.png" alt="Поток данных привязки данных" title="DataBinding_DataFlow"></p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> Привязка передает изменения свойства источника для автоматического обновления целевого свойства, но изменения свойства цели не передаются обратно к свойству источника. Этот тип привязки подходит, если привязываемый элемент управления неявно доступен только для чтения. Например, можно привязаться к источнику, такому как биржевые сводки, или, возможно, свойство цели не имеет интерфейса для внесения изменений, например цвета фона привязанной к данным таблицы. Если нет необходимости отслеживать изменения целевого свойства, можно работать в режиме привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> — в этом случае удастся избежать издержек режима привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> связывание вызывает изменения в свойство источника или целевого свойства для автоматического обновления другого. Этот тип привязки подходит для изменяемых форм или других полностью интерактивных сценариев ИП. Большинство свойств по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязки, но некоторые свойства зависимостей (обычно свойства изменяемых пользователем элементов управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.togglebutton.ischecked">IsChecked</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>) по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> привязки. Существует способ определить программно, использует ли свойство зависимостей односторонние или двухсторонние привязки по умолчанию: для этого нужно получить метаданные этого свойства, воспользовавшись методом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.getmetadata">GetMetadata</a>, а затем проверить логическое значение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.bindstwowaybydefault">BindsTwoWayByDefault</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWayToSource">OneWayToSource</a> является обратным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> связывание; он обновляет свойство источника при изменении свойства цели. Одним из примеров является пересчет исходного значения из ИП.</p>
+</li>
+<li><p>Не показано на рисунке является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneTime">OneTime</a> привязки, который вызывает инициализировать целевое свойство источника, но последующие изменения не распространяются. Это означает, что, если в контексте данных производятся изменения или меняется объект, это изменение не отражается в целевом свойстве. Этот тип привязки подходит при использовании данных там, где приемлемо использовать снимок текущего состояния или данные действительно являются статичными. Этот тип привязки также является полезным, если нужно инициализировать целевое свойство с использованием какого-либо значения из исходного свойства, а контекст данных заранее неизвестен. Это, по сути, упрощенная форма привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a>, которая обеспечивает более высокую производительность в случаях, когда исходное значение не меняется.</p>
+</li>
+</ul>
+<p>Обратите внимание, что для обнаружения изменений в источнике (применимо к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> привязок), источник должен реализовывать механизм уведомлений об изменениях соответствующее свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a>. См. в разделе <a href="how-to-implement-property-change-notification.html">реализация уведомления об изменении свойства</a> пример <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> реализации.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a> Страницу свойств предоставляет дополнительные сведения о режимах привязки и пример того, как указать направление привязки.</p>
+<p><a name="what_triggers_source_updates"></a></p>
+<h3 id="what-triggers-source-updates">Что инициирует обновления источника</h3>
+<p>Привязки становятся <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWayToSource">OneWayToSource</a> отслеживать изменения в свойство цели и распространять их в источнике. Это называется обновлением источника. Например, можно изменять текст элемента TextBox для изменения базового значение источника. Как описано в предыдущем разделе, направление потока данных определяется по значению <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a> свойства привязки.</p>
+<p>Однако обновляется ли значение источника при изменении текста или после завершения изменения текста и отвода указателя мыши от элемента TextBox? <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> Свойство привязки определяет, что инициирует обновления источника. Точки стрелок вправо на следующем рисунке показывают роль <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> свойство:</p>
+<p><img src="media/data-binding-overview/data-binding-updatesource-trigger.png" alt="Схема, показывающая роль свойство UpdateSourceTrigger."></p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_PropertyChanged">PropertyChanged</a>, затем значение указывает правую стрелку действия <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWayToSource">OneWayToSource</a> привязки обновляется сразу, как изменения целевого свойства. Тем не менее если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_LostFocus">LostFocus</a>, а затем это значение обновляется только новое значение при свойство цели теряет фокус.</p>
+<p>Аналогичную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a> свойство, различные свойства зависимостей имеют различное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> значения. Значение по умолчанию для большинства свойств зависимостей — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_PropertyChanged">PropertyChanged</a>, а свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a> имеет значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_LostFocus">LostFocus</a>. Это означает, что источник обновления обычно происходят при изменении изменения свойства цели, что подходит для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>es и других простых элементов управления. Однако для текстовых полей обновления после каждого нажатия клавиши уменьшают производительность и не дают пользователю обычной возможности удаления предыдущего символа и исправления ошибок ввода до того, как новое значение будет зафиксировано. Вот почему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a> свойство имеет значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_LostFocus">LostFocus</a> вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_PropertyChanged">PropertyChanged</a>.</p>
+<p>См. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> сведения о том, как найти значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> значение свойства зависимостей.</p>
+<p>Следующая таблица содержит пример сценария для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> с использованием синтаксиса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> в качестве примера:</p>
+<table>
+<thead>
+<tr>
+<th>Значение UpdateSourceTrigger</th>
+<th>Когда обновляется значение источника</th>
+<th>Пример сценария для TextBox</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LostFocus (значение по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">TextBox.Text</a>)</td>
+<td>Возникает при потере фокуса элементом управления TextBox</td>
+<td>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> , связанный с логикой проверки (см. в разделе Проверка данных)</td>
+</tr>
+<tr>
+<td>Свойство изменено</td>
+<td>При вводе в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элементы управления в окне чата</td>
+</tr>
+<tr>
+<td>Явные</td>
+<td>Когда приложение вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression.updatesource">UpdateSource</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элементы управления в редактируемой форме (обновляет значения источника только в том случае, когда пользователь нажимает кнопку «Отправить»)</td>
+</tr>
+</tbody>
+</table>
+<p>Пример см. в разделе <a href="how-to-control-when-the-textbox-text-updates-the-source.html">Практическое руководство. Управление обновлением источника из поля TextBox</a>.</p>
+<p><a name="creating_a_binding"></a></p>
+<h2 id="creating-a-binding">Создание привязки</h2>
+<p>Подводя итог некоторым понятиям, описанным в предыдущих разделах, установить привязку с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта и каждая привязка обычно состоит из четырех компонентов: привязка целевой, свойство цели, источник привязки и путь к используемому значению источника. Этот раздел описывает установку привязки.</p>
+<p>Рассмотрим следующий пример, в котором объектом источника привязки является класс с именем <em>MyData</em>, определенный в пространстве имен <em>SDKSample</em>. В качестве демонстрационного примера класс <em>MyData</em> имеет строковое свойство с именем <em>ColorName</em> со значением Red. Таким образом, в этом примере создается кнопка с красным фоном.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о синтаксисе объявления привязки и примеры настройки привязки в коде см. в разделе <a href="binding-declarations-overview.html">Общие сведения об объявлении привязок</a>.</p>
+<p>Если применить этот пример к основной диаграмме, полученное изображение будет выглядеть следующим образом. Это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязке, так как свойство Background поддерживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязки по умолчанию.</p>
+<p><img src="media/data-binding-overview/data-binding-button-background-example.png" alt="Схема, показывающая свойства Background привязки данных."></p>
+<p>Может возникнуть вопрос, почему это работает, даже если <em>ColorName</em> свойство имеет строковый тип при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство имеет тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>. Это происходит в результате преобразования типов по умолчанию, которое обсуждается в разделе <a href="#data_conversion">Преобразование данных</a>.</p>
+<p><a name="specifying_the_binding_source"></a></p>
+<h3 id="specifying-the-binding-source">Указание источника привязки</h3>
+<p>Обратите внимание на то, что в предыдущем примере источник привязки определялся установкой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> Затем наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> значение из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, который является его родительским элементом. Повторим, что объект источника привязки является одним из четырех необходимых компонентов привязки. Таким образом, без указания объекта источника привязки эта привязка не имела бы смысла.</p>
+<p>Есть несколько способов для указания объекта источника привязки. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> на родительский элемент может быть удобно при привязке нескольких свойств к одному источнику. Однако иногда удобнее указывать источник привязки в отдельных объявлениях привязки. Для предыдущего примера, вместо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство, можно указать источник привязки, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> свойства непосредственно в объявлении привязки кнопки, как показано в следующем примере:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Кроме установки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство на элементе напрямую, наследование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> от предка (например, кнопки в первом примере) и явного указания источника привязки, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> (например, кнопки в последнем примере), можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a> свойство или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> свойство, чтобы указать источник привязки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a> Свойство полезно, если при привязке к другим элементам в приложении, например при использовании ползунка для настройки ширины кнопки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> Свойство полезно, если привязка задается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Дополнительные сведения см. в разделе <a href="how-to-specify-the-binding-source.html">Указание источника привязки</a>.</p>
+<p><a name="specifying_the_path_to_the_value"></a></p>
+<h3 id="specifying-the-path-to-the-value">Указание пути к значению</h3>
+<p>Если источник привязки является объектом, то использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> свойство, чтобы указать значение, используемое для привязки. Если при привязке к XML данных, использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> свойство, чтобы указать значение. В некоторых случаях, возможно, применяемой к использованию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> свойство даже в том случае, когда база данных находится XML. Например, если вы хотите получить доступ к свойству Name возвращаемого XmlNode (в результате запроса XPath), следует использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> свойства в дополнение к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> свойство.</p>
+<p>Сведения о синтаксисе и примеры см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> страницы свойств.</p>
+<p>Обратите внимание, что, несмотря на то, что мы и подчеркнули, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> к используемому значению является одним из четырех необходимых компонентов привязки, в сценариях, когда вы хотите выполнить привязку ко всему объекту, используемое значение будет таким же, как объект источника привязки. В таком случае это касается и не указывайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a>. Рассмотрим следующий пример.</p>
+<pre><code class="lang-xaml" name="MasterDetail#EmptyBinding">&lt;ListBox ItemsSource=&quot;{Binding}&quot;
+         IsSynchronizedWithCurrentItem=&quot;true&quot;/&gt;
+</code></pre>
+<p>В приведенном выше примере используется синтаксис пустой привязки: {Binding}. В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> наследует DataContext от родительского элемента DockPanel (не показано в следующем примере). Если путь не указан, по умолчанию производится привязка ко всему объекту. Другими словами, в этом примере путь был указан, так как выполняется привязка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойство ко всему объекту. (Подробное описание см. в разделе <a href="#binding_to_collections">Привязка к коллекциям</a>.)</p>
+<p>Кроме привязки к коллекции, этот сценарий полезен также для привязки ко всему объекту, а не только к одному свойству объекта. Например, если объект источника является объектом строкового типа и всего лишь нужна привязка к самой строке. Другим распространенным сценарием является необходимость привязки элемента к объекту с несколькими свойствами.</p>
+<p>Обратите внимание, что может потребоваться применить пользовательскую логику, чтобы данные имели смысл для свойства целевого объекта привязки. Пользовательская логика может иметь вид пользовательского преобразователя (если тип преобразования по умолчанию не существует). Сведения о преобразователях см. в разделе <a href="#data_conversion">Преобразование данных</a>.</p>
+<p><a name="binding_bindingexpression"></a></p>
+<h3 id="binding-and-bindingexpression">Привязка и класс BindingExpression</h3>
+<p>До разъяснения других функций и использования привязки данных, было бы полезно рассказать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a> класса. Как видно в предыдущих разделах, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класс является классом высокого уровня для объявления привязки; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класс предоставляет множество свойств, которые позволяют указать характеристики привязки. Связанный класс, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a>, является базовым объектом, поддерживающим связь между источником и целью. Привязка содержит всю информацию, которая может использоваться совместно в нескольких выражениях привязки. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a> представляет собой экземпляр выражения, который нельзя использовать совместно и содержит все сведения об экземпляре <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>.</p>
+<p>Например, рассмотрим следующую команду, где <em>myDataObject</em> является экземпляром класса <em>MyData</em> класс, <em>myBinding</em> является источником <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта и <em>MyData</em> класс представляет собой определенный класс, который содержит строковое свойство с именем <em>MyDataProperty</em>. В этом примере привязывается текстовое содержимое <em>mytext</em>, экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>, <em>MyDataProperty</em>.</p>
+<pre><code class="lang-csharp" name="CodeOnlyBinding#1">// Make a new source.
+MyData myDataObject = new MyData(DateTime.Now);
+Binding myBinding = new Binding(&quot;MyDataProperty&quot;);
+myBinding.Source = myDataObject;
+// Bind the new data source to the myText TextBlock control's Text dependency property.
+myText.SetBinding(TextBlock.TextProperty, myBinding);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Один и тот же объект <em>myBinding</em> можно использовать для создания других привязок. Например, можно использовать объект <em>myBinding</em> для привязки текстового содержимого флажка к <em>MyDataProperty</em>. В этом сценарии будут два экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a> совместное использование <em>myBinding</em> объекта.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a> объекта можно получить с помощью возвращаемого значения метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingoperations.getbindingexpression">GetBindingExpression</a> в объекте с привязкой к данным. В следующих разделах описываются некоторые примеры использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingexpression">BindingExpression</a> класса:</p>
+<ul>
+<li><p><a href="how-to-get-the-binding-object-from-a-bound-target-property.html">Получение объекта привязки из свойства целевого объекта привязки</a></p>
+</li>
+<li><p><a href="how-to-control-when-the-textbox-text-updates-the-source.html">Управление обновлением источника из поля TextBox</a></p>
+</li>
+</ul>
+<p><a name="data_conversion"></a></p>
+<h2 id="data-conversion">Преобразование данных</h2>
+<p>В предыдущем примере кнопка красная так как его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство привязано к строковому свойству со значением «Красный». Это работает, поскольку преобразователь типов присутствует на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> тип преобразовать строковое значение для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>.</p>
+<p>Если добавить эти сведения в рисунок из раздела <a href="#creating_a_binding">Создание привязки</a>, схема будет выглядеть следующим образом.</p>
+<p><img src="media/data-binding-overview/data-binding-button-default-conversion.png" alt="Схема, показывающая свойство привязки данных по умолчанию."></p>
+<p>Однако, что делать, если вместо свойства строкового типа объект источника привязки имеет <em>цвет</em> свойство типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a>? В этом случае в порядке для создания привязки необходимо включить первый <em>цвет</em> значение свойства в нечто, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> значение свойства. Необходимо создать пользовательский преобразователь, реализовав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.ivalueconverter">IValueConverter</a> интерфейс, как показано в следующем примере:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.ivalueconverter">IValueConverter</a> Справочной странице предоставляет дополнительные сведения.</p>
+<p>Теперь пользовательский преобразователь используется вместо преобразования по умолчанию и схема выглядит следующим образом.</p>
+<p><img src="media/data-binding-overview/data-binding-converter-color-example.png" alt="Схема, показывающая пользовательский преобразователь привязки данных."></p>
+<p>Таким образом, преобразования по умолчанию могут быть доступны благодаря преобразователям типов, присутствующим в типе, к которому производится привязка. Такое поведение будет зависеть от того, какие преобразователи типов доступны в целевом объекте. Если существуют какие-то сомнением, создайте свой собственный преобразователь.</p>
+<p>Ниже приведены некоторые типовые сценарии, где имеет смысл реализация преобразователя данных.</p>
+<ul>
+<li><p>Данные должны отображаться по-разному в зависимости от региональных стандартов. Например, можно реализовать преобразователь валюты или преобразователь даты/времени в календаре на основе значений или стандартов, используемых в определенных региональных стандартах.</p>
+</li>
+<li><p>Используемые данные не обязательно предназначены для изменения текстового значения свойства, а предназначены для изменения некоторых других значений, например источника изображения, цвета или стиля отображаемого текста. Преобразователи могут использоваться в данном экземпляре для преобразования привязки неподходящего свойства, например привязки текстового поля к свойству Background ячейки таблицы.</p>
+</li>
+<li><p>К одним и тем же данным может быть привязано несколько элементов управления или несколько свойств элементов управления. В этом случае основная привязка может просто отображать текст, тогда как другие привязки обрабатывают специфичные проблемы отображения, но они по-прежнему используют одну и ту же привязку в качестве исходных данных.</p>
+</li>
+<li><p>Пока мы еще не рассматривали <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a>, где свойство цели имеет коллекцию привязок. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a>, следует использовать пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.imultivalueconverter">IMultiValueConverter</a> для получения окончательного значения из значений привязок. Например, цвет может быть вычислен из соотношения красного, синего и зеленого значений, которые могут быть значениями одних и тех же или разных объектов источника привязки. См. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> класс страницы, примеры и Дополнительные сведения.</p>
+</li>
+</ul>
+<p><a name="binding_to_collections"></a></p>
+<h2 id="binding-to-collections">Привязка к коллекциям</h2>
+<p>Объект источника привязки может рассматриваться как отдельный объект, свойства которого содержат данные, или как коллекция данных полиморфных объектов, часто группируемых вместе (например, в результате запроса к базе данных). Пока еще мы обсуждали привязку только к одному объекту, однако привязка к коллекции данных является распространенным сценарием. Например, распространенным сценарием является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a> для отображения коллекции данных, такие как в приложении, показанном в <a href="#what_is_data_binding">новые возможности привязки данных?</a> раздел.</p>
+<p>К счастью, наша основная схема по-прежнему применима. При связывании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> коллекции, то диаграмма будет выглядеть следующим образом:</p>
+<p><img src="media/data-binding-overview/data-binding-itemscontrol.png" alt="Схема, показывающая объект ItemsControl привязки данных."></p>
+<p>Как показано на этой схеме для привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> на объект коллекции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойством является свойство для использования. Можно представить себе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойство как содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>. Обратите внимание, что привязка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> поддерживает свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязки по умолчанию.</p>
+<p><a name="how_to_implement_collections"></a></p>
+<h3 id="how-to-implement-collections">Способы реализации коллекций</h3>
+<p>Пользователь может выполнить перечисление любой коллекции, реализующей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a> интерфейс. Тем не менее чтобы настроить динамические привязки таким образом, чтобы обновить вставки и удаления элементов в коллекции ИП автоматически, в коллекции должен быть реализован <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a> интерфейс. Этот интерфейс предоставляет событие, которое должно вызываться при каждом изменении коллекции.</p>
+<p>WPF предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a> класс, который является встроенной реализацией коллекции данных, предоставляющей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a> интерфейс. Обратите внимание, что для полной поддержки передачи значений данных от объектов источника для целевых объектов, каждый объект в коллекции, который поддерживает свойства связывания должен также реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> интерфейс. Дополнительные сведения см. в разделе <a href="binding-sources-overview.html">Общие сведения об источниках привязки</a>.</p>
+<p>Перед реализацией свою собственную коллекцию, рассмотрите возможность использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a> или один из существующей коллекции классов, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.collection-1">Collection&lt;T&gt;</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.bindinglist-1">BindingList&lt;T&gt;</a>, среди прочих. Если имеется расширенный скрипт и требуется реализовать свою собственную коллекцию, рассмотрите возможность использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ilist">IList</a>, который предоставляет неуниверсальную коллекцию объектов, которые можно получить индивидуальный доступ по индексу и, следовательно, максимальную производительность.</p>
+<p><a name="collection_views"></a></p>
+<h3 id="collection-views">Представления коллекций</h3>
+<p>Один раз в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> привязан к коллекции данных, может потребоваться сортировка, фильтрация и группировать данные. Чтобы сделать это, используйте представления коллекций, которые являются классами, реализующими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.icollectionview">ICollectionView</a> интерфейс.</p>
+<h4 id="what-are-collection-views">Понятие о представлениях коллекций</h4>
+<p>Представление коллекции — это слой, расположенный в верхней части связанной исходной коллекции, с помощью которого можно перемещаться по исходной коллекции и просматривать ее содержимое на основе запросов сортировки, фильтрации и группировки, не изменяя саму коллекцию. В представлении коллекции также поддерживается указатель на текущий элемент коллекции. Если в исходной коллекции реализован <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged">INotifyCollectionChanged</a> интерфейс, изменения, инициированные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.inotifycollectionchanged.collectionchanged">CollectionChanged</a> событие, передаются представлениям.</p>
+<p>Так как представления не меняют базовые исходные коллекции, каждая исходная коллекция может иметь несколько связанных с ней представлений. Например, имеется коллекция объектов <em>Task</em>. С помощью представлений можно отображать одни и те же данные различными способами. Например, в левой части страницы можно отображать задачи, отсортированные по приоритету, а справа — сгруппированные по областям.</p>
+<p><a name="how_to_create_a_view"></a></p>
+<h4 id="how-to-create-a-view">Создание представления</h4>
+<p>Одним из способов создания и использования представления является непосредственное создание объекта представления и затем использование его в качестве источника привязки. В качестве примера рассмотрим приложение <a href="https://go.microsoft.com/fwlink/?LinkID=163703">Пример привязки данных</a>, показанное в подразделе <a href="#what_is_data_binding">Понятие привязки данных</a>. Приложение реализовано таким образом, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> привязывается к представлению коллекции данных, а не в коллекции данных напрямую. Следующий пример извлекается из приложения <a href="https://go.microsoft.com/fwlink/?LinkID=163703">Пример привязки данных</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a> Класс является Язык XAML прокси-сервера, который наследует от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionview">CollectionView</a>. В данном конкретном примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource.source">Source</a> представления привязан к <em>AuctionItems</em> коллекции (типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a>) текущего объекта приложения.</p>
+<pre><code class="lang-xaml" name="DataBindingLab#WindowResources1">&lt;Window.Resources&gt;
+</code></pre><pre><code class="lang-xaml" name="DataBindingLab#CollectionViewSource">&lt;CollectionViewSource 
+      Source=&quot;{Binding Source={x:Static Application.Current}, Path=AuctionItems}&quot;   
+      x:Key=&quot;listingDataView&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="DataBindingLab#WindowResources2">&lt;/Window.Resources&gt;
+</code></pre>
+<p>Ресурс <em>listingDataView</em> выступает в качестве источника привязки для элементов в приложении, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>:</p>
+<pre><code class="lang-xaml" name="DataBindingLab#Master1">&lt;ListBox Name=&quot;Master&quot; Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;3&quot; Margin=&quot;8&quot;
+    ItemsSource=&quot;{Binding Source={StaticResource listingDataView}}&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="DataBindingLab#Master2">&lt;/ListBox&gt;
+</code></pre>
+<p>Чтобы создать другое представление для той же коллекции, можно создать другое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a> экземпляра и присвоить ему другое <code>x:Key</code> имя.</p>
+<p>В следующей таблице показано, какие типы данных представления создаются в качестве представления коллекции по умолчанию или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a> зависимости от типа исходной коллекции.</p>
+<table>
+<thead>
+<tr>
+<th>Тип исходной коллекции</th>
+<th>Тип представления коллекции</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></td>
+<td>Внутренний тип, основанный на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionview">CollectionView</a></td>
+<td>Невозможно группировать элементы.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ilist">IList</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.listcollectionview">ListCollectionView</a></td>
+<td>Самый быстрый.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.ibindinglist">IBindingList</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindinglistcollectionview">BindingListCollectionView</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="using-a-default-view">Использование представления по умолчанию</h5>
+<p>Один из способов создания и использования представления коллекции заключается в указании представления коллекции в качестве источника привязки. WPF также создает представление коллекции по умолчанию для каждой коллекции, используемой в качестве источника привязки. Если выполнить привязку непосредственно к коллекции, WPF выполняет привязку к представлению коллекции по умолчанию. Обратите внимание, что данное представление по умолчанию совместно используется всеми привязками к одной и той же коллекции, поэтому изменения, внесенные в представление по умолчанию одним привязанным элементом управления либо кодом (например, сортировка или изменение указателя на текущий элемент, что будет рассмотрено ниже), распространяются на все привязки к одной коллекции.</p>
+<p>Чтобы получить представление по умолчанию, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource.getdefaultview">GetDefaultView</a> метод. Пример см. в разделе <a href="how-to-get-the-default-view-of-a-data-collection.html">Практическое руководство. Получение представления по умолчанию для коллекции данных</a>.</p>
+<h5 id="collection-views-with-adonet-datatables">Использование представлений коллекций с таблицами данных ADO.NET</h5>
+<p>Для повышения производительности представления коллекций для ADO.NET <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.datatable">DataTable</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.dataview">DataView</a> объектов делегируют функции сортировки и фильтрации для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.dataview">DataView</a>. При этом функции сортировки и фильтрации совместно используются всеми представлениями коллекции для источника данных. Чтобы включить для независимой сортировки и фильтрации для каждого представления коллекции, инициализируйте каждое представление коллекции с собственным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.dataview">DataView</a> объекта.</p>
+<h4 id="sorting">Сортировка</h4>
+<p>Как уже отмечалось ранее, представления могут применять сортировку для коллекции. Так как данные находятся в базовой коллекции, они могут иметь или не иметь некий порядок следования. Представление коллекции позволяет установить порядок или изменить порядок, используемый по умолчанию, на основе введенных признаков сравнения. Так как это представление данных на стороне клиента, распространенным скриптом является сортировка пользователем столбцов табличных данных по значениям, содержащимся в столбце. С использованием представлений управляемая пользователем сортировка может применяться еще раз без необходимости внесения изменений в основную коллекцию или создания повторного запроса к содержимому коллекции. Пример см. в разделе <a href="../controls/how-to-sort-a-gridview-column-when-a-header-is-clicked.html">Практическое руководство. Сортировка столбцов GridView при нажатии на заголовок</a>.</p>
+<p>В следующем примере показано логика сортировки «Сортировать по категориям и дате» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> приложения ИП в <a href="#what_is_data_binding">новые возможности привязки данных?</a> раздел:</p>
+<pre><code class="lang-csharp" name="DataBindingLab#8">private void AddSorting(object sender, RoutedEventArgs args)
+{
+    // This sorts the items first by Category and within each Category,
+    // by StartDate. Notice that because Category is an enumeration,
+    // the order of the items is the same as in the enumeration declaration
+    listingDataView.SortDescriptions.Add(
+        new SortDescription(&quot;Category&quot;, ListSortDirection.Ascending));
+    listingDataView.SortDescriptions.Add(
+        new SortDescription(&quot;StartDate&quot;, ListSortDirection.Ascending));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="filtering">Фильтрация</h4>
+<p>Представления могут применять к коллекции фильтр. Это означает, что несмотря на то что элемент может существовать в коллекции, его конкретное представление предназначено для отображения только некоторого подмножества полной коллекции. Возможна фильтрация по условию в данных. Например, как показано в приложение в <a href="#what_is_data_binding">новые возможности привязки данных?</a> разделе «Показывать только товары по сниженным ценам» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> содержит логику фильтрации товаров с ценой 25 долл. Следующий код выполняется для установки <em>ShowOnlyBargainsFilter</em> как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource.filter">Filter</a> обработчик событий при, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> выбран:</p>
+<pre><code class="lang-csharp" name="DataBindingLab#10">listingDataView.Filter += new FilterEventHandler(ShowOnlyBargainsFilter);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обработчик события <em>ShowOnlyBargainsFilter</em> реализуется следующим образом.</p>
+<pre><code class="lang-csharp" name="DataBindingLab#5">private void ShowOnlyBargainsFilter(object sender, FilterEventArgs e)
+{
+    AuctionItem product = e.Item as AuctionItem;
+    if (product != null)
+    {
+        // Filter out products with price 25 or above
+        if (product.CurrentPrice &lt; 25)
+        {
+            e.Accepted = true;
+        }
+        else
+        {
+            e.Accepted = false;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если вы используете один из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionview">CollectionView</a> классы напрямую вместо того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a>, использовалась бы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionview.filter">Filter</a> свойство, чтобы указать обратный вызов. Пример см. в разделе <a href="how-to-filter-data-in-a-view.html">Практическое руководство. Фильтрация данных в представлении</a>.</p>
+<h4 id="grouping">Группирование</h4>
+<p>За исключением внутреннего класса, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a> коллекции, все представления коллекций поддерживают функцию группировки, которая позволяет разбить коллекцию в представлении коллекции на логические группы. Группы могут быть явными, если пользователь предоставляет список групп, или неявными, если эти группы создаются динамически в зависимости от данных.</p>
+<p>В следующем примере показано логику «Группировать по категории» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>:</p>
+<pre><code class="lang-csharp" name="DataBindingLab#6">// This groups the items in the view by the property &quot;Category&quot;
+PropertyGroupDescription groupDescription = new PropertyGroupDescription();
+groupDescription.PropertyName = &quot;Category&quot;;
+listingDataView.GroupDescriptions.Add(groupDescription);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Другой пример группировки см. в разделе <a href="../controls/how-to-group-items-in-a-listview-that-implements-a-gridview.html">Практическое руководство. Группировка элементов в объекте ListView, реализующем GridView</a>.</p>
+<h4 id="current-item-pointers">Указатели на текущий элемент</h4>
+<p>В представлениях также присутствует понятие текущего элемента. Существует возможность перемещаться по объектам в представлении коллекции. При переходе перемещается указатель элемента, позволяющий извлечь объект, расположенный в определенном месте в коллекции. Пример см. в разделе <a href="how-to-navigate-through-the-objects-in-a-data-collectionview.html">Перемещение по объектам в Data CollectionView</a>.</p>
+<p>Поскольку WPF выполняет привязку к коллекции только с помощью представления (либо указанного пользователем, либо представления коллекции по умолчанию), для всех привязок к коллекциям имеется указатель на текущий элемент. При привязке к представлению символ косой черты (&quot;/&quot;) в значении <code>Path</code> указывает на текущий элемент представления. В следующем примере контекст данных является представлением коллекции. В первой строке выполняется привязка к коллекции. Во второй строке выполняется привязка к текущему элементу коллекции. В третьей строке выполняется привязка к свойству <code>Description</code> текущего элемента коллекции.</p>
+<pre><code class="lang-xaml">&lt;Button Content=&quot;{Binding }&quot; /&gt;  
+&lt;Button Content=&quot;{Binding Path=/}&quot; /&gt;  
+&lt;Button Content=&quot;{Binding Path=/Description}&quot; /&gt;   
+</code></pre>
+<p>Косую черту и синтаксис свойства также можно комбинировать для обработки иерархии коллекций. В приведенном ниже примере выполняется привязка к текущему элементу коллекции <code>Offices</code>, который является свойством текущего элемента исходной коллекции.</p>
+<pre><code class="lang-xaml">&lt;Button Content=&quot;{Binding /Offices/}&quot; /&gt;  
+</code></pre>
+<p>На указатель текущего элемента влияют примененные к коллекции операции сортировки и фильтрации. При сортировке указатель текущего элемента устанавливается на последний выбранный элемент, однако представление коллекции перестраивается относительно его. (Возможно, до этого выбранный элемент был в начале списка, но теперь выбранный элемент может оказаться где-нибудь в середине.) При фильтрации выбранный элемент сохраняется, если данный выбор остается в представлении после фильтрации. В противном случае указатель текущего элемента устанавливается на первый элемент отфильтрованного представления коллекции.</p>
+<p><a name="master_detail_scenario"></a></p>
+<h4 id="master-detail-binding-scenario">Сценарий &quot;основной — подробности&quot;</h4>
+<p>Понятие текущего элемента применимо не только для перемещения элементов в коллекции, но также для сценария привязки &quot;основной — подробности&quot;. Еще раз рассмотрим ИП приложения из подраздела <a href="#what_is_data_binding">Понятие привязки данных</a>. В этом приложении выделение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> определяет содержимое, показанное в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>. Чтобы поместить его в другой способ, при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элемент выделен, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> отображает сведения о выбранного элемента.</p>
+<p>Для реализации этого сценария необходимо наличие двух или более элементов управления, привязанных к одному и тому же представлению. В следующем примере из <a href="https://go.microsoft.com/fwlink/?LinkID=163703">пример привязки данных</a> показана разметка элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> появится в приложении ИП в <a href="#what_is_data_binding">новые возможности привязки данных?</a> раздел:</p>
+<pre><code class="lang-xaml" name="DataBindingLab#Master1">&lt;ListBox Name=&quot;Master&quot; Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;3&quot; Margin=&quot;8&quot;
+    ItemsSource=&quot;{Binding Source={StaticResource listingDataView}}&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="DataBindingLab#Master2">&lt;/ListBox&gt;
+</code></pre><pre><code class="lang-xaml" name="DataBindingLab#Detail">&lt;ContentControl Name=&quot;Detail&quot; Grid.Row=&quot;3&quot; Grid.ColumnSpan=&quot;3&quot; 
+        Content=&quot;{Binding Source={StaticResource listingDataView}}&quot; 
+        ContentTemplate=&quot;{StaticResource detailsProductListingTemplate}&quot; 
+        Margin=&quot;9,0,0,0&quot;/&gt;
+</code></pre>
+<p>Обратите внимание, что оба элемента управления привязаны к одному источнику, статическому ресурсу <em>listingDataView</em> (просмотреть определение этого ресурса можно в подразделе <a href="#how_to_create_a_view">Создание представления</a>). Это работает, поскольку если объект одноэлементного множества ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> в данном случае) связан с представлением коллекции, он автоматически привязывается к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionview.currentitem">CurrentItem</a> представления. Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a> объекты автоматически синхронизировать денежного формата и выделение. Если элемент управления списка не привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.collectionviewsource">CollectionViewSource</a> объект как в этом примере, то необходимо задать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.issynchronizedwithcurrentitem">IsSynchronizedWithCurrentItem</a> свойства <code>true</code> для правильной работы.</p>
+<p>Другие примеры см. в разделах <a href="how-to-bind-to-a-collection-and-display-information-based-on-selection.html">Практическое руководство. Привязка к коллекции и вывод сведений в зависимости от выделенного элемента</a> и <a href="how-to-use-the-master-detail-pattern-with-hierarchical-data.html">Практическое руководство. Использование шаблона &quot;главный — подчиненный&quot; с иерархическими данными</a>.</p>
+<p>Можно заметить, что в приведенном выше примере используется шаблон. На самом деле, данные не будут отображаться выбранным способом без использования шаблонов (один явно используется элементом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> и неявно используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>). К шаблонам данных мы перейдем в следующем разделе.</p>
+<p><a name="data_templating"></a></p>
+<h2 id="data-templating">Шаблоны данных</h2>
+<p>Без использования шаблонов данных ИП приложения в подразделе <a href="#what_is_data_binding">Понятие привязки данных</a> будет выглядеть следующим образом.</p>
+<p><img src="media/data-binding-overview/data-binding-demo-templates.png" alt="Демонстрация привязки данных без шаблонов данных"></p>
+<p>Как показано в примере в предыдущем разделе, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> управления и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> привязаны к всему объекту коллекции (или точнее, представление объекта коллекции) из <em>AuctionItem</em>s. Отсутствии особых инструкций по способу отображения сбора данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> отображает строковое представление каждого объекта в базовой коллекции и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> отображает строковое представление объекта, он связан.</p>
+<p>Чтобы решить эту проблему, приложение определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>s. Как показано в примере в предыдущем разделе, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> явным образом использует <em>detailsProductListingTemplate</em><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> Управления неявно использует следующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> при отображении <em>AuctionItem</em> объектов в коллекции:</p>
+<pre><code class="lang-xaml" name="DataBindingLab#AuctionItemDataTemplate">&lt;DataTemplate DataType=&quot;{x:Type src:AuctionItem}&quot;&gt;
+    &lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot;
+            Padding=&quot;7&quot; Name=&quot;border&quot; Margin=&quot;3&quot; Width=&quot;500&quot;&gt;
+        &lt;Grid&gt;
+          &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition/&gt;
+            &lt;RowDefinition/&gt;
+            &lt;RowDefinition/&gt;
+            &lt;RowDefinition/&gt;
+          &lt;/Grid.RowDefinitions&gt;
+          &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width=&quot;20&quot;/&gt;
+            &lt;ColumnDefinition Width=&quot;86&quot;/&gt;
+            &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
+          &lt;/Grid.ColumnDefinitions&gt;
+              
+            &lt;Polygon Grid.Row=&quot;0&quot; Grid.Column=&quot;0&quot; Grid.RowSpan=&quot;4&quot;
+                     Fill=&quot;Yellow&quot; Stroke=&quot;Black&quot; StrokeThickness=&quot;1&quot;
+                     StrokeLineJoin=&quot;Round&quot; Width=&quot;20&quot; Height=&quot;20&quot;
+                     Stretch=&quot;Fill&quot;
+                     Points=&quot;9,2 11,7 17,7 12,10 14,15 9,12 4,15 6,10 1,7 7,7&quot;
+                     Visibility=&quot;Hidden&quot; Name=&quot;star&quot;/&gt;
+
+            &lt;TextBlock Grid.Row=&quot;0&quot; Grid.Column=&quot;1&quot; Margin=&quot;0,0,8,0&quot;
+                       Name=&quot;descriptionTitle&quot;
+                       Style=&quot;{StaticResource smallTitleStyle}&quot;&gt;Description:&lt;/TextBlock&gt;
+            &lt;TextBlock Name=&quot;DescriptionDTDataType&quot; Grid.Row=&quot;0&quot; Grid.Column=&quot;2&quot; 
+                Text=&quot;{Binding Path=Description}&quot; 
+                Style=&quot;{StaticResource textStyleTextBlock}&quot;/&gt;
+
+            &lt;TextBlock Grid.Row=&quot;1&quot; Grid.Column=&quot;1&quot; Margin=&quot;0,0,8,0&quot;
+                       Name=&quot;currentPriceTitle&quot;
+                       Style=&quot;{StaticResource smallTitleStyle}&quot;&gt;Current Price:&lt;/TextBlock&gt;
+            &lt;StackPanel Grid.Row=&quot;1&quot; Grid.Column=&quot;2&quot; Orientation=&quot;Horizontal&quot;&gt;
+                &lt;TextBlock Text=&quot;$&quot; Style=&quot;{StaticResource textStyleTextBlock}&quot;/&gt;
+                &lt;TextBlock Name=&quot;CurrentPriceDTDataType&quot; 
+                    Text=&quot;{Binding Path=CurrentPrice}&quot; 
+                    Style=&quot;{StaticResource textStyleTextBlock}&quot;/&gt;
+            &lt;/StackPanel&gt;
+        &lt;/Grid&gt;
+    &lt;/Border&gt;
+    &lt;DataTemplate.Triggers&gt;
+        &lt;DataTrigger Binding=&quot;{Binding Path=SpecialFeatures}&quot;&gt;
+            &lt;DataTrigger.Value&gt;
+                &lt;src:SpecialFeatures&gt;Color&lt;/src:SpecialFeatures&gt;
+            &lt;/DataTrigger.Value&gt;
+          &lt;DataTrigger.Setters&gt;
+            &lt;Setter Property=&quot;BorderBrush&quot; Value=&quot;DodgerBlue&quot; TargetName=&quot;border&quot; /&gt;
+            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Navy&quot; TargetName=&quot;descriptionTitle&quot; /&gt;
+            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Navy&quot; TargetName=&quot;currentPriceTitle&quot; /&gt;
+            &lt;Setter Property=&quot;BorderThickness&quot; Value=&quot;3&quot; TargetName=&quot;border&quot; /&gt;
+            &lt;Setter Property=&quot;Padding&quot; Value=&quot;5&quot; TargetName=&quot;border&quot; /&gt;
+          &lt;/DataTrigger.Setters&gt;
+        &lt;/DataTrigger&gt;
+        &lt;DataTrigger Binding=&quot;{Binding Path=SpecialFeatures}&quot;&gt;
+            &lt;DataTrigger.Value&gt;
+                &lt;src:SpecialFeatures&gt;Highlight&lt;/src:SpecialFeatures&gt;
+            &lt;/DataTrigger.Value&gt;
+            &lt;Setter Property=&quot;BorderBrush&quot; Value=&quot;Orange&quot; TargetName=&quot;border&quot; /&gt;
+            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Navy&quot; TargetName=&quot;descriptionTitle&quot; /&gt;
+            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Navy&quot; TargetName=&quot;currentPriceTitle&quot; /&gt;
+            &lt;Setter Property=&quot;Visibility&quot; Value=&quot;Visible&quot; TargetName=&quot;star&quot; /&gt;
+            &lt;Setter Property=&quot;BorderThickness&quot; Value=&quot;3&quot; TargetName=&quot;border&quot; /&gt;
+            &lt;Setter Property=&quot;Padding&quot; Value=&quot;5&quot; TargetName=&quot;border&quot; /&gt;
+        &lt;/DataTrigger&gt;
+    &lt;/DataTemplate.Triggers&gt;
+&lt;/DataTemplate&gt;
+</code></pre>
+<p>С помощью этих двух <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>, результирующий пользовательский Интерфейс имеет, описанной в <a href="#what_is_data_binding">новые возможности привязки данных?</a> раздел. Как видно из этого снимка, в дополнение к возможности размещать данные в элементах управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>s позволяют определять подходящие визуальные элементы для данных. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatrigger">DataTrigger</a>s используются выше <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> таким образом, чтобы <em>AuctionItem</em>s с <em>SpecialFeatures</em> значение <em>выделите</em> отображались с Оранжевые границы и помечается звездочкой.</p>
+<p>Дополнительные сведения о шаблонах данных см. в разделе <a href="data-templating-overview.html">Общие сведения о шаблонах данных</a>.</p>
+<p><a name="data_validation"></a></p>
+<h2 id="data-validation">Проверка данных</h2>
+<p>Для большинства приложений, принимающих входные данные от пользователя, необходима логика проверки, чтобы убедиться, что пользователь ввел ожидаемые данные. Проверка может основываться на типе, диапазоне, формате или других требованиях конкретного приложения. В этом разделе рассматривается, как работает проверка данных в WPF.</p>
+<h3 id="associating-validation-rules-with-a-binding">Связь правил проверки и привязки</h3>
+<p>WPF Модель привязки данных, вы сможете связать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">ValidationRules</a> с вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта. Например, следующий пример связывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> к свойству с именем <code>StartPrice</code> и добавляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">Binding.ValidationRules</a> свойство.</p>
+<pre><code class="lang-xaml" name="DataBindingLab#DefaultValidation">&lt;TextBox Name=&quot;StartPriceEntryForm&quot; Grid.Row=&quot;2&quot; Grid.Column=&quot;1&quot;
+    Style=&quot;{StaticResource textStyleTextBox}&quot; Margin=&quot;8,5,0,5&quot;&gt;
+  &lt;TextBox.Text&gt;
+    &lt;Binding Path=&quot;StartPrice&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+      &lt;Binding.ValidationRules&gt;
+        &lt;ExceptionValidationRule /&gt;
+      &lt;/Binding.ValidationRules&gt;
+    &lt;/Binding&gt;
+  &lt;/TextBox.Text&gt;
+&lt;/TextBox&gt;
+</code></pre>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объект проверяет, является ли допустимым значение свойства. WPF имеются следующие два встроенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объектов:</p>
+<ul>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a> проверяет исключения, возникшие во время обновления свойства источника привязки. В предыдущем примере <code>StartPrice</code> имеет тип integer. Когда пользователь вводит значение, которое невозможно преобразовать в целое число, создается исключение, приводящее к тому, что привязка будет помечена как недопустимая. Альтернативный синтаксис параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a> явным образом заключается в задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesonexceptions">ValidatesOnExceptions</a> свойства <code>true</code> на вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> объекта.</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a> выполняет проверку ошибок, вызываемых объектами, реализующими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.idataerrorinfo">IDataErrorInfo</a> интерфейс. Пример использования этого правила проверки, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a>. Альтернативный синтаксис параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a> явным образом заключается в задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesondataerrors">ValidatesOnDataErrors</a> свойства <code>true</code> на вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> объекта.</p>
+</li>
+</ul>
+<p>Можно также создать свои собственные правила проверки путем наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> класса и реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод. В следующем примере показано правило, используемое элементом <em>Добавление списка продуктов</em> «Дата начала» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> из <a href="#what_is_data_binding">новые возможности привязки данных?</a> раздел:</p>
+<pre><code class="lang-csharp" name="DataBindingLab#2">class FutureDateRule : ValidationRule
+{
+    public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    {
+        DateTime date;
+        try
+        {
+            date = DateTime.Parse(value.ToString());
+        }
+        catch (FormatException)
+        {
+            return new ValidationResult(false, &quot;Value is not a valid date.&quot;);
+        }
+        if (DateTime.Now.Date &gt; date)
+        {
+            return new ValidationResult(false, &quot;Please enter a date in the future.&quot;);
+        }
+        else
+        {
+            return ValidationResult.ValidResult;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><em>StartDateEntryForm</em> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> использует этот <em>FutureDateRule</em>, как показано в следующем примере:</p>
+<pre><code class="lang-xaml" name="DataBindingLab#CustomValidation">&lt;TextBox Name=&quot;StartDateEntryForm&quot; Grid.Row=&quot;3&quot; Grid.Column=&quot;1&quot; 
+    Validation.ErrorTemplate=&quot;{StaticResource validationTemplate}&quot; 
+    Style=&quot;{StaticResource textStyleTextBox}&quot; Margin=&quot;8,5,0,5&quot;&gt;
+    &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;StartDate&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot; 
+            Converter=&quot;{StaticResource dateConverter}&quot; &gt;
+            &lt;Binding.ValidationRules&gt;
+                &lt;src:FutureDateRule /&gt;
+            &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+    &lt;/TextBox.Text&gt;
+&lt;/TextBox&gt;
+</code></pre>
+<p>Обратите внимание, что поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger#System_Windows_Data_UpdateSourceTrigger_PropertyChanged">PropertyChanged</a>, механизм привязки обновляет значение источника при каждом нажатии клавиши, то есть он также проверяет каждое правило в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">ValidationRules</a> коллекцию при каждом нажатии клавиши. Это будет обсуждаться далее в разделе &quot;Процесс проверки&quot;.</p>
+<p><a name="invalidation_feedback"></a></p>
+<h3 id="providing-visual-feedback">Предоставление визуального отклика</h3>
+<p>Если пользователь вводит недопустимое значение, можно сформировать отклик приложения ИП на ошибку. Один из способов обеспечения такого отклика является установление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">Validation.ErrorTemplate</a> присоединенное свойство пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Как показано в предыдущем подразделе, <em>StartDateEntryForm</em> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> вызывается <em>validationTemplate</em>. В следующем примере показано определение элемента <em>validationTemplate</em>.</p>
+<pre><code class="lang-xaml" name="DataBindingLab#1">&lt;ControlTemplate x:Key=&quot;validationTemplate&quot;&gt;
+  &lt;DockPanel&gt;
+    &lt;TextBlock Foreground=&quot;Red&quot; FontSize=&quot;20&quot;&gt;!&lt;/TextBlock&gt;
+    &lt;AdornedElementPlaceholder/&gt;
+  &lt;/DockPanel&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.adornedelementplaceholder">AdornedElementPlaceholder</a> Элемент указывает, где должен размещаться элемент управления.</p>
+<p>Кроме того, можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a> отображение сообщений об ошибках. Оба <em>StartDateEntryForm</em> и <em>StartPriceEntryForm</em><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>используют стиль <em>textStyleTextBox</em>, который создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a> , Отображает сообщение об ошибке. В следующем примере показано определение элемента <em>textStyleTextBox</em>. Присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.haserror">Validation.HasError</a> является <code>true</code> когда один или несколько привязок к свойствам связанного элемента находятся в ошибки.</p>
+<pre><code class="lang-xaml" name="DataBindingLab#14">&lt;Style x:Key=&quot;textStyleTextBox&quot; TargetType=&quot;TextBox&quot;&gt;
+  &lt;Setter Property=&quot;Foreground&quot; Value=&quot;#333333&quot; /&gt;
+  &lt;Setter Property=&quot;MaxLength&quot; Value=&quot;40&quot; /&gt;
+  &lt;Setter Property=&quot;Width&quot; Value=&quot;392&quot; /&gt;
+  &lt;Style.Triggers&gt;
+    &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;true&quot;&gt;
+      &lt;Setter Property=&quot;ToolTip&quot;
+        Value=&quot;{Binding RelativeSource={RelativeSource Self},
+                        Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+    &lt;/Trigger&gt;
+  &lt;/Style.Triggers&gt;
+&lt;/Style&gt;
+</code></pre>
+<p>С помощью пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a>, <em>StartDateEntryForm</em> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> при ошибке проверки выглядит следующим образом:</p>
+<p><img src="media/databindingdemo-validation.PNG" alt="Ошибка проверки привязки данных" title="DataBindingDemo_Validation"></p>
+<p>Если ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> имеет правила проверки, но вы не укажете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> на связанный элемент управления, по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> будет использоваться для уведомления пользователей об ошибке проверки. Значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> — это шаблон элемента управления, определяющий красную границу графического уровня. По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a>, ИП из <em>StartPriceEntryForm</em> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> при ошибке проверки выглядит следующим образом:</p>
+<p><img src="media/databindingdemo-validationdefault.PNG" alt="Ошибка проверки привязки данных" title="DataBindingDemo_ValidationDefault"></p>
+<p>Пример предоставления логики проверки всех элементов управления в диалоговом окне см. в подразделе &quot;Пользовательские диалоговые окна&quot; раздела <a href="../app-development/dialog-boxes-overview.html">Общие сведения о диалоговых окнах</a>.</p>
+<h3 id="validation-process">Процесс проверки</h3>
+<p>Проверка обычно выполняется, когда целевое значение передается свойству источника привязки. Эта операция выполняется по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWayToSource">OneWayToSource</a> привязки. Таким образом, что причина обновления источника зависит от значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a> свойства, как описано в разделе <a href="#what_triggers_source_updates">что инициирует обновления источника</a> раздел.</p>
+<p>Ниже описан процесс <em>проверки</em>. Обратите внимание, что при возникновении ошибки проверки или ошибки другого типа на любом этапе данного процесса процесс будет прерван.</p>
+<ol>
+<li><p>Обработчик привязки проверяет наличие пользовательских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объекты, определенные, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_RawProposedValue">RawProposedValue</a> для этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, в этом случае он вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод на каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> пока не будет запущен один из них произошла ошибка или пока не будут выполнены все из них.</p>
+</li>
+<li><p>Обработчик привязки вызывает преобразователь, если таковой существует.</p>
+</li>
+<li><p>При успешном завершении работы преобразователя обработчик привязки проверяет наличие пользовательских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объекты, определенные, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_ConvertedProposedValue">ConvertedProposedValue</a> для этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, в этом случае он вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод на каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присвоено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_ConvertedProposedValue">ConvertedProposedValue</a> пока не будет запущен один из них в ошибку или пока не будут выполнены все из них.</p>
+</li>
+<li><p>Обработчик привязки присваивает значение исходному свойству.</p>
+</li>
+<li><p>Обработчик привязки проверяет наличие пользовательских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объекты, определенные, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a> для этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, в этом случае он вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод на каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a> пока не будет запущен один из них в ошибку или пока не будут выполнены все из них. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a> связан с привязкой и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> имеет значение по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a> установлен на этом этапе. Это также является точкой при привязки, в которых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesondataerrors">ValidatesOnDataErrors</a> присвоено <code>true</code> проверяются.</p>
+</li>
+<li><p>Обработчик привязки проверяет наличие пользовательских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объекты, определенные, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_CommittedValue">CommittedValue</a> для этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, в этом случае он вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод на каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_CommittedValue">CommittedValue</a> пока не будет запущен один из них в ошибку или пока не будут выполнены все из них.</p>
+</li>
+</ol>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> не передает в любое время, во время этого процесса, обработчик привязки создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationerror">ValidationError</a> и добавляет его к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errors">Validation.Errors</a> коллекции привязанного элемента. Перед привязкой запускается ядро <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объектов на любом этапе, удаляет все <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationerror">ValidationError</a> , добавленный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errors">Validation.Errors</a> присоединенное свойство привязанного элемента во время выполнения этого шага. Например если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> которого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a> сбой, в следующий раз, происходит процесс проверки, обработчик привязки удалит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationerror">ValidationError</a> непосредственно перед вызовом любого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a>.</p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errors">Validation.Errors</a> не является пустым, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.haserror">Validation.HasError</a> присоединенное свойство элемента имеет значение <code>true</code>. Кроме того Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.notifyonvalidationerror">NotifyOnValidationError</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> присваивается <code>true</code>, то обработчик привязки вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.error">Validation.Error</a> присоединенного события в элементе.</p>
+<p>Также Обратите внимание, что при передаче допустимого значения в любом направлении (от целевого объекта к источнику и от источника к целевому объекту) очищается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errors">Validation.Errors</a> вложенного свойства зависимостей.</p>
+<p>Если привязки задано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a> связанные с ней, или было <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesonexceptions">ValidatesOnExceptions</a> свойству <code>true</code> и создается исключение при обработчик привязки задает источник, обработчик привязки проверяет наличие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter">UpdateSourceExceptionFilter</a>. У вас есть возможность использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter">UpdateSourceExceptionFilter</a> обратного вызова, чтобы предоставить пользовательский обработчик для обработки исключений. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter">UpdateSourceExceptionFilter</a> не указан в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, обработчик привязки создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationerror">ValidationError</a> с исключением и добавляет ее к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errors">Validation.Errors</a> коллекции привязанного элемента.</p>
+<h2 id="debugging-mechanism">Механизм отладки</h2>
+<p>Можно задать присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.diagnostics.presentationtracesources.tracelevel">PresentationTraceSources.TraceLevel</a> связанные с привязкой объекта для получения сведений о состоянии конкретной привязки.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dataerrorvalidationrule">DataErrorValidationRule</a></li>
+<li><a href="../getting-started/whats-new.html">Новые возможности WPF версии 4.5</a></li>
+<li><a href="how-to-bind-to-the-results-of-a-linq-query.html">Привязка к результатам запроса LINQ</a></li>
+<li><a href="../advanced/optimizing-performance-data-binding.html">Привязка данных</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=163703">Пример привязки данных</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+<li><a href="how-to-bind-to-an-ado-net-data-source.html">Привязка к источнику данных ADO.NET</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Win32 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Win32 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="hosting-win32-content-in-wpf">Размещение содержимого Win32 в WPF</h1>
+
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>См. в разделе <a href="wpf-and-win32-interoperation.html">взаимодействие WPF и Win32</a>.</p>
+<h2 id="a-walkthrough-of-win32-inside-windows-presentation-framework-hwndhost">Пошаговое руководство на основе Win32 в Windows Presentation Framework (HwndHost)</h2>
+<p>Для повторного использования Win32 содержимое внутри WPF приложения, используют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>, который является элементом управления, который заставляет HWND выглядеть WPF содержимого. Как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> проста в использовании: являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и реализовать <code>BuildWindowCore</code> и <code>DestroyWindowCore</code> методы, затем экземпляр вашего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> производного класса и поместите его внутри вашей WPF приложение.</p>
+<p>Если ваш Win32 логики уже упакован как элемент управления, то <code>BuildWindowCore</code> реализации нечто большее, чем вызов <code>CreateWindow</code>. Например, чтобы создать Win32 управления LISTBOX в C++:</p>
+<pre><code class="lang-cpp">virtual HandleRef BuildWindowCore(HandleRef hwndParent) override {
+    HWND handle = CreateWindowEx(0, L&quot;LISTBOX&quot;,
+    L&quot;this is a Win32 listbox&quot;,
+    WS_CHILD | WS_VISIBLE | LBS_NOTIFY
+    | WS_VSCROLL | WS_BORDER,
+    0, 0, // x, y
+    30, 70, // height, width
+    (HWND) hwndParent.Handle.ToPointer(), // parent hwnd
+    0, // hmenu
+    0, // hinstance
+    0); // lparam
+
+    return HandleRef(this, IntPtr(handle));
+}
+
+virtual void DestroyWindowCore(HandleRef hwnd) override {
+    // HwndHost will dispose the hwnd for us
+}
+</code></pre>
+<p>Но предположим, что Win32 код не столь автономно? Если таким образом, можно создать Win32 диалоговое окно и внедрить его содержимое в одно крупное WPF приложения. В этом примере это в Microsoft Visual Studio и C++, несмотря на то, что это также можно сделать на другом языке или из командной строки.</p>
+<p>Начните с простого диалога, который компилируется в C++ DLL проекта.</p>
+<p>Затем поместим диалог в большее WPF приложения:</p>
+<ul>
+<li><p>Скомпилируйте DLL как управляемый (<code>/clr</code>)</p>
+</li>
+<li><p>Включить диалоговое окно в элемент управления</p>
+</li>
+<li><p>Определить класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> с <code>BuildWindowCore</code> и <code>DestroyWindowCore</code> методы</p>
+</li>
+<li><p>Переопределить <code>TranslateAccelerator</code> метод для обработки ключей диалоговое окно</p>
+</li>
+<li><p>Переопределить <code>TabInto</code> метод для поддержки переходов</p>
+</li>
+<li><p>Переопределить <code>OnMnemonic</code> метод для поддержки назначенных клавиш</p>
+</li>
+<li><p>Создать экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> подкласс и поместить его в правом WPF элемент</p>
+</li>
+</ul>
+<h3 id="turn-the-dialog-into-a-control">Включить диалоговое окно в элемент управления</h3>
+<p>Диалоговое окно можно превратить в дочерний элемент с использованием стилей WS_CHILD и DS_CONTROL HWND. Перейдите в файл ресурсов (.rc), где определено диалоговое окно и найти начало определения диалогового окна:</p>
+<pre><code>IDD_DIALOG1 DIALOGEX 0, 0, 303, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+</code></pre>
+<p>Измените второй строки, чтобы:</p>
+<pre><code>STYLE DS_SETFONT | WS_CHILD | WS_BORDER | DS_CONTROL
+</code></pre>
+<p>Это действие не полностью его в автономное элемента управления; необходимо по-прежнему вызвать <code>IsDialogMessage()</code> , Win32 может обрабатывать определенные сообщения, но изменение элемента управления предоставляют простой способ размещения этих элементов управления внутри другого HWND.</p>
+<h2 id="subclass-hwndhost">Подкласс HwndHost</h2>
+<p>Импортируйте такие пространства имен:</p>
+<pre><code class="lang-cpp">namespace ManagedCpp
+{
+    using namespace System;
+    using namespace System::Windows;
+    using namespace System::Windows::Interop;
+    using namespace System::Windows::Input;
+    using namespace System::Windows::Media;
+    using namespace System::Runtime::InteropServices;
+</code></pre>
+<p>Создайте класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и переопределить <code>BuildWindowCore</code> и <code>DestroyWindowCore</code> методов:</p>
+<pre><code class="lang-cpp">public ref class MyHwndHost : public HwndHost, IKeyboardInputSink {
+    private:
+        HWND dialog;
+
+    protected:
+        virtual HandleRef BuildWindowCore(HandleRef hwndParent) override {
+            InitializeGlobals();
+            dialog = CreateDialog(hInstance,
+                MAKEINTRESOURCE(IDD_DIALOG1),
+                (HWND) hwndParent.Handle.ToPointer(),
+                (DLGPROC) About);
+            return HandleRef(this, IntPtr(dialog));
+        }
+
+        virtual void DestroyWindowCore(HandleRef hwnd) override {
+            // hwnd will be disposed for us
+        }
+</code></pre>
+<p>Здесь используется <code>CreateDialog</code> Создание диалогового окна, которое на самом деле элемент управления. Так как это один из первых методов, вызванных внутри DLL, необходимо выполнить некоторые стандартные Win32 инициализацию путем вызова функции, будут определены позже, вызывается <code>InitializeGlobals()</code>:</p>
+<pre><code class="lang-cpp">bool initialized = false;
+    void InitializeGlobals() {
+        if (initialized) return;
+        initialized = true;
+
+        // TODO: Place code here.
+        MSG msg;
+        HACCEL hAccelTable;
+
+        // Initialize global strings
+        LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+        LoadString(hInstance, IDC_TYPICALWIN32DIALOG, szWindowClass, MAX_LOADSTRING);
+        MyRegisterClass(hInstance);
+</code></pre>
+<h3 id="override-translateaccelerator-method-to-handle-dialog-keys">Переопределите метод TranslateAccelerator обрабатывать ключи диалоговое окно</h3>
+<p>Если запустить этот пример, получится элемент управления диалогового окна, отображающий, но будет игнорировать всю обработку, которая делает клавиатуры диалоговое окно функциональной диалоговое окно. Теперь необходимо переопределить <code>TranslateAccelerator</code> реализации (который поставляется вместе с <code>IKeyboardInputSink</code>, интерфейс, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> реализует). Этот метод вызывается, когда приложение получает WM_KEYDOWN и WM_SYSKEYDOWN.</p>
+<pre><code class="lang-cpp">#undef TranslateAccelerator
+        virtual bool TranslateAccelerator(System::Windows::Interop::MSG% msg,
+            ModifierKeys modifiers) override
+        {
+            ::MSG m = ConvertMessage(msg);
+
+            // Win32's IsDialogMessage() will handle most of our tabbing, but doesn't know
+            // what to do when it reaches the last tab stop
+            if (m.message == WM_KEYDOWN &amp;&amp; m.wParam == VK_TAB) {
+                HWND firstTabStop = GetDlgItem(dialog, IDC_EDIT1);
+                HWND lastTabStop = GetDlgItem(dialog, IDCANCEL);
+                TraversalRequest^ request = nullptr;
+
+                if (GetKeyState(VK_SHIFT) &amp;&amp; GetFocus() == firstTabStop) {
+                    // this code should work, but there’s a bug with interop shift-tab in current builds
+                    request = gcnew TraversalRequest(FocusNavigationDirection::Last);
+                }
+                else if (!GetKeyState(VK_SHIFT) &amp;&amp; GetFocus() == lastTabStop) {
+                    request = gcnew TraversalRequest(FocusNavigationDirection::Next);
+                }
+
+                if (request != nullptr)
+                    return ((IKeyboardInputSink^) this)-&gt;KeyboardInputSite-&gt;OnNoMoreTabStops(request);
+
+            }
+
+            // Only call IsDialogMessage for keys it will do something with.
+            if (msg.message == WM_SYSKEYDOWN || msg.message == WM_KEYDOWN) {
+                switch (m.wParam) {
+                    case VK_TAB:
+                    case VK_LEFT:
+                    case VK_UP:
+                    case VK_RIGHT:
+                    case VK_DOWN:
+                    case VK_EXECUTE:
+                    case VK_RETURN:
+                    case VK_ESCAPE:
+                    case VK_CANCEL:
+                        IsDialogMessage(dialog, &amp;m);
+                        // IsDialogMessage should be called ProcessDialogMessage --
+                        // it processes messages without ever really telling you
+                        // if it handled a specific message or not
+                        return true;
+                }
+            }
+
+            return false; // not a key we handled
+        }
+</code></pre>
+<p>Это много кода, поэтому она может использовать более подробные пояснения. Во-первых, код, используя C++ и C++ макросы; вы должны знать, что уже макрос с именем <code>TranslateAccelerator</code>, который определен в winuser.h:</p>
+<pre><code class="lang-cpp">#define TranslateAccelerator  TranslateAcceleratorW
+</code></pre>
+<p>Поэтому убедитесь, что определение <code>TranslateAccelerator</code> метода и не <code>TranslateAcceleratorW</code> метод.</p>
+<p>Таким же образом есть неуправляемый код winuser.h MSG и управляемое <code>Microsoft::Win32::MSG</code> структуры. Чтобы устранить неоднозначность между ними с помощью C++ <code>::</code> оператор.</p>
+<pre><code class="lang-cpp">virtual bool TranslateAccelerator(System::Windows::Interop::MSG% msg,
+    ModifierKeys modifiers) override
+{
+    ::MSG m = ConvertMessage(msg);
+}
+
+Both MSGs have the same data, but sometimes it is easier to work with the unmanaged definition, so in this sample you can define the obvious conversion routine:
+
+```cpp
+::MSG ConvertMessage(System::Windows::Interop::MSG% msg) {
+    ::MSG m;
+    m.hwnd = (HWND) msg.hwnd.ToPointer();
+    m.lParam = (LPARAM) msg.lParam.ToPointer();
+    m.message = msg.message;
+    m.wParam = (WPARAM) msg.wParam.ToPointer();
+
+    m.time = msg.time;
+
+    POINT pt;
+    pt.x = msg.pt_x;
+    pt.y = msg.pt_y;
+    m.pt = pt;
+
+    return m;
+}
+</code></pre>
+<p>К <code>TranslateAccelerator</code>. Основным критерием является вызов Win32 функция <code>IsDialogMessage</code> делать столько работы, возможно, но <code>IsDialogMessage</code> не имеет доступа к любому за пределами диалогового окна. По мере выполнения вне диалогового окна, заставляя следующую за последним элементом управления в нашем диалоге, вам потребуется установить фокус на WPF часть путем вызова <code>IKeyboardInputSite::OnNoMoreStops</code>.</p>
+<pre><code class="lang-cpp">// Win32's IsDialogMessage() will handle most of the tabbing, but doesn't know
+// what to do when it reaches the last tab stop
+if (m.message == WM_KEYDOWN &amp;&amp; m.wParam == VK_TAB) {
+    HWND firstTabStop = GetDlgItem(dialog, IDC_EDIT1);
+    HWND lastTabStop = GetDlgItem(dialog, IDCANCEL);
+    TraversalRequest^ request = nullptr;
+
+    if (GetKeyState(VK_SHIFT) &amp;&amp; GetFocus() == firstTabStop) {
+        request = gcnew TraversalRequest(FocusNavigationDirection::Last);
+    }
+    else if (!GetKeyState(VK_SHIFT) &amp;&amp; GetFocus() ==  lastTabStop) { {
+        request = gcnew TraversalRequest(FocusNavigationDirection::Next);
+    }
+
+    if (request != nullptr)
+        return ((IKeyboardInputSink^) this)-&gt;KeyboardInputSite-&gt;OnNoMoreTabStops(request);
+}
+</code></pre>
+<p>Теперь вызовите <code>IsDialogMessage</code>. Но один из ответственности <code>TranslateAccelerator</code> метод сообщается WPF ли нажатие клавиши или нет. Если вы не обрабатывает его, событие ввода может Туннелировать и поднимаются по остальной части приложения. Здесь, будут предоставлены особенности обработки клавиатуры и характера архитектура ввода в Win32. К сожалению <code>IsDialogMessage</code> не возвращает никоим образом обрабатывает ли конкретное нажатие клавиши. Что еще хуже, он вызывает <code>DispatchMessage()</code> на нажатия клавиш, он не должен обрабатывать!  Чтобы вы могли реконструировать <code>IsDialogMessage</code>и вызвать его только для ключей, вы знаете, что он будет обрабатывать:</p>
+<pre><code class="lang-cpp">// Only call IsDialogMessage for keys it will do something with.
+if (msg.message == WM_SYSKEYDOWN || msg.message == WM_KEYDOWN) {
+    switch (m.wParam) {
+        case VK_TAB:
+        case VK_LEFT:
+        case VK_UP:
+        case VK_RIGHT:
+        case VK_DOWN:
+        case VK_EXECUTE:
+        case VK_RETURN:
+        case VK_ESCAPE:
+        case VK_CANCEL:
+            IsDialogMessage(dialog, &amp;m);
+            // IsDialogMessage should be called ProcessDialogMessage --
+            // it processes messages without ever really telling you
+            // if it handled a specific message or not
+            return true;
+    }
+</code></pre>
+<h3 id="override-tabinto-method-to-support-tabbing">Переопределение метода TabInto для поддержки переходов</h3>
+<p>Теперь, когда вы реализовали <code>TranslateAccelerator</code>, пользователь может совершать переходы внутри диалогового окна поле и выйти в большее WPF приложения. Но пользователь не может перейти обратно в диалоговом окне. Чтобы разрешить это, переопределите <code>TabInto</code>:</p>
+<pre><code class="lang-cpp">public:
+    virtual bool TabInto(TraversalRequest^ request) override {
+        if (request-&gt;FocusNavigationDirection == FocusNavigationDirection::Last) {
+            HWND lastTabStop = GetDlgItem(dialog, IDCANCEL);
+            SetFocus(lastTabStop);
+        }
+        else {
+            HWND firstTabStop = GetDlgItem(dialog, IDC_EDIT1);
+            SetFocus(firstTabStop);
+        }
+        return true;
+    }
+</code></pre>
+<p><code>TraversalRequest</code> Параметр указывает, является ли действие tab или shift.</p>
+<h3 id="override-onmnemonic-method-to-support-mnemonics">Переопределение метода OnMnemonic для поддержки назначенных клавиш</h3>
+<p>Обработка событий клавиатуры почти завершена, но имеется еще один аспекте — назначенные клавиши не работают. Если пользователь нажимает клавишу alt-F, фокус не переходит в «First name:» поле ввода. Таким образом, необходимо переопределить <code>OnMnemonic</code> метод:</p>
+<pre><code class="lang-cpp">virtual bool OnMnemonic(System::Windows::Interop::MSG% msg, ModifierKeys modifiers) override {
+    ::MSG m = ConvertMessage(msg);
+
+    // If it's one of our mnemonics, set focus to the appropriate hwnd
+    if (msg.message == WM_SYSCHAR &amp;&amp; GetKeyState(VK_MENU /*alt*/)) {
+        int dialogitem = 9999;
+        switch (m.wParam) {
+            case 's': dialogitem = IDOK; break;
+            case 'c': dialogitem = IDCANCEL; break;
+            case 'f': dialogitem = IDC_EDIT1; break;
+            case 'l': dialogitem = IDC_EDIT2; break;
+            case 'p': dialogitem = IDC_EDIT3; break;
+            case 'a': dialogitem = IDC_EDIT4; break;
+            case 'i': dialogitem = IDC_EDIT5; break;
+            case 't': dialogitem = IDC_EDIT6; break;
+            case 'z': dialogitem = IDC_EDIT7; break;
+        }
+        if (dialogitem != 9999) {
+            HWND hwnd = GetDlgItem(dialog, dialogitem);
+            SetFocus(hwnd);
+            return true;
+        }
+    }
+    return false; // key unhandled
+};
+</code></pre>
+<p>Почему бы не вызвать <code>IsDialogMessage</code> здесь?  Имеют ту же проблему как — необходимо иметь возможность сообщить WPF кода, обработал ли код нажатие клавиши или нет, и <code>IsDialogMessage</code> не предусмотрена. Есть также вторая проблема, так как <code>IsDialogMessage</code> отказывается обрабатывать мнемонический символ, если фокус HWND не содержится в диалоговом окне.</p>
+<h3 id="instantiate-the-hwndhost-derived-class">Создать экземпляр производного класса HwndHost</h3>
+<p>Наконец, после того, вся поддержка ключа и вкладку на месте, можно поместить в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> в большее WPF приложения. Если основное приложение создается на языке XAML, чтобы поместить его в нужном месте проще всего оставить пустым <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент, где необходимо поместить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. Вы создадите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> с именем <code>insertHwndHostHere</code>:</p>
+<pre><code class="lang-xaml">&lt;Window x:Class=&quot;WPFApplication1.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Windows Presentation Framework Application&quot;
+    Loaded=&quot;Window1_Loaded&quot;
+    &gt;
+    &lt;StackPanel&gt;
+        &lt;Button Content=&quot;WPF button&quot;/&gt;
+        &lt;Border Name=&quot;insertHwndHostHere&quot; Height=&quot;200&quot; Width=&quot;500&quot;/&gt;
+        &lt;Button Content=&quot;WPF button&quot;/&gt;
+    &lt;/StackPanel&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Затем все, что остается лишь найти правильное место в коде для создания экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и подключите его к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>. В этом примере будет поместить его в конструктор для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> производного класса:</p>
+<pre><code class="lang-csharp">public partial class Window1 : Window {
+    public Window1() {
+    }
+
+    void Window1_Loaded(object sender, RoutedEventArgs e) {
+        HwndHost host = new ManagedCpp.MyHwndHost();
+        insertHwndHostHere.Child = host;
+    }
+}
+</code></pre>
+<p>Что позволяет:</p>
+<p><img src="./media/interoparch09.PNG" alt="Снимок экрана приложения WPF" title="InteropArch09"></p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

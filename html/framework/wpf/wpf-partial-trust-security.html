@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; &#1095;&#1072;&#1089;&#1090;&#1080;&#1095;&#1085;&#1086;&#1075;&#1086; &#1076;&#1086;&#1074;&#1077;&#1088;&#1080;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; &#1095;&#1072;&#1089;&#1090;&#1080;&#1095;&#1085;&#1086;&#1075;&#1086; &#1076;&#1086;&#1074;&#1077;&#1088;&#1080;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-partial-trust-security">Безопасность частичного доверия в WPF</h1>
+
+<p><a name="introduction"></a> Как правило, интернет-приложениям следует ограничить прямой доступ к критическим системным ресурсам, чтобы избежать злонамеренного повреждения. По умолчанию HTML и языки сценариев на стороне клиента не могут получить доступ к критическим системным ресурсам. Поскольку Браузерные приложения Windows Presentation Foundation (WPF) может быть запущено из браузера, они должны соответствовать аналогичному набору ограничений. Для принудительного применения этих ограничений WPF полагается на CAS (Code Access Security — безопасность доступа кода) и ClickOnce (см. в разделе <a href="wpf-security-strategy-platform-security.html">стратегия безопасности WPF — безопасность платформы</a>). По умолчанию Браузерные приложения запрашивают зоны Интернета CAS набор разрешений, независимо от того, запускаются ли они из Интернета, локальной интрасети или локального компьютера. Приложения, выполняющиеся с набором разрешений меньшим, чем полный набор, называют выполняющимися с частичным доверием.</p>
+<p>WPF предоставляет широкий спектр поддержки, чтобы убедиться, что число функциональных возможностей, как можно можно безопасно в режиме частичного доверия и вместе с CAS, обеспечивает дополнительную поддержку для программирования в режиме частичного доверия.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#WPF_Feature_Partial_Trust_Support">Поддержка частичного доверия функциями WPF</a></p>
+</li>
+<li><p><a href="#Partial_Trust_Programming">Программирование в режиме частичного доверия</a></p>
+</li>
+<li><p><a href="#Managing_Permissions">Управление разрешениями</a></p>
+</li>
+</ul>
+<p><a name="WPF_Feature_Partial_Trust_Support"></a></p>
+<h2 id="wpf-feature-partial-trust-support">Поддержка частичного доверия функциями WPF</h2>
+<p>В следующей таблице перечислены обобщенные функции Windows Presentation Foundation (WPF), которые являются безопасными для использования в пределах набора разрешений зоны Интернета.</p>
+<p>Таблица 1. Функции WPF, являются безопасными в режиме частичного доверия</p>
+<table>
+<thead>
+<tr>
+<th>Область функции</th>
+<th>Функция</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Общие</td>
+<td>Окно обозревателя<br><br> Доступ к исходному сайту<br><br> IsolatedStorage (ограничение 512 КБ)<br><br> Поставщики UIAutomation<br><br> Система команд<br><br> Редакторы метода ввода (IME)<br><br> Перо планшетного компьютера и рукописный ввод<br><br> Моделирование перетаскивания с помощью событий захвата и перемещения мыши<br><br> OpenFileDialog<br><br> Десериализация XAML (посредством XamlReader.Load)</td>
+</tr>
+<tr>
+<td>Веб-интеграция</td>
+<td>Диалоговое окно загрузки браузера<br><br> Навигация верхнего уровня, инициированная пользователем<br><br> mailto:links<br><br> Параметры универсального идентификатора ресурса (URI)<br><br> HTTPWebRequest<br><br> Содержимое WPF, размещенное в IFRAME<br><br> Размещение HTML-страниц одного веб-сайта с помощью Frame<br><br> Размещение HTML-страниц одного веб-сайта с помощью WebBrowser<br><br> Веб-службы (ASMX-файлы)<br><br> Веб-службы (с помощью Windows Communication Foundation)<br><br> Скрипты<br><br> Модель DOM</td>
+</tr>
+<tr>
+<td>Визуальные элементы</td>
+<td>2D- и 3D-графика<br><br> Анимация<br><br> Мультимедиа (исходный сайт и междоменные)<br><br> Обработка изображений/аудио/видео</td>
+</tr>
+<tr>
+<td>Чтение</td>
+<td>FlowDocument<br><br> XPS-документы<br><br> Внедренные и системные шрифты<br><br> Шрифты CFF и TrueType</td>
+</tr>
+<tr>
+<td>Редактирование</td>
+<td>Проверка орфографии<br><br> RichTextBox<br><br> Поддержка буфера обмена для обычного текста и рукописного ввода<br><br> Вставка, инициированная пользователем<br><br> Копирование выделенного содержимого</td>
+</tr>
+<tr>
+<td>Элементы управления</td>
+<td>Общие элементы управления</td>
+</tr>
+</tbody>
+</table>
+<p>Эта таблица охватывает WPF функции на высоком уровне. Более подробные сведения, Windows SDK задокументированы разрешения, необходимые каждому элементу в WPF. Кроме того, следующие функции содержат более подробные сведения, касающиеся выполнения при частичном доверии, включая некоторые особые аспекты.</p>
+<ul>
+<li><p>XAML (см. в разделе <a href="advanced/xaml-overview-wpf.html">Обзор XAML (WPF)</a>).</p>
+</li>
+<li><p>Всплывающие окна (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.popup">System.Windows.Controls.Primitives.Popup</a>).</p>
+</li>
+<li><p>Перетаскивание (см. в разделе <a href="advanced/drag-and-drop-overview.html">Drag and Drop Обзор</a>).</p>
+</li>
+<li><p>Буфер обмена (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.clipboard">System.Windows.Clipboard</a>).</p>
+</li>
+<li><p>Работы с образами (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">System.Windows.Controls.Image</a>).</p>
+</li>
+<li><p>Сериализация (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xamlreader.load">XamlReader.Load</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xamlwriter.save">XamlWriter.Save</a>).</p>
+</li>
+<li><p>Открыть файл-диалоговое окно (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.win32.openfiledialog">Microsoft.Win32.OpenFileDialog</a>).</p>
+</li>
+</ul>
+<p>В следующей таблице описываются WPF набора разрешений зоны функции, которые не являются безопасными для выполнения в пределах Интернета.</p>
+<p>Таблица 2. Функции WPF, не являются безопасными в режиме частичного доверия</p>
+<table>
+<thead>
+<tr>
+<th>Область функции</th>
+<th>Функция</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Общие</td>
+<td>Окно (определенные приложением окна и диалоговые окна)<br><br> SaveFileDialog<br><br> Файловая система<br><br> Доступ к реестру<br><br> Перетаскивание<br><br> Сериализация XAML (через XamlWriter.Save)<br><br> Клиенты UIAutomation<br><br> Доступ к исходному окну (HwndHost)<br><br> Полная поддержка управления речью<br><br> Взаимодействие с Windows Forms</td>
+</tr>
+<tr>
+<td>Визуальные элементы</td>
+<td>Эффекты для точечных рисунков<br><br> Кодирование изображений</td>
+</tr>
+<tr>
+<td>Редактирование</td>
+<td>Буфер обмена формата RTF<br><br> Полная поддержка XAML</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Partial_Trust_Programming"></a></p>
+<h2 id="partial-trust-programming">Программирование в режиме частичного доверия</h2>
+<p>Для XBAP приложения, код, превышающий набор разрешений по умолчанию, имеет другое поведение в зависимости от зоны безопасности. В некоторых случаях пользователь получит предупреждение при попытке установить приложение. Пользователь может выбрать продолжение или отмену установки. В следующей таблице описаны поведение приложения для каждой зоны безопасности и действия, необходимые для получения приложением полного доверия.</p>
+<table>
+<thead>
+<tr>
+<th>Зона безопасности</th>
+<th>Поведение</th>
+<th>Получение полного доверия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Локальный компьютер</td>
+<td>Автоматическое получение полного доверия</td>
+<td>Никаких действий не требуется.</td>
+</tr>
+<tr>
+<td>Интрасеть и надежные веб-сайты</td>
+<td>Запрос полного доверия</td>
+<td>Подпишите приложение XBAP с помощью сертификата, чтобы пользователь видел источник в запросе.</td>
+</tr>
+<tr>
+<td>Интернет</td>
+<td>Сбой с сообщением &quot;Доверие не оказано&quot;</td>
+<td>Подпишите приложение XBAP с помощью сертификата.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поведение, описанное в предыдущей таблице, относится к приложениям XBAP с полным доверием, не следующим модели доверенного развертывания ClickOnce.</p>
+</div>
+<p>В общем случае код, который может превышать допустимые разрешения, вероятнее всего, является общим кодом, который совместно используется автономными и браузерными приложениями. CAS и WPF обеспечивают несколько методик для таких случаев.</p>
+<p><a name="Detecting_Permissions_using_CAS"></a></p>
+<h3 id="detecting-permissions-using-cas">Определение разрешений с помощью CAS</h3>
+<p>В некоторых случаях общий код в сборках библиотеки будет использоваться как автономными приложениями и XBAP. В этих случаях код может выполнять функции, которые могут потребовать больше разрешений, чем позволяет набор разрешений, присвоенный приложению. Приложение может определять, независимо от того, имеется ли он имеет определенное разрешение с помощью системы безопасности Microsoft .NET Framework. В частности, его можно проверить на наличие определенного разрешения, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.codeaccesspermission.demand">Demand</a> метод экземпляра нужного разрешения. Это показано в следующем примере, который содержит код, запрашивающий возможность сохранить файл на локальный диск.</p>
+<pre><code class="lang-csharp" name="PartialTrustSecurityOverviewSnippets#DetectPermsCODE1">using System.IO;
+using System.IO.IsolatedStorage;
+using System.Security;
+using System.Security.Permissions;
+using System.Windows;
+
+namespace SDKSample
+{
+    public class FileHandling
+    {
+        public void Save()
+        {
+            if (IsPermissionGranted(new FileIOPermission(FileIOPermissionAccess.Write, @&quot;c:\newfile.txt&quot;)))
+            {
+                // Write to local disk
+                using (FileStream stream = File.Create(@&quot;c:\newfile.txt&quot;))
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.WriteLine(&quot;I can write to local disk.&quot;);
+                }
+            }
+            else
+            {
+                MessageBox.Show(&quot;I can't write to local disk.&quot;);
+            }
+        }
+
+        // Detect whether or not this application has the requested permission
+        bool IsPermissionGranted(CodeAccessPermission requestedPermission)
+        {
+            try
+            {
+                // Try and get this permission
+                requestedPermission.Demand();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PartialTrustSecurityOverviewSnippets#DetectPermsCODE2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если приложение не имеет нужных разрешений, вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.codeaccesspermission.demand">Demand</a> создаст исключение безопасности. В противном случае разрешение будет предоставлено. <code>IsPermissionGranted</code> Инкапсулирует это поведение и возвращает <code>true</code> или <code>false</code> соответствующим образом.</p>
+<p><a name="Graceful_Degradation_of_Functionality"></a></p>
+<h3 id="graceful-degradation-of-functionality">Постепенное снижение функциональности</h3>
+<p>Возможность обнаружения у кода разрешений на выполнение действия представляет интерес для кода, который может выполняться из разных зон. Обнаружение зоны — это один из аспектов, однако рекомендуется по возможности предоставить пользователю альтернативу. Например, приложение с полным доверием обычно позволяет пользователям создавать файлы в любом расположении, тогда как приложение с частичным доверием может создавать файлы только в изолированном хранилище. Если код для создания файла существует в сборке, которая совместно используется приложениями с полным доверием (автономными) и приложениями с частичным доверием (размещенными в браузере), и оба приложения должны обеспечивать функцию создания файлов пользователем, общий код должен определить, выполняется ли он в режиме частичного или полного доверия перед созданием файла в соответствующем расположении. Оба варианта демонстрируются в следующем коде.</p>
+<pre><code class="lang-csharp" name="PartialTrustSecurityOverviewSnippets#DetectPermsGracefulCODE1">using System.IO;
+using System.IO.IsolatedStorage;
+using System.Security;
+using System.Security.Permissions;
+using System.Windows;
+
+namespace SDKSample
+{
+    public class FileHandlingGraceful
+    {
+        public void Save()
+        {
+            if (IsPermissionGranted(new FileIOPermission(FileIOPermissionAccess.Write, @&quot;c:\newfile.txt&quot;)))
+            {
+                // Write to local disk
+                using (FileStream stream = File.Create(@&quot;c:\newfile.txt&quot;))
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.WriteLine(&quot;I can write to local disk.&quot;);
+                }
+            }
+            else
+            {
+                // Persist application-scope property to
+                // isolated storage
+                IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+                using (IsolatedStorageFileStream stream =
+                    new IsolatedStorageFileStream(&quot;newfile.txt&quot;, FileMode.Create, storage))
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.WriteLine(&quot;I can write to Isolated Storage&quot;);
+                }
+            }
+        }
+
+        // Detect whether or not this application has the requested permission
+        bool IsPermissionGranted(CodeAccessPermission requestedPermission)
+        {
+            try
+            {
+                // Try and get this permission
+                requestedPermission.Demand();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PartialTrustSecurityOverviewSnippets#DetectPermsGracefulCODE2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Во многих случаях вы сможете найти альтернативу частичному доверию.</p>
+<p>В управляемой среде, например интрасети, можно установить пользовательские управляемых инфраструктур для всех клиентов в глобальном глобальный кэш сборок (GAC). Эти библиотеки могут выполнять код, который требует полного доверия и можно ссылаться из приложений, которым разрешено только частичное доверие, используя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.allowpartiallytrustedcallersattribute">AllowPartiallyTrustedCallersAttribute</a> (Дополнительные сведения см. в разделе <a href="security-wpf.html">безопасности</a> и <a href="wpf-security-strategy-platform-security.html">безопасность WPF Стратегия — безопасность платформы</a>).</p>
+<p><a name="Browser_Host_Detection"></a></p>
+<h3 id="browser-host-detection">Обнаружение узла браузера</h3>
+<p>С помощью CAS для проверки разрешений является подходящим способом, когда необходимо проверить на основе отдельных разрешений. Тем не менее эта методика зависит от перехвата исключений в рамках нормальной обработки, что не рекомендуется в общем и может вызывать проблемы производительности. Вместо этого Если ваш Приложение обозревателя XAML (XBAP) выполняется только в песочнице зоны Интернета, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.browserinterophelper.isbrowserhosted">BrowserInteropHelper.IsBrowserHosted</a> свойство, которое возвращает значение true для XAML-приложения браузера (XBAP).</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.browserinterophelper.isbrowserhosted">IsBrowserHosted</a> только отличает ли приложение выполняется в браузере, не какой набор разрешений приложения, выполнив.</p>
+</div>
+<p><a name="Managing_Permissions"></a></p>
+<h2 id="managing-permissions">Управление разрешениями</h2>
+<p>По умолчанию XBAP с частичным доверием (набор разрешений зоны Интернета по умолчанию). Тем не менее в зависимости от требований приложения можно изменить набор разрешений по умолчанию. Например если XBAP запускается из локальной интрасети, он может воспользоваться преимуществом расширенного набора разрешений, как показано в следующей таблице.</p>
+<p>Таблица 3. Разрешений LocalIntranet и Internet</p>
+<table>
+<thead>
+<tr>
+<th>Разрешение</th>
+<th>Атрибут</th>
+<th>LocalIntranet</th>
+<th>Интернет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS</td>
+<td>Доступ к DNS-серверам</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Переменные среды</td>
+<td>Чтение</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Диалоговые окна для работы с файлами</td>
+<td>Открыть</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Диалоговые окна для работы с файлами</td>
+<td>Без ограничений</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Изолированное хранилище</td>
+<td>Изоляция сборки по пользователю</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Изолированное хранилище</td>
+<td>Неизвестная изоляция</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Изолированное хранилище</td>
+<td>Неограниченная квота для пользователя</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Мультимедиа</td>
+<td>Безопасные аудио-, видеоданные и изображения</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Печать</td>
+<td>Печать по умолчанию</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Печать</td>
+<td>Безопасная печать</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Отражение</td>
+<td>Вывод</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>Выполнение управляемого кода</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>Утверждение предоставленных разрешений</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Пользовательский интерфейс</td>
+<td>Без ограничений</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td>Пользовательский интерфейс</td>
+<td>Безопасные окна верхнего уровня</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Пользовательский интерфейс</td>
+<td>Собственный буфер обмена</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td>Веб-браузер</td>
+<td>Безопасная навигация по фреймам в HTML</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Вырезание и вставка разрешены только в режиме частичного доверия при инициации пользователем.</p>
+</div>
+<p>Если вам требуется повысить уровень разрешений, необходимо изменить параметры проекта и манифест приложения ClickOnce. Дополнительные сведения см. в разделе <a href="app-development/wpf-xaml-browser-applications-overview.html">Общие сведения о приложениях браузера WPF XAML</a>. Следующие документы также могут быть полезны.</p>
+<ul>
+<li><p><a href="../tools/mage-exe-manifest-generation-and-editing-tool.md">Mage.exe (средство создания и редактирования манифеста)</a></p>
+</li>
+<li><p><a href="../tools/mageui-exe-manifest-generation-and-editing-tool-graphical-client.md">MageUI.exe (средство создания и редактирования манифестов, графический клиент)</a></p>
+</li>
+<li><p><a href="/visualstudio/deployment/securing-clickonce-applications">Защита приложений ClickOnce</a></p>
+</li>
+</ul>
+<p>Если ваш XBAP требует полного доверия, можно использовать те же средства для предоставления запрошенных разрешений. Несмотря на то что XBAP только получит полное доверие, если он установлен на локальном компьютере и запущено с локального компьютера, интрасети или с URL-адрес, который указан в браузере доверенных или разрешенных сайтов. Если приложение установлено из интрасети или с доверенного сайта, пользователь получит стандартный запрос ClickOnce, уведомляющий о повышенных разрешениях. Пользователь может выбрать продолжение или отмену установки.</p>
+<p>Кроме того, модель доверенного развертывания ClickOnce можно использовать для полностью доверенного развертывания из любой зоны безопасности. Дополнительные сведения см. в разделе <a href="/visualstudio/deployment/trusted-application-deployment-overview">Trusted Application Deployment Overview</a> и <a href="security-wpf.html">безопасности</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="security-wpf.html">Безопасность</a></li>
+<li><a href="wpf-security-strategy-platform-security.html">Стратегия безопасности WPF — безопасность платформы</a></li>
+<li><a href="wpf-security-strategy-security-engineering.html">Стратегия безопасности WPF — проектирование безопасности</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

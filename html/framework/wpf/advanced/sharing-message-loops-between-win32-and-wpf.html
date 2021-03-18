@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1074;&#1084;&#1077;&#1089;&#1090;&#1085;&#1086;&#1077; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1094;&#1080;&#1082;&#1083;&#1086;&#1074; &#1086;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1080; &#1089;&#1086;&#1086;&#1073;&#1097;&#1077;&#1085;&#1080;&#1081; &#1084;&#1077;&#1078;&#1076;&#1091; Win32 &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1074;&#1084;&#1077;&#1089;&#1090;&#1085;&#1086;&#1077; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1094;&#1080;&#1082;&#1083;&#1086;&#1074; &#1086;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1080; &#1089;&#1086;&#1086;&#1073;&#1097;&#1077;&#1085;&#1080;&#1081; &#1084;&#1077;&#1078;&#1076;&#1091; Win32 &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="sharing-message-loops-between-win32-and-wpf">Совместное использование циклов обработки сообщений между Win32 и WPF</h1>
+
+<p>В этом разделе описывается, как реализовать цикл обработки сообщений для взаимодействия с Windows Presentation Foundation (WPF), либо с помощью существующих сообщений раскрытия цикл в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> или создав цикл обработки отдельных сообщений на Win32 сторона кода взаимодействия.</p>
+<h2 id="componentdispatcher-and-the-message-loop">Диспетчер компонента и цикл обработки сообщений</h2>
+<p>Обычный сценарий для взаимодействия и поддержки события клавиатуры — для реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a>, или подкласса из классов, которые уже реализуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. Тем не менее поддержка приемника клавиатуры не рассматриваются все возможные циклам обработки сообщений вы можете столкнуться при отправке и получении сообщений через ваши границы взаимодействия. Чтобы помочь формализовать архитектуру цикла обработки сообщений приложения, Windows Presentation Foundation (WPF) предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> класс, который определяет простой протокол для цикла обработки сообщений для выполнения.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> — Это статический класс, предоставляющий несколько членов. Область каждого метода неявно привязаны в вызывающий поток. Цикл обработки сообщений должен вызывать некоторые из них API - интерфейсы в критические моменты времени (как определено в следующем разделе).</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> Предоставляет события, которые может прослушивать других компонентов (таких как приемник ввода от клавиатуры). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> Класса вызывает соответствующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> методов в соответствующей последовательности. Если вы реализуете собственный цикл обработки сообщений, код отвечает за вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> методы таким же образом.</p>
+<p>Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> методы в потоке только будет вызывать обработчики событий, которые были зарегистрированы в этом потоке.</p>
+<h2 id="writing-message-loops">Написание циклов обработки сообщений</h2>
+<p>Ниже приведен контрольный список <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> членов, которые будет использовать при написании собственного цикла обработки сообщений:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.pushmodal">PushModal</a>: ваш цикл обработки сообщений должен вызывать его, чтобы указать, что поток является модальным.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.popmodal">PopModal</a>: ваш цикл обработки сообщений должен вызывать его, чтобы указать, что поток обращается к немодальным.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.raiseidle">RaiseIdle</a>: ваш цикл обработки сообщений должен вызывать его, чтобы указать, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> должен вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadidle">ThreadIdle</a> событий. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> не вызовут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadidle">ThreadIdle</a> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.isthreadmodal">IsThreadModal</a> — <code>true</code>, но циклы обработки сообщений, можно вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.raiseidle">RaiseIdle</a> даже в том случае, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> не может отвечать на него в модальном состоянии.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.raisethreadmessage">RaiseThreadMessage</a>: ваш цикл обработки сообщений должен вызывать его, чтобы указать, что доступно новое сообщение. Возвращаемое значение отражает ли прослушиватель для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> сообщение обработано событие. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.raisethreadmessage">RaiseThreadMessage</a> возвращает <code>true</code> (обработано), диспетчер в дальнейшем ничего с сообщением. Если возвращается значение <code>false</code>, диспетчер ожидает вызов Win32 функция <code>TranslateMessage</code>, затем вызвать <code>DispatchMessage</code>.</p>
+</li>
+</ul>
+<h2 id="using-componentdispatcher-and-existing-message-handling">Использование диспетчера компонента и обработки существующих сообщений</h2>
+<p>Ниже приведен контрольный список <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> членов, которые будет использовать при работе с внутренними запросами WPF цикл обработки сообщений.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.isthreadmodal">IsThreadModal</a>: возвращает ли приложение становится модальным (например, цикл обработки сообщений модальное был отправлен). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> может отслеживать это состояние, так как класс хранит количество <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.pushmodal">PushModal</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.popmodal">PopModal</a> вызовы из цикла обработки сообщений.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ThreadFilterMessage</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadpreprocessmessage">ThreadPreprocessMessage</a> событий выполните стандартные правила для вызова делегата. Делегаты вызываются в неопределенном порядке, и вызываются все делегаты, даже если первый из них помечает сообщение как обработанное.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadidle">ThreadIdle</a>: указывает на соответствующий и эффективное время простоя обработки (нет других ожидающих сообщений для потока). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadidle">ThreadIdle</a> не будет вызываться, если поток является модальным.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ThreadFilterMessage</a>: вызывается для всех сообщений, обрабатываемых сообщений.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadpreprocessmessage">ThreadPreprocessMessage</a>: вызывается для всех сообщений, которые не были обработаны во время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ThreadFilterMessage</a>.</p>
+</li>
+</ul>
+<p>Сообщение считается обработанным, если после <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ThreadFilterMessage</a> событий или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadpreprocessmessage">ThreadPreprocessMessage</a> событий, <code>handled</code> параметр, передаваемый по ссылке в данных события является <code>true</code>. Обработчики событий должен игнорировать это сообщение, если <code>handled</code> является <code>true</code>, так как это означает, что другой обработчик обработал сообщение первым. Обработчики событий для обоих событий могут изменить сообщение. Диспетчер должен отправлять измененное сообщение, а не исходное сообщение без изменений. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadpreprocessmessage">ThreadPreprocessMessage</a> доставляется всем прослушивателям, но архитектурно том, что только окно верхнего уровня, содержащий HWND, с которой сообщения должны вызвать код в ответ на сообщение.</p>
+<h2 id="how-hwndsource-treats-componentdispatcher-events">Как HwndSource Рассматривает события диспетчера компонента</h2>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> является окном верхнего уровня (нет родительского HWND), будет зарегистрирован <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a>. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadpreprocessmessage">ThreadPreprocessMessage</a> возникает, если сообщение предназначено для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> или дочерних окон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> вызовы его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.system-windows-interop-ikeyboardinputsink-translateaccelerator">IKeyboardInputSink.TranslateAccelerator</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.translatechar">TranslateChar</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.onmnemonic">OnMnemonic</a> последовательность приемника клавиатуры.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> не является окном верхнего уровня (имеет родительский элемент HWND), будет существовать без обработки. Только окно верхнего уровня должен выполнять обработку и оно должно быть окном верхнего уровня с поддержкой приемника клавиатуры как часть любого скрипта взаимодействия.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> вызывается без вызова метода приемника сочетания, приложение получит более высокоуровневые события клавиатуры например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.keydown">KeyDown</a>. Однако методы приемник не клавиатуры будет вызываться, которые нарушают функции модели ввода клавиатуры, такие как поддержка ключа доступа. Это может произойти, когда цикл обработки сообщений не уведомил соответствующий поток на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a>, либо потому, что родительское HWND не вызвало соответствующие ответы приемника клавиатуры.</p>
+<p>Это сообщение в приемник ввода от клавиатуры не могут отправляться на HWND, обработчики для данного сообщения, добавленные с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.addhook">AddHook</a> метод. Сообщение может быть обработано на уровне загрузки сообщений напрямую и не отправлено <code>DispatchMessage</code> функции.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+<li><a href="threading-model.html">Модель потоков</a></li>
+<li><a href="input-overview.html">Общие сведения о входных данных</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

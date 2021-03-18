@@ -1,0 +1,830 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; Storyboard | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; Storyboard | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="storyboards-overview">Общие сведения о Storyboard</h1>
+
+<p>В этом разделе показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов для создания и применения анимаций. Он описывает, как интерактивно манипулировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов и описывает синтаксис косвенного выбора свойств.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания этого раздела необходимо ознакомиться с различными типами анимации и их основными возможностями. Общие сведения об анимации см. в разделе <a href="animation-overview.html">Общие сведения об эффектах анимации</a>. Вы также должны знать, как использовать вложенные свойства. Дополнительные сведения о вложенных свойствах см. в разделах <a href="../advanced/attached-properties-overview.html">Общие сведения о вложенных свойствах</a>.</p>
+<p><a name="whatisatimeline"></a></p>
+<h2 id="what-is-a-storyboard">Что такое раскадровка?</h2>
+<p>Анимация — не единственный удобный тип временной шкалы. Существуют другие классы временной шкалы, с помощью которых вы сможете создать наборы временных шкал и применить временные шкалы к свойствам. Временные шкалы контейнера являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timelinegroup">TimelineGroup</a> класса и включать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.paralleltimeline">ParallelTimeline</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> — это тип временной шкалы контейнера, который содержит сведения для временных шкал, он содержит. Раскадровка может содержать любой тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>, включая другие временные шкалы контейнера и анимации. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объекты позволяют объединять временные шкалы, которые влияют на различные объекты и свойства в одно дерево временной шкалы, упрощая организацию и управление сложным поведением времени. Например, предположим, что вам необходима кнопка, которая выполняет следующие три действия.</p>
+<ul>
+<li><p>Увеличивается и изменяет цвет, когда пользователь выбирает кнопку.</p>
+</li>
+<li><p>Сжимается, а затем увеличивается до исходного размера, когда пользователь нажимает на кнопку.</p>
+</li>
+<li><p>Сжимается и изменяет яркость до 50-процентной прозрачности, если кнопка становится недоступной.</p>
+</li>
+</ul>
+<p>В этом случае у вас есть несколько наборов анимаций, которые применяются к одному объекту и которые требуется воспроизводить в разное время в зависимости от состояния кнопки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объекты позволяют упорядочить анимации и применить их в группах для одного или нескольких объектов.</p>
+<p><a name="wherecanyouuseastoryboard"></a></p>
+<h2 id="where-can-you-use-a-storyboard">Где можно использовать раскадровку?</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> может использоваться для анимации свойства зависимостей анимируемых классов (Дополнительные сведения о том, что делает класс анимируемым, см. в разделе <a href="animation-overview.html">Общие сведения об анимации</a>). Однако поскольку раскадровка является функцией уровня платформы, объект должен принадлежать к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">NameScope</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>.</p>
+<p>Например, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> для следующих целей:</p>
+<ul>
+<li><p>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> (не являющийся элементом платформы), который закрашивает фон кнопки (разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>),</p>
+</li>
+<li><p>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> (не являющийся элементом платформы), которая закрашивает заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometrydrawing">GeometryDrawing</a> (не являющийся элементом платформы) отображается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>).</p>
+</li>
+<li><p>В коде, анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объявляется с помощью класса, который также содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> зарегистрировано, его имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+</li>
+</ul>
+<p>Тем не менее, невозможно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> , не зарегистрировало его именем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>, или который не использовался, чтобы задать свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>.</p>
+<p><a name="applyanimationswithastoryboard"></a></p>
+<h2 id="how-to-apply-animations-with-a-storyboard">Применение анимации с помощью раскадровки</h2>
+<p>Чтобы использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> для создания и применения анимаций, можно добавить анимации в качестве дочерних временных шкал объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> Класс предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">Storyboard.TargetName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">Storyboard.TargetProperty</a> присоединенных свойств. Эти свойства используются для указания целевого объекта и целевого свойства анимации.</p>
+<p>Чтобы применить анимацию к целевым объектам, началом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> с помощью действия триггера или метода. В XAML, использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> со <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatrigger">DataTrigger</a>. В коде, можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод.</p>
+<p>В следующей таблице показаны различные где каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> начать прием поддерживается: для каждого экземпляра, стиль, шаблон элемента управления и шаблон данных. Применение к конкретным экземплярам подразумевает применение анимации или раскадровки непосредственно к экземплярам объектов, а не в стилях, шаблонах элементов управления или шаблонах данных.</p>
+<table>
+<thead>
+<tr>
+<th>Раскадровка запускается с помощью метода...</th>
+<th>Применение к конкретным экземплярам</th>
+<th>Стиль</th>
+<th>Шаблон элемента управления</th>
+<th>Шаблон данных</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a></td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td><a href="how-to-animate-a-property-by-using-a-storyboard.html">Анимация свойства с помощью раскадровки</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> и свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a></td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td><a href="how-to-trigger-an-animation-when-a-property-value-changes.html">Запуск анимации при изменении значения свойства</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatrigger">DataTrigger</a></td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/aa970679(v=vs.90)">Практическое руководство. Запуск анимации при изменении данных</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Нет</td>
+<td><a href="how-to-animate-a-property-by-using-a-storyboard.html">Анимация свойства с помощью раскадровки</a></td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> используется для рисования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#1">&lt;!-- This example shows how to animate with a storyboard.--&gt;
+&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;Microsoft.Samples.Animation.StoryboardsExample&quot; 
+  WindowTitle=&quot;Storyboards Example&quot;&gt;
+  &lt;StackPanel Margin=&quot;20&quot;&gt;
+    
+    &lt;Rectangle Name=&quot;MyRectangle&quot;
+      Width=&quot;100&quot;
+      Height=&quot;100&quot;&gt;
+      &lt;Rectangle.Fill&gt;
+        &lt;SolidColorBrush x:Name=&quot;MySolidColorBrush&quot; Color=&quot;Blue&quot; /&gt;
+      &lt;/Rectangle.Fill&gt;
+      &lt;Rectangle.Triggers&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Rectangle.MouseEnter&quot;&gt;
+          &lt;BeginStoryboard&gt;
+            &lt;Storyboard&gt;
+              &lt;DoubleAnimation 
+                Storyboard.TargetName=&quot;MyRectangle&quot;
+                Storyboard.TargetProperty=&quot;Width&quot;
+                From=&quot;100&quot; To=&quot;200&quot; Duration=&quot;0:0:1&quot; /&gt;
+              
+              &lt;ColorAnimation 
+                Storyboard.TargetName=&quot;MySolidColorBrush&quot;
+                Storyboard.TargetProperty=&quot;Color&quot;
+                From=&quot;Blue&quot; To=&quot;Red&quot; Duration=&quot;0:0:1&quot; /&gt;  
+            &lt;/Storyboard&gt;
+          &lt;/BeginStoryboard&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Rectangle.Triggers&gt;
+    &lt;/Rectangle&gt; 
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#100">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Data;
+using System.Windows.Shapes;
+using System.Windows.Input;
+
+namespace Microsoft.Samples.Animation
+{
+    public class StoryboardsExample : Page
+    {
+        public StoryboardsExample()
+        {
+            this.WindowTitle = &quot;Storyboards Example&quot;;
+            StackPanel myStackPanel = new StackPanel();
+            myStackPanel.Margin = new Thickness(20);
+
+            Rectangle myRectangle = new Rectangle();
+            myRectangle.Name = &quot;MyRectangle&quot;;
+
+            // Create a name scope for the page.
+            NameScope.SetNameScope(this, new NameScope());
+
+            this.RegisterName(myRectangle.Name, myRectangle);
+            myRectangle.Width = 100;
+            myRectangle.Height = 100;
+            SolidColorBrush mySolidColorBrush = new SolidColorBrush(Colors.Blue);
+            this.RegisterName(&quot;MySolidColorBrush&quot;, mySolidColorBrush);
+            myRectangle.Fill = mySolidColorBrush;
+
+            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            myDoubleAnimation.From = 100;
+            myDoubleAnimation.To = 200;
+            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
+            Storyboard.SetTargetProperty(myDoubleAnimation,
+                new PropertyPath(Rectangle.WidthProperty));
+
+            ColorAnimation myColorAnimation = new ColorAnimation();
+            myColorAnimation.From = Colors.Blue;
+            myColorAnimation.To = Colors.Red;
+            myColorAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            Storyboard.SetTargetName(myColorAnimation, &quot;MySolidColorBrush&quot;);
+            Storyboard.SetTargetProperty(myColorAnimation,
+                new PropertyPath(SolidColorBrush.ColorProperty));
+            Storyboard myStoryboard = new Storyboard();
+            myStoryboard.Children.Add(myDoubleAnimation);
+            myStoryboard.Children.Add(myColorAnimation);
+
+            myRectangle.MouseEnter += delegate(object sender, MouseEventArgs e)
+            {
+                myStoryboard.Begin(this);
+            };
+
+            myStackPanel.Children.Add(myRectangle);
+            this.Content = myStackPanel;
+        }
+    }
+}
+</code></pre>
+<p>В следующих разделах описываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> присоединенных свойств более подробно.</p>
+<p><a name="targetingelementsandfreezables"></a></p>
+<h2 id="targeting-framework-elements-framework-content-elements-and-freezables">Элементы целевой платформы, элементы содержимого платформы и объекты Freezable</h2>
+<p>В предыдущем разделе упоминалось, что для поиска целевого объекта анимации необходимо знать имя целевого объекта и анимируемое свойство. Указание свойства для анимации выполняется очень легко: просто задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">Storyboard.TargetProperty</a> именем анимируемое свойство.  Укажите имя объекта, свойство которого вы хотите анимировать, установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">Storyboard.TargetName</a> свойство анимации.</p>
+<p>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter.targetname">TargetName</a> работы свойства целевого объекта должен иметь имя. Назначение имени для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> в XAML отличается от присваивания имени <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта.</p>
+<p>Элементами платформы являются классы, наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класса. Примеры элементов платформы включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>. По существу все окна, панели и элементы управления являются элементами. Элементами содержимого платформы являются классы, наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> класса. Примеры элементов содержимого платформы включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.paragraph">Paragraph</a>. Если вы не уверены, что этот элемент является элементом платформы или элементом содержимого платформы, проверьте, есть ли у этого элемента свойство Name. Если есть, скорее всего, это элемент платформы или элемент содержимого платформы. Чтобы убедиться в этом, обратитесь к разделу &quot;Иерархия наследования&quot; на странице типа элемента.</p>
+<p>Чтобы включить целевые элементом платформы или элемента содержимого платформы в XAML, можно задать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.name">Name</a> свойство. В коде, необходимо также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.registername">RegisterName</a> метод, чтобы зарегистрировать имя элемента в элементе, для которого вы создали <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">NameScope</a>.</p>
+<p>В следующем примере, взятом из предыдущего примера, назначает имя <code>MyRectangle</code> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>, тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#2">&lt;Rectangle Name=&quot;MyRectangle&quot;
+  Width=&quot;100&quot;
+  Height=&quot;100&quot;&gt;
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#102">Rectangle myRectangle = new Rectangle();
+myRectangle.Name = &quot;MyRectangle&quot;;
+
+// Create a name scope for the page.
+NameScope.SetNameScope(this, new NameScope());
+
+this.RegisterName(myRectangle.Name, myRectangle);
+</code></pre>
+<p>После того как элемент получил имя, вы можете анимировать свойство этого элемента.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#5">&lt;DoubleAnimation 
+  Storyboard.TargetName=&quot;MyRectangle&quot;
+  Storyboard.TargetProperty=&quot;Width&quot;
+  From=&quot;100&quot; To=&quot;200&quot; Duration=&quot;0:0:1&quot; /&gt;
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#105">Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> типы являются классы, наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класса. Примеры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a>.</p>
+<p>Чтобы включить целевые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> с помощью анимации в XAML, использовании <a href="../../xaml-services/x-name-directive.md">директива x: Name</a> присвоить имя. В коде используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.registername">RegisterName</a> метод для регистрации имени элемента, для которого вы создали <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">NameScope</a>.</p>
+<p>В следующем примере назначается имя, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#3">&lt;SolidColorBrush x:Name=&quot;MySolidColorBrush&quot; Color=&quot;Blue&quot; /&gt;
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#103">SolidColorBrush mySolidColorBrush = new SolidColorBrush(Colors.Blue);
+this.RegisterName(&quot;MySolidColorBrush&quot;, mySolidColorBrush);
+</code></pre>
+<p>Затем этот объект можно выбрать в качестве целевого с помощью анимации.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#7">&lt;ColorAnimation 
+  Storyboard.TargetName=&quot;MySolidColorBrush&quot;
+  Storyboard.TargetProperty=&quot;Color&quot;
+  From=&quot;Blue&quot; To=&quot;Red&quot; Duration=&quot;0:0:1&quot; /&gt;  
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#107">Storyboard.SetTargetName(myColorAnimation, &quot;MySolidColorBrush&quot;);
+Storyboard.SetTargetProperty(myColorAnimation,
+    new PropertyPath(SolidColorBrush.ColorProperty));
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объекты используются области видимости имен для разрешения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> свойство. Дополнительные сведения об областях видимости имен WPF см. в разделе <a href="../advanced/wpf-xaml-namescopes.html">Области видимости имен XAML в WPF</a>. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> свойства указан, элемент, на котором она была определена, или, в случае стили, оформленного элемент целевым объектом для анимации.</p>
+<p>Иногда имя не может быть назначен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта. Например если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объявлен как ресурс или используется для задания значения свойства в стиле, ему нельзя присвоить имя. Так как у объекта нет имени, к нему нельзя обратиться напрямую, но можно обратиться косвенно. В следующих разделах описано, как обращаться к целевым объектам косвенно.</p>
+<p><a name="pathsyntaxforchangeable"></a></p>
+<h2 id="indirect-targeting">Косвенное обращение</h2>
+<p>Иногда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> не может применяться непосредственно с помощью анимации, например, при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объявлен как ресурс или используется для задания значения свойства в стиле. В таких случаях, несмотря на то, что вы не можете выбрать напрямую, можно анимировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта. Вместо того чтобы задавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> свойство с именем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>, присвойте ему имя элемента, к которому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> «принадлежит». Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> прямоугольника элемент принадлежит этому прямоугольника. Чтобы анимировать кисть, необходимо установить анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> в цепи свойства, которое начинается с свойство элемента платформы или элемента содержимого платформы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> использовалась для установки и заканчивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> анимируемое свойство.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#33">&lt;ColorAnimation 
+  Storyboard.TargetName=&quot;Rectangle01&quot;
+  Storyboard.TargetProperty=&quot;Fill.Color&quot;
+  From=&quot;Blue&quot; To=&quot;AliceBlue&quot; Duration=&quot;0:0:1&quot; /&gt;
+</code></pre><pre><code class="lang-csharp" name="storyboards_ovw_snip#134">DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {Rectangle.FillProperty, SolidColorBrush.ColorProperty};
+string thePath = &quot;(0).(1)&quot;;
+PropertyPath myPropertyPath = new PropertyPath(thePath, propertyChain);
+Storyboard.SetTargetProperty(myColorAnimation, myPropertyPath);
+</code></pre>
+<p>Обратите внимание, что, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> является фиксированной, будет создан клон и этот клон будет анимироваться. Если это происходит, исходный объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.hasanimatedproperties">HasAnimatedProperties</a> свойство продолжает возвращать <code>false</code>, так как исходный объект фактически не анимируется. Дополнительные сведения о клонировании см. в разделе <a href="../advanced/freezable-objects-overview.html">Freezable Общие сведения об объектах</a>.</p>
+<p>Обратите внимание, что при косвенном обращении к целевым объектам можно обращаться к объектам, которых не существует. Например, можно предположить, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> для конкретной кнопки было установлено с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> и попробуете анимировать его свойство Color, когда на самом деле <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> использовалась для установки фона кнопки. В этих случаях исключение не вызывается; анимация не имеет видимого эффекта, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> не реагирует на изменения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> свойство.</p>
+<p>В следующих разделах более подробно описан синтаксис косвенного обращения к целевым объектам.</p>
+<p><a name="xamlsyntaxchangeableproperty"></a></p>
+<h3 id="indirectly-targeting-a-property-of-a-freezable-in-xaml">Косвенное обращение к свойству объекта Freezable в XAML</h3>
+<p>Чтобы обратиться к свойству объекта freezable в XAML, используйте следующий синтаксис.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>ElementPropertyName</em> <code>.</code> <em>FreezablePropertyName</em></td>
+</tr>
+</tbody>
+</table>
+<p>Where</p>
+<ul>
+<li><p><em>ElementPropertyName</em> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> которого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> используется для задания, и</p>
+</li>
+<li><p><em>FreezablePropertyName</em> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> для анимации.</p>
+</li>
+</ul>
+<p>Ниже показано, как анимировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> используемый для задания</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> элемента прямоугольника.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#32">&lt;Rectangle
+  Name=&quot;Rectangle01&quot;
+  Height=&quot;100&quot;
+  Width=&quot;100&quot;
+  Fill=&quot;{StaticResource MySolidColorBrushResource}&quot;&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.MouseEnter&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;ColorAnimation 
+            Storyboard.TargetName=&quot;Rectangle01&quot;
+            Storyboard.TargetProperty=&quot;Fill.Color&quot;
+            From=&quot;Blue&quot; To=&quot;AliceBlue&quot; Duration=&quot;0:0:1&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre>
+<p>Иногда требуется обратиться к объекту Freezable, который содержится в коллекции или массиве.</p>
+<p>Чтобы обратиться к объекту Freezable, который содержится в коллекции, используйте следующий синтаксис пути.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>ElementPropertyName</em> <code>.Children[</code> <em>CollectionIndex</em> <code>].</code> <em>FreezablePropertyName</em></td>
+</tr>
+</tbody>
+</table>
+<p>Где <em>CollectionIndex</em> — индекс объекта в массиве или коллекции.</p>
+<p>Например, предположим, что у прямоугольника есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a> ресурс, применяемый к его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство и вы хотите анимировать одно из преобразований, он содержит.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#34">&lt;TransformGroup x:Key=&quot;MyTransformGroupResource&quot;
+  x:Shared=&quot;False&quot;&gt;
+  &lt;ScaleTransform /&gt;
+  &lt;RotateTransform /&gt;
+&lt;/TransformGroup&gt;
+</code></pre>
+<p>Ниже показано, как анимировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> показано в предыдущем примере.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip_XAML#35">&lt;Rectangle
+  Name=&quot;Rectangle02&quot;
+  Height=&quot;100&quot;
+  Width=&quot;100&quot;
+  Fill=&quot;Blue&quot;
+  RenderTransform=&quot;{StaticResource MyTransformGroupResource}&quot;&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.MouseEnter&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimation 
+            Storyboard.TargetName=&quot;Rectangle02&quot;
+            Storyboard.TargetProperty=&quot;RenderTransform.Children[1].Angle&quot;
+            From=&quot;0&quot; To=&quot;360&quot; Duration=&quot;0:0:1&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;  
+</code></pre>
+<p><a name="targetingpropertyofchangeableincode"></a></p>
+<h3 id="indirectly-targeting-a-property-of-a-freezable-in-code">Косвенное обращение к свойству объекта Freezable в коде</h3>
+<p>В коде создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> объекта. При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>, указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.pathparameters">PathParameters</a>.</p>
+<p>Чтобы создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.pathparameters">PathParameters</a>, необходимо создать массив типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> , содержащий список поля идентификаторов свойств зависимостей. — Первое поле идентификатора свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> , <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> используется для задания. Следующее поле идентификатора представляет свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> к целевому объекту. Представьте себе, как цепочку свойств, который подключается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекта.</p>
+<p>Ниже приведен пример цепочки свойств зависимостей, предназначенное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> элемента прямоугольника.</p>
+<pre><code class="lang-csharp" name="storyboards_ovw_snip#135">DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {Rectangle.FillProperty, SolidColorBrush.ColorProperty};
+</code></pre>
+<p>Необходимо также указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a>. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> , сообщающий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a> как интерпретировать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.pathparameters">PathParameters</a>. Для этого используется следующий синтаксис.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(</code> <em>OwnerPropertyArrayIndex</em> <code>).(</code> <em>FreezablePropertyArrayIndex</em> <code>)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Where</p>
+<ul>
+<li><p><em>OwnerPropertyArrayIndex</em> — это индекс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> массив, содержащий идентификатор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> свойство объекта, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> используется для задания, и</p>
+</li>
+<li><p><em>FreezablePropertyArrayIndex</em> — это индекс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> массив, содержащий идентификатор свойства к целевому объекту.</p>
+</li>
+</ul>
+<p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a> , будет сопровождать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.pathparameters">PathParameters</a> определенный в предыдущем примере.</p>
+<pre><code class="lang-csharp" name="storyboards_ovw_snip#PropertyChainAndPath">DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {Rectangle.FillProperty, SolidColorBrush.ColorProperty};
+string thePath = &quot;(0).(1)&quot;;
+</code></pre>
+<p>В следующем примере объединяются кода в предыдущих примерах для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> элемента прямоугольника.</p>
+<pre><code class="lang-csharp" name="storyboards_ovw_snip#137">
+// Create a name scope for the page.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle rectangle01 = new Rectangle();
+rectangle01.Name = &quot;Rectangle01&quot;;
+this.RegisterName(rectangle01.Name, rectangle01);
+rectangle01.Width = 100;
+rectangle01.Height = 100;
+rectangle01.Fill =
+    (SolidColorBrush)this.Resources[&quot;MySolidColorBrushResource&quot;];
+
+ColorAnimation myColorAnimation = new ColorAnimation();
+myColorAnimation.From = Colors.Blue;
+myColorAnimation.To = Colors.AliceBlue;
+myColorAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+Storyboard.SetTargetName(myColorAnimation, rectangle01.Name);
+
+DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {Rectangle.FillProperty, SolidColorBrush.ColorProperty};
+string thePath = &quot;(0).(1)&quot;;
+PropertyPath myPropertyPath = new PropertyPath(thePath, propertyChain);
+Storyboard.SetTargetProperty(myColorAnimation, myPropertyPath);
+
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myColorAnimation);
+BeginStoryboard myBeginStoryboard = new BeginStoryboard();
+myBeginStoryboard.Storyboard = myStoryboard;
+EventTrigger myMouseEnterTrigger = new EventTrigger();
+myMouseEnterTrigger.RoutedEvent = Rectangle.MouseEnterEvent;
+myMouseEnterTrigger.Actions.Add(myBeginStoryboard);
+rectangle01.Triggers.Add(myMouseEnterTrigger);
+</code></pre>
+<p>Иногда требуется обратиться к объекту Freezable, который содержится в коллекции или массиве. Например, предположим, что у прямоугольника есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a> ресурс, применяемый к его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство и вы хотите анимировать одно из преобразований, он содержит.</p>
+<pre><code class="lang-xaml" name="storyboards_ovw_snip#142">&lt;TransformGroup x:Key=&quot;MyTransformGroupResource&quot;
+  x:Shared=&quot;False&quot;&gt;
+  &lt;ScaleTransform /&gt;
+  &lt;RotateTransform /&gt;
+&lt;/TransformGroup&gt;  
+</code></pre>
+<p>Целевой объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> содержится в коллекции, используйте следующий синтаксис пути.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(</code> <em>OwnerPropertyArrayIndex</em> <code>).(</code> <em>CollectionChildrenPropertyArrayIndex</em> <code>)</code> <code>[</code> <em>CollectionIndex</em> <code>].(</code> <em>FreezablePropertyArrayIndex</em> <code>)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Где <em>CollectionIndex</em> — индекс объекта в массиве или коллекции.</p>
+<p>Целевой объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a>, во втором преобразовании в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>, следует ввести следующую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.path">Path</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.pathparameters">PathParameters</a>.</p>
+<pre><code class="lang-csharp" name="storyboards_ovw_snip#139">DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {
+            Rectangle.RenderTransformProperty,
+            TransformGroup.ChildrenProperty,
+            RotateTransform.AngleProperty
+        };
+string thePath = &quot;(0).(1)[1].(2)&quot;;
+PropertyPath myPropertyPath = new PropertyPath(thePath, propertyChain);
+Storyboard.SetTargetProperty(myDoubleAnimation, myPropertyPath);
+</code></pre>
+<p>В примере показан полный код для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>.</p>
+<pre><code class="lang-csharp" name="storyboards_ovw_snip#138">Rectangle rectangle02 = new Rectangle();
+rectangle02.Name = &quot;Rectangle02&quot;;
+this.RegisterName(rectangle02.Name, rectangle02);
+rectangle02.Width = 100;
+rectangle02.Height = 100;
+rectangle02.Fill = Brushes.Blue;
+rectangle02.RenderTransform =
+    (TransformGroup)this.Resources[&quot;MyTransformGroupResource&quot;];
+
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 0;
+myDoubleAnimation.To = 360;
+myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
+Storyboard.SetTargetName(myDoubleAnimation, rectangle02.Name);
+
+DependencyProperty[] propertyChain =
+    new DependencyProperty[]
+        {
+            Rectangle.RenderTransformProperty,
+            TransformGroup.ChildrenProperty,
+            RotateTransform.AngleProperty
+        };
+string thePath = &quot;(0).(1)[1].(2)&quot;;
+PropertyPath myPropertyPath = new PropertyPath(thePath, propertyChain);
+Storyboard.SetTargetProperty(myDoubleAnimation, myPropertyPath);
+
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+BeginStoryboard myBeginStoryboard = new BeginStoryboard();
+myBeginStoryboard.Storyboard = myStoryboard;
+EventTrigger myMouseEnterTrigger = new EventTrigger();
+myMouseEnterTrigger.RoutedEvent = Rectangle.MouseEnterEvent;
+myMouseEnterTrigger.Actions.Add(myBeginStoryboard);
+rectangle02.Triggers.Add(myMouseEnterTrigger);
+</code></pre><h3 id="indirectly-targeting-with-a-freezable-as-the-starting-point">Косвенное обращение с использованием объекта Freezable в качестве начальной точки</h3>
+<p>Предыдущих разделах мы описали косвенное обращение к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> , начав с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> и создав цепочку свойств до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> подчиненных свойств. Можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> качестве отправной точки и косвенно обращаться к одному из его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> подсвойства. Одно дополнительное ограничение применяется при использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> отправной точки для косвенного: начальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> и каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> не должны фиксироваться между ним и косвенно целевых подчиненных свойств.</p>
+<p><a name="controllable_storyboards"></a></p>
+<h2 id="interactively-controlling-a-storyboard-in-xaml">Интерактивное управление раскадровкой в XAML</h2>
+<p>Чтобы запустить раскадровку Язык XAML, использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> запуска действия. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> распределяет анимации объектов и свойств и запускает раскадровку. (Дополнительные сведения об этом процессе см. в разделе <a href="animation-and-timing-system-overview.html">анимации и общие сведения о характере системы</a>.) Если вы предоставите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> имя, указав его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard.name">Name</a> свойство, можно упростить управляемой раскадровки. Вы можете затем интерактивно управлять раскадровкой после ее запуска. Ниже приведен список действий для управляемой раскадровки, которые используются совместно с триггерами событий для управления раскадровкой.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pausestoryboard">PauseStoryboard</a>: Приостанавливает раскадровку.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.resumestoryboard">ResumeStoryboard</a>: Возобновляет приостановленную раскадровку.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.setstoryboardspeedratio">SetStoryboardSpeedRatio</a>: Изменяет скорость раскадровки.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.skipstoryboardtofill">SkipStoryboardToFill</a>: Перемещает раскадровку в конец ее периода заполнения, если он имеется.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.stopstoryboard">StopStoryboard</a>: Останавливает раскадровку.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.removestoryboard">RemoveStoryboard</a>: Удаляет раскадровку.</p>
+</li>
+</ul>
+<p>В следующем примере показано использование действий для интерактивного управления раскадровкой.</p>
+<pre><code class="lang-xaml" name="animation_ovws_snip#ControllableStoryboardExampleWholePage">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;Microsoft.SDK.Animation.ControllableStoryboardExample&quot;
+  WindowTitle=&quot;Fading Rectangle Example&quot;&gt;
+  &lt;StackPanel Margin=&quot;10&quot;&gt;
+
+    &lt;Rectangle
+      Name=&quot;MyRectangle&quot;
+      Width=&quot;100&quot; 
+      Height=&quot;100&quot;
+      Fill=&quot;Blue&quot;&gt;
+    &lt;/Rectangle&gt;
+
+    &lt;Button Name=&quot;BeginButton&quot;&gt;Begin&lt;/Button&gt;
+    &lt;Button Name=&quot;PauseButton&quot;&gt;Pause&lt;/Button&gt;
+    &lt;Button Name=&quot;ResumeButton&quot;&gt;Resume&lt;/Button&gt;
+    &lt;Button Name=&quot;SkipToFillButton&quot;&gt;Skip To Fill&lt;/Button&gt;
+    &lt;Button Name=&quot;StopButton&quot;&gt;Stop&lt;/Button&gt;
+
+    &lt;StackPanel.Triggers&gt;
+      &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot; SourceName=&quot;BeginButton&quot;&gt;
+        &lt;BeginStoryboard Name=&quot;MyBeginStoryboard&quot;&gt;
+          &lt;Storyboard&gt;
+            &lt;DoubleAnimation
+              Storyboard.TargetName=&quot;MyRectangle&quot; 
+              Storyboard.TargetProperty=&quot;(Rectangle.Opacity)&quot;
+              From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; /&gt;
+          &lt;/Storyboard&gt;
+        &lt;/BeginStoryboard&gt;
+      &lt;/EventTrigger&gt;
+      &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot; SourceName=&quot;PauseButton&quot;&gt;
+        &lt;PauseStoryboard BeginStoryboardName=&quot;MyBeginStoryboard&quot; /&gt;
+      &lt;/EventTrigger&gt;
+      &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot; SourceName=&quot;ResumeButton&quot;&gt;
+        &lt;ResumeStoryboard BeginStoryboardName=&quot;MyBeginStoryboard&quot; /&gt;
+      &lt;/EventTrigger&gt;
+      &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot; SourceName=&quot;SkipToFillButton&quot;&gt;
+        &lt;SkipStoryboardToFill BeginStoryboardName=&quot;MyBeginStoryboard&quot; /&gt;
+      &lt;/EventTrigger&gt;
+      &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot; SourceName=&quot;StopButton&quot;&gt;
+        &lt;StopStoryboard BeginStoryboardName=&quot;MyBeginStoryboard&quot; /&gt;
+      &lt;/EventTrigger&gt;
+    &lt;/StackPanel.Triggers&gt;
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p><a name="controllable_storyboards_procedural"></a></p>
+<h2 id="interactively-controlling-a-storyboard-by-using-code">Интерактивное управление раскадровкой с помощью кода</h2>
+<p>В предыдущих примерах было показано, как анимировать свойства с помощью действий триггера. В коде, можно также управлять раскадровкой с помощью интерактивных методов класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> класса. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> чтобы сделать интерактивными в коде, необходимо использовать соответствующую перегрузку раскадровки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод и указать <code>true</code> чтобы сделать раскадровку управляемой. См. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin#System_Windows_Media_Animation_Storyboard_Begin_System_Windows_FrameworkElement_System_Boolean_">Begin(FrameworkElement, Boolean)</a> дополнительную информацию.</p>
+<p>В следующем списке приведены методы, которые можно использовать для управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> после ее запуска:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.pause">Pause</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.resume">Resume</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.seek">Seek</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.skiptofill">SkipToFill</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.stop">Stop</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.remove">Remove</a></p>
+</li>
+</ul>
+<p>С помощью этих методов удобен тем, что не нужно создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.triggeraction">TriggerAction</a> объектов; нужна ссылка на управляемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> требуется работать.</p>
+<p><strong>Примечание.</strong> Все интерактивные действия, выполняемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a>и поэтому на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> произойдет при следующем такте, который произойдет незадолго перед следующей операцией рендеринга. Например, если вы используете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.seek">Seek</a> метод для перехода к следующей точке анимации, значение свойства не изменится сразу же, вместо этого изменяется значение при следующем такте.</p>
+<p>Приведенный ниже показано, как применять анимации с помощью интерактивных методов класса и управлять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> класса.</p>
+<pre><code class="lang-csharp" name="animation_ovws_procedural_snip#ControllableStoryboardExampleWholePage">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+
+namespace SDKSample
+{
+
+    public class ControllableStoryboardExample : Page
+    {
+        private Storyboard myStoryboard;
+
+        public ControllableStoryboardExample()
+        {
+
+            // Create a name scope for the page.
+
+            NameScope.SetNameScope(this, new NameScope());
+
+            this.WindowTitle = &quot;Controllable Storyboard Example&quot;;
+            StackPanel myStackPanel = new StackPanel();
+            myStackPanel.Margin = new Thickness(10);
+
+            // Create a rectangle.
+            Rectangle myRectangle = new Rectangle();
+            myRectangle.Name = &quot;myRectangle&quot;;
+
+            // Assign the rectangle a name by
+            // registering it with the page, so that
+            // it can be targeted by storyboard
+            // animations.
+            this.RegisterName(myRectangle.Name, myRectangle);
+            myRectangle.Width = 100;
+            myRectangle.Height = 100;
+            myRectangle.Fill = Brushes.Blue;
+            myStackPanel.Children.Add(myRectangle);
+
+            //
+            // Create an animation and a storyboard to animate the
+            // rectangle.
+            //
+            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            myDoubleAnimation.From = 1.0;
+            myDoubleAnimation.To = 0.0;
+            myDoubleAnimation.Duration = new Duration(TimeSpan.FromMilliseconds(5000));
+            myDoubleAnimation.AutoReverse = true;
+
+            // Create the storyboard.
+            myStoryboard = new Storyboard();
+            myStoryboard.Children.Add(myDoubleAnimation);
+            Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
+            Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
+
+            //
+            // Create some buttons to control the storyboard
+            // and a panel to contain them.
+            //
+            StackPanel buttonPanel = new StackPanel();
+            buttonPanel.Orientation = Orientation.Horizontal;
+            Button beginButton = new Button();
+            beginButton.Content = &quot;Begin&quot;;
+            beginButton.Click += new RoutedEventHandler(beginButton_Clicked);
+            buttonPanel.Children.Add(beginButton);
+            Button pauseButton = new Button();
+            pauseButton.Content = &quot;Pause&quot;;
+            pauseButton.Click += new RoutedEventHandler(pauseButton_Clicked);
+            buttonPanel.Children.Add(pauseButton);
+            Button resumeButton = new Button();
+            resumeButton.Content = &quot;Resume&quot;;
+            resumeButton.Click += new RoutedEventHandler(resumeButton_Clicked);
+            buttonPanel.Children.Add(resumeButton);
+            Button skipToFillButton = new Button();
+            skipToFillButton.Content = &quot;Skip to Fill&quot;;
+            skipToFillButton.Click += new RoutedEventHandler(skipToFillButton_Clicked);
+            buttonPanel.Children.Add(skipToFillButton);
+            Button setSpeedRatioButton = new Button();
+            setSpeedRatioButton.Content = &quot;Triple Speed&quot;;
+            setSpeedRatioButton.Click += new RoutedEventHandler(setSpeedRatioButton_Clicked);
+            buttonPanel.Children.Add(setSpeedRatioButton);
+            Button stopButton = new Button();
+            stopButton.Content = &quot;Stop&quot;;
+            stopButton.Click += new RoutedEventHandler(stopButton_Clicked);
+            buttonPanel.Children.Add(stopButton);
+            myStackPanel.Children.Add(buttonPanel);
+            this.Content = myStackPanel;
+        }
+
+        // Begins the storyboard.
+        private void beginButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            // Specifying &quot;true&quot; as the second Begin parameter
+            // makes this storyboard controllable.
+            myStoryboard.Begin(this, true);
+        }
+
+        // Pauses the storyboard.
+        private void pauseButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myStoryboard.Pause(this);
+        }
+
+        // Resumes the storyboard.
+        private void resumeButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myStoryboard.Resume(this);
+        }
+
+        // Advances the storyboard to its fill period.
+        private void skipToFillButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myStoryboard.SkipToFill(this);
+        }
+
+        // Updates the storyboard's speed.
+        private void setSpeedRatioButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            // Makes the storyboard progress three times as fast as normal.
+            myStoryboard.SetSpeedRatio(this, 3);
+        }
+
+        // Stops the storyboard.
+        private void stopButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myStoryboard.Stop(this);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="usingstoryboardsinstyles"></a></p>
+<h2 id="animate-in-a-style">Анимация с использованием стилей</h2>
+<p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов для определения анимаций в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Анимации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> похоже на использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в другом месте, со следующими тремя исключениями:</p>
+<ul>
+<li><p>Вы не укажете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a>; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> всегда указывает элемент, к которому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> применяется. Целевой объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекты, следует использовать косвенное обращение. Дополнительные сведения о косвенном обращении см. в разделе <a href="#pathsyntaxforchangeable">косвенное обращение</a> раздел.</p>
+</li>
+<li><p>Нельзя указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger.sourcename">SourceName</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a>.</p>
+</li>
+<li><p>Нельзя использовать динамический ресурс ссылки или выражения привязки данных для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> или значений свойств анимации. Это потому, что весь код внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> должен быть поточно ориентированными, и система управления должна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов, чтобы сделать их потокобезопасными. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> нельзя зафиксировать, если его или ее дочерние временные шкалы содержат динамические ресурсы ссылки или выражения привязки данных. Дополнительные сведения о фиксации и других <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> функции, см. в разделе <a href="../advanced/freezable-objects-overview.html">Freezable Общие сведения об объектах</a>.</p>
+</li>
+<li><p>В XAML, нельзя объявлять обработчики событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> или событий анимации.</p>
+</li>
+</ul>
+<p>Пример, показывающий, как определить раскадровку в стиле, см. в разделе <a href="how-to-animate-in-a-style.html">анимация с использованием стилей</a> пример.</p>
+<p><a name="defineAStoryboardInAControlTemplateSection"></a></p>
+<h2 id="animate-in-a-controltemplate">Анимация в ControlTemplate</h2>
+<p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов для определения анимаций в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Анимации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> похоже на использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в другом месте, со следующими двумя исключениями:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> Могут ссылаться только на дочерние объекты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> не указан, элемент, в который целевым объектом для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> применяется.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger.sourcename">SourceName</a> Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> могут ссылаться только на дочерние объекты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+</li>
+<li><p>Нельзя использовать динамический ресурс ссылки или выражения привязки данных для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> или значений свойств анимации. Это потому, что весь код внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> должен быть поточно ориентированными, и система управления должна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объектов, чтобы сделать их потокобезопасными. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> нельзя зафиксировать, если его или ее дочерние временные шкалы содержат динамические ресурсы ссылки или выражения привязки данных. Дополнительные сведения о фиксации и других <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> функции, см. в разделе <a href="../advanced/freezable-objects-overview.html">Freezable Общие сведения об объектах</a>.</p>
+</li>
+<li><p>В XAML, нельзя объявлять обработчики событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> или событий анимации.</p>
+</li>
+</ul>
+<p>Пример, показывающий, как определить раскадровку в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, см. в разделе <a href="how-to-animate-in-a-controltemplate.html">анимация в ControlTemplate</a> пример.</p>
+<p><a name="animateWhenAPropertyValueChanges"></a></p>
+<h2 id="animate-when-a-property-value-changes">Анимация при изменении значения свойства</h2>
+<p>В стилях и шаблонах элементов можно использовать объекты триггеров для запуска раскадровки при изменении свойства. Примеры, см. в разделе <a href="how-to-trigger-an-animation-when-a-property-value-changes.html">триггер анимации при изменении значения свойства</a> и <a href="how-to-animate-in-a-controltemplate.html">анимация в ControlTemplate</a>.</p>
+<p>Анимации с помощью свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> объекты ведут себя в сложнее, чем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> анимации или анимации к использованию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> методы.  Они «переходной» с анимацией определены другими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> объектов, но compose с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> и анимациями, запускаемыми.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a></li>
+<li><a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

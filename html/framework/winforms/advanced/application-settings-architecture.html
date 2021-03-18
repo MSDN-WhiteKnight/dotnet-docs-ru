@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1087;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1086;&#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1087;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1086;&#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="application-settings-architecture">Архитектура параметров приложения</h1>
+
+<p>В этом разделе описываются принципы работы архитектуры параметров приложения и рассматриваются дополнительные возможности архитектуры, такие как сгруппированные параметры и ключи параметров.</p>
+<p>Архитектура параметров приложений позволяет определять строго типизированные параметры с областью приложения или пользователя и сохраняет параметры в сеансах приложения. Архитектура предоставляет механизм сохраняемости по умолчанию для сохранения параметров и их загрузки из локальной файловой системы. Она также определяет интерфейсы для предоставления пользовательских механизмов сохраняемости.</p>
+<p>Эти интерфейсы позволяют пользовательским компонентам сохранять свои параметры, когда они размещаются в приложении. Благодаря ключам параметров компоненты могут раздельно хранить параметры для нескольких экземпляров компонента.</p>
+<h2 id="defining-settings">Определение параметров</h2>
+<p>Архитектура параметров приложения используется внутри ASP.NET и Windows Forms, и содержит ряд базовых классов, которые являются общими для обеих сред. Наиболее важным является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsbase">SettingsBase</a>, который предоставляет доступ к параметрам через коллекцию и предоставляет низкоуровневые методы для загрузки и сохранения параметров. Каждая среда реализует свой собственный класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsbase">SettingsBase</a> для обеспечения дополнительных функциональных возможностей параметров для этой среды. В приложении Windows Forms все параметры приложения должны быть определены в классе, производном от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> класс, который добавляет следующие функции базовому классу:</p>
+<ul>
+<li><p>Операции загрузки и сохранения более высокого уровня</p>
+</li>
+<li><p>Поддержка параметров области пользователя</p>
+</li>
+<li><p>Возврат для параметров пользователя предопределенных значений по умолчанию</p>
+</li>
+<li><p>Обновление параметров из предыдущей версии приложения</p>
+</li>
+<li><p>Проверка параметров, либо до их изменения, либо до их сохранения</p>
+</li>
+</ul>
+<p>Параметры можно описать с помощью нескольких атрибутов, определенных в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration">System.Configuration</a> пространству имен; они описаны в <a href="application-settings-attributes.html">атрибуты параметров приложения</a>. При определении параметра его необходимо применить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationscopedsettingattribute">ApplicationScopedSettingAttribute</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.userscopedsettingattribute">UserScopedSettingAttribute</a>, которая описывает, применяется ли параметр ко всему приложению, или просто для текущего пользователя.</p>
+<p>В следующем примере кода определяется пользовательский класс параметров с одним параметром <code>BackgroundColor</code>.</p>
+<pre><code class="lang-csharp" name="ApplicationSettings.Create#1">using System;
+using System.Configuration;
+using System.Drawing;
+
+public class MyUserSettings : ApplicationSettingsBase
+{
+    [UserScopedSetting()]
+    [DefaultSettingValue(&quot;white&quot;)]
+    public Color BackgroundColor
+    {
+        get
+        {
+            return ((Color)this[&quot;BackgroundColor&quot;]);
+        }
+        set
+        {
+            this[&quot;BackgroundColor&quot;] = (Color)value;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="settings-persistence">Сохраняемость параметров</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> Класс не сохраняемость или загрузку параметров; это выполняет поставщик параметров, а класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>. Если класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> не указывает поставщика параметров посредством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsproviderattribute">SettingsProviderAttribute</a>, а затем поставщика по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a>, используется.</p>
+<p>Система конфигурации, которая была первоначально выпущена с .NET Framework, поддерживает предоставление статических данных конфигурации приложения через файл machine.config локального компьютера или в файле <code>app.</code>exe.config, развертываемого вместе с приложением. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a> Класс расширяет эту встроенную поддержку одним из следующих способов:</p>
+<ul>
+<li><p>Параметры области приложения могут храниться в файле machine.config или <code>app.</code>exe.config. Файл machine.config всегда предназначен только для чтения, тогда как <code>app</code>.exe.config для большинства приложений рекомендуется использовать только для чтения с точки зрения безопасности.</p>
+</li>
+<li><p>Параметры области пользователя могут храниться в файлах <code>app</code>.exe.config. В этом случае они обрабатываются как статические значения по умолчанию.</p>
+</li>
+<li><p>Параметры области пользователя не по умолчанию хранятся в новом файле — <em>пользователь</em>.config, где <em>пользователь</em> — имя пользователя, который в данный момент выполняет приложение. Можно указать значение по умолчанию для параметра области пользователя с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.defaultsettingvalueattribute">DefaultSettingValueAttribute</a>. Так как во время выполнения приложения параметры области пользователя часто изменяются, файл <code>user</code>.config всегда доступен для чтения и записи.</p>
+</li>
+</ul>
+<p>Во всех трех файлах конфигурации параметры хранятся в формате XML. Элементом XML верхнего уровня для параметров области приложения является <code>&lt;appSettings&gt;</code>, а <code>&lt;userSettings&gt;</code> используется для параметров области пользователя. Файл <code>app</code>.exe.config, содержащий как параметры области приложения, так и значения по умолчанию для параметров области пользователя, выглядит следующим образом:</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;  
+&lt;configuration&gt;  
+    &lt;configSections&gt;  
+        &lt;sectionGroup name=&quot;applicationSettings&quot; type=&quot;System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; &gt;  
+            &lt;section name=&quot;WindowsApplication1.Properties.Settings&quot; type=&quot;System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; /&gt;  
+        &lt;/sectionGroup&gt;  
+        &lt;sectionGroup name=&quot;userSettings&quot; type=&quot;System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; &gt;  
+            &lt;section name=&quot;WindowsApplication1.Properties.Settings&quot; type=&quot;System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; allowExeDefinition=&quot;MachineToLocalUser&quot; /&gt;  
+        &lt;/sectionGroup&gt;  
+    &lt;/configSections&gt;  
+    &lt;applicationSettings&gt;  
+        &lt;WindowsApplication1.Properties.Settings&gt;  
+            &lt;setting name=&quot;Cursor&quot; serializeAs=&quot;String&quot;&gt;  
+                &lt;value&gt;Default&lt;/value&gt;  
+            &lt;/setting&gt;  
+            &lt;setting name=&quot;DoubleBuffering&quot; serializeAs=&quot;String&quot;&gt;  
+                &lt;value&gt;False&lt;/value&gt;  
+            &lt;/setting&gt;  
+        &lt;/WindowsApplication1.Properties.Settings&gt;  
+    &lt;/applicationSettings&gt;  
+    &lt;userSettings&gt;  
+        &lt;WindowsApplication1.Properties.Settings&gt;  
+            &lt;setting name=&quot;FormTitle&quot; serializeAs=&quot;String&quot;&gt;  
+                &lt;value&gt;Form1&lt;/value&gt;  
+            &lt;/setting&gt;  
+            &lt;setting name=&quot;FormSize&quot; serializeAs=&quot;String&quot;&gt;  
+                &lt;value&gt;595, 536&lt;/value&gt;  
+            &lt;/setting&gt;  
+        &lt;/WindowsApplication1.Properties.Settings&gt;  
+    &lt;/userSettings&gt;  
+&lt;/configuration&gt;  
+</code></pre>
+<p>Определение элементов в разделе параметров приложения файла конфигурации см. в разделе <a href="../../configure-apps/file-schema/application-settings-schema.md">Схема параметров приложения</a>.</p>
+<h3 id="settings-bindings">Привязки параметров</h3>
+<p>Параметры приложения используют архитектуру привязки данных Windows Forms для обеспечения двустороннего обмена обновлениями параметров между объектом параметров и компонентами. Если для создания параметров приложения и их назначения свойствам компонентов используется Visual Studio, эти привязки создаются автоматически.</p>
+<p>Параметр приложения можно привязать только к компонента, поддерживающего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.ibindablecomponent">IBindableComponent</a> интерфейс. Кроме того, компонент должен реализовывать событие изменения для конкретного связанного свойства или уведомлять параметры приложений об изменении свойства с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> интерфейс. Если компонент не реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.ibindablecomponent">IBindableComponent</a> и привязка выполняется с помощью Visual Studio, то свойства привязки будут установлены в первый раз, но не будут обновляться. Если компонент реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.ibindablecomponent">IBindableComponent</a> , но уведомления об изменении не поддержки свойств, привязка не будет обновлять файл параметров, при изменении свойства.</p>
+<p>Некоторые компоненты Windows Forms, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>, не поддерживают привязку параметров.</p>
+<h3 id="settings-serialization">Сериализация параметров</h3>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a> необходимо сохранить параметры на диск, он выполняет следующие действия:</p>
+<ol>
+<li><p>Использует отражение для проверки всех свойств, определенных для вашего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> производного класса, поиск, примененные с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationscopedsettingattribute">ApplicationScopedSettingAttribute</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.userscopedsettingattribute">UserScopedSettingAttribute</a>.</p>
+</li>
+<li><p>Сериализует свойство на диск. Сначала пытается вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter.converttostring">ConvertToString</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter.convertfromstring">ConvertFromString</a> на тип, связанного с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter">TypeConverter</a>. Если это не удается, использует XML-сериализацию.</p>
+</li>
+<li><p>Распределяет параметры по файлам на основе атрибута параметра.</p>
+</li>
+</ol>
+<p>При реализации собственного класса параметров можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsserializeasattribute">SettingsSerializeAsAttribute</a> чтобы отметить параметр для настраиваемой или двоичной сериализации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsserializeas">SettingsSerializeAs</a> перечисления. Дополнительные сведения о создании собственных классов параметров в коде, см. в разделе <a href="how-to-create-application-settings.html">как: Создание параметров приложения</a>.</p>
+<h3 id="settings-file-locations">Расположение файлов параметров</h3>
+<p>Расположение файлов <code>app</code>.exe.config и <em>user</em>.config зависит от способа установки приложения. Для приложения на базе Windows Forms, скопировать на локальном компьютере <code>app</code>. exe.config будет находиться в той же папке, что базовый каталог основного исполняемого файла приложения, и <em>пользователя</em>.config будет находиться в расположение которого задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.localuserappdatapath">Application.LocalUserAppDataPath</a> свойство. Для приложения, установленного с помощью ClickOnce, оба этих файла будут находиться в каталоге данных ClickOnce в каталоге %InstallRoot%\Documents and Settings\<em>имя_пользователя</em>\Local Settings.</p>
+<p>Место хранения этих файлов будет другим, если пользователь включил перемещаемые профили, что позволит ему определять разные настройки Windows и приложения в случае использования им других компьютеров в домене. В этом случае для приложений ClickOnce и не ClickOnce их файлы <code>app</code>.exe.config и <em>user</em>.config будут находиться в каталоге %InstallRoot%\Documents and Settings\<em>имя_пользователя</em>\Application Data.</p>
+<p>Дополнительные сведения о том, как параметры приложения работают с новой технологией развертывания, см. в разделе <a href="/visualstudio/deployment/clickonce-and-application-settings">ClickOnce и параметры приложения</a>. Дополнительные сведения о каталоге данных ClickOnce см. в разделе <a href="/visualstudio/deployment/accessing-local-and-remote-data-in-clickonce-applications">Доступ к локальным и удаленным данным в приложениях ClickOnce</a>.</p>
+<h2 id="application-settings-and-security">Параметры приложения и безопасность</h2>
+<p>Параметры приложения предназначены для работы в режиме частичного доверия, то есть в среде с ограниченным доступом, которая используется по умолчанию для приложений Windows Forms, размещенных в Интернете или интрасети. Для использования параметров приложения с поставщиком параметров по умолчанию специальные разрешения, выходящие за рамки частичного доверия, не нужны.</p>
+<p>При использовании параметров приложения в приложенииClickOnce файл <code>user</code>.config хранится в каталоге данных ClickOnce. Размер файла <code>user</code>.config приложения не может превышать квоту каталога данных, заданную в ClickOnce. Дополнительные сведения см. в разделе <a href="/visualstudio/deployment/clickonce-and-application-settings">ClickOnce и параметры приложения</a>.</p>
+<h2 id="custom-settings-providers">Поставщики пользовательских настроек</h2>
+<p>В архитектуре параметров приложений, есть слабую связь между параметрами приложения класс-оболочку, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a>, и связанный поставщик параметров или поставщиков, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>. Эта связь определяется только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsproviderattribute">SettingsProviderAttribute</a> применен к классу-оболочке или его отдельным свойствам. Если параметры, поставщик явно не указано, поставщик по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a>, используется. В результате такая архитектура позволяет создавать и использовать поставщиков настраиваемых параметров.</p>
+<p>Предположим, что требуется разработать и использовать <code>SqlSettingsProvider</code>, то есть поставщика, который будет хранить все данные параметров в базе данных Microsoft SQL Server. Ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>-получит эти сведения в производном классе его <code>Initialize</code> методу в качестве параметра типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.specialized.namevaluecollection">System.Collections.Specialized.NameValueCollection</a>. Затем вы реализуете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider.getpropertyvalues">GetPropertyValues</a> метод для получения параметров из хранилища данных, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider.setpropertyvalues">SetPropertyValues</a> для их сохранения. Поставщик может использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingspropertycollection">SettingsPropertyCollection</a> передаваемое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider.getpropertyvalues">GetPropertyValues</a> чтобы определить имя свойства, тип и область, а также любые другие атрибуты параметров, определенных для этого свойства.</p>
+<p>Вашему поставщику будет необходимо реализовать одно свойство и один метод, реализация которых может оказаться сложной. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider.applicationname">ApplicationName</a> Свойство является абстрактным свойством класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>; оно для возврата следующее:</p>
+<pre><code class="lang-csharp" name="ApplicationSettings.Architecture#2">public override string ApplicationName
+{
+    get
+    {
+        return (System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+    }
+    set
+    {
+        // Do nothing.
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ваш производный класс также должен реализовать метод <code>Initialize</code>, который не принимает аргументы и не возвращает значения. Этот метод не определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>.</p>
+<p>Наконец, необходимо реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.iapplicationsettingsprovider">IApplicationSettingsProvider</a> на поставщика, чтобы обеспечить поддержку обновления параметров, Возврат параметров по умолчанию и обновление параметров из одной версии приложения в другой.</p>
+<p>После реализации и компиляции поставщика необходимо указать, что класс параметров должен использовать этого поставщика вместо значения по умолчанию. Для этого через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsproviderattribute">SettingsProviderAttribute</a>. Если применяется ко всему классу параметров поставщик используется для каждого параметра, который определяется в классе; Если применяется к отдельным параметрам архитектура параметров приложения использует этого поставщика только для этих параметров и использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a> для остальных. В следующем примере кода показано, как указать классу параметров, что необходимо использовать пользовательского поставщика.</p>
+<pre><code class="lang-csharp" name="ApplicationSettings.Architecture#1">using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Configuration;
+
+namespace ApplicationSettingsArchitectureCS
+{
+    [SettingsProvider(&quot;SqlSettingsProvider&quot;)]
+    class CustomSettings : ApplicationSettingsBase
+    {
+        // Implementation goes here.
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Поставщик можно вызывать одновременно из нескольких потоков, но он всегда будет выполнять запись данных в одно место хранения. Таким образом, архитектура параметров приложения будет всегда создавать только один экземпляр класса поставщика.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Следует убедиться, что поставщик является потокобезопасным и позволяет выполнять запись в файлы конфигурации только одному потоку за раз.</p>
+</div>
+<p>Поставщик должен поддерживать все атрибуты, определенные в параметры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration">System.Configuration</a> пространства имен, хотя необходимо по меньшей мере поддерживать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationscopedsettingattribute">ApplicationScopedSettingAttribute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.userscopedsettingattribute">UserScopedSettingAttribute</a>и также должен поддерживать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.defaultsettingvalueattribute">DefaultSettingValueAttribute</a>. Для тех атрибутов, которые он не поддерживает, поставщик должен завершаться ошибкой без уведомления. Он не должен создавать исключение. Если класс параметров использует Недопустимое сочетание атрибутов, тем не менее, такие как применение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationscopedsettingattribute">ApplicationScopedSettingAttribute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.userscopedsettingattribute">UserScopedSettingAttribute</a> тот же параметр — ваш поставщик должен исключение и прервать операцию.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a></li>
+<li><a href="application-settings-overview.html">Общие сведения о параметрах приложений</a></li>
+<li><a href="application-settings-for-custom-controls.html">Параметры приложения для пользовательских элементов управления</a></li>
+<li><a href="/visualstudio/deployment/clickonce-and-application-settings">ClickOnce и параметры приложения</a></li>
+<li><a href="../../configure-apps/file-schema/application-settings-schema.md">Схема параметров приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

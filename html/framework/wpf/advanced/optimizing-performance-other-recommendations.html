@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1044;&#1088;&#1091;&#1075;&#1080;&#1077; &#1088;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1044;&#1088;&#1091;&#1075;&#1080;&#1077; &#1088;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimizing-performance-other-recommendations">Оптимизация производительности: Другие рекомендации</h1>
+
+<p><a name="introduction"></a> В этом разделе содержатся рекомендации по улучшению производительности в дополнение к описанным в разделах статьи <a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a>.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#Opacity">Сравнение прозрачности кисти с прозрачностью элементов</a></p>
+</li>
+<li><p><a href="#Navigation_Objects">Переход к объекту</a></p>
+</li>
+<li><p><a href="#Hit_Testing">Проверка попадания курсора мыши на больших трехмерных поверхностях</a></p>
+</li>
+<li><p><a href="#CompositionTarget_Rendering_Event">Событие CompositionTarget.Rendering</a></p>
+</li>
+<li><p><a href="#Avoid_Using_ScrollBarVisibility">Избегайте использования ScrollBarVisibility=Auto</a></p>
+</li>
+<li><p><a href="#FontCache">Настройка службы кэширования шрифтов для сокращения времени загрузки</a></p>
+</li>
+</ul>
+<p><a name="Opacity"></a></p>
+<h2 id="opacity-on-brushes-versus-opacity-on-elements">Сравнение прозрачности кисти с прозрачностью элементов</h2>
+<p>При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> присвоить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.stroke">Stroke</a> элемента, лучше задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush.opacity">Brush.Opacity</a> преимущества, а не параметр элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство. Изменение элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство может привести к WPF создание временной поверхности.</p>
+<p><a name="Navigation_Objects"></a></p>
+<h2 id="navigation-to-object">Переход к объекту</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> Объект является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и расширяет его поддержкой навигации по содержимому, главным образом путем объединения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала. Вы можете обновить клиентскую область <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> , если указать универсальный идентификатор ресурса (URI) или объект. В следующем примере демонстрируются оба способа.</p>
+<pre><code class="lang-csharp" name="Performance#PerformanceSnippet14">private void buttonGoToUri(object sender, RoutedEventArgs args)
+{
+    navWindow.Source = new Uri(&quot;NewPage.xaml&quot;, UriKind.RelativeOrAbsolute);
+}
+
+private void buttonGoNewObject(object sender, RoutedEventArgs args)
+{
+    NewPage nextPage = new NewPage();
+    nextPage.InitializeComponent();
+    navWindow.Content = nextPage;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> объект имеет журнал, в котором записывается история переходов данного пользователя в этом окне. Одной из целей создания журнала является возможность разрешить пользователям повторять действия.</p>
+<p>При навигации с помощью универсальный идентификатор ресурса (URI) журнал сохраняет только ссылку универсальный идентификатор ресурса (URI). Это означает, что каждый раз при повторном посещении страницы она динамически перестраивается за время, зависящее от сложности страницы. В этом случае затраты на хранение журнала незначительны, а скорость воссоздания страниц является потенциально высокой.</p>
+<p>При переходе с помощью объекта в журнал сохраняется полное визуальное дерево объекта. Это означает, что при каждом повторном посещении страницы она отображается немедленно без необходимости реконструирования. В этом случае затраты на хранение журнала высоки, а скорость воссоздания страниц низкая.</p>
+<p>При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> объекта, необходимо будет следует учитывать влияние журналирования на производительность приложения. Дополнительные сведения см. в разделе <a href="../app-development/navigation-overview.html">Общие сведения о переходах</a>.</p>
+<p><a name="Hit_Testing"></a></p>
+<h2 id="hit-testing-on-large-3d-surfaces">Проверка попадания курсора мыши на больших трехмерных поверхностях</h2>
+<p>Проверка попадания курсора мыши на больших трехмерных поверхностях является операцией, очень затратной по производительности и загрузке процессора. Особенно это относится к анимированным трехмерным поверхностям. Если проверка попадания курсора на этих поверхностях не требуется, то ее следует отключить. Объекты, которые являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> могут отключить проверку, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ishittestvisible">IsHitTestVisible</a> свойства <code>false</code>.</p>
+<p><a name="CompositionTarget_Rendering_Event"></a></p>
+<h2 id="compositiontargetrendering-event">Событие CompositionTarget.Rendering</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">CompositionTarget.Rendering</a> Событие вызывает WPF для поддержки постоянной анимации. Если это событие используется, отключайте его при каждой возможности.</p>
+<p><a name="Avoid_Using_ScrollBarVisibility"></a></p>
+<h2 id="avoid-using-scrollbarvisibilityauto">Избегайте использования ScrollBarVisibility=Auto</h2>
+<p>По возможности избегайте использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility#System_Windows_Controls_ScrollBarVisibility_Auto">ScrollBarVisibility.Auto</a> значение <code>HorizontalScrollBarVisibility</code> и <code>VerticalScrollBarVisibility</code> свойства. Эти свойства определяются для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.richtextbox">RichTextBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer">ScrollViewer</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> объектов и как присоединенное свойство для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> объекта. Вместо этого задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility">ScrollBarVisibility</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility#System_Windows_Controls_ScrollBarVisibility_Disabled">Disabled</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility#System_Windows_Controls_ScrollBarVisibility_Hidden">Hidden</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility#System_Windows_Controls_ScrollBarVisibility_Visible">Visible</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility#System_Windows_Controls_ScrollBarVisibility_Auto">Auto</a> Значение предназначен для случаев, когда пространство ограничено и полосы прокрутки должны отображаться, только когда это необходимо. Например, может быть полезно использовать это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollbarvisibility">ScrollBarVisibility</a> со значением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> 30 элементов, в отличие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> с сотнями строк текста.</p>
+<p><a name="FontCache"></a></p>
+<h2 id="configure-font-cache-service-to-reduce-start-up-time">Настройка службы кэширования шрифтов для сокращения времени загрузки</h2>
+<p>Служба кэширования шрифтов WPF используется для совместной обработки данных шрифтов приложениями WPF. Первое запускаемое приложение WPF запускает эту службу, если она еще не запущена. Если вы используете Windows Vista, можно задать службы «Windows Presentation Foundation (WPF) Font Cache 3.0.0.0» из «Вручную» (по умолчанию) «Автоматически (отложенный запуск)», чтобы уменьшить длительность начального запуска WPF приложений.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="planning-for-application-performance.html">Планирование производительности приложения</a></li>
+<li><a href="optimizing-performance-taking-advantage-of-hardware.html">Использование преимуществ оборудования</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+<li><a href="optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="optimizing-performance-object-behavior.html">Поведение объекта</a></li>
+<li><a href="optimizing-performance-application-resources.html">Ресурсы приложений</a></li>
+<li><a href="optimizing-performance-text.html">Текста</a></li>
+<li><a href="optimizing-performance-data-binding.html">Привязка данных</a></li>
+<li><a href="../graphics-multimedia/animation-tips-and-tricks.html">Советы и рекомендации по анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

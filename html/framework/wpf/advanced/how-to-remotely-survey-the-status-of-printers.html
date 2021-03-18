@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1076;&#1072;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081; &#1086;&#1087;&#1088;&#1086;&#1089; &#1089;&#1086;&#1089;&#1090;&#1086;&#1103;&#1085;&#1080;&#1081; &#1087;&#1088;&#1080;&#1085;&#1090;&#1077;&#1088;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1076;&#1072;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081; &#1086;&#1087;&#1088;&#1086;&#1089; &#1089;&#1086;&#1089;&#1090;&#1086;&#1103;&#1085;&#1080;&#1081; &#1087;&#1088;&#1080;&#1085;&#1090;&#1077;&#1088;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-remotely-survey-the-status-of-printers">Практическое руководство. Удаленный опрос состояний принтеров</h1>
+
+<p>В средних и крупных компаниях могут возникнуть ситуации, когда из-за замятия или отсутствия бумаги либо по иным причинам не работают сразу несколько принтеров. Широкий набор свойства принтеров в API - интерфейсы платформы Microsoft .NET Framework предоставляют средства для выполнения быстрого опроса состояния принтеров.</p>
+<h2 id="example">Пример</h2>
+<p>Ниже представлены основные этапы создания подобной служебной программы.</p>
+<ol>
+<li><p>Получите список всех серверов печати.</p>
+</li>
+<li><p>Выполните циклический просмотр всех серверов, чтобы запросить их очереди печати.</p>
+</li>
+<li><p>Для каждого сервера выполните циклический просмотр всех очередей сервера и прочтите каждое свойство, которое может указывать на то, что очередь в данный момент не работает.</p>
+</li>
+</ol>
+<p>Представленный ниже код представляет собой набор фрагментов. Для простоты в этом примере предполагается наличие списка серверов печати, разделенного символами перевода строки. Переменная <code>fileOfPrintServers</code> является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.streamreader">StreamReader</a> этого файла. Поскольку каждое имя сервера размещается на отдельной строке, любой вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.streamreader.readline">ReadLine</a> возвращает имя следующего сервера и перемещает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.streamreader">StreamReader</a>на курсор в начало следующей строки.</p>
+<p>Во внешнем цикле в коде создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver">PrintServer</a> объекта для последнего сервера печати и указывает, что приложение должно обладать правами администратора на сервер.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При наличии большого количества серверов, можно повысить производительность с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver.-ctor#System_Printing_PrintServer__ctor_System_String_System_String___System_Printing_PrintSystemDesiredAccess_">PrintServer(String, String[], PrintSystemDesiredAccess)</a> инициализирующих только свойства, которые вы собираетесь требуется.</p>
+</div>
+<p>Затем в примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver.getprintqueues">GetPrintQueues</a> создать коллекцию всех сервера и помещает в очередь и начинает организовать цикл по ним. Этот внутренний цикл содержит структуру ветвления, соответствующую двум способам проверки состояния принтера:</p>
+<ul>
+<li><p>Вы можете прочесть флаги из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.queuestatus">QueueStatus</a> свойства, которые имеют тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueuestatus">PrintQueueStatus</a>.</p>
+</li>
+<li><p>Можно прочитать каждое соответствующее свойство, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.isoutofpaper">IsOutOfPaper</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.ispaperjammed">IsPaperJammed</a>.</p>
+</li>
+</ul>
+<p>В этом примере демонстрируются оба метода, поскольку пользователь получил какой метод использовать и ответил «y», если хотите использовать флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.queuestatus">QueueStatus</a> свойство. Ниже представлены подробные сведения об этих двух методах.</p>
+<p>В конечном итоге результаты предоставляются пользователю.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SurveyQueues">// Survey queue status for every queue on every print server
+String line;
+String statusReport = &quot;\n\nAny problem states are indicated below:\n\n&quot;;
+while ((line = fileOfPrintServers.ReadLine()) != null)
+ {
+     PrintServer myPS = new PrintServer(line, PrintSystemDesiredAccess.AdministrateServer);
+     PrintQueueCollection myPrintQueues = myPS.GetPrintQueues();
+     statusReport = statusReport + &quot;\n&quot; + line;
+     foreach (PrintQueue pq in myPrintQueues)
+     {
+         pq.Refresh();
+         statusReport = statusReport + &quot;\n\t&quot; + pq.Name + &quot;:&quot;;
+         if (useAttributesResponse == &quot;y&quot;)
+         {
+             TroubleSpotter.SpotTroubleUsingQueueAttributes(ref statusReport, pq);
+             // TroubleSpotter class is defined in the complete example.
+         }
+         else
+         {
+             TroubleSpotter.SpotTroubleUsingProperties(ref statusReport, pq);
+         }
+     }// end for each print queue
+ }// end while list of print servers is not yet exhausted
+
+fileOfPrintServers.Close();
+Console.WriteLine(statusReport);
+Console.WriteLine(&quot;\nPress Return to continue.&quot;);
+Console.ReadLine();
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы проверить состояние принтера, используя флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.queuestatus">QueueStatus</a> свойство, проверьте каждый соответствующий флаг включен. Обычно определить, задан ли один бит в наборе битовых флагов, позволяет логическая операция И с набором флагов в качестве одной операнды и самим флагом в качестве второй. Поскольку сам флаг имеет только один набор битов, результатом логической операции И может стать максимум установка самого бита. Чтобы определить, установлен ли этот бит, просто сравните результат логической операции И с самим флагом. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueuestatus">PrintQueueStatus</a>, <a href="../../../csharp/language-reference/operators/and-operator.md">&amp; оператор (C# ссылку)</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.flagsattribute">FlagsAttribute</a>.</p>
+<p>Для каждого атрибута с установленным битом код добавляет уведомление в итоговый отчет, который будет представлен пользователю. (Метод <strong>ReportAvailabilityAtThisTime</strong>, вызываемый в конце кода, описывается ниже.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueAttributes">// Check for possible trouble states of a printer using the flags of the QueueStatus property
+internal static void SpotTroubleUsingQueueAttributes(ref String statusReport, PrintQueue pq)
+{
+    if ((pq.QueueStatus &amp; PrintQueueStatus.PaperProblem) == PrintQueueStatus.PaperProblem)
+    {
+        statusReport = statusReport + &quot;Has a paper problem. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.NoToner) == PrintQueueStatus.NoToner)
+    {
+        statusReport = statusReport + &quot;Is out of toner. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.DoorOpen) == PrintQueueStatus.DoorOpen)
+    {
+        statusReport = statusReport + &quot;Has an open door. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.Error) == PrintQueueStatus.Error)
+    {
+        statusReport = statusReport + &quot;Is in an error state. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.NotAvailable) == PrintQueueStatus.NotAvailable)
+    {
+        statusReport = statusReport + &quot;Is not available. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.Offline) == PrintQueueStatus.Offline)
+    {
+        statusReport = statusReport + &quot;Is off line. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.OutOfMemory) == PrintQueueStatus.OutOfMemory)
+    {
+        statusReport = statusReport + &quot;Is out of memory. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.PaperOut) == PrintQueueStatus.PaperOut)
+    {
+        statusReport = statusReport + &quot;Is out of paper. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.OutputBinFull) == PrintQueueStatus.OutputBinFull)
+    {
+        statusReport = statusReport + &quot;Has a full output bin. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.PaperJam) == PrintQueueStatus.PaperJam)
+    {
+        statusReport = statusReport + &quot;Has a paper jam. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.Paused) == PrintQueueStatus.Paused)
+    {
+        statusReport = statusReport + &quot;Is paused. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.TonerLow) == PrintQueueStatus.TonerLow)
+    {
+        statusReport = statusReport + &quot;Is low on toner. &quot;;
+    }
+    if ((pq.QueueStatus &amp; PrintQueueStatus.UserIntervention) == PrintQueueStatus.UserIntervention)
+    {
+        statusReport = statusReport + &quot;Needs user intervention. &quot;;
+    }
+
+    // Check if queue is even available at this time of day
+    // The method below is defined in the complete example.
+    ReportAvailabilityAtThisTime(ref statusReport, pq);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы проверить состояние принтера с помощью каждого свойства, просто прочтите каждое свойство и добавьте примечание, если какое-либо свойство имеет значение <code>true</code>, в итоговый отчет для пользователя. (Метод <strong>ReportAvailabilityAtThisTime</strong>, вызываемый в конце кода, описывается ниже.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueProperties">// Check for possible trouble states of a printer using its properties
+internal static void SpotTroubleUsingProperties(ref String statusReport, PrintQueue pq)
+{
+    if (pq.HasPaperProblem)
+    {
+        statusReport = statusReport + &quot;Has a paper problem. &quot;;
+    }
+    if (!(pq.HasToner))
+    {
+        statusReport = statusReport + &quot;Is out of toner. &quot;;
+    }
+    if (pq.IsDoorOpened)
+    {
+        statusReport = statusReport + &quot;Has an open door. &quot;;
+    }
+    if (pq.IsInError)
+    {
+        statusReport = statusReport + &quot;Is in an error state. &quot;;
+    }
+    if (pq.IsNotAvailable)
+    {
+        statusReport = statusReport + &quot;Is not available. &quot;;
+    }
+    if (pq.IsOffline)
+    {
+        statusReport = statusReport + &quot;Is off line. &quot;;
+    }
+    if (pq.IsOutOfMemory)
+    {
+        statusReport = statusReport + &quot;Is out of memory. &quot;;
+    }
+    if (pq.IsOutOfPaper)
+    {
+        statusReport = statusReport + &quot;Is out of paper. &quot;;
+    }
+    if (pq.IsOutputBinFull)
+    {
+        statusReport = statusReport + &quot;Has a full output bin. &quot;;
+    }
+    if (pq.IsPaperJammed)
+    {
+        statusReport = statusReport + &quot;Has a paper jam. &quot;;
+    }
+    if (pq.IsPaused)
+    {
+        statusReport = statusReport + &quot;Is paused. &quot;;
+    }
+    if (pq.IsTonerLow)
+    {
+        statusReport = statusReport + &quot;Is low on toner. &quot;;
+    }
+    if (pq.NeedUserIntervention)
+    {
+        statusReport = statusReport + &quot;Needs user intervention. &quot;;
+    }
+
+    // Check if queue is even available at this time of day
+    // The following method is defined in the complete example.
+    ReportAvailabilityAtThisTime(ref statusReport, pq);
+}//end SpotTroubleUsingProperties
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Метод <strong>ReportAvailabilityAtThisTime</strong> позволяет определить наличие очереди в текущее время суток.</p>
+<p>Метод не выполняет никаких действий при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a> свойства одинаковы, поскольку в этом случае принтер доступен все время. Если они отличаются, метод получает текущее время, которое затем должно быть преобразовано в общее число минут после полуночи, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a> свойства являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, которые не представляют минут после полуночи, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объекты. В конечном итоге метод проверяет, находится ли текущее время в промежутке между временем начала и окончания.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#UsingStartAndUntilTimes">private static void ReportAvailabilityAtThisTime(ref String statusReport, PrintQueue pq)
+{
+    if (pq.StartTimeOfDay != pq.UntilTimeOfDay) // If the printer is not available 24 hours a day
+    {
+DateTime utcNow = DateTime.UtcNow;
+Int32 utcNowAsMinutesAfterMidnight = (utcNow.TimeOfDay.Hours * 60) + utcNow.TimeOfDay.Minutes;
+
+        // If now is not within the range of available times . . .
+        if (!((pq.StartTimeOfDay &lt; utcNowAsMinutesAfterMidnight)
+           &amp;&amp;
+           (utcNowAsMinutesAfterMidnight &lt; pq.UntilTimeOfDay)))
+        {
+            statusReport = statusReport + &quot; Is not available at this time of day. &quot;;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueuestatus">PrintQueueStatus</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.flagsattribute">FlagsAttribute</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver.getprintqueues">GetPrintQueues</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver">PrintServer</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.localprintserver">LocalPrintServer</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.enumeratedprintqueuetypes">EnumeratedPrintQueueTypes</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a></li>
+<li><a href="../../../csharp/language-reference/operators/and-operator.md">Оператор &amp; (Справочник по C#)</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="printing-overview.html">Общие сведения о печати</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

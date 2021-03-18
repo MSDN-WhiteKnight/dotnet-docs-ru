@@ -1,0 +1,612 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-hosting-a-windows-forms-composite-control-in-wpf">Пошаговое руководство. Размещение составного элемента управления Windows Forms в приложении WPF</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Тем не менее, если имеются существенные преимущества в Windows Forms код, он может быть более эффективным для повторного использования по крайней мере часть этого кода в вашей WPF приложения, а не переписывание кода с нуля. Наиболее распространенный сценарий — при наличии существующих элементов управления Windows Forms. В некоторых случаях, возможно, у вас даже нет доступа к исходному коду для этих элементов управления. WPF предоставляет простую процедуру размещения таких элементов управления в WPF приложения. Например, можно использовать WPF для большей части операций программирования при размещении специализированных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементов управления.</p>
+<p>В этом пошаговом руководстве пошагово продемонстрирует приложения, на котором размещена составного элемента управления Windows Forms для поддержки ввода данных в WPF приложения. Составной элемент управления упакован в библиотеку DLL. Эта общая процедура может быть расширена для более сложных приложений и элементов управления. В этом пошаговом руководстве должна быть почти идентично повторяет свойства и функциональные возможности для <a href="walkthrough-hosting-a-wpf-composite-control-in-windows-forms.html">Пошаговое руководство: Размещение составного элемента управления WPF в Windows Forms</a>. Основным отличием является то, что сценарий размещения выполняется в обратном порядке.</p>
+<p>Пошаговое руководство состоит из двух разделов. В первом разделе кратко описывается реализация составного элемента управления Windows Forms. Во втором разделе подробно рассматриваются размещение составного элемента управления в WPF приложения, получать события из элемента управления и доступ к некоторым свойствам элемента управления.</p>
+<p>В данном пошаговом руководстве представлены следующие задачи.</p>
+<ul>
+<li><p>Реализация составного элемента управления Windows Forms.</p>
+</li>
+<li><p>Реализация ведущего приложения WPF.</p>
+</li>
+</ul>
+<p>Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159999">размещения Windows Forms составного элемента управления в WPF</a>.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для выполнения шагов, описанных в этом руководстве, вам понадобится Visual Studio.</p>
+<h2 id="implementing-the-windows-forms-composite-control">Реализация составного элемента управления Windows Forms</h2>
+<p>В этом примере составного элемента управления Windows Forms — это форма простого ввода данных. Эта форма принимает имя и адрес пользователя и затем использует пользовательское событие для возвращения сведений в основное приложение. На приведенном ниже рисунке показан отображаемый элемент управления.</p>
+<p>На следующем рисунке показана составного элемента управления Windows Forms:</p>
+<p><img src="media/walkthrough-hosting-a-windows-forms-composite-control-in-wpf/windows-forms-control.gif" alt="Снимок экрана с простого элемента управления Windows Forms."></p>
+<h3 id="creating-the-project">Создание проекта</h3>
+<p>Для запуска проекта выполните указанные ниже действия.</p>
+<ol>
+<li><p>Запустите Microsoft Visual Studioи откройте <strong>новый проект</strong> диалоговое окно.</p>
+</li>
+<li><p>В категории Windows выберите <strong>Библиотека элементов управления Windows Forms</strong> шаблона.</p>
+</li>
+<li><p>Присвойте проекту имя <code>MyControls</code>.</p>
+</li>
+<li><p>Для расположения укажите понятным именем папки верхнего уровня, такие как <code>WpfHostingWindowsFormsControl</code>. Позже ведущее приложение будет помещено в эту папку.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong>, чтобы создать проект. По умолчанию проект содержит один элемент управления с именем <code>UserControl1</code>.</p>
+</li>
+<li><p>В обозревателе решений Переименуйте <code>UserControl1</code> для <code>MyControl1</code>.</p>
+</li>
+</ol>
+<p>Проект должен иметь ссылки на перечисленные ниже системные библиотеки DLL. Если какие-либо из этих библиотек DLL не включены по умолчанию, добавьте их в проект.</p>
+<ul>
+<li><p>Система</p>
+</li>
+<li><p>System.Data</p>
+</li>
+<li><p>System.Drawing;</p>
+</li>
+<li><p>System.Windows.Forms.</p>
+</li>
+<li><p>System.Xml</p>
+</li>
+</ul>
+<h3 id="adding-controls-to-the-form">Добавление элементов управления на форму</h3>
+<p>Чтобы добавить элементы управления в форму, выполните следующие действия.</p>
+<ul>
+<li>Откройте <code>MyControl1</code> в конструкторе.</li>
+</ul>
+<p>Добавьте пять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> элементы управления и соответствующие им <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> элементами управления, размером и положением, как на предыдущем рисунке, в форме. В примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> именуются элементы управления:</p>
+<ul>
+<li><p><code>txtName</code></p>
+</li>
+<li><p><code>txtAddress</code></p>
+</li>
+<li><p><code>txtCity</code></p>
+</li>
+<li><p><code>txtState</code></p>
+</li>
+<li><p><code>txtZip</code></p>
+</li>
+</ul>
+<p>Добавьте два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> элементов управления с меткой <strong>ОК</strong> и <strong>отменить</strong>. В примере используются названия кнопок <code>btnOK</code> и <code>btnCancel</code>, соответственно.</p>
+<h3 id="implementing-the-supporting-code">Реализация соответствующего кода</h3>
+<p>Откройте форму в представлении кода. Элемент управления возвращает собранные данные на узел путем вызова пользовательского <code>OnButtonClick</code> событий. Данные содержатся в объекте аргумента события. В следующем коде показано объявление события и делегата.</p>
+<p>Добавьте следующий код в класс <code>MyControl1</code> .</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#2">public delegate void MyControlEventHandler(object sender, MyControlEventArgs args);
+public event MyControlEventHandler OnButtonClick;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>MyControlEventArgs</code> Класс содержит информацию, возвращаемую к узлу.</p>
+<p>Добавьте в форму следующий класс.</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#3">public class MyControlEventArgs : EventArgs
+{
+    private string _Name;
+    private string _StreetAddress;
+    private string _City;
+    private string _State;
+    private string _Zip;
+    private bool _IsOK;
+
+    public MyControlEventArgs(bool result,
+                                   string name,
+                                   string address,
+                                   string city,
+                                   string state,
+                                   string zip)
+    {
+        _IsOK = result;
+        _Name = name;
+        _StreetAddress = address;
+        _City = city;
+        _State = state;
+        _Zip = zip;
+    }
+
+    public string MyName
+    {
+        get { return _Name; }
+        set { _Name = value; }
+    }
+    public string MyStreetAddress
+    {
+        get { return _StreetAddress; }
+        set { _StreetAddress = value; }
+    }
+    public string MyCity
+    {
+        get { return _City; }
+        set { _City = value; }
+    }
+    public string MyState
+    {
+        get { return _State; }
+        set { _State = value; }
+    }
+    public string MyZip
+    {
+        get { return _Zip; }
+        set { _Zip = value; }
+    }
+    public bool IsOK
+    {
+        get { return _IsOK; }
+        set { _IsOK = value; }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Когда пользователь щелкает <strong>ОК</strong> или <strong>отменить</strong> кнопки, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> создать обработчики событий <code>MyControlEventArgs</code> объект, содержащий данные и вызывает <code>OnButtonClick</code> событий. Аргумент события, — это единственное различие между двумя обработчиками <code>IsOK</code> свойство. Это свойство позволяет основному приложению определить, какая кнопка была нажата. Ему будет присвоено <code>true</code> для <strong>ОК</strong> кнопку, и <code>false</code> для <strong>отменить</strong> кнопки. В следующем примере кода показаны два обработчика кнопок.</p>
+<p>Добавьте следующий код в класс <code>MyControl1</code> .</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#4">private void btnOK_Click(object sender, System.EventArgs e)
+{
+
+    MyControlEventArgs retvals = new MyControlEventArgs(true,
+                                                         txtName.Text,
+                                                         txtAddress.Text,
+                                                         txtCity.Text,
+                                                         txtState.Text,
+                                                         txtZip.Text);
+    OnButtonClick(this, retvals);
+}
+
+private void btnCancel_Click(object sender, System.EventArgs e)
+{
+    MyControlEventArgs retvals = new MyControlEventArgs(false,
+                                                         txtName.Text,
+                                                         txtAddress.Text,
+                                                         txtCity.Text,
+                                                         txtState.Text,
+                                                         txtZip.Text);
+    OnButtonClick(this, retvals);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="giving-the-assembly-a-strong-name-and-building-the-assembly">Присвоение сборке строгого имени и построение сборки</h3>
+<p>Для этой сборки, на которые ссылается WPF приложения, он должен иметь строгое имя. Для создания строгого имени, создать файл ключа с Sn.exe и добавьте его в проект.</p>
+<ol>
+<li><p>Откройте командную строку Visual Studio. Чтобы сделать это, нажмите кнопку <strong>запустить</strong> меню, а затем выберите <strong>все программы/Microsoft Visual Studio 2010 Tools и Visual Studio Командная строка Visual Studio</strong>. Откроется окно консоли с настраиваемыми переменными среды.</p>
+</li>
+<li><p>В командной строке, используйте <code>cd</code> команду, чтобы перейти в папку проекта.</p>
+</li>
+<li><p>Создайте файл ключа с именем MyControls.snk, выполнив следующую команду.</p>
+<pre><code>Sn.exe -k MyControls.snk
+</code></pre>
+</li>
+<li><p>Чтобы включить файл ключа в проект, щелкните правой кнопкой мыши имя проекта в обозревателе решений и нажмите кнопку <strong>свойства</strong>. В конструкторе проектов щелкните <strong>подписывание</strong> выберите <strong>подписать сборку</strong> установите флажок, а затем перейдите к файлу ключа.</p>
+</li>
+<li><p>Постройте решение. Сборка создаст библиотеку DLL с именем MyControls.dll.</p>
+</li>
+</ol>
+<h2 id="implementing-the-wpf-host-application">Реализация ведущего приложения WPF</h2>
+<p>WPF Разместить приложение использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> для размещения элемента управления <code>MyControl1</code>. Приложение обрабатывает <code>OnButtonClick</code> событий для получения данных из элемента управления. Он также имеет коллекцию переключателей, можно изменять некоторые свойства элемента управления из WPF приложения. Ниже показано готовое приложение.</p>
+<p>На следующем рисунке показана полного приложения, включая элемент управления, внедренные в приложении WPF:</p>
+<p><img src="media/walkthrough-hosting-a-windows-forms-composite-control-in-wpf/windows-presentation-foundation-page-control.gif" alt="Снимок экрана, показывающий элемент управления, встроенный в страницу WPF."></p>
+<h3 id="creating-the-project">Создание проекта</h3>
+<p>Для запуска проекта выполните указанные ниже действия.</p>
+<ol>
+<li><p>Откройте Visual Studioи выберите <strong>новый проект</strong>.</p>
+</li>
+<li><p>В категории Windows выберите <strong>приложение WPF</strong> шаблона.</p>
+</li>
+<li><p>Присвойте проекту имя <code>WpfHost</code>.</p>
+</li>
+<li><p>В качестве расположения укажите ту же папку верхнего уровня, в которой содержится проект MyControls.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong>, чтобы создать проект.</p>
+</li>
+</ol>
+<p>Необходимо также добавить ссылки на библиотеку DLL, содержащую <code>MyControl1</code> и других сборок.</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши имя проекта в обозревателе решений и выберите <strong>добавить ссылку</strong>.</p>
+</li>
+<li><p>Нажмите кнопку <strong>Обзор</strong> вкладку и перейдите к папке, которая содержит файл MyControls.dll. В данном пошаговом руководстве это папка MyControls\bin\Debug.</p>
+</li>
+<li><p>Выберите файл MyControls.dll и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>Добавьте ссылку на сборку WindowsFormsIntegration с именем WindowsFormsIntegration.dll.</p>
+</li>
+</ol>
+<h3 id="implementing-the-basic-layout">Реализация базового макета</h3>
+<p>пользовательский интерфейс Узла приложение реализовано в файле MainWindow.xaml. Этот файл содержит Язык XAML разметку, которая определяет макет и размещает элемент управления Windows Forms. Приложение состоит из трех областей:</p>
+<ul>
+<li><p><strong>Свойства элемента управления</strong> панель, которая содержит коллекцию переключателей, можно использовать для изменения различных свойств размещаемого элемента управления.</p>
+</li>
+<li><p><strong>Данные из элемента управления</strong> панель, которая содержит несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы, которые отображают данные, возвращенные из размещенного элемента управления.</p>
+</li>
+<li><p>Размещенный элемент.</p>
+</li>
+</ul>
+<p>Базовый макет показан в следующем XAML-коде. Разметка, необходимая для размещения <code>MyControl1</code> пропущена в этом примере, но будет рассказано ниже.</p>
+<p>Замените XAML-код в файле MainWindow.xaml следующим. Если вы используете Visual Basic, измените класс на <code>x:Class=&quot;MainWindow&quot;</code>.</p>
+<pre><code class="lang-xaml" name="WpfHostingWindowsFormsControl#100">&lt;Window xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      x:Class=&quot;WpfHost.MainWindow&quot;
+      xmlns:mcl=&quot;clr-namespace:MyControls;assembly=MyControls&quot;
+      Loaded=&quot;Init&quot;&gt;
+  &lt;DockPanel&gt;
+    &lt;DockPanel.Resources&gt;
+      &lt;Style x:Key=&quot;inlineText&quot; TargetType=&quot;{x:Type Inline}&quot;&gt;
+        &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Normal&quot;/&gt;
+      &lt;/Style&gt;
+      &lt;Style x:Key=&quot;titleText&quot; TargetType=&quot;{x:Type TextBlock}&quot;&gt;
+        &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Top&quot;/&gt;
+        &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;10,5,10,0&quot;/&gt;
+      &lt;/Style&gt;
+    &lt;/DockPanel.Resources&gt;
+
+    &lt;StackPanel Orientation=&quot;Vertical&quot;
+                DockPanel.Dock=&quot;Left&quot;
+                Background=&quot;Bisque&quot;
+                Width=&quot;250&quot;&gt;
+
+      &lt;TextBlock  Margin=&quot;10,10,10,10&quot;
+                  FontWeight=&quot;Bold&quot;
+                  FontSize=&quot;12&quot;&gt;Control Properties&lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Background Color&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnOriginalBackColor&quot;
+                    IsChecked=&quot;True&quot;
+                    Click=&quot;BackColorChanged&quot;&gt;Original&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnBackGreen&quot;
+                    Click=&quot;BackColorChanged&quot;&gt;LightGreen&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnBackSalmon&quot;
+                    Click=&quot;BackColorChanged&quot;&gt;LightSalmon&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Foreground Color&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnOriginalForeColor&quot;
+                    IsChecked=&quot;True&quot;
+                    Click=&quot;ForeColorChanged&quot;&gt;Original&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnForeRed&quot;
+                    Click=&quot;ForeColorChanged&quot;&gt;Red&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnForeYellow&quot;
+                    Click=&quot;ForeColorChanged&quot;&gt;Yellow&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Font Family&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnOriginalFamily&quot;
+                     IsChecked=&quot;True&quot;
+                    Click=&quot;FontChanged&quot;&gt;Original&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnTimes&quot;
+                    Click=&quot;FontChanged&quot;&gt;Times New Roman&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnWingdings&quot;
+                    Click=&quot;FontChanged&quot;&gt;Wingdings&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Font Size&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnOriginalSize&quot;
+                    IsChecked=&quot;True&quot;
+                    Click=&quot;FontSizeChanged&quot;&gt;Original&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnTen&quot;
+                    Click=&quot;FontSizeChanged&quot;&gt;10&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnTwelve&quot;
+                    Click=&quot;FontSizeChanged&quot;&gt;12&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Font Style&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnNormalStyle&quot;
+                     IsChecked=&quot;True&quot;
+                     Click=&quot;StyleChanged&quot;&gt;Original&lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnItalic&quot;
+                     Click=&quot;StyleChanged&quot;&gt;Italic&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;Font Weight&lt;/TextBlock&gt;
+      &lt;StackPanel Margin=&quot;10,10,10,10&quot;&gt;
+        &lt;RadioButton Name=&quot;rdbtnOriginalWeight&quot;
+                     IsChecked=&quot;True&quot;
+                   Click=&quot;WeightChanged&quot;&gt;
+          Original
+        &lt;/RadioButton&gt;
+        &lt;RadioButton Name=&quot;rdbtnBold&quot;
+                   Click=&quot;WeightChanged&quot;&gt;Bold&lt;/RadioButton&gt;
+      &lt;/StackPanel&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;WindowsFormsHost Name=&quot;wfh&quot;
+                     DockPanel.Dock=&quot;Top&quot;
+                     Height=&quot;300&quot;&gt;
+      &lt;mcl:MyControl1 Name=&quot;mc&quot;/&gt;
+    &lt;/WindowsFormsHost&gt;
+    
+    &lt;StackPanel Orientation=&quot;Vertical&quot;
+                Height=&quot;Auto&quot;
+                Background=&quot;LightBlue&quot;&gt;
+      &lt;TextBlock Margin=&quot;10,10,10,10&quot;
+            FontWeight=&quot;Bold&quot;
+            FontSize=&quot;12&quot;&gt;Data From Control&lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;
+        Name: &lt;Span Name=&quot;txtName&quot; Style=&quot;{StaticResource inlineText}&quot;/&gt;
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;
+        Street Address: &lt;Span Name=&quot;txtAddress&quot; Style=&quot;{StaticResource inlineText}&quot;/&gt;
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;
+        City: &lt;Span Name=&quot;txtCity&quot; Style=&quot;{StaticResource inlineText}&quot;/&gt;
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;
+        State: &lt;Span Name=&quot;txtState&quot; Style=&quot;{StaticResource inlineText}&quot;/&gt;
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Style=&quot;{StaticResource titleText}&quot;&gt;
+        Zip: &lt;Span Name=&quot;txtZip&quot; Style=&quot;{StaticResource inlineText}&quot;/&gt;
+      &lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;
+  &lt;/DockPanel&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элемент содержит несколько наборов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> элементы управления, необходимые для изменения различных свойств размещаемого элемента управления по умолчанию. За которым следует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, какие узлы <code>MyControl1</code>. Конечный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элемент содержит несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы, отображающие данных, которые возвращаются размещенным элементом управления. Упорядочение элементов и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">Dock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> параметров атрибутов внедрить размещаемого элемента управления в окно без пропусков и искажений.</p>
+<h4 id="hosting-the-control">Размещение элемента управления</h4>
+<p>Следующей отредактированной версии предыдущего XAML внимание уделяется элементам, которые необходимы для размещения <code>MyControl1</code>.</p>
+<pre><code class="lang-xaml" name="WpfHostingWindowsFormsControl#101">&lt;Window xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      x:Class=&quot;WpfHost.MainWindow&quot;
+      xmlns:mcl=&quot;clr-namespace:MyControls;assembly=MyControls&quot;
+      Loaded=&quot;Init&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="WpfHostingWindowsFormsControl#102">&lt;WindowsFormsHost Name=&quot;wfh&quot;
+                 DockPanel.Dock=&quot;Top&quot;
+                 Height=&quot;300&quot;&gt;
+  &lt;mcl:MyControl1 Name=&quot;mc&quot;/&gt;
+&lt;/WindowsFormsHost&gt;
+</code></pre>
+<p><code>xmlns</code> Атрибут сопоставления пространства имен создает ссылку на <code>MyControls</code> пространство имен, содержащее размещенного элемента управления. Это сопоставление позволяет представить <code>MyControl1</code> в XAML как <code>&lt;mcl:MyControl1&gt;</code>.</p>
+<p>Два элемента в коде XAML обрабатывают размещение:</p>
+<ul>
+<li><p><code>WindowsFormsHost</code> Представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, который позволяет размещать элемент управления Windows Forms в WPF приложения.</p>
+</li>
+<li><p><code>mcl:MyControl1</code>, которое представляет <code>MyControl1</code>, добавляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> дочернюю коллекцию элемента. Таким образом, этот элемент управления Windows Forms отображается как часть WPF , а также могут взаимодействовать с элементом управления из приложения.</p>
+</li>
+</ul>
+<h3 id="implementing-the-code-behind-file">Реализация файла кода программной части</h3>
+<p>Файл кода, MainWindow.xaml.vb или MainWindow.xaml.cs содержит процедурный код, который реализует функциональность ИП описано в предыдущем разделе. Основные задачи</p>
+<ul>
+<li><p>Присоединение обработчика событий к <code>MyControl1</code>в <code>OnButtonClick</code> событий.</p>
+</li>
+<li><p>Изменение различных свойств <code>MyControl1</code>в зависимости от способа настройки коллекции переключателей.</p>
+</li>
+<li><p>Отображение данных, собранных с помощью элемента управления.</p>
+</li>
+</ul>
+<h4 id="initializing-the-application">Инициализация приложения</h4>
+<p>Код инициализации содержится в обработчике событий для окна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий и присоединяет обработчик событий к элементу управления <code>OnButtonClick</code> событий.</p>
+<p>В файле MainWindow.xaml.vb или MainWindow.xaml.cs, добавьте следующий код, чтобы <code>MainWindow</code> класса.</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#11">private Application app;
+private Window myWindow;
+FontWeight initFontWeight;
+Double initFontSize;
+FontStyle initFontStyle;
+SolidColorBrush initBackBrush;
+SolidColorBrush initForeBrush;
+FontFamily initFontFamily;
+bool UIIsReady = false;
+
+private void Init(object sender, EventArgs e)
+{
+    app = System.Windows.Application.Current;
+    myWindow = (Window)app.MainWindow;
+    myWindow.SizeToContent = SizeToContent.WidthAndHeight;
+    wfh.TabIndex = 10;
+    initFontSize = wfh.FontSize;
+    initFontWeight = wfh.FontWeight;
+    initFontFamily = wfh.FontFamily;
+    initFontStyle = wfh.FontStyle;
+    initBackBrush = (SolidColorBrush)wfh.Background;
+    initForeBrush = (SolidColorBrush)wfh.Foreground;
+    (wfh.Child as MyControl1).OnButtonClick += new MyControl1.MyControlEventHandler(Pane1_OnButtonClick);
+    UIIsReady = true;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Так как XAML описанные ранее добавленный <code>MyControl1</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> коллекцию дочерних элементов элемента, можно привести <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.child">Child</a> для получения ссылки на <code>MyControl1</code>. Затем можно использовать эту ссылку для присоединения обработчика событий к <code>OnButtonClick</code>.</p>
+<p>Помимо предоставления ссылки на элемент управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> предоставляет ряд свойств элемента управления, которыми можно управлять из приложения. Код инициализации назначает эти значения закрытым глобальным переменным для последующего использования в приложении.</p>
+<p>Таким образом, можно легко получить типы в <code>MyControls</code> библиотеки DLL, добавьте следующий <code>Imports</code> или <code>using</code> в начало файла.</p>
+<pre><code class="lang-vb">Imports MyControls
+</code></pre>
+<pre><code class="lang-csharp">using MyControls;
+</code></pre>
+<h4 id="handling-the-onbuttonclick-event">Обработка события OnButtonClick</h4>
+<p><code>MyControl1</code> вызывает <code>OnButtonClick</code> событие, когда пользователь нажимает какую-либо из кнопок элемента управления.</p>
+<p>Добавьте следующий код в класс <code>MainWindow</code> .</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#12">//Handle button clicks on the Windows Form control
+private void Pane1_OnButtonClick(object sender, MyControlEventArgs args)
+{
+    txtName.Inlines.Clear();
+    txtAddress.Inlines.Clear();
+    txtCity.Inlines.Clear();
+    txtState.Inlines.Clear();
+    txtZip.Inlines.Clear();
+
+    if (args.IsOK)
+    {
+        txtName.Inlines.Add( &quot; &quot; + args.MyName );
+        txtAddress.Inlines.Add( &quot; &quot; + args.MyStreetAddress );
+        txtCity.Inlines.Add( &quot; &quot; + args.MyCity );
+        txtState.Inlines.Add( &quot; &quot; + args.MyState );
+        txtZip.Inlines.Add( &quot; &quot; + args.MyZip );
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Данные в текстовых полях упакованы в <code>MyControlEventArgs</code> объекта. Если пользователь нажимает кнопку <strong>ОК</strong> кнопку, обработчик событий извлекает данные и отображает его на панели ниже <code>MyControl1</code>.</p>
+<h4 id="modifying-the-controls-properties">Изменение свойств элемента управления</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент предоставляет несколько свойств размещаемого элемента управления по умолчанию. В результате можно изменить внешний вид элемента управления, чтобы он более полно соответствовал стилю приложения. Наборы переключателей на левой панели позволяют пользователю изменять некоторые свойства цвета и шрифта. Каждый набор кнопок имеет обработчик для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событие, которое определяет пользователя переключателей и меняет соответствующее свойство элемента управления.</p>
+<p>Добавьте следующий код в класс <code>MainWindow</code> .</p>
+<pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#13">private void BackColorChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnBackGreen)
+        wfh.Background = new SolidColorBrush(Colors.LightGreen);
+    else if (sender == rdbtnBackSalmon)
+        wfh.Background = new SolidColorBrush(Colors.LightSalmon);
+    else if (UIIsReady == true)
+        wfh.Background = initBackBrush;
+}
+
+private void ForeColorChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnForeRed)
+        wfh.Foreground = new SolidColorBrush(Colors.Red);
+    else if (sender == rdbtnForeYellow)
+        wfh.Foreground = new SolidColorBrush(Colors.Yellow);
+    else if (UIIsReady == true)
+        wfh.Foreground = initForeBrush;
+}
+
+private void FontChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnTimes)
+        wfh.FontFamily = new FontFamily(&quot;Times New Roman&quot;);
+    else if (sender == rdbtnWingdings)
+        wfh.FontFamily = new FontFamily(&quot;Wingdings&quot;);
+    else if (UIIsReady == true)
+        wfh.FontFamily = initFontFamily;
+}
+private void FontSizeChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnTen)
+        wfh.FontSize = 10;
+    else if (sender == rdbtnTwelve)
+        wfh.FontSize = 12;
+    else if (UIIsReady == true)
+        wfh.FontSize = initFontSize;
+}
+private void StyleChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnItalic)
+        wfh.FontStyle = FontStyles.Italic;
+    else if (UIIsReady == true)
+        wfh.FontStyle = initFontStyle;
+}
+private void WeightChanged(object sender, RoutedEventArgs e)
+{
+    if (sender == rdbtnBold)
+        wfh.FontWeight = FontWeights.Bold;
+    else if (UIIsReady == true)
+        wfh.FontWeight = initFontWeight;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Выполните сборку и запуск приложения. Добавьте какой-нибудь текст в составной элемент управления Windows Forms и нажмите кнопку <strong>ОК</strong>. Текст отображается в метках. Щелкайте различные переключатели, чтобы увидеть соответствующий эффект в элементе управления.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="/visualstudio/designers/designing-xaml-in-visual-studio">Проектирование XAML в Visual Studio</a></li>
+<li><a href="walkthrough-hosting-a-windows-forms-control-in-wpf.html">Пошаговое руководство. Размещение элементов управления Windows Forms в WPF</a></li>
+<li><a href="walkthrough-hosting-a-wpf-composite-control-in-windows-forms.html">Пошаговое руководство. Размещение составного элемента управления WPF в форме Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

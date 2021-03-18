@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1077;&#1088;&#1080;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080; &#1093;&#1088;&#1072;&#1085;&#1077;&#1085;&#1080;&#1077; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1077;&#1088;&#1080;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080; &#1093;&#1088;&#1072;&#1085;&#1077;&#1085;&#1080;&#1077; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="document-serialization-and-storage">Сериализация и хранение документов</h1>
+
+<p>Microsoft .NET Framework предоставляет мощную среду для создания и отображения документов высокого качества.  Улучшенные возможности, поддерживающие фиксированные и потоковые документы, улучшенные элементы управления просмотром в сочетании с мощными возможностями двумерной и трехмерной графики позволяют вывести приложения .NET Framework на новый уровень качества и взаимодействия с пользователем.  Возможность гибко управлять представлением документа в памяти является ключевой функцией программы .NET Framework, а также возможность эффективно сохранять и загружать документы из хранилища данных необходима практически во всех приложениях.  Процесс преобразования документа из внутреннего представления в памяти во внешнее хранилище данных называется сериализацией.  Обратный процесс чтения хранилища данных и воссоздания исходного экземпляра в памяти называется десериализацией.</p>
+<p><a name="AboutSerialization"></a></p>
+<h2 id="about-document-serialization">О сериализации документов</h2>
+<p>В идеальном случае процесс сериализации и десериализации документа из памяти и в память прозрачен для приложения.  Приложение вызывает метод write сериализатора для сохранения документа, в то время как метод read десериализатора осуществляет доступ к хранилищу данных и воссоздает исходный экземпляр в памяти.  Как правило, формат хранения данных не имеет значения для приложения при условии, что в процессе сериализации и десериализации воссоздается документ в исходной форме.</p>
+<p>Приложения часто предоставляют несколько параметров сериализации, которые позволяют пользователям сохранять документы на другом носителе или в другом формате.  Например, приложение может предложить варианты &quot;Сохранить как&quot; для сохранения документа в файл на диске, базу данных или веб-службу.  Аналогичным образом разные сериализаторы могут сохранять документ в различных форматах, например в HTML, RTF, XML, XPS или в ином стороннем формате.  Для приложения сериализация определяет интерфейс, который изолирует сведения о носителе в реализации каждого определенного сериализатора.  Помимо преимуществ инкапсуляции сведений о хранении, .NET Framework <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization">System.Windows.Documents.Serialization</a> API - интерфейсы предоставляют несколько других важных возможностей.</p>
+<h3 id="features-of-net-framework-30-document-serializers">Компоненты сериализаторов документов .NET Framework 3.0</h3>
+<ul>
+<li><p>Прямой доступ к высокоуровневым объектам документа (логическое дерево и визуальные элементы) позволяет эффективно хранить разделенное на страницы содержимое, двухмерные и трехмерные элементы, изображения, мультимедиа, гиперссылки, аннотации и другое содержимое поддержки.</p>
+</li>
+<li><p>Синхронные и асинхронные операции.</p>
+</li>
+<li><p>Поддержка сериализаторов подключаемых модулей с расширенными возможностями:</p>
+<ul>
+<li><p>Доступ на уровне системы для использования всеми приложениями .NET Framework.</p>
+</li>
+<li><p>Удобное обнаружение подключаемых модулей приложения.</p>
+</li>
+<li><p>Простое развертывание, установка и обновление пользовательских подключаемых модулей сторонних производителей.</p>
+</li>
+<li><p>Поддержка интерфейса пользователя для пользовательских параметров и настроек среды выполнения.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="xps-print-path">Способ печати XPS</h3>
+<p>Microsoft .NET Framework XPS способ печати также предоставляет расширяемый механизм записи документов посредством вывода на печать.  XPS служит как формат файла документа и имеет собственный формат очереди печати для Windows Vista.  XPS документы можно отправлять непосредственно на XPS-совместимым принтерам без необходимости для преобразования в промежуточный формат.  См. дополнительные сведения о параметрах и возможностях вывода пути печати в разделе <a href="printing-overview.html">Общие сведения о печати</a>.</p>
+<p><a name="PluginSerializers"></a></p>
+<h2 id="plug-in-serializers">Подключаемые сериализаторы</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization">System.Windows.Documents.Serialization</a> API-интерфейсы обеспечивают поддержку для подключаемых и связанных сериализаторов, которые устанавливаются отдельно от приложения, привязка во время выполнения и осуществляется с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider">SerializerProvider</a> механизм обнаружения.  Подключаемые сериализаторы обеспечивают расширенные преимущества для простоты развертывания и использования в масштабах системы.  Связанные сериализаторы также можно реализовать для сред с частичным доверием, таких как XAML-приложения браузера (XBAP), где подключаемые сериализаторы недоступны.  Связанные сериализаторы, основанные на производной реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerwriter">SerializerWriter</a> класса, компилируются и связываются непосредственно в приложение.  Подключаемые и связанные сериализаторы функционируют через идентичные открытые методы и события, упрощающие использование любого из этих типов сериализаторов (или обоих типов) в приложении.</p>
+<p>Подключаемые сериализаторы помогают разработчикам приложений, обеспечивая расширяемость новых проектируемых систем хранения и файловых форматов и избавляя от необходимости создавать код напрямую для каждого потенциального формата во время создания.  Подключаемые сериализаторы помогают и сторонним разработчикам, предоставляя стандартизированные средства развертывания, установки и обновления доступных системе подключаемых модулей для пользовательских или собственных форматов файлов.</p>
+<h3 id="using-a-plug-in-serializer">Использование подключаемого сериализатора</h3>
+<p>Использовать подключаемые сериализаторы достаточно просто.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider">SerializerProvider</a> Перечисляет класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerdescriptor">SerializerDescriptor</a> объекта для каждого подключаемого модуля установлена в системе.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerdescriptor.isloadable">IsLoadable</a> Свойство фильтрует установленные подключаемые модули, на основе текущей конфигурации и проверяет, что сериализатор можно загружать и используемые приложением.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerdescriptor">SerializerDescriptor</a> Также предоставляет другие свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerdescriptor.displayname">DisplayName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerdescriptor.defaultfileextension">DefaultFileExtension</a>, который приложение может использовать, чтобы предложить пользователю выбрать сериализатор для доступного формата вывода.  Подключаемый модуль сериализатора по умолчанию для XPS входит в состав .NET Framework и всегда перечисляется.  После выбора пользователем формата для вывода, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider.createserializerwriter">CreateSerializerWriter</a> метод используется для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerwriter">SerializerWriter</a> для заданного формата.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerwriter">SerializerWriter</a>.<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerwriter.write">Write</a> Затем, метод может вызываться для вывода потока документов в хранилище данных.</p>
+<p>В следующем примере показано приложение, использующее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider">SerializerProvider</a> метод в свойстве «Свойство PlugInFileFilter».  Свойство PlugInFileFilter перечисляет установленные подключаемые модули и создает строку фильтра с доступными файловыми параметрами для <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.win32.savefiledialog">SaveFileDialog</a>.</p>
+<pre><code class="lang-csharp" name="DocumentSerialize#DocSerializeFileFilter">// ------------------------ PlugInFileFilter --------------------------
+/// &lt;summary&gt;
+///   Gets a filter string for installed plug-in serializers.&lt;/summary&gt;
+/// &lt;remark&gt;
+///   PlugInFileFilter is used to set the SaveFileDialog or
+///   OpenFileDialog &quot;Filter&quot; property when saving or opening files
+///   using plug-in serializers.&lt;/remark&gt;
+private string PlugInFileFilter
+{
+    get
+    {   // Create a SerializerProvider for accessing plug-in serializers.
+        SerializerProvider serializerProvider = new SerializerProvider();
+        string filter = &quot;&quot;;
+
+        // For each loadable serializer, add its display
+        // name and extension to the filter string.
+        foreach (SerializerDescriptor serializerDescriptor in
+            serializerProvider.InstalledSerializers)
+        {
+            if (serializerDescriptor.IsLoadable)
+            {
+                // After the first, separate entries with a &quot;|&quot;.
+                if (filter.Length &gt; 0)   filter += &quot;|&quot;;
+
+                // Add an entry with the plug-in name and extension.
+                filter += serializerDescriptor.DisplayName + &quot; (*&quot; +
+                    serializerDescriptor.DefaultFileExtension + &quot;)|*&quot; +
+                    serializerDescriptor.DefaultFileExtension;
+            }
+        }
+
+        // Return the filter string of installed plug-in serializers.
+        return filter;
+    }
+}
+</code></pre>
+<p>После выбора пользователем имя выходного файла, в следующем примере показано использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider.createserializerwriter">CreateSerializerWriter</a> для сохранения заданного документа в указанном формате.</p>
+<pre><code class="lang-csharp" name="DocumentSerialize#DocSerializePlugIn">// Create a SerializerProvider for accessing plug-in serializers.
+SerializerProvider serializerProvider = new SerializerProvider();
+
+// Locate the serializer that matches the fileName extension.
+SerializerDescriptor selectedPlugIn = null;
+foreach ( SerializerDescriptor serializerDescriptor in
+                serializerProvider.InstalledSerializers )
+{
+    if ( serializerDescriptor.IsLoadable &amp;&amp;
+         fileName.EndsWith(serializerDescriptor.DefaultFileExtension) )
+    {   // The plug-in serializer and fileName extensions match.
+        selectedPlugIn = serializerDescriptor;
+        break; // foreach
+    }
+}
+
+// If a match for a plug-in serializer was found,
+// use it to output and store the document.
+if (selectedPlugIn != null)
+{
+    Stream package = File.Create(fileName);
+    SerializerWriter serializerWriter =
+        serializerProvider.CreateSerializerWriter(selectedPlugIn,
+                                                  package);
+    IDocumentPaginatorSource idoc =
+        flowDocument as IDocumentPaginatorSource;
+    serializerWriter.Write(idoc.DocumentPaginator, null);
+    package.Close();
+    return true;
+}
+</code></pre>
+<p><a name="InstallingPluginSerializers"></a></p>
+<h3 id="installing-plug-in-serializers">Установка подключаемых сериализаторов</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider">SerializerProvider</a> Класс предоставляет интерфейс приложений верхнего уровня для обнаружения подключаемых сериализаторов и доступа.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider">SerializerProvider</a> Находит и предоставляет приложению список сериализаторов, которые установлены и доступны в системе.  Особенности установленных сериализаторов определяются через параметры реестра.  Подключаемые сериализаторы можно добавить в реестр с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider.registerserializer">RegisterSerializer</a> метода; или если .NET Framework еще не установлена, сценарий установки подключаемого модуля может непосредственно задать реестра значения.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.serializerprovider.unregisterserializer">UnregisterSerializer</a> Метод может использоваться для удаления ранее установленного подключаемого модуля или параметры реестра можно сбросить аналогично удалению скрипта.</p>
+<h3 id="creating-a-plug-in-serializer">Создание подключаемого сериализатора</h3>
+<p>Подключаемые и связанные сериализаторы используют одинаковые предоставленные открытые методы и события, и их также можно настроить для синхронной и асинхронной работы.  Для создания подключаемого сериализатора, как правило, требуется выполнить три шага.</p>
+<ol>
+<li><p>Реализация и отладка сериализатора сначала в виде связанного сериализатора.  Изначально создание сериализатора, скомпилированного и связанного непосредственно в тестовом приложении, предоставляет полный доступ к точкам останова и другим полезным для тестирования отладочным службам.</p>
+</li>
+<li><p>После полного тестирования сериализатора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.iserializerfactory">ISerializerFactory</a> интерфейс будет добавлен для создания подключаемого модуля.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.iserializerfactory">ISerializerFactory</a> Интерфейс обеспечивает полный доступ ко всем объектам .NET Framework, включая логическое дерево, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> объектов, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.idocumentpaginatorsource">IDocumentPaginatorSource</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> элементов.  Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization.iserializerfactory">ISerializerFactory</a> предоставляет те же синхронные и асинхронные методы и события, которые используются связанными сериализаторами.  Поскольку на вывод крупных документов может потребоваться время, рекомендуется использовать асинхронные операции, чтобы сохранить возможность взаимодействия с пользователем и предоставить возможность отмены, если с источником данных произойдет проблема.</p>
+</li>
+<li><p>После создания подключаемого сериализатора сценарий установки реализуется для распространения и установки (и удаления) подключаемого модуля (см. <a href="#InstallingPluginSerializers">Установка подключаемых сериализаторов</a> выше).</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.serialization">System.Windows.Documents.Serialization</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.xps.xpsdocumentwriter">XpsDocumentWriter</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.xps.packaging.xpsdocument">XpsDocument</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="printing-overview.html">Общие сведения о печати</a></li>
+<li><a href="https://go.microsoft.com/fwlink?LinkID=106246">XML Paper Specification: Обзор</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

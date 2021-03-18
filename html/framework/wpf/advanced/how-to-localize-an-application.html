@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1051;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1051;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-localize-an-application">Практическое руководство. Локализация приложения</h1>
+
+<p>В этом учебнике рассматривается создание локализованного приложения с помощью средства LocBaml.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Средство LocBaml не является готовым приложением. Оно представлено в качестве примера, в котором используются некоторые API локализации и показывается, как можно написать средство локализации.</p>
+</div>
+<p><a name="Introduction"></a></p>
+<h2 id="overview">Обзор</h2>
+<p>В этом обзоре предоставляется поэтапный подход к локализации приложений. Сначала необходимо подготовить приложение так, чтобы можно было извлечь текст, который будет переведен. После перевода текста требуется влить переведенный текст в новую копию исходного приложения.</p>
+<p><a name="Requirements"></a></p>
+<h2 id="requirements">Требования</h2>
+<p>В ходе данного обсуждения будет использоваться Microsoft Build Engine (MSBuild), который является компилятором, запускаемым из командной строки.</p>
+<p>Кроме того, будет рекомендовано использовать файл проекта. Инструкции по использованию MSBuild и файлы проекта, см. в разделе <a href="../app-development/building-and-deploying-wpf-applications.html">сборки и развертывания</a>.</p>
+<p>Во всех примерах в этом разделе в качестве языка и региональных параметров используется en-US (английский (США)). Это позволяет проходить по шагам примеров без установки другого языка.</p>
+<p><a name="create_sample_app"></a></p>
+<h2 id="create-a-sample-application">Создание примера приложения</h2>
+<p>На этом шаге вы будете выполнять подготовку приложения к локализации. В примерах Windows Presentation Foundation (WPF) предоставляется приложение HelloApp, которое будет использоваться для примеров кода в этом разделе. Если вы хотите использовать этот пример, скачайте Язык XAML файлов из <a href="https://go.microsoft.com/fwlink/?LinkID=160016">средства LocBaml</a>.</p>
+<ol>
+<li><p>Разработайте свое приложение до точки, в которой хотите начать локализацию.</p>
+</li>
+<li><p>Укажите язык разработки в файле проекта, чтобы MSBuild создал основную сборку и вспомогательную сборку (файл с расширением .resources.dll), которая будет содержать ресурсы нейтрального языка. Файл проекта в примере HelloApp — HelloApp.csproj. В этом файле можно найти язык разработки, заданный следующим образом:</p>
+<p><code>&lt;UICulture&gt;en-US&lt;/UICulture&gt;</code></p>
+</li>
+<li><p>Добавьте ИД пользователей в свои файлы XAML. ИД пользователей используются для отслеживания изменений в файлах и для идентификации элементов, которые должны быть переведены. Чтобы добавить ИД пользователей в файлы, запустите <strong>updateuid</strong> в файле проекта:</p>
+<p><strong>msbuild -t:updateuid helloapp.csproj</strong></p>
+<p>Чтобы проверить, что отсутствующие или дублированные ИД пользователей, запустите <strong>checkuid</strong>:</p>
+<p><strong>MSBuild - t: checkuid helloapp.csproj</strong></p>
+<p>После выполнения команды <strong>updateuid</strong>, файлы должны содержать ИД пользователей. Например, в файле Pane1.xaml приложения HelloApp вы должны найти следующее:</p>
+<p><code>&lt;StackPanel x:Uid=&quot;StackPanel_1&quot;&gt;</code></p>
+<p><code>&lt;TextBlock x:Uid=&quot;TextBlock_1&quot;&gt;Hello World&lt;/TextBlock&gt;</code></p>
+<p><code>&lt;TextBlock x:Uid=&quot;TextBlock_2&quot;&gt;Goodbye World&lt;/TextBlock&gt;</code></p>
+<p><code>&lt;/StackPanel&gt;</code></p>
+</li>
+</ol>
+<p><a name="create_dll"></a></p>
+<h2 id="create-the-neutral-language-resources-satellite-assembly">Создание вспомогательной сборки ресурсов нейтрального языка</h2>
+<p>После настройки приложения для создания вспомогательной сборки для ресурсов нейтрального языка можно построить приложение. При этом будет создана основная сборка приложения, а также вспомогательная сборка ресурсов нейтрального языка, которая требуется LocBaml для локализации. Построение приложения</p>
+<ol>
+<li><p>Скомпилируйте HelloApp, чтобы создать библиотека динамической компоновки (DLL):</p>
+<p><strong>msbuild helloapp.csproj</strong></p>
+</li>
+<li><p>Новая основная сборка приложения, HelloApp.exe, создается в следующей папке:</p>
+<p><code>C:\HelloApp\Bin\Debug\</code></p>
+</li>
+<li><p>Новая вспомогательная сборка ресурсов нейтрального языка, HelloApp.resources.dll, создается в следующей папке:</p>
+<p><code>C:\HelloApp\Bin\Debug\en-US\</code></p>
+</li>
+</ol>
+<p><a name="build_locbaml"></a></p>
+<h2 id="build-the-locbaml-tool">Построение средства LocBaml</h2>
+<ol>
+<li><p>Все файлы, необходимые для построения LocBaml, находятся в примерах WPF. Загрузить файлы C# с <a href="https://go.microsoft.com/fwlink/?LinkID=160016">средства LocBaml</a>.</p>
+</li>
+<li><p>Из командной строки запустите файл проекта (locbaml.csproj), чтобы построить это средство:</p>
+<p><strong>msbuild locbaml.csproj</strong></p>
+</li>
+<li><p>Перейдите в каталог Bin\Release, чтобы найти созданный исполняемый файл (locbaml.exe). Например: C:\LocBaml\Bin\Release\locbaml.exe.</p>
+</li>
+<li><p>При запуске LocBaml вы можете указать следующие параметры.</p>
+<ul>
+<li><p><strong>синтаксический анализ</strong> или <strong>-p:</strong> Анализирует Baml, ресурсы или DLL файлы для создания файла CSV или txt.</p>
+</li>
+<li><p><strong>создать</strong> или <strong>-g:</strong> Создает локализованный двоичный файл, используя переведенный файл.</p>
+</li>
+<li><p><strong>out</strong> или <strong>-o</strong> {<em>каталог_файла</em>] <strong>:</strong> Имя выходного файла.</p>
+</li>
+<li><p><strong>язык и региональные параметры</strong> или <strong>- cul</strong> {<em>языка и региональных параметров</em>] <strong>:</strong> Языковой стандарт выходных сборок.</p>
+</li>
+<li><p><strong>Перевод</strong> или <strong>- trans</strong> {<em>translation.csv</em>] <strong>:</strong> Переведенный или локализованного файла.</p>
+</li>
+<li><p><strong>asmpath</strong> or <strong>-asmpath:</strong> {<em>filedirectory</em>] <strong>:</strong> Если ваш XAML код содержит пользовательские элементы управления, необходимо предоставить <strong>asmpath</strong> в сборку пользовательского элемента управления.</p>
+</li>
+<li><p><strong>nologo:</strong> Отображение логотипа или сведений об авторских правах.</p>
+</li>
+<li><p><strong>verbose:</strong> Отображает сведения режима подробного протоколирования.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если при запуске этого средства вам потребуется список параметров, введите <strong>LocBaml.exe</strong> и нажмите клавишу ВВОД.</p>
+</div>
+</li>
+</ol>
+<p><a name="parse_dll"></a></p>
+<h2 id="use-locbaml-to-parse-a-file">Использование LocBaml для анализа файла</h2>
+<p>Теперь, после создания средства LocBaml, вы можете выполнить анализ файла HelloApp.resources.dll, чтобы извлечь текстовое содержимое, которое будет локализовано.</p>
+<ol>
+<li><p>Скопируйте LocBaml.exe в папку приложения bin\debug, где была создана основная сборка приложения.</p>
+</li>
+<li><p>Чтобы выполнить анализ файла вспомогательной сборки и сохранить результат в виде CSV-файла, используйте следующую команду:</p>
+<p><strong>/Parse LocBaml.exe HelloApp.resources.dll /out:Hello.csv</strong></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если входной файл HelloApp.resources.dll не находится в том же каталоге, что и LocBaml.exe, переместите один из файлов таким образом, чтобы оба файла были в одном каталоге.</p>
+</div>
+</li>
+<li><p>При выполнении анализа файлов с помощью LocBaml выходные данные состоят из семи полей, разделенных запятыми (CSV-файлы) или знаками табуляции (TXT-файлы). Ниже показан проанализированный CSV-файл для HelloApp.resources.dll:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml,Stack1:System.Windows.Controls.StackPanel.$Content,Ignore,FALSE, FALSE,,#Text1;#Text2;</td>
+</tr>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml,Stack1:System.Windows.Controls.StackPanel.$Content,Ignore,FALSE, FALSE,,#Text1;#Text2;</td>
+</tr>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml,Stack1:System.Windows.Controls.StackPanel.$Content,Ignore,FALSE, FALSE,,#Text1;#Text2;</td>
+</tr>
+</tbody>
+</table>
+<p>Это следующие семь полей.</p>
+<ol>
+<li><p><strong>Имя BAML</strong>. Имя ресурса BAML по отношению к вспомогательной сборке исходного языка.</p>
+</li>
+<li><p><strong>Ключ ресурса</strong>. Идентификатор локализованного ресурса.</p>
+</li>
+<li><p><strong>Категория</strong>. Тип значения. См. в разделе <a href="localization-attributes-and-comments.html">атрибуты и комментарии локализации</a>.</p>
+</li>
+<li><p><strong>Удобочитаемость</strong>. Может ли значение быть прочитано средством локализации. См. в разделе <a href="localization-attributes-and-comments.html">атрибуты и комментарии локализации</a>.</p>
+</li>
+<li><p><strong>Изменяемость</strong>. Может ли значение изменяться средством локализации. См. в разделе <a href="localization-attributes-and-comments.html">атрибуты и комментарии локализации</a>.</p>
+</li>
+<li><p><strong>Комментарии</strong>. Дополнительное описание значения, помогающее определить способ локализации значения. См. в разделе <a href="localization-attributes-and-comments.html">атрибуты и комментарии локализации</a>.</p>
+</li>
+<li><p><strong>Значение</strong>. Текстовое значение для перевода на нужный язык.</p>
+</li>
+</ol>
+<p>В следующей таблице показывается, как эти поля соответствуют разделенным значениям CSV-файла.</p>
+<table>
+<thead>
+<tr>
+<th>Имя BAML</th>
+<th>Ключ ресурса</th>
+<th>Категория</th>
+<th>Удобочитаемость</th>
+<th>Изменяемость</th>
+<th>Комментарии</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml</td>
+<td>Stack1:System.Windows.Controls.StackPanel.$Content</td>
+<td>Пропустить</td>
+<td>false</td>
+<td>false</td>
+<td></td>
+<td>#Text1;#Text2</td>
+</tr>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml</td>
+<td>Text1:System.Windows.Controls.TextBlock.$Content</td>
+<td>Нет</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+<td>Hello World</td>
+</tr>
+<tr>
+<td>HelloApp.g.en-US.resources:window1.baml</td>
+<td>Text1:System.Windows.Controls.TextBlock.$Content</td>
+<td>Нет</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+<td>Goodbye World</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание, что все значения для <strong>комментарии</strong> поля не содержат значений; Если поле не имеет значения, оно пустое. Также Обратите внимание, что элемент в первой строке ни читаемым, ни изменяемым и имеет «Ignore» как его <strong>категории</strong> значение, все это указывает, что значение не локализуемое.</p>
+</li>
+<li><p>Чтобы облегчить поиск локализуемых элементов в проанализированных файлах, особенно в больших файлах, можно сортировать или фильтровать элементы по <strong>категории</strong>, <strong>удобочитаемость</strong>, и <strong>Изменяемости</strong>. Например можно отфильтровать нечитаемые и неизменяемые значения.</p>
+</li>
+</ol>
+<p><a name="translate_loc_content"></a></p>
+<h2 id="translate-the-localizable-content">Перевод локализуемого содержимого</h2>
+<p>Используйте любое доступное средство для перевода извлеченного содержимого. Для этого рекомендуется записать ресурсы в CSV-файл и просматривать их в Microsoft Excel, внося переведенный текст в последний столбец (значение).</p>
+<p><a name="merge_translations"></a></p>
+<h2 id="use-locbaml-to-generate-a-new-resourcesdll-file">Использование LocBaml для создания нового файла .resources.dll</h2>
+<p>Содержимое, которое было идентифицировано при анализе файла HelloApp.resources.dll с помощью LocBaml, переведено, и его необходимо влить обратно в исходное приложение. Используйте <strong>создания</strong> или <strong>-g</strong> параметр, чтобы создать новый. файл resources.dll.</p>
+<ol>
+<li><p>Чтобы создать новый файл HelloApp.resources.dll, используйте следующий синтаксис. Пометьте язык и региональные параметры как en-US (/cul:en-US).</p>
+<p><strong>LocBaml.exe /generate HelloApp.resources.dll /trans:Hello.csv /out:c:\ /cul:en-US</strong></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если входной файл Hello.csv не находится в том же каталоге, что и исполняемый файл LocBaml.exe, переместите один из файлов таким образом, чтобы оба файла были в одном каталоге.</p>
+</div>
+</li>
+<li><p>Замените старый файл HelloApp.resources.dll в каталоге C:\HelloApp\Bin\Debug\en-US\HelloApp.resources.dll на новый созданный файл HelloApp.resources.dll.</p>
+</li>
+<li><p>Теперь в вашем приложении фразы Hello World и Goodbye World должны быть переведены.</p>
+</li>
+<li><p>Для перевода на другой язык используйте язык, на который вы переводите. В следующем примере показано, как переводить на канадский французский.</p>
+<p><strong>LocBaml.exe / создать HelloApp.resources.dll /trans:Hellofr-CA.csv /out:c: \ /cul:fr-ЦС</strong></p>
+</li>
+<li><p>В той же основной сборке приложения создайте новую папку для выбранного языка и региональных параметров, в которой будет размещена новая вспомогательная сборка. Для канадского французского папку можно назвать fr-CA.</p>
+</li>
+<li><p>Скопируйте созданную вспомогательную сборку в новую папку.</p>
+</li>
+<li><p>Чтобы протестировать новую вспомогательную сборку, необходимо изменить язык и региональные параметры, с которыми будет выполняться приложение. Это можно сделать одним из двух способов.</p>
+<ul>
+<li><p>Изменить региональные параметры операционной системы (<strong>запустить</strong> | <strong>панели управления</strong> | <strong>язык и региональные стандарты</strong>).</p>
+</li>
+<li><p>В своем приложении добавьте в файл App.xaml.cs следующий код:</p>
+</li>
+</ul>
+<pre><code class="lang-xaml" name="LocBamlChangeCultureSnippets#LocBamlChangeCultureMARKUP">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.App&quot;
+    x:Uid=&quot;Application_1&quot;
+    StartupUri=&quot;Window1.xaml&quot;&gt;
+&lt;/Application&gt;
+</code></pre><pre><code class="lang-csharp" name="LocBamlChangeCultureSnippets#LocBamlChangeCultureCODEBEHIND">using System.Windows;
+using System.Globalization;
+using System.Threading;
+
+namespace SDKSample
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            // Change culture under which this application runs
+            CultureInfo ci = new CultureInfo(&quot;fr-CA&quot;);
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<p><a name="Some_Tips_for_Using_LocBaml"></a></p>
+<h2 id="some-tips-for-using-locbaml">Советы по использованию LocBaml</h2>
+<ul>
+<li><p>Все зависимые сборки, которые определяют пользовательские элементы управления, должны быть скопированы в локальный каталог LocBaml или установлены в глобальном кэше сборок. Это необходимо потому, что API локализации должен иметь доступ к зависимым сборкам при чтении двоичный XAML (BAML).</p>
+</li>
+<li><p>Если основная сборка имеет подпись, созданная библиотека DLL ресурсов также должна быть подписана для ее загрузки.</p>
+</li>
+<li><p>Версия библиотеки DLL локализованных ресурсов должна быть синхронизирована с основной сборкой.</p>
+</li>
+</ul>
+<p><a name="Whats_Next"></a></p>
+<h2 id="whats-next">Что дальше?</h2>
+<p>Теперь у вас есть базовое представление о том, как использовать средство LocBaml.  Вы можете создать файл, содержащий ИД пользователей. С помощью средства LocBaml вы можете анализировать файл для извлечения локализуемого содержимого и после перевода этого содержимого можете создать файл .resources.dll, объединяющий переведенное содержимое. В этом разделе не рассматриваются все возможные детали, но теперь у вас есть знания, необходимые для использования LocBaml для локализации приложений.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="globalization-for-wpf.html">Глобализация для WPF</a></li>
+<li><a href="use-automatic-layout-overview.html">Обзор использования автоматической разметки</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1040;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1099; &#1080; &#1082;&#1086;&#1084;&#1084;&#1077;&#1085;&#1090;&#1072;&#1088;&#1080;&#1080; &#1083;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1040;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1099; &#1080; &#1082;&#1086;&#1084;&#1084;&#1077;&#1085;&#1090;&#1072;&#1088;&#1080;&#1080; &#1083;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="localization-attributes-and-comments">Атрибуты и комментарии локализации</h1>
+
+<p>Windows Presentation Foundation (WPF) комментарии локализации являются свойствами в XAML исходный код, предоставленными разработчиками для обеспечения правил и подсказок при локализации. Windows Presentation Foundation (WPF) комментарии локализации содержат два набора данных: атрибуты локализуемости и комментарии локализации в свободной форме. Атрибуты локализуемости используются API локализации WPF для указания того, какие ресурсы должны быть локализованы. Комментарии произвольной формы представляют собой любые сведения, которые автор приложения хочет указать.</p>
+<p><a name="Localizer_Comments_"></a></p>
+<h2 id="localization-comments">Комментарии локализации</h2>
+<p>Если авторы приложения разметки имеют особые требования для определенных элементов в XAML, например ограничения длины текста, семейства шрифтов или размера шрифта, они могут передать эту информацию локализаторам с помощью комментариев в коде XAML. Процесс добавления комментариев к исходному коду выглядит следующим образом.</p>
+<ol>
+<li><p>Разработчик приложения добавляет комментарии локализации в исходный код XAML.</p>
+</li>
+<li><p>Во время процесса построения разработчик может указать в PROJ-файле, следует ли оставить комментарии произвольной локализации в сборке либо вынести за пределы файла часть комментариев или все комментарии. Вынесенные комментарии помещаются в отдельный файл. Параметр указывается с помощью тега <code>LocalizationDirectivesToLocFile</code>, например:</p>
+<p><code>&lt;LocalizationDirectivesToLocFile&gt;</code> <em>value</em> <code>&lt;/LocalizationDirectivesToLocFile&gt;</code></p>
+</li>
+<li><p>Могут быть назначены следующие значения:</p>
+<ul>
+<li><p><strong>None</strong> — комментарии и атрибуты остаются внутри сборки, отдельный файл не создается.</p>
+</li>
+<li><p><strong>CommentsOnly</strong> — из сборки выносятся только комментарии и помещаются в отдельном файле LocFile.</p>
+</li>
+<li><p><strong>All</strong> — из сборки выносятся комментарии и атрибуты, которые помещаются в отдельный файл LocFile.</p>
+</li>
+</ul>
+</li>
+<li><p>При извлечении локализуемых ресурсов из BAML атрибуты локализуемости учитываются API локализации BAML.</p>
+</li>
+<li><p>Файлы локализации комментариев, содержащие только комментарии в произвольной форме, включаются в процесс локализации на более поздней стадии.</p>
+</li>
+</ol>
+<p>В следующем примере показано добавление комментариев локализации в файл XAML.</p>
+<p><code>&lt;TextBlock x:Id = &quot;text01&quot;</code></p>
+<p><code>FontFamily = &quot;Microsoft Sans Serif&quot;</code></p>
+<p><code>FontSize = &quot;12&quot;</code></p>
+<p><code>Localization.Attributes = &quot;$Content (Unmodifiable Readable Text)</code></p>
+<p><code>FontFamily (Unmodifiable Readable)&quot;</code></p>
+<p><code>Localization.Comments = &quot;$Content (Trademark)</code></p>
+<p><code>FontSize (Trademark font size)&quot; &gt;</code></p>
+<p><code>Microsoft</code></p>
+<p><code>&lt;/TextBlock&gt;</code></p>
+<p>В предыдущем примере раздел Localization.Attributes содержит атрибуты локализации, а раздел Localization.Comments — произвольные комментарии. В следующей таблице показаны атрибуты, комментарии и их значения для локализатора.</p>
+<table>
+<thead>
+<tr>
+<th>Атрибуты локализации</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Content (Unmodifiable Readable Text)</td>
+<td>Содержимое элемента TextBlock не может быть изменено. Локализаторы не могут изменить слово Microsoft. Содержимое является видимым (доступным для чтения) локализатору. Категория содержимого — текст.</td>
+</tr>
+<tr>
+<td>FontFamily (Unmodifiable Readable)</td>
+<td>Свойство семейства шрифтов элемента TextBlock не может быть изменено, но является видимым для локализатора.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Произвольные комментарии локализации</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Content (Trademark)</td>
+<td>Автор приложения сообщает локализатору, что содержимое в элементе TextBlock является товарным знаком.</td>
+</tr>
+<tr>
+<td>FontSize (Trademark font size)</td>
+<td>Автор приложения указывает, что свойство font size должно соответствовать стандартному размеру товарного знака.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="localizability-attributes">Атрибуты локализуемости</h3>
+<p>Информация атрибутов локализуемости содержит список пар, состоящих из имени целевого значения и связанных значений локализуемости. Целевое имя может быть именем свойства или специальным именем $Content. Если это имя свойства, целевое значение является значением свойства. Если это $Content, то целевое значение является содержимым элемента.</p>
+<p>Существует три типа атрибутов.</p>
+<ul>
+<li><p><strong>Категория</strong>. Этот параметр определяет, должно ли значение изменяться из средства локализатора. См. раздел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.localizabilityattribute.category">Category</a>.</p>
+</li>
+<li><p><strong>Удобочитаемость</strong>. Этот параметр определяет, должно ли средство локализатора читать (и отображать) значение. См. раздел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.localizabilityattribute.readability">Readability</a>.</p>
+</li>
+<li><p><strong>Изменяемость</strong>. Этот параметр определяет, разрешает ли средство локализатора изменять значение. См. раздел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.localizabilityattribute.modifiability">Modifiability</a>.</p>
+</li>
+</ul>
+<p>Эти атрибуты можно указать в любом порядке через пробел. В случае указания дублированных атрибутов последний атрибут переопределяет предыдущие. Например, Localization.Attributes = &quot;Unmodifiable Modifiable&quot; устанавливает параметр Modifiability в значение Modifiable, так как это последнее значение.</p>
+<p>Параметры Modifiability (изменяемость) и Readability (читаемость) понятны без объяснений. Атрибут Category (категория) предоставляет стандартные категории, которые помогают локализатору при переводе текста. Такие категории, как Text, Label и Title, предоставляют локализатору сведения о том, как следует переводить текст. Кроме того, существуют также специальные категории: Нет, наследуют, игнорировать и NeverLocalize.</p>
+<p>В следующей таблице показаны значения специальных категорий.</p>
+<table>
+<thead>
+<tr>
+<th>Категория</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Нет</td>
+<td>Целевое значение не имеет определенной категории.</td>
+</tr>
+<tr>
+<td>Наследовать</td>
+<td>Целевое значение наследует свои категории от родительского.</td>
+</tr>
+<tr>
+<td>Пропустить</td>
+<td>Целевое значение не обрабатывается в процессе локализации. Не обрабатывается только текущее значение. Параметр не влияет на дочерние узлы.</td>
+</tr>
+<tr>
+<td>NeverLocalize</td>
+<td>Текущее значение не локализуется. Эта категория наследуется потомками элемента.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Localization_Comments"></a></p>
+<h2 id="localization-comments">Комментарии локализации</h2>
+<p>Localization.Comments содержит произвольные строки, касающиеся целевого значения. Разработчики приложения могут добавлять сведения для предоставления подсказок локализаторов о том, как следует переводить текст приложений. Форматом комментариев может быть любая строка, заключенная в круглые скобки &quot;()&quot;. Используйте символ &quot;\&quot; для создания escape-символов.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="globalization-for-wpf.html">Глобализация для WPF</a></li>
+<li><a href="how-to-use-automatic-layout-to-create-a-button.html">Использование автоматического макета для создания кнопки</a></li>
+<li><a href="how-to-use-a-grid-for-automatic-layout.html">Использование сетки для автоматического макета</a></li>
+<li><a href="how-to-localize-an-application.html">Локализация приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

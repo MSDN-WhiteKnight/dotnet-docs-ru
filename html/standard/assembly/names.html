@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1048;&#1084;&#1077;&#1085;&#1072; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1048;&#1084;&#1077;&#1085;&#1072; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="assembly-names">Имена сборок</h1>
+
+<p>Имя сборки хранится в метаданных и в значительной степени влияет на ее область определения и использование в приложениях. Сборки со строгим именем имеют полное имя, в состав которого входит имя сборки, язык и региональные параметры, открытый ключ, номер версии и (необязательно) архитектура процессора. У загружаемых сборок оно часто называется отображаемым именем, и его можно получить через свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.fullname">FullName</a>.</p>
+<p>Среда выполнения использует сведения об имени для обнаружения сборки и для того, чтобы отличать данную сборку от других сборок с тем же именем. Например, сборка со строгим именем <code>myTypes</code> может иметь следующее полное имя:</p>
+<pre><code>myTypes, Version=1.0.1234.0, Culture=en-US, PublicKeyToken=b77a5c561934e089c, ProcessorArchitecture=msil
+</code></pre>
+<p>В этом примере полное имя указывает, что у сборки <code>myTypes</code> имеется строгое имя с токеном открытого ключа, значение языка и региональных параметров &quot;Английский (США)&quot; и номер версии 1.0.1234.0. Архитектурой процессора является <code>msil</code>. Это означает, что должна выполняться JIT-компиляция в 32- или 64-разрядный код в зависимости от операционной системы и процессора.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Сведения о <code>ProcessorArchitecture</code> позволяют создавать версии сборок для конкретных процессоров. Можно создавать версии сборок, идентификации которых различаются только архитектурой процессора — например 32-разрядные и 64-разрядные версии. При строгом именовании указывать архитектуру процессора не требуется. Для получения дополнительной информации см. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname.processorarchitecture">AssemblyName.ProcessorArchitecture</a>.</p>
+</div>
+<p>Код, запрашивающий типы в сборке, должен использовать полное имя сборки. Данный подход называется полной привязкой. Частичная привязка, при которой задается только имя самой сборки, при ссылке на сборки в платформе .NET Framework не допускается.</p>
+<p>Все ссылки на сборки, составляющие .NET Framework, должны содержать полное имя сборки. Например, для ссылки на сборку System.Data в .NET Framework версии 1.0 необходимо использовать следующее имя:</p>
+<pre><code>System.data, version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+</code></pre>
+<p>Версия соответствует номеру версии всех сборок .NET Framework, поставлявшихся с .NET Framework версии 1.0. Для сборок .NET Framework значение языка и региональных параметров всегда нейтрально, а открытый ключ совпадает с показанным в приведенном выше примере.</p>
+<p>Например, при установке слушателя трассировки для добавления ссылки на сборку в файле конфигурации необходимо использовать полное имя системной сборки .NET Framework:</p>
+<pre><code class="lang-xml">&lt;add name=&quot;myListener&quot; type=&quot;System.Diagnostics.TextWriterTraceListener, System, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; initializeData=&quot;c:\myListener.log&quot; /&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В ходе привязки среда выполнения не различает регистр в именах сборок, но при этом сохраняет его без изменений. Некоторые средства Windows SDK работают с именами сборок с учетом регистра. Оптимальным является такой порядок использования имен сборок, при котором они рассматриваются как регистрозависимые.</p>
+</div>
+<h2 id="name-application-components">Правила именования компонентов приложений</h2>
+<p>При определении идентификации сборки среда выполнения не учитывает имя файла. Удостоверение сборки, которое состоит из ее имени, версии, языка и региональных параметров, а также строгого имени, должно восприниматься средой выполнения однозначно.</p>
+<p>Если, например, сборка <em>myAssembly.exe</em> ссылается на сборку <em>myAssembly.dll</em>, то при вызове <em>myAssembly.exe</em> привязка пройдет корректно. Тем не менее, если другое приложение вызовет <em>myAssembly.exe</em> с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.executeassembly">AppDomain.ExecuteAssembly</a>, при обработке запроса на привязку к сборке <code>myAssembly</code>, поступившего от <em>myAssembly.exe</em>, среда выполнения определит, что сборка с именем <code>myAssembly</code> уже загружена. В этом случае сборка <em>myAssembly.dll</em> загружаться не будет. Так как запрашиваемый тип отсутствует в <em>myAssembly.exe</em>, то возникнет исключение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.typeloadexception">TypeLoadException</a>.</p>
+<p>Во избежание этой проблемы необходимо следить за тем, чтобы сборки, составляющие приложение, имели разные имена, а сборки с одинаковыми именами располагались бы в разных каталогах.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если в .NET Framework сборка со строгим именем помещается в глобальный кэш сборок, то имя файла сборки должно соответствовать имени сборки (без учета расширения имени файла, например <em>EXE</em> или <em>DLL</em>). Так, если имя файла сборки — <em>myAssembly.dll</em>, то именем сборки должно быть <code>myAssembly</code>. Имена закрытых сборок, развертываемых только в корневом каталоге приложения, могут отличаться от соответствующих файловых имен.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="find-fully-qualified-name.html">Практическое руководство. Определение полного имени сборки</a></li>
+<li><a href="create.html">Создание сборок</a></li>
+<li><a href="strong-named.html">Сборки со строгими именами</a></li>
+<li><a href="../../framework/app-domains/gac.md">Глобальный кэш сборок</a></li>
+<li><a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

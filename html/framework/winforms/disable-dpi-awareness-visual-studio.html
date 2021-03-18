@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1090;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1077; &#1087;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1080; &#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1103; DPI &#1074; Visual Studio | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1090;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1077; &#1087;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1080; &#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1103; DPI &#1074; Visual Studio | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="disable-dpi-awareness-in-visual-studio">Отключение поддержки определения DPI в Visual Studio</h1>
+
+<p>Visual Studio является точек на дюйм (DPI) приложения, что означает отображение шкалы автоматически. Если приложение указано, что он не поддерживает определение DPI, операционная система масштабируется приложение в качестве растрового изображения. Это поведение также называется виртуализации точек на ДЮЙМ. Приложение по-прежнему считает, что он выполняется на 100% масштабирования или 96 точек на дюйм.</p>
+<p>В этой статье рассматриваются ограничения части конструктора Windows Forms на HDPI-мониторах и ее запуске Visual Studio как процесс не поддерживают DPI.</p>
+<h2 id="windows-forms-designer-on-hdpi-monitors">Конструктор Windows Forms на HDPI-мониторах</h2>
+<p><strong>Конструктор Windows Forms</strong> в Visual Studio не имеет масштабирования. При открытии некоторых форм, в результате проблем с отображением <strong>конструктор Windows Forms</strong> на большое число точек на дюйм (HDPI) мониторов. Например элементы управления могут иметь пересекаются, как показано на следующем рисунке:</p>
+<p><img src="./media/disable-dpi-awareness-visual-studio/win-forms-designer-hdpi.png" alt="Конструктор Windows Forms на мониторе HDPI"></p>
+<p>При открытии формы в <strong>конструктор Windows Forms</strong> в Visual Studio на мониторе HDPI Visual Studio отображает желтый, информационные панели в верхней части конструктора:</p>
+<p><img src="./media/disable-dpi-awareness-visual-studio/scaling-gold-bar.png" alt="Информационные панели в Visual Studio, чтобы перезагрузить компьютер в режиме не поддерживают DPI"></p>
+<p>Считывает сообщение <strong>масштабирование на главном экране равен 200% (192 dpi). Это может вызвать проблемы отрисовки в окне конструктора.</strong></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Эта информационная панель была введена в Visual Studio 2017 версии 15.8.</p>
+</div>
+<p>Если вы не работают в конструкторе, не требуется для настройки макета формы можно игнорировать информационные панели и продолжить работу в редакторе кода или в других типах конструкторов. (Вы также можете <a href="#disable-notifications">отключение уведомлений</a> , чтобы информационные панели не отображаются.) Только <strong>конструктор Windows Forms</strong> снижается. Если вам нужно работать в <strong>конструктор Windows Forms</strong>, следующий раздел поможет вам <a href="#to-resolve-the-display-problem">решить проблему</a>.</p>
+<h2 id="to-resolve-the-display-problem">Для устранения проблемы отображения</h2>
+<p>Существует три способа решения проблемы отображения:</p>
+<ol>
+<li><a href="#restart-visual-studio-as-a-dpi-unaware-process">Перезапустите Visual Studio как процесс не поддерживают DPI</a></li>
+<li><a href="#add-a-registry-entry">Добавьте параметр реестра</a></li>
+<li><a href="#set-your-display-scaling-setting-to-100">Настройте дисплей масштабирование параметр до 100%</a></li>
+</ol>
+<h3 id="restart-visual-studio-as-a-dpi-unaware-process">Перезапустите Visual Studio как процесс не поддерживают DPI</h3>
+<p>Как процесс не поддерживают DPI можно перезапустить Visual Studio, выбрав параметр на желтый информационные панели. Это предпочтительный способ устранения проблемы.</p>
+<p>При запуске Visual Studio как процесс не поддерживают DPI, устранения проблем макет конструктора, но шрифты могут быть нечеткими. Visual Studio отображает различные желтый информационное сообщение, когда он выполняется как процесс не поддерживают DPI, — говорит <strong>Visual Studio выполняется как процесс не поддерживают DPI. Конструкторы WPF и XAML могут отображаться неправильно.</strong> Информационные панели также предоставляет возможность <strong>перезапустите Visual Studio, как поддерживающее DPI процесс</strong>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<ul>
+<li>Если извлечения окна инструментов в Visual Studio при выборе перезагрузите компьютер как процесс не поддерживают DPI, может измениться положения этих окон инструментов.</li>
+<li>Если вы используете профиль Visual Basic по умолчанию, или у вас есть <strong>сохранять новые проекты при создании</strong> параметр выбран в <strong>средства</strong> &gt; <strong>параметры</strong>  &gt;  <strong>Проекты и решения</strong>, Visual Studio не удается восстановить проект после его перезапуска, как процесс не поддерживают DPI. Тем не менее, можно открыть проект, выбрав его в разделе <strong>файл</strong> &gt; <strong>последние проекты и решения</strong>.</li>
+</ul>
+</div>
+<p>Очень важно перезапустить Visual Studio как поддерживающее DPI процесс при завершении работы <strong>конструктор Windows Forms</strong>. Когда он выполняется как процесс не поддерживают DPI, можно, выглядели нечеткими шрифты и могут возникнуть проблемы в других конструкторах например <strong>конструктор XAML</strong>. Если вы закроете и снова откройте Visual Studio при работе в режиме не поддерживают DPI, он становится дюйм еще раз. Можно также щелкнуть <strong>перезапустите Visual Studio, как поддерживающее DPI процесс</strong> параметр на информационные панели.</p>
+<h3 id="add-a-registry-entry">Добавьте параметр реестра</h3>
+<p>Visual Studio можно пометить как не поддерживающие точек на ДЮЙМ, путем изменения реестра. Откройте <strong>редактора реестра</strong> и добавить запись <strong>NT\CurrentVersion\AppCompatFlags\Layers этот</strong> подраздел:</p>
+<p><strong>Запись</strong>: В зависимости от того, используете ли вы Visual Studio 2017 или 2019 г. Используйте одно из следующих значений:</p>
+<ul>
+<li>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe</li>
+<li>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы используете выпуск Visual Studio Professional или Enterprise, замените <strong>сообщества</strong> с <strong>Professional</strong> или <strong>Enterprise</strong> в записи. Кроме того, замените букву диска, при необходимости.</p>
+</div>
+<p><strong>Тип</strong>: REG_SZ</p>
+<p><strong>Значение</strong>. DPIUNAWARE</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Visual Studio остается в режиме не поддерживают DPI, пока вы не удалите запись в реестр.</p>
+</div>
+<h3 id="set-your-display-scaling-setting-to-100">Настройте дисплей масштабирование параметр до 100%</h3>
+<p>Для применения вашего экрана, масштабирование параметр до 100% в Windows 10 введите <strong>параметры отображения</strong> в панели поиска, а затем выберите задач <strong>изменению параметров отображения</strong>. В <strong>параметры</strong> окне <strong>изменить размер текста, приложений и других элементов</strong> для <strong>100%</strong>.</p>
+<p>Настройка вашего экрана, масштабирование до 100% может быть нежелательно, так как он может сделать пользовательский интерфейс слишком мал, чтобы можно было использовать.</p>
+<h2 id="disable-notifications">Отключение уведомлений</h2>
+<p>Вы можете не получать уведомления о DPI масштабирование проблемы в Visual Studio. Может потребоваться отключить уведомления, если вы не в конструкторе, например.</p>
+<p>Чтобы отключить уведомления, выберите <strong>средства</strong> &gt; <strong>параметры</strong> открыть <strong>параметры</strong> диалоговое окно. Выберите <strong>конструктор Windows Forms</strong> &gt; <strong>Общие</strong>и задайте <strong>уведомления масштабирование DPI</strong> для <strong>False</strong>.</p>
+<p><img src="./media/disable-dpi-awareness-visual-studio/notifications-option.png" alt="Разрешение DPI, параметр уведомлений в Visual Studio"></p>
+<p>Если требуется, чтобы позднее снова включить функцию масштабирования уведомления, присвойте свойству <strong>True</strong>.</p>
+<h2 id="troubleshoot">Устранение неполадок</h2>
+<p>Если поддержка DPI перехода не работает должным образом в Visual Studio, проверьте наличие <code>dpiAwareness</code> значение в <strong>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image файл выполнения Options\devenv.exe</strong>  подразделов в редакторе реестра. Удалите значение, если он имеется.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="automatic-scaling-in-windows-forms.html">Автоматическое масштабирование в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

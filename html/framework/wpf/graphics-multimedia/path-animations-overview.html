@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1103; &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1087;&#1091;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1103; &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1087;&#1091;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="path-animations-overview">Общие сведения об анимация с использованием пути</h1>
+
+<p><a name="introduction"></a> В этом разделе представлены общие сведения об анимациях по контуру, которые позволяют использовать геометрические контуры для формирования выходных значений. Анимации по контуру можно использовать для перемещения или вращения объектов по сложным траекториям.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания этого раздела необходимо ознакомиться с WPF средствах анимации. Общие сведения о возможностях анимации, см. в разделе <a href="animation-overview.html">Общие сведения об анимации</a>.</p>
+<p>Так как используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объект для определения контура анимации, вы также должны быть знакомы с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> и различные типы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathsegment">PathSegment</a> объектов. Дополнительные сведения см. в разделе <a href="geometry-overview.html">Общие сведения о геометрии</a>.</p>
+<p><a name="what_is_a_path_animation"></a></p>
+<h2 id="what-is-a-path-animation">Что такое анимация по контуру?</h2>
+<p>Анимацию по контуру — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> , использующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> в качестве входных данных. В параметры From, или по свойству (как это делается для From/To/By анимации) или с помощью ключевых кадров (как для анимации по ключевым кадрам), определяется геометрическая траектория и использовать его для задания <code>PathGeometry</code> свойство анимации пути. При выполнении анимации по контуру текущие данные о координатах X, Y и угле наклона используются для расчета выходных данных.</p>
+<p>Метод анимации по контуру очень удобен при выполнении анимации объекта по сложной траектории. Один из способов для перемещения объекта вдоль пути является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a> для преобразования объекта по сложной траектории. В следующем примере демонстрируется этот способ, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a> анимируемого объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform.matrix">Matrix</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a> Применяется к кнопке и приводит к перемещению вдоль изогнутого пути. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath.doesrotatewithtangent">DoesRotateWithTangent</a> свойству <code>true</code>, прямоугольник поворачивается по касательной к пути.</p>
+<pre><code class="lang-xaml" name="PathAnimationGallery_snippet#MatrixAnimationUsingPathDoesRotateWithTangentWholePage">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; 
+  xmlns:PresentationOptions=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation/options&quot; 
+  xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+  mc:Ignorable=&quot;PresentationOptions&quot; Margin=&quot;20&quot;&gt;
+  &lt;Canvas Width=&quot;400&quot; Height=&quot;400&quot;&gt;
+      
+    &lt;!-- The Button that is animated across the screen by animating
+         the MatrixTransform applied to the button. --&gt;
+    &lt;Button MinWidth=&quot;100&quot; Content=&quot;A Button&quot;&gt;
+      &lt;Button.RenderTransform&gt;
+        &lt;MatrixTransform x:Name=&quot;ButtonMatrixTransform&quot;&gt;
+          &lt;MatrixTransform.Matrix &gt;
+            &lt;Matrix /&gt;
+          &lt;/MatrixTransform.Matrix&gt;
+        &lt;/MatrixTransform&gt;
+      &lt;/Button.RenderTransform&gt;
+      &lt;Button.Triggers&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Button.Loaded&quot;&gt;
+          &lt;BeginStoryboard&gt;
+            &lt;Storyboard&gt;
+              &lt;MatrixAnimationUsingPath
+              Storyboard.TargetName=&quot;ButtonMatrixTransform&quot;
+              Storyboard.TargetProperty=&quot;Matrix&quot;
+              DoesRotateWithTangent=&quot;True&quot;
+              Duration=&quot;0:0:5&quot; 
+              RepeatBehavior=&quot;Forever&quot; &gt;
+                &lt;MatrixAnimationUsingPath.PathGeometry&gt;
+                  &lt;PathGeometry 
+                    Figures=&quot;M 10,100 C 35,0 135,0 160,100 180,190 285,200 310,100&quot; 
+                    PresentationOptions:Freeze=&quot;True&quot; /&gt;
+                &lt;/MatrixAnimationUsingPath.PathGeometry&gt;
+              &lt;/MatrixAnimationUsingPath&gt;
+            &lt;/Storyboard&gt;
+          &lt;/BeginStoryboard&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Button.Triggers&gt;
+    &lt;/Button&gt;
+  &lt;/Canvas&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="PathAnimationGallery_procedural_snip#MatrixAnimationUsingPathDoesRotateWithTangentWholePage">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace SDKSample
+{
+
+    /// &lt;summary&gt;
+    /// Shows how to animate an object along
+    /// a geometric path.
+    /// &lt;/summary&gt;
+    public class MatrixAnimationUsingPathDoesRotateWithTangentExample : Page
+    {
+
+        public MatrixAnimationUsingPathDoesRotateWithTangentExample()
+        {
+            this.Margin = new Thickness(20);
+
+            // Create a NameScope for the page so that
+            // we can use Storyboards.
+            NameScope.SetNameScope(this, new NameScope());
+
+            // Create a button.
+            Button aButton = new Button();
+            aButton.MinWidth = 100;
+            aButton.Content = &quot;A Button&quot;;
+
+            // Create a MatrixTransform. This transform
+            // will be used to move the button.
+            MatrixTransform buttonMatrixTransform = new MatrixTransform();
+            aButton.RenderTransform = buttonMatrixTransform;
+
+            // Register the transform's name with the page
+            // so that it can be targeted by a Storyboard.
+            this.RegisterName(&quot;ButtonMatrixTransform&quot;, buttonMatrixTransform);
+
+            // Create a Canvas to contain the button
+            // and add it to the page.
+            // Although this example uses a Canvas,
+            // any type of panel will work.
+            Canvas mainPanel = new Canvas();
+            mainPanel.Width = 400;
+            mainPanel.Height = 400;
+            mainPanel.Children.Add(aButton);
+            this.Content = mainPanel;
+
+            // Create the animation path.
+            PathGeometry animationPath = new PathGeometry();
+            PathFigure pFigure = new PathFigure();
+            pFigure.StartPoint = new Point(10, 100);
+            PolyBezierSegment pBezierSegment = new PolyBezierSegment();
+            pBezierSegment.Points.Add(new Point(35, 0));
+            pBezierSegment.Points.Add(new Point(135, 0));
+            pBezierSegment.Points.Add(new Point(160, 100));
+            pBezierSegment.Points.Add(new Point(180, 190));
+            pBezierSegment.Points.Add(new Point(285, 200));
+            pBezierSegment.Points.Add(new Point(310, 100));
+            pFigure.Segments.Add(pBezierSegment);
+            animationPath.Figures.Add(pFigure);
+
+            // Freeze the PathGeometry for performance benefits.
+            animationPath.Freeze();
+
+            // Create a MatrixAnimationUsingPath to move the
+            // button along the path by animating
+            // its MatrixTransform.
+            MatrixAnimationUsingPath matrixAnimation =
+                new MatrixAnimationUsingPath();
+            matrixAnimation.PathGeometry = animationPath;
+            matrixAnimation.Duration = TimeSpan.FromSeconds(5);
+            matrixAnimation.RepeatBehavior = RepeatBehavior.Forever;
+
+            // Set the animation's DoesRotateWithTangent property
+            // to true so that rotates the rectangle in addition
+            // to moving it.
+            matrixAnimation.DoesRotateWithTangent = true;
+
+            // Set the animation to target the Matrix property
+            // of the MatrixTransform named &quot;ButtonMatrixTransform&quot;.
+            Storyboard.SetTargetName(matrixAnimation, &quot;ButtonMatrixTransform&quot;);
+            Storyboard.SetTargetProperty(matrixAnimation,
+                new PropertyPath(MatrixTransform.MatrixProperty));
+
+            // Create a Storyboard to contain and apply the animation.
+            Storyboard pathAnimationStoryboard = new Storyboard();
+            pathAnimationStoryboard.Children.Add(matrixAnimation);
+
+            // Start the storyboard when the button is loaded.
+            aButton.Loaded += delegate(object sender, RoutedEventArgs e)
+            {
+                // Start the storyboard.
+                pathAnimationStoryboard.Begin(this);
+            };
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о синтаксисе пути, который используется в XAML пример, см. в разделе <a href="path-markup-syntax.html">синтаксис разметки пути</a> Обзор. Полный пример см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160028">Пример анимации вдоль пути</a>.</p>
+<p>Можно применить анимацию к свойству с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в XAML и коде или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> метод в коде. Анимацию по контуру можно также использовать для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> и применить его к одному или нескольким свойствам. Дополнительные сведения о различных способах применения анимации см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<p><a name="animation_types"></a></p>
+<h2 id="path-animation-types">Типы анимаций по контуру</h2>
+<p>Так как при анимации создаются значения свойств, существуют различные типы анимаций для различных типов свойств. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a>), используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a>, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значений и т. д.</p>
+<p>Классы анимации по контуру принадлежат <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation">System.Windows.Media.Animation</a> пространства имен и используется следующее соглашение об именовании:</p>
+<p><em>&lt;Тип &gt;</em> <code>AnimationUsingPath</code></p>
+<p>Где <em>&lt;Type&gt;</em> — тип значения, которое выполняет анимацию класса.</p>
+<p>WPF предоставляет классы анимации по следующему пути.</p>
+<table>
+<thead>
+<tr>
+<th>Тип свойства</th>
+<th>Соответствующий класс анимации по контуру</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath">DoubleAnimationUsingPath</a></td>
+<td><a href="how-to-animate-an-object-along-a-path-double-animation.html">Анимация объекта вдоль контура (двойная анимация)</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix">Matrix</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a></td>
+<td><a href="how-to-animate-an-object-along-a-path-matrix-animation.html">Анимация объекта вдоль контура (матричная анимация)</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath">PointAnimationUsingPath</a></td>
+<td><a href="how-to-animate-an-object-along-a-path-point-animation.html">Анимация объекта вдоль контура (точечная анимация)</a></td>
+</tr>
+</tbody>
+</table>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a> приводит к возникновению ошибки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix">Matrix</a> значения из его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath.pathgeometry">PathGeometry</a>. При использовании с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a> можно перемещать объект вдоль пути. Если задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath.doesrotatewithtangent">DoesRotateWithTangent</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingpath">MatrixAnimationUsingPath</a> для <code>true</code>, будет также выполняться поворот объекта вдоль изгибов траектории.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath">PointAnimationUsingPath</a> приводит к возникновению ошибки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значения из x-y координаты и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath.pathgeometry">PathGeometry</a>. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath">PointAnimationUsingPath</a> для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значения, можно перемещать объект вдоль пути. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath">PointAnimationUsingPath</a> не может поворачивать объекты.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath">DoubleAnimationUsingPath</a> приводит к возникновению ошибки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения из его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath.pathgeometry">PathGeometry</a>. Установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath.source">Source</a> свойство, можно указать ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath">DoubleAnimationUsingPath</a> использует координаты x, координату по оси y или угол траектории в качестве результата. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath">DoubleAnimationUsingPath</a> для поворота объекта или перемещения его вдоль оси x или y.</p>
+<p><a name="pathanimationinput"></a></p>
+<h2 id="path-animation-input">Входные данные для анимации по контуру</h2>
+<p>Каждого класса анимации по контуру <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> свойство для указания его входных данных. В анимации пути <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> для создания выходных значений. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> Класс позволяет описывать сложные фигуры, состоящие из дуг, кривых и линий.</p>
+<p>В сердце <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> — это коллекция <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> объектов; эти объекты названы так, потому что каждая фигура описывает дискретную форму в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>. Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> состоит из одного или нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathsegment">PathSegment</a> объектов, каждый из которых описывает сегмент фигуры.</p>
+<p>Существует несколько типов сегментов.</p>
+<table>
+<thead>
+<tr>
+<th>Тип сегмента</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.arcsegment">ArcSegment</a></td>
+<td>Создает эллиптическую дугу между двумя точками.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.beziersegment">BezierSegment</a></td>
+<td>Создает кривую Безье третьего порядка между двумя точками.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linesegment">LineSegment</a></td>
+<td>Создает линию между двумя точками.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.polybeziersegment">PolyBezierSegment</a></td>
+<td>Создает набор кривых Безье третьего порядка.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.polylinesegment">PolyLineSegment</a></td>
+<td>Создает набор линий.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.polyquadraticbeziersegment">PolyQuadraticBezierSegment</a></td>
+<td>Создает набор кривых Безье второго порядка.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.quadraticbeziersegment">QuadraticBezierSegment</a></td>
+<td>Создает кривую Безье второго порядка.</td>
+</tr>
+</tbody>
+</table>
+<p>Сегменты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> объединяются в одну геометрическую форму, которая использует конечную точку сегмента как начальную точку следующего сегмента. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure.startpoint">StartPoint</a> Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> указывает точку, от которой рисуется первый сегмент. Каждый последующий сегмент начинается в конечной точке предыдущего сегмента. Например, вертикальная линия от <code>10,50</code> для <code>10,150</code> может быть определена путем задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure.startpoint">StartPoint</a> свойства <code>10,50</code> и создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linesegment">LineSegment</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linesegment.point">Point</a> значение свойства <code>10,150</code>.</p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объектов, см. в разделе <a href="geometry-overview.html">Общие сведения о геометрии</a>.</p>
+<p>В XAML, также можно использовать специальный сокращенный синтаксис для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry.figures">Figures</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>. Дополнительные сведения см. в разделе <a href="path-markup-syntax.html">синтаксис разметки пути</a> Обзор.</p>
+<p>Дополнительные сведения о синтаксисе пути, который используется в XAML пример, см. в разделе <a href="path-markup-syntax.html">синтаксис разметки пути</a> Обзор.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160028">Пример анимации вдоль пути</a></li>
+<li><a href="path-markup-syntax.html">Синтаксис разметки пути</a></li>
+<li><a href="path-animation-how-to-topics.html">Практические руководства, посвященные анимации пути</a></li>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

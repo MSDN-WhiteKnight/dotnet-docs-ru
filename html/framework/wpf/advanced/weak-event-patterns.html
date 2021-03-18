@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1064;&#1072;&#1073;&#1083;&#1086;&#1085;&#1099; &#1089;&#1083;&#1072;&#1073;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1064;&#1072;&#1073;&#1083;&#1086;&#1085;&#1099; &#1089;&#1083;&#1072;&#1073;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="weak-event-patterns">Шаблоны слабых событий</h1>
+
+<p>В приложениях возможно, что обработчики, присоединенные к источникам событий, не будут уничтожены в соответствии с объектом прослушиватель, который присоединил обработчик к источнику. Это может привести к утечке памяти. Windows Presentation Foundation (WPF) представляет шаблон, который может использоваться для решения этой проблемы путем предоставления выделенного класса диспетчера для конкретных событий и реализации интерфейса прослушивателей для данного события. Этот шаблон разработки называется <em>шаблоне слабых событий</em>.</p>
+<h2 id="why-implement-the-weak-event-pattern">Почему реализация шаблона слабых событий?</h2>
+<p>Прослушивание событий может привести к утечке памяти. Обычным методом для прослушивания событий — использовать синтаксис конкретного языка, который присоединяет обработчик к событию на источнике. Например, в C#, что синтаксис является: <code>source.SomeEvent += new SomeEventHandler(MyEventHandler)</code>.</p>
+<p>Этот метод создает строгую ссылку из источника события для прослушивателя событий. Обычно присоединение обработчика события для прослушивателя вызывает прослушиватель для времени жизни объекта, зависит от времени существования объекта источника (если не будет явно удален обработчик событий). Но в некоторых случаях вы можете время жизни объекта прослушивателя управляются другими факторами, например, принадлежит ли он в настоящее время к визуальному дереву приложения, а не по времени существования источника. Каждый раз, когда время жизни объекта источника выходит за пределы время жизни объекта-прослушивателя, обычный шаблон события приводит к утечке памяти: прослушиватель хранится дольше, чем планировалось.</p>
+<p>Шаблон слабых событий предназначен для решения проблемы утечки памяти. Шаблон слабых событий можно использовать всякий раз, когда прослушиватель должен зарегистрироваться для получения события, но прослушиватель не знает, явно отмены регистрации. Шаблон слабых событий можно также использоваться всякий раз, когда время жизни объекта-источника превышает время существования полезных объект прослушивателя. (В этом случае <em>полезные</em> определяется пользователем.) Шаблон слабых событий позволяет прослушивателя, чтобы зарегистрироваться и получить событие, не затрагивая характеристики времени жизни объекта прослушивателя любым способом. По сути неявная ссылка из источника не определяет, является ли прослушиватель под сбор мусора. Ссылка является слабой ссылки, таким образом система именования шаблона слабых событий и в сопутствующих API - интерфейсы. Прослушиватель может быть собран как мусор или в противном случае уничтожения, а источник может продолжить без сохранения только что уничтоженный обработчика ссылок на объект.</p>
+<h2 id="who-should-implement-the-weak-event-pattern">Кто должен реализовывать шаблон слабых событий?</h2>
+<p>Реализация шаблона слабых событий представляет интерес в первую очередь для разработчиков элементов управления. Как разработчик элемента управления — во многом за поведение и включения элемента управления и его влияние на приложения, в которых она вставляется. Это включает и поведения времени существования объекта элемента управления, в частности, обработка описанной проблемы утечки памяти.</p>
+<p>Некоторые сценарии изначально подходят для применения этого шаблона слабых событий. Одним из таких сценариев является привязка данных. В привязке данных, довольно часто для исходного объекта, была полностью независима от объект-прослушиватель, который является целевым объектом привязки. Многие аспекты WPF привязки данных уже имеют шаблон слабых событий, примененный в порядок реализации событий.</p>
+<h2 id="how-to-implement-the-weak-event-pattern">Реализация шаблона слабых событий</h2>
+<p>Реализация шаблона слабых событий тремя способами. В следующей таблице перечислены три подхода и приводятся рекомендации по при их использованию.</p>
+<table>
+<thead>
+<tr>
+<th>Подход</th>
+<th>Когда следует реализовать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Использовать существующий класс manager слабых событий</td>
+<td>Если вы хотите подписаться на событие имеет соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a>, с помощью существующего диспетчера слабых событий. Список диспетчеров слабых событий, которые входят в состав WPF, см. в разделе иерархии наследования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> класса. Так, как диспетчеры включены слабых событий ограничены, возможно, необходимо будет выбрать один из других подходов.</td>
+</tr>
+<tr>
+<td>Использовать класс manager универсального слабых событий</td>
+<td>Используйте универсальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2">WeakEventManager&lt;TEventSource,TEventArgs&gt;</a> существующей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> не доступен, требуется, чтобы легко реализовать, и вы не занимается увеличивает производительность работы. Универсальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2">WeakEventManager&lt;TEventSource,TEventArgs&gt;</a> является менее эффективным, чем диспетчер слабых событий существующих или пользовательских. Например универсальный класс выполняет дополнительные отражение для обнаружения событий, имени события. Кроме того, код для регистрации событий с помощью универсального <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2">WeakEventManager&lt;TEventSource,TEventArgs&gt;</a> является более подробным по сравнению с помощью существующего или пользовательских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a>.</td>
+</tr>
+<tr>
+<td>Создайте класс manager пользовательских слабых событий</td>
+<td>Создание пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> существующей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> недоступен и нужно, чтобы повышения эффективности работы. С помощью пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> подписаться на событие будет более эффективной, но вы затраты на создавать больше кода в начале.</td>
+</tr>
+<tr>
+<td>С помощью диспетчера сторонних слабых событий</td>
+<td>NuGet имеет <a href="https://www.nuget.org/packages?q=weak+event+manager&amp;prerel=false">несколько диспетчеров слабых событий</a> и многие платформы WPF также поддерживать шаблон (например, см. в разделе <a href="https://github.com/PrismLibrary/Prism-Documentation/blob/master/docs/wpf/Communication.md#subscribing-to-events">документации призмы подписка слабо связанных событий</a>).</td>
+</tr>
+</tbody>
+</table>
+<p>В следующих разделах рассматривается реализация шаблона слабых событий.  Для целей данного обсуждения Чтобы подписаться на событие имеет следующие характеристики.</p>
+<ul>
+<li><p>Имя события находится <code>SomeEvent</code>.</p>
+</li>
+<li><p>Событие <code>EventSource</code> класс.</p>
+</li>
+<li><p>Обработчик событий имеет тип: <code>SomeEventEventHandler</code> (или <code>EventHandler&lt;SomeEventEventArgs&gt;</code>).</p>
+</li>
+<li><p>Событие передает параметр типа <code>SomeEventEventArgs</code> обработчикам событий.</p>
+</li>
+</ul>
+<h3 id="using-an-existing-weak-event-manager-class">С помощью существующего класса слабого диспетчера событий</h3>
+<ol>
+<li><p>Найдите событие слабые manager.</p>
+<p>Список диспетчеров слабых событий, которые входят в состав WPF, см. в разделе иерархии наследования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> класса.</p>
+</li>
+<li><p>Использование нового диспетчера слабых событий вместо обычной привязке события.</p>
+<p>Например, если ваш код использует следующий шаблон для подписки на событие:</p>
+<pre><code>source.SomeEvent += new SomeEventEventHandler(OnSomeEvent);  
+</code></pre>
+<p>Измените его на следующий шаблон:</p>
+<pre><code>SomeEventWeakEventManager.AddHandler(source, OnSomeEvent);  
+</code></pre>
+<p>Аналогично Если ваш код использует следующий шаблон для отмены подписки на событие:</p>
+<pre><code>source.SomeEvent -= new SomeEventEventHandler(OnSome);  
+</code></pre>
+<p>Измените его на следующий шаблон:</p>
+<pre><code>SomeEventWeakEventManager.RemoveHandler(source, OnSomeEvent);  
+</code></pre>
+</li>
+</ol>
+<h3 id="using-the-generic-weak-event-manager-class">Использование универсального класса слабого диспетчера событий</h3>
+<ol>
+<li><p>Использование универсального <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2">WeakEventManager&lt;TEventSource,TEventArgs&gt;</a> класса вместо обычной привязке события.</p>
+<p>При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2">WeakEventManager&lt;TEventSource,TEventArgs&gt;</a> Чтобы зарегистрировать прослушивателей событий, необходимо указать источник события и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a> тип как параметры типа для класса и вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager-2.addhandler">AddHandler</a> как показано в следующем коде:</p>
+<pre><code>WeakEventManager&lt;EventSource, SomeEventEventArgs&gt;.AddHandler(source, &quot;SomeEvent&quot;, source_SomeEvent);  
+</code></pre>
+</li>
+</ol>
+<h3 id="creating-a-custom-weak-event-manager-class">Создание пользовательского класса слабого диспетчера событий</h3>
+<ol>
+<li><p>Скопируйте следующий шаблон класса в проект.</p>
+<p>Этот класс наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a> класса.</p>
+<pre><code class="lang-csharp" name="WeakEvents#WeakEventManagerTemplate">class SomeEventWeakEventManager : WeakEventManager
+{
+
+    private SomeEventWeakEventManager()
+    {
+    }
+
+    /// &lt;summary&gt;
+    /// Add a handler for the given source's event.
+    /// &lt;/summary&gt;
+    public static void AddHandler(EventSource source,
+                                  EventHandler&lt;SomeEventEventArgs&gt; handler)
+    {
+        if (source == null)
+            throw new ArgumentNullException(&quot;source&quot;);
+        if (handler == null)
+            throw new ArgumentNullException(&quot;handler&quot;);
+
+        CurrentManager.ProtectedAddHandler(source, handler);
+    }
+
+    /// &lt;summary&gt;
+    /// Remove a handler for the given source's event.
+    /// &lt;/summary&gt;
+    public static void RemoveHandler(EventSource source,
+                                     EventHandler&lt;SomeEventEventArgs&gt; handler)
+    {
+        if (source == null)
+            throw new ArgumentNullException(&quot;source&quot;);
+        if (handler == null)
+            throw new ArgumentNullException(&quot;handler&quot;);
+
+        CurrentManager.ProtectedRemoveHandler(source, handler);
+    }
+
+    /// &lt;summary&gt;
+    /// Get the event manager for the current thread.
+    /// &lt;/summary&gt;
+    private static SomeEventWeakEventManager CurrentManager
+    {
+        get
+        {
+            Type managerType = typeof(SomeEventWeakEventManager);
+            SomeEventWeakEventManager manager =
+                (SomeEventWeakEventManager)GetCurrentManager(managerType);
+
+            // at first use, create and register a new manager
+            if (manager == null)
+            {
+                manager = new SomeEventWeakEventManager();
+                SetCurrentManager(managerType, manager);
+            }
+
+            return manager;
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Return a new list to hold listeners to the event.
+    /// &lt;/summary&gt;
+    protected override ListenerList NewListenerList()
+    {
+        return new ListenerList&lt;SomeEventEventArgs&gt;();
+    }
+
+    /// &lt;summary&gt;
+    /// Listen to the given source for the event.
+    /// &lt;/summary&gt;
+    protected override void StartListening(object source)
+    {
+        EventSource typedSource = (EventSource)source;
+        typedSource.SomeEvent += new EventHandler&lt;SomeEventEventArgs&gt;(OnSomeEvent);
+    }
+
+    /// &lt;summary&gt;
+    /// Stop listening to the given source for the event.
+    /// &lt;/summary&gt;
+    protected override void StopListening(object source)
+    {
+        EventSource typedSource = (EventSource)source;
+        typedSource.SomeEvent -= new EventHandler&lt;SomeEventEventArgs&gt;(OnSomeEvent);
+    }
+
+    /// &lt;summary&gt;
+    /// Event handler for the SomeEvent event.
+    /// &lt;/summary&gt;
+    void OnSomeEvent(object sender, SomeEventEventArgs e)
+    {
+        DeliverEvent(sender, e);
+    }
+}
+</code></pre></li>
+<li><p>Замените <code>SomeEventWeakEventManager</code> с собственным именем.</p>
+</li>
+<li><p>Замените имена трех, описанные ранее, с соответствующими именами для события. (<code>SomeEvent</code>, <code>EventSource</code>, и <code>SomeEventEventArgs</code>)</p>
+</li>
+<li><p>Настроить видимость (открытый / внутренней / закрытый) для класса manager слабых событий в ту же видимость, что событие, которыми она управляет.</p>
+</li>
+<li><p>Использование нового диспетчера слабых событий вместо обычной привязке события.</p>
+<p>Например, если ваш код использует следующий шаблон для подписки на событие:</p>
+<pre><code>source.SomeEvent += new SomeEventEventHandler(OnSomeEvent);  
+</code></pre>
+<p>Измените его на следующий шаблон:</p>
+<pre><code>SomeEventWeakEventManager.AddHandler(source, OnSomeEvent);  
+</code></pre>
+<p>Аналогично Если ваш код использует следующий шаблон для отмены подписки на события:</p>
+<pre><code>source.SomeEvent -= new SomeEventEventHandler(OnSome);  
+</code></pre>
+<p>Измените его на следующий шаблон:</p>
+<pre><code>SomeEventWeakEventManager.RemoveHandler(source, OnSomeEvent);  
+</code></pre>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.weakeventmanager">WeakEventManager</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.iweakeventlistener">IWeakEventListener</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

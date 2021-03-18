@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1077;&#1088;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1086;&#1076;&#1072; OnPaint | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1077;&#1088;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1086;&#1076;&#1072; OnPaint | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="overriding-the-onpaint-method">Переопределение метода OnPaint</h1>
+
+<p>Основные шаги для переопределения любого события, определенные в .NET Framework идентичны и обобщены в следующем списке.</p>
+<h4 id="to-override-an-inherited-event">Чтобы переопределить наследуемое событие</h4>
+<ol>
+<li><p>Переопределите защищенный <code>On</code> <em>EventName</em> метод.</p>
+</li>
+<li><p>Вызовите <code>On</code> <em>EventName</em> метод базового класса из переопределенного <code>On</code> <em>EventName</em> метод, чтобы зарегистрированные делегаты получили событие.</p>
+</li>
+</ol>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> Событий описано здесь подробно, так как каждый элемент управления Windows Forms необходимо переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событие, он наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. Базовый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> класс не знает, как производный элемент управления должен быть нарисован и не обеспечивает логику рисования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> просто отправляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий для приемников зарегистрированных событий.</p>
+<p>Если вы работали с образцом в <a href="how-to-develop-a-simple-windows-forms-control.html">как: Разработка простого элемента управления Windows Forms</a>, вы видели пример переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод. Следующий фрагмент кода взят из этого примера.</p>
+<pre><code class="lang-vb">Public Class FirstControl  
+   Inherits Control  
+  
+   Public Sub New()  
+   End Sub  
+  
+   Protected Overrides Sub OnPaint(e As PaintEventArgs)  
+      ' Call the OnPaint method of the base class.  
+      MyBase.OnPaint(e)  
+      ' Call methods of the System.Drawing.Graphics object.  
+      e.Graphics.DrawString(Text, Font, New SolidBrush(ForeColor), RectangleF.op_Implicit(ClientRectangle))  
+   End Sub  
+End Class   
+</code></pre>
+<pre><code class="lang-csharp">public class FirstControl : Control {  
+   public FirstControl() {}  
+   protected override void OnPaint(PaintEventArgs e) {  
+      // Call the OnPaint method of the base class.  
+      base.OnPaint(e);  
+      // Call methods of the System.Drawing.Graphics object.  
+      e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), ClientRectangle);  
+   }   
+}   
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> Класс содержит данные для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий. Он имеет два свойства, как показано в следующем коде.</p>
+<pre><code class="lang-vb">Public Class PaintEventArgs  
+   Inherits EventArgs  
+   ...  
+   Public ReadOnly Property ClipRectangle() As System.Drawing.Rectangle  
+      ...  
+   End Property  
+  
+   Public ReadOnly Property Graphics() As System.Drawing.Graphics  
+      ...  
+   End Property   
+   ...  
+End Class  
+</code></pre>
+<pre><code class="lang-csharp">public class PaintEventArgs : EventArgs {  
+...  
+    public System.Drawing.Rectangle ClipRectangle {}  
+    public System.Drawing.Graphics Graphics {}  
+...  
+}  
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> Указывает на прямоугольник для рисования и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.graphics">Graphics</a> свойство ссылается на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Классы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing">System.Drawing</a> управляются пространство имен классов, предоставляющих доступ к функциям GDI+, новая графическая библиотека Windows. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Объект имеет методы для рисования точек, строк, линий, дуг, кнопку с многоточием и многих других форм.</p>
+<p>Элемент управления вызывает его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод всякий раз, когда ему необходимо изменить его визуального отображения. Этот метод в свою очередь вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../../standard/events/index.md">События</a></li>
+<li><a href="rendering-a-windows-forms-control.html">Отрисовка элементов управления Windows Forms</a></li>
+<li><a href="defining-an-event-in-windows-forms-controls.html">Определение событий</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

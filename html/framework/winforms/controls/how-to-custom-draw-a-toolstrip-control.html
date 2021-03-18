@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1072;&#1103; &#1087;&#1088;&#1086;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; ToolStrip | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1072;&#1103; &#1087;&#1088;&#1086;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; ToolStrip | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-custom-draw-a-toolstrip-control">Практическое руководство. Пользовательская прорисовка элемента управления ToolStrip</h1>
+
+<p>Элементы управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> имеют следующие связанные классы отрисовки:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> предоставляет внешний вид и стиль операционной системы.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> предоставляет внешний вид и стиль Microsoft Office.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a> является абстрактным базовым классом для двух других классов отрисовки.</p>
+</li>
+</ul>
+<p>Для настраиваемой отрисовки (также известной как рисование владельцем) элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> можно переопределить один из классов отрисовки и изменить перспективу логики отрисовки.</p>
+<p>В приведенных ниже процедурах описаны различные аспекты настраиваемой отрисовки.</p>
+<h3 id="to-switch-between-the-provided-renderers">Переключение между доступными средствами отрисовки</h3>
+<ul>
+<li><p>Задайте для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.rendermode">RenderMode</a> требуемое значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode">ToolStripRenderMode</a>.</p>
+<p>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode#System_Windows_Forms_ToolStripRenderMode_ManagerRenderMode">ManagerRenderMode</a> статический режим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.rendermode">RenderMode</a> определяет средство отрисовки для приложения. Другие значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode">ToolStripRenderMode</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode#System_Windows_Forms_ToolStripRenderMode_Custom">Custom</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode#System_Windows_Forms_ToolStripRenderMode_Professional">Professional</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode#System_Windows_Forms_ToolStripRenderMode_System">System</a>.</p>
+</li>
+</ul>
+<h3 id="to-change-the-microsoft-officestyle-borders-to-straight">Изменение границ в стиле Microsoft Office на прямые</h3>
+<ul>
+<li>Переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer.onrendertoolstripborder">ToolStripProfessionalRenderer.OnRenderToolStripBorder</a>, но не вызывайте базовый класс.</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Существуют версии этого метода для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a>.</p>
+</div>
+<h3 id="to-change-the-professionalcolortable">Изменение ProfessionalColorTable</h3>
+<ul>
+<li><p>Переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.professionalcolortable">ProfessionalColorTable</a> и измените нужные цвета.</p>
+<pre><code class="lang-vb">Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As _  
+System.EventArgs) Handles Me.Load  
+    Dim t As MyColorTable = New MyColorTable  
+    ToolStrip1.Renderer = New ToolStripProfessionalRenderer(t)  
+End Sub  
+
+Class MyColorTable   
+Inherits ProfessionalColorTable  
+
+Public Overrides ReadOnly Property ButtonPressedGradientBegin() As Color  
+    Get  
+        Return Color.Red  
+    End Get  
+End Property  
+
+Public Overrides ReadOnly Property ButtonPressedGradientMiddle() _  
+As System.Drawing.Color  
+    Get  
+        Return Color.Blue  
+    End Get  
+        End Property  
+
+Public Overrides ReadOnly Property ButtonPressedGradientEnd() _  
+As System.Drawing.Color  
+    Get  
+        Return Color.Green  
+    End Get  
+End Property  
+
+Public Overrides ReadOnly Property ButtonSelectedGradientBegin() _  
+As Color  
+    Get  
+        Return Color.Yellow  
+    End Get  
+End Property  
+
+Public Overrides ReadOnly Property ButtonSelectedGradientMiddle() As System.Drawing.Color  
+    Get  
+        Return Color.Orange  
+    End Get  
+End Property  
+
+Public Overrides ReadOnly Property ButtonSelectedGradientEnd() _  
+As System.Drawing.Color  
+    Get  
+        Return Color.Violet  
+    End Get  
+End Property  
+End Class  
+</code></pre>
+</li>
+</ul>
+<h3 id="to-change-the-rendering-for-all-toolstrip-controls-in-your-application">Изменение отрисовки для всех элементов управления ToolStrip в приложении</h3>
+<ol>
+<li><p>С помощью свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmanager.rendermode">ToolStripManager.RenderMode</a> выберите одно из доступных средств отрисовки.</p>
+</li>
+<li><p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmanager.renderer">ToolStripManager.Renderer</a> для назначения пользовательского средства отрисовки.</p>
+</li>
+<li><p>Убедитесь в том, что свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.rendermode">ToolStrip.RenderMode</a> присвоено значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprendermode#System_Windows_Forms_ToolStripRenderMode_ManagerRenderMode">ManagerRenderMode</a>.</p>
+</li>
+</ol>
+<h3 id="to-turn-off-the-microsoft-office-colors-for-the-entire-application">Отключение цветов в стиле Microsoft Office для всего приложения</h3>
+<ul>
+<li>Присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmanager.visualstylesenabled">ToolStripManager.VisualStylesEnabled</a> значение <code>false</code>.</li>
+</ul>
+<h3 id="to-turn-off-the-microsoft-office-colors-for-one-toolstrip-control">Отключение цветов в стиле Microsoft Office для одного элемента управления ToolStrip</h3>
+<ul>
+<li><p>Используйте код, аналогичный приведенному ниже.</p>
+<pre><code class="lang-vb">Dim colorTable As ProfessionalColorTable()  
+colorTable.UseSystemColors = True  
+Dim toolStrip.Renderer As ToolStripProfessionalRenderer(colorTable)  
+</code></pre>
+<pre><code class="lang-csharp">ProfessionalColorTable colorTable = new ProfessionalColorTable();  
+colorTable.UseSystemColors = true;  
+toolStrip.Renderer = new ToolStripProfessionalRenderer(colorTable);  
+</code></pre>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a></li>
+<li><a href="controls-with-built-in-owner-drawing-support.html">Элементы управления Windows Forms со встроенной поддержки рисования владельцем</a></li>
+<li><a href="create-and-set-a-custom-renderer-for-the-toolstrip-control-in-wf.html">Практическое руководство. Создание и определение пользовательского средства визуализации для элемента управления ToolStrip в Windows Forms</a></li>
+<li><a href="toolstrip-control-overview-windows-forms.html">Общие сведения об элементе управления ToolStrip</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1095;&#1072;&#1089;&#1086;&#1074; WPF &#1074; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1095;&#1072;&#1089;&#1086;&#1074; WPF &#1074; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-hosting-a-wpf-clock-in-win32">Пошаговое руководство. Размещение часов WPF в Win32</h1>
+
+<p>Чтобы поместить WPF внутри Win32 приложения, используют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, который предоставляет HWND, который содержит ваши WPF содержимое. Сначала вы создаете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, предоставив ему параметры, аналогичные CreateWindow. Указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> о WPF содержимого, которое требуется поместить. Наконец, вы получаете HWND из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>. В этом пошаговом руководстве описывается создание смешанного WPF внутри Win32 приложение, которое повторно реализует операционной системы <strong>свойства даты и времени</strong> диалоговое окно.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>См. в разделе <a href="wpf-and-win32-interoperation.html">взаимодействие WPF и Win32</a>.</p>
+<h2 id="how-to-use-this-tutorial">Как использовать этот учебник</h2>
+<p>Основное внимание в этом учебнике уделяется важным шагам в процессе создания приложения взаимодействия. Пример, поддерживаемый руководства <a href="https://go.microsoft.com/fwlink/?LinkID=160051">пример взаимодействия часов Win32</a>, но этот пример характеризует работу конечного продукта. Этом учебнике приведены шаги, как если бы вы начали с существующим Win32 собственного проекта, возможно с уже существующим проектом и добавили размещенных WPF в приложение. Вы можете сравнить ваш конечный продукт с <a href="https://go.microsoft.com/fwlink/?LinkID=160051">пример взаимодействия часов Win32</a>.</p>
+<h2 id="a-walkthrough-of-windows-presentation-framework-inside-win32-hwndsource">Пошаговое руководство по WPF внутри Win32 (HwndSource)</h2>
+<p>На следующем рисунке показан конечный продукт, который должен получиться в результате выполнения инструкций из этого учебника:</p>
+<p><img src="./media/interoparch06.PNG" alt="Диалоговое окно &quot;Свойства даты и времени&quot;" title="InteropArch06"></p>
+<p>Это диалоговое окно можно воссоздать, создав C++ Win32 в проекте Microsoft Visual Studioи использование редактора диалоговых окон для создания следующих:</p>
+<p><img src="./media/interoparch07.PNG" alt="Диалоговое окно &quot;Свойства даты и времени&quot;" title="InteropArch07"></p>
+<p>(Необходимо использовать Microsoft Visual Studio использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, и вам не нужно использовать C++ для написания Win32 программы, но это является весьма распространенный способ сделать это и хорошо подходит для пошагового объяснения в учебнике).</p>
+<p>Вам необходимо выполнить пять вложенных шагов, чтобы поставить WPF часов в диалоговое окно:</p>
+<ol>
+<li><p>Включение вашего Win32 проект, чтобы вызывать управляемый код (<strong>/CLR</strong>), изменив параметры проекта в Microsoft Visual Studio.</p>
+</li>
+<li><p>Создание WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в отдельной библиотеке DLL.</p>
+</li>
+<li><p>Поместите этот WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>.</p>
+</li>
+<li><p>Получите HWND для, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.handle">Handle</a> свойство.</p>
+</li>
+<li><p>Используйте Win32 выбрать место для размещения HWND внутри более крупной Win32 приложения</p>
+</li>
+</ol>
+<h2 id="clr">/clr</h2>
+<p>Первым делом необходимо преобразовать этот неуправляемый Win32 проект, в который можно вызывать управляемый код. Используйте параметр компилятора/CLR, который будет связан с необходимыми библиотеками DLL, вы хотите использовать и скорректирует основной метод для использования с WPF.</p>
+<p>Чтобы включить использование управляемого кода в проекте C++: Правой кнопкой мыши проект win32clock и выберите <strong>свойства</strong>. На <strong>Общие</strong> страницы свойств (по умолчанию), измените поддержку общеязыковой на <code>/clr</code>.</p>
+<p>Добавьте ссылки на библиотеки DLL, необходимые для WPF: PresentationCore.dll, PresentationFramework.dll, System.dll, WindowsBase.dll, UIAutomationProvider.dll и UIAutomationTypes.dll. (Следующие инструкции предполагают, что операционная система установлена на диске C:.)</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши проект win32clock и выберите <strong>ссылки...</strong> , а внутри этого диалогового окна:</p>
+</li>
+<li><p>Щелкните правой кнопкой мыши проект win32clock и выберите <strong>ссылки...</strong> .</p>
+</li>
+<li><p>Нажмите кнопку <strong>добавить новую ссылку</strong>, перейдите на вкладку, введите C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\PresentationCore.dll и нажмите кнопку ОК.</p>
+</li>
+<li><p>Повторите для PresentationFramework.dll: C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\PresentationFramework.dll.</p>
+</li>
+<li><p>Повторите для WindowsBase.dll: C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\WindowsBase.dll.</p>
+</li>
+<li><p>Повторите для UIAutomationTypes.dll: C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\UIAutomationTypes.dll.</p>
+</li>
+<li><p>Повторите для UIAutomationProvider.dll: C:\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\UIAutomationProvider.dll.</p>
+</li>
+<li><p>Нажмите кнопку <strong>добавить новую ссылку</strong>, выберите System.dll и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong> чтобы выйти из страниц свойств win32clock для добавления ссылок.</p>
+</li>
+</ol>
+<p>Наконец, добавьте <code>STAThreadAttribute</code> для <code>_tWinMain</code> метод для использования с WPF:</p>
+<pre><code class="lang-cpp">[System::STAThreadAttribute]
+int APIENTRY _tWinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPTSTR    lpCmdLine,
+                     int       nCmdShow)
+</code></pre>
+<p>Этот атрибут сообщает среда CLR , когда он инициализирует Модель COM, его следует использовать модель однопотокового подразделения (STA), который необходим для WPF (и Windows Forms).</p>
+<h2 id="create-a-windows-presentation-framework-page">Создание страницы WPF</h2>
+<p>Создайте библиотеку DLL, которая определяет WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Часто бывает проще всего создать WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> как автономное приложение и записать и отладить WPF таким способом часть. После этого проект можно преобразовать в библиотеку DLL, щелкните правой кнопкой мыши проект, щелкнув <strong>свойства</strong>, перейдя в приложение и изменив тип выходных данных на библиотеку классов Windows.</p>
+<p>WPF Проект библиотеки dll можно объединить с Win32 (одно решение, которое содержит два проекта) — проект, щелкните правой кнопкой мыши решение, выберите <strong>добавить/существующий проект</strong>.</p>
+<p>Чтобы использовать эту WPF dll из Win32 проекта, необходимо добавить ссылку:</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши проект win32clock и выберите <strong>ссылки...</strong> .</p>
+</li>
+<li><p>Нажмите кнопку <strong>добавить новую ссылку</strong>.</p>
+</li>
+<li><p>Щелкните вкладку <strong>Проекты</strong>. Выберите WPFClock, нажмите кнопку &quot;ОК&quot;.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong> чтобы выйти из страниц свойств win32clock для добавления ссылок.</p>
+</li>
+</ol>
+<h2 id="hwndsource">HwndSource</h2>
+<p>Далее используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> вносить WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> вид HWND. Добавьте этот блок кода в файл C++:</p>
+<pre><code class="lang-cpp">namespace ManagedCode
+{
+    using namespace System;
+    using namespace System::Windows;
+    using namespace System::Windows::Interop;
+    using namespace System::Windows::Media;
+
+    HWND GetHwnd(HWND parent, int x, int y, int width, int height) {
+        HwndSource^ source = gcnew HwndSource(
+            0, // class style
+            WS_VISIBLE | WS_CHILD, // style
+            0, // exstyle
+            x, y, width, height,
+            &quot;hi&quot;, // NAME
+            IntPtr(parent)        // parent window
+            );
+
+        UIElement^ page = gcnew WPFClock::Clock();
+        source-&gt;RootVisual = page;
+        return (HWND) source-&gt;Handle.ToPointer();
+    }
+}
+}
+</code></pre>
+<p>это большой фрагмент кода, который требует определенных пояснений. Первая часть представляет собой различные операторы, поэтому полностью квалифицировать все вызовы не нужно:</p>
+<pre><code class="lang-cpp">namespace ManagedCode
+{
+    using namespace System;
+    using namespace System::Windows;
+    using namespace System::Windows::Interop;
+    using namespace System::Windows::Media;
+</code></pre>
+<p>Затем вы определяете функцию, которая создает WPF содержимого, помещает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> , и возвращает HWND:</p>
+<pre><code class="lang-cpp">HWND GetHwnd(HWND parent, int x, int y, int width, int height) {
+</code></pre>
+<p>Сначала вы создаете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, параметры которого аналогичны CreateWindow:</p>
+<pre><code class="lang-cpp">HwndSource^ source = gcnew HwndSource(
+    0, // class style
+    WS_VISIBLE | WS_CHILD, // style
+    0, // exstyle
+    x, y, width, height,
+    &quot;hi&quot;, // NAME
+    IntPtr(parent) // parent window
+);
+</code></pre>
+<p>Затем вы создаете WPF класса содержимого, вызывая его конструктор:</p>
+<pre><code class="lang-cpp">UIElement^ page = gcnew WPFClock::Clock();
+</code></pre>
+<p>Затем вы подключаете страницу, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>:</p>
+<pre><code class="lang-cpp">source-&gt;RootVisual = page;
+</code></pre>
+<p>И в последней строке вы возвращаете HWND для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>:</p>
+<pre><code class="lang-cpp">return (HWND) source-&gt;Handle.ToPointer();
+</code></pre>
+<h2 id="positioning-the-hwnd">Размещение класса HWND</h2>
+<p>Теперь, когда создан HWND, содержащий WPF часы, необходимо поместить этот HWND в Win32 диалоговое окно. Если известно, где разместить HWND, было бы просто передать размер и расположение для <code>GetHwnd</code> функцию, определенную ранее. Однако для определения диалогового окна вы использовали файл ресурсов, поэтому вы не совсем уверены, где размещаются HWND. Можно использовать Microsoft Visual Studio редактор диалоговых окон, чтобы поместить Win32 СТАТИЧЕСКОГО элемента управления, где требуется часов («вставить часы здесь») и использовать его для размещения WPF часов.</p>
+<p>Месте обработки WM_INITDIALOG можно использовать <code>GetDlgItem</code> Чтобы получить HWND для местозаполнителя STATIC:</p>
+<pre><code class="lang-cpp">HWND placeholder = GetDlgItem(hDlg, IDC_CLOCK);
+</code></pre>
+<p>Затем вычисляется размер и положение местозаполнителя STATIC, чтобы можно было поместить WPF clock в этом месте:</p>
+<p>Прямоугольник RECT;</p>
+<pre><code class="lang-cpp">GetWindowRect(placeholder, &amp;rectangle);
+int width = rectangle.right - rectangle.left;
+int height = rectangle.bottom - rectangle.top;
+POINT point;
+point.x = rectangle.left;
+point.y = rectangle.top;
+result = MapWindowPoints(NULL, hDlg, &amp;point, 1);
+</code></pre>
+<p>Затем местозаполнитель STATIC скрывается:</p>
+<pre><code class="lang-cpp">ShowWindow(placeholder, SW_HIDE);
+</code></pre>
+<p>И создайте WPF HWND в этом расположении часов:</p>
+<pre><code class="lang-cpp">HWND clock = ManagedCode::GetHwnd(hDlg, point.x, point.y, width, height);
+</code></pre>
+<p>Чтобы сделать это руководство интересным и создать настоящие WPF часов, вам нужно будет создать WPF управления часов на этом этапе. Это делается, в основном, с помощью разметки, с использованием нескольких обработчиков событий в коде программной части. Поскольку это руководство о взаимодействии, а не о разработке элементов управления, полный код для WPF часов предоставляется здесь как блок кода без отдельных указаний по его построению и что означает каждая часть. Вы можете экспериментировать с этим кодом, чтобы изменить внешний вид и функциональность элемента управления.</p>
+<p>Ниже приводится пример разметки:</p>
+<pre><code class="lang-xaml" name="Win32Clock#AllClockXAML">&lt;Page x:Class=&quot;WPFClock.Clock&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    &gt;
+    &lt;Grid&gt;
+        &lt;Grid.Background&gt;
+            &lt;LinearGradientBrush StartPoint=&quot;0,0&quot; EndPoint=&quot;0,1&quot;&gt;
+              &lt;GradientStop Color=&quot;#fcfcfe&quot; Offset=&quot;0&quot; /&gt;
+              &lt;GradientStop Color=&quot;#f6f4f0&quot; Offset=&quot;1.0&quot; /&gt;
+            &lt;/LinearGradientBrush&gt;
+        &lt;/Grid.Background&gt;
+
+        &lt;Grid Name=&quot;PodClock&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;&gt;
+            &lt;Grid.Resources&gt;
+                &lt;Storyboard x:Key=&quot;sb&quot;&gt;
+                    &lt;DoubleAnimation From=&quot;0&quot; To=&quot;360&quot; Duration=&quot;12:00:00&quot; RepeatBehavior=&quot;Forever&quot;
+                        Storyboard.TargetName=&quot;HourHand&quot;
+                        Storyboard.TargetProperty=&quot;(Rectangle.RenderTransform).(RotateTransform.Angle)&quot; 
+                        /&gt;
+                    &lt;DoubleAnimation From=&quot;0&quot; To=&quot;360&quot; Duration=&quot;01:00:00&quot; RepeatBehavior=&quot;Forever&quot;
+                        Storyboard.TargetName=&quot;MinuteHand&quot;  
+                        Storyboard.TargetProperty=&quot;(Rectangle.RenderTransform).(RotateTransform.Angle)&quot;
+                        /&gt;
+                    &lt;DoubleAnimation From=&quot;0&quot; To=&quot;360&quot; Duration=&quot;0:1:00&quot; RepeatBehavior=&quot;Forever&quot;
+                        Storyboard.TargetName=&quot;SecondHand&quot;  
+                        Storyboard.TargetProperty=&quot;(Rectangle.RenderTransform).(RotateTransform.Angle)&quot;
+                        /&gt;
+                &lt;/Storyboard&gt;
+            &lt;/Grid.Resources&gt;
+
+          &lt;Ellipse Width=&quot;108&quot; Height=&quot;108&quot; StrokeThickness=&quot;3&quot;&gt;
+            &lt;Ellipse.Stroke&gt;
+              &lt;LinearGradientBrush&gt;
+                &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;0&quot; /&gt;
+                &lt;GradientStop Color=&quot;DarkBlue&quot; Offset=&quot;1&quot; /&gt;
+              &lt;/LinearGradientBrush&gt;
+            &lt;/Ellipse.Stroke&gt;
+          &lt;/Ellipse&gt;
+          &lt;Ellipse VerticalAlignment=&quot;Center&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;104&quot; Height=&quot;104&quot; Fill=&quot;LightBlue&quot; StrokeThickness=&quot;3&quot;&gt;
+            &lt;Ellipse.Stroke&gt;
+              &lt;LinearGradientBrush&gt;
+                &lt;GradientStop Color=&quot;DarkBlue&quot; Offset=&quot;0&quot; /&gt;
+                &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;1&quot; /&gt;
+              &lt;/LinearGradientBrush&gt;
+            &lt;/Ellipse.Stroke&gt;          
+          &lt;/Ellipse&gt;
+            &lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Black&quot; Background=&quot;White&quot; Margin=&quot;20&quot; HorizontalAlignment=&quot;Right&quot; VerticalAlignment=&quot;Center&quot;&gt;
+                &lt;TextBlock Name=&quot;MonthDay&quot; Text=&quot;{Binding}&quot;/&gt;
+            &lt;/Border&gt;
+            &lt;Canvas Width=&quot;102&quot; Height=&quot;102&quot;&gt;
+                &lt;Ellipse Width=&quot;8&quot; Height=&quot;8&quot; Fill=&quot;Black&quot; Canvas.Top=&quot;46&quot; Canvas.Left=&quot;46&quot; /&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;48&quot; Fill=&quot;Black&quot; Width=&quot;4&quot; Height=&quot;8&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;0&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;30&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;60&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;48&quot; Fill=&quot;Black&quot; Width=&quot;4&quot; Height=&quot;8&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;90&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;120&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;150&quot; /&gt;
+                      &lt;/Rectangle.RenderTransform&gt;
+                    &lt;/Rectangle&gt;
+                    &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;48&quot; Fill=&quot;Black&quot; Width=&quot;4&quot; Height=&quot;8&quot;&gt;
+                      &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;180&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;210&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;240&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;48&quot; Fill=&quot;Black&quot; Width=&quot;4&quot; Height=&quot;8&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;270&quot; /&gt;
+                      &lt;/Rectangle.RenderTransform&gt;
+                    &lt;/Rectangle&gt;
+                    &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                      &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;300&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle Canvas.Top=&quot;5&quot; Canvas.Left=&quot;49&quot; Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;6&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;2&quot; CenterY=&quot;46&quot; Angle=&quot;330&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+
+
+                &lt;Rectangle x:Name=&quot;HourHand&quot; Canvas.Top=&quot;21&quot; Canvas.Left=&quot;48&quot; 
+                            Fill=&quot;Black&quot; Width=&quot;4&quot; Height=&quot;30&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform x:Name=&quot;HourHand2&quot; CenterX=&quot;2&quot; CenterY=&quot;30&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle x:Name=&quot;MinuteHand&quot; Canvas.Top=&quot;6&quot; Canvas.Left=&quot;49&quot; 
+                        Fill=&quot;Black&quot; Width=&quot;2&quot; Height=&quot;45&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;1&quot; CenterY=&quot;45&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+                &lt;Rectangle x:Name=&quot;SecondHand&quot; Canvas.Top=&quot;4&quot; Canvas.Left=&quot;49&quot; 
+                        Fill=&quot;Red&quot; Width=&quot;1&quot; Height=&quot;47&quot;&gt;
+                    &lt;Rectangle.RenderTransform&gt;
+                        &lt;RotateTransform CenterX=&quot;0.5&quot; CenterY=&quot;47&quot; /&gt;
+                    &lt;/Rectangle.RenderTransform&gt;
+                &lt;/Rectangle&gt;
+            &lt;/Canvas&gt;
+        &lt;/Grid&gt;
+    &lt;/Grid&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>И сопутствующий код программной части:</p>
+<pre><code class="lang-csharp" name="Win32Clock#AllClockCS">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+
+namespace WPFClock
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for Clock.xaml
+    /// &lt;/summary&gt;
+    public partial class Clock : Page
+    {
+        private DispatcherTimer _dayTimer;
+
+        public Clock()
+        {
+            InitializeComponent();
+            this.Loaded += new RoutedEventHandler(Clock_Loaded);
+        }
+
+        void Clock_Loaded(object sender, RoutedEventArgs e) {
+            // set the datacontext to be today's date
+            DateTime now = DateTime.Now;
+            DataContext = now.Day.ToString();
+
+            // then set up a timer to fire at the start of tomorrow, so that we can update
+            // the datacontext
+            _dayTimer = new DispatcherTimer();
+            _dayTimer.Interval = new TimeSpan(1, 0, 0, 0) - now.TimeOfDay;
+            _dayTimer.Tick += new EventHandler(OnDayChange);
+            _dayTimer.Start();
+
+            // finally, seek the timeline, which assumes a beginning at midnight, to the appropriate
+            // offset
+            Storyboard sb = (Storyboard)PodClock.FindResource(&quot;sb&quot;);
+            sb.Begin(PodClock, HandoffBehavior.SnapshotAndReplace, true);
+            sb.Seek(PodClock, now.TimeOfDay, TimeSeekOrigin.BeginTime);
+        }
+
+        private void OnDayChange(object sender, EventArgs e)
+        {
+            // date has changed, update the datacontext to reflect today's date
+            DateTime now = DateTime.Now;
+            DataContext = now.Day.ToString();
+            _dayTimer.Interval = new TimeSpan(1, 0, 0, 0);
+        }
+    }
+}
+</code></pre>
+<p>Результат выглядит следующим образом:</p>
+<p><img src="./media/interoparch08.PNG" alt="Диалоговое окно &quot;Свойства даты и времени&quot;" title="InteropArch08"></p>
+<p>Чтобы сравнить конечный результат с кодом, сформировавшим этот снимок экрана, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160051">пример взаимодействия часов Win32</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160051">Пример взаимодействия с часами Win32</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

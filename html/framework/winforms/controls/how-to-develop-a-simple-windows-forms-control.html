@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1087;&#1088;&#1086;&#1089;&#1090;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1092;&#1086;&#1088;&#1084; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1087;&#1088;&#1086;&#1089;&#1090;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1092;&#1086;&#1088;&#1084; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-develop-a-simple-windows-forms-control">Практическое руководство. Разработка простого элемента управления форм Windows Forms</h1>
+
+<p>В этом разделе рассматриваются основные этапы создания пользовательского элемента управления Windows Forms. Простой элемент управления, разработанный в этом пошаговом руководстве, позволяет изменять выравнивание его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> значение изменяемого свойства. Он не вызывает и не обрабатывает события.</p>
+<h3 id="to-create-a-simple-custom-control">Создание простого пользовательского элемента управления</h3>
+<ol>
+<li><p>Определите класс, производный от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>.</p>
+<pre><code class="lang-vb">Public Class FirstControl  
+   Inherits Control  
+
+End Class  
+</code></pre>
+<pre><code class="lang-csharp">public class FirstControl:Control {}  
+</code></pre>
+</li>
+<li><p>Определите свойства. (Не является обязательным для определения свойств, так как элемент управления наследует многие свойства из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> класс, но большинство пользовательских элементов управления обычно определяются дополнительные свойства.) В следующем фрагменте кода определяется свойство с именем <code>TextAlignment</code> , <code>FirstControl</code> используется для форматирования отображения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойство унаследовано от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. Дополнительные сведения об определении свойств см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/65zdfbdt(v%3dvs.120)">Общие сведения о свойствах</a>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FirstControl#3">// ContentAlignment is an enumeration defined in the System.Drawing
+// namespace that specifies the alignment of content on a drawing 
+// surface.
+private ContentAlignment alignmentValue = ContentAlignment.MiddleLeft;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Устанавливая свойство, изменяющее визуальное отображение элемента управления, необходимо вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> метод для перерисовки элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> определен в базовом классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>.</p>
+</li>
+<li><p>Переопределите защищенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> наследует метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> для предоставления логику отрисовки элемента управления. Если не переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a>, элемент управления не будет возможность рисования самого себя. В следующем фрагменте кода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод выводит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойство унаследовано от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> , а его выравнивание по <code>alignmentValue</code> поля.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FirstControl#4">protected override void OnPaint(PaintEventArgs e) 
+{   
+    base.OnPaint(e);
+    StringFormat style = new StringFormat();
+    style.Alignment = StringAlignment.Near;
+    switch (alignmentValue) 
+    {
+        case ContentAlignment.MiddleLeft:
+            style.Alignment = StringAlignment.Near;
+            break;
+        case ContentAlignment.MiddleRight:
+            style.Alignment = StringAlignment.Far;
+            break;
+        case ContentAlignment.MiddleCenter:
+            style.Alignment = StringAlignment.Center;
+            break;
+    }
+    
+    // Call the DrawString method of the System.Drawing class to write   
+    // text. Text and ClientRectangle are properties inherited from
+    // Control.
+    e.Graphics.DrawString(
+        Text, 
+        Font, 
+        new SolidBrush(ForeColor), 
+        ClientRectangle, style);
+
+} 
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Укажите атрибуты для своего элемента управления. Атрибуты позволяют визуальному конструктору адекватно отображать ваш элемент управления, а также его свойства и события во время разработки. Код в следующем фрагменте применяет атрибуты к свойству <code>TextAlignment</code>. В конструкторе, например Visual Studio <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.categoryattribute.category">Category</a> атрибут (показанный в фрагменте кода) вызывает отображение свойства для отображения логической категории. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.descriptionattribute.description">Description</a> Атрибут приводит к строку описания, которое должно отображаться в нижней части <strong>свойства</strong> окно при <code>TextAlignment</code> было выбрано свойство. Дополнительные сведения об атрибутах см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/tk67c2t8(v=vs.120)">Атрибуты времени разработки для компонентов</a>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FirstControl#5">[
+Category(&quot;Alignment&quot;),
+Description(&quot;Specifies the alignment of text.&quot;)
+]
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>(Необязательно.) Предоставьте элементу управления ресурсы. Чтобы предоставить элементу управления ресурс, такой как растровое изображение, можно использовать параметр компилятора (<code>/res</code> для C#), позволяющий упаковать ресурсы с элементом управления. Во время выполнения ресурс можно получить с помощью методов класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a> класса. Более подробную информацию о создании и использовании ресурсов см. в разделе <a href="../../resources/index.md">Ресурсы в приложениях для настольных систем</a>.</p>
+</li>
+<li><p>Скомпилируйте и разверните элемент управления. Чтобы скомпилировать и развернуть <code>FirstControl,</code>, выполните следующие действия.</p>
+<ol>
+<li><p>Сохраните код из представленного ниже примера в исходный файл (например, FirstControl.cs или FirstControl.vb).</p>
+</li>
+<li><p>Скомпилируйте исходный код в сборку и сохраните его в каталог приложения. Для этого выполните следующую команду из каталога, содержащего исходный файл.</p>
+<pre><code class="lang-console">vbc -t:library -out:[path to your application's directory]/CustomWinControls.dll -r:System.dll -r:System.Windows.Forms.dll -r:System.Drawing.dll FirstControl.vb  
+</code></pre>
+<pre><code class="lang-console">csc -t:library -out:[path to your application's directory]/CustomWinControls.dll -r:System.dll -r:System.Windows.Forms.dll -r:System.Drawing.dll FirstControl.cs  
+</code></pre>
+<p>Параметр компилятора <code>/t:library</code> сообщает компилятору, что создаваемая сборка является библиотекой (а не исполняемым файлом). Параметр <code>/out</code> определяет путь и имя сборки. Параметр <code>/r</code> определяет имена сборок, на которые ссылается код. В этом примере создается закрытая сборка, которую могут использовать только ваши приложения. Это значит, что сохранить ее в каталог приложения нельзя. Дополнительные сведения об упаковке и развертывании элемента управления, который нужно распределить, см. в разделе <a href="../../deployment/index.md">Развертывание</a>.</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>В следующем примере показан код для <code>FirstControl</code>. Элемент управления помещается в пространство имен <code>CustomWinControls</code>. Это пространство имен обеспечивает логическое группирование связанных типов. Элемент управления можно создавать в новом или в уже существующем пространстве имен. В C# объявление <code>using</code> (в Visual Basic <code>Imports</code>) обеспечивает доступ к типам из пространства имен без использования полного имени типа. В следующем примере <code>using</code> объявление позволяет коду получать доступ к классу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms">System.Windows.Forms</a> просто <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> вместо того чтобы использовать полное доменное имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FirstControl#1">using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace CustomWinControls
+{
+    public class FirstControl : Control
+    {
+
+        public FirstControl()
+        {
+
+        }
+
+        // ContentAlignment is an enumeration defined in the System.Drawing
+        // namespace that specifies the alignment of content on a drawing 
+        // surface.
+        private ContentAlignment alignmentValue = ContentAlignment.MiddleLeft;
+
+        [
+        Category(&quot;Alignment&quot;),
+        Description(&quot;Specifies the alignment of text.&quot;)
+        ]
+        public ContentAlignment TextAlignment 
+        {
+            
+            get 
+            {
+                return alignmentValue;
+            }
+            set 
+            {
+                alignmentValue = value;
+
+                // The Invalidate method invokes the OnPaint method described 
+                // in step 3.
+                Invalidate(); 
+            }
+        }
+        
+
+        protected override void OnPaint(PaintEventArgs e) 
+        {   
+            base.OnPaint(e);
+            StringFormat style = new StringFormat();
+            style.Alignment = StringAlignment.Near;
+            switch (alignmentValue) 
+            {
+                case ContentAlignment.MiddleLeft:
+                    style.Alignment = StringAlignment.Near;
+                    break;
+                case ContentAlignment.MiddleRight:
+                    style.Alignment = StringAlignment.Far;
+                    break;
+                case ContentAlignment.MiddleCenter:
+                    style.Alignment = StringAlignment.Center;
+                    break;
+            }
+            
+            // Call the DrawString method of the System.Drawing class to write   
+            // text. Text and ClientRectangle are properties inherited from
+            // Control.
+            e.Graphics.DrawString(
+                Text, 
+                Font, 
+                new SolidBrush(ForeColor), 
+                ClientRectangle, style);
+
+        } 
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="using-the-custom-control-on-a-form">Использование пользовательского элемента управления в форме</h2>
+<p>В следующем примере показана простая форма с использованием <code>FirstControl</code>. Она создает три экземпляра <code>FirstControl</code> с разными значениями свойства <code>TextAlignment</code>.</p>
+<h4 id="to-compile-and-run-this-sample">Компиляция и выполнение примера</h4>
+<ol>
+<li><p>Сохраните код в следующем примере в исходный файл (SimpleForm.cs или SimpleForms.vb).</p>
+</li>
+<li><p>Скомпилируйте исходный код в исполняемую сборку, выполнив следующую команду из каталога, содержащего исходный файл.</p>
+<pre><code class="lang-console">vbc -r:CustomWinControls.dll -r:System.dll -r:System.Windows.Forms.dll -r:System.Drawing.dll SimpleForm.vb  
+</code></pre>
+<pre><code class="lang-console">csc -r:CustomWinControls.dll -r:System.dll -r:System.Windows.Forms.dll -r:System.Drawing.dll SimpleForm.cs  
+</code></pre>
+<p>Customwincontrols.dll — это сборка, содержащая класс <code>FirstControl</code>. Эта сборка должна находиться в том же каталоге, что и исходный файл для формы, которая к ней обращается (SimpleForm.cs или SimpleForms.vb).</p>
+</li>
+<li><p>Выполните файла SimpleForm.exe с помощью следующей команды.</p>
+<pre><code class="lang-console">SimpleForm  
+</code></pre>
+</li>
+</ol>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FirstControl#10">using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace CustomWinControls
+{
+
+    public class SimpleForm : System.Windows.Forms.Form
+    {
+        private FirstControl firstControl1;
+    
+        private System.ComponentModel.Container components = null;
+
+        public SimpleForm()
+        {
+            InitializeComponent();
+        }
+
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if (components != null) 
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose( disposing );
+        }
+
+        private void InitializeComponent()
+        {
+            this.firstControl1 = new FirstControl();
+            this.SuspendLayout();
+
+            // 
+            // firstControl1
+            // 
+            this.firstControl1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.firstControl1.Location = new System.Drawing.Point(96, 104);
+            this.firstControl1.Name = &quot;firstControl1&quot;;
+            this.firstControl1.Size = new System.Drawing.Size(75, 16);
+            this.firstControl1.TabIndex = 0;
+            this.firstControl1.Text = &quot;Hello World&quot;;
+            this.firstControl1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+
+            // 
+            // SimpleForm
+            // 
+            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.Controls.Add(this.firstControl1);
+            this.Name = &quot;SimpleForm&quot;;
+            this.Text = &quot;SimpleForm&quot;;
+            this.ResumeLayout(false);
+
+        }
+    
+        [STAThread]
+        static void Main() 
+        {
+            Application.Run(new SimpleForm());
+        }
+
+
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="properties-in-windows-forms-controls.html">Свойства элементов управления Windows Forms</a></li>
+<li><a href="events-in-windows-forms-controls.html">События элементов управления Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

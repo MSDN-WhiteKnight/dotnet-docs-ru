@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1073;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1073;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="varieties-of-custom-controls">Создание собственных элементов управления</h1>
+
+<p>Платформа .NET Framework предоставляет возможности разработки и реализации новых элементов управления. С ее помощью можно расширить функциональные возможности привычных пользовательских элементов управления, а также уже существующих элементов управления через наследование. Кроме того, она позволяет писать настраиваемые элементы управления с собственной отрисовкой.</p>
+<p>Выбор типа создаваемого элемента управления может быть затруднителен. В этом разделе описываются различия между типами элементов управления, которые можно использовать для наследования, и рассказывается, как выбрать тип элемента управления для конкретного проекта.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о создании элемента управления для использования в Web Forms см. в разделе <a href="https://docs.microsoft.com/previous-versions/aspnet/zt27tfhy(v=vs.100)">Разработка пользовательских серверных элементов управления ASP.NET</a>.</p>
+</div>
+<h2 id="base-control-class">Базовый класс элемента управления</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> Класс является базовым классом для элементов управления Windows Forms. Он обеспечивает инфраструктуру, необходимую для визуального отображения элементов управления в приложениях Windows Forms.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> Класс выполняет следующие задачи для обеспечения визуального отображения в приложениях Windows Forms:</p>
+<ul>
+<li><p>Обеспечивает обработку окон.</p>
+</li>
+<li><p>Управляет маршрутизацией сообщений.</p>
+</li>
+<li><p>Предоставляет события мыши и клавиатуры, а также многие другие события пользовательского интерфейса.</p>
+</li>
+<li><p>Предоставляет расширенные функции размещения.</p>
+</li>
+<li><p>Содержит многие свойства, связанные с визуальным отображением, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.forecolor">ForeColor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.height">Height</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.width">Width</a>.</p>
+</li>
+<li><p>Обеспечивает безопасность и поддержку потоков, необходимые для того, чтобы элемент управления Windows Forms действовал как элемент управления Microsoft® ActiveX®.</p>
+</li>
+</ul>
+<p>Поскольку существенная часть инфраструктуры предоставляется базовым классом, разрабатывать собственные элементы управления Windows Forms довольно просто.</p>
+<h2 id="kinds-of-controls">Типы элементов управления</h2>
+<p>Windows Forms поддерживает три типа элементов управления, определяемых пользователем: <em>составные</em>, <em>расширенные</em> и <em>настраиваемые</em>. В следующих разделах описывается каждый тип элемента управления и приводятся рекомендации по выбору типа для использования в проектах.</p>
+<h3 id="composite-controls">Составные элементы управления</h3>
+<p>Составной элемент управления — это коллекция элементов управления Windows Forms, инкапсулированных в общий контейнер. Этот тип элементов управления иногда называют <em>пользовательским элементом управления</em>. Элементы, входящие в составной элемент управления, называются <em>составляющими</em>.</p>
+<p>Составной элементе управления содержит все унаследованные функциональные возможности, связанные с каждым входящим в него элементом управления Windows Forms, и позволяет выборочно представлять и связывать их свойства. Кроме того, составной элемент управления предоставляет немало функций для обработки событий клавиатуры по умолчанию, не требуя дополнительной разработки с вашей стороны.</p>
+<p>Например, составной элемент управления можно собрать таким образом, чтобы он отображал данные адреса клиента из базы данных. Этот элемент управления может включать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления для отображения полей базы данных, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> для обработки привязки к источнику данных и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingnavigator">BindingNavigator</a> элемент управления для перемещения по записям. Вы можете выборочно предоставить свойства привязки данных, а также упаковать и повторно использовать весь элемент управления в других приложениях. Пример такого рода составного элемента управления, см. в разделе <a href="how-to-apply-attributes-in-windows-forms-controls.html">как: Применение атрибутов в элементах управления Windows Forms</a>.</p>
+<p>Создание составного элемента управления, являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> класса. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> Базовый класс обеспечивает маршрутизацию клавиатуры для дочерних элементов управления и позволяет им работать сообща. Дополнительные сведения см. в разделе <a href="developing-a-composite-windows-forms-control.html">Разработка составного элемента Windows Forms</a>.</p>
+<p><strong>Рекомендация</strong></p>
+<p>Наследование класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> имеет смысл в следующих случаях:</p>
+<ul>
+<li>— если нужно объединить функциональные возможности нескольких элементов управления Windows Forms в один блок для повторного использования.</li>
+</ul>
+<h3 id="extended-controls">Расширенные элементы управления</h3>
+<p>Элемент управления можно унаследовать от любого существующего элемента управления Windows Forms. Такой подход позволяет сохранить все функциональные возможности, унаследованные от элемента управления Windows Forms, и расширить их путем добавления пользовательских свойств, методов или других функций. С помощью этого параметра можно переопределить логику отрисовки базового элемента управления, а затем расширить его пользовательский интерфейс, изменив его внешний вид.</p>
+<p>Например, можно создать элемент управления, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> она щелкнул элемент управления, который отслеживает, сколько раз пользователь.</p>
+<p>В некоторых элементах графический пользовательский интерфейс элемента управления можно добавить пользовательское оформление путем переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод базового класса. Кнопку, отслеживающую число нажатий, можно переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод вызывать базовую реализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a>, а затем отрисовать число нажатий в одном углу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> клиентской области элемента управления.</p>
+<p><strong>Рекомендация</strong></p>
+<p>Наследование элементов управления Windows Forms имеет смысл в следующих случаях:</p>
+<ul>
+<li><p>— если большинство необходимых функций аналогичны функциям уже существующего элемента управления Windows Forms;</p>
+</li>
+<li><p>— если нестандартный графический интерфейс не требуется или необходимо разработать новый интерфейс для существующего элемента управления.</p>
+</li>
+</ul>
+<h3 id="custom-controls">Пользовательские элементы управления</h3>
+<p>Другим способом разработки элемента управления является создание его практически с нуля путем наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> Класс обеспечивает всю основную функциональность, необходимую элементам управления, включая обработку событий, клавиатуры и мыши, но не функциональности элемента управления или графического интерфейса.</p>
+<p>Создание элемента управления путем наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> класс требует гораздо больше внимания и усилий, чем наследование от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> или существующего элемента управления Windows Forms. Поскольку значительную часть реализации вы выполняете сами, ваш элемент управления может быть более гибким, чем составной или расширенный, и вы можете его адаптировать к конкретным задачам.</p>
+<p>Чтобы реализовать пользовательский элемент управления, необходимо написать код для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> событие элемента управления, а также любые определенные функции код, необходимый. Можно также переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a> метод и обработать сообщения windows напрямую. Это самый эффективный способ создания элементов управления, однако для того, чтобы использовать его эффективно, необходимо знание API Microsoft Win32®.</p>
+<p>Примером нестандартного элемента управления служит элемент управления &quot;Часы&quot;, который выглядит и действует как часы со стрелками. Чтобы заставить стрелки часов двигаться в ответ на вызывается пользовательская отрисовка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer.tick">Tick</a> событий из внутреннего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer">Timer</a> компонента. Дополнительные сведения см. в разделе <a href="how-to-develop-a-simple-windows-forms-control.html">Как Разработка элемента управления форм Windows простой</a>.</p>
+<p><strong>Рекомендация</strong></p>
+<p>Наследование класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> имеет смысл в следующих случаях:</p>
+<ul>
+<li><p>— если требуется создать пользовательское графическое представление элемента управления;</p>
+</li>
+<li><p>— если требуется реализовать пользовательские функциональные возможности, которые недоступны в стандартных элементах управления.</p>
+</li>
+</ul>
+<h3 id="activex-controls">Элементы управления ActiveX</h3>
+<p>Несмотря на то что инфраструктура Windows Forms оптимизирована для размещения элементов управления Windows Forms, элементы управления ActiveX также можно использовать. Эта задача поддерживается в Visual Studio. Дополнительные сведения см. в разделе <a href="how-to-add-activex-controls-to-windows-forms.html">Как Добавление элементов управления ActiveX в формы Windows Forms</a>.</p>
+<h3 id="windowless-controls">Элементы управления без окон</h3>
+<p>Технологии Microsoft Visual Basic® 6.0 и ActiveX поддерживают элементы управления <em>без окон</em>. В Windows Forms элементы управления без окон не поддерживаются.</p>
+<h2 id="custom-design-experience">Пользовательская среда разработки</h2>
+<p>Если вам требуется пользовательская среда разработки, вы можете создать свой собственный конструктор. Для составных элементов управления, создайте производный пользовательский класс конструктора из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.design.parentcontroldesigner">ParentControlDesigner</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.design.documentdesigner">DocumentDesigner</a> классы. Для расширенных и настраиваемых элементов управления, создайте производный пользовательский класс конструктора из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.design.controldesigner">ControlDesigner</a> класса.</p>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.designerattribute">DesignerAttribute</a> должен быть сопоставлен конструктора элемента управления. Дополнительные сведения см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/37899azc(v=vs.120)">расширение поддержки времени разработки</a> и <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/307hck25(v=vs.120)">как: Создание элемента управления Windows Forms, используются преимущества функций разработки</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="developing-custom-windows-forms-controls.html">Разработка пользовательских элементов управления Windows Forms в .NET Framework</a></li>
+<li><a href="how-to-develop-a-simple-windows-forms-control.html">Практическое руководство. Разработка простого элемента управления форм Windows Forms</a></li>
+<li><a href="developing-a-composite-windows-forms-control.html">Разработка составного элемента Windows Forms</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/37899azc(v=vs.120)">Расширение поддержки времени разработки</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/307hck25(v=vs.120)">Практическое руководство. Создание элемента управления Windows Forms, используются преимущества функций времени разработки</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

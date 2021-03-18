@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1051;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1075;&#1080;&#1073;&#1088;&#1080;&#1076;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1051;&#1086;&#1082;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1075;&#1080;&#1073;&#1088;&#1080;&#1076;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-localizing-a-hybrid-application">Пошаговое руководство. Локализация гибридного приложения</h1>
+
+<p>В этом пошаговом руководстве показано, как локализовать WPF элементов в Windows Forms-гибридные приложения на основе.</p>
+<p>В данном пошаговом руководстве представлены следующие задачи.</p>
+<ul>
+<li><p>Создание Windows Forms узла проекта.</p>
+</li>
+<li><p>Добавление локализуемого содержимого.</p>
+</li>
+<li><p>Включение локализации.</p>
+</li>
+<li><p>Назначение идентификаторов ресурсов.</p>
+</li>
+<li><p>Использование средства LocBaml для создания вспомогательной сборки.</p>
+</li>
+</ul>
+<p>Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160015">локализация гибридного приложения образец</a>.</p>
+<p>Закончив, вы получите локализованное гибридное приложение.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.</p>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h2 id="creating-the-windows-forms-host-project">Создание ведущего проекта Windows Forms</h2>
+<p>Первым шагом является создание Windows Forms приложения проекта и добавьте WPF элемент содержимого, которое будет локализовано.</p>
+<h3 id="to-create-the-host-project">Создание ведущего проекта</h3>
+<ol>
+<li><p>Создание <strong>приложение WPF</strong> проект с именем <code>LocalizingWpfInWf</code>.  (<strong>Файл</strong> &gt; <strong>новый</strong> &gt; <strong>проекта</strong> &gt; <strong>Visual C#</strong> или <strong>Visual Basic</strong>   &gt;  <strong>Классический рабочий стол</strong> &gt; <strong>приложение WPF</strong>).</p>
+</li>
+<li><p>Добавить WPF<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> элемент с именем <code>SimpleControl</code> в проект.</p>
+</li>
+<li><p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элементу управления размещение <code>SimpleControl</code> элемент на форме. Дополнительные сведения см. в разделе <a href="walkthrough-hosting-a-3-d-wpf-composite-control-in-windows-forms.html">Пошаговое руководство: Размещение составного элемента управления WPF, трехмерного в Windows Forms</a>.</p>
+</li>
+</ol>
+<h2 id="adding-localizable-content">Добавление локализуемого содержимого</h2>
+<p>Далее вы добавите Windows Forms метки элемента управления и задайте WPF содержимое элемента Локализованная строка.</p>
+<h3 id="to-add-localizable-content">Добавление локализуемого содержимого</h3>
+<ol>
+<li><p>В <strong>обозревателе решений</strong>, дважды щелкните <strong>SimpleControl.xaml</strong> чтобы открыть его в Конструктор WPF.</p>
+</li>
+<li><p>Установка содержимого для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> управления, используя следующий код.</p>
+<pre><code class="lang-xaml" name="LocalizingWpfInWf#10">&lt;UserControl x:Class=&quot;LocalizingWpfInWf.SimpleControl&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    &gt;
+
+  &lt;Canvas&gt;
+    &lt;Button Content=&quot;Hello&quot;/&gt;
+  &lt;/Canvas&gt;
+&lt;/UserControl&gt;
+</code></pre></li>
+<li><p>В <strong>обозревателе решений</strong>, дважды щелкните <strong>Form1</strong> чтобы открыть его в конструкторе Windows Forms.</p>
+</li>
+<li><p>Откройте <strong>элементов</strong> и дважды щелкните <strong>метка</strong> для добавления в форму элемент управления label. Задайте для его свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> значение <code>&quot;Hello&quot;</code>.</p>
+</li>
+<li><p>Нажмите клавишу <strong>F5</strong>, чтобы выполнить сборку приложения и запустить его.</p>
+<p>Оба <code>SimpleControl</code> отображать текст, элемент и элемент управления label <strong>«Hello»</strong>.</p>
+</li>
+</ol>
+<h2 id="enabling-localization">Включение локализации</h2>
+<p>Конструктор Windows Forms предоставляет параметры для включения локализации во вспомогательной сборке.</p>
+<h3 id="to-enable-localization">Включение локализации</h3>
+<ol>
+<li><p>В <strong>обозревателе решений</strong>, дважды щелкните <strong>Form1.cs</strong> чтобы открыть его в конструкторе Windows Forms.</p>
+</li>
+<li><p>В <strong>свойства</strong> окна, задайте для свойства формы <strong>Localizable</strong> свойства <code>true</code>.</p>
+</li>
+<li><p>В <strong>свойства</strong> окна, установите для параметра <strong>языка</strong> свойства <strong>испанский (Испания)</strong>.</p>
+</li>
+<li><p>В конструкторе Windows Forms выберите элемент управления label.</p>
+</li>
+<li><p>В <strong>свойства</strong> окна, установите для параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойства <code>&quot;Hola&quot;</code>.</p>
+<p>Новый файл ресурсов с именем Form1.es-ES.resx будет добавлен в проект.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong>, щелкните правой кнопкой мыши <strong>Form1.cs</strong> и нажмите кнопку <strong>Просмотр кода</strong> чтобы открыть его в редакторе кода.</p>
+</li>
+<li><p>Скопируйте следующий код в <code>Form1</code> конструктор, предшествующий вызову <code>InitializeComponent</code>.</p>
+<pre><code class="lang-csharp" name="LocalizingWpfInWf#2">public Form1()
+{
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(&quot;es-ES&quot;);
+
+    InitializeComponent();
+}
+</code></pre></li>
+<li><p>В <strong>обозревателе решений</strong>, щелкните правой кнопкой мыши <strong>LocalizingWpfInWf</strong> и нажмите кнопку <strong>выгрузить проект</strong>.</p>
+<p>Имя проекта помечается <strong>(недоступно)</strong>.</p>
+</li>
+<li><p>Щелкните правой кнопкой мыши <strong>LocalizingWpfInWf</strong>и нажмите кнопку <strong>изменить LocalizingWpfInWf.csproj</strong>.</p>
+<p>Файл проекта откроется в редакторе кода.</p>
+</li>
+<li><p>Скопируйте следующую строку в первый <code>PropertyGroup</code> в файле проекта.</p>
+<pre><code class="lang-xml">&lt;UICulture&gt;en-US&lt;/UICulture&gt;
+</code></pre>
+</li>
+<li><p>Сохраните файл проекта и закройте его.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong>, щелкните правой кнопкой мыши <strong>LocalizingWpfInWf</strong> и нажмите кнопку <strong>перезагрузить проект</strong>.</p>
+</li>
+</ol>
+<h2 id="assigning-resource-identifiers">Назначение идентификаторов ресурсов</h2>
+<p>Вы можете сопоставить локализуемое содержимое со сборками ресурсов с помощью идентификаторов ресурсов. Приложение MsBuild.exe автоматически назначает идентификаторы ресурсов при указании <code>updateuid</code> параметр.</p>
+<h3 id="to-assign-resource-identifiers">Назначение идентификаторов ресурсов</h3>
+<ol>
+<li><p>Из меню &quot;Пуск&quot; откройте командную строку разработчика для Visual Studio.</p>
+</li>
+<li><p>Используйте приведенную ниже команду для назначения идентификаторов ресурсов вашему локализуемому содержимому.</p>
+<pre><code>msbuild -t:updateuid LocalizingWpfInWf.csproj
+</code></pre>
+</li>
+<li><p>В <strong>обозревателе решений</strong>, дважды щелкните <strong>SimpleControl.xaml</strong> чтобы открыть его в редакторе кода. Вы увидите, что <code>msbuild</code> команды добавил <code>Uid</code> атрибута ко всем элементам. Это облегчает локализацию через назначение идентификаторов ресурсов.</p>
+<pre><code class="lang-xaml" name="LocalizingWpfInWf#20">&lt;UserControl x:Uid=&quot;UserControl_1&quot; x:Class=&quot;LocalizingWpfInWf.SimpleControl&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    &gt;
+
+  &lt;Canvas x:Uid=&quot;Canvas_1&quot;&gt;
+    &lt;Button x:Uid=&quot;Button_1&quot; Content=&quot;Hello&quot;/&gt;
+  &lt;/Canvas&gt;
+&lt;/UserControl&gt;
+</code></pre></li>
+<li><p>Нажмите клавишу <strong>F6</strong> для сборки решения.</p>
+</li>
+</ol>
+<h2 id="using-locbaml-to-produce-a-satellite-assembly">Использование LocBaml для создания вспомогательной сборки</h2>
+<p>Локализованное содержимое хранится в содержащей только ресурсы <em>вспомогательную сборку</em>. Используйте средство командной строки LocBaml.exe, чтобы создать локализованную сборку для вашей WPF содержимого.</p>
+<h3 id="to-produce-a-satellite-assembly">Создание вспомогательной сборки</h3>
+<ol>
+<li><p>Скопируйте файл LocBaml.exe в папку проекта obj\Debug. Дополнительные сведения см. в разделе <a href="how-to-localize-an-application.html">локализация приложения</a>.</p>
+</li>
+<li><p>В окне командной строки используйте приведенную ниже команду для извлечения строк ресурсов во временный файл.</p>
+<pre><code>LocBaml /parse LocalizingWpfInWf.g.en-US.resources /out:temp.csv
+</code></pre>
+</li>
+<li><p>Откройте файл temp.csv с помощью Visual Studio или другого текстового редактора. Замените строку <code>&quot;Hello&quot;</code> на ее испанский перевод <code>&quot;Hola&quot;</code>.</p>
+</li>
+<li><p>Сохраните файл temp.csv.</p>
+</li>
+<li><p>Используйте приведенную ниже команду для создания локализованного файла ресурса.</p>
+<pre><code>LocBaml /generate /trans:temp.csv LocalizingWpfInWf.g.en-US.resources /out:. /cul:es-ES
+</code></pre>
+<p>Файл LocalizingWpfInWf.g.es-ES.resources создается в папке obj\Debug.</p>
+</li>
+<li><p>Используйте приведенную ниже команду для создания локализованной вспомогательной сборки.</p>
+<pre><code>Al.exe /out:LocalizingWpfInWf.resources.dll /culture:es-ES /embed:LocalizingWpfInWf.Form1.es-ES.resources /embed:LocalizingWpfInWf.g.es-ES.resources
+</code></pre>
+<p>Файл LocalizingWpfInWf.resources.dll создается в папке obj\Debug.</p>
+</li>
+<li><p>Скопируйте файл LocalizingWpfInWf.resources.dll в папку проекта bin\Debug\es-ES. Замените существующий файл.</p>
+</li>
+<li><p>Запустите файл LocalizingWpfInWf.exe, который находится в папке проекта bin\Debug. Не выполняйте повторную сборку приложения, чтобы не перезаписать вспомогательную сборку.</p>
+<p>В приложении выводятся локализованные строки вместо английских строк.</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="how-to-localize-an-application.html">Локализация приложения</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/y99d1cd3(v=vs.100)">Пошаговое руководство. Локализация форм Windows Forms</a></li>
+<li><a href="/visualstudio/designers/designing-xaml-in-visual-studio">Проектирование XAML в Visual Studio</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

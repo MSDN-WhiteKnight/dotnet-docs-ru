@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1085;&#1072;&#1089;&#1090;&#1088;&#1072;&#1080;&#1074;&#1072;&#1077;&#1084;&#1099;&#1084; &#1074;&#1085;&#1077;&#1096;&#1085;&#1080;&#1084; &#1074;&#1080;&#1076;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1085;&#1072;&#1089;&#1090;&#1088;&#1072;&#1080;&#1074;&#1072;&#1077;&#1084;&#1099;&#1084; &#1074;&#1085;&#1077;&#1096;&#1085;&#1080;&#1084; &#1074;&#1080;&#1076;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="creating-a-control-that-has-a-customizable-appearance">Создание элемента управления с настраиваемым внешним видом</h1>
+
+<p><a name="introduction"></a>
+Windows Presentation Foundation (WPF) дает возможность создать внешний вид которых можно настроить элемент управления. Например, можно изменить внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> Кроме какие настройки свойств будет сделать путем создания нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. На следующем рисунке показано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> , по умолчанию использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> , использующий пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+<p><img src="media/ndp-checkboxdefault.png" alt="Флажок с шаблоном элемента управления по умолчанию. " title="NDP_CheckBoxDefault"><br>
+Элемент управления CheckBox, использующий шаблон элемента управления по умолчанию</p>
+<p><img src="media/ndp-checkboxcustom.png" alt="Флажок с пользовательским шаблоном элемента управления. " title="NDP_CheckBoxCustom"><br>
+Элемент управления CheckBox, использующий пользовательский шаблон элемента управления</p>
+<p>Если вы следуете части и состояния модели, при создании элемента управления, внешнего вида элемента управления будет настраиваемым. Средства конструктора, таких как Microsoft Expression Blend поддерживает части и состояния модели, поэтому при выполнении этой модели элемент управления будет можно настраивать в таких типах приложений.  В этом разделе описывается, части и состояния модели и как следовать ему при создании собственного элемента управления. В этом разделе используется пример пользовательского элемента управления, <code>NumericUpDown</code>для иллюстрации идеи, лежащие в этой модели.  <code>NumericUpDown</code> Элемент управления отображает числовое значение, которое пользователь может увеличить или уменьшить, нажимая кнопки элемента управления.  На следующем рисунке показано <code>NumericUpDown</code> элемент управления, который рассматривается в этом разделе.</p>
+<p><img src="media/ndp-numericupdown.png" alt="Пользовательский элемент управления NumericUpDown. " title="NDP_NumericUPDown"><br>
+Пользовательский элемент управления NumericUpDown</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#prerequisites">Предварительные требования</a></p>
+</li>
+<li><p><a href="#parts_and_states_model">Модель частей и состояний</a></p>
+</li>
+<li><p><a href="#defining_the_visual_structure_and_visual_behavior_of_a_control_in_a_controltemplate">Определение визуальную структуру и визуальное поведение элемента управления в ControlTemplate</a></p>
+</li>
+<li><p><a href="#using_parts_of_the_controltemplate_in_code">Части шаблона элемента управления в коде</a></p>
+</li>
+<li><p><a href="#providing_the_control_contract">Предоставление контракта элемента управления</a></p>
+</li>
+<li><p><a href="#complete_example">Полный пример</a></p>
+</li>
+</ul>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы знаете, как создать новую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для существующего элемента управления, уже есть опыт каковы элементы в контракте элемента управления и понимать концепции, описанные в <a href="customizing-the-appearance-of-an-existing-control.html">Настройка внешнего вида существующего элемента управления, Создания объекта ControlTemplate</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Чтобы создать элемент управления, который может быть настраиваемым внешним видом, необходимо создать элемент управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класс или один из его подклассов, отличных от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>.  Элемент управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> является элементом управления, можно создать очень быстро, но он не использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и не может настроить его внешний вид.</p>
+</div>
+<p><a name="parts_and_states_model"></a></p>
+<h2 id="parts-and-states-model">Модель частей и состояний</h2>
+<p>Части и состояния модели указывает способ определения визуальную структуру и визуальное поведение элемента управления. Чтобы выполнить части и состояния модели, поступайте следующим:</p>
+<ul>
+<li><p>Определите визуальную структуру и визуальное поведение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> элемента управления.</p>
+</li>
+<li><p>Выполните определенные рекомендации, когда логика элемента управления взаимодействует с частями шаблона элемента управления.</p>
+</li>
+<li><p>Укажите контракт элемента управления, чтобы указать, что должны быть включены в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+</li>
+</ul>
+<p>При определении визуальную структуру и визуальное поведение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> элемента управления, разработчики приложения могут изменять визуальную структуру и визуальное поведение элемента управления путем создания нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> вместо написания кода.   Необходимо предоставить разработчикам контракт элемента управления, который сообщает приложению о том, какие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов и состояний должны быть определены в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Вы должны следовать некоторым рекомендациям при взаимодействии с частями в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> таким образом, элемент управления правильно обрабатывал неполное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  Если вы следуете этим трем принципам, разработчики приложений будут иметь возможность создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для элемента управления просто так же легко, как только они могут для элементов управления, поставляемые с WPF.  В следующем разделе объясняется каждый из этих рекомендаций, подробно.</p>
+<p><a name="defining_the_visual_structure_and_visual_behavior_of_a_control_in_a_controltemplate"></a></p>
+<h2 id="defining-the-visual-structure-and-visual-behavior-of-a-control-in-a-controltemplate">Определение визуальную структуру и визуальное поведение элемента управления в ControlTemplate</h2>
+<p>При создании пользовательского элемента управления с помощью модели части и состояния, определении визуальную структуру и визуальное поведение элемента управления его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> вместо в своей логике.  Визуальную структуру элемента управления состоит из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекты, составляющие элемента управления.  Визуальное поведение — это способ отображения элемента управления, когда он находится в определенном состоянии.   Дополнительные сведения о создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> , который указывает визуальную структуру и визуальное поведение элемента управления, см. в разделе <a href="customizing-the-appearance-of-an-existing-control.html">Настройка внешнего вида существующего элемента управления путем создания объекта ControlTemplate</a>.</p>
+<p>В примере <code>NumericUpDown</code> элемента управления, визуальная структура включает в себя два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> элементов управления и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.  При добавлении этих элементов управления в коде <code>NumericUpDown</code> управления--в конструкторе, например положение этих элементов управления может быть неизменяемым.  Вместо определения визуальную структуру и визуальное поведение элемента управления в его код, можно задать его в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  Затем разработчик приложения может настроить расположение кнопок и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и указать поведение при <code>Value</code> отрицательное поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> можно заменить.</p>
+<p>Следующий пример показывает визуальную структуру элемента <code>NumericUpDown</code> элемент управления, который включает в себя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> для увеличения <code>Value</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> уменьшение <code>Value</code>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для отображения <code>Value</code>.</p>
+<pre><code class="lang-xaml" name="VSMCustomControl#VisualStructure">&lt;ControlTemplate TargetType=&quot;src:NumericUpDown&quot;&gt;
+  &lt;Grid  Margin=&quot;3&quot; 
+         Background=&quot;{TemplateBinding Background}&quot;&gt;
+    &lt;Grid&gt;
+      &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition/&gt;
+        &lt;RowDefinition/&gt;
+      &lt;/Grid.RowDefinitions&gt;
+      &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition/&gt;
+        &lt;ColumnDefinition/&gt;
+      &lt;/Grid.ColumnDefinitions&gt;
+
+      &lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot; 
+              Margin=&quot;7,2,2,2&quot; Grid.RowSpan=&quot;2&quot; 
+              Background=&quot;#E0FFFFFF&quot;
+              VerticalAlignment=&quot;Center&quot; 
+              HorizontalAlignment=&quot;Stretch&quot;&gt;
+
+        &lt;!--Bind the TextBlock to the Value property--&gt;
+        &lt;TextBlock Name=&quot;TextBlock&quot;
+                   Width=&quot;60&quot; TextAlignment=&quot;Right&quot; Padding=&quot;5&quot;
+                   Text=&quot;{Binding RelativeSource={RelativeSource FindAncestor, 
+                     AncestorType={x:Type src:NumericUpDown}}, 
+                     Path=Value}&quot;/&gt;
+      &lt;/Border&gt;
+
+      &lt;RepeatButton Content=&quot;Up&quot; Margin=&quot;2,5,5,0&quot;
+        Name=&quot;UpButton&quot;
+        Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;/&gt;
+      &lt;RepeatButton Content=&quot;Down&quot; Margin=&quot;2,0,5,5&quot;
+        Name=&quot;DownButton&quot;
+        Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;/&gt;
+
+      &lt;Rectangle Name=&quot;FocusVisual&quot; Grid.ColumnSpan=&quot;2&quot; Grid.RowSpan=&quot;2&quot; 
+        Stroke=&quot;Black&quot; StrokeThickness=&quot;1&quot;  
+        Visibility=&quot;Collapsed&quot;/&gt;
+    &lt;/Grid&gt;
+
+  &lt;/Grid&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
+<p>Визуальное поведение элемента <code>NumericUpDown</code> элемент управления является то, что значение является красным цветом, если отрицательное.  При изменении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> в программном коде <code>Value</code> отрицательное, <code>NumericUpDown</code> всегда будет отображаться красный отрицательное значение. Укажите визуальное поведение элемента управления в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> , добавив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов для <code>Positive</code> и <code>Negative</code> состояний.  <code>Positive</code> и <code>Negative</code> являются взаимоисключающими (элемент управления всегда находится в одном из двух), поэтому в примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты в единую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>.  Когда элемент управления переходит в <code>Negative</code> состояние, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> станет красным.  Если элемент управления находится в <code>Positive</code> состояние, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> ему возвращается исходное значение.  Определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> подробнее рассматривается в <a href="customizing-the-appearance-of-an-existing-control.html">Настройка внешнего вида существующего элемента управления путем создания объекта ControlTemplate</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Не забудьте задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.visualstategroups">VisualStateManager.VisualStateGroups</a> присоединенного свойства в корне <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+</div>
+<pre><code class="lang-xaml" name="VSMCustomControl#ValueStates">&lt;ControlTemplate TargetType=&quot;local:NumericUpDown&quot;&gt;
+  &lt;Grid  Margin=&quot;3&quot; 
+         Background=&quot;{TemplateBinding Background}&quot;&gt;
+
+    &lt;VisualStateManager.VisualStateGroups&gt;
+      &lt;VisualStateGroup Name=&quot;ValueStates&quot;&gt;
+
+        &lt;!--Make the Value property red when it is negative.--&gt;
+        &lt;VisualState Name=&quot;Negative&quot;&gt;
+          &lt;Storyboard&gt;
+            &lt;ColorAnimation To=&quot;Red&quot;
+              Storyboard.TargetName=&quot;TextBlock&quot; 
+              Storyboard.TargetProperty=&quot;(Foreground).(Color)&quot;/&gt;
+          &lt;/Storyboard&gt;
+
+        &lt;/VisualState&gt;
+
+        &lt;!--Return the TextBlock's Foreground to its 
+            original color.--&gt;
+        &lt;VisualState Name=&quot;Positive&quot;/&gt;
+      &lt;/VisualStateGroup&gt;
+    &lt;/VisualStateManager.VisualStateGroups&gt;
+  &lt;/Grid&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
+<p><a name="using_parts_of_the_controltemplate_in_code"></a></p>
+<h2 id="using-parts-of-the-controltemplate-in-code">Части шаблона элемента управления в коде</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> автор может опустить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов, намеренно или по ошибке, но логика элемента управления могут понадобиться эти части правильной. Модель части и состояния указывает, что элемент управления должен быть устойчив к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> , где отсутствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов.  Элемент управления не должны вызывать исключение или сообщение ошибку если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> отсутствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. В этом разделе описываются рекомендации по взаимодействию с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов и управление состояниями.</p>
+<h3 id="anticipate-missing-frameworkelement-objects">Предвидеть отсутствие FrameworkElement объектов</h3>
+<p>При определении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, логика элемента управления может потребоваться взаимодействовать с некоторыми из них.  Например <code>NumericUpDown</code> управления подписывается на кнопки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий, чтобы увеличить или уменьшить <code>Value</code> и задает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для <code>Value</code>. Если пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> опускает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> или кнопки, это допустимо, что элемент управления теряет часть ее функциональных возможностей, но следует убедиться, что элемент управления не вызывает ошибку. Например если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> не содержит кнопки для изменения <code>Value</code>, <code>NumericUpDown</code> теряет свою функциональность, но приложение, использующее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> будет продолжать работу.</p>
+<p>Следующие рекомендации убедитесь, что элемент управления правильно реагирует на отсутствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов:</p>
+<ol>
+<li><p>Задайте <code>x:Name</code> атрибут для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> , необходимо ссылаться в коде.</p>
+</li>
+<li><p>Определите частные свойства для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> , вам понадобится взаимодействовать с.</p>
+</li>
+<li><p>Подписаться и Отмена подписки на события, которые обрабатывает элемент управления в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> доступа set свойства.</p>
+</li>
+<li><p>Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> свойства, которые были определены на этапе 2 в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onapplytemplate">OnApplyTemplate</a> метод. Это связано с самой ранней, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> доступен для элемента управления. Используйте <code>x:Name</code> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> для получения их из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+</li>
+<li><p>Убедитесь, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> не <code>null</code> перед обращением к их элементам.  Если это <code>null</code>, не сообщает об ошибке.</p>
+</li>
+</ol>
+<p>В следующих примерах показывается как <code>NumericUpDown</code> элемент управления взаимодействует с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов в соответствии с рекомендациями в списке выше.</p>
+<p>В примере, который определяет визуальную структуру элемента <code>NumericUpDown</code> контролировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> , увеличивающий <code>Value</code> имеет его <code>x:Name</code> атрибут <code>UpButton</code>.  В следующем примере объявляется свойство с именем <code>UpButtonElement</code> , представляющий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> , объявленным в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. <code>set</code> Доступа сначала отменяет подписку на кнопку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий Если <code>UpDownElement</code> не <code>null</code>, задает свойство, и затем подписывается на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий. Также имеется свойство определен, но не отображается, для других <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a>, который называется <code>DownButtonElement</code>.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#UpButtonProperty">private RepeatButton upButtonElement;
+
+private RepeatButton UpButtonElement
+{
+    get
+    {
+        return upButtonElement;
+    }
+
+    set
+    {
+        if (upButtonElement != null)
+        {
+            upButtonElement.Click -=
+                new RoutedEventHandler(upButtonElement_Click);
+        }
+        upButtonElement = value;
+
+        if (upButtonElement != null)
+        {
+            upButtonElement.Click +=
+                new RoutedEventHandler(upButtonElement_Click);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onapplytemplate">OnApplyTemplate</a> для <code>NumericUpDown</code> элемента управления.  В примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> метод для получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  Обратите внимание, что в примере предотвращаются ситуации, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> находит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> с указанным именем, которое не относится к ожидаемому типу. Это также рекомендуемый способ игнорирования элементов, имеющих указанный <code>x:Name</code> , но имеет неправильный тип.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#ApplyTemplate">public override void OnApplyTemplate()
+{
+    UpButtonElement = GetTemplateChild(&quot;UpButton&quot;) as RepeatButton;
+    DownButtonElement = GetTemplateChild(&quot;DownButton&quot;) as RepeatButton;
+    //TextElement = GetTemplateChild(&quot;TextBlock&quot;) as TextBlock;
+
+    UpdateStates(false);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следуя рекомендациям, показанные в предыдущих примерах, убедитесь, что элемент управления будет продолжать выполняться, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> отсутствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+<h3 id="use-the-visualstatemanager-to-manage-states">Использование VisualStateManager для управления состояниями</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Отслеживает состояния элемента управления и выполняет логику, необходимую для перехода между состояниями. При добавлении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, их следует добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.visualstategroups">VisualStateManager.VisualStateGroups</a> вложенного свойства зависимостей, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> имеет доступ к ним.</p>
+<p>В следующем примере повторяется предыдущий пример, в котором показано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты, которые соответствуют <code>Positive</code> и <code>Negative</code> состояний элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> В <code>Negative</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> включает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> красным.   Когда <code>NumericUpDown</code> элемент управления находится в <code>Negative</code> state, раскадровки в <code>Negative</code> состояние начинается.  Затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в <code>Negative</code> состояние останавливается, когда элемент управления возвращается <code>Positive</code> состояния.  <code>Positive</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> Не содержать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> так как при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> для <code>Negative</code> останавливается, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> возвращает исходного цвета.</p>
+<pre><code class="lang-xaml" name="VSMCustomControl#ValueStates">&lt;ControlTemplate TargetType=&quot;local:NumericUpDown&quot;&gt;
+  &lt;Grid  Margin=&quot;3&quot; 
+         Background=&quot;{TemplateBinding Background}&quot;&gt;
+
+    &lt;VisualStateManager.VisualStateGroups&gt;
+      &lt;VisualStateGroup Name=&quot;ValueStates&quot;&gt;
+
+        &lt;!--Make the Value property red when it is negative.--&gt;
+        &lt;VisualState Name=&quot;Negative&quot;&gt;
+          &lt;Storyboard&gt;
+            &lt;ColorAnimation To=&quot;Red&quot;
+              Storyboard.TargetName=&quot;TextBlock&quot; 
+              Storyboard.TargetProperty=&quot;(Foreground).(Color)&quot;/&gt;
+          &lt;/Storyboard&gt;
+
+        &lt;/VisualState&gt;
+
+        &lt;!--Return the TextBlock's Foreground to its 
+            original color.--&gt;
+        &lt;VisualState Name=&quot;Positive&quot;/&gt;
+      &lt;/VisualStateGroup&gt;
+    &lt;/VisualStateManager.VisualStateGroups&gt;
+  &lt;/Grid&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
+<p>Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> присваивается имя, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> не находится в контракте элемента управления для <code>NumericUpDown</code> так как логика элемента управления никогда не ссылается на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.  Элементы, которые упоминаются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> имеют имена, но не обязательно должны быть частью контракта элемента управления, так как новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для элемента управления не может потребоваться ссылка на этот элемент.  Например, человек, который создает новую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <code>NumericUpDown</code> может решить указать, что не <code>Value</code> путем изменения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a>.  В этом случае ни код, ни <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> ссылки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> по имени.</p>
+<p>Логика элемента управления отвечает за изменение состояния элемента управления. В следующем примере показано, что <code>NumericUpDown</code> контролирующие вызовы, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> метод в <code>Positive</code> состояние при <code>Value</code> 0 или больше и <code>Negative</code> состояние при <code>Value</code> меньше 0.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#ValueStateChange">if (Value &gt;= 0)
+{
+    VisualStateManager.GoToState(this, &quot;Positive&quot;, useTransitions);
+}
+else
+{
+    VisualStateManager.GoToState(this, &quot;Negative&quot;, useTransitions);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> Метод выполняет логику, необходимую для запуска и остановки раскадровки соответствующим образом. Когда элемент управления вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> для изменения его состояния <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> делает следующее:</p>
+<ul>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> требуется элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, раскадровки. Затем, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> откуда элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, завершения раскадровки.</p>
+</li>
+<li><p>Если элемент управления уже находится в состоянии, которое указано, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> не предпринимает никаких действий и возвращает <code>true</code>.</p>
+</li>
+<li><p>Если указанное состояние не существует в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> из <code>control</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> не предпринимает никаких действий и возвращает <code>false</code>.</p>
+</li>
+</ul>
+<h4 id="best-practices-for-working-with-the-visualstatemanager">Рекомендации по работе с VisualStateManager</h4>
+<p>Рекомендуется выполнить следующую команду, чтобы поддерживать состояний элемента управления.</p>
+<ul>
+<li><p>Свойства можно используйте для отслеживания состояния.</p>
+</li>
+<li><p>Создайте вспомогательный метод для перехода между состояниями.</p>
+</li>
+</ul>
+<p><code>NumericUpDown</code> Управления использует его <code>Value</code> свойства для отслеживания, является ли он в <code>Positive</code> или <code>Negative</code> состояния.  <code>NumericUpDown</code> Управления также определяет <code>Focused</code> и <code>UnFocused</code> очевидно из записей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isfocused">IsFocused</a> свойство. Если вы используете состояния, которые не соответствуют естественным образом свойство элемента управления, можно определить частное свойство для отслеживания состояния.</p>
+<p>Один метод, который обновляет все состояния, централизованно выполняет вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> и сохраняет код управляемым. В следующем примере показан <code>NumericUpDown</code> вспомогательный метод элемента управления, <code>UpdateStates</code>. Когда <code>Value</code> больше или равно 0, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> в <code>Positive</code> состояние.  Когда <code>Value</code> — меньше 0, элемент управления находится в <code>Negative</code> состояние.  Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isfocused">IsFocused</a> — <code>true</code>, элемент управления находится в <code>Focused</code> состояния; в противном случае он находится в <code>Unfocused</code> состояние.  Элемент управления может вызывать <code>UpdateStates</code> каждый раз, когда необходимо изменить свое состояние, независимо от состояния.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#UpdateStates">private void UpdateStates(bool useTransitions)
+{
+    if (Value &gt;= 0)
+    {
+        VisualStateManager.GoToState(this, &quot;Positive&quot;, useTransitions);
+    }
+    else
+    {
+        VisualStateManager.GoToState(this, &quot;Negative&quot;, useTransitions);
+    }
+
+    if (IsFocused)
+    {
+        VisualStateManager.GoToState(this, &quot;Focused&quot;, useTransitions);
+    }
+    else
+    {
+        VisualStateManager.GoToState(this, &quot;Unfocused&quot;, useTransitions);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если передать имя состояния для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> когда элемент управления уже находится в этом состоянии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> ничего не делает, поэтому не нужно проверить текущее состояние элемента управления.  Например если <code>Value</code> изменяется от одного отрицательного числа на другое отрицательное число, раскадровка для <code>Negative</code> состояние не прерывается, и пользователь не увидит изменений в элементе управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> объектов, чтобы определить, какое состояние, чтобы завершить работу при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a>. Элемент управления всегда находится в одном состоянии для каждой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> , определенный в его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и покидает это состояние только при переходе в другое состояние с использованием того же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> из <code>NumericUpDown</code> управления определяет <code>Positive</code> и <code>Negative</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов в одном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> и <code>Focused</code> и <code>Unfocused</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты в другой. (Вы увидите <code>Focused</code> и <code>Unfocused</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> определенные в <a href="#complete_example">полный пример</a> в этой статье, когда элемент управления переходит из <code>Positive</code> состояние <code>Negative</code> состояние, или наоборот, элемент управления остается в либо <code>Focused</code> или <code>Unfocused</code> состояния.</p>
+<p>Существует три типичные места, где может изменить состояние элемента управления:</p>
+<ul>
+<li><p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> применяется к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>.</p>
+</li>
+<li><p>При изменении свойства.</p>
+</li>
+<li><p>При возникновении события.</p>
+</li>
+</ul>
+<p>В следующих примерах демонстрируется обновление состояния <code>NumericUpDown</code> элемента управления в таких случаях.</p>
+<p>Необходимо обновить состояние элемента управления в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onapplytemplate">OnApplyTemplate</a> метод отображения элемента управления в правильное состояние при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> применяется. В следующем примере вызывается <code>UpdateStates</code> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onapplytemplate">OnApplyTemplate</a> чтобы убедиться в правильности состояния элемента управления.  Например, предположим, создаваемые <code>NumericUpDown</code> и затем задать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> зеленый цвет и <code>Value</code> значению -5.  Если вы не вызываете <code>UpdateStates</code> при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> применяется к <code>NumericUpDown</code> элемент управления, элемент управления отсутствует в <code>Negative</code> состояние и значение отображается зеленым цветом, вместо red.  Необходимо вызвать <code>UpdateStates</code> для размещения этого элемента управления <code>Negative</code> состояние.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#ApplyTemplate">public override void OnApplyTemplate()
+{
+    UpButtonElement = GetTemplateChild(&quot;UpButton&quot;) as RepeatButton;
+    DownButtonElement = GetTemplateChild(&quot;DownButton&quot;) as RepeatButton;
+    //TextElement = GetTemplateChild(&quot;TextBlock&quot;) as TextBlock;
+
+    UpdateStates(false);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Часто требуется для обновления состояния элемента управления при изменении свойства. В следующем примере показан весь <code>ValueChangedCallback</code> метод. Так как <code>ValueChangedCallback</code> вызывается, когда <code>Value</code> изменяется, вызывается метод <code>UpdateStates</code> в случае, если <code>Value</code> изменилось с положительным, отрицательным или наоборот. Это допустимо для вызова <code>UpdateStates</code> при <code>Value</code> изменяется, но остается положительным или отрицательным, поскольку в этом случае элемент управления не изменяет состояние.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#EntireValueChangedCallback">private static void ValueChangedCallback(DependencyObject obj,
+    DependencyPropertyChangedEventArgs args)
+{
+    NumericUpDown ctl = (NumericUpDown)obj;
+    int newValue = (int)args.NewValue;
+
+    // Call UpdateStates because the Value might have caused the
+    // control to change ValueStates.
+    ctl.UpdateStates(true);
+
+    // Call OnValueChanged to raise the ValueChanged event.
+    ctl.OnValueChanged(
+        new ValueChangedEventArgs(NumericUpDown.ValueChangedEvent,
+            newValue));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Может также потребоваться обновить состояния при возникновении события. В следующем примере показано, что <code>NumericUpDown</code> вызовы <code>UpdateStates</code> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> для обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotfocus">GotFocus</a> событий.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#OnGotFocus">protected override void OnGotFocus(RoutedEventArgs e)
+{
+    base.OnGotFocus(e);
+    UpdateStates(true);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Помогает управлять состояний элемента управления. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a>, убедитесь, что элемент управления правильные переходы между состояниями.  Если вы выполните рекомендации, описанные в этом разделе, для работы с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a>, код элемента управления будет оставаться читаемым и простым в обслуживании.</p>
+<p><a name="providing_the_control_contract"></a></p>
+<h2 id="providing-the-control-contract">Предоставление контракта элемента управления</h2>
+<p>Укажите контракт элемента управления, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> авторы будет знать, какие нужно указать в шаблоне. Контракт элемента управления имеет три элемента:</p>
+<ul>
+<li><p>визуальный элемент, используемый логикой элемента управления;</p>
+</li>
+<li><p>состояния элемента управления и группа, к которой принадлежит каждое состояние;</p>
+</li>
+<li><p>общие свойства, визуально воздействующие на элемент управления.</p>
+</li>
+</ul>
+<p>Кто-то, которое создает новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> должен знать, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов логикой элемента управления, новые типы этих объектов и их имена. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> автор также необходимо знать имя каждого возможного состояния элемента управления, а какие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> состояние имеет значение.</p>
+<p>Возвращаясь к <code>NumericUpDown</code> примере элемент управления ожидает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> быть следующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов:</p>
+<ul>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> вызывается <code>UpButton</code>.</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a> вызывается <code>DownButton.</code></p>
+</li>
+</ul>
+<p>Размер элемента управления можно в следующих состояниях:</p>
+<ul>
+<li><p>В поле <code>ValueStates</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a></p>
+<ul>
+<li><p><code>Positive</code></p>
+</li>
+<li><p><code>Negative</code></p>
+</li>
+</ul>
+</li>
+<li><p>В поле <code>FocusStates</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a></p>
+<ul>
+<li><p><code>Focused</code></p>
+</li>
+<li><p><code>Unfocused</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Указать, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> ожидает, что объекты элемента управления, использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatepartattribute">TemplatePartAttribute</a>, который указывает имя и тип ожидаемых элементов.  Для указания возможных состояний элемента управления, используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatevisualstateattribute">TemplateVisualStateAttribute</a>, который указывает имя состояния, а какие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> он принадлежит.  Поместите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatepartattribute">TemplatePartAttribute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatevisualstateattribute">TemplateVisualStateAttribute</a> в определении класса элемента управления.</p>
+<p>Любое открытое свойство, которое влияет на внешний вид элемента управления также является частью контракта элемента управления.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекта и состояний для <code>NumericUpDown</code> элемента управления.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#ControlContract">[TemplatePart(Name = &quot;UpButtonElement&quot;, Type = typeof(RepeatButton))]
+[TemplatePart(Name = &quot;DownButtonElement&quot;, Type = typeof(RepeatButton))]
+[TemplateVisualState(Name = &quot;Positive&quot;, GroupName = &quot;ValueStates&quot;)]
+[TemplateVisualState(Name = &quot;Negative&quot;, GroupName = &quot;ValueStates&quot;)]
+[TemplateVisualState(Name = &quot;Focused&quot;, GroupName = &quot;FocusedStates&quot;)]
+[TemplateVisualState(Name = &quot;Unfocused&quot;, GroupName = &quot;FocusedStates&quot;)]
+public class NumericUpDown : Control
+{
+    public static readonly DependencyProperty BackgroundProperty;
+    public static readonly DependencyProperty BorderBrushProperty;
+    public static readonly DependencyProperty BorderThicknessProperty;
+    public static readonly DependencyProperty FontFamilyProperty;
+    public static readonly DependencyProperty FontSizeProperty;
+    public static readonly DependencyProperty FontStretchProperty;
+    public static readonly DependencyProperty FontStyleProperty;
+    public static readonly DependencyProperty FontWeightProperty;
+    public static readonly DependencyProperty ForegroundProperty;
+    public static readonly DependencyProperty HorizontalContentAlignmentProperty;
+    public static readonly DependencyProperty PaddingProperty;
+    public static readonly DependencyProperty TextAlignmentProperty;
+    public static readonly DependencyProperty TextDecorationsProperty;
+    public static readonly DependencyProperty TextWrappingProperty;
+    public static readonly DependencyProperty VerticalContentAlignmentProperty;
+
+    public Brush Background { get; set; }
+    public Brush BorderBrush { get; set; }
+    public Thickness BorderThickness { get; set; }
+    public FontFamily FontFamily { get; set; }
+    public double FontSize { get; set; }
+    public FontStretch FontStretch { get; set; }
+    public FontStyle FontStyle { get; set; }
+    public FontWeight FontWeight { get; set; }
+    public Brush Foreground { get; set; }
+    public HorizontalAlignment HorizontalContentAlignment { get; set; }
+    public Thickness Padding { get; set; }
+    public TextAlignment TextAlignment { get; set; }
+    public TextDecorationCollection TextDecorations { get; set; }
+    public TextWrapping TextWrapping { get; set; }
+    public VerticalAlignment VerticalContentAlignment { get; set; }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="complete_example"></a></p>
+<h2 id="complete-example">Полный пример</h2>
+<p>Ниже приведен весь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <code>NumericUpDown</code> элемента управления.</p>
+<pre><code class="lang-xaml" name="VSMCustomControl#NUDTemplate">&lt;!--This is the contents of the themes/generic.xaml file.--&gt;
+&lt;ResourceDictionary
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:local=&quot;clr-namespace:VSMCustomControl&quot;&gt;
+
+
+  &lt;Style TargetType=&quot;{x:Type local:NumericUpDown}&quot;&gt;
+    &lt;Setter Property=&quot;Template&quot;&gt;
+      &lt;Setter.Value&gt;
+        &lt;ControlTemplate TargetType=&quot;local:NumericUpDown&quot;&gt;
+          &lt;Grid  Margin=&quot;3&quot; 
+                Background=&quot;{TemplateBinding Background}&quot;&gt;
+
+
+            &lt;VisualStateManager.VisualStateGroups&gt;
+
+              &lt;VisualStateGroup Name=&quot;ValueStates&quot;&gt;
+
+                &lt;!--Make the Value property red when it is negative.--&gt;
+                &lt;VisualState Name=&quot;Negative&quot;&gt;
+                  &lt;Storyboard&gt;
+                    &lt;ColorAnimation To=&quot;Red&quot;
+                      Storyboard.TargetName=&quot;TextBlock&quot; 
+                      Storyboard.TargetProperty=&quot;(Foreground).(Color)&quot;/&gt;
+                  &lt;/Storyboard&gt;
+
+                &lt;/VisualState&gt;
+
+                &lt;!--Return the control to its initial state by
+                    return the TextBlock's Foreground to its 
+                    original color.--&gt;
+                &lt;VisualState Name=&quot;Positive&quot;/&gt;
+              &lt;/VisualStateGroup&gt;
+
+              &lt;VisualStateGroup Name=&quot;FocusStates&quot;&gt;
+
+                &lt;!--Add a focus rectangle to highlight the entire control
+                    when it has focus.--&gt;
+                &lt;VisualState Name=&quot;Focused&quot;&gt;
+                  &lt;Storyboard&gt;
+                    &lt;ObjectAnimationUsingKeyFrames Storyboard.TargetName=&quot;FocusVisual&quot; 
+                                                   Storyboard.TargetProperty=&quot;Visibility&quot; Duration=&quot;0&quot;&gt;
+                      &lt;DiscreteObjectKeyFrame KeyTime=&quot;0&quot;&gt;
+                        &lt;DiscreteObjectKeyFrame.Value&gt;
+                          &lt;Visibility&gt;Visible&lt;/Visibility&gt;
+                        &lt;/DiscreteObjectKeyFrame.Value&gt;
+                      &lt;/DiscreteObjectKeyFrame&gt;
+                    &lt;/ObjectAnimationUsingKeyFrames&gt;
+                  &lt;/Storyboard&gt;
+                &lt;/VisualState&gt;
+
+                &lt;!--Return the control to its initial state by
+                    hiding the focus rectangle.--&gt;
+                &lt;VisualState Name=&quot;Unfocused&quot;/&gt;
+              &lt;/VisualStateGroup&gt;
+
+            &lt;/VisualStateManager.VisualStateGroups&gt;
+
+            &lt;Grid&gt;
+              &lt;Grid.RowDefinitions&gt;
+                &lt;RowDefinition/&gt;
+                &lt;RowDefinition/&gt;
+              &lt;/Grid.RowDefinitions&gt;
+              &lt;Grid.ColumnDefinitions&gt;
+                &lt;ColumnDefinition/&gt;
+                &lt;ColumnDefinition/&gt;
+              &lt;/Grid.ColumnDefinitions&gt;
+
+              &lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot; 
+                Margin=&quot;7,2,2,2&quot; Grid.RowSpan=&quot;2&quot; 
+                Background=&quot;#E0FFFFFF&quot;
+                VerticalAlignment=&quot;Center&quot; 
+                HorizontalAlignment=&quot;Stretch&quot;&gt;
+                &lt;!--Bind the TextBlock to the Value property--&gt;
+                &lt;TextBlock Name=&quot;TextBlock&quot;
+                  Width=&quot;60&quot; TextAlignment=&quot;Right&quot; Padding=&quot;5&quot;
+                  Text=&quot;{Binding RelativeSource={RelativeSource FindAncestor, 
+                                 AncestorType={x:Type local:NumericUpDown}}, 
+                                 Path=Value}&quot;/&gt;
+              &lt;/Border&gt;
+
+              &lt;RepeatButton Content=&quot;Up&quot; Margin=&quot;2,5,5,0&quot;
+                Name=&quot;UpButton&quot;
+                Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;/&gt;
+              &lt;RepeatButton Content=&quot;Down&quot; Margin=&quot;2,0,5,5&quot;
+                Name=&quot;DownButton&quot;
+                Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;/&gt;
+
+              &lt;Rectangle Name=&quot;FocusVisual&quot; Grid.ColumnSpan=&quot;2&quot; Grid.RowSpan=&quot;2&quot; 
+                Stroke=&quot;Black&quot; StrokeThickness=&quot;1&quot;  
+                Visibility=&quot;Collapsed&quot;/&gt;
+            &lt;/Grid&gt;
+
+          &lt;/Grid&gt;
+        &lt;/ControlTemplate&gt;
+      &lt;/Setter.Value&gt;
+    &lt;/Setter&gt;
+  &lt;/Style&gt;
+&lt;/ResourceDictionary&gt;
+</code></pre>
+<p>В следующем примере показано логику для <code>NumericUpDown</code>.</p>
+<pre><code class="lang-csharp" name="VSMCustomControl#ControlLogic">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Media;
+
+namespace VSMCustomControl
+{
+    [TemplatePart(Name = &quot;UpButtonElement&quot;, Type = typeof(RepeatButton))]
+    [TemplatePart(Name = &quot;DownButtonElement&quot;, Type = typeof(RepeatButton))]
+    [TemplateVisualState(Name = &quot;Positive&quot;, GroupName = &quot;ValueStates&quot;)]
+    [TemplateVisualState(Name = &quot;Negative&quot;, GroupName = &quot;ValueStates&quot;)]
+    [TemplateVisualState(Name = &quot;Focused&quot;, GroupName = &quot;FocusedStates&quot;)]
+    [TemplateVisualState(Name = &quot;Unfocused&quot;, GroupName = &quot;FocusedStates&quot;)]
+    public class NumericUpDown : Control
+    {
+        public NumericUpDown()
+        {
+            DefaultStyleKey = typeof(NumericUpDown);
+            this.IsTabStop = true;
+        }
+
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register(
+                &quot;Value&quot;, typeof(int), typeof(NumericUpDown),
+                new PropertyMetadata(
+                    new PropertyChangedCallback(ValueChangedCallback)));
+
+        public int Value
+        {
+            get
+            {
+                return (int)GetValue(ValueProperty);
+            }
+
+            set
+            {
+                SetValue(ValueProperty, value);
+            }
+        }
+
+        private static void ValueChangedCallback(DependencyObject obj,
+            DependencyPropertyChangedEventArgs args)
+        {
+            NumericUpDown ctl = (NumericUpDown)obj;
+            int newValue = (int)args.NewValue;
+
+            // Call UpdateStates because the Value might have caused the
+            // control to change ValueStates.
+            ctl.UpdateStates(true);
+
+            // Call OnValueChanged to raise the ValueChanged event.
+            ctl.OnValueChanged(
+                new ValueChangedEventArgs(NumericUpDown.ValueChangedEvent,
+                    newValue));
+        }
+
+        public static readonly RoutedEvent ValueChangedEvent =
+            EventManager.RegisterRoutedEvent(&quot;ValueChanged&quot;, RoutingStrategy.Direct,
+                          typeof(ValueChangedEventHandler), typeof(NumericUpDown));
+
+        public event ValueChangedEventHandler ValueChanged
+        {
+            add { AddHandler(ValueChangedEvent, value); }
+            remove { RemoveHandler(ValueChangedEvent, value); }
+        }
+
+        protected virtual void OnValueChanged(ValueChangedEventArgs e)
+        {
+            // Raise the ValueChanged event so applications can be alerted
+            // when Value changes.
+            RaiseEvent(e);
+        }
+
+        private void UpdateStates(bool useTransitions)
+        {
+            if (Value &gt;= 0)
+            {
+                VisualStateManager.GoToState(this, &quot;Positive&quot;, useTransitions);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, &quot;Negative&quot;, useTransitions);
+            }
+
+            if (IsFocused)
+            {
+                VisualStateManager.GoToState(this, &quot;Focused&quot;, useTransitions);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, &quot;Unfocused&quot;, useTransitions);
+            }
+        }
+
+        public override void OnApplyTemplate()
+        {
+            UpButtonElement = GetTemplateChild(&quot;UpButton&quot;) as RepeatButton;
+            DownButtonElement = GetTemplateChild(&quot;DownButton&quot;) as RepeatButton;
+            //TextElement = GetTemplateChild(&quot;TextBlock&quot;) as TextBlock;
+
+            UpdateStates(false);
+        }
+
+        private RepeatButton downButtonElement;
+
+        private RepeatButton DownButtonElement
+        {
+            get
+            {
+                return downButtonElement;
+            }
+
+            set
+            {
+                if (downButtonElement != null)
+                {
+                    downButtonElement.Click -=
+                        new RoutedEventHandler(downButtonElement_Click);
+                }
+                downButtonElement = value;
+
+                if (downButtonElement != null)
+                {
+                    downButtonElement.Click +=
+                        new RoutedEventHandler(downButtonElement_Click);
+                }
+            }
+        }
+
+        void downButtonElement_Click(object sender, RoutedEventArgs e)
+        {
+            Value--;
+        }
+
+        private RepeatButton upButtonElement;
+
+        private RepeatButton UpButtonElement
+        {
+            get
+            {
+                return upButtonElement;
+            }
+
+            set
+            {
+                if (upButtonElement != null)
+                {
+                    upButtonElement.Click -=
+                        new RoutedEventHandler(upButtonElement_Click);
+                }
+                upButtonElement = value;
+
+                if (upButtonElement != null)
+                {
+                    upButtonElement.Click +=
+                        new RoutedEventHandler(upButtonElement_Click);
+                }
+            }
+        }
+
+        void upButtonElement_Click(object sender, RoutedEventArgs e)
+        {
+            Value++;
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            Focus();
+        }
+
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            base.OnGotFocus(e);
+            UpdateStates(true);
+        }
+
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            base.OnLostFocus(e);
+            UpdateStates(true);
+        }
+    }
+
+    public delegate void ValueChangedEventHandler(object sender, ValueChangedEventArgs e);
+
+    public class ValueChangedEventArgs : RoutedEventArgs
+    {
+        private int _value;
+
+        public ValueChangedEventArgs(RoutedEvent id, int num)
+        {
+            _value = num;
+            RoutedEvent = id;
+        }
+
+        public int Value
+        {
+            get { return _value; }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="customizing-the-appearance-of-an-existing-control.html">Настройка внешнего вида существующего элемента управления путем создания объекта ControlTemplate</a></li>
+<li><a href="control-customization.html">Настройка элементов управления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

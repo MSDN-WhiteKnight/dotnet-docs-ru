@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1089;&#1090;&#1088;&#1072;&#1085;&#1077;&#1085;&#1080;&#1077; &#1085;&#1077;&#1087;&#1086;&#1083;&#1072;&#1076;&#1086;&#1082; &#1089;&#1084;&#1077;&#1096;&#1072;&#1085;&#1085;&#1099;&#1093; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1089;&#1090;&#1088;&#1072;&#1085;&#1077;&#1085;&#1080;&#1077; &#1085;&#1077;&#1087;&#1086;&#1083;&#1072;&#1076;&#1086;&#1082; &#1089;&#1084;&#1077;&#1096;&#1072;&#1085;&#1085;&#1099;&#1093; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="troubleshooting-hybrid-applications">Устранение неполадок смешанных приложений</h1>
+
+<p><a name="introduction"></a> В этом разделе перечислены некоторые общие проблемы, которые могут возникать при создании смешанных приложений, одновременно использующих технологии WPF и Windows Forms.</p>
+<p><a name="overlapping_controls"></a></p>
+<h2 id="overlapping-controls">Перекрывающиеся элементы управления</h2>
+<p>Элементы управления могут не перекрываться должным образом. Windows Forms использует отдельный HWND для каждого элемента управления. WPF использует один HWND для всего содержимого на странице. Это отличие в реализации вызывает неожиданные перекрывающиеся поведения.</p>
+<p>Элемент управления Windows Forms, размещенный в WPF, всегда появляется в верхней части содержимого WPF.</p>
+<p>WPF содержимое размещается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> отображается элемент управления в z порядок <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления. Можно перекрывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элементов управления, но размещенное WPF содержимое объединяется и не взаимодействует.</p>
+<p><a name="child_property"></a></p>
+<h2 id="child-property">Дочернее свойство</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> классы можно разместить только один дочерний элемент управления или элемент. Для размещения нескольких элементов управления или элементов необходимо использовать контейнер в качестве дочернего содержимого. Например, можно добавить Windows Forms в элементах управления кнопки и флажка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.panel">System.Windows.Forms.Panel</a> управления, а затем назначить панель свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.child">Child</a> свойство. Тем не менее, нельзя добавлять элементы управления кнопки и флажка отдельно к тому же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.</p>
+<p><a name="scaling"></a></p>
+<h2 id="scaling">Масштабирование</h2>
+<p>WPF и Windows Forms имеют разные модели масштабирования. Некоторые преобразования масштаба WPF являются показательными для элементов управления Windows Forms, а некоторые — нет. Например, масштабирование элемента управления Windows Forms к 0 будет работать, но если попытаться масштабировать тот же элемент управления обратно на ненулевое значение, то размер элемента управления останется равным 0. Дополнительные сведения см. в разделе <a href="layout-considerations-for-the-windowsformshost-element.html">Вопросы, связанные с макетом элемента WindowsFormsHost</a>.</p>
+<p><a name="adapter"></a></p>
+<h2 id="adapter">Адаптер</h2>
+<p>Путаница может быть при работе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> классов, так как они содержат скрытый контейнер. Как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> классы имеют скрытые контейнеры, называемые <em>адаптера</em>, которые они используют для размещения содержимого. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, адаптер является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">System.Windows.Forms.ContainerControl</a> класса. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления, адаптер является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> элемент. При появлении ссылок на адаптер в других разделах взаимодействия, этот контейнер становится контейнером, о котором шла речь.</p>
+<p><a name="nesting"></a></p>
+<h2 id="nesting">Вложение</h2>
+<p>Вложение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемент управления не поддерживается. Вложение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> управления внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент также не поддерживается.</p>
+<p><a name="focus"></a></p>
+<h2 id="focus">Фокус</h2>
+<p>Фокус работает по-разному в WPF и Windows Forms, что означает, что в смешанном приложении могут возникать проблемы с фокусом. Например, если имеется фокус внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент и вы либо свести к минимуму и восстановить страницу или Показать модальное диалоговое окно, фокус внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента могут быть потеряны. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент по-прежнему имеет фокус, но не имеете права управления внутри него.</p>
+<p>Фокус также влияет и на проверку данных. Проверка работает в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, но он не работает, как вы клавишу tab <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, или между двумя разными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элементов.</p>
+<p><a name="property_mapping"></a></p>
+<h2 id="property-mapping">Сопоставление свойств</h2>
+<p>Некоторые сопоставления свойств требуют всесторонней интерпретации для того, чтобы связать отличающиеся реализации между технологиями WPF и Windows Forms. Сопоставления свойств позволяют коду реагировать на изменения в шрифтах, цветах и других свойствах. В общем случае сопоставление свойств работает посредством прослушивания событий <em>Property</em>Changed или вызовов On<em>Property</em>Changed и установки свойств либо в дочернем элементе управления, либо в его адаптере. Дополнительные сведения см. в разделе <a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a>.</p>
+<p><a name="layoutrelated_properties_on_hosted_content"></a></p>
+<h2 id="layout-related-properties-on-hosted-content">Связанные с макетом свойства в размещенном содержимом</h2>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.child">WindowsFormsHost.Child</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.child">ElementHost.Child</a> свойству назначается, некоторые связанные с макетом свойства в размещенном содержимом устанавливаются автоматически. Изменение этих свойств содержимого может привести к неожиданным поведениям макета.</p>
+<p>Размещенное содержимое присоединяется для заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> родительского. Чтобы включить это поведение заполнения, некоторые свойства задаются при установке дочернего свойства. В следующей таблице перечислены, задаваемых свойств содержимого по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> классы.</p>
+<table>
+<thead>
+<tr>
+<th>Класс узла</th>
+<th>Свойства содержимого</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.margin">Margin</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dock">Dock</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.autosize">AutoSize</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.location">Location</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.maximumsize">MaximumSize</a></td>
+</tr>
+</tbody>
+</table>
+<p>Не устанавливайте эти свойства непосредственно в размещенном содержимом. Дополнительные сведения см. в разделе <a href="layout-considerations-for-the-windowsformshost-element.html">Вопросы, связанные с макетом элемента WindowsFormsHost</a>.</p>
+<p><a name="navigation_applications"></a></p>
+<h2 id="navigation-applications">Приложения навигации</h2>
+<p>Приложения навигации могут не поддерживать состояние пользователя. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент восстанавливает свои элементы управления, когда он используется в приложении навигации. Восстановление дочерних элементов управления происходит, когда пользователь выходит из страницы, размещающей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент и затем возвращается на нее. Любое содержимое, введенное пользователем, будут потеряно.</p>
+<p><a name="message_loop_interoperation"></a></p>
+<h2 id="message-loop-interoperation">Взаимодействие с циклом обработки сообщений</h2>
+<p>При работе с циклом обработки сообщений Windows Forms сообщения могут обрабатываться не так, как ожидалось. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.enablewindowsformsinterop">EnableWindowsFormsInterop</a> Вызывается метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> конструктор. Этот метод добавляет фильтр сообщений к циклу обработки сообщений WPF. Этот фильтр вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.preprocessmessage">Control.PreProcessMessage</a> метод Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a> целевой сообщения и переводит либо отправляет сообщение.</p>
+<p>При отображении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> в Windows Forms цикл обработки сообщений с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.run">Application.Run</a>, ввод чего-либо только при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.enablemodelesskeyboardinterop">EnableModelessKeyboardInterop</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.enablemodelesskeyboardinterop">EnableModelessKeyboardInterop</a> Альбома <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и добавляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.imessagefilter">System.Windows.Forms.IMessageFilter</a>, который перенаправляет сообщения, связанные с ключом WPF цикл обработки сообщений. Дополнительные сведения см. в разделе <a href="windows-forms-and-wpf-interoperability-input-architecture.html">Windows Forms и архитектура ввода взаимодействия WPF</a>.</p>
+<p><a name="opacity_and_layering"></a></p>
+<h2 id="opacity-and-layering">Непрозрачность и организация по уровням</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> Класс не поддерживает слои. Это значит, что параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент не оказывает влияния, и не произойдет смешения с другими WPF windows, которые имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.allowstransparency">AllowsTransparency</a> присвоено <code>true</code>.</p>
+<p><a name="dispose"></a></p>
+<h2 id="dispose">Ликвидировать</h2>
+<p>Неудаленные классы вполне могут дать утечку ресурсов. Убедитесь, что в смешанных приложениях <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> удалены классы, или можно потерять ресурсы. Windows Forms Удаляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> контролирует, когда его немодальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a> родительских закрывается. WPF Удаляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элементов при завершении работы приложения. Можно показать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> в Windows Forms цикл обработки сообщений. В этом случае код может не получить уведомление о том, что приложение завершает работу.</p>
+<p><a name="enabling_visual_styles"></a></p>
+<h2 id="enabling-visual-styles">Включение стилей оформления</h2>
+<p>Microsoft Windows XP визуальные стили на Windows Forms не может быть включено управление. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.enablevisualstyles">Application.EnableVisualStyles</a> Метод вызывается в шаблоне для Windows Forms приложения. Несмотря на то что этот метод не вызывается по умолчанию, если вы используете Visual Studio для создания проекта, вы получите визуальные стили Microsoft Windows XP для элементов управления, если доступен Comctl32.dll версии 6.0. Необходимо вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.enablevisualstyles">EnableVisualStyles</a> метод перед созданием дескрипторов в потоке. Дополнительные сведения см. в разделе <a href="how-to-enable-visual-styles-in-a-hybrid-application.html">Как Включение визуальных стилей в гибридном приложении</a>.</p>
+<p><a name="licensed_controls"></a></p>
+<h2 id="licensed-controls">Лицензированные элементы управления</h2>
+<p>Лицензированные элементы управления Windows Forms, отображающие в окне сообщения информацию о лицензировании, могут вызвать непредвиденное поведение для смешанного приложения. Некоторые лицензированные элементы управления отображают диалоговое окно в ответ на создание обработчика. Например, лицензированный элемент управления может информировать пользователя о том, что нужна лицензия, или о том, что у пользователя осталось три пробных запуска элемента управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класс и дескриптор дочернего элемента управления создается внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.buildwindowcore">BuildWindowCore</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> Класс не позволяет сообщениям обрабатываться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.buildwindowcore">BuildWindowCore</a> метод, но отображение диалогового окна вызывает сообщения для отправки. Чтобы включить этот скрипт лицензирования, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.createcontrol">Control.CreateControl</a> метод в элементе управления перед назначением его как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> дочерним элементом.</p>
+<p><a name="wpf_designer"></a></p>
+<h2 id="wpf-designer">Конструктор WPF</h2>
+<p>Можно разработать содержимое WPF с помощью Конструктор WPF для Visual Studio. В следующих разделах перечислены некоторые общие проблемы, которые могут возникнуть при создании смешанных приложений с помощью Конструктор WPF.</p>
+<h3 id="backcolortransparent-is-ignored-at-design-time">Во время разработки игнорируется BackColorTransparent</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> Свойство может не работать ожидаемым образом во время разработки.</p>
+<p>Если элемент управления WPF не находится на видимом родителе, исполняющая среда WPF игнорирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> значение. Причина, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> может игнорироваться обусловлено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> объект создается в отдельном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a>. Тем не менее, при запуске приложения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> работает должным образом.</p>
+<h3 id="design-time-error-list-appears-when-the-obj-folder-is-deleted">При удалении папки obj появляется список ошибок времени разработки</h3>
+<p>Если удаляется папка obj, появляется список ошибок времени разработки.</p>
+<p>При разработке с использованием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a>, конструктор Windows Forms использует созданные файлы в папке Debug или Release внутри папки obj проекта. При удалении этих файлов появляется список ошибок времени разработки. Для устранения этой проблемы следует перестроить проект. Дополнительные сведения см. в разделе <a href="../../winforms/controls/design-time-errors-in-the-windows-forms-designer.html">Ошибки во время разработки в конструкторе Windows Forms</a>.</p>
+<p><a name="elementhost_and_ime"></a></p>
+<h2 id="elementhost-and-ime">ElementHost и IME</h2>
+<p>Размещенные элементы управления WPF в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> в настоящее время не поддерживают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.imemode">ImeMode</a> свойство. Изменения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.imemode">ImeMode</a> будет игнорироваться размещенными элементами управления.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628658(v=vs.100)">Взаимодействие в конструкторе WPF</a></li>
+<li><a href="windows-forms-and-wpf-interoperability-input-architecture.html">Windows Forms и архитектура ввода взаимодействия WPF</a></li>
+<li><a href="how-to-enable-visual-styles-in-a-hybrid-application.html">Практическое руководство. Включение визуальных стилей в гибридном приложении</a></li>
+<li><a href="layout-considerations-for-the-windowsformshost-element.html">Вопросы, связанные с макетом элемента WindowsFormsHost</a></li>
+<li><a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a></li>
+<li><a href="../../winforms/controls/design-time-errors-in-the-windows-forms-designer.html">Ошибки во время разработки в конструкторе Windows Forms Designer</a></li>
+<li><a href="migration-and-interoperability.html">Миграция и взаимодействие систем</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

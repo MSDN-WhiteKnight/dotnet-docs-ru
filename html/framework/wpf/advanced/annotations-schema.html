@@ -1,0 +1,671 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1093;&#1077;&#1084;&#1072; &#1087;&#1088;&#1080;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1093;&#1077;&#1084;&#1072; &#1087;&#1088;&#1080;&#1084;&#1077;&#1095;&#1072;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="annotations-schema">Схема примечаний</h1>
+
+<p>В этом разделе описывается определение схемы XML (XSD), используемое структурой заметок для сохранения и извлечения данных заметок пользователей.</p>
+<p>Annotations Framework сериализует данные заметки из внутреннего представления в формат XML.  Формат XML, используемый для этого преобразования, описывается XSD-схемой Annotations Framework.  Схема определяет независимый от реализации формат XML, который может использоваться для обмена данными заметок между приложениями.</p>
+<p>Определение схемы XML Annotations Framework состоит из двух подсхем:</p>
+<ul>
+<li><p>основная схема XML-заметок (основная схема);</p>
+</li>
+<li><p>базовая схема XML-заметок (базовая схема).</p>
+</li>
+</ul>
+<p>Основная схема определяет первичную XML-структуру <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation">Annotation</a>.  Большая часть XML-элементов, определенных в основной схеме соответствуют типам в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations">System.Windows.Annotations</a> пространства имен.  Основная схема предоставляет три точки расширения, в которых приложения могут добавлять собственные XML-данные.  Эти точки расширения включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation.authors">Authors</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.contentlocatorpart">ContentLocatorPart</a>и «Содержимое».  (Элементы содержимого представлены в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.xmlelement">XmlElement</a> списка.)</p>
+<p>Базовая схема, описанная в этом разделе, определяет расширения для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation.authors">Authors</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.contentlocatorpart">ContentLocatorPart</a>и типы содержимого, включая в первоначальном выпуске Windows Presentation Foundation (WPF).</p>
+<p><a name="CoreSchema"></a></p>
+<h2 id="annotations-xml-core-schema">Основная схема XML-заметок</h2>
+<p>Основная схема XML заметок определяет структуру XML, которая используется для хранения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation">Annotation</a> объектов.</p>
+<pre><code class="lang-xml">&lt;xsd:schema elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;
+            blockDefault=&quot;#all&quot;
+            xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+            targetNamespace=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/core&quot;
+            xmlns:anc=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/core&quot;&gt;
+
+  &lt;!-- The Annotations element groups a number of annotations.  --&gt;
+  &lt;xsd:element name=&quot;Annotations&quot; type=&quot;anc:AnnotationsType&quot; /&gt;
+
+  &lt;xsd:complexType name=&quot;AnnotationsType&quot;&gt;
+    &lt;xsd:sequence&gt;
+      &lt;xsd:element name=&quot;Annotation&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;
+                   type=&quot;anc:AnnotationType&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- AnnotationType defines the structure of the Annotation element. --&gt;
+  &lt;xsd:complexType name=&quot;AnnotationType&quot;&gt;
+    &lt;xsd:sequence&gt;
+
+      &lt;!-- List of 0 or more authors. --&gt;
+      &lt;xsd:element name=&quot;Authors&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;
+                   type=&quot;anc:AuthorListType&quot; /&gt;
+
+      &lt;!-- List of 0 or more anchors. --&gt;
+      &lt;xsd:element name=&quot;Anchors&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;
+                   type=&quot;anc:ResourceListType&quot; /&gt;
+
+      &lt;!-- List of 0 or more cargos. --&gt;
+      &lt;xsd:element name=&quot;Cargos&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;
+                   type=&quot;anc:ResourceListType&quot; /&gt;
+
+    &lt;/xsd:sequence&gt;
+
+    &lt;!-- Unique annotation ID. --&gt;
+    &lt;xsd:attribute name=&quot;Id&quot; type=&quot;xsd:string&quot; use=&quot;required&quot; /&gt;
+
+    &lt;!-- Annotation &quot;Type&quot; is used to map the annotation to an annotation
+         component that takes care of the visual representation of the
+         annotation.  WPF V1 recognizes three annotation types:
+  http://schemas.microsoft.com/windows/annotations/2003/11/base:Highlight
+  http://schemas.microsoft.com/windows/annotations/2003/11/base:TextStickyNote
+  http://schemas.microsoft.com/windows/annotations/2003/11/base:InkStickyNote
+    --&gt;
+    &lt;xsd:attribute name=&quot;Type&quot; type=&quot;xsd:QName&quot; use=&quot;required&quot; /&gt;
+
+    &lt;!-- Time when the annotation was last modified.  --&gt;
+    &lt;xsd:attribute name=&quot;LastModificationTime&quot; use=&quot;optional&quot;
+                   type=&quot;xsd:dateTime&quot; /&gt;
+
+    &lt;!-- Time when the annotation was created.  --&gt;
+    &lt;xsd:attribute name=&quot;CreationTime&quot; use=&quot;optional&quot;
+                   type=&quot;xsd:dateTime&quot; /&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- &quot;Authors&quot; consists of 0 or more elements that represent an author. --&gt;
+  &lt;xsd:complexType name=&quot;AuthorListType&quot;&gt;
+    &lt;xsd:sequence minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;
+      &lt;xsd:element ref=&quot;anc:Author&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- The core schema allows any author type. Supported author types
+       in version 1 (V1) are described in the base schema. --&gt;
+  &lt;xsd:element name=&quot;Author&quot; abstract=&quot;true&quot; block=&quot;extension restriction&quot;/&gt;
+
+  &lt;!-- Both annotation anchor and annotation cargo are represented by the
+       ResourceListType which contains 0 or more &quot;Resource&quot; elements. --&gt;
+  &lt;xsd:complexType name=&quot;ResourceListType&quot;&gt;
+    &lt;xsd:sequence&gt;
+      &lt;xsd:element name=&quot;Resource&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;
+                   type=&quot;anc:ResourceType&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- Resource groups identification, location
+       and/or content of some information.  --&gt;
+  &lt;xsd:complexType name=&quot;ResourceType&quot;&gt;
+    &lt;xsd:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; &gt;
+      &lt;xsd:choice&gt;
+        &lt;xsd:element name=&quot;ContentLocator&quot; type=&quot;anc:ContentLocatorType&quot; /&gt;
+        &lt;xsd:element name=&quot;ContentLocatorGroup&quot; type=&quot;anc:ContentLocatorGroupType&quot; /&gt;
+      &lt;/xsd:choice&gt;
+      &lt;xsd:element ref=&quot;anc:Content&quot;/&gt;
+    &lt;/xsd:choice&gt;
+
+    &lt;!-- Unique resource identifier. --&gt;
+    &lt;xsd:attribute name=&quot;Id&quot; type=&quot;xsd:string&quot; use=&quot;required&quot; /&gt;
+
+    &lt;!-- Optional resource name. --&gt;
+    &lt;xsd:attribute name=&quot;Name&quot; type=&quot;xsd:string&quot; use=&quot;optional&quot; /&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- ContentLocatorGroup contains a set of ContentLocators --&gt;
+  &lt;xsd:complexType name=&quot;ContentLocatorGroupType&quot;&gt;
+    &lt;xsd:sequence&gt;
+      &lt;xsd:element name=&quot;ContentLocator&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;
+                   type=&quot;anc:ContentLocatorType&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- A ContentLocator describes the location or the identification
+       of particular data within some context.  The ContentLocator consists
+       of one or more ContentLocatorParts.  Each ContentLocatorPart needs to
+       be successively applied to the context to arrive at the data.  What
+       &quot;applying&quot;, &quot;context&quot;, and &quot;data&quot; mean is application dependent.
+  --&gt;
+  &lt;xsd:complexType name=&quot;ContentLocatorType&quot;&gt;
+    &lt;xsd:sequence minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;&gt;
+      &lt;xsd:element ref=&quot;anc:ContentLocatorPart&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- A ContentLocatorPart is a set of &quot;Item&quot; elements.  Each &quot;Item&quot; element
+       has &quot;Name&quot; and &quot;Value&quot; attributes that define a name/value pair.
+       ContentLocatorPart is an abstract type that must be restricted for each
+       concrete ContentLocatorPart definition.  This restriction should define
+       allowed names and values for the concrete ContentLocatorPart type. That
+       way the application can define its own way of locating information. The
+       ContentLocatorPartTypes that are allowed in version 1 (V1) of WPF are
+       defined in the Annotations Base Schema.
+  --&gt;
+  &lt;xsd:element name=&quot;ContentLocatorPart&quot; type=&quot;anc:ContentLocatorPartType&quot;
+               abstract=&quot;true&quot; /&gt;
+
+  &lt;xsd:complexType name=&quot;ContentLocatorPartType&quot; abstract=&quot;true&quot;
+                   block=&quot;restriction&quot;&gt;
+    &lt;xsd:sequence minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;
+      &lt;xsd:element name=&quot;Item&quot; type=&quot;anc:ItemType&quot; /&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:complexType name=&quot;ItemType&quot; abstract=&quot;true&quot; &gt;
+    &lt;xsd:attribute name=&quot;Name&quot; type='xsd:string' use=&quot;required&quot; /&gt;
+    &lt;xsd:attribute name=&quot;Value&quot; type='xsd:string' use=&quot;optional&quot; /&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- Content describes the underlying content of a resource.  This is an
+       abstract type that should be redefined for each concrete content type
+       through restriction.  Allowed content types in WPF version 1 are
+       defined in the Annotations Base Schema.
+  --&gt;
+  &lt;xsd:element name=&quot;Content&quot; abstract=&quot;true&quot; block=&quot;extension restriction&quot;/&gt;
+
+&lt;/xsd:schema&gt;
+</code></pre>
+<p><a name="BaseSchema"></a></p>
+<h2 id="annotations-xml-base-schema">Базовая схема XML-заметок</h2>
+<p>Базовая схема определяет структуру XML для трех абстрактных элементов, определенных в основной схеме: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation.authors">Authors</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.contentlocatorpart">ContentLocatorPart</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotationresource.contents">Contents</a>.</p>
+<pre><code class="lang-xml">&lt;xsd:schema elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot;
+     blockDefault=&quot;#all&quot;
+     xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+     targetNamespace=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/base&quot;
+     xmlns:anb=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/base&quot;
+     xmlns:anc=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/core&quot;&gt;
+
+  &lt;xsd:import schemaLocation=&quot;AnnotationCoreV1.xsd&quot;
+       namespace=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/core&quot;/&gt;
+
+  &lt;!-- ***** Author ***** --&gt;
+  &lt;!-- Simple DisplayName Author --&gt;
+  &lt;xsd:complexType name=&quot;StringAuthorType&quot;&gt;
+    &lt;xsd:simpleContent &gt;
+      &lt;xsd:extension base='xsd:string' /&gt;
+    &lt;/xsd:simpleContent&gt;
+  &lt;/xsd:complexType&gt;
+  &lt;xsd:element name=&quot;StringAuthor&quot; type=&quot;anb:StringAuthorType&quot;
+               substitutionGroup=&quot;anc:Author&quot;/&gt;
+
+  &lt;!-- ***** LocatorParts ***** --&gt;
+
+  &lt;!-- Helper types --&gt;
+
+  &lt;!-- CountItemNameType - helper type to define count item --&gt;
+  &lt;xsd:simpleType name=&quot;CountItemNameType&quot;&gt;
+    &lt;xsd:restriction base='xsd:string'&gt;
+      &lt;xsd:pattern value=&quot;Count&quot; /&gt;
+    &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- NumberType - helper type to define segment count item --&gt;
+  &lt;xsd:simpleType name=&quot;NumberType&quot;&gt;
+    &lt;xsd:restriction base='xsd:string'&gt;
+      &lt;xsd:pattern value=&quot;\d*&quot; /&gt;
+    &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- SegmentNameType: helper type to define possible segment name types --&gt;
+  &lt;xsd:simpleType name=&quot;SegmentItemNameType&quot;&gt;
+    &lt;xsd:restriction base='xsd:string'&gt;
+      &lt;xsd:pattern value=&quot;Segment\d*&quot; /&gt;
+    &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- Flow Locator Part --&gt;
+
+  &lt;!-- FlowSegmentValueItemType: helper type to define flow segment values --&gt;
+  &lt;xsd:simpleType name=&quot;FlowSegmentItemValueType&quot;&gt;
+    &lt;xsd:restriction base='xsd:string'&gt;
+      &lt;xsd:pattern value=&quot; \d*,\d*&quot; /&gt;
+    &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- FlowItemType --&gt;
+  &lt;xsd:complexType name=&quot;FlowItemType&quot; abstract = &quot;true&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anc:ItemType&quot;&gt;
+      &lt;/xsd:restriction&gt;
+   &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- FlowSegmentItemType --&gt;
+  &lt;xsd:complexType name=&quot;FlowSegmentItemType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anb:FlowItemType&quot;&gt;
+        &lt;xsd:attribute name=&quot;Name&quot; use=&quot;required&quot;
+                       type=&quot;anb:SegmentItemNameType&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; use=&quot;required&quot;
+                       type=&quot;anb:FlowSegmentItemValueType&quot;/&gt;
+       &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+ &lt;/xsd:complexType&gt;
+
+  &lt;!-- FlowCountItemType --&gt;
+  &lt;xsd:complexType name=&quot;FlowCountItemType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anb:FlowItemType&quot;&gt;
+        &lt;xsd:attribute name=&quot;Name&quot; type=&quot;anb:CountItemNameType&quot; use=&quot;required&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; type=&quot;anb:NumberType&quot; use=&quot;required&quot;/&gt;
+       &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- CharacterRangeType is an extension of ContentLocatorPartType that locates
+  *    part of the content within a FlowDocument. CharacterRangeType contains one
+  *    &quot;Item&quot; element with name &quot;Count&quot; and value the number(N) of &quot;SegmentXX&quot;
+  *    elements that this ContentLocatorPart has.  It also contains N &quot;Item&quot;
+  *    elements with name &quot;SegmentXX&quot; where XX is a number from 0 to N-1. The
+  *    value of each &quot;SegmentXX&quot; element is a string in the form &quot;offset, length&quot;
+  *    which locates one sequence of symbols in the FlowDocument. Example:
+
+  *        &lt;anb:CharacterRange&gt;
+  *          &lt;anc:Item Name=&quot;Count&quot; Value=&quot;2&quot; /&gt;
+  *          &lt;anc:Item Name=&quot;Segment0&quot; Value=&quot;5,10&quot; /&gt;
+  *          &lt;anc:Item Name=&quot;Segment1&quot; Value=&quot;25,2&quot; /&gt;
+  *        &lt;/anb:CharacterRange&gt;
+  --&gt;
+  &lt;xsd:complexType name=&quot;CharacterRangeType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:extension base=&quot;anc:ContentLocatorPartType&quot;&gt;
+        &lt;xsd:sequence minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;&gt;
+          &lt;xsd:element name=&quot;Item&quot; type=&quot;anb:FlowItemType&quot; /&gt;
+        &lt;/xsd:sequence&gt;
+      &lt;/xsd:extension&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- CharacterRange element substitutes ContentLocatorPart element --&gt;
+  &lt;xsd:element name=&quot;CharacterRange&quot; type=&quot;anb:CharacterRangeType&quot;
+               substitutionGroup=&quot;anc:ContentLocatorPart&quot;/&gt;
+
+  &lt;!-- Fixed LocatorPart --&gt;
+
+  &lt;!-- Helper type – FixedItemType --&gt;
+  &lt;xsd:complexType name=&quot;FixedItemType&quot; abstract = &quot;true&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anc:ItemType&quot;&gt;
+      &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- Helper type – FixedCountItemType: ContentLocatorPart items count --&gt;
+  &lt;xsd:complexType name=&quot;FixedCountItemType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anb:FixedItemType&quot;&gt;
+        &lt;xsd:attribute name=&quot;Name&quot; type=&quot;anb:CountItemNameType&quot; use=&quot;required&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; type=&quot;anb:NumberType&quot; use=&quot;required&quot;/&gt;
+      &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- Helper type -FixedSegmentValue: Defines possible fixed segment values --&gt;
+  &lt;xsd:simpleType name=&quot;FixedSegmentItemValueType&quot;&gt;
+     &lt;xsd:restriction base='xsd:string'&gt;
+        &lt;xsd:pattern value=&quot;\d*,\d*,\d*,\d*&quot; /&gt;
+     &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- Helper type - FixedSegmentItemType --&gt;
+  &lt;xsd:complexType name=&quot;FixedSegmentItemType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anb:FixedItemType&quot;&gt;
+        &lt;xsd:attribute name=&quot;Name&quot; use=&quot;required&quot;
+                       type=&quot;anb:SegmentItemNameType&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; use=&quot;required&quot;
+                       type=&quot;anb:FixedSegmentItemValueType &quot;/&gt;
+      &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- FixedTextRangeType is an extension of ContentLocatorPartType that locates
+  *    content within a FixedDocument.  It contains one &quot;Item&quot; element with name
+  *    &quot;Count&quot; and value the number (N) of &quot;Item&quot; elements with name &quot;SegmentXX&quot;
+  *    that this ContentLocatorPart has.  FixedTextRange locator part also
+  *    contains N &quot;Item&quot; elements with one attribute Name=&quot;SegmentXX&quot; where XX is
+  *    a number from 0 to N-1 and one attribute &quot;Value&quot; in the form &quot;X1, Y1, X2,
+  *    Y2&quot;.  Here X1,Y1 are the coordinates of the start symbol in this segment,
+  *    X2,Y2 are the coordinates of the end symbol in this segment.  Example:
+  *
+  *        &lt;anb:FixedTextRange&gt;
+  *          &lt;anc:Item Name=&quot;Count&quot; Value=&quot;2&quot; /&gt;
+  *          &lt;anc:Item Name=&quot;Segment0&quot; Value=&quot;10,5,20,5&quot; /&gt;
+  *          &lt;anc:Item Name=&quot;Segment1&quot; Value=&quot;25,15, 25,20&quot; /&gt;
+  *        &lt;/anb:FixedTextRange&gt;
+  --&gt;
+  &lt;xsd:complexType name=&quot;FixedTextRangeType&quot;&gt;
+     &lt;xsd:complexContent&gt;
+        &lt;xsd:extension base=&quot;anc:ContentLocatorPartType&quot;&gt;
+           &lt;xsd:sequence minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;&gt;
+              &lt;xsd:element name=&quot;Item&quot; type=&quot;anb:FixedItemType&quot; /&gt;
+           &lt;/xsd:sequence&gt;
+       &lt;/xsd:extension&gt;
+     &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- FixedTextRange element substitutes ContentLocatorPart element --&gt;
+  &lt;xsd:element name=&quot;FixedTextRange&quot; type=&quot;anb:FixedTextRangeType&quot;
+               substitutionGroup=&quot;anc:ContentLocatorPart&quot;/&gt;
+
+  &lt;!-- DataId --&gt;
+
+  &lt;!-- ValueItemNameType: helper type to define value item --&gt;
+  &lt;xsd:simpleType name=&quot;ValueItemNameType&quot;&gt;
+    &lt;xsd:restriction base='xsd:string'&gt;
+      &lt;xsd:pattern value=&quot;Value&quot; /&gt;
+    &lt;/xsd:restriction&gt;
+  &lt;/xsd:simpleType&gt;
+
+  &lt;!-- StringValueItemType --&gt;
+  &lt;xsd:complexType name=&quot;StringValueItemType&quot;&gt;
+     &lt;xsd:complexContent&gt;
+        &lt;xsd:restriction base=&quot;anc:ItemType&quot;&gt;
+           &lt;xsd:attribute name=&quot;Name&quot; type=&quot;anb:ValueItemNameType&quot; use=&quot;required&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; type=&quot;xsd:string&quot; use=&quot;required&quot;/&gt;
+        &lt;/xsd:restriction&gt;
+     &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:complexType name=&quot;StringValueLocatorPartType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:extension base=&quot;anc:ContentLocatorPartType&quot;&gt;
+        &lt;xsd:sequence minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot;&gt;
+          &lt;xsd:element name=&quot;Item&quot; type=&quot;anb:ValueItemType&quot; /&gt;
+        &lt;/xsd:sequence&gt;
+      &lt;/xsd:extension&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- DataId element substitutes ContentLocatorPart and is used to locate a
+  *    subtree in the logical tree.  Including DataId locator part in a
+  *    ContentLocator helps to narrow down the search for a particular content.
+  *    Example of DataId ContentLocatorPart:
+  *
+  *        &lt;anb:DataId&gt;
+  *          &lt;anc:Item Name=&quot;Value&quot; Value=&quot;FlowDocument&quot; /&gt;
+  *        &lt;/anb:DataId&gt;
+  --&gt;
+
+  &lt;xsd:element name=&quot;DataId&quot; type=&quot;anb: StringValueLocatorPartType &quot;
+               substitutionGroup=&quot;anc:ContentLocatorPart&quot;/&gt;
+
+  &lt;!-- PageNumber --&gt;
+
+  &lt;!-- NumberValueItemType --&gt;
+  &lt;xsd:complexType name=&quot;NumberValueItemType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:restriction base=&quot;anc:ItemType&quot;&gt;
+        &lt;xsd:attribute name=&quot;Name&quot; type=&quot;anb:ValueItemNameType&quot; use=&quot;required&quot;/&gt;
+        &lt;xsd:attribute name=&quot;Value&quot; type=&quot;anb:NumberType&quot; use=&quot;required&quot;/&gt;
+      &lt;/xsd:restriction&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:complexType name=&quot;NumberValueLocatorPartType&quot;&gt;
+    &lt;xsd:complexContent&gt;
+      &lt;xsd:extension base=&quot;anc:ContentLocatorPartType&quot;&gt;
+        &lt;xsd:sequence minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot;&gt;
+          &lt;xsd:element name=&quot;Item&quot; type=&quot;anb:ValueItemType&quot; /&gt;
+        &lt;/xsd:sequence&gt;
+      &lt;/xsd:extension&gt;
+    &lt;/xsd:complexContent&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;!-- PageNumber element substitutes ContentLocatorPart and is used to locate a
+  *    page in a FixedDocument.  PageNumber ContentLocatorPart is used in
+  *    conjunction with the FixedTextRange ContentLocatorPart and it shows on with
+  *    page are the coordinates defined in the FixedTextRange.
+  *    Example of a PageNumber ContentLocatorPart:
+  *
+  *       &lt;anb:PageNumber&gt;
+  *         &lt;anc:Item Name=&quot;Value&quot; Value=&quot;1&quot; /&gt;
+  *       &lt;/anb:PageNumber&gt;
+  --&gt;
+  &lt;xsd:element name=&quot;PageNumber&quot; type=&quot;anb:NumberValueLocatorPartType&quot;
+               substitutionGroup=&quot;anc:ContentLocatorPart&quot;/&gt;
+
+  &lt;!-- ***** Content ***** --&gt;
+  &lt;!-- Highlight colors – defines highlight color for annotations of type
+  *    Highlight or normal and active anchor colors for annotations of type
+  *    TextStickyNote and InkStickyNote.
+  --&gt;
+  &lt;xsd:complexType name=&quot;ColorsContentType&quot;&gt;
+    &lt;xsd:attribute name=&quot;Background&quot; type='xsd:string' use=&quot;required&quot; /&gt;
+    &lt;xsd:attribute name=&quot;ActiveBackground&quot; type='xsd:string' use=&quot;optional&quot; /&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:element name=&quot;Colors&quot; type=&quot;anb:ColorsContentType&quot;
+               substitutionGroup=&quot;anc:Content&quot;/&gt;
+
+  &lt;!-- RTB Text –contains XAML representing StickyNote Reach Text Box text.
+  *    Used in annotations of type TextStickyNote. --&gt;
+  &lt;xsd:complexType name=&quot;TextContentType&quot;&gt;
+    &lt;!-- See XAML schema for RTB content --&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:element name=&quot;Text&quot; type=&quot;anb:TextContentType&quot;
+               substitutionGroup=&quot;anc:Content&quot;/&gt;
+
+  &lt;!-- Ink – contains XAML representing Sticky Note ink.
+  *    Used in annotations of type InkStickyNote. --&gt;
+  &lt;xsd:complexType name=&quot;InkContentType&quot;&gt;
+    &lt;!-- See XAML schema for Ink content --&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:element name=&quot;Ink&quot; type=&quot;anb:InkContentType&quot;
+               substitutionGroup=&quot;anc:Content&quot;/&gt;
+
+  &lt;!-- SN Metadata – defines StickyNote attributes as position width, height,
+  *    etc.  Used in annotations of type TextStickyNote and InkStickyNote. --&gt;
+  &lt;xsd:complexType name=&quot;MetadataContentType&quot;&gt;
+    &lt;xsd:attribute name=&quot;Left&quot; type='xsd:decimal' use=&quot;optional&quot;  /&gt;
+    &lt;xsd:attribute name=&quot;Top&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+    &lt;xsd:attribute name=&quot;Width&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+    &lt;xsd:attribute name=&quot;Height&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+    &lt;xsd:attribute name=&quot;XOffset&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+    &lt;xsd:attribute name=&quot;YOffset&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+    &lt;xsd:attribute name=&quot;ZOrder&quot; type='xsd:decimal' use=&quot;optional&quot; /&gt;
+  &lt;/xsd:complexType&gt;
+
+  &lt;xsd:element name=&quot;Metadata&quot; type=&quot;anb:MetadataContentType&quot;
+               substitutionGroup=&quot;anc:Content&quot;/&gt;
+
+&lt;/xsd:schema&gt;
+</code></pre>
+<p><a name="SampleXML"></a></p>
+<h2 id="sample-xml-produced-by-annotations-xmlstreamstore">Пример XML-кода, созданный классом XmlStreamStore Annotations</h2>
+<p>XML, ниже показан результат выполнения заметки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.storage.xmlstreamstore">XmlStreamStore</a> и организацию примера файла, который содержит три заметки: выделение текста-записки и рукописную записку.</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;anc:Annotations
+     xmlns:anc=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/core&quot;
+     xmlns:anb=&quot;http://schemas.microsoft.com/windows/annotations/2003/11/base&quot;&gt;
+
+  &lt;anc:Annotation Id=&quot;d308ea9b-36eb-4cc4-94d0-97634f10f7a2&quot;
+                  CreationTime=&quot;2006-09-13T18:28:51.4465702-07:00&quot;
+                  LastModificationTime=&quot;2006-09-13T18:28:51.4465702-07:00&quot;
+                  Type=&quot;anb:Highlight&quot;&gt;
+    &lt;anc:Anchors&gt;
+      &lt;anc:Resource Id=&quot;4f53661b-7328-4673-8e3f-c53f08b9cd94&quot;&gt;
+        &lt;anc:ContentLocator&gt;
+          &lt;anb:DataId&gt;
+            &lt;anc:Item Name=&quot;Value&quot; Value=&quot;FlowDocument&quot; /&gt;
+          &lt;/anb:DataId&gt;
+          &lt;anb:CharacterRange&gt;
+            &lt;anc:Item Name=&quot;Segment0&quot; Value=&quot;600,609&quot; /&gt;
+            &lt;anc:Item Name=&quot;Count&quot; Value=&quot;1&quot; /&gt;
+          &lt;/anb:CharacterRange&gt;
+        &lt;/anc:ContentLocator&gt;
+      &lt;/anc:Resource&gt;
+    &lt;/anc:Anchors&gt;
+  &lt;/anc:Annotation&gt;
+
+  &lt;anc:Annotation Id=&quot;d7a8d271-387e-4144-9f8b-bc3c97816e5f&quot;
+                  CreationTime=&quot;2006-09-13T18:28:56.7903202-07:00&quot;
+                  LastModificationTime=&quot;2006-09-13T18:28:56.8996952-07:00&quot;
+                  Type=&quot;anb:TextStickyNote&quot;&gt;
+    &lt;anc:Authors&gt;
+      &lt;anb:StringAuthor&gt;Denise Smith&lt;/anb:StringAuthor&gt;
+    &lt;/anc:Authors&gt;
+
+    &lt;anc:Anchors&gt;
+      &lt;anc:Resource Id=&quot;dab2560e-6ebd-4ad0-80f9-483356a3be0b&quot;&gt;
+        &lt;anc:ContentLocator&gt;
+          &lt;anb:DataId&gt;
+            &lt;anc:Item Name=&quot;Value&quot; Value=&quot;FlowDocument&quot; /&gt;
+          &lt;/anb:DataId&gt;
+          &lt;anb:CharacterRange&gt;
+            &lt;anc:Item Name=&quot;Segment0&quot; Value=&quot;787,801&quot; /&gt;
+            &lt;anc:Item Name=&quot;Count&quot; Value=&quot;1&quot; /&gt;
+          &lt;/anb:CharacterRange&gt;
+        &lt;/anc:ContentLocator&gt;
+      &lt;/anc:Resource&gt;
+    &lt;/anc:Anchors&gt;
+
+    &lt;anc:Cargos&gt;
+      &lt;anc:Resource Id=&quot;ea4dbabd-b400-4cf9-8908-5716b410f9e4&quot; Name=&quot;Meta Data&quot;&gt;
+        &lt;anb:MetaData anb:ZOrder=&quot;0&quot; /&gt;
+      &lt;/anc:Resource&gt;
+    &lt;/anc:Cargos&gt;
+  &lt;/anc:Annotation&gt;
+
+  &lt;anc:Annotation Id=&quot;66803c69-b0d7-4cc3-bdff-cacc1955e806&quot;
+                  CreationTime=&quot;2006-09-13T18:29:03.6653202-07:00&quot;
+                  LastModificationTime=&quot;2006-09-13T18:29:03.7121952-07:00&quot;
+                  Type=&quot;anb:InkStickyNote&quot;&gt;
+    &lt;anc:Authors&gt;
+      &lt;anb:StringAuthor&gt;Mike Nash&lt;/anb:StringAuthor&gt;
+    &lt;/anc:Authors&gt;
+
+    &lt;anc:Anchors&gt;
+      &lt;anc:Resource Id=&quot;52251c53-8eeb-4fd7-b8f3-94e78dfc25fa&quot;&gt;
+        &lt;anc:ContentLocator&gt;
+          &lt;anb:DataId&gt;
+            &lt;anc:Item Name=&quot;Value&quot; Value=&quot;FlowDocument&quot; /&gt;
+          &lt;/anb:DataId&gt;
+          &lt;anb:CharacterRange&gt;
+            &lt;anc:Item Name=&quot;Segment0&quot; Value=&quot;880,884&quot; /&gt;
+            &lt;anc:Item Name=&quot;Count&quot; Value=&quot;1&quot; /&gt;
+          &lt;/anb:CharacterRange&gt;
+        &lt;/anc:ContentLocator&gt;
+      &lt;/anc:Resource&gt;
+    &lt;/anc:Anchors&gt;
+
+    &lt;anc:Cargos&gt;
+      &lt;anc:Resource Id=&quot;11e50b97-8d91-4ff9-82c3-16607b2b552b&quot; Name=&quot;Meta Data&quot;&gt;
+        &lt;anb:MetaData anb:ZOrder=&quot;1&quot; /&gt;
+      &lt;/anc:Resource&gt;
+    &lt;/anc:Cargos&gt;
+  &lt;/anc:Annotation&gt;
+
+&lt;/anc:Annotations&gt;
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations">System.Windows.Annotations</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.storage">System.Windows.Annotations.Storage</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.annotation">Annotation</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.storage.annotationstore">AnnotationStore</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.annotations.storage.xmlstreamstore">XmlStreamStore</a></li>
+<li><a href="annotations-overview.html">Общие сведения о заметках</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

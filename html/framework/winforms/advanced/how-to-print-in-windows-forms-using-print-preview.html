@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1095;&#1072;&#1090;&#1100; &#1074; Windows Forms &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1087;&#1088;&#1077;&#1076;&#1074;&#1072;&#1088;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1086;&#1089;&#1084;&#1086;&#1090;&#1088;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1095;&#1072;&#1090;&#1100; &#1074; Windows Forms &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1087;&#1088;&#1077;&#1076;&#1074;&#1072;&#1088;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1087;&#1088;&#1086;&#1089;&#1084;&#1086;&#1090;&#1088;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-print-in-windows-forms-using-print-preview">Практическое руководство. Печать в Windows Forms с использованием предварительного просмотра</h1>
+
+<p>При программировании с использованием Windows Forms в качестве дополнения к службам печати часто предлагается возможность предварительного просмотра. Легким способом добавления предварительного просмотра в приложение является использование элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog">PrintPreviewDialog</a> в сочетании с логикой обработки событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> для печати файла.</p>
+<h3 id="to-preview-a-text-document-with-a-printpreviewdialog-control">Предварительный просмотр текстового документа с помощью элемента управления PrintPreviewDialog</h3>
+<ol>
+<li><p>Добавьте в форму элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog">PrintPreviewDialog</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument">PrintDocument</a>и две строки.</p>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#1">private PrintPreviewDialog printPreviewDialog1 = new PrintPreviewDialog();
+private PrintDocument printDocument1 = new PrintDocument();
+
+// Declare a string to hold the entire document contents.
+private string documentContents;
+
+// Declare a variable to hold the portion of the document that
+// is not printed.
+private string stringToPrint;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Укажите в качестве значения свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.documentname">DocumentName</a> документ, который нужно напечатать, а затем откройте документ и прочтите его содержимое в строку, добавленную ранее.</p>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#2">private void ReadDocument()
+{
+    string docName = &quot;testPage.txt&quot;;
+    string docPath = @&quot;c:\&quot;;
+    printDocument1.DocumentName = docName;
+    using (FileStream stream = new FileStream(docPath + docName, FileMode.Open))
+    using (StreamReader reader = new StreamReader(stream))
+    {
+        documentContents = reader.ReadToEnd();
+    }
+    stringToPrint = documentContents;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Как и при печати документа, для расчета числа строк на странице и отрисовки содержимого документа в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> используется свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printpageeventargs.graphics">Graphics</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printpageeventargs">PrintPageEventArgs</a> и содержимое файла. Нарисовав очередную страницу, проверьте, является ли она последней, и установите соответствующим образом свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printpageeventargs.hasmorepages">HasMorePages</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printpageeventargs">PrintPageEventArgs</a> . Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> возникает до тех пор, пока значение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printpageeventargs.hasmorepages">HasMorePages</a> не станет равно <code>false</code>. После завершения отрисовки документа сбросьте строку, подлежащую отрисовке. Кроме того, убедитесь в том, что событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> связано со своим методом обработки событий.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если поддержка печати уже реализована в приложении, то, возможно, шаги 2 и 3 были выполнены ранее.</p>
+</div>
+<p>В примере кода ниже обработчик событий используется для печати файла testPage.txt тем шрифтом, который используется в форме.</p>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#3">void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+{
+    int charactersOnPage = 0;
+    int linesPerPage = 0;
+
+    // Sets the value of charactersOnPage to the number of characters 
+    // of stringToPrint that will fit within the bounds of the page.
+    e.Graphics.MeasureString(stringToPrint, this.Font,
+        e.MarginBounds.Size, StringFormat.GenericTypographic,
+        out charactersOnPage, out linesPerPage);
+
+    // Draws the string within the bounds of the page.
+    e.Graphics.DrawString(stringToPrint, this.Font, Brushes.Black,
+    e.MarginBounds, StringFormat.GenericTypographic);
+
+    // Remove the portion of the string that has been printed.
+    stringToPrint = stringToPrint.Substring(charactersOnPage);
+
+    // Check to see if more pages are to be printed.
+    e.HasMorePages = (stringToPrint.Length &gt; 0);
+
+    // If there are no more pages, reset the string to be printed.
+    if (!e.HasMorePages)
+        stringToPrint = documentContents;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog.document">Document</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog">PrintPreviewDialog</a> значение компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument">PrintDocument</a> в форме.</p>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#5">printPreviewDialog1.Document = printDocument1;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.showdialog">ShowDialog</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog">PrintPreviewDialog</a> . Как правило, метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.showdialog">ShowDialog</a> вызывается из метода обработки событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> кнопки. Вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.showdialog">ShowDialog</a> приводит к возникновению события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> и отрисовке выходных данных в элементе управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.printpreviewdialog">PrintPreviewDialog</a> . Когда пользователь нажимает на значок печати в диалоговом окне, событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.printing.printdocument.printpage">PrintPage</a> вызывается снова. При этом выходные данные отправляются на принтер, а не в диалоговое окно предварительного просмотра. Вот почему в шаге 3 в конце процесса отрисовки сбрасывалась строка.</p>
+<p>В примере ниже показан метод обработки событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> для кнопки в форме. Этот метод вызывает методы для чтения документа и вывода окна предварительного просмотра.</p>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#4">private void printPreviewButton_Click(object sender, EventArgs e)
+{
+    ReadDocument();
+    printPreviewDialog1.Document = printDocument1;
+printPreviewDialog1.ShowDialog();
+    
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-csharp" name="System.Drawing.Printing.PrintPreviewExample#0">using System;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Printing;
+using System.Windows.Forms;
+
+namespace PrintPreviewApp
+{
+    public partial class Form1 : Form
+    {
+        private Button printPreviewButton;
+
+        private PrintPreviewDialog printPreviewDialog1 = new PrintPreviewDialog();
+        private PrintDocument printDocument1 = new PrintDocument();
+
+        // Declare a string to hold the entire document contents.
+        private string documentContents;
+
+        // Declare a variable to hold the portion of the document that
+        // is not printed.
+        private string stringToPrint;
+
+        public Form1()
+        {
+            this.printPreviewButton = new System.Windows.Forms.Button();
+            this.printPreviewButton.Location = new System.Drawing.Point(12, 12);
+            this.printPreviewButton.Size = new System.Drawing.Size(125, 23);
+            this.printPreviewButton.Text = &quot;Print Preview&quot;;
+            this.printPreviewButton.Click += new System.EventHandler(this.printPreviewButton_Click);
+            this.ClientSize = new System.Drawing.Size(292, 266);
+            this.Controls.Add(this.printPreviewButton);
+            printDocument1.PrintPage +=
+                new PrintPageEventHandler(printDocument1_PrintPage);
+        }
+        private void ReadDocument()
+        {
+            string docName = &quot;testPage.txt&quot;;
+            string docPath = @&quot;c:\&quot;;
+            printDocument1.DocumentName = docName;
+            using (FileStream stream = new FileStream(docPath + docName, FileMode.Open))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                documentContents = reader.ReadToEnd();
+            }
+            stringToPrint = documentContents;
+        }
+
+        void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            int charactersOnPage = 0;
+            int linesPerPage = 0;
+
+            // Sets the value of charactersOnPage to the number of characters 
+            // of stringToPrint that will fit within the bounds of the page.
+            e.Graphics.MeasureString(stringToPrint, this.Font,
+                e.MarginBounds.Size, StringFormat.GenericTypographic,
+                out charactersOnPage, out linesPerPage);
+
+            // Draws the string within the bounds of the page.
+            e.Graphics.DrawString(stringToPrint, this.Font, Brushes.Black,
+            e.MarginBounds, StringFormat.GenericTypographic);
+
+            // Remove the portion of the string that has been printed.
+            stringToPrint = stringToPrint.Substring(charactersOnPage);
+
+            // Check to see if more pages are to be printed.
+            e.HasMorePages = (stringToPrint.Length &gt; 0);
+
+            // If there are no more pages, reset the string to be printed.
+            if (!e.HasMorePages)
+                stringToPrint = documentContents;
+        }
+        private void printPreviewButton_Click(object sender, EventArgs e)
+        {
+            ReadDocument();
+            printPreviewDialog1.Document = printDocument1;
+        printPreviewDialog1.ShowDialog();
+            
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li><p>ссылки на сборки System, System.Windows.Forms и System.Drawing.</p>
+</li>
+<li><p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-print-a-multi-page-text-file-in-windows-forms.html">Практическое руководство. Печать многостраничных текстовых файлов в Windows Forms</a></li>
+<li><a href="windows-forms-print-support.html">Поддержка печати в Windows Forms</a></li>
+<li><a href="../more-secure-printing-in-windows-forms.html">Более безопасная печать в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

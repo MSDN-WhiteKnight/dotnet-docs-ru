@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1089; PropertyPath XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1089; PropertyPath XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="propertypath-xaml-syntax">Синтаксис PropertyPath XAML</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> Поддерживает сложный встроенный объект XAML синтаксиса для настройки различных свойств, которые принимают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> тип в качестве значения. Этом разделе описана <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> синтаксис применительно к привязки и анимации.</p>
+<p><a name="where"></a></p>
+<h2 id="where-propertypath-is-used">Где используется PropertyPath</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> представляет собой общий объект, который используется в нескольких Windows Presentation Foundation (WPF) функции. Несмотря на использование общего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> для передачи информации о пути к свойству, варианты использования для каждой области возможностей где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> используется как тип варьироваться. Таким образом, более практично документировать синтаксис для каждой функции.</p>
+<p>В основном WPF использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> для описания путей объектной модели для нахождения свойств источника данных и для описания конечного пути для целевой анимации.</p>
+<p>Некоторые свойства стиля и шаблона, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter.property">Setter.Property</a> принимают имя полное свойство, которое внешне напоминает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>. Но это не подлинный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>; вместо этого это <em>owner.property</em> строка для использования формата обеспечивается WPF XAML процессора в сочетании с преобразователем типов для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>.</p>
+<p><a name="databinding_s"></a></p>
+<h2 id="propertypath-for-objects-in-data-binding">PropertyPath для объектов в привязке данных</h2>
+<p>Привязка данных является функцией WPF, которую можно привязать к целевому значению любого свойства зависимостей. Однако источник такой привязки данных не обязательно должен быть свойством зависимостей. Это может быть любой тип свойства, распознаваемый применимым поставщиком данных. Пути свойств используются особенно для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a>, который используется для получения источников привязки из среда CLR объектов и их свойств.</p>
+<p>Обратите внимание, что привязка данных к XML не использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>, так как он не использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>. Вместо этого использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> и укажите допустимый синтаксис XPath в Модель объектов XML-документов (DOM) данных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> также указываются в виде строки, но не документируется здесь. см. в разделе <a href="../data/how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries.html">привязка к данным XML с помощью XMLDataProvider и запросов XPath</a>.</p>
+<p>Ключом к пониманию путей к свойствам в привязке к данным является то, что можно настроить целевой объект привязки на отдельное значение свойства либо использовать привязку к целевым свойствам, которые принимают списки или коллекции. При связывании коллекций, например привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> , будет расширяться в зависимости от количества элементов данных в коллекции, а затем путь к свойству должен ссылаться на объект коллекции, а не отдельные элементы коллекции. Механизм привязки данных будет соответствовать коллекции, используемой как источник данных в тип целевого объекта привязки автоматически, что приводит к заполнению <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> массивом элементов.</p>
+<p><a name="singlecurrent"></a></p>
+<h3 id="single-property-on-the-immediate-object-as-data-context">Одиночное свойство в объекте интерпретации в качестве контекста данных</h3>
+<pre><code class="lang-xml">&lt;Binding Path=&quot;propertyName&quot; .../&gt;  
+</code></pre>
+<p><em>propertyName</em> должно разрешаться как имя свойства, которое находится в текущем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> использования. Если привязка обновляет источник, это свойство должно быть доступно для чтения и записи, а исходный объект должен быть изменяемым.</p>
+<p><a name="singleindex"></a></p>
+<h3 id="single-indexer-on-the-immediate-object-as-data-context">Одиночный индексатор в объекте интерпретации в контексте данных</h3>
+<pre><code class="lang-xml">&lt;Binding Path=&quot;[key]&quot; .../&gt;  
+</code></pre>
+<p><code>key</code> должен быть либо типизированным индексом для словаря или хэш-таблицу или целочисленный индекс массива. Кроме того, значение ключа должно быть типом, который можно непосредственно привязать к свойству, в котором оно применяется. Например, хэш-таблицу, содержащий строковых ключей и строковых значений можно использовать таким образом для привязки к тексту для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>. Либо, если ключ указывает на коллекцию или субиндекс, этот синтаксис можно использовать для привязки к целевому свойству коллекции. В противном случае необходимо ссылаться на конкретное свойство, например с помощью синтаксиса <code>&lt;Binding Path=&quot;[key].propertyName&quot; .../&gt;</code>.</p>
+<p>При необходимости можно указать тип индекса. Дополнительные сведения об этом аспекте индексированного пути свойства, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a>.</p>
+<p><a name="multipleindirect"></a></p>
+<h3 id="multiple-property-indirect-property-targeting">Несколько свойств (косвенное назначение свойства)</h3>
+<pre><code class="lang-xml">&lt;Binding Path=&quot;propertyName.propertyName2&quot; .../&gt;  
+</code></pre>
+<p><code>propertyName</code> должно разрешаться как имя свойства, которое является текущим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a>. Свойствами пути <code>propertyName</code> и <code>propertyName2</code> могут быть любые свойства, которые существуют в связи, где <code>propertyName2</code> — свойство, которое существует в типе, являющемся значением <code>propertyName</code>.</p>
+<p><a name="singleattached"></a></p>
+<h3 id="single-property-attached-or-otherwise-type-qualified">Одиночное свойство, присоединенное свойство или свойство с указанием типа</h3>
+<pre><code class="lang-xml">&lt;object property=&quot;(ownerType.propertyName)&quot; .../&gt;  
+</code></pre>
+<p>Скобки означают, что это свойство в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> должно быть создано с использованием частичной квалификации. Может использоваться пространство имен XML для поиска типа с соответствующим сопоставлением. <code>ownerType</code> Выполняет поиск типов, XAML обработчик имеет доступ к, до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!include[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен.  <code>propertyName</code> должно разрешаться как имя свойства, существующего в <code>ownerType</code>. Этот синтаксис обычно используется в одном из следующих случаев.</p>
+<ul>
+<li><p>Путь, указанный в XAML, который находится в стиле или шаблоне, не имеющем указанного целевого типа. Использование полных имен обычно недействительно для иных случаев, поскольку в отличие от стилей и шаблонов свойство существует в экземпляре, а не в типе.</p>
+</li>
+<li><p>Свойство является присоединенным свойством.</p>
+</li>
+<li><p>Выполняется привязка к статическому свойству.</p>
+</li>
+</ul>
+<p>Для использования в качестве цели раскадровки свойство, указанное как <code>propertyName</code> должно быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>.</p>
+<p><a name="sourcetraversal"></a></p>
+<h3 id="source-traversal-binding-to-hierarchies-of-collections">Обход источников (привязка к иерархиям коллекций)</h3>
+<pre><code class="lang-xml">&lt;object Path=&quot;propertyName/propertyNameX&quot; .../&gt;  
+</code></pre>
+<p>/ в этом синтаксисе используется для навигации в иерархическом объекте источника данных. Поддерживается несколько шагов в иерархии с последовательными символами /. Обход источников учитывает текущую позицию указателя записи, которая определяется синхронизацией данных с пользовательским интерфейсом его представления. Дополнительные сведения о привязке к иерархическим объектам источника данных и концепции указателя текущей записи в привязке данных см. в разделе <a href="../data/how-to-use-the-master-detail-pattern-with-hierarchical-data.html">Использование шаблона &quot;Основной/подробности&quot; с иерархическими данными</a> или <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Внешне этот синтаксис походит на XPath. Настоящую XPath выражение для привязки к XML источник данных не используется в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> значение и вместо этого следует использовать для взаимоисключающего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> свойство.</p>
+</div>
+<h3 id="collection-views">Представления коллекций</h3>
+<p>Для ссылки на представление именованной коллекции перед именем представления используется символ решетки (<code>#</code>).</p>
+<h3 id="current-record-pointer">Указатель текущей записи</h3>
+<p>Чтобы ссылаться на указатель текущей записи для представления коллекции или сценария привязки данных &quot;Основной/подробности&quot;, в начале строки пути поставьте косую черту (<code>/</code>). Обход любого пути, проходящего через косую черту, начинается с указателя текущей записи.</p>
+<h3 id="multiple-indexers">Несколько индексаторов</h3>
+<pre><code>&lt;object Path=&quot;[index1,index2...]&quot; .../&gt;  
+or  
+&lt;object Path=&quot;propertyName[index,index2...]&quot; .../&gt;  
+</code></pre>
+<p>Если данный объект поддерживает несколько индексаторов, их можно указать по порядку, аналогично синтаксису ссылок на массив. Рассматриваемый объект может быть либо текущим контекстом, либо значением свойства, содержащего объект с несколькими индексами.</p>
+<p>По умолчанию значения индексатора вводятся с использованием характеристик базового объекта. При необходимости можно указать тип индекса. Дополнительные сведения о вводе индексаторов см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a>.</p>
+<p><a name="mixing"></a></p>
+<h3 id="mixing-syntaxes">Смешанные синтаксисы</h3>
+<p>Можно смешивать все синтаксисы, показанные выше. Например, ниже приведен пример, в котором создается путь к свойству цвета в определенных координатах x, y <code>ColorGrid</code> свойства, содержащего массив сетки пикселей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объектов:</p>
+<pre><code class="lang-xml">&lt;Rectangle Fill=&quot;{Binding ColorGrid[20,30].SolidColorBrushResult}&quot; .../&gt;  
+</code></pre>
+<h3 id="escapes-for-property-path-strings">Escape-символы для строк путей к свойствам</h3>
+<p>Для некоторых бизнес-объектов может возникнуть случай, когда для правильного анализа строки пути к свойству требуется escape-последовательность. Такая необходимость должна возникать редко, так как многие из этих символов имеют аналогичные проблемы взаимодействия при именовании в языках, которые обычно используются для определения бизнес-объекта.</p>
+<ul>
+<li><p>Внутри индексаторов ([ ]) символ каретки (^) служит escape-символом для следующего символа.</p>
+</li>
+<li><p>Необходимо предварять escape-символами (используя XML-сущности) определенные символы, которые являются специальными для определения языка XML. Используйте <code>&amp;</code> в качестве escape-символа для символа &amp;. Используйте <code>&gt;</code> в качестве escape-символа для символа &gt;.</p>
+</li>
+<li><p>Необходимо предварять escape-символами (с помощью обратной косой черты <code>\</code>) символы, которые являются специальными для поведения средства синтаксического анализа WPF XAML для обработки расширения разметки.</p>
+<ul>
+<li><p>Обратная косая черта (<code>\</code>) сама по себе является escape-символом.</p>
+</li>
+<li><p>Знак равенства (<code>=</code>) разделяет имя и значение свойства.</p>
+</li>
+<li><p>Запятая (<code>,</code>) разделяет свойства.</p>
+</li>
+<li><p>Закрывающая фигурная скобка (<code>}</code>) — это конец расширения разметки.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>С технической точки зрения, эти escape-последовательности также работают для пути к свойству раскадровки, но обычно объектные модели обходятся для существующих объектов WPF и использование escape-символов не требуется.</p>
+</div>
+<p><a name="databinding_sa"></a></p>
+<h2 id="propertypath-for-animation-targets">PropertyPath для целевых объектов анимации</h2>
+<p>Целевое свойство анимации должно быть свойством зависимостей, который принимает либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> или типом-примитивом. Однако целевое свойство типа и конечное анимированное свойство могут существовать в различных объектах. Для анимаций путь к свойству используется для определения связи между свойством целевого объекта именованной анимации и заданным целевым свойством анимации путем обхода отношений &quot;объект/свойство&quot; в значениях свойств.</p>
+<p><a name="general"></a></p>
+<h3 id="general-object-property-considerations-for-animations">Общие рекомендации для отношений &quot;объект/свойство&quot; для анимаций</h3>
+<p>Подробнее о концепциях анимации в целом см. в разделах <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о раскадровке </a> и <a href="../graphics-multimedia/animation-overview.html">Общие сведения об анимации </a>.</p>
+<p>Тип значения или анимируемое свойство должны являться объектами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> тип или типы-примитивы. Свойство, которое запускает путь должен разрешаться как имя свойства зависимостей, которое существует в указанном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> типа.</p>
+<p>Для поддержки клонирования в целях анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> который уже был заморожен, объекта, заданного параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> должно быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> производного класса.</p>
+<p><a name="singlestepanim"></a></p>
+<h3 id="single-property-on-the-target-object">Одно свойство в целевом объекте</h3>
+<pre><code class="lang-xml">&lt;animation Storyboard.TargetProperty=&quot;propertyName&quot; .../&gt;  
+</code></pre>
+<p><code>propertyName</code> должно разрешаться как имя свойства зависимостей, которое существует в указанном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> типа.</p>
+<p><a name="indirectanim"></a></p>
+<h3 id="indirect-property-targeting">Косвенное назначение свойства</h3>
+<pre><code class="lang-xml">&lt;animation Storyboard.TargetProperty=&quot;propertyName.propertyName2&quot; .../&gt;  
+</code></pre>
+<p><code>propertyName</code> должно быть свойством, либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> типом значения или примитивом, который существует на указанном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> типа.</p>
+<p><code>propertyName2</code> должно быть имя свойства зависимостей, которое существует в объекте, который является значением <code>propertyName</code>. Другими словами <code>propertyName2</code> существовать как свойства зависимости в тип, являющийся <code>propertyName</code> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.propertytype">PropertyType</a>.</p>
+<p>Косвенное назначение анимации необходимо из-за примененных стилей и шаблонов. Чтобы целевой объект анимации, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> на целевой объект и что имя устанавливается с помощью <a href="../../xaml-services/x-name-directive.md">x: Name</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.name">Name</a>. Хотя элементы шаблона и стиля также могут иметь имена, эти имена действительны только в области имен стиля и шаблона. (Если бы шаблоны и стили совместно использовали пространства имен с разметкой приложения, имена не могли бы быть уникальными. Стили и шаблоны буквально разделяются между экземплярами и могут сохранять повторяющиеся имена). Таким образом, если отдельные свойства элемента, которые нужно анимировать, исходят из стиля или шаблона, то нужно начать с именованного экземпляра элемента, который не происходит из шаблона стиля. Затем укажите целевой объект в визуальном дереве стиля или шаблона, чтобы достичь свойства, которое нужно анимировать.</p>
+<p>Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.background">Background</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> является полным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> (фактически <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>), который поступил из шаблона темы. Для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> полностью, то потребуется потребовалась бы BrushAnimation (возможно, одна для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> типа) и нет такого типа. Чтобы анимировать кисть, вместо этого анимируются свойства определенного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> типа. Необходимо получить из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> для его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> для применения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a> существует. Путь к свойству в этом примере будет <code>Background.Color</code>.</p>
+<p><a name="attachedanim"></a></p>
+<h3 id="attached-properties">Вложенные свойства</h3>
+<pre><code class="lang-xml">&lt;animation Storyboard.TargetProperty=&quot;(ownerType.propertyName)&quot; .../&gt;  
+</code></pre>
+<p>Скобки означают, что это свойство в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> должно быть создано с использованием частичной квалификации. Для поиска типа может использоваться пространство имен XML. <code>ownerType</code> Выполняет поиск типов, XAML обработчик имеет доступ к, до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!include[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен. <code>propertyName</code> должно разрешаться как имя свойства, существующего в <code>ownerType</code>. Свойство, указанное как <code>propertyName</code> должно быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. (Все присоединенные свойства WPF реализуются как свойства взаимозависимостей, поэтому эта проблема возникает только для настраиваемых присоединенных свойств.)</p>
+<p><a name="indexanim"></a></p>
+<h3 id="indexers">Индексаторы</h3>
+<pre><code class="lang-xml">&lt;animation Storyboard.TargetProperty=&quot;propertyName.propertyName2[index].propertyName3&quot; .../&gt;  
+</code></pre>
+<p>Большинство свойств зависимостей или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> типы не поддерживают индексатор. Таким образом, единственное использование индексатора в пути к анимации — это промежуточное положение между свойством, которое запускает цепочку в именованном целевом объекте и конечным анимированным свойством. В предоставленном синтаксисе это <code>propertyName2</code>. Например, может быть необходимо, если промежуточные свойство является коллекцией, такие как индексатор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>, в путь свойства, такие как <code>RenderTransform.Children[1].Angle</code>.</p>
+<p><a name="ppincode"></a></p>
+<h2 id="propertypath-in-code">PropertyPath в коде</h2>
+<p>Использование кода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>, включая способы создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>, см. в разделе справки по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a>.</p>
+<p>В общем случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a> предназначен для использования двух различных конструкторов, один для привязки и простейших анимаций и один для сложных анимаций. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.-ctor#System_Windows_PropertyPath__ctor_System_Object_">PropertyPath(Object)</a> подписи для привязок, где объект — строка. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.-ctor#System_Windows_PropertyPath__ctor_System_Object_">PropertyPath(Object)</a> подпись для одношаговых путей к анимации, когда этот объект является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath.-ctor#System_Windows_PropertyPath__ctor_System_String_System_Object___">PropertyPath(String, Object[])</a> для сложной анимации. Последний конструктор использует строку токена для первого параметра и массив объектов, которые заполняют позиции в строке токена, чтобы определить отношение пути к свойству.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertypath">PropertyPath</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о Storyboard</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

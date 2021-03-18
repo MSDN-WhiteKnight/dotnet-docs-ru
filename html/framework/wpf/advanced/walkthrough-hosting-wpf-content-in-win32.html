@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; WPF &#1074; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; WPF &#1074; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-hosting-wpf-content-in-win32">Пошаговое руководство. Размещение содержимого WPF в Win32</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Однако если вы существенно потратились на код Win32, то добавление функциональности WPF в ваше приложение может быть более эффективно, чем переписывание исходного кода. WPF предоставляет простой механизм для размещения WPF содержимого в Win32 окна.</p>
+<p>Этом руководстве описывается создание примера приложения, <a href="https://go.microsoft.com/fwlink/?LinkID=160004">размещения содержимого WPF в окне Win32</a>, в котором узлы WPF содержимого в Win32 окна. Вы можете расширить этот пример для размещения любого окна Win32. Поскольку этот пример включает смешанный управляемый и неуправляемый код, приложение создается на C++/CLI.</p>
+<p><a name="requirements"></a></p>
+<h2 id="requirements">Требования</h2>
+<p>В этом учебнике предполагается, что вы знакомы с основами программирования в WPF и Win32. Основные сведения о WPF программирования, см. в разделе <a href="../getting-started/index.html">Приступая к работе</a>. Общие сведения о Win32 программирования, следует ссылаться на любой из многочисленных книг по этой теме, в частности <em>программирования Windows</em> Чарльза Петцольда.</p>
+<p>Так как пример, сопровождающий этот учебник, реализован в C++/CLI, это руководство предполагает знакомство с использованием C++ программу Win32API а также понимание программирования управляемого кода. Знакомство с C++/CLI желательно, но не обязательно.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот учебник включает ряд примеров кода из связанного образца приложения. Однако для удобства чтения он не содержит полный пример кода. Полный образец кода, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160004">размещение содержимого WPF в окне Win32</a>.</p>
+</div>
+<p><a name="basic_procedure"></a></p>
+<h2 id="the-basic-procedure">Основная процедура</h2>
+<p>В этом разделе описаны основные процедуру, используемую для узла WPF содержимого в Win32 окна. В остальных разделах подробно описывается каждый шаг.</p>
+<p>Ключом к размещению WPF содержимого Win32 окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> класса. Этот класс заключает WPF содержимого в Win32 окно, в котором она должна быть включена в ваш пользовательский интерфейс как дочернего окна. Следующий подход объединяет Win32 и WPF в одном приложении.</p>
+<ol>
+<li><p>Реализуйте вашей WPF содержимое в виде управляемого класса.</p>
+</li>
+<li><p>Реализуйте приложение Win32 с помощью C++/CLI. Если вы начинаете с существующего приложения и неуправляемого кода C++, то обычно можете позволить приложению вызывать управляемый код, изменив параметры проекта, чтобы включить флаг компилятора <code>/clr</code>.</p>
+</li>
+<li><p>Установите в качестве потоковой модели однопотоковое подразделение (STA).</p>
+</li>
+<li><p>Обрабатывать <a href="/windows/desktop/winmsg/wm-create">WM_CREATE</a>уведомления в процедуре окна и выполните следующее:</p>
+<ol>
+<li><p>Создайте новый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> с родительским окном в качестве его параметра <code>parent</code>.</p>
+</li>
+<li><p>Создайте экземпляр вашего класса содержимого WPF.</p>
+</li>
+<li><p>Назначьте ссылку WPF объект содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>.</p>
+</li>
+<li><p>Получите HWND для содержимого. Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.handle">Handle</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> содержит дескриптор окна (HWND). Чтобы получить HWND, который можно использовать в неуправляемой части приложения, приведите <code>Handle.ToPointer()</code> к HWND.</p>
+</li>
+</ol>
+</li>
+<li><p>Реализуйте управляемый класс, содержащий статическое поле для хранения ссылки на ваше содержимое WPF. Этот класс позволяет получить ссылку на содержимое WPF из вашего кода Win32.</p>
+</li>
+<li><p>Назначьте содержимое WPF этому статическому полю.</p>
+</li>
+<li><p>Получайте уведомления от WPF содержимого путем присоединения обработчика к одному или нескольким из WPF события.</p>
+</li>
+<li><p>Взаимодействуйте с содержимым WPF с помощью ссылки, которую вы сохранили в статическом поле, для задания свойств и т. д.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Можно также использовать Язык XAML для реализации вашей WPF содержимого. Однако его необходимо компилировать отдельно как библиотека динамической компоновки (DLL) и ссылаться на эту DLL из своего приложения Win32. Оставшаяся часть процедуры аналогична описанной выше.</p>
+</div>
+<p><a name="implementing_the_application"></a></p>
+<h2 id="implementing-the-host-application">Реализация ведущего приложения</h2>
+<p>В этом разделе описывается размещение WPF содержимого в базовом Win32 приложения. Само содержимое реализуется в C++/CLI как управляемый класс. Большей частью это просто программирование WPF. Ключевые аспекты реализации содержимого рассматриваются в <a href="#implementing_the_wpf_page">реализация содержимого WPF</a>.</p>
+<p><a name="autoNestedSectionsOUTLINE1"></a></p>
+<ul>
+<li><p><a href="#the_basic_application">Базовое приложение</a></p>
+</li>
+<li><p><a href="#hosting_the_wpf_page">Размещение содержимого WPF</a></p>
+</li>
+<li><p><a href="#holding_a_reference">Хранение ссылки на содержимое WPF</a></p>
+</li>
+<li><p><a href="#communicating_with_the_page">Взаимодействие с содержимым WPF</a></p>
+</li>
+</ul>
+<p><a name="the_basic_application"></a></p>
+<h3 id="the-basic-application">Базовое приложение</h3>
+<p>Отправной точкой для ведущего приложения было создание шаблона Visual Studio 2005.</p>
+<ol>
+<li><p>Откройте Visual Studio 2005 и выберите <strong>новый проект</strong> из <strong>файл</strong> меню.</p>
+</li>
+<li><p>Выберите <strong>Win32</strong> из списка Visual C++ типы проектов. Если язык по умолчанию не C++, вы найдете эти типы проектов в разделе <strong>другие языки</strong>.</p>
+</li>
+<li><p>Выберите <strong>проект Win32</strong> шаблон, задайте имя для проекта и нажмите кнопку <strong>ОК</strong> для запуска <strong>мастер приложений Win32</strong>.</p>
+</li>
+<li><p>Примите параметры мастера по умолчанию и нажмите кнопку <strong>Готово</strong> для запуска проекта.</p>
+</li>
+</ol>
+<p>Этот шаблон создает базовое приложение Win32, включая:</p>
+<ul>
+<li><p>точку входа для приложения;</p>
+</li>
+<li><p>окно со связанной процедурой окна (WndProc);</p>
+</li>
+<li><p>Меню с <strong>файл</strong> и <strong>помочь</strong> заголовки. <strong>Файл</strong> меню имеет <strong>выхода</strong> элемента, который закрывает приложение. <strong>Помочь</strong> меню имеет <strong>о</strong> элемента, который запускает простое диалоговое окно.</p>
+</li>
+</ul>
+<p>Прежде чем приступить к созданию кода для узла WPF содержимого, необходимо внести два изменения в этот базовый шаблон.</p>
+<p>Сначала следует скомпилировать проект как управляемый код. По умолчанию проект компилируется как неуправляемый код. Однако поскольку WPF реализуется в управляемом коде, проект должен быть скомпилирован соответствующим образом.</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши имя проекта в <strong>обозревателе решений</strong> и выберите <strong>свойства</strong> в контекстном меню, чтобы запустить <strong>страницы свойств</strong> диалоговое окно.</p>
+</li>
+<li><p>Выберите <strong>свойства конфигурации</strong> в представлении дерева в левой области.</p>
+</li>
+<li><p>Выберите <strong>среда CLR</strong> поддержку от <strong>проекта по умолчанию</strong> списка в правой области.</p>
+</li>
+<li><p>Выберите <strong>Поддержка Common Language Runtime (/ clr)</strong> из раскрывающегося списка.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот флаг компилятора позволяет использовать управляемый код в приложении, но ваш неуправляемый код будет продолжать компилироваться как раньше.</p>
+</div>
+<p>WPF Используется однопотоковое подразделение (STA), потоковая модель. Чтобы правильно работать с WPF содержимого кода, вам необходимо установить потоковой модели приложения в STA путем применения атрибута к точке входа.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="hosting_the_wpf_page"></a></p>
+<h3 id="hosting-the-wpf-content">Размещение содержимого WPF</h3>
+<p>WPF Содержимое является простым приложением ввода адреса. Оно состоит из нескольких элементов управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> для получения имени пользователя, адреса и т. д. Существует также два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов управления, <strong>ОК</strong> и <strong>отменить</strong>. Когда пользователь щелкает <strong>ОК</strong>, кнопки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> обработчик событий собирает данные из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элементы управления, назначает его соответствующим свойствам и вызывает пользовательское событие, <code>OnButtonClicked</code>. Когда пользователь щелкает <strong>отменить</strong>, обработчик просто вызывает <code>OnButtonClicked</code>. Объект аргумента события для <code>OnButtonClicked</code> содержит логическое поле, которое указывает, какая кнопка была нажата.</p>
+<p>Код для размещения WPF содержимое реализуется в обработчике <a href="/windows/desktop/winmsg/wm-create">WM_CREATE</a> уведомления в главном окне.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>GetHwnd</code> Метод принимает сведения о размере и позиции, а также родительский дескриптор окна и возвращает дескриптор окна размещенного WPF содержимого.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Нельзя использовать директиву <code>#using</code> для пространства имен <code>System::Windows::Interop</code>. Иначе будет создан конфликт имен между структурой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.msg">MSG</a> в этом пространстве имен и структурой MSG, объявленной в winuser.h. Вместо этого необходимо использовать полные имена для доступа к содержимому этого пространства имен.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Нельзя разместить WPF содержимое непосредственно в окне приложения. Вместо этого сначала создайте объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, который должен включать в себя содержимое WPF. Этот объект по сути является окном, предназначенным для размещения WPF содержимого. Вы размещаете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объекта в родительском окне, создав его в качестве дочернего элемента Win32 окно, которое является частью приложения. Параметры конструктора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> содержат в основном те же сведения, которые будут передаваться в CreateWindow при создании дочернего окна Win32.</p>
+<p>Далее необходимо создать экземпляр WPF объекта содержимого. В этом случае содержимое WPF реализуется как отдельный класс <code>WPFPage</code>, использующий C++/CLI. Можно также реализовать содержимое WPF с помощью XAML. Тем не менее, для этого необходимо настроить отдельный проект и построить WPF содержимое в виде DLL. Вы можете добавить ссылку на эту DLL в свой проект и использовать эту ссылку для создания экземпляра содержимого WPF.</p>
+<p>Отобразить WPF содержимого в вашем дочернем окне, назначьте ссылку WPF содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>.</p>
+<p>Следующая строка кода присоединяет обработчик событий <code>WPFButtonClicked</code> к событию WPF содержимого <code>OnButtonClicked</code>. Этот обработчик вызывается, когда пользователь щелкает <strong>ОК</strong> или <strong>отменить</strong> кнопки. См. в разделе <a href="#communicating_with_the_page">взаимодействие с содержимым</a> дальнейшее обсуждение этого обработчика событий.</p>
+<p>В последней строке кода показан возврат дескриптора окна (HWND), который связан с объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>. Вы можете использовать этот дескриптор из своего кода Win32 для отправки сообщений в размещенное окно, хотя в этом примере так не делается. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> инициирует событие каждый раз при получении сообщения. Для обработки сообщений вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.addhook">AddHook</a>, чтобы присоединить обработчик сообщений, а затем обрабатывать сообщения в этом обработчике.</p>
+<p><a name="holding_a_reference"></a></p>
+<h3 id="holding-a-reference-to-the-wpf-content">Хранение ссылки на содержимое WPF</h3>
+<p>Для многих приложений потребуется взаимодействовать с содержимым WPF позднее. Например, может возникнуть необходимость изменить свойства содержимого WPF или разместить в объекте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> другое содержимое WPF. Для этого потребуется ссылка на объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> или содержимое WPF. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> и связанное с ним содержимое WPF остаются в памяти до уничтожения дескриптора окна. Однако переменная, которая назначается объекту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, выйдет из области действия сразу после возврата из процедуры окна. Обычный способ решения этой проблемы с приложениями Win32 заключается в использовании статической или глобальной переменной. К сожалению, нельзя назначать управляемый объект таким типам переменных. Вы можете назначить дескриптор окна, связанный с объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, глобальной или статической переменной, но которая не предоставляет доступ к самому объекту.</p>
+<p>Самым простым решением этой проблемы является реализация управляемого класса, который содержит набор статических полей для хранения ссылок на любые управляемые объекты, к которым требуется доступ. В данном примере используется класс <code>WPFPageHost</code> для хранения ссылки на содержимое WPF, а также начальные значения его свойств, которые могут быть изменены пользователем позднее. Это определяется в заголовке.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В последней части <code>GetHwnd</code> функция присваивает значения этим полям для последующего использования, пока <code>myPage</code> остается в области.</p>
+<p><a name="communicating_with_the_page"></a></p>
+<h3 id="communicating-with-the-wpf-content">Взаимодействие с содержимым WPF</h3>
+<p>Существует два типа взаимодействия с содержимым WPF. Приложение получает сведения из WPF содержимого, когда пользователь щелкает <strong>ОК</strong> или <strong>отменить</strong> кнопки. Приложение также имеет ИП, в котором пользователь может изменять изменять различные свойства содержимого WPF, такие как цвет фона или размер шрифта по умолчанию.</p>
+<p>Как упоминалось выше, когда пользователь нажимает одну из кнопок, содержимое WPF вызывает событие <code>OnButtonClicked</code>. Приложение присоединяет обработчик к этому событию, чтобы получать эти уведомления. Если <strong>ОК</strong> была нажата кнопка, обработчик возвращает сведения о пользователе из WPF содержимого и отображает его в наборе статических элементов управления.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обработчик получает объект аргумента WPF пользовательского события из содержимого <code>MyPageEventArgs</code>. Объекта <code>IsOK</code> свойству <code>true</code> Если <strong>ОК</strong> была нажата, и <code>false</code> Если <strong>отменить</strong> была нажата кнопка.</p>
+<p>Если <strong>ОК</strong> была нажата кнопка, обработчик получает ссылку на WPF содержимого из класса контейнера. Затем он собирает сведения о пользователе, которые хранятся в соответствующих свойствах содержимого WPF, и использует статические элементы управления для отображения этих сведений в родительском окне. Поскольку данные содержимого WPF хранятся в виде управляемых строк, они должны быть маршалированы для использования элементом управления Win32. Если <strong>отменить</strong> была нажата кнопка, обработчик удаляет данные из статических элементов управления.</p>
+<p>Приложение ИП предоставляет набор переключателей, с помощью которых пользователь может изменять цвет фона для содержимого WPF и некоторые свойства, связанные со шрифтами. Следующий пример представляет выдержку из процедуры окна приложения (WndProc), содержащую обработку его сообщения, которая устанавливает разные свойства в различных сообщениях, включая цвет фона. Остальные примеры похожи и не приводятся. Подробные сведения и контекст см. в полном примере.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы задать цвет фона, получите ссылку на содержимое WPF (<code>hostedPage</code>) из <code>WPFPageHost</code> и установите в свойстве цвета фона соответствующий цвет. В примере используется три варианта цвета: исходный цвет, светло-зеленый и светло-оранжевый. Исходный цвет фона хранится в виде статического поля в классе <code>WPFPageHost</code>. Чтобы задать другие два цвета, создайте новый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> и передайте в конструктор значение статического цвета из объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.colors">Colors</a>.</p>
+<p><a name="implementing_the_wpf_page"></a></p>
+<h2 id="implementing-the-wpf-page">Реализация страницы WPF</h2>
+<p>Вы можете размещать и использовать WPF содержимого без каких-либо знаний о фактической реализации. Если WPF содержимое было упаковано в отдельную DLL, его можно встроить в любом среда CLR языка. Ниже приведено краткое пошаговое описание реализации C++/CLI, которая используется в данном примере. Этот подраздел состоит из следующих подразделов.</p>
+<p><a name="autoNestedSectionsOUTLINE2"></a></p>
+<ul>
+<li><p><a href="#page_layout">Макет</a></p>
+</li>
+<li><p><a href="#returning_data_to_window">Возврат данных в главное окно</a></p>
+</li>
+<li><p><a href="#set_page_properties">Установка свойств WPF</a></p>
+</li>
+</ul>
+<p><a name="page_layout"></a></p>
+<h3 id="layout">Макет</h3>
+<p>ИП Элементов в WPF содержимое состоят из пяти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элементы управления, связанных с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> элементов управления: Имя, адрес, городе, штате и Zip. Существует также два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов управления, <strong>ОК</strong> и <strong>Отмена</strong></p>
+<p>Содержимое WPF реализовано в классе <code>WPFPage</code>. Макет обрабатывается с помощью элемента макета <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>. Этот класс наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>, который фактически делает его корневым элементом содержимого WPF.</p>
+<p>WPF Содержимого конструктор принимает требуемые ширину и высоту и размеры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> соответствующим образом. Затем он определяет базовый макет, создавая набор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.columndefinition">ColumnDefinition</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.rowdefinition">RowDefinition</a> объектов и добавления их в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> базовый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid.columndefinitions">ColumnDefinitions</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid.rowdefinitions">RowDefinitions</a> коллекций, соответственно. Это задает сетку из пяти строк и семи столбцов с размерами, определяемыми содержимым ячеек.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Затем конструктор добавляет элементы ИП в объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>. Первый элемент — это текст заголовка, который является элементом управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>, выравниваемым по центру в первой строке сетки.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следующая строка содержит элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> «Имя» и связанный с ним элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>. Так как тот же код используется для каждой пары «метка/текстовое поле», он помещается в пару закрытых методов и используется для всех пяти пар «метка/текстовое поле». Эти методы создают соответствующий элемент управления и вызывают класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> статического метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid.setcolumn">SetColumn</a> и методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid.setrow">SetRow</a> для размещения элементов управления в соответствующую ячейку. После создания элемента управления в примере вызывается метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.uielementcollection.add">Add</a> в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> для добавления элемента управления в сетку. Для добавления оставшихся пар «метка/текстовое поле» используется аналогичный код. Подробности см. в примере кода.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Реализация этих двух методов выглядит следующим образом:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Наконец, в этом примере добавляется <strong>ОК</strong> и <strong>отменить</strong> кнопки и присоединяет обработчик событий к их <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> события.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="returning_data_to_window"></a></p>
+<h3 id="returning-the-data-to-the-host-window">Возврат данных в главное окно</h3>
+<p>При нажатии одной из кнопок вызывается ее событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a>. Главное окно может просто присоединять обработчики к этим событиям и получать данные напрямую из элементов управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>. В примере используется несколько менее прямой подход. Он обрабатывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> в WPF контента, а затем вызывает пользовательское событие <code>OnButtonClicked</code>для уведомления WPF содержимого. Это позволяет WPF содержимого выполнить некоторую проверку параметров перед уведомлением узла. Обработчик получает текст из элементов управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> и назначает его общим свойствам, из которых узел может получать сведения.</p>
+<p>Объявление события в WPFPage.h:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> в WPFPage.cpp:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="set_page_properties"></a></p>
+<h3 id="setting-the-wpf-properties">Установка свойств WPF</h3>
+<p>Win32 Узла позволяет пользователю изменять разные WPF свойства содержимого. Со стороны Win32 это просто изменение свойств. Реализация в классе содержимого WPF несколько более сложная, поскольку нет одного глобального свойства, которое управляет шрифтами для всех элементов управления. Вместо этого для каждого элемента управления изменяется соответствующее свойство в методах доступа set этого свойства. В следующем примере показано код <code>DefaultFontFamily</code> свойство. Задание свойства вызывает закрытый метод, который в свою очередь устанавливает свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontfamily">FontFamily</a> для различных элементов управления.</p>
+<p>Из WPFPage.h:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Из WPFPage.cpp:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

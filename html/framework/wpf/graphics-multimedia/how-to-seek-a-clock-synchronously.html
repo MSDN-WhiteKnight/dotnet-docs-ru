@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1095;&#1072;&#1089;&#1086;&#1074; &#1074; &#1089;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1085;&#1086;&#1084; &#1088;&#1077;&#1078;&#1080;&#1084;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1095;&#1072;&#1089;&#1086;&#1074; &#1074; &#1089;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1085;&#1086;&#1084; &#1088;&#1077;&#1078;&#1080;&#1084;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-seek-a-clock-synchronously">Практическое руководство. Установка часов в синхронном режиме</h1>
+
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller.seekalignedtolasttick">SeekAlignedToLastTick</a> метод для часов до определенной точки в синхронном. В следующем примере показано, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller.seek">Seek</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller.seekalignedtolasttick">SeekAlignedToLastTick</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller">ClockController</a>.</p>
+<p>В этом примере показано, как выполнить поиск <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a>; пример, демонстрирующий поиск раскадровки, см. в разделе <a href="how-to-seek-a-storyboard-synchronously.html">поиск раскадровки синхронно</a> .</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-csharp" name="ClockController_procedural_snip#ClockControllerSeekExample">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Data;
+using System.Xml;
+using System.Configuration;
+
+namespace SDKSample
+{
+    /// &lt;summary&gt;
+    /// Shows how to interactively control a clock.
+    /// &lt;/summary&gt;
+
+  public class SeekAlignedToLastTickExample : Page
+    {
+
+        private AnimationClock myClock;
+        private TextBlock currentTimeIndicator;
+        private TextBox seekDestination;
+        private TextBlock rectangleWidthIndicator;
+        private Rectangle myRectangle;
+
+        public SeekAlignedToLastTickExample()
+        {
+
+            this.WindowTitle = &quot;Controlling a Storyboard&quot;;
+            this.Background = Brushes.White;
+
+            StackPanel myStackPanel = new StackPanel();
+            myStackPanel.Margin = new Thickness(20);
+
+            // Create a rectangle.
+            myRectangle = new Rectangle();
+            myRectangle.Width = 100;
+            myRectangle.Height = 20;
+            myRectangle.Margin = new Thickness(12,0,0,5);
+            myRectangle.Fill = new SolidColorBrush(Color.FromArgb(170, 51, 51, 255));
+            myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+            myStackPanel.Children.Add(myRectangle);
+
+            //
+            // Create an animation and a storyboard to animate the
+            // rectangle.
+            //
+            DoubleAnimation myDoubleAnimation =
+                new DoubleAnimation(100, 500, new Duration(TimeSpan.FromSeconds(60)));
+            myClock = myDoubleAnimation.CreateClock();
+            myRectangle.ApplyAnimationClock(Rectangle.WidthProperty, myClock);
+            myClock.Controller.Stop();
+
+            //
+            // Create some buttons to control the storyboard
+            // and a panel to contain them.
+            //
+            StackPanel buttonPanel = new StackPanel();
+            buttonPanel.Orientation = Orientation.Horizontal;
+            Button beginButton = new Button();
+            beginButton.Content = &quot;Begin&quot;;
+            beginButton.Click += new RoutedEventHandler(beginButton_Clicked);
+            buttonPanel.Children.Add(beginButton);
+            Button pauseButton = new Button();
+            pauseButton.Content = &quot;Pause&quot;;
+            pauseButton.Click +=new RoutedEventHandler(pauseButton_Clicked);
+            buttonPanel.Children.Add(pauseButton);
+            Button resumeButton = new Button();
+            resumeButton.Content = &quot;Resume&quot;;
+            resumeButton.Click +=new RoutedEventHandler(resumeButton_Clicked);
+            buttonPanel.Children.Add(resumeButton);
+            Button skipToFillButton = new Button();
+            skipToFillButton.Content = &quot;Skip to Fill&quot;;
+            skipToFillButton.Click +=new RoutedEventHandler(skipToFillButton_Clicked);
+            buttonPanel.Children.Add(skipToFillButton);
+            Button setSpeedRatioButton = new Button();
+            setSpeedRatioButton.Content = &quot;Triple Speed&quot;;
+            setSpeedRatioButton.Click +=new RoutedEventHandler(setSpeedRatioButton_Clicked);
+            buttonPanel.Children.Add(setSpeedRatioButton);
+            Button stopButton = new Button();
+            stopButton.Content = &quot;Stop&quot;;
+            stopButton.Click +=new RoutedEventHandler(stopButton_Clicked);
+            buttonPanel.Children.Add(stopButton);
+            Button removeButton = new Button();
+            removeButton.Content = &quot;Remove&quot;;
+            removeButton.Click +=new RoutedEventHandler(removeButton_Clicked);
+            buttonPanel.Children.Add(removeButton);
+
+            myStackPanel.Children.Add(buttonPanel);
+
+            // Create some controls to display the
+            // storyboard's current time and the
+            // current width of the rectangle.
+            StackPanel seekPanel = new StackPanel();
+            seekPanel.Margin = new Thickness(10);
+            StackPanel aPanel = new StackPanel();
+            Label aLabel = new Label();
+            aPanel.Orientation = Orientation.Horizontal;
+            aLabel.Content = &quot;Current Time: &quot;;
+            aPanel.Children.Add(aLabel);
+            currentTimeIndicator = new TextBlock();
+            aPanel.Children.Add(currentTimeIndicator);
+            seekPanel.Children.Add(aPanel);
+
+            aPanel = new StackPanel();
+            aPanel.Orientation = Orientation.Horizontal;
+            aLabel = new Label();
+            aLabel.Content = &quot;Rectangle Width: &quot;;
+            aPanel.Children.Add(aLabel);
+            rectangleWidthIndicator = new TextBlock();
+            rectangleWidthIndicator.Text = myRectangle.Width.ToString();
+            aPanel.Children.Add(rectangleWidthIndicator);
+            seekPanel.Children.Add(aPanel);
+
+            // Create some controls to enable the
+            // user to specify a seek position.
+
+            aPanel = new StackPanel();
+            aPanel.Orientation = Orientation.Horizontal;
+            aLabel = new Label();
+            aLabel.Content = &quot;Seek Offset: &quot; ;
+            aPanel.Children.Add(aLabel);
+            seekDestination = new TextBox();
+            seekDestination.Text = &quot;0&quot;;
+            aPanel.Children.Add(seekDestination);
+            seekPanel.Children.Add(aPanel);
+
+            Button seekButton = new Button();
+            seekButton.Content = &quot;Seek&quot;;
+            seekButton.Click += new RoutedEventHandler(seekButton_Clicked);
+            seekPanel.Children.Add(seekButton);
+            Button seekAlignedToLastTickButton = new Button();
+            seekAlignedToLastTickButton.Content = &quot;Seek Aligned to Last Tick&quot;;
+            seekAlignedToLastTickButton.Click += new RoutedEventHandler(seekAlignedToLastTickButton_Clicked);
+            seekPanel.Children.Add(seekAlignedToLastTickButton);
+
+            myStackPanel.Children.Add(seekPanel);
+
+            this.Content = myStackPanel;
+
+            myClock.CurrentTimeInvalidated += new EventHandler(myClock_CurrentTimeInvalidated);
+        }
+
+        // Begins the clock.
+        private void beginButton_Clicked(object sender, RoutedEventArgs args)
+        {
+
+            myClock.Controller.Begin();
+        }
+
+        // Pauses the clock.
+        private void pauseButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myClock.Controller.Pause();
+        }
+
+        // Resumes the clock.
+        private void resumeButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myClock.Controller.Resume();
+        }
+
+        // Advances the clock to its fill period.
+        private void skipToFillButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myClock.Controller.SkipToFill();
+        }
+
+        // Updates the clock's speed.
+        private void setSpeedRatioButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            // Makes the clock progress three times as fast as normal.
+            myClock.Controller.SpeedRatio = 3;
+        }
+
+        // Stops the clock.
+        private void stopButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myClock.Controller.Stop();
+        }
+
+        // Removes the clock.
+        private void removeButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            myClock.Controller.Remove();
+        }
+
+        private void seekButton_Clicked(object sender, RoutedEventArgs args)
+        {
+            try {
+
+                // The rectangle width will probably not be at its new
+                // value when this call is made, because the
+                // clock probably hasn't ticked yet.
+                TimeSpan seekTime = TimeSpan.Parse(seekDestination.Text);
+                myClock.Controller.Seek(seekTime, TimeSeekOrigin.BeginTime);
+                rectangleWidthIndicator.Text = myRectangle.Width.ToString();
+            }catch(FormatException ex)
+            {
+                MessageBox.Show(&quot;Invalid TimeSpan value.&quot;);
+                seekDestination.Focus();
+            }
+        }
+
+        private void seekAlignedToLastTickButton_Clicked(object sender, RoutedEventArgs args)
+        {
+
+            try {
+
+                // The rectangle width will be at its new
+                // value when this call is made, because SeekAlignedToLastTick
+                // operation immediately updates timeline and animation
+                // values.
+                TimeSpan seekTime = TimeSpan.Parse(seekDestination.Text);
+                myClock.Controller.SeekAlignedToLastTick(seekTime, TimeSeekOrigin.BeginTime);
+                rectangleWidthIndicator.Text = myRectangle.Width.ToString();
+            }catch(FormatException ex)
+            {
+                MessageBox.Show(&quot;Invalid TimeSpan value.&quot;);
+                seekDestination.Focus();
+            }
+        }
+
+        private void myClock_CurrentTimeInvalidated(object sender, EventArgs e)
+        {
+
+            currentTimeIndicator.Text = myClock.CurrentTime.ToString();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

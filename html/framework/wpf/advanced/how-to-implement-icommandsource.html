@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; ICommandSource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; ICommandSource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-implement-icommandsource">Практическое руководство. Реализация ICommandSource</h1>
+
+<p>В этом примере показано, как создать источник команды, реализовав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a>.  Источник команды — это объект, который знает, как для вызова команды.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> Интерфейс предоставляет три члена: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandparameter">CommandParameter</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> — Это команда, которая будет вызываться. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandparameter">CommandParameter</a> — Это тип пользовательских данных, который передается из источника команды методу, который обрабатывает команду. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a> — Это объект, для которого выполняется команда.</p>
+<p>В этом примере класс создается который подклассы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a> управления и реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a>.</p>
+<h2 id="example">Пример</h2>
+<p>WPF предоставляет ряд классов, которые реализуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a>.  Источник команды определяет, как он вызывает команду.   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> вызывают команду при щелчке.  Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a> вызывает команду при его выборе. Эти классы становится только команды источнику их <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> свойству.</p>
+<p>В этом примере команда будет вызываться при перемещении ползунка или, точнее говоря, при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.rangebase.value">Value</a> изменении свойства.</p>
+<p>Ниже приведено определение класса.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceClassDefinition">public class CommandSlider : Slider, ICommandSource
+{
+    public CommandSlider() : base()
+    {
+    }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следующим шагом является реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> членов.  В этом примере свойства реализуются как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> объектов.  Это включает свойства для использования привязки данных.  Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> , представлена в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.  Дополнительные сведения о привязке данных см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<p>Только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> свойство показан здесь.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceCommandPropertyDefinition">// Make Command a dependency property so it can use databinding.
+public static readonly DependencyProperty CommandProperty =
+    DependencyProperty.Register(
+        &quot;Command&quot;,
+        typeof(ICommand),
+        typeof(CommandSlider),
+        new PropertyMetadata((ICommand)null,
+        new PropertyChangedCallback(CommandChanged)));
+
+public ICommand Command
+{
+    get
+    {
+        return (ICommand)GetValue(CommandProperty);
+    }
+    set
+    {
+        SetValue(CommandProperty, value);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже приведен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> изменить обратного вызова.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceCommandChanged">// Command dependency property change callback.
+private static void CommandChanged(DependencyObject d,
+    DependencyPropertyChangedEventArgs e)
+{
+    CommandSlider cs = (CommandSlider)d;
+    cs.HookUpCommand((ICommand)e.OldValue,(ICommand)e.NewValue);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следующим шагом является добавление и удаление команды, связанный с источника команды.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> Свойство не может просто быть перезаписан при добавлении новой команды, так как обработчики событий, связанные с предыдущей командой, если таковая имела место, сначала необходимо удалить.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceHookUnHookCommands">// Add a new command to the Command Property.
+private void HookUpCommand(ICommand oldCommand, ICommand newCommand)
+{
+    // If oldCommand is not null, then we need to remove the handlers.
+    if (oldCommand != null)
+    {
+        RemoveCommand(oldCommand, newCommand);
+    }
+    AddCommand(oldCommand, newCommand);
+}
+
+// Remove an old command from the Command Property.
+private void RemoveCommand(ICommand oldCommand, ICommand newCommand)
+{
+    EventHandler handler = CanExecuteChanged;
+    oldCommand.CanExecuteChanged -= handler;
+}
+
+// Add the command.
+private void AddCommand(ICommand oldCommand, ICommand newCommand)
+{
+    EventHandler handler = new EventHandler(CanExecuteChanged);
+    canExecuteChangedHandler = handler;
+    if (newCommand != null)
+    {
+        newCommand.CanExecuteChanged += canExecuteChangedHandler;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Последним шагом является создание логики для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> обработчика и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> метод.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> Событие сообщает источнику команды, может измениться, возможность команды для выполнения на текущей цели команды.  При получении этого события источник команды обычно вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a> метод о команде.  Если команда не может выполнить на текущей цели команды, источник команды обычно отключается.  Если команда может выполняться для текущего целевого объекта команды, источник команды обычно включает себя.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandCanExecuteChanged">private void CanExecuteChanged(object sender, EventArgs e)
+{
+
+    if (this.Command != null)
+    {
+        RoutedCommand command = this.Command as RoutedCommand;
+
+        // If a RoutedCommand.
+        if (command != null)
+        {
+            if (command.CanExecute(CommandParameter, CommandTarget))
+            {
+                this.IsEnabled = true;
+            }
+            else
+            {
+                this.IsEnabled = false;
+            }
+        }
+        // If a not RoutedCommand.
+        else
+        {
+            if (Command.CanExecute(CommandParameter))
+            {
+                this.IsEnabled = true;
+            }
+            else
+            {
+                this.IsEnabled = false;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Последний шаг — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> метод.  Если команда является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.execute">Execute</a> метод вызван; в противном случае — значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> вызывается метод.</p>
+<pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandExecute">// If Command is defined, moving the slider will invoke the command;
+// Otherwise, the slider will behave normally.
+protected override void OnValueChanged(double oldValue, double newValue)
+{
+    base.OnValueChanged(oldValue, newValue);
+
+    if (this.Command != null)
+    {
+        RoutedCommand command = Command as RoutedCommand;
+
+        if (command != null)
+        {
+            command.Execute(CommandParameter, CommandTarget);
+        }
+        else
+        {
+            ((ICommand)Command).Execute(CommandParameter);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a></li>
+<li><a href="commanding-overview.html">Общие сведения о системе команд</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

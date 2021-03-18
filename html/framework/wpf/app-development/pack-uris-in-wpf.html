@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>URI &#1090;&#1080;&#1087;&#1072; &quot;pack&quot; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="URI &#1090;&#1080;&#1087;&#1072; &quot;pack&quot; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="pack-uris-in-wpf">URI типа &quot;pack&quot; в WPF</h1>
+
+<p>В Windows Presentation Foundation (WPF), универсальные идентификаторы ресурсов (URI) используются для идентификации и загрузки файлов несколькими способами, включая следующие:</p>
+<ul>
+<li><p>Указание пользовательский интерфейс для отображения при первом запуске приложения.</p>
+</li>
+<li><p>Загрузка изображений.</p>
+</li>
+<li><p>Переход по страницам.</p>
+</li>
+<li><p>Загрузка неисполняемых файлов данных.</p>
+</li>
+</ul>
+<p>Кроме того Идентификаторы URI может использоваться для идентификации и загрузки файлов из различных расположений, включая следующие:</p>
+<ul>
+<li><p>Текущая сборка.</p>
+</li>
+<li><p>Указанная ссылками сборка.</p>
+</li>
+<li><p>Расположение, связанное со сборкой.</p>
+</li>
+<li><p>Исходный узел приложения.</p>
+</li>
+</ul>
+<p>Для обеспечения согласованного механизма идентификации и загрузки этих типов файлов из этих расположений, WPF использует расширяемость <em>схема URI упаковки</em>. В этом разделе представлен обзор схемы, описывается формирование пакета Идентификаторы URI для разнообразных сценариев, рассматриваются абсолютное и относительное Идентификаторы URI и URI разрешение как использовать пакет Идентификаторы URI из обоих разметки и код.</p>
+<p><a name="The_Pack_URI_Scheme"></a></p>
+<h2 id="the-pack-uri-scheme">Схема URI типа &quot;pack&quot;</h2>
+<p>Пакет URI используется схема <a href="https://go.microsoft.com/fwlink/?LinkID=71255">спецификации Open Packaging Conventions</a> спецификации (OPC), которая описывает модель для организации и идентификации содержимого. Основными элементами этой модели являются пакеты и элементы, где <em>пакета</em> — это логический контейнер для одного или более логическими <em>частей</em>. Эта структура показана на следующем рисунке.</p>
+<p><img src="media/pack-uris-in-wpf/wpf-package-parts-diagram.png" alt="Схема пакета и частей"></p>
+<p>Для определения частей, спецификации OPC используется расширяемость RFC 2396 (универсальных кодов ресурса (URI): Общий синтаксис) для определения в пакете URI схемы.</p>
+<p>Схемы, который задается параметром URI определяется его префиксом; http, ftp и file, известных примеров. Пакет URI схема использует «pack» в качестве схемы и содержит два компонента: центр и путь. Ниже приведен формат для пакета URI.</p>
+<p>пакет: / /<em>центра</em>/<em>путь</em></p>
+<p><em>Центра</em> указывает тип пакета, которое находится элемент, пока <em>путь</em> указывает расположение части внутри пакета.</p>
+<p>Эта концепция показана на следующей схеме:</p>
+<p><img src="media/pack-uris-in-wpf/wpf-relationship-diagram.png" alt="Отношение между пакетом, сертификацией и путем"></p>
+<p>Пакеты и элементы аналогичны приложениям и файлам. Приложение (пакет) может содержать один или несколько файлов (элементов), в том числе:</p>
+<ul>
+<li><p>Файлы ресурсов, скомпилированные в локальную сборку.</p>
+</li>
+<li><p>Файлы ресурсов, скомпилированные в сборку, на которую указывает ссылка.</p>
+</li>
+<li><p>Файлы ресурсов, скомпилированные в ссылающуюся сборку.</p>
+</li>
+<li><p>Файлы содержимого.</p>
+</li>
+<li><p>Файлы исходного узла.</p>
+</li>
+</ul>
+<p>Для доступа к этим типам файлов, WPF поддерживает два центра: application: / / / и siteoforigin: / / /. Центр application:/// определяет файлы данных приложения, известные во время компиляции, включая файлы ресурсов и файлы содержимого. Центр siteoforigin:/// определяет файлы исходного узла. На следующем рисунке показана область каждого центра.</p>
+<p><img src="media/pack-uris-in-wpf/wpf-pack-uri-scheme.png" alt="Схема URI типа “pack”"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Компонент центра пакета URI является встроенным URI , указывающий на пакет и должен соответствовать стандарту RFC 2396. Кроме того, символ &quot;/&quot; необходимо заменить символом &quot;,&quot;, и необходимо обособлять escape-символами такие зарезервированные символы, как &quot;%&quot; и &quot;?&quot;. Подробные сведения см. в OPC.</p>
+</div>
+<p>В следующих разделах рассматривается построение пакета Идентификаторы URI с использованием этих двух центров с соответствующими путями для идентификации ресурсов, содержимого и файлы исходного узла.</p>
+<p><a name="Resource_File_Pack_URIs___Local_Assembly"></a></p>
+<h2 id="resource-file-pack-uris">URI типа &quot;pack&quot; для файла ресурсов</h2>
+<p>Файлы ресурсов настраиваются как MSBuild<code>Resource</code> элементы и компилируются в сборки. WPF поддерживает формирование пакета Идентификаторы URI может использоваться для идентификации файлов ресурсов, которые компилируются в локальную сборку или компилируется в сборку, на который ссылается локальная сборка.</p>
+<p><a name="Local_Assembly_Resource_File"></a></p>
+<h3 id="local-assembly-resource-file">Файл ресурсов локальной сборки</h3>
+<p>Пакет URI для ресурса файла, который компилируется в локальную сборку использует следующие центр и путь:</p>
+<ul>
+<li><p><strong>Центр</strong>: application:///.</p>
+</li>
+<li><p><strong>Путь</strong>: Имя файла ресурсов, включая его путь относительно корневой папки проекта локальной сборки.</p>
+</li>
+</ul>
+<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в корневой папке проекта локальной сборки.</p>
+<p><code>pack://application:,,,/ResourceFile.xaml</code></p>
+<p>В следующем примере показано пакете URI для XAML файла ресурсов, который находится во вложенной папке проекта локальной сборки.</p>
+<p><code>pack://application:,,,/Subfolder/ResourceFile.xaml</code></p>
+<p><a name="Resource_File_Pack_URIs___Referenced_Assembly"></a></p>
+<h3 id="referenced-assembly-resource-file">Файл ресурсов указанной ссылками сборки</h3>
+<p>Пакет URI для ресурса файла, который компилируется в сборку использует следующие центр и путь:</p>
+<ul>
+<li><p><strong>Центр</strong>: application:///.</p>
+</li>
+<li><p><strong>Путь</strong>: Имя файла ресурсов, который компилируется в сборку. Путь должен соответствовать следующему формату:</p>
+<p><em>AssemblyShortName</em>{<em>; Версия</em>] {<em>; Открытый ключ</em>]; component /<em>путь</em></p>
+<ul>
+<li><p><strong>AssemblyShortName</strong> — краткое имя для указанной ссылками сборки.</p>
+</li>
+<li><p><strong>;Version</strong> [необязательно] — версия указанной ссылками сборки, которая содержит файл ресурсов. Используется при загрузке двух или более указанных ссылками сборок с одинаковым кратким именем.</p>
+</li>
+<li><p><strong>;PublicKey</strong> [необязательно]: открытый ключ, который использовался для подписи указанной ссылками сборки. Используется при загрузке двух или более указанных ссылками сборок с одинаковым кратким именем.</p>
+</li>
+<li><p><strong>;component</strong>: указывает, что на упоминаемую сборку ссылается локальная сборка.</p>
+</li>
+<li><p><strong>/Path</strong>: имя файла ресурсов, включая его путь относительно корневой папки проекта указанной ссылками сборки.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в корневой папке проекта указанной ссылками сборки.</p>
+<p><code>pack://application:,,,/ReferencedAssembly;component/ResourceFile.xaml</code></p>
+<p>В следующем примере показано пакете URI для XAML файла ресурсов, который находится во вложенной папке проекта указанной ссылками сборки.</p>
+<p><code>pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml</code></p>
+<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в папке корневой папки проекта ссылочной сборки конкретной версии.</p>
+<p><code>pack://application:,,,/ReferencedAssembly;v1.0.0.1;component/ResourceFile.xaml</code></p>
+<p>Обратите внимание, что пакет URI синтаксис для файлов ресурсов указанной ссылками сборки может использоваться только вместе с приложением: / / / центра. Например, следующее не поддерживается в WPF.</p>
+<p><code>pack://siteoforigin:,,,/SomeAssembly;component/ResourceFile.xaml</code></p>
+<p><a name="Content_File_Pack_URIs"></a></p>
+<h2 id="content-file-pack-uris">URI типа &quot;pack&quot; для файла содержимого</h2>
+<p>Пакет URI для файла содержимого использует следующие центр и путь:</p>
+<ul>
+<li><p><strong>Центр</strong>: application:///.</p>
+</li>
+<li><p><strong>Путь</strong>: Имя файла содержимого, включая его путь относительно расположения файла системы основной исполняемой сборки приложения.</p>
+</li>
+</ul>
+<p>В следующем примере показано пакете URI для XAML содержимого файла, расположенного в той же папке, что и исполняемая сборка.</p>
+<p><code>pack://application:,,,/ContentFile.xaml</code></p>
+<p>В следующем примере показано пакете URI для XAML содержимого файла, расположенного во вложенной папке относительно исполняемой сборки приложения.</p>
+<p><code>pack://application:,,,/Subfolder/ContentFile.xaml</code></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>HTML файлы содержимого не может перемещаться. URI Схема поддерживает переход только к HTML файлы, расположенные на исходном узле.</p>
+</div>
+<p><a name="The_siteoforigin_____Authority"></a></p>
+<h2 id="site-of-origin-pack-uris">URI типа &quot;pack&quot; исходного узла</h2>
+<p>Пакет URI для исходного узла файла использует следующие центр и путь:</p>
+<ul>
+<li><p><strong>Центр</strong>: siteoforigin:///.</p>
+</li>
+<li><p><strong>Путь</strong>: Имя узла исходного файла, включая его путь относительно расположения, из которого была запущена исполняемая сборка.</p>
+</li>
+</ul>
+<p>В следующем примере показано пакете URI для XAML сайта из исходного файла, хранящегося в расположении, из которого запускается исполняемая сборка.</p>
+<p><code>pack://siteoforigin:,,,/SiteOfOriginFile.xaml</code></p>
+<p>В следующем примере показано пакете URI для XAML сайта из исходного файла, хранящегося во вложенной папке относительно расположения, из которого запускается исполняемая сборка приложения.</p>
+<p><code>pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml</code></p>
+<p><a name="Page_Files"></a></p>
+<h2 id="page-files">Файлы подкачки</h2>
+<p>XAML файлы, которые настроены как MSBuild<code>Page</code> элементы компилируются в сборки таким же образом, как файлы ресурсов. Следовательно MSBuild<code>Page</code> элементов можно идентифицировать с помощью пакета Идентификаторы URI для файлов ресурсов.</p>
+<p>Типы XAML файлы, которые обычно настраиваются как MSBuild<code>Page</code> элементы имеют одно из следующих корневых элементов:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">System.Windows.Window</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">System.Windows.Controls.Page</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">System.Windows.Navigation.PageFunction&lt;T&gt;</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">System.Windows.ResourceDictionary</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">System.Windows.Documents.FlowDocument</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">System.Windows.Controls.UserControl</a></p>
+</li>
+</ul>
+<p><a name="Absolute_vs_Relative_Pack_URIs"></a></p>
+<h2 id="absolute-vs-relative-pack-uris">Абсолютные и относительные URI типа &quot;pack&quot;</h2>
+<p>Полный пакет URI включает в себя схему, центр и путь, и он считается абсолютным пакет URI. Для разработчиков, упрощения XAML элементы обычно допускают настройку соответствующих атрибутов в относительный пакет URI, который включает только путь.</p>
+<p>Например, рассмотрим следующий абсолютный пакет URI для файла ресурсов в локальной сборке.</p>
+<p><code>pack://application:,,,/ResourceFile.xaml</code></p>
+<p>Относительный пакет URI , ссылающийся на этот ресурс файла будет следующим.</p>
+<p><code>/ResourceFile.xaml</code></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поскольку файлы исходного узла не связаны со сборками, они могут ссылаться только на абсолютный пакет Идентификаторы URI.</p>
+</div>
+<p>По умолчанию относительный пакет URI считается относительно расположения разметки или кода, содержащий ссылку. Если используется предварительная обратная косая черта, однако относительный пакет для URI рассматривается относительно корня приложения. Например, рассмотрим следующую структуру проекта.</p>
+<p><code>App.xaml</code></p>
+<p><code>Page2.xaml</code></p>
+<p><code>\SubFolder</code></p>
+<p><code>+ Page1.xaml</code></p>
+<p><code>+ Page2.xaml</code></p>
+<p>Если Page1.xaml содержит URI , ссылающийся на <em>корневой</em>\SubFolder\Page2.xaml, ссылка может использовать следующий относительный пакет URI.</p>
+<p><code>Page2.xaml</code></p>
+<p>Если Page1.xaml содержит URI , ссылающийся на <em>корневой</em>\Page2.xaml, ссылка может использовать следующий относительный пакет URI.</p>
+<p><code>/Page2.xaml</code></p>
+<p><a name="Pack_URI_Resolution"></a></p>
+<h2 id="pack-uri-resolution">Разрешение URI типа &quot;pack&quot;</h2>
+<p>Формат пакета Идентификаторы URI делает возможным для пакета Идентификаторы URI для различных типов файлов может выглядеть одинаково. Например, рассмотрим следующий абсолютный пакет URI.</p>
+<p><code>pack://application:,,,/ResourceOrContentFile.xaml</code></p>
+<p>Этот абсолютный пакет URI может ссылаться на файлы ресурсов в локальной сборке или файл содержимого. То же самое верно для следующего относительного URI.</p>
+<p><code>/ResourceOrContentFile.xaml</code></p>
+<p>Чтобы определить тип файла, типа pack URI ссылается на, WPF разрешает Идентификаторы URI для файлов ресурсов в локальных сборках и файлы содержимого с помощью следующих эвристических методов:</p>
+<ol>
+<li><p>Проверка метаданных сборки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> атрибут, соответствующий пакет URI.</p>
+</li>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> обнаружении атрибута путь пакета URI ссылается на файл содержимого.</p>
+</li>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> атрибут не найден, проверки файлы ресурсов набора, которые компилируются в локальную сборку.</p>
+</li>
+<li><p>Если файл ресурсов, которое соответствует пути пакета URI найден, путь пакета URI ссылается на файл ресурсов.</p>
+</li>
+<li><p>Если ресурс не найден, то созданный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> является недопустимым.</p>
+</li>
+</ol>
+<p>URI разрешения не применяется для Идентификаторы URI , со следующими разделами:</p>
+<ul>
+<li><p>Файлы содержимого в связанные сборки: не поддерживаются следующие типы файлов WPF.</p>
+</li>
+<li><p>Внедренные файлы в указанных ссылками сборках: Идентификаторы URI , которые идентифицируют их являются уникальными, поскольку они включают в себя имя сборки, на которые имеются ссылки и <code>;component</code> суффикс.</p>
+</li>
+<li><p>Файлы исходного узла: Идентификаторы URI , которые идентифицируют их являются уникальными, поскольку они являются только такие файлы, которые могут быть идентифицированы пакетом Идентификаторы URI , содержащего центр siteoforigin: / / / центра.</p>
+</li>
+</ul>
+<p>Единственное упрощение, которое пакет URI поддерживает разрешение для кода в некоторой степени зависеть от расположения файлов ресурсов и содержимого. Например, если у вас есть файл ресурсов в локальной сборке, который перенастроен в файл содержимого, пакет URI для ресурса останется таким же, как и код, который использует пакет URI.</p>
+<p><a name="Programming_with_Pack_URIs"></a></p>
+<h2 id="programming-with-pack-uris">Программирование с использованием URI типа &quot;pack&quot;</h2>
+<p>Многие WPF классы реализуют свойства, которые могут быть заданы с помощью пакета Идентификаторы URI, в том числе:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">Application.StartupUri</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.source">Frame.Source</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.source">NavigationWindow.Source</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink.navigateuri">Hyperlink.NavigateUri</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.icon">Window.Icon</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image.source">Image.Source</a></p>
+</li>
+</ul>
+<p>Эти свойства можно задать из разметки и кода. В этом разделе демонстрируются основные конструкции для разметки и кода, а также приводятся примеры наиболее распространенных сценариев.</p>
+<p><a name="Using_Pack_URIs_in_Markup"></a></p>
+<h3 id="using-pack-uris-in-markup">Использование URI типа &quot;pack&quot; в разметке</h3>
+<p>Пакет URI задается в разметке путем настройки элемента атрибута с помощью пакета URI. Пример:</p>
+<p><code>&lt;element attribute=&quot;pack://application:,,,/File.xaml&quot; /&gt;</code></p>
+<p>Таблица 1 демонстрирует различные абсолютный пакет Идентификаторы URI , можно указывать в разметке.</p>
+<p>Таблица 1. Абсолютный пакет URI типа в разметке</p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Абсолютный пакет URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Файл ресурсов — локальная сборка</td>
+<td><code>&quot;pack://application:,,,/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке — локальная сборка</td>
+<td><code>&quot;pack://application:,,,/Subfolder/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов — указанная ссылками сборка</td>
+<td><code>&quot;pack://application:,,,/ReferencedAssembly;component/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке указанной ссылками сборки</td>
+<td><code>&quot;pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в указанной ссылками сборке с несколькими версиями</td>
+<td><code>&quot;pack://application:,,,/ReferencedAssembly;v1.0.0.0;component/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл содержимого</td>
+<td><code>&quot;pack://application:,,,/ContentFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл содержимого в подпапке</td>
+<td><code>&quot;pack://application:,,,/Subfolder/ContentFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл исходного узла</td>
+<td><code>&quot;pack://siteoforigin:,,,/SOOFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл исходного узла в подпапке</td>
+<td><code>&quot;pack://siteoforigin:,,,/Subfolder/SOOFile.xaml&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 2 демонстрирует различные относительные pack Идентификаторы URI , можно указывать в разметке.</p>
+<p>Таблица 2. Относительный пакет URI типа в разметке</p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Относительный пакет URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Файл ресурсов в локальной сборке</td>
+<td><code>&quot;/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке — локальная сборка</td>
+<td><code>&quot;/Subfolder/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в указанной ссылками сборке</td>
+<td><code>&quot;/ReferencedAssembly;component/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке указанной ссылками сборки</td>
+<td><code>&quot;/ReferencedAssembly;component/Subfolder/ResourceFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл содержимого</td>
+<td><code>&quot;/ContentFile.xaml&quot;</code></td>
+</tr>
+<tr>
+<td>Файл содержимого в подпапке</td>
+<td><code>&quot;/Subfolder/ContentFile.xaml&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="Using_Pack_URIs_in_Code"></a></p>
+<h3 id="using-pack-uris-in-code">Использование URI типа &quot;pack&quot; в коде</h3>
+<p>Укажите пакет URI в коде путем создания экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класса и передачи URI в качестве параметра конструктора. Это показано в следующем примере.</p>
+<pre><code class="lang-csharp">Uri uri = new Uri(&quot;pack://application:,,,/File.xaml&quot;);  
+</code></pre>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класс считает, что пакет Идентификаторы URI абсолютным. Следовательно, возникает исключение при создании экземпляра класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класс создается с помощью относительных пакета URI.</p>
+<pre><code class="lang-csharp">Uri uri = new Uri(&quot;/File.xaml&quot;);  
+</code></pre>
+<p>К счастью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri.-ctor#System_Uri__ctor_System_String_System_UriKind_">Uri(String, UriKind)</a> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> конструктор классов принимает параметр типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind">UriKind</a> чтобы можно было указать ли пакет URI является абсолютным или относительным.</p>
+<pre><code class="lang-csharp">// Absolute URI (default)  
+Uri absoluteUri = new Uri(&quot;pack://application:,,,/File.xaml&quot;, UriKind.Absolute);  
+// Relative URI  
+Uri relativeUri = new Uri(&quot;/File.xaml&quot;,   
+                        UriKind.Relative);  
+</code></pre>
+<p>Следует указать только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Absolute">Absolute</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Relative">Relative</a> когда вы будете уверены, что указанный пакет URI — одно из них. Если вы не знаете тип пакета URI , например, если пользователь вводит пакет, используемый URI во время выполнения, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_RelativeOrAbsolute">RelativeOrAbsolute</a> вместо этого.</p>
+<pre><code class="lang-csharp">// Relative or Absolute URI provided by user via a text box  
+TextBox userProvidedUriTextBox = new TextBox();  
+Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);  
+</code></pre>
+<p>Таблице 3 показаны различные относительные pack Идентификаторы URI , можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
+<p>Таблица 3. Абсолютный пакет URI типа в коде</p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Абсолютный пакет URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Файл ресурсов — локальная сборка</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/ResourceFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке — локальная сборка</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/Subfolder/ResourceFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов — указанная ссылками сборка</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/ReferencedAssembly;component/ResourceFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке указанной ссылками сборки</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в указанной ссылками сборке с несколькими версиями</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/ReferencedAssembly;v1.0.0.0;component/ResourceFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл содержимого</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/ContentFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл содержимого в подпапке</td>
+<td><code>Uri uri = new Uri(&quot;pack://application:,,,/Subfolder/ContentFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл исходного узла</td>
+<td><code>Uri uri = new Uri(&quot;pack://siteoforigin:,,,/SOOFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+<tr>
+<td>Файл исходного узла в подпапке</td>
+<td><code>Uri uri = new Uri(&quot;pack://siteoforigin:,,,/Subfolder/SOOFile.xaml&quot;, UriKind.Absolute);</code></td>
+</tr>
+</tbody>
+</table>
+<p>Таблица 4 демонстрирует различные относительные pack Идентификаторы URI , можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
+<p>Таблица 4. Относительный пакет URI типа в коде</p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Относительный пакет URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Файл ресурсов — локальная сборка</td>
+<td><code>Uri uri = new Uri(&quot;/ResourceFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке — локальная сборка</td>
+<td><code>Uri uri = new Uri(&quot;/Subfolder/ResourceFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов — указанная ссылками сборка</td>
+<td><code>Uri uri = new Uri(&quot;/ReferencedAssembly;component/ResourceFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+<tr>
+<td>Файл ресурсов в подпапке — указанная ссылками сборка</td>
+<td><code>Uri uri = new Uri(&quot;/ReferencedAssembly;component/Subfolder/ResourceFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+<tr>
+<td>Файл содержимого</td>
+<td><code>Uri uri = new Uri(&quot;/ContentFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+<tr>
+<td>Файл содержимого в подпапке</td>
+<td><code>Uri uri = new Uri(&quot;/Subfolder/ContentFile.xaml&quot;, UriKind.Relative);</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="Common_Pack_URI_Scenarios"></a></p>
+<h3 id="common-pack-uri-scenarios">Типичные сценарии URI типа &quot;pack&quot;</h3>
+<p>Предыдущих разделах обсуждались способы создания пакета Идентификаторы URI для идентификации ресурсов, содержимого и файлы исходного узла. В WPF, эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.</p>
+<p><a name="Specifying_the_UI_to_Show_when_an_Application_Starts"></a></p>
+<h4 id="specifying-the-ui-to-show-when-an-application-starts">Указание пользовательского интерфейса для отображения при запуске приложения</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> Указывает первый ИП должна отображаться при WPF приложение запускается. Для автономных приложений ИП может быть окном, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="PackURIOverviewSnippets#StartupUriWindow">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    StartupUri=&quot;MainWindow.xaml&quot; /&gt;
+</code></pre>
+<p>Автономные приложения и XAML-приложения браузера (XBAP) можно также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="PackURIOverviewSnippets#StartupUriPage">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    StartupUri=&quot;HomePage.xaml&quot; /&gt;
+</code></pre>
+<p>Если приложение — это автономное приложение, и страница указана с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a>, WPF открывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> для размещения страницы. Для XBAP, страница будет отображена в браузере основного приложения.</p>
+<p><a name="Navigating_to_a_Page"></a></p>
+<h4 id="navigating-to-a-page">Переход на страницу</h4>
+<p>В следующем примере показано, как перейти на какую-либо страницу.</p>
+<pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML1">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  WindowTitle=&quot;Page With Hyperlink&quot;
+  WindowWidth=&quot;250&quot;
+  WindowHeight=&quot;250&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML2">&lt;Hyperlink NavigateUri=&quot;UriOfPageToNavigateTo.xaml&quot;&gt;
+  Navigate to Another Page
+&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML3">&lt;/Page&gt;
+</code></pre>
+<p>Дополнительные сведения о различных способах перехода в WPF, см. в разделе <a href="navigation-overview.html">Общие сведения о переходах</a>.</p>
+<p><a name="Specifying_a_Window_Icon"></a></p>
+<h4 id="specifying-a-window-icon">Указание значка окна</h4>
+<p>В следующем примере показано использование URI для указания значка окна.</p>
+<pre><code class="lang-xaml" name="WindowIconSnippets#WindowIconSetXAML">&lt;Window
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;SDKSample.MainWindow&quot;
+    Icon=&quot;WPFIcon1.ico&quot;&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.icon">Icon</a>.</p>
+<p><a name="Loading_Image__Audio__and_Video_Files"></a></p>
+<h4 id="loading-image-audio-and-video-files">Загрузка файлов изображения, аудио и видео файлов</h4>
+<p>WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью пакета Идентификаторы URI, как показано в следующих примерах.</p>
+<pre><code class="lang-xaml" name="MediaPlayerVideoSample#VideoPackURIAtSOO">&lt;MediaElement Stretch=&quot;Fill&quot; LoadedBehavior=&quot;Play&quot; Source=&quot;pack://siteoforigin:,,,/Media/bee.wmv&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="MediaPlayerAudioSample#AudioPackURIAtSOO">&lt;MediaElement Stretch=&quot;Fill&quot; LoadedBehavior=&quot;Play&quot; Source=&quot;pack://siteoforigin:,,,/Media/ringin.wav&quot; /&gt;
+</code></pre><pre><code class="lang-xaml" name="ImageSample#ImagePackURIContent">&lt;Image Source=&quot;Images/Watermark.png&quot; /&gt;
+</code></pre>
+<p>Дополнительные сведения о работе с мультимедийным содержимым см. в разделе <a href="../graphics-multimedia/index.html">графика и мультимедиа</a>.</p>
+<p><a name="Loading_a_Resource_Dictionary_from_the_Site_of_Origin"></a></p>
+<h4 id="loading-a-resource-dictionary-from-the-site-of-origin">Загрузка словаря ресурсов с исходного узла</h4>
+<p>Словари ресурсов (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>) можно использовать для поддержки тем приложения. Одним из способов создания тем и управления ими является создание нескольких тем в качестве словарей ресурсов, расположенных в исходном узле приложения. Это позволяет добавлять и обновлять темы без повторной компиляции и развертывания приложения. Словари ресурсов можно определить и загрузить с помощью пакета Идентификаторы URI, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="ResourceDictionarySnippets#ResourceDictionaryPackURI">&lt;Application
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    StartupUri=&quot;HomePage.xaml&quot;&gt;
+  &lt;Application.Resources&gt;
+    &lt;ResourceDictionary Source=&quot;pack://siteoforigin:,,,/PageTheme.xaml&quot; /&gt;
+  &lt;/Application.Resources&gt;
+&lt;/Application&gt;
+</code></pre>
+<p>Обзор тем в WPF, см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="wpf-application-resource-content-and-data-files.html">Ресурсы, Содержимое и Файлы данных WPF-приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

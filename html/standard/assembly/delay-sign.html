@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1090;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1072;&#1103; &#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1100; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1090;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1072;&#1103; &#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1100; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="delay-sign-an-assembly">Отложенная подпись сборки</h1>
+
+<p>Организация может располагать тщательно оберегаемой парой ключей, повседневный доступ к которой разработчикам не предоставляется. Открытый ключ часто является доступным, но доступ к закрытому ключу предоставляется лишь отдельным лицам. При разработке сборок со строгими именами каждая сборка, в которой имеется ссылка на другую сборку со строгим именем, должна содержать маркер открытого ключа, использованного для присвоения строгого имени второй сборке. Данный подход требует, чтобы открытый ключ был доступен во время процесса разработки.</p>
+<p>Во время компоновки сборки можно использовать отложенную или частичную подпись для того, чтобы зарезервировать в переносимом исполняемом файле (PE-файле) место для подписи строгого имени, а применение полноценной подписи отложить и выполнить на следующем этапе (обычно непосредственно перед поставкой сборки).</p>
+<p>Отложенная подпись сборки:</p>
+<ol>
+<li><p>Получите открытый ключ, входящий в состав пары ключей, у организации, отвечающей за окончательную подпись. Обычно этот ключ указывается в формате файла <a href="../../framework/tools/sn-exe-strong-name-tool.md">SNK</a>, который может быть создан с помощью <em>программы строгих имен (Sn.exe)</em> , входящей в состав Windows SDK.</p>
+</li>
+<li><p>Включите в исходный код сборки два указанных ниже настраиваемых атрибута из пространства имен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection">System.Reflection</a>.</p>
+<ul>
+<li><p>Атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblykeyfileattribute">AssemblyKeyFileAttribute</a>, который передает имя файла, содержащего открытый ключ, своему конструктору в качестве параметра.</p>
+</li>
+<li><p>Атрибут<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblydelaysignattribute">AssemblyDelaySignAttribute</a>, который указывает, что используется отложенная подпись, передавая значение <strong>true</strong> своему конструктору в качестве параметра.</p>
+</li>
+</ul>
+<p>Пример:</p>
+<pre><code class="lang-cpp">[assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)];
+[assembly:AssemblyDelaySignAttribute(true)];
+</code></pre>
+<pre><code class="lang-csharp">[assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)]
+[assembly:AssemblyDelaySignAttribute(true)]
+</code></pre>
+<pre><code class="lang-vb">&lt;Assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)&gt;
+&lt;Assembly:AssemblyDelaySignAttribute(True)&gt;
+</code></pre>
+</li>
+<li><p>Компилятор вставляет открытый ключ в манифест сборки и резервирует в PE-файле место для полной подписи строгого имени. При компоновке сборки должен использоваться подлинный открытый ключ, чтобы другие сборки, ссылающиеся на данную сборку, могли получить этот ключ и сохранить его в своих ссылках на сборку.</p>
+</li>
+<li><p>Так как подпись строгого имени сборки пока некорректна, необходимо отключить проверку этой подписи. Это можно сделать с помощью программы строгих имен, используя параметр <strong>–Vr</strong>.</p>
+<p>В следующем примере производится отключение проверки сборки с именем <em>myAssembly.dll</em>.</p>
+<pre><code class="lang-console">sn –Vr myAssembly.dll
+</code></pre>
+<p>Чтобы отключить проверку на платформах, где нельзя запустить средства для работы со строгими именами, такие как микропроцессоры Advanced RISC Machine (ARM), используйте параметр <strong>–Vk</strong> для создания файла реестра. Импортируйте файл реестра в реестр на компьютере, где нужно отключить проверку. В следующем примере создается файл реестра для <code>myAssembly.dll</code>.</p>
+<pre><code class="lang-console">sn –Vk myRegFile.reg myAssembly.dll
+</code></pre>
+<p>С помощью параметра <strong>–Vr</strong> или <strong>–Vk</strong> можно дополнительно включить файл <em>SNK</em> для подписывания ключа теста.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Строгие имена не являются средством обеспечения безопасности. Они служат только для однозначной идентификации.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если во время разработки с помощью Visual Studio на компьютере с 64-разрядной архитектурой используется отложенная подпись и сборка компилируется для конфигурации <strong>Любой ЦП</strong>, возможно, параметр <strong>-Vr</strong> потребуется применить дважды. (В Visual Studio конфигурация <strong>Любой ЦП</strong> является значением свойства сборки <strong>Целевая платформа</strong>; при компиляции из командной строки это параметр по умолчанию.) Чтобы запустить приложение из командной строки или в проводнике, используйте 64-разрядную версию <a href="../../framework/tools/sn-exe-strong-name-tool.md">Sn.exe (средство строгих имен)</a> для применения к сборке параметра <strong>-Vr</strong>. Чтобы загрузить сборку в Visual Studio во время разработки (например, если сборка содержит компоненты, используемые другими сборками в приложении), необходимо использовать 32-разрядную версию средства работы со строгими именами. Причина заключается в том, что JIT-компилятор компилирует сборки в 64-разрядный машинный код, когда сборка запускается из командной строки, и в 32-разрядный машинный код, когда сборка загружается в среду во время разработки.</p>
+</div>
+</li>
+<li><p>Позже, обычно сразу перед поставкой, необходимо отправить сборку в подписывающий центр организации для подписания действующим строгим именем с помощью параметра программы строгих имен <strong>–R</strong>.</p>
+<p>В следующем примере сборка с именем <em>myAssembly.dll</em> подписывается строгим именем с помощью пары ключей <em>sgKey.snk</em>.</p>
+<pre><code class="lang-console">sn -R myAssembly.dll sgKey.snk
+</code></pre>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="create.html">Создание сборок</a></li>
+<li><a href="create-public-private-key-pair.html">Практическое руководство. Создание пары открытого и закрытого ключей</a></li>
+<li><a href="../../framework/tools/sn-exe-strong-name-tool.md">Sn.exe (средство строгих имен)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

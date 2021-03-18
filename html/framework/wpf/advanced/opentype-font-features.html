@@ -1,0 +1,629 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080; &#1096;&#1088;&#1080;&#1092;&#1090;&#1072; OpenType | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080; &#1096;&#1088;&#1080;&#1092;&#1090;&#1072; OpenType | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="opentype-font-features">Возможности шрифта OpenType</h1>
+
+<p>В этом разделе содержится обзор некоторых ключевых возможностей OpenType технологии шрифтов в Windows Presentation Foundation (WPF).</p>
+<p><a name="overview"></a></p>
+<h2 id="opentype-font-format">Формат шрифта OpenType</h2>
+<p>Формат шрифта OpenType является расширением формата шрифта TrueType®, добавляющим поддержку данных шрифтов PostScript. Формат шрифта OpenType был разработан совместно Майкрософт и Adobe Corporation. OpenType шрифты и операционной системы, службы, поддерживающие OpenType шрифты предоставляют пользователям простой способ установки и использования шрифтов, содержат ли TrueType контуров или структуры CFF (PostScript).</p>
+<p>Формат шрифта OpenType решает следующие задачи разработки.</p>
+<ul>
+<li><p>Расширенная поддержка многоплатформенности.</p>
+</li>
+<li><p>Улучшенная поддержка международных кодировок.</p>
+</li>
+<li><p>Улучшенная защита данных шрифта.</p>
+</li>
+<li><p>Меньшие размеры файлов, что повышает эффективность распространения шрифта.</p>
+</li>
+<li><p>Расширенная поддержка дополнительного типографского контроля.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Пакет Windows SDK содержит набор образцов шрифтов OpenType, которые можно использовать с приложениями Windows Presentation Foundation (WPF). Эти шрифты обеспечивают большинство функций, приведенных в остальной части этого раздела. Дополнительные сведения см. в разделе <a href="sample-opentype-font-pack.html">Пакет образцов шрифтов OpenType</a>.</p>
+</div>
+<p>Подробные сведения о формате шрифтов OpenType см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=96731">Спецификации OpenType</a>.</p>
+<h3 id="advanced-typographic-extensions">Дополнительные типографские расширения</h3>
+<p>Дополнительные типографские таблицы (макетные таблицы OpenType) расширяют функциональные возможности шрифтов со структурами TrueType или CFF. OpenType Шрифты макета содержат дополнительную информацию, которая расширяет возможности шрифтов для поддержки международной типографии высокого качества. Большинство шрифтов OpenType предоставляет только подмножество общих доступных функций OpenType. OpenType шрифты обеспечивают следующие возможности.</p>
+<ul>
+<li><p>Широкое сопоставление между символами и глифами с поддержкой лигатур, позиционных форм, вариантов и других подстановок шрифтов.</p>
+</li>
+<li><p>Поддержка двумерного позиционирования и вложения глифов.</p>
+</li>
+<li><p>Явные сведения сценариев и языка, содержащиеся в шрифте, чтобы приложение обработки текста могло соответствующим образом настроить его поведение.</p>
+</li>
+</ul>
+<p>Макетные таблицы OpenType подробно описаны в разделе <a href="https://www.microsoft.com/typography/otspec/otff.htm">«Таблицы файла шрифта»</a> спецификации OpenType.</p>
+<p>Остальная часть в этом обзоре описываются Широта и гибкость некоторых дающих интересные OpenType функций, доступных в свойствах объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта. Дополнительные сведения об этом объекте см. в разделе <a href="#typography_class">Класс Typography</a>.</p>
+<p><a name="variants"></a></p>
+<h2 id="variants">Варианты</h2>
+<p>Варианты используются для отображения различных типографских стилей, например надстрочных и подстрочных знаков.</p>
+<h3 id="superscripts-and-subscripts">надстрочные и подстрочные</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.variants">Variants</a> Свойство позволяет задать надстрочные и подстрочные значения для OpenType шрифта.</p>
+<p>Следующий текст демонстрирует надстрочные знаки для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-superscripts.gif" alt="Текст, использующий верхние индексы OpenType" title="текст, использующий верхние индексы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются надстрочные знаки для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#12">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot;&gt;
+  2&lt;Run Typography.Variants=&quot;Superscript&quot;&gt;3&lt;/Run&gt;
+  14&lt;Run Typography.Variants=&quot;Superscript&quot;&gt;th&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p>Следующий текст демонстрирует подстрочные знаки для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-subscripts.gif" alt="Текст, использующий нижние индексы OpenType" title="текст, использующий нижние индексы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются подстрочные знаки для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#13">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot;&gt;
+  H&lt;Run Typography.Variants=&quot;Subscript&quot;&gt;2&lt;/Run&gt;O
+  Footnote&lt;Run Typography.Variants=&quot;Subscript&quot;&gt;4&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="decorative-uses-of-superscripts-and-subscripts">Применение надстрочных и подстрочных знаков в декоративных целях</h3>
+<p>Надстрочные и подстрочные знаки можно также использовать для создания декоративных эффектов текста в смешанном регистре. Следующий текст демонстрирует надстрочный и подстрочный текст для шрифта Palatino Linotype. Обратите внимание, что заглавные буквы не затрагиваются.</p>
+<p><img src="media/opentype-font-features/opentype-superscripts-subscripts.gif" alt="Текст, использующий OpenType надстрочные и подстрочные знаки" title="текст, использующий OpenType надстрочные и подстрочные знаки"></p>
+<p>В следующем примере разметки показано, как задаются надстрочные и подстрочные знаки для шрифта, с использованием свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#14">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot; Typography.Variants=&quot;Superscript&quot;&gt;
+  Chapter One
+&lt;/Paragraph&gt;
+&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot; Typography.Variants=&quot;Subscript&quot;&gt;
+  Chapter One
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="capitals"></a></p>
+<h2 id="capitals">Capitals</h2>
+<p>Capitals — это набор типографских форм, которые отображают текст в прописных глифах. Когда текст отображается всеми прописными буквами, обычно расстояние между буквами кажется слишком маленьким, а плотность и пропорции символов слишком большими. OpenType поддерживает множество форматов стилей для прописных букв, включая малые прописные, капитель, титульные буквы и прописные интервалы. Эти форматы стиля позволяют управлять внешним видом прописных букв.</p>
+<p>Следующий текст демонстрирует стандартные прописные буквы, буквы в стиле SmallCaps и в стиле AllSmallCaps для шрифта Pescadero. В данном случае для всех трех слов используется один и тот же размер шрифта.</p>
+<p><img src="media/opentype-font-features/opentype-capitals.gif" alt="Текст, использующий прописные буквы OpenType" title="текст, использующий прописные буквы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются прописные буквы для шрифта Pescadero с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта. При использовании формата SmallCaps начальные прописные буквы игнорируются.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#9">&lt;Paragraph FontFamily=&quot;Pescadero&quot; FontSize=&quot;48&quot;&gt;
+  &lt;Run&gt;CAPITALS&lt;/Run&gt;
+  &lt;Run Typography.Capitals=&quot;SmallCaps&quot;&gt;Capitals&lt;/Run&gt;
+  &lt;Run Typography.Capitals=&quot;AllSmallCaps&quot;&gt;Capitals&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="titling-capitals">Титульные прописные буквы</h3>
+<p>Титульные прописные буквы имеют меньшую плотность и пропорции и разработаны для придания более изысканного вида, чем при использовании обычных прописных букв. Титульные прописные буквы обычно используются в больших размерах шрифтов для заголовков. Следующий текст демонстрирует обычные и титульные прописные буквы для шрифта Pescadero. Обратите внимание на более узкие ножки в тексте во второй строке.</p>
+<p><img src="media/opentype-font-features/opentype-titling-capitals.gif" alt="Текст, использующий титульные прописные буквы OpenType" title="текст, использующий титульные прописные буквы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются титульные прописные буквы для шрифта Pescadero с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet17">&lt;Paragraph FontFamily=&quot;Pescadero&quot;&gt;
+  &lt;Run Typography.Capitals=&quot;Titling&quot;&gt;chapter one&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="capital-spacing">Интервалы прописных букв</h3>
+<p>Прописной интервал — это функция, которая позволяет обеспечить дополнительные интервалы при использовании в тексте только прописных букв. Прописные буквы обычно разрабатываются для использования вместе со строчными. Интервал между прописной и строчной буквами, который кажется вполне подходящим, может выглядеть слишком маленьким при использовании только прописных букв. Следующий текст демонстрирует обычный и прописной интервалы для шрифта Pescadero.</p>
+<p><img src="media/opentype-font-features/opentype-capital-spacing.gif" alt="Текст, использующий прописной интервал OpenType" title="текст, использующий прописной интервал OpenType "></p>
+<p>В следующем примере разметки показано, как задается прописной интервал для шрифта Pescadero с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet18">&lt;Paragraph FontFamily=&quot;Pescadero&quot;&gt;
+  &lt;Run Typography.CapitalSpacing=&quot;True&quot;&gt;CHAPTER ONE&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="ligatures"></a></p>
+<h2 id="ligatures">Лигатуры</h2>
+<p>Лигатуры — это два (или более) глифа, превращающиеся в один глиф для создания более читаемого или привлекательного текста. OpenType шрифты поддерживают четыре типа лигатур:</p>
+<ul>
+<li><p><strong>Стандартные лигатуры</strong>. Разработаны для улучшения удобочитаемости. Стандартные лигатуры включают fi, fl и ff.</p>
+</li>
+<li><p><strong>Контекстные лигатуры</strong>. Разработаны для улучшения удобочитаемости путем обеспечения более эффективного поведения соединения символов, составляющих лигатуры.</p>
+</li>
+<li><p><strong>Дискретные лигатуры</strong>. Предназначены для украшения и не разрабатывались для удобочитаемости.</p>
+</li>
+<li><p><strong>Исторические лигатуры</strong>. Предназначены для исторических целей и не разрабатывались для удобочитаемости.</p>
+</li>
+</ul>
+<p>Следующий текст демонстрирует глифы стандартных лигатур для шрифта Pericles.</p>
+<p><img src="media/opentype-font-features/opentype-standard-ligatures.gif" alt="Текст, использующий стандартные лигатуры OpenType" title="текст, использующий стандартные лигатуры OpenType"></p>
+<p>В следующем примере разметки показано, как задаются глифы стандартных лигатур для шрифта Pericles с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#4">&lt;Paragraph FontFamily=&quot;Pericles&quot; Typography.StandardLigatures=&quot;True&quot;&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;FI&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;FL&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;TH&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;TT&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;TV&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;TW&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;TY&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;VT&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;WT&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;YT&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p>Следующий текст демонстрирует глифы дискретных лигатур для шрифта Pericles.</p>
+<p><img src="media/opentype-font-features/opentype-discretionary-ligatures.gif" alt="Текст, использующий избирательные лигатуры OpenType" title="текст, использующий избирательные лигатуры OpenType"></p>
+<p>В следующем примере разметки показано, как определить глифы дискретных лигатур для шрифта Pericles с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#5">&lt;Paragraph FontFamily=&quot;Pericles&quot; Typography.DiscretionaryLigatures=&quot;True&quot;&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;CO&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LA&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LE&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LI&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LL&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LO&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;LU&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p>По умолчанию шрифты OpenType в Windows Presentation Foundation (WPF) используют стандартные лигатуры. Например, при использовании шрифта Palatino Linotype стандартные лигатуры fi, ff и fl отображаются как глиф объединенных символов. Обратите внимание, что пары знаков для каждой стандартной лигатуры касаются друг друга.</p>
+<p><img src="media/opentype-font-features/opentype-standard-ligatures-palatino.gif" alt="Текст, использующий стандартные лигатуры OpenType с Palatino Linotype" title="текста при использовании шрифта Palatino Linotype стандартные лигатуры OpenType"></p>
+<p>Однако функции стандартных лигатур можно отключить, чтобы стандартные лигатуры, такие как ff, отображались как два отдельных глифа, а не как глиф объединенных символов.</p>
+<p><img src="media/opentype-font-features/disabled-opentype-standard-ligatures.gif" alt="Текст, использующий отключенные стандартные лигатуры OpenType" title="текст, использующий отключенные стандартные лигатуры OpenType"></p>
+<p>В следующем примере разметки показано, как отключить глифы стандартных лигатур для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#6">&lt;!-- Set standard ligatures to false in order to disable feature. --&gt;
+&lt;Paragraph Typography.StandardLigatures=&quot;False&quot; FontFamily=&quot;Palatino Linotype&quot; FontSize=&quot;72&quot;&gt;
+  fi ff fl
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="swashes"></a></p>
+<h2 id="swashes">Орнаменты</h2>
+<p>Swash-глифы являются декоративными глифами, которые используют сложную орнаментацию, часто связанную с каллиграфией. Следующий текст отображает стандартные и swash-глифы для шрифта Pescadero.</p>
+<p><img src="media/opentype-font-features/opentype-standard-swash-glyphs.gif" alt="Текст, использующий стандартные и swash-глифы OpenType" title="текст, использующий стандартные и swash-глифы OpenType"></p>
+<p>Орнаменты часто используются как декоративные элементы в коротких фразах, таких как объявления о событиях. В следующем тексте орнаменты используются для выделения прописных букв названия события.</p>
+<p><img src="media/opentype-font-features/opentype-swashes.gif" alt="Текст, использующий орнаментированные глифы OpenType" title="текст, использующий орнаментированные глифы OpenType"></p>
+<p>В следующем примере разметки показано определение swash-глифы для шрифта, с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#7">&lt;Paragraph FontFamily=&quot;Pescadero&quot; TextBlock.TextAlignment=&quot;Center&quot;&gt;
+  Wishing you a&lt;LineBreak/&gt;
+  &lt;Run Typography.StandardSwashes=&quot;1&quot; FontSize=&quot;36&quot;&gt;Happy New Year!&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="contextual-swashes">Контекстные орнаментированные глифы</h3>
+<p>Некоторые комбинации орнаментированных глифов могут приводить к непривлекательному результату, например когда перекрываются подстрочные элементы на соседних буквах. Контекстные орнаментированные глифы позволяют использовать замещающий орнаментированный глиф, улучшающий внешний вид. Следующий текст показывает одно и то же слово до и после применения контекстного орнаментированного глифа.</p>
+<p><img src="media/opentype-font-features/opentype-contextual-swashes.gif" alt="Текст, использующий контекстные орнаментированные глифы OpenType" title="текст, использующий контекстные орнаментированные глифы OpenType"></p>
+<p>В следующем примере разметки показано, как задается контекстный глиф для шрифта Pescadero с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet16">&lt;Paragraph FontFamily=&quot;Pescadero&quot; Typography.StandardSwashes=&quot;1&quot;&gt;
+  Lyon &lt;Run Typography.ContextualSwashes=&quot;1&quot;&gt;L&lt;/Run&gt;yon
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="alternates"></a></p>
+<h2 id="alternates">Варианты</h2>
+<p>Варианты — это глифы, на которые может заменяться стандартный глиф. OpenType шрифты, например Pericles, используемый в следующих примерах, могут содержать альтернативные глифы, которые можно использовать для создания другого внешнего вида текста. Следующий текст демонстрирует стандартные глифы для шрифта Pericles.</p>
+<p><img src="media/opentype-font-features/opentype-standard-glyphs.gif" alt="Текст, использующий стандартные глифы OpenType" title="текст, использующий стандартные глифы OpenType"></p>
+<p>Шрифт OpenType Pericles содержит дополнительные глифы, поддерживающие изменение стилей для стандартных наборов глифов. Приведенный ниже текст отображает глифы с изменением стиля.</p>
+<p><img src="media/opentype-font-features/opentype-stylistic-alternate-glyphs.gif" alt="Текст, использующий OpenType Стилистические варианты глифов" title="текст, использующий OpenType Стилистические варианты глифов"></p>
+<p>В следующем примере разметки показано, как определить Стилистические варианты глифов для шрифта Pericles с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#2">&lt;Paragraph FontFamily=&quot;Pericles&quot;&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;A&lt;/Run&gt;NCIENT
+  GR&lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;EE&lt;/Run&gt;K
+  MYTH&lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;O&lt;/Run&gt;LOGY
+&lt;/Paragraph&gt;
+</code></pre>
+<p>Следующий текст демонстрирует несколько других стилистических вариантов глифов для шрифта Pericles.</p>
+<p><img src="media/opentype-font-features/opentype-stylistic-alternate-glyphs-pericles.gif" alt="Текст, использующий OpenType Стилистические варианты глифов для шрифта Pericles" title="текст, использующий OpenType Стилистические варианты глифов для шрифта Pericles"></p>
+<p>В следующем примере разметки показано, как определяются эти другие стилистические варианты глифов.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#3">&lt;Paragraph FontFamily=&quot;Pericles&quot;&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;A&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;2&quot;&gt;A&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;3&quot;&gt;A&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;C&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;E&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;G&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;O&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;Q&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;R&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;2&quot;&gt;R&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;S&lt;/Run&gt;
+  &lt;Run Typography.StylisticAlternates=&quot;1&quot;&gt;Y&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="random-contextual-alternates">Случайные контекстные варианты</h3>
+<p>Случайные контекстные варианты предоставляют несколько заменяющих глифов для одного символа. При реализации со шрифтами рукописного типа эта функция может имитировать рукописный ввод, используя набор случайно выбранных глифов с незначительными различиями во внешнем виде. В следующем тексте используются случайные контекстные варианты глифов для шрифта Lindsey. Обратите внимание, что буква «a» немного отличается.</p>
+<p><img src="media/opentype-font-features/opentype-random-contextual-alternates.gif" alt="Текст, использующий случайные контекстные варианты глифов OpenType" title="текст, использующий случайные контекстные варианты глифов OpenType"></p>
+<p>В следующем примере разметки показано, как задаются случайные контекстные варианты для шрифта Lindsey с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet20">&lt;TextBlock FontFamily=&quot;Lindsey&quot;&gt;
+  &lt;Run Typography.ContextualAlternates=&quot;True&quot;&gt;
+    a banana in a cabana
+  &lt;/Run&gt;
+&lt;/TextBlock&gt;
+</code></pre><h3 id="historical-forms">Исторические формы</h3>
+<p>Исторические формы — это типографские соглашения, которые были приняты в прошлом. Следующий текст отображает фразу Boston, Massachusetts с помощью исторической формы глифов для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-historical-forms.gif" alt="Текст, использующий исторические формы OpenType" title="текст, использующий исторические формы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются исторические формы для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#8">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot;&gt;
+  &lt;Run Typography.HistoricalForms=&quot;True&quot;&gt;Boston, Massachusetts&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="numerical_styles"></a></p>
+<h2 id="numerical-styles">Числовые стили</h2>
+<p>Шрифты OpenType поддерживают большое количество функций, которые могут использоваться с числовыми значениями в тексте.</p>
+<h3 id="fractions">Дроби</h3>
+<p>OpenType шрифты поддерживают разные стили для дробей, включая диагональные и вертикальные дроби.</p>
+<p>Следующий текст демонстрирует стили дробей для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-slashed-stacked-fractions.gif" alt="Текст, использующий OpenType диагональные и вертикальные дроби" title="текст, использующий OpenType диагональные и вертикальные дроби"></p>
+<p>В следующем примере разметки показано, как задаются стили дробей для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#10">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot; Typography.Fraction=&quot;Slashed&quot;&gt;
+  1/8 1/4 3/8 1/2 5/8 3/4 7/8
+&lt;/Paragraph&gt;
+&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot; Typography.Fraction=&quot;Stacked&quot;&gt;
+  1/8 1/4 3/8 1/2 5/8 3/4 7/8
+&lt;/Paragraph&gt;
+</code></pre><h3 id="old-style-numerals">Числа в старом стиле</h3>
+<p>OpenType шрифты поддерживают формат чисел старого стиля. Этот формат используется для отображения чисел в стилях, которые уже не являются стандартными. Следующий текст демонстрирует дату 18 века в стандартном формате и в формате старого стиля для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-old-style-numerals.gif" alt="Текст, использующий старый стиль числа OpenType" title="текст, использующий старый стиль числа OpenType"></p>
+<p>Следующий текст демонстрирует стандартные числа и числа в старом стиле для шрифта Palatino Linotype.</p>
+<p><img src="media/opentype-font-features/opentype-old-style-numeral-sets.gif" alt="Текст, использующий OpenType наборы чисел старого стиля" title="текст, использующий OpenType наборы чисел старого стиля"></p>
+<p>В следующем примере разметки показано, как для определения числа в старом стиле для шрифта Palatino Linotype с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#11">&lt;Paragraph FontFamily=&quot;Palatino Linotype&quot;&gt;
+  &lt;Run Typography.NumeralStyle=&quot;Normal&quot;&gt;1234567890&lt;/Run&gt;
+  &lt;Run Typography.NumeralStyle=&quot;OldStyle&quot;&gt;1234567890&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre><h3 id="proportional-and-tabular-figures">Пропорциональные и табличные цифры</h3>
+<p>OpenType шрифты поддерживают отображение пропорциональных и табличных цифр для регулирования выравнивания по ширине при использовании чисел. При использовании пропорциональных цифр каждая цифра имеет свою ширину — например 1 будет уже, чем 5. Табличные цифры имеют одинаковую ширину, поэтому их можно выравнивать по вертикали, что повышает удобочитаемость финансовой информации.</p>
+<p>В первом столбце следующего текста показаны два числа, использующие пропорциональные цифры и шрифт Miramonte. Обратите внимание на разную ширину цифр 5 и 1. Во втором столбце показаны те же два числа, ширина которых скорректирована с помощью функции табличных цифр.</p>
+<p><img src="media/opentype-font-features/opentype-proportional-tabular-figures.gif" alt="Текст, использующий пропорциональные и табличные цифры OpenType" title="текст, использующий пропорциональные и табличные цифры OpenType"></p>
+<p>В следующем примере разметки показано, как определить пропорциональные и табличные цифры для шрифта Miramonte с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet19">&lt;TextBlock FontFamily=&quot;Miramonte&quot;&gt;
+  &lt;Run Typography.NumeralAlignment=&quot;Proportional&quot;&gt;114,131&lt;/Run&gt;
+&lt;/TextBlock&gt;
+&lt;TextBlock FontFamily=&quot;Miramonte&quot;&gt;
+  &lt;Run Typography.NumeralAlignment=&quot;Tabular&quot;&gt;114,131&lt;/Run&gt;
+&lt;/TextBlock&gt;
+</code></pre><h3 id="slashed-zero">Перечеркнутый нуль</h3>
+<p>OpenType шрифты поддерживают перечеркнутого нуля формат чисел, чтобы подчеркнуть разницу между буквой «O» и цифрой «0». Числа с перечеркнутым нулем часто используются для идентификаторов в финансовых и деловых сведениях.</p>
+<p>Следующий текст демонстрирует пример идентификатора заказа с использованием шрифта Miramonte. В первой строке используются стандартные цифры. Во второй строке используются перечеркнутые нули для лучшего контраста с прописной буквой O.</p>
+<p><img src="media/opentype-font-features/opentype-slashed-zero-numerals.gif" alt="Текст, использующий OpenType перечеркнутые нули" title="текст, использующий OpenType перечеркнутые нули"></p>
+<p>В следующем примере разметки показано, как определить перечеркнутые нули для шрифта Miramonte с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#OpenTypeFontSnippet15">&lt;Paragraph FontFamily=&quot;Miramonte&quot;&gt;
+  &lt;Run&gt;Order #0048-OTC-390&lt;/Run&gt;
+  &lt;LineBreak/&gt;
+  &lt;Run Typography.SlashedZero=&quot;True&quot;&gt;Order #0048-OTC-390&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p><a name="typography_class"></a></p>
+<h2 id="typography-class">Класс Typography</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> Объект предоставляет набор функций, OpenType поддерживает шрифт. Задав свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> в разметке, можно легко создавать документы, которые используют преимущества OpenType функции.</p>
+<p>Следующий текст демонстрирует стандартные прописные буквы, буквы в стиле SmallCaps и в стиле AllSmallCaps для шрифта Pescadero. В данном случае для всех трех слов используется один и тот же размер шрифта.</p>
+<p><img src="media/opentype-font-features/opentype-capitals.gif" alt="Текст, использующий прописные буквы OpenType" title="текст, использующий прописные буквы OpenType"></p>
+<p>В следующем примере разметки показано, как задаются прописные буквы для шрифта Pescadero с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта. При использовании формата SmallCaps начальные прописные буквы игнорируются.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontSamples#9">&lt;Paragraph FontFamily=&quot;Pescadero&quot; FontSize=&quot;48&quot;&gt;
+  &lt;Run&gt;CAPITALS&lt;/Run&gt;
+  &lt;Run Typography.Capitals=&quot;SmallCaps&quot;&gt;Capitals&lt;/Run&gt;
+  &lt;Run Typography.Capitals=&quot;AllSmallCaps&quot;&gt;Capitals&lt;/Run&gt;
+&lt;/Paragraph&gt;
+</code></pre>
+<p>Следующий пример кода выполняет ту же задачу, что и предыдущий пример разметки.</p>
+<pre><code class="lang-csharp" name="TypographyCodeSnippets#TypographyCodeSnippet1">MyParagraph.FontFamily = new FontFamily(&quot;Pescadero&quot;);
+MyParagraph.FontSize = 48;
+
+Run run_1 = new Run(&quot;CAPITALS &quot;);
+MyParagraph.Inlines.Add(run_1);
+
+Run run_2 = new Run(&quot;Capitals &quot;);
+run_2.Typography.Capitals = FontCapitals.SmallCaps;
+MyParagraph.Inlines.Add(run_2);
+
+Run run_3 = new Run(&quot;Capitals&quot;);
+run_3.Typography.Capitals = FontCapitals.AllSmallCaps;
+MyParagraph.Inlines.Add(run_3);
+
+MyParagraph.Inlines.Add(new LineBreak());
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="typography-class-properties">Свойства класса Typography</h3>
+<p>В следующей таблице перечислены свойства, значения и параметры по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a> объекта.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Значения</th>
+<th>Значение по умолчанию</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.annotationalternates">AnnotationAlternates</a></td>
+<td>Числовое значение — байт</td>
+<td>0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.capitals">Capitals</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_AllPetiteCaps">AllPetiteCaps</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_AllSmallCaps">AllSmallCaps</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_PetiteCaps">PetiteCaps</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_SmallCaps">SmallCaps</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_Titling">Titling</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_Unicase">Unicase</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontcapitals#System_Windows_FontCapitals_Normal">FontCapitals.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.capitalspacing">CapitalSpacing</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.casesensitiveforms">CaseSensitiveForms</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.contextualalternates">ContextualAlternates</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.contextualligatures">ContextualLigatures</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.contextualswashes">ContextualSwashes</a></td>
+<td>Числовое значение — байт</td>
+<td>0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.discretionaryligatures">DiscretionaryLigatures</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.eastasianexpertforms">EastAsianExpertForms</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.eastasianlanguage">EastAsianLanguage</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_HojoKanji">HojoKanji</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Jis04">Jis04</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Jis78">Jis78</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Jis83">Jis83</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Jis90">Jis90</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_NlcKanji">NlcKanji</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Simplified">Simplified</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Traditional">Traditional</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_TraditionalNames">TraditionalNames</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianlanguage#System_Windows_FontEastAsianLanguage_Normal">FontEastAsianLanguage.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.eastasianwidths">EastAsianWidths</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Full">Full</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Half">Half</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Proportional">Proportional</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Quarter">Quarter</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Third">Third</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fonteastasianwidths#System_Windows_FontEastAsianWidths_Normal">FontEastAsianWidths.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.fraction">Fraction</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontfraction#System_Windows_FontFraction_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontfraction#System_Windows_FontFraction_Slashed">Slashed</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontfraction#System_Windows_FontFraction_Stacked">Stacked</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontfraction#System_Windows_FontFraction_Normal">FontFraction.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.historicalforms">HistoricalForms</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.historicalligatures">HistoricalLigatures</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.kerning">Kerning</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.mathematicalgreek">MathematicalGreek</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.numeralalignment">NumeralAlignment</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontnumeralalignment#System_Windows_FontNumeralAlignment_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontnumeralalignment#System_Windows_FontNumeralAlignment_Proportional">Proportional</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontnumeralalignment#System_Windows_FontNumeralAlignment_Tabular">Tabular</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontnumeralalignment#System_Windows_FontNumeralAlignment_Normal">FontNumeralAlignment.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.numeralstyle">NumeralStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontnumeralstyle#System_Windows_FontNumeralStyle_Normal">FontNumeralStyle.Normal</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.slashedzero">SlashedZero</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.standardligatures">StandardLigatures</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.standardswashes">StandardSwashes</a></td>
+<td>Числовое значение — байт</td>
+<td>0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticalternates">StylisticAlternates</a></td>
+<td>Числовое значение — байт</td>
+<td>0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset1">StylisticSet1</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset2">StylisticSet2</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset3">StylisticSet3</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset4">StylisticSet4</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset5">StylisticSet5</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset6">StylisticSet6</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset7">StylisticSet7</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset8">StylisticSet8</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset9">StylisticSet9</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset10">StylisticSet10</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset11">StylisticSet11</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset12">StylisticSet12</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset13">StylisticSet13</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset14">StylisticSet14</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset15">StylisticSet15</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset16">StylisticSet16</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset17">StylisticSet17</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset18">StylisticSet18</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset19">StylisticSet19</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.stylisticset20">StylisticSet20</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography.variants">Variants</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Inferior">Inferior</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Normal">Normal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Ordinal">Ordinal</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Ruby">Ruby</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Subscript">Subscript</a> | <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Superscript">Superscript</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontvariants#System_Windows_FontVariants_Normal">FontVariants.Normal</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=96731">Спецификация OpenType</a></li>
+<li><a href="typography-in-wpf.html">Оформление в WPF</a></li>
+<li><a href="sample-opentype-font-pack.html">Образец пакета шрифтов OpenType</a></li>
+<li><a href="packaging-fonts-with-applications.html">Упаковка шрифтов с приложениями</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

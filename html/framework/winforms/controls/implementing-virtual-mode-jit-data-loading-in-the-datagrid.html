@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1074;&#1080;&#1088;&#1090;&#1091;&#1072;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1088;&#1077;&#1078;&#1080;&#1084;&#1072; &#1089; JIT-&#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1086;&#1081; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1074;&#1080;&#1088;&#1090;&#1091;&#1072;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1088;&#1077;&#1078;&#1080;&#1084;&#1072; &#1089; JIT-&#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1086;&#1081; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="implementing-virtual-mode-with-just-in-time-data-loading-in-the-windows-forms-datagridview-control">Реализация виртуального режима с JIT-загрузкой данных для элемента управления DataGridView в Windows Forms</h1>
+
+<p>Одна из причин для реализации виртуальный режим в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления является получение данных только по мере необходимости. Это называется <em>загрузка данных just-in-time</em>.</p>
+<p>Если вы работаете с очень большими таблицами в удаленной базе данных, например, можно избежать задержки при запуске, извлечение только данные, необходимые для отображения и получения дополнительных данных только в том случае, когда пользователь прокручивает новых строк в представление. Если клиентские компьютеры под управлением приложения имеют ограниченный объем памяти для хранения данных, можно также удалить неиспользуемые данные, при получении новых значений из базы данных.</p>
+<p>В следующих разделах рассматривается использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления с кэшем just-in-time.</p>
+<p>Чтобы скопировать код из этого раздела единым блоком, см. раздел <a href="virtual-mode-with-just-in-time-data-loading-in-the-datagrid.html">Практическое руководство. Реализация виртуального режима с JIT в загрузкой данных в Windows Forms элемента управления DataGridView</a>.</p>
+<h2 id="the-form">Формы</h2>
+<p>В следующем примере кода определяется форму, содержащую только для чтения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления, который взаимодействует с <code>Cache</code> объекта через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a> обработчик событий. <code>Cache</code> Объекта управляет значениями, хранящимися локально и использует <code>DataRetriever</code> объект для извлечения значения из таблицы Orders учебной базы данных &quot;Борей&quot;. <code>DataRetriever</code> Объект, который реализует <code>IDataPageRetriever</code> интерфейс, необходимый <code>Cache</code> класса, также используется для инициализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления строками и столбцами.</p>
+<p><code>IDataPageRetriever</code>, <code>DataRetriever</code>, И <code>Cache</code> типы описаны далее в этом разделе.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Хранение конфиденциальных сведений (например, пароля) в строке подключения может повлиять на безопасность приложения. Использование проверки подлинности Windows (также называемой встроенными средствами безопасности) — более безопасный способ управления доступом к базе данных. Дополнительные сведения см. в разделе <a href="../../data/adonet/protecting-connection-information.md">Защита сведений о подключении</a>.</p>
+</div>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#100">using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
+
+public class VirtualJustInTimeDemo : System.Windows.Forms.Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+    private Cache memoryCache;
+
+    // Specify a connection string. Replace the given value with a 
+    // valid connection string for a Northwind SQL Server sample
+    // database accessible to your system.
+    private string connectionString =
+        &quot;Initial Catalog=NorthWind;Data Source=localhost;&quot; +
+        &quot;Integrated Security=SSPI;Persist Security Info=False&quot;;
+    private string table = &quot;Orders&quot;;
+
+    protected override void OnLoad(EventArgs e)
+    {
+        // Initialize the form.
+        this.AutoSize = true;
+        this.Controls.Add(this.dataGridView1);
+        this.Text = &quot;DataGridView virtual-mode just-in-time demo&quot;;
+
+        // Complete the initialization of the DataGridView.
+        this.dataGridView1.Size = new Size(800, 250);
+        this.dataGridView1.Dock = DockStyle.Fill;
+        this.dataGridView1.VirtualMode = true;
+        this.dataGridView1.ReadOnly = true;
+        this.dataGridView1.AllowUserToAddRows = false;
+        this.dataGridView1.AllowUserToOrderColumns = false;
+        this.dataGridView1.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+        this.dataGridView1.CellValueNeeded += new
+            DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+
+        // Create a DataRetriever and use it to create a Cache object
+        // and to initialize the DataGridView columns and rows.
+        try
+        {
+            DataRetriever retriever =
+                new DataRetriever(connectionString, table);
+            memoryCache = new Cache(retriever, 16);
+            foreach (DataColumn column in retriever.Columns)
+            {
+                dataGridView1.Columns.Add(
+                    column.ColumnName, column.ColumnName);
+            }
+            this.dataGridView1.RowCount = retriever.RowCount;
+        }
+        catch (SqlException)
+        {
+            MessageBox.Show(&quot;Connection could not be established. &quot; +
+                &quot;Verify that the connection string is valid.&quot;);
+            Application.Exit();
+        }
+
+        // Adjust the column widths based on the displayed values.
+        this.dataGridView1.AutoResizeColumns(
+            DataGridViewAutoSizeColumnsMode.DisplayedCells);
+
+        base.OnLoad(e);
+    }
+
+    private void dataGridView1_CellValueNeeded(object sender,
+        DataGridViewCellValueEventArgs e)
+    {
+        e.Value = memoryCache.RetrieveElement(e.RowIndex, e.ColumnIndex);
+    }
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new VirtualJustInTimeDemo());
+    }
+
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="the-idatapageretriever-interface">Интерфейс IDataPageRetriever</h2>
+<p>В следующем примере кода определяется <code>IDataPageRetriever</code> интерфейс, который реализуется <code>DataRetriever</code> класса. — Единственный метод, объявленный в этом интерфейсе <code>SupplyPageOfData</code> метод, который требуется индекс начальной строки и число строк на одной странице данных. Эти значения используются средством реализации для извлечения подмножества данных из источника данных.</p>
+<p>Объект <code>Cache</code> использует реализацию этого интерфейса во время построения для загрузки двух начальных страниц данных. Каждый раз, когда требуется значение без кэширования, отменяет одну из этих страниц и запрашивает новую страницу с значением из кэша <code>IDataPageRetriever</code>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#201">public interface IDataPageRetriever
+{
+    DataTable SupplyPageOfData(int lowerPageBoundary, int rowsPerPage);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="the-dataretriever-class">Класс DataRetriever</h2>
+<p>В следующем примере кода определяется <code>DataRetriever</code> класса, который реализует <code>IDataPageRetriever</code> интерфейс для извлечения страниц данных с сервера. <code>DataRetriever</code> Класс также предоставляет <code>Columns</code> и <code>RowCount</code> свойства, который <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления использует для создания необходимых столбцов и добавьте соответствующее количество пустых строк <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">Rows</a> коллекции. Добавление пустых строк необходим, чтобы элемент управления будет действовать как если бы, если он содержит все данные в таблице. Это означает, что бегунка полосы прокрутки будет иметь соответствующий размер, что пользователь сможет получить доступ к любой строки в таблице. Строки заполняются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a> обработчик событий только в том случае, если они оказались в представление.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#200">public class DataRetriever : IDataPageRetriever
+{
+    private string tableName;
+    private SqlCommand command;
+
+    public DataRetriever(string connectionString, string tableName)
+    {
+        SqlConnection connection = new SqlConnection(connectionString);
+        connection.Open();
+        command = connection.CreateCommand();
+        this.tableName = tableName;
+    }
+
+    private int rowCountValue = -1;
+
+    public int RowCount
+    {
+        get
+        {
+            // Return the existing value if it has already been determined.
+            if (rowCountValue != -1)
+            {
+                return rowCountValue;
+            }
+
+            // Retrieve the row count from the database.
+            command.CommandText = &quot;SELECT COUNT(*) FROM &quot; + tableName;
+            rowCountValue = (int)command.ExecuteScalar();
+            return rowCountValue;
+        }
+    }
+
+    private DataColumnCollection columnsValue;
+
+    public DataColumnCollection Columns
+    {
+        get
+        {
+            // Return the existing value if it has already been determined.
+            if (columnsValue != null)
+            {
+                return columnsValue;
+            }
+
+            // Retrieve the column information from the database.
+            command.CommandText = &quot;SELECT * FROM &quot; + tableName;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable table = new DataTable();
+            table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+            adapter.FillSchema(table, SchemaType.Source);
+            columnsValue = table.Columns;
+            return columnsValue;
+        }
+    }
+
+    private string commaSeparatedListOfColumnNamesValue = null;
+
+    private string CommaSeparatedListOfColumnNames
+    {
+        get
+        {
+            // Return the existing value if it has already been determined.
+            if (commaSeparatedListOfColumnNamesValue != null)
+            {
+                return commaSeparatedListOfColumnNamesValue;
+            }
+
+            // Store a list of column names for use in the
+            // SupplyPageOfData method.
+            System.Text.StringBuilder commaSeparatedColumnNames =
+                new System.Text.StringBuilder();
+            bool firstColumn = true;
+            foreach (DataColumn column in Columns)
+            {
+                if (!firstColumn)
+                {
+                    commaSeparatedColumnNames.Append(&quot;, &quot;);
+                }
+                commaSeparatedColumnNames.Append(column.ColumnName);
+                firstColumn = false;
+            }
+
+            commaSeparatedListOfColumnNamesValue =
+                commaSeparatedColumnNames.ToString();
+            return commaSeparatedListOfColumnNamesValue;
+        }
+    }
+
+    // Declare variables to be reused by the SupplyPageOfData method.
+    private string columnToSortBy;
+    private SqlDataAdapter adapter = new SqlDataAdapter();
+
+    public DataTable SupplyPageOfData(int lowerPageBoundary, int rowsPerPage)
+    {
+        // Store the name of the ID column. This column must contain unique 
+        // values so the SQL below will work properly.
+        if (columnToSortBy == null)
+        {
+            columnToSortBy = this.Columns[0].ColumnName;
+        }
+
+        if (!this.Columns[columnToSortBy].Unique)
+        {
+            throw new InvalidOperationException(String.Format(
+                &quot;Column {0} must contain unique values.&quot;, columnToSortBy));
+        }
+
+        // Retrieve the specified number of rows from the database, starting
+        // with the row specified by the lowerPageBoundary parameter.
+        command.CommandText = &quot;Select Top &quot; + rowsPerPage + &quot; &quot; +
+            CommaSeparatedListOfColumnNames + &quot; From &quot; + tableName +
+            &quot; WHERE &quot; + columnToSortBy + &quot; NOT IN (SELECT TOP &quot; +
+            lowerPageBoundary + &quot; &quot; + columnToSortBy + &quot; From &quot; +
+            tableName + &quot; Order By &quot; + columnToSortBy +
+            &quot;) Order By &quot; + columnToSortBy;
+        adapter.SelectCommand = command;
+
+        DataTable table = new DataTable();
+        table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+        adapter.Fill(table);
+        return table;
+    }
+
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="the-cache-class">Класс кэша</h2>
+<p>В следующем примере кода определяется <code>Cache</code> класс, который управляет двумя страницами данных, которое заполняется с помощью <code>IDataPageRetriever</code> реализации. <code>Cache</code> Класс определяет внутреннее <code>DataPage</code> структуру, которая содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.datatable">DataTable</a> для хранения значений в одном кэше страницы и которая вычисляет индексы строк, представляющих верхнюю и нижнюю границы страницы.</p>
+<p><code>Cache</code> Класс загружает две страницы данных во время построения. Каждый раз, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a> событий запрашивает значение, <code>Cache</code> объект определяет, если значение доступно в одной из двух его страниц и если да, то возвращает его. Если значение не доступен локально, <code>Cache</code> определяет, какой из двух страниц дальше всего от текущей строки и заменяет страницу с запрошенным значением, которое затем возвращается новый.</p>
+<p>Предположим, что количество строк на странице данных является таким же, как количество строк, которые могут отображаться на экране за один раз, эта модель позволяет пользователям, разбиение по страницам в таблице, эффективно вернуться на последнюю просмотренную страницу.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#300">public class Cache
+{
+    private static int RowsPerPage;
+
+    // Represents one page of data.  
+    public struct DataPage
+    {
+        public DataTable table;
+        private int lowestIndexValue;
+        private int highestIndexValue;
+
+        public DataPage(DataTable table, int rowIndex)
+        {
+            this.table = table;
+            lowestIndexValue = MapToLowerBoundary(rowIndex);
+            highestIndexValue = MapToUpperBoundary(rowIndex);
+            System.Diagnostics.Debug.Assert(lowestIndexValue &gt;= 0);
+            System.Diagnostics.Debug.Assert(highestIndexValue &gt;= 0);
+        }
+
+        public int LowestIndex
+        {
+            get
+            {
+                return lowestIndexValue;
+            }
+        }
+
+        public int HighestIndex
+        {
+            get
+            {
+                return highestIndexValue;
+            }
+        }
+
+        public static int MapToLowerBoundary(int rowIndex)
+        {
+            // Return the lowest index of a page containing the given index.
+            return (rowIndex / RowsPerPage) * RowsPerPage;
+        }
+
+        private static int MapToUpperBoundary(int rowIndex)
+        {
+            // Return the highest index of a page containing the given index.
+            return MapToLowerBoundary(rowIndex) + RowsPerPage - 1;
+        }
+    }
+
+    private DataPage[] cachePages;
+    private IDataPageRetriever dataSupply;
+
+    public Cache(IDataPageRetriever dataSupplier, int rowsPerPage)
+    {
+        dataSupply = dataSupplier;
+        Cache.RowsPerPage = rowsPerPage;
+        LoadFirstTwoPages();
+    }
+
+    // Sets the value of the element parameter if the value is in the cache.
+    private bool IfPageCached_ThenSetElement(int rowIndex,
+        int columnIndex, ref string element)
+    {
+        if (IsRowCachedInPage(0, rowIndex))
+        {
+            element = cachePages[0].table
+                .Rows[rowIndex % RowsPerPage][columnIndex].ToString();
+            return true;
+        }
+        else if (IsRowCachedInPage(1, rowIndex))
+        {
+            element = cachePages[1].table
+                .Rows[rowIndex % RowsPerPage][columnIndex].ToString();
+            return true;
+        }
+
+        return false;
+    }
+
+    public string RetrieveElement(int rowIndex, int columnIndex)
+    {
+        string element = null;
+
+        if (IfPageCached_ThenSetElement(rowIndex, columnIndex, ref element))
+        {
+            return element;
+        }
+        else
+        {
+            return RetrieveData_CacheIt_ThenReturnElement(
+                rowIndex, columnIndex);
+        }
+    }
+
+    private void LoadFirstTwoPages()
+    {
+        cachePages = new DataPage[]{
+            new DataPage(dataSupply.SupplyPageOfData(
+                DataPage.MapToLowerBoundary(0), RowsPerPage), 0), 
+            new DataPage(dataSupply.SupplyPageOfData(
+                DataPage.MapToLowerBoundary(RowsPerPage), 
+                RowsPerPage), RowsPerPage)};
+    }
+
+    private string RetrieveData_CacheIt_ThenReturnElement(
+        int rowIndex, int columnIndex)
+    {
+        // Retrieve a page worth of data containing the requested value.
+        DataTable table = dataSupply.SupplyPageOfData(
+            DataPage.MapToLowerBoundary(rowIndex), RowsPerPage);
+
+        // Replace the cached page furthest from the requested cell
+        // with a new page containing the newly retrieved data.
+        cachePages[GetIndexToUnusedPage(rowIndex)] = new DataPage(table, rowIndex);
+
+        return RetrieveElement(rowIndex, columnIndex);
+    }
+
+    // Returns the index of the cached page most distant from the given index
+    // and therefore least likely to be reused.
+    private int GetIndexToUnusedPage(int rowIndex)
+    {
+        if (rowIndex &gt; cachePages[0].HighestIndex &amp;&amp;
+            rowIndex &gt; cachePages[1].HighestIndex)
+        {
+            int offsetFromPage0 = rowIndex - cachePages[0].HighestIndex;
+            int offsetFromPage1 = rowIndex - cachePages[1].HighestIndex;
+            if (offsetFromPage0 &lt; offsetFromPage1)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        else
+        {
+            int offsetFromPage0 = cachePages[0].LowestIndex - rowIndex;
+            int offsetFromPage1 = cachePages[1].LowestIndex - rowIndex;
+            if (offsetFromPage0 &lt; offsetFromPage1)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+    }
+
+    // Returns a value indicating whether the given row index is contained
+    // in the given DataPage. 
+    private bool IsRowCachedInPage(int pageNumber, int rowIndex)
+    {
+        return rowIndex &lt;= cachePages[pageNumber].HighestIndex &amp;&amp;
+            rowIndex &gt;= cachePages[pageNumber].LowestIndex;
+    }
+
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="additional-considerations">Дополнительные сведения</h2>
+<p>Приведенные выше примеры кода предоставляются в качестве демонстрации загрузки данных just-in-time. Необходимо будет изменить код для ваших нужд для достижения максимальной эффективности. Как минимум необходимо будет выбрать соответствующее значение для числа строк на одной странице данных в кэше. Это значение передается в <code>Cache</code> конструктор. Количество строк на странице должно быть не меньше, чем количество строк, которые могут отображаться одновременно в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления.</p>
+<p>Для получения наилучших результатов необходимо провести тестирование производительности для определения требований системы и пользователей. Несколько факторов, которые необходимо принять во внимание включают в себя объем памяти в клиентских компьютеров под управлением приложения, доступная пропускная способность сетевого подключения и задержки сервера, используемого. Значения пропускной способности и задержки должно определяться во время активного использования.</p>
+<p>Для повышения быстродействия приложения, можно увеличить объем данных, хранящихся локально. Для сокращения времени запуска, однако следует загружать слишком много данных изначально. Может потребоваться изменить <code>Cache</code> класса, чтобы увеличить число страниц данных, оно может хранить. С помощью нескольких страниц данных повышает эффективность прокрутки, но вам потребуется определить оптимальное количество строк на странице данных, в зависимости от доступной пропускной способности и задержки сервера. С помощью страницы меньшего размера сервер будет осуществляться чаще, но займет меньше времени для возврата запрошенных данных. Если задержки более критичны, чем пропускная способность, можно использовать страниц данных большего размера.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.virtualmode">VirtualMode</a></li>
+<li><a href="performance-tuning-in-the-windows-forms-datagridview-control.html">Оптимизация производительности элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="best-practices-for-scaling-the-windows-forms-datagridview-control.html">Масштабирование элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="virtual-mode-in-the-windows-forms-datagridview-control.html">Виртуальный режим элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="implementing-virtual-mode-wf-datagridview-control.html">Пошаговое руководство. Реализация виртуального режима для элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="virtual-mode-with-just-in-time-data-loading-in-the-datagrid.html">Практическое руководство. Реализация виртуального режима с JIT-загрузкой данных для элемента управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

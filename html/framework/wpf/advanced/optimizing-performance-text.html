@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1058;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1058;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimizing-performance-text">Оптимизация производительности: Текста</h1>
+
+<p>WPF включает поддержку представления текстового контента с помощью многофункциональных пользовательский интерфейс элементов управления. В целом можно разделить отрисовку текста на три уровня.</p>
+<ol>
+<li><p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrun">GlyphRun</a> объекты непосредственно.</p>
+</li>
+<li><p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта.</p>
+</li>
+<li><p>Использование высокоуровневых элементов управления, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> объектов.</p>
+</li>
+</ol>
+<p>В этом разделе даются рекомендации по повышению производительности отрисовки текста.</p>
+<p><a name="Glyph_Level"></a></p>
+<h2 id="rendering-text-at-the-glyph-level">Отрисовка текста на уровне глифа</h2>
+<p>Windows Presentation Foundation (WPF) обеспечивает расширенную поддержку текста включая разметку на уровне глифа с прямым доступом к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> для клиентов, которым требуется перехватывать и сохранять текст после форматирования. Эти функции обеспечивают критически важную поддержку различных требований к отрисовке текста в каждом из следующих сценариев.</p>
+<ul>
+<li><p>Отображение на экране документов фиксированного формата.</p>
+</li>
+<li><p>Сценарии печати.</p>
+<ul>
+<li><p>Язык XAML как язык принтера.</p>
+</li>
+<li><p>Средство записи XPS-документов (Майкрософт).</p>
+</li>
+<li><p>Предыдущие драйверы принтера, вывод из приложений Win32 в фиксированный формат.</p>
+</li>
+<li><p>Формат очереди печати.</p>
+</li>
+</ul>
+</li>
+<li><p>Представление документов фиксированного формата, включая клиенты предыдущих версий Windows и другие вычислительные устройства.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrun">GlyphRun</a> предназначены для представления документов фиксированного формата и сценариев печати. Windows Presentation Foundation (WPF) предоставляет несколько элементов для общего макета и пользовательский интерфейс сценариях, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>. Дополнительные сведения о макете и сценариях ИП см. в статье <a href="typography-in-wpf.html">Оформление в WPF</a>.</p>
+</div>
+<p>Следующие примеры показывают, как следует указывать свойства для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> объекта в Язык XAML. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> Представляет выходные данные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrun">GlyphRun</a> в XAML. В примерах предполагается, что шрифты Arial, Courier New и Times New Roman устанавливаются в папку <strong>C:\WINDOWS\Fonts</strong> на локальном компьютере.</p>
+<pre><code class="lang-xaml" name="GlyphsOvwSample1#1">&lt;!-- The example shows how to use a Glyphs object. --&gt;
+&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  &gt;
+
+   &lt;StackPanel Background=&quot;PowderBlue&quot;&gt;
+
+      &lt;Glyphs
+         FontUri             = &quot;C:\WINDOWS\Fonts\TIMES.TTF&quot;
+         FontRenderingEmSize = &quot;100&quot;
+         StyleSimulations    = &quot;BoldSimulation&quot;
+         UnicodeString       = &quot;Hello World!&quot;
+         Fill                = &quot;Black&quot;
+         OriginX             = &quot;100&quot;
+         OriginY             = &quot;200&quot;
+      /&gt;
+
+   &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre><h3 id="using-drawglyphrun">Использование DrawGlyphRun</h3>
+<p>Если у вас есть пользовательский элемент управления, и вы хотите отобразить глифы, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext.drawglyphrun">DrawGlyphRun</a> метод.</p>
+<p>WPF также предоставляет службы более низкого уровня для пользовательского форматирования с помощью объекта текста <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта. Наиболее эффективным способом отрисовки текста в Windows Presentation Foundation (WPF) является создание текстового контента на уровне глифа с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.glyphs">Glyphs</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrun">GlyphRun</a>. Однако ценой этой эффективности будет потеря прост в использовании форматирования RTF, которые являются встроенными функциями из Windows Presentation Foundation (WPF) элементы управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>.</p>
+<p><a name="FormattedText_Object"></a></p>
+<h2 id="formattedtext-object">Объект FormattedText</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> Объект позволяет рисовать многострочный текст, в котором каждый символ в текст можно форматировать по отдельности. Дополнительные сведения см. в разделе <a href="drawing-formatted-text.html">Рисование форматированного текста</a>.</p>
+<p>Чтобы создать форматированный текст, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.-ctor">FormattedText</a> конструктор для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта. После создания исходной строки форматированного текста можно применить ряд стилей форматирования. Если в приложении требуется реализовать собственный макет, а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объект является более предпочтительной, чем использование элемента управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>. Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта, см. в разделе <a href="drawing-formatted-text.html">Рисование форматированного текста</a> .</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> Предоставляет возможность низкоуровневого форматирования текста. К одному или более символам можно применить несколько стилей форматирования. Например, можно вызвать оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.setfontsize">SetFontSize</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.setforegroundbrush">SetForegroundBrush</a> методы для изменения форматирования первые пять символов в тексте.</p>
+<p>В следующем примере кода создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта и готовит его к просмотру.</p>
+<pre><code class="lang-csharp" name="formattedtextsnippets#FormattedTextSnippets1">protected override void OnRender(DrawingContext drawingContext)
+{
+    string testString = &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor&quot;;
+
+    // Create the initial formatted text string.
+    FormattedText formattedText = new FormattedText(
+        testString,
+        CultureInfo.GetCultureInfo(&quot;en-us&quot;),
+        FlowDirection.LeftToRight,
+        new Typeface(&quot;Verdana&quot;),
+        32,
+        Brushes.Black);
+
+    // Set a maximum width and height. If the text overflows these values, an ellipsis &quot;...&quot; appears.
+    formattedText.MaxTextWidth = 300;
+    formattedText.MaxTextHeight = 240;
+
+    // Use a larger font size beginning at the first (zero-based) character and continuing for 5 characters.
+    // The font size is calculated in terms of points -- not as device-independent pixels.
+    formattedText.SetFontSize(36 * (96.0 / 72.0), 0, 5);
+
+    // Use a Bold font weight beginning at the 6th character and continuing for 11 characters.
+    formattedText.SetFontWeight(FontWeights.Bold, 6, 11);
+
+    // Use a linear gradient brush beginning at the 6th character and continuing for 11 characters.
+    formattedText.SetForegroundBrush(
+                            new LinearGradientBrush(
+                            Colors.Orange,
+                            Colors.Teal,
+                            90.0),
+                            6, 11);
+
+    // Use an Italic font style beginning at the 28th character and continuing for 28 characters.
+    formattedText.SetFontStyle(FontStyles.Italic, 28, 28);
+
+    // Draw the formatted text string to the DrawingContext of the control.
+    drawingContext.DrawText(formattedText, new Point(10, 0));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="FlowDocument_TextBlock_Label"></a></p>
+<h2 id="flowdocument-textblock-and-label-controls">Элементы управления FlowDocument, TextBlock и Label</h2>
+<p>WPF содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений.</p>
+<h3 id="flowdocument-impacts-performance-more-than-textblock-or-label">FlowDocument влияет на производительность больше, чем TextBlock и Label</h3>
+<p>В общем случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемент должен использоваться при необходимости, например короткого предложения в ограниченная поддержка текста пользовательский интерфейс. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> может использоваться, если требуется Минимальная текстовая поддержка. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> Элемент — это контейнер для документов плавающей верстки, поддерживающих представление форматированного контента и таким образом, имеет большее влияние на производительность, чем при использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> элементов управления.</p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>, см. в разделе <a href="flow-document-overview.html">Общие сведения о документе нефиксированного</a>.</p>
+<h3 id="avoid-using-textblock-in-flowdocument">Избегайте использования TextBlock в FlowDocument</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> Элемент является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> Элемент является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.textelement">TextElement</a>, который является менее затратным в использовании, чем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>-объект, производный от. По возможности используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для отображения текстового содержимого в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>.</p>
+<p>В следующем примере разметки показано два способа настройки текстового контента в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet13">&lt;FlowDocument&gt;
+
+  &lt;!-- Text content within a Run (more efficient). --&gt;
+  &lt;Paragraph&gt;
+    &lt;Run&gt;Line one&lt;/Run&gt;
+  &lt;/Paragraph&gt;
+
+  &lt;!-- Text content within a TextBlock (less efficient). --&gt;
+  &lt;Paragraph&gt;
+    &lt;TextBlock&gt;Line two&lt;/TextBlock&gt;
+  &lt;/Paragraph&gt;
+
+&lt;/FlowDocument&gt;
+</code></pre><h3 id="avoid-using-run-to-set-text-properties">Избегайте использования Run для задания свойств текста</h3>
+<p>В целом, использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> является более производительным, чем неиспользование явного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> объекта вообще. Если вы используете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> устанавливаете свойства текста, задайте эти свойства непосредственно на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> вместо этого.</p>
+<p>В следующем примере разметки показано два способа задания свойства текста, в этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.fontweight">FontWeight</a> свойство:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet12">&lt;!-- Run is used to set text properties. --&gt;
+&lt;TextBlock&gt;
+  &lt;Run FontWeight=&quot;Bold&quot;&gt;Hello, world&lt;/Run&gt;
+&lt;/TextBlock&gt;
+
+&lt;!-- TextBlock is used to set text properties, which is more efficient. --&gt;
+&lt;TextBlock FontWeight=&quot;Bold&quot;&gt;
+  Hello, world
+&lt;/TextBlock&gt;
+</code></pre>
+<p>В следующей таблице показаны стоимость отображения 1000 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> объекты с и без явного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Тип TextBlock</strong></th>
+<th><strong>Время создания (мс)</strong></th>
+<th><strong>Время отрисовки (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Установка свойств текста с помощью Run</td>
+<td>146</td>
+<td>540</td>
+</tr>
+<tr>
+<td>Установка свойств текста с помощью TextBlock</td>
+<td>43</td>
+<td>453</td>
+</tr>
+</tbody>
+</table>
+<h3 id="avoid-databinding-to-the-labelcontent-property">Избегайте привязки данных к свойству Label.Content</h3>
+<p>Представьте себе ситуацию, где у вас есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> объект, который постоянно обновляется из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> источника. При привязке данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> исходный объект, может наблюдаться низкая производительность. Каждый раз, когда источник <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> обновляется, старый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> объект удаляется, а новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> создается заново, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> является неизменяемым, его невозможно изменить. Это, в свою очередь, вызовет переход <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> объект, который удаляет свое устаревшее содержимое и создает новое содержимое для отображения новых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>.</p>
+<p>Решение этой проблемы довольно простое. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> не установлено пользовательское <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.contenttemplate">ContentTemplate</a> значение, замените <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и выполнить привязку данных его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> значение исходной строки.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Свойство с привязкой данных</strong></th>
+<th><strong>Время обновления (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Label.Content</td>
+<td>835</td>
+</tr>
+<tr>
+<td>TextBlock.Text</td>
+<td>242</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Hyperlink"></a></p>
+<h2 id="hyperlink">Гиперссылка</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> Объект — это элемент содержимого потока встроенного уровня, позволяющим размещать гиперссылки в содержимом потока.</p>
+<h3 id="combine-hyperlinks-in-one-textblock-object">Объединение гиперссылок в одном объекте TextBlock</h3>
+<p>Вы можете оптимизировать использование нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> элементов, объединив их в одном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>. Это позволяет минимизировать число объектов, создаваемых в приложении. Например, может потребоваться отобразить несколько гиперссылок, как показано ниже.</p>
+<p>Домашняя страница MSN | Мой MSN</p>
+<p>В следующем примере разметки показано несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы, используемые для отображения гиперссылок:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet9">&lt;!-- Hyperlinks in separate TextBlocks. --&gt;
+&lt;TextBlock&gt;
+  &lt;Hyperlink TextDecorations=&quot;None&quot; NavigateUri=&quot;http://www.msn.com&quot;&gt;MSN Home&lt;/Hyperlink&gt;
+&lt;/TextBlock&gt;
+
+&lt;TextBlock Text=&quot; | &quot;/&gt;
+
+&lt;TextBlock&gt;
+  &lt;Hyperlink TextDecorations=&quot;None&quot; NavigateUri=&quot;http://my.msn.com&quot;&gt;My MSN&lt;/Hyperlink&gt;
+&lt;/TextBlock&gt;
+</code></pre>
+<p>В следующем примере разметки показан более эффективный способ отображения гиперссылок, на этот раз с помощью одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet10">&lt;!-- Hyperlinks combined in the same TextBlock. --&gt;
+&lt;TextBlock&gt;
+  &lt;Hyperlink TextDecorations=&quot;None&quot; NavigateUri=&quot;http://www.msn.com&quot;&gt;MSN Home&lt;/Hyperlink&gt;
+  
+  &lt;Run Text=&quot; | &quot; /&gt;
+  
+  &lt;Hyperlink TextDecorations=&quot;None&quot; NavigateUri=&quot;http://my.msn.com&quot;&gt;My MSN&lt;/Hyperlink&gt;
+&lt;/TextBlock&gt;
+</code></pre><h3 id="showing-underlines-on-hyperlinks-only-on-mouseenter-events">Отображение подчеркивания гиперссылок только при возникновении события MouseEnter</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textdecoration">TextDecoration</a> объект — это визуальное украшение, можно добавить к тексту, однако он может быть производительность при создании. При внесении широкое использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> элементов, рассмотрите возможность отображать подчеркивание только при возникновении события, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.mouseenter">MouseEnter</a> событий. Дополнительные сведения см. в разделе <a href="how-to-specify-whether-a-hyperlink-is-underlined.html">Определение того, подчеркнута ли ссылка</a>.</p>
+<p>На следующем рисунке показано, как запускается событием MouseEnter подчеркнутой гиперссылки:</p>
+<p><img src="media/how-to-specify-whether-a-hyperlink-is-underlined/text-decorations-hyperlinks.png" alt="Гиперссылки, отображающие TextDecorations"></p>
+<p>В следующем примере разметки демонстрируется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> определен с подчеркиванием и без него:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet11">&lt;!-- Hyperlink with default underline. --&gt;
+&lt;Hyperlink NavigateUri=&quot;http://www.msn.com&quot;&gt;
+  MSN Home
+&lt;/Hyperlink&gt;
+
+&lt;Run Text=&quot; | &quot; /&gt;
+
+&lt;!-- Hyperlink with no underline. --&gt;
+&lt;Hyperlink Name=&quot;myHyperlink&quot; TextDecorations=&quot;None&quot;
+           MouseEnter=&quot;OnMouseEnter&quot;
+           MouseLeave=&quot;OnMouseLeave&quot;
+           NavigateUri=&quot;http://www.msn.com&quot;&gt;
+  My MSN
+&lt;/Hyperlink&gt;
+</code></pre>
+<p>В следующей таблице показаны затраты производительности на отображение 1000 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> элементы с подчеркиванием и без него.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Гиперссылка</strong></th>
+<th><strong>Время создания (мс)</strong></th>
+<th><strong>Время отрисовки (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>С подчеркиванием</td>
+<td>289</td>
+<td>1130</td>
+</tr>
+<tr>
+<td>Без подчеркивания</td>
+<td>299</td>
+<td>776</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Text_Formatting_Features"></a></p>
+<h2 id="text-formatting-features">Возможности форматирования текста</h2>
+<p>WPF предоставляет службы, такие как автоматическая расстановка переносов форматирования RTF. Эти службы могут влиять на производительность приложения и должны использоваться только при необходимости.</p>
+<h3 id="avoid-unnecessary-use-of-hyphenation">Избегайте излишнего использования расстановки переносов</h3>
+<p>Автоматическая расстановка переносов находит точки останова дефиса для строк текста и разрешает дополнительные позиции разрыва для строк в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> объектов. По умолчанию возможность автоматического переноса в этих объектах отключена. Эту функцию можно включить, установив свойство IsHyphenationEnabled объекта в значение <code>true</code>. Однако включение этой функции заставляет WPF инициировать взаимодействие Модель COM, которое может повлиять на производительность приложения. Рекомендуется не использовать автоматическую расстановку переносов, если это не является обязательным.</p>
+<h3 id="use-figures-carefully">Внимательно используйте рисунки</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.figure">Figure</a> элемент представляет часть неформатированного содержимого, которое может быть абсолютно позиционировано внутри страницы содержимого. В некоторых случаях <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.figure">Figure</a> может привести к целой страницы автоматическое переформатирование, если ее положение конфликтует с уже размещенным содержимым. Можно свести к минимуму вероятность ненужного переформатирования либо путем группировки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.figure">Figure</a> элементов друг с другом, либо объявить их в верхней части содержимого в сценарии фиксированного размера страницы.</p>
+<h3 id="optimal-paragraph">Оптимальный абзац</h3>
+<p>Средство оптимального абзаца из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> размещает абзацы, чтобы пустое пространство распределялось максимально равномерно. По умолчанию средство оптимального абзаца отключено. Вы можете включить эту функцию, задав объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument.isoptimalparagraphenabled">IsOptimalParagraphEnabled</a> свойства <code>true</code>. Однако включение этой функции влияет на производительность приложения. Рекомендуется не использовать средство оптимального абзаца без необходимости.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+<li><a href="planning-for-application-performance.html">Планирование производительности приложения</a></li>
+<li><a href="optimizing-performance-taking-advantage-of-hardware.html">Использование преимуществ оборудования</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+<li><a href="optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="optimizing-performance-object-behavior.html">Поведение объекта</a></li>
+<li><a href="optimizing-performance-application-resources.html">Ресурсы приложений</a></li>
+<li><a href="optimizing-performance-data-binding.html">Привязка данных</a></li>
+<li><a href="optimizing-performance-other-recommendations.html">Дополнительные рекомендации по повышению производительности</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

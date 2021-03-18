@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1089;&#1090;&#1088;&#1086;&#1077;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1089;&#1090;&#1088;&#1086;&#1077;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="building-a-wpf-application-wpf">Построение приложения WPF</h1>
+
+<p>Приложения Windows Presentation Foundation (WPF) может быть собран как .NET Framework исполняемые файлы (.exe), библиотеки (.dll) или сочетание обоих типов сборки. В этом разделе даются вводные сведения для построения приложений WPF и описываются основные шаги процесса построения.</p>
+<p><a name="Building_a_WPF_Application_using_Command_Line"></a></p>
+<h2 id="building-a-wpf-application">Построение приложения WPF</h2>
+<p>Приложения WPF можно компилировать следующими способами.</p>
+<ul>
+<li><p>Из командной строки. Приложение должно содержать только код (без XAML) и файл определения приложения. Дополнительные сведения см. в разделе <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">Построение из командной строки с помощью csc.exe</a> или <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">Построение из командной строки (Visual Basic)</a>.</p>
+</li>
+<li><p>С помощью Microsoft Build Engine (MSBuild). Помимо кода и файлов XAML приложение должно содержать файл проекта MSBuild. Дополнительные сведения см. в разделе &quot;MSBuild&quot;.</p>
+</li>
+<li><p>Visual Studio. Visual Studio — это интегрированная среда разработки, которая компилирует приложения WPF с помощью MSBuild и включает визуальный конструктор для создания пользовательского интерфейса. Дополнительные сведения см. в разделе <a href="/visualstudio/ide/index-writing-code">записи кода и управление им с помощью Visual Studio</a> и <a href="/visualstudio/designers/designing-xaml-in-visual-studio">конструктора XAML в Visual Studio</a>.</p>
+</li>
+</ul>
+<p><a name="The_Windows_Presentation_Foundation_Build_Pipeline"></a></p>
+<h2 id="wpf-build-pipeline">Конвейер сборки WPF</h2>
+<p>Когда выполняется сборка проекта WPF, вызывается сочетание целевых объектов, специфичных для языка и WPF. Процесс выполнения этих целевых объектов называется конвейером сборки, и его ключевые шаги показаны на следующем рисунке.</p>
+<p><img src="media/wpfbuildsystem-figure1.png" alt="Процесс сборки WPF" title="WPFBuildSystem_Figure1"></p>
+<p><a name="Pre_Build_Initializations"></a></p>
+<h3 id="pre-build-initializations">Инициализации перед сборкой</h3>
+<p>Перед сборкой MSBuild определяет расположение важных инструментов и библиотек, включая следующие.</p>
+<ul>
+<li><p>.NET Framework.</p>
+</li>
+<li><p>Каталоги Windows SDK.</p>
+</li>
+<li><p>Расположение ссылочных сборок WPF.</p>
+</li>
+<li><p>Свойство для путей поиска сборки.</p>
+</li>
+</ul>
+<p>В первую очередь MSBuild ищет сборки в каталоге ссылочных сборок (%ProgramFiles%\Reference Assemblies\Microsoft\Framework\v3.0\). На этом шаге процесс сборки также инициализирует различные свойства и группы элементов и выполняет все необходимые действия по очистке.</p>
+<p><a name="Resolving_references"></a></p>
+<h3 id="resolving-references">Разрешение ссылок</h3>
+<p>Процесс сборки находит и привязывает сборки, которые требуются для выполнения сборки проекта приложения. Эта логика содержится в задаче <code>ResolveAssemblyReference</code>. Все сборки, объявленные как <code>Reference</code> в файле проекта, предоставляются в задачу вместе с информацией о путях поиска и метаданными в сборках, уже установленных в системе. Задача ищет сборки и использует метаданные установленной сборки для фильтрации этих основных сборок WPF, которые не должны отображаться в манифестах выходных данных. Это позволяет избежать избыточных сведений в манифесте ClickOnce. Например, так как PresentationFramework.dll может считаться представителем приложения, построенного на, а также для WPF и, кроме того с момента все WPF сборки существует в том же расположении на каждом компьютере с .NET Framework установлен, нет необходимости включать в манифесты все сведения о всех ссылочных сборок .NET Framework.</p>
+<p><a name="Markup_Compilation___Pass_1"></a></p>
+<h3 id="markup-compilationpass-1">Компиляция разметки — шаг 1</h3>
+<p>На этом шаге файлы XAML анализируются и компилируются, чтобы в среде выполнения не тратилось время на анализ XML и проверку значений свойств. Скомпилированный файл XAML заранее размечен, так что во время выполнения его загрузка происходит гораздо быстрее, чем загрузка файла XAML.</p>
+<p>На этом шаге для каждого файла XAML, который является элементом сборки <code>Page</code>, выполняются следующие действия.</p>
+<ol>
+<li><p>Файл XAML анализируется компилятором разметки.</p>
+</li>
+<li><p>Для этого XAML создается скомпилированное представление и копируется в папку obj\Release.</p>
+</li>
+<li><p>Создается представление CodeDOM нового разделяемого класса и копируется в папку obj\Release.</p>
+</li>
+</ol>
+<p>Кроме того, создается отдельный языковой файл кода для каждого файла XAML. Например для страницы Page1.xaml в проекте Visual Basic, создается файл Page1.g.vb; для страницы Page1.xaml в проекте C# создается файл Page1.g.cs. &quot;.g&quot; в имени файла указывает, что это файл созданного кода, который имеет объявление разделяемого класса для элемента верхнего уровня файла разметки (например, <code>Page</code> или <code>Window</code>). Класс объявляется с <code>partial</code> модификатор в C# (<code>Extends</code> в Visual Basic) для указания, есть другое объявление класса в другом месте, обычно в коде программной файл Page1.xaml.cs.</p>
+<p>Разделяемый класс расширяется от соответствующего базового класса (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> для страницы) и реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.icomponentconnector">System.Windows.Markup.IComponentConnector</a> интерфейс. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.icomponentconnector">IComponentConnector</a> Интерфейс содержит методы для инициализации компонента и связывания имен и событий элемента в его содержимом. Следовательно, в созданном файле кода имеется реализация метода, подобная следующей:</p>
+<pre><code class="lang-csharp">public void InitializeComponent() {  
+    if (_contentLoaded) {  
+        return;  
+    }  
+    _contentLoaded = true;  
+    System.Uri resourceLocater =   
+        new System.Uri(  
+            &quot;window1.xaml&quot;,   
+            System.UriKind.RelativeOrAbsolute);  
+    System.Windows.Application.LoadComponent(this, resourceLocater);  
+}  
+</code></pre>
+<pre><code class="lang-vb">Public Sub InitializeComponent() _  
+  
+    If _contentLoaded Then  
+        Return  
+    End If  
+  
+    _contentLoaded = True  
+    Dim resourceLocater As System.Uri = _  
+        New System.Uri(&quot;mainwindow.xaml&quot;, System.UriKind.Relative)  
+  
+    System.Windows.Application.LoadComponent(Me, resourceLocater)  
+  
+End Sub  
+</code></pre>
+<p>По умолчанию компиляция разметки выполняется в том же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> как MSBuild ядра. Это обеспечивает значительный выигрыш в производительности. Это поведение можно переключать с помощью свойства <code>AlwaysCompileMarkupFilesInSeparateDomain</code>. Это преимущество выгружаются все ссылочные сборки при выгрузке отдельного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a>.</p>
+<p><a name="Pass_2_of_Markup_Compilation"></a></p>
+<h3 id="markup-compilationpass-2">Компиляция разметки — шаг 2</h3>
+<p>Не все страницы XAML компилируются на шаге 1 компиляции разметки. XAML файлы, имеющие локально определенные типы (ссылки на типы, определенные в коде в том же проекте), исключаются из компиляции на этом этапе. Причина заключается в том, что эти локально определенные типы существуют только в источнике и еще не скомпилированы. Чтобы определить это, синтаксический анализатор использует эвристику, которая включает поиск элементов, таких как <code>x:Name</code>, в файле разметки. При обнаружении такого экземпляра компиляция этого файла разметки откладывается, пока не будут скомпилированы файлы кода, после чего второй этап компиляции разметки обрабатывает эти файлы.</p>
+<p><a name="File_Classification"></a></p>
+<h3 id="file-classification">Классификация файлов</h3>
+<p>Процесс сборки помещает выходные файлы в различные группы ресурсов на основе того, в какую сборку приложения они будут помещены. В обычном нелокализованном приложении все файлы данных, отмеченные как <code>Resource</code>, помещаются в главную сборку (исполняемый файл или библиотеку). Когда в проекте задается <code>UICulture</code>, все скомпилированные файлы XAML и ресурсы, специально отмеченные как языковые, помещаются во вспомогательную сборку ресурсов. Кроме того, все независящие от языка ресурсы помещаются в главную сборку. На этом шаге процесса сборки принимается это решение.</p>
+<p>Действия сборки <code>ApplicationDefinition</code>, <code>Page</code> и <code>Resource</code> в файле проекта могут быть дополнены метаданными <code>Localizable</code> (допустимые значения — <code>true</code> и <code>false</code>), которые определяют, зависит ли этот файл от языка.</p>
+<p><a name="Core_Compilation"></a></p>
+<h3 id="core-compilation">Основная компиляция</h3>
+<p>На этапе основной компиляции выполняется компиляция файлов кода. Это управляется логикой в языковых файлах целей сборки Microsoft.CSharp.targets и Microsoft.VisualBasic.targets. Если эвристика определила, что первого этапа компилятора разметки достаточно, то создается главная сборка. Однако если один или несколько файлов XAML в проекте имеют ссылки на локально определенные типы, то создается временный DLL-файл, чтобы могли быть созданы окончательные сборки приложения по завершении второго этапа компиляции разметки.</p>
+<p><a name="Manifest_generation"></a></p>
+<h3 id="manifest-generation">Создание манифеста</h3>
+<p>В конце процесса сборки, когда будут готовы все сборки приложения и файлы контента, создаются манифесты ClickOnce для приложения.</p>
+<p>Файл манифеста развертывания описывает модель развертывания: текущую версию, поведение обновления и идентификатор издателя вместе с цифровой подписью. Этот манифест должен создаваться администраторами, управляющими развертыванием. Файл имеет расширение .xbap (для XAML-приложения браузера (XBAP)) и .application для установленных приложений. Первое диктуется свойством проекта <code>HostInBrowser</code>, и в результате манифест идентифицирует приложение как браузерное.</p>
+<p>Манифест приложения (файл .exe.manifest) описывает сборки приложения и зависимые библиотеки, а также перечисляет разрешения, необходимые для приложения. Этот файл должен быть создан разработчиком приложения. Для запуска приложения ClickOnce пользователь открывает файл манифеста развертывания приложения.</p>
+<p>Эти файлы манифеста всегда создаются для XBAP. Для установленных приложений они не создаются, если в файле проекта не будет задано свойство <code>GenerateManifests</code> со значением <code>true</code>.</p>
+<p>XBAP Получите два дополнительных разрешения разрешений, назначаемых типичные приложения зоны Интернета: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.webbrowserpermission">WebBrowserPermission</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.mediapermission">MediaPermission</a>. Система сборки WPF объявляет эти разрешения в манифесте приложения.</p>
+<p><a name="Incremental_Build_Support"></a></p>
+<h2 id="incremental-build-support">Добавочная сборка</h2>
+<p>Система сборки WPF обеспечивает поддержку добавочных сборок. Она достаточно интеллектуально обнаруживает изменения, внесенные в разметку или код, и компилирует только те артефакты, на которые повлияло изменение. Механизм добавочной сборки использует следующие файлы.</p>
+<ul>
+<li><p>Файл $(<em>AssemblyName</em>)_MarkupCompiler.Cache для сохранения текущего состояния компилятора.</p>
+</li>
+<li><p>Файл $(<em>AssemblyName</em>)_MarkupCompiler.lref для кэширования файлов XAML со ссылками на локально определенные типы.</p>
+</li>
+</ul>
+<p>Ниже приведен набор правил, управляющих добавочной сборкой.</p>
+<ul>
+<li><p>Файл — это наименьшая единица, в которой система сборки обнаруживает изменения. Таким образом, для файла кода система сборки не может узнать, был ли изменен тип или добавлен код. То же самое относится и к файлам проекта.</p>
+</li>
+<li><p>Механизм добавочной сборки должен знать, что страница XAML либо определяет класс, либо использует другие классы.</p>
+</li>
+<li><p>Если изменены записи <code>Reference</code>, то перекомпилируются все страницы.</p>
+</li>
+<li><p>При изменении файла кода перекомпилируются все страницы с локально определенными ссылками типа.</p>
+</li>
+<li><p>Если изменяется файл XAML:</p>
+<ul>
+<li><p>XAML объявляется как <code>Page</code> в проекте: если XAML не имеет локально определенных ссылок на типы, перекомпилируется этот XAML плюс все страницы XAML с локальными ссылками; если XAML имеет локальные ссылки, перекомпилируются все страницы XAML с локальными ссылками.</p>
+</li>
+<li><p>Если XAML объявляется как <code>ApplicationDefinition</code> в проекте: перекомпилируются все XAML страниц (причина: каждый XAML есть ссылка на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> тип, который мог быть изменен).</p>
+</li>
+</ul>
+</li>
+<li><p>Если файл проекта объявляет файл кода как определение приложения вместо файла XAML:</p>
+<ul>
+<li><p>Проверьте, изменилось ли значение <code>ApplicationClassName</code> в файле проекта (появился ли новый тип приложения). Если да, перекомпилируйте все приложение.</p>
+</li>
+<li><p>В противном случае перекомпилируйте все страницы XAML с локальными ссылками.</p>
+</li>
+</ul>
+</li>
+<li><p>При изменении файла проекта: примените все вышеперечисленные правила и посмотрите, что нужно перекомпилировать. Изменения следующих свойств приводят к полной перекомпиляции: <code>AssemblyName</code>, <code>IntermediateOutputPath</code>, <code>RootNamespace</code> и <code>HostInBrowser</code>.</p>
+</li>
+</ul>
+<p>Возможны следующие сценарии перекомпиляции.</p>
+<ul>
+<li><p>Перекомпилируется все приложение.</p>
+</li>
+<li><p>Перекомпилируются только те файлы XAML, в которых есть локально определенные ссылки типа.</p>
+</li>
+<li><p>Ничего не перекомпилируется (если в проекте ничего не изменялось).</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="deploying-a-wpf-application-wpf.html">Развертывание приложения WPF</a></li>
+<li><a href="/visualstudio/msbuild/wpf-msbuild-reference">Справочные сведения о WPF для MSBuild</a></li>
+<li><a href="pack-uris-in-wpf.html">URI типа &quot;pack&quot; в WPF</a></li>
+<li><a href="wpf-application-resource-content-and-data-files.html">Ресурсы, Содержимое и Файлы данных WPF-приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1085;&#1072;&#1076;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080;, &#1074;&#1086;&#1079;&#1074;&#1088;&#1072;&#1097;&#1072;&#1102;&#1097;&#1077;&#1081; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1081; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1085;&#1072;&#1076;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080;, &#1074;&#1086;&#1079;&#1074;&#1088;&#1072;&#1097;&#1072;&#1102;&#1097;&#1077;&#1081; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1081; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-create-an-add-in-that-returns-a-ui">Практическое руководство. Создание надстройки, возвращающей пользовательский интерфейс</h1>
+
+<p>В этом примере показано, как создать надстройку, возвращающий Windows Presentation Foundation (WPF) на узел автономного приложения WPF.</p>
+<p>Надстройка возвращает пользовательский Интерфейс, который является пользовательский элемент управления WPF. Содержимое пользовательского элемента управления составляет одна кнопка, при нажатии которой отображается окно сообщения. Автономное приложение WPF размещает надстройку и отображает пользовательский элемент управления (возвращенный надстройкой) как содержимое главного окна приложения.</p>
+<p><strong>Предварительные требования</strong></p>
+<p>В этом примере представлены расширения WPF модель надстроек платформы .NET Framework, реализовать этот сценарий и предполагается следующее:</p>
+<ul>
+<li><p>Знание модели надстроек платформы .NET Framework, включая конвейер, надстройка и разработку основного приложения. Если вы не знакомы с этими понятиями, см. в разделе <a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">надстройки и расширения</a>. Учебник, в котором демонстрируется реализация конвейера, надстройки и ведущего приложения, см. в разделе <a href="../../add-ins/walkthrough-create-extensible-app.md">Пошаговое руководство: Создание расширяемого приложения</a>.</p>
+</li>
+<li><p>Знание расширений WPF в .NET Framework модель надстроек, которые можно найти здесь: <a href="wpf-add-ins-overview.html">Общие сведения о надстройках WPF</a>.</p>
+</li>
+</ul>
+<h2 id="example">Пример</h2>
+<p>Создание надстройки, возвращающей пользовательский Интерфейс WPF требуется специальный код для каждого сегмента конвейера, надстройки и ведущего приложения.</p>
+<p><a name="Contract"></a></p>
+<h2 id="implementing-the-contract-pipeline-segment">Реализация сегмента конвейера контракта</h2>
+<p>Метод должен быть определен контрактом для возвращения пользовательского интерфейса и его возвращаемое значение должно быть типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>. Это демонстрируется путем <code>GetAddInUI</code> метод <code>IWPFAddInContract</code> контракта в следующем коде.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#ContractCode">using System.AddIn.Contract;
+using System.AddIn.Pipeline;
+
+namespace Contracts
+{
+    /// &lt;summary&gt;
+    /// Defines the services that an add-in will provide to a host application
+    /// &lt;/summary&gt;
+    [AddInContract]
+    public interface IWPFAddInContract : IContract
+    {
+        // Return a UI to the host application
+        INativeHandleContract GetAddInUI();
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="AddInView"></a></p>
+<h2 id="implementing-the-add-in-view-pipeline-segment">Реализация сегмента конвейера представления надстройки</h2>
+<p>Поскольку надстройка реализует Пользовательские интерфейсы предоставляет в качестве подклассов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, метод представления надстройки, которое связано с <code>IWPFAddInView.GetAddInUI</code> должен возвращать значение типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>. В следующем коде показано представление надстройки контракта, реализованное как интерфейс.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#AddInViewCode">using System.AddIn.Pipeline;
+using System.Windows;
+
+namespace AddInViews
+{
+    /// &lt;summary&gt;
+    /// Defines the add-in's view of the contract
+    /// &lt;/summary&gt;
+    [AddInBase]
+    public interface IWPFAddInView
+    {
+        // The add-in's implementation of this method will return
+        // a UI type that directly or indirectly derives from
+        // FrameworkElement.
+        FrameworkElement GetAddInUI();
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="AddInSideAdapter"></a></p>
+<h2 id="implementing-the-add-in-side-adapter-pipeline-segment">Реализация сегмента конвейера адаптера надстройки</h2>
+<p>Метод контракта возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>, но Надстройка возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> (как указано представлением надстройки). Следовательно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> должны быть преобразованы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> перед пересечением границы изоляции. Эту работу выполняет адаптер стороне надстройки, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a>, как показано в следующем коде.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#AddInSideAdapterCode">using System.AddIn.Contract;
+using System.AddIn.Pipeline;
+using System.Windows;
+
+using AddInViews;
+using Contracts;
+
+namespace AddInSideAdapters
+{
+    /// &lt;summary&gt;
+    /// Adapts the add-in's view of the contract to the add-in contract
+    /// &lt;/summary&gt;
+    [AddInAdapter]
+    public class WPFAddIn_ViewToContractAddInSideAdapter : ContractBase, IWPFAddInContract
+    {
+        IWPFAddInView wpfAddInView;
+
+        public WPFAddIn_ViewToContractAddInSideAdapter(IWPFAddInView wpfAddInView)
+        {
+            // Adapt the add-in view of the contract (IWPFAddInView)
+            // to the contract (IWPFAddInContract)
+            this.wpfAddInView = wpfAddInView;
+        }
+
+        public INativeHandleContract GetAddInUI()
+        {
+            // Convert the FrameworkElement from the add-in to an INativeHandleContract
+            // that will be passed across the isolation boundary to the host application.
+            FrameworkElement fe = this.wpfAddInView.GetAddInUI();
+            INativeHandleContract inhc = FrameworkElementAdapters.ViewToContractAdapter(fe);
+            return inhc;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="HostView"></a></p>
+<h2 id="implementing-the-host-view-pipeline-segment">Реализация сегмента конвейера представления в основном приложении</h2>
+<p>Так как основное приложение будет отображать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, метод представления главного приложения, которое связано с <code>IWPFAddInHostView.GetAddInUI</code> должен возвращать значение типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>. В следующем коде показано представление контракта в основном приложении, реализованное как интерфейс.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#HostViewCode">using System.Windows;
+
+namespace HostViews
+{
+    /// &lt;summary&gt;
+    /// Defines the host's view of the add-in
+    /// &lt;/summary&gt;
+    public interface IWPFAddInHostView
+    {
+        // The view returns as a class that directly or indirectly derives from
+        // FrameworkElement and can subsequently be displayed by the host
+        // application by embedding it as content or sub-content of a UI that is
+        // implemented by the host application.
+        FrameworkElement GetAddInUI();
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="HostSideAdapter"></a></p>
+<h2 id="implementing-the-host-side-adapter-pipeline-segment">Реализация сегмента конвейера адаптера приложения</h2>
+<p>Метод контракта возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>, но основное приложение ожидает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> (как указано представлением узла). Следовательно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> должны быть преобразованы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> после пересечения границы изоляции. Эту работу выполняет адаптер на стороне узла, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a>, как показано в следующем коде.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#HostSideAdapterCode">using System.AddIn.Contract;
+using System.AddIn.Pipeline;
+using System.Windows;
+
+using Contracts;
+using HostViews;
+
+namespace HostSideAdapters
+{
+    /// &lt;summary&gt;
+    /// Adapts the add-in contract to the host's view of the add-in
+    /// &lt;/summary&gt;
+    [HostAdapter]
+    public class WPFAddIn_ContractToViewHostSideAdapter : IWPFAddInHostView
+    {
+        IWPFAddInContract wpfAddInContract;
+        ContractHandle wpfAddInContractHandle;
+
+        public WPFAddIn_ContractToViewHostSideAdapter(IWPFAddInContract wpfAddInContract)
+        {
+            // Adapt the contract (IWPFAddInContract) to the host application's
+            // view of the contract (IWPFAddInHostView)
+            this.wpfAddInContract = wpfAddInContract;
+
+            // Prevent the reference to the contract from being released while the
+            // host application uses the add-in
+            this.wpfAddInContractHandle = new ContractHandle(wpfAddInContract);
+        }
+
+        public FrameworkElement GetAddInUI()
+        {
+            // Convert the INativeHandleContract that was passed from the add-in side
+            // of the isolation boundary to a FrameworkElement
+            INativeHandleContract inhc = this.wpfAddInContract.GetAddInUI();
+            FrameworkElement fe = FrameworkElementAdapters.ContractToViewAdapter(inhc);
+            return fe;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="AddIn"></a></p>
+<h2 id="implementing-the-add-in">Реализация надстройки</h2>
+<p>Адаптер на стороне надстройки и надстройка созданного представления надстройки (<code>WPFAddIn1.AddIn</code>) должен реализовывать <code>IWPFAddInView.GetAddInUI</code> метод для возврата <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекта ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> в этом примере). Реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, <code>AddInUI</code>, показано в следующем примере кода.</p>
+<pre><code class="lang-xaml" name="SimpleAddInReturnsAUISample#AddInUIMarkup">    &lt;UserControl
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;WPFAddIn1.AddInUI&quot;&gt;
+    
+    &lt;StackPanel&gt;
+        &lt;Button Click=&quot;clickMeButton_Click&quot; Content=&quot;Click Me!&quot; /&gt;
+    &lt;/StackPanel&gt;
+    
+&lt;/UserControl&gt;
+</code></pre><pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#AddInUICodeBehind">using System.Windows;
+using System.Windows.Controls;
+
+namespace WPFAddIn1
+{
+    public partial class AddInUI : UserControl
+    {
+        public AddInUI()
+        {
+            InitializeComponent();
+        }
+
+        void clickMeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(&quot;Hello from WPFAddIn1&quot;);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Реализация <code>IWPFAddInView.GetAddInUI</code> надстройкой просто должен возвращать новый экземпляр класса <code>AddInUI</code>, как показано в следующем примере кода.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#AddInCode">using System.AddIn;
+using System.Windows;
+
+using AddInViews;
+
+namespace WPFAddIn1
+{
+    /// &lt;summary&gt;
+    /// Add-In implementation
+    /// &lt;/summary&gt;
+    [AddIn(&quot;WPF Add-In 1&quot;)]
+    public class WPFAddIn : IWPFAddInView
+    {
+        public FrameworkElement GetAddInUI()
+        {
+            // Return add-in UI
+            return new AddInUI();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="App"></a></p>
+<h2 id="implementing-the-host-application">Реализация ведущего приложения</h2>
+<p>Адаптер и созданного представления узла, ведущее приложение может использовать модель надстроек платформы .NET Framework, чтобы открыть конвейер, получить серверное представление надстройки, и вызовите <code>IWPFAddInHostView.GetAddInUI</code> метод. Эти действия показаны в следующем коде.</p>
+<pre><code class="lang-csharp" name="SimpleAddInReturnsAUISample#GetUICode">// Get add-in pipeline folder (the folder in which this application was launched from)
+string appPath = Environment.CurrentDirectory;
+
+// Rebuild visual add-in pipeline
+string[] warnings = AddInStore.Rebuild(appPath);
+if (warnings.Length &gt; 0)
+{
+    string msg = &quot;Could not rebuild pipeline:&quot;;
+    foreach (string warning in warnings) msg += &quot;\n&quot; + warning;
+    MessageBox.Show(msg);
+    return;
+}
+
+// Activate add-in with Internet zone security isolation
+Collection&lt;AddInToken&gt; addInTokens = AddInStore.FindAddIns(typeof(IWPFAddInHostView), appPath);
+AddInToken wpfAddInToken = addInTokens[0];
+this.wpfAddInHostView = wpfAddInToken.Activate&lt;IWPFAddInHostView&gt;(AddInSecurityLevel.Internet);
+
+// Get and display add-in UI
+FrameworkElement addInUI = this.wpfAddInHostView.GetAddInUI();
+this.addInUIHostGrid.Children.Add(addInUI);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">Надстройки и расширения среды</a></li>
+<li><a href="wpf-add-ins-overview.html">Общие сведения о надстройках WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

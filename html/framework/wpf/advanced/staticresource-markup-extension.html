@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1077; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; StaticResource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1077; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; StaticResource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="staticresource-markup-extension">Расширение разметки StaticResource</h1>
+
+<p>Предоставляет значение для любого XAML свойства атрибута, посмотрев на ссылку на уже заданного ресурса. Поведение подстановки для этого ресурса аналогичен во время загрузки, который будет искать ресурсы, которые были ранее загружены из разметки текущего XAML странице, а также других источников приложения и автоматически создаст значение ресурсов как значение свойства в объектах во время выполнения.</p>
+<h2 id="xaml-attribute-usage">Использование атрибута XAML</h2>
+<pre><code class="lang-xml">&lt;object property=&quot;{StaticResource key}&quot; .../&gt;  
+</code></pre>
+<h2 id="xaml-object-element-usage">Использование элемента объекта XAML</h2>
+<pre><code class="lang-xml">&lt;object&gt;  
+  &lt;object.property&gt;  
+&lt;StaticResource ResourceKey=&quot;key&quot; .../&gt;  
+  &lt;/object.property&gt;  
+&lt;/object&gt;  
+</code></pre>
+<h2 id="xaml-values">Значения XAML</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td>Ключ для запрашиваемого ресурса. Этот ключ была изначально назначена по <a href="../../xaml-services/x-key-directive.md">директивы x: Key</a> Если ресурс был создан в разметке или был предоставлен в виде <code>key</code> параметра при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary.add">ResourceDictionary.Add</a> Если ресурс был создан в коде.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remarks">Примечания</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Объект <code>StaticResource</code> не следует пытаться сделать прямую ссылку на ресурс, определенный лексически далее в XAML файл. Попытка выполнить такую операцию не поддерживается, и даже если эта ссылка не произойдет сбой, попытка прямой ссылки повлечет снижение производительности во время загрузки при внутренней хэш-таблиц, представляющих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> производится поиск. Для получения наилучших результатов настройте композицию словарей ресурсов таким образом, что можно избежать прямых ссылок. Если не удается избежать опережающие ссылки, используйте <a href="dynamicresource-markup-extension.html">расширение разметки DynamicResource</a> вместо этого.</p>
+</div>
+<p>Указанный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension.resourcekey">ResourceKey</a> должен соответствовать имеющийся ресурс, определенный с помощью <a href="../../xaml-services/x-key-directive.md">директивы x: Key</a> на определенном уровне страницы, приложения, доступный элемент управления темы и внешним ресурсам или системных ресурсов. Поиск ресурсов происходит в указанном порядке. Дополнительные сведения о поведение подстановки ресурса для статических и динамических ресурсов, см. в разделе <a href="xaml-resources.html">ресурсы XAML</a>.</p>
+<p>Ключ ресурса может быть любой строкой, определенные в <a href="../../xaml-services/xamlname-grammar.md">Грамматика XamlName</a>. Ключ ресурса также может быть других типов объектов, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a>. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> ключ — это основа для элементов управления можно стилями темы, через ключ неявного стиля. Дополнительные сведения см. в разделе <a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a>.</p>
+<p>Декларативные альтернативные методы ссылкой на ресурс — как <a href="dynamicresource-markup-extension.html">расширение разметки DynamicResource</a>.</p>
+<p>Синтаксис атрибутов является наиболее распространенным синтаксисом, используемым с этим расширением разметки. Строковая лексема, указываемая после строки идентификатора <code>StaticResource</code>, присваивается в качестве значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension.resourcekey">ResourceKey</a> соответствующего класса расширения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension">StaticResourceExtension</a>.</p>
+<p><code>StaticResource</code> может использоваться в синтаксисе элемента объекта. В этом случае укажите значение параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension.resourcekey">ResourceKey</a> свойство является обязательным.</p>
+<p><code>StaticResource</code> Можно также использовать в использовании атрибут verbose, который указывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension.resourcekey">ResourceKey</a> как свойство = значение пары:</p>
+<pre><code class="lang-xml">&lt;object property=&quot;{StaticResource ResourceKey=key}&quot; .../&gt;  
+</code></pre>
+<p>Подробное определение зачастую удобно использовать для расширений, которые имеют несколько устанавливаемых свойств, а также в том случае, если некоторые свойства являются необязательными. Так как <code>StaticResource</code> имеет только одно устанавливаемое свойство, которое является обязательным, это использование не является типичным.</p>
+<p>В WPF XAML реализации обработчика обработка данного расширения разметки определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.staticresourceextension">StaticResourceExtension</a> класса.</p>
+<p><code>StaticResource</code> является расширением разметки. Расширения разметки обычно реализуются, если требуется заменить значения атрибутов на нелитеральные значения или имена обработчиков и если требуется больше, чем простая настройка преобразователей типов на работу с определенными типами или свойствами. Все расширения разметки в XAML используют символы &quot;{&quot; и &quot;}&quot; в синтаксисе их атрибутов, который является соглашением, по которому обработчик XAML распознает, что расширение разметки должно обработать атрибут. Дополнительные сведения см. в разделе <a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a></li>
+<li><a href="xaml-resources.html">Ресурсы XAML</a></li>
+<li><a href="resources-and-code.html">Ресурсы и код</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

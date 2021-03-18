@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1072; &#1074;&#1099;&#1089;&#1086;&#1082;&#1086;&#1075;&#1086; DPI &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1072; &#1074;&#1099;&#1089;&#1086;&#1082;&#1086;&#1075;&#1086; DPI &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="high-dpi-support-in-windows-forms">Поддержка высокого DPI в Windows Forms</h1>
+
+<p>Начиная с .NET Framework 4.7, Windows Forms включает усовершенствования для распространенных высокое разрешение и динамических сценариев точек на ДЮЙМ. Сюда входит следующее.</p>
+<ul>
+<li><p>Усовершенствования в масштабировании и макет ряд Windows Forms элементы управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.monthcalendar">MonthCalendar</a> управления и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkedlistbox">CheckedListBox</a> элемента управления.</p>
+</li>
+<li><p>Один проход масштабирования.  В .NET Framework 4.6 и более ранних версий масштабирование было выполнено через несколько проходов, которые вызвала некоторые элементы управления масштабировать больше, чем была необходима.</p>
+</li>
+<li><p>Поддержка динамических сценариев точек на ДЮЙМ, в которых пользователь изменяет идентификации точек на ДЮЙМ или масштаб после запуска приложения Windows Forms.</p>
+</li>
+</ul>
+<p>В версиях .NET Framework, начиная с .NET Framework 4.7 Улучшенная поддержка высокого Разрешения является дополнительной функции. Необходимо настроить приложение таким образом, чтобы воспользоваться его преимуществами.</p>
+<h2 id="configuring-your-windows-forms-app-for-high-dpi-support">Настройка поддержка высокого Разрешения в приложении Windows Forms</h2>
+<p>Новые функции Windows Forms, которые поддерживают высокий уровень поддержки определения DPI доступны только в приложениях, предназначенных для .NET Framework 4.7 и работают в операционных системах Windows, начиная с Windows 10 Creators Update.</p>
+<p>Кроме того чтобы настроить поддержка высокого Разрешения в приложении Windows Forms, выполните следующие действия.</p>
+<ul>
+<li><p>Объявление совместимости с Windows 10.</p>
+<p>Чтобы сделать это, добавьте следующее в файл манифеста:</p>
+<pre><code class="lang-xml">&lt;compatibility xmlns=&quot;urn:schemas-microsoft-com:compatibility.v1&quot;&gt;
+  &lt;application&gt;
+    &lt;!-- Windows 10 compatibility --&gt;
+    &lt;supportedOS Id=&quot;{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}&quot; /&gt;
+  &lt;/application&gt;
+&lt;/compatibility&gt;
+</code></pre>
+</li>
+<li><p>Включить awareness DPI для каждого монитора в <em>app.config</em> файл.</p>
+<p>Windows Forms вводится новый <a href="../configure-apps/file-schema/winforms/index.md"> <code>&lt;System.Windows.Forms.ApplicationConfigurationSection&gt;</code> </a> элемент для поддержки новых функций и добавлены сведения о настройках, начиная с .NET Framework 4.7. Чтобы воспользоваться преимуществами новых функций, которые поддерживают высокое разрешение, добавьте следующее в файл конфигурации приложения.</p>
+<pre><code class="lang-xml">&lt;System.Windows.Forms.ApplicationConfigurationSection&gt;
+  &lt;add key=&quot;DpiAwareness&quot; value=&quot;PerMonitorV2&quot; /&gt;
+&lt;/System.Windows.Forms.ApplicationConfigurationSection&gt;
+</code></pre>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>В предыдущих версиях .NET Framework используемой манифест для добавления поддержка высокого Разрешения. Этот подход не рекомендуется, так как он переопределяет параметры, определенные в файле app.config.</p>
+</div>
+</li>
+<li><p>Вызовите статический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.enablevisualstyles">EnableVisualStyles</a> метод.</p>
+<p>Это должен быть первый вызов метода в точку входа приложения. Пример:</p>
+<pre><code class="lang-csharp">static void Main()
+{
+    Application.EnableVisualStyles();
+    Application.SetCompatibleTextRenderingDefault(false);
+    Application.Run(new Form2());
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="opting-out-of-individual-high-dpi-features">Отказ от отдельных функций высокий DPI</h2>
+<p>Установка <code>DpiAwareness</code> значение <code>PerMonitorV2</code> возможности все высокий DPI awareness поддерживается в версиях .NET Framework, начиная с .NET Framework 4.7. Как правило этого достаточно для большинства приложений Windows Forms. Тем не менее вы можете отказаться от один или несколько отдельных компонентов. Самой важной причиной для этого является то, что существующий код приложения уже обрабатывает эту функцию.  Например если приложение обрабатывает автоматическое масштабирование, может потребоваться отключить автоматическое изменение размеров следующим образом:</p>
+<pre><code class="lang-xml">&lt;System.Windows.Forms.ApplicationConfigurationSection&gt;
+  &lt;add key=&quot;DpiAwareness&quot; value=&quot;PerMonitorV2&quot; /&gt;
+  &lt;add key=&quot;EnableWindowsFormsHighDpiAutoResizing&quot; value=&quot;false&quot; /&gt;
+&lt;/System.Windows.Forms.ApplicationConfigurationSection&gt;
+</code></pre>
+<p>Список отдельных ключей и их значения, см. в разделе <a href="../configure-apps/file-schema/winforms/windows-forms-add-configuration-element.md">добавьте элемент конфигурации Windows Forms</a>.</p>
+<h2 id="new-dpi-change-events">Новые события изменения DPI</h2>
+<p>Три новые события, начиная с .NET Framework 4.7, позволяют программным образом обрабатывать динамические изменения DPI.</p>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dpichangedafterparent">DpiChangedAfterParent</a>, который срабатывает, когда настройка DPI для элемента управления изменяется программным образом после события изменения DPI для его родительского элемента управления или формы произошла.</li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dpichangedbeforeparent">DpiChangedBeforeParent</a>, который срабатывает, когда настройка DPI для элемента управления изменяется программным образом перед событием изменения DPI для его родительского элемента управления или формы произошла.</li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.dpichanged">DpiChanged</a>, который возникает при изменении настройки DPI на устройстве отображения, где в данный момент отображается форма.</li>
+</ul>
+<h2 id="new-helper-methods-and-properties">Новые вспомогательные методы и свойства</h2>
+<p>.NET Framework 4.7 также добавляет новые вспомогательные методы и свойства, которые предоставляют сведения о масштабе DPI и позволяют выполнять масштабирование. Сюда входит следующее.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.logicaltodeviceunits">LogicalToDeviceUnits</a>, который преобразует значение из логического устройства.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scalebitmaplogicaltodevice">ScaleBitmapLogicalToDevice</a>, которая пропорционально увеличивает растровое изображение логического значения DPI для устройства.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.devicedpi">DeviceDpi</a>, который возвращает значения DPI для текущего устройства.</p>
+</li>
+</ul>
+<h2 id="versioning-considerations">Вопросы управления версиями</h2>
+<p>Помимо выполнения по .NET Framework 4.7 и Windows 10 Creators Update, приложение может также выполняться в среде, в которой он не совместим с высоким DPI улучшения. В этом случае необходимо разработать переход на резервный ресурс для вашего приложения. Это можно сделать для выполнения <a href="controls/user-drawn-controls.html">нестандартных операций рисования</a> для обработки масштабирования.</p>
+<p>Чтобы сделать это, необходимо также определить операционную систему, на котором выполняется приложение. Это можно сделать с помощью следующего кода:</p>
+<pre><code class="lang-csharp">// Create a reference to the OS version of Windows 10 Creators Update.
+Version OsMinVersion = new Version(10, 0, 15063, 0);
+
+// Access the platform/version of the current OS.
+Console.WriteLine(Environment.OSVersion.Platform.ToString());
+Console.WriteLine(Environment.OSVersion.VersionString);
+
+// Compare the current version to the minimum required version.
+Console.WriteLine(Environment.OSVersion.Version.CompareTo(OsMinVersion));
+</code></pre>
+<p>Обратите внимание на то, что приложение не будет определять успешно Windows 10, если он не был указан как поддерживаемой операционной системы в манифесте приложения.</p>
+<p>Вы также можете проверить версию .NET Framework, в которой было создано приложение:</p>
+<pre><code class="lang-csharp">Console.WriteLine(AppDomain.CurrentDomain.SetupInformation.TargetFrameworkName);
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../configure-apps/file-schema/winforms/windows-forms-add-configuration-element.md">Windows Forms добавьте элемент конфигурации</a></li>
+<li><a href="adjusting-the-size-and-scale-of-windows-forms.html">Настройка размера и масштаба формы Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

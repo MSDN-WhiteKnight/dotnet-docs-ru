@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms &#1089;&#1086; &#1074;&#1089;&#1090;&#1088;&#1086;&#1077;&#1085;&#1085;&#1086;&#1081; &#1087;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1080; &#1088;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074;&#1083;&#1072;&#1076;&#1077;&#1083;&#1100;&#1094;&#1077;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms &#1089;&#1086; &#1074;&#1089;&#1090;&#1088;&#1086;&#1077;&#1085;&#1085;&#1086;&#1081; &#1087;&#1086;&#1076;&#1076;&#1077;&#1088;&#1078;&#1082;&#1080; &#1088;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074;&#1083;&#1072;&#1076;&#1077;&#1083;&#1100;&#1094;&#1077;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="controls-with-built-in-owner-drawing-support">Элементы управления Windows Forms со встроенной поддержки рисования владельцем</h1>
+
+<p>Рисование владельцем в Windows Forms, иначе называемое пользовательским рисованием, — это способ изменения внешнего вида определенных элементов управления.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Слово «control» этого раздела используется для обозначения классов, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.component">Component</a>.</p>
+</div>
+<p>Как правило, Windows обрабатывает Рисование автоматически, используя параметры свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> для определения внешнего вида элемента управления. При рисовании владельцем можно перехватить процесс рисования, изменив элементы внешнего вида, которые недоступны при использовании свойств. Например, многие элементы управления позволяют задавать цвет отображаемого текста, но вы ограничены одним цветом. Рисование владельцем позволяет, например, отображать часть текста черным цветом, а другую часть — красным.</p>
+<p>На практике рисование владельцем аналогично рисованию графических элементов в форме. Например, можно использовать графические методы в обработчике для формы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий для эмуляции <code>ListBox</code> элемента управления, но вам пришлось бы писать собственный код для обработки взаимодействия с пользователем. При рисовании владельцем элемент управления использует ваш код для рисования своего содержимого, но в остальном сохраняет все свои внутренние возможности. Графические методы можно использовать для рисования каждого элемента в элементе управления или для настройки некоторых аспектов каждого элемента при использовании внешнего вида по умолчанию для других аспектов каждого элемента.</p>
+<h2 id="owner-drawing-in-windows-forms-controls">Рисование владельцем в элементах управления Windows Forms</h2>
+<p>Чтобы выполнить рисование владельцем в элементах управления, поддерживающих эту функцию, вы, как правило, задаете одно свойство и обрабатываете одно или несколько событий.</p>
+<p>Большинство элементов управления, поддерживающих рисование владельцем, имеют свойство <code>OwnerDraw</code> или <code>DrawMode</code>, указывающее, будет ли элемент управления вызывать связанные с рисованием события при рисовании себя.</p>
+<p>Элементы управления, которые не имеют свойства <code>OwnerDraw</code> или <code>DrawMode</code>, включают элемент управления <code>DataGridView</code>, предоставляющий происходящие автоматически события рисования, и элемент управления <code>ToolStrip</code>, рисуемый с помощью внешнего класса отрисовки, имеющего собственные события, связанные с рисованием.</p>
+<p>Существует много различных типов событий рисования, однако типичное событие рисования возникает для рисования отдельного элемента внутри элемента управления. Обработчик событий получает объект <code>EventArgs</code>, который содержит сведения о рисуемом элементе, и инструменты, которые можно использовать для рисования. Например, этот объект обычно содержит номер индекса элемента в его родительской коллекции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> указывает границы отображения элемента и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект для вызова методов рисования. Для некоторых событий объект <code>EventArgs</code> предоставляет дополнительные сведения об элементе и методах, которые можно вызвать для рисования некоторых аспектов элемента по умолчанию, таких как фон или прямоугольник фокуса.</p>
+<p>Чтобы создать элемент управления для повторного использования, содержащий настройки рисования владельцем, создайте новый класс, производный от класса элемента управления, который поддерживает рисование владельцем. Вместо обработки событий рисования включите код рисования владельцем в переопределения для соответствующего метода или методов <code>On</code><em>ИмяСобытия</em> в новом классе. Убедитесь в том, что в этом случае вызывается метод или методы <code>On</code><em>ИмяСобытия</em> базового класса, чтобы пользователи элемента управления могли обрабатывать события рисования владельцем и выполнять дополнительные настройки.</p>
+<p>Следующие элементы управления Windows Forms поддерживают рисование владельцем во всех версиях .NET Framework.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox">ListBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem">MenuItem</a> (используемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mainmenu">MainMenu</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenu">ContextMenu</a>)</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabcontrol">TabControl</a></p>
+</li>
+</ul>
+<p>Следующие элементы управления поддерживают рисование владельцем только в .NET Framework 2.0.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip">ToolTip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview">ListView</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a></p>
+</li>
+</ul>
+<p>Следующие элементы управления поддерживают рисование владельцем и являются новыми в .NET Framework 2.0.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a></p>
+</li>
+</ul>
+<p>В следующих разделах приводятся дополнительные сведения для каждого из этих элементов управления.</p>
+<h3 id="listbox-and-combobox-controls">Элементы управления ListBox и ComboBox</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox">ListBox</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> элементы управления позволяют рисовать отдельные элементы в элементе управления одного или разного размера.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkedlistbox">CheckedListBox</a> элемент управления является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox">ListBox</a> элемента управления, он не поддерживает рисование владельцем.</p>
+</div>
+<p>Для рисования каждого элемента тот же размер, задайте <code>DrawMode</code> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drawmode#System_Windows_Forms_DrawMode_OwnerDrawFixed">OwnerDrawFixed</a> и обрабатывать <code>DrawItem</code> событий.</p>
+<p>Для рисования каждого элемента с использованием другого размера, задайте <code>DrawMode</code> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drawmode#System_Windows_Forms_DrawMode_OwnerDrawVariable">OwnerDrawVariable</a> и обработать <code>MeasureItem</code> и <code>DrawItem</code> события. Событие <code>MeasureItem</code> позволяет указать размер элемента, прежде чем возникнет событие <code>DrawItem</code> для этого элемента.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox.drawmode">ListBox.DrawMode</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox.measureitem">ListBox.MeasureItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox.drawitem">ListBox.DrawItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox.drawmode">ComboBox.DrawMode</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox.measureitem">ComboBox.MeasureItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox.drawitem">ComboBox.DrawItem</a></p>
+</li>
+<li><p><a href="how-to-create-variable-sized-text-in-a-combobox-control.html">Практическое руководство. Индивидуальное форматирование строк, отображаемых в элементе управления ComboBox</a></p>
+</li>
+</ul>
+<h3 id="menuitem-component">Компонент MenuItem</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem">MenuItem</a> Компонент представляет собой отдельный пункт меню в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mainmenu">MainMenu</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenu">ContextMenu</a> компонента.</p>
+<p>Для рисования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem">MenuItem</a>, задайте его <code>OwnerDraw</code> свойства <code>true</code> и обработать его <code>DrawItem</code> событий. Чтобы изменять размер элемента меню перед возникновением события <code>DrawItem</code>, требуется обработка события <code>MeasureItem</code> элемента.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem.ownerdraw">MenuItem.OwnerDraw</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem.drawitem">MenuItem.DrawItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menuitem.measureitem">MenuItem.MeasureItem</a></p>
+</li>
+</ul>
+<h3 id="tabcontrol-control">Элемент управления TabControl</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabcontrol">TabControl</a> Элемент управления позволяет рисовать отдельные вкладки в элементе управления. Рисование владельцем влияет только на вкладки; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabpage">TabPage</a> содержимое не затрагиваются.</p>
+<p>Для рисования каждой вкладки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabcontrol">TabControl</a>, задайте <code>DrawMode</code> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabdrawmode#System_Windows_Forms_TabDrawMode_OwnerDrawFixed">OwnerDrawFixed</a> и обрабатывать <code>DrawItem</code> событий. Это событие возникает один раз для каждой вкладки, только если вкладка видна в элементе управления.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabcontrol.drawmode">TabControl.DrawMode</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tabcontrol.drawitem">TabControl.DrawItem</a></p>
+</li>
+</ul>
+<h3 id="tooltip-component">Компонент ToolTip</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip">ToolTip</a> Компонент позволяет рисовать всю подсказку, когда она появится.</p>
+<p>Для рисования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip">ToolTip</a>, задайте его <code>OwnerDraw</code> свойства <code>true</code> и обработать его <code>Draw</code> событий. Чтобы настроить размер <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip">ToolTip</a> перед <code>Draw</code> происходит событие, обрабатывать <code>Popup</code> событий и набор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.popupeventargs.tooltipsize">ToolTipSize</a> свойство в обработчике событий.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip.ownerdraw">ToolTip.OwnerDraw</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip.draw">ToolTip.Draw</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip.popup">ToolTip.Popup</a></p>
+</li>
+</ul>
+<h3 id="listview-control">Элемент управления ListView</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview">ListView</a> Управления позволяет рисовать отдельные элементы, подпункты и заголовки столбцов в элементе управления.</p>
+<p>Чтобы включить рисование владельцем в элементе управления, задайте для свойства <code>OwnerDraw</code> значение <code>true</code>.</p>
+<p>Для рисования каждого пункта в элементе управления обработайте событие <code>DrawItem</code>.</p>
+<p>Для рисования каждого подпункта или столбца заголовка в элементе управления при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview.view">View</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.view#System_Windows_Forms_View_Details">Details</a>, обрабатывать <code>DrawSubItem</code> и <code>DrawColumnHeader</code> события.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview.ownerdraw">ListView.OwnerDraw</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview.drawitem">ListView.DrawItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview.drawsubitem">ListView.DrawSubItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview.drawcolumnheader">ListView.DrawColumnHeader</a></p>
+</li>
+</ul>
+<h3 id="treeview-control">Элемент управления TreeView</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a> Элемент управления позволяет рисовать отдельные узлы в элементе управления.</p>
+<p>Чтобы рисовать только текст, отображаемый в каждом узле, задайте <code>DrawMode</code> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeviewdrawmode#System_Windows_Forms_TreeViewDrawMode_OwnerDrawText">OwnerDrawText</a> и обрабатывать <code>DrawNode</code> событий для рисования текста.</p>
+<p>Чтобы рисовать все элементы каждого узла, задайте <code>DrawMode</code> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeviewdrawmode#System_Windows_Forms_TreeViewDrawMode_OwnerDrawAll">OwnerDrawAll</a> и обрабатывать <code>DrawNode</code> событий для рисования любых требуемых, такие как текст, значки, флажки, знаки плюс и минус и линий, соединяющих узлы элементов.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview.drawmode">TreeView.DrawMode</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview.drawnode">TreeView.DrawNode</a></p>
+</li>
+</ul>
+<h3 id="datagridview-control">Элемент управления DataGridView</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Управления позволяет рисовать отдельные ячейки и строки в элементе управления.</p>
+<p>Для рисования отдельных ячеек обработайте событие <code>CellPainting</code>.</p>
+<p>Для рисования отдельных строк или элементов строк обработайте одно или оба события <code>RowPrePaint</code> и <code>RowPostPaint</code>. Событие <code>RowPrePaint</code> возникает до рисования ячеек в строке, а событие <code>RowPostPaint</code> — после их рисования. Можно обрабатывать оба события и событие <code>CellPainting</code> для рисования фона строки, отдельных ячеек и переднего плана строки по отдельности. Кроме того, можно предоставить особые настройки в нужных местах и использовать отображение по умолчанию для других элементов строки.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellpainting">CellPainting</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowprepaint">RowPrePaint</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowpostpaint">RowPostPaint</a></p>
+</li>
+<li><p><a href="customize-the-appearance-of-cells-in-the-datagrid.html">Практическое руководство. Настройка внешнего вида ячеек элемента управления DataGridView в Windows Forms</a></p>
+</li>
+<li><p><a href="customize-the-appearance-of-rows-in-the-datagrid.html">Практическое руководство. Настройка внешнего вида строк элемента управления DataGridView в Windows Forms</a></p>
+</li>
+</ul>
+<h3 id="toolstrip-control">Элемент управления ToolStrip</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и производные элементы управления позволяют настраивать все аспекты их внешнего вида.</p>
+<p>Для обеспечения пользовательской отрисовки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементов управления <code>Renderer</code> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmanager">ToolStripManager</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontentpanel">ToolStripContentPanel</a> для <code>ToolStripRenderer</code> и обработать один или несколько из большого числа событий рисования, предоставляемых <code>ToolStripRenderer</code> класса. Можно также задать <code>Renderer</code> свойство к экземпляру свой собственный класс производным от <code>ToolStripRenderer</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> , который реализует или переопределяет определенные <code>On</code> <em>EventName</em> методы.</p>
+<p>Дополнительные сведения, включая примеры кода, см. в следующих разделах.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a></p>
+</li>
+<li><p><a href="create-and-set-a-custom-renderer-for-the-toolstrip-control-in-wf.html">Практическое руководство. Создание и определение пользовательского средства визуализации для элемента управления ToolStrip в Windows Forms</a></p>
+</li>
+<li><p><a href="how-to-custom-draw-a-toolstrip-control.html">Практическое руководство. Пользовательская прорисовка элемента управления ToolStrip</a></p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="controls-to-use-on-windows-forms.html">Элементы управления для использования в формах Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1088;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1072;&#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1088;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1072;&#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-override-metadata-for-a-dependency-property">Практическое руководство. Переопределение метаданных для свойств зависимостей</h1>
+
+<p>В этом примере показано, как переопределить метаданные свойства зависимостей по умолчанию, которое поступает из наследуемого класса, путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.overridemetadata">OverrideMetadata</a> с указанием конкретного типа метаданных.</p>
+<h2 id="example">Пример</h2>
+<p>Определив его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertymetadata">PropertyMetadata</a>, класс может определить поведение свойства зависимости, например, значение и свойство системы обратные вызовы по умолчанию. Многие классы свойств зависимостей уже имеют метаданные по умолчанию, заданные во время процесса их регистрации. К ним относятся свойства зависимостей, которые являются частью API WPF. Класс, который наследует свойство зависимости при наследовании класса, может переопределить исходные метаданные, так что характеристики свойства, которые могут изменяться посредством метаданных, будут соответствовать любым особым требованиям подкласса.</p>
+<p>Переопределение метаданных в свойстве зависимости должно быть выполнено до того, как свойство начнет использоваться системой свойств (то есть до того момента, когда будут созданы определенные экземпляры объектов, регистрирующие свойство). Вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.overridemetadata">OverrideMetadata</a> должны быть выполнены в статических конструкторах типа, предоставляющего себя в качестве <code>forType</code> параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.overridemetadata">OverrideMetadata</a>. При попытке изменить метаданные существующих экземпляров типа-владельца не возникнет исключения, но это приведет к несогласованному поведению системы свойств. Кроме того, метаданные могут переопределяться один раз для каждого типа. Последующие попытки переопределить метаданные для того же типа вызовут исключение.</p>
+<p>В приведенном ниже примере пользовательский класс <code>MyAdvancedStateControl</code> переопределяет метаданные, предоставленные свойству <code>StateProperty</code> классом <code>MyAdvancedStateControl</code>, новыми метаданными свойства. Например, значение <code>StateProperty</code> по умолчанию теперь является <code>true</code>, если это свойство запрашивается для нового экземпляра <code>MyAdvancedStateControl</code>.</p>
+<pre><code class="lang-csharp" name="PropertySystemEsoterics#MyStateControl">public class MyStateControl : ButtonBase
+{
+  public MyStateControl() : base() { }
+  public Boolean State
+  {
+    get { return (Boolean)this.GetValue(StateProperty); }
+    set { this.SetValue(StateProperty, value); }
+  }
+  public static readonly DependencyProperty StateProperty = DependencyProperty.Register(
+    &quot;State&quot;, typeof(Boolean), typeof(MyStateControl),new PropertyMetadata(false));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="PropertySystemEsoterics#MyAdvancedStateControl">public class MyAdvancedStateControl : MyStateControl
+{
+  public MyAdvancedStateControl() : base() { }
+  static MyAdvancedStateControl()
+  {
+    MyStateControl.StateProperty.OverrideMetadata(typeof(MyAdvancedStateControl), new PropertyMetadata(true));
+  }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="properties-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

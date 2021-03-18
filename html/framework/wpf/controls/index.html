@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="controls">Элементы управления</h1>
+
+<p><a name="introduction"></a>
+Windows Presentation Foundation (WPF) содержит большинство распространенных компонентов пользовательского интерфейса, которые используются практически во всех приложениях Windows, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Исторически эти объекты называются элементами управления. Хотя пакет SDK для WPF продолжает использовать термин &quot;элемент управления&quot; для общего обозначения любого класса, который представляет видимый объект в приложении, важно отметить, что класс не обязательно должен наследовать от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, чтобы иметь визуальное представление. Классы, наследующие от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, содержат шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, позволяющий пользователю элемента управления существенно изменить внешний вид элемента управления, не создавая новый подкласс. В этом разделе описано, как элементы управления (и наследующие от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, и не наследующие от него) обычно используются в WPF.</p>
+<p><a name="creating_an_instance_of_a_control"></a></p>
+<h2 id="creating-an-instance-of-a-control">Создание экземпляра элемента управления</h2>
+<p>Элемент управления можно добавить в приложение с помощью Язык XAML или кода. В следующем примере показано, как создать простое приложение, которое запрашивает у пользователя имя и фамилию. В этом примере создается шесть элементов управления: две метки, два текстовых поля и две кнопки в XAML. Все элементы управления могут быть созданы аналогичным образом.</p>
+<pre><code class="lang-xaml" name="ControlsOverview#1">&lt;Grid&gt;
+  &lt;Grid.RowDefinitions&gt;
+    &lt;RowDefinition Height=&quot;30&quot;/&gt;
+    &lt;RowDefinition Height=&quot;30&quot;/&gt;
+    &lt;RowDefinition Height=&quot;30&quot;/&gt;
+    &lt;RowDefinition/&gt;
+  &lt;/Grid.RowDefinitions&gt;
+  &lt;Grid.ColumnDefinitions&gt;
+    &lt;ColumnDefinition/&gt;
+    &lt;ColumnDefinition/&gt;
+  &lt;/Grid.ColumnDefinitions&gt;
+
+  &lt;Label&gt;
+    Enter your first name:
+  &lt;/Label&gt;
+  &lt;TextBox Grid.Row=&quot;0&quot; Grid.Column=&quot;1&quot; 
+           Name=&quot;firstName&quot; Margin=&quot;0,5,10,5&quot;/&gt;
+
+  &lt;Label Grid.Row=&quot;1&quot; &gt;
+    Enter your last name:
+  &lt;/Label&gt;
+  &lt;TextBox Grid.Row=&quot;1&quot; Grid.Column=&quot;1&quot; 
+           Name=&quot;lastName&quot; Margin=&quot;0,5,10,5&quot;/&gt;
+
+  &lt;Button Grid.Row=&quot;2&quot; Grid.Column=&quot;0&quot; 
+          Name=&quot;submit&quot; Margin=&quot;2&quot;&gt;
+    View message
+  &lt;/Button&gt;
+
+  &lt;Button Grid.Row=&quot;2&quot; Grid.Column=&quot;1&quot; 
+          Name=&quot;Clear&quot; Margin=&quot;2&quot;&gt;
+    Clear Name
+  &lt;/Button&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p>В следующем примере создается такое же приложение в коде. Для краткости создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>, <code>grid1</code>, было исключено из примера. <code>grid1</code> имеет те же определения столбцов и строк, как показано в предыдущем примере XAML.</p>
+<pre><code class="lang-csharp" name="ControlsOverview#2">Label firstNameLabel;
+Label lastNameLabel;
+TextBox firstName;
+TextBox lastName;
+Button submit;
+Button clear;
+
+void CreateControls()
+{
+    firstNameLabel = new Label();
+    firstNameLabel.Content = &quot;Enter your first name:&quot;;
+    grid1.Children.Add(firstNameLabel);
+
+    firstName = new TextBox();
+    firstName.Margin = new Thickness(0, 5, 10, 5);
+    Grid.SetColumn(firstName, 1);
+    grid1.Children.Add(firstName);
+
+    lastNameLabel = new Label();
+    lastNameLabel.Content = &quot;Enter your last name:&quot;;
+    Grid.SetRow(lastNameLabel, 1);
+    grid1.Children.Add(lastNameLabel);
+
+    lastName = new TextBox();
+    lastName.Margin = new Thickness(0, 5, 10, 5);
+    Grid.SetColumn(lastName, 1);
+    Grid.SetRow(lastName, 1);
+    grid1.Children.Add(lastName);
+
+    submit = new Button();
+    submit.Content = &quot;View message&quot;;
+    Grid.SetRow(submit, 2);
+    grid1.Children.Add(submit);
+
+    clear = new Button();
+    clear.Content = &quot;Clear Name&quot;;
+    Grid.SetRow(clear, 2);
+    Grid.SetColumn(clear, 1);
+    grid1.Children.Add(clear);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="changing_the_appearance_of_a_control"></a></p>
+<h2 id="changing-the-appearance-of-a-control">Изменение внешнего вида элемента управления</h2>
+<p>Обычно внешний вид элемента управления изменяется в соответствии с внешним видом приложения. Можно изменить внешний вид элемента управления, выполнив одно из следующих действий (в зависимости от того, чего нужно достичь):</p>
+<ul>
+<li><p>Изменить значение свойства элемента управления.</p>
+</li>
+<li><p>Создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> для элемента управления.</p>
+</li>
+<li><p>Создать новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для элемента управления.</p>
+</li>
+</ul>
+<h3 id="changing-a-controls-property-value">Изменение значения свойства элемента управления</h3>
+<p>Многие элементы управления имеют свойства, которые позволяют изменять внешний вид элемента управления, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> у <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Можно задать значение свойства как в  XAML, так и в коде. В следующем примере задаются свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a> у <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в XAML.</p>
+<pre><code class="lang-xaml" name="ControlsOverview#3">&lt;Button FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot;&gt;
+  &lt;!--Set the Background property of the Button to
+    a LinearGradientBrush.--&gt;
+  &lt;Button.Background&gt;
+    &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; 
+                            EndPoint=&quot;1,0.5&quot;&gt;
+      &lt;GradientStop Color=&quot;Green&quot; Offset=&quot;0.0&quot; /&gt;
+      &lt;GradientStop Color=&quot;White&quot; Offset=&quot;0.9&quot; /&gt;
+    &lt;/LinearGradientBrush&gt;
+
+  &lt;/Button.Background&gt;
+  View message
+&lt;/Button&gt;
+</code></pre>
+<p>Следующий пример устанавливает те же самые свойства в коде.</p>
+<pre><code class="lang-csharp" name="ControlsOverview#4">LinearGradientBrush buttonBrush = new LinearGradientBrush();
+buttonBrush.StartPoint = new Point(0, 0.5);
+buttonBrush.EndPoint = new Point(1, 0.5);
+buttonBrush.GradientStops.Add(new GradientStop(Colors.Green, 0));
+buttonBrush.GradientStops.Add(new GradientStop(Colors.White, 0.9));
+
+submit.Background = buttonBrush;
+submit.FontSize = 14;
+submit.FontWeight = FontWeights.Bold;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="creating-a-style-for-a-control">Создание стиля для элемента управления</h3>
+<p>WPF дает возможность группового определения внешнего вида элементов управления путем создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> вместо установки свойств для каждого экземпляра в приложении. В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>, который применяется к каждому элементу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в приложении. Определения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> обычно размещаются в XAML в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>, например в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+<pre><code class="lang-xaml" name="ControlsOverview#5">&lt;Style TargetType=&quot;Button&quot;&gt;
+  &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;
+  &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;
+  &lt;Setter Property=&quot;Background&quot;&gt;
+    &lt;Setter.Value&gt;
+      &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; 
+                              EndPoint=&quot;1,0.5&quot;&gt;
+        &lt;GradientStop Color=&quot;Green&quot; Offset=&quot;0.0&quot; /&gt;
+        &lt;GradientStop Color=&quot;White&quot; Offset=&quot;0.9&quot; /&gt;
+      &lt;/LinearGradientBrush&gt;
+
+    &lt;/Setter.Value&gt;
+  &lt;/Setter&gt;
+&lt;/Style&gt;
+</code></pre>
+<p>Можно также применить стиль только к определенным элементам управления определенного типа, присвоив стилю ключ и указав этот ключ в свойстве <code>Style</code> элемента управления. Дополнительные сведения о стилях см. в разделе <a href="styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<h3 id="creating-a-controltemplate">Создание шаблона ControlTemplate</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> позволяет одновременно задать свойства для нескольких элементов управления, но иногда может потребоваться настроить внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> за пределами того, что можно сделать созданием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Классы, наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, имеют шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, который определяет структуру и внешний вид элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>. Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.template">Template</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> является открытым, поэтому вы можете задать для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> свой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, отличающийся от его шаблона по умолчанию. Часто можно указать новый шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> вместо наследования от элемента управления для настройки внешнего вида <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>.</p>
+<p>Рассмотрим очень популярный элемент управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Основное поведение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> позволяет приложению выполнить определенное действие, когда пользователь щелкает этот элемент. По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в WPF отображается как приподнятый прямоугольник. При разработке приложения может возникнуть необходимость использовать это поведение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, то есть, обработку события нажатия кнопки, но при этом изменить внешний вид кнопки в большей степени, чем позволяет изменение ее свойств. В этом случае можно создать новый шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+<p>В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> со скругленными углами и градиентным фоном.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.background">Background</a> которого — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> с двумя объектами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a>. Первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a> использует привязку данных для привязки свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop.color">Color</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a> к цвету фона кнопки.  При задании свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> цвет этого значения будет использоваться как первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a>. Дополнительные сведения о привязке данных см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>. В примере также создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a>, который изменяет внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.ispressed">IsPressed</a> принимает значение <code>true</code>.</p>
+<pre><code class="lang-xaml" name="ControlsOverview#6">&lt;!--Define a template that creates a gradient-colored button.--&gt;
+&lt;Style TargetType=&quot;Button&quot;&gt;
+  &lt;Setter Property=&quot;Template&quot;&gt;
+    &lt;Setter.Value&gt;
+      &lt;ControlTemplate TargetType=&quot;Button&quot;&gt;
+        &lt;Border 
+          x:Name=&quot;Border&quot;  
+          CornerRadius=&quot;20&quot; 
+          BorderThickness=&quot;1&quot;
+          BorderBrush=&quot;Black&quot;&gt;
+          &lt;Border.Background&gt;
+            &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; 
+                                 EndPoint=&quot;1,0.5&quot;&gt;
+              &lt;GradientStop Color=&quot;{Binding Background.Color, 
+                    RelativeSource={RelativeSource TemplatedParent}}&quot; 
+                            Offset=&quot;0.0&quot; /&gt;
+              &lt;GradientStop Color=&quot;White&quot; Offset=&quot;0.9&quot; /&gt;
+            &lt;/LinearGradientBrush&gt;
+          &lt;/Border.Background&gt;
+          &lt;ContentPresenter 
+            Margin=&quot;2&quot;
+            HorizontalAlignment=&quot;Center&quot;
+            VerticalAlignment=&quot;Center&quot;
+            RecognizesAccessKey=&quot;True&quot;/&gt;
+        &lt;/Border&gt;
+        &lt;ControlTemplate.Triggers&gt;
+          &lt;!--Change the appearance of
+          the button when the user clicks it.--&gt;
+          &lt;Trigger Property=&quot;IsPressed&quot; Value=&quot;true&quot;&gt;
+            &lt;Setter TargetName=&quot;Border&quot; Property=&quot;Background&quot;&gt;
+              &lt;Setter.Value&gt;
+                &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; 
+                                     EndPoint=&quot;1,0.5&quot;&gt;
+                  &lt;GradientStop Color=&quot;{Binding Background.Color, 
+                    RelativeSource={RelativeSource TemplatedParent}}&quot; 
+                                Offset=&quot;0.0&quot; /&gt;
+                  &lt;GradientStop Color=&quot;DarkSlateGray&quot; Offset=&quot;0.9&quot; /&gt;
+                &lt;/LinearGradientBrush&gt;
+              &lt;/Setter.Value&gt;
+            &lt;/Setter&gt;
+          &lt;/Trigger&gt;
+
+        &lt;/ControlTemplate.Triggers&gt;
+      &lt;/ControlTemplate&gt;
+    &lt;/Setter.Value&gt;
+  &lt;/Setter&gt;
+&lt;/Style&gt;
+</code></pre><pre><code class="lang-xaml" name="ControlsOverview#7">&lt;Button Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;2&quot; Name=&quot;submitName&quot;
+        Background=&quot;Green&quot;&gt;View message&lt;/Button&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> должно быть присвоено значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> для правильной работы примера.</p>
+</div>
+<p><a name="subscribing_to_events"></a></p>
+<h2 id="subscribing-to-events">Подписка на события</h2>
+<p>Можно подписаться на событие элемента управления с помощью XAML или кода, но обработать событие можно только в коде.  В следующем примере показано, как подписаться на событие <code>Click</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<pre><code class="lang-xaml" name="ControlsOverview#10">&lt;Button Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;2&quot; Name=&quot;submitName&quot; Click=&quot;submit_Click&quot;
+  Background=&quot;Green&quot;&gt;View message&lt;/Button&gt;
+</code></pre><pre><code class="lang-csharp" name="ControlsOverview#8">submit.Click += new RoutedEventHandler(submit_Click);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показана обработка события <code>Click</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<pre><code class="lang-csharp" name="ControlsOverview#9">void submit_Click(object sender, RoutedEventArgs e)
+{
+    MessageBox.Show(&quot;Hello, &quot; + firstName.Text + &quot; &quot; + lastName.Text);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="rich_content_in_controls"></a></p>
+<h2 id="rich-content-in-controls">Форматированное содержимое в элементах управления</h2>
+<p>Большинство классов, наследующих от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, могут включать форматированное содержимое. Например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> может содержать любой объект, будь то строка, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>. Следующие классы обеспечивают поддержку форматированного содержимого и служат базовыми классами для большинства элементов управления в WPF.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>. Примеры классов, которые наследуют от этого класса: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>. Примеры классов, которые наследуют от этого класса: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.statusbar">StatusBar</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol">HeaderedContentControl</a>. Примеры классов, которые наследуют от этого класса: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.groupbox">GroupBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.expander">Expander</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol">HeaderedItemsControl</a>. Примеры классов, которые наследуют от этого класса: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>.</p>
+</li>
+</ul>
+<p>Дополнительные сведения об этих базовых классах см. в разделе <a href="wpf-content-model.html">Модель содержимого WPF</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+<li><a href="controls-by-category.html">Категории элементов управления</a></li>
+<li><a href="control-library.html">Библиотека элементов управления</a></li>
+<li><a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="../advanced/input-wpf.html">Ввод</a></li>
+<li><a href="../advanced/how-to-enable-a-command.html">Включение команды</a></li>
+<li><a href="walkthroughs-create-a-custom-animated-button.html">Пошаговые руководства. Создание пользовательской анимированной кнопки</a></li>
+<li><a href="control-customization.html">Настройка элементов управления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

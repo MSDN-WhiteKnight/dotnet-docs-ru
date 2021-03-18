@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1050;&#1101;&#1096;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1050;&#1101;&#1096;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-caching-application-data-in-a-wpf-application">Пошаговое руководство. Кэширование данных приложения WPF</h1>
+
+<p>Кэширование позволяет хранить данные в памяти для быстрого доступа. При повторном доступе к данным приложения могут получать их из кэша вместо извлечения из исходного источника. Это может повысить производительность и масштабируемость. Кроме того, кэширование обеспечивает доступность данных при временной недоступности источника данных.</p>
+<p>.NET Framework Предоставляет классы, которые позволяют использовать кэширование в .NET Framework приложений. Эти классы находятся в папке <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching">System.Runtime.Caching</a> пространства имен.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching">System.Runtime.Caching</a> Пространство имен впервые появилось в .NET Framework 4. Это пространство имен обеспечивает кэширование доступен для всех .NET Framework приложений. В предыдущих версиях .NET Framework кэширование было доступно только в пространстве имен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.web">System.Web</a> и поэтому требовало зависимости от классов ASP.NET.</p>
+</div>
+<p>В этом пошаговом руководстве показано, как использовать функции кэширования, которая доступна в .NET Framework как часть Windows Presentation Foundation (WPF) приложения. В этом пошаговом руководстве кэшировать содержимое текстового файла.</p>
+<p>В данном пошаговом руководстве представлены следующие задачи:</p>
+<ul>
+<li><p>Создание проекта приложения WPF.</p>
+</li>
+<li><p>Добавление ссылки на .NET Framework 4.</p>
+</li>
+<li><p>Инициализация кэша.</p>
+</li>
+<li><p>Добавление записи кэша, который содержит содержимое текстового файла.</p>
+</li>
+<li><p>Предоставление используется политика вытеснения для записи кэша.</p>
+</li>
+<li><p>Отслеживание пути кэшированный файл и уведомление о экземпляра кэша изменения отслеживаемого элемента.</p>
+</li>
+</ul>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для выполнения данного пошагового руководства требуется:</p>
+<ul>
+<li><p>Microsoft Visual Studio 2010.</p>
+</li>
+<li><p>Текстовый файл, который содержит небольшой объем текста. (Содержимое файла текст будет отображаться в окне сообщения.) Код, показанный в этом пошаговом руководстве предполагается, что вы работаете в следующем файле:</p>
+<p><code>c:\cache\cacheText.txt</code></p>
+<p>Тем не менее можно использовать любой текстовый файл и внести небольшие изменения в код в этом пошаговом руководстве.</p>
+</li>
+</ul>
+<h2 id="creating-a-wpf-application-project">Создание проекта приложения WPF</h2>
+<p>Начнем с создания проекта приложения WPF.</p>
+<h4 id="to-create-a-wpf-application">Создание приложения WPF</h4>
+<ol>
+<li><p>Запустите Visual Studio.</p>
+</li>
+<li><p>В <strong>файл</strong> меню, щелкните <strong>New</strong>, а затем нажмите кнопку <strong>новый проект</strong>.</p>
+<p>Откроется диалоговое окно <strong>Новый проект</strong>.</p>
+</li>
+<li><p>В разделе <strong>установленные шаблоны</strong>, выберите язык программирования, который вы хотите использовать (<strong>Visual Basic</strong> или <strong>Visual C#</strong>).</p>
+</li>
+<li><p>В <strong>новый проект</strong> выберите <strong>приложение WPF</strong>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы не видите <strong>приложение WPF</strong> шаблона, убедитесь, что вы используете версию .NET Framework поддерживает WPF. В <strong>новый проект</strong> выберите .NET Framework 4 из списка.</p>
+</div>
+</li>
+<li><p>В <strong>имя</strong> текстовое поле, введите имя для проекта. Например, можно ввести <strong>WPFCaching</strong>.</p>
+</li>
+<li><p>Установите флажок <strong>Создать каталог для решения</strong>.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong>.</p>
+<p>Откроется конструктор WPF в <strong>разработки</strong> просмотра и отображает файл MainWindow.xaml. Visual Studio создает <strong>Мой проект</strong> папка, файл Application.xaml и файл MainWindow.xaml.</p>
+</li>
+</ol>
+<h2 id="targeting-the-net-framework-and-adding-a-reference-to-the-caching-assemblies">Нацеливание на платформу .NET Framework и Добавление ссылки на сборки кэширования</h2>
+<p>По умолчанию приложения WPF предназначены .NET Framework 4 (клиентский профиль). Чтобы использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching">System.Runtime.Caching</a> пространства имен в приложении WPF, приложение должно использовать платформу .NET Framework 4 (не .NET Framework 4 (клиентский профиль)) и необходимо включить ссылку на пространство имен.</p>
+<p>Таким образом, следующим шагом является изменение целевой платформы .NET Framework и добавьте ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching">System.Runtime.Caching</a> пространства имен.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Процедура изменения целевой платформы .NET Framework отличается в проекте Visual Basic и в проекте Visual C#.</p>
+</div>
+<h4 id="to-change-the-target-net-framework-in-visual-basic">Изменение целевой платформы .NET Framework в Visual Basic</h4>
+<ol>
+<li><p>В <strong>обозревателя решений</strong>, щелкните правой кнопкой мыши имя проекта и нажмите кнопку <strong>свойства</strong>.</p>
+<p>Откроется окно свойств для приложения.</p>
+</li>
+<li><p>Откройте вкладку <strong>Компиляция</strong>.</p>
+</li>
+<li><p>В нижней части окна, щелкните <strong>Дополнительные параметры компиляции...</strong> .</p>
+<p><strong>Дополнительные параметры компилятора</strong> диалоговое окно.</p>
+</li>
+<li><p>В <strong>целевой платформы (все конфигурации)</strong> выберите .NET Framework 4. (Не выбирайте .NET Framework 4 (клиентский профиль).)</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong>.</p>
+<p>Откроется диалоговое окно <strong>Изменение целевой рабочей среды</strong>.</p>
+</li>
+<li><p>В <strong>Изменение целевой платформы</strong> диалоговом окне щелкните <strong>Да</strong>.</p>
+<p>Проект будет закрыт и вновь открыт.</p>
+</li>
+<li><p>Добавьте ссылку на сборку кэширования, выполнив следующие действия:</p>
+<ol>
+<li><p>В <strong>обозревателе решений</strong>, щелкните правой кнопкой мыши имя проекта и нажмите кнопку <strong>добавить ссылку</strong>.</p>
+</li>
+<li><p>Выберите <strong>.NET</strong> выберите <code>System.Runtime.Caching</code>, а затем нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="to-change-the-target-net-framework-in-a-visual-c-project">Изменение целевой платформы .NET Framework в проекте Visual C#</h4>
+<ol>
+<li><p>В <strong>обозревателе решений</strong>, щелкните правой кнопкой мыши имя проекта и нажмите кнопку <strong>свойства</strong>.</p>
+<p>Откроется окно свойств для приложения.</p>
+</li>
+<li><p>Перейдите на вкладку <strong>Приложение</strong> .</p>
+</li>
+<li><p>В <strong>требуемой версии .NET framework</strong> выберите .NET Framework 4. (Не выбирайте <strong>клиентский профиль .NET Framework 4</strong>.)</p>
+</li>
+<li><p>Добавьте ссылку на сборку кэширования, выполнив следующие действия:</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши <strong>ссылки</strong> папку и нажмите кнопку <strong>добавить ссылку</strong>.</p>
+</li>
+<li><p>Выберите <strong>.NET</strong> выберите <code>System.Runtime.Caching</code>, а затем нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="adding-a-button-to-the-wpf-window">Добавление кнопки в окне WPF</h2>
+<p>Затем добавьте элемент управления button и создайте обработчик событий для кнопки <code>Click</code> событий. Позже будет добавлен код, поэтому при нажатии кнопки, кэшируются и отображается содержимое текстового файла.</p>
+<h4 id="to-add-a-button-control">Чтобы добавить элемент управления button</h4>
+<ol>
+<li><p>В <strong>обозревателе решений</strong>, дважды щелкните файл MainWindow.xaml, чтобы открыть его.</p>
+</li>
+<li><p>Из <strong>элементов</strong>в разделе <strong>стандартных элементов управления WPF</strong>, перетащите <code>Button</code> управления <code>MainWindow</code> окна.</p>
+</li>
+<li><p>В <strong>свойства</strong> окне <code>Content</code> свойство <code>Button</code> управления <strong>получить кэш</strong>.</p>
+</li>
+</ol>
+<h2 id="initializing-the-cache-and-caching-an-entry">Инициализация кэша и кэширование записи</h2>
+<p>Далее добавим код для выполнения следующих задач:</p>
+<ul>
+<li><p>Создайте экземпляр класса кэша — то есть будет создавать новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.memorycache">MemoryCache</a> объекта.</p>
+</li>
+<li><p>Укажите, что кэш использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.hostfilechangemonitor">HostFileChangeMonitor</a> объектов для отслеживания изменений в текстовом файле.</p>
+</li>
+<li><p>Чтение текстового файла и кэшировать его содержимое в качестве записи кэша.</p>
+</li>
+<li><p>Отображение содержимого кэшированного текстового файла.</p>
+</li>
+</ul>
+<h4 id="to-create-the-cache-object">Чтобы создать объект кэша</h4>
+<ol>
+<li><p>Дважды щелкните кнопку, которую вы только что добавили для создания обработчика событий в файле MainWindow.xaml.cs или MainWindow.Xaml.vb.</p>
+</li>
+<li><p>В верхней части файла (перед объявлением класса), добавьте следующий код <code>Imports</code> (Visual Basic) или <code>using</code> операторы (C#):</p>
+<pre><code class="lang-csharp">using System.Runtime.Caching;
+using System.IO;
+</code></pre>
+<pre><code class="lang-vb">Imports System.Runtime.Caching
+Imports System.IO
+</code></pre>
+</li>
+<li><p>В обработчике событий добавьте следующий код для создания экземпляра объекта кэша:</p>
+<pre><code class="lang-csharp">ObjectCache cache = MemoryCache.Default;
+</code></pre>
+<pre><code class="lang-vb">Dim cache As ObjectCache = MemoryCache.Default
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.objectcache">ObjectCache</a> Класс является встроенный класс, который предоставляет кэш в памяти объект.</p>
+</li>
+<li><p>Добавьте следующий код для чтения содержимого записи кэша с именем <code>filecontents</code>:</p>
+<pre><code class="lang-vb">Dim fileContents As String = TryCast(cache(&quot;filecontents&quot;), String)
+</code></pre>
+<pre><code class="lang-csharp">string fileContents = cache[&quot;filecontents&quot;] as string;
+</code></pre>
+</li>
+<li><p>Добавьте следующий код для проверки, является ли запись кэша с именем <code>filecontents</code> существует:</p>
+<pre><code class="lang-vb">If fileContents Is Nothing Then
+
+End If
+</code></pre>
+<pre><code class="lang-csharp">if (fileContents == null)
+{
+
+}
+</code></pre>
+<p>Если указанная запись кэша не существует, необходимо прочитать текстовый файл и добавить его в качестве записи кэша в кэш.</p>
+</li>
+<li><p>В <code>if/then</code> block, добавьте следующий код для создания нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.cacheitempolicy">CacheItemPolicy</a> , указывающий, что срок действия записи кэша истекает через 10 секунд.</p>
+<pre><code class="lang-vb">Dim policy As New CacheItemPolicy()
+policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(10.0)
+</code></pre>
+<pre><code class="lang-csharp">CacheItemPolicy policy = new CacheItemPolicy();
+policy.AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(10.0);
+</code></pre>
+<p>Если нет сведений о удаления или истечения срока действия, по умолчанию используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.objectcache.infiniteabsoluteexpiration">InfiniteAbsoluteExpiration</a>, означающее записей кэша, которые никогда не истекать только по абсолютным временем. Вместо этого записей кэша истекает только в том случае, если имеется достаточный объем памяти. Рекомендуется следует всегда явно задавать абсолютный или скользящий срок действия.</p>
+</li>
+<li><p>Внутри <code>if/then</code> блокировать и после кода, добавленного на предыдущем шаге, добавьте следующий код, чтобы создать коллекцию для пути к файлам, которые необходимо отслеживать, а также, добавляемый в коллекцию путь файла текста:</p>
+<pre><code class="lang-vb">Dim filePaths As New List(Of String)()
+filePaths.Add(&quot;c:\cache\cacheText.txt&quot;)
+</code></pre>
+<pre><code class="lang-csharp">List&lt;string&gt; filePaths = new List&lt;string&gt;();
+filePaths.Add(&quot;c:\\cache\\cacheText.txt&quot;);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если текстовый файл, вы хотите использовать не <code>c:\cache\cacheText.txt</code>, укажите путь, где вы хотите использовать текстовый файл.</p>
+</div>
+</li>
+<li><p>После кода, добавленного на предыдущем шаге, добавьте следующий код, чтобы добавить новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.hostfilechangemonitor">HostFileChangeMonitor</a> отслеживает объект в коллекцию изменение для записи кэша:</p>
+<pre><code class="lang-vb">policy.ChangeMonitors.Add(New HostFileChangeMonitor(filePaths))
+</code></pre>
+<pre><code class="lang-csharp">policy.ChangeMonitors.Add(new HostFileChangeMonitor(filePaths));
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.hostfilechangemonitor">HostFileChangeMonitor</a> Объект отслеживает путь файла текста и уведомляет кэш в том случае, если происходят изменения. В этом примере запись кэша истекает при изменении содержимого файла.</p>
+</li>
+<li><p>После кода, добавленного на предыдущем шаге добавьте следующий код для считывания содержимого текстового файла:</p>
+<pre><code class="lang-vb">fileContents = File.ReadAllText(&quot;c:\cache\cacheText.txt&quot;) &amp; vbCrLf &amp; DateTime.Now.ToString()
+</code></pre>
+<pre><code class="lang-csharp">fileContents = File.ReadAllText(&quot;c:\\cache\\cacheText.txt&quot;) + &quot;\n&quot; + DateTime.Now;
+</code></pre>
+<p>Отметка даты и времени добавляется таким образом, можно видеть, по истечении срока действия записи кэша.</p>
+</li>
+<li><p>После кода, добавленного на предыдущем шаге, добавьте следующий код, чтобы вставить содержимое файла в объект кэша в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.cacheitem">CacheItem</a> экземпляр:</p>
+<pre><code class="lang-vb">cache.Set(&quot;filecontents&quot;, fileContents, policy)
+</code></pre>
+<pre><code class="lang-csharp">cache.Set(&quot;filecontents&quot;, fileContents, policy);
+</code></pre>
+<p>Укажите сведения о способе записи кэша, передав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.cacheitempolicy">CacheItemPolicy</a> объект, созданный ранее в качестве параметра.</p>
+</li>
+<li><p>После <code>if/then</code> block, добавьте следующий код для отображения содержимого кэшированного файла в окне сообщения:</p>
+<pre><code class="lang-vb">MessageBox.Show(fileContents)
+</code></pre>
+<pre><code class="lang-csharp">MessageBox.Show(fileContents);
+</code></pre>
+</li>
+<li><p>В <strong>построения</strong> меню, щелкните <strong>построения WPFCaching</strong> для сборки проекта.</p>
+</li>
+</ol>
+<h2 id="testing-caching-in-the-wpf-application">Проверка кэширования в приложении WPF</h2>
+<p>Теперь можно протестировать приложение.</p>
+<h4 id="to-test-caching-in-the-wpf-application">Проверка кэширования в приложении WPF</h4>
+<ol>
+<li><p>Нажмите CTRL+F5, чтобы запустить приложение.</p>
+<p><code>MainWindow</code> Откроется диалоговое окно.</p>
+</li>
+<li><p>Нажмите кнопку <strong>получить кэш</strong>.</p>
+<p>Кэшированное содержимое из текстового файла отображается в окне сообщения. Обратите внимание, что отметка времени на файл.</p>
+</li>
+<li><p>Закройте окно сообщения и нажмите кнопку <strong>получить кэш</strong> еще раз.</p>
+<p>Метка времени не изменяется. Это означает, что отображается кэшированное содержимое.</p>
+</li>
+<li><p>Подождите 10 секунд или более, а затем нажмите кнопку <strong>получить кэш</strong> еще раз.</p>
+<p>Это время отображается новой метки времени. Это означает, что политики сообщите кэша истек и что отображается новое кэшированное содержимое.</p>
+</li>
+<li><p>В текстовом редакторе откройте текстовый файл, который вы создали. Еще не следует вносить любые изменения.</p>
+</li>
+<li><p>Закройте окно сообщения и нажмите кнопку <strong>получить кэш</strong> еще раз.</p>
+<p>Обратите внимание, что отметка времени еще раз.</p>
+</li>
+<li><p>Внести изменения в текстовый файл и сохраните файл.</p>
+</li>
+<li><p>Закройте окно сообщения и нажмите кнопку <strong>получить кэш</strong> еще раз.</p>
+<p>Это окно сообщения содержит обновленное содержимое из текстового файла и новой метки времени. Это означает, что монитор изменений файла узла удалил запись кэша сразу после внесения изменений файл, несмотря на то, что не истек абсолютный период.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Можно увеличить время вытеснения, в 20 секунд или более, чтобы предоставить больше времени для внесения изменений в файле.</p>
+</div>
+</li>
+</ol>
+<h2 id="code-example">Пример кода</h2>
+<p>После завершения этого пошагового руководства, код для созданного проекта будет выглядеть следующим образом.</p>
+<pre><code class="lang-csharp" name="CachingWPFApplications#1">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Runtime.Caching;
+using System.IO;
+
+namespace WPFCaching
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
+            ObjectCache cache = MemoryCache.Default;
+            string fileContents = cache[&quot;filecontents&quot;] as string;
+
+            if (fileContents == null)
+            {
+                CacheItemPolicy policy = new CacheItemPolicy();
+                policy.AbsoluteExpiration =
+                    DateTimeOffset.Now.AddSeconds(10.0);
+
+                List&lt;string&gt; filePaths = new List&lt;string&gt;();
+                filePaths.Add(&quot;c:\\cache\\cacheText.txt&quot;);
+
+                policy.ChangeMonitors.Add(new
+                    HostFileChangeMonitor(filePaths));
+
+                // Fetch the file contents.
+                fileContents = File.ReadAllText(&quot;c:\\cache\\cacheText.txt&quot;) + &quot;\n&quot; + DateTime.Now.ToString();
+
+                cache.Set(&quot;filecontents&quot;, fileContents, policy);
+            }
+            MessageBox.Show(fileContents);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.memorycache">MemoryCache</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching.objectcache">ObjectCache</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.caching">System.Runtime.Caching</a></li>
+<li><a href="../../performance/caching-in-net-framework-applications.md">Кэширование в приложениях платформы .NET Framework</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

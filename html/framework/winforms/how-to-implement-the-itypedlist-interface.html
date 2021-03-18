@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1072; ITypedList | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1072; ITypedList | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-implement-the-itypedlist-interface">Практическое руководство. Реализация интерфейса ITypedList</h1>
+
+<p>Реализуйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.itypedlist">ITypedList</a> интерфейс, чтобы включить обнаружение схемы для связываемого списка.</p>
+<h2 id="example">Пример</h2>
+<p>В следующем примере кода показано, как реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.itypedlist">ITypedList</a> интерфейс. Универсальный тип с именем <code>SortableBindingList</code> является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.bindinglist-1">BindingList&lt;T&gt;</a> и реализующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.itypedlist">ITypedList</a> интерфейс. Простой класс с именем <code>Customer</code> данных, который привязан к заголовку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.ITypedList#1">using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Collections;
+using System.Reflection;
+
+namespace ITypedListCS
+{
+    [Serializable()]
+    public class SortableBindingList&lt;T&gt; : BindingList&lt;T&gt;, ITypedList
+    {
+        [NonSerialized()]
+        private PropertyDescriptorCollection properties;
+
+        public SortableBindingList() : base()
+        {
+            // Get the 'shape' of the list. 
+            // Only get the public properties marked with Browsable = true.
+            PropertyDescriptorCollection pdc = TypeDescriptor.GetProperties(
+                typeof(T), 
+                new Attribute[] { new BrowsableAttribute(true) });
+
+            // Sort the properties.
+            properties = pdc.Sort();
+        }
+
+        #region ITypedList Implementation
+
+        public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
+        {
+            PropertyDescriptorCollection pdc;
+
+            if (listAccessors!=null &amp;&amp; listAccessors.Length&gt;0)
+            {
+                // Return child list shape.
+                pdc = ListBindingHelper.GetListItemProperties(listAccessors[0].PropertyType);
+            }
+            else
+            {
+                // Return properties in sort order.
+                pdc = properties;
+            }
+
+            return pdc;
+        }
+
+        // This method is only used in the design-time framework 
+        // and by the obsolete DataGrid control.
+        public string GetListName(PropertyDescriptor[] listAccessors)
+        {   
+            return typeof(T).Name;
+        }
+
+        #endregion
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.ITypedList#10">using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel;
+
+namespace ITypedListCS
+{
+    class Customer : INotifyPropertyChanged
+    {
+        public Customer() {}
+
+        public Customer(int id, string name, string company, string address, string city, string state, string zip)
+        {
+            this._id = id;
+            this._name = name;
+            this._company = company;
+            this._address = address;
+            this._city = city;
+            this._state = state;
+            this._zip = zip;
+        }
+
+        #region Public Properties
+
+        private int _id;
+
+        public int ID
+        {
+            get { return _id; }
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;ID&quot;));
+                }
+            }
+        }
+
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;Name&quot;));
+                }
+            }
+        }
+
+        private string _company;
+
+        public string Company
+        {
+            get { return _company; }
+            set
+            {
+                if (_company != value)
+                {
+                    _company = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;Company&quot;));
+                }
+            }
+        }
+
+        private string _address;
+
+        public string Address
+        {
+            get { return _address; }
+            set
+            {
+                if (_address != value)
+                {
+                    _address = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;Address&quot;));
+                }
+            }
+        }
+
+        private string _city;
+
+        public string City
+        {
+            get { return _city; }
+            set
+            {
+                if (_city != value)
+                {
+                    _city = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;City&quot;));
+                }
+            }
+        }
+
+        private string _state;
+
+        public string State
+        {
+            get { return _state; }
+            set
+            {
+                if (_state != value)
+                {
+                    _state = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;State&quot;));
+                }
+            }
+        }
+
+        private string _zip;
+
+        public string ZipCode
+        {
+            get { return _zip; }
+            set
+            {
+                if (_zip != value)
+                {
+                    _zip = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(&quot;ZipCode&quot;));
+                }
+            }
+        }
+
+        #endregion
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (null != PropertyChanged)
+            {
+                PropertyChanged(this, e);
+            }
+        }
+
+        #endregion
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.ITypedList#100">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ITypedListCS
+{
+    public partial class Form1 : Form
+    {
+        private SortableBindingList&lt;Customer&gt; sortableBindingListOfCustomers;
+        private BindingList&lt;Customer&gt; bindingListOfCustomers;
+
+        private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label2;
+        private DataGridView dataGridView1;
+        private Button button1;
+        private Button button2;
+        
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.sortableBindingListOfCustomers = new SortableBindingList&lt;Customer&gt;();
+            this.bindingListOfCustomers = new BindingList&lt;Customer&gt;();
+
+            this.dataGridView1.DataSource = this.bindingListOfCustomers;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.DataSource = null;
+            this.dataGridView1.DataSource = this.sortableBindingListOfCustomers;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.dataGridView1.DataSource = null;
+            this.dataGridView1.DataSource = this.bindingListOfCustomers;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing &amp;&amp; (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.label2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = &quot;flowLayoutPanel1&quot;;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(566, 51);
+            this.flowLayoutPanel1.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.label2.Name = &quot;label2&quot;;
+            this.label2.Size = new System.Drawing.Size(558, 39);
+            this.label2.TabIndex = 0;
+            this.label2.Text = &quot;This sample demonstrates how to implement the ITypedList interface.  Clicking on the 'Sort Columns' button will bind the DataGridView to a sub-classed BindingList&lt;T&gt; that implements ITypedList to provide a sorted list of columns.  Clicking on the 'Reset' button will bind the DataGridView to a normal BindingList&lt;T&gt;.&quot;;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 57);
+            this.dataGridView1.Name = &quot;dataGridView1&quot;;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(465, 51);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(477, 57);
+            this.button1.Name = &quot;button1&quot;;
+            this.button1.Size = new System.Drawing.Size(82, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = &quot;Sort Columns&quot;;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(477, 86);
+            this.button2.Name = &quot;button2&quot;;
+            this.button2.Size = new System.Drawing.Size(82, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = &quot;Reset&quot;;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(566, 120);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Name = &quot;Form1&quot;;
+            this.Text = &quot;ITypedList Sample&quot;;
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        #endregion
+    }
+
+    static class Program
+    {
+        /// &lt;summary&gt;
+        /// The main entry point for the application.
+        /// &lt;/summary&gt;
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li>ссылки на сборки System.Drawing и System.Windows.Forms.</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.itypedlist">ITypedList</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.bindinglist-1">BindingList&lt;T&gt;</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.ibindinglist">IBindingList</a></li>
+<li><a href="data-binding-and-windows-forms.html">Связывание данных и Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

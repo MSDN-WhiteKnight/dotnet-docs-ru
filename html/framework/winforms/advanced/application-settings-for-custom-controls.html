@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1099; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; &#1076;&#1083;&#1103; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1099; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; &#1076;&#1083;&#1103; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="application-settings-for-custom-controls">Параметры приложения для пользовательских элементов управления</h1>
+
+<p>Необходимо выполнить определенные задачи, чтобы предоставить возможность сохранения параметров приложения элементы управления расположены в сторонних приложениях пользовательских элементов управления.</p>
+<p>Большая часть документации о параметры приложения записывается в предположении, что вы создаете изолированное приложение. Тем не менее, если вы создаете элемент управления, который будет размещаться другим разработчикам в своих приложениях, необходимо выполнить ряд дополнительных действий для элемента управления для сохранения его параметры должным образом.</p>
+<h2 id="application-settings-and-custom-controls">Параметры приложения и пользовательские элементы управления</h2>
+<p>Элемент управления правильно сохранял свои параметры, он должен инкапсулировать процесс, создав свой собственный выделенный приложений параметры оболочки класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a>. Кроме того, необходимо реализовать класс основной элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings">IPersistComponentSettings</a>. Интерфейс содержит несколько свойств, а также два метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.loadcomponentsettings">LoadComponentSettings</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.savecomponentsettings">SaveComponentSettings</a>. Если добавить элемент управления в форме с помощью <strong>конструктор Windows Forms</strong> в Visual Studio, Windows Forms будет вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.loadcomponentsettings">LoadComponentSettings</a> автоматически при инициализации элемента управления; необходимо вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.savecomponentsettings">SaveComponentSettings</a> самостоятельно в <code>Dispose</code> метод вашего элемента управления.</p>
+<p>Кроме того чтобы параметры приложения для пользовательских элементов управления для правильной работы в средах разработки, таких как Visual Studio следует реализовать следующие:</p>
+<ol>
+<li><p>Пользовательский класс параметров приложения с помощью конструктора, принимающего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.icomponent">IComponent</a> в качестве единственного параметра. Этот класс используется для сохранения и загрузки всех параметров приложения. При создании нового экземпляра этого класса, передайте пользовательский элемент управления с помощью конструктора.</p>
+</li>
+<li><p>Создайте этот пользовательский класс параметров после создан и помещен в форму, например в форме элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.load">Load</a> обработчик событий.</p>
+</li>
+</ol>
+<p>Инструкции по созданию пользовательского класса параметров см. в разделе <a href="how-to-create-application-settings.html">как: Создание параметров приложения</a>.</p>
+<h2 id="settings-keys-and-shared-settings">Параметры ключей и общими настройками</h2>
+<p>Некоторые элементы управления можно использовать несколько раз в пределах той же форме. В большинстве случаев, требуется эти элементы управления, чтобы сохранить свои собственные отдельные параметры. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.settingskey">SettingsKey</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings">IPersistComponentSettings</a>, можно указать уникальная строка, которая используется для однозначного определения нескольких версий элемента управления в форме.</p>
+<p>Самый простой способ реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.settingskey">SettingsKey</a> заключается в использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.name">Name</a> свойство элемента управления для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.settingskey">SettingsKey</a>. При загрузке или сохранении параметры элемента управления, передается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings.settingskey">SettingsKey</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingskey">SettingsKey</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> класса. Параметры приложения используют этот уникальный ключ для сохранения параметров пользователя в XML. В следующем примере кода как <code>&lt;userSettings&gt;</code> раздел может иметь для экземпляра пользовательского элемента управления с именем <code>CustomControl1</code> , сохраняет параметр в его <code>Text</code> свойство.</p>
+<pre><code class="lang-xml">&lt;userSettings&gt;  
+    &lt;CustomControl1&gt;  
+        &lt;setting name=&quot;Text&quot; serializedAs=&quot;string&quot;&gt;  
+            &lt;value&gt;Hello, World&lt;/value&gt;  
+        &lt;/setting&gt;  
+    &lt;/CustomControl1&gt;  
+&lt;/userSettings&gt;  
+</code></pre>
+<p>Все экземпляры элемента управления, который не нужно вводить значение для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingskey">SettingsKey</a> будут совместно использовать те же параметры.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.ipersistcomponentsettings">IPersistComponentSettings</a></li>
+<li><a href="application-settings-architecture.html">Архитектура параметров приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

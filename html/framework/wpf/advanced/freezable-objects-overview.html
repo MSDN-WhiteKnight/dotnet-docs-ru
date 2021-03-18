@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&#1093; &#1082;&#1083;&#1072;&#1089;&#1089;&#1072; Freezable | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&#1093; &#1082;&#1083;&#1072;&#1089;&#1089;&#1072; Freezable | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="freezable-objects-overview">Общие сведения об объектах класса Freezable</h1>
+
+<p>В этом разделе описывается, как эффективно использовать и создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекты, которые предоставляют специальные функции, которые могут помочь повысить производительность приложения. Объекты freezable примеры кисти, перья, преобразования, геометрии и анимации.</p>
+<p><a name="whatisafreezable"></a></p>
+<h2 id="what-is-a-freezable">Что такое Freezable?</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> — это специальный тип объекта, имеющий два состояния: фиксированное и нефиксированное. Незафиксированный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> ведет себя как любой другой объект. Зафиксированный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> не может быть изменен.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событие, чтобы уведомлять наблюдателей об каких-либо изменений объекта. Замораживание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> позволяет повысить его производительность, поскольку он больше не требуется тратить ресурсы на уведомления об изменениях. Зафиксированный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> также может использоваться несколькими потоками, в отличие от незафиксированных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> невозможно.</p>
+<p>Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класс имеет много приложений, наиболее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекты в Windows Presentation Foundation (WPF) связаны с графическая подсистема.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> Класс упрощает использование определенных объектов графических систем и может повысить производительность приложения. Примеры типов, которые наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> классы. Так как они содержат неуправляемые ресурсы, система должна отслеживать изменения этих объектов и затем обновить соответствующие им неуправляемые ресурсы, при наличии изменений в исходный объект. Даже если вы не меняете фактически объект графической системы, системы необходимо по-прежнему тратить часть его ресурсов, наблюдение за объектом, в случае, если изменить его.</p>
+<p>Предположим, например, можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> кисти и использовать его для рисования фона кнопки.</p>
+<pre><code class="lang-csharp" name="freezablesample_procedural#FrozenExamplePart1">Button myButton = new Button();
+SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
+myButton.Background = myBrush;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>При отображении кнопки WPF графическая подсистема использует сведения, предоставленные для закраски группы пикселей, которое необходимо создать внешний вид кнопки. Несмотря на то, что вы использовали Одноцветная кисть для описания того, как должен быть окрашен кнопки, сплошной цвет кисти фактически не выполняет заливку. Графическая система создает быстрые низкоуровневые объекты для кнопки и кисти, а это те объекты, которые отображаются на экране.</p>
+<p>При изменении кисти, эти низкоуровневые объекты бы быть создан повторно. Класс freezable представляет, что дает возможность найти соответствующие объекты низкоуровневые и обновлять их при его изменении кисти. Если эта возможность включена, кисть, которая называется «незафиксированной».</p>
+<p>Freezable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод позволяет отключить данную возможность самостоятельного обновления. Этот метод можно использовать, чтобы сделать кисть «зафиксированной» или неизменяемым.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Не каждый объект Freezable может быть зафиксирован. Чтобы избежать возникновения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a>, проверьте значение свойства объекта Freezable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.canfreeze">CanFreeze</a> свойства, чтобы определить, является ли он быть зафиксирован перед фиксированием.</p>
+</div>
+<pre><code class="lang-csharp" name="freezablesample_procedural#FrozenExamplePart2">if (myBrush.CanFreeze)
+{
+    // Makes the brush unmodifiable.
+    myBrush.Freeze();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если вам больше не нужно изменять freezable, зафиксировать этот дает выигрыш в производительности. Если закрепить кисть, которая в этом примере, графическая система больше не потребуется отслеживать его изменения. Графическая система также может отправлять другие виды оптимизации, поскольку известно, что кисть, которая не изменится.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Для удобства объекты freezable остаются незафиксированными, пока вы явным образом замораживайте.</p>
+</div>
+<p><a name="frozenfreezables"></a></p>
+<h2 id="using-freezables">С помощью объектов Freezable</h2>
+<p>Использование незафиксированного freezable аналогично использованию любого другого типа объекта. В следующем примере цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> изменяется с желтого на красный после он используется для рисования фона кнопки. Графическая система работает незаметно для автоматического изменения кнопки с желтого на красный при очередном обновлении экрана.</p>
+<pre><code class="lang-csharp" name="freezablesample_procedural#UnFrozenExampleShort">Button myButton = new Button();
+SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
+myButton.Background = myBrush;
+
+// Changes the button's background to red.
+myBrush.Color = Colors.Red;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="freezing-a-freezable">Замораживание Freezable</h3>
+<p>Чтобы сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> неизменяемым, необходимо вызвать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод. Когда вы закрепить объект, содержащий объекты freezable, эти объекты также закрепляются. Например, если зафиксировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>, рисунки и сегменты будут зафиксированы.</p>
+<p>Freezable <strong>нельзя</strong> зафиксировать, если одно из следующих условий:</p>
+<ul>
+<li><p>Объект имеет анимированные или свойства с привязкой к данным.</p>
+</li>
+<li><p>Он имеет свойства, заданные на динамический ресурс. (См. в разделе <a href="xaml-resources.html">ресурсы XAML</a> Дополнительные сведения о динамических ресурсов.)</p>
+</li>
+<li><p>Он содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> вложенные объекты, которые нельзя зафиксировать.</p>
+</li>
+</ul>
+<p>Если эти условия имеют значение false, и вы не собираетесь изменять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>, то стоит зафиксировать, чтобы получить выигрыш в производительности, описанные ранее.</p>
+<p>При вызове метода freezable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод, он не может быть изменен. Попытка изменить зафиксированного объекта возникает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a> исключение. Следующий код создает исключение, так как выполняется попытка изменить кисть после она была зафиксирована.</p>
+<pre><code class="lang-csharp" name="freezablesample_procedural#ExceptionExample">
+Button myButton = new Button();
+SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
+
+if (myBrush.CanFreeze)
+{
+    // Makes the brush unmodifiable.
+    myBrush.Freeze();
+}
+
+myButton.Background = myBrush;
+
+try {
+
+    // Throws an InvalidOperationException, because the brush is frozen.
+    myBrush.Color = Colors.Red;
+}catch(InvalidOperationException ex)
+{
+    MessageBox.Show(&quot;Invalid operation: &quot; + ex.ToString());
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы избежать возникновения этого исключения, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.isfrozen">IsFrozen</a> метод, чтобы определить, является ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> заморожен.</p>
+<pre><code class="lang-csharp" name="freezablesample_procedural#CheckIsFrozenExample">
+Button myButton = new Button();
+SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
+
+if (myBrush.CanFreeze)
+{
+    // Makes the brush unmodifiable.
+    myBrush.Freeze();
+}
+
+myButton.Background = myBrush;
+
+if (myBrush.IsFrozen) // Evaluates to true.
+{
+    // If the brush is frozen, create a clone and
+    // modify the clone.
+    SolidColorBrush myBrushClone = myBrush.Clone();
+    myBrushClone.Color = Colors.Red;
+    myButton.Background = myBrushClone;
+}
+else
+{
+    // If the brush is not frozen,
+    // it can be modified directly.
+    myBrush.Color = Colors.Red;
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В предыдущем примере кода, изменяемая копия была сделана зафиксированного объекта с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clone">Clone</a> метод. В следующем разделе рассматривается более подробно клонирования.</p>
+<p><strong>Примечание</strong> поскольку зафиксированного freezable невозожно анимировать, системы анимации автоматически создаст изменяемые клоны замороженный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объектов при попытке их с помощью анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. Чтобы снизить издержки из-за клонирования, оставьте объект незафиксированным, если вы собираетесь анимировать его. Дополнительные сведения об анимации с помощью раскадровки см. в разделе <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
+<h3 id="freezing-from-markup">Замораживание из разметки</h3>
+<p>Чтобы закрепить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объявленный в разметке, можно использовать <code>PresentationOptions:Freeze</code> атрибута. В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объявляется как ресурс страницы и зафиксирован. Затем используется для установки фона кнопки.</p>
+<pre><code class="lang-xaml" name="FreezableSample#FreezeFromMarkupWholePage">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  xmlns:PresentationOptions=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation/options&quot; 
+  xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+  mc:Ignorable=&quot;PresentationOptions&quot;&gt;
+
+  &lt;Page.Resources&gt;
+
+    &lt;!-- This resource is frozen. --&gt;
+    &lt;SolidColorBrush 
+      x:Key=&quot;MyBrush&quot;
+      PresentationOptions:Freeze=&quot;True&quot; 
+      Color=&quot;Red&quot; /&gt;
+  &lt;/Page.Resources&gt;
+
+
+  &lt;StackPanel&gt;
+
+    &lt;Button Content=&quot;A Button&quot; 
+      Background=&quot;{StaticResource MyBrush}&quot;&gt;
+    &lt;/Button&gt;
+
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Чтобы использовать <code>Freeze</code> атрибут, необходимо сопоставить с параметрами представления пространство имен: <code>http://schemas.microsoft.com/winfx/2006/xaml/presentation/options</code>. <code>PresentationOptions</code> — Это рекомендуемый префикс для сопоставления данного пространства имен:</p>
+<pre><code>xmlns:PresentationOptions=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation/options&quot;   
+</code></pre>
+<p>Так как не все средства чтения XAML распознают этот атрибут, рекомендуется использовать <a href="mc-ignorable-attribute.html">mc: Ignorable-атрибут</a> для пометки <code>Presentation:Freeze</code> атрибут ignorable как:</p>
+<pre><code>xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;  
+mc:Ignorable=&quot;PresentationOptions&quot;  
+</code></pre>
+<p>Дополнительные сведения см. в разделе <a href="mc-ignorable-attribute.html">mc: Ignorable-атрибут</a> страницы.</p>
+<h3 id="unfreezing-a-freezable">«Размораживание» Freezable</h3>
+<p>После фиксации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> никогда не может быть изменен или разморозить; тем не менее, можно создать с помощью незафиксированную копию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clone">Clone</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clonecurrentvalue">CloneCurrentValue</a> метод.</p>
+<p>В следующем примере фона кнопки задается с помощью кисти и кисти, затем заморожен. Незафиксированная копия состоит из кисти с использованием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clone">Clone</a> метод. Клон изменяется и используется для изменения фона кнопки с желтого на красный.</p>
+<pre><code class="lang-csharp" name="freezablesample_procedural#CloneExample">Button myButton = new Button();
+SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
+
+// Freezing a Freezable before it provides
+// performance improvements if you don't
+// intend on modifying it.
+if (myBrush.CanFreeze)
+{
+    // Makes the brush unmodifiable.
+    myBrush.Freeze();
+}
+
+myButton.Background = myBrush;
+
+// If you need to modify a frozen brush,
+// the Clone method can be used to
+// create a modifiable copy.
+SolidColorBrush myBrushClone = myBrush.Clone();
+
+// Changing myBrushClone does not change
+// the color of myButton, because its
+// background is still set by myBrush.
+myBrushClone.Color = Colors.Red;
+
+// Replacing myBrush with myBrushClone
+// makes the button change to red.
+myButton.Background = myBrushClone;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Независимо от используемого метода клонирования, анимация никогда не копируется в новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clone">Clone</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clonecurrentvalue">CloneCurrentValue</a> методы создают детальные копии объекта freezable. Если объект freezable содержит другие зафиксированные объекты freezable, они также клонируются и становятся изменяемыми. Например, если копировать зафиксированный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> чтобы сделать его изменяемым, рисунки и сегменты также копируются и становятся изменяемыми.</p>
+<p><a name="createyourownfreezableclass"></a></p>
+<h2 id="creating-your-own-freezable-class">Создание собственного класса Freezable</h2>
+<p>Класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> поддерживает следующие функции.</p>
+<ul>
+<li><p>Особые состояния: только для чтения (замороженным) и состояние для записи.</p>
+</li>
+<li><p>Потокобезопасность: зафиксированный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> может использоваться несколькими потоками.</p>
+</li>
+<li><p>Подробные уведомления об изменениях: В отличие от других <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>s, объектах класса Freezable предоставить уведомление об изменениях, при изменении значений вложенных свойств.</p>
+</li>
+<li><p>Удобное клонирование: Freezable класс уже реализовал несколько методов, которые обеспечивают большую глубину клонирования.</p>
+</li>
+</ul>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>и поэтому использует в системе свойств зависимостей. Свойства класса не обязательно должны быть свойствами зависимости, но использование свойств зависимостей уменьшит объем кода, необходимо написать, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класс был разработан с учетом свойств зависимости. Дополнительные сведения о системе свойств зависимостей, см. в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.</p>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> подкласс должен переопределять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> метод. Если ваш класс использует свойства зависимости для всех своих данных, вы закончили.</p>
+<p>Если класс содержит члены данных не свойство зависимости, необходимо также переопределить следующие методы:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clonecore">CloneCore</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clonecurrentvaluecore">CloneCurrentValueCore</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.getasfrozencore">GetAsFrozenCore</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.getcurrentvalueasfrozencore">GetCurrentValueAsFrozenCore</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freezecore">FreezeCore</a></p>
+</li>
+</ul>
+<p>Также необходимо соблюдать следующие правила для доступа и записи на данные-члены, которые не являются свойствами зависимостей:</p>
+<ul>
+<li><p>В начале любого API , считывает элементы данных не свойство зависимости, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.readpreamble">ReadPreamble</a> метод.</p>
+</li>
+<li><p>В начале любого API, который записывает элементы данных не свойство зависимости, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.writepreamble">WritePreamble</a> метод. (После вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.writepreamble">WritePreamble</a> в API, не требуется дополнительный вызов к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.readpreamble">ReadPreamble</a> также считывать элементы данных не свойство зависимости.)</p>
+</li>
+<li><p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.writepostscript">WritePostscript</a> метод перед выходом из методов, которые записывают на данные-члены не свойство зависимости.</p>
+</li>
+</ul>
+<p>Если класс содержит члены данных зависимостей свойства, которые являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> объектов, необходимо также вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.onfreezablepropertychanged">OnFreezablePropertyChanged</a> метод каждый раз при изменении одного из их значения, даже если вы изменяете член <code>null</code>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Очень важно, что началом реализации каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> метод можно переопределить с помощью вызова к базовой реализации.</p>
+</div>
+<p>Пример настраиваемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> , представлена в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159981">пример пользовательского</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=159981">Пример пользовательской анимации</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

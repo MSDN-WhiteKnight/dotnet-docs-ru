@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Windows Forms &#1080; &#1072;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1074;&#1074;&#1086;&#1076;&#1072; &#1074;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Windows Forms &#1080; &#1072;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1074;&#1074;&#1086;&#1076;&#1072; &#1074;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="windows-forms-and-wpf-interoperability-input-architecture">Windows Forms и архитектура ввода взаимодействия WPF</h1>
+
+<p>Взаимодействия между WPF и Windows Forms должна иметь обработки ввода сочетания обеих технологий. В этом разделе описывается, как реализовать эти технологии, клавиатуры и обработки сообщений с целью обеспечить корректное взаимодействие в гибридных приложениях.</p>
+<p>В этом разделе содержатся следующие подразделы:</p>
+<ul>
+<li><p>Безрежимные формы и диалоговые окна</p>
+</li>
+<li><p>WindowsFormsHost-клавиатура и обработки сообщений</p>
+</li>
+<li><p>ElementHost-клавиатура и обработки сообщений</p>
+</li>
+</ul>
+<h2 id="modeless-forms-and-dialog-boxes">Безрежимные формы и диалоговые окна</h2>
+<p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.enablewindowsformsinterop">EnableWindowsFormsInterop</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента для размыкания немодальное форму или диалоговое окно из WPF-приложения на основе.</p>
+<p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.enablemodelesskeyboardinterop">EnableModelessKeyboardInterop</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления, чтобы открыть немодальный WPF странице в Windows Forms-приложения на основе.</p>
+<h2 id="windowsformshost-keyboard-and-message-processing">WindowsFormsHost-клавиатура и обработки сообщений</h2>
+<p>Если они размещаются в WPF-приложения, на основе Windows Forms клавиатуры и обработка состоит из следующих сообщений:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Класс получает сообщения из WPF цикл обработки сообщений, который реализован <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> класса.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Класс создает суррогат Windows Forms цикл обработки сообщений, чтобы убедиться, что обычные Windows Forms происходит обработка клавиатуры.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Класс реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a> интерфейс для координации управления фокусом с WPF.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элементы управления зарегистрироваться и начать их циклы обработки сообщений.</p>
+</li>
+</ul>
+<p>В следующих разделах эти части процесса более подробно.</p>
+<h3 id="acquiring-messages-from-the-wpf-message-loop">Получение сообщений из цикла обработки сообщений WPF</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> Класс реализует диспетчер цикла сообщений для WPF. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher">ComponentDispatcher</a> Класс предоставляет обработчики для внешние клиенты могли фильтровать сообщения перед WPF обрабатывает их.</p>
+<p>Взаимодействия реализация обрабатывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ComponentDispatcher.ThreadFilterMessage</a> событие, которое позволяет Windows Forms элементы управления для обработки сообщений перед WPF элементов управления.</p>
+<h3 id="surrogate-windows-forms-message-loop">Цикл обработки сообщений суррогат Windows Forms</h3>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application">System.Windows.Forms.Application</a> класс содержит цикл основного сообщения для Windows Forms приложений. Во время взаимодействия Windows Forms сообщение, цикл не обрабатывает сообщения. Таким образом эта логика должна быть воспроизведена. Обработчик <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ComponentDispatcher.ThreadFilterMessage</a> событий выполняет следующие действия:</p>
+<ol>
+<li><p>Фильтрует сообщения с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.imessagefilter">IMessageFilter</a> интерфейс.</p>
+</li>
+<li><p>Вызывает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.preprocessmessage">Control.PreProcessMessage</a>.</p>
+</li>
+<li><p>Преобразует и отправляет сообщение, если это необходимо.</p>
+</li>
+<li><p>Передает сообщение для размещения элемента управления, если нет других элементов управления обработки сообщения.</p>
+</li>
+</ol>
+<h3 id="ikeyboardinputsink-implementation">Реализация IKeyboardInputSink</h3>
+<p>Суррогатный цикл обработки сообщений обрабатывает управление клавиатуры. Таким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.tabinto">IKeyboardInputSink.TabInto</a> метод является единственным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a> член, требующий реализацию в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> класса.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> возвращает <code>false</code> для его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.system-windows-interop-ikeyboardinputsink-tabinto">IKeyboardInputSink.TabInto</a> реализации. Это предотвращает переход из WPF управления Windows Forms элемента управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.tabinto">IKeyboardInputSink.TabInto</a> метод выполняет следующие действия:</p>
+<ol>
+<li><p>Находит первый или последний Windows Forms управления, содержащийся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и может получать фокус. Выбор элемента управления зависит от обхода сведений.</p>
+</li>
+<li><p>Устанавливает фокус на элементе управления и возвращает <code>true</code>.</p>
+</li>
+<li><p>Если элемент управления не может получать фокус, возвращает <code>false</code>.</p>
+</li>
+</ol>
+<h3 id="windowsformshost-registration">WindowsFormsHost регистрации</h3>
+<p>Когда дескриптор окна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> создается элемент управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления вызывает внутренний статический метод, который регистрирует его присутствие для цикла обработки сообщений.</p>
+<p>Во время регистрации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления проверяет цикл обработки сообщений. Если не был запущен цикл обработки сообщений, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ComponentDispatcher.ThreadFilterMessage</a> будет создан обработчик событий. Цикл обработки сообщений считается запущенным при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.componentdispatcher.threadfiltermessage">ComponentDispatcher.ThreadFilterMessage</a> присоединен обработчик событий.</p>
+<p>При уничтожении дескриптор окна, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления удалит себя из регистрации.</p>
+<h2 id="elementhost-keyboard-and-message-processing">ElementHost-клавиатура и обработки сообщений</h2>
+<p>Если они размещаются в Windows Forms приложения, WPF клавиатуры и обработка состоит из следующих сообщений:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsite">IKeyboardInputSite</a> реализации интерфейсов.</p>
+</li>
+<li><p>Переход с клавишами со стрелками.</p>
+</li>
+<li><p>Клавиши команд и диалоговых окон.</p>
+</li>
+<li><p>Windows Forms Обработка с помощью ускорителя.</p>
+</li>
+</ul>
+<p>В следующих разделах эти части более подробно.</p>
+<h3 id="interface-implementations">Реализации интерфейсов</h3>
+<p>В Windows Forms, маршрутизацией сообщений клавиатуры на дескриптор окна элемента управления, имеющий фокус. В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления, эти сообщения направляются в размещенный элемент. Чтобы выполнить это, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемент управления предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> экземпляра. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемент управления имеет фокус, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> экземпляр направляет большинство клавиатуры, чтобы он может обработать WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputmanager">InputManager</a> класса.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> Класс реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsite">IKeyboardInputSite</a> интерфейсов.</p>
+<p>Взаимодействие с клавиатурой зависит от реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsite.onnomoretabstops">OnNoMoreTabStops</a> метод для обработки клавиши TAB &quot;и&quot; стрелка ключа входных данных, который перемещает фокус элементов.</p>
+<h3 id="tabbing-and-arrow-keys">Между приложениями и клавиш со стрелками</h3>
+<p>Windows Forms Логику выбора сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.system-windows-interop-ikeyboardinputsink-tabinto">IKeyboardInputSink.TabInto</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsite.onnomoretabstops">OnNoMoreTabStops</a> методы, реализуемые ВКЛАДКУ &quot;и&quot; стрелка ключа навигации. Переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.select">Select</a> метод выполняет это сопоставление.</p>
+<h3 id="command-keys-and-dialog-box-keys">Сочетания клавиш и клавиш диалогового окна</h3>
+<p>Чтобы предоставить WPF возможность первым обработать клавиши для команд и диалоговых окон, Windows Forms команды предварительной обработки подключен к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.translateaccelerator">TranslateAccelerator</a> метод. Переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processcmdkey">Control.ProcessCmdKey</a> метод объединяет две технологии.</p>
+<p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.translateaccelerator">TranslateAccelerator</a> метод, размещенные элементы можно обработать сообщение, ключей, например WM_KEYUP WM_KEYDOWN, WM_SYSKEYDOWN или WM_SYSKEYUP, включая ключи команды, например, ввод, ESC, нажатии клавиши TAB. Если сообщение о нажатии клавиши не обработано, оно отправляется вверх Windows Forms иерархии для обработки.</p>
+<h3 id="accelerator-processing">Обработка с помощью ускорителя</h3>
+<p>Для правильной обработки Windows Forms обработки сочетаний клавиш, которые должны быть подключены к WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.accesskeymanager">AccessKeyManager</a> класса. Кроме того все сообщения WM_CHAR, должны быть правильно направлены в размещенные элементы.</p>
+<p>Так как значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink.translatechar">TranslateChar</a> возвращает метод <code>false</code>, сообщения WM_CHAR обрабатываются с использованием следующую логику:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputchar">Control.IsInputChar</a> Метод переопределяется, чтобы убедиться, что все сообщения WM_CHAR перенаправляются в размещенные элементы.</p>
+</li>
+<li><p>Если клавиша ALT нажата, сообщение является WM_SYSCHAR. Windows Forms не обрабатывает это сообщение с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputchar">IsInputChar</a> метод. Таким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processmnemonic">ProcessMnemonic</a> переопределяется метод для запроса WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.accesskeymanager">AccessKeyManager</a> для зарегистрированному сочетанию клавиш. При обнаружении зарегистрированному сочетанию клавиш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.accesskeymanager">AccessKeyManager</a> обрабатывает его.</p>
+</li>
+<li><p>Если не нажата клавиша ALT, WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputmanager">InputManager</a> класс обрабатывает необработанные входные данные. Если входное значение ускоритель <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.accesskeymanager">AccessKeyManager</a> обрабатывает его. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputmanager.postprocessinput">PostProcessInput</a> Событие обрабатывается для сообщений WM_CHAR, которые не были обработаны.</p>
+</li>
+</ul>
+<p>Когда пользователь нажимает клавишу ALT, ускоритель визуальные подсказки отображаются на всю форму. Для поддержки этого поведения всех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элементов управления в активной форме получают сообщения WM_SYSKEYDOWN, независимо от того, что элемент управления имеет фокус.</p>
+<p>Сообщения отправляются только к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элементов управления в активной форме.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.enablewindowsformsinterop">EnableWindowsFormsInterop</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.enablemodelesskeyboardinterop">EnableModelessKeyboardInterop</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="walkthrough-hosting-a-windows-forms-composite-control-in-wpf.html">Пошаговое руководство. Размещение составного элемента управления Windows Forms в приложении WPF</a></li>
+<li><a href="walkthrough-hosting-a-wpf-composite-control-in-windows-forms.html">Пошаговое руководство. Размещение составного элемента управления WPF в форме Windows Forms</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

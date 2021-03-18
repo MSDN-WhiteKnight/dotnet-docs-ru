@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1072;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1086;&#1074; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1072;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1086;&#1074; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="set-assembly-attributes">Настройка атрибутов сборки</h1>
+
+<p>Атрибуты сборки — это значения, которые предоставляют сведения о сборке. Атрибуты разделяются на следующие группы.</p>
+<ul>
+<li><p>Атрибуты удостоверения сборки</p>
+</li>
+<li><p>Информационные атрибуты</p>
+</li>
+<li><p>Атрибуты манифеста сборки</p>
+</li>
+<li><p>Атрибуты строгого имени</p>
+</li>
+</ul>
+<h2 id="assembly-identity-attributes">Атрибуты удостоверения сборки</h2>
+<p>Три атрибута вместе со строгим именем (если оно применимо) определяют удостоверение сборки: имя, версия, язык и региональные параметры. Эти атрибуты формируют полное имя сборки и являются обязательными при ссылке на сборку в коде. Атрибуты можно использовать для задания версии сборки и языка и региональных параметров. Компилятор или <a href="../../framework/tools/al-exe-assembly-linker.md">компоновщик сборок (Al.exe)</a> задает значение имени при создании сборки на основе файла, содержащего манифест сборки.</p>
+<p>В следующей таблице описаны атрибуты версии и языка и региональных параметров.</p>
+<table>
+<thead>
+<tr>
+<th>Атрибут удостоверения сборки</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblycultureattribute">AssemblyCultureAttribute</a></td>
+<td>Перечислимое поле, указывающее язык и региональные параметры, поддерживаемые сборкой. В сборке можно также указать независимость от языка и региональных параметров, чтобы указать, что сборка содержит ресурсы для языка и региональных параметров по умолчанию. <strong>Примечание.</strong>  Среда выполнения рассматривает любую сборку, у которой для атрибута языка и региональных параметров не задано значение NULL, в качестве вспомогательной сборки. Такие сборки подчиняются правилам привязки вспомогательных сборок. Дополнительные сведения см. в разделе <a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyflagsattribute">AssemblyFlagsAttribute</a></td>
+<td>Значение, задающее атрибуты сборки: например, может ли сборка выполняться параллельно.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyversionattribute">AssemblyVersionAttribute</a></td>
+<td>Числовое значение в формате <em>основной_номер</em> . <em>дополнительный_номер</em> . <em>номер_сборки</em> . <em>номер_редакции</em> (например, 2.4.0.0). Среда CLR использует это значение для выполнения операций привязки в сборках со строгими именами. <strong>Примечание.</strong>  Если атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyinformationalversionattribute">AssemblyInformationalVersionAttribute</a> не применен к сборке, то номер версии, задаваемый атрибутом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyversionattribute">AssemblyVersionAttribute</a>, используется свойствами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.productversion">Application.ProductVersion</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.userappdatapath">Application.UserAppDataPath</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.userappdataregistry">Application.UserAppDataRegistry</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере кода показано, как применить атрибуты версии и языка и региональных параметров сборки.</p>
+<pre><code class="lang-cpp">// Set version number for the assembly.
+[assembly:AssemblyVersionAttribute(&quot;4.3.2.1&quot;)];
+// Set culture as German.
+[assembly:AssemblyCultureAttribute(&quot;de&quot;)];
+</code></pre>
+<pre><code class="lang-csharp">// Set version number for the assembly.
+[assembly:AssemblyVersionAttribute(&quot;4.3.2.1&quot;)]
+// Set culture as German.
+[assembly:AssemblyCultureAttribute(&quot;de&quot;)]
+</code></pre>
+<pre><code class="lang-vb">' Set version number for the assembly.
+&lt;Assembly:AssemblyVersionAttribute(&quot;4.3.2.1&quot;)&gt;
+' Set culture as German.
+&lt;Assembly:AssemblyCultureAttribute(&quot;de&quot;)&gt;
+</code></pre>
+<h2 id="informational-attributes">Информационные атрибуты</h2>
+<p>Информационные атрибуты можно использовать для предоставления дополнительных сведений о компании или продукте в сборке. В следующей таблице описаны информационные атрибуты, которые можно применить к сборке.</p>
+<table>
+<thead>
+<tr>
+<th>Информационный атрибут</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblycompanyattribute">AssemblyCompanyAttribute</a></td>
+<td>Строковое значение, содержащее название компании.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblycopyrightattribute">AssemblyCopyrightAttribute</a></td>
+<td>Строковое значение, содержащее сведения об авторских правах.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyfileversionattribute">AssemblyFileVersionAttribute</a></td>
+<td>Строковое значение, содержащее номер версии файла Win32. Обычно по умолчанию здесь используется версия сборки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyinformationalversionattribute">AssemblyInformationalVersionAttribute</a></td>
+<td>Строковое значение, содержащее сведения о версии, которые не используются средой CLR, например полный номер версии продукта. <strong>Примечание.</strong>  Если этот атрибут применен к сборке, указываемую им строку можно получить во время выполнения с помощью свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.productversion">Application.ProductVersion</a>. Эта строка также используется в пути и разделе реестра, предоставляемых свойствами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.userappdatapath">Application.UserAppDataPath</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.userappdataregistry">Application.UserAppDataRegistry</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyproductattribute">AssemblyProductAttribute</a></td>
+<td>Строковое значение, содержащее сведения о продукте.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblytrademarkattribute">AssemblyTrademarkAttribute</a></td>
+<td>Строковое значение, содержащее сведения о товарном знаке.</td>
+</tr>
+</tbody>
+</table>
+<p>Эти атрибуты могут отображаться на странице свойств сборки в Windows и могут быть переопределены с помощью параметра компилятора <strong>/win32res</strong> , с помощью которого вы можете задать собственный файл ресурсов Win32.</p>
+<h2 id="assembly-manifest-attributes">Атрибуты манифеста сборки</h2>
+<p>Атрибуты манифеста сборки можно использовать для предоставления сведений в манифесте сборки, включая название, описание, псевдоним по умолчанию и конфигурацию. В следующей таблице описаны атрибуты манифеста сборки.</p>
+<table>
+<thead>
+<tr>
+<th>Атрибуты манифеста сборки</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyconfigurationattribute">AssemblyConfigurationAttribute</a></td>
+<td>Строковое значение, содержащее конфигурацию сборки, например Retail или Debug. Среда выполнения не использует это значение.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblydefaultaliasattribute">AssemblyDefaultAliasAttribute</a></td>
+<td>Строковое значение, содержащее псевдоним по умолчанию, используемый для ссылки на эту сборку из других сборок. Это значение предоставляет понятное имя, если имя сборки само по себе не является понятным (например, если это значение идентификатора GUID). Это значение можно также использовать как краткую форму полного имени сборки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblydescriptionattribute">AssemblyDescriptionAttribute</a></td>
+<td>Строковое значение, содержащее краткое описание сути и назначения сборки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblytitleattribute">AssemblyTitleAttribute</a></td>
+<td>Строковое значение, содержащее понятное имя сборки. Например, сборка с именем <em>comdlg</em> может иметь название &quot;Элемент управления стандартного диалогового окна Майкрософт&quot;.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="strong-name-attributes">Атрибуты строгого имени</h2>
+<p>Атрибуты строгого имени можно использовать для задания строгого имени сборки. В таблице ниже описываются атрибуты строгого имени.</p>
+<table>
+<thead>
+<tr>
+<th>Атрибут строгого имени</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblydelaysignattribute">AssemblyDelaySignAttribute</a></td>
+<td>Логическое значение, указывающее, что используется отложенная подпись.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblykeyfileattribute">AssemblyKeyFileAttribute</a></td>
+<td>Строковое значение, указывающее имя файла, который содержит открытый ключ (при использовании отложенной подписи), или открытый и закрытый ключи, передаваемые в качестве параметра в конструктор этого атрибута. Обратите внимание, что имя файла указано относительно пути к выходному файлу ( <em>EXE</em> или <em>DLL</em> ), а не пути к исходному файлу.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblykeynameattribute">AssemblyKeyNameAttribute</a></td>
+<td>Указывает контейнер ключей, содержащий пару ключей, передаваемых в качестве параметра в конструктор этого атрибута.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере кода показаны атрибуты, применяемые при использовании отложенной подписи для создания сборки со строгим именем с помощью файла открытого ключа <em>myKey.snk</em> .</p>
+<pre><code class="lang-cpp">[assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)];
+[assembly:AssemblyDelaySignAttribute(true)];
+</code></pre>
+<pre><code class="lang-csharp">[assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)]
+[assembly:AssemblyDelaySignAttribute(true)]
+</code></pre>
+<pre><code class="lang-vb">&lt;Assembly:AssemblyKeyFileAttribute(&quot;myKey.snk&quot;)&gt;
+&lt;Assembly:AssemblyDelaySignAttribute(True)&gt;
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="create.html">Создание сборок</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1080; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1080; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-implement-binding-validation">Практическое руководство. Реализация проверки привязки</h1>
+
+<p>В этом примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> и триггер стиля для предоставления визуальной обратной связи, чтобы информировать пользователей, если введено недопустимое значение, на основании пользовательского правила проверки.</p>
+<h2 id="example">Пример</h2>
+<p>Текстовое содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> в следующем примере, привязан к <code>Age</code> свойства (типа int) объекта источника привязки с именем <code>ods</code>. Привязка настроена на использование правила проверки с именем <code>AgeRangeRule</code> так, чтобы при вводе нечисловых символов или значения меньше 21 или больше 130 рядом с текстовым полем появился красный восклицательный знак и подсказка с сообщением об ошибке, когда пользователь наводит указатель мыши на текстовое поле.</p>
+<pre><code class="lang-xaml" name="BindValidation#2">&lt;TextBox Name=&quot;textBox1&quot; Width=&quot;50&quot; FontSize=&quot;15&quot;
+         Validation.ErrorTemplate=&quot;{StaticResource validationTemplate}&quot;
+         Style=&quot;{StaticResource textBoxInError}&quot;
+         Grid.Row=&quot;1&quot; Grid.Column=&quot;1&quot; Margin=&quot;2&quot;&gt;
+  &lt;TextBox.Text&gt;
+    &lt;Binding Path=&quot;Age&quot; Source=&quot;{StaticResource ods}&quot;
+             UpdateSourceTrigger=&quot;PropertyChanged&quot; &gt;
+      &lt;Binding.ValidationRules&gt;
+        &lt;c:AgeRangeRule Min=&quot;21&quot; Max=&quot;130&quot;/&gt;
+      &lt;/Binding.ValidationRules&gt;
+    &lt;/Binding&gt;
+  &lt;/TextBox.Text&gt;
+&lt;/TextBox&gt;
+</code></pre>
+<p>В следующем примере показана реализация <code>AgeRangeRule</code>, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> и переопределяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> метод. Метод Int32.Parse() вызывается для значения, чтобы убедиться в том, что он не содержит недопустимых символов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> Возвращает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationresult">ValidationResult</a> , указывающее, если значение допустимо на основе ли исключение перехватывается во время синтаксического анализа и от того, является ли значение возраста за пределами нижнюю и верхнюю границы.</p>
+<pre><code class="lang-csharp" name="BindValidation#3">public class AgeRangeRule : ValidationRule
+{
+    public int Min { get; set; }
+    public int Max { get; set; }
+
+    public AgeRangeRule()
+    {
+    }
+
+    public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    {
+        int age = 0;
+
+        try
+        {
+            if (((string)value).Length &gt; 0)
+                age = Int32.Parse((String)value);
+        }
+        catch (Exception e)
+        {
+            return new ValidationResult(false, $&quot;Illegal characters or {e.Message}&quot;);
+        }
+
+        if ((age &lt; Min) || (age &gt; Max))
+        {
+            return new ValidationResult(false,
+              $&quot;Please enter an age in the range: {Min}-{Max}.&quot;);
+        }
+        return ValidationResult.ValidResult;
+    }
+}
+</code></pre>
+<p>В следующем примере показано пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> <code>validationTemplate</code> , создает красный восклицательный знак для уведомления пользователя об ошибке проверки. Шаблоны элементов управления используются для переопределения внешнего вида элемента управления.</p>
+<pre><code class="lang-xaml" name="BindValidation#4">&lt;ControlTemplate x:Key=&quot;validationTemplate&quot;&gt;
+  &lt;DockPanel&gt;
+    &lt;TextBlock Foreground=&quot;Red&quot; FontSize=&quot;20&quot;&gt;!&lt;/TextBlock&gt;
+    &lt;AdornedElementPlaceholder/&gt;
+  &lt;/DockPanel&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
+<p>Как показано в следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a> , в котором показано сообщение об ошибке создается с использованием стиля с именем <code>textBoxInError</code>. Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.haserror">HasError</a> — <code>true</code>, триггер задает для подсказки текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> для первой ошибки проверки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> Присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesourcemode#System_Windows_Data_RelativeSourceMode_Self">Self</a>, ссылающегося на текущий элемент.</p>
+<pre><code class="lang-xaml" name="BindValidation#5">&lt;Style x:Key=&quot;textBoxInError&quot; TargetType=&quot;{x:Type TextBox}&quot;&gt;
+  &lt;Style.Triggers&gt;
+    &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;true&quot;&gt;
+      &lt;Setter Property=&quot;ToolTip&quot;
+        Value=&quot;{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)/ErrorContent}&quot;/&gt;
+    &lt;/Trigger&gt;
+  &lt;/Style.Triggers&gt;
+&lt;/Style&gt;
+</code></pre>
+<p>Полный пример см. в <a href="https://go.microsoft.com/fwlink/?LinkID=159972">Примере проверки привязки</a>.</p>
+<p>Обратите внимание, что если вы не предоставите пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">ErrorTemplate</a> отображается шаблон ошибки по умолчанию для предоставления пользователю визуальной обратной связи при ошибке проверки. См. &quot;Проверка данных&quot; в разделе <a href="data-binding-overview.html">Общие сведения о привязке данных</a>. Кроме того, WPF предоставляет встроенное правило проверки, которое отслеживает исключения, получаемые во время обновления свойства источника привязки. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

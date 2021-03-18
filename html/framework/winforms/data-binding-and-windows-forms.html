@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="data-binding-and-windows-forms">Связывание данных и Windows Forms</h1>
+
+<p>В Windows Forms можно выполнить привязку не только к традиционным источникам данных, но и к практически к любой структуре, содержащий данные. Можно выполнить привязку к массиву значений, который рассчитывается во время выполнения, считывается из файла или является производным от значений других элементов управления.</p>
+<p>Кроме того, любое свойство любого элемента можно привязать к источнику данных. При традиционной привязке данных пользователь обычно привязывает отображаемое свойство, например свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a>, к источнику данных. В .NET Framework имеется возможность задавать другие свойства посредством привязки. Привязку можно использовать для выполнения следующих задач.</p>
+<ul>
+<li><p>Задание рисунка для элемента управления изображения.</p>
+</li>
+<li><p>Задание цвета фона для одного или нескольких элементов управления.</p>
+</li>
+<li><p>Задание размера элементов управления.</p>
+</li>
+</ul>
+<p>По существу, привязка данных является автоматическим способом задания любого доступного во время выполнения свойства любого элемента управления в форме.</p>
+<h2 id="types-of-data-binding">Типы привязки данных</h2>
+<p>Windows Forms можно использовать преимущества двух типов привязки данных: простой и сложной. Каждая имеет собственные преимущества.</p>
+<table>
+<thead>
+<tr>
+<th>Тип привязки данных</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Простая привязка данных</td>
+<td>Возможность привязки элемента управления к одному элементу данных, например к значению в столбце таблицы набора данных. Это тип привязки характерен для элементов управления, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a>, которые обычно отображают одно значение. По сути, любое свойство в элементе управления можно привязать к полю в базе данных. Имеется широкая поддержка этой возможности в Visual Studio.<br><br> Дополнительные сведения:<br><br> -   <a href="interfaces-related-to-data-binding.html">Интерфейсы, относящиеся к привязке данных</a><br>-   <a href="how-to-navigate-data-in-windows-forms.html">Практическое руководство. Переход между данными в Windows Forms</a><br>-   <a href="how-to-create-a-simple-bound-control-on-a-windows-form.html">Практическое руководство. Создание элемента управления простой привязкой в форме Windows</a></td>
+</tr>
+<tr>
+<td>Сложная привязка данных</td>
+<td>Возможность привязки элемента управления к нескольким элементам данных, обычно к нескольким записям в базе данных. Сложная привязка также называется привязкой на основе списка. Примеры элементов управления, которые поддерживают сложную привязку, — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listbox">ListBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a>. Пример сложной привязки данных, см. в разделе <a href="controls/how-to-bind-a-windows-forms-combobox-or-listbox-control-to-data.html">как: Привязка к данным Windows Forms ComboBox или ListBox-элемент управления</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bindingsource-component">Компонент BindingSource</h2>
+<p>Чтобы упростить привязку данных, Windows Forms позволяет привязать источник данных к компоненту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>, а затем привязать элементы управления к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>. Компонент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> можно использовать в сценариях простой или сложной привязки. В любом случае компонент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> действует как посредник между источником данных и связанными элементами управления, предоставляющий возможности управления уведомлениями об изменениях и другие функции.</p>
+<h2 id="common-scenarios-that-employ-data-binding">Типичные сценарии, в которых используется привязка данных</h2>
+<p>Практически каждое коммерческое приложение использует сведения, полученные из источников данных разных типов. Обычно это осуществляется через привязку данных. В следующем списке приведено несколько наиболее распространенных сценариев, в которых привязка данных используется в качестве метода представления данных и управления ими.</p>
+<table>
+<thead>
+<tr>
+<th>Сценарий</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Отчеты</td>
+<td>Отчеты — это гибкий инструмент отображения и сводного представления данных в печатном документе. Широко распространено создание отчетов, которые выводят выбранное содержимого источника данных на экран или на принтер. Традиционные формы отчетов — списки, счета и сводки. Элементы обычно представлены в виде столбцов списка, у каждой позиции списка существуют вложенные элементы, однако необходимо выбирать макеты, которые лучше всего подходят для организации данных.</td>
+</tr>
+<tr>
+<td>Запись данных</td>
+<td>Распространенным способом ввода больших объемов связанных данных или отправки пользователям запросов на предоставление сведений является использование формы для ввода данных. Пользователи могут вводить сведения или выбирать варианты, используя текстовые поля, переключатели, флажки и раскрывающиеся списки. Затем данные отправляются на хранение в базу данных, структура которой основана на введенных данных.</td>
+</tr>
+<tr>
+<td>Отношение &quot;Основной/подробности&quot;</td>
+<td>Приложение &quot;Основной/подробности&quot; — это еще один способ просмотра связанных данных. В частности, существует две таблицы данных со связывающими их отношением: в классическом деловом примере — это таблица &quot;Клиенты&quot; и таблица &quot;Заказы&quot; с отношением, связывающим клиентов с их соответствующими заказами. Дополнительные сведения о создании приложения &quot;основной/подробности&quot; с двумя формами Windows <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементов управления, см. в разделе <a href="controls/create-a-master-detail-form-using-two-datagridviews.html">как: Создание формы «основной/подробности» с помощью двух элементов управления DataGridView Windows Forms</a></td>
+</tr>
+<tr>
+<td>Таблица подстановки</td>
+<td>Другим распространенным сценарием представления данных и работы с ними является использование таблицы подстановок. Являясь частью крупной структуры представления данных, элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> применяется для отображения данных и управления ими. Смысл заключается в том, что данные, отображаемые в элементе управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a>, отличаются от данных, которые записываются в базу данных. Например, если есть элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a>, отображающий позиции товара в продуктовом магазине, возможно, вы захотите увидеть названия товаров (хлеб, молоко, яйца). Однако чтобы упростить получение сведений из базы данных и нормализовать базу данных, вы, вероятно, сохраните данные по конкретным позициям для определенного заказа виде кодов (501, 603 и т. д.). Таким образом, между понятным именем товара из продуктового магазина в элементе управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> в форме и соответствующим кодом товара, указанным в заказе, присутствует неявная связь. В этом заключается сущность таблицы подстановок. Дополнительные сведения см. в разделе <a href="controls/how-to-create-a-lookup-table-with-the-windows-forms-bindingsource-component.html">Как Создание таблицы подстановок с помощью компонента BindingSource в Windows Forms</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.binding">Binding</a></li>
+<li><a href="windows-forms-data-binding.html">Привязка данных Windows Forms</a></li>
+<li><a href="controls/how-to-bind-the-windows-forms-datagrid-control-to-a-data-source.html">Практическое руководство. Привязка элемента управления DataGrid в Windows Forms к источнику данных</a></li>
+<li><a href="controls/bindingsource-component.html">Компонент BindingSource</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

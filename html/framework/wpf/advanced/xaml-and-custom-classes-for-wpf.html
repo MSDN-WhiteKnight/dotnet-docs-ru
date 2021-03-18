@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1050;&#1086;&#1076; XAML &#1080; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1077; &#1082;&#1083;&#1072;&#1089;&#1089;&#1099; &#1076;&#1083;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1050;&#1086;&#1076; XAML &#1080; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1077; &#1082;&#1083;&#1072;&#1089;&#1089;&#1099; &#1076;&#1083;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="xaml-and-custom-classes-for-wpf">Код XAML и пользовательские классы для WPF</h1>
+
+<p>Реализация языка XAML в платформах среда CLR поддерживает возможность определения пользовательского класса или структуры на любом языке среда CLR и последующего доступа к этому классу с помощью разметки XAML. В одном файле разметки можно использовать сочетание определенных в Windows Presentation Foundation (WPF) типов и пользовательских типов, обычно сопоставляя пользовательские типы с префиксом пространства имен XAML. В этом разделе обсуждаются требования, которым должен соответствовать пользовательский класс, чтобы его можно было использовать в качестве элемента XAML.</p>
+<p><a name="Custom_Classes_in_Applications_vs__in_Assemblies"></a></p>
+<h2 id="custom-classes-in-applications-or-assemblies">Пользовательские классы в приложениях или сборках</h2>
+<p>Пользовательские классы, используемые в XAML, можно определить двумя способами: в коде программной части или другом коде, который создает основное приложение Windows Presentation Foundation (WPF), или как класс в отдельной сборке, например как исполняемый файл или библиотеку DLL, используемые в качестве библиотеки классов. Каждый из этих подходов имеет определенные преимущества и недостатки.</p>
+<ul>
+<li><p>Преимуществом создания библиотеки классов является то, что все подобные пользовательские классы могут совместно использоваться несколькими различными приложениями. Отдельная библиотека также облегчает управление версиями приложений и упрощает создание класса, который предполагается использовать в качестве корневого элемента на странице XAML.</p>
+</li>
+<li><p>Преимущество определения пользовательских классов в приложении состоит в том, что этот способ является относительно простым и сводит к минимуму проблемы развертывания и тестирования, возникающие при введении отдельных сборок за пределами главного исполняемого файла приложения.</p>
+</li>
+<li><p>Независимо от того, определены ли пользовательские классы в одной или разных сборках, они должны быть распределены между пространством имен CLR и пространством имен XML, чтобы их можно было использовать в XAML в качестве элементов. См. раздел <a href="xaml-namespaces-and-namespace-mapping-for-wpf-xaml.html">Пространства имен XAML и сопоставление пространств имен для WPF XAML</a>.</p>
+</li>
+</ul>
+<p><a name="Requirements_for_a_Custom_Class_as_a_XAML_Element"></a></p>
+<h2 id="requirements-for-a-custom-class-as-a-xaml-element">Требования к пользовательскому классу как элементу XAML</h2>
+<p>Чтобы можно было создавать экземпляр класса в качестве объектного элемента, класс должен удовлетворять указанным ниже требованиям.</p>
+<ul>
+<li><p>Пользовательский класс должен быть открытым и должен поддерживать открытый конструктор по умолчанию (без параметров). (Примечания о структурах см. в следующем разделе.)</p>
+</li>
+<li><p>Пользовательский класс не должен быть вложенным. Вложенные классы и &quot;точка&quot; в их общем синтаксисе использования в среде CLR конфликтуют с другими функциями WPF и XAML, такими как присоединенные свойства.</p>
+</li>
+</ul>
+<p>В дополнение к разрешению синтаксиса объектных элементов определение объекта также разрешает синтаксис элемента свойства для всех других открытых свойств, которые принимают объект в качестве типа значения. Это происходит потому, что экземпляр объекта теперь может быть создан в качестве объектного элемента и может заполнить значение элемента свойства.</p>
+<h3 id="structures">Структуры</h3>
+<p>Структуры, определяемые как настраиваемые типы, всегда следует создавать в XAML в WPF. Причина заключается в том, что компиляторы CLR неявным образом создают для структуры конструктор по умолчанию, который инициализирует все свойства со значениями по умолчанию. В некоторых случаях поведение конструктора по умолчанию или использование объектных элементов для структуры является нежелательным. Это возможно в тех случаях, когда структура используется для заполнения значений и функционирует в качестве объединения, в котором хранятся взаимоисключающие значения, и поэтому ни одному из свойств нельзя присвоить значение. Объект WPF Примером такой структуры является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.gridlength">GridLength</a>. Как правило, в таких структурах необходимо реализовать преобразователь типов, чтобы значения можно было представить в виде атрибутов, используя преобразования строк для создания различных интерпретаций или режимов значений структуры. Структура также должна реализовывать аналогичное поведение для конструкции кода с помощью конструктора, не являющегося конструктором по умолчанию.</p>
+<p><a name="Requirements_for_Properties_of_a_Custom_Class_as_XAML"></a></p>
+<h2 id="requirements-for-properties-of-a-custom-class-as-xaml-attributes">Требования к свойствам пользовательского класса как атрибутам XAML</h2>
+<p>Свойства должны ссылаться на тип, передаваемый по значению (такой как примитив), или использовать класс для типа, имеющего конструктор по умолчанию или преобразователь выделенного типа, к которому может получить доступ процессор XAML. В реализации XAML среды CLR процессоры XAML находят такие преобразователи с помощью собственной поддержки примитивов языка либо путем применения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverterattribute">TypeConverterAttribute</a> для типа или члена в определениях резервных типов.</p>
+<p>Помимо этого, свойство может ссылаться на абстрактный тип класса или интерфейс. Для абстрактных классов или интерфейсов ожидаемый результат синтаксического анализа XAML заключается в том, что значение свойства должно быть заполнено практическими экземплярами класса, которые реализуют интерфейс, или экземплярами типов, которые являются производными от абстрактного класса.</p>
+<p>Свойства могут объявляться в абстрактном классе, но могут быть заданы только в практических классах, производных от абстрактных классов. Это объясняется тем, что для создания объектного элемента для класса в целом требуется открытый конструктор по умолчанию в классе.</p>
+<h3 id="typeconverter-enabled-attribute-syntax">Синтаксис атрибута с поддержкой TypeConverter</h3>
+<p>Если поддерживается выделенный преобразователь типов атрибутов на уровне класса, то применяемый тип преобразования включает синтаксис атрибута для любого свойства, для которого необходимо создать экземпляр этого типа. Преобразователь типа не включает использование объектного элемента типа — только наличие конструктора по умолчанию для данного типа разрешает использование объектного элемента. Таким образом, свойства, разрешенные преобразователем типов, обычно не используются в синтаксисе свойств, если только сам тип не поддерживает синтаксис объектных элементов. Исключением из этого является указание синтаксиса элемента свойства при наличии элемента свойства, содержащего строку. Это использование действительно фактически эквивалентна использованию синтаксиса атрибута и такое использование не часто, если не существует потребность в более надежную обработку пробела значение атрибута. Например, ниже показано использование элемента свойства, который принимает строку, а использование атрибута эквивалентно.</p>
+<pre><code class="lang-xaml" name="XamlOvwSupport#GoofyTCPE">&lt;Button&gt;Hallo!
+  &lt;Button.Language&gt;
+    de-DE
+  &lt;/Button.Language&gt;
+&lt;/Button&gt;
+</code></pre><pre><code class="lang-xaml" name="XamlOvwSupport#GoofyTCPE2">&lt;Button Language=&quot;de-DE&quot;&gt;Hallo!&lt;/Button&gt;
+</code></pre>
+<p>Примерами свойств, где синтаксис атрибута разрешен, но синтаксис элемента свойства, содержащего объектный элемент, запрещен XAML являются различные свойства, принимающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.cursor">Cursor</a> типа. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.cursor">Cursor</a> Класс имеет выделенный преобразователь типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.cursorconverter">CursorConverter</a>, но не предоставляет конструктор по умолчанию, поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a> свойство может устанавливаться только через синтаксис атрибута, даже если фактический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.cursor">Cursor</a> тип является ссылочным типом.</p>
+<h3 id="per-property-type-converters">Преобразователь типа каждого свойства</h3>
+<p>В качестве альтернативы само свойство может объявлять преобразователь типов на уровне свойств. Это позволяет «мини-язык», который создает объекты типа встроенного свойства путем обработки входящих строковых значений атрибута в качестве входных данных для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter.convertfrom">ConvertFrom</a> операции на основе соответствующего типа. Обычно это делается для предоставления удобного метода доступа, а не как единственное средство для задания свойства в XAML. Кроме того, можно также применять преобразователь типов для атрибутов, если необходимо использовать существующие типы CLR, которые не предоставляют конструктор по умолчанию или преобразователь типов атрибутов. Примеры из WPF API являются некоторые свойства, которые принимают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a> типа. В этом случае WPF используется текущей платформы Microsoft .NET Framework <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a> тип для лучшей совместимости и сценариев миграции, которые использовались в предыдущих версиях платформ, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a> тип не поддерживает необходимые конструкторы или преобразование типов на уровне типа, чтобы использоваться в качестве значения свойства XAML напрямую.</p>
+<p>При каждом предоставлении свойства, использующего XAML (особенно в том случае, если вы являетесь автором элемента управления), настоятельно рекомендуем резервировать это свойство с помощью свойства зависимости. Это особенно верно в случае, если используется существующая Windows Presentation Foundation (WPF) реализация обработчика XAML, так как можно повысить производительность с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> резервного. Свойство зависимости предоставит возможности системы свойств для данного свойства, которые пользователи ожидают от доступного в XAML свойства. В число этих возможностей входят анимация, привязка данных и поддержка стилей. Дополнительные сведения см. в разделах <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a> и <a href="xaml-loading-and-dependency-properties.html">Загрузка кода XAML и свойства зависимостей</a>.</p>
+<h3 id="writing-and-attributing-a-type-converter">Написание и установка атрибутов преобразователя типов</h3>
+<p>Иногда нужно будет написать собственный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter">TypeConverter</a> производного класса, чтобы предоставить преобразование для типа свойства. Инструкции по наследованию и созданию преобразователя типов, поддерживающего использование XAML, и способах применения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverterattribute">TypeConverterAttribute</a>, см. в разделе <a href="typeconverters-and-xaml.html">TypeConverters и XAML</a>.</p>
+<p><a name="Requirements_for_Events_of_a_Custom_Class_as_XAML"></a></p>
+<h2 id="requirements-for-xaml-event-handler-attribute-syntax-on-events-of-a-custom-class">Требования к синтаксису атрибутов обработчиков событий XAML пользовательского класса</h2>
+<p>Чтобы событие можно было использовать в качестве события CLR, оно должно быть предоставлено в качестве открытого события класса, поддерживающего конструктор по умолчанию, или абстрактного класса, где событие может быть доступно в производных классах. Чтобы использоваться как перенаправленное событие, ваш CLR событие должно явным образом реализовывать <code>add</code> и <code>remove</code> методы, которые добавляют и удаляют обработчики для CLR сигнатуры события и направляют эти обработчики в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.removehandler">RemoveHandler</a> методы. Эти методы добавляют или удаляют обработчики из хранилища обработчиков перенаправленных событий экземпляра, к которому присоединено событие.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Можно регистрировать обработчики непосредственно для перенаправленных событий с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a>и намеренно не определять CLR событие, которое предоставляет перенаправленное событие. Обычно это не рекомендуется, так как событие не включит синтаксис атрибута XAML для подключения обработчиков и результирующий класс предложит менее прозрачное представление XAML возможностей этого типа.</p>
+</div>
+<p><a name="Collection_Properties"></a></p>
+<h2 id="writing-collection-properties">Написание свойств коллекции</h2>
+<p>Свойства, принимающие тип коллекции, имеют синтаксис XAML, который позволяет определять объекты, добавляемые в коллекцию. Этот синтаксис имеет две важные функции.</p>
+<ul>
+<li><p>Объект, являющийся объектом коллекции, необязательно определять в синтаксисе объектного элемента. Присутствие этого типа коллекции подразумевается всякий раз, когда в XAML указывается свойство, принимающее тип коллекции.</p>
+</li>
+<li><p>Дочерние элементы свойства коллекции в разметке обрабатываются для того, чтобы они стали элементами коллекции. Обычно доступ кода к элементам коллекции осуществляется через методы списка или словаря, такие как <code>Add</code>, или через индексатор. Но синтаксис XAML не поддерживает методы или индексаторы (исключение: XAML 2009 может поддерживать методы, но с помощью XAML 2009 ограничивает возможные способы использования WPF; см. в разделе <a href="../../xaml-services/xaml-2009-language-features.md">возможности языка XAML 2009</a>). Коллекции, очевидно, являются очень общим требованием для построения дерева элементов, и требуется какой-нибудь способ заполнения этих коллекций в декларативном XAML. Таким образом, дочерние элементы свойства коллекции обрабатываются путем добавления их в коллекцию, которая является значением типа свойства коллекции.</p>
+</li>
+</ul>
+<p>Реализация служб XAML в .NET Framework и, следовательно, процессор XAML WPF используют указанное ниже определение того, что составляет свойство коллекции. Тип свойства должен реализовывать один из следующих интерфейсов:</p>
+<ul>
+<li><p>Реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ilist">IList</a>.</p>
+</li>
+<li><p>Реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.idictionary">IDictionary</a> или универсальный эквивалент (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey,TValue&gt;</a>).</p>
+</li>
+<li><p>Является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.array">Array</a> (Дополнительные сведения о массивах в XAML см. в разделе <a href="../../xaml-services/x-array-markup-extension.md">расширение разметки x: Array</a>.)</p>
+</li>
+<li><p>Реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.iaddchild">IAddChild</a> (интерфейс определяется WPF).</p>
+</li>
+</ul>
+<p>Каждый из этих типов в среде CLR имеет метод <code>Add</code>, который используется процессором XAML для добавления элементов в базовую коллекцию при создании графа объекта.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Универсальный <code>List</code> и <code>Dictionary</code> интерфейсы (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey,TValue&gt;</a>) не поддерживаются при обнаружении коллекций WPF процессор XAML. Тем не менее, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> класса в качестве базового класса, так как он реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ilist">IList</a> напрямую, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey,TValue&gt;</a> как базовый класс, так как он реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.idictionary">IDictionary</a> напрямую.</p>
+</div>
+<p>При объявлении свойства, принимающего коллекцию, будьте осторожны при инициализации значения свойства в новых экземплярах типа. Если свойство не реализуется как свойство зависимости, то со свойством достаточно использовать резервное поле, вызывающее конструктор типа коллекции. Если свойство является свойством зависимости, то может потребоваться инициализация свойства коллекции как части конструктора типа по умолчанию. Это обусловлено тем, что свойство зависимости принимает значение по умолчанию из метаданных и обычно нежелательно, чтобы начальное значение свойства коллекции было статической общей коллекцией. Экземпляр коллекции должен иметься для каждого экземпляра содержащего типа. Дополнительные сведения см. в разделе <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+<p>Вы можете реализовать пользовательский тип коллекции для свойства коллекции. Из-за неявной обработки свойства коллекции пользовательскому типу коллекции не требуется предоставлять конструктор по умолчанию, который будет использоваться в XAML неявно. Однако при необходимости можно предоставить конструктор по умолчанию для типа коллекции. Это может оказаться целесообразным. Если не предоставить конструктор по умолчанию, невозможно будет явно объявить коллекцию в качестве объектного элемента. Некоторые разработчики разметки могут предпочесть просмотр явной коллекции в качестве стиля разметки. Кроме того, конструктор по умолчанию может уменьшить требования к инициализации при создании объектов, использующих тип коллекций в качестве значения свойства.</p>
+<p><a name="XAMLCONtent"></a></p>
+<h2 id="declaring-xaml-content-properties">Объявление свойств содержимого XAML</h2>
+<p>Язык XAML определяет концепцию свойства содержимого XAML. Каждый класс, используемый в синтаксисе объекта, может иметь только одно свойство содержимого XAML. Чтобы объявить свойство в качестве свойства содержимого XAML для класса, примените <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.contentpropertyattribute">ContentPropertyAttribute</a> как часть определения класса. Укажите имя предполагаемого свойства содержимого XAML как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.contentpropertyattribute.name">Name</a> в атрибуте. Свойство задается как строка по имени, не как конструкция отражения таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.propertyinfo">PropertyInfo</a>.</p>
+<p>Можно определить свойство коллекции как свойство содержимого XAML. Это отражается на использовании этого свойства, так как объектный элемент может иметь один или несколько дочерних элементов без промежуточных объектных элементов коллекции или тегов элементов свойства. Эти элементы затем рассматриваются как значение для свойства содержимого XAML и добавляются к резервному экземпляру коллекции.</p>
+<p>Некоторые существующие свойства содержимого XAML используют тип свойства <code>Object</code>. Это позволяет XAML, содержимого, свойство, которое может принимать как простые значения, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> так и значение ссылки на объект. Если следовать этой модели, то тип будет отвечать как за определение типа, так и за обработку возможных типов. Типичной причиной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a> содержимого типа является поддержка как простых средств добавления содержимого объекта в виде строки (которая получает обработку представления по умолчанию) или улучшенных средств для добавления содержимого объекта, который задает нестандартное представление или Дополнительные данные.</p>
+<p><a name="Serializing"></a></p>
+<h2 id="serializing-xaml">Сериализация XAML</h2>
+<p>В некоторых сценариях (например, если вы являетесь автором элемента управления) следует убедиться в том, что любое представление объекта, которое может быть создано в XAML, также может быть сериализовано обратно в эквивалентную разметку XAML. Требования к сериализации не описываются в этом разделе. См. разделы <a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a> и <a href="element-tree-and-serialization.html">Дерево элементов и сериализация</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a></li>
+<li><a href="base-elements-overview.html">Общие сведения о базовых элементах</a></li>
+<li><a href="xaml-loading-and-dependency-properties.html">Загрузка кода XAML и свойства зависимостей</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

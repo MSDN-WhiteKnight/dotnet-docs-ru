@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1074;&#1077;&#1088;&#1089;&#1080;&#1103;&#1084;&#1080; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1074;&#1077;&#1088;&#1089;&#1080;&#1103;&#1084;&#1080; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="assembly-versioning">Управление версиями сборок</h1>
+
+<p>Управление версиями сборок, использующих среду CLR, производится полностью на уровне сборки. Конкретная версия сборки и версии зависимых от нее сборок указываются в манифесте сборки. Политика управления версиями по умолчанию для среды выполнения заключается в том, что приложения могут выполняться только с версиями, с которыми они были разработаны и протестированы, если иное не переопределено явной политикой использования версий в файлах конфигурации (в файле конфигурации приложения, файле политики издателя и файле конфигурации администратора компьютера).</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Управление версиями выполняется только для сборок со строгими именами.</p>
+</div>
+<p>Среда выполнения предпринимает несколько шагов для разрешения запроса привязки сборок.</p>
+<ol>
+<li><p>Проверяет исходную ссылку на сборку для определения версии сборки, с которой будет связано приложение.</p>
+</li>
+<li><p>Проверяет все применимые файлы конфигурации для использования политики управления версиями.</p>
+</li>
+<li><p>Определяет правильную сборку на основании исходной ссылки на сборку и любого указанного в файлах конфигурации перенаправления, а также версию, которая должна связываться с вызывающей сборкой.</p>
+</li>
+<li><p>Проверяет глобальный кэш сборок и указанные в файлах конфигурации базы кода, а затем проверяет папку приложения и вложенные папки с помощью правил проверки, описанных в разделе <a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a>.</p>
+</li>
+</ol>
+<p>Указанные шаги показаны на следующей иллюстрации:</p>
+<p><img src="media/versioning/resolve-assembly-binding-request.gif" alt="Схема, показывающая шаги по разрешению запроса привязки сборки."></p>
+<p>Дополнительные сведения о настройке приложений см. в разделе <a href="../../framework/configure-apps/index.md">Настройка приложений</a>. Дополнительные сведения о политике привязки см. в разделе <a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a>.</p>
+<h2 id="version-information">Сведения о версии</h2>
+<p>В каждой сборке есть два различных способа задания сведений о версии.</p>
+<ul>
+<li><p>Номер версии сборки, который наряду с именем сборки и сведениями о языке и региональных параметрах является частью удостоверения сборки. Это номер используется средой выполнения для применения политики управления версиями и играет ключевую роль в процессе разрешения типов на этапе выполнения.</p>
+</li>
+<li><p>Информационная версия, которая представляет собой строку с дополнительными сведениями о версии, служащую исключительно в информационных целях.</p>
+</li>
+</ul>
+<h3 id="assembly-version-number">Номер версии сборки</h3>
+<p>Каждая сборка имеет номер версии, являющийся частью ее удостоверения. Следовательно, две сборки, имеющие разные номера версий, рассматриваются средой выполнения как совершенно разные сборки. Этот номер версии физически представляется в виде строки из четырех частей следующего формата:</p>
+<p>&lt;<em>major version</em>&gt;.&lt;<em>minor version</em>&gt;.&lt;<em>build number</em>&gt;.&lt;<em>revision</em>&gt;</p>
+<p>Например, в версии &quot;1.5.1254.0&quot; число &quot;1&quot; представляет основную версию, &quot;5&quot; — младший номер версии, &quot;1254&quot; — номер построения, а &quot;0&quot; — номер редакции.</p>
+<p>Номер версии сохраняется в манифесте сборки вместе с другими данными удостоверения, включая имя сборки и открытый ключ, а также сведения о связях и удостоверениях других подключаемых к приложению сборок.</p>
+<p>При построении сборки средство разработки записывает сведения о зависимостях каждой сборки, на которую имеется ссылка, в манифест сборки. Среда выполнения использует эти номера версий вместе с конфигурационными данными, установленными администратором, приложением или издателем для загрузки нужной версии сборки, на которую имеется ссылка.</p>
+<p>С целью управления версиями среда выполнения разделяет обычные сборки и сборки со строгими именами. Проверка версий производится только для сборок со строгими именами.</p>
+<p>Сведения о политиках привязки версий см. в разделе <a href="../../framework/configure-apps/index.md">Настройка приложений</a>. Дополнительные сведения о способе использования средой выполнения сведений о версии для поиска определенной сборки см. в разделе <a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a>.</p>
+<h3 id="assembly-informational-version">Информационная версия сборки</h3>
+<p>Информационная версия сборки представляет собой строку, которая добавляет к сборке дополнительные данные и служит только для информации. Она не используется на этапе выполнения. Информационная версия (в текстовом формате) соответствует описанию продукта на рынке, данным о комплектации или названии продукта. Эта версия не используется средой выполнения. Так, информационная версия может быть задана как &quot;Среда CLR версии 1.0&quot; или &quot;Элемент управления NET с пакетом обновления 2&quot;. В Microsoft Windows эта информация отображается в элементе &quot;Версия продукта&quot; на вкладке &quot;Версии&quot; в диалоговом окне свойств файла.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Хотя можно задать любой текст, при компиляции появится предупреждение, если строка имеет формат отличный от формата номера версии сборки или если она имеет правильный формат, но содержит подстановочные знаки. Это не опасное предупреждение.</p>
+</div>
+<p>Информационная версия представляется с помощью пользовательского атрибута <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyinformationalversionattribute">System.Reflection.AssemblyInformationalVersionAttribute</a>. Дополнительные сведения об атрибуте информационной версии см. в разделе <a href="set-attributes.html">Настройка атрибутов сборки</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a></li>
+<li><a href="../../framework/configure-apps/index.md">Настройка приложений</a></li>
+<li><a href="set-attributes.html">Настройка атрибутов сборки</a></li>
+<li><a href="index.html">Сборки в .NET</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

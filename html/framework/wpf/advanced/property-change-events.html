@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103; &#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103; &#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="property-change-events">События изменения свойств</h1>
+
+<p>Windows Presentation Foundation (WPF) определяет несколько событий, которые вызываются в ответ на изменение в значении свойства. Часто этим свойством является свойство зависимостей. Самим событием иногда является перенаправляемое событие, а иногда — стандартное событие среда CLR. Определение события зависит от сценария, так как некоторые изменения свойств лучше перенаправлять через дерево элементов, тогда как другие в основном влияют только на объект, в котором это свойство изменено.</p>
+<h2 id="identifying-a-property-change-event">Определение события изменения свойства</h2>
+<p>Не все события, сообщающие об изменении свойства, явным образом определяются как событие изменения свойства на основании шаблона сигнатуры или именования. Как правило, в описании события в документации пакет средств разработки программного обеспечения (SDK) указывается, связано ли событие непосредственно с изменением значения свойства, и предоставляются перекрестные ссылки между свойством и событием.</p>
+<h3 id="routedpropertychanged-events">События RoutedPropertyChanged</h3>
+<p>Некоторые события используют тип данных события и делегат, которые явно используются для событий изменения свойств. Тип данных события является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventargs-1">RoutedPropertyChangedEventArgs&lt;T&gt;</a>, а делегатом — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventhandler-1">RoutedPropertyChangedEventHandler&lt;T&gt;</a>. Данные события и делегат имеют параметр универсального типа, который используется для указания фактического типа изменяющегося свойства при определении обработчика. Данные события содержат два свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventargs-1.oldvalue">OldValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventargs-1.newvalue">NewValue</a>, который затем передаются как аргумент типа событий данных.</p>
+<p>&quot;Перенаправляемая&quot; часть имени указывает, что событие изменения свойства зарегистрировано как перенаправляемое событие. Преимуществом перенаправления события изменения свойства является то, что верхний уровень элемента управления может получать события изменения свойств, если свойства дочерних элементов (составные части элемента управления) изменяют значения. Например, можно создать элемент управления, который включает в себя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.rangebase">RangeBase</a> элементов управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a>. Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.rangebase.value">Value</a> изменения свойств в части ползунка, может потребоваться обработка этого изменения в родительском элементе управления, а не на части.</p>
+<p>Поскольку имеется старое и новое значение, то может казаться заманчивым использовать этот обработчик событий в качестве проверяющего элемента управления для значения свойства. Однако большинство событий изменения свойств создается не для этого. Как правило, предоставляются значения, на основе которых можно действовать в других логических областях кода, но на самом деле изменение значений из обработчика событий не рекомендуется и может привести к непреднамеренной рекурсии в зависимости от реализации обработчика.</p>
+<p>Если свойство является пользовательское свойство зависимости, или вы работаете с производным классом где определен код создания экземпляра, существует гораздо лучший механизм отслеживания изменений свойств, встроенной в WPF системы свойств: обратные вызовы системы свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a>. Дополнительные сведения об использовании системы свойств WPF для проверки и приведения см. в разделах <a href="dependency-property-callbacks-and-validation.html">Проверка и обратные вызовы свойства зависимостей</a> и <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+<h3 id="dependencypropertychanged-events">События DependencyPropertyChanged</h3>
+<p>Другая пара типов, которые являются частью сценария события изменения свойств является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventargs">DependencyPropertyChangedEventArgs</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventhandler">DependencyPropertyChangedEventHandler</a>. События для этих изменений свойств не перенаправляются; это стандартные события CLR. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventargs">DependencyPropertyChangedEventArgs</a> является типом отчетов, так как он является производным от данных необычные события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventargs">DependencyPropertyChangedEventArgs</a> — это структура, а не класс.</p>
+<p>События, которые используют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventargs">DependencyPropertyChangedEventArgs</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventhandler">DependencyPropertyChangedEventHandler</a> немного более распространены, чем <code>RoutedPropertyChanged</code> события. Например, событие, которое использует эти типы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismousecapturedchanged">IsMouseCapturedChanged</a>.</p>
+<p>Как и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventargs-1">RoutedPropertyChangedEventArgs&lt;T&gt;</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertychangedeventargs">DependencyPropertyChangedEventArgs</a> также сообщает старое и новое значение для свойства. Аналогично это относится и к тому, что вы можете делать со значениями. Обычно не рекомендуется пытаться снова изменить значения в отправителе в ответ на это событие.</p>
+<h2 id="property-triggers">Триггеры свойств</h2>
+<p>С событием изменения свойств тесно связана другая концепция — триггер свойств. Триггер свойств создается внутри стиля или шаблона и позволяет создавать условное поведение на основе значения свойства, которому назначается триггер.</p>
+<p>У триггера свойств должно быть свойство зависимостей. Оно может быть (и часто является) свойством зависимостей только для чтения. Хорошим указанием на то, что свойство зависимостей, предоставляемое элементом управления, хотя бы частично разработано как триггер свойства, является Is в начале имени свойства. Свойства с таким именованием часто являются логическим свойством зависимостей только для чтения, а основной сценарий для свойства — предоставление состояния элемента управления, которое может иметь последствия для пользовательского интерфейса реального времени и, следовательно, является кандидатом на роль триггера свойств.</p>
+<p>Некоторые из этих свойств также имеют специальное событие изменения свойства. Например, свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismousecaptured">IsMouseCaptured</a> имеет событие изменения свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismousecapturedchanged">IsMouseCapturedChanged</a>. Само свойство доступно только для чтения, его значение системой ввода, и система ввода создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismousecapturedchanged">IsMouseCapturedChanged</a> при каждом изменении в режиме реального времени.</p>
+<p>По сравнению с истинным событием изменения свойства, использование триггера свойств для реагирования на изменение свойства имеет некоторые ограничения.</p>
+<p>Триггеры свойств работают через логику точного соответствия. Нужно указать свойство и конкретное значение, для которого будет срабатывать триггер. Например: <code>&lt;Setter Property=&quot;IsMouseCaptured&quot; Value=&quot;true&quot;&gt; ... &lt;/Setter&gt;</code>. Из-за этого ограничения большая часть триггеров свойств будет использоваться для логических свойств или свойств, которые принимают определенное значение перечисления, когда возможный диапазон значений достаточно управляем, чтобы определить триггер для каждого случая. Триггеры свойств могут существовать только для специальных значений, например когда количество элементов достигает нуля, а также нет триггера, который учитывает случаи, когда значение свойства изменяется от нуля (вместо триггеров для всех случаев вам может понадобиться обработчик события кода или поведение по умолчанию, которое снова возвращается из состояния триггера, когда значение отлично от нуля).</p>
+<p>Синтаксис триггера свойств аналогичен оператору if в программировании. Если условие триггера истинно, тогда &quot;тело&quot; триггера свойств &quot;выполняется&quot;. &quot;Тело&quot; триггера свойств является не кодом, а разметкой. Разметка ограничена использованием одного или нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> элементы для задания других свойств объекта, где применяется стиль или шаблон.</p>
+<p>Чтобы сместить условие «if» триггера свойства, которое имеет широкий выбор возможных значений, обычно рекомендуется установить это же значение свойства по умолчанию с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a>. Таким образом, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> метод задания будет иметь приоритет в случае, когда условие триггера истинно и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> , не находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> , будет иметь приоритет всякий раз, когда условие триггера не выполняется.</p>
+<p>Триггеры свойств, как правило, подходят для сценариев, в которых одно или несколько свойств Appearance должны изменяться в зависимости от состояния другого свойства в том же элементе.</p>
+<p>Дополнительные сведения о триггерах свойств см. в разделе <a href="../controls/styling-and-templating.html">Использование стилей и шаблонов</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

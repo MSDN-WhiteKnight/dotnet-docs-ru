@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1082; &#1088;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;&#1072;&#1084; &#1079;&#1072;&#1087;&#1088;&#1086;&#1089;&#1072; LINQ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1082; &#1088;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;&#1072;&#1084; &#1079;&#1072;&#1087;&#1088;&#1086;&#1089;&#1072; LINQ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-bind-to-the-results-of-a-linq-query">Практическое руководство. Привязка к результатам запроса LINQ</h1>
+
+<p>В этом примере показано, как выполнить запрос LINQ, а затем привязать к результатам.</p>
+<h2 id="example">Пример</h2>
+<p>В следующем примере создается два окна. Первый список содержит три элемента списка.</p>
+<pre><code class="lang-xaml" name="LinqExample#UI">&lt;ListBox SelectionChanged=&quot;ListBox_SelectionChanged&quot;
+         SelectedIndex=&quot;0&quot; Margin=&quot;10,0,10,0&quot; &gt;
+    &lt;ListBoxItem&gt;1&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;2&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;3&lt;/ListBoxItem&gt;
+&lt;/ListBox&gt;
+&lt;ListBox Width=&quot;400&quot; Margin=&quot;10&quot; Name=&quot;myListBox&quot;
+         HorizontalContentAlignment=&quot;Stretch&quot;
+         ItemsSource=&quot;{Binding}&quot;
+         ItemTemplate=&quot;{StaticResource myTaskTemplate}&quot;/&gt;
+
+</code></pre>
+<p>Выбор элемента из первого списка вызывает следующий обработчик событий. В этом примере <code>Tasks</code> — это коллекция <code>Task</code> объектов. <code>Task</code> Класс имеет свойство с именем <code>Priority</code>. Этот обработчик событий запускает запрос LINQ, возвращающий коллекцию <code>Task</code> объекты, которые имеют значение выбранного приоритета, а затем устанавливает его в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a>:</p>
+<pre><code class="lang-csharp" name="LinqExample#Using">using System.Linq;
+</code></pre><pre><code class="lang-csharp" name="LinqExample#Tasks">Tasks tasks = new Tasks();
+</code></pre><pre><code class="lang-csharp" name="LinqExample#Handler">private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    int pri = Int32.Parse(((sender as ListBox).SelectedItem as ListBoxItem).Content.ToString());
+
+    this.DataContext = from task in tasks
+                       where task.Priority == pri
+                       select task;
+}
+</code></pre>
+<p>Второй список привязывается к этой коллекции, так как его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> имеет значение <code>{Binding}</code>. Таким образом, он отображает возвращаемой коллекции (на основе <code>myTaskTemplate</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>).</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-make-data-available-for-binding-in-xaml.html">Обеспечение доступности данных для привязки в XAML</a></li>
+<li><a href="how-to-bind-to-a-collection-and-display-information-based-on-selection.html">Привязка к коллекции и вывод сведений в зависимости от выделенного элемента</a></li>
+<li><a href="../getting-started/whats-new.html">Новые возможности WPF версии 4.5</a></li>
+<li><a href="data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

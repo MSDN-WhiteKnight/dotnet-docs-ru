@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1089;&#1086;&#1074;&#1077;&#1088;&#1096;&#1077;&#1085;&#1089;&#1090;&#1074;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1077; &#1089;&#1090;&#1088;&#1086;&#1075;&#1086;&#1077; &#1080;&#1084;&#1077;&#1085;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1089;&#1086;&#1074;&#1077;&#1088;&#1096;&#1077;&#1085;&#1089;&#1090;&#1074;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1077; &#1089;&#1090;&#1088;&#1086;&#1075;&#1086;&#1077; &#1080;&#1084;&#1077;&#1085;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="enhanced-strong-naming">Усовершенствованное строгое именование</h1>
+
+<p>Подпись строгого имени — это механизм идентификации сборок в .NET Framework. Это цифровая подпись с открытым ключом, которая обычно используется для проверки целостности данных, передаваемых от инициатора (подписывающего) к получателю (проверяющему). Эта подпись используется в виде уникального идентификатора сборки и гарантирует, что ссылки на сборку не являются неоднозначными. Подписывание сборки является частью процесса сборки, что затем проверяется при ее загрузке.</p>
+<p>Подписи строгого имени помогают предотвратить подделку сборки на стороне злоумышленника с последующей повторной подписью сборки оригинальным ключом подписавшего. Но ключи строгого имени не содержат никаких сведений об издателе, а также не содержат иерархию сертификатов. Подпись строгого имени не гарантирует, что подписавшему сборку человеку можно доверять, и не указывает на то, что человек является правомерным владельцем ключа; она означает только то, что владелец ключа подписал сборку. Поэтому не рекомендуется использовать подпись строгого имени как средство проверки безопасности на доверие к коду сторонних разработчиков. Рекомендуемым способом проверки подлинности кода является Microsoft Authenticode.</p>
+<h2 id="limitations-of-conventional-strong-names">Ограничения обычных строгих имен</h2>
+<p>Технология строгого именования, используемая в версиях до .NET Framework 4.5, имеет указанные ниже недостатки:</p>
+<ul>
+<li><p>Ключи постоянно подвержены атакам, а улучшенные методы и оборудование облегчают поиск закрытого ключа по открытому. Для защиты от атак необходимы более длинные ключи. Версии .NET Framework до .NET Framework 4.5 предоставляют возможность подписывания с помощью ключа любого размера (размер по умолчанию — 1024 бита), но подпись сборки новым ключом испортит все двоичные файлы, ссылающиеся на старый идентификатор сборки. Поэтому изменение размера ключа подписи является крайне сложным, если необходимо обеспечить совместимость.</p>
+</li>
+<li><p>Подпись строгого имени поддерживает только алгоритм SHA-1. Недавно было показано, что алгоритма SHA-1 недостаточно для обеспечения безопасности хэширования. Поэтому необходим более надежный алгоритм (SHA-256 или выше). Возможно, алгоритм SHA-1 утратит статус совместимого с FIPS, что станет проблемой для тех, кто предпочитает использовать только FIPS-совместимое программное обеспечение и алгоритмы.</p>
+</li>
+</ul>
+<h2 id="advantages-of-enhanced-strong-names">Преимущества улучшенных строгих имен</h2>
+<p>Основными преимуществами улучшенных строгих имен являются совместимость с уже существующими строгими именами и возможность утверждения эквивалентности одного идентификатора другому.</p>
+<ul>
+<li><p>Разработчики, которые имеют уже существующие подписанные сборки, могут перенести формирование их идентификаторов на алгоритм SHA-2, сохранив при этом совместимость со сборками, которые ссылаются на старые идентификаторы.</p>
+</li>
+<li><p>Разработчики, которые создают новые сборки и не имеют существующих подписей строгого имени, могут использовать более безопасные алгоритмы SHA-2 и подписывать сборки так, как они делали всегда.</p>
+</li>
+</ul>
+<h2 id="use-enhanced-strong-names">Использование улучшенных строгих имен</h2>
+<p>Ключи строгого имени состоят из ключа подписи и ключа удостоверения. Сборка подписывается с помощью ключа подписи и не зависит от ключа удостоверения. До выхода версии .NET Framework 4.5 эти ключи были идентичными. Начиная с .NET Framework 4.5 ключ удостоверения остается таким же, как и в более ранних версиях платформы .NET Framework, а ключ подписи улучшается с использованием более надежного хэш-алгоритма. Кроме того, ключ подписи подписывается ключом удостоверения для создания подписи другой стороны.</p>
+<p>Атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblysignaturekeyattribute">AssemblySignatureKeyAttribute</a> позволяет метаданным сборки использовать уже существующий открытый ключ для идентификации сборки, что позволяет старым ссылкам на сборки продолжать работать.  Атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblysignaturekeyattribute">AssemblySignatureKeyAttribute</a> использует подпись другой стороны для проверки того, является ли владелец нового ключа подписи также владельцем старого ключа удостоверения.</p>
+<h3 id="sign-with-sha-2-without-key-migration">Подписывание с использованием SHA-2 без переноса ключа</h3>
+<p>Чтобы подписать сборку без переноса подписи строгого имени, выполните следующие команды в командной строке:</p>
+<ol>
+<li><p>Создайте ключ удостоверения (если необходимо).</p>
+<pre><code class="lang-console">sn -k IdentityKey.snk  
+</code></pre>
+</li>
+<li><p>Извлеките открытый ключ удостоверения и укажите, что при подписывании этим ключом необходимо использовать алгоритм SHA-2.</p>
+<pre><code class="lang-console">sn -p IdentityKey.snk IdentityPubKey.snk sha256  
+</code></pre>
+</li>
+<li><p>Используйте отложенную подпись сборки с помощью файла с открытым ключом удостоверения.</p>
+<pre><code class="lang-console">csc MyAssembly.cs /keyfile:IdentityPubKey.snk /delaySign+  
+</code></pre>
+</li>
+<li><p>Повторно подпишите сборку с помощью полной пары ключей удостоверения.</p>
+<pre><code class="lang-console">sn -Ra MyAssembly.exe IdentityKey.snk  
+</code></pre>
+</li>
+</ol>
+<h3 id="sign-with-sha-2-with-key-migration">Подписывание с использованием SHA-2 с переносом ключа</h3>
+<p>Чтобы подписать сборку с переносом подписи строгого имени, выполните следующие команды в командной строке:</p>
+<ol>
+<li><p>Создайте пару ключей удостоверения и подписи (если необходимо).</p>
+<pre><code class="lang-console">sn -k IdentityKey.snk  
+sn -k SignatureKey.snk  
+</code></pre>
+</li>
+<li><p>Извлеките открытый ключ подписи и укажите, что при подписывании этим ключом необходимо использовать алгоритм SHA-2.</p>
+<pre><code class="lang-console">sn -p SignatureKey.snk SignaturePubKey.snk sha256  
+</code></pre>
+</li>
+<li><p>Извлеките открытый ключ удостоверения, определяющий хэш-алгоритм, с помощью которого создается подпись другой стороны.</p>
+<pre><code class="lang-console">sn -p IdentityKey.snk IdentityPubKey.snk  
+</code></pre>
+</li>
+<li><p>Создайте параметры для атрибута <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblysignaturekeyattribute">AssemblySignatureKeyAttribute</a> и прикрепите атрибут к сборке.</p>
+<pre><code class="lang-console">sn -a IdentityPubKey.snk IdentityKey.snk SignaturePubKey.snk  
+</code></pre>
+<p>Вы увидите приблизительно следующее.</p>
+<pre><code class="lang-output">Information for key migration attribute.
+(System.Reflection.AssemblySignatureKeyAttribute):
+publicKey=
+002400000c80000094000000060200000024000052534131000400000100010005a3a81ac0a519
+d96244a9c589fc147c7d403e40ccf184fc290bdd06c7339389a76b738e255a2bce1d56c3e7e936
+e4fc87d45adc82ca94c716b50a65d39d373eea033919a613e4341c66863cb2dc622bcb541762b4
+3893434d219d1c43f07e9c83fada2aed400b9f6e44ff05e3ecde6c2827830b8f43f7ac8e3270a3
+4d153cdd
+
+counterSignature=
+e3cf7c211678c4d1a7b8fb20276c894ab74c29f0b5a34de4d61e63d4a997222f78cdcbfe4c91eb
+e1ddf9f3505a32edcb2a76f34df0450c4f61e376b70fa3cdeb7374b1b8e2078b121e2ee6e8c6a8
+ed661cc35621b4af53ac29c9e41738f199a81240e8fd478c887d1a30729d34e954a97cddce66e3
+ae5fec2c682e57b7442738
+</code></pre>
+<p>Эти выходные данные затем могут быть преобразованы в AssemblySignatureKeyAttribute.</p>
+<pre><code class="lang-csharp">[assembly:System.Reflection.AssemblySignatureKeyAttribute(
+&quot;002400000c80000094000000060200000024000052534131000400000100010005a3a81ac0a519d96244a9c589fc147c7d403e40ccf184fc290bdd06c7339389a76b738e255a2bce1d56c3e7e936e4fc87d45adc82ca94c716b50a65d39d373eea033919a613e4341c66863cb2dc622bcb541762b43893434d219d1c43f07e9c83fada2aed400b9f6e44ff05e3ecde6c2827830b8f43f7ac8e3270a34d153cdd&quot;,
+&quot;e3cf7c211678c4d1a7b8fb20276c894ab74c29f0b5a34de4d61e63d4a997222f78cdcbfe4c91ebe1ddf9f3505a32edcb2a76f34df0450c4f61e376b70fa3cdeb7374b1b8e2078b121e2ee6e8c6a8ed661cc35621b4af53ac29c9e41738f199a81240e8fd478c887d1a30729d34e954a97cddce66e3ae5fec2c682e57b7442738&quot;
+)]
+</code></pre>
+</li>
+<li><p>Используйте отложенную подпись сборки с помощью открытого ключа удостоверения.</p>
+<pre><code class="lang-console">csc MyAssembly.cs /keyfile:IdentityPubKey.snk /delaySign+  
+</code></pre>
+</li>
+<li><p>Подпишите сборку с помощью полной пары ключей удостоверения.</p>
+<pre><code class="lang-console">sn -Ra MyAssembly.exe SignatureKey.snk  
+</code></pre>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="create-use-strong-named.html">Создание и использование сборок со строгими именами</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

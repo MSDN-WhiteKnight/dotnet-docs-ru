@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1090;&#1080;&#1087;&#1086;&#1084; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1090;&#1080;&#1087;&#1086;&#1084; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-bind-a-windows-forms-control-to-a-type">Практическое руководство. Связывание элемента управления с типом в Windows Forms</h1>
+
+<p>При создании элементов управления, взаимодействующих с данными, иногда бывает нужно привязать элемент управления к типу, а не к объекту. Такая ситуация особенно часто возникает на этапе разработки, когда данные недоступны, но все равно нужно, чтобы элемент управления отображал данные из открытого интерфейса типа. Например, вы привязываете элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> к объекту, предоставляемому веб-службой, и хотите, чтобы во время разработки элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> помечал свои столбцы именами членов пользовательского типа.</p>
+<p>Элемент управления можно легко привязать к типу с помощью компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>.</p>
+<h2 id="example">Пример</h2>
+<p>В примере кода ниже показано, как привязать элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> к пользовательскому типу с помощью компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>. После запуска примера можно увидеть, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> пометил столбцы, отражающие свойства объекта <code>Customer</code>, перед заполнением элемента управления данными. В примере есть кнопка Add Customer (Добавить клиента) для добавления данных в элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a>. При нажатии на кнопку новый объект <code>Customer</code> добавляется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>. В реальном сценарии данные можно было бы получить путем вызова веб-службы или другого источника данных.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataConnector.BindingToType#1">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+
+class Form1 : Form
+{
+    BindingSource bSource = new BindingSource();
+    private Button button1;
+    DataGridView dgv = new DataGridView();
+
+    public Form1()
+    {
+        this.button1 = new System.Windows.Forms.Button();
+        this.button1.Location = new System.Drawing.Point(140, 326);
+        this.button1.Name = &quot;button1&quot;;
+        this.button1.AutoSize = true;
+        this.button1.Text = &quot;Add Customer&quot;;
+        this.button1.Click += new System.EventHandler(this.button1_Click);
+        this.ClientSize = new System.Drawing.Size(362, 370);
+        this.Controls.Add(this.button1);
+
+        // Bind the BindingSource to the DemoCustomer type.
+        bSource.DataSource = typeof(DemoCustomer);
+
+        // Set up the DataGridView control.
+        dgv.Dock = DockStyle.Top;
+        this.Controls.Add(dgv);
+
+        // Bind the DataGridView control to the BindingSource.
+        dgv.DataSource = bSource;
+       
+    }
+    public static void Main()
+    {
+        Application.Run(new Form1());
+     
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        bSource.Add(new DemoCustomer(DateTime.Today));
+    }
+}
+
+// This simple class is used to demonstrate binding to a type.
+public class DemoCustomer
+{
+    public DemoCustomer()
+    {
+        idValue = Guid.NewGuid();
+    }
+
+    public DemoCustomer(DateTime FirstOrderDate)
+    {
+        FirstOrder = FirstOrderDate;
+        idValue = Guid.NewGuid();
+    }
+    // These fields hold the data that backs the public properties.
+    private DateTime firstOrderDateValue;
+    private Guid idValue;
+    private string custNameValue;
+
+    public string CustomerName
+    {
+        get { return custNameValue; }
+        set { custNameValue = value; }
+    }
+    
+    // This is a property that represents a birth date.
+    public DateTime FirstOrder
+    {
+        get
+        {
+            return this.firstOrderDateValue;
+        }
+        set
+        {
+            if (value != this.firstOrderDateValue)
+            {
+                this.firstOrderDateValue = value;
+            }
+        }
+    }
+
+    // This is a property that represents a customer ID.
+    public Guid ID
+    {
+        get
+        {
+            return this.idValue;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li>ссылки на сборки System и System.Windows.Forms;</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingnavigator">BindingNavigator</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a></li>
+<li><a href="bindingsource-component.html">Компонент BindingSource</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

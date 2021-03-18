@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1083;&#1072;&#1089;&#1090;&#1080; &#1074;&#1080;&#1076;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; &#1080;&#1084;&#1077;&#1085; XAML &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1083;&#1072;&#1089;&#1090;&#1080; &#1074;&#1080;&#1076;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; &#1080;&#1084;&#1077;&#1085; XAML &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-xaml-namescopes">Области видимости имен XAML в WPF</h1>
+
+<p>Области имен XAML — это понятие, которое идентифицирует объекты, определенные в XAML. Имена из области имен XAML можно использовать для установления связей между именами объектов, определенными в XAML, и эквивалентными им экземплярами из дерева объектов. Области имен XAML в управляемом коде WPF, как правило, создаются при загрузке отдельных корневых страниц XAML для приложения XAML. Области видимости имен XAML как программируемые объекты определяются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> и реализуются также посредством практического класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">NameScope</a>.</p>
+<p><a name="Namescopes_in_Loaded_XAML_Applications"></a></p>
+<h2 id="namescopes-in-loaded-xaml-applications">Области имен в загруженных приложениях XAML</h2>
+<p>В более широком контексте программирования или информатики в концепции программирования включается принцип уникального идентификатора или имени, которое можно использовать для доступа к объекту. В системах, где используются идентификаторы или имена, область имен определяет границы, в пределах которых процесс или технология ищет объект с запрошенным именем, или границы, в пределах которых применяются уникальные имена. Эти общие принципы действительны и для областей имен XAML. В WPF области имен XAML создаются в корневом элементе страницы XAML при загрузке страницы. Каждое имя, указанное внутри страницы XAML, начиная с корневой страницы, добавляется в соответствующую область имен XAML.</p>
+<p>В WPF XAML, элементы, являющиеся общими корневыми элементами (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>) всегда управляют областью видимости имен XAML. Если такой элемент, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> является корневым элементом страницы в разметке, XAML процессор добавляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> неявно root, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> можно указать область видимости имен XAML рабочего.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Область имен XAML создается для рабочего приложения XAML при выполнении действий сборки WPF, даже если атрибуты <code>Name</code> и <code>x:Name</code> не определены в элементах разметки XAML.</p>
+</div>
+<p>При попытке использования одного и того же имени дважды в любой области имен XAML будет вызвано исключение. Для кода XAML системы WPF, который содержит код программной части и является компонентом скомпилированного приложения, во время первоначальной компиляции разметки при создании сформированного класса для страницы вызывается исключение при выполнении действий сборки WPF. Для кода XAML, разметка которого не скомпилирована действием сборки, исключения, связанные с проблемами области имен XAML, могут вызываться при загрузке кода XAML. Разработчики XAML должны также учитывать возможность возникновения проблем с областью имен XAML во время разработки.</p>
+<h3 id="adding-objects-to-runtime-object-trees">Добавление объектов в деревья объектов среды выполнения</h3>
+<p>Область имен XAML системы WPF создается и определяется в момент синтаксического анализа кода XAML. Если объект добавляется в дерево объектов уже после того, как выполнен синтаксический анализ кода XAML, сформировавшего это дерево, значение <code>Name</code> или <code>x:Name</code> нового объекта не приводит к автоматическому обновлению сведений из области имен XAML. Чтобы добавить имя для объекта в области видимости имен XAML WPF после загрузки XAML, необходимо вызвать соответствующую реализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope.registername">RegisterName</a> на объект, который определяет область видимости имен XAML, который обычно является корневой страницы XAML. Если имя не зарегистрирован, добавленный объект нельзя ссылаться по имени через методы например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findname">FindName</a>, и вы не может использовать это имя для анимации.</p>
+<p>Является наиболее распространенным сценарием для разработчиков приложений, который будет использоваться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> для регистрации имен в области видимости имен XAML в текущем корне страницы. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> является частью важных сценария для раскадровок, целевых объектов для анимации. Дополнительные сведения см. в разделе <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о Storyboard</a>.</p>
+<p>При вызове метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> объект, отличный от объекта, который определяет область видимости имен XAML, имя по-прежнему регистрируется в области видимости имен XAML, вызывающего объекта, находящееся в, как если бы Вы вызвали <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> на область видимости имен XAML, определение объекта.</p>
+<h3 id="xaml-namescopes-in-code">Области имен XAML в коде</h3>
+<p>Вы можете создавать и использовать области имен XAML в коде. Интерфейсы API и понятия, которые применяются при создании областей имен XAML, совпадают с применяемыми в чистом коде, так как обработчик XAML для WPF использует эти API и понятия при обработке самого кода XAML. Они существуют в основном для поиска объектов по имени в дереве объектов, которое, как правило, частично или полностью задано в XAML.</p>
+<p>Для приложений, создаваемых программным путем, а не из загруженного XAML, необходимо реализовать объект, который определяет область видимости имен XAML <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a>, или быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> производного класса, чтобы поддерживать создание области видимости имен XAML на его экземпляры.</p>
+<p>Также для любого элемента, не загруженного и не обработанного обработчиком XAML, область имен XAML для объекта не создается и не инициализируется по умолчанию. Необходимо явным образом создать область имен XAML для любого объекта, в котором впоследствии требуется регистрировать имена. Чтобы создать область имен XAML, вызовите статический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.setnamescope">SetNameScope</a> метод. Укажите объект, которому будет принадлежать его как <code>dependencyObject</code> параметра, а новые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.-ctor">NameScope</a> вызов конструктора как <code>value</code> параметр.</p>
+<p>Если объект, предоставленный как <code>dependencyObject</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.setnamescope">SetNameScope</a> не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>, вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> для любых дочерних элементов не окажет никакого воздействия. Если вам не удается создать новую область видимости имен XAML явно, то вызывает для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> приведет к появлению исключения.</p>
+<p>Пример использования интерфейсов API для области имен XAML в коде см. в разделе <a href="../graphics-multimedia/how-to-define-a-name-scope.html">Определение пространства имен</a>.</p>
+<p><a name="Namescopes_in_Styles_and_Templates"></a></p>
+<h2 id="xaml-namescopes-in-styles-and-templates">Области имен XAML в стилях и шаблонах</h2>
+<p>Стили и шаблоны WPF позволяют повторно использовать и применять содержимое простым и понятным способом. Однако стили и шаблоны могут также включать элементы с именами XAML, определенными на уровне шаблона. Затем один и тот же шаблон может использоваться несколько раз на странице. По этой причине стили и шаблоны определяют свои собственные области имен XAML независимо от расположения в дереве объектов, где применяется стиль или шаблон.</p>
+<p>Рассмотрим следующий пример.</p>
+<pre><code class="lang-xaml" name="XamlOvwSupport#NameScopeTemplates">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  &gt;
+  &lt;Page.Resources&gt;
+    &lt;ControlTemplate x:Key=&quot;MyButtonTemplate&quot; TargetType=&quot;{x:Type Button}&quot;&gt;
+      &lt;Border BorderBrush=&quot;Red&quot; Name=&quot;TheBorder&quot; BorderThickness=&quot;2&quot;&gt;
+        &lt;ContentPresenter/&gt;
+      &lt;/Border&gt;      
+    &lt;/ControlTemplate&gt;
+  &lt;/Page.Resources&gt;
+  &lt;StackPanel&gt;
+    &lt;Button Template=&quot;{StaticResource MyButtonTemplate}&quot;&gt;My first button&lt;/Button&gt;
+    &lt;Button Template=&quot;{StaticResource MyButtonTemplate}&quot;&gt;My second button&lt;/Button&gt;
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Здесь один тот же шаблон применяется к двум разным кнопкам. Если у шаблонов не было дискретных областей имен XAML, имя <code>TheBorder</code>, используемое в шаблоне, вызовет конфликт имен в области имен XAML. Каждый экземпляр шаблона имеет свою собственную область имен XAML, поэтому в данном примере каждая область имен XAML экземпляра шаблона будет содержать ровно одно имя.</p>
+<p>Стили также определяют собственные области имен XAML, в основном поэтому части раскадровок могут иметь присвоенные индивидуальные имена. Эти имена включают конкретные расширения функциональности элемента управления, которые предназначены для элементов с таким именем, даже если шаблон был переопределен при настройке элемента управления.</p>
+<p>Из-за независимых областей имен XAML поиск именованных элементов в шаблоне является более затратной задачей, чем поиск нешаблонного именованного элемента на странице. Сначала необходимо определить применяемый шаблон путем получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.template">Template</a> значения свойства элемента управления, где применяется шаблон. Затем вызывается версия шаблона <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate.findname">FindName</a>, передающая элемент управления, в котором шаблон применяется в качестве второго параметра.</p>
+<p>Если вы являетесь автором элемента управления, и вы создаете соглашение, в котором конкретный именованный элемент в примененном шаблоне является целью для поведения, определенные самим элементом управления, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> метода из кода реализации элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> Метод защищен, поэтому только автор элемента управления имеет доступ к нему.</p>
+<p>При работе с в шаблоне и требуется получить область имен XAML, где применяется шаблон, получите значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a>, а затем вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findname">FindName</a> существует. В качестве примера работы в шаблоне можно привести ситуацию, когда пишется реализация обработчика событий, в котором событие будет вызвано из элемента в примененном шаблоне.</p>
+<p><a name="Namescopes_and_Name_related_APIs"></a></p>
+<h2 id="xaml-namescopes-and-name-related-apis">Области имен XAML и интерфейсы API, связанные с именами</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findname">FindName</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unregistername">UnregisterName</a> методы. Если объект, для которого вызываются эти методы, имеет собственную область имен XAML, то методы вызывают методы соответствующей области имен XAML. В противном случае выполняется проверка того, владеет ли родительский элемент областью имен XAML и этот процесс продолжается рекурсивно до тех пор, пока область имен XAML не будет найдена (из-за того что поведение обработчика XAML гарантирует наличие области имен XAML в корне). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> имеет аналогичное поведение, за исключением, не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> может содержать область видимости имен XAML. Методы существуют в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> , чтобы вызовы могут перенаправляться в конечном счете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> родительского элемента.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.setnamescope">SetNameScope</a> используется для сопоставления новой области видимости имен XAML с существующим объектом. Вы можете вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.setnamescope">SetNameScope</a> более одного раза Чтобы сбросить или очистить XAML области видимости имен, но это не является распространенным вариантом применения. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.getnamescope">GetNameScope</a> обычно не используется из кода.</p>
+<h3 id="xaml-namescope-implementations">Реализации области имен XAML</h3>
+<p>Следующие классы реализуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> напрямую:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">NameScope</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate">FrameworkTemplate</a></p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> не используйте имена XAML или области видимости имен; он использует ключи вместо этого, так как он является реализацией словаря. Единственная причина, по которой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> — что он может вызывать исключения в пользовательском коде, которые помогают уточнить различие между true области видимости имен XAML и как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> обрабатывает клавиши, а также чтобы убедиться, что области видимости имен XAML не применяются к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> родительскими элементами.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate">FrameworkTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> через явные определения интерфейса. Явные реализации позволяют этим областям видимости имен XAML функционировать традиционно, когда они доступны через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> интерфейса, как области видимости имен XAML передаются по WPF внутренние процессы. Но явные определения интерфейсов не являются частью обычной области API <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate">FrameworkTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>, так как редко бывает нужно вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.inamescope">INameScope</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate">FrameworkTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> напрямую, а вместо этого используется другой интерфейс API Например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a>.</p>
+<p>Следующие классы определяют свои собственные области видимости имен XAML, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope">System.Windows.NameScope</a> вспомогательный класс и подключении к его реализации области имен XAML через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.namescope.namescope">NameScope.NameScope</a> вложенного свойства зависимостей:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a></p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="xaml-namespaces-and-namespace-mapping-for-wpf-xaml.html">Пространства имен XAML и сопоставление пространств имен для WPF XAML</a></li>
+<li><a href="../../xaml-services/x-name-directive.md">Директива x:Name</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

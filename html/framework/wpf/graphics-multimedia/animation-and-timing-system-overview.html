@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; &#1080; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1077;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; &#1080; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1077;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="animation-and-timing-system-overview">Общие сведения об анимации и системе управления временем</h1>
+
+<p>В этом разделе описывается, как система управления временем использует анимацию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> классы для анимации свойств.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Чтобы понять содержимое этого раздела, необходимо знать, как использовать анимацию WPF для анимации свойств, как описано в разделе <a href="animation-overview.html">Общие сведения об эффектах анимации</a>. В нем также можно ознакомиться со свойствами зависимостей. Дополнительные сведения см. в разделе <a href="../advanced/dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.</p>
+<p><a name="timelinesandclocks"></a></p>
+<h2 id="timelines-and-clocks">Временные шкалы и часы</h2>
+<p><a href="animation-overview.html">Общие сведения об анимации</a> описано как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> представляет сегмент времени и анимации — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> , формирующий значения выходных данных. Сама по себе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>, не выполняет никаких действий кроме описания сегмента времени. Он является временной шкалы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объект, который не работает. Аналогичным образом, анимация не выполняет анимирования фактически свойства: класс анимации описывает способ вычисления выходные значения, но это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> , созданных для данной анимации, анимацию и применяет его к свойствам.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> — это специальный тип объекта, который поддерживает состояние времени для выполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>. Он предоставляет три бита информации, которые необходимы для анимации и системы: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currenttime">CurrentTime</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currentprogress">CurrentProgress</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currentstate">CurrentState</a>. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> определяет его текущее время, ход выполнения и состояние с помощью поведения времени, описываемого его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a>, и т. д.</p>
+<p>В большинстве случаев <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> создается автоматически для временной шкалы. При анимации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> метод, часы автоматически создаются для временной шкалы и анимации и применить к их целевым свойствам. Вы также можете создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> явным образом с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.createclock">CreateClock</a> метод вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.mediatimeline.createclock">MediaTimeline.CreateClock</a> Метод создает часы соответствующего типа для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> на котором он вызывается. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> содержит дочерние временные шкалы, он создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекты для них. Полученный в результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекты упорядочиваются в деревья, которые соответствуют структуре <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> дерева объектов, из которой они созданы.</p>
+<p>Существует различных типа часов для различных типов шкал времени. В следующей таблице показаны <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> типы, которые соответствуют некоторым другим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> типов.</p>
+<table>
+<thead>
+<tr>
+<th>Тип временной шкалы</th>
+<th>Тип часов</th>
+<th>Назначение часов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Анимация (наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a></td>
+<td>Создает выходные значения для свойства зависимостей.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.mediatimeline">MediaTimeline</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.mediaclock">MediaClock</a></td>
+<td>Обрабатывает файл мультимедиа.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.paralleltimeline">ParallelTimeline</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockgroup">ClockGroup</a></td>
+<td>Группирует и управляет дочерними <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockgroup">ClockGroup</a></td>
+<td>Группирует и управляет дочерними <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов</td>
+</tr>
+</tbody>
+</table>
+<p>Можно применить любой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> создаваемых к совместимым свойствам зависимостей с помощью объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ianimatable.applyanimationclock">ApplyAnimationClock</a> метод.</p>
+<p>В сценариях с высокой нагрузкой, например при анимации большого количества сходных объектов, управление использованием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> использования может дать выигрыш в производительности.</p>
+<p><a name="timemanager"></a></p>
+<h2 id="clocks-and-the-time-manager">Часы и диспетчер времени</h2>
+<p>При анимации объектов в WPF, это время диспетчер, который управляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.mediaplayer.clock">Clock</a> объектами, созданными для временных шкал. Диспетчер времени — это корень дерева объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.mediaplayer.clock">Clock</a>, который управляет потоком времени в этом дереве.  Диспетчер времени создается автоматически для каждого приложения WPF и остается невидимым для разработчика приложения. Диспетчер времени &quot;тикает&quot; много раз в секунду; фактическое число тактов, возникающих каждую секунду, зависит от доступных системных ресурсов. Во время каждой из этих тактов диспетчер времени вычисляет состояние всех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов в дереве расчета времени.</p>
+<p>На следующем рисунке показано отношение между диспетчером времени и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>, а также анимированными свойствами зависимостей.</p>
+<p><img src="media/graphicsmm-clocks-1clock1prop.png" alt="Время компоненты системы" title="graphicsmm_clocks_1clock1prop"><br>
+Анимирование свойства</p>
+<p>Когда диспетчер времени &quot;тикает&quot;, он обновляет время каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> в приложении. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>, он использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.getcurrentvalue">GetCurrentValue</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> из которого он был создан для расчета его текущего выходного значения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> Предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> с текущее местное время, входное значение, которое обычно является базовым значением свойства и конечное значение по умолчанию. После получения значения анимированного свойства с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> метода или метода доступа CLR, вы получите выходные данные его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>.</p>
+<h4 id="clock-groups">Группы часов</h4>
+<p>Выше описаны различные типы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов для различных типов шкал времени. На следующем рисунке показано отношение между диспетчером времени <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockgroup">ClockGroup</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>, а также анимированными свойствами зависимостей. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockgroup">ClockGroup</a> создается для временных шкал, которые группируют другие временные шкалы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> класс, который группирует анимации и другие временные шкалы.</p>
+<p><img src="media/graphicsmm-clocks-2clock1clockgroup2prop.png" alt="Время компоненты системы" title="graphicsmm_clocks_2clock1clockgroup2prop"><br>
+ClockGroup</p>
+<h4 id="composition">Композиция</h4>
+<p>Можно связать несколько часов с одним свойством. При этом каждые часы используют выходное значение предыдущих часов в качестве своего базового значения. На следующем рисунке показаны три <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> объекты, которые применены к тому же свойству. Clock1 использует базовое значение анимируемого свойства в качестве входных данных и для создания выходных данных. Clock2 принимает выходные данные от Clock1 в качестве входных данных и использует их для создания выходных данных. Clock3 принимает выходные данные от Clock2 в качестве входных данных и использует их для создания выходных данных. Когда несколько часов влияют на одно и то же свойство одновременно, считается, что они находятся в цепочке композиции.</p>
+<p><img src="media/graphicsmm-clocks-2clock1prop.png" alt="Время компоненты системы" title="graphicsmm_clocks_2clock1prop"><br>
+Цепочка композиции</p>
+<p>Обратите внимание, что, несмотря на то, что связь создается между входными и выходными из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> объекты в цепочке композиции, их поведение времени не меняется. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекты (включая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> объекты) имеют иерархическую зависимость от их родительских <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов.</p>
+<p>Чтобы применить несколько часов к тому же свойству, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_Compose">Compose</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior">HandoffBehavior</a> при применении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, анимации, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>.</p>
+<h4 id="ticks-and-event-consolidation">Такты и объединение событий</h4>
+<p>В дополнение к расчету выходных значений тикающий диспетчер времени выполняет и другие операции: он определяет состояние всех часов и вызывает соответствующие события.</p>
+<p>Хотя такты меняются часто, между ними может возникать множество событий. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> может остановлен, запущен и остановлен снова в таком случае его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currentstate">CurrentState</a> значение будет изменено три раза. В теории <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currentstateinvalidated">CurrentStateInvalidated</a> событие может вызываться несколько раз в одном такте; Однако механизм времени объединяет события, позволяя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.currentstateinvalidated">CurrentStateInvalidated</a> событие может вызываться не более одного раза за такт. Это справедливо для всех временных событий: не более одного события каждого типа вызывается для заданного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекта.</p>
+<p>При <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> изменяет состояние и возвращается обратно в исходное состояние между тактами (например после изменения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Stopped">Stopped</a> и вернуться к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a>), по-прежнему возникновении связанного события.</p>
+<p>Дополнительные сведения о временных событиях см. в разделе <a href="timing-events-overview.html">Общие сведения о временных событиях</a>.</p>
+<p><a name="currentvaluesbasevaluesofproperties"></a></p>
+<h2 id="current-values-and-base-values-of-properties">Текущие и базовые значения свойств</h2>
+<p>Анимированное свойство может иметь два значения: базовое значение и текущее. При задании свойства с помощью метода доступа CLR или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> метод, устанавливается его базовое значение. Если свойство не анимировано, его базовое и текущее значения совпадают.</p>
+<p>При анимации свойства, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> задает свойства <em>текущей</em> значение. Получение значения свойства посредством метода доступа CLR или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> метод возвращает выходные данные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Filling">Filling</a>. Базовое значение этого свойства можно получить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ianimatable.getanimationbasevalue">GetAnimationBaseValue</a> метод.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="timing-events-overview.html">Общие сведения о временных событиях</a></li>
+<li><a href="timing-behaviors-overview.html">Общие сведения о характере поведения во времени</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

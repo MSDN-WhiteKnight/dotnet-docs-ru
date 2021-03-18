@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; &#1090;&#1080;&#1087;&#1072; &#1082;&#1086;&#1083;&#1083;&#1077;&#1082;&#1094;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; &#1090;&#1080;&#1087;&#1072; &#1082;&#1086;&#1083;&#1083;&#1077;&#1082;&#1094;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="collection-type-dependency-properties">Свойства зависимостей типа коллекция</h1>
+
+<p>Этот раздел содержит рекомендации и примеры шаблонов для реализации свойства зависимостей, где типом свойства является коллекция.</p>
+<p><a name="implementing"></a></p>
+<h2 id="implementing-a-collection-type-dependency-property">Реализация свойства зависимостей типа &quot;коллекция&quot;</h2>
+<p>Для свойства зависимостей в общем шаблон реализации, которому необходимо следовать, является определение CLR обертки свойства, где это свойство является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор, а не полем или другой конструкцией. При реализации свойства типа &quot;коллекция&quot; вы следуете этому же шаблону. Тем не менее, свойство типа &quot;коллекция&quot; некоторым образом усложняет шаблон всякий раз, когда тип, содержащийся в коллекции является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> производного класса.</p>
+<p><a name="initializing"></a></p>
+<h2 id="initializing-the-collection-beyond-the-default-value">Инициализация коллекции за пределами значения по умолчанию</h2>
+<p>При создании свойства зависимостей вы не указываете значение свойства по умолчанию в качестве начального значения поля. Вместо этого значение по умолчанию указывается через метаданные свойства зависимостей. Если свойство является ссылочным типом, значение по умолчанию, заданное в метаданных свойства зависимостей, не является значением по умолчанию для каждого экземпляра. Напротив, это значение по умолчанию, которое применяется ко всем экземплярам типа. Поэтому необходимо избегать использования единственной статической коллекции, определенной метаданными свойства коллекции, в качестве рабочего значения по умолчанию для вновь создаваемых экземпляров типа. Вместо этого необходимо явно задать в качестве значения коллекции уникальную коллекцию (экземпляр) как часть логики конструктора класса. В противном случае будет создан случайный одноэлементный класс.</p>
+<p>Рассмотрим следующий пример. В следующем разделе примера показано определение класса <code>Aquarium</code>. Этот класс определяет свойство зависимостей типа коллекции <code>AquariumObjects</code>, который использует универсальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> тип с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> ограничения типа. В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register#System_Windows_DependencyProperty_Register_System_String_System_Type_System_Type_System_Windows_PropertyMetadata_">Register(String, Type, Type, PropertyMetadata)</a> вызов для свойства зависимостей метаданные устанавливают значение по умолчанию к новым базовым <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a>.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport2#CollectionProblemDefinition">public class Fish : FrameworkElement { }
+public class Aquarium : DependencyObject {
+    private static readonly DependencyPropertyKey AquariumContentsPropertyKey =
+        DependencyProperty.RegisterReadOnly(
+          &quot;AquariumContents&quot;,
+          typeof(List&lt;FrameworkElement&gt;),
+          typeof(Aquarium),
+          new FrameworkPropertyMetadata(new List&lt;FrameworkElement&gt;())
+        );
+    public static readonly DependencyProperty AquariumContentsProperty =
+        AquariumContentsPropertyKey.DependencyProperty;
+
+    public List&lt;FrameworkElement&gt; AquariumContents
+    {
+        get { return (List&lt;FrameworkElement&gt;)GetValue(AquariumContentsProperty); }
+    }
+
+    // ...
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Однако если оставить такой код, как в примере, это значение по умолчанию одного списка будет использоваться совместно для всех экземпляров <code>Aquarium</code>. Если выполнить следующий тестовый код, предназначенный для демонстрации того, как создаются два отдельных экземпляра <code>Aquarium</code> и добавляется один отличный <code>Fish</code> для каждого из них, вы увидите странный результат.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#CollectionProblemTestCode">Aquarium myAq1 = new Aquarium();
+Aquarium myAq2 = new Aquarium();
+Fish f1 = new Fish();
+Fish f2 = new Fish();
+myAq1.AquariumContents.Add(f1);
+myAq2.AquariumContents.Add(f2);
+MessageBox.Show(&quot;aq1 contains &quot; + myAq1.AquariumContents.Count.ToString() + &quot; things&quot;);
+MessageBox.Show(&quot;aq2 contains &quot; + myAq2.AquariumContents.Count.ToString() + &quot; things&quot;);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Вместо того чтобы каждой коллекции назначалось число 1, каждой коллекции назначается число 2! Это происходит, поскольку каждый <code>Aquarium</code> добавил свой объект <code>Fish</code> в коллекцию значений по умолчанию, которая является результатом вызова одного конструктора в метаданных и, таким образом, совместно используется всеми экземплярами. Как правило, такая ситуация нежелательна.</p>
+<p>Чтобы устранить эту проблему, необходимо сбросить значение свойства зависимостей коллекции, задав уникальный экземпляр в составе вызова конструктора класса. Так как свойство является свойством зависимостей только для чтения, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue#System_Windows_DependencyObject_SetValue_System_Windows_DependencyPropertyKey_System_Object_">SetValue(DependencyPropertyKey, Object)</a> метод задается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> , доступна только в классе.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#CollectionProblemCtor">public Aquarium() : base()
+{
+    SetValue(AquariumContentsPropertyKey, new List&lt;FrameworkElement&gt;());
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Теперь, запустив тот же тестовый код еще раз, вы можете заметить, что результаты стали более ожидаемыми, то есть каждый <code>Aquarium</code> поддерживает свою собственную уникальную коллекцию.</p>
+<p>Если свойство коллекции будет доступным для чтения и записи, в этот шаблон потребуется внести небольшое изменение. В этом случае можно вызвать открытый метод доступа set из конструктора для выполнения инициализации, он по-прежнему будет вызывать сигнатура <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue#System_Windows_DependencyObject_SetValue_System_Windows_DependencyProperty_System_Object_">SetValue(DependencyProperty, Object)</a> внутри обертки, с помощью общедоступного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор.</p>
+<h2 id="reporting-binding-value-changes-from-collection-properties">Передача сведений об изменении значений привязки из свойств коллекции</h2>
+<p>Свойство коллекции, которое само является свойством зависимостей, не сообщает об изменениях своих подсвойств автоматически. При создании привязок в коллекции это может мешать привязке сообщать об изменениях и, следовательно, нарушить некоторые сценарии привязки данных. Тем не менее если вы используете тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezablecollection-1">FreezableCollection&lt;T&gt;</a> как типа коллекции, затем изменении подсвойств в содержащихся элементов в коллекции будут передаваться правильно, и привязка будет работать должным образом.</p>
+<p>Чтобы включить привязку подсвойств в коллекции объектов зависимостей, создайте свойство коллекции типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezablecollection-1">FreezableCollection&lt;T&gt;</a>, с ограничением типа для этой коллекции к любому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> производного класса.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezablecollection-1">FreezableCollection&lt;T&gt;</a></li>
+<li><a href="xaml-and-custom-classes-for-wpf.html">Код XAML и пользовательские классы для WPF</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="dependency-property-metadata.html">Метаданные свойства зависимости</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

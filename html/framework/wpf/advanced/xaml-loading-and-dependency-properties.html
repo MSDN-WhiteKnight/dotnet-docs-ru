@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1072; &#1082;&#1086;&#1076;&#1072; XAML &#1080; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1072; &#1082;&#1086;&#1076;&#1072; XAML &#1080; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="xaml-loading-and-dependency-properties">Загрузка кода XAML и свойства зависимостей</h1>
+
+<p>Текущая реализация процессора WPF в XAML, по сути, учитывает свойство зависимостей. При загрузке двоичных файлов XAML и обработке атрибутов, которые являются свойствами зависимостей, процессор XAML WPF использует методы системы свойств для свойств зависимостей. При этом выполняется обход оболочек свойств. При реализации пользовательских свойств зависимостей, вы должны учитывать такое поведение и избегать размещения любой другой код в оболочке свойства, отличные от методов системы свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы, как пользователь и разработчик, понимаете свойства зависимостей и ознакомились с разделами <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a> и <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>. Следует также прочитать разделы <a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a> и <a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a>.</p>
+<p><a name="implementation"></a></p>
+<h2 id="the-wpf-xaml-loader-implementation-and-performance">Реализация загрузчика XAML WPF и производительность</h2>
+<p>В целях реализации требуется значительно меньше затрат для определения свойства как свойства зависимости и доступа к системе свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> метод, чтобы задать его, а не с помощью оболочки свойства и метода задания значения. Причина этого заключается в том, что процессору XAML требуется вывести всю объектную модель вспомогательного кода, основываясь только на сведениях о типе и связях между членами, которые определены структурой разметки и различными строками.</p>
+<p>Поиск типа осуществляется посредством сочетания элементов xmlns и атрибутов сборки, однако для идентификации членов, определения членов которой можно установить в качестве атрибута, и разрешение типов, поддерживаемых значениями свойств обычно требуется расширенное отражение с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.propertyinfo">PropertyInfo</a>. Так как свойства зависимостей данного типа доступны в виде таблицы хранилища с помощью системы свойств, WPF реализацию его XAML процессора использует эту таблицу и выводит, что любое данное свойство <em>ABC</em> может быть эффективнее задано путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> в содержащем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> производный тип, с помощью идентификатора свойства зависимости <em>ABCProperty</em>.</p>
+<p><a name="implications"></a></p>
+<h2 id="implications-for-custom-dependency-properties">Последствия использования пользовательских свойств зависимостей</h2>
+<p>Так как текущая реализация процессора XAML в WPF при установке свойства полностью обходит оболочки, не следует помещать дополнительную логику в определения метода set оболочки для пользовательского свойства зависимости. Если поместить такую логику в определение метода set, она не будет выполняться, если свойство задается в XAML, а не в коде.</p>
+<p>Аналогичным образом, другие аспекты XAML процессора, которые получают значения свойств из XAML обработки также используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> вместо оболочки. Таким образом, следует также избегать любых дополнительных реализаций в <code>get</code> определение за пределы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> вызова.</p>
+<p>В приведенном ниже примере показано рекомендуемое определение свойства зависимости с оболочками, где идентификатор свойства хранится в виде поля с атрибутами <code>public</code> <code>static</code> <code>readonly</code>, а определения методов <code>get</code> и <code>set</code> не содержат никакого кода, кроме необходимых методов системы свойств, определяющих резервное свойство зависимости.</p>
+<pre><code class="lang-csharp" name="WPFAquariumSln#AGWithWrapper">
+public static readonly DependencyProperty AquariumGraphicProperty = DependencyProperty.Register(
+  &quot;AquariumGraphic&quot;,
+  typeof(Uri),
+  typeof(AquariumObject),
+  new FrameworkPropertyMetadata(null,
+      FrameworkPropertyMetadataOptions.AffectsRender,
+      new PropertyChangedCallback(OnUriChanged)
+  )
+);
+public Uri AquariumGraphic
+{
+  get { return (Uri)GetValue(AquariumGraphicProperty); }
+  set { SetValue(AquariumGraphicProperty, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="dependency-property-metadata.html">Метаданные свойства зависимости</a></li>
+<li><a href="collection-type-dependency-properties.html">Свойства зависимостей типа коллекция</a></li>
+<li><a href="dependency-property-security.html">Безопасность свойства зависимости</a></li>
+<li><a href="safe-constructor-patterns-for-dependencyobjects.html">Шаблоны безопасного конструктора для DependencyObjects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

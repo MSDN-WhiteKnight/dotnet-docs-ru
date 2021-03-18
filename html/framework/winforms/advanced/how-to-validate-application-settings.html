@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1087;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1086;&#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1087;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1086;&#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-validate-application-settings">Практическое руководство. Проверка параметров приложения</h1>
+
+<p>В этом разделе показано, как проверить параметры приложения перед их сохранением.</p>
+<p>Поскольку параметры приложений являются строго типизированными, это дает некоторую уверенность в том, что пользователи не могут назначить тому или иному параметру данные неверного типа. Тем не менее, пользователь по-прежнему может попытаться присвоить значение вне допустимого диапазона, наприме указать дату рождения в будущем. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a>, родительским классом для всех классов параметров приложения, предоставляет четыре события для проверки границ. Благодаря обработке этих событий весь код проверки размещается в одном месте, а не в разных частях проекта.</p>
+<p>Используемое событие зависит от времени, когда необходимо проверить параметры, как описано в следующей таблице.</p>
+<table>
+<thead>
+<tr>
+<th>событие</th>
+<th>Вхождение и использование</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingsloaded">SettingsLoaded</a></td>
+<td>Возникает после начальной загрузки группы свойств параметров.<br><br> Используйте это событие для проверки начальных значений для всей группы свойств перед их применением в приложении.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingchanging">SettingChanging</a></td>
+<td>Происходит перед изменением значения одного свойства параметров.<br><br> Используйте это событие для проверки одного свойства до его изменения. Оно позволяет пользователям немедленно получить сведения о своих действиях и решениях.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.propertychanged">PropertyChanged</a></td>
+<td>Происходит после изменения значения одного свойства параметра.<br><br> Используйте это событие для проверки одного свойства после его изменения. Это событие редко используется для проверки, если не требуется длительный процесс асинхронной проверки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingssaving">SettingsSaving</a></td>
+<td>Возникает перед сохранением группы свойств параметров.<br><br> Используйте это событие для проверки значений для всей группы свойств перед их сохранением на диске.</td>
+</tr>
+</tbody>
+</table>
+<p>Как правило, в целях проверки все эти события внутри одного приложения не используются. Например, часто бывает можно выполнить все требования по проверке путем обработки только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingchanging">SettingChanging</a> событий.</p>
+<p>Обычно при обнаружении недопустимого значения обработчик событий выполняет одно из следующих действий.</p>
+<ul>
+<li><p>Автоматически предоставляет заведомо правильное значение, например значение по умолчанию.</p>
+</li>
+<li><p>Повторно запрашивает сведения у пользователя серверного кода.</p>
+</li>
+<li><p>Для событий, возникающих до связанных с ними действий, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingchanging">SettingChanging</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingssaving">SettingsSaving</a>, использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs">CancelEventArgs</a> аргумент для отмены операции.</p>
+</li>
+</ul>
+<p>Дополнительные сведения об обработке событий см. в разделе <a href="../event-handlers-overview-windows-forms.html">Общие сведения об обработчиках событий</a>.</p>
+<p>Следующие процедуры показывают, как для проверки корректности даты рождения с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingchanging">SettingChanging</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingssaving">SettingsSaving</a> событий. В этих процедурах предполагается, что вы уже создали параметры приложения. В этом примере будет выполнена проверка границ для параметра с именем <code>DateOfBirth</code>. Дополнительные сведения о создании параметров см. в разделе <a href="how-to-create-application-settings.html">как: Создание параметров приложения</a>.</p>
+<h3 id="to-obtain-the-application-settings-object">Получение объекта параметров приложения</h3>
+<ul>
+<li><p>Для получения ссылки на объект параметров приложения (экземпляр программы-оболочки) выполните одно из следующих действий:</p>
+<ul>
+<li><p>Если вы создали параметры в диалоговом окне «Параметры приложения Visual Studio» в <strong>редакторе свойств</strong>, объект параметров по умолчанию, созданный для вашего языка, можно получить с помощью следующего выражения.</p>
+<pre><code class="lang-csharp">Configuration.Settings.Default   
+</code></pre>
+<pre><code class="lang-vb">MySettings.Default   
+</code></pre>
+<p>-или-</p>
+</li>
+<li><p>Если вы являетесь разработчиком на Visual Basic и создали параметры приложения с помощью конструктора проектов, для извлечения параметров можно использовать <a href="../../../visual-basic/language-reference/objects/my-settings-object.md">объект My.Settings</a>.</p>
+<p>-или-</p>
+</li>
+<li><p>Если параметры были созданы путем наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> напрямую, необходимо создать экземпляр класса вручную.</p>
+<pre><code class="lang-csharp">MyCustomSettings settings = new MyCustomSettings();  
+</code></pre>
+<pre><code class="lang-vb">Dim Settings as New MyCustomSettings()  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>В следующих процедурах предполагается, что объект параметров приложения получен путем выполнения последнего действия в этой процедуре.</p>
+<h3 id="to-validate-application-settings-when-a-setting-is-changing">Проверка параметров приложения при изменении параметра</h3>
+<ol>
+<li><p>Если вы являетесь C# developer, в формы или элемента управления <code>Load</code> событий, добавьте обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingchanging">SettingChanging</a> событий.</p>
+<p>-или-</p>
+<p>Если вы являетесь разработчиком на Visual Basic, объявите переменную <code>Settings</code> с помощью ключевого слова <code>WithEvents</code>.</p>
+<pre><code class="lang-csharp">public void Form1_Load(Object sender, EventArgs e)   
+{  
+    settings.SettingChanging += new SettingChangingEventHandler(MyCustomSettings_SettingChanging);  
+}  
+</code></pre>
+<pre><code class="lang-vb">Public Sub Form1_Load(sender as Object, e as EventArgs)  
+    AddHandler settings.SettingChanging, AddressOf MyCustomSettings_SettingChanging  
+End Sub   
+</code></pre>
+</li>
+<li><p>Определите обработчик событий и напишите внутри него код для выполнения проверки границ для даты рождения.</p>
+<pre><code class="lang-csharp">private void MyCustomSettings_SettingChanging(Object sender, SettingChangingEventArgs e)  
+{  
+    if (e.SettingName.Equals(&quot;DateOfBirth&quot;)) {  
+        Date newDate = (Date)e.NewValue;  
+        If (newDate &gt; Date.Now) {  
+            e.Cancel = true;  
+            // Inform the user.  
+        }  
+    }  
+}  
+</code></pre>
+<pre><code class="lang-vb">Private Sub MyCustomSettings_SettingChanging(sender as Object, e as SettingChangingEventArgs) Handles Settings.SettingChanging  
+    If (e.SettingName.Equals(&quot;DateOfBirth&quot;)) Then  
+        Dim NewDate as Date = CType(e.NewValue, Date)  
+        If (NewDate &gt; Date.Now) Then  
+            e.Cancel = True  
+            ' Inform the user.  
+        End If  
+    End If  
+End Sub  
+</code></pre>
+</li>
+</ol>
+<h3 id="to-validate-application-settings-when-a-save-occurs">Проверка параметров приложения в ходе сохранения</h3>
+<ol>
+<li><p>В своей форме или элемента управления <code>Load</code> событий, добавьте обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase.settingssaving">SettingsSaving</a> событий.</p>
+<pre><code class="lang-csharp">public void Form1_Load(Object sender, EventArgs e)   
+{  
+    settings.SettingsSaving += new SettingsSavingEventHandler(MyCustomSettings_SettingsSaving);  
+}  
+</code></pre>
+<pre><code class="lang-vb">Public Sub Form1_Load(Sender as Object, e as EventArgs)  
+    AddHandler settings.SettingsSaving, AddressOf MyCustomSettings_SettingsSaving  
+End Sub  
+</code></pre>
+</li>
+<li><p>Определите обработчик событий и напишите внутри него код для выполнения проверки границ для даты рождения.</p>
+<pre><code class="lang-csharp">private void MyCustomSettings_SettingsSaving(Object sender, SettingsSavingEventArgs e)  
+{  
+    if (this[&quot;DateOfBirth&quot;] &gt; Date.Now) {  
+        e.Cancel = true;  
+    }  
+}  
+</code></pre>
+<pre><code class="lang-vb">Private Sub MyCustomSettings_SettingsSaving(Sender as Object, e as SettingsSavingEventArgs)  
+    If (Me[&quot;DateOfBirth&quot;] &gt; Date.Now) Then  
+        e.Cancel = True  
+    End If  
+End Sub  
+</code></pre>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../creating-event-handlers-in-windows-forms.html">Создание обработчиков событий в Windows Forms</a></li>
+<li><a href="how-to-create-application-settings.html">Практическое руководство. Создание параметров приложения</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

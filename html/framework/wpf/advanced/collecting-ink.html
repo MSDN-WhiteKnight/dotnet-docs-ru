@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1073;&#1086;&#1088;&#1072; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1093; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1073;&#1086;&#1088;&#1072; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1093; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="collect-ink">Сбора рукописных фрагментов</h1>
+
+<p>Платформа <a href="../index.html">Windows Presentation Foundation</a> выполняет сбор цифровых рукописных фрагментов, что является одной из основных ее функций. В этом разделе обсуждаются методы сбора рукописных данных в Windows Presentation Foundation (WPF).</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Чтобы использовать в следующих примерах, сначала необходимо установить Visual Studio и Windows SDK. Следует также понять, как создавать приложения для WPF. Дополнительные сведения о начале работы с WPF, см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a>.</p>
+<h2 id="use-the-inkcanvas-element">Использование элемента InkCanvas</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">System.Windows.Controls.InkCanvas</a> Элемент предоставляет самый простой способ сбора рукописных данных в WPF. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> элемент для получения и отображения рукописного ввода. Рукописный ввод, как правило, осуществляется с помощью пера, которое взаимодействует с дигитайзером для создания рукописных штрихов. Кроме того, вместо пера можно использовать мышь. Созданные штрихи представляются в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объекты и их можно управлять программно или пользователем ввода данных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Позволяет пользователям выбор, изменение или удаление существующего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a>.</p>
+<p>С помощью XAML, вы можно настроить сбор рукописных фрагментов, просто добавив <strong>InkCanvas</strong> к дереву. В следующем примере добавляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> в проект WPF по умолчанию, созданные в Visual Studio:</p>
+<pre><code class="lang-xaml" name="DigitalInkTopics#6">&lt;Grid&gt;
+  &lt;InkCanvas/&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p><strong>InkCanvas</strong> элемент также может содержать дочерние элементы, что позволяет добавлять функции рукописных заметок практически любого типа элемента XAML. Например, чтобы добавить возможности рукописного ввода в текстовый элемент, просто сделайте его дочерним элементом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>:</p>
+<pre><code class="lang-xaml" name="DigitalInkTopics#5">&lt;InkCanvas&gt;
+  &lt;TextBlock&gt;Show text here.&lt;/TextBlock&gt;
+&lt;/InkCanvas&gt;
+</code></pre>
+<p>Добавление поддержки пометки изображений с помощью рукописного ввода выполняется так же просто:</p>
+<pre><code class="lang-xaml" name="DigitalInkTopics#7">&lt;InkCanvas&gt;
+  &lt;Image Source=&quot;myPicture.jpg&quot;/&gt;
+&lt;/InkCanvas&gt;
+</code></pre><h3 id="inkcollection-modes">Режимы InkCollection</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Обеспечивает поддержку различных режимов ввода с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.editingmode">EditingMode</a> свойство.</p>
+<h3 id="manipulate-ink">Рукописным вводом</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Обеспечивает поддержку многих операций редактирования рукописных данных. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> стереть поддерживает назад пера, и требуется дополнительный код для добавления функций к элементу.</p>
+<h4 id="selection">Выбранное</h4>
+<p>Установка режима выбора сводится параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvaseditingmode">InkCanvasEditingMode</a> свойства <strong>выберите</strong>.</p>
+<p>Следующий код устанавливает режим редактирования на основе значения из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox">CheckBox</a>:</p>
+<pre><code class="lang-csharp" name="DigitalInkTopics#8">// Set the selection mode based on a checkbox
+if ((bool)cbSelectionMode.IsChecked)
+{
+    theInkCanvas.EditingMode = InkCanvasEditingMode.Select;
+}
+else
+{
+    theInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="drawingattributes">DrawingAttributes</h4>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.drawingattributes">DrawingAttributes</a> свойство для изменения внешнего вида рукописных штрихов. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.color">Color</a> членом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> задает цвет отображаемого объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a>.</p>
+<p>В следующем примере изменяется цвет выбранных штрихов на красный:</p>
+<pre><code class="lang-csharp" name="DigitalInkTopics#9">// Get the selected strokes from the InkCanvas
+StrokeCollection selection = theInkCanvas.GetSelectedStrokes();
+
+// Check to see if any strokes are actually selected
+if (selection.Count &gt; 0)
+{
+    // Change the color of each stroke in the collection to red
+    foreach (System.Windows.Ink.Stroke stroke in selection)
+    {
+        stroke.DrawingAttributes.Color = System.Windows.Media.Colors.Red;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="defaultdrawingattributes">DefaultDrawingAttributes</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.defaultdrawingattributes">DefaultDrawingAttributes</a> Свойство предоставляет доступ к свойствам, например высоту, ширину и цвет штрихов, создаваемых в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>. После перевода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.defaultdrawingattributes">DefaultDrawingAttributes</a>, все следующие штрихи, введенные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> подготавливаются к просмотру с новыми значениями свойства.</p>
+<p>А также изменения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.defaultdrawingattributes">DefaultDrawingAttributes</a> в файле кода, можно использовать синтаксис XAML для указания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.defaultdrawingattributes">DefaultDrawingAttributes</a> свойства.</p>
+<p>Далее примере показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.color">Color</a> свойства. Чтобы использовать этот код, создайте новый проект WPF с именем «HelloInkCanvas» в Visual Studio. Замените код в <em>MainWindow.xaml</em> файла следующим кодом:</p>
+<pre><code class="lang-xaml" name="HelloInkCanvas#1">&lt;Window x:Class=&quot;HelloInkCanvas.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:Ink=&quot;clr-namespace:System.Windows.Ink;assembly=PresentationCore&quot;
+    Title=&quot;Hello, InkCanvas!&quot; Height=&quot;300&quot; Width=&quot;300&quot;
+    &gt;
+  &lt;Grid&gt;
+    &lt;InkCanvas Name=&quot;inkCanvas1&quot; Background=&quot;Ivory&quot;&gt;
+      &lt;InkCanvas.DefaultDrawingAttributes&gt;
+        &lt;Ink:DrawingAttributes xmlns:ink=&quot;system-windows-ink&quot; Color=&quot;Red&quot; Width=&quot;5&quot; /&gt;
+      &lt;/InkCanvas.DefaultDrawingAttributes&gt;
+    &lt;/InkCanvas&gt;
+
+    &lt;!-- This stack panel of buttons is a sibling to InkCanvas (not a child) but overlapping it, 
+         higher in z-order, so that ink is collected and rendered behind --&gt;
+    &lt;StackPanel Name=&quot;buttonBar&quot; VerticalAlignment=&quot;Top&quot; Height=&quot;26&quot; Orientation=&quot;Horizontal&quot; Margin=&quot;5&quot;&gt;
+      &lt;Button Click=&quot;Ink&quot;&gt;Ink&lt;/Button&gt;
+      &lt;Button Click=&quot;Highlight&quot;&gt;Highlight&lt;/Button&gt;
+      &lt;Button Click=&quot;EraseStroke&quot;&gt;EraseStroke&lt;/Button&gt;
+      &lt;Button Click=&quot;Select&quot;&gt;Select&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+  &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Затем добавьте следующие обработчики событий для кнопки в файл кода программной части, внутри класса MainWindow:</p>
+<pre><code class="lang-csharp" name="HelloInkCanvas#2">// Set the EditingMode to ink input.
+private void Ink(object sender, RoutedEventArgs e)
+{
+    inkCanvas1.EditingMode = InkCanvasEditingMode.Ink;
+
+    // Set the DefaultDrawingAttributes for a red pen.
+    inkCanvas1.DefaultDrawingAttributes.Color = Colors.Red;
+    inkCanvas1.DefaultDrawingAttributes.IsHighlighter = false;
+    inkCanvas1.DefaultDrawingAttributes.Height = 2;
+}
+
+// Set the EditingMode to highlighter input.
+private void Highlight(object sender, RoutedEventArgs e)
+{
+    inkCanvas1.EditingMode = InkCanvasEditingMode.Ink;
+
+    // Set the DefaultDrawingAttributes for a highlighter pen.
+    inkCanvas1.DefaultDrawingAttributes.Color = Colors.Yellow;
+    inkCanvas1.DefaultDrawingAttributes.IsHighlighter = true;
+    inkCanvas1.DefaultDrawingAttributes.Height = 25;
+}
+
+// Set the EditingMode to erase by stroke.
+private void EraseStroke(object sender, RoutedEventArgs e)
+{
+    inkCanvas1.EditingMode = InkCanvasEditingMode.EraseByStroke;
+}
+
+// Set the EditingMode to selection.
+private void Select(object sender, RoutedEventArgs e)
+{
+    inkCanvas1.EditingMode = InkCanvasEditingMode.Select;
+}
+</code></pre>
+<p>После копирования этого кода нажмите клавишу <strong>F5</strong> в Visual Studio для запуска программы в отладчике.</p>
+<p>Обратите внимание, что как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> размещает кнопки вверху <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>. При попытке рукописного ввода поверх кнопок, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> собирает и отображает рукописные данные позади кнопок. Это обусловлено кнопок являются одноранговыми с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> в отличие от дочерних элементов. Кроме того, кнопки находятся выше в z-порядке, поэтому рукописные фрагменты отображаются позади них.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.defaultdrawingattributes">DefaultDrawingAttributes</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink">System.Windows.Ink</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,476 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1076;&#1074;&#1091;&#1089;&#1090;&#1086;&#1088;&#1086;&#1085;&#1085;&#1080;&#1093; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1103;&#1093; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1076;&#1074;&#1091;&#1089;&#1090;&#1086;&#1088;&#1086;&#1085;&#1085;&#1080;&#1093; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1103;&#1093; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="bidirectional-features-in-wpf-overview">Общие сведения о двусторонних возможностях в WPF</h1>
+
+<p>В отличие от других платформ разработки WPF имеет множество функций, поддерживающих быструю разработку двунаправленного содержимого, например, направленного как слева направо и справа налево в одном документе. В то же время WPF имеет превосходный интерфейс для пользователей, которым необходимы двунаправленные возможности, такие как арабский и иврит, пользователям, говорящим.</p>
+<p>В следующих разделах описаны различные возможности двунаправленного письма с примерами, иллюстрирующими способы достижения наилучшего отображения двунаправленного содержимого на экране. В большинстве примеров используется XAML, хотя вы можете легко применить концепции, чтобы C# или Microsoft Visual Basic.</p>
+<p><a name="FlowDirection"></a></p>
+<h2 id="flowdirection">FlowDirection</h2>
+<p>Основным свойством, определяющим направление потока содержимого в WPF приложение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a>. Это свойство может быть присвоено одно из двух значений перечисления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>. Свойство доступно для всех WPF элементы, которые наследуются от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+<p>В следующем примере задается направление потока <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> элемент.</p>
+<p><strong>Направление потока слева направо</strong></p>
+<pre><code class="lang-xaml" name="LTRRTL#LTR">&lt;TextBlock Background=&quot;DarkBlue&quot; Foreground=&quot;LightBlue&quot; 
+   FontSize=&quot;20&quot; FlowDirection=&quot;LeftToRight&quot;&gt;
+        This is a left-to-right TextBlock
+&lt;/TextBlock&gt;
+</code></pre>
+<p><strong>Направление потока справа налево</strong></p>
+<pre><code class="lang-xaml" name="LTRRTL#RTL">&lt;TextBlock Background=&quot;LightBlue&quot; Foreground=&quot;DarkBlue&quot;
+   FontSize=&quot;20&quot; FlowDirection=&quot;RightToLeft&quot;&gt;
+        This is a right-to-left TextBlock
+&lt;/TextBlock&gt;
+</code></pre>
+<p>На следующем рисунке показано, как работает указанный код.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/left-right-right-left.png" alt="Рисунок, иллюстрирующий различными направлениями потоков."></p>
+<p>Элемент в пределах пользовательский интерфейс дерева будут наследовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> из своего контейнера. В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> находится внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>, который находится внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>. Установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> это значение для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> также.</p>
+<p>В следующем примере показано задание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a>.</p>
+<pre><code class="lang-xaml" name="FlowDirection#FlowDirection">&lt;Window
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;FlowDirectionApp.Window1&quot;
+    Title=&quot;BidiFeatures&quot; Height=&quot;200&quot; Width=&quot;700&quot; 
+    FlowDirection=&quot;RightToLeft&quot;&gt;
+     
+    &lt;Grid&gt;
+      &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition/&gt;
+        &lt;ColumnDefinition/&gt;
+      &lt;/Grid.ColumnDefinitions&gt;
+      &lt;TextBlock Grid.Column=&quot;0&quot; &gt;
+          This is a right-to-left TextBlock
+      &lt;/TextBlock&gt;
+
+      &lt;TextBlock Grid.Column=&quot;1&quot; FlowDirection=&quot;LeftToRight&quot;&gt;
+          This is a left-to-right TextBlock
+      &lt;/TextBlock&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Верхний уровень <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>, поэтому все элементы, содержащиеся в нем, наследуют то же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a>. Элемент мог переопределить заданное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> его необходимо добавить явное изменение направления как во втором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> в предыдущем примере, который изменяет на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a>. Если аргумент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> определен, по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a> применяется.</p>
+<p>На следующем рисунке показан в предыдущем примере выходных данных:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/explicit-direction-change.png" alt="Рисунок, иллюстрирующий изменение направления потока явной."></p>
+<p><a name="FlowDocument"></a></p>
+<h2 id="flowdocument">FlowDocument</h2>
+<p>Многие платформы разработки, такие как HTML, Win32 и Java, обеспечивают специальную поддержку разработки двунаправленного содержимого. Языки разметки, такие как HTML предоставляют авторам содержимого необходимые средства разметки для отображения текста в любом требуемом направлении, например HTML 4.0 тег, «dir», который принимает в качестве значения «rtl» или «ltr». Этот тег аналогичен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> свойство, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> свойство работает в более сложных способов для разметки текста и может использоваться для нетекстового содержимого.</p>
+<p>В WPF, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> является универсальным ИП элемент, который может содержать сочетание текста, таблиц, изображений и других элементов. Этот элемент используется в примерах, описанных ниже.</p>
+<p>Добавление текста к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> можно сделать более таким образом один. Простой способ сделать это – <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.paragraph">Paragraph</a> которого является элемент уровня блока, используемый для группировки содержимого, такие как текст. Добавление текста в элементы встроенного уровня, в примерах используются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> — Это элемент содержимого потока встроенного уровня, используемый для группировки других встроенных элементов, хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> является элемент предназначен для содержания цепочки неформатированного текста содержимого потока встроенного уровня. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> может содержать несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> элементов.</p>
+<p>Первый пример документа содержит документ, который имеет несколько сетевых совместно используемых имен; например <code>\\server1\folder\file.ext</code>. Независимо от того на каком языке написан документ, в котором содержится эта сетевая ссылка, на арабском или английском, нам хотелось бы, чтобы он выглядел всегда одинаково. Приведенный ниже рисунок иллюстрирует использование элемента Span и показана ссылка в арабском <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a> документа:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/flow-direction-span-element.png" alt="Рисунок, иллюстрирующий использование элемента Span. " title="FlowDocument"></p>
+<p>Поскольку текст <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>, все специальные символы, такие как &quot;\«, разделяют текст справа налево. Результаты в ссылке, не отображаются в правильном порядке, поэтому для решения проблемы, текст необходимо внедрить, чтобы сохранить отдельного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> передаваемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a>. Создавать отдельные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> для каждого языка, более эффективный способ решения проблемы является внедрить реже используемый текст на английском языке в больших арабский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a>.</p>
+<p>Следующий рисунок иллюстрирует это с помощью элемента Run, внедренный в элемент Span:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/embedded-span-element.png" alt="Пример выполнения элемента внедрен в элемент Span."></p>
+<p>В следующем примере показано использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> элементов в документах.</p>
+<pre><code class="lang-xaml" name="RunSpan#RunSpan">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    FlowDirection=&quot;RightToLeft&quot;&gt;
+
+  &lt;FlowDocument&gt;
+    &lt;Paragraph&gt;
+      &lt;Span FlowDirection=&quot;RightToLeft&quot; &gt;
+        ستجد الملف هنا:
+        &lt;Run FlowDirection=&quot;LeftToRight&quot;&gt;
+           \\server1\filename\filename1.txt&lt;/Run&gt;
+        ثم باقى النص!
+      &lt;/Span&gt;
+    &lt;/Paragraph&gt;
+  &lt;/FlowDocument&gt;
+&lt;/Page&gt;
+</code></pre>
+<p><a name="SpanElements"></a></p>
+<h2 id="span-elements">Элементы Span</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> Элемент работает в качестве разделителя между фрагментами текста с различными направлениями потоков.  Даже <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> считаются элементы с одинаковыми направлениями потока имеют разные двунаправленные области, т. е <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> элементы упорядочены в контейнере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>, только содержимое внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> элемент следует за <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a>.</p>
+<p>На следующем рисунке показано направление потока нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/flow-direction-text-blocks.png" alt="Рисунок, иллюстрирующий текстовые блоки с различными направлениями потоков."></p>
+<p>В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> элементов для получения результатов, представленных на предыдущем рисунке.</p>
+<pre><code class="lang-xaml" name="Span#Span">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
+  &lt;StackPanel &gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; FlowDirection=&quot;RightToLeft&quot;&gt;
+      &lt;Run FlowDirection=&quot;LeftToRight&quot;&gt;العالم&lt;/Run&gt;
+      &lt;Run FlowDirection=&quot;LeftToRight&quot; Foreground=&quot;Red&quot; &gt;فى سلام&lt;/Run&gt;
+    &lt;/TextBlock&gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; FlowDirection=&quot;LeftToRight&quot;&gt;
+      &lt;Run FlowDirection=&quot;RightToLeft&quot;&gt;العالم&lt;/Run&gt;
+      &lt;Run FlowDirection=&quot;RightToLeft&quot; Foreground=&quot;Red&quot; &gt;فى سلام&lt;/Run&gt;
+    &lt;/TextBlock&gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; Foreground=&quot;Blue&quot;&gt;العالم فى سلام&lt;/TextBlock&gt;
+
+    &lt;Separator/&gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; FlowDirection=&quot;RightToLeft&quot;&gt;
+      &lt;Span Foreground=&quot;Red&quot; FlowDirection=&quot;LeftToRight&quot;&gt;Hello&lt;/Span&gt;
+      &lt;Span FlowDirection=&quot;LeftToRight&quot;&gt;World&lt;/Span&gt;
+    &lt;/TextBlock&gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; FlowDirection=&quot;LeftToRight&quot;&gt;
+      &lt;Span Foreground=&quot;Red&quot; FlowDirection=&quot;RightToLeft&quot;&gt;Hello&lt;/Span&gt;
+      &lt;Span FlowDirection=&quot;RightToLeft&quot;&gt;World&lt;/Span&gt;
+    &lt;/TextBlock&gt;
+
+    &lt;TextBlock FontSize=&quot;20&quot; Foreground=&quot;Blue&quot;&gt;Hello World&lt;/TextBlock&gt;
+
+  &lt;/StackPanel&gt;
+
+&lt;/Page&gt;
+
+</code></pre>
+<p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы в этом примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> элементы располагаются в соответствии с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> их родительские элементы, но текст внутри каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.span">Span</a> элемент последовательности согласно своему собственному <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>. Это применимо для латинского, арабского или любого другого языка.</p>
+<h3 id="adding-xmllang">Добавление XML: lang</h3>
+<p>Приведенный ниже рисунок показывает другой пример, использующий числа и арифметические выражения, такие как <code>&quot;200.0+21.4=221.4&quot;</code>. Обратите внимание на то, что только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> имеет значение.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/numbers-flow-right-left.png" alt="Рисунок, иллюстрирующий отображение чисел с использованием только FlowDirection."></p>
+<p>Пользователи данного приложения будут разочарованы выходные данные, даже если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> правильно чисел не так, как должны быть отформатированы числа на арабском языке.</p>
+<p>Элементы XAML могут включать XML атрибут (<code>xml:lang</code>), определяющий язык каждого элемента. XAML также поддерживает XML языковой принцип при котором <code>xml:lang</code> значения, применяющиеся к родительским элементам в дереве, используются дочерние элементы. В предыдущем примере так как язык не был определен для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.run">Run</a> элемента или любой из его свойство top на уровне элементов, по умолчанию <code>xml:lang</code> использовался, который является <code>en-US</code> для XAML. Внутренняя алгоритму формирования чисел Windows Presentation Foundation (WPF) числа выбираются в соответствии с языком – в данном случае английский. Чтобы арабские числа отображались правильно <code>xml:lang</code> необходимо задать.</p>
+<p>На следующем рисунке показан пример с <code>xml:lang</code> добавлен.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/arabic-numbers-flow-right-left.png" alt="Рисунок, иллюстрирующий арабские числа с направлением потока справа налево."></p>
+<p>В следующем примере добавляется <code>xml:lang</code> в приложение.</p>
+<pre><code class="lang-xaml" name="LangAttribute#LangAttribute">&lt;Page
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    FlowDirection=&quot;RightToLeft&quot;&gt;
+      &lt;FlowDocument&gt;
+         &lt;Paragraph&gt;
+            &lt;Span FlowDirection=&quot;RightToLeft&quot; Language=&quot;ar-SA&quot;&gt;
+              العملية الحسابية: &quot;200.0+21.4=221.4&quot;
+            &lt;/Span&gt;
+         &lt;/Paragraph&gt;
+      &lt;/FlowDocument&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Имейте в виду, что во многих языках применяются различные <code>xml:lang</code> значения в зависимости от целевого региона, например, <code>&quot;ar-SA&quot;</code> и <code>&quot;ar-EG&quot;</code> представляют собой два диалекта арабского языка. В предыдущих примерах показано, что необходимо определить оба <code>xml:lang</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> значения.</p>
+<p><a name="FlowDirectionNontext"></a></p>
+<h2 id="flowdirection-with-non-text-elements">Направление потока применительно к нетекстовым элементам</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> Определяет не только направление текста в текстовом элементе, но также направление потока в практически любом другом ИП элемент. Показано на следующем рисунке <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a> , использующая горизонтальную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> для рисования фона с левой к правой градиента.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/toolbar-left-right-gradient.png" alt="Рисунок, показывающий элемент toolbar с слева правой градиента."></p>
+<p>После задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>, не только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a> кнопки будут располагаться справа налево, но даже <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> перестраивает свои смещения в направлении справа налево.</p>
+<p>На следующем рисунке показано перестроение элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a>.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/toolbar-right-left-gradient.png" alt="Рисунок, показывающий элемент toolbar с правом градиент слева."></p>
+<p>В следующем примере рисуется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>. (Чтобы нарисовать его слева направо, удалите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>.</p>
+<pre><code class="lang-xaml" name="Gradient#Gradient">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+  
+  &lt;ToolBar FlowDirection=&quot;RightToLeft&quot; Height=&quot;50&quot; DockPanel.Dock=&quot;Top&quot;&gt;
+    &lt;ToolBar.Background&gt;
+      &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; EndPoint=&quot;1,1&quot;&gt;
+        &lt;LinearGradientBrush.GradientStops&gt;
+          &lt;GradientStop Color=&quot;DarkRed&quot; Offset=&quot;0&quot; /&gt;
+          &lt;GradientStop Color=&quot;DarkBlue&quot; Offset=&quot;0.3&quot; /&gt;
+          &lt;GradientStop Color=&quot;LightBlue&quot; Offset=&quot;0.6&quot; /&gt;
+          &lt;GradientStop Color=&quot;White&quot; Offset=&quot;1&quot; /&gt;
+        &lt;/LinearGradientBrush.GradientStops&gt;
+      &lt;/LinearGradientBrush&gt;
+    &lt;/ToolBar.Background&gt;
+
+    &lt;Button FontSize=&quot;12&quot; Foreground=&quot;White&quot;&gt;Button1&lt;/Button&gt;
+    &lt;Rectangle Width=&quot;20&quot;/&gt;
+    &lt;Button FontSize=&quot;12&quot; Foreground=&quot;White&quot;&gt;Button2&lt;/Button&gt;
+    &lt;Rectangle Width=&quot;20&quot;/&gt;
+    &lt;Button FontSize=&quot;12&quot; Foreground=&quot;White&quot;&gt;Button3&lt;/Button&gt;
+    &lt;Rectangle Width=&quot;20&quot;/&gt;
+    &lt;Button FontSize=&quot;12&quot; Foreground=&quot;White&quot;&gt;Button4&lt;/Button&gt;
+    &lt;Rectangle Width=&quot;20&quot;/&gt;
+  &lt;/ToolBar&gt;
+&lt;/Page&gt;
+</code></pre>
+<p><a name="FlowDirectionExceptions"></a></p>
+<h3 id="flowdirection-exceptions">Исключения направления потока</h3>
+<p>Существует несколько вариантов где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> некорректно. В этом разделе рассматриваются два таких исключения.</p>
+<p><strong>Изображение</strong></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> Представляет элемент управления, отображающий изображение. В XAML он может использоваться с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image.source">Source</a> свойство, определяющее универсальный идентификатор ресурса (URI) из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> для отображения.</p>
+<p>В отличие от других ИП элементов, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> не наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> из контейнера. Тем не менее если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> явно присвоено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> отображается перевернутым по горизонтали. Это сделано для удобства разработчиков двунаправленного содержимого. В некоторых случаях горизонтальным отражением достигается требуемый эффект.</p>
+<p>На следующем рисунке показано перевернутое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a>.</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/flipped-image-example.png" alt="Рисунок, иллюстрирующий перевернутое изображение."></p>
+<p>В следующем примере показано, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> не наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> , которая его содержит. <strong>Примечание</strong> необходимо иметь файл с именем <strong>ms_logo.jpg</strong> на C:\ диск для запуска этого примера.</p>
+<pre><code class="lang-xaml" name="Image#Image">&lt;StackPanel 
+  xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' 
+  FlowDirection=&quot;RightToLeft&quot;&gt;
+
+  &lt;Image Source=&quot;file://c:/ms_logo.jpg&quot; 
+         Width=&quot;147&quot; Height=&quot;50&quot;/&gt;
+  &lt;Separator Height=&quot;10&quot;/&gt;
+  &lt;Image Source=&quot;file://c:/ms_logo.jpg&quot; 
+         Width=&quot;147&quot; Height=&quot;50&quot; FlowDirection=&quot;LeftToRight&quot; /&gt;
+  &lt;Separator Height=&quot;10&quot;/&gt;
+  &lt;Image Source=&quot;file://c:/ms_logo.jpg&quot; 
+         Width=&quot;147&quot; Height=&quot;50&quot; FlowDirection=&quot;RightToLeft&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p><strong>Примечание</strong> включенные в загружаемые файлы — <strong>ms_logo.jpg</strong> файл. В коде предполагается, что JPG-файл находится не внутри проекта, а где-нибудь на диске C:. Необходимо скопировать JPG-файл из файлов проекта на диск C:\ или изменить код так, чтобы выполнялся поиск файла внутри проекта. Чтобы сделать это, измените <code>Source=&quot;file://c:/ms_logo.jpg&quot;</code> для <code>Source=&quot;ms_logo.jpg&quot;</code>.</p>
+<p><strong>Пути</strong></p>
+<p>В дополнение к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a>, еще один интересный элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>. Контур — это объект, который может нарисовать последовательность соединенных линий и кривых. Он ведет себя так же, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> относительно его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>, например его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> является горизонтальным отражением элемента его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a> один. Однако в отличие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> наследует его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> из контейнера и не требуется указывать явно.</p>
+<p>В следующем примере рисуется простая стрелка, использующая три линии. Первая стрелка наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a> направление из потока <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> таким образом, чтобы его начальная и конечная точки отсчитываются от корня на правой стороне. Вторая стрелка, который явно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> также начинается справа от оператора. Однако третья стрелка начинается от корня с левой стороны. Дополнительные сведения о рисовании см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linegeometry">LineGeometry</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometrygroup">GeometryGroup</a>.</p>
+<pre><code class="lang-xaml" name="Paths#Paths">&lt;StackPanel 
+  xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' 
+  FlowDirection=&quot;RightToLeft&quot;&gt;
+
+  &lt;Path Stroke=&quot;Blue&quot; StrokeThickness=&quot;4&quot;&gt;
+    &lt;Path.Data&gt;
+      &lt;GeometryGroup &gt;
+        &lt;LineGeometry StartPoint=&quot;300,10&quot; EndPoint=&quot;350,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;10,30&quot; EndPoint=&quot;352,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;300,50&quot; EndPoint=&quot;350,30&quot; /&gt;
+      &lt;/GeometryGroup&gt;
+    &lt;/Path.Data&gt;
+  &lt;/Path&gt;
+
+  &lt;Path Stroke=&quot;Red&quot; StrokeThickness=&quot;4&quot; FlowDirection=&quot;RightToLeft&quot;&gt;
+    &lt;Path.Data&gt;
+      &lt;GeometryGroup &gt;
+        &lt;LineGeometry StartPoint=&quot;300,10&quot; EndPoint=&quot;350,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;10,30&quot; EndPoint=&quot;352,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;300,50&quot; EndPoint=&quot;350,30&quot; /&gt;
+      &lt;/GeometryGroup&gt;
+    &lt;/Path.Data&gt;
+  &lt;/Path&gt;
+ 
+  &lt;Path Stroke=&quot;Green&quot; StrokeThickness=&quot;4&quot; FlowDirection=&quot;LeftToRight&quot;&gt;
+    &lt;Path.Data&gt;
+      &lt;GeometryGroup &gt;
+        &lt;LineGeometry StartPoint=&quot;300,10&quot; EndPoint=&quot;350,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;10,30&quot; EndPoint=&quot;352,30&quot; /&gt;
+        &lt;LineGeometry StartPoint=&quot;300,50&quot; EndPoint=&quot;350,30&quot; /&gt;
+      &lt;/GeometryGroup&gt;
+    &lt;/Path.Data&gt;
+  &lt;/Path&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>На следующем рисунке показан в предыдущем примере выходных данных с помощью стрелки, нарисованные с помощью <code>Path</code> элемент:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/arrows-drawn-path-element.png" alt="Рисунок, иллюстрирующий стрелки, нарисованные с помощью элемента Path."></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> приведены два примера того, как Windows Presentation Foundation (WPF) использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>. Рядом с макетом ИП элементы в определенном направлении в контейнере, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> можно использовать с элементами, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> отображаемое на поверхности, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.radialgradientbrush">RadialGradientBrush</a>. Каждый раз, когда требуется расположить справа налево содержимое, которое имитирует расположение слева направо, или наоборот, Windows Presentation Foundation (WPF) предоставит вам такую возможность.</p>
+<p><a name="NumberSubstitution"></a></p>
+<h2 id="number-substitution">Подстановки чисел</h2>
+<p>Исторически сложилось так, что Windows поддерживала подстановку чисел, позволяя представления различных культурных фигур для одних цифр во время сохранения внутреннего хранения этих цифр, объединенных в разных языковых стандартах, например, числа хранятся в их известное шестнадцатеричных значений, 0x40, 41, а отображаются в соответствии с выбранного языка.</p>
+<p>Это позволяет приложениям обрабатывать числовые данные без необходимости преобразовать их с одного языка на другой, например, пользователь может открыть Microsoft Excel электронную таблицу в локализованных арабский Windows числа на арабском языке и открыть его в европейскую версию Windows он увидит европейское представление тех же чисел. Это также необходимо для других символов, например запятая или символ процента, так как они обычно сопровождают числа в одном документе.</p>
+<p>Windows Presentation Foundation (WPF) продолжает традицию и добавляет новые для этого средства, позволяющие пользователю более точно контролировать время и способ подстановки используется. Эта функция может использоваться со всеми языками, но особенно полезна она в обработке двунаправленного содержимого, когда представление чисел для разных региональных стандартов становится проблемой для разработчиков приложений, предназначенных для использования в разных странах.</p>
+<p>Основным свойством, управляющим способом подстановки чисел работает Windows Presentation Foundation (WPF) является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.substitution">Substitution</a> свойства зависимостей. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution">NumberSubstitution</a> Класс указывает, как должны отображаться числа в тексте. Он имеет три открытых свойства, определяющих его поведение. Ниже приведен краткий обзор каждого из свойств.</p>
+<p><strong>CultureSource:</strong></p>
+<p>Это свойство задает способ определения регионального стандарта для чисел. Оно принимает одно из трех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numberculturesource">NumberCultureSource</a> значений перечисления.</p>
+<ul>
+<li><p>Переопределение: Региональный стандарт для чисел, — это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.cultureoverride">CultureOverride</a> свойство.</p>
+</li>
+<li><p>Text: Региональный стандарт для чисел определяется по региональному стандарту текстовой цепочки. В разметке, это было бы <code>xml:lang</code>, или его псевдоним <code>Language</code> свойство (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.language">Language</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.language">Language</a>). Кроме того, он используется по умолчанию для классов, производных от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>. Эти классы включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.paragraph">System.Windows.Documents.Paragraph</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">System.Windows.Documents.Table</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">System.Windows.Documents.TableCell</a> и т. д.</p>
+</li>
+<li><p>Пользователь: Региональный стандарт для чисел определяется по региональному стандарту текущего потока. Это свойство имеет значение по умолчанию для всех подклассов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.</p>
+</li>
+</ul>
+<p><strong>CultureOverride</strong>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.cultureoverride">CultureOverride</a> Свойство используется только в том случае, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.culturesource">CultureSource</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numberculturesource#System_Windows_Media_NumberCultureSource_Override">Override</a> и учитывается, в противном случае. Оно определяет региональный стандарт для чисел. Значение <code>null</code>, значение по умолчанию, интерпретируется как en US.</p>
+<p><strong>Substitution</strong>.</p>
+<p>Это свойство определяет выполняемый тип подстановки чисел. Оно принимает одно из следующих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod">NumberSubstitutionMethod</a> значений перечисления.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_AsCulture">AsCulture</a>: Метод подстановки определяется на основании региональных параметров чисел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.numberformatinfo.digitsubstitution">NumberFormatInfo.DigitSubstitution</a> свойство. Это значение по умолчанию.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_Context">Context</a>: Если региональный стандарт для чисел арабский &quot;или&quot; Персидский языка и региональных параметров, он указывает, что цифры зависят от контекста.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_European">European</a>: Числа всегда визуализируются как европейские цифры.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_NativeNational">NativeNational</a>: Числа отображаются с использованием национальных цифр для региональный стандарт для чисел, как указано в региональных параметрах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo.numberformat">NumberFormat</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_Traditional">Traditional</a>: Числа отображаются с использованием традиционных цифр для языка и региональных чисел. Для большинства языков и региональных параметров, это так же, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_NativeNational">NativeNational</a>. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitutionmethod#System_Windows_Media_NumberSubstitutionMethod_NativeNational">NativeNational</a> результатов цифр на римские для некоторых арабских языков, тогда как это значение в арабских цифрах для всех арабских языков.</p>
+</li>
+</ul>
+<p>О чем говорят эти значения разработчикам двунаправленного содержимого? В большинстве случаев разработчику достаточно только для определения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> и язык каждого текстового ИП элемент, например <code>Language=&quot;ar-SA&quot;</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution">NumberSubstitution</a> логики отвечает за отображение чисел в соответствии с правильным ИП. В следующем примере показано использование английских и арабских чисел в Windows Presentation Foundation (WPF) приложения, работающего в арабской версии Windows.</p>
+<pre><code class="lang-xaml" name="Numbers#Numbers">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; &gt;
+  &lt;StackPanel&gt;
+   &lt;TextBlock Background=&quot;LightGreen&quot; FontSize=&quot;32&quot; 
+      Language=&quot;ar-SA&quot; FlowDirection=&quot;RightToLeft&quot;&gt;1+2=3&lt;/TextBlock&gt;
+   &lt;TextBox Background=&quot;LightGreen&quot; FontSize=&quot;32&quot; 
+      Language=&quot;ar-SA&quot; FlowDirection=&quot;RightToLeft&quot;&gt;1+2=3&lt;/TextBox&gt;
+   &lt;TextBlock Background=&quot;LightBlue&quot; FontSize=&quot;32&quot;&gt;1+2=3&lt;/TextBlock&gt;
+   &lt;TextBox Background=&quot;LightBlue&quot; FontSize=&quot;32&quot;&gt;1+2=3&lt;/TextBox&gt;
+ &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Приведенный ниже рисунок показывает результат выполнения предыдущего примера, если у вас в арабской версии Windows с помощью арабских и английских чисел, отображаемых:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/arabic-english-numbers.png" alt="Рисунок, показывающий английских и арабских чисел."></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> Был важные таким образом, поскольку настройка параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a> вместо этого будут отображаться европейские цифры. В следующих разделах рассматривается, как сделать одинаковое отображение цифр по всему документу. Если этот пример не выполняется на арабской версии Windows, все цифры отображаются на экране как европейские цифры.</p>
+<p><strong>Определение правил подстановки</strong></p>
+<p>В реальном приложении может возникнуть необходимость установить язык программным путем. Например, вы хотите задать <code>xml:lang</code> атрибут, который будет таким же, как используется в системе ИП, или требуется изменять язык в зависимости от состояния приложения.</p>
+<p>Если вы хотите внести изменения на основании состояния приложения, использование других возможностей, предоставляемых Windows Presentation Foundation (WPF).</p>
+<p>Во-первых, установите компонент приложения <code>NumberSubstitution.CultureSource=&quot;Text&quot;</code>. С помощью этого параметра гарантирует, что параметры не будут извлекаться из ИП для текстовых элементов, содержащих «User» по умолчанию, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.</p>
+<p>Пример:</p>
+<pre><code class="lang-xaml">&lt;TextBlock
+   Name=&quot;text1&quot; NumberSubstitution.CultureSource=&quot;Text&quot;&gt;
+   1234+5679=6913
+&lt;/TextBlock&gt;
+</code></pre>
+<p>В соответствующем C# кода; задание <code>Language</code> свойство, к примеру, чтобы <code>&quot;ar-SA&quot;</code>.</p>
+<pre><code class="lang-csharp">text1.Language = System.Windows.Markup.XmlLanguage.GetLanguage(&quot;ar-SA&quot;);
+</code></pre>
+<p>Если необходимо задать <code>Language</code> свойства языка пользовательского интерфейса текущего пользователя с помощью следующего кода.</p>
+<pre><code class="lang-csharp">text1.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag);
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo.currentculture">CultureInfo.CurrentCulture</a> представляет текущий язык и региональные параметры, используемые текущим потоком во время выполнения.</p>
+<p>Окончательный XAML пример должен быть аналогично приведенному ниже.</p>
+<pre><code class="lang-xaml" name="Numbers2#Numbers2">&lt;Page x:Class=&quot;WindowsApplication.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Code Sample&quot; Height=&quot;300&quot; Width=&quot;300&quot;
+&gt;
+    &lt;StackPanel&gt;
+      &lt;TextBlock Language=&quot;ar-SA&quot; 
+         FlowDirection=&quot;RightToLeft&quot;&gt;عربى: 1+2=3
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Language=&quot;ar-SA&quot; 
+         FlowDirection=&quot;RightToLeft&quot; 
+         NumberSubstitution.Substitution=&quot;European&quot;&gt;عربى: 1+2=3 
+      &lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Окончательный C# пример должен быть следующего вида.</p>
+<pre><code class="lang-csharp" name="NumbersCSharp#NumbersCSharp">namespace BidiTest
+{
+    public partial class Window1 : Window
+    {
+
+        public Window1()
+        {
+            InitializeComponent();
+
+            string currentLanguage =
+                System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag;
+
+            text1.Language = System.Windows.Markup.XmlLanguage.GetLanguage(currentLanguage);
+
+            if (currentLanguage.ToLower().StartsWith(&quot;ar&quot;))
+            {
+                text1.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                text1.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+    }
+}
+</code></pre>
+<p>Приведенный ниже рисунок показывает, как выглядит окно для любого языка программирования, отображение арабских чисел:</p>
+<p><img src="media/bidirectional-features-in-wpf-overview/displays-arabic-numbers.png" alt="Рисунок, иллюстрирующий отображение арабских чисел."></p>
+<p><strong>Использование свойства подстановки</strong></p>
+<p>Способ подстановки числа работает Windows Presentation Foundation (WPF) зависит от языка текстового элемента и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> слева направо, а затем будут отображаться европейские цифры. Тем не менее если ему предшествует текст на арабском языке или задан язык «ar» и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a> является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>, вместо этого будут отображаться арабские цифры.</p>
+<p>В некоторых случаях может потребоваться создание универсального приложения, например с европейскими цифрами для всех пользователей. Или арабские цифры в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> ячейки с определенным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Один простой способ выполнения задачи, использующего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.substitution">Substitution</a> свойство.</p>
+<p>В следующем примере первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.numbersubstitution.substitution">Substitution</a> свойство задано, поэтому отображаются арабские цифры должным образом. Однако во втором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>задана подстановка в европейском стандарте переопределяет замену по умолчанию для арабских чисел и отображаются европейские цифры.</p>
+<pre><code class="lang-xaml" name="Numbers3#Numbers3">&lt;Page x:Class=&quot;WindowsApplication.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Code Sample&quot; Height=&quot;300&quot; Width=&quot;300&quot;
+&gt;
+    &lt;StackPanel&gt;
+      &lt;TextBlock Language=&quot;ar-SA&quot; 
+         FlowDirection=&quot;RightToLeft&quot;&gt;عربى: 1+2=3
+      &lt;/TextBlock&gt;
+      &lt;TextBlock Language=&quot;ar-SA&quot; 
+         FlowDirection=&quot;RightToLeft&quot; 
+         NumberSubstitution.Substitution=&quot;European&quot;&gt;عربى: 1+2=3 
+      &lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

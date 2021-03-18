@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1080;&#1086;&#1088;&#1080;&#1090;&#1077;&#1090; &#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1080;&#1086;&#1088;&#1080;&#1090;&#1077;&#1090; &#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1103; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dependency-property-value-precedence">Приоритет значения свойств зависимостей</h1>
+
+<p><a name="introduction"></a> В этом разделе рассказывается, как работа системы свойств Windows Presentation Foundation (WPF) может повлиять на значение свойства зависимости, и описывается приоритет применения аспектов системы свойств к действительному значению свойства.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Предполагается, что вы имеете представление о свойствах зависимости с точки зрения потребителя существующих свойств зависимостей в классах WPF и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a>. Чтобы выполнить примеры в этом разделе, следует также иметь представление о Язык XAML и написании приложений WPF.</p>
+<p><a name="intro"></a></p>
+<h2 id="the-wpf-property-system">Система свойств WPF</h2>
+<p>Система свойств WPF предлагает эффективный способ определения значений свойств зависимостей с помощью множества факторов, включая такие возможности, как проверка свойства в режиме реального времени, позднее связывание и уведомление связанных свойств об изменениях значений других свойств. Точный порядок и логика, используемые для определения значений свойства зависимости, достаточно сложны. Знание этого порядка поможет избежать ненужной настройки свойств и путаницы в вопросах, почему определенные попытки повлиять на значение свойства зависимости или спрогнозировать его не дали ожидаемого результата.</p>
+<p><a name="multiple_sets"></a></p>
+<h2 id="dependency-properties-might-be-set-in-multiple-places">Свойства зависимостей могут быть &quot;установлены&quot; в нескольких расположениях</h2>
+<p>Ниже приведен пример XAML где то же свойство (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>) имеет три разных «set» операции, которые могут повлиять на значение.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#DPPrecedence">    &lt;Button Background=&quot;Red&quot;&gt;
+      &lt;Button.Style&gt;
+        &lt;Style TargetType=&quot;{x:Type Button}&quot;&gt;
+          &lt;Setter Property=&quot;Background&quot; Value=&quot;Green&quot;/&gt;
+          &lt;Style.Triggers&gt;
+            &lt;Trigger Property=&quot;IsMouseOver&quot; Value=&quot;True&quot;&gt;
+              &lt;Setter Property=&quot;Background&quot; Value=&quot;Blue&quot; /&gt;
+            &lt;/Trigger&gt;
+          &lt;/Style.Triggers&gt;
+        &lt;/Style&gt;
+      &lt;/Button.Style&gt;
+Click
+    &lt;/Button&gt;
+</code></pre>
+<p>Как вы считаете, какой цвет будет здесь использован: красный, зеленый или синий?</p>
+<p>За исключением динамических значений и приведения наборы локальных свойств устанавливаются с наивысшим приоритетом. Если значение задается локально, можно ожидать, что значение будет соблюдаться, даже если выше все стили и шаблоны элемента управления. В этом примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> задается значение Red, локально. Таким образом, стиль, определенный в этой области, даже если это неявный стиль, который в противном случае будет применяться ко всем элементам этого типа в этой области, не наивысший приоритет для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойства его значение.  Если удалить локальное значение Red из этого экземпляра Button, то стиль получит приоритет и кнопка получит значение Background из стиля.  Внутри стиля приоритет получают триггеры, поэтому кнопка будет синей, если указатель мыши находится над ней, и зеленым в других случаях.</p>
+<p><a name="listing"></a></p>
+<h2 id="dependency-property-setting-precedence-list">Список приоритета настройки свойств зависимости</h2>
+<p>Ниже приведен точный порядок, который использует система свойств при присвоении значений времени выполнения свойствам зависимостей. Сначала указаны элементы с наивысшим приоритетом. Этот список включает некоторые обобщения, сделанные в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.</p>
+<ol>
+<li><p><strong>Приведение системы свойств.</strong> Дополнительные сведения о приведении см. в теме <a href="#animations">Приведение, анимация и базовое значение</a> далее в этом разделе.</p>
+</li>
+<li><p><strong>Активные анимации или анимации с поведением Hold.</strong> Анимация свойства имеет практический эффект только в том случае, если она может иметь приоритет над базовым (неанимированным) значением, даже если это значение было задано локально. Дополнительные сведения см. в теме <a href="#animations">Приведение, анимация и базовое значение</a> далее в этом разделе.</p>
+</li>
+<li><p><strong>Локальное значение.</strong> Локальное значение может устанавливаться с помощью «оболочки» свойства, которое приравнивается к настройке атрибут или свойство в качестве элемента XAML, или с помощью вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> API с помощью свойства конкретного экземпляра. Если задано локальное значение с помощью привязки или ресурса, каждый из них функционирует в таком приоритете, как если бы было задано прямое значение.</p>
+</li>
+<li><p><strong>Свойства шаблона TemplatedParent.</strong> Элемент имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a> если она была создана как часть шаблона ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>). Дополнительные сведения о случаях его применения см. в теме <a href="#templatedparent">TemplatedParent</a> далее в этом разделе. В шаблоне действует следующий приоритет:</p>
+<ol>
+<li><p>Триггеры — с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a> шаблона.</p>
+</li>
+<li><p>Наборы свойств (обычно через XAML атрибуты) в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a> шаблона.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Неявный стиль.</strong> Применяется только к свойству <code>Style</code>. Свойство <code>Style</code> заполняется любым ресурсом стиля с ключом, соответствующим типу этого элемента. Ресурс стиля должен существовать либо на странице, либо в приложении; поиск ресурса неявного стиля в темах не выполняется.</p>
+</li>
+<li><p><strong>Триггеры стилей.</strong> Триггеры в стилях со страницы или из приложения (эти стили могут быть явными или неявными, но не стилями по умолчанию, поскольку последние имеют более низкий приоритет).</p>
+</li>
+<li><p><strong>Триггеры шаблонов.</strong> Любой триггер из шаблона внутри стиля или непосредственно применяемый шаблон.</p>
+</li>
+<li><p><strong>Методы задания стилей.</strong> Значения из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> в стилях со страницы или приложения.</p>
+</li>
+<li><p><strong>Стиль по умолчанию (тема).</strong> Подробные сведения о применении этих стилей и связи стилей тем с шаблонами в стилях тем см. в теме <a href="#themestyles">Стили (темы) по умолчанию</a> далее в этом разделе. В стиле по умолчанию применяется следующий порядок приоритета:</p>
+<ol>
+<li><p>Активные триггеры в тематическом стиле.</p>
+</li>
+<li><p>Методы задания в тематическом стиле.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Наследование.</strong> Некоторые свойства зависимостей наследуют свои значения от родительского элемента к дочерним элементам, так что их не требуется задавать по отдельности на каждом элементе в приложении. Подробные сведения см. в разделе <a href="property-value-inheritance.html">Наследование значений свойств</a>.</p>
+</li>
+<li><p><strong>Значение по умолчанию из метаданных свойства зависимости.</strong> Любое заданное свойство зависимостей может иметь значение по умолчанию, заданное при регистрации системы свойств конкретного свойства. Кроме того, производные классы, которые наследуют свойства зависимостей, имеют возможность переопределить эти метаданные (включая значение по умолчанию) на уровне отдельных типов. Дополнительные сведения см. в разделе <a href="dependency-property-metadata.html">Метаданные свойств зависимостей</a>. Поскольку наследование для наследуемого свойства проверяется до значения по умолчанию, значение по умолчанию родительского элемента имеет приоритет над дочерним элементом.  Следовательно, если наследуемое свойство нигде не задано, используется значение по умолчанию, как указано в корневом элементе, либо родительское значение используется вместо значения по умолчанию дочернего элемента.</p>
+</li>
+</ol>
+<p><a name="templatedparent"></a></p>
+<h2 id="templatedparent">TemplatedParent</h2>
+<p>TemplatedParent как приоритетный элемент не применяется ни к какому свойству элемента, объявляемому непосредственно в стандартной разметке приложения. Понятие TemplatedParent существует только для дочерних элементов в пределах визуального дерева, которые создаются в результате применения шаблона. Когда система свойств ищет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a> шаблона для значения, она ищет шаблон, который создал этот элемент. Значения свойств из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a> шаблон обычно функционируют, как если бы они были установлены в качестве локальное значение для дочернего элемента, но это имеет меньший приоритет относительно локального значения существует, так как шаблоны являются совместно. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.templatedparent">TemplatedParent</a>.</p>
+<p><a name="style_property"></a></p>
+<h2 id="the-style-property">Свойство стиля</h2>
+<p>Порядок поиска, описанный выше ко всем возможным свойствам зависимостей, кроме одного: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> Свойство является уникальным в том, что он стиль невозможно, поэтому элементы приоритета с 5 по 8 не применяются. Кроме того, анимация или приведение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> не рекомендуется (и анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> потребует использования пользовательского класса анимации). При этом остается три способа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство может иметь значение:</p>
+<ul>
+<li><p><strong>Явный стиль.</strong> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> Свойство задается напрямую. В большинстве случаев стиль не определяется внутри объекта, а используется ссылка на стиль как ресурс с применением явного ключа. В этом случае само свойство Style действует как локальное значение с приоритетом 3.</p>
+</li>
+<li><p><strong>Неявный стиль.</strong> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> Свойство не задано напрямую. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> существует на определенном уровне последовательности поиска ресурсов (страницы, приложения) и шифруется с помощью ключа ресурса, который соответствует является стиль, применяемый к типу. В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> само свойство действует с приоритетом, определенным в последовательности как элемент 5. Это условие можно обнаружить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertyhelper">DependencyPropertyHelper</a> от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство и ищете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.basevaluesource#System_Windows_BaseValueSource_ImplicitStyleReference">ImplicitStyleReference</a> в результатах.</p>
+</li>
+<li><p><strong>Стиль по умолчанию</strong>, также известный как <strong>стиль темы.</strong> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> Свойство не задается напрямую, а на самом деле оно считывается как <code>null</code> времени выполнения. В этом случае стиль поступает из оценки темы времени выполнения, которая является частью механизма презентации WPF.</p>
+</li>
+</ul>
+<p>Для неявных стилей не в темах необходимо точное соответствие - <code>MyButton</code> <code>Button</code>-производный класс не будет неявно использовать стиль для <code>Button</code>.</p>
+<p><a name="themestyles"></a></p>
+<h2 id="default-theme-styles">Стили (темы) по умолчанию</h2>
+<p>Каждый элемент управления, который поставляется с WPF, имеет стиль по умолчанию. Стили по умолчанию могут варьироваться по темам, поэтому иногда их называют тематическими стилями.</p>
+<p>Наиболее важные сведения, находящийся в стиле по умолчанию для элемента управления — его шаблон элемента управления, который существует в тематическом стиле в качестве метода задания для его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.template">Template</a> свойство. При отсутствии шаблона из стилей по умолчанию элемент управления без пользовательского шаблона в составе пользовательского стиля вообще бы не имел визуального представления. Шаблон из стиля по умолчанию придает визуальному представлению каждого элемента управления базовую структуру, а также определяет подключения между свойствами, определенными в визуальном дереве шаблона и соответствующем классе элементов управления. Каждый элемент управления предоставляет набор свойств, которые могут повлиять на внешний вид элемента управления без полной замены шаблона. Например, рассмотрим по умолчанию внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a> элемент управления, который является компонентом из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar">ScrollBar</a>.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a> имеет ряд настраиваемых свойств. Шаблон по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a> создает базовую структуру / визуальное дерево с несколькими вложенными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> компоненты для создания наклона. Если свойство, которое является частью шаблона должно быть предоставлено для настройки с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a> класса, то это свойство должно быть предоставлено <a href="templatebinding-markup-extension.html">TemplateBinding</a>, в шаблоне. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a>, различные свойства этих границ имеют общую привязку шаблона свойствам, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.background">Background</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.borderthickness">BorderThickness</a>. Однако некоторые другие свойства или визуальные представления заданы в коде шаблона элемента управления или привязаны к значениям, которые поступают непосредственно из темы; чтобы изменить их, необходимо заменить весь шаблон. Как правило, если свойство поступает из шаблонного родительского элемента и не предоставляется привязкой шаблона, его невозможно скорректировать с помощью стилей, поскольку нет простого способа указать его в качестве целевого объекта. Однако это свойство может зависеть от наследования значения свойства в примененном шаблоне или значения по умолчанию.</p>
+<p>Тематические стили используют тип в качестве ключа в своих определениях. Тем не менее, при применении тем к экземпляру данного элемента, поиск тем для этого типа выполняется путем проверки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a> свойство элемента управления. Это отличается от сценария неявных стилей, где используется литеральный тип. Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a> бы наследуется производными классами, даже если разработчик не изменяет его (рекомендуется изменять свойство не переопределить его на уровне свойств, но чтобы изменить его значение по умолчанию в метаданных свойства). Такая опосредованность позволяет базовым классам определять тематические стили для производных элементов, которые в противном случае не имеют стиля (или, что более важно, не имеют шаблона внутри стиля и поэтому вообще не имеют визуального представления по умолчанию). Таким образом, можно создавать производные <code>MyButton</code> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> по-прежнему получите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> шаблон по умолчанию. Если вы были создателем элемента управления <code>MyButton</code> и требуется другое поведение, можно переопределить метаданные свойства зависимостей для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a> на <code>MyButton</code> чтобы возвращать другой ключ, а затем определить соответствующие тематические стили, включая шаблон для <code>MyButton</code> , необходимо упаковать с вашей <code>MyButton</code> элемента управления. Дополнительные сведения о темах, стилях и создании элементов управления см. в разделе <a href="../controls/control-authoring-overview.html">Общие сведения о создании элементов управления</a>.</p>
+<p><a name="resources"></a></p>
+<h2 id="dynamic-resource-references-and-binding">Ссылки на динамические ресурсы и привязки</h2>
+<p>В операциях со ссылками на динамические ресурсы и привязками учитывается приоритет расположения при настройке. Например, динамический ресурс, применяемый к локальному значению, действует с приоритетом 3, привязка для метода задания свойства в тематическом стиле действует с приоритетом 9 и так далее. Поскольку ссылки на динамические ресурсы и привязки должны иметь возможность получения значений из состояния времени выполнения приложения, это предполагает, что фактический процесс определения приоритета значения свойства для какого-либо свойства распространяется и на время выполнения.</p>
+<p>Ссылки на динамические ресурсы, строго говоря, не являются частью системы свойств, но они имеют свой порядок поиска, который перекликается с вышеуказанной последовательностью. Этот приоритет более подробно описан в разделе <a href="xaml-resources.html">Ресурсы XAML</a>. В общем случае действует следующий приоритет: элемент корневой страницы, приложение, тема, система.</p>
+<p>Динамические ресурсы и привязки получают приоритет расположения, в котором они были заданы, но значение откладывается. Следствием этого является тот факт, что если задать для динамического ресурса или привязки локальное значение, то при любом изменении локального значения динамический ресурс или привязка будут меняться полностью. Даже если вы вызываете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> метод, чтобы удалить локально заданное значение, динамический ресурс или привязка не будет восстановлено. На самом деле, если вы вызываете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> на свойство, которое имеет динамический ресурс или привязка имея (без литерального локального значения), они также будут удалены с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> вызвать слишком.</p>
+<p><a name="setcurrentvalue"></a></p>
+<h2 id="setcurrentvalue">SetCurrentValue</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a> Метод — еще один способ задать свойство, но не в порядке приоритета. Вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a> позволяет изменить значение свойства, не перезаписывая источник предыдущего значения. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a> каждый раз, когда требуется задать значение, не предоставляя этому значению приоритет локального значения. Например, если свойство задается триггером, а затем ему присваивается другое значение с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a>, система свойств по-прежнему учитывает этот триггер, и свойство меняется, если происходит действие триггера. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a> позволяет изменить значение свойства, не предоставляя ему источник с более высоким приоритетом. Аналогичным образом, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setcurrentvalue">SetCurrentValue</a> для изменения значения свойства, не перезаписывая привязку.</p>
+<p><a name="animations"></a></p>
+<h2 id="coercion-animations-and-base-value">Приведение, анимации и базовое значение</h2>
+<p>Приведение и анимация используют значение, которое в SDK определяется как &quot;базовое значение&quot;. Базовое значение — это любое значение, определяемое посредством восходящей оценки элементов до тех пор, пока не будет достигнут элемент 2.</p>
+<p>Для анимации базовое значение может повлиять на анимированное значение, если анимация не указывает значения From и To для определенных моделей поведения, либо если анимация умышленно возвращается к базовому значению по завершении выполнения. Чтобы увидеть это на практике, запустите <a href="https://go.microsoft.com/fwlink/?LinkID=159988">Пример целевых значений анимации From, To, By</a>. Попробуйте установить локальные значения высоты прямоугольника в примере, чтобы начальное локальное значение отличалось от любого значения From в анимации. Обратите внимание, что анимация сразу же начинает использовать значения From и заменяет базовое значение после запуска. Анимацию можно указать, чтобы вернуться к значению, обнаруженному перед анимацией после ее завершения, указав Stop <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a>. После этого для определения базового значения используется обычный приоритет.</p>
+<p>К одному свойству можно применить несколько анимаций, причем каждая из этих анимаций может быть определена в разных точках списка приоритетов значений. Однако вместо того чтобы применять анимацию с более высоким приоритетом, вероятно, анимации объединят свои значения. Это зависит от того, как именно определяются анимации, и от типа анимируемого значения. Дополнительные сведения об анимации свойств см. в разделе <a href="../graphics-multimedia/animation-overview.html">Общие сведения об эффектах анимации</a>.</p>
+<p>Приведение применяется на самом высоком уровне. Приведение значения может быть выполнено даже для уже выполняющейся анимации. Некоторые существующие свойства зависимостей в WPF имеют встроенные приведения. Для настраиваемого свойства зависимости, для настраиваемого свойства зависимости поведение приведения определяется путем написания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> и передачи обратного вызова в составе метаданных при создании свойства. Также можно переопределить поведение приведения существующих свойств путем переопределения метаданных для этого свойства в производном классе. Приведение взаимодействует с базовым значением таким образом, что ограничения на приведение применяются в том виде, в котором они существуют на тот момент, однако базовое значение сохраняется. Таким образом, если ограничения в приведении впоследствии будут сняты, приведение вернет ближайшее к базовому возможное значение и, возможно, влияние приведения на свойство прекратится, как только ограничение будет снято. Дополнительные сведения о поведении приведения см. в разделе <a href="dependency-property-callbacks-and-validation.html">Проверка и обратные вызовы свойства зависимостей</a>.</p>
+<p><a name="triggers"></a></p>
+<h2 id="trigger-behaviors">Поведения триггера</h2>
+<p>Элементы управления часто определяют поведение триггера в составе своего стиля по умолчанию, в темах. Установка локальных свойств для элементов управления может препятствовать реагированию триггеров на инициированные пользователями события (визуально или своими действиями). Наиболее распространенное использование триггера свойств предназначен для свойства элемента управления или состояния, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.isselected">IsSelected</a>. Например, по умолчанию при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> отключена (триггер для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isenabled">IsEnabled</a> — <code>false</code>) то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> значение в тематическом стиле является то, что элемент управления затемнены «». Но если вы задали локальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> значение, что обычный серый цвет будет отменен в приоритете, набора локальных свойств даже в этом сценарии триггера свойства. Будьте осторожны при установке значений для свойств, которые имеют поведения триггеров на уровне темы; кроме того, необходимо убедиться, что не создается ненужных помех работе пользователя с этим элементом управления.</p>
+<p><a name="clearvalue"></a></p>
+<h2 id="clearvalue-and-value-precedence">ClearValue и приоритет значения</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> Метод предоставляет соответствующие средства для очистки любого применяемого локально значения из свойства зависимости, которое задается в элементе. Однако, при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> не гарантирует, что новое действительное значение по умолчанию, заданное в метаданных во время регистрации свойства. Все остальные участники в приоритете значений будут по-прежнему активны. Только локально заданное значение удаляется из последовательности приоритетов. Например, если вы вызываете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a> по свойству, где этот также задано тематическим стилем, а затем тематическое значение будет применено как новое значение, а не по умолчанию на основе метаданных. Если вы хотите извлечь все элементы значения свойства из процесса и значение по умолчанию зарегистрированные метаданные, можно получить значение по умолчанию точно, путем запроса метаданных свойства зависимостей, а затем можно использовать локально значение по умолчанию свойство с вызовом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="dependency-property-callbacks-and-validation.html">Проверка и обратные вызовы свойства зависимостей</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

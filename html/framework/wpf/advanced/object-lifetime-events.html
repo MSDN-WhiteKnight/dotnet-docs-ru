@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103; &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1080; &#1078;&#1080;&#1079;&#1085;&#1080; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103; &#1074;&#1088;&#1077;&#1084;&#1077;&#1085;&#1080; &#1078;&#1080;&#1079;&#1085;&#1080; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="object-lifetime-events">События времени жизни объекта</h1>
+
+<p>В этом разделе описываются определенные события WPF, обозначающие этапы создания, использования и удаления времени жизни объекта.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах Windows Presentation Foundation (WPF) и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>. Чтобы выполнить примеры в этом разделе, следует также иметь представление о Язык XAML (см. раздел <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>) и знать, как создаются приложения WPF.</p>
+<p><a name="intro"></a></p>
+<h2 id="object-lifetime-events">События времени жизни объекта</h2>
+<p>Все объекты в управляемым кодом Microsoft .NET Framework выполните аналогичный набор этапов жизни, создания, использования и удаления. Многие объекты также имеют этап завершения, который возникает как часть этапа удаления. WPF объекты, дополнительные, особенно визуальные объекты, WPF определяет как элементы, также имеют набор общих этапов жизни объекта. Модель приложений и модель программирования WPF предоставляют эти этапы как последовательность событий. В WPF существует четыре основных типа объектов, связанных с событиями времени жизни: элементы в целом, элементы окна, узлы навигации и объекты приложения. Узлы окон и навигации также входят в более крупные группы визуальных объектов (элементов). В этом разделе описываются события времени жизни, которые являются общими для всех элементов, а затем даются общие сведения о конкретных событиях, которые относятся к определениям приложений, узлам окон или навигации.</p>
+<p><a name="common_events"></a></p>
+<h2 id="common-lifetime-events-for-elements">Общие события времени жизни для элементов</h2>
+<p>Любой элемент уровня инфраструктуры WPF (объекты, производные от либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>) имеет три общих события времени жизни: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unloaded">Unloaded</a>.</p>
+<h3 id="initialized">инициализированные</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a> возникает первым и примерно соответствует инициализации объекта путем вызова его конструктора. Поскольку событие происходит в ответ на инициализацию, можно гарантировать, что все свойства объекта установлены. (Исключением является использование таких выражений, как динамические ресурсы или привязки; это будут необработанные выражения.) В результате требование установки всех свойств, последовательность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a> , вызванных вложенных элементов, которые определены в разметке отображается в порядке вложенности элементов в дереве элементов, во-первых, затем от родительского элемента к корню. Этот порядок обусловлен тем, что отношения и вложения «родитель/потомок» являются свойствами, и поэтому родитель не может завершить инициализацию, пока дочерние элементы, указанные в свойстве, не будут полностью инициализированы.</p>
+<p>При написании обработчика в ответ на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a> событий, необходимо учитывать, что нет никакой гарантии, что все остальные элементы в дереве элементов (логическом или визуальном дереве) вокруг где присоединяется обработчик, были созданы, особенно родительские элементы. Переменные члены могут быть null, или источники данных могут быть еще не заполненными через базовую привязку (даже на уровне выражения).</p>
+<h3 id="loaded">Загружен</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> Далее вызывается. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> События перед окончательной отрисовкой, но после система макета вычислила все необходимые значения для подготовки к просмотру. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> предполагает, что логическое дерево, элемент, содержащийся в завершена и подключается к источнику представления, который предоставляет HWND и поверхность для отрисовки. Стандартная привязка данных (привязка к локальному источнику, например другие свойства или явно определенным источникам данных) произойдет до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a>. Асинхронная привязка данных (к внешним или динамическим источникам) может произойти, но по определению асинхронности не обязательно произойдет.</p>
+<p>Механизм, по которому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> события отличается от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.initialized">Initialized</a> Событие является вызывается элементом за элементом, без прямого согласования с завершенным деревом элементов. Напротив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событие вызывается в качестве согласованного усилия по всему дереву элементов (в частности, логическое дерево). Если все элементы в дереве находятся в состоянии, когда они считаются загружены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> сначала события в корневом элементе. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> Событий затем вызывается последовательно для каждого дочернего элемента.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Такое поведение может внешне напоминать туннелирование для перенаправленного события. Тем не менее информация не переносится от события к событию. Каждый элемент всегда имеет возможность обработать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий и пометка данных события как обработанных не оказывает влияния за пределами этого элемента.</p>
+</div>
+<h3 id="unloaded">Выгружен</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unloaded">Unloaded</a> вызывается последним и инициируется либо источником представления, либо удаляемым визуальным родителем. Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unloaded">Unloaded</a> возникает и обрабатывается, элемент, который является родителем источника события (что определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.parent">Parent</a> свойства) или любой конкретный элемент в логических или визуальных деревьях может уже быть сброшен, это означает, что связывание данных, ссылки на ресурсы , и стили могут быть установлены не в обычное или последнее известное значение времени выполнения.</p>
+<p><a name="application_model_elements"></a></p>
+<h2 id="lifetime-events-application-model-elements">Элементы модели приложений событий времени жизни</h2>
+<p>Основываясь на общих события времени жизни для элементов являются следующие элементы модели приложений: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>. Они расширяют общие события времени жизни дополнительными событиями, которые связаны с их конкретными целями. Эти темы подробно рассматриваются в следующих разделах.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>: <a href="../app-development/application-management-overview.html">Общие сведения об управлении приложением</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>: <a href="../app-development/wpf-windows-overview.html">Общие сведения о Windows WPF</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>: <a href="../app-development/navigation-overview.html">Общие сведения о переходах</a>.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="dependency-property-value-precedence.html">Приоритет значения свойств зависимостей</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

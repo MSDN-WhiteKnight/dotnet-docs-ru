@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1090;&#1080;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1092;&#1086;&#1082;&#1091;&#1089;&#1072; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072;&#1093; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1080; FocusVisualStyle | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1090;&#1080;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1092;&#1086;&#1082;&#1091;&#1089;&#1072; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072;&#1093; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1080; FocusVisualStyle | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="styling-for-focus-in-controls-and-focusvisualstyle">Стилизация фокуса в элементах управления и FocusVisualStyle</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет два параллельных механизма для изменения внешнего вида элемента управления, получивший фокус клавиатуры. Первый механизм — использование методов задания свойств для свойств, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocused">IsKeyboardFocused</a> внутри стиля или шаблона, который применяется к элементу управления. Второй механизм представляет собой отдельный стиль в качестве значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.focusvisualstyle">FocusVisualStyle</a> свойство; «стиль визуального отображения фокуса» создает отдельное визуальное дерево для декоративного элемента, который отображается поверх элемента управления, а не изменяет визуальное дерево элемента управления или другой пользовательский Интерфейс элемент путем ее замены. В данном разделе рассматриваются сценарии, для которых подходит любой из этих механизмов.</p>
+<p><a name="Purpose"></a></p>
+<h2 id="the-purpose-of-focus-visual-style">Назначение визуального стиля фокуса</h2>
+<p>Функция визуального стиля фокуса предоставляет общую &quot;объектную модель&quot; для введения визуальной обратной связи с пользователем на основе навигации с помощью клавиатуры к любому элементу пользовательского интерфейса. Это можно сделать без применения нового шаблона к элементу управления или знания композиции определенного шаблона.</p>
+<p>Но именно потому, что функция визуального стиля фокуса работает без знания шаблонов элементов управления, визуальная обратная связь, которая может отображаться для элемента управления с использованием визуального стиля фокуса, ограничена в обязательном порядке. Эта функция фактически накладывает другое визуальное дерево (декоративный элемент) поверх визуального дерева, созданного при отрисовке элемента управления с помощью его шаблона. Определить это отдельное визуальное дерево с использованием стиля, который заполняет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.focusvisualstyle">FocusVisualStyle</a> свойство.</p>
+<p><a name="Default"></a></p>
+<h2 id="default-focus-visual-style-behavior">Поведение визуального стиля фокуса по умолчанию</h2>
+<p>Визуальные стили фокуса действуют только тогда, когда действие фокусировки было инициировано клавиатурой. Любое действие мыши или программное изменение фокуса отключает режим визуальных стилей фокуса. Дополнительные сведения о различиях между режимами фокуса см. в разделе <a href="focus-overview.html">Общие сведения о фокусе</a>.</p>
+<p>Темы для элементов управления включают поведение визуального стиля фокуса по умолчанию, который становится визуальным стилем фокуса для всех элементов управления в теме. Этот стиль темы определяется значением статического ключа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.systemparameters.focusvisualstylekey">FocusVisualStyleKey</a>. При объявлении собственного визуального стиля фокуса на уровне приложения можно заменить это поведение стиля по умолчанию из темы. Кроме того, при определении целой темы необходимо использовать этот же ключ для определения стиля поведения по умолчанию для всей темы.</p>
+<p>В темах визуальный стиль фокуса по умолчанию обычно очень прост. Ниже приводится приблизительная оценка.</p>
+<pre><code class="lang-xaml">&lt;Style x:Key=&quot;{x:Static SystemParameters.FocusVisualStyleKey}&quot;&gt;  
+  &lt;Setter Property=&quot;Control.Template&quot;&gt;  
+    &lt;Setter.Value&gt;  
+      &lt;ControlTemplate&gt;  
+        &lt;Rectangle StrokeThickness=&quot;1&quot;  
+          Stroke=&quot;Black&quot;  
+          StrokeDashArray=&quot;1 2&quot;  
+          SnapsToDevicePixels=&quot;true&quot;/&gt;  
+      &lt;/ControlTemplate&gt;  
+    &lt;/Setter.Value&gt;  
+  &lt;/Setter&gt;  
+&lt;/Style&gt;  
+</code></pre>
+<p><a name="When"></a></p>
+<h2 id="when-to-use-focus-visual-styles">Когда следует использовать визуальные стили фокуса</h2>
+<p>Концептуально внешний вид визуальных стилей фокуса, применяемых к элементам управления, должен быть согласованным в различных элементах. Одним из способов обеспечить такую согласованность является изменение визуального стиля фокуса только при составлении целой темы, в которой каждый элемент управления, определенный в теме, получает либо один и тот же визуальный стиль фокуса, либо некоторую вариацию стиля, визуально связанную с другими элементами управления. Кроме того, можно использовать один и тот же стиль (или аналогичные стили) для каждого элемента, фокусируемого с клавиатуры, на странице или в пользовательском интерфейсе.</p>
+<p>Параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.focusvisualstyle">FocusVisualStyle</a> для отдельных стилей управления, которые не являются частью темы — фокус не предполагаемое использование стилей оформления. Это связано с тем, что несогласованность визуального поведения элементов управления может привести к путанице при использовании фокуса клавиатуры. Если планируется конкретное поведение для фокуса клавиатуры, которое намеренно не согласовано в теме, гораздо лучшим подходом является использование триггеры в стилях для отдельных свойств состояния ввода, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isfocused">IsFocused</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocused">IsKeyboardFocused</a>.</p>
+<p>Визуальные стили фокуса действуют исключительно для фокуса клавиатуры. Таким образом, визуальные стили фокуса являются функцией специальных возможностей. Если требуется изменять пользовательский интерфейс для какого-либо типа фокуса с помощью мыши, клавиатуры или программными средствами, то не следует использовать визуальные стили фокуса. Вместо этого используйте методы задания и триггеры в стилях или шаблонах, которые работают на основе значения общих свойств фокуса, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isfocused">IsFocused</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocuswithin">IsKeyboardFocusWithin</a>.</p>
+<p><a name="How"></a></p>
+<h2 id="how-to-create-a-focus-visual-style">Создание визуального стиля фокуса</h2>
+<p>Стиль, создаваемые для визуального стиля фокуса, всегда должен иметь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>. Стиль должен состоять в основном из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Не указан целевой тип как тип, в котором визуальный стиль фокуса назначен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.focusvisualstyle">FocusVisualStyle</a>.</p>
+<p>Так как целевым типом всегда является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, нужно создать стиль, с помощью свойств, которые являются общими для всех элементов управления (с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класса и его базовых классов). Необходимо создать шаблон, который будет правильно функционировать как наложение для элемента пользовательского интерфейса и не будет скрывать функциональные области элемента управления. Как правило, это означает, что визуальная обратная связь должна появляться за пределами полей управления или в качестве временных или ненавязчивых эффектов, которые не будут блокировать проверку нажатий в элементе управления, к которому применен визуальный стиль фокуса. Свойства, которые можно использовать в привязке шаблона, которые можно использовать для определения размеров и расположения шаблона наложения включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualheight">ActualHeight</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualwidth">ActualWidth</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.padding">Padding</a>.</p>
+<p><a name="Alternatives"></a></p>
+<h2 id="alternatives-to-using-a-focus-visual-style">Альтернативные варианты использования визуального стиля фокуса</h2>
+<p>В ситуациях, когда использование визуального стиля фокуса нецелесообразно (при стилизации только отдельных элементов управления или если необходим больший контроль над шаблоном элемента управления), существует множество других доступных свойств и методов, которые могут создавать визуальное поведение в ответ на изменения фокуса.</p>
+<p>Триггеры, методы задания и методы задания событий рассматриваются подробно в разделе <a href="../controls/styling-and-templating.html">Использование стилей и шаблонов</a>. Обработка перенаправляемых событий рассматривается в разделе <a href="routed-events-overview.html">Общие сведения о перенаправляемых событиях</a>.</p>
+<h3 id="iskeyboardfocused">IsKeyboardFocused</h3>
+<p>Если вас интересует именно фокус клавиатуры, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocused">IsKeyboardFocused</a> свойства зависимостей можно использовать для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a>. Триггер свойства в стиле или шаблоне является более подходящим методом определения поведения фокуса клавиатуры, который применяется только для отдельного элемента управления и может визуально не соответствовать поведению фокуса клавиатуры других элементов управления.</p>
+<p>Другим похожим свойством зависимостей является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocuswithin">IsKeyboardFocusWithin</a>, который может быть можно использовать, чтобы визуально обнаружить, фокус клавиатуры находится где-то внутри структуры или в функциональной области элемента управления. Например, можно поместить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocuswithin">IsKeyboardFocusWithin</a> триггер таким образом, что панель, которая группирует несколько элементов управления будет отображаться по-разному, даже если фокус клавиатуры может более точно находиться на отдельном элементе этой панели.</p>
+<p>Можно также использовать события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotkeyboardfocus">GotKeyboardFocus</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.lostkeyboardfocus">LostKeyboardFocus</a> (а также их эквиваленты предварительного просмотра). Эти события можно использовать в качестве основы для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>, или можно написать обработчики событий в коде.</p>
+<h3 id="other-focus-properties">Другие свойства фокуса</h3>
+<p>Если требуется, чтобы все возможные причины изменения фокуса для порождали визуальное поведение, следует установить метод доступа или триггер на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isfocused">IsFocused</a> свойства зависимостей, либо на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotfocus">GotFocus</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.lostfocus">LostFocus</a> события, которые используются для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.focusvisualstyle">FocusVisualStyle</a></li>
+<li><a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+<li><a href="focus-overview.html">Общие сведения о фокусе</a></li>
+<li><a href="input-overview.html">Общие сведения о входных данных</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

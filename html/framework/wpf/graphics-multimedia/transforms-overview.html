@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1082;&#1083;&#1072;&#1089;&#1089;&#1072;&#1093; Transform | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1082;&#1083;&#1072;&#1089;&#1089;&#1072;&#1093; Transform | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="transforms-overview">Общие сведения о классах Transform</h1>
+
+<p>В этом разделе описывается использование Двумерный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> классы для поворота, масштабирования, сдвига и наклона <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов.</p>
+<p><a name="whatIsATransformSection"></a></p>
+<h2 id="what-is-a-transform">Что такое преобразование?</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> определяет способ сопоставления или преобразования точек из одного пространства координат в другом пространстве координат. Это сопоставление описывается с помощью матрицы преобразования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix">Matrix</a>, который является коллекцией из трех строк и трех столбцов со <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Windows Presentation Foundation (WPF) использует строки матрицы. Векторы представляют собой массивы на основе строк, а не на основе столбцов.</p>
+</div>
+<p>В следующей таблице показана структура матрицы WPF.</p>
+<h3 id="a-2-d-transformation-matrix">Матрица двумерного преобразования</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.m11">M11</a><br><br> По умолчанию: 1.0</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.m12">M12</a><br><br> По умолчанию: 0,0</td>
+<td>0,0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.m21">M21</a><br><br> По умолчанию: 0,0</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.m22">M22</a><br><br> По умолчанию: 1.0</td>
+<td>0,0</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.offsetx">OffsetX</a><br><br> По умолчанию: 0,0</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.offsety">OffsetY</a><br><br> По умолчанию: 0,0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Изменяя значения элементов матрицы, можно поворачивать, масштабировать, наклонять и перемещать объект. Например, если вы измените значение в первом столбце третьей строки ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix.offsetx">OffsetX</a> значение) до 100, можно будет использовать его, чтобы переместить объект на 100 единиц по оси x. Если изменить значение во втором столбце второй строки на 3, можно использовать его для растяжения объекта в три раза больше по сравнению с текущим размером. Если изменить оба значения, объект будет перемещен на 100 единиц по оси X, а его ширина будет увеличена в 3 раза. Так как Windows Presentation Foundation (WPF) поддерживает только аффинные преобразования, в правом столбце всегда равны 0, 0, 1.</p>
+<p>Несмотря на то, что Windows Presentation Foundation (WPF) позволяет напрямую управлять значениями элементов матрицы, она также предоставляет несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> классы, которые позволяют преобразовывать объект, не зная структуры матрицы. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform">ScaleTransform</a> класс позволяет масштабировать объект, задав его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scalex">ScaleX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scaley">ScaleY</a> свойства, вместо изменения матрицы преобразования. Аналогичным образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> класс позволяет повернуть объект, просто установив его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> свойство.</p>
+<p><a name="transformClassesSection"></a></p>
+<h2 id="transform-classes">Классы преобразования</h2>
+<p>Windows Presentation Foundation (WPF) предоставляет следующие Двумерный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> классы для распространенных операций преобразования:</p>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Описание</th>
+<th>Пример</th>
+<th>Рисунки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a></td>
+<td>Поворачивает элемент на указанный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a>.</td>
+<td><a href="how-to-rotate-an-object.html">Вращение объекта</a></td>
+<td><img src="media/graphicsmm-thumbnails-rotate.png" alt="Иллюстрация вращения" title="graphicsmm_thumbnails_rotate"></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform">ScaleTransform</a></td>
+<td>Масштабирует элемент с указанным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scalex">ScaleX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform.scaley">ScaleY</a> суммы.</td>
+<td><a href="how-to-scale-an-element.html">Масштабирование элемента</a></td>
+<td><img src="media/graphicsmm-thumbnails-scale.png" alt="Иллюстрация масштабирования" title="graphicsmm_thumbnails_scale"></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.skewtransform">SkewTransform</a></td>
+<td>Наклоняет элемент в соответствии с указанным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.skewtransform.anglex">AngleX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.skewtransform.angley">AngleY</a> суммы.</td>
+<td><a href="how-to-skew-an-element.html">Наклон элемента</a></td>
+<td><img src="media/graphicsmm-thumbnails-skew.png" alt="Иллюстрация наклона" title="graphicsmm_thumbnails_skew"></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a></td>
+<td>Перемещает (преобразует) элемента заданным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.y">Y</a> суммы.</td>
+<td><a href="how-to-translate-an-element.html">Перемещение элемента</a></td>
+<td><img src="media/graphicsmm-thumbnails-translate.png" alt="Иллюстрация перемещения" title="graphicsmm_thumbnails_translate"></td>
+</tr>
+</tbody>
+</table>
+<p>Для создания более сложных преобразований, Windows Presentation Foundation (WPF) предоставляет следующие два класса:</p>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Описание</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a></td>
+<td>Группирует несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a> объекты в единую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> , затем можно применить для преобразования свойств.</td>
+<td><a href="how-to-apply-multiple-transforms-to-an-object.html">Применение нескольких преобразований к объекту</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a></td>
+<td>Создает пользовательские преобразования, которые не предоставляются с использованием других <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> классы. При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrixtransform">MatrixTransform</a>, напрямую управлять матрицу.</td>
+<td><a href="how-to-use-a-matrixtransform-to-create-custom-transforms.html">Использование MatrixTransform для создания пользовательских преобразований</a></td>
+</tr>
+</tbody>
+</table>
+<p>Windows Presentation Foundation (WPF) также предоставляет Трехмерный преобразования. Дополнительные сведения см. в описании класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.transform3d">Transform3D</a>.</p>
+<p><a name="transformationproperties"></a></p>
+<h2 id="common-transformation-properties">Общие свойства преобразования</h2>
+<p>Один из способов преобразования объекта — объявить соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> введите и применить его к свойству преобразования объекта. У различных типов объектов есть различные типы свойств преобразования. В следующей таблице перечислены несколько часто используемых типов Windows Presentation Foundation (WPF) и их свойства преобразования.</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Свойства преобразования</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush.transform">Transform</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush.relativetransform">RelativeTransform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.containervisual">ContainerVisual</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.containervisual.transform">Transform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.transform">Transform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry.transform">Transform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.texteffect">TextEffect</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.texteffect.transform">Transform</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="transformcenter"></a></p>
+<h2 id="transformations-and-coordinate-systems">Преобразования и системы координат</h2>
+<p>При преобразовании объекта преобразуется не только объект, но и пространство координат, в котором он существует. По умолчанию преобразование центрируется в начало системы координат целевого объекта: (0,0). Единственное исключение — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a>; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> нет свойств центра задать, так как результат преобразования не так же, независимо от того, где по центру.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> для поворота <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент, тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, на 45 градусов относительно центральной точки по умолчанию (0, 0). На следующем рисунке показан результат поворота.</p>
+<p><img src="media/graphicsmm-fe-rotated-about-upperleft-corner.png" alt="FrameworkElement, повернутый на 45 градусов о (0,0)" title="graphicsmm_FE_rotated_about_upperleft_corner"><br>
+Элемент Rectangle, повернутый на 45 градусов относительно точки (0,0)</p>
+<pre><code class="lang-xaml" name="Transforms_snip#TransformsFERotatedAboutTopLeft">&lt;Canvas Width=&quot;200&quot; Height=&quot;200&quot;&gt;
+  &lt;Rectangle 
+    Canvas.Left=&quot;100&quot; Canvas.Top=&quot;100&quot;
+    Width=&quot;50&quot; Height=&quot;50&quot; 
+    Fill=&quot;RoyalBlue&quot; Opacity=&quot;1.0&quot;&gt;
+    &lt;Rectangle.RenderTransform&gt;
+      &lt;RotateTransform Angle=&quot;45&quot; /&gt;
+    &lt;/Rectangle.RenderTransform&gt;
+  &lt;/Rectangle&gt;
+&lt;/Canvas&gt;
+</code></pre>
+<p>По умолчанию элемент поворачивается относительно левого верхнего угла: (0, 0). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform">ScaleTransform</a>, И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.skewtransform">SkewTransform</a> классы предоставляют свойства CenterX и CenterY, которые позволяют указать точку, в которой применяется преобразование.</p>
+<p>В следующем примере также используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> для поворота <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент на 45 градусов; тем не менее, это время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centerx">CenterX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centery">CenterY</a> свойств, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> имеет центр (25, 25). На следующем рисунке показан результат поворота.</p>
+<p><img src="media/graphicsmm-fe-rotated-about-center.png" alt="Геометрическая фигура, повернутая на 45 градусов о (25, 25)" title="graphicsmm_FE_rotated_about_center"><br>
+Элемент Rectangle, повернутый на 45 градусов относительно точки (25, 25)</p>
+<pre><code class="lang-xaml" name="Transforms_snip#TransformsFERotatedAboutCenter">&lt;Canvas Width=&quot;200&quot; Height=&quot;200&quot;&gt;
+  &lt;Rectangle 
+    Canvas.Left=&quot;100&quot; Canvas.Top=&quot;100&quot;
+    Width=&quot;50&quot; Height=&quot;50&quot; 
+    Fill=&quot;RoyalBlue&quot; Opacity=&quot;1.0&quot;&gt;
+    &lt;Rectangle.RenderTransform&gt;
+      &lt;RotateTransform Angle=&quot;45&quot; CenterX=&quot;25&quot; CenterY=&quot;25&quot; /&gt;
+    &lt;/Rectangle.RenderTransform&gt;
+  &lt;/Rectangle&gt;
+&lt;/Canvas&gt;
+</code></pre>
+<p><a name="layoutTransformsAndRenderTransformsSection"></a></p>
+<h2 id="transforming-a-frameworkelement">Преобразование элемента FrameworkElement</h2>
+<p>Применение преобразований к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> и примените его к одному из двух свойств, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класс предоставляет:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> — Преобразование, которое применяется перед проходом разметки. После применения преобразования система разметки обрабатывает преобразованные размер и положение элемента.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> — Преобразование, которое изменяет внешний вид элемента, но применяется после завершения прохода макета. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> вместо свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> можно добиться повышения производительности.</p>
+</li>
+</ul>
+<p>Какое свойство следует использовать? Из-за преимуществ производительности, которые он предоставляет, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство всякий раз, когда возможно, особенно при использовании анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> объектов. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> свойство при масштабирования, поворота и наклона, а вам нужны родительского элемента, чтобы изменить размер элемента. Обратите внимание, что, если они используются с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> объектов, по-видимому, не влияют на элементы. Это вызвано тем, что система разметки возвращает преобразуемый элемент в исходное положение в ходе обработки.</p>
+<p>Дополнительные сведения о разметке в Windows Presentation Foundation (WPF) см. в разделе <a href="../advanced/layout.html">Общие сведения о разметке</a>.</p>
+<p><a name="exampleRotateAnElement45degSection"></a></p>
+<h2 id="example-rotate-a-frameworkelement-45-degrees">Пример Поворот элемента FrameworkElement на 45 градусов</h2>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> для поворота кнопки по часовой стрелке на 45 градусов. Кнопка находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> , имеет две другие кнопки.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> поворачивается вокруг точки (0, 0). Так как в примере не задана центральная точка, то кнопка поворачивается вокруг точки (0, 0), т. е. левого верхнего угла. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> Применяется к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство. На рисунке ниже показан результат преобразования.</p>
+<p><img src="media/graphicsmm-rendertransformwithdefaultcenter.png" alt="Кнопка, преобразованная с использованием RenderTransform" title="graphicsmm_RenderTransformWithDefaultCenter"><br>
+Поворот на 45 градусов по часовой стрелке вокруг левого верхнего угла</p>
+<pre><code class="lang-xaml" name="Transforms_snip#GraphicsMMRotateButtonExample1">&lt;Border Margin=&quot;30&quot; 
+  HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Top&quot;
+  BorderBrush=&quot;Black&quot; BorderThickness=&quot;1&quot; &gt;
+  &lt;StackPanel Orientation=&quot;Vertical&quot;&gt;
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;
+    &lt;Button Content=&quot;Rotated Button&quot;&gt;
+      &lt;Button.RenderTransform&gt;
+        &lt;RotateTransform Angle=&quot;45&quot; /&gt;
+      &lt;/Button.RenderTransform&gt;
+    &lt;/Button&gt;
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;
+  &lt;/StackPanel&gt;
+&lt;/Border&gt;
+</code></pre>
+<p>В следующем примере также используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> для поворота кнопки на 45 градусов по часовой стрелке, но он также задает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransformorigin">RenderTransformOrigin</a> кнопки значение (0,5, 0,5). Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransformorigin">RenderTransformOrigin</a> свойство задается относительно размера кнопки. В результате кнопка поворачивается вокруг центра, а не вокруг левого верхнего угла. На рисунке ниже показан результат преобразования.</p>
+<p><img src="media/graphicsmm-rendertransformrelativecenter.png" alt="Кнопка, преобразованная относительно ее центра" title="graphicsmm_RenderTransformRelativeCenter"><br>
+Поворот на 45 градусов по часовой стрелке вокруг центра</p>
+<pre><code class="lang-xaml" name="Transforms_snip#GraphicsMMRotateButtonExample2">&lt;Border Margin=&quot;30&quot;   
+  HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Top&quot;
+  BorderBrush=&quot;Black&quot; BorderThickness=&quot;1&quot;&gt;
+  &lt;StackPanel Orientation=&quot;Vertical&quot;&gt;
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;
+    &lt;Button Content=&quot;Rotated Button&quot;
+      RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;
+      &lt;Button.RenderTransform&gt;
+        &lt;RotateTransform Angle=&quot;45&quot; /&gt;
+      &lt;/Button.RenderTransform&gt;
+    &lt;/Button&gt;
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;
+  &lt;/StackPanel&gt;
+&lt;/Border&gt;
+</code></pre>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> вместо свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство для поворота кнопки.  При этом преобразование влияет на разметку кнопки, что приводит к запуску полного прохода системы разметки. Так как размер кнопки был изменен, то после поворота кнопки также изменяется ее положение. На рисунке ниже показан результат преобразования.</p>
+<p><img src="media/graphicsmm-layouttransform.png" alt="Кнопка, преобразованная с использованием LayoutTransform" title="graphicsmm_LayoutTransform"><br>
+Поворот кнопки с использованием LayoutTransform</p>
+<pre><code class="lang-xaml" name="Transforms_snip#GraphicsMMRotateButtonExample3">&lt;Border Margin=&quot;30&quot;   
+ HorizontalAlignment=&quot;Left&quot; VerticalAlignment=&quot;Top&quot;
+ BorderBrush=&quot;Black&quot; BorderThickness=&quot;1&quot;&gt;
+  &lt;StackPanel Orientation=&quot;Vertical&quot;&gt;
+
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;   
+    &lt;Button Content=&quot;Rotated Button&quot;&gt;
+      &lt;Button.LayoutTransform&gt;
+        &lt;RotateTransform Angle=&quot;45&quot;  /&gt;
+      &lt;/Button.LayoutTransform&gt;
+    &lt;/Button&gt;   
+    &lt;Button Content=&quot;A Button&quot; Opacity=&quot;1&quot; /&gt;
+  &lt;/StackPanel&gt;
+&lt;/Border&gt;
+</code></pre>
+<p><a name="animate_transforms"></a></p>
+<h2 id="animating-transformations">Анимация преобразований</h2>
+<p>Так как они наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable">Animatable</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> классы могут быть анимированы. Для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a>, примените анимацию совместимого типа к свойству для анимации.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> вносить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> вращаться при ее нажатии.</p>
+<pre><code class="lang-xaml" name="Transforms_snip#GraphicsMMAnimatedRotateButtonExampleWholePage">&lt;Page 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  Title=&quot;Button Animated RotateTransform Example&quot;
+  Background=&quot;White&quot; Margin=&quot;50&quot;&gt;
+  &lt;StackPanel&gt;
+    
+    
+
+    &lt;Button Content=&quot;A Button&quot;
+      RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;
+      &lt;Button.RenderTransform&gt;
+        &lt;RotateTransform x:Name=&quot;AnimatedRotateTransform&quot; Angle=&quot;0&quot; /&gt;
+      &lt;/Button.RenderTransform&gt;
+      &lt;Button.Triggers&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;
+          &lt;BeginStoryboard&gt;
+            &lt;Storyboard&gt;
+              &lt;DoubleAnimation 
+                Storyboard.TargetName=&quot;AnimatedRotateTransform&quot;
+                Storyboard.TargetProperty=&quot;Angle&quot; 
+                To=&quot;360&quot; Duration=&quot;0:0:1&quot; FillBehavior=&quot;Stop&quot; /&gt;
+            &lt;/Storyboard&gt;
+          &lt;/BeginStoryboard&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Button.Triggers&gt;
+    &lt;/Button&gt;
+
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Полный пример см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=158252">Примеры двумерных преобразований</a>. Дополнительные сведения об анимации см. в разделе <a href="animation-overview.html">Общие сведения об эффектах анимации</a>.</p>
+<p><a name="freezable_features"></a></p>
+<h2 id="freezable-features">Возможности объектов Freezable</h2>
+<p>Так как он наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класс, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> предоставляет ряд специальных возможностей: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> объекты могут быть объявлены как <a href="../advanced/xaml-resources.html">ресурсы</a>, общие для нескольких объектов, делать доступными только для чтения с целью повышения производительности, клонировать и делать потокобезопасными. Дополнительные сведения о различных функциях, предоставляемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объектов, см. в разделе <a href="../advanced/freezable-objects-overview.html">Freezable Общие сведения об объектах</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix">Matrix</a></li>
+<li><a href="transformations-how-to-topics.html">Практические руководства</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=158252">Пример двумерных преобразований</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

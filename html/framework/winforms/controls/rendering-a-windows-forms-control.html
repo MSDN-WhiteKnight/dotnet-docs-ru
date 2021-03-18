@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="rendering-a-windows-forms-control">Отрисовка элементов управления Windows Forms</h1>
+
+<p>Визуализации — это процесс создания визуального представления на экране пользователя. Windows Forms используется GDI (новая Windows графическая библиотека) для подготовки к просмотру. Управляемые классы, предоставляющие доступ к GDI в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing">System.Drawing</a> пространства имен и его подпространства имен.</p>
+<p>Следующие элементы участвуют в отрисовке элемента управления.</p>
+<ul>
+<li><p>Рисования функциональных возможностях, предоставляемых базовым классом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>.</p>
+</li>
+<li><p>Основные GDI графической библиотеки.</p>
+</li>
+<li><p>Геометрия области рисования.</p>
+</li>
+<li><p>Процедура освобождения графических ресурсов.</p>
+</li>
+</ul>
+<h2 id="drawing-functionality-provided-by-control">Функции рисования, обеспечиваемые элементом управления</h2>
+<p>Базовый класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> предоставляет функциональные возможности рисования посредством его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий. Элемент управления вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событие при каждой попытке обновления его отображения. Дополнительные сведения о событиях в .NET Framework, см. в разделе <a href="../../../standard/events/index.md">обработка и вызов событий</a>.</p>
+<p>Класс данных события для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a>, содержащий данные, необходимые для рисования элемента управления — дескриптора графический объект и объект прямоугольник, представляющий область для рисования. Эти объекты отображаются в полужирным шрифтом в следующем фрагменте кода.</p>
+<pre><code class="lang-vb">Public Class PaintEventArgs  
+   Inherits EventArgs  
+   Implements IDisposable  
+  
+   Public ReadOnly Property ClipRectangle() As System.Drawing.Rectangle  
+      ...  
+   End Property  
+  
+   Public ReadOnly Property Graphics() As System.Drawing.Graphics  
+      ...  
+   End Property  
+   ' Other properties and methods.  
+   ...  
+End Class  
+</code></pre>
+<pre><code class="lang-csharp">public class PaintEventArgs : EventArgs, IDisposable {  
+public System.Drawing.Rectangle ClipRectangle {get;}  
+public System.Drawing.Graphics Graphics {get;}  
+// Other properties and methods.  
+...  
+}  
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> — Это управляемый класс, инкапсулирующий функциональность рисования, как описано в разделе, GDI далее в этом разделе. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> Является экземпляром класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> структурировать и определяет доступные области, в котором можно нарисовать элемент управления. Разработчик элемента управления можно рассчитать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> свойства элемента управления, как описано в описании геометрии далее в этом разделе.</p>
+<p>Элемент управления должен предоставить логику отрисовки путем переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> Получает доступ к графический объект и прямоугольника для рисования с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.design.paintvalueeventargs.graphics">Graphics</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> переданным ему экземпляром.</p>
+<pre><code class="lang-vb">Protected Overridable Sub OnPaint(pe As PaintEventArgs)  
+</code></pre>
+<pre><code class="lang-csharp">protected virtual void OnPaint(PaintEventArgs pe);  
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> Метод базового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> класс не реализует какой-либо функциональности, но просто вызывает делегаты событий, зарегистрированные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий. При переопределении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a>, как правило, следует вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> получать метод базового класса, чтобы зарегистрированные делегаты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий. Тем не менее, элементы управления, их всю поверхность рисования не следует вызывать базовый класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a>, как это вызовет мерцание. Пример переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> событий, см. в разделе <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Они не вызывают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> непосредственно из вашего элемента управления; вместо этого вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> метод (наследуется от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>) или другим методом, который вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> В свою очередь вызывает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> Метод перегружен, и, в зависимости от аргументов предоставляемое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> <code>e</code>, перерисовывает элемент управления, некоторые или все его области экрана.</p>
+</div>
+<p>Базовый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> класс определяет другой метод, который используется для рисования — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> метод.</p>
+<pre><code class="lang-vb">Protected Overridable Sub OnPaintBackground(pevent As PaintEventArgs)  
+</code></pre>
+<pre><code class="lang-csharp">protected virtual void OnPaintBackground(PaintEventArgs pevent);  
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> Закрашивает фон (и тем самым фигуры) окна и гарантированно будет выполняться быстро, при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> рисует детали и могут работать медленнее, так как индивидуальные запросы на рисование объединены в один <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событие, которое охватывает все области, которые должны быть перерисовки. Может возникнуть необходимость вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> Если, к примеру, требуется нарисовать градиентной заливкой фон для элемента управления.</p>
+<p>Хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> имеет аналогичное номенклатуру и принимает того же аргумента как <code>OnPaint</code> метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> не является методом значение true, событие. Существует не <code>PaintBackground</code> событий и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> вызывает делегаты событий. При переопределении метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> метода производного класса не требуется для вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaintbackground">OnPaintBackground</a> метод базового класса.</p>
+<h2 id="gdi-basics">Основные сведения о GDI +</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Класс предоставляет методы для рисования различных фигур, таких как круги, треугольники, дуги и эллипсы, а также методы для отображения текста. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing">System.Drawing</a> Пространство имен и его подпространства имен содержат классы, инкапсулирующие графические элементы, такие как фигуры (круги, прямоугольники, дуги и другие), цвета, шрифты, кистей и т. д. Дополнительные сведения о GDI, см. в разделе <a href="../advanced/using-managed-graphics-classes.html">использование управляемых графических классов</a>. Основы GDI также описаны в <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
+<h2 id="geometry-of-the-drawing-region">Геометрия области рисования</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.clientrectangle">ClientRectangle</a> Свойства элемента управления задает прямоугольную область, доступную для элемента управления на экране пользователя, хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> задает область, которая фактически закрашивается. (Помните, что рисование выполняется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событие метода, принимающего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> экземпляр в качестве аргумента). Элемент управления может потребоваться рисовать только часть ее доступной области, как в случае изменения отображения элемента управления при небольшом разделе. В этих случаях разработчик элемента управления следует вычислять фактическое прямоугольника для рисования и передать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a>. Перегруженные версии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invalidate">Invalidate</a> , принимающих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.region">Region</a> в качестве аргумента, используют этот аргумент для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a>.</p>
+<p>В следующем фрагменте кода показано как <code>FlashTrackBar</code> прямоугольную область для рисования вычисляет пользовательского элемента управления. <code>client</code> Обозначает переменную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs.cliprectangle">ClipRectangle</a> свойство. Полный пример см. в разделе <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#6">Rectangle invalid = new Rectangle(
+    client.X + min, 
+    client.Y, 
+    max - min, 
+    client.Height);
+
+Invalidate(invalid);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="freeing-graphics-resources">Освобождение ресурсов графики</h2>
+<p>Графические объекты ресурсоемки, потому что они используют системные ресурсы. Такие объекты содержат экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">System.Drawing.Graphics</a> класса, а также экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.brush">System.Drawing.Brush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">System.Drawing.Pen</a>и другие графические классы. Очень важно, создания ресурса графики, только в том случае, когда она необходима и отпустите его сразу после его использования. Если вы создаете тип, реализующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a> интерфейс, вызовите его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable.dispose">Dispose</a> метод, когда вы закончите с ним для освобождения ресурсов.</p>
+<p>В следующем фрагменте кода показано как <code>FlashTrackBar</code> пользовательский элемент управления создает и освобождает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.brush">Brush</a> ресурсов. Полный исходный код, см. в разделе <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#5">private Brush baseBackground = null;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#4">base.OnPaint(e);
+if (baseBackground == null) {
+    if (showGradient) {
+        baseBackground = new LinearGradientBrush(new Point(0, 0),
+                                                 new Point(ClientSize.Width, 0),
+                                                 StartColor,
+                                                 EndColor);
+    }
+    else if (BackgroundImage != null) {
+        baseBackground = new TextureBrush(BackgroundImage);
+    }
+    else {
+        baseBackground = new SolidBrush(BackColor);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#3">protected override void OnResize(EventArgs e) {
+    base.OnResize(e);
+    if (baseBackground != null) {
+        baseBackground.Dispose();
+        baseBackground = null;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-create-a-windows-forms-control-that-shows-progress.html">Практическое руководство. Создание элемента управления, показывающего прогресс в форме Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

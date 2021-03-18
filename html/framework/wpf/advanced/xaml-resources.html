@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="xaml-resources">Ресурсы XAML</h1>
+
+<p>Ресурс — это объект, который можно повторно использовать в разных местах приложения. Примерами ресурсов являются кисти и стили. В этом обзоре описывается использование ресурсов в XAML. Можно также создать и доступ к ресурсам с помощью кода или попеременно между кодом и Язык XAML. Дополнительные сведения см. в разделе <a href="resources-and-code.html">ресурсы и код</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Файлы ресурсов, описанных в этом разделе, отличаются от файлов ресурсов, описанных в <a href="../app-development/wpf-application-resource-content-and-data-files.html">ресурса приложения WPF, содержимое и файлы данных</a> и отличаются от внедренных или связанных ресурсов, описанных в <a href="/visualstudio/ide/managing-application-resources-dotnet">управление Ресурсами приложения (.NET)</a>.</p>
+</div>
+<p><a name="usingresources"></a></p>
+<h2 id="using-resources-in-xaml">Использование ресурсов в XAML</h2>
+<p>В следующем примере определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> как ресурс в корневом элементе страницы. Затем ссылается на ресурс и использует его для задания свойства нескольких дочерних элементов, включая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<pre><code class="lang-xaml" name="FEResourceSH_snip#XAML">&lt;Page Name=&quot;root&quot;
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+&gt;
+  &lt;Page.Resources&gt;
+    &lt;SolidColorBrush x:Key=&quot;MyBrush&quot; Color=&quot;Gold&quot;/&gt;
+    &lt;Style TargetType=&quot;Border&quot; x:Key=&quot;PageBackground&quot;&gt;
+      &lt;Setter Property=&quot;Background&quot; Value=&quot;Blue&quot;/&gt;
+    &lt;/Style&gt;
+    &lt;Style TargetType=&quot;TextBlock&quot; x:Key=&quot;TitleText&quot;&gt;
+      &lt;Setter Property=&quot;Background&quot; Value=&quot;Blue&quot;/&gt;
+      &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Top&quot;/&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;18&quot;/&gt;
+      &lt;Setter Property=&quot;Foreground&quot; Value=&quot;#4E87D4&quot;/&gt;
+      &lt;Setter Property=&quot;FontFamily&quot; Value=&quot;Trebuchet MS&quot;/&gt;
+      &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,40,10,10&quot;/&gt;
+    &lt;/Style&gt;
+    &lt;Style TargetType=&quot;TextBlock&quot; x:Key=&quot;Label&quot;&gt;
+      &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Right&quot;/&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;8&quot;/&gt;
+      &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{StaticResource MyBrush}&quot;/&gt;
+      &lt;Setter Property=&quot;FontFamily&quot; Value=&quot;Arial&quot;/&gt;
+      &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;
+      &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,3,10,0&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/Page.Resources&gt;
+  &lt;StackPanel&gt;
+    &lt;Border Style=&quot;{StaticResource PageBackground}&quot;&gt;
+      &lt;DockPanel&gt;
+        &lt;TextBlock Style=&quot;{StaticResource TitleText}&quot;&gt;Title&lt;/TextBlock&gt;
+        &lt;TextBlock Style=&quot;{StaticResource Label}&quot;&gt;Label&lt;/TextBlock&gt;
+        &lt;TextBlock DockPanel.Dock=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot; FontSize=&quot;36&quot; Foreground=&quot;{StaticResource MyBrush}&quot; Text=&quot;Text&quot; Margin=&quot;20&quot; /&gt;
+        &lt;Button DockPanel.Dock=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot; Height=&quot;30&quot; Background=&quot;{StaticResource MyBrush}&quot; Margin=&quot;40&quot;&gt;Button&lt;/Button&gt;
+        &lt;Ellipse DockPanel.Dock=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot; Width=&quot;100&quot; Height=&quot;100&quot; Fill=&quot;{StaticResource MyBrush}&quot; Margin=&quot;40&quot; /&gt;
+      &lt;/DockPanel&gt;
+    &lt;/Border&gt;
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+
+
+</code></pre>
+<p>Каждый элемент уровня платформы (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>) имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> свойство, которое является свойством, содержит ресурсы (как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>), определяющий ресурс. Вы можете определить ресурсы в любом элементе. Тем не менее, ресурсы, наиболее часто определяются в корневом элементе, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в примере.</p>
+<p>Каждый ресурс в словаре ресурсов должен иметь уникальный ключ. При определении ресурсов в разметке, можно назначить уникальный ключ через <a href="../../xaml-services/x-key-directive.md">директивы x: Key</a>. Как правило, ключ является строкой. Однако можно задать его как другой тип объекта с помощью соответствующих расширений разметки. Нестроковые ключи для ресурсов используются в определенных функциональных областях в WPF, в частности в стили, ресурсах компонентов и стилях данных.</p>
+<p>После определения ресурса можно ссылаться на ресурс, который должен быть использован для значения свойства, с помощью синтаксиса расширения разметки ресурсов, задающего имя ключа, например:</p>
+<pre><code class="lang-xaml" name="FEResourceSH_snip#KeyNameUsage">&lt;Button Background=&quot;{StaticResource MyBrush}&quot;/&gt;
+&lt;Ellipse Fill=&quot;{StaticResource MyBrush}&quot;/&gt;
+</code></pre>
+<p>В предыдущем примере когда XAML загрузчика обрабатывает значение <code>{StaticResource MyBrush}</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, логика подстановки ресурсов сначала проверяет словарь ресурсов для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элемент. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> нет определения ключа ресурса <code>MyBrush</code> (это не так, его коллекция ресурсов пуста), затем подстановка проверяет родительский элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Таким образом, при определении ресурса на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> корневой элемент, все элементы в логическом дереве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> можно получить доступ, и можно повторно использовать тот же ресурс для задания значения любого свойства, принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> , ресурс представляет. В предыдущем примере, же <code>MyBrush</code> ресурсов задает два различных свойства: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>.</p>
+<p><a name="staticdynamic"></a></p>
+<h2 id="static-and-dynamic-resources">Статические и динамические ресурсы</h2>
+<p>Ресурс может использоваться как статический или динамический ресурс. Это делается с помощью <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a> или <a href="dynamicresource-markup-extension.html">расширение разметки DynamicResource</a>. Расширения разметки — это функция XAML переполняться можно указать ссылку на объект с расширением разметки обработки строки атрибута и возврата объекта XAML загрузчика. Дополнительные сведения о поведении расширения разметки, см. в разделе <a href="markup-extensions-and-wpf-xaml.html">расширения разметки и XAML WPF</a>.</p>
+<p>При использовании расширения разметки обычно предоставляют один или несколько параметров в виде строки; они обрабатываются этим расширением разметки, а не в контексте задаваемого свойства. <a href="staticresource-markup-extension.html">Расширение разметки StaticResource</a> обрабатывает ключ путем поиска значения для этого ключа во всех доступных словарях ресурсов. Это происходит во время загрузки, которая является моментом времени, когда процессу загрузки необходимо присвоить значение свойству, которое принимает ссылку на статический ресурс. <a href="dynamicresource-markup-extension.html">Расширение разметки DynamicResource</a> вместо процессы ключ путем создания выражения и это выражение остается необработанным пока приложение фактически выполняется, после чего выражение вычисляется и получается значение.</p>
+<p>Приведенные ниже соображения могут повлиять на выбор использования ссылки на статический или динамический ресурс.</p>
+<ul>
+<li><p>Общая схема создания ресурсов для приложения (постранично, в приложении, в свободном XAML, в сборке только ресурсов).</p>
+</li>
+<li><p>Является ли обновление ресурсов в режиме реального времени частью требований приложения.</p>
+</li>
+<li><p>Соответствующее поведение подстановки этого ссылочного типа ресурса.</p>
+</li>
+<li><p>Конкретное свойство или тип ресурса и собственное поведение этих типов.</p>
+</li>
+</ul>
+<h3 id="static-resources">Статические ресурсы</h3>
+<p>Ссылки на статические ресурсы лучше всего использовать в указанных ниже случаях.</p>
+<ul>
+<li><p>Когда структура приложения концентрирует большую часть его ресурсов в словарях ресурсов уровня страницы или приложения. Ссылки на статические ресурсы не обрабатываются повторно в зависимости от поведения во время выполнения, например при перезагрузке страницы. Таким образом, можно получить выигрыш в производительности благодаря отсутствию большого количества динамических ссылок на ресурсы, когда согласно структуре ресурсов и приложения в них нет необходимости.</p>
+</li>
+<li><p>Вы задаете значение свойства, не принадлежащем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>.</p>
+</li>
+<li><p>При создании словаря ресурсов, который будет скомпилирован в DLL и либо упакован как часть приложения, либо совместно использоваться приложениями.</p>
+</li>
+<li><p>При создании темы для пользовательского элемента управления и определении ресурсов, используемых в темах. В этом случае обычно не требуется подстановка ссылок на динамические ресурсы. Вместо этого требуется подстановка ссылок на статические ресурсы, чтобы подстановка была прогнозируемой и самодостаточной для темы. При использовании ссылки на динамический ресурс даже ссылка в теме остается необработанной до времени выполнения и есть вероятность того, что при применении темы некоторые локальные элементы переопределят ключ, на который тема пытается сослаться, и локальный элемент окажется перед темой при подстановке. Если такое случится, тема будет работать не так, как ожидалось.</p>
+</li>
+<li><p>При использовании ресурсов для задания большого количества свойств зависимостей. Свойства зависимостей обладают эффективным кэшированием значений, обеспечиваемым системой свойств, поэтому, если предоставить свойству зависимости значение, которое может быть вычислено во время загрузки, свойству не потребуется проверять пересчитанное выражение и оно сможет вернуть последнее фактическое значение. Этот метод может обеспечить выигрыш в производительности.</p>
+</li>
+<li><p>Вы хотите изменить основной ресурс для всех объектов-получателей, или вы хотите поддерживать отдельные записываемые экземпляры для каждого объекта-получателя с помощью <a href="../../xaml-services/x-shared-attribute.md">x: Shared Attribute</a>.</p>
+</li>
+</ul>
+<h4 id="static-resource-lookup-behavior">Поведение подстановки статического ресурса</h4>
+<ol>
+<li><p>Процесс подстановки ищет запрошенный ключ в словаре ресурсов, определенном элементом, который устанавливает это свойство.</p>
+</li>
+<li><p>Затем процесс подстановки обходит логическое дерево снизу вверх до родительского элемента и его словаря ресурсов. Это продолжается до тех пор, пока не будет достигнут корневой элемент.</p>
+</li>
+<li><p>Далее проверяются ресурсы приложения. Ресурсы приложения — это ресурсы в словаре ресурсов, который определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> объекта для вашей WPF приложения.</p>
+</li>
+</ol>
+<p>Ссылки на статический ресурс из словаря ресурсов должны указывать на ресурс, уже определенный лексически до ссылки на ресурс. Опережающие ссылки не могут быть разрешены ссылкой на статический ресурс. По этой причине, если используются ссылки на статический ресурс, нужно так разрабатывать структуру словаря ресурсов, чтобы ресурсы, предназначенные для использования ресурсами, определялись в начале каждого соответствующего словаря ресурсов или около него.</p>
+<p>Подстановку статических ресурсов можно расширить в темы или в системные ресурсы, но это поддерживается только в том случае, поскольку XAML загрузчик задерживает запрос. Задержка необходима, чтобы тема среды выполнения в момент загрузки страницы правильно применялась к приложению. Однако не рекомендуется использование ссылок на статические ресурсы для ключей, которые существуют только в теме или как системные ресурсы. Это происходит потому, что такие ссылки не будут повторно обработаны при изменении темы пользователем в режиме реального времени. Ссылки на динамические ресурсы более надежны при запросе темы или системных ресурсов. Исключением является случай, когда элемент темы сам запрашивает другой ресурс. Такие ссылки должны быть статическими по причинам, упомянутым выше.</p>
+<p>Поведение исключения, если ссылка на статический ресурс не найдена, варьируется. Если ресурс был задержан, то исключение возникнет во время выполнения. Если ресурс не был задержан, исключение возникнет во время загрузки.</p>
+<h3 id="dynamic-resources">Динамические ресурсы</h3>
+<p>Динамические ресурсы лучше всего подходят для указанных ниже случаев.</p>
+<ul>
+<li><p>Когда значение ресурса зависит от условий, не известных до времени выполнения. Сюда входят системные ресурсы или ресурсы, которые в противном случае задаются пользователем. Например, можно создать значения установщика, которые ссылаются на системные свойства, как представлено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.systemcolors">SystemColors</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.systemfonts">SystemFonts</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.systemparameters">SystemParameters</a>. Эти значения являются действительно динамическими, так как они в конечном счете берутся из среды выполнения пользователя и операционной системы. Кроме того, возможны темы уровня приложения, которые могут изменяться, когда при доступе к ресурсу уровня страницы также необходимо отследить изменения.</p>
+</li>
+<li><p>При создании стилей темы или ссылке на них для пользовательского элемента управления.</p>
+</li>
+<li><p>Когда планируется настроить содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> во время существования приложения.</p>
+</li>
+<li><p>Когда имеется сложная структура ресурсов с взаимозависимостями, где могут потребоваться опережающие ссылки. Ссылки на статические ресурсы не поддерживают опережающие ссылки, но ссылки на динамические ресурсы поддерживают их, так как ресурс не нужно пересчитывать до времени выполнения, и опережающие ссылки, следовательно, не релевантны.</p>
+</li>
+<li><p>При ссылке на особенно большой с точки зрения компиляции или рабочего множества ресурс, если он может не использоваться немедленно при загрузке страницы. Ссылки на статические ресурсы всегда загружаются из XAML при загрузке страницы; однако ссылка на динамический ресурс не загружается до фактического использования.</p>
+</li>
+<li><p>При создании стиля, где значения для метода задания могут браться из других значений, на которые влияют темы или другие пользовательские параметры.</p>
+</li>
+<li><p>Когда ресурсы применяются к элементам, для которых во время существования приложения может быть изменен порядок наследования в логическом дереве. Изменение родительского элемента также потенциально изменяет область подстановки ресурса, так что, если необходим пересчет ресурса в новой области элемента с измененным порядком наследования, всегда следует использовать ссылку на динамический ресурс.</p>
+</li>
+</ul>
+<h4 id="dynamic-resource-lookup-behavior">Поведение подстановки динамического ресурса</h4>
+<p>Поведение подстановки ресурса для ссылки на динамический ресурс аналогично поведению подстановки в коде при вызове метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findresource">FindResource</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.setresourcereference">SetResourceReference</a>.</p>
+<ol>
+<li><p>Процесс подстановки ищет запрошенный ключ в словаре ресурсов, определенном элементом, который устанавливает это свойство.</p>
+<ul>
+<li><p>Если элемент определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.resources">Resources</a> словарь в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> проверяется.</p>
+</li>
+<li><p>Если элемент определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.template">Template</a> свойство, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate.resources">Resources</a> словарь в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworktemplate">FrameworkTemplate</a> проверяется.</p>
+</li>
+</ul>
+</li>
+<li><p>Затем процесс подстановки обходит логическое дерево снизу вверх до родительского элемента и его словаря ресурсов. Это продолжается до тех пор, пока не будет достигнут корневой элемент.</p>
+</li>
+<li><p>Далее проверяются ресурсы приложения. Ресурсы приложения — это ресурсы в словаре ресурсов, который определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> объекта для вашей WPF приложения.</p>
+</li>
+<li><p>Для текущей активной темы проверяется словарь ресурсов темы. Если тема изменяется во время выполнения, значение будет повторно вычислено.</p>
+</li>
+<li><p>Проверяются системные ресурсы.</p>
+</li>
+</ol>
+<p>Поведение исключения (если таковое имеется) варьируется.</p>
+<ul>
+<li><p>Если ресурс был запрошен пользователем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findresource">FindResource</a> вызова и не найден, возникает исключение.</p>
+</li>
+<li><p>Если ресурс был запрошен пользователем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.tryfindresource">TryFindResource</a> вызова и не найден, исключение не создается, но возвращаемое значение — <code>null</code>. Если задаваемое свойство не принимает <code>null</code>, по-прежнему возможно, что глубже исключение (это зависит от задания отдельного свойства).</p>
+</li>
+<li><p>Если ресурс запрошен по ссылке на динамический ресурс в XAMLи не найден, то поведение зависит от общей системы свойств, но общее поведение таково, как если бы не свойство произошло операции задания на уровне, где существует ресурс. Например, при попытке задать фон для отдельного элемента кнопки с помощью ресурса, который не может быть вычислен, не происходит задания значения, но фактическое значение по-прежнему может быть получено от других членов системы свойств и приоритета значения. Например, значение фона может по-прежнему браться из локально определенного стиля кнопки или из стиля темы. Для свойств, не определенных стилями темы, после неудавшейся попытки обработки ресурса фактическое значение может браться из значения по умолчанию в метаданных свойства.</p>
+</li>
+</ul>
+<h4 id="restrictions">Ограничения</h4>
+<p>Для ссылок на динамические ресурсы есть некоторые важные ограничения. Должно выполняться по крайней мере одно из указанных ниже условий.</p>
+<ul>
+<li><p>Задаваемое свойство должно быть свойством на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>. Что свойство должно поддерживаться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>.</p>
+</li>
+<li><p>Ссылка указывает на значение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a>.</p>
+</li>
+<li><p>Задаваемое свойство должно быть свойством на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> , предоставляется как значение либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a> свойство, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> значение.</p>
+</li>
+</ul>
+<p>Так как задаваемое свойство должно быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> свойство, большинство изменений свойств может распространяться на пользовательский Интерфейс, так как изменение свойства (измененное значение динамического ресурса) подтверждается системой свойств. Большинство элементов управления включает логику, которая принудительно создаст новый макет элемента управления, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> изменения и что свойство может повлиять на макет. Однако не все свойства, имеющие <a href="dynamicresource-markup-extension.html">расширение разметки DynamicResource</a> качестве их значения, гарантированно предоставляют значение таким образом, что они обновляются в реальном времени в пользовательском Интерфейсе. Функциональные возможности по-прежнему могут отличаться в зависимости от свойства, типа, которому принадлежит свойство, или даже логической структуры приложения.</p>
+<p><a name="stylesimplicitkeys"></a></p>
+<h2 id="styles-datatemplates-and-implicit-keys">Стили, DataTemplates и неявные ключи</h2>
+<p>Ранее было отмечено, что все товары в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> потребуется ключ. Тем не менее, это означает, что все ресурсы должны иметь явный <code>x:Key</code>. Некоторые типы объектов поддерживают неявный ключ, если он определен как ресурс, где значение ключа связано со значением другого свойства. Это называется неявным ключом, тогда как <code>x:Key</code> атрибута является явным ключом. Любой неявный ключ можно перезаписать, указав явный ключ.</p>
+<p>Одним очень важным сценарием для ресурсов является определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. На самом деле <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> почти всегда определяется как запись в словаре ресурсов, так как стили наследственным образом предназначены для повторного использования. Дополнительные сведения о стилях см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<p>С помощью неявного ключа можно создавать стили для элементов управления либо ссылаться на них. Стили темы, определяющие внешний вид элемента управления по умолчанию, используют этот неявный ключ. Неявный ключ с точки зрения запроса представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> самого элемента управления. Неявный ключ с точки зрения определения ресурса представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> стиля. Таким образом, если вы создаете темы для пользовательских элементов управления, стили, которые взаимодействуют с существующими стилями темы, необходимо указать <a href="../../xaml-services/x-key-directive.md">директивы x: Key</a> для этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. А если требуется использовать стили из тем, то вообще не нужно задавать стиль. Например, следующее определение стиля работает, даже если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> ресурсов не имеет ключа:</p>
+<pre><code class="lang-xaml" name="FEResourceSH_snip#ImplicitStyle">&lt;Style TargetType=&quot;Button&quot;&gt;
+  &lt;Setter Property=&quot;Background&quot;&gt;
+    &lt;Setter.Value&gt;
+      &lt;LinearGradientBrush&gt;
+        &lt;GradientStop Offset=&quot;0.0&quot; Color=&quot;AliceBlue&quot;/&gt;
+        &lt;GradientStop Offset=&quot;1.0&quot; Color=&quot;Salmon&quot;/&gt;           
+      &lt;/LinearGradientBrush&gt;
+    &lt;/Setter.Value&gt;
+  &lt;/Setter&gt;  
+  &lt;Setter Property=&quot;FontSize&quot; Value=&quot;18&quot;/&gt;
+&lt;/Style&gt;
+</code></pre>
+<p>Что стиля на самом деле есть ключ: неявный ключ <code>typeof(</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a><code>)</code>. В разметке, можно указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> непосредственно в качестве типа имени (или при необходимости можно использовать <a href="../../xaml-services/x-type-markup-extension.md">{x: Type...}</a> для возврата <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a>.</p>
+<p>Через механизмах стилей темы по умолчанию, используемые WPF, что стиль будет применен как стиль среды выполнения для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> на странице, несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> сам пытается задать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство или конкретного ресурса ссылка на стиль. Стиль, определенный на странице, находится в последовательности подстановки, чем стиль словаря темы, используя тот же ключ, который имеет стиль словаря темы. Вы можете просто указать <code>&lt;Button&gt;Hello&lt;/Button&gt;</code> в любом месте страницы и стиль, определенный с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> из <code>Button</code> будет применен к этой кнопке. Если требуется, можно по-прежнему явно ключ стиля с тем же значением типа, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a>для ясности в разметке, но это не является обязательным.</p>
+<p>Неявные ключи для стилей не применяются к элементу управления, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle">OverridesDefaultStyle</a> — <code>true</code> (также Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle">OverridesDefaultStyle</a> может быть задан как часть собственного поведения для класса элемента управления, а не явным образом в экземпляре элемента управления). Кроме того, чтобы поддерживать неявные ключи для производных классов, элемент управления необходимо переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a> (все существующие элементы управления, предоставляемые как часть WPF этого). Дополнительные сведения о стилях, темах и разработке элементов управления см. в разделе <a href="../controls/guidelines-for-designing-stylable-controls.html">рекомендации по разработке элементов</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> также имеет неявный ключ. Неявным ключом для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate.datatype">DataType</a> значение свойства. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate.datatype">DataType</a> также можно указать как имя типа, а не явным образом с помощью <a href="../../xaml-services/x-type-markup-extension.md">{x: Type...} </a>. Дополнительные сведения см. в разделе <a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a></li>
+<li><a href="optimizing-performance-application-resources.html">Ресурсы приложений</a></li>
+<li><a href="resources-and-code.html">Ресурсы и код</a></li>
+<li><a href="how-to-define-and-reference-a-resource.html">Определение и создание ссылки на ресурс</a></li>
+<li><a href="../app-development/application-management-overview.html">Общие сведения об управлении приложением</a></li>
+<li><a href="../../xaml-services/x-type-markup-extension.md">Расширение разметки x:Type</a></li>
+<li><a href="staticresource-markup-extension.html">Расширение разметки StaticResource</a></li>
+<li><a href="dynamicresource-markup-extension.html">Расширение разметки DynamicResource</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

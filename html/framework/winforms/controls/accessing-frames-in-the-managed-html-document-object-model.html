@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1044;&#1086;&#1089;&#1090;&#1091;&#1087; &#1082; &#1092;&#1088;&#1077;&#1081;&#1084;&#1072;&#1084; &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1103;&#1077;&#1084;&#1086;&#1081; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1085;&#1086;&#1081; &#1084;&#1086;&#1076;&#1077;&#1083;&#1080; HTML-&#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1044;&#1086;&#1089;&#1090;&#1091;&#1087; &#1082; &#1092;&#1088;&#1077;&#1081;&#1084;&#1072;&#1084; &#1089; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1103;&#1077;&#1084;&#1086;&#1081; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1085;&#1086;&#1081; &#1084;&#1086;&#1076;&#1077;&#1083;&#1080; HTML-&#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="accessing-frames-in-the-managed-html-document-object-model">Доступ к фреймам с использованием управляемой объектной модели HTML-документов</h1>
+
+<p>Некоторые HTML-документы состоят из <em>кадров</em>, или windows, которые могут содержать другие документы HTML. Использование фреймов упрощает создание HTML-страниц, в которых одна или несколько частей страницы остаются статичными, например панель навигации, а в остальных фреймах содержимое постоянно изменяется.</p>
+<p>Авторы HTML-кода могут создавать фреймы одним из двух способов:</p>
+<ul>
+<li>С помощью тегов <code>FRAMESET</code> и <code>FRAME</code>, которые создают фиксированные окна.</li>
+</ul>
+<p>-или-</p>
+<ul>
+<li>С помощью тега <code>IFRAME</code>, он создает плавающее окно, которое может быть перемещено во время выполнения.</li>
+</ul>
+<ol>
+<li><p>Так как фреймы содержат HTML-документы, то в объектной модели документа (DOM) они представлены и как элементы-окна и как элементы-фреймы.</p>
+</li>
+<li><p>При доступе к тегу <code>FRAME</code> или <code>IFRAME</code> с использованием коллекции Frames <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow">HtmlWindow</a>, необходимо извлечь элемент-окно, соответствующий фрейму. Он представляет все динамические свойства фрейма, такие как текущий URL-адрес, документ и размер.</p>
+</li>
+<li><p>При доступе к тегу <code>FRAME</code> или <code>IFRAME</code> с помощью свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow.windowframeelement">WindowFrameElement</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow">HtmlWindow</a>, коллекции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlelement.children">Children</a> или таких методов, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlelementcollection.getelementsbyname">GetElementsByName</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmldocument.getelementbyid">GetElementById</a>, происходит извлечение элемента фрейма. Он представляет статические свойства фрейма, включая URL-адрес, указанный в исходном HTML-файле.</p>
+</li>
+</ol>
+<h2 id="frames-and-security">Фреймы и безопасность</h2>
+<p>Доступ к фреймам усложняется тем фактом, что управляемая модель HTML DOM реализует меры безопасности, называемые <em>сценария безопасности между рамками</em>. Если документ содержит <code>FRAMESET</code> с двумя или более <code>FRAME</code> в различных доменах, эти <code>FRAME</code> не смогут взаимодействовать друг с другом. Другими словами <code>FRAME</code> , отображает содержимое с веб-сайт не может получить доступ к <code>FRAME</code> , на котором размещается сторонний сайт например <code>http://www.adatum.com/</code>. Безопасность реализуется на уровне класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow">HtmlWindow</a>. Можно получать общие сведения о размещении другого веб-сайта в <code>FRAME</code>, например его URL-адрес, но невозможно получить доступ к его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow.document">Document</a>, изменить размер или расположение <code>FRAME</code> или <code>IFRAME</code>, в которых он размещен.</p>
+<p>Это правило также применяется к окнам, которые можно открыть с помощью методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow.open">Open</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.htmlwindow.opennew">OpenNew</a>. Если открываемое окно относится к другому домену, отличающемуся от домена страницы, размещенной в элементе управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a>, то перемещение окна или доступ к его содержимому невозможны. Эти ограничения также применяются принудительно при использовании элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> для отображения веб-сайта, который отличается от веб-сайта, на котором развернуто приложение Windows Forms. Если используется технология развертывания ClickOnce для установки приложения с веб-сайта A и используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> для отображения веб-сайта Б, то доступ к данным веб-сайта Б будет отсутствовать.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/docs/Web/HTML/Element/frame">&lt;кадр &gt; элемент</a></li>
+<li><a href="using-the-managed-html-document-object-model.html">Использование управляемой объектной модели HTML-документов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

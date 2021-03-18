@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1090;&#1086;&#1082;&#1086;&#1074;&#1072;&#1103; &#1084;&#1086;&#1076;&#1077;&#1083;&#1100; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1090;&#1086;&#1082;&#1086;&#1074;&#1072;&#1103; &#1084;&#1086;&#1076;&#1077;&#1083;&#1100; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-ink-threading-model">Потоковая модель рукописного ввода</h1>
+
+<p>Одним из преимуществ рукописного ввода на планшетном ПК является, что его сходство с записи с помощью регулярного пера и бумаги.  В этой ситуации планшетное перо получать входные данные гораздо быстрее мыши и отображает рукописные данные как записи пользователя.  Поток пользовательского интерфейса (UI) приложения недостаточно для сбора данных пера и отрисовка рукописных данных, так как он может быть заблокирован.  Чтобы устранить эту проблему, WPF приложение использует два дополнительных потока, когда пользователь осуществляет рукописный ввод.</p>
+<p>Ниже перечислены потоки, примите участие в сборе и отображении рукописный ввод.</p>
+<ul>
+<li><p>Поток пера - поток, который принимает ввод от пера.  (На самом деле это пул потоков, но в этом разделе он называется пуле потоков пера.)</p>
+</li>
+<li><p>Поток пользовательского интерфейса приложения - поток, который определяет пользовательский интерфейс приложения.</p>
+</li>
+<li><p>Поток динамической отрисовки - поток, который отображает рукописные данные при пользователь рисует штрих. Поток динамической отрисовки отличается от потока, отображающего другие элементы пользовательского интерфейса для приложения, как упоминалось в Windows Presentation Foundation <a href="threading-model.html">потоковая модель</a>.</p>
+</li>
+</ul>
+<p>Модель рукописного ввода совпадает ли приложение использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> или пользовательский элемент управления, аналогичный показанному на <a href="creating-an-ink-input-control.html">Создание элемента управления рукописным ввода</a>.  Несмотря на то, что в этом разделе обсуждается создание потоков на основе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>, те же принципы применяются при создании пользовательского элемента управления.</p>
+<h2 id="threading-overview">Работа с потоками Обзор</h2>
+<p>На следующей схеме показана модель потоков, когда пользователь рисует штрих:</p>
+<p><img src="media/inkthreading-drawingink.png" alt="Потоковая модель во время отрисовки мазка. " title="InkThreading_DrawingInk"></p>
+<ol>
+<li><p>Действия, происходящие во время пользователь рисует штрих</p>
+<ol>
+<li><p>Когда пользователь рисует штрих, точки пера поставляются потоке пера.  Подключаемые модули пера, включая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>примите точки пера в потоке пера и иметь возможность изменить их перед <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> их получает.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Отображает точки пера в поток динамической отрисовки. Это происходит в то же время на предыдущем шаге.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Получает точки пера в потоке пользовательского интерфейса.</p>
+</li>
+</ol>
+</li>
+<li><p>Действия, происходящие после пользователь завершает штрих</p>
+<ol>
+<li><p>Когда пользователь заканчивает рисование штриха, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> и добавляет его к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>, который статически его отображает.</p>
+</li>
+<li><p>Поток пользовательского интерфейса оповещает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> , статически выполняется отрисовка росчерка пера, поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> удаляет его визуальное представление штриха.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="ink-collection-and-stylus-plug-ins">Сбор рукописных фрагментов и подключаемых модулей пера</h2>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> Объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a> получать и изменять точки пера в потоке пера. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> Объекты получают точки пера, в соответствии с их порядок в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a>.</p>
+<p>На следующей схеме показана гипотетическую ситуацию где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> содержит <code>stylusPlugin1</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>, и <code>stylusPlugin2</code>в этом порядке.</p>
+<p><img src="media/inkthreading-pluginorder.png" alt="Порядок модулей пера влияет на выходные данные. " title="InkThreading_PluginOrder"></p>
+<p>На предыдущей диаграмме происходит следующее поведение:</p>
+<ol>
+<li><p><code>StylusPlugin1</code> изменения значений x и y.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Получает измененные точки пера и отображает их в поток динамической отрисовки.</p>
+</li>
+<li><p><code>StylusPlugin2</code> Получает измененные точки пера и дальнейшие изменения значений x и y.</p>
+</li>
+<li><p>Приложение собирает точки пера и, когда пользователь заканчивает штриха, статически отображает штрих.</p>
+</li>
+</ol>
+<p>Предположим, что <code>stylusPlugin1</code> ограничивает точки пера в прямоугольник и <code>stylusPlugin2</code> переносит точки пера вправо.  В приведенном выше сценарии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> принимает ограниченные, но не перенесенные точки пера.  Когда пользователь рисует штрих, выполняется отрисовка росчерка пера в границах прямоугольника, но он не доступен для перевода, пока пользователь отрывает перо.</p>
+<h3 id="performing-operations-with-a-stylus-plug-in-on-the-ui-thread">Выполнение операций с помощью пера, подключаемый модуль, в потоке пользовательского интерфейса</h3>
+<p>Так как точные попадания не может выполняться в потоке пера, некоторые элементы могут иногда получать пера, предназначенный для других элементов. Если требуется, чтобы убедиться в том, правильно направлен входных данных перед выполнением операции, подписаться на и выполнить операцию в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin.onstylusdownprocessed">OnStylusDownProcessed</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin.onstylusmoveprocessed">OnStylusMoveProcessed</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin.onstylusupprocessed">OnStylusUpProcessed</a> метод. Эти методы вызываются потоком приложения после точной проверки нажатия. Чтобы подписаться на эти методы, вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.rawstylusinput.notifywhenprocessed">NotifyWhenProcessed</a> метод в методе, который генерируется в потоке пера.</p>
+<p>На следующей схеме показана связь между потоком пера и поток пользовательского интерфейса по отношению к событиям пера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a>.</p>
+<p><img src="media/inkthreading-plugincallbacks.png" alt="Потоковые модели рукописного ввода (пользовательский Интерфейс и перо)" title="InkThreading_PluginCallbacks"></p>
+<h2 id="rendering-ink">Отрисовка рукописных данных</h2>
+<p>Когда пользователь рисует штрих, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> отображает рукописные данные в отдельном потоке, поэтому данные для «поток» от пера даже в том случае, если поток пользовательского интерфейса занят.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Строит визуальное дерево на поток динамической отрисовки, так как он собирает точки пера.  Когда пользователь заканчивает штриха, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> запрашивает получать уведомления, когда приложение выполняет следующего прохода отрисовки.  После следующего прохода отрисовки, завершения работы приложения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> очищает его визуального дерева.  Следующая диаграмма иллюстрирует этот процесс.</p>
+<p><img src="media/inkthreading-visualtree.png" alt="Рукописный ввод, схема потоков" title="InkThreading_VisualTree"></p>
+<ol>
+<li><p>Пользователь начинает штриха.</p>
+<ol>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Создает визуальное дерево.</li>
+</ol>
+</li>
+<li><p>Пользователь рисует штрих.</p>
+<ol>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Строит визуальное дерево.</li>
+</ol>
+</li>
+<li><p>Пользователь завершает штриха.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> Добавляет штрих в визуальном дереве.</p>
+</li>
+<li><p>Уровень интеграции мультимедиа (MIL) статически отображает штрихи.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Очищает визуальные элементы.</p>
+</li>
+</ol>
+</li>
+</ol>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

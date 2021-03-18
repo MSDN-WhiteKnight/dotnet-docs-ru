@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1103;&#1093; From-To-By | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1103;&#1093; From-To-By | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fromtoby-animations-overview">Общие сведения об анимациях From/To/By</h1>
+
+<p>В этом разделе описываются способы использования анимаций From/To/By для свойств зависимостей. Анимация From/To/By создает переход между двумя целевыми значениями.</p>
+<p><a name="prereq"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания этого раздела необходимо ознакомиться с WPF средствах анимации. Общие сведения о возможностях анимации, см. в разделе <a href="animation-overview.html">Общие сведения об анимации</a>.</p>
+<p><a name="whatisanimation"></a></p>
+<h2 id="what-is-a-fromtoby-animation">Что такое анимация From/To/By?</h2>
+<p>From/To/By анимации — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> , создает переход между начальным и конечным значением. Количество времени, которое занимает переход определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> этой анимации.</p>
+<p>From/To/By можно применить анимацию к свойству с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в разметке и коде или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> метод в коде. Вы также может использовать анимацию для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> и применить его к одному или нескольким свойствам. Дополнительные сведения о различных способах применения анимации см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<p>Анимация From/To/By может иметь не более двух целевых значений. Если требуется анимация, у которой более двух целевых значений, используйте анимацию по ключевым кадрам. Анимации по ключевым кадрам описаны в <a href="key-frame-animations-overview.html">сведения об анимации по ключевым кадрам</a>.</p>
+<p><a name="animation_types"></a></p>
+<h2 id="fromtoby-animation-types">Типы анимации From/To/By</h2>
+<p>Так как при анимации создаются значения свойств, существуют различные типы анимаций для различных типов свойств. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойства элемента, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a>, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значений и т. д.</p>
+<p>Классы анимации From/To/By принадлежат к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation">System.Windows.Media.Animation</a> пространства имен и используется следующее соглашение об именовании:</p>
+<p><em>&lt;Тип &gt;</em> <code>Animation</code></p>
+<p>Где <em>&lt;Type&gt;</em> — тип значения, которое выполняет анимацию класса.</p>
+<p>WPF предоставляет следующие From/To/By классы анимации.</p>
+<table>
+<thead>
+<tr>
+<th>Тип свойства</th>
+<th>Соответствующий класс анимации From/To/By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.byteanimation">ByteAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.decimal">Decimal</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.decimalanimation">DecimalAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int16">Int16</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int16animation">Int16Animation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int32animation">Int32Animation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int64">Int64</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int64animation">Int64Animation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimation">PointAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.quaternion">Quaternion</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.quaternionanimation">QuaternionAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.rect">Rect</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.rectanimation">RectAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotation3d">Rotation3D</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.rotation3danimation">Rotation3DAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.singleanimation">SingleAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.size">Size</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.sizeanimation">SizeAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.thickness">Thickness</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.thicknessanimation">ThicknessAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.vector3d">Vector3D</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vector3danimation">Vector3DAnimation</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.vector">Vector</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vectoranimation">VectorAnimation</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="anim_values"></a></p>
+<h2 id="target-values">Целевые значения</h2>
+<p>Анимация From/To/By создает переход между двумя целевыми значениями. Обычно задается начальное значение (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойства) и конечное значение (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство). Но можно также указать только начальное значение, конечное или значение смещения. В таких случаях анимация получает отсутствующее целевое значение из свойства, для которого она выполняется. Ниже описаны различные способы задания целевых значений анимации.</p>
+<ul>
+<li><p><strong>Начальное значение</strong></p>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойства, если вы хотите явно указать начальное значение анимации. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство самостоятельно или с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство. Если указать только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство, анимация переходит от этого значения к базовому значению анимируемого свойства.</p>
+</li>
+<li><p><strong>Конечное значение</strong></p>
+<p>Чтобы задать конечное значение анимации, используйте его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство. Если вы используете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> само свойство, анимация получает начальное значение из анимируемого свойства или из выходных данных другой анимации, которая применяется к тому же свойству. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство вместе с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство, чтобы явно указать начальное и конечное значения для анимации.</p>
+</li>
+<li><p><strong>Значение смещения</strong></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> Свойство позволяет указать смещение вместо явного начального или конечного значения анимации. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> Свойство анимации определяет, сколько анимация изменяет значение за время своего выполнения. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство отдельно или с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство. Если указать только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство, анимация добавит значение смещения к базовому значению свойства или выходным объектом другой анимации.</p>
+</li>
+</ul>
+<p><a name="examples"></a></p>
+<h2 id="using-fromtoby-values">Использование значений From/To/By</h2>
+<p>В следующих разделах рассматривается использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойства вместе или по отдельности.</p>
+<p>В примерах этого раздела используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>, который является типом анимации From/To/By, для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> то есть 10 аппаратно-независимых пикселях в высокого уровня и 100 аппаратно-независимых пикселей в ширину.</p>
+<p>Несмотря на то, что каждый пример использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>, From, To и By свойства всех From/To/By анимации ведут себя одинаково. Хотя в каждом из этих примеров используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, анимации From/To/By можно использовать в других целях. Дополнительные сведения см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<h3 id="fromto">От/кому</h3>
+<p>При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> значения одновременно, анимация выполняется от значения, который задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство, которое задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> 50 и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> в значение 300. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> анимируется от 50 до 300.</p>
+<pre><code class="lang-csharp" name="basicvalues_snip#FromToAnimationInline">// Demonstrates the From and To properties used together.
+
+// Create a NameScope for this page so that
+// Storyboards can be used.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle myRectangle = new Rectangle();
+
+// Assign the Rectangle a name so that
+// it can be targeted by a Storyboard.
+this.RegisterName(
+    &quot;fromToAnimatedRectangle&quot;, myRectangle);
+myRectangle.Height = 10;
+myRectangle.Width = 100;
+myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+myRectangle.Fill = Brushes.Black;
+
+// Demonstrates the From and To properties used together.
+// Animates the rectangle's Width property from 50 to 300 over 10 seconds.
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 50;
+myDoubleAnimation.To = 300;
+myDoubleAnimation.Duration =
+    new Duration(TimeSpan.FromSeconds(10));
+
+Storyboard.SetTargetName(myDoubleAnimation, &quot;fromToAnimatedRectangle&quot;);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+
+// Use an anonymous event handler to begin the animation
+// when the rectangle is clicked.
+myRectangle.MouseLeftButtonDown += delegate(object sender, MouseButtonEventArgs args)
+    {
+        myStoryboard.Begin(myRectangle);
+    };
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="to">Кому</h3>
+<p>Если задано только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство, анимация выполняется от базового значения анимируемого свойства или из выходных данных составляющей анимации, которая ранее была применена к тому же свойству, которое задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство.</p>
+<p>(«Составляющая анимация» ссылается на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Filling">Filling</a> анимации, ранее примененную к тому же свойству, остается в силе при применении текущей анимации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_Compose">Compose</a> переадресуемое поведение.)</p>
+<p>В следующем примере задается только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> до 300. Так как начальное значение не указано, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> использует базовое значение (100) <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойство в качестве своего начального значения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> Из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> анимируется от 100 до конечного значения анимации 300.</p>
+<pre><code class="lang-csharp" name="basicvalues_snip#ToAnimationInline">// Demonstrates the use of the To property.
+
+// Create a NameScope for this page so that
+// Storyboards can be used.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle myRectangle = new Rectangle();
+
+// Assign the Rectangle a name so that
+// it can be targeted by a Storyboard.
+this.RegisterName(
+    &quot;toAnimatedRectangle&quot;, myRectangle);
+myRectangle.Height = 10;
+myRectangle.Width = 100;
+myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+myRectangle.Fill = Brushes.Gray;
+
+// Demonstrates the To property used by itself. Animates
+// the Rectangle's Width property from its base value
+// (100) to 300 over 10 seconds.
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.To = 300;
+myDoubleAnimation.Duration =
+    new Duration(TimeSpan.FromSeconds(10));
+
+Storyboard.SetTargetName(myDoubleAnimation, &quot;toAnimatedRectangle&quot;);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+
+// Use an anonymous event handler to begin the animation
+// when the rectangle is clicked.
+myRectangle.MouseLeftButtonDown += delegate(object sender, MouseButtonEventArgs args)
+    {
+        myStoryboard.Begin(myRectangle);
+    };
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="by">На</h3>
+<p>Если задано только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство анимации, анимация выполняется от базового значения анимируемого свойства или из выходных данных составляющей анимации к сумме этого значения и значения, который задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство.</p>
+<p>В следующем примере задается только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> до 300. Так как в примере указывается начальное значение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> использует базовое значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойства, 100, как начальное значение. Конечное значение определяется добавлением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> значение анимации, 300, к начальному значению, 100: 400. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> анимируется от 100 до 400.</p>
+<pre><code class="lang-csharp" name="basicvalues_snip#ByAnimationInline">// Demonstrates the use of the By property.
+
+// Create a NameScope for this page so that
+// Storyboards can be used.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle myRectangle = new Rectangle();
+
+// Assign the Rectangle a name so that
+// it can be targeted by a Storyboard.
+this.RegisterName(
+    &quot;byAnimatedRectangle&quot;, myRectangle);
+myRectangle.Height = 10;
+myRectangle.Width = 100;
+myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+myRectangle.Fill = Brushes.RoyalBlue;
+
+// Demonstrates the By property used by itself.
+// Increments the Rectangle's Width property by 300 over 10 seconds.
+// As a result, the Width property is animated from its base value
+// (100) to 400 (100 + 300) over 10 seconds.
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.By = 300;
+myDoubleAnimation.Duration =
+    new Duration(TimeSpan.FromSeconds(10));
+
+Storyboard.SetTargetName(myDoubleAnimation, &quot;byAnimatedRectangle&quot;);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+
+// Use an anonymous event handler to begin the animation
+// when the rectangle is clicked.
+myRectangle.MouseLeftButtonDown += delegate(object sender, MouseButtonEventArgs args)
+    {
+        myStoryboard.Begin(myRectangle);
+    };
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="fromby">From/By</h3>
+<p>При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойства анимации, анимация выполняется от значения, который задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойства, чтобы значение, которое указано на сумму <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойства.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> 50 и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> в значение 300. Конечное значение определяется добавлением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> значение анимации, 300, к начальному значению, 50: 350. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> анимируется от 50 до 350.</p>
+<pre><code class="lang-csharp" name="basicvalues_snip#FromByAnimationInline">// Demonstrates the use of the From and By properties.
+
+// Create a NameScope for this page so that
+// Storyboards can be used.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle myRectangle = new Rectangle();
+
+// Assign the Rectangle a name so that
+// it can be targeted by a Storyboard.
+this.RegisterName(
+    &quot;byAnimatedRectangle&quot;, myRectangle);
+myRectangle.Height = 10;
+myRectangle.Width = 100;
+myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+myRectangle.Fill = Brushes.BlueViolet;
+
+// Demonstrates the From and By properties used together.
+// Increments the Rectangle's Width property by 300 over 10 seconds.
+// As a result, the Width property is animated from 50
+// to 350 (50 + 300) over 10 seconds.
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 50;
+myDoubleAnimation.By = 300;
+myDoubleAnimation.Duration =
+    new Duration(TimeSpan.FromSeconds(10));
+
+Storyboard.SetTargetName(myDoubleAnimation, &quot;byAnimatedRectangle&quot;);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+
+// Use an anonymous event handler to begin the animation
+// when the rectangle is clicked.
+myRectangle.MouseLeftButtonDown += delegate(object sender, MouseButtonEventArgs args)
+    {
+        myStoryboard.Begin(myRectangle);
+    };
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="from">Исходный тип</h3>
+<p>Если указано только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> значение анимации, анимация выполняется от значения, который задается параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство, к базовому значению анимируемого свойства или выходных данных составляющей анимации.</p>
+<p>В следующем примере задается только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> до 50. Так как конечное значение не указано, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> использует базовое значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> 100 свойства, в качестве конечного значения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> Из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> анимируется от 50 до базового значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> 100 свойства.</p>
+<pre><code class="lang-csharp" name="basicvalues_snip#FromAnimationInline">// Demonstrates the use of the From property.
+
+// Create a NameScope for this page so that
+// Storyboards can be used.
+NameScope.SetNameScope(this, new NameScope());
+
+Rectangle myRectangle = new Rectangle();
+
+// Assign the Rectangle a name so that
+// it can be targeted by a Storyboard.
+this.RegisterName(
+    &quot;fromAnimatedRectangle&quot;, myRectangle);
+myRectangle.Height = 10;
+myRectangle.Width = 100;
+myRectangle.HorizontalAlignment = HorizontalAlignment.Left;
+myRectangle.Fill = Brushes.Purple;
+
+// Demonstrates the From property used by itself. Animates the
+// rectangle's Width property from 50 to its base value (100)
+// over 10 seconds.
+DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 50;
+myDoubleAnimation.Duration =
+    new Duration(TimeSpan.FromSeconds(10));
+
+Storyboard.SetTargetName(myDoubleAnimation, &quot;fromAnimatedRectangle&quot;);
+Storyboard.SetTargetProperty(myDoubleAnimation,
+    new PropertyPath(Rectangle.WidthProperty));
+Storyboard myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+
+// Use an anonymous event handler to begin the animation
+// when the rectangle is clicked.
+myRectangle.MouseLeftButtonDown += delegate(object sender, MouseButtonEventArgs args)
+    {
+        myStoryboard.Begin(myRectangle);
+    };
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="toby">To/By</h3>
+<p>Если заданы оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойства анимации, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.by">By</a> свойство учитывается.</p>
+<p><a name="otheranimationtypes"></a></p>
+<h2 id="other-animation-types">Другие типы анимаций</h2>
+<p>From/To/By ― не единственный тип анимации, WPF предоставляет: он также предоставляет анимации по ключевым кадрам и анимация с использованием пути.</p>
+<ul>
+<li><p>Анимация по ключевым кадрам анимирует по любому числу конечных значений, описанных с помощью ключевых кадров. Дополнительные сведения см. в разделе <a href="key-frame-animations-overview.html">сведения об анимации по ключевым кадрам</a>.</p>
+</li>
+<li><p>Анимация пути формирует выходные значения из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>. Дополнительные сведения см. в разделе <a href="path-animations-overview.html">Общие сведения об анимации пути</a>.</p>
+</li>
+</ul>
+<p>WPF также позволяет создавать собственные настраиваемые типы анимации. Дополнительные сведения см. в разделе <a href="custom-animations-overview.html">Общие сведения о настраиваемых анимации</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a></li>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="storyboards-overview.html">Общие сведения о Storyboard</a></li>
+<li><a href="key-frame-animations-overview.html">Общие сведения об анимации по ключевым кадрам</a></li>
+<li><a href="path-animations-overview.html">Общие сведения об анимация с использованием пути</a></li>
+<li><a href="custom-animations-overview.html">Общие сведения о пользовательской анимации</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=159988">FROM, To и пример целевых значений анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

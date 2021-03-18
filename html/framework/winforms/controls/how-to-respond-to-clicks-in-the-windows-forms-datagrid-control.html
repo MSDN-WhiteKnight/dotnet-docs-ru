@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1097;&#1077;&#1083;&#1095;&#1082;&#1072; &#1084;&#1099;&#1096;&#1080; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1097;&#1077;&#1083;&#1095;&#1082;&#1072; &#1084;&#1099;&#1096;&#1080; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-respond-to-clicks-in-the-windows-forms-datagrid-control">Практическое руководство. Обработка щелчка мыши элементом управления DataGrid в Windows Forms</h1>
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> заменяет элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid">DataGrid</a> и расширяет его функциональные возможности; однако при необходимости элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid">DataGrid</a> можно сохранить для обратной совместимости и использования в будущем. Дополнительные сведения см. в разделе <a href="differences-between-the-windows-forms-datagridview-and-datagrid-controls.html">Различия элементов управления DataGridView и DataGrid в Windows Forms</a>.</p>
+</div>
+<p>После Windows Forms <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid">DataGrid</a> подключен к базе данных, вы можете отслеживать, который ячеек пользователем.</p>
+<h3 id="to-detect-when-the-user-of-the-datagrid-selects-a-different-cell">Чтобы определить, когда пользователь DataGrid выбирает другую ячейку</h3>
+<ul>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid.currentcellchanged">CurrentCellChanged</a> обработчик событий, напишите код соответствующим образом отреагировать.</p>
+<pre><code class="lang-vb">Private Sub myDataGrid_CurrentCellChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles myDataGrid.CurrentCellChanged  
+   MessageBox.Show(&quot;Col is &quot; &amp; myDataGrid.CurrentCell.ColumnNumber _  
+      &amp; &quot;, Row is &quot; &amp; myDataGrid.CurrentCell.RowNumber _  
+      &amp; &quot;, Value is &quot; &amp; myDataGrid.Item(myDataGrid.CurrentCell))  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void myDataGrid_CurrentCellChanged(object sender,   
+System.EventArgs e)  
+{  
+   MessageBox.Show (&quot;Col is &quot; + myDataGrid.CurrentCell.ColumnNumber  
+      + &quot;, Row is &quot; + myDataGrid.CurrentCell.RowNumber   
+      + &quot;, Value is &quot; + myDataGrid[myDataGrid.CurrentCell] );  
+}  
+</code></pre>
+<p>(Visual C#) Поместите следующий код в конструктор формы для регистрации обработчика событий.</p>
+<pre><code class="lang-csharp">this.myDataGrid.CurrentCellChanged += new  
+   System.EventHandler(this.myDataGrid_CurrentCellChanged);  
+</code></pre>
+</li>
+</ul>
+<h3 id="to-determine-which-part-of-the-datagrid-the-user-clicked">Чтобы определить, какая часть элемента управления DataGrid пользователь щелкнул</h3>
+<ul>
+<li><p>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid.hittest">HitTest</a> метод в соответствующем обработчике событий, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> событий.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid.hittest">HitTest</a> Возвращает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid.hittestinfo">DataGrid.HitTestInfo</a> , содержащий строки и столбца выбранной области.</p>
+<pre><code class="lang-vb">Private Sub myDataGrid_MouseDown(ByVal sender As Object, _  
+ByVal e As MouseEventArgs) Handles myDataGrid.MouseDown  
+   Dim myGrid As DataGrid = CType(sender, DataGrid)  
+   Dim hti As System.Windows.Forms.DataGrid.HitTestInfo  
+   hti = myGrid.HitTest(e.X, e.Y)  
+   Dim message As String = &quot;You clicked &quot;  
+
+   Select Case hti.Type  
+      Case System.Windows.Forms.DataGrid.HitTestType.None  
+         message &amp;= &quot;the background.&quot;  
+      Case System.Windows.Forms.DataGrid.HitTestType.Cell  
+         message &amp;= &quot;cell at row &quot; &amp; hti.Row &amp; &quot;, col &quot; &amp; hti.Column  
+      Case System.Windows.Forms.DataGrid.HitTestType.ColumnHeader  
+         message &amp;= &quot;the column header for column &quot; &amp; hti.Column  
+      Case System.Windows.Forms.DataGrid.HitTestType.RowHeader  
+         message &amp;= &quot;the row header for row &quot; &amp; hti.Row  
+      Case System.Windows.Forms.DataGrid.HitTestType.ColumnResize  
+         message &amp;= &quot;the column resizer for column &quot; &amp; hti.Column  
+      Case System.Windows.Forms.DataGrid.HitTestType.RowResize  
+         message &amp;= &quot;the row resizer for row &quot; &amp; hti.Row  
+      Case System.Windows.Forms.DataGrid.HitTestType.Caption  
+         message &amp;= &quot;the caption&quot;  
+      Case System.Windows.Forms.DataGrid.HitTestType.ParentRows  
+         message &amp;= &quot;the parent row&quot;  
+   End Select  
+
+   Console.WriteLine(message)  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void myDataGrid_MouseDown(object sender,   
+System.Windows.Forms.MouseEventArgs e)  
+{  
+   DataGrid myGrid = (DataGrid) sender;  
+   System.Windows.Forms.DataGrid.HitTestInfo hti;  
+   hti = myGrid.HitTest(e.X, e.Y);  
+   string message = &quot;You clicked &quot;;  
+
+   switch (hti.Type)   
+   {  
+      case System.Windows.Forms.DataGrid.HitTestType.None :  
+         message += &quot;the background.&quot;;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.Cell :  
+         message += &quot;cell at row &quot; + hti.Row + &quot;, col &quot; + hti.Column;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.ColumnHeader :  
+         message += &quot;the column header for column &quot; + hti.Column;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.RowHeader :  
+         message += &quot;the row header for row &quot; + hti.Row;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.ColumnResize :  
+         message += &quot;the column resizer for column &quot; + hti.Column;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.RowResize :  
+         message += &quot;the row resizer for row &quot; + hti.Row;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.Caption :  
+         message += &quot;the caption&quot;;  
+         break;  
+      case System.Windows.Forms.DataGrid.HitTestType.ParentRows :  
+         message += &quot;the parent row&quot;;  
+         break;  
+      }  
+
+      Console.WriteLine(message);  
+}  
+</code></pre>
+<p>(Visual C#) Поместите следующий код в конструктор формы для регистрации обработчика событий.</p>
+<pre><code class="lang-csharp">this.myDataGrid.MouseDown += new  
+   System.Windows.Forms.MouseEventHandler  
+   (this.myDataGrid_MouseDown);  
+</code></pre>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="datagrid-control-windows-forms.html">Элемент управления DataGrid</a></li>
+<li><a href="change-displayed-data-at-run-time-wf-datagrid-control.html">Практическое руководство. Изменение данных, отображаемых во время выполнения, в элементе управления DataGrid в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1077;&#1088;&#1077;&#1093;&#1074;&#1072;&#1090; &#1074;&#1074;&#1086;&#1076;&#1072;, &#1086;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1103;&#1077;&#1084;&#1086;&#1075;&#1086; &#1087;&#1077;&#1088;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1077;&#1088;&#1077;&#1093;&#1074;&#1072;&#1090; &#1074;&#1074;&#1086;&#1076;&#1072;, &#1086;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1103;&#1077;&#1084;&#1086;&#1075;&#1086; &#1087;&#1077;&#1088;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="intercepting-input-from-the-stylus">Перехват ввода, осуществляемого пером</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins">System.Windows.Input.StylusPlugIns</a> Архитектура предоставляет механизм для реализации низкоуровневого управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> входных данных и создание рукописный ввод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объектов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> Класс предоставляет механизм для реализации пользовательского поведения и применения его к потоку данных, поступающих от устройства пера, для обеспечения оптимальной производительности.</p>
+<p>В этом разделе содержатся следующие подразделы:</p>
+<ul>
+<li><p><a href="#Architecture">Архитектура</a></p>
+</li>
+<li><p><a href="#ImplementingStylusPlugins">Реализация подключаемых модулей пера</a></p>
+</li>
+<li><p><a href="#AddingYourPluginToAnInkCanvas">Добавление подключаемого модуля к объекту класса InkCanvas</a></p>
+</li>
+<li><p><a href="#Conclusion">Заключение</a></p>
+</li>
+</ul>
+<p><a name="Architecture"></a></p>
+<h2 id="architecture">Архитектура</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> Развитие <a href="https://go.microsoft.com/fwlink/?LinkId=50753&amp;clcid=0x409">потоке</a> API-интерфейсы, описанные в <a href="https://go.microsoft.com/fwlink/?LinkId=50752&amp;clcid=0x409">получение и управление с помощью пера</a>в <a href="https://go.microsoft.com/fwlink/?linkid=11782&amp;clcid=0x409">Microsoft Windows XP Tablet PC Edition программного обеспечения Комплект SDK 1.7</a>.</p>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> свойства, которое является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a>. Вы можете добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> к элементу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> свойства для управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных, так как он создается. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные состоят из всех свойств, поддерживаемых дигитайзером системы, включая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint.x">X</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint.y">Y</a> точки данных, а также <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint.pressurefactor">PressureFactor</a> данных.</p>
+<p>Ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> объектов вставляются непосредственно в поток данных, поступающих от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> устройства при добавлении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> свойство. Порядок, в котором подключаемые модули добавляются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекции определяет порядок, в котором они получат <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных. Например, если добавить подключаемый модуль фильтра, ограничивающий входные данные для определенного региона и затем добавить подключаемый модуль, который распознает жесты, так как они записаны, подключаемый модуль, который распознает жесты будет получать отфильтрованные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных.</p>
+<p><a name="ImplementingStylusPlugins"></a></p>
+<h2 id="implementing-stylus-plug-ins">Реализация подключаемых модулей пера</h2>
+<p>Для реализации подключаемого модуля, являются производными от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a>. Этот класс является o применяется к потоку данных, как поступающие из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a>. В этом классе можно изменить значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> создает или вызывает исключение, приложение будет закрыто. Необходимо тщательно протестировать элементы управления, которые используют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> и использовать элемент управления, только если вы уверены, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> не вызовет исключение.</p>
+</div>
+<p>В следующем примере показан подключаемый модуль, который ограничивает ввод с помощью пера, изменив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint.x">X</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint.y">Y</a> значения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных по мере поступают из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> устройства.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#19">using System;
+using System.Windows.Media;
+using System.Windows;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Input;
+using System.Windows.Ink;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#3">// A StylusPlugin that restricts the input area.
+class FilterPlugin : StylusPlugIn
+{
+    protected override void OnStylusDown(RawStylusInput rawStylusInput)
+    {
+        // Call the base class before modifying the data.
+        base.OnStylusDown(rawStylusInput);
+
+        // Restrict the stylus input.
+        Filter(rawStylusInput);
+    }
+
+    protected override void OnStylusMove(RawStylusInput rawStylusInput)
+    {
+        // Call the base class before modifying the data.
+        base.OnStylusMove(rawStylusInput);
+
+        // Restrict the stylus input.
+        Filter(rawStylusInput);
+    }
+
+    protected override void OnStylusUp(RawStylusInput rawStylusInput)
+    {
+        // Call the base class before modifying the data.
+        base.OnStylusUp(rawStylusInput);
+
+        // Restrict the stylus input
+        Filter(rawStylusInput);
+    }
+
+    private void Filter(RawStylusInput rawStylusInput)
+    {
+        // Get the StylusPoints that have come in.
+        StylusPointCollection stylusPoints = rawStylusInput.GetStylusPoints();
+
+        // Modify the (X,Y) data to move the points
+        // inside the acceptable input area, if necessary.
+        for (int i = 0; i &lt; stylusPoints.Count; i++)
+        {
+            StylusPoint sp = stylusPoints[i];
+            if (sp.X &lt; 50) sp.X = 50;
+            if (sp.X &gt; 250) sp.X = 250;
+            if (sp.Y &lt; 50) sp.Y = 50;
+            if (sp.Y &gt; 250) sp.Y = 250;
+            stylusPoints[i] = sp;
+        }
+
+        // Copy the modified StylusPoints back to the RawStylusInput.
+        rawStylusInput.SetStylusPoints(stylusPoints);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="AddingYourPluginToAnInkCanvas"></a></p>
+<h2 id="adding-your-plug-in-to-an-inkcanvas">Добавление подключаемого модуля к объекту класса InkCanvas</h2>
+<p>Самый простой способ использовать пользовательский подключаемый модуль должен реализовать класс, производный от InkCanvas и добавьте его в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> свойство.</p>
+<p>В следующем примере показано пользовательское <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> , фильтрующее рукописный ввод.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#4">public class FilterInkCanvas : InkCanvas
+{
+    FilterPlugin filter = new FilterPlugin();
+
+    public FilterInkCanvas()
+        : base()
+    {
+        this.StylusPlugIns.Add(filter);
+    }
+}
+</code></pre>
+<p>Если вы добавите <code>FilterInkCanvas</code> к приложению и запустить его, вы заметите, что рукописные данные не ограничены областью, пока пользователь не завершит штрих. Это обусловлено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.dynamicrenderer">DynamicRenderer</a> свойство, являющееся <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> и уже является членом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекции. Пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> добавленные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> Получает коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных после <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> получает данные. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные не будут фильтроваться до, после пользователь отрывает перо, чтобы завершить штриха. Чтобы отфильтровать рукописный ввод, когда пользователь рисует его, необходимо вставить <code>FilterPlugin</code> перед <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>.</p>
+<p>Следующий код C# демонстрирует пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> , фильтрующее рукописный ввод, так как он отрисовывается.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#5">public class DynamicallyFilteredInkCanvas : InkCanvas
+{
+    FilterPlugin filter = new FilterPlugin();
+
+    public DynamicallyFilteredInkCanvas()
+        : base()
+    {
+        int dynamicRenderIndex =
+            this.StylusPlugIns.IndexOf(this.DynamicRenderer);
+
+        this.StylusPlugIns.Insert(dynamicRenderIndex, filter);
+    }
+}
+</code></pre>
+<p><a name="Conclusion"></a></p>
+<h2 id="conclusion">Заключение</h2>
+<p>Путем наследования своих собственных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> классы и вставки их в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a> коллекций, можно значительно улучшить обработку цифровых рукописных данных. У вас есть доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных, как оно создается, дает возможность настроить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> ввода. Так как у вас есть такой низкоуровневый доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных, можно реализовать коллекцию чернил и подготовки к просмотру, обеспечивающих оптимальную производительность для вашего приложения.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="advanced-ink-handling.html">Дополнительная обработка рукописных данных</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=50752&amp;clcid=0x409">Доступ и управление с помощью пера</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

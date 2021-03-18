@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1073;&#1077;&#1089;&#1087;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1085;&#1086;&#1089;&#1090;&#1080; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; &#1074; XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1073;&#1077;&#1089;&#1087;&#1077;&#1095;&#1077;&#1085;&#1080;&#1077; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1085;&#1086;&#1089;&#1090;&#1080; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1083;&#1103; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; &#1074; XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-make-data-available-for-binding-in-xaml">Практическое руководство. Обеспечение доступности данных для привязки в XAML</h1>
+
+<p>В этом разделе рассматриваются различные способы, которые можно сделать данные доступными для привязки в Язык XAML, в зависимости от потребностей приложения.</p>
+<h2 id="example">Пример</h2>
+<p>Если у вас есть среда CLR объекта, вы бы хотели привязки из XAML, один из способов, вы можете сделать объект доступным для привязки является определение его как ресурс и присвойте ему <code>x:Key</code>. В следующем примере имеется <code>Person</code> объект с строковое свойство с именем <code>PersonName</code>. <code>Person</code> Объекта (в строке, выделено, содержащий <code>&lt;src&gt;</code> элемент) определен в пространстве имен <code>SDKSample</code>.</p>
+<pre><code class="lang-xaml" name="SimpleBinding#Instantiation" highlight-lines="9,37">&lt;Window
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  xmlns:src=&quot;clr-namespace:SDKSample&quot;
+  SizeToContent=&quot;WidthAndHeight&quot;
+  Title=&quot;Simple Data Binding Sample&quot;&gt;
+
+  &lt;Window.Resources&gt;
+    &lt;src:Person x:Key=&quot;myDataSource&quot; PersonName=&quot;Joe&quot;/&gt;
+    &lt;Style TargetType=&quot;{x:Type Label}&quot;&gt;
+      &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Top&quot;/&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot;/&gt;
+    &lt;/Style&gt;
+    &lt;Style TargetType=&quot;{x:Type TextBox}&quot;&gt;
+      &lt;Setter Property=&quot;Width&quot; Value=&quot;100&quot;/&gt;
+      &lt;Setter Property=&quot;Height&quot; Value=&quot;25&quot;/&gt;
+      &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Top&quot;/&gt;
+    &lt;/Style&gt;
+    &lt;Style TargetType=&quot;{x:Type TextBlock}&quot;&gt;
+      &lt;Setter Property=&quot;Width&quot; Value=&quot;100&quot;/&gt;
+      &lt;Setter Property=&quot;Height&quot; Value=&quot;25&quot;/&gt;
+      &lt;Setter Property=&quot;DockPanel.Dock&quot; Value=&quot;Top&quot;/&gt;
+      &lt;Setter Property=&quot;Padding&quot; Value=&quot;3&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/Window.Resources&gt;
+  &lt;Border Margin=&quot;5&quot; BorderBrush=&quot;Aqua&quot; BorderThickness=&quot;1&quot; Padding=&quot;8&quot; CornerRadius=&quot;3&quot;&gt;
+    &lt;DockPanel Width=&quot;200&quot; Height=&quot;100&quot; Margin=&quot;35&quot;&gt;
+      &lt;Label&gt;Enter a Name:&lt;/Label&gt;
+      &lt;TextBox&gt;
+        &lt;TextBox.Text&gt;
+          &lt;Binding Source=&quot;{StaticResource myDataSource}&quot; Path=&quot;PersonName&quot;
+                   UpdateSourceTrigger=&quot;PropertyChanged&quot;/&gt;
+        &lt;/TextBox.Text&gt;
+      &lt;/TextBox&gt;
+      
+      &lt;Label&gt;The name you entered:&lt;/Label&gt;
+      &lt;TextBlock Text=&quot;{Binding Source={StaticResource myDataSource}, Path=PersonName}&quot;/&gt;
+    &lt;/DockPanel&gt;
+  &lt;/Border&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Затем можно привязать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> управления к объекту в XAML, как выделенная строка содержит <code>&lt;TextBlock&gt;</code> показан элемент.</p>
+<p>Кроме того, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a> класса, как показано в следующем примере:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Привязка определяется так же, как выделенные строки, содержащей <code>&lt;TextBlock&gt;</code> показан элемент.</p>
+<p>В данном конкретном примере результат одинаков: у вас есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> с текстовым содержимым <code>Joe</code>. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a> класс предоставляет функциональные возможности, такие как возможность привязки к результату метода. Вы можете использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a> , если вы нуждаетесь в функциях, он предоставляет.</p>
+<p>Тем не менее, если выполнить привязку к объекту, который уже был создан, необходимо задать <code>DataContext</code> в коде, как показано в следующем примере.</p>
+<pre><code class="lang-csharp" name="ADODataSet#1">DataSet myDataSet;
+
+private void OnInit(object sender, EventArgs e)
+{
+  string mdbFile = Path.Combine(AppDataPath, &quot;BookData.mdb&quot;);
+  string connString = string.Format(
+      &quot;Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}&quot;, mdbFile);
+  OleDbConnection conn = new OleDbConnection(connString);
+  OleDbDataAdapter adapter = new OleDbDataAdapter(&quot;SELECT * FROM BookTable;&quot;, conn);
+
+  myDataSet = new DataSet();
+  adapter.Fill(myDataSet, &quot;BookTable&quot;);
+
+  // myListBox is a ListBox control.
+  // Set the DataContext of the ListBox to myDataSet
+  myListBox.DataContext = myDataSet;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы получить доступ к XML данные с помощью привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a> , представлена в разделе <a href="how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries.html">привязка к данным XML с помощью XMLDataProvider и запросов XPath</a>. Чтобы получить доступ к XML данные с помощью привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a> , представлена в разделе <a href="how-to-bind-to-xdocument-xelement-or-linq-for-xml-query-results.html">привязка к XDocument, XElement или LINQ для результатов запросов XML</a>.</p>
+<p>Сведения о многом, можно указать данные, при привязке к, см. в разделе <a href="how-to-specify-the-binding-source.html">Указание источника привязки</a>. Сведения о типы данных можно привязать к или как реализовать собственные среда CLR объекты для привязки, см. в разделе <a href="binding-sources-overview.html">Общие сведения об источниках привязки</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

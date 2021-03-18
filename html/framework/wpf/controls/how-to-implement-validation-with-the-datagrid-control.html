@@ -1,0 +1,520 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1080; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1080; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-implement-validation-with-the-datagrid-control">Практическое руководство. Реализация проверки с помощью элемента управления DataGrid</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> Элемент управления позволяет выполнять проверку на уровне строк и ячеек. Когда пользователь обновляет значение проверки на уровне ячейки проверяются отдельные свойства объекта привязки данных. Когда пользователь вносит изменения в строку проверки на уровне строк проверяются целые объекты данных. Также можно реализовать визуальную реакцию на ошибки проверки или использовать визуальную обратную связь по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> предоставляет элемент управления.</p>
+<p>Следующие процедуры описывают способы применения правил проверки к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> привязки и настраивать визуальную обратную связь.</p>
+<h3 id="to-validate-individual-cell-values">Чтобы проверить значения отдельных ячеек</h3>
+<ul>
+<li><p>Укажите одно или несколько правил проверки для привязки, используемой со столбцом. Это аналогично проверке данных в простые элементы управления, как описано в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> элемента управления с четырьмя столбцами, которые привязаны к различным свойствам бизнес-объекта. Укажите трех столбцов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.exceptionvalidationrule">ExceptionValidationRule</a> , задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesonexceptions">ValidatesOnExceptions</a> свойства <code>true</code>.</p>
+<pre><code class="lang-xaml" name="DataGrid_Validation#BasicXaml">&lt;Grid&gt;
+
+  &lt;Grid.Resources&gt;
+    &lt;local:Courses x:Key=&quot;courses&quot;/&gt;
+  &lt;/Grid.Resources&gt;
+
+  &lt;DataGrid Name=&quot;dataGrid1&quot; FontSize=&quot;20&quot;
+    ItemsSource=&quot;{StaticResource courses}&quot; 
+    AutoGenerateColumns=&quot;False&quot;&gt;
+    &lt;DataGrid.Columns&gt;
+      &lt;DataGridTextColumn Header=&quot;Course Name&quot; 
+        Binding=&quot;{Binding Name, TargetNullValue=(enter a course name)}&quot;/&gt;
+      &lt;DataGridTextColumn Header=&quot;Course ID&quot;
+        Binding=&quot;{Binding Id, ValidatesOnExceptions=True}&quot;/&gt;
+      &lt;DataGridTextColumn Header=&quot;Start Date&quot;
+        Binding=&quot;{Binding StartDate, ValidatesOnExceptions=True, 
+          StringFormat=d}&quot;/&gt;
+      &lt;DataGridTextColumn Header=&quot;End Date&quot;
+        Binding=&quot;{Binding EndDate, ValidatesOnExceptions=True,
+          StringFormat=d}&quot;/&gt;
+    &lt;/DataGrid.Columns&gt;
+  &lt;/DataGrid&gt;
+  
+&lt;/Grid&gt;
+</code></pre>
+<p>Когда пользователь вводит недопустимое значение (например, отличный от integer в столбце идентификатор курса), появится красная граница вокруг ячейки. Вы можете изменить эти отзывы проверки по умолчанию, как описано в следующей процедуре.</p>
+</li>
+</ul>
+<h3 id="to-customize-cell-validation-feedback">Настройка сигнала о проверке ячейки</h3>
+<ul>
+<li><p>Значение столбца <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagridboundcolumn.editingelementstyle">EditingElementStyle</a> свойство на стиль, соответствующий столбец редактирования элемента управления. Так как элементы управления создаются во время выполнения, нельзя использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.errortemplate">Validation.ErrorTemplate</a> присоединенного свойства, как с помощью простых элементов управления.</p>
+<p>В следующем примере обновляется предыдущего примера, добавив стиля ошибки, применяемое для трех столбцов с помощью правил проверки. Когда пользователь вводит недопустимое значение, стиль изменяет цвет фона ячейки и добавляет всплывающей подсказки. Обратите внимание на использование триггера, чтобы определить, имеется ли ошибка проверки. Это необходимо, поскольку в настоящее время отсутствует специальный шаблон ошибок для ячеек.</p>
+<pre><code class="lang-xaml" name="DataGrid_Validation#CellValidationXaml">&lt;DataGrid.Resources&gt;
+  &lt;Style x:Key=&quot;errorStyle&quot; TargetType=&quot;{x:Type TextBox}&quot;&gt;
+    &lt;Setter Property=&quot;Padding&quot; Value=&quot;-2&quot;/&gt;
+    &lt;Style.Triggers&gt;
+      &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;True&quot;&gt;
+        &lt;Setter Property=&quot;Background&quot; Value=&quot;Red&quot;/&gt;
+        &lt;Setter Property=&quot;ToolTip&quot; 
+          Value=&quot;{Binding RelativeSource={RelativeSource Self},
+            Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+      &lt;/Trigger&gt;
+    &lt;/Style.Triggers&gt;
+  &lt;/Style&gt;
+&lt;/DataGrid.Resources&gt;
+
+&lt;DataGrid.Columns&gt;
+  &lt;DataGridTextColumn Header=&quot;Course Name&quot; 
+    Binding=&quot;{Binding Name, TargetNullValue=(enter a course name)}&quot;/&gt;
+  &lt;DataGridTextColumn Header=&quot;Course ID&quot;
+    EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+    Binding=&quot;{Binding Id, ValidatesOnExceptions=True}&quot;/&gt;
+  &lt;DataGridTextColumn Header=&quot;Start Date&quot;
+    EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+    Binding=&quot;{Binding StartDate, ValidatesOnExceptions=True, 
+      StringFormat=d}&quot;/&gt;
+  &lt;DataGridTextColumn Header=&quot;End Date&quot;
+    EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+    Binding=&quot;{Binding EndDate, ValidatesOnExceptions=True,
+      StringFormat=d}&quot;/&gt;
+&lt;/DataGrid.Columns&gt;
+</code></pre>
+<p>Можно реализовать дополнительную настройку, заменив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagridcolumn.cellstyle">CellStyle</a> используемый столбцом.</p>
+</li>
+</ul>
+<h3 id="to-validate-multiple-values-in-a-single-row">Для проверки нескольких значений в одной строке</h3>
+<ol>
+<li><p>Реализуйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> подкласса, который проверяет несколько свойств объекта привязки данных. В вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a> привести реализацию метода <code>value</code> значение параметра для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindinggroup">BindingGroup</a> экземпляра. Вы можете обращаться к объекту данных, используя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindinggroup.items">Items</a> свойство.</p>
+<p>В следующем примере демонстрируется этот процесс проверки ли <code>StartDate</code> значение свойства для <code>Course</code> объекта более ранняя, чем его <code>EndDate</code> значение свойства.</p>
+<pre><code class="lang-csharp" name="DataGrid_Validation#CourseValidationRule">public class CourseValidationRule : ValidationRule
+{
+    public override ValidationResult Validate(object value,
+        System.Globalization.CultureInfo cultureInfo)
+    {
+        Course course = (value as BindingGroup).Items[0] as Course;
+        if (course.StartDate &gt; course.EndDate)
+        {
+            return new ValidationResult(false,
+                &quot;Start Date must be earlier than End Date.&quot;);
+        }
+        else
+        {
+            return ValidationResult.ValidResult;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Добавить правило проверки к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid.rowvalidationrules">DataGrid.RowValidationRules</a> коллекции. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid.rowvalidationrules">RowValidationRules</a> Свойство обеспечивает прямой доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindinggroup.validationrules">ValidationRules</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindinggroup">BindingGroup</a> экземпляр, который группирует все привязки, используемые элементом управления.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid.rowvalidationrules">RowValidationRules</a> свойства в XAML. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validationstep">ValidationStep</a> Свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationstep#System_Windows_Controls_ValidationStep_UpdatedValue">UpdatedValue</a> таким образом, чтобы проверка осуществляется только после обновления объект привязанных данных.</p>
+<pre><code class="lang-xaml" name="DataGrid_Validation#RowValidationRulesXaml">&lt;DataGrid.RowValidationRules&gt;
+  &lt;local:CourseValidationRule ValidationStep=&quot;UpdatedValue&quot;/&gt;
+&lt;/DataGrid.RowValidationRules&gt;
+</code></pre>
+<p>Когда пользователь указывает дату окончания, более ранняя, чем дата начала, в заголовке строки появляется красный восклицательный знак (!). Вы можете изменить эти отзывы проверки по умолчанию, как описано в следующей процедуре.</p>
+</li>
+</ol>
+<h3 id="to-customize-row-validation-feedback">Настройка сигнала о проверке строки</h3>
+<ul>
+<li><p>Задайте свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid.rowvalidationerrortemplate">DataGrid.RowValidationErrorTemplate</a>. Это свойство позволяет настраивать сигнала о проверке строки для отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> элементов управления. Могут также влиять на несколько элементов управления с помощью неявный стиль строки для установки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagridrow.validationerrortemplate">DataGridRow.ValidationErrorTemplate</a> свойство.</p>
+<p>В следующем примере заменяется сигнала о проверке строки по умолчанию с более заметный индикатор. Когда пользователь вводит недопустимое значение, красный круг с белым восклицательным знаком отображается в заголовке строки. Эта операция выполняется для ошибок проверки строк и ячеек. Сообщение об ошибке отображается во всплывающей подсказке.</p>
+<pre><code class="lang-xaml" name="DataGrid_Validation#RowValidationFeedbackXaml">&lt;DataGrid.RowValidationErrorTemplate&gt;
+  &lt;ControlTemplate&gt;
+    &lt;Grid Margin=&quot;0,-2,0,-2&quot;
+      ToolTip=&quot;{Binding RelativeSource={RelativeSource
+      FindAncestor, AncestorType={x:Type DataGridRow}},
+      Path=(Validation.Errors)[0].ErrorContent}&quot;&gt;
+      &lt;Ellipse StrokeThickness=&quot;0&quot; Fill=&quot;Red&quot; 
+        Width=&quot;{TemplateBinding FontSize}&quot; 
+        Height=&quot;{TemplateBinding FontSize}&quot; /&gt;
+      &lt;TextBlock Text=&quot;!&quot; FontSize=&quot;{TemplateBinding FontSize}&quot; 
+        FontWeight=&quot;Bold&quot; Foreground=&quot;White&quot; 
+        HorizontalAlignment=&quot;Center&quot;  /&gt;
+    &lt;/Grid&gt;
+  &lt;/ControlTemplate&gt;
+&lt;/DataGrid.RowValidationErrorTemplate&gt;
+</code></pre></li>
+</ul>
+<h2 id="example">Пример</h2>
+<p>Следующий пример приводится полная демонстрация проверки ячеек и строк. <code>Course</code> Класс предоставляет образец данных объект, реализующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.ieditableobject">IEditableObject</a> для поддержки транзакций. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> Элемент управления взаимодействует с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.ieditableobject">IEditableObject</a> чтобы пользователи могли отменить изменения, нажав клавишу ESC.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы используете Visual Basic, в первой строке файла MainWindow.XAML, замените <code>x:Class=&quot;DataGridValidation.MainWindow&quot;</code> с <code>x:Class=&quot;MainWindow&quot;</code>.</p>
+</div>
+<p>Чтобы протестировать проверку, попробуйте сделайте следующее:</p>
+<ul>
+<li><p>В столбце идентификатор курса введите значение отличный от integer.</p>
+</li>
+<li><p>В столбце даты окончания введите дату, более ранняя, чем дата начала.</p>
+</li>
+<li><p>Удаление значения в идентификатор курса, Дата начала или дата окончания.</p>
+</li>
+<li><p>Чтобы отменить недопустимое значение для ячейки, поместите курсор в ячейку и нажмите клавишу ESC.</p>
+</li>
+<li><p>Чтобы отменить изменения для всей строки, когда текущая ячейка находится в режиме редактирования, дважды нажмите клавишу ESC.</p>
+</li>
+<li><p>При возникновении ошибки проверки, наведите указатель мыши на индикатор в заголовке строки, чтобы просмотреть сообщение об ошибке.</p>
+</li>
+</ul>
+<pre><code class="lang-csharp" name="DataGrid_Validation#FullCode">using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+
+namespace DataGridValidation
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            dataGrid1.InitializingNewItem += (sender, e) =&gt;
+            {
+                Course newCourse = e.NewItem as Course;
+                newCourse.StartDate = newCourse.EndDate = DateTime.Today;
+            };
+        }
+    }
+
+    public class Courses : ObservableCollection&lt;Course&gt;
+    {
+        public Courses()
+        {
+            this.Add(new Course
+            {
+                Name = &quot;Learning WPF&quot;,
+                Id = 1001,
+                StartDate = new DateTime(2010, 1, 11),
+                EndDate = new DateTime(2010, 1, 22)
+            });
+            this.Add(new Course
+            {
+                Name = &quot;Learning Silverlight&quot;,
+                Id = 1002,
+                StartDate = new DateTime(2010, 1, 25),
+                EndDate = new DateTime(2010, 2, 5)
+            });
+            this.Add(new Course
+            {
+                Name = &quot;Learning Expression Blend&quot;,
+                Id = 1003,
+                StartDate = new DateTime(2010, 2, 8),
+                EndDate = new DateTime(2010, 2, 19)
+            });
+            this.Add(new Course
+            {
+                Name = &quot;Learning LINQ&quot;,
+                Id = 1004,
+                StartDate = new DateTime(2010, 2, 22),
+                EndDate = new DateTime(2010, 3, 5)
+            });
+        }
+    }
+
+    public class Course : IEditableObject, INotifyPropertyChanged
+    {
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name == value) return;
+                _name = value;
+                OnPropertyChanged(&quot;Name&quot;);
+            }
+        }
+
+        private int _number;
+        public int Id
+        {
+            get
+            {
+                return _number;
+            }
+            set
+            {
+                if (_number == value) return;
+                _number = value;
+                OnPropertyChanged(&quot;Id&quot;);
+            }
+        }
+
+        private DateTime _startDate;
+        public DateTime StartDate
+        {
+            get
+            {
+                return _startDate;
+            }
+            set
+            {
+                if (_startDate == value) return;
+                _startDate = value;
+                OnPropertyChanged(&quot;StartDate&quot;);
+            }
+        }
+
+        private DateTime _endDate;
+        public DateTime EndDate
+        {
+            get
+            {
+                return _endDate;
+            }
+            set
+            {
+                if (_endDate == value) return;
+                _endDate = value;
+                OnPropertyChanged(&quot;EndDate&quot;);
+            }
+        }
+
+        #region IEditableObject
+
+        private Course backupCopy;
+        private bool inEdit;
+
+        public void BeginEdit()
+        {
+            if (inEdit) return;
+            inEdit = true;
+            backupCopy = this.MemberwiseClone() as Course;
+        }
+
+        public void CancelEdit()
+        {
+            if (!inEdit) return;
+            inEdit = false;
+            this.Name = backupCopy.Name;
+            this.Id = backupCopy.Id;
+            this.StartDate = backupCopy.StartDate;
+            this.EndDate = backupCopy.EndDate;
+        }
+
+        public void EndEdit()
+        {
+            if (!inEdit) return;
+            inEdit = false;
+            backupCopy = null;
+        }
+
+        #endregion
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this,
+                    new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
+
+    }
+
+    public class CourseValidationRule : ValidationRule
+    {
+        public override ValidationResult Validate(object value,
+            System.Globalization.CultureInfo cultureInfo)
+        {
+            Course course = (value as BindingGroup).Items[0] as Course;
+            if (course.StartDate &gt; course.EndDate)
+            {
+                return new ValidationResult(false,
+                    &quot;Start Date must be earlier than End Date.&quot;);
+            }
+            else
+            {
+                return ValidationResult.ValidResult;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="DataGrid_Validation#FullXaml">&lt;Window x:Class=&quot;DataGridValidation.MainWindow&quot;
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  xmlns:local=&quot;clr-namespace:DataGridValidation&quot;
+  Title=&quot;DataGrid Validation Example&quot; Height=&quot;240&quot; Width=&quot;600&quot;&gt;
+
+  &lt;Grid&gt;
+
+    &lt;Grid.Resources&gt;
+      &lt;local:Courses x:Key=&quot;courses&quot;/&gt;
+    &lt;/Grid.Resources&gt;
+
+    &lt;DataGrid Name=&quot;dataGrid1&quot; FontSize=&quot;20&quot; RowHeaderWidth=&quot;27&quot;
+      ItemsSource=&quot;{StaticResource courses}&quot; 
+      AutoGenerateColumns=&quot;False&quot;&gt;
+
+      &lt;DataGrid.Resources&gt;
+        &lt;Style x:Key=&quot;errorStyle&quot; TargetType=&quot;{x:Type TextBox}&quot;&gt;
+          &lt;Setter Property=&quot;Padding&quot; Value=&quot;-2&quot;/&gt;
+          &lt;Style.Triggers&gt;
+            &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;True&quot;&gt;
+              &lt;Setter Property=&quot;Background&quot; Value=&quot;Red&quot;/&gt;
+              &lt;Setter Property=&quot;ToolTip&quot; 
+                Value=&quot;{Binding RelativeSource={RelativeSource Self},
+                  Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+            &lt;/Trigger&gt;
+          &lt;/Style.Triggers&gt;
+        &lt;/Style&gt;
+      &lt;/DataGrid.Resources&gt;
+
+      &lt;DataGrid.Columns&gt;
+        &lt;DataGridTextColumn Header=&quot;Course Name&quot; 
+          Binding=&quot;{Binding Name, TargetNullValue=(enter a course name)}&quot;/&gt;
+        &lt;DataGridTextColumn Header=&quot;Course ID&quot;
+          EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+          Binding=&quot;{Binding Id, ValidatesOnExceptions=True}&quot;/&gt;
+        &lt;DataGridTextColumn Header=&quot;Start Date&quot;
+          EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+          Binding=&quot;{Binding StartDate, ValidatesOnExceptions=True, 
+            StringFormat=d}&quot;/&gt;
+        &lt;DataGridTextColumn Header=&quot;End Date&quot;
+          EditingElementStyle=&quot;{StaticResource errorStyle}&quot;
+          Binding=&quot;{Binding EndDate, ValidatesOnExceptions=True,
+            StringFormat=d}&quot;/&gt;
+      &lt;/DataGrid.Columns&gt;
+
+      &lt;DataGrid.RowValidationRules&gt;
+        &lt;local:CourseValidationRule ValidationStep=&quot;UpdatedValue&quot;/&gt;
+      &lt;/DataGrid.RowValidationRules&gt;
+
+      &lt;DataGrid.RowValidationErrorTemplate&gt;
+        &lt;ControlTemplate&gt;
+          &lt;Grid Margin=&quot;0,-2,0,-2&quot;
+            ToolTip=&quot;{Binding RelativeSource={RelativeSource
+            FindAncestor, AncestorType={x:Type DataGridRow}},
+            Path=(Validation.Errors)[0].ErrorContent}&quot;&gt;
+            &lt;Ellipse StrokeThickness=&quot;0&quot; Fill=&quot;Red&quot; 
+              Width=&quot;{TemplateBinding FontSize}&quot; 
+              Height=&quot;{TemplateBinding FontSize}&quot; /&gt;
+            &lt;TextBlock Text=&quot;!&quot; FontSize=&quot;{TemplateBinding FontSize}&quot; 
+              FontWeight=&quot;Bold&quot; Foreground=&quot;White&quot; 
+              HorizontalAlignment=&quot;Center&quot;  /&gt;
+          &lt;/Grid&gt;
+        &lt;/ControlTemplate&gt;
+      &lt;/DataGrid.RowValidationErrorTemplate&gt;
+
+    &lt;/DataGrid&gt;
+
+  &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a></li>
+<li><a href="datagrid.html">DataGrid</a></li>
+<li><a href="../data/data-binding-wpf.html">Привязка данных</a></li>
+<li><a href="../data/how-to-implement-binding-validation.html">Реализация проверки привязки</a></li>
+<li><a href="../data/how-to-implement-validation-logic-on-custom-objects.html">Реализация логики проверки для пользовательских объектов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

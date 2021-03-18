@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1043;&#1083;&#1086;&#1073;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1076;&#1083;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1043;&#1083;&#1086;&#1073;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1076;&#1083;&#1103; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="globalization-for-wpf">Глобализация для WPF</h1>
+
+<p>В этом разделе рассматриваются проблемы, которые следует иметь в виду при написании Windows Presentation Foundation (WPF) приложений для мирового рынка. Элементы программирования глобализации определяются в Microsoft .NET в <code>System.Globalization</code>.</p>
+<p><a name="xaml_globalization"></a></p>
+<h2 id="xaml-globalization">Глобализация XAML</h2>
+<p>Язык XAML на основе XML и использует поддержку глобализации, определенную в XML спецификации. В следующих разделах описаны некоторые XAML функций, которые следует учитывать.</p>
+<p><a name="char_reference"></a></p>
+<h3 id="character-references">Ссылки символов</h3>
+<p>Ссылка символа сообщает модуль кода UTF16 конкретного Юникод символов, он представляет в десятичном или шестнадцатеричном формате. В следующем примере показано шестнадцатеричная ссылка символа для по КОПТСКИЙ ЗАГЛАВНОЙ буквы или «Ϩ»:</p>
+<pre><code>&amp;#1000;
+</code></pre>
+<p>В следующем примере шестнадцатеричная ссылка символа. Обратите внимание, что он имеет <strong>x</strong> перед шестнадцатеричным числом.</p>
+<pre><code>&amp;#x3E8;
+</code></pre>
+<p><a name="encoding"></a></p>
+<h3 id="encoding">кодировка</h3>
+<p>Поддерживает следующие кодировки XAML являются ASCII, Юникод UTF-16 и UTF-8. Оператор кодировки должен в начале XAML документа. Если атрибут кодировки и порядок байтов отсутствуют, по умолчанию в средстве синтаксического анализа используется кодировка UTF-8. Предпочтительные кодировки: UTF-8 и UTF-16. UTF-7 не поддерживается. Следующий пример демонстрирует указание кодировки UTF-8 в XAML файл.</p>
+<pre><code>?xml encoding=&quot;UTF-8&quot;?
+</code></pre>
+<p><a name="lang_attrib"></a></p>
+<h3 id="language-attribute">Атрибут Language</h3>
+<p>XAML использует <a href="../../xaml-services/xml-lang-handling-in-xaml.md">XML: lang</a> для представления атрибута языка элемента.  Чтобы воспользоваться преимуществами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a> класса, значение атрибута языка должно быть одним из параметров языка и региональных параметров, определенных классом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo">CultureInfo</a>. <a href="../../xaml-services/xml-lang-handling-in-xaml.md">xml:lang</a> наследуется в дереве элементов (правилами XML, не обязательно из-за наследования свойства зависимости), и его значение по умолчанию — пустая строка, если оно не назначено явно.</p>
+<p>Атрибут языка полезно использовать для задания диалектов. Например, французский язык имеет разные написание, словарь и произношение во Франции, Квебеке, Бельгии и Швейцарии. Также китайский, японский и корейский совместно использовать точки кода в Юникод, но их идеограммы отличаются, и они используют полностью различные шрифты.</p>
+<p>Следующие Язык XAML примере <code>fr-CA</code> атрибут языка для указания на канадский французский.</p>
+<pre><code class="lang-xml">&lt;TextBlock xml:lang=&quot;fr-CA&quot;&gt;Découvrir la France&lt;/TextBlock&gt;
+</code></pre>
+<p><a name="unicode"></a></p>
+<h3 id="unicode">Юникод</h3>
+<p>XAML поддерживает все Юникод функций, включая суррогаты. До тех пор, пока кодировка может быть сопоставлен Юникод, поддерживается. Например, GB18030 представляет определенные символы, которые сопоставляются расширениям A и B и парам суррогатов китайского, японского и корейского. Следовательно, этот набор символов полностью поддерживается. Объект WPF приложение может использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo">StringInfo</a> для работы со строками без понимания того, имеют ли они суррогатные пары или несамостоятельные символы.</p>
+<p><a name="design_intl_ui_with_xaml"></a></p>
+<h2 id="designing-an-international-user-interface-with-xaml">Проектирование международного интерфейса пользователя с XAML</h2>
+<p>В этом разделе описываются пользовательский интерфейс функций, которые следует учитывать при написании приложения.</p>
+<p><a name="intl_text"></a></p>
+<h3 id="international-text">Международный текст</h3>
+<p>WPF включает встроенную обработку для систем письма все поддерживаемые Microsoft .NET Framework.</p>
+<p>В настоящее время поддерживаются следующие скрипты.</p>
+<ul>
+<li><p>Арабский</p>
+</li>
+<li><p>бенгальский</p>
+</li>
+<li><p>деванагари</p>
+</li>
+<li><p>кириллица</p>
+</li>
+<li><p>Греческий</p>
+</li>
+<li><p>Гуджарати</p>
+</li>
+<li><p>гурмухи</p>
+</li>
+<li><p>Иврит</p>
+</li>
+<li><p>Идеографические скрипты</p>
+</li>
+<li><p>Каннада</p>
+</li>
+<li><p>Лаосский</p>
+</li>
+<li><p>Латиница</p>
+</li>
+<li><p>Малаялам</p>
+</li>
+<li><p>Монгольский</p>
+</li>
+<li><p>Ория</p>
+</li>
+<li><p>Сирийский</p>
+</li>
+<li><p>Тамильский</p>
+</li>
+<li><p>Телугу</p>
+</li>
+<li><p>мальдивский</p>
+</li>
+<li><p>Тайский *</p>
+</li>
+<li><p>Тибетский</p>
+</li>
+</ul>
+<ul>
+<li>В этом выпуске отображение и изменение текста на тайском языке поддерживается; а разбиение по словам — нет.</li>
+</ul>
+<p>В настоящее время не поддерживаются следующие скрипты.</p>
+<ul>
+<li><p>Кхмерский</p>
+</li>
+<li><p>Старый хангыль (корейский)</p>
+</li>
+<li><p>бирманский</p>
+</li>
+<li><p>Сингальский</p>
+</li>
+</ul>
+<p>Обработчики всех систем письма поддерживают OpenType шрифты. OpenType шрифты могут включать OpenType макетные таблицы, которые позволяют создателям шрифтов проектировать более качественные международные и типографские шрифты. OpenType Таблицы макетов шрифтов содержат сведения о заменах, позиционирования глифа, обоснование и относительно базового уровня, включении приложений обработки текста для улучшения макетов текста.</p>
+<p>OpenType шрифты разрешить обработку больших глиф наборами с помощью Юникод кодирования. Такая кодировка обеспечивает широкую международную поддержку и возможность использования типографских вариантов глифов.</p>
+<p>WPF отрисовка текста реализована на базе Технология Microsoft ClearType субпиксельной технология, которая поддерживает независимость от разрешения. Это значительно улучшает читаемость и предоставляет возможность поддержки качественных документов журнального стиля для всех скриптов.</p>
+<p><a name="intl_layout"></a></p>
+<h3 id="international-layout">Международный макет</h3>
+<p>WPF предоставляет очень удобный способ поддержки горизонтальной, двунаправленной и вертикальной разметки. В инфраструктуре представления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> свойство может использоваться для определения макета. Ниже перечислены шаблоны направления текста:</p>
+<ul>
+<li><p><em>LeftToRight</em> — горизонтальная разметка для латиницы, восточноазиатских языков и т. д.</p>
+</li>
+<li><p><em>RightToLeft</em> — двунаправленная разметка для арабского, иврита и т. д.</p>
+</li>
+</ul>
+<p><a name="developing_localizable_apps"></a></p>
+<h2 id="developing-localizable-applications">Разработка локализуемых приложений</h2>
+<p>При написании приложений для мирового рынка следует помнить, что приложения должны быть локализуемыми. В следующих разделах указано, на что обратить внимание.</p>
+<p><a name="mui"></a></p>
+<h3 id="multilingual-user-interface">Многоязыковой интерфейс пользователя</h3>
+<p>Многоязыковые интерфейсы пользователя (MUI) является Майкрософт поддержка переключения Пользовательские интерфейсы с одного языка на другой. Объект WPF приложение использует модель сборок для поддержки MUI. Одно приложение содержит независимые от языка сборки, а также зависимые от языка сборки вспомогательных ресурсов. Точкой входа является управляемый EXE-файл в основной сборке.  WPF загрузчик ресурсов использует преимущества Платформав диспетчер ресурсов для поддержки поиска и резервирования ресурсов. Многоязыковые вспомогательные сборки работают с одной и той же основной сборкой. Загружается сборка ресурсов зависит от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.globalization.cultureinfo.currentuiculture">CurrentUICulture</a> текущего потока.</p>
+<p><a name="localizable_ui"></a></p>
+<h3 id="localizable-user-interface">Локализуемый пользовательский интерфейс</h3>
+<p>WPF приложения используют XAML для определения их ИП. XAML позволяет разработчикам задавать иерархию объектов с набором свойств и логику. Главным образом используется XAML является разработка WPF приложения, но его можно использовать для задания иерархии любых среда CLR объектов. Большинство разработчиков используют XAML для указания своего приложения ИП и использовать язык программирования, например C# для реагирования на действия пользователя.</p>
+<p>С точки зрения ресурсов XAML разработанный для описания зависящий от языка ИП элемент ресурсов и поэтому должны быть локализуемыми для поддержки международных языков окончательный формат распространения. Так как XAML не может обрабатывать события, многие XAML приложения содержат блоки кода, чтобы сделать это. Дополнительные сведения см. в разделе <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>. Код исключается и компилируется в разные двоичные файлы при XAML файл преобразуется в BAML-форму XAML. Форма BAML файлов XAML, изображения и другие типы управляемых объектов ресурсов внедряются во вспомогательную сборку ресурсов, которая может быть локализована на другие языки, или в основную сборку, если локализация не требуется.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>WPF приложения поддерживают все ПлатформаCLR ресурсы, включая таблицы строк, изображений и т. д.</p>
+</div>
+<p><a name="building_localizable_apps"></a></p>
+<h3 id="building-localizable-applications">Разработка локализуемых приложений</h3>
+<p>Локализация означает адаптацию ИП для разных языков и региональных параметров. Чтобы сделать WPF локализуемым, разработчикам нужно объединить все локализуемые ресурсы в сборку ресурсов приложения. Сборка ресурсов локализуется на разные языки, и код программной части использует модуль управления ресурсами API для загрузки. Один из файлов, необходимых для WPF приложения — это файл проекта (.proj). Все ресурсы, используемые в приложении, необходимо включить в файл проекта. В следующем примере из CSPROJ-файла показано, как это сделать.</p>
+<pre><code class="lang-xml">&lt;Resource Include=&quot;data\picture1.jpg&quot;/&gt;
+&lt;EmbeddedResource Include=&quot;data\stringtable.en-US.restext&quot;/&gt;
+</code></pre>
+<p>Для использования ресурсов в приложении создайте экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a> и загрузки ресурсов, которые вы хотите использовать. В следующем примере показано, как это сделать.</p>
+<pre><code class="lang-csharp" name="LocalizationResources#2">void OnClick(object sender, RoutedEventArgs e)
+{
+  ResourceManager rm = new ResourceManager (&quot;MySampleApp.data.stringtable&quot;,
+       Assembly.GetExecutingAssembly());
+  Text1.Text = rm.GetString(&quot;Message&quot;);
+}
+</code></pre>
+<p><a name="using_clickonce"></a></p>
+<h2 id="using-clickonce-with-localized-applications">Использование ClickOnce с локализованными приложениями</h2>
+<p>ClickOnce — это новая технология развертывания Windows Forms, которая будет поставляться вместе с Visual Studio 2005. Она позволяет устанавливать и обновлять веб-приложения. При локализации приложения, которое было развернуто с помощью ClickOnce, просмотреть его можно только на локализованном языке и с соответствующими региональными параметрами. Например, если развернутое приложение локализуется на японский его можно просматривать только на японском языке Microsoft Windows не на английском языке Windows. Это представляет проблему, так как это распространенный сценарий для японского пользователям запускать английской версии Windows.</p>
+<p>Чтобы решить эту проблему, можно задать резервный атрибут нейтрального языка. Разработчик приложения может при необходимости удалить ресурсы из основной сборки и указать, что ресурсы можно найти во вспомогательной сборке, соответствующей определенной культуре. Для управления этим процессом используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.neutralresourceslanguageattribute">NeutralResourcesLanguageAttribute</a>. Конструктор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.neutralresourceslanguageattribute">NeutralResourcesLanguageAttribute</a> класс имеет две подписи: одна принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.ultimateresourcefallbacklocation">UltimateResourceFallbackLocation</a> для указания расположения где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a> должен извлекать резервные ресурсы: основную или вспомогательную сборку. В следующем примере показано использование атрибута. Для конечного расположения запасных, код вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a> для поиска ресурсов в подкаталоге «de» каталога текущей выполняемой сборке.</p>
+<pre><code>[assembly: NeutralResourcesLanguageAttribute(
+    &quot;de&quot; , UltimateResourceFallbackLocation.Satellite)]
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="wpf-globalization-and-localization-overview.html">Общие сведения о глобализации и локализации WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

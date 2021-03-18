@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1088;&#1077;&#1084;&#1103; &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1072; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1088;&#1077;&#1084;&#1103; &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1072; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="application-startup-time">Время запуска приложения</h1>
+
+<p>Время, необходимое для запуска WPF-приложения, может сильно варьироваться. В этом разделе описаны различные способы, позволяющие сократить воспринимаемое и фактическое время запуска приложений Windows Presentation Foundation (WPF).</p>
+<h2 id="understanding-cold-startup-and-warm-startup">Общее представление о холодном и горячем запуске</h2>
+<p>Холодный запуск происходит, когда вы запускаете приложение в первый раз после перезагрузки системы либо когда вы запускаете приложение, закрываете его и запускаете снова после длительного периода времени. Если при запуске приложения в списке ожидания диспетчера памяти WIndows не окажется необходимых страниц (кода, статических данных, реестра и т. д.), возникнет ошибка страницы. Для загрузки таких страниц в память требуется доступ к диску.</p>
+<p>Горячий запуск происходит, когда большинство страниц для основных компонентов среды CLR уже загружены в память, что экономит дорогостоящее время доступа к диску. Вот почему при повторном запуске управляемое приложение запускается быстрее.</p>
+<h2 id="implement-a-splash-screen">Реализация экрана-заставки</h2>
+<p>В случаях когда между запуском приложения и отображением первого графического интерфейса происходит значительная неизбежная задержка, можно оптимизировать воспринимаемое время запуска с помощью <em>экрана-заставки</em>. В этом случае изображение появляется практически сразу после того, как пользователь запустит приложение. Когда приложение будет готово к отображению первого пользовательского интерфейса, экран-заставка исчезнет. Начиная с версии .NET Framework 3.5 SP1, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.splashscreen">SplashScreen</a> класс для реализации экрана-заставки. Дополнительные сведения см. в разделе <a href="../app-development/how-to-add-a-splash-screen-to-a-wpf-application.html">Практическое руководство. Добавление в WPF-приложение экрана-заставки</a>.</p>
+<p>Кроме того, используя собственные графические средства Win32, вы можете реализовать свой собственный экран заставки. Отобразите реализацию перед <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.run">Run</a> вызывается метод.</p>
+<h2 id="analyze-the-startup-code">Анализ кода запуска</h2>
+<p>Определите причину задержки холодного запуска. Она может быть связана с дисковым вводом-выводом, но необязательно. В целом использование внешних ресурсов, таких как сеть, веб-службы или диск, следует минимизировать.</p>
+<p>Перед проверкой убедитесь, что управляемый или WPF-код не используют другие выполняемые приложения.</p>
+<p>Сразу после перезагрузки перезапустите WPF-приложение и определите, сколько времени занимает его отображение. Если последующие запуски приложения (горячий запуск) будут происходить быстрее, то проблема холодного запуска, скорее всего, была связана с вводом-выводом.</p>
+<p>Если проблема холодного запуска не связана с вводом-выводом, возможно, ваше приложение выполняет какую-либо длительную инициализацию или вычисление, ожидает завершения какого-либо события или требует существенной JIT-компиляции при запуске. В следующих разделах эти ситуации описываются более подробно.</p>
+<h2 id="optimize-module-loading">Оптимизация загрузки модулей</h2>
+<p>Чтобы определить, какие модули загружает ваше приложение, воспользуйтесь такими средствами, как обозреватель процессов (Procexp.exe) и Tlist.exe. Команда <code>Tlist &lt;pid&gt;</code> показывает все модули, загруженные процессом.</p>
+<p>Например, если вы не подключаетесь к Интернету, но видите, что загружается процесс System.Web.dll, значит, в приложение есть модуль, который ссылается на эту сборку. Убедитесь, что эта ссылка действительно необходима.</p>
+<p>Если в приложении несколько модулей, объедините их в один. В этом случае загрузка сборок CLR займет меньше времени. Меньшее количество сборок также означает, что в CLR хранится меньше состояний.</p>
+<h2 id="defer-initialization-operations">Приостановка операций инициализации</h2>
+<p>Код инициализации можно отложить до тех пор, пока обработка основного окна приложения не будет завершена.</p>
+<p>Помните, что инициализация может выполняться в конструкторе классов, а в случае если код инициализации ссылается на другие классы, это может привести к каскадному выполнению многих конструкторов классов.</p>
+<h2 id="avoid-application-configuration">Предотвращение конфигурации приложения</h2>
+<p>Конфигурации приложения можно избежать. Например, если приложение имеет простые требования к конфигурации и строгое плановое время запуска, для запуска лучше использовать записи реестров или простой INI-файл.</p>
+<h2 id="utilize-the-gac">Использование GAC</h2>
+<p>Если сборка не установлена в глобальном кэше сборок (GAC), возникают задержки, связанные с проверкой хэша сборок со строгими именами, а также с проверкой образа Ngen (если на компьютере доступен машинный образ для этой сборки). Для всех сборок, установленных в GAC, проверка строгих имен пропускается. Дополнительные сведения см. в разделе <a href="../../tools/gacutil-exe-gac-tool.md">Gacutil.exe (средство глобального кэша сборок)</a>.</p>
+<h2 id="use-ngenexe">Применение Ngen.exe</h2>
+<p>В приложении можно использовать генератор образов в машинном коде (Ngen.exe). При использовании Ngen.exe вы меняете потребление ресурсов ЦП на улучшение доступа к диску, поскольку машинный образ, созданный Ngen.exe, скорее всего, будет больше, чем образ MSIL.</p>
+<p>Чтобы сократить время горячего запуска, всегда используйте Ngen.exe в своем приложении, поскольку при этом JIT-компиляция кода приложения не влияет на потребление ресурсов ЦП.</p>
+<p>Ngen.exe может также пригодиться в некоторых сценариях холодного запуска, поскольку в этом случае загрузка JIT-компилятора (mscorjit.dll) не требуется.</p>
+<p>Одновременное присутствие модулей Ngen и JIT может вызвать противоположный эффект. Это связано с тем, что при этом требуется загрузка mscorjit.dll, а когда JIT-компилятор работает с вашим кодом и считывает метаданные сборок, происходит обращение к многим страницам в образах Ngen.</p>
+<h3 id="ngen-and-clickonce">NGen и ClickOnce</h3>
+<p>Время загрузки вашего приложения может также зависеть от выбранного способа его развертывания. ClickOnce развертывание приложений не поддерживает Ngen. Если вы решите использовать Ngen.exe для своего приложения, выберите другой механизм развертывания, например установщик Windows.</p>
+<p>См. дополнительные сведения о <a href="../../tools/ngen-exe-native-image-generator.md">файле Ngen.exe (генераторе образов в машинном коде)</a>.</p>
+<h3 id="rebasing-and-dll-address-collisions">Изменение базового адреса и конфликты DLL-адресов</h3>
+<p>При использовании Ngen.exe следует учитывать, что при загрузке машинных образов в память может измениться базовый адрес. Если DLL не загружается по предпочтительному базовому адресу, поскольку этот диапазон адресов уже распределен, загрузчик Windows загрузит файл по другому адресу, что может потребовать много времени.</p>
+<p>Проверить наличие модулей, в которых все страницы являются закрытыми, можно с помощью средства Virtual Address Dump (Vadump.exe). Если такой модуль имеется, его адрес может измениться. После этого его страницы станут недоступны.</p>
+<p>Дополнительные сведения о настройке базового адреса см. в разделе <a href="../../tools/ngen-exe-native-image-generator.md">Ngen.exe (генератор образов в машинном коде)</a>.</p>
+<h2 id="optimize-authenticode">Оптимизация Authenticode</h2>
+<p>Проверка Authenticode увеличивает время запуска. Сборки, подписанные с помощью Authenticode, должны проверяться центром сертификации (ЦС). Такая проверка может занять много времени, поскольку требует многократного подключения к сети для загрузки текущих списков отзыва сертификатов. Она также обеспечивает всю цепочку действительных сертификатов на пути к доверенному корневому центру. В результате загрузка сборки может задержаться на несколько секунд.</p>
+<p>Вы можете установить сертификат CA на клиентский компьютер или не использовать Authenticode, когда это возможно. Если вашему приложению не требуется свидетельство издателя, платить за проверку подписи вам не нужно.</p>
+<p>Начиная с версии .NET Framework 3,5, конфигурация включает параметр, позволяющий отключить проверку Authenticode. Для этого добавьте в файл конфигурации app.exe следующий параметр.</p>
+<pre><code class="lang-xml">&lt;configuration&gt;  
+    &lt;runtime&gt;  
+        &lt;generatePublisherEvidence enabled=&quot;false&quot;/&gt;   
+    &lt;/runtime&gt;  
+&lt;/configuration&gt;  
+</code></pre>
+<p>Дополнительные сведения см. в разделе <a href="../../configure-apps/file-schema/runtime/generatepublisherevidence-element.md">&lt;Элемент generatePublisherEvidence&gt;</a>.</p>
+<h2 id="compare-performance-on-windows-vista">Сравнение производительности в Windows Vista</h2>
+<p>Диспетчер памяти в Windows Vista включает технологию, которая называется SuperFetch. SuperFetch анализирует шаблоны использования памяти с течением времени, определяя оптимальное содержимое памяти для конкретного пользователя. Она работает постоянно, поддерживая содержимое памяти в любой момент времени.</p>
+<p>Этот подход отличается от технологии Windows XP, которая выполняет предварительную загрузку данных в память без анализа шаблонов использования. Если пользователь часто работает с вашим приложением WPF в Windows Vista, время холодного запуска вашего приложения может сократиться.</p>
+<h2 id="use-appdomains-efficiently">Эффективное использование доменов приложения</h2>
+<p>По возможности загружайте сборки в область кода с нейтральным доменом, чтобы машинный образ, если таковой существует, использовался во всех созданных в приложении доменах.</p>
+<p>Чтобы повысить производительность, необходимо обеспечить взаимодействие между доменами, сократив число междоменных вызовов. По возможности используйте вызовы без аргументов или с аргументами примитивного типа.</p>
+<h2 id="use-the-neutralresourceslanguage-attribute">Использование атрибута NeutralResourcesLanguage</h2>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.neutralresourceslanguageattribute">NeutralResourcesLanguageAttribute</a> для указания нейтрального языка и региональных параметров для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a>. Этот подход позволяет избежать неудачного поиска сборок.</p>
+<h2 id="use-the-binaryformatter-class-for-serialization">Использование класса BinaryFormatter для сериализации</h2>
+<p>Если необходимо использовать сериализацию, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter">BinaryFormatter</a> вместо класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.serialization.xmlserializer">XmlSerializer</a> класса. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter">BinaryFormatter</a> Класс реализован в библиотеке базовых классов (BCL) в сборке mscorlib.dll. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.serialization.xmlserializer">XmlSerializer</a> Реализуется в сборке System.Xml.dll, что может быть загрузку дополнительного DLL.</p>
+<p>Если необходимо использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.serialization.xmlserializer">XmlSerializer</a> класс, вы может повысить производительность, можно создать предварительную сборку сериализации.</p>
+<h2 id="configure-clickonce-to-check-for-updates-after-startup">Настройка технологии ClickOnce на проверку обновлений после запуска</h2>
+<p>Если приложение использует ClickOnce, запретите подключение к сети при запуске, настроив ClickOnce на проверку наличия обновлений на сайте развертывания после запуска приложения.</p>
+<p>Если используется модель приложения браузера XAML (XBAP), обратите внимание на то, что ClickOnce проверяет наличие обновлений на сайте развертывания, даже если XBAP уже присутствует в кэше ClickOnce. Для получения дополнительной информации см. <a href="/visualstudio/deployment/clickonce-security-and-deployment">ClickOnce Security and Deployment</a>.</p>
+<h2 id="configure-the-presentationfontcache-service-to-start-automatically">Настройка автоматического запуска службы PresentationFontCache</h2>
+<p>Первым WPF-приложением, которое загружается после перезагрузки, является служба PresentationFontCache. Служба кэширует системные шрифты, делает их более доступными и повышает общую производительность. Поскольку с запуском службы, а также с некоторыми управляемыми средами связаны временные задержки, службу можно настроить на автоматический запуск при перезагрузке системы.</p>
+<h2 id="set-data-binding-programmatically">Настройка программной привязки данных</h2>
+<p>Вместо использования XAML для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> декларативно для главного окна, рассмотрите возможность установки его в обработчике <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.onactivated">OnActivated</a> метод.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.splashscreen">SplashScreen</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.neutralresourceslanguageattribute">NeutralResourcesLanguageAttribute</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resources.resourcemanager">ResourceManager</a></li>
+<li><a href="../app-development/how-to-add-a-splash-screen-to-a-wpf-application.html">Добавление в WPF-приложение экрана-заставки</a></li>
+<li><a href="../../tools/ngen-exe-native-image-generator.md">Ngen.exe (генератор образов в машинном коде)</a></li>
+<li><a href="../../configure-apps/file-schema/runtime/generatepublisherevidence-element.md">&lt;generatePublisherEvidence &gt; элемент</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

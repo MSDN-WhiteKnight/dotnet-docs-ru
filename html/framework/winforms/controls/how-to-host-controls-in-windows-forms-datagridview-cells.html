@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1074; &#1103;&#1095;&#1077;&#1081;&#1082;&#1072;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1074; &#1103;&#1095;&#1077;&#1081;&#1082;&#1072;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-host-controls-in-windows-forms-datagridview-cells">Практическое руководство. Размещение элементов управления в ячейках элемента управления DataGridView в Windows Forms</h1>
+
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> предоставляет несколько типов столбцов, что позволяет пользователям вводить и редактировать значения различными способами. Если эти типы столбцов не удовлетворяют вашим потребностям ввода данных, вы можете создать собственные типы столбцов с ячейками, содержащими элементы управления по своему выбору. Для этого необходимо определить классы, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a>. Необходимо также определить класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> и реализующий интерфейс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.idatagridvieweditingcontrol">IDataGridViewEditingControl</a>.</p>
+<p>В следующем примере кода показано, как создать столбец календаря. В ячейках этого столбца отображаются даты с помощью обычных текстовых полей, однако при редактировании ячейки появляется элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepicker">DateTimePicker</a>. Чтобы избежать необходимости повторно реализовать функции отображения текстового поля, класс <code>CalendarCell</code> является производным от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcell">DataGridViewTextBoxCell</a>, а не наследует класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> напрямую.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При наследовании от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> и добавлении новых свойств к производному классу необходимо переопределить метод <code>Clone</code>, чтобы скопировать новые свойства во время операций копирования. Кроме того, необходимо вызвать метод <code>Clone</code> базового класса, чтобы свойства базового класса скопировались в новую ячейку или столбец.</p>
+</div>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridViewCalendarColumn#000">using System;
+using System.Windows.Forms;
+
+public class CalendarColumn : DataGridViewColumn
+{
+    public CalendarColumn() : base(new CalendarCell())
+    {
+    }
+
+    public override DataGridViewCell CellTemplate
+    {
+        get
+        {
+            return base.CellTemplate;
+        }
+        set
+        {
+            // Ensure that the cell used for the template is a CalendarCell.
+            if (value != null &amp;&amp; 
+                !value.GetType().IsAssignableFrom(typeof(CalendarCell)))
+            {
+                throw new InvalidCastException(&quot;Must be a CalendarCell&quot;);
+            }
+            base.CellTemplate = value;
+        }
+    }
+}
+
+public class CalendarCell : DataGridViewTextBoxCell
+{
+
+    public CalendarCell()
+        : base()
+    {
+        // Use the short date format.
+        this.Style.Format = &quot;d&quot;;
+    }
+
+    public override void InitializeEditingControl(int rowIndex, object 
+        initialFormattedValue, DataGridViewCellStyle dataGridViewCellStyle)
+    {
+        // Set the value of the editing control to the current cell value.
+        base.InitializeEditingControl(rowIndex, initialFormattedValue, 
+            dataGridViewCellStyle);
+        CalendarEditingControl ctl = 
+            DataGridView.EditingControl as CalendarEditingControl;
+        // Use the default row value when Value property is null.
+        if (this.Value == null)
+        {
+            ctl.Value = (DateTime)this.DefaultNewRowValue;
+        }
+        else
+        {
+            ctl.Value = (DateTime)this.Value;
+        }
+    }
+
+    public override Type EditType
+    {
+        get
+        {
+            // Return the type of the editing control that CalendarCell uses.
+            return typeof(CalendarEditingControl);
+        }
+    }
+
+    public override Type ValueType
+    {
+        get
+        {
+            // Return the type of the value that CalendarCell contains.
+            
+            return typeof(DateTime);
+        }
+    }
+
+    public override object DefaultNewRowValue
+    {
+        get
+        {
+            // Use the current date and time as the default value.
+            return DateTime.Now;
+        }
+    }
+}
+
+class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl
+{
+    DataGridView dataGridView;
+    private bool valueChanged = false;
+    int rowIndex;
+
+    public CalendarEditingControl()
+    {
+        this.Format = DateTimePickerFormat.Short;
+    }
+
+    // Implements the IDataGridViewEditingControl.EditingControlFormattedValue 
+    // property.
+    public object EditingControlFormattedValue
+    {
+        get
+        {
+            return this.Value.ToShortDateString();
+        }
+        set
+        {            
+            if (value is String)
+            {
+                try
+                {
+                    // This will throw an exception of the string is 
+                    // null, empty, or not in the format of a date.
+                    this.Value = DateTime.Parse((String)value);
+                }
+                catch
+                {
+                    // In the case of an exception, just use the 
+                    // default value so we're not left with a null
+                    // value.
+                    this.Value = DateTime.Now;
+                }
+            }
+        }
+    }
+
+    // Implements the 
+    // IDataGridViewEditingControl.GetEditingControlFormattedValue method.
+    public object GetEditingControlFormattedValue(
+        DataGridViewDataErrorContexts context)
+    {
+        return EditingControlFormattedValue;
+    }
+
+    // Implements the 
+    // IDataGridViewEditingControl.ApplyCellStyleToEditingControl method.
+    public void ApplyCellStyleToEditingControl(
+        DataGridViewCellStyle dataGridViewCellStyle)
+    {
+        this.Font = dataGridViewCellStyle.Font;
+        this.CalendarForeColor = dataGridViewCellStyle.ForeColor;
+        this.CalendarMonthBackground = dataGridViewCellStyle.BackColor;
+    }
+
+    // Implements the IDataGridViewEditingControl.EditingControlRowIndex 
+    // property.
+    public int EditingControlRowIndex
+    {
+        get
+        {
+            return rowIndex;
+        }
+        set
+        {
+            rowIndex = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl.EditingControlWantsInputKey 
+    // method.
+    public bool EditingControlWantsInputKey(
+        Keys key, bool dataGridViewWantsInputKey)
+    {
+        // Let the DateTimePicker handle the keys listed.
+        switch (key &amp; Keys.KeyCode)
+        {
+            case Keys.Left:
+            case Keys.Up:
+            case Keys.Down:
+            case Keys.Right:
+            case Keys.Home:
+            case Keys.End:
+            case Keys.PageDown:
+            case Keys.PageUp:
+                return true;
+            default:
+                return !dataGridViewWantsInputKey;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl.PrepareEditingControlForEdit 
+    // method.
+    public void PrepareEditingControlForEdit(bool selectAll)
+    {
+        // No preparation needs to be done.
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .RepositionEditingControlOnValueChange property.
+    public bool RepositionEditingControlOnValueChange
+    {
+        get
+        {
+            return false;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingControlDataGridView property.
+    public DataGridView EditingControlDataGridView
+    {
+        get
+        {
+            return dataGridView;
+        }
+        set
+        {
+            dataGridView = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingControlValueChanged property.
+    public bool EditingControlValueChanged
+    {
+        get
+        {
+            return valueChanged;
+        }
+        set
+        {
+            valueChanged = value;
+        }
+    }
+
+    // Implements the IDataGridViewEditingControl
+    // .EditingPanelCursor property.
+    public Cursor EditingPanelCursor
+    {
+        get
+        {
+            return base.Cursor;
+        }
+    }
+
+    protected override void OnValueChanged(EventArgs eventargs)
+    {
+        // Notify the DataGridView that the contents of the cell
+        // have changed.
+        valueChanged = true;
+        this.EditingControlDataGridView.NotifyCurrentCellDirty(true);
+        base.OnValueChanged(eventargs);
+    }
+}
+
+public class Form1 : Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new Form1());
+    }
+
+    public Form1()
+    {
+        this.dataGridView1.Dock = DockStyle.Fill;
+        this.Controls.Add(this.dataGridView1);
+        this.Load += new EventHandler(Form1_Load);
+        this.Text = &quot;DataGridView calendar column demo&quot;;
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        CalendarColumn col = new CalendarColumn();
+        this.dataGridView1.Columns.Add(col);
+        this.dataGridView1.RowCount = 5;
+        foreach (DataGridViewRow row in this.dataGridView1.Rows)
+        {
+            row.Cells[0].Value = DateTime.Now;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>В следующем примере требуется:</p>
+<ul>
+<li>ссылки на сборки System и System.Windows.Forms;</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcell">DataGridViewTextBoxCell</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.idatagridvieweditingcontrol">IDataGridViewEditingControl</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepicker">DateTimePicker</a></li>
+<li><a href="customizing-the-windows-forms-datagridview-control.html">Настройка элементов управления DataGridView в Windows Forms</a></li>
+<li><a href="datagridview-control-architecture-windows-forms.html">Архитектура элементов управления DataGridView</a></li>
+<li><a href="column-types-in-the-windows-forms-datagridview-control.html">Типы столбцов элемента управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

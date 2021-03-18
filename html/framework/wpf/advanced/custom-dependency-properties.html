@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-dependency-properties">Пользовательские свойства зависимостей</h1>
+
+<p>В этом разделе описываются основания для создания настраиваемых свойств зависимостей для приложений Windows Presentation Foundation (WPF), а также этапы и некоторые варианты реализации, которые могут повысить производительность, удобство использования и универсальность свойств.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах WPF и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>. Чтобы выполнить примеры в этом разделе, следует также иметь представление о Язык XAML и написании простых приложений WPF.</p>
+<p><a name="whatis"></a></p>
+<h2 id="what-is-a-dependency-property">Что такое свойство зависимостей?</h2>
+<p>Реализовать поведение, аналогичное свойству среда CLR, для поддержки стилизации, привязки данных, наследования, анимации и значений по умолчанию можно путем реализации его как свойства зависимостей. Свойства зависимостей являются свойствами, которые зарегистрированы в WPF системы свойств путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> метод (или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerreadonly">RegisterReadOnly</a>), и снабжаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> поле идентификатора. Свойства зависимостей могут использоваться только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> типов, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> находится достаточно высоко в WPF иерархии классов, поэтому большинство классов, доступных в WPF могут поддерживать свойства зависимостей. Дополнительные сведения о свойствах зависимостей и некоторых терминах и соглашениях, используемых для их описания в этом SDK, см. в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.</p>
+<p><a name="example_dp"></a></p>
+<h2 id="examples-of-dependency-properties">Примеры свойств зависимостей</h2>
+<p>Примеры свойств зависимостей, реализуемых в WPF классы включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойство и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a> свойство среди многих других. Каждое свойство зависимости, предоставленное классом имеет соответствующий открытое статическое поле типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> на том же классе. Это идентификатор для свойства зависимостей. Идентификатор именуется по следующему соглашению: имя свойства зависимостей, за которым следует строка <code>Property</code>. Например, соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> поле идентификатора для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.backgroundproperty">BackgroundProperty</a>. Идентификатор хранит сведения о свойстве зависимостей, как она была зарегистрирована, а затем идентификатор позже используется для других операций, в которых участвует свойство зависимостей, например, вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>.</p>
+<p>Как упоминалось в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>, все свойства зависимостей в WPF (за исключением наиболее присоединенных свойств) также являются свойствами CLR из-за реализации &quot;оболочки&quot;. Таким образом, из кода можно получать или задавать свойства зависимостей путем вызова методов доступа CLR, определяющих оболочки таким же образом, как и для других свойств CLR. Как потребитель созданных свойств зависимостей, вы обычно не используете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>, которые являются точки подключения к базовой системе свойств. Вместо этого существующая реализация CLR уже будет вызван свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> в <code>get</code> и <code>set</code> реализации оболочки свойства, соответствующим образом используя поле идентификатора . При собственной реализации настраиваемого свойства зависимостей вы будете определять оболочку аналогичным образом.</p>
+<p><a name="backing_with_dp"></a></p>
+<h2 id="when-should-you-implement-a-dependency-property">Почему требуется реализовывать свойство зависимостей?</h2>
+<p>При реализации свойства в классе, до тех пор, пока ваш класс является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>, вы можете снабдить свое свойство с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор и, следовательно, чтобы сделать его свойства зависимостей. Назначение свойства свойством зависимостей не всегда требуется и не всегда уместно и зависит от конкретной ситуации. В некоторых случаях достаточно просто снабдить свойство закрытым полем. Тем не менее реализовать свойство как свойство зависимостей потребуется, если свойство должно поддерживать одну или несколько из следующих возможностей WPF.</p>
+<ul>
+<li><p>Требуется, чтобы свойство было задаваемым в стиле. Более подробную информацию см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+</li>
+<li><p>Требуется, чтобы свойство поддерживало привязку данных. Дополнительные сведения о свойствах зависимостей привязки данных см. в разделе <a href="../data/how-to-bind-the-properties-of-two-controls.html">Привязка свойств двух элементов управления</a>.</p>
+</li>
+<li><p>Требуется, чтобы свойство было задаваемым с помощью динамической ссылки ресурса. Дополнительные сведения см. в разделе <a href="xaml-resources.html">Ресурсы XAML</a>.</p>
+</li>
+<li><p>Требуется настроить автоматическое наследование значения свойства из родительского элемента в дереве элементов. В этом случае регистрация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerattached">RegisterAttached</a> метод, даже при создании оболочки свойства для CLR доступа. Дополнительные сведения см. в разделе <a href="property-value-inheritance.html">Наследование значения свойства</a>.</p>
+</li>
+<li><p>Требуется, чтобы свойство поддерживало анимацию. Более подробную информацию см. в разделе <a href="../graphics-multimedia/animation-overview.html">Общие сведения об эффектах анимации</a>.</p>
+</li>
+<li><p>Требуется, чтобы система свойств сообщала об изменении предыдущего значения свойства действиями, выполняемыми системой свойств, окружением или пользователем, или путем чтения и использования стилей. Используя метаданные свойства, свойство может указывать метод обратного вызова, который будет вызываться каждый раз, когда система свойств определит, что значение свойства было однозначно изменено. Связанным понятием является приведение значения свойства. Дополнительные сведения см. в разделе <a href="dependency-property-callbacks-and-validation.html">Проверка и обратные вызовы свойства зависимостей</a>.</p>
+</li>
+<li><p>Требуется использовать установленные соглашения о метаданных, которые также используются процессами WPF, такими как передача сведений о том, нужно ли системе макета перестраивать визуальные компоненты элемента при изменении значения свойства. Или требуется возможность использовать переопределения метаданных таким образом, чтобы производные классы могли изменять основанные на метаданных характеристики, такие как значение по умолчанию.</p>
+</li>
+<li><p>Требуется, чтобы свойства пользовательского элемента управления для получения конструктора WPF для Visual Studio поддерживают, например <strong>свойства</strong> редактирование окна. Дополнительные сведения см. в разделе <a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a>.</p>
+</li>
+</ul>
+<p>Рекомендуется рассмотреть возможность реализации сценариев путем переопределения метаданных существующего свойства зависимостей, вместо реализации совершенно нового свойства. Практическая польза переопределения метаданных зависит от сценария и того, насколько этот сценарий схож с реализацией существующих свойств зависимостей и классов WPF. Дополнительные сведения о переопределении метаданных для существующих свойств см. в разделе <a href="dependency-property-metadata.html">Метаданные свойств зависимостей</a>.</p>
+<p><a name="checklist"></a></p>
+<h2 id="checklist-for-defining-a-dependency-property">Контрольный список определения свойства зависимостей</h2>
+<p>Определение свойства зависимостей состоит из четырех различных понятий. Эти понятия не обязательно являются строгими этапами процедуры, так как некоторые из них в итоге объединяются в одну строку кода в реализации.</p>
+<ul>
+<li><p>(Необязательно.) Создайте метаданные для свойства зависимостей.</p>
+</li>
+<li><p>Зарегистрируйте имя свойства в системе свойств, указав тип владельца и тип значения свойства. Также укажите метаданные свойства, если они используются.</p>
+</li>
+<li><p>Определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор, что <code>public</code> <code>static</code> <code>readonly</code> поля в типе владельца.</p>
+</li>
+<li><p>Определите свойство-&quot;оболочку&quot; CLR, имя которого соответствует имени свойства зависимостей. Реализуйте методы доступа <code>get</code> и <code>set</code> свойства-&quot;оболочки&quot; CLR для подключения к свойству зависимостей, которое оно поддерживает.</p>
+</li>
+</ul>
+<p><a name="registering"></a></p>
+<h3 id="registering-the-property-with-the-property-system">Регистрация свойства в системе свойств</h3>
+<p>Чтобы назначить свойство свойством зависимостей, необходимо зарегистрировать это свойство в таблице, обслуживаемой системой свойств, и предоставить ему уникальный идентификатор, используемый в качестве квалификатора для последующих операций системы свойств. Эти операции могут быть внутренними операциями или вашим собственным кодом, вызывающим систему свойств API - интерфейсы. Чтобы зарегистрировать свойство, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> метод в теле класса (внутри класса, но вне определения любого из членов). Поле идентификатора также предоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> вызова метода, в качестве возвращаемого значения. Причина, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> вызов выполняется за пределами другого элемента определения обусловлено это возвращаемое значение используется для назначения и создания <code>public</code> <code>static</code> <code>readonly</code> поле типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> как часть класса. Это поле становится идентификатором для вашего свойства зависимостей.</p>
+<pre><code class="lang-csharp" name="WPFAquariumSln#RegisterAG">public static readonly DependencyProperty AquariumGraphicProperty = DependencyProperty.Register(
+  &quot;AquariumGraphic&quot;,
+  typeof(Uri),
+  typeof(AquariumObject),
+  new FrameworkPropertyMetadata(null,
+      FrameworkPropertyMetadataOptions.AffectsRender,
+      new PropertyChangedCallback(OnUriChanged)
+  )
+);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="nameconventions"></a></p>
+<h3 id="dependency-property-name-conventions">Соглашения об именовании свойств зависимостей</h3>
+<p>Существуют установленные соглашения об именовании, касающиеся свойств зависимостей, которым необходимо следовать, если ситуация не является исключительной.</p>
+<p>Само свойство зависимости будет иметь базовое имя, «AquariumGraphic» пример, в котором задается как первый параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a>. Это имя должно быть уникальным в пределах каждого регистрирующего типа. Считается, что свойства зависимостей, наследуемые через базовые типы, уже являются частью регистрирующего типа: имена наследуемых свойств нельзя зарегистрировать повторно. Однако существует способ добавления класса как владельца свойства зависимостей даже в том случае, если это свойство зависимостей не наследуется. Дополнительные сведения см. в разделе <a href="dependency-property-metadata.html">Метаданные свойств зависимостей</a>.</p>
+<p>При создании поля идентификатора назовите это поле по зарегистрированному имени свойства, добавив суффикс <code>Property</code>. Это поле является идентификатором для свойства зависимостей, и он будет использоваться позже в качестве входных данных для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> разрешить вызовы, которые будут выполняться в оболочках, при других кода доступ к свойству через ваш код доступе любого внешнего кода вы , системой свойств и, вероятно, XAML процессоров.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Определение свойства зависимостей в теле класса является обычной реализацией, однако его также можно определить в статическом конструкторе класса. Этот подход может оказаться целесообразным, если для инициализации свойства зависимостей требуется несколько строк кода.</p>
+</div>
+<p><a name="wrapper1"></a></p>
+<h3 id="implementing-the-wrapper">Реализация &quot;оболочки&quot;</h3>
+<p>Реализация оболочки должна вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> в <code>get</code> реализации, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> в <code>set</code> (исходный вызов регистрации и поле показанная здесь реализация слишком для ясности).</p>
+<p>В все, кроме исключительных обстоятельствах реализации оболочки должны выполнять только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> действия, соответственно. Причина этого обсуждается в разделе <a href="xaml-loading-and-dependency-properties.html">Загрузка кода XAML и свойства зависимостей</a>.</p>
+<p>Все существующие открытые свойства зависимостей, предоставляемые для классов WPF, используют эту простую модель реализации оболочки. Основные сложности обработки свойств зависимостей определяются наследуемым поведением системы свойств или реализацией через другие понятия, такие как приведение или обратные вызовы изменения свойства через метаданные свойства.</p>
+<pre><code class="lang-csharp" name="WPFAquariumSln#AGWithWrapper">
+public static readonly DependencyProperty AquariumGraphicProperty = DependencyProperty.Register(
+  &quot;AquariumGraphic&quot;,
+  typeof(Uri),
+  typeof(AquariumObject),
+  new FrameworkPropertyMetadata(null,
+      FrameworkPropertyMetadataOptions.AffectsRender,
+      new PropertyChangedCallback(OnUriChanged)
+  )
+);
+public Uri AquariumGraphic
+{
+  get { return (Uri)GetValue(AquariumGraphicProperty); }
+  set { SetValue(AquariumGraphicProperty, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Опять же, по соглашению, имя свойства-оболочки должно быть совпадает с именем, выбранным и заданным в качестве первого параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> вызов, который зарегистрировал свойство. Если свойство не следует соглашению, это не обязательно ведет к его неработоспособности, однако будет наблюдаться несколько серьезных проблем.</p>
+<ul>
+<li><p>Не будут работать определенные аспекты стилей и шаблонов.</p>
+</li>
+<li><p>Большинство инструментов и конструкторов полагается на соглашения об именовании для правильной сериализации XAML, а также для предоставления помощи разработчику на уровне свойств.</p>
+</li>
+<li><p>Текущая реализация загрузчика WPF XAML полностью обходит оболочки и основывается на соглашении об именовании при обработке значений атрибутов. Дополнительные сведения см. в разделе <a href="xaml-loading-and-dependency-properties.html">Загрузка кода XAML и свойства зависимостей</a>.</p>
+</li>
+</ul>
+<p><a name="metadata"></a></p>
+<h3 id="property-metadata-for-a-new-dependency-property">Метаданные свойства для нового свойства зависимостей</h3>
+<p>При регистрации свойства зависимостей через систему свойств создается объект метаданных, который хранит характеристики свойства. Многие из этих характеристик имеют значения по умолчанию, заданные в случае, если данное свойство зарегистрировано с помощью простых сигнатур <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a>. Другие сигнатуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> позволяют указывать метаданные, требуемые при регистрации свойства. Как правило, метаданные, задаваемые для свойства зависимостей, предполагают предоставление значений по умолчанию, применяемых для новых экземпляров, которые используют свойство.</p>
+<p>При создании свойства зависимостей, которое существует в производном классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, можно использовать более специализированный класс метаданных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a> вместо базового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertymetadata">PropertyMetadata</a> класса. Конструктор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a> класс имеет несколько сигнатур, в котором можно указать различные характеристики метаданных в сочетании. Если вы хотите указать только значение по умолчанию, используйте сигнатуру, которая принимает один параметр типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>. Передайте этот параметр объекта как значение по умолчанию определенного типа, для свойства (предоставленное значение по умолчанию должен быть типом, указанным как <code>propertyType</code> параметр в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> вызова).</p>
+<p>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a>, можно также указать флаги параметров метаданных для свойства. Эти флаги преобразуются в дискретные свойства в метаданных свойства после регистрации и используются для передачи определенных условных объектов в другие процессы, например в обработчик макетов.</p>
+<h4 id="setting-appropriate-metadata-flags">Задание соответствующих флагов метаданных</h4>
+<ul>
+<li><p>Если свойство (или изменения в его значении) влияет на пользовательский интерфейс, и в частности затрагивает как система макета размер или отрисовку элемента на странице, задайте одно или несколько из следующих флагов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsMeasure">AffectsMeasure</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsArrange">AffectsArrange</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsRender">AffectsRender</a>.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsMeasure">AffectsMeasure</a> Указывает, что изменение этого свойства требует изменения для ИП подготовки отчетов, где содержащего его объекта может потребовать больше или меньше места в родительском элементе. Например, этот флаг следует задать для свойства &quot;Ширина&quot;.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsArrange">AffectsArrange</a> Указывает, что изменение этого свойства требует изменения для ИП отрисовки, обычно не требует изменения в выделенном пространстве, однако означает, что изменилось размещение в пространстве. Например, этот флаг следует задать для свойства &quot;Выравнивание&quot;.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsRender">AffectsRender</a> Указывает, что произошло некоторое другое изменение, не повлияет на макет и измерение, но требуют повторной визуализации. Примером будет свойство, изменяющее цвет существующего элемента, например &quot;Фон&quot;.</p>
+</li>
+<li><p>Эти флаги часто используются в качестве протокола в метаданных для собственных реализаций переопределения системы свойств или обратных вызовов макета. Например, возможно, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.onpropertychanged">OnPropertyChanged</a> обратного вызова, который будет вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.invalidatearrange">InvalidateArrange</a> Если любое свойство экземпляра сообщает об изменении значения и имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.affectsarrange">AffectsArrange</a> как <code>true</code> в своих метаданных.</p>
+</li>
+</ul>
+</li>
+<li><p>Некоторые свойства могут влиять на характеристики отрисовки содержащего их родительского элемента указанными выше способами и помимо изменений в обязательном размере, упомянутых выше. Например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.paragraph.minorphanlines">MinOrphanLines</a> свойства, используемого в модели потокового документа, где изменения этого свойства можно изменять общую отрисовку документа нефиксированного формата, содержащего абзац. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsParentArrange">AffectsParentArrange</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsParentMeasure">AffectsParentMeasure</a> для определения аналогичных случаев в ваших собственных свойствах.</p>
+</li>
+<li><p>По умолчанию свойства зависимостей поддерживают привязку данных. Вы можете специально отключить привязку данных для случаев, когда отсутствует практический смысл в привязке данных или когда быстродействие в привязке данных для больших объектов становится проблемой.</p>
+</li>
+<li><p>По умолчанию, привязка данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a> для значений по умолчанию свойства зависимостей для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a>. Можно всегда изменить привязки на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> каждого экземпляра привязки; Дополнительные сведения см. в разделе <a href="../data/how-to-specify-the-direction-of-the-binding.html">Указание направления привязки</a>. Но как автор свойства зависимостей, можно использовать свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> режима привязки по умолчанию. Примером существующего свойства зависимости является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem.issubmenuopen">MenuItem.IsSubmenuOpen</a>; сценарий для этого свойства является то, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem.issubmenuopen">IsSubmenuOpen</a> параметр логики и компоновки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> взаимодействовать со стилями темы по умолчанию. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem.issubmenuopen">IsSubmenuOpen</a> Свойство логики изначально использует привязку данных для поддержания состояния свойства в соответствии с другими свойствами состояния и вызовы методов. Другим примером свойства, которое привязывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_TwoWay">TwoWay</a> по умолчанию является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">TextBox.Text</a>.</p>
+</li>
+<li><p>Можно также включить наследование свойств в пользовательское свойство зависимости, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_Inherits">Inherits</a> флаг. Наследование свойств удобно для ситуации, когда родительские и дочерние элементы имеют общее свойство и для дочерних элементов имеет смысл задать то же значение свойства, что и в родительском элементе. Примером наследуемого свойства является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a>, который используется для операций привязки, чтобы включить важный сценарий «основной-подробности» для представления данных. Благодаря <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> наследуемые, дочерние элементы наследуют контекст данных также. Благодаря наследованию значения свойства вы можете указать контекст данных в корне приложения или страницы и вам не потребуется уточнять его для привязок во всех возможных дочерних элементах. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> также представляет собой хороший пример, чтобы продемонстрировать, что наследование переопределяет значение по умолчанию, но может всегда быть локально установлено для любого конкретного дочернего элемента. Дополнительные сведения см. в разделе <a href="../data/how-to-use-the-master-detail-pattern-with-hierarchical-data.html">использование шаблона «основной-подробности» с иерархическими данными</a>. Наследование значения свойства может влиять на производительность, и таким образом, его следует использовать с осторожностью. Дополнительные сведения см. в разделе <a href="property-value-inheritance.html">Наследование значения свойства</a>.</p>
+</li>
+<li><p>Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_Journal">Journal</a> флаг, указывающий, если свойство зависимостей должны обнаруживаться или использоваться службами ведения журнала переходов. Пример — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.selectedindex">SelectedIndex</a> свойство; любой элемент, выбранный в выделенной области элемента управления должны сохраняться при навигации по истории ведения журнала.</p>
+</li>
+</ul>
+<p><a name="RODP"></a></p>
+<h2 id="read-only-dependency-properties">Свойства зависимости &quot;только для чтения&quot;</h2>
+<p>Можно определить свойство зависимости, которое доступно только для чтения. Однако ситуации для такого использования немного отличаются, как и процедура регистрации свойства в системе свойств и предоставление идентификатора. Дополнительные сведения см. в разделе <a href="read-only-dependency-properties.html">Свойства зависимостей &quot;только для чтения&quot;</a>.</p>
+<p><a name="CTDP"></a></p>
+<h2 id="collection-type-dependency-properties">Свойства зависимостей типа коллекция</h2>
+<p>Свойства зависимостей типа коллекции имеют некоторые дополнительные проблемы при реализации, которые необходимо учитывать. Подробности см. в разделе <a href="collection-type-dependency-properties.html">Свойства зависимостей типа коллекции</a>.</p>
+<p><a name="SecurityC"></a></p>
+<h2 id="dependency-property-security-considerations">Замечания по безопасности свойств зависимостей</h2>
+<p>Свойства зависимостей должны объявляться как открытые свойства. Поля идентификаторов свойств зависимостей должны объявляться как открытые статические поля. Даже при попытке объявить другие уровни доступа (например, защищенный) к свойству зависимостей всегда можно обращаться через идентификатор в сочетании с API - интерфейсы системы свойств. Даже защищенное поле идентификатора потенциально доступно из-за метаданных reporting или определения значения API - интерфейсы , которые являются частью системы свойств, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.localvalueenumerator">LocalValueEnumerator</a>. Дополнительные сведения см. в разделе <a href="dependency-property-security.html">Безопасность свойств зависимостей</a>.</p>
+<p><a name="DPCtor"></a></p>
+<h2 id="dependency-properties-and-class-constructors">Свойства зависимостей и конструкторы класса</h2>
+<p>Есть общий принцип в программировании управляемого кода (он часто принудительно применяется средствами анализа кода, такими как FxCop), подразумевающий, что конструкторы класса не должны вызывать виртуальные методы. Этот принцип обусловлен тем, что конструкторы могут быть вызваны в качестве базовой инициализации конструктора производного класса, а ввод виртуального метода через конструктор может произойти в состоянии неполной инициализации конструируемого экземпляра объекта. При наследовании от любого класса, который уже является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>, следует иметь в виду, что сама система свойств вызывает и предоставляет виртуальные методы. Эти виртуальные методы являются частью служб системы свойств WPF. Переопределение методов позволяет производным классам участвовать в определении значения. Чтобы избежать потенциальных проблем при инициализации среды выполнения, не задавайте значения свойств зависимостей в конструкторах классов (если только вы не следуете конкретному шаблону конструктора). Подробнее см. в разделе <a href="safe-constructor-patterns-for-dependencyobjects.html">Шаблоны безопасного конструктора для DependencyObjects</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="dependency-property-metadata.html">Метаданные свойства зависимостей</a></li>
+<li><a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a></li>
+<li><a href="collection-type-dependency-properties.html">Свойства зависимостей типа коллекции</a></li>
+<li><a href="dependency-property-security.html">Безопасность свойства зависимостей</a></li>
+<li><a href="xaml-loading-and-dependency-properties.html">Загрузка кода XAML и свойства зависимостей</a></li>
+<li><a href="safe-constructor-patterns-for-dependencyobjects.html">Шаблоны безопасного конструктора для DependencyObjects</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

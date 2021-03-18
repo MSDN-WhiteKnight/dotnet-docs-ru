@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1044;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1077; &#1084;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080; WPF 3D | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1044;&#1086;&#1089;&#1090;&#1080;&#1078;&#1077;&#1085;&#1080;&#1077; &#1084;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086;&#1081; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080; WPF 3D | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="maximize-wpf-3d-performance">Достижение максимальной производительности WPF 3D</h1>
+
+<p>При использовании Windows Presentation Foundation (WPF) для создания трехмерных элементов управления и включения трехмерных сцен в приложениях, важно рассмотреть вопрос оптимизации производительности. Здесь представлен список 3D классов и свойств, которые влияют на производительность приложения, а также рекомендации по оптимизации производительности при их использовании.</p>
+<p>В этом разделе предполагается, что хорошо знакомы с Windows Presentation Foundation (WPF) трехмерные функции. В этом документе приводятся советы для «уровень отрисовки 2» — примерно определяется как оборудование, поддерживающее версия построителя текстуры 2.0 и вершинный построитель текстуры версии 2.0. Дополнительные сведения см. в разделе <a href="../advanced/graphics-rendering-tiers.html">уровни отрисовки графики</a>.</p>
+<h2 id="performance-impact-high">Влияние на производительность: High</h2>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Рекомендация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a></td>
+<td>Скорость кисти (от самой быстрой к самой медленной):<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> (с кэшированием)<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> (с кэшированием)<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.radialgradientbrush">RadialGradientBrush</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> (без кэширования).<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> (без кэширования).</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.cliptoboundsproperty">ClipToBoundsProperty</a></td>
+<td>Задайте <code>Viewport3D.ClipToBounds</code> значение false, если вы не обязательно должны иметь Windows Presentation Foundation (WPF) явно усечение содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a> прямоугольник Viewport3D. Windows Presentation Foundation (WPF) Сглаженный обрезки может выполняться очень медленно, и <code>ClipToBounds</code> (медленно) включен по умолчанию на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ishittestvisible">IsHitTestVisible</a></td>
+<td>Задайте <code>Viewport3D.IsHitTestVisible</code> значение false, если нет необходимости Windows Presentation Foundation (WPF) рассмотреть содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a> при выполнении проверки нажатия мыши.  Проверка нажатия трехмерного содержимого выполняется программным образом и может быть достаточно больших сеточных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ishittestvisible">IsHitTestVisible</a> (медленно) включен по умолчанию на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a></td>
+<td>Создавайте различные модели только в том случае, когда им нужен различные материалы или преобразования.  В противном случае попробуйте объединить несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a> экземпляры с одним и тем же материалы и преобразования в несколько больших <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a> экземпляров.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a></td>
+<td>Сетка анимации — Изменение отдельных вершин сетки на основе покадрового — не всегда эффективно в Windows Presentation Foundation (WPF).  Чтобы свести к минимуму влияние на производительность уведомления об изменениях, при изменении каждой вершины, отсоедините сетку из визуального дерева до выполнения каждой вершины.  После сетки был изменен, снова присоедините ее к визуальному дереву.  Кроме того попробуйте минимизировать размер сетки, таким образом, будет анимирован.</td>
+</tr>
+<tr>
+<td>3D сглаживание</td>
+<td>Чтобы увеличить скорость отрисовки, отключите мультисэмплинга на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a> , установив присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.edgemode">EdgeMode</a> для <code>Aliased</code>.  По умолчанию, 3D сглаживание отключено на Microsoft Windows XP и включены на Windows Vista с 4 образцами на пиксель.</td>
+</tr>
+<tr>
+<td>Текста</td>
+<td>Live текст в трехмерной сцене (live, так как он <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a>) может выполняться медленно. Попробуйте вместо этого использовать изображения текста (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a>) Если не приведет к изменению текста.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a></td>
+<td>Если необходимо использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> в трехмерной сцене, так как содержимое кисти не является статическим, попробуйте, кэшировать кисть (установив это присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cachinghint">CachingHint</a> для <code>Cache</code>).  Пороги недействительности минимальный и максимальный масштаб (с помощью вложенных свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cacheinvalidationthresholdminimum">CacheInvalidationThresholdMinimum</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cacheinvalidationthresholdmaximum">CacheInvalidationThresholdMaximum</a>), чтобы кэшируемых кистей не будет повторно создать слишком часто, сохраняя при этом нужный уровень качества.  По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> не кэшируются, это означает, что каждый раз, когда что-то закрашивается с кисть, которая должна быть повторно подготовленных к просмотру, все содержимое кисти сначала должен быть заново отрисовать промежуточных область.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.effects.bitmapeffect">BitmapEffect</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.effects.bitmapeffect">BitmapEffect</a> заставляет все измененное содержимое будет отображаться без аппаратного ускорения.  Для наилучшей производительности, не используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.effects.bitmapeffect">BitmapEffect</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="performance-impact-medium">Влияние на производительность: Средняя</h2>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Рекомендация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a></td>
+<td>Когда сетки определяется как соседними треугольники с общими вершинами, и эти вершины имеют те же позиции, обычный и координаты текстуры, определите каждую общую вершину только один раз, а затем определите треугольники по индексу с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.triangleindices">TriangleIndices</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a></td>
+<td>Попробуйте уменьшить размеры текстуры при наличии явного управления размер (при использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a> и/или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>).  Обратите внимание, что текстуры более низкого разрешения могут снизить качество изображения, поэтому следует найти правильный баланс между качеством и производительностью.</td>
+</tr>
+<tr>
+<td>Непрозрачность</td>
+<td>При отрисовке прозрачные трехмерного содержимого (например отражений), используйте свойства непрозрачности кисти или материалов (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush.opacity">Opacity</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.diffusematerial.color">Color</a>) вместо создания отдельного прозрачные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a> , задав <code>Viewport3D.Opacity</code> значение меньше 1.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a></td>
+<td>Свести к минимуму количество <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a> объектов, вы используете в сцене.  Поместите несколько 3D моделей в тот же Viewport3D, а не создавать отдельные экземпляры Viewport3D для каждой модели.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a></td>
+<td>Обычно это полезно для повторного использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a>, кистей и материалов.  Все являются multiparentable, так как они являются производными от <code>Freezable</code>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a></td>
+<td>Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод на объектах Freezable, если их свойства останется без изменений в приложении.  Замораживание можно уменьшить рабочего набора, а также повысить скорость.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> при содержимое кисти не изменится.  2D-содержимого могут преобразовываться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a> , а затем использовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d.backmaterial">BackMaterial</a></td>
+<td>Не используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d.backmaterial">BackMaterial</a> бесполезно, если фактически см. в разделе с обратной стороны вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.light">Light</a></td>
+<td>Скорость света (самая быстрая к самой медленной):<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.ambientlight">AmbientLight</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.directionallight">DirectionalLight</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.pointlight">PointLight</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.spotlight">SpotLight</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a></td>
+<td>Попробуйте сохранять размер сетки в эти ограничения:<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.positions">Positions</a>: 20 001 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.point3d">Point3D</a> экземпляров<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.triangleindices">TriangleIndices</a>: 60,003 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a> экземпляров</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.material">Material</a></td>
+<td>Скорость материала (самая быстрая к самой медленной):<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.emissivematerial">EmissiveMaterial</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.diffusematerial">DiffuseMaterial</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.specularmaterial">SpecularMaterial</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a></td>
+<td>Windows Presentation Foundation (WPF) Объемные эффекты не отказывается от невидимых кистей (черных кистей окружения, кистей очистки и т.д.) согласованным образом.  Рассмотрите возможность отказаться от сцены этих средств.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.materialgroup">MaterialGroup</a></td>
+<td>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.material">Material</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.materialgroup">MaterialGroup</a> вызывает передачу другого отрисовки, таким образом, включая множество материалов, даже простое материалам, может существенно увеличить нагрузку заливки на установленный GPU.  Свести к минимуму количество материалов в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.materialgroup">MaterialGroup</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="performance-impact-low">Влияние на производительность: Low</h2>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Рекомендация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.transform3dgroup">Transform3DGroup</a></td>
+<td>При анимации не требуется или привязки данных, вместо использования преобразования группы, содержащей несколько преобразований, использовать единую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.matrixtransform3d">MatrixTransform3D</a>, настроив на будет произведением всех преобразований, которые в противном случае будет существовать независимо друг от друга в группе преобразования.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.light">Light</a></td>
+<td>Свести к минимуму количество освещения в сцене. Слишком большое количество источников света в сцене заставит Windows Presentation Foundation (WPF) на переключение на программную отрисовку.  Эти ограничения действуют примерно 110 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.directionallight">DirectionalLight</a> объектов, 70 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.pointlight">PointLight</a> объектов или 40 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.spotlight">SpotLight</a> объектов.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.modelvisual3d">ModelVisual3D</a></td>
+<td>Разделите перемещения объектов из статических объектов, помещая их в отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.modelvisual3d">ModelVisual3D</a> экземпляров.  ModelVisual3D «тяжелее» <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a> так, как он кэширует преобразованные границы.  GeometryModel3D оптимизирован для модели. ModelVisual3D оптимизирован для узел сцены.  Используйте ModelVisual3D для размещения общих экземпляров объекта GeometryModel3D в сцене.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.light">Light</a></td>
+<td>Свести к минимуму количество раз, изменять число источников света на сцене.  Каждое изменение числа источников света заставляет повторного создания шейдера и повторной компиляции, если ранее существовал конфигурации (и тем самым ее построитель уже кэширован).</td>
+</tr>
+<tr>
+<td>Светлый</td>
+<td>Черные источники света не будут отображаться, но будут увеличивать время построения. Рассмотрите возможность отказаться от них.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d">MeshGeometry3D</a></td>
+<td>Чтобы свести к минимуму время создания больших коллекций в Windows Presentation Foundation (WPF), например MeshGeometry3D <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.positions">Positions</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.normals">Normals</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.texturecoordinates">TextureCoordinates</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.meshgeometry3d.triangleindices">TriangleIndices</a>, предварительно размер коллекции, перед заполнением значение. Если это возможно передайте коллекции конструкторов предварительно заполненных такие структуры данных, массивов или списков.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="3-d-graphics-overview.html">Обзор трехмерной графики</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

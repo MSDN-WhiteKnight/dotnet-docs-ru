@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="attached-properties-overview">Общие сведения о вложенных свойствах зависимостей</h1>
+
+<p>Присоединенное свойство — это понятие, определяемое языком XAML. Присоединенное свойство предназначено для использования в качестве типа глобального свойства, которое может быть задано для любого объекта. В Windows Presentation Foundation (WPF) присоединенные свойства обычно определяются как особая форма свойства зависимости, не имеющего обычной &quot;оболочки&quot; свойства.</p>
+<h2 id="предварительные-требования-">Предварительные требования <a name="prerequisites"></a></h2>
+<p>Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах Windows Presentation Foundation (WPF) и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>. Чтобы выполнить примеры в этом разделе, следует также понимать XAML и знаете, как создавать приложения WPF.</p>
+<h2 id="зачем-использовать-вложенные-свойства-">Зачем использовать вложенные свойства <a name="attached_properties_usage"></a></h2>
+<p>Среди прочего, присоединенные свойства позволяют разным дочерним элементам задавать уникальные значения для свойства, которое фактически определено в родительском элементе. Конкретным примером этого сценария является уведомление дочерними элементами родительского элемента о порядке их представления в пользовательский интерфейс. Одним из примеров является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> Свойство создается как присоединенное свойство, так как он предназначен для элементов, содержащихся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, а не для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> сам. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> Класс определяет статическое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> поле с именем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dockproperty">DockProperty</a>, а затем предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.getdock">GetDock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.setdock">SetDock</a> методы как открытые методы доступа для вложенных свойств.</p>
+<h2 id="присоединенные-свойства-в-xaml-">Присоединенные свойства в XAML <a name="attached_properties_xaml"></a></h2>
+<p>В XAML присоединенные свойства задаются с помощью синтаксиса <em>ПоставщикПрисоединенногоСвойства</em>.<em>ИмяСвойства</em>.</p>
+<p>Ниже приведен пример как можно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> в XAML:</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#APBasicUsage">&lt;DockPanel&gt;
+  &lt;CheckBox DockPanel.Dock=&quot;Top&quot;&gt;Hello&lt;/CheckBox&gt;
+&lt;/DockPanel&gt;
+</code></pre>
+<p>Обратите внимание, что использование похож на статическое свойство; Вы всегда ссылаться на тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> , является владельцем и регистрирует присоединенное свойство, а не ссылается на экземпляр, заданный по имени.</p>
+<p>Кроме того, поскольку присоединенное свойство в XAML является атрибутом, который устанавливается в разметке, операция задания является значимой. Нельзя напрямую получить свойство в XAML, хотя существуют некоторые косвенные механизмы для сравнения значений, такие как триггеры в стилях (подробнее см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>).</p>
+<h3 id="attached-property-implementation-in-wpf">Реализация присоединенного свойства в WPF</h3>
+<p>В Windows Presentation Foundation (WPF), большинство присоединенных свойств, которые существуют для типов WPF, которые связаны с представлением пользовательского интерфейса реализуются как свойства зависимости. Присоединенные свойства являются понятием XAML, тогда как свойства зависимости являются понятием WPF. Поскольку WPF присоединенные свойства являются свойствами зависимостей, они поддерживают понятия свойств зависимости, такие как метаданные свойства и значения по умолчанию из этих метаданных свойства.</p>
+<h2 id="как-присоединенные-свойства-используются-типом-владельца-">Как присоединенные свойства используются типом владельца <a name="howused"></a></h2>
+<p>Хотя присоединенные свойства могут устанавливаться для любого объекта, это не означает, что задание свойства будет создавать осязаемый результат или что значение будет когда-либо использоваться другим объектом. Как правило, использование присоединенных свойств подразумевает, что объекты, поступающие из разнообразных иерархий классов или логических связей, могут передавать общую информацию в тип, который определяет присоединенное свойство. Тип, который определяет присоединенное свойство, обычно соответствует одной из следующих моделей.</p>
+<ul>
+<li><p>Тип, который определяет присоединенное свойство, может являться родительским элементом для элементов, которые будут задавать значения для присоединенного свойства. Тип, который затем выполняет итерацию его дочерних объектов согласно внутренней логике относительно некоторой структуры дерева объектов, получает значения и выполняет с этими значениями какие-либо действия.</p>
+</li>
+<li><p>Тип, который определяет присоединенное свойство, будет использоваться в качестве дочернего элемента для разнообразных возможных родительских элементов и моделей содержимого.</p>
+</li>
+<li><p>Тип, который определяет присоединенное свойство, представляет службу. Другие типы устанавливают значения для присоединенного свойства. Затем, когда элемент, задающий свойство, вычисляется в контексте службы, значения присоединенного свойства получаются через внутреннюю логику класса службы.</p>
+</li>
+</ul>
+<h3 id="an-example-of-a-parent-defined-attached-property">Пример присоединенного свойства, определенного родительским элементом</h3>
+<p>Наиболее типичный сценарий, где WPF определяет присоединенное свойство — когда родительский элемент поддерживает коллекцию дочерних элементов, а также реализует поведение, на котором особенности поведения передаются отдельно для каждого дочернего элемента.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> Определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> вложенное свойство зависимостей, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> содержит код уровня класса как часть логики отображения (в частности, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.measureoverride">MeasureOverride</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.arrangeoverride">ArrangeOverride</a>). Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> экземпляр всегда проверяет ли любой из его непосредственные дочерние элементы задали значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a>. В таком случае эти значения становятся входными данными для логики отображения, применяемой к соответствующему дочернему элементу. Вложенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> экземпляров каждого обрабатывать свои собственные коллекции непосредственных дочерних элементов, но это поведение зависит от реализации как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> процессы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> значения. Теоретически возможно наличие присоединенных свойств, оказывающих влияние на элементы за пределами непосредственного родителя. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> присоединенное свойство имеет значение для элемента, который не имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> возникает родительского элемента, с которым выполняется действие его, ошибка или исключение. Это просто означает, что значение глобального свойства было задано, но оно не имеет текущего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> родителя, который может использовать эти данные.</p>
+<h2 id="присоединенные-свойства-в-коде-">Присоединенные свойства в коде <a name="attached_properties_code"></a></h2>
+<p>Присоединенные свойства в WPF не имеют обычных CLR методов «оболочки» для простого получения и задания доступа. Это происходит потому, что присоединенное свойство не обязательно входит в пространство имен CLR для экземпляров, в которых задано это свойство. Тем не менее обработчик XAML должен иметь возможность задавать эти значения при анализе XAML. Для поддержки эффективного использования присоединенных свойств, тип владельца присоединенного свойства должен реализовывать специальные методы доступа в форме <strong>Get_PropertyName_</strong> и <strong>Set_PropertyName_</strong>. Такие специальные методы доступа также удобны для получения или задания присоединенного свойства в коде. С точки зрения кода присоединенное свойство аналогично резервному полю с методами доступа к методам вместо методов доступа к свойствам. Такое резервное поле может существовать для любого объекта и не требует специального определения.</p>
+<p>В следующем примере кода показано задание присоединенного свойства в коде. В этом примере <code>myCheckBox</code> является экземпляром класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> класса.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#APCode">DockPanel myDockPanel = new DockPanel();
+CheckBox myCheckBox = new CheckBox();
+myCheckBox.Content = &quot;Hello&quot;;
+myDockPanel.Children.Add(myCheckBox);
+DockPanel.SetDock(myCheckBox, Dock.Top);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Аналогично XAML регистр, если <code>myCheckBox</code> бы еще не добавлен как дочерний элемент элемента <code>myDockPanel</code> третьей строкой кода, то Четвертая строка кода не приведет к исключению, но значение свойства не будет взаимодействовать с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> родительского и, следовательно, не имела бы смысла. Только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> заданное для дочернего элемента с наличием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> родительский элемент будет влиять на поведение в отображаемом приложении. (В этом случае вы может задать присоединенное свойство, а затем подключиться к дереву. Аналогично, можно подключиться к дереву, а затем задать присоединенное свойство. Любая последовательность действий дает тот же результат.)</p>
+<h2 id="метаданные-присоединенного-свойства-">Метаданные присоединенного свойства <a name="attached_properties_metadata"></a></h2>
+<p>При регистрации свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a> определяет характеристики свойства, такие как ли свойство влиять на отрисовку, измерение и т. д. Метаданные для присоединенного свойства, как правило, не отличаются от задаваемых для свойства зависимостей. Если задать значение по умолчанию в переопределении для метаданных присоединенного свойства, это значение становится значением по умолчанию неявного присоединенного свойства для экземпляров переопределяющего класса. В частности, значение по умолчанию передается, если некоторый процесс запрашивает значение присоединенного свойства с помощью метода доступа <code>Get</code> для этого свойства, указывая экземпляр класса, в котором заданы метаданные, и значение для этого присоединенного свойства не задано иным образом.</p>
+<p>Если вы хотите разрешить наследование значений свойства, следует использовать присоединенные свойства, вместо неприсоединенных свойств зависимостей. Подробнее см. в разделе <a href="property-value-inheritance.html">Наследование значения свойства</a>.</p>
+<h2 id="настраиваемые-присоединенные-свойства-">Настраиваемые присоединенные свойства <a name="custom"></a></h2>
+<h3 id="когда-следует-создавать-присоединенное-свойство-">Когда следует создавать присоединенное свойство <a name="create_attached_properties"></a></h3>
+<p>Присоединенное свойство можно создать, если требуется механизм задания свойств для классов, не являющихся определяющим классом. Наиболее распространенным сценарием является макет. Примерами существующих свойств макета являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.zindex">Panel.ZIndex</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas.top">Canvas.Top</a>. В этом сценарии элементы, которые существуют как дочерние элементы для элементов, управляющих макетом, могут индивидуально выражать требования макета для своих родительских элементов, задавая значение свойства, определяемого родительским элементом как присоединенное свойство.</p>
+<p>Другой сценарий использования присоединенного свойства — когда класс представляет службу и требуется реализовать более прозрачную интеграцию службы классами.</p>
+<p>Еще одним сценарием является для получения поддержки конструктора WPF для Visual Studio, такие как <strong>свойства</strong> редактирование окна. Дополнительные сведения см. в разделе <a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a>.</p>
+<p>Как упоминалось ранее, свойство следует регистрировать как присоединенное, если требуется использовать наследование значения свойства.</p>
+<h3 id="создание-присоединенного-свойства-">Создание присоединенного свойства <a name="how_do_i_create_attached_properties"></a></h3>
+<p>Если ваш класс определяет присоединенное свойство исключительно для использования на других типов, то не обязательно должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>. Но вам нужно наследовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> Если вы следуете общей моделью WPF что присоединенное свойство также быть свойством зависимостей.</p>
+<p>Определите присоединенное свойство как свойство зависимостей, объявив <code>public static readonly</code> поле типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. Это поле определяется с помощью возвращаемого значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerattached">RegisterAttached</a> метод. Имя поля должно совпадать с именем присоединенного свойства, с добавлением строки <code>Property</code>, чтобы соответствовать установленным WPF шаблону именования идентифицирующие поля и свойств, которые они представляют. Поставщик присоединенного свойства также должен предоставлять статические <strong>Get_PropertyName_</strong> и <strong>Set_PropertyName_</strong> методов как методы доступа для вложенных свойств зависимостей; Если сделать это приведет к в свойстве система не сможет использовать присоединенное свойство.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если опустить метод доступа get присоединенного свойства, привязка данных для этого свойства не будет работать в средствах разработки, таких как Visual Studio и Expression Blend.</p>
+</div>
+<h4 id="the-get-accessor">Метод доступа get</h4>
+<p>Сигнатура для <strong>Get_PropertyName_</strong> должен быть метод доступа:</p>
+<p><code>public static object GetPropertyName(object target)</code></p>
+<ul>
+<li><p>Объект <code>target</code> можно указать как более конкретный тип в реализации. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.getdock">DockPanel.GetDock</a> метод типизирует параметр как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, так как присоединенное свойство предназначено только для настройки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> экземпляров.</p>
+</li>
+<li><p>Возвращаемое значение можно указать как более конкретный тип в реализации. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.getdock">GetDock</a> метод типизирует его как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dock">Dock</a>, так как значение можно задать только это перечисление.</p>
+</li>
+</ul>
+<h4 id="the-set-accessor">Метод доступа set</h4>
+<p>Сигнатура для <strong>Set_PropertyName_</strong> должен быть метод доступа:</p>
+<p><code>public static void SetPropertyName(object target, object value)</code></p>
+<ul>
+<li><p>Объект <code>target</code> можно указать как более конкретный тип в реализации. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.setdock">SetDock</a> метод типизирует его как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, так как присоединенное свойство предназначено только для настройки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> экземпляров.</p>
+</li>
+<li><p>Объект <code>value</code> можно указать как более конкретный тип в реализации. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.setdock">SetDock</a> метод типизирует его как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dock">Dock</a>, так как значение можно задать только это перечисление. Помните, что значением этого метода являются входные данные, поступающие от загрузчика XAML, когда он встречает присоединенное свойство в использовании присоединенного свойства в макете. Эти входные данные являются значением, указанным как значение атрибута XAML в разметке. Таким образом, необходимо обеспечить поддержку преобразования типов, сериализатора значений или расширений разметки для используемого типа так, чтобы соответствующий тип можно было создать из значения атрибута (которое, в конечном счете, является просто строкой).</p>
+</li>
+</ul>
+<p>В следующем примере показано регистрации свойства зависимостей (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerattached">RegisterAttached</a> метод), а также <strong>Get_PropertyName_</strong> и <strong>Set_PropertyName_</strong> методы доступа. В этом примере именем присоединенного свойства является <code>IsBubbleSource</code>. Таким образом, методы доступа должны называться <code>GetIsBubbleSource</code> и <code>SetIsBubbleSource</code>.</p>
+<pre><code class="lang-csharp" name="WPFAquariumSln#RegisterAttachedBubbler">public static readonly DependencyProperty IsBubbleSourceProperty = DependencyProperty.RegisterAttached(
+  &quot;IsBubbleSource&quot;,
+  typeof(Boolean),
+  typeof(AquariumObject),
+  new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender)
+);
+public static void SetIsBubbleSource(UIElement element, Boolean value)
+{
+  element.SetValue(IsBubbleSourceProperty, value);
+}
+public static Boolean GetIsBubbleSource(UIElement element)
+{
+  return (Boolean)element.GetValue(IsBubbleSourceProperty);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="attached-property-attributes">Атрибуты присоединенного свойства</h4>
+<p>WPF определяет несколько Атрибуты .NET Framework , предназначенные для предоставления сведений о присоединенных свойствах процессам отражения и типичным пользователям отражения и сведений о свойстве таких как конструкторы. Поскольку присоединенные свойства имеют тип неограниченной области, разработчикам необходим способ, который позволит избежать представления пользователям глобального списка всех присоединенных свойств, которые определены в конкретной реализации технологии, использующей XAML. Атрибуты .NET Framework , WPF определяет для присоединенных свойств, которые могут использоваться для ситуаций, когда данное присоединенное свойство должно отображаться в окне &quot;Свойства&quot;. Эти атрибуты можно также применить для собственных присоединенных свойств. Назначение и синтаксис Атрибуты .NET Framework описаны в соответствующих разделах справочника.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.attachedpropertybrowsableattribute">AttachedPropertyBrowsableAttribute</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.attachedpropertybrowsableforchildrenattribute">AttachedPropertyBrowsableForChildrenAttribute</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.attachedpropertybrowsablefortypeattribute">AttachedPropertyBrowsableForTypeAttribute</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.attachedpropertybrowsablewhenattributepresentattribute">AttachedPropertyBrowsableWhenAttributePresentAttribute</a></p>
+</li>
+</ul>
+<h2 id="дополнительные-сведения-о-вложенных-свойствах-">Дополнительные сведения о вложенных свойствах <a name="more"></a></h2>
+<ul>
+<li><p>Дополнительные сведения о создании присоединенного свойства см. в разделе <a href="how-to-register-an-attached-property.html">Регистрация присоединенного свойства</a>.</p>
+</li>
+<li><p>Более сложные сценарии использования свойств зависимостей и присоединенных свойств см. в разделе <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+</li>
+<li><p>Свойство можно также зарегистрировать как присоединенное свойство и как свойство зависимостей, но тем не менее предоставить реализации &quot;оболочки&quot;. В этом случае свойство можно задать как для данного элемента, так и для любого элемента с помощью синтаксиса подключенных свойств XAML. Например, свойство с соответствующим сценарием для стандартной и присоединенной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FrameworkElement.FlowDirection</a>.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a></li>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a></li>
+<li><a href="how-to-register-an-attached-property.html">Регистрация присоединенного свойства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1077;&#1078;&#1076;&#1091;&#1085;&#1072;&#1088;&#1086;&#1076;&#1085;&#1099;&#1077; &#1096;&#1088;&#1080;&#1092;&#1090;&#1099; &#1074; Windows Forms &#1080; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1077;&#1078;&#1076;&#1091;&#1085;&#1072;&#1088;&#1086;&#1076;&#1085;&#1099;&#1077; &#1096;&#1088;&#1080;&#1092;&#1090;&#1099; &#1074; Windows Forms &#1080; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1099; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="international-fonts-in-windows-forms-and-controls">Международные шрифты в Windows Forms и элементы управления</h1>
+
+<p>В приложения на разных языках выбора шрифтов рекомендуется использовать откат шрифта, когда это возможно. Это означает что система определяет, что скрипт символ принадлежит.</p>
+<h2 id="using-font-fallback">С помощью откат шрифта</h2>
+<p>Чтобы воспользоваться преимуществами этой функции, не устанавливайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a> свойство для форм или любого другого элемента. Приложение будет автоматически использовать системный шрифт по умолчанию, который отличается от языка локализованной операционной системы в другую. При запуске приложения, система автоматически выбирает правильный шрифт для языка и региональных параметров, выбранных в операционной системе.</p>
+<p>Имеется исключение из правила шрифта, который предназначен для изменения стиля шрифта. Это может оказаться важным для приложения, в котором пользователь нажимает кнопку, чтобы текст в текстовом поле отображаются полужирным шрифтом. Чтобы сделать это, следует написать функцию, чтобы изменить стиль шрифта текстового поля будут выводиться полужирным шрифтом, в зависимости от независимо от формы шрифта. Очень важно для вызова этой функции в двух местах: в кнопки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий и в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.fontchanged">FontChanged</a> обработчик событий. Если функция вызывается только в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий и некоторых других фрагмент кода изменяет семейство шрифтов для всей формы, текстовое поле не изменяется с остальной частью формы.</p>
+<pre><code class="lang-vb">Private Sub MakeBold()
+   ' Change the TextBox to a bold version of the form font
+   TextBox1.Font = New Font(Me.Font, FontStyle.Bold)
+End Sub
+
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+   ' Clicking this button makes the TextBox bold
+   MakeBold()
+End Sub
+
+Private Sub Form1_FontChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.FontChanged
+   ' If the TextBox is already bold and the form's font changes,
+   ' change the TextBox to a bold version of the new form font
+   If (TextBox1.Font.Style = FontStyle.Bold) Then
+      MakeBold()
+   End If
+End Sub
+</code></pre>
+<pre><code class="lang-csharp">private void button1_Click(object sender, System.EventArgs e)
+{
+   // Clicking this button makes the TextBox bold
+   MakeBold();
+}
+
+private void MakeBold()
+{
+   // Change the TextBox to a bold version of the form's font
+   textBox1.Font = new Font(this.Font, FontStyle.Bold);
+}
+
+private void Form1_FontChanged(object sender, System.EventArgs e)
+{
+   // If the TextBox is already bold and the form's font changes,
+   // change the TextBox to a bold version of the new form font
+   if (textBox1.Font.Style == FontStyle.Bold)
+   {
+      MakeBold();
+   }
+}
+</code></pre>
+<p>Тем не менее при локализации приложения, полужирный шрифт может отображать плохо для определенных языков. Если это представляет собой проблему, вы локализаторам возможность переключения шрифта с жирного шрифта на обычный текст. Поскольку локализаторы обычно не являются разработчиками, а не имеют доступа к исходному коду, только с файлами ресурсов, этот параметр необходимо задать в файлах ресурсов. Чтобы сделать это, необходимо установить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.bold">Bold</a> свойства <code>true</code>. Результатом начертание шрифта, которая записывается в файлы ресурсов, где его можно изменить локализаторов. Затем написать код после <code>InitializeComponent</code> метод, который сбрасывает шрифт в зависимости от шрифта независимо от формы, но использует стиль шрифта, указанное в файле ресурсов.</p>
+<pre><code class="lang-vb">TextBox1.Font = New System.Drawing.Font(Me.Font, TextBox1.Font.Style)
+</code></pre>
+<pre><code class="lang-csharp">textBox1.Font = new System.Drawing.Font(this.Font, textBox1.Font.Style);
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="globalizing-windows-forms.html">Глобализация приложений Windows Forms</a></li>
+<li><a href="using-fonts-and-text.html">Работами со шрифтами и текстом</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

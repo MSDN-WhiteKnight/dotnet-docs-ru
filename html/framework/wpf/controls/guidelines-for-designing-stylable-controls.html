@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1100;&#1102; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1089;&#1090;&#1080;&#1083;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1100;&#1102; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1089;&#1090;&#1080;&#1083;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="guidelines-for-designing-stylable-controls">Рекомендации по разработке элементов управления с возможностью использования стилей</h1>
+
+<p>В этом документе содержатся рекомендации по разработке элементов управления, стили и шаблоны которых можно с легкостью изменять. Эти рекомендации являются результатом продолжительного периода проб и ошибок при работе над стилями тем оформления для встроенного набора элементов управления WPF. Было выяснено, что успешное изменение стилей зависит как от хорошо спроектированной объектной модели, так и самого стиля. Данный документ предназначен именно для разработчиков элементов управления, а не для разработчиков стилей.</p>
+<p><a name="Terminology"></a></p>
+<h2 id="terminology">Терминология</h2>
+<p>Термин &quot;использование стилей и шаблонов&quot; относится к набору технологий, позволяющих разработчику элементов управления отложить разработку визуальных характеристик элемента управления на этап разработки стилей и шаблонов элемента управления. Такой набор технологий включает следующее:</p>
+<ul>
+<li><p>стили (включая методы задания свойств, триггеры и раскадровки);</p>
+</li>
+<li><p>ресурсы;</p>
+</li>
+<li><p>шаблоны элементов управления;</p>
+</li>
+<li><p>шаблоны данных.</p>
+</li>
+</ul>
+<p>Вводная информация, касающаяся стилей и шаблонов, представлена в разделе <a href="styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<p><a name="Before_You_Start__Understanding_Your_Control"></a></p>
+<h2 id="before-you-start-understanding-your-control">Перед началом работы: Основные сведения о элемент управления</h2>
+<p>Прежде чем перейти к рекомендациям, важно понять и определить типичные способы использования элементов управления. Зачастую стили предоставляют неуправляемый набор возможностей. Проблема элементов управления, написанных для широкого применения (многими разработчиками, во многих приложениях), состоит в том, что стили можно использовать для масштабных изменений внешнего вида элементов управления. На самом же деле элемент управления, к которому применен стиль, может не соответствовать замыслу разработчика. Поскольку стили по сути представляют безграничную гибкость, можно использовать подход, подразумевающий типичные способы их использования, чтобы ограничить область их применения.</p>
+<p>Чтобы понять, какие существуют типичные способы использования элементов управления, можно рассмотреть область значений, предоставляемых элементом управления. Какие специфические свойства отличают конкретный элемент управления от всех остальных? Типичные способы использования не подразумевают какой-либо определенный внешний вид, они подразумевают концепцию элемента управления и соответствующий набор ожидаемых функций. В этом свете можно сделать некоторые предположения о структурной модели и поведении элемента управления в соответствии с примененным стилем в общем случае. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>, например, основные сведения о типичных способов использования не даст представления о ли конкретный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> имеет скругленные углы, но она даст вам представление о тот факт, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> скорее всего, необходимы всплывающее окно и способ переключения при открытии.</p>
+<p><a name="General_Guidelines"></a></p>
+<h2 id="general-guidelines">Общие рекомендации</h2>
+<ul>
+<li><p><strong>Не вводите строгие контракты шаблонов.</strong> Контракт шаблона элемента управления может состоять из элементов, команд, привязок, триггеров или даже параметров свойств, которые требуются или ожидаются для правильного функционирования элемента управления.</p>
+<ul>
+<li><p>Минимизируйте контракты, насколько возможно.</p>
+</li>
+<li><p>При разработке основывайтесь на факте, что во время разработки (то есть при использовании средства разработки) для шаблона элемента управления естественным является состояние незавершенности. WPF не поддерживает инфраструктуру состояния, «составления», поэтому элементы управления должны быть построены исходя из предположения, что такое состояние может допускаться.</p>
+</li>
+<li><p>Не следует генерировать исключения, если не выполняется какой-либо аспект контракта шаблона. Согласно этому, панели не должны вызывать исключения, если у них слишком много или слишком мало дочерних элементов.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Периферийная функциональность в шаблонных вспомогательных элементах.</strong> Каждый элемент управления должен концентрироваться на функциональных возможностях его ядра и на верном представлении ценности и определяться общим использованием элемента управления. Для этого используйте в шаблоне композицию и вспомогательные элементы, чтобы предоставить периферийные проявления и визуализации, т. е. модели поведения и визуализации, которые не относятся к основной функциональности элемента управления. Вспомогательные элементы делятся на три категории.</p>
+<ul>
+<li><p><strong>Изолированные</strong> вспомогательные элементы — это повторно используемые общедоступные элементы управления или примитивы, используемые в шаблоне &quot;анонимно&quot;, в том смысле что ни вспомогательный элемент, ни элемент управления с примененным стилем не знают друг о друге. С технической точки зрения любой элемент может быть анонимного типа, но в данном контексте этот термин описывает типы, которые инкапсулируют специализированные функции для выполнения целевых сценариев.</p>
+</li>
+<li><p><strong>Основанные на типах</strong> вспомогательные элементы — это новые типы, инкапсулирующие специализированные функции. Эти элементы обычно разрабатываются с более узким диапазоном функциональных возможностей, чем стандартные элементы управления и примитивы. В отличие от изолированных вспомогательных элементов основанные на типах вспомогательные элементы имеют сведения о контексте, в котором используются, и обычно должны использовать общие данные с элементом управления, к шаблону которого они относятся.</p>
+</li>
+<li><p><strong>Именованные вспомогательные элементы</strong> являются общими элементами управления или примитивами, которые элемент управления ожидает найти в своем шаблоне по имени. Таким элементам присваиваются известные имена в шаблоне, что дает элементу управления возможность найти элемент и взаимодействовать с ним программным способом. Имена всех элементов в шаблоне уникальные.</p>
+</li>
+</ul>
+<p>В таблице ниже иллюстрируется современное использование вспомогательных элементов в стилях элементов управления (данный список не является полным).</p>
+<table>
+<thead>
+<tr>
+<th>Элемент</th>
+<th>Тип</th>
+<th>Где используется</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a></td>
+<td>Основанные на типе</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, и так далее (все <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> типы)</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemspresenter">ItemsPresenter</a></td>
+<td>Основанные на типе</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a>, и так далее (все <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> типы)</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.toolbaroverflowpanel">ToolBarOverflowPanel</a></td>
+<td>Именованные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.popup">Popup</a></td>
+<td>Автономные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a>, и так далее</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a></td>
+<td>Именованные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar">ScrollBar</a>, и так далее</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar">ScrollBar</a></td>
+<td>Именованные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer">ScrollViewer</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer">ScrollViewer</a></td>
+<td>Автономные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, и так далее</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.tabpanel">TabPanel</a></td>
+<td>Автономные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabcontrol">TabControl</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a></td>
+<td>Именованные</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.tickbar">TickBar</a></td>
+<td>Основанные на типе</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><strong>Минимизируйте необходимые во вспомогательных элементах определяемые пользователем привязки или параметры свойств</strong>. Обычно для вспомогательного элемента необходимы некоторые привязки или параметры свойств, гарантирующие его правильную работу в шаблоне элемента управления. Вспомогательный элемент и элемент управления шаблон должны устанавливать эти параметры, насколько это возможно. При задании свойств или установке привязок следует соблюдать осторожность, чтобы не переопределить значения, установленные пользователем. Ниже приведены конкретные рекомендации.</p>
+<ul>
+<li><p>Именованные вспомогательные элементы должны идентифицироваться по родительскому элементу, который должен устанавливать все необходимые параметры вспомогательного элемента.</p>
+</li>
+<li><p>Основанные на типах вспомогательные элементы должны непосредственно устанавливать себе все необходимые параметры. Это может потребовать запроса вспомогательным элементом информационного контекста, в котором он используется, включая его <code>TemplatedParent</code> (тип элемента управления для шаблона, в котором он используется). Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> автоматически привязывает <code>Content</code> свойство его <code>TemplatedParent</code> для его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter.content">Content</a> свойства при использовании в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> производный тип.</p>
+</li>
+<li><p>Изолированные вспомогательные элементы не могут быть оптимизированы таким образом, так как по определению ни вспомогательный элемент, ни родительский элемент не знают друг о друге.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Используйте свойство Name, чтобы пометить элементы внутри шаблона</strong>. Элемент управления, которому необходимо найти элемент в его стиле для программного доступа к нему, должен для этого использовать свойство <code>Name</code> и парадигму <code>FindName</code>. Элемент управления не должен вызывать исключение, когда элемент не найден, он должен без вмешательства пользователя корректно отключить функциональные возможности, которым требуется этот элемент.</p>
+</li>
+<li><p><strong>Следуйте рекомендациям для выражения состояния элемента управления и поведения в стиле.</strong> Ниже приведен упорядоченный список советов и рекомендаций по заданию изменений состояния элемента управления и поведения в стиле. Следует использовать первый элемент в списке, который разрешает сценарий.</p>
+<ol>
+<li><p>Привязка свойства. Пример: привязка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox.isdropdownopen">ComboBox.IsDropDownOpen</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.togglebutton.ischecked">ToggleButton.IsChecked</a>.</p>
+</li>
+<li><p>Вызванные изменения свойств или анимация свойств. Пример: состояние наведения мыши <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+</li>
+<li><p>Команда. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar.lineupcommand">LineUpCommand</a>  /  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar.linedowncommand">LineDownCommand</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.scrollbar">ScrollBar</a>.</p>
+</li>
+<li><p>Изолированные вспомогательные элементы. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.tabpanel">TabPanel</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabcontrol">TabControl</a>.</p>
+</li>
+<li><p>Вспомогательные типы, основанные на типах. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.tickbar">TickBar</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a>.</p>
+</li>
+<li><p>Именованные вспомогательные элементы. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>.</p>
+</li>
+<li><p>Передающиеся вверх события именованных вспомогательных типов. Если ожидать от элемента стиля передающихся вверх событий, следует потребовать, чтобы элемент, вызывающий событие, мог быть идентифицирован уникальным образом. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.thumb">Thumb</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>.</p>
+</li>
+<li><p>Настраиваемое поведение <code>OnRender</code>. Пример: <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.buttonchrome">ButtonChrome</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Как можно реже используйте триггеры стиля (в отличие от триггеров шаблона)</strong>. Триггеры, которые влияют на свойства элементов в шаблоне, должны быть объявлены в шаблоне. Триггеры, которые влияют на свойства элемента управления (не <code>TargetName</code>), могут быть объявлены в стиле, если только не известно, что при изменении шаблона триггер уничтожится.</p>
+</li>
+<li><p><strong>Согласовываться с существующими шаблонами стилей.</strong> Зачастую существуют различные способы решения проблемы. Следите за шаблонами стилей элементов управления и, если возможно, обеспечивайте согласованность с существующими шаблонами стилей элементов управления. Это особенно важно для элементов управления, производных от одного базового типа (например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.rangebase">RangeBase</a>, и так далее).</p>
+</li>
+<li><p><strong>Предоставляйте свойства, чтобы разрешить выполнение общих сценариев настройки без создания новых шаблонов</strong>. WPF не поддерживает подключаемые/настраиваемые части, поэтому пользователю элемента управления с помощью только два метода настройки: непосредственная установка свойств или установка свойств с использованием стилей. Исходя из этого, удобно предоставлять ограниченное количество свойств, нацеленных на очень общие, высокоприоритетные сценарии настройки, которые в противном случае потребуют создания новых шаблонов. Ниже приведены советы и рекомендации по тому, когда и как разрешать сценарии настройки.</p>
+<ul>
+<li><p>Самые общие настройки должны быть предоставлены как свойства элемента управления и использоваться шаблоном.</p>
+</li>
+<li><p>Менее общие (хотя нередкие) настройки должны быть предоставлены как вложенные свойства зависимостей и использоваться шаблоном.</p>
+</li>
+<li><p>Для известных, но редких настроек допустимо создание новых шаблонов.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="Theme_Considerations"></a></p>
+<h2 id="theme-considerations">Рекомендации касательно тем</h2>
+<ul>
+<li><p><strong>Стили тем должны стремиться к согласованной семантике свойств во всех темах, но ничего не гарантировать</strong>. Элемент управления должен содержать в своей документации документ, описывающий семантику свойства элемента управления, то есть &quot;значение&quot; свойства для элемента управления. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> управления следует определить значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство в пределах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>. Во всех темах стили по умолчанию для элемента управления должны стремиться следовать семантике, определенной в этом документе. С другой стороны, пользователи элемента управления должны знать, что семантика свойств может меняться от темы к теме. В некоторых случаях заданное свойство может оказаться неэффективным с учетом визуальных ограничений, накладываемых конкретной темой. (Например, для многих элементов управления в классической теме нет одинарной границы, к которой можно применить <code>Thickness</code>.)</p>
+</li>
+<li><p><strong>Для стилей тем не требуется согласованная для всех тем триггерная семантика</strong>. Поведение, предоставляемое стилем элемента управления с помощью триггеров или анимации, может меняться от темы к теме. Пользователям элемента управления следует помнить, что элемент управления не обязательно будет использовать во всех темах один и тот же механизм для достижения определенного поведения. Например, для выражения поведения при наведении указателя мыши одна тема может использовать анимацию, а другая может использовать триггер. Это может привести к несогласованности в сохранении поведения настроенных элементов управления. (Например, изменение свойства фона может не повлиять на состояние нахождения элемента управления под наведенным указателем мыши, если это состояние обеспечивается с помощью триггера. Однако если такое состояние реализовано с использованием анимации, изменение фона может привести к неисправимым ошибкам анимации и, следовательно, к смене состояния.)</p>
+</li>
+<li><p><strong>Для стилей тем не требуется согласованной для всех тем семантики &quot;макета&quot;</strong>. Например, стиль по умолчанию не должен гарантировать, что элемент управления будет иметь тот же размер во всех темах или что у него во всех темах будут те же границы/поля содержимого.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+<li><a href="control-authoring-overview.html">Общие сведения о разработке элементов управления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

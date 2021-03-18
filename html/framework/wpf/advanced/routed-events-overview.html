@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1085;&#1072;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1085;&#1072;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="routed-events-overview">Общие сведения о перенаправленных событиях</h1>
+
+<p>В этом разделе описывается понятие перенаправленных событий в Windows Presentation Foundation (WPF). Здесь определяется терминология перенаправленных событий, описывается, как перенаправленные события маршрутизируются через дерево элементов, кратко описываются способы обработки перенаправленных событий, а также способы создания пользовательских перенаправленных событий.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Этот раздел предполагает наличие базовых знаний о среда CLR и объектно-ориентированном программировании,а также представление о связях между элементами WPF в виде дерева. Чтобы выполнить примеры в этом разделе, следует также понимать Язык XAML и знать, как писать простые приложения или страницы WPF. Дополнительные сведения см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a> и <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>.</p>
+<p><a name="routing"></a></p>
+<h2 id="what-is-a-routed-event">Что такое перенаправленное событие?</h2>
+<p>Перенаправленные события можно рассматривать с точки зрения функциональности или реализации. Здесь приводятся оба определения, чтобы пользователи могли выбрать наиболее подходящее для себя.</p>
+<p>Функциональное определение: Перенаправленное событие — это тип события, которое может вызывать обработчики нескольких слушателей в дереве элементов, а не только объект, который вызвал событие.</p>
+<p>Определение реализации: Перенаправленное событие — CLR событий, поддерживаемый экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> класса и обрабатывается Windows Presentation Foundation (WPF) системой событий.</p>
+<p>Обычно в приложении WPF содержится много элементов. В зависимости от того, созданы элементы в коде или объявлены в XAML, они связаны в дереве элементов друг с другом. Маршрут события может проходить в одном из двух направлений в зависимости от определения события, но обычно маршрут проходит от исходного элемента и затем &quot;всплывает&quot; вверх по дереву элементов до тех пор, пока не достигнет корневого элемента дерева (как правило, страница или окно). Концепция всплывания может быть знакома, если имеется опыт работы с моделью DHTML-объектов.</p>
+<p>Рассмотрим следующее простое дерево элементов.</p>
+<pre><code class="lang-xaml" name="EventOvwSupport#GroupButton">&lt;Border Height=&quot;50&quot; Width=&quot;300&quot; BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;&gt;
+  &lt;StackPanel Background=&quot;LightGray&quot; Orientation=&quot;Horizontal&quot; Button.Click=&quot;CommonClickHandler&quot;&gt;
+    &lt;Button Name=&quot;YesButton&quot; Width=&quot;Auto&quot; &gt;Yes&lt;/Button&gt;
+    &lt;Button Name=&quot;NoButton&quot; Width=&quot;Auto&quot; &gt;No&lt;/Button&gt;
+    &lt;Button Name=&quot;CancelButton&quot; Width=&quot;Auto&quot; &gt;Cancel&lt;/Button&gt;
+  &lt;/StackPanel&gt;
+&lt;/Border&gt;
+</code></pre>
+<p>Это дерево элементов выглядит примерно следующим образом.</p>
+<p><img src="media/routedevent-ovw-1.gif" alt="Кнопки &quot;Да&quot;, &quot;Нет&quot; и &quot;Отмена&quot;" title="RoutedEvent_ovw_1"></p>
+<p>В этом упрощенном дереве элементов источником <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий является одним из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов и какое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> была нажата — первый элемент, который имеет возможность обработать событие. Но если обработчик не присоединен к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> действует на событие, а затем будет всплывать вверх до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> родительского элемента в дереве элементов, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>. Потенциально событие может передаваться к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>, а затем за пределы границы к корневой странице дерева элементов (не показано).</p>
+<p>Другими словами, маршрутом события для данного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событие:</p>
+<p>Button--&gt;StackPanel--&gt;Border--&gt;...</p>
+<h3 id="top-level-scenarios-for-routed-events">Сценарии верхнего уровня для перенаправленных событий</h3>
+<p>Ниже приведен краткий обзор сценариев, определяющих концепцию перенаправления событий и то, почему обычного события CLR не было достаточно для осуществления этих сценариев.</p>
+<p><strong>Составление элемента управления и инкапсуляция.</strong> Различные элементы управления в WPF имеют расширенную модель содержимого. Например, можно поместить изображение внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, что эффективно расширит визуальное дерево кнопки. Тем не менее добавленное изображение не должно отключать проверку нажатия, которая позволяет кнопке реагировать на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> ее содержимого, даже если пользователь нажимает пиксели, которые технически являются частью изображения.</p>
+<p><strong>Точки присоединения обработчика:</strong> В Windows Forms, придется присоединить один обработчик несколько раз для обработки событий, которые могут возникнуть из нескольких элементов. Перенаправленные события позволяют присоединить обработчик только один раз, как было показано в предыдущем примере, и при необходимости использовать логику обработки для определения места возникновения события. Например, это может быть обработчиком для ранее показанного XAML.</p>
+<pre><code class="lang-csharp" name="EventOvwSupport#GroupButtonCodeBehind">private void CommonClickHandler(object sender, RoutedEventArgs e)
+{
+  FrameworkElement feSource = e.Source as FrameworkElement;
+  switch (feSource.Name)
+  {
+    case &quot;YesButton&quot;:
+      // do something here ...
+      break;
+    case &quot;NoButton&quot;:
+      // do something ...
+      break;
+    case &quot;CancelButton&quot;:
+      // do something ...
+      break;
+  }
+  e.Handled=true;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><strong>Обработка классов:</strong> Перенаправленные события разрешают использовать статический обработчик, который определен в классе. Этот обработчик классов может обрабатывать событие раньше любого вложенного обработчика экземпляров.</p>
+<p><strong>Ссылка на событие без отражения:</strong> Определенных методов кода и исправлений требуется Идентификация определенного события. Перенаправленное событие создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> поле идентификатора, который обеспечивает надежный метод идентификации события, не требует статического отражения или выполнения отражения.</p>
+<h3 id="how-routed-events-are-implemented">Реализация перенаправленных событий</h3>
+<p>Перенаправленное событие — CLR событий, поддерживаемый экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> класса и зарегистрирована WPF системой событий. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> Экземпляр, полученный из регистрации обычно сохраняется в качестве <code>public</code> <code>static</code> <code>readonly</code> члена класса, который регистрирует и таким образом «владеет» перенаправленным поля. Соединение с событием CLR с таким же именем (которое иногда называется событием программы-оболочки) выполняется путем переопределения реализаций <code>add</code> и <code>remove</code> для события CLR. Как правило, <code>add</code> и <code>remove</code> остаются неявными по умолчанию и используют соответствующий синтаксис события определенного языка для добавления и удаления обработчиков события. Механизм подключения и резервирования перенаправленного события похож как свойство зависимостей является CLR свойство, поддерживаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> класса и зарегистрирована WPF системы свойств.</p>
+<p>В следующем примере показано объявление пользовательского <code>Tap</code> перенаправленного события, включая регистрацию и использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> поле идентификатора и <code>add</code> и <code>remove</code> реализации для <code>Tap</code> CLR событий.</p>
+<pre><code class="lang-csharp" name="RoutedEventCustom#AddRemoveHandler">public static readonly RoutedEvent TapEvent = EventManager.RegisterRoutedEvent(
+    &quot;Tap&quot;, RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MyButtonSimple));
+
+// Provide CLR accessors for the event
+public event RoutedEventHandler Tap
+{
+        add { AddHandler(TapEvent, value); }
+        remove { RemoveHandler(TapEvent, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="routed-event-handlers-and-xaml">Обработчики перенаправленных событий и XAML</h3>
+<p>Чтобы добавить обработчик для события с помощью XAML, следует объявить имя события как атрибут для элемента, который является прослушивателем событий. Значением атрибута является имя метода реализуемого обработчика, который должен существовать в разделяемом классе файла кода программной части.</p>
+<pre><code class="lang-xaml" name="EventOvwSupport#SimplestSyntax">&lt;Button Click=&quot;b1SetColor&quot;&gt;button&lt;/Button&gt;
+</code></pre>
+<p>Синтаксис языка XAML для добавления стандартных обработчиков событий CLR одинаков для добавления обработчиков перенаправленных событий, так как на самом деле обработчики добавляются к программе-оболочке события CLR, которая содержит реализацию перенаправленного события. Дополнительные сведения о добавлении обработчиков событий в XAML см. в разделе <a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a>.</p>
+<p><a name="routing_strategies"></a></p>
+<h2 id="routing-strategies">Стратегии маршрутизации</h2>
+<p>Перенаправленные события используют одну из трех стратегий маршрутизации.</p>
+<ul>
+<li><p><strong>Восходящая маршрутизация:</strong> Вызываются обработчики событий в источник событий. Перенаправленное событие затем следует к родительским элементам до достижения корневого элемента дерева. Большинство перенаправленных событий используют стратегию восходящей маршрутизации. События восходящей маршрутизации обычно используются для получения отчета об изменении входных данных или состояния от различных элементов управления или других элементов пользовательского интерфейса.</p>
+</li>
+<li><p><strong>Direct:</strong> Только элемент-источник события имеет возможность вызывать обработчики в ответ. Это является аналогом &quot;маршрутизации&quot;, которая используется Windows Forms для события. Тем не менее, в отличие от стандартного CLR событий, прямые перенаправленные события поддерживают обработку классов (обработка классов объясняется в следующем разделе) и может использоваться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>.</p>
+</li>
+<li><p><strong>Туннелирование:</strong> Изначально вызываются обработчики событий в корневого элемента дерева. Перенаправленное событие затем передается по маршруту через последовательные дочерние элементы к узловому элементу, который является источником перенаправленного события (элементом, вызвавшим перенаправленное событие). Нисходящая маршрутизация событий часто используется или обрабатывается как часть композиции для элемента управления таким образом, что события из составных частей композиции могут намеренно подавляться или заменяться событиями, которые определены для полного контроля. Входные события, которые содержатся в WPF, часто реализуются в виде пары нисходящей и восходящей маршрутизации. События нисходящей маршрутизации также иногда называют событиями предварительного просмотра по причине используемого для пар соглашения об именах.</p>
+</li>
+</ul>
+<p><a name="why_use"></a></p>
+<h2 id="why-use-routed-events">Зачем использовать перенаправленные события?</h2>
+<p>Разработчикам приложений не всегда необходимо знать, реализуется ли обрабатываемое событие как перенаправленное. Перенаправленные события имеют особое поведение, но такое событие остается невидимым, если обрабатывается в элементе, где оно возникает.</p>
+<p>Перенаправленные события являются мощным инструментом при использовании их в одном из предлагаемых сценариев: при определении общих обработчиков для общего корня, при композиции собственного элемента управления или при определении собственного класса пользовательского элемента управления.</p>
+<p>Прослушиватели перенаправленных событий и источники перенаправленных событий не требуются для совместного использования общего события в их иерархии. Любой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> может быть прослушивателем перенаправленных событий. Таким образом, можно использовать полный набор перенаправленных событий, доступных во всем рабочем API как концептуальный &quot;интерфейс&quot;, посредством чего разнородные элементы в приложении могут обмениваться данными о событиях. Эта концепция &quot;интерфейса&quot; для перенаправленных событий особенно применима для событий ввода.</p>
+<p>Перенаправленные события могут также использоваться для связи элементов дерева, так как данные событий сохраняются для каждого элемента в маршруте. Один элемент может изменить что-либо в данных события, и это изменение будет доступно для следующего элемента в маршруте.</p>
+<p>Помимо маршрутизации, существуют еще две причины реализации события WPF в качестве перенаправленного события вместо стандартного события CLR. При реализации собственных событий рекомендуется учитывать приведенные далее принципы.</p>
+<ul>
+<li><p>Определенные WPF Стилизация и использование шаблонов функции, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> требуется указанное событие было перенаправленным. Это сценарий идентификатора события, упомянутого выше.</p>
+</li>
+<li><p>Перенаправленные события поддерживают механизм обработки классов, в силу чего класс может указывать статические методы, имеющие возможность обрабатывать перенаправленные события до того, как любой зарегистрированный обработчик экземпляров сможет получить к ним доступ. Это очень полезно при разработке элемента управления, поскольку класс может управляться с помощью событий, что не может быть случайно подавлено обработкой события в экземпляре.</p>
+</li>
+</ul>
+<p>Каждое из описанных выше рассуждений рассматривается в отдельной части этого раздела.</p>
+<p><a name="event_handing"></a></p>
+<h2 id="adding-and-implementing-an-event-handler-for-a-routed-event">Добавление и реализация обработчика событий для перенаправленного события</h2>
+<p>Чтобы добавить обработчик событий в XAML, просто добавьте имя события в элемент как атрибут и установите значение атрибута в качестве имени обработчика событий, который реализует соответствующий делегат, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="EventOvwSupport#SimplestSyntax">&lt;Button Click=&quot;b1SetColor&quot;&gt;button&lt;/Button&gt;
+</code></pre>
+<p><code>b1SetColor</code> — имя реализуемого обработчика, который содержит код, который обрабатывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий. <code>b1SetColor</code> должен иметь ту же сигнатуру, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventhandler">RoutedEventHandler</a> делегат, который является делегатом обработчика событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событий. Первый параметр всех делегатов обработчиков перенаправленных событий указывает элемент, к которому добавляется обработчик событий, а второй параметр указывает данные для события.</p>
+<pre><code class="lang-csharp" name="EventOvwSupport#SimpleHandlerA">void b1SetColor(object sender, RoutedEventArgs args)
+{
+  //logic to handle the Click event
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventhandler">RoutedEventHandler</a> является делегатом обработчика перенаправленных событий basic. Для перенаправленных событий, которые являются специализированными для определенных элементов управления или скриптов, делегаты, которые используются для обработчиков перенаправленных событий, также могут быть более специализированными, чтобы они могли передавать определенные данные события. Например, в общем сценарии ввода можно обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.dragenter">DragEnter</a> перенаправленного события. Обработчик должен реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventhandler">DragEventHandler</a> делегировать. С помощью наиболее конкретного делегата, можно обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs">DragEventArgs</a> в обработчике событий и прочитать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.data">Data</a> свойство, которое содержит полезные данные буфера обмена операции перетаскивания.</p>
+<p>Полный пример добавления обработчика событий к элементу с помощью XAML см. в разделе <a href="how-to-handle-a-routed-event.html">Обработка перенаправленных событий</a>.</p>
+<p>Добавить обработчик для перенаправленного события в приложении, созданном в коде, достаточно просто. Обработчики перенаправленных событий всегда можно добавлять с помощью вспомогательного метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> (который является тот же метод, который вызывает резервной копией для <code>add</code>.) Однако существующие перенаправленные события  WPF обычно имеют резервную реализацию <code>add</code> и логику <code>remove</code>, позволяющую добавлять обработчики перенаправленных событий с помощью синтаксиса событий для определенного языка, являющегося более понятным, чем вспомогательный метод. Ниже приведен пример использования вспомогательного метода.</p>
+<pre><code class="lang-csharp" name="EventOvwSupport#AddHandlerCode">void MakeButton()
+ {
+     Button b2 = new Button();
+     b2.AddHandler(Button.ClickEvent, new RoutedEventHandler(Onb2Click));
+ }
+ void Onb2Click(object sender, RoutedEventArgs e)
+ {
+     //logic to handle the Click event
+ }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показан C# синтаксис оператора (Visual Basic имеет немного другой синтаксис оператора из-за обработки разыменовывания):</p>
+<pre><code class="lang-csharp" name="EventOvwSupport#AddHandlerPlusEquals">void MakeButton2()
+{
+  Button b2 = new Button();
+  b2.Click += new RoutedEventHandler(Onb2Click2);
+}
+void Onb2Click2(object sender, RoutedEventArgs e)
+{
+  //logic to handle the Click event
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Пример добавления обработчика событий в коде см. в разделе <a href="how-to-add-an-event-handler-using-code.html">Добавление обработчика событий с помощью кода</a>.</p>
+<p>Если вы используете Visual Basic, можно также использовать <code>Handles</code> ключевое слово, чтобы добавить обработчик как часть объявлений обработчика. Дополнительные сведения см. в разделе <a href="visual-basic-and-wpf-event-handling.html">Обработка событий в Visual Basic и WPF</a>.</p>
+<p><a name="concept_handled"></a></p>
+<h3 id="the-concept-of-handled">Концепция обработанных событий</h3>
+<p>Все перенаправленные события совместно используют общий базовый класс данных события, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs">RoutedEventArgs</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs">RoutedEventArgs</a> Определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> свойство, которое принимает логическое значение. Цель <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> свойство является включение любой обработчик событий в маршруте мог отметить перенаправленное событие как <em>обрабатываются</em>, его значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> для <code>true</code>. После обработки обработчиком в одном элементе в маршруте совместно используемые данные события снова предоставляются каждому прослушивателю в маршруте.</p>
+<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> влияет на перенаправленное событие сообщил или обрабатываются во время их передачи дальнейшего в маршруте. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> является <code>true</code> событий данные для перенаправленного события, а затем обработчики, которые прослушивают перенаправляемые события на другие элементы, обычно больше не вызываются для этого конкретного экземпляра события. Это справедливо как для обработчиков, присоединенных к XAML, так и для обработчиков, добавленных с помощью синтаксиса присоединения обработчика событий конкретного языка, например <code>+=</code> или <code>Handles</code>. Для наиболее общих сценариев обработки Пометка события как обработанного путем присвоения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> для <code>true</code> будет «stop» нисходящую или восходящую маршрутизацию событий, а также для любого события, которое обрабатывается в точке маршрута обработчиком классов маршрутизацию.</p>
+<p>Тем не менее, отсутствует «handledEventsToo» механизм, посредством которого прослушиватели могут по-прежнему запускать обработчики в ответ на перенаправляемые события где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> является <code>true</code> в данных события. Другими словами, маршрут события в действительности не останавливается при пометке события в данных события как обработанного. Механизм handledEventsToo можно использовать только в коде или в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>:</p>
+<ul>
+<li><p>В коде, вместо того чтобы использовать синтаксис события определенного языка, который работает для общих CLR события, вызывать WPF метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler#System_Windows_UIElement_AddHandler_System_Windows_RoutedEvent_System_Delegate_System_Boolean_">AddHandler(RoutedEvent, Delegate, Boolean)</a> для добавления обработчика. Задайте для <code>handledEventsToo</code> значение <code>true</code>.</p>
+</li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter.handledeventstoo">HandledEventsToo</a> атрибут, который будет <code>true</code>.</p>
+</li>
+</ul>
+<p>Помимо поведения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> создает состояние в маршрутизированных событиях, концепция <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> влияет на том, как должны разрабатываться приложение и написать код обработчика событий. Можно представить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> как простой протокол, предоставляемый перенаправленными событиями. Способы использования этого протокола является, однако концептуальное проектирование как значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> предназначен для использования выглядит следующим образом:</p>
+<ul>
+<li><p>Если перенаправленное событие помечено как обработанное, то затем его не требуется снова обрабатывать другими элементами в маршруте.</p>
+</li>
+<li><p>Если перенаправленное событие не помечено как обработанное, то либо не регистрировал обработчик или обработчики, которые были зарегистрированных разрешили использовать данные события и установили отказались другой прослушиватель, более ранний в маршруте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> для <code>true</code>. (Или, возможно, текущий прослушиватель является первой точкой в маршруте.) Обработчики на текущем прослушивателе имеют три возможных варианта действий.</p>
+<ul>
+<li><p>Не выполнять никаких действий. Событие остается необработанным и переходит к следующему прослушивателю.</p>
+</li>
+<li><p>Выполнить код в ответ на событие, при этом убедиться, что выполненное действие не было достаточно существенным, чтобы пометить событие как обработанное. Событие перенаправляется к следующему прослушивателю.</p>
+</li>
+<li><p>Выполнить кода в ответ на событие. Пометить событие как обработанное в данных события, передаваемых обработчику, потому что предпринятое действие считается достаточно существенным, чтобы пометить событие как обработанное. Событие перенаправляется к следующему прослушивателю, но с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> = <code>true</code> в его данных события, поэтому только <code>handledEventsToo</code> прослушиватели имеют возможность вызвать следующие обработчики.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Этот концептуальный проект подкреплен описанным ранее поведением при маршрутизации: более сложным (хотя и возможным для кода и стилей) является присоединение обработчиков для перенаправленных событий, которые вызываются, даже если предыдущий обработчик маршрута уже установил <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a>для <code>true</code>.</p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a>, обработка класса перенаправленных событий и рекомендации о том, когда необходимо помечать перенаправленное событие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a>, см. в разделе <a href="marking-routed-events-as-handled-and-class-handling.html">маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p>В приложениях весьма распространена обработка только перенаправляемого по восходящей события в объекте, который вызывал его, независимо от характеристик маршрутизации события. Однако все же рекомендуется помечать перенаправленное событие как обработанное в данных события, чтобы избежать непредвиденных побочных эффектов на случай, если элемент, который далее следует в дереве элементов, имеет вложенный обработчик для этого же перенаправленного события.</p>
+<p><a name="class_handlers"></a></p>
+<h2 id="class-handlers">Обработчики классов</h2>
+<p>При определении класса, производного каким-либо образом из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>, можно также определить и присоединить обработчик класса для перенаправленного события, который является объявленным или унаследованным элементом события класса. Обработчики классов вызываются ранее любого обработчика прослушивателей экземпляров, присоединенного к экземпляру этого класса, всякий раз, когда перенаправленное событие встречает экземпляр элемента в своем маршруте.</p>
+<p>Некоторые элементы управления WPF имеют внутреннюю обработку классов для некоторых перенаправленных событий. Может показаться, что перенаправленное событие не возникает никогда, но на самом деле оно обрабатывается классом и перенаправленное событие по-прежнему может потенциально обрабатываться с помощью обработчиков экземпляров при использовании определенных методов. Кроме того, многие базовые классы и элементы управления предоставляют виртуальные методы, которые могут быть использованы для переопределения поведения при обработке классов. Дополнительные сведения о том, как обрабатывать нежелательные классы и как определить обработку собственного класса в пользовательском классе, см. в разделе <a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p><a name="attached_events"></a></p>
+<h2 id="attached-events-in-wpf">Вложенные события в WPF</h2>
+<p>XAML также определяет специальный тип события, называемого <em>вложенным событием</em>. Вложенное событие позволяет добавлять обработчик для конкретного события в произвольный элемент. Элементу, обрабатывающему событие, не требуется определять или наследовать вложенное событие, и ни объект, который потенциально может вызвать событие, ни экземпляр обработки места назначения не должны определять или каким-либо иным способом владеть этим событием в качестве элемента класса.</p>
+<p>Система ввода WPF широко использует вложенные события. Однако практически все эти вложенные события перенаправляются через базовые элементы. События ввода затем отображаются как эквивалент невложенных перенаправленных событий, которые являются членами класса базового элемента. К примеру, присоединенное событие основной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.mousedown">Mouse.MouseDown</a> может намного легче обрабатываться на любой заданной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousedown">MouseDown</a> об этом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> вместо работы с синтаксисом присоединенных событий, либо в XAML или кода.</p>
+<p>Дополнительные сведения о вложенных событиях в WPF см. в разделе <a href="attached-events-overview.html">Общие сведения о вложенных событиях</a>.</p>
+<p><a name="Qualifying_Event_Names_in_XAML_for_Anticipated_Routing"></a></p>
+<h2 id="qualified-event-names-in-xaml">Полные имена событий в XAML</h2>
+<p>Другой синтаксис напоминает синаксис <em>typename</em>. <em>EventName</em> вложенного события, но он не является синтаксисом вложенного события при присоединении обработчиков для перенаправленных событий, вызываемых дочерними элементами. Обработчики присоединяются в общем родительском элементе, чтобы воспользоваться преимуществами маршрутизации событий, несмотря на то что общий родительский элемент может не иметь соответствующего перенаправленного события в качестве члена. Рассмотрим этот пример еще раз.</p>
+<pre><code class="lang-xaml" name="EventOvwSupport#GroupButton">&lt;Border Height=&quot;50&quot; Width=&quot;300&quot; BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;&gt;
+  &lt;StackPanel Background=&quot;LightGray&quot; Orientation=&quot;Horizontal&quot; Button.Click=&quot;CommonClickHandler&quot;&gt;
+    &lt;Button Name=&quot;YesButton&quot; Width=&quot;Auto&quot; &gt;Yes&lt;/Button&gt;
+    &lt;Button Name=&quot;NoButton&quot; Width=&quot;Auto&quot; &gt;No&lt;/Button&gt;
+    &lt;Button Name=&quot;CancelButton&quot; Width=&quot;Auto&quot; &gt;Cancel&lt;/Button&gt;
+  &lt;/StackPanel&gt;
+&lt;/Border&gt;
+</code></pre>
+<p>Здесь является прослушивателем родительского элемента, где добавляется обработчик <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>. Тем не менее, она добавляет обработчик для перенаправленного события, который был объявлен и будет вызываться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> класс (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase">ButtonBase</a> на самом деле, но доступен для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> через наследование). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> «владеет» событием, но система перенаправленных событий позволяет обработчикам любого перенаправленного события быть присоединенными к любому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> прослушиватель экземпляра, в противном случае может присоединить прослушиватели для среда CLR событий. Пространством имен xmlns по умолчанию для этих полных имен атрибутов событий обычно является пространство имен xmlns WPF по умолчанию, но можно также указать префиксные пространства имен для пользовательских перенаправленных событий. Дополнительные сведения о xmlns см. в разделе <a href="xaml-namespaces-and-namespace-mapping-for-wpf-xaml.html">Пространства имен XAML и сопоставление пространств имен для WPF XAML</a>.</p>
+<p><a name="how_event_processing_works"></a></p>
+<h2 id="wpf-input-events">События ввода WPF</h2>
+<p>Перенаправленные события в платформе WPF часто применяются для событий ввода. В WPF имена перенаправляемых по нисходящей событий по соглашению указываются с префиксом Preview. События ввода часто возникают попарно, одно маршрутизируется по восходящей, другое — по нисходящей. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keydown">KeyDown</a> событий и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.previewkeydown">PreviewKeyDown</a> событий имеют одинаковую сигнатуру, при этом первое является событием восходящей маршрутизации ввода, а второе — по нисходящей событий ввода. Иногда события ввода имеют только восходящую или, возможно, только прямую маршрутизацию. В документации в разделах, посвященных перенаправленным событиям, содержатся перекрестные ссылки на аналогичные перенаправленные события с альтернативной стратегией маршрутизации, если такие перенаправленные события существуют, и ссылки на разделы документации для уточнения стратегии маршрутизации каждого перенаправленного события.</p>
+<p>WPF входные события, возникающие попарно, реализуются так, что одно действие пользователя из входных данных, таких как нажатие кнопки мыши, последовательно вызовет оба перенаправленные события пары. Сначала вызывается событие, которое маршрутизируется по нисходящей. Затем вызывается событие, которое маршрутизируется по восходящей. Два события буквально совместно используют тот же экземпляр данных события, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.raiseevent">RaiseEvent</a> вызов метода в реализующем классе восходящей маршрутизации событие, которое ожидает передачи данных для данных события, события и повторно использует его для новых вызываемых событий. Прослушиватели с обработчиками для события, маршрутизирующегося по нисходящей, могут первыми пометить перенаправленное событие как обработанное (сначала обработчики классов, затем обработчики экземпляров). Если элемент при нисходящей маршрутизации отметил перенаправленное событие как обработанное, уже обработанные данные события отправляются для события, маршрутизирующегося по восходящей, и типичные обработчики, вложенные для эквивалентных маршрутизируемых по восходящей событий, не будут вызываться. Внешне это будет выглядеть так, как будто обработанное маршрутизируемое по восходящей событие и не вызывалось. Поведение при обработке полезно использовать при композиции элементов управления, где требуется, чтобы конечный элемент управления (а не его составные части) создавал отчеты о событиях проверки нажатия при вводе или событиях ввода на основе фокуса. Конечный элемент управления находится ближе к корневому элементу в композиции и поэтому имеет возможность обработать событие, передаваемое по нисходящей, первым и, возможно, &quot;заменить&quot; это перенаправленное событие более подходящим для данного элемента управления как часть кода, которая резервирует класс элемента управления.</p>
+<p>В качестве иллюстрации того, как обрабатываются события ввода, рассмотрим следующий пример. На следующем рисунке дерева <code>leaf element #2</code> является источником событий <code>PreviewMouseDown</code> и <code>MouseDown</code>.</p>
+<p><img src="media/wcsdkcoreinputevents.png" alt="Схема маршрутизации события" title="wcsdkCoreInputEvents"><br>
+Восходящая и нисходящая маршрутизация событий ввода</p>
+<p>Порядок обработки событий выглядит следующим образом.</p>
+<ol>
+<li><p><code>PreviewMouseDown</code> (нисходящее) на корневом элементе.</p>
+</li>
+<li><p><code>PreviewMouseDown</code> (нисходящее) на промежуточном элементе #1.</p>
+</li>
+<li><p><code>PreviewMouseDown</code> (нисходящее) на исходном элементе #2.</p>
+</li>
+<li><p><code>MouseDown</code> (всплывающее) на исходном элементе #2.</p>
+</li>
+<li><p><code>MouseDown</code> (всплывающее) на промежуточном элементе #1.</p>
+</li>
+<li><p><code>MouseDown</code> (всплывающее) на корневом элементе.</p>
+</li>
+</ol>
+<p>Делегат обработчика перенаправленных событий содержит ссылки на два объекта: объект, который вызвал событие, и объект, в котором был вызван обработчик. Объект, в котором был вызван обработчик, указывается с помощью параметра <code>sender</code>. Объект, где было вызвано событие сообщает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.source">Source</a> свойство в данных события. Перенаправленное событие может по-прежнему возникает и обрабатывается один и тот же объект, в этом случае <code>sender</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.source">Source</a> идентичны (это происходит на этапах 3 и 4, в примере обработки).</p>
+<p>Из-за нисходящей и восходящей маршрутизации родительские элементы получают события ввода, где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.source">Source</a> является одним из их дочерних элементов. При очень важно знать, что такое исходного элемента, можно определить исходный элемент, обратившись к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.source">Source</a> свойство.</p>
+<p>Как правило когда событие ввода помечено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a>, дополнительные обработчики не вызываются. Обычно события ввода помечаются как обработанные сразу же после вызова обработчика, который при обработке события ввода опирается на логику приложения.</p>
+<p>Исключением из общего правила о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> обработчики событий, зарегистрированные для намеренного игнорирования ввода находится в состоянии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> состояние данных событий будет по-прежнему вызываться в маршруте. Дополнительные сведения см. в разделах <a href="preview-events.html">События предварительного просмотра</a> или <a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p>Модель общего использования данных события при нисходящей и восходящей маршрутизации и последовательный вызов сначала нисходящих, а потом всплывающих событий не обязательно выполняются для всех перенаправленных событий. Такое поведение реализуется в зависимости от того, как устройства ввода WPF вызывают или соединяют пары событий ввода. Дополнительным сценарием является реализация собственных событий ввода, но эту модель также можно реализовывать для собственных событий ввода.</p>
+<p>В определенных классах обработка классов используется для определенных событий ввода, как правило, с целью переопределения значения событий ввода, вызываемых пользователем, и вызова новых событий. Дополнительные сведения см. в разделе <a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p>Дополнительные сведения о вводе данных и о том, как ввод данных и события взаимодействуют в обычных сценариях приложения, см. в разделе <a href="input-overview.html">Общие сведения о входных данных</a>.</p>
+<p><a name="events_styles"></a></p>
+<h2 id="eventsetters-and-eventtriggers">EventSetters и EventTriggers</h2>
+<p>В стилях, можно включить какой-либо предопределенный XAML обработки синтаксис в разметке с помощью событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>. При применении стиля указанный обработчик добавляется в экземпляр стиля. Можно объявить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a> только для перенаправленного события. Пример. Обратите внимание, что указанный метод <code>b1SetColor</code> находится в файле кода программной части.</p>
+<pre><code class="lang-xaml" name="EventOvwSupport#XAML2">&lt;StackPanel
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;SDKSample.EventOvw2&quot;
+  Name=&quot;dpanel2&quot;
+  Initialized=&quot;PrimeHandledToo&quot;
+&gt;
+  &lt;StackPanel.Resources&gt;
+    &lt;Style TargetType=&quot;{x:Type Button}&quot;&gt;
+      &lt;EventSetter Event=&quot;Click&quot; Handler=&quot;b1SetColor&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/StackPanel.Resources&gt;
+  &lt;Button&gt;Click me&lt;/Button&gt;
+  &lt;Button Name=&quot;ThisButton&quot; Click=&quot;HandleThis&quot;&gt;
+    Raise event, handle it, use handled=true handler to get it anyway.
+  &lt;/Button&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>— Это преимущество, что стиль является скорее всего, содержать много другой информации, которая могла бы применяться к любой кнопке в приложении, и необходимости <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a> быть частью этого стиля способствует повторному использованию кода даже на уровне разметки. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a> отделяет имена методов для обработчиков один шаг вперед от Общие приложения и страницы разметки.</p>
+<p>Другим особым синтаксисом, который сочетает перенаправленных событий и анимации возможности WPF является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>. Как и в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>, только перенаправленные события могут использоваться для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>. Как правило <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> объявляется как часть стиля, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> также могут быть объявлены на уровне элементов страницы как часть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.triggers">Triggers</a> коллекции, или в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> Позволяет указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> что запускается каждый раз, когда перенаправленное событие встречает на своем маршруте элемент, который объявляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> для этого события. Преимущество <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> просто обработав событие, и для запуска существующей раскадровки том, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> обеспечивает лучший контроль над раскадровкой и его поведение во время выполнения. Дополнительные сведения см. в разделе <a href="../graphics-multimedia/how-to-use-event-triggers-to-control-a-storyboard-after-it-starts.html">Использование триггеров событий для управления раскадровкой после ее запуска</a>.</p>
+<p><a name="more_about"></a></p>
+<h2 id="more-about-routed-events">Дополнительные сведения о перенаправленных событиях</h2>
+<p>В этом разделе перенаправленные события рассматриваются, главным образом, с точки зрения описания основных понятий. Также приводится руководство по тому, как и когда следует отвечать на перенаправляемые события, которые уже существуют в различных базовых элементах и элементах управления. Однако можно создать собственное перенаправленное событие на пользовательском классе вместе со всей необходимой поддержкой, такой как особые для этого события классы данных и делегаты. Владельцем перенаправленного события может быть любой класс, но перенаправленные события должны вызываться и обрабатываться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> производные классы для практического. Дополнительные сведения о пользовательских событиях см. в разделе <a href="how-to-create-a-custom-routed-event.html">Создание пользовательских событий маршрутизации</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager">EventManager</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs">RoutedEventArgs</a></li>
+<li><a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a></li>
+<li><a href="input-overview.html">Общие сведения о входных данных</a></li>
+<li><a href="commanding-overview.html">Общие сведения о системе команд</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="trees-in-wpf.html">Деревья в WPF</a></li>
+<li><a href="weak-event-patterns.html">Шаблоны слабых событий</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

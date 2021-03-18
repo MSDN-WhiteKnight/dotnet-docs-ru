@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; &quot;&#1090;&#1086;&#1083;&#1100;&#1082;&#1086; &#1076;&#1083;&#1103; &#1095;&#1090;&#1077;&#1085;&#1080;&#1103;&quot; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; &quot;&#1090;&#1086;&#1083;&#1100;&#1082;&#1086; &#1076;&#1083;&#1103; &#1095;&#1090;&#1077;&#1085;&#1080;&#1103;&quot; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="read-only-dependency-properties">Свойства зависимости &quot;только для чтения&quot;</h1>
+
+<p>В этом разделе описываются свойства зависимостей &quot;только для чтения&quot;, включая существующие свойства зависимостей &quot;только для чтения&quot;, а также сценарии и методы создания настраиваемого свойства зависимостей &quot;только для чтения&quot;.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы понимаете основные сценарии реализации свойства зависимостей и способы применения метаданных к настраиваемому свойству зависимостей. Дополнительные сведения см. в разделах <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a> и <a href="dependency-property-metadata.html">Метаданные свойства зависимостей</a>.</p>
+<p><a name="existing"></a></p>
+<h2 id="existing-read-only-dependency-properties">Существующие свойства зависимостей &quot;только для чтения&quot;</h2>
+<p>Некоторые свойства зависимостей, определенные в среде Windows Presentation Foundation (WPF), доступны только для чтения. Типичной причиной для указания свойства зависимости &quot;только для чтения&quot; является то, что это свойства, которые должны использоваться для определения состояния там, где это состояние зависит от множества факторов, но простая настройка этого состояния для данного свойства нежелательна с точки зрения дизайна пользовательского интерфейса. Например, свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismouseover">IsMouseOver</a> действительно только отображает состояние, определяемое вводом с помощью мыши. Любая попытка установить это значение программно путем обхода истинного ввода с помощью мыши будет непредсказуемой и вызовет несогласованность.</p>
+<p>Поскольку свойства зависимостей &quot;только для чтения&quot; нельзя устанавливать, они не подходят для многих сценариев, для которых свойства зависимостей обычно предлагают решение (а именно: привязка данных с возможностью прямого использования стилей для значения, проверки, анимации, наследования). Несмотря на то что их нельзя устанавливать, свойства зависимостей &quot;только для чтения&quot; обладают некоторыми дополнительными возможностями, которые поддерживаются свойствами зависимостей в системе свойств. Наиболее важной оставшейся возможностью является то, что свойство зависимости &quot;только для чтения&quot; по-прежнему можно использовать как триггер свойств в стиле. Невозможно включить триггеры с помощью обычного свойства среда CLR. Оно должно быть свойством зависимостей. Вышеупомянутое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismouseover">IsMouseOver</a> свойство является отличным примером сценария, в которых может оказаться весьма полезным определение стиля для элемента управления, в котором некоторые свойства visible, такие как фоновый рисунок, основной цвет или похожие свойства сложных элементов в элемент управления изменится, когда пользователь наведет указатель мыши на определенную область элемента управления. Изменения в свойстве зависимостей &quot;только для чтения&quot; также могут обнаруживаться и сообщаться внутренними процессами определения недействительности в системе свойств. Фактически, это внутренняя поддержка функциональности триггера свойств.</p>
+<p><a name="new"></a></p>
+<h2 id="creating-custom-read-only-dependency-properties">Создание пользовательских свойств зависимостей &quot;только для чтения&quot;</h2>
+<p>Обязательно ознакомьтесь с вышеприведенным разделом, описывающим, почему свойства зависимостей &quot;только для чтения&quot; не будут работать для многих типичных сценариев свойств зависимостей. Однако при наличии соответствующего сценария можно создать собственное свойство зависимостей &quot;только для чтения&quot;.</p>
+<p>Большая часть процесса создания свойства зависимостей &quot;только для чтения&quot; аналогична описанному в разделах <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a> и <a href="how-to-implement-a-dependency-property.html">Реализация свойства зависимостей</a>. Однако есть три важных отличия.</p>
+<ul>
+<li><p>При регистрации свойства следует вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerreadonly">RegisterReadOnly</a> вместо обычного метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> метод для регистрации свойства.</p>
+</li>
+<li><p>При реализации свойства wrapper CLR убедитесь, что в программе-оболочке нет реализации set, и таким образом, отсутствует несогласованность в состоянии &quot;только для чтения&quot; для открытой программы-оболочки.</p>
+</li>
+<li><p>Объект, возвращаемый регистрацией только для чтения — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. Необходимо сохранить это поле в качестве члена, но обычно не нужно его делать общим членом для типа.</p>
+</li>
+</ul>
+<p>Любое частное поле или значение, заложенное в свойство зависимостей &quot;только для чтения&quot;, может быть полностью записываемым с помощью любой выбранной логики. Однако самый простой способ задать свойство либо изначально, либо в составе логики выполнения — это использовать API - интерфейсы системы свойств, а не обходить систему свойств и настраивать частное резервное поле напрямую. В частности, имеется подпись <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> , принимающий параметр типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a>. Как и где это значение программно в логике приложения повлияет на том, как вы можете установить доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> создается при первой регистрации свойства зависимостей. Если обрабатывать эту логику внутри класса, то можно сделать ее частной. Если необходимо устанавливать ее из других частей сборки, можно сделать ее внутренней. Одним из подходов является вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> обработчика событий класса для соответствующего события, сообщающего экземпляру класса, хранимого значения свойства необходимо изменить. Другой подход заключается в связывании свойств зависимости с помощью парных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> обратные вызовы как часть метаданных этих свойств во время регистрации.</p>
+<p>Поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> является закрытым и не распространяется системой свойств вне кода, свойство зависимостей только для чтения иметь лучшую безопасность настройки, чем свойство зависимости для чтения и записи. Для свойства зависимостей с возможностью чтения и записи идентифицирующее поле является явно или неявно общим, и таким образом, свойство является широко устанавливаемым. Дополнительные сведения см. в разделе <a href="dependency-property-security.html">Безопасность свойства зависимостей</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

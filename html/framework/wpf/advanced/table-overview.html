@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1090;&#1072;&#1073;&#1083;&#1080;&#1094;&#1072;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1090;&#1072;&#1073;&#1083;&#1080;&#1094;&#1072;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="table-overview">Общие сведения о таблицах</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> представляет собой элемент уровня блока, который поддерживает представление на основе сетки содержимого документа. Гибкость этого элемента делает его очень полезным, но также и более сложным для понимания и правильного использования.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#table_basics">Основные сведения о таблицах</a></p>
+</li>
+<li><p><a href="#table_vs_Grid">Отличие таблицы от сетки</a></p>
+</li>
+<li><p><a href="#basic_table_structure">Основная структура таблицы</a></p>
+</li>
+<li><p><a href="#table_containment">Вложения таблицы</a></p>
+</li>
+<li><p><a href="#row_groupings">Группирование строк</a></p>
+</li>
+<li><p><a href="#rendering_precedence">Приоритет отрисовки фона</a></p>
+</li>
+<li><p><a href="#spanning_rows_or_columns">Объединение строк или столбцов</a></p>
+</li>
+<li><p><a href="#building_a_table_with_code">Построение таблицы с помощью кода</a></p>
+</li>
+<li><p>[Связанные разделы]</p>
+</li>
+</ul>
+<p><a name="table_basics"></a></p>
+<h2 id="table-basics">Основные сведения о таблицах</h2>
+<p><a name="table_vs_Grid"></a></p>
+<h3 id="how-is-table-different-then-grid">Отличие таблицы от сетки</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> совместно использовать некоторые общие функциональные возможности, но каждый из них лучше всего подходит для различных сценариев. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> предназначен для использования в потоковом содержимом (см. в разделе <a href="flow-document-overview.html">Общие</a> Дополнительные сведения о потоковом содержимом). Сетки лучше всего использовать внутри форм (по сути в любом месте вне потокового содержимого). В рамках <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> поддерживает поток такие возможности, как разбиение на страницы, Перекомпоновка столбцов и Выбор содержимого при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> — нет. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> с другой стороны лучше всего использовать за пределами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> по многим причинам, в том числе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> добавляет элементы на основе индекса строк и столбцов, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> — нет. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> Элемент позволяет создавать слои дочернего содержимого, позволяя более чем одного элемента существовать внутри одной «ячейки». <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> не поддерживает слои. Дочерние элементы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> можно абсолютно позиционировать относительно области границ их «ячейки». <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> не поддерживает эту функцию. Наконец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> требует меньше ресурсов, а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> поэтому рассмотрите возможность использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> для повышения производительности.</p>
+<p><a name="basic_table_structure"></a></p>
+<h3 id="basic-table-structure">Основная структура таблицы</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> предоставляет презентацию основе сетки, состоящий из столбцов (представленный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecolumn">TableColumn</a> элементов) и строк (представленных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerow">TableRow</a> элементов). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecolumn">TableColumn</a> элементы не размещайте содержимого; они просто определяют столбцы и их характеристики. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerow">TableRow</a> элементы должны размещаться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerowgroup">TableRowGroup</a> элемент, который определяет группирование строк в таблице. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a> элементы, которые содержат фактическое содержимое, которое должно быть представлено в таблице, должны размещаться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerow">TableRow</a> элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a> может содержать только элементы, которые являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a>.  Допустимые дочерние элементы для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a> включают.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.blockuicontainer">BlockUIContainer</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.list">List</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.paragraph">Paragraph</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.section">Section</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a></p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a> элементы могут не содержать текстовое содержимое. Дополнительные сведения о правилах включения для потока содержимого элементы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a>, см. в разделе <a href="flow-document-overview.html">Общие</a>.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> аналогичен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> элемент но имеет больше возможностей и, следовательно, требует больше ресурсов.</p>
+</div>
+<p>В следующем примере определяется Простая таблица 2 x 3 с помощью XAML.</p>
+<pre><code class="lang-xaml" name="TableSnippets2#_Table_BasicLayout">&lt;!-- 
+  Table is a Block element, and as such must be hosted in a container
+  for Block elements.  FlowDocument provides such a container. 
+--&gt;
+&lt;FlowDocument&gt;
+  &lt;Table&gt;
+    &lt;!-- 
+      This table has 3 columns, each described by a TableColumn 
+      element nested in a Table.Columns collection element. 
+    --&gt;
+    &lt;Table.Columns&gt;
+      &lt;TableColumn /&gt;
+      &lt;TableColumn /&gt;
+      &lt;TableColumn /&gt;
+    &lt;/Table.Columns&gt;
+    &lt;!-- 
+      This table includes a single TableRowGroup which hosts 2 rows,
+      each described by a TableRow element.
+    --&gt;
+    &lt;TableRowGroup&gt;
+      &lt;!--
+        Each of the 2 TableRow elements hosts 3 cells, described by
+        TableCell elements.
+      --&gt;
+      &lt;TableRow&gt;
+        &lt;TableCell&gt;
+          &lt;!-- 
+            TableCell elements may only host elements derived from Block.
+            In this example, Paragaph elements serve as the ultimate content
+            containers for the cells in this table.
+          --&gt;
+          &lt;Paragraph&gt;Cell at Row 1 Column 1&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+        &lt;TableCell&gt;
+          &lt;Paragraph&gt;Cell at Row 1 Column 2&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+        &lt;TableCell&gt;
+          &lt;Paragraph&gt;Cell at Row 1 Column 3&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+      &lt;/TableRow&gt;
+      &lt;TableRow&gt;
+        &lt;TableCell&gt;
+          &lt;Paragraph&gt;Cell at Row 2 Column 1&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+        &lt;TableCell&gt;
+          &lt;Paragraph&gt;Cell at Row 2 Column 2&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+        &lt;TableCell&gt;
+          &lt;Paragraph&gt;Cell at Row 2 Column 3&lt;/Paragraph&gt;
+        &lt;/TableCell&gt;
+      &lt;/TableRow&gt;
+    &lt;/TableRowGroup&gt;
+  &lt;/Table&gt;
+&lt;/FlowDocument&gt;
+</code></pre>
+<p>На следующем рисунке показана отрисовка этого примера.</p>
+<p><img src="media/table-overview/basic-table-render-example.png" alt="Снимок экрана: отрисовка базовой таблицы."></p>
+<p><a name="table_containment"></a></p>
+<h3 id="table-containment">Вложения таблицы</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a> элемент и следует общим правилам для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a> элементов уровня.  Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> элемент может содержаться в любом из следующих элементов:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listviewitem">ListViewItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.section">Section</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.floater">Floater</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.figure">Figure</a></p>
+</li>
+</ul>
+<p><a name="row_groupings"></a></p>
+<h3 id="row-groupings">Группирование строк</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerowgroup">TableRowGroup</a> Элемент предоставляет способ произвольного группирования строк в таблице; каждая строка таблицы должна принадлежать группе строк.  Строки в группе часто имеют общее назначение и могут быть стилизованы в виде группы.  Обычно группирование строк используется для отделения строк специального назначения, например строк названия, заголовка и нижнего колонтитула, от основного содержимого, находящегося в таблице.</p>
+<p>В следующем примере используется XAML для определения таблицы с примененным стилем заголовка и нижнего колонтитула.</p>
+<pre><code class="lang-xaml" name="TableSnippets2#_Table_RowGroups">&lt;Table&gt;
+  &lt;Table.Resources&gt;
+    &lt;!-- Style for header/footer rows. --&gt;
+    &lt;Style x:Key=&quot;headerFooterRowStyle&quot; TargetType=&quot;{x:Type TableRowGroup}&quot;&gt;
+      &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;DemiBold&quot;/&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;16&quot;/&gt;
+      &lt;Setter Property=&quot;Background&quot; Value=&quot;LightGray&quot;/&gt;
+    &lt;/Style&gt;
+
+    &lt;!-- Style for data rows. --&gt;
+    &lt;Style x:Key=&quot;dataRowStyle&quot; TargetType=&quot;{x:Type TableRowGroup}&quot;&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot;/&gt;
+      &lt;Setter Property=&quot;FontStyle&quot; Value=&quot;Italic&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/Table.Resources&gt;
+  
+  &lt;Table.Columns&gt;
+    &lt;TableColumn/&gt; &lt;TableColumn/&gt; &lt;TableColumn/&gt; &lt;TableColumn/&gt;
+  &lt;/Table.Columns&gt;
+
+  &lt;!-- This TableRowGroup hosts a header row for the table. --&gt;
+  &lt;TableRowGroup Style=&quot;{StaticResource headerFooterRowStyle}&quot;&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell/&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;Gizmos&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;Thingamajigs&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;Doohickies&lt;/Paragraph&gt;&lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+  
+  &lt;!-- This TableRowGroup hosts the main data rows for the table. --&gt;
+  &lt;TableRowGroup Style=&quot;{StaticResource dataRowStyle}&quot;&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell&gt;&lt;Paragraph Foreground=&quot;Blue&quot;&gt;Blue&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;1&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;2&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;3&lt;/Paragraph&gt; &lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell&gt;&lt;Paragraph Foreground=&quot;Red&quot;&gt;Red&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;1&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;2&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;3&lt;/Paragraph&gt;&lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell&gt;&lt;Paragraph Foreground=&quot;Green&quot;&gt;Green&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;1&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;2&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;3&lt;/Paragraph&gt;&lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+
+  &lt;!-- This TableRowGroup hosts a footer row for the table. --&gt;
+  &lt;TableRowGroup Style=&quot;{StaticResource headerFooterRowStyle}&quot;&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;Totals&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;3&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;&lt;Paragraph&gt;6&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell&gt;
+        &lt;Table&gt;&lt;/Table&gt;
+      &lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+&lt;/Table&gt;
+</code></pre>
+<p>На следующем рисунке показана отрисовка этого примера.</p>
+<p><img src="media/table-rowgroups.png" alt="Снимок экрана: Группы строк таблицы" title="Table_RowGroups"></p>
+<p><a name="rendering_precedence"></a></p>
+<h3 id="background-rendering-precedence">Приоритет отрисовки фона</h3>
+<p>Элементы таблицы отрисовываются в следующем порядке (z-порядок от нижнего к верхнему). Этот порядок нельзя изменить. Например, для этих элементов не существует свойства &quot;Z-порядок&quot;, которое можно использовать для переопределения этого установленного порядка.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecolumn">TableColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerowgroup">TableRowGroup</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerow">TableRow</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell">TableCell</a></p>
+</li>
+</ol>
+<p>Рассмотрим следующий пример, в котором задается цвет фона для каждого из этих элементов в таблице.</p>
+<pre><code class="lang-xaml" name="TableSnippets2#_Table_ZOrder">&lt;Table Background=&quot;Yellow&quot;&gt;
+  &lt;Table.Columns&gt;
+    &lt;TableColumn/&gt;
+    &lt;TableColumn Background=&quot;LightGreen&quot;/&gt;
+    &lt;TableColumn/&gt;
+  &lt;/Table.Columns&gt;
+  &lt;TableRowGroup&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell/&gt;&lt;TableCell/&gt;&lt;TableCell/&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+  &lt;TableRowGroup Background=&quot;Tan&quot;&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell/&gt;&lt;TableCell/&gt;&lt;TableCell/&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow Background=&quot;LightBlue&quot;&gt;
+      &lt;TableCell/&gt;&lt;TableCell Background=&quot;Purple&quot;/&gt;&lt;TableCell/&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell/&gt;&lt;TableCell/&gt;&lt;TableCell/&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+  &lt;TableRowGroup&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell/&gt;&lt;TableCell/&gt;&lt;TableCell/&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+&lt;/Table&gt;
+</code></pre>
+<p>На следующем рисунке показана отрисовка этого примера (показаны только фоновые цвета).</p>
+<p><img src="media/table-zorder.png" alt="Снимок экрана: Таблица z-порядок" title="Table_ZOrder"></p>
+<p><a name="spanning_rows_or_columns"></a></p>
+<h3 id="spanning-rows-or-columns">Объединение строк или столбцов</h3>
+<p>Ячейки таблицы могут быть настроены для охватывать несколько строк или столбцов с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell.rowspan">RowSpan</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecell.columnspan">ColumnSpan</a> соответственно.</p>
+<p>Рассмотрим следующий пример, в котором ячейка включает три столбца.</p>
+<pre><code class="lang-xaml" name="TableSnippets2#_Table_ColumnSpan">&lt;Table&gt;
+  &lt;Table.Columns&gt;
+    &lt;TableColumn/&gt;
+    &lt;TableColumn/&gt;
+    &lt;TableColumn/&gt;
+  &lt;/Table.Columns&gt;
+
+  &lt;TableRowGroup&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell ColumnSpan=&quot;3&quot; Background=&quot;Cyan&quot;&gt;
+        &lt;Paragraph&gt;This cell spans all three columns.&lt;/Paragraph&gt;
+      &lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+    &lt;TableRow&gt;
+      &lt;TableCell Background=&quot;LightGray&quot;&gt;&lt;Paragraph&gt;Cell 1&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell Background=&quot;LightGray&quot;&gt;&lt;Paragraph&gt;Cell 2&lt;/Paragraph&gt;&lt;/TableCell&gt;
+      &lt;TableCell Background=&quot;LightGray&quot;&gt;&lt;Paragraph&gt;Cell 3&lt;/Paragraph&gt;&lt;/TableCell&gt;
+    &lt;/TableRow&gt;
+  &lt;/TableRowGroup&gt;
+&lt;/Table&gt;
+</code></pre>
+<p>На следующем рисунке показана отрисовка этого примера.</p>
+<p><img src="media/table-columnspan.png" alt="Снимок экрана: Ячейка, охватывающая все три столбца" title="Table_ColumnSpan"></p>
+<p><a name="building_a_table_with_code"></a></p>
+<h2 id="building-a-table-with-code">Построение таблицы с помощью кода</h2>
+<p>Следующие примеры показывают, как программным способом создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> и заполнение ее содержимым. Содержимое таблицы распределено по пяти строкам (представленный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablerow">TableRow</a> объектов, содержащихся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table.rowgroups">RowGroups</a> объекта) и шести столбцам (представленный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecolumn">TableColumn</a> объектов). Строки используются для различных целей представления, включая строку названия, предназначенную для заголовка всей таблицы, строку заголовка для описания столбцов данных в таблице и строку нижнего колонтитула для сводной информации.  Обратите внимание, что строки &quot;title&quot;, &quot;header&quot; и &quot;footer&quot; не встроены в таблицу. Это просто строки с разными характеристиками. Ячейки таблицы содержат фактическое содержимое, которое может состоять из текста, изображений или практически любых других пользовательский интерфейс элемент.</p>
+<p>Во-первых, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> создается узел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a>и новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table">Table</a> создается и добавляется к содержимому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>.</p>
+<pre><code class="lang-csharp" name="TableSnippets#_TableCreate">// Create the parent FlowDocument...
+flowDoc = new FlowDocument();
+
+// Create the Table...
+table1 = new Table();
+// ...and add it to the FlowDocument Blocks collection.
+flowDoc.Blocks.Add(table1);
+
+// Set some global formatting properties for the table.
+table1.CellSpacing = 10;
+table1.Background = Brushes.White;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Далее шесть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.tablecolumn">TableColumn</a> объекты создаются и добавляются в таблицу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table.columns">Columns</a> коллекции с определенным форматированием.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Обратите внимание, что таблицы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.table.columns">Columns</a> коллекция использует стандартную индексацию с нуля.</p>
+</div>
+<pre><code class="lang-csharp" name="TableSnippets#_TableCreateColumns">// Create 6 columns and add them to the table's Columns collection.
+int numberOfColumns = 6;
+for (int x = 0; x &lt; numberOfColumns; x++)
+{
+    table1.Columns.Add(new TableColumn());
+
+    // Set alternating background colors for the middle colums.
+    if(x%2 == 0)
+        table1.Columns[x].Background = Brushes.Beige;
+    else
+        table1.Columns[x].Background = Brushes.LightSteelBlue;
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Затем создается строка заголовка и добавляется в таблицу с определенным форматированием.  Строка названия содержит одну ячейку, охватывающую все шесть столбцов таблицы.</p>
+<pre><code class="lang-csharp" name="TableSnippets#_TableAddTitleRow">// Create and add an empty TableRowGroup to hold the table's Rows.
+table1.RowGroups.Add(new TableRowGroup());
+
+// Add the first (title) row.
+table1.RowGroups[0].Rows.Add(new TableRow());
+
+// Alias the current working row for easy reference.
+TableRow currentRow = table1.RowGroups[0].Rows[0];
+
+// Global formatting for the title row.
+currentRow.Background = Brushes.Silver;
+currentRow.FontSize = 40;
+currentRow.FontWeight = System.Windows.FontWeights.Bold;
+
+// Add the header row with content,
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;2004 Sales Project&quot;))));
+// and set the row to span all 6 columns.
+currentRow.Cells[0].ColumnSpan = 6;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Далее создается и добавляется в таблицу строка заголовка, а ячейки в строке заголовка создаются и заполняются содержимым.</p>
+<pre><code class="lang-csharp" name="TableSnippets#_TableAddHeaderRow">// Add the second (header) row.
+table1.RowGroups[0].Rows.Add(new TableRow());
+currentRow = table1.RowGroups[0].Rows[1];
+
+// Global formatting for the header row.
+currentRow.FontSize = 18;
+currentRow.FontWeight = FontWeights.Bold;
+
+// Add cells with content to the second row.
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Product&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Quarter 1&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Quarter 2&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Quarter 3&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Quarter 4&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;TOTAL&quot;))));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Затем создается и добавляется в таблицу строка для данных, создаются ячейки в этой строке и заполняются содержимым.  Построение этой строки аналогично построению строки заголовка с применением немного другого форматирования.</p>
+<pre><code class="lang-csharp" name="TableSnippets#_TableAddDataRow">// Add the third row.
+table1.RowGroups[0].Rows.Add(new TableRow());
+currentRow = table1.RowGroups[0].Rows[2];
+
+// Global formatting for the row.
+currentRow.FontSize = 12;
+currentRow.FontWeight = FontWeights.Normal;
+
+// Add cells with content to the third row.
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Widgets&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;$50,000&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;$55,000&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;$60,000&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;$65,000&quot;))));
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;$230,000&quot;))));
+
+// Bold the first cell.
+currentRow.Cells[0].FontWeight = FontWeights.Bold;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Наконец, создается, добавляется и форматируется строка нижнего колонтитула.  Как и строка названия, нижний колонтитул содержит одну ячейку, которая включает все шесть столбцов в таблице.</p>
+<pre><code class="lang-csharp" name="TableSnippets#_TableAddFooterRow">table1.RowGroups[0].Rows.Add(new TableRow());
+currentRow = table1.RowGroups[0].Rows[3];
+
+// Global formatting for the footer row.
+currentRow.Background = Brushes.LightGray;
+currentRow.FontSize = 18;
+currentRow.FontWeight = System.Windows.FontWeights.Normal;
+
+// Add the header row with content,
+currentRow.Cells.Add(new TableCell(new Paragraph(new Run(&quot;Projected 2004 Revenue: $810,000&quot;))));
+// and set the row to span all 6 columns.
+currentRow.Cells[0].ColumnSpan = 6;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="flow-document-overview.html">Общие сведения о документах нефиксированного формата</a></li>
+<li><a href="how-to-define-a-table-with-xaml.html">Определение таблицы с помощью XAML</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="how-to-use-flow-content-elements.html">Использование элементов потокового содержимого</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

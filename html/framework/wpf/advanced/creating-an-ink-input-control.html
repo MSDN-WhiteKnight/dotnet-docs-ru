@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1084; &#1074;&#1074;&#1086;&#1076;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1084; &#1074;&#1074;&#1086;&#1076;&#1086;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="creating-an-ink-input-control">Создание элемента управления рукописным вводом</h1>
+
+<p>Вы можете создать пользовательский элемент управления, динамически и статически отображает рукописные данные. То есть отрисовку рукописных фрагментов, как пользователь рисует штрих, вызывая рукописный ввод «поток» от планшетного пера и отображения рукописного ввода после него добавляется к элементу управления, либо с помощью пера, вставленный из буфера обмена, или загрузить из файла. Для динамического отображения рукописного ввода, необходимо использовать элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>. Для статического отображения рукописного ввода, необходимо переопределить методы событий пера (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusdown">OnStylusDown</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusmove">OnStylusMove</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusup">OnStylusUp</a>) для сбора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные, создавать штрихи и добавить их в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> (отображает рукописные данные в элементе управления).</p>
+<p>В этом разделе содержатся следующие подразделы:</p>
+<ul>
+<li><p><a href="#CollectingStylusPointDataAndCreatingInkStrokes">Практическое руководство. Сбор данных точек пера и создание рукописных штрихов</a></p>
+</li>
+<li><p><a href="#EnablingYourControlToAcceptInputTromTheMouse">Практическое руководство. Включить элемент управления принимать ввод от мыши</a></p>
+</li>
+<li><p><a href="#PuttingItTogether">Сводная информация</a></p>
+</li>
+<li><p><a href="#UsingAdditionalPluginsAndDynamicRenderers">С помощью дополнительных подключаемых модулей и DynamicRenderers</a></p>
+</li>
+<li><p><a href="#AdvancedInkHandling_Conclusion">Заключение</a></p>
+</li>
+</ul>
+<p><a name="CollectingStylusPointDataAndCreatingInkStrokes"></a></p>
+<h2 id="how-to-collect-stylus-point-data-and-create-ink-strokes">Практическое руководство. Сбор данных точек пера и создание рукописных штрихов</h2>
+<p>Чтобы создать элемент управления, который собирает и управляет рукописного ввода штрихов сделайте следующее:</p>
+<ol>
+<li><p>Наследуйте класс от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> или одного из классов, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#20">using System;
+using System.Windows.Ink;
+using System.Windows.Input;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Controls;
+using System.Windows;
+</code></pre><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#14">class InkControl : Label
+{
+</code></pre><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#15">}
+</code></pre></li>
+<li><p>Добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> в классе и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> свойство к новому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#16">InkPresenter ip;
+
+public InkControl()
+{
+    // Add an InkPresenter for drawing.
+    ip = new InkPresenter();
+    this.Content = ip;
+}
+</code></pre></li>
+<li><p>Присоединение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter.attachvisuals">AttachVisuals</a> метод и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекции. Это позволяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> отображать рукописные данные по мере сбора данных точек пера элементом управления.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#17">public InkControl()
+{
+</code></pre><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#18">    // Add a dynamic renderer that
+    // draws ink as it &quot;flows&quot; from the stylus.
+    dr = new DynamicRenderer();
+    ip.AttachVisuals(dr.RootVisual, dr.DrawingAttributes);
+    this.StylusPlugIns.Add(dr);
+}
+</code></pre></li>
+<li><p>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusdown">OnStylusDown</a> .  В этом методе, захватывающий перо вызовом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus.capture">Capture</a>. При захвате пера, элемент управления будет продолжать получать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusmove">StylusMove</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusup">StylusUp</a> события даже в том случае, если перо покидает границы элемента управления. Это не является строго обязательным, но почти всегда желательно для удобства работы пользователей. Создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> для сбора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных. Наконец, добавьте начального набора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a>.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#7">protected override void OnStylusDown(StylusDownEventArgs e)
+{
+    // Capture the stylus so all stylus input is routed to this control.
+    Stylus.Capture(this);
+
+    // Allocate memory for the StylusPointsCollection and
+    // add the StylusPoints that have come in so far.
+    stylusPoints = new StylusPointCollection();
+    StylusPointCollection eventPoints =
+        e.GetStylusPoints(this, stylusPoints.Description);
+
+    stylusPoints.Add(eventPoints);
+}
+</code></pre></li>
+<li><p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusmove">OnStylusMove</a> метод и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> объект, который был создан ранее.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#8">protected override void OnStylusMove(StylusEventArgs e)
+{
+    if (stylusPoints == null)
+    {
+        return;
+    }
+
+    // Add the StylusPoints that have come in since the
+    // last call to OnStylusMove.
+    StylusPointCollection newStylusPoints =
+        e.GetStylusPoints(this, stylusPoints.Description);
+    stylusPoints.Add(newStylusPoints);
+}
+</code></pre></li>
+<li><p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusup">OnStylusUp</a> метод и создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> данных. Добавьте новые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> созданной вами для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter.strokes">Strokes</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> и освободить захват пера.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#10">protected override void OnStylusUp(StylusEventArgs e)
+{
+    if (stylusPoints == null)
+    {
+        return;
+    }
+
+    // Add the StylusPoints that have come in since the
+    // last call to OnStylusMove.
+    StylusPointCollection newStylusPoints =
+        e.GetStylusPoints(this, stylusPoints.Description);
+    stylusPoints.Add(newStylusPoints);
+
+    // Create a new stroke from all the StylusPoints since OnStylusDown.
+    Stroke stroke = new Stroke(stylusPoints);
+
+    // Add the new stroke to the Strokes collection of the InkPresenter.
+    ip.Strokes.Add(stroke);
+
+    // Clear the StylusPointsCollection.
+    stylusPoints = null;
+
+    // Release stylus capture.
+    Stylus.Capture(null);
+}
+</code></pre></li>
+</ol>
+<p><a name="EnablingYourControlToAcceptInputTromTheMouse"></a></p>
+<h2 id="how-to-enable-your-control-to-accept-input-from-the-mouse">Практическое руководство. Включить элемент управления принимать ввод от мыши</h2>
+<p>Если добавить предыдущий элемент управления в приложение, запустите его и использовать мышь в качестве устройства ввода, можно заметить, что штрихов не сохраняются. Для сохранения штрихов, когда указатель мыши используется как устройство ввода сделайте следующее:</p>
+<ol>
+<li><p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmouseleftbuttondown">OnMouseLeftButtonDown</a> и создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> получать положение указателя мыши при происхождении события и создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> точки данных и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a>.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#11">protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+{
+
+    base.OnMouseLeftButtonDown(e);
+
+    // If a stylus generated this event, return.
+    if (e.StylusDevice != null)
+    {
+        return;
+    }
+
+    // Start collecting the points.
+    stylusPoints = new StylusPointCollection();
+    Point pt = e.GetPosition(this);
+    stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+}
+</code></pre></li>
+<li><p>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmousemove">OnMouseMove</a> . Получите положение указателя мыши при происхождении события и создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> с использованием точки данных.  Добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> объект, который был создан ранее.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#12">protected override void OnMouseMove(MouseEventArgs e)
+{
+
+    base.OnMouseMove(e);
+
+    // If a stylus generated this event, return.
+    if (e.StylusDevice != null)
+    {
+        return;
+    }
+
+    // Don't collect points unless the left mouse button
+    // is down.
+    if (e.LeftButton == MouseButtonState.Released ||
+        stylusPoints == null)
+    {
+        return;
+    }
+
+    Point pt = e.GetPosition(this);
+    stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+}
+</code></pre></li>
+<li><p>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmouseleftbuttonup">OnMouseLeftButtonUp</a> .  Создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> данных и добавьте новые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> созданной вами для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter.strokes">Strokes</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#13">protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+{
+
+    base.OnMouseLeftButtonUp(e);
+
+    // If a stylus generated this event, return.
+    if (e.StylusDevice != null)
+    {
+        return;
+    }
+
+    if (stylusPoints == null)
+    {
+        return;
+    }
+
+    Point pt = e.GetPosition(this);
+    stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+
+    // Create a stroke and add it to the InkPresenter.
+    Stroke stroke = new Stroke(stylusPoints);
+    stroke.DrawingAttributes = dr.DrawingAttributes;
+    ip.Strokes.Add(stroke);
+
+    stylusPoints = null;
+}
+</code></pre></li>
+</ol>
+<p><a name="PuttingItTogether"></a></p>
+<h2 id="putting-it-together">Сводная информация</h2>
+<p>Ниже приведен пользовательский элемент управления, сбора данных рукописного ввода при использовании пользователем мыши или пера.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#20">using System;
+using System.Windows.Ink;
+using System.Windows.Input;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Controls;
+using System.Windows;
+</code></pre><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#6">// A control for managing ink input
+class InkControl : Label
+{
+    InkPresenter ip;
+    DynamicRenderer dr;
+
+    // The StylusPointsCollection that gathers points
+    // before Stroke from is created.
+    StylusPointCollection stylusPoints = null;
+
+    public InkControl()
+    {
+        // Add an InkPresenter for drawing.
+        ip = new InkPresenter();
+        this.Content = ip;
+
+        // Add a dynamic renderer that
+        // draws ink as it &quot;flows&quot; from the stylus.
+        dr = new DynamicRenderer();
+        ip.AttachVisuals(dr.RootVisual, dr.DrawingAttributes);
+        this.StylusPlugIns.Add(dr);
+    }
+
+    static InkControl()
+    {
+        // Allow ink to be drawn only within the bounds of the control.
+        Type owner = typeof(InkControl);
+        ClipToBoundsProperty.OverrideMetadata(owner,
+            new FrameworkPropertyMetadata(true));
+    }
+
+    protected override void OnStylusDown(StylusDownEventArgs e)
+    {
+        // Capture the stylus so all stylus input is routed to this control.
+        Stylus.Capture(this);
+
+        // Allocate memory for the StylusPointsCollection and
+        // add the StylusPoints that have come in so far.
+        stylusPoints = new StylusPointCollection();
+        StylusPointCollection eventPoints =
+            e.GetStylusPoints(this, stylusPoints.Description);
+
+        stylusPoints.Add(eventPoints);
+    }
+
+    protected override void OnStylusMove(StylusEventArgs e)
+    {
+        if (stylusPoints == null)
+        {
+            return;
+        }
+
+        // Add the StylusPoints that have come in since the
+        // last call to OnStylusMove.
+        StylusPointCollection newStylusPoints =
+            e.GetStylusPoints(this, stylusPoints.Description);
+        stylusPoints.Add(newStylusPoints);
+    }
+
+    protected override void OnStylusUp(StylusEventArgs e)
+    {
+        if (stylusPoints == null)
+        {
+            return;
+        }
+
+        // Add the StylusPoints that have come in since the
+        // last call to OnStylusMove.
+        StylusPointCollection newStylusPoints =
+            e.GetStylusPoints(this, stylusPoints.Description);
+        stylusPoints.Add(newStylusPoints);
+
+        // Create a new stroke from all the StylusPoints since OnStylusDown.
+        Stroke stroke = new Stroke(stylusPoints);
+
+        // Add the new stroke to the Strokes collection of the InkPresenter.
+        ip.Strokes.Add(stroke);
+
+        // Clear the StylusPointsCollection.
+        stylusPoints = null;
+
+        // Release stylus capture.
+        Stylus.Capture(null);
+    }
+
+    protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+    {
+
+        base.OnMouseLeftButtonDown(e);
+
+        // If a stylus generated this event, return.
+        if (e.StylusDevice != null)
+        {
+            return;
+        }
+
+        // Start collecting the points.
+        stylusPoints = new StylusPointCollection();
+        Point pt = e.GetPosition(this);
+        stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+    }
+
+    protected override void OnMouseMove(MouseEventArgs e)
+    {
+
+        base.OnMouseMove(e);
+
+        // If a stylus generated this event, return.
+        if (e.StylusDevice != null)
+        {
+            return;
+        }
+
+        // Don't collect points unless the left mouse button
+        // is down.
+        if (e.LeftButton == MouseButtonState.Released ||
+            stylusPoints == null)
+        {
+            return;
+        }
+
+        Point pt = e.GetPosition(this);
+        stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+    }
+
+    protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+    {
+
+        base.OnMouseLeftButtonUp(e);
+
+        // If a stylus generated this event, return.
+        if (e.StylusDevice != null)
+        {
+            return;
+        }
+
+        if (stylusPoints == null)
+        {
+            return;
+        }
+
+        Point pt = e.GetPosition(this);
+        stylusPoints.Add(new StylusPoint(pt.X, pt.Y));
+
+        // Create a stroke and add it to the InkPresenter.
+        Stroke stroke = new Stroke(stylusPoints);
+        stroke.DrawingAttributes = dr.DrawingAttributes;
+        ip.Strokes.Add(stroke);
+
+        stylusPoints = null;
+    }
+}
+</code></pre>
+<p><a name="UsingAdditionalPluginsAndDynamicRenderers"></a></p>
+<h2 id="using-additional-plug-ins-and-dynamicrenderers">С помощью дополнительных подключаемых модулей и DynamicRenderers</h2>
+<p>Как и InkCanvas, пользовательский элемент управления может иметь пользовательские <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> и дополнительные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> объектов. Добавить шаблоны в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекции. Порядок <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a> влияет на внешний вид рукописного ввода при его отрисовке. Предположим, что у вас есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> вызывается <code>dynamicRenderer</code> и пользовательское <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> вызывается <code>translatePlugin</code> , offsets рукописный ввод от пера. Если <code>translatePlugin</code> является первым <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a>, и <code>dynamicRenderer</code> является вторым, будет смещаться рукописный текст, который «потоки», когда пользователь перемещает перо. Если <code>dynamicRenderer</code> является первым, и <code>translatePlugin</code> является вторым, не будет смещаться рукописный ввод, пока пользователь отрывает перо.</p>
+<p><a name="AdvancedInkHandling_Conclusion"></a></p>
+<h2 id="conclusion">Заключение</h2>
+<p>Можно создать элемент управления, который собирает и отображает рукописные данные, переопределив методы событий пера. Создав собственный элемент управления, создания своих собственных производных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> классы и их вставка в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugincollection">StylusPlugInCollection</a>, можно реализовать практически для любых аспектов поведения, возможное сопоставление с рукописный ввод. У вас есть доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных, как оно создается, дает возможность настроить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> входных данных и их вывода на экран, подходящие для вашего приложения. Так как у вас есть такой низкоуровневый доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данных, можно реализовать коллекцию рукописного ввода и отображать ее с оптимальной производительности приложения.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="advanced-ink-handling.html">Дополнительная обработка рукописных данных</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=50752&amp;clcid=0x409">Доступ и управление с помощью пера</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

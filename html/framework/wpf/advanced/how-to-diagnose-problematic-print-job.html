@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1044;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1082;&#1072; &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084; &#1087;&#1088;&#1080; &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1080; &#1079;&#1072;&#1076;&#1072;&#1085;&#1080;&#1081; &#1087;&#1077;&#1095;&#1072;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1044;&#1080;&#1072;&#1075;&#1085;&#1086;&#1089;&#1090;&#1080;&#1082;&#1072; &#1087;&#1088;&#1086;&#1073;&#1083;&#1077;&#1084; &#1087;&#1088;&#1080; &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1080; &#1079;&#1072;&#1076;&#1072;&#1085;&#1080;&#1081; &#1087;&#1077;&#1095;&#1072;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-diagnose-problematic-print-job">Практическое руководство. Диагностика проблем при выполнении заданий печати</h1>
+
+<p>Администраторы сетей часто получают от пользователей жалобы на то, что задания печати не выполняются или выполняются слишком медленно. Широкий набор свойств заданий печати в API - интерфейсы платформы Microsoft .NET Framework предоставляют средства для выполнения быструю удаленную диагностику заданий печати.</p>
+<h2 id="example">Пример</h2>
+<p>Ниже представлены основные этапы создания подобной служебной программы.</p>
+<ol>
+<li><p>Определите, на какое задание печати жалуется пользователь. Части пользователи не могут указать его точно. Они могут не знать имена серверов печати или принтеров. Пользователи могут описывать расположение принтера в терминологии, который использовался в параметрах его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.location">Location</a> свойство. В связи с этим будет полезно составить список задач, отправленных пользователем на данный момент. Если их несколько, определить, какое именно задание вызывает проблемы, позволит взаимодействие между пользователем и системным администратором печати. Порядок действий при этом следующий:</p>
+<ol>
+<li><p>Получите список всех серверов печати.</p>
+</li>
+<li><p>Выполните циклический просмотр всех серверов, чтобы запросить их очереди печати.</p>
+</li>
+<li><p>Для каждого сервера выполните циклический просмотр всех очередей сервера, чтобы запросить их задания.</p>
+</li>
+<li><p>Для каждого цикла очереди выполните циклический просмотр ее заданий и соберите идентификационные данные заданий, отправленных подавшим жалобу пользователем.</p>
+</li>
+</ol>
+</li>
+<li><p>Обнаружив проблемное задание, изучите соответствующие свойства, чтобы узнать, в чем может быть проблема. Например, определите, находится ли задание в состоянии ошибки и не отключился ли обслуживающий очередь принтер от сети перед печатью задания.</p>
+</li>
+</ol>
+<p>Приведенный ниже код представляет собой последовательность примеров кода. Код в первом примере кода содержит циклический просмотр очередей печати. (Шаг 1c выше.) Переменная <code>myPrintQueues</code> является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueuecollection">PrintQueueCollection</a> объект для текущего сервера печати.</p>
+<p>В примере кода начинается с обновления текущего объекта очереди печати с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.refresh">PrintQueue.Refresh</a>. Это гарантирует, что свойства объекта точно отображают состояние физического принтера, который он представляет. Затем приложение получает коллекцию заданий печати в настоящее время в очереди печати с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.getprintjobinfocollection">GetPrintJobInfoCollection</a>.</p>
+<p>Затем приложение выполняет цикл по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo">PrintSystemJobInfo</a> коллекции и сравнивает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.submitter">Submitter</a> свойство с псевдонимом подавшего жалобу пользователя. Если они совпадают, приложение добавляет идентификационные сведения о задании в предоставляемую строку. (Переменные <code>userName</code> и <code>jobList</code> инициализируются в приложении на более раннем этапе.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#EnumerateJobsInQueues">foreach (PrintQueue pq in myPrintQueues)
+{
+    pq.Refresh();
+    PrintJobInfoCollection jobs = pq.GetPrintJobInfoCollection();
+    foreach (PrintSystemJobInfo job in jobs)
+    {
+        // Since the user may not be able to articulate which job is problematic,
+        // present information about each job the user has submitted.
+        if (job.Submitter == userName)
+        {
+            atLeastOne = true;
+            jobList = jobList + &quot;\nServer:&quot; + line;
+            jobList = jobList + &quot;\n\tQueue:&quot; + pq.Name;
+            jobList = jobList + &quot;\n\tLocation:&quot; + pq.Location;
+            jobList = jobList + &quot;\n\t\tJob: &quot; + job.JobName + &quot; ID: &quot; + job.JobIdentifier;
+        }
+    }// end for each print job
+}// end for each print queue
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере кода выбирается приложение с шага 2. (См. выше.) Проблемное задание обнаружено, и приложение запрашивает данные, которые позволят его идентифицировать. На основе этих данных он создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver">PrintServer</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo">PrintSystemJobInfo</a> объектов.</p>
+<p>На этом этапе приложение содержит структуру ветвления, соответствующую двум способам проверки состояния заданий печати:</p>
+<ul>
+<li><p>Вы можете прочесть флаги из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.jobstatus">JobStatus</a> свойства, которые имеют тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printjobstatus">PrintJobStatus</a>.</p>
+</li>
+<li><p>Можно прочитать каждое соответствующее свойство, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.isblocked">IsBlocked</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.isinerror">IsInError</a>.</p>
+</li>
+</ul>
+<p>В этом примере демонстрируются оба метода, поскольку пользователь получил какой метод использовать и ответил «Y», если хотите использовать флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.jobstatus">JobStatus</a> свойство. Ниже представлены подробные сведения об этих двух методах. Наконец, для создания отчетов о возможности печати соответствующего задания в это время суток в приложении используется метод под названием <strong>ReportQueueAndJobAvailability</strong>. Этот метод обсуждается в разделе <a href="how-to-discover-whether-a-print-job-can-be-printed-at-this-time-of-day.html">Практическое руководство. Определение возможности печати в заданное время суток</a>.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#IdentifyAndDiagnoseProblematicJob">// When the problematic print job has been identified, enter information about it.
+Console.Write(&quot;\nEnter the print server hosting the job (including leading slashes \\\\): &quot; +
+&quot;\n(press Return for the current computer \\\\{0}): &quot;, Environment.MachineName);
+String pServer = Console.ReadLine();
+if (pServer == &quot;&quot;)
+{
+    pServer = &quot;\\\\&quot; +Environment.MachineName;
+}
+Console.Write(&quot;\nEnter the print queue hosting the job: &quot;);
+String pQueue = Console.ReadLine();
+Console.Write(&quot;\nEnter the job ID: &quot;);
+Int16 jobID = Convert.ToInt16(Console.ReadLine());
+
+// Create objects to represent the server, queue, and print job.
+PrintServer hostingServer = new PrintServer(pServer, PrintSystemDesiredAccess.AdministrateServer);
+PrintQueue hostingQueue = new PrintQueue(hostingServer, pQueue, PrintSystemDesiredAccess.AdministratePrinter);
+PrintSystemJobInfo theJob = hostingQueue.GetJob(jobID);
+
+if (useAttributesResponse == &quot;Y&quot;)
+{
+    TroubleSpotter.SpotTroubleUsingJobAttributes(theJob);
+    // TroubleSpotter class is defined in the complete example.
+}
+else
+{
+    TroubleSpotter.SpotTroubleUsingProperties(theJob);
+}
+
+TroubleSpotter.ReportQueueAndJobAvailability(theJob);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы проверить состояние задания печати, используя флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.jobstatus">JobStatus</a> свойство, проверьте каждый соответствующий флаг включен. Обычно определить, задан ли один бит в наборе битовых флагов, позволяет логическая операция И с набором флагов в качестве одной операнды и самим флагом в качестве второй. Поскольку сам флаг имеет только один набор битов, результатом логической операции И может стать максимум установка самого бита. Чтобы определить, установлен ли этот бит, просто сравните результат логической операции И с самим флагом. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printjobstatus">PrintJobStatus</a>, <a href="../../../csharp/language-reference/operators/and-operator.md">&amp; оператор (C# ссылку)</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.flagsattribute">FlagsAttribute</a>.</p>
+<p>Для каждого атрибута с заданным битом код передает соответствующие данные на экран консоли и иногда предлагает способы реагирования. (Метод <strong>HandlePausedJob</strong>, который вызывается в случае приостановки задания или очереди, описывается ниже.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#SpotTroubleUsingJobAttributes">// Check for possible trouble states of a print job using the flags of the JobStatus property
+internal static void SpotTroubleUsingJobAttributes(PrintSystemJobInfo theJob)
+{
+    if ((theJob.JobStatus &amp; PrintJobStatus.Blocked) == PrintJobStatus.Blocked)
+    {
+        Console.WriteLine(&quot;The job is blocked.&quot;);
+    }
+    if (((theJob.JobStatus &amp; PrintJobStatus.Completed) == PrintJobStatus.Completed)
+        ||
+        ((theJob.JobStatus &amp; PrintJobStatus.Printed) == PrintJobStatus.Printed))
+    {
+        Console.WriteLine(&quot;The job has finished. Have user recheck all output bins and be sure the correct printer is being checked.&quot;);
+    }
+    if (((theJob.JobStatus &amp; PrintJobStatus.Deleted) == PrintJobStatus.Deleted)
+        ||
+        ((theJob.JobStatus &amp; PrintJobStatus.Deleting) == PrintJobStatus.Deleting))
+    {
+        Console.WriteLine(&quot;The user or someone with administration rights to the queue has deleted the job. It must be resubmitted.&quot;);
+    }
+    if ((theJob.JobStatus &amp; PrintJobStatus.Error) == PrintJobStatus.Error)
+    {
+        Console.WriteLine(&quot;The job has errored.&quot;);
+    }
+    if ((theJob.JobStatus &amp; PrintJobStatus.Offline) == PrintJobStatus.Offline)
+    {
+        Console.WriteLine(&quot;The printer is offline. Have user put it online with printer front panel.&quot;);
+    }
+    if ((theJob.JobStatus &amp; PrintJobStatus.PaperOut) == PrintJobStatus.PaperOut)
+    {
+        Console.WriteLine(&quot;The printer is out of paper of the size required by the job. Have user add paper.&quot;);
+    }
+
+    if (((theJob.JobStatus &amp; PrintJobStatus.Paused) == PrintJobStatus.Paused)
+        ||
+        ((theJob.HostingPrintQueue.QueueStatus &amp; PrintQueueStatus.Paused) == PrintQueueStatus.Paused))
+    {
+        HandlePausedJob(theJob);
+        //HandlePausedJob is defined in the complete example.
+    }
+
+    if ((theJob.JobStatus &amp; PrintJobStatus.Printing) == PrintJobStatus.Printing)
+    {
+        Console.WriteLine(&quot;The job is printing now.&quot;);
+    }
+    if ((theJob.JobStatus &amp; PrintJobStatus.Spooling) == PrintJobStatus.Spooling)
+    {
+        Console.WriteLine(&quot;The job is spooling now.&quot;);
+    }
+    if ((theJob.JobStatus &amp; PrintJobStatus.UserIntervention) == PrintJobStatus.UserIntervention)
+    {
+        Console.WriteLine(&quot;The printer needs human intervention.&quot;);
+    }
+}//end SpotTroubleUsingJobAttributes
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Чтобы проверить состояние задания печати с помощью отдельных свойств, просто прочтите каждое свойство и, если свойство имеет значение <code>true</code>, передайте данные на экран консоли и по возможности предложите способ реагирования. (Метод <strong>HandlePausedJob</strong>, который вызывается в случае приостановки задания или очереди, описывается ниже.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#SpotTroubleUsingJobProperties">// Check for possible trouble states of a print job using its properties
+internal static void SpotTroubleUsingProperties(PrintSystemJobInfo theJob)
+{
+    if (theJob.IsBlocked)
+    {
+        Console.WriteLine(&quot;The job is blocked.&quot;);
+    }
+    if (theJob.IsCompleted || theJob.IsPrinted)
+    {
+        Console.WriteLine(&quot;The job has finished. Have user recheck all output bins and be sure the correct printer is being checked.&quot;);
+    }
+    if (theJob.IsDeleted || theJob.IsDeleting)
+    {
+        Console.WriteLine(&quot;The user or someone with administration rights to the queue has deleted the job. It must be resubmitted.&quot;);
+    }
+    if (theJob.IsInError)
+    {
+        Console.WriteLine(&quot;The job has errored.&quot;);
+    }
+    if (theJob.IsOffline)
+    {
+        Console.WriteLine(&quot;The printer is offline. Have user put it online with printer front panel.&quot;);
+    }
+    if (theJob.IsPaperOut)
+    {
+        Console.WriteLine(&quot;The printer is out of paper of the size required by the job. Have user add paper.&quot;);
+    }
+
+    if (theJob.IsPaused || theJob.HostingPrintQueue.IsPaused)
+    {
+        HandlePausedJob(theJob);
+        //HandlePausedJob is defined in the complete example.
+    }
+
+    if (theJob.IsPrinting)
+    {
+        Console.WriteLine(&quot;The job is printing now.&quot;);
+    }
+    if (theJob.IsSpooling)
+    {
+        Console.WriteLine(&quot;The job is spooling now.&quot;);
+    }
+    if (theJob.IsUserInterventionRequired)
+    {
+        Console.WriteLine(&quot;The printer needs human intervention.&quot;);
+    }
+}//end SpotTroubleUsingProperties
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Метод <strong>HandlePausedJob</strong> позволяет пользователю приложения удаленно возобновлять приостановленные задания. Поскольку приостановка очереди печати может быть связана именно с этим, метод начинается с запроса решения пользователя о его возобновлении. Если вы ответили «Y», а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.resume">PrintQueue.Resume</a> вызывается метод.</p>
+<p>Затем пользователю предлагается решить, следует ли возобновить само задание печати (на случай, если оно было приостановлено независимо от очереди печати). (Сравните <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.ispaused">PrintQueue.IsPaused</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.ispaused">PrintSystemJobInfo.IsPaused</a>.) Если вы ответили «Y», затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.resume">PrintSystemJobInfo.Resume</a> вызываемой; в противном случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo.cancel">Cancel</a> вызывается.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#HandlePausedJob">internal static void HandlePausedJob(PrintSystemJobInfo theJob)
+{
+    // If there's no good reason for the queue to be paused, resume it and
+    // give user choice to resume or cancel the job.
+    Console.WriteLine(&quot;The user or someone with administrative rights to the queue&quot; +
+         &quot;\nhas paused the job or queue.&quot; +
+         &quot;\nResume the queue? (Has no effect if queue is not paused.)&quot; +
+         &quot;\nEnter \&quot;Y\&quot; to resume, otherwise press return: &quot;);
+    String resume = Console.ReadLine();
+    if (resume == &quot;Y&quot;)
+    {
+        theJob.HostingPrintQueue.Resume();
+
+        // It is possible the job is also paused. Find out how the user wants to handle that.
+        Console.WriteLine(&quot;Does user want to resume print job or cancel it?&quot; +
+            &quot;\nEnter \&quot;Y\&quot; to resume (any other key cancels the print job): &quot;);
+        String userDecision = Console.ReadLine();
+        if (userDecision == &quot;Y&quot;)
+        {
+            theJob.Resume();
+        }
+        else
+        {
+            theJob.Cancel();
+        }
+    }//end if the queue should be resumed
+}//end HandlePausedJob
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printjobstatus">PrintJobStatus</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo">PrintSystemJobInfo</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.flagsattribute">FlagsAttribute</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a></li>
+<li><a href="../../../csharp/language-reference/operators/and-operator.md">Оператор &amp; (Справочник по C#)</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="printing-overview.html">Общие сведения о печати</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

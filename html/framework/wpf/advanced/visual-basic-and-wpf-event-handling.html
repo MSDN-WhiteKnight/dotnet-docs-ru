@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1074; Visual Basic &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1074; Visual Basic &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="visual-basic-and-wpf-event-handling">Обработка событий в Visual Basic и WPF</h1>
+
+<p>Для языка Microsoft Visual Basic .NET в частности, можно использовать конкретного языка <code>Handles</code> ключевое слово, чтобы связать обработчики событий с экземплярами, вместо присоединения обработчиков событий с атрибутами или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> метод. Однако метод присоединения обработчиков к экземплярам <code>Handles</code> имеет некоторые ограничения, так как синтаксис <code>Handles</code> не поддерживает некоторые возможности перенаправленных событий системы событий WPF.</p>
+<h2 id="using-handles-in-a-wpf-application">Использование ключевого слова Handles в приложениях WPF</h2>
+<p>Все обработчики событий, которые подключены к экземплярам и событиям с помощью <code>Handles</code>, должны быть определены внутри объявления частичного класса экземпляра, который также является требованием для обработчиков событий, назначенных с помощью значений атрибутов в элементах. Можно указать только <code>Handles</code> для элемента на странице, которая имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.name">Name</a> значение свойства (или <a href="../../xaml-services/x-name-directive.md">директива x: Name</a> объявлен). Это обусловлено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.name">Name</a> в XAML создает ссылку на экземпляр, который необходим для поддержки <em>Instance.Event</em> формат ссылки, необходимые <code>Handles</code> синтаксис. Единственным элементом, который может использоваться для <code>Handles</code> без <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.name">Name</a> ссылка является экземпляром корневого элемента, который определяет разделяемый класс.</p>
+<p>Можно назначить один и тот же обработчик для нескольких элементов, разделяя запятыми ссылки <em>Instance.Event</em> после <code>Handles</code>.</p>
+<p>Можно использовать <code>Handles</code> для назначения более одного обработчика для той же ссылки <em>Instance.Event</em>. Не следует придавать значения порядку, в котором приведены обработчики в ссылке <code>Handles</code>; предполагается, что обработчики, обрабатывающие одно и тоже событие, могут вызываться в любом порядке.</p>
+<p>Чтобы удалить обработчик, который был добавлен с <code>Handles</code> в объявлении, можно вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.removehandler">RemoveHandler</a>.</p>
+<p>Можно использовать <code>Handles</code> для присоединения обработчиков для перенаправленных событий до тех пор, пока обработчики присоединяются к экземплярам, которые определяют обрабатываемое в таблицах элементов событие. Для перенаправленных событий, обработчики, присоединенные с помощью <code>Handles</code> следуют тем же правилам маршрутизации, что и обработчики, присоединенные как XAML атрибуты, или с общей сигнатурой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a>. Это означает, что если событие уже помечено как обработанное ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> свойство в данных события является <code>True</code>), то обработчики, присоединенные с помощью <code>Handles</code> не вызываются в ответ на этот экземпляр события. Событие не может быть помечено как обрабатываемое обработчиками экземпляров из другого элемента маршрута или обработкой класса либо из текущего элемента, либо из более ранних элементов маршрута. Для событий ввода, которые поддерживают события восходящей и нисходящей маршрутизации, нисходящая маршрутизация может пометить пару событий как обрабатываемую. Дополнительные сведения о перенаправленных событиях см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<h2 id="limitations-of-handles-for-adding-handlers">Ограничения ключевого слова Handles при добавлении обработчиков</h2>
+<p><code>Handles</code> не может ссылаться на обработчики для присоединенных событий. Необходимо использовать метод доступа <code>add</code> для присоединенных событий или атрибуты события <em>typename.eventname</em> в XAML. Дополнительные сведения см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p>Для перенаправленных событий можно использовать <code>Handles</code> только для назначения обработчиков экземплярам, в которых это событие существует в таблице элементов экземпляра. Однако в общем случае маршрутизации событий, родительский элемент может быть слушателем события от дочерних элементов, даже если этого события нет в таблице элементов родительского элемента. В синтаксисе атрибута это можно указать через форму атрибута <em>typename.membername</em>, которая определяет, какой тип фактически определяет обрабатываемое событие. Например, родительский <code>Page</code> (не имеющий <code>Click</code> события, определенного) может прослушивать события нажатий кнопки путем назначения атрибута обработчика в форме <code>Button.Click</code>. Но <code>Handles</code> не поддерживает форму <em>typename.membername</em>, так как он должен поддерживать конфликтующую форму <em>Instance.Event</em>. Дополнительные сведения см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p><code>Handles</code> не удается присоединить обработчики, вызывающиеся для событий, которые уже помечено как обработанное. Вместо этого необходимо использовать код и вызвать <code>handledEventsToo</code> перегруженная версия <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler#System_Windows_UIElement_AddHandler_System_Windows_RoutedEvent_System_Delegate_System_Boolean_">AddHandler(RoutedEvent, Delegate, Boolean)</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Не используйте <code>Handles</code> синтаксиса в коде Visual Basic при указании обработчик событий для того же события в XAML. В таком случае обработчик событий вызывается дважды.</p>
+</div>
+<h2 id="how-wpf-implements-handles-functionality">Как в WPF реализуются функциональные возможности ключевого слова Handles</h2>
+<p>Когда Язык XAML компиляции страницы промежуточный файл объявляет <code>Friend</code> <code>WithEvents</code> ссылки на страницу, содержащую каждый элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.name">Name</a> набор свойств (или <a href="../../xaml-services/x-name-directive.md">директива x: Name</a> объявлен). Каждый именованный экземпляр является потенциальным элементом, который можно присвоить обработчику с помощью <code>Handles</code>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В Microsoft Visual Studio IntelliSense может показать варианты завершения элементами, доступными для ссылки <code>Handles</code> на странице. Но для того чтобы промежуточный файл смог заполнить все ссылки <code>Friends</code>, может потребоваться один проход компиляции.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a></li>
+<li><a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

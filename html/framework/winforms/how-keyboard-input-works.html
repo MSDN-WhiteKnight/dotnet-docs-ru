@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1080;&#1085;&#1094;&#1080;&#1087; &#1088;&#1072;&#1073;&#1086;&#1090;&#1099; &#1074;&#1074;&#1086;&#1076; &#1089; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1080;&#1085;&#1094;&#1080;&#1087; &#1088;&#1072;&#1073;&#1086;&#1090;&#1099; &#1074;&#1074;&#1086;&#1076; &#1089; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-keyboard-input-works">Принцип работы ввод с клавиатуры</h1>
+
+<p>Ввод с клавиатуры обрабатывается в Windows Forms посредством вызова событий клавиатуры в ответ на сообщения Windows. В большинстве приложений Windows Forms для обработки ввода с клавиатуры используются только события клавиатуры. Тем не менее, чтобы реализовать более сложные сценарии ввода с клавиатуры, например перехват клавиш до того, как они достигнут элемента управления, необходимо понимать, как работают сообщения клавиатуры. В этом разделе описываются типы данных ключа, распознаваемых приложением Windows Forms, и приводятся общие сведения о маршрутизацией сообщений клавиатуры. Сведения о событиях клавиатуры см. в разделе <a href="using-keyboard-events.html">Использование событий клавиатуры</a>.</p>
+<h2 id="types-of-keys">Типы ключей</h2>
+<p>Windows Forms идентифицирует ввод с клавиатуры как коды виртуальных клавиш, представленные побитового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.keys">Keys</a> перечисления. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.keys">Keys</a> перечисления, можно объединять несколько нажатых клавиш в одно значение. Эти значения соответствуют значениям, сопровождающим сообщения Windows WM_KEYDOWN и WM_SYSKEYDOWN. Нажатие большинства физических клавиш можно обнаружить путем обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keyup">KeyUp</a> события. Клавиши знаков являются подмножеством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.keys">Keys</a> перечисления и соответствуют значениям, сопровождающим сообщения WM_CHAR и WM_SYSCHAR Windows. Если сочетание нажатых клавиш образует знак, его можно определить символ путем обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> событий. Кроме того, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.visualbasic.devices.keyboard">Keyboard</a>, предоставляемый интерфейсом программирования Visual Basic, обнаруживать, какие клавиши были нажаты и отправлять ключи. Дополнительные сведения см. в разделе <a href="../../visual-basic/developing-apps/programming/computer-resources/accessing-the-keyboard.md">Доступ к клавиатуре</a>.</p>
+<h2 id="order-of-keyboard-events">Порядок событий клавиатуры</h2>
+<p>Как было показано ранее, в элементе управления могут возникать 3 связанных с клавиатурой события. Общий порядок событий показывает следующая последовательность:</p>
+<ol>
+<li><p>Пользователь помещает клавиша «», предварительно обрабатывается, подготавливается к отправке и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событием.</p>
+</li>
+<li><p>Пользователь удерживает клавиша «», предварительно обрабатывается, подготавливается к отправке и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> событием.</p>
+<p>Пока пользователь удерживает нажатой данную клавишу, это событие возникает несколько раз.</p>
+</li>
+<li><p>Пользователь отпускает клавиша «», ключ она предварительно обрабатывается, отправляется и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keyup">KeyUp</a> событием.</p>
+</li>
+</ol>
+<h2 id="preprocessing-keys">Предварительная обработка сообщений клавиатуры</h2>
+<p>Как и другие сообщения, обработка сообщений клавиатуры выполняется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a> метод формы или элемента управления. Тем не менее, прежде чем клавиатуры обработки сообщений, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.preprocessmessage">PreProcessMessage</a> метод вызывает один или несколько методов, которые могут быть переопределены для обработки специальных символов и физических клавиш. Эти методы можно переопределить для обнаружения и фильтрации определенных клавиш перед обработкой сообщения элементом управления. В следующей таблице показаны выполняемые действия и связанные методы в порядке их осуществления.</p>
+<h3 id="preprocessing-for-a-keydown-event">Предварительная обработка события KeyDown</h3>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Связанный метод</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Проверка клавиши для команд, например ярлыка для сочетаний клавиш или меню.</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processcmdkey">ProcessCmdKey</a></td>
+<td>Этот метод обрабатывает клавишу для команд, которая имеет приоритет над обычными клавишами. Если этот метод возвращает <code>true</code>, сообщение о нажатии клавиши не отправляется, и событие клавиши не возникает. Если он возвращает <code>false</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a> называется<code>.</code></td>
+</tr>
+<tr>
+<td>Проверка наличия специальной клавишей, требующей предварительной обработки или обычной клавиши знака, должен вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событий и отправляться в элемент управления.</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a></td>
+<td>Если метод возвращает <code>true</code>, это означает, что элемент управления является обычный символ и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> события. Если <code>false</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogkey">ProcessDialogKey</a> вызывается. <strong>Примечание.</strong>  Чтобы элемент управления получает клавишу или сочетание клавиш, можно обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.previewkeydown">PreviewKeyDown</a> событий и набор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.previewkeydowneventargs.isinputkey">IsInputKey</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.previewkeydowneventargs">PreviewKeyDownEventArgs</a> для <code>true</code> для ключ или ключи, которые вы хотите.</td>
+</tr>
+<tr>
+<td>Проверка клавиши навигации (ESC, TAB, ВВОД или клавиши со стрелками).</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogkey">ProcessDialogKey</a></td>
+<td>Этот метод обрабатывает физическую клавишу со специальными функциональными возможностями в элементе управления, например переключение фокуса между элементом управления и его родительским объектом. Если непосредственный элемент управления не обрабатывает ключ, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogkey">ProcessDialogKey</a> вызывается для родительского элемента управления и так далее до самого верхнего элемента управления в иерархии. Если этот метод возвращает <code>true</code>, предварительная обработка завершается, и событие клавиатуры не возникает. Если он возвращает <code>false</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событием.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preprocessing-for-a-keypress-event">Предварительная обработка события KeyPress</h3>
+<table>
+<thead>
+<tr>
+<th>Действие</th>
+<th>Связанный метод</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Убедитесь, что клавиша является обычным символом, который должен быть обработан элементом управления</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputchar">IsInputChar</a></td>
+<td>Если символ является обычный символ, этот метод возвращает <code>true</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> события и последующая предварительная обработка не выполняется. В противном случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogchar">ProcessDialogChar</a> будет вызываться.</td>
+</tr>
+<tr>
+<td>Проверьте, не является ли символ назначенной клавишей (например, &amp;OK на кнопке)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogchar">ProcessDialogChar</a></td>
+<td>Этот метод, схожий с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogkey">ProcessDialogKey</a>, будет вызываться по иерархии элементов управления. Если элемент управления является контейнерным, он проверяет наличие назначенных клавиш путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processmnemonic">ProcessMnemonic</a> на себя и своих дочерних элементах управления. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogchar">ProcessDialogChar</a> возвращает <code>true</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> событие не происходит.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="processing-keyboard-messages">Обработка сообщений клавиатуры</h2>
+<p>После сообщения клавиатуры достигают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a> метод формы или элемента управления, они обрабатываются с помощью набора методов, которые могут быть переопределены. Каждый из этих методов возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a> значение, указывающее, имеет ли сообщение клавиатуры обработано и использовано элементом управления. Если один из методов возвращает <code>true</code>, сообщение считается обработанным и не передается в базовый или родительский объект элемента управления для дальнейшей обработки. В противном случае сообщение остается в очереди сообщений и может быть обработано в другом методе в базовом или родительском объекте элемента управления. В следующей таблице представлены методы, обеспечивающие обработку сообщений клавиатуры.</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processkeymessage">ProcessKeyMessage</a></td>
+<td>Этот метод обрабатывает все сообщения клавиатуры, которые получены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a> метод элемента управления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processkeypreview">ProcessKeyPreview</a></td>
+<td>Этот метод отправляет сообщение клавиатуры в родительский объект элемента управления. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processkeypreview">ProcessKeyPreview</a> возвращает <code>true</code>, событие клавиатуры не создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processkeyeventargs">ProcessKeyEventArgs</a> вызывается.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processkeyeventargs">ProcessKeyEventArgs</a></td>
+<td>Этот метод вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keyup">KeyUp</a> соответствующие события.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="overriding-keyboard-methods">Переопределение методов клавиатуры</h2>
+<p>Существует множество методов переопределения, когда выполняется предварительная и основная обработка сообщений клавиатуры. Тем не менее некоторые методы отличаются большим удобством. В таблице ниже приведены задачи, которые может быть необходимо выполнить, и оптимальные способы переопределения методов для сообщений клавиатуры. Дополнительные сведения о переопределении методов см. в разделе <a href="../../visual-basic/programming-guide/language-features/objects-and-classes/inheritance-basics.md#overriding-properties-and-methods-in-derived-classes">переопределение свойств и методов в производных классах</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Метод</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Перехват клавиши навигации и создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событий. Например, в текстовом поле необходимо обработать клавиши TAB и Return.</td>
+<td>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a>. <strong>Примечание.</strong>  Кроме того, можно обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.previewkeydown">PreviewKeyDown</a> событий и набор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.previewkeydowneventargs.isinputkey">IsInputKey</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.previewkeydowneventargs">PreviewKeyDownEventArgs</a> для <code>true</code> для ключ или ключи, которые вы хотите.</td>
+</tr>
+<tr>
+<td>Выполнение специальной обработки ввода или навигации в элементе управления. Например, необходимо использовать клавиши со стрелками в элементе управления &quot;Список&quot;, чтобы изменить выбранный элемент.</td>
+<td>Переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogkey">ProcessDialogKey</a></td>
+</tr>
+<tr>
+<td>Перехват клавиши навигации и создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> событий. Например, в элементе управления регулятора требуется выполнение нескольких нажатий клавиши со стрелкой для ускорения перехода между элементами.</td>
+<td>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputchar">IsInputChar</a>.</td>
+</tr>
+<tr>
+<td>Выполнение специальной обработки ввода или навигации во время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> событий. Например, в элементе управления &quot;Список&quot; при удержании нажатой клавиши &quot;r&quot; следует переходить между элементами, которые начинаются с буквы &quot;r&quot;.</td>
+<td>Переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processdialogchar">ProcessDialogChar</a></td>
+</tr>
+<tr>
+<td>Выполнение обработки пользовательских назначенных клавиш. Например, необходимо обрабатывать назначенные клавиши на кнопках, нарисованных владельцем, содержащихся на панели инструментов.</td>
+<td>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.processmnemonic">ProcessMnemonic</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.keys">Keys</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.preprocessmessage">PreProcessMessage</a></li>
+<li><a href="../../visual-basic/language-reference/objects/my-computer-keyboard-object.md">Объект My.Computer.Keyboard</a></li>
+<li><a href="../../visual-basic/developing-apps/programming/computer-resources/accessing-the-keyboard.md">Доступ к клавиатуре</a></li>
+<li><a href="using-keyboard-events.html">Использование событий клавиатуры</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

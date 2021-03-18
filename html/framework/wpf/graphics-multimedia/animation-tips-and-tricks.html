@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1074;&#1077;&#1090;&#1099; &#1080; &#1088;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1074;&#1077;&#1090;&#1099; &#1080; &#1088;&#1077;&#1082;&#1086;&#1084;&#1077;&#1085;&#1076;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="animation-tips-and-tricks">Советы и рекомендации по анимации</h1>
+
+<p>При работе с анимацией в WPF, существует ряд советов и приемов, которые анимациям работают лучше и сэкономить разочарований.</p>
+<p><a name="generalissuessection"></a></p>
+<h2 id="general-issues">Общие проблемы</h2>
+<h3 id="animating-the-position-of-a-scroll-bar-or-slider-freezes-it">Анимация расположения полосы прокрутки или ползунка замораживает их</h3>
+<p>Если вы анимируете положение полосы прокрутки или ползунка с помощью анимации, которая имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_HoldEnd">HoldEnd</a> (значение по умолчанию), пользователь больше не будет иметь возможность перемещения полосы прокрутки или ползунка. Это происходит из-за того, что, хотя анимация завершена, она по-прежнему переопределяет базовое значение целевого свойства. Чтобы остановить анимация не переопределяла текущее значение свойства, удалить его или присвойте ему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a>. Дополнительные сведения и пример см. в разделе <a href="how-to-set-a-property-after-animating-it-with-a-storyboard.html">Установка свойства после его анимации с помощью раскадровки</a>.</p>
+<h3 id="animating-the-output-of-an-animation-has-no-effect">Анимация выходных данных анимации ничего не делает</h3>
+<p>Невозможна анимация объекта, являющегося выходным объектом другой анимации. Например, если вы используете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a> для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.radialgradientbrush">RadialGradientBrush</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>, невозможно анимировать никакие свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.radialgradientbrush">RadialGradientBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>.</p>
+<h3 id="cant-change-the-value-of-a-property-after-animating-it">Невозможно изменить значение свойства после его анимации</h3>
+<p>В некоторых случаях может получиться так, что вы не сможете изменить значение свойства после его анимации, даже после завершения анимации. Это происходит из-за того, что, хотя анимация завершена, она по-прежнему переопределяет базовое значение свойства. Чтобы остановить анимация не переопределяла текущее значение свойства, удалить его или присвойте ему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a>. Дополнительные сведения и пример см. в разделе <a href="how-to-set-a-property-after-animating-it-with-a-storyboard.html">Установка свойства после его анимации с помощью раскадровки</a>.</p>
+<h3 id="changing-a-timeline-has-no-effect">Изменение временной шкалы ничего не делает</h3>
+<p>Несмотря на то что большинство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> анимируемых свойств и могут быть привязаны к данным, изменение значений свойств активного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> не дает эффекта. Это потому, что, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> является начали, система времени создает копию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> и использует ее для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекта. Изменение исходного объекта не влияет на сделанную системой копию.</p>
+<p>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> для отражения изменений, необходимо повторно и заменить ранее созданные часы ее часы. Автоматическое повторное создание часов не выполняется. Ниже показано несколько способов применения изменений временной шкалы.</p>
+<ul>
+<li><p>Если временная шкала или принадлежит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, его можно сделать отражать изменения посредством применения его с помощью раскадровки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод. Это имеет побочный эффект в виде перезапуска анимации. В коде, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.seek">Seek</a> резервного метода для возврата раскадровки в предыдущее положение.</p>
+</li>
+<li><p>Если анимация применяется непосредственно к свойству с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> мы вызываем метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> снова метод и передать его анимации, которые были изменены.</p>
+</li>
+<li><p>При работе непосредственно на уровне часов создайте и примените новый набор часов и используйте его для замены предыдущего набора созданных часов.</p>
+</li>
+</ul>
+<p>Дополнительные сведения о временных шкалах и часах см. в разделе <a href="animation-and-timing-system-overview.html">анимации и общие сведения о характере системы</a>.</p>
+<h3 id="fillbehaviorstop-doesnt-work-as-expected">FillBehavior.Stop не работает должным образом</h3>
+<p>Иногда при задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a> кажется, что не происходит, например, когда одна анимация «передает» на другой, так как он имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard.handoffbehavior">HandoffBehavior</a> параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_SnapshotAndReplace">SnapshotAndReplace</a>.</p>
+<p>В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> Анимируется для перемещения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> вокруг <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>.</p>
+<pre><code class="lang-xaml" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipAnimatedObject">&lt;Canvas Width=&quot;600&quot; Height=&quot;200&quot;&gt;
+  &lt;Rectangle 
+    Canvas.Top=&quot;50&quot; Canvas.Left=&quot;0&quot; 
+    Width=&quot;50&quot; Height=&quot;50&quot; Fill=&quot;Red&quot;&gt;
+    &lt;Rectangle.RenderTransform&gt;
+      &lt;TranslateTransform 
+        x:Name=&quot;MyTranslateTransform&quot; 
+        X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+    &lt;/Rectangle.RenderTransform&gt;
+  &lt;/Rectangle&gt;
+&lt;/Canvas&gt;
+</code></pre>
+<p>В примерах в этом разделе используются описанные выше объекты для демонстрации нескольких случаев, где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойство не работает, как следует из его.</p>
+<h4 id="fillbehaviorstop-and-handoffbehavior-with-multiple-animations">FillBehavior=&quot;Stop&quot; и HandoffBehavior с несколькими анимациями</h4>
+<p>Иногда кажется, что анимация игнорирует его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойство при ее замене второй анимацией. Рассмотрим следующий пример, который создает два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и использует их для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> показано в предыдущем примере.</p>
+<p>Первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, <code>B1</code>, анимирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> от 0 до 350, который перемещает прямоугольник на 350 пикселей вправо. При анимации достигает окончания своей длительности и прекращает воспроизведение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> , свойство возвращается к исходному значению, 0. В результате прямоугольник перемещается вправо на 350 пикселей, а затем перепрыгивает обратно в исходное положение.</p>
+<pre><code class="lang-xaml" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardB1Button">&lt;Button Content=&quot;Start Storyboard B1&quot;&gt;
+  &lt;Button.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard x:Name=&quot;B1&quot;&gt;
+          &lt;DoubleAnimation 
+            Storyboard.TargetName=&quot;MyTranslateTransform&quot;
+            Storyboard.TargetProperty=&quot;X&quot;
+            From=&quot;0&quot; To=&quot;350&quot; Duration=&quot;0:0:5&quot;
+            FillBehavior=&quot;Stop&quot;
+            /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Button.Triggers&gt;
+&lt;/Button&gt;
+</code></pre>
+<p>Второй <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, <code>B2</code>, также анимирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство одной и той же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a>. Так как только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство анимации в этом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> не установлен, анимация использует текущее значение анимируемого свойства в качестве своего начального значения.</p>
+<pre><code class="lang-xaml" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardB2Button">
+&lt;!-- Animates the same object and property as the preceding
+     Storyboard. --&gt;
+&lt;Button Content=&quot;Start Storyboard B2&quot;&gt;
+  &lt;Button.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard x:Name=&quot;B2&quot;&gt;
+          &lt;DoubleAnimation 
+            Storyboard.TargetName=&quot;MyTranslateTransform&quot;
+            Storyboard.TargetProperty=&quot;X&quot;
+            To=&quot;500&quot; Duration=&quot;0:0:5&quot; 
+            FillBehavior=&quot;Stop&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Button.Triggers&gt;
+&lt;/Button&gt;
+</code></pre>
+<p>При нажатии второй кнопки во время первого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> — воспроизведение, можно предположить следующее поведение:</p>
+<ol>
+<li><p>Первая раскадровка заканчивается и отправляет прямоугольник в исходное положение, поскольку анимация имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a>.</p>
+</li>
+<li><p>Вторая раскадровка вступает в силу и анимируется от текущей позиции, которая теперь имеет значение 0, до 500.</p>
+</li>
+</ol>
+<p><strong>Но это не происходит.</strong> Прямоугольник не прыгает обратно; он продолжает перемещаться вправо. Это происходит потому, что вторая анимация использует текущее значение первой анимации в качестве своего начального значения и анимируется от этого значения до 500. Когда вторая анимация заменяет первый, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_SnapshotAndReplace">SnapshotAndReplace</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior">HandoffBehavior</a> используется, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> первой анимации не имеет значения.</p>
+<h4 id="fillbehavior-and-the-completed-event">FillBehavior и завершенное событие</h4>
+<p>В следующем примере показывается другой сценарий, в котором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> не дает эффекта. Опять же, в примере используется раскадровка для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> от 0 до 350. Тем не менее, это время в примере регистрируется для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.completed">Completed</a> событий.</p>
+<pre><code class="lang-xaml" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardCButton">&lt;Button Content=&quot;Start Storyboard C&quot;&gt;
+  &lt;Button.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard Completed=&quot;StoryboardC_Completed&quot;&gt;
+          &lt;DoubleAnimation 
+            Storyboard.TargetName=&quot;MyTranslateTransform&quot;
+            Storyboard.TargetProperty=&quot;X&quot;
+            From=&quot;0&quot; To=&quot;350&quot; Duration=&quot;0:0:5&quot;
+            FillBehavior=&quot;Stop&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Button.Triggers&gt;
+&lt;/Button&gt;
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.completed">Completed</a> Обработчик запускает другой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> которая анимирует то же свойство от его текущего значения до 500.</p>
+<pre><code class="lang-csharp" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardC1CompletedHandler">private void StoryboardC_Completed(object sender, EventArgs e)
+{
+
+    Storyboard translationAnimationStoryboard =
+        (Storyboard)this.Resources[&quot;TranslationAnimationStoryboardResource&quot;];
+    translationAnimationStoryboard.Begin(this);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже приведена разметка, определяющая вторую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> как ресурс.</p>
+<pre><code class="lang-xaml" name="AnimationTipsAndTricksSample_snip#FillBehaviorTipResources">&lt;Page.Resources&gt;
+  &lt;Storyboard x:Key=&quot;TranslationAnimationStoryboardResource&quot;&gt;
+    &lt;DoubleAnimation 
+      Storyboard.TargetName=&quot;MyTranslateTransform&quot;
+      Storyboard.TargetProperty=&quot;X&quot;
+      To=&quot;500&quot; Duration=&quot;0:0:5&quot; /&gt;
+  &lt;/Storyboard&gt;
+&lt;/Page.Resources&gt;
+</code></pre>
+<p>При запуске <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, можно ожидать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> анимируется от 0 до 350, затем вернется к 0 после ее завершения (поскольку в нем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a>) и затем будет анимироваться от 0 до 500. Вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a> выполняет анимацию от 0 до 350, а затем до 500.</p>
+<p>Это порядок, в котором WPF вызывает события и потому, что значения свойств кэшируются и не пересчитываются, если свойство является действительным. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.completed">Completed</a> Событие обрабатывается первым, так как оно было вызвано корневой временной шкалой (первой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>). В настоящее время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform.x">X</a> свойство по-прежнему возвращает свое анимированное значение, так как он еще не стало недействительным. Второй <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> использует кэшированное значение в качестве своего начального значения и начинает анимацию.</p>
+<p><a name="performancesection"></a></p>
+<h2 id="performance">Производительность</h2>
+<h3 id="animations-continue-to-run-after-navigating-away-from-a-page">Анимация продолжает выполняться после ухода со страницы</h3>
+<p>При переходе от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , есть работающие анимации, эти анимации продолжают выполняться до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> удаляется сборщиком мусора. В зависимости от используемой системы навигации страница, с которой ушли, может оставаться в памяти неограниченное количество времени, постоянно потребляя ресурсы на анимацию. Это наиболее заметно, когда страница содержит постоянно выполняющиеся анимации (&quot;фоновые&quot;).</p>
+<p>По этой причине рекомендуется использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.unloaded">Unloaded</a> событий для удаления анимаций, когда вы уходите со страницы.</p>
+<p>Анимацию можно удалить разными способами. Следующие методы можно использовать для удаления анимаций, принадлежащих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>.</p>
+<ul>
+<li><p>Чтобы удалить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> вы начали с помощью триггера события, см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms749412(v=vs.90)">как: Удаление раскадровки</a>.</p>
+</li>
+<li><p>Чтобы использовать код для удаления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.remove">Remove</a> метод.</p>
+</li>
+</ul>
+<p>Следующий метод может использоваться независимо от того, как была запущена анимация.</p>
+<ul>
+<li>Чтобы удалить анимацию из определенного свойства, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation#System_Windows_Media_Animation_Animatable_BeginAnimation_System_Windows_DependencyProperty_System_Windows_Media_Animation_AnimationTimeline_">BeginAnimation(DependencyProperty, AnimationTimeline)</a> метод. Укажите в качестве первого параметра анимируемое свойство и <code>null</code> как второй. Это удалит из свойства все часы анимации.</li>
+</ul>
+<p>Дополнительные сведения о различных способах анимации свойств см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<h3 id="using-the-compose-handoffbehavior-consumes-system-resources">Использование составного HandoffBehavior потребляет системные ресурсы</h3>
+<p>При применении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> к свойству с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_Compose">Compose</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior">HandoffBehavior</a>любые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> ранее связанную с ним объекты по-прежнему потребляют ресурсы системы; система управления временем не удаляет эти часы автоматически.</p>
+<p>Чтобы избежать проблем с производительностью при применении большого количества часов через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.handoffbehavior#System_Windows_Media_Animation_HandoffBehavior_Compose">Compose</a>, следует удалять составные часы из анимируемого свойства после их завершения. Есть несколько способов удаления часов.</p>
+<ul>
+<li><p>Чтобы удалить все часы из свойства, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.applyanimationclock#System_Windows_Media_Animation_Animatable_ApplyAnimationClock_System_Windows_DependencyProperty_System_Windows_Media_Animation_AnimationClock_">ApplyAnimationClock(DependencyProperty, AnimationClock)</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation#System_Windows_Media_Animation_Animatable_BeginAnimation_System_Windows_DependencyProperty_System_Windows_Media_Animation_AnimationTimeline_">BeginAnimation(DependencyProperty, AnimationTimeline)</a> метод анимируемого объекта. Укажите в качестве первого параметра анимируемое свойство и <code>null</code> как второй. Это удалит из свойства все часы анимации.</p>
+</li>
+<li><p>Чтобы удалить определенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> из списка часов, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.controller">Controller</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> извлекаемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller">ClockController</a>, затем вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller.remove">Remove</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller">ClockController</a>. Обычно это делается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.completed">Completed</a> обработчик событий для часов. Обратите внимание, что только корневые часы могут управляться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller">ClockController</a>; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.controller">Controller</a> свойство дочерних часов вернет <code>null</code>. Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock.completed">Completed</a> событие не будет вызываться, если эффективная продолжительность часов — forever.  В этом случае пользователю будет необходимо определить, когда нужно вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockcontroller.remove">Remove</a>.</p>
+</li>
+</ul>
+<p>В основном это проблема для анимации объектов, имеющих длинное время жизни.  Когда объект собирается как мусор, его часы отсоединяются и также собираются как мусор.</p>
+<p>Дополнительные сведения об объектах часов см. в разделе <a href="animation-and-timing-system-overview.html">анимации и общие сведения о характере системы</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

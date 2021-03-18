@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1050;&#1072;&#1082; &#1072;&#1085;&#1080;&#1084;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1074; &#1089;&#1090;&#1080;&#1083;&#1077; (WPF) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1050;&#1072;&#1082; &#1072;&#1085;&#1080;&#1084;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1074; &#1089;&#1090;&#1080;&#1083;&#1077; (WPF) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-animate-in-a-style">Как анимация с использованием стилей</h1>
+
+<p>В этом примере показано, как анимировать свойства в стиле. При анимации в стиле, элемент структуры, для которой определяется стиль можно сделать целью напрямую. Чтобы обратиться к фиксируемому объекту, вам необходимо «поставить точку» из свойства элемента со стилем.</p>
+<p>В следующем примере определяются внутри стиля и применяются для нескольких анимаций <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Когда пользователь перемещает указатель мыши над кнопкой, его из непрозрачного переходит в полупрозрачности и обратно еще раз, многократно. Когда пользователь перемещает указатель мыши кнопки, он становится полностью непрозрачным. При нажатии кнопки, цвет его фона изменяется с оранжевого на белый и обратно. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> используется для закрашивания кнопки нельзя обратиться напрямую, она осуществляется вниз с помощью кнопки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство.</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-xaml" name="timingbehaviors_snip#21">&lt;!-- StyleStoryboardsExample.xaml
+     This example shows how to create storyboards in a style. --&gt;
+&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  WindowTitle=&quot;Storyboards in Styles Example&quot; Background=&quot;White&quot;&gt;
+  &lt;Page.Resources&gt;
+  
+    &lt;!-- Defines a Button style. --&gt;
+    &lt;Style TargetType=&quot;{x:Type Button}&quot; x:Key=&quot;MyButtonStyle&quot;&gt;
+      &lt;Setter Property=&quot;Button.Background&quot;&gt;
+        &lt;Setter.Value&gt;
+          &lt;SolidColorBrush Color=&quot;Orange&quot; /&gt;
+        &lt;/Setter.Value&gt;
+      &lt;/Setter&gt;
+      &lt;Style.Triggers&gt;
+      
+        &lt;!-- Animates the button's opacity on mouse over. --&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Button.MouseEnter&quot;&gt;
+          &lt;EventTrigger.Actions&gt;
+            &lt;BeginStoryboard&gt;
+              &lt;Storyboard&gt;
+                &lt;DoubleAnimation
+                  Storyboard.TargetProperty=&quot;(Button.Opacity)&quot;
+                  From=&quot;1.0&quot; To=&quot;0.5&quot; Duration=&quot;0:0:0.5&quot; AutoReverse=&quot;True&quot;
+                  RepeatBehavior=&quot;Forever&quot; /&gt;
+              &lt;/Storyboard&gt;
+            &lt;/BeginStoryboard&gt;
+          &lt;/EventTrigger.Actions&gt;
+        &lt;/EventTrigger&gt;  
+        
+        &lt;!-- Returns the button's opacity to 1 when the mouse leaves. --&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Button.MouseLeave&quot;&gt;
+          &lt;EventTrigger.Actions&gt;
+            &lt;BeginStoryboard&gt;
+              &lt;Storyboard&gt;
+                &lt;DoubleAnimation
+                  Storyboard.TargetProperty=&quot;(Button.Opacity)&quot;
+                  To=&quot;1&quot; Duration=&quot;0:0:0.1&quot; /&gt;
+              &lt;/Storyboard&gt;
+            &lt;/BeginStoryboard&gt;
+          &lt;/EventTrigger.Actions&gt;
+        &lt;/EventTrigger&gt;   
+        
+        &lt;!-- Changes the button's color when clicked. 
+             Notice that the animation can't target the
+             SolidColorBrush used to paint the button's background
+             directly. The brush must be accessed through the button's
+             Background property. --&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;
+          &lt;EventTrigger.Actions&gt;
+            &lt;BeginStoryboard&gt;
+              &lt;Storyboard&gt;
+                &lt;ColorAnimation 
+                  Storyboard.TargetProperty=&quot;(Button.Background).(SolidColorBrush.Color)&quot;
+                  From=&quot;Orange&quot; To=&quot;White&quot; Duration=&quot;0:0:0.1&quot; AutoReverse=&quot;True&quot; /&gt;
+              &lt;/Storyboard&gt;
+            &lt;/BeginStoryboard&gt;
+          &lt;/EventTrigger.Actions&gt;
+        &lt;/EventTrigger&gt;  
+      &lt;/Style.Triggers&gt;
+    &lt;/Style&gt;
+  &lt;/Page.Resources&gt;
+  
+  &lt;StackPanel Margin=&quot;20&quot;&gt;
+    &lt;Button Style=&quot;{StaticResource MyButtonStyle}&quot;&gt;Click Me&lt;/Button&gt;
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Обратите внимание, что при анимации в стиле, возможно, к целевым объектам, которые не существуют. Например, предположим, что стиль использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> переопределяется свойство фона кнопки, но в определенный момент стиль и фона кнопки задается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a>.  Для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> не создается исключение; анимация завершатся сбоем без уведомления.</p>
+<p>Дополнительные сведения о синтаксисе планирования раскадровки, см. в разделе <a href="storyboards-overview.html">Общие сведения о раскадровках</a>. Дополнительные сведения об анимации см. в разделе <a href="animation-overview.html">Общие сведения об анимации</a>. Дополнительные сведения о стилях см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

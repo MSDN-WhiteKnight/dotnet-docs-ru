@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1085;&#1077;&#1076;&#1088;&#1077;&#1085;&#1080;&#1077; &#1090;&#1080;&#1087;&#1086;&#1074; &#1080;&#1079; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1103;&#1077;&#1084;&#1099;&#1093; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1074; Visual Studio | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1085;&#1077;&#1076;&#1088;&#1077;&#1085;&#1080;&#1077; &#1090;&#1080;&#1087;&#1086;&#1074; &#1080;&#1079; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1103;&#1077;&#1084;&#1099;&#1093; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1074; Visual Studio | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-embed-types-from-managed-assemblies-in-visual-studio">Пошаговое руководство. Внедрение типов из управляемых сборок в Visual Studio</h1>
+
+<p>Внедряя сведения о типе из управляемой сборки со строгим именем, можно свободно объединять типы в приложении, делая версию независимой. Это означает, что в программе можно использовать типы из любой версии управляемой библиотеки, т. е. необходимость компиляции для каждой новой версии отпадает.</p>
+<p>Внедрение типов часто используется с COM-взаимодействием, например в приложениях, использующих объекты автоматизации из Microsoft Office. Сведения о типе внедрения позволяют одной и той же сборке программы работать с различными версиями Microsoft Office на разных компьютерах. Тем не менее внедрение типа можно также использовать с полностью управляемыми решениями.</p>
+<p>После указания открытых интерфейсов, доступных для внедрения, создайте реализующие их классы среды выполнения. Во время разработки клиентская программа встраивает сведения о типе для интерфейсов, ссылаясь на сборку, содержащую открытые интерфейсы, и присваивая свойству <code>Embed Interop Types</code> ссылки значение <code>True</code>. После этого клиентская программа может загружать экземпляры объектов среды выполнения, типизированные как указанные интерфейсы. Это эквивалентно использованию компилятора командной строки и ссылки на сборку с помощью <a href="../../csharp/language-reference/compiler-options/link-compiler-option.md">параметра компилятора -link</a>.</p>
+<p>При создании новой версии сборки среды выполнения со строгим именем повторная компиляция клиентской программы не требуется. Клиентская программа продолжает работать с той версией сборки среды выполнения, которая ей доступна, используя сведения о внедренном типе для открытых интерфейсов.</p>
+<p>С помощью этого пошагового руководства:</p>
+<ol>
+<li>Создайте сборку со строгим именем и открытым интерфейсом, содержащим сведения о типе, который может быть внедрен.</li>
+<li>Создайте сборку среды выполнения со строгим именем, реализующую открытый интерфейс.</li>
+<li>Создайте клиентскую программу, внедряющую сведения о типе из открытого интерфейса и создающую экземпляр класса из сборки среды выполнения.</li>
+<li>Внесите изменения и создайте сборку среды выполнения заново.</li>
+<li>Запустите клиентскую программу, чтобы увидеть, что новая версия сборки среды выполнения используется без повторной компиляции.</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Отображаемые на компьютере имена или расположения некоторых элементов пользовательского интерфейса Visual Studio могут отличаться от указанных в следующих инструкциях. Это зависит от имеющегося выпуска Visual Studio и используемых параметров. Дополнительные сведения см. в разделе <a href="/visualstudio/ide/personalizing-the-visual-studio-ide">Персонализация среды IDE</a>.</p>
+</div>
+<h2 id="conditions-and-limitations">Условия и ограничения</h2>
+<p>Вы можете внедрить информацию о типах из сборки при следующих условиях:</p>
+<ul>
+<li>Сборка предоставляет по крайней мере один открытый интерфейс.</li>
+<li>Внедренные интерфейсы снабжаются аннотацией с указанием атрибутов <code>ComImport</code> и <code>Guid</code> с уникальными GUID.</li>
+<li>Сборка снабжается аннотацией с указанием атрибута <code>ImportedFromTypeLib</code> или атрибута <code>PrimaryInteropAssembly</code>, а также атрибута сборки <code>Guid</code>. По умолчанию шаблоны проектов Visual C# и Visual Basic включают атрибут сборки <code>Guid</code>.</li>
+</ul>
+<p>Так как основной функцией внедрения типа является поддержка внедрения сборок COM-взаимодействия, при внедрении сведений о типе в полностью управляемое решение применяются следующие ограничения:</p>
+<ul>
+<li>Внедряются только атрибуты, характерные для COM-взаимодействия. Другие атрибуты игнорируются.</li>
+<li>Если тип включает универсальные параметры внедренного типа, использовать этот тип за границей сборки невозможно. Граница сборки пересекается, например, при вызове метода из другой сборки или выведении типа из типа, определенного в другой сборке.</li>
+<li>Константы не внедряются.</li>
+<li>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">System.Collections.Generic.Dictionary&lt;TKey,TValue&gt;</a> не поддерживает использование внедренного типа в качестве ключа. Для поддержки внедренного типа в качестве ключа можно реализовать свой собственный тип словаря.</li>
+</ul>
+<h2 id="create-an-interface">Создание интерфейса</h2>
+<p>Первый шаг заключается в создании сборки интерфейса для эквивалентности типов.</p>
+<ol>
+<li><p>В Visual Studio последовательно выберите <strong>Файл</strong> &gt; <strong>Создать</strong> &gt; <strong>Проект</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Создание проекта</strong> введите <em>библиотека классов</em> в поле <strong>Поиск шаблонов</strong>. Выберите шаблон <strong>Библиотека классов (.NET Framework)</strong> для C# или Visual Basic в списке и щелкните <strong>Далее</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Настроить новый проект</strong> в поле <strong>Имя проекта</strong> введите <em>TypeEquivalenceInterface</em> и нажмите кнопку <strong>Создать</strong>. Проект создан.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши файл <em>Class1.cs</em> или <em>Class1.vb</em>, выберите пункт <strong>Переименовать</strong> и переименуйте файл с <em>Class1</em> на <em>ISampleInterface</em>. Ответьте <strong>Да</strong> на запрос, чтобы также переименовать класс на <code>ISampleInterface</code>. Этот класс представляет открытый интерфейс для класса.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceInterface</strong> и выберите пункт <strong>Свойства</strong>.</p>
+</li>
+<li><p>Выберите элемент <strong>Сборка</strong> в левой области экрана <strong>Свойства</strong> и задайте в поле <strong>Путь вывода</strong> расположение на компьютере, например <em>C:\TypeEquivalenceSample</em>. Данное расположение используется в рамках всего этого пошагового руководства.</p>
+</li>
+<li><p>Выберите <strong>Подписывание</strong> в левой области экрана <strong>Свойства</strong> и установите флажок <strong>Подписать сборку</strong>. В раскрывающемся списке <strong>Выберите файл ключа строгого имени</strong> выберите <strong>Создать</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Создание ключа строгого имени</strong> в разделе <strong>Имя файла ключа</strong> введите <em>key.snk</em>. Снимите флажок <strong>Защитить мой файл ключей паролем</strong> и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>Откройте файл класса <em>ISampleInterface</em> в редакторе кода и замените его содержимое следующим кодом, чтобы создать интерфейс <code>ISampleInterface</code>:</p>
+<pre><code class="lang-csharp">using System;
+using System.Runtime.InteropServices;
+
+namespace TypeEquivalenceInterface
+{
+    [ComImport]
+    [Guid(&quot;8DA56996-A151-4136-B474-32784559F6DF&quot;)]
+    public interface ISampleInterface
+    {
+        void GetUserInput();
+        string UserInput { get; }
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">Imports System.Runtime.InteropServices
+
+&lt;ComImport()&gt;
+&lt;Guid(&quot;8DA56996-A151-4136-B474-32784559F6DF&quot;)&gt;
+Public Interface ISampleInterface
+    Sub GetUserInput()
+    ReadOnly Property UserInput As String
+End Interface
+</code></pre>
+</li>
+<li><p>В меню <strong>Сервис</strong> выберите пункт <strong>Создать GUID</strong> и в диалоговом окне <strong>Создание GUID</strong> выберите <strong>Формат реестра</strong>. Выберите <strong>Копировать</strong>, а затем <strong>Выход</strong>.</p>
+</li>
+<li><p>В атрибуте <code>Guid</code> кода замените пример GUID на скопированный GUID и удалите фигурные скобки ( <strong>{ }</strong> ).</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> разверните папку <strong>Свойства</strong> и выберите файл <em>AssemblyInfo.cs</em> или <em>AssemblyInfo.vb</em> file. В редакторе кода добавьте в файл следующий атрибут:</p>
+<pre><code class="lang-csharp">[assembly: ImportedFromTypeLib(&quot;&quot;)]
+</code></pre>
+<pre><code class="lang-vb">&lt;Assembly: ImportedFromTypeLib(&quot;&quot;)&gt;
+</code></pre>
+</li>
+<li><p>Выберите <strong>Файл</strong> &gt; <strong>Сохранить все</strong> или нажмите клавиши <strong>CTRL</strong>+<strong>SHIFT</strong>+<strong>S</strong> для сохранения файлов и проекта.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceInterface</strong> и выберите пункт <strong>Сборка</strong>. DLL-файл библиотеки классов компилируется и сохраняется по указанному пути вывода сборки, например <em>C:\TypeEquivalenceSample</em>.</p>
+</li>
+</ol>
+<h2 id="create-a-runtime-class">Создание класса среды выполнения</h2>
+<p>Далее создайте класс среды выполнения для эквивалентности типов.</p>
+<ol>
+<li><p>В Visual Studio последовательно выберите <strong>Файл</strong> &gt; <strong>Создать</strong> &gt; <strong>Проект</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Создание проекта</strong> введите <em>библиотека классов</em> в поле <strong>Поиск шаблонов</strong>. Выберите шаблон <strong>Библиотека классов (.NET Framework)</strong> для C# или Visual Basic в списке и щелкните <strong>Далее</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Настроить новый проект</strong> в поле <strong>Имя проекта</strong> введите <em>TypeEquivalenceRuntime</em> и нажмите кнопку <strong>Создать</strong>. Проект создан.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши файл <em>Class1.cs</em> или <em>Class1.vb</em>, выберите пункт <strong>Переименовать</strong> и переименуйте файл с <em>Class1</em> на <em>SampleClass</em>. Ответьте <strong>Да</strong> на запрос, чтобы также переименовать класс на <code>SampleClass</code>. Этот класс реализует интерфейс <code>ISampleInterface</code> .</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceInterface</strong> и выберите пункт <strong>Свойства</strong>.</p>
+</li>
+<li><p>Выберите элемент <strong>Сборка</strong> в левой области экрана <strong>Свойства</strong> и задайте в поле <strong>Путь вывода</strong> то же расположение, которое использовали для проекта TypeEquivalenceInterface, например, <em>C:\TypeEquivalenceSample</em>.</p>
+</li>
+<li><p>Выберите <strong>Подписывание</strong> в левой области экрана <strong>Свойства</strong> и установите флажок <strong>Подписать сборку</strong>. В раскрывающемся списке <strong>Выберите файл ключа строгого имени</strong> выберите <strong>Создать</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Создание ключа строгого имени</strong> в разделе <strong>Имя файла ключа</strong> введите <em>key.snk</em>. Снимите флажок <strong>Защитить мой файл ключей паролем</strong> и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните проект <strong>TypeEquivalenceRuntime</strong> правой кнопкой мыши и выберите <strong>Добавить</strong> &gt; <strong>Ссылка</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Диспетчер ссылок</strong> выберите <strong>Обзор</strong> и перейдите к папке пути вывода. Выберите файл <em>TypeEquivalenceInterface.dll</em>, нажмите кнопку <strong>Добавить</strong> и затем кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> разверните папку <strong>Ссылки</strong> и выберите ссылку <strong>TypeEquivalenceInterface</strong>. В области <strong>Свойства</strong> задайте для параметра <strong>Определенная версия</strong> значение <strong>False</strong>, если оно еще не установлено.</p>
+</li>
+<li><p>Откройте файл класса <em>SampleClass</em> в редакторе кода и замените его содержимое следующим кодом, чтобы создать класс <code>SampleClass</code>:</p>
+<pre><code class="lang-csharp">using System;
+using TypeEquivalenceInterface;
+
+namespace TypeEquivalenceRuntime
+{
+    public class SampleClass : ISampleInterface
+    {
+        private string p_UserInput;
+        public string UserInput { get { return p_UserInput; } }
+
+        public void GetUserInput()
+        {
+            Console.WriteLine(&quot;Please enter a value:&quot;);
+            p_UserInput = Console.ReadLine();
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">Imports TypeEquivalenceInterface
+
+Public Class SampleClass
+    Implements ISampleInterface
+
+    Private p_UserInput As String
+    Public ReadOnly Property UserInput() As String Implements ISampleInterface.UserInput
+        Get
+            Return p_UserInput
+        End Get
+    End Property
+
+    Public Sub GetUserInput() Implements ISampleInterface.GetUserInput
+        Console.WriteLine(&quot;Please enter a value:&quot;)
+        p_UserInput = Console.ReadLine()
+    End Sub
+End Class
+</code></pre>
+</li>
+<li><p>Выберите <strong>Файл</strong> &gt; <strong>Сохранить все</strong> или нажмите клавиши <strong>CTRL</strong>+<strong>SHIFT</strong>+<strong>S</strong> для сохранения файлов и проекта.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните проект <strong>TypeEquivalenceRuntime</strong> правой кнопкой мыши и выберите <strong>Сборка</strong>. DLL-файл библиотеки классов компилируется и сохраняется по указанному пути вывода сборки.</p>
+</li>
+</ol>
+<h2 id="create-a-client-project">Создание клиентского проекта</h2>
+<p>Наконец, создайте клиентскую программу эквивалентности типов, которая ссылается на сборку интерфейса.</p>
+<ol>
+<li><p>В Visual Studio последовательно выберите <strong>Файл</strong> &gt; <strong>Создать</strong> &gt; <strong>Проект</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Создание проекта</strong> введите <em>консоль</em> в поле <strong>Поиск шаблонов</strong>. Выберите шаблон <strong>Консольное приложение (.NET Framework)</strong> для C# или Visual Basic в списке и щелкните <strong>Далее</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Настроить новый проект</strong> в поле <strong>Имя проекта</strong> введите <em>TypeEquivalenceClient</em> и нажмите кнопку <strong>Создать</strong>. Проект создан.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceClient</strong> и выберите пункт <strong>Свойства</strong>.</p>
+</li>
+<li><p>Выберите элемент <strong>Сборка</strong> в левой области экрана <strong>Свойства</strong> и задайте в поле <strong>Путь вывода</strong> то же расположение, которое использовали для проекта TypeEquivalenceInterface, например, <em>C:\TypeEquivalenceSample</em>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceClient</strong> и выберите <strong>Добавить</strong> &gt; <strong>Ссылка</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Диспетчер ссылок</strong> выберите файл <strong>TypeEquivalenceInterface.dll</strong>, если он уже присутствует в списке. В противном случае выберите <strong>Обзор</strong>, перейдите к папке пути вывода, выберите файл <em>TypeEquivalenceInterface.dll</em> (а не <em>TypeEquivalenceRuntime.dll</em>) и нажмите кнопку <strong>Добавить</strong>. Нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> разверните папку <strong>Ссылки</strong> и выберите ссылку <strong>TypeEquivalenceInterface</strong>. В области <strong>Свойства</strong> установите для параметра <strong>Внедрить типы взаимодействия</strong> значение <strong>True</strong>.</p>
+</li>
+<li><p>Откройте файл <em>Program.cs</em> или <em>Module1.vb</em> в редакторе кода и замените его содержимое следующим кодом, чтобы создать клиентскую программу:</p>
+<pre><code class="lang-csharp">using System;
+using System.Reflection;
+using TypeEquivalenceInterface;
+
+namespace TypeEquivalenceClient
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Assembly sampleAssembly = Assembly.Load(&quot;TypeEquivalenceRuntime&quot;);
+            ISampleInterface sampleClass =
+                (ISampleInterface)sampleAssembly.CreateInstance(&quot;TypeEquivalenceRuntime.SampleClass&quot;);
+            sampleClass.GetUserInput();
+            Console.WriteLine(sampleClass.UserInput);
+            Console.WriteLine(sampleAssembly.GetName().Version.ToString());
+            Console.ReadLine();
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">Imports System.Reflection
+Imports TypeEquivalenceInterface
+
+Module Module1
+
+    Sub Main()
+        Dim sampleAssembly = Assembly.Load(&quot;TypeEquivalenceRuntime&quot;)
+        Dim sampleClass As ISampleInterface = CType( _
+            sampleAssembly.CreateInstance(&quot;TypeEquivalenceRuntime.SampleClass&quot;), ISampleInterface)
+        sampleClass.GetUserInput()
+        Console.WriteLine(sampleClass.UserInput)
+        Console.WriteLine(sampleAssembly.GetName().Version)
+        Console.ReadLine()
+    End Sub
+
+End Module
+</code></pre>
+</li>
+<li><p>Выберите <strong>Файл</strong> &gt; <strong>Сохранить все</strong> или нажмите клавиши <strong>CTRL</strong>+<strong>SHIFT</strong>+<strong>S</strong> для сохранения файлов и проекта.</p>
+</li>
+<li><p>Нажмите клавиши <strong>CTRL</strong>+<strong>F5</strong>, чтобы собрать и запустить программу. Обратите внимание, что выходные данные консоли возвращают версию сборки <strong>1.0.0.0</strong>.</p>
+</li>
+</ol>
+<h2 id="modify-the-interface">Изменение интерфейса</h2>
+<p>Теперь измените сборку интерфейса и смените ее версию.</p>
+<ol>
+<li><p>В Visual Studio выберите <strong>Файл</strong> &gt; <strong>Открыть</strong> &gt; <strong>Проект/решение</strong> и откройте проект <strong>TypeEquivalenceInterface</strong>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceInterface</strong> и выберите пункт <strong>Свойства</strong>.</p>
+</li>
+<li><p>Выберите <strong>Приложение</strong> в левой области экрана <strong>Свойства</strong> и элемент <strong>Сведения о сборке</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Сведения о сборке</strong> измените значения <strong>Версия сборки</strong> и <strong>Версия файла</strong> на <em>2.0.0.0</em> и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>Откройте файл <em>SampleInterface.cs</em> или <em>SampleInterface.vb</em> и добавьте в интерфейс <code>ISampleInterface</code> следующую строку кода:</p>
+<pre><code class="lang-csharp">DateTime GetDate();
+</code></pre>
+<pre><code class="lang-vb">Function GetDate() As Date
+</code></pre>
+</li>
+<li><p>Выберите <strong>Файл</strong> &gt; <strong>Сохранить все</strong> или нажмите клавиши <strong>CTRL</strong>+<strong>SHIFT</strong>+<strong>S</strong> для сохранения файлов и проекта.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши проект <strong>TypeEquivalenceInterface</strong> и выберите пункт <strong>Сборка</strong>. Новая версия DLL-файла библиотеки классов компилируется и сохраняется по пути вывода сборки.</p>
+</li>
+</ol>
+<h2 id="modify-the-runtime-class">Изменение класса среды выполнения</h2>
+<p>Также измените класс среды выполнения и обновите его версию.</p>
+<ol>
+<li><p>В Visual Studio выберите <strong>Файл</strong> &gt; <strong>Открыть</strong> &gt; <strong>Проект/решение</strong> и откройте проект <strong>TypeEquivalenceRuntime</strong>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните проект <strong>TypeEquivalenceRuntime</strong> правой кнопкой мыши и выберите <strong>Свойства</strong>.</p>
+</li>
+<li><p>Выберите <strong>Приложение</strong> в левой области экрана <strong>Свойства</strong> и элемент <strong>Сведения о сборке</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Сведения о сборке</strong> измените значения <strong>Версия сборки</strong> и <strong>Версия файла</strong> на <em>2.0.0.0</em> и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>Откройте файл <em>SampleClass.cs</em> или <em>SampleClass.vb</em> и добавьте в класс <code>SampleClass</code> следующий код:</p>
+<pre><code class="lang-csharp"> public DateTime GetDate()
+ {
+     return DateTime.Now;
+ }
+</code></pre>
+<pre><code class="lang-vb">Public Function GetDate() As DateTime Implements ISampleInterface.GetDate
+    Return Now
+End Function
+</code></pre>
+</li>
+<li><p>Выберите <strong>Файл</strong> &gt; <strong>Сохранить все</strong> или нажмите клавиши <strong>CTRL</strong>+<strong>SHIFT</strong>+<strong>S</strong> для сохранения файлов и проекта.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните проект <strong>TypeEquivalenceRuntime</strong> правой кнопкой мыши и выберите <strong>Сборка</strong>. Новая версия DLL-файла библиотеки классов компилируется и сохраняется по пути вывода сборки.</p>
+</li>
+</ol>
+<h2 id="run-the-updated-client-program">Запуск обновленной клиентской программы</h2>
+<p>Перейдите в папку вывода сборки и запустите <em>TypeEquivalenceClient.exe</em>. Обратите внимание, что выходные данные консоли теперь отражают новую версию сборки <code>TypeEquivalenceRuntime</code> — <em>2.0.0.0</em> — без повторной компиляции программы.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../csharp/language-reference/compiler-options/link-compiler-option.md">-link (параметры компилятора C#)</a></li>
+<li><a href="../../visual-basic/reference/command-line-compiler/link.md">-link (Visual Basic)</a></li>
+<li><a href="../../csharp/programming-guide/index.md">Руководство по программированию на C#</a></li>
+<li><a href="../../visual-basic/programming-guide/concepts/index.md">Основные понятия программирования (Visual Basic)</a></li>
+<li><a href="index.html">Сборки в .NET</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

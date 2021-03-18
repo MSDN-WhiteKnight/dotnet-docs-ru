@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1086;&#1089;&#1090;&#1088;&#1072;&#1085;&#1089;&#1090;&#1074;&#1072; &#1080;&#1084;&#1077;&#1085; XAML &#1080; &#1089;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1088;&#1086;&#1089;&#1090;&#1088;&#1072;&#1085;&#1089;&#1090;&#1074; &#1080;&#1084;&#1077;&#1085; &#1076;&#1083;&#1103; WPF XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1086;&#1089;&#1090;&#1088;&#1072;&#1085;&#1089;&#1090;&#1074;&#1072; &#1080;&#1084;&#1077;&#1085; XAML &#1080; &#1089;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1088;&#1086;&#1089;&#1090;&#1088;&#1072;&#1085;&#1089;&#1090;&#1074; &#1080;&#1084;&#1077;&#1085; &#1076;&#1083;&#1103; WPF XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="xaml-namespaces-and-namespace-mapping-for-wpf-xaml">Пространства имен XAML и сопоставление пространств имен для WPF XAML</h1>
+
+<p>В этом разделе обосновывается наличие и рассматриваются цели сопоставления двух пространств имен XAML, обычно содержащихся в корневом теге файла WPF XAML. Также описываются способы создания аналогичных сопоставлений для использования элементов, заданных в коде и/или в отдельных сборках.</p>
+<h2 id="what-is-a-xaml-namespace">Общие сведения о пространстве имен XAML</h2>
+<p>Пространство имен XAML — это расширение концепции пространства имен XML. При указании пространства имен XAML используется синтаксис пространства имен XML: соблюдается принцип использования универсальных кодов ресурсов (URI) в качестве идентификаторов пространств имен, использование префиксов, позволяющих указать несколько пространств имен с общим исходным кодом разметки и т. п. Основное нововведение в определении пространства имен XML, используемом в XAML, заключается в том, что пространство имен XAML неявно задает область уникальности используемой разметки и при этом влияет на возможное дополнение сущностей разметки определенными пространствами имен CLR и указанными в них сборками. Последний фактор обусловлен в том числе природой контекста схемы XAML. Впрочем, в отношении взаимодействия WPF с пространствами имен XAML можно рассматривать пространства имен XAML с учетом пространства имен XAML по умолчанию, пространства имен языка XAML и любых других пространств имен XAML, напрямую сопоставленных в разметке XAML с дополняющими их пространствами имен CLR и указанными в них сборками.</p>
+<p><a name="The_WPF_and_XAML_Namespace_Declarations"></a></p>
+<h2 id="the-wpf-and-xaml-namespace-declarations">WPF и объявления пространства имен XAML</h2>
+<p>В объявлении пространства имен в корневом теге многих XAML-файлов, как правило, содержатся два объявления пространства имен XML. Первое объявление задает сопоставление для общего пространства имен клиента WPF и платформы XAML как для пространства имен по умолчанию.</p>
+<p><code>xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;</code></p>
+<p>Второе объявление сопоставляет отдельное пространство имен XAML, сопоставляя его (обычно) с префиксом <code>x:</code>.</p>
+<p><code>xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</code></p>
+<p>Связь между этими объявлениями состоит в том, что сопоставление префикса <code>x:</code> поддерживает встроенные функции, которые являются частью определения языка XAML и WPF является реализацией, которая использует XAML в качестве языка и определяет словарь объектов для XAML. Так как использование словаря WPF более распространено, чем использование встроенных функций XAML, словарь WPF сопоставляется по умолчанию.</p>
+<p>Поддержка соглашения префикса <code>x:</code> для сопоставления встроенных функций языка XAML также используется в шаблонах проектов, образцах кода и документации по возможностям языка в этом SDK. Пространство имен XAML определяет многие часто используемые функциональные возможности, которые необходимы даже для основных приложений WPF. Например, чтобы присоединить какой-либо код программной части к XAML-файлу через разделяемый класс, необходимо именовать класс как атрибут <code>x:Class</code> в корневом элементе соответствующего XAML-файла. Или же любой элемент, определенный на странице XAML, к которой необходимо получить доступ в качестве ключевого ресурса, должен иметь заданный атрибут <code>x:Key</code>. Дополнительные сведения об этих и других аспектах XAML см. в разделах <a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a> и <a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a>.</p>
+<p><a name="Mapping_To_Custom_Classes_and_Assemblies"></a></p>
+<h2 id="mapping-to-custom-classes-and-assemblies">Сопоставление пользовательских классов и сборок</h2>
+<p>Вы можете сопоставить пространства имен XML со сборками, используя серию токенов в объявлении префиксов <code>xmlns</code> аналогично тому, как стандартные пространства имен WPF и встроенных функций XAML сопоставляются с префиксами.</p>
+<p>Синтаксис допускает перечисленные ниже возможные именованные токены и значения.</p>
+<p><code>clr-namespace:</code> Пространство имен CLR объявлено внутри сборки, которая содержит открытые типы, предоставленные как элементы.</p>
+<p><code>assembly=</code> Сборка, содержащая некоторые или все указанные CLR пространства имен. Это значение обычно содержит только имя сборки, но не путь к ней, и не включает расширение имени файла (например, EXE или DLL). Путь к этой сборке должен быть задан в качестве ссылки проекта в файле проекта, который содержит код XAML, который следует сопоставить. Чтобы включить управление версиями и подписи строгого имени, <code>assembly</code> значение может быть строкой в соответствии с определением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname">AssemblyName</a>, а не простым именем строки.</p>
+<p>Обратите внимание, что токен <code>clr-namespace</code> отделяется от значения двоеточием (:), тогда как токен <code>assembly</code> отделяется от значения знаком равенства (=). Эти два токена разделяются точкой с запятой. Кроме того не включайте все пробелы в любом месте в объявлении.</p>
+<h3 id="a-basic-custom-mapping-example">Простой пример пользовательского сопоставления</h3>
+<p>В следующем примере кода определяется пользовательский класс.</p>
+<pre><code class="lang-csharp">namespace SDKSample {  
+    public class ExampleClass : ContentControl {  
+        public ExampleClass() {  
+        ...  
+        }  
+    }  
+}  
+</code></pre>
+<pre><code class="lang-vb">Namespace SDKSample  
+    Public Class ExampleClass  
+        Inherits ContentControl  
+         ...  
+        Public Sub New()  
+        End Sub  
+    End Class  
+End Namespace  
+</code></pre>
+<p>Затем пользовательский класс компилируется в библиотеку, которая согласно параметрам проекта (не показано) имеет имя <code>SDKSampleLibrary</code>.</p>
+<p>Для ссылки на этот пользовательский класс также следует включить его в качестве ссылки на текущий проект, что обычно делается с помощью пользовательского интерфейса обозревателя решений в Visual Studio.</p>
+<p>Теперь, когда есть библиотека с классом и ссылка на него в параметрах проектах, можно добавить следующее сопоставление префикса как часть корневого элемента в XAML.</p>
+<p><code>xmlns:custom=&quot;clr-namespace:SDKSample;assembly=SDKSampleLibrary&quot;</code></p>
+<p>Чтобы собрать это все вместе, используется приведенный ниже код XAML, в который включено пользовательское сопоставление с обычным сопоставлением и сопоставлением x: в корневом теге. Затем используется ссылка с префиксом для создания экземпляра <code>ExampleClass</code> в этом пользовательском интерфейсе.</p>
+<pre><code class="lang-xaml">&lt;Page x:Class=&quot;WPFApplication1.MainPage&quot;  
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;   
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;  
+    xmlns:custom=&quot;clr-namespace:SDKSample;assembly=SDKSampleLibrary&quot;&gt;  
+  ...  
+  &lt;custom:ExampleClass/&gt;  
+...  
+&lt;/Page&gt;  
+</code></pre>
+<h3 id="mapping-to-current-assemblies">Сопоставление с текущими сборками</h3>
+<p><code>assembly</code> можно опустить, если <code>clr-namespace</code> на которую указывает ссылка, определенное в ту же сборку код приложения, который ссылается на пользовательские классы. Аналогичный способ для этого случая ― указание <code>assembly=</code> без строкового токена после знака равенства.</p>
+<p>Пользовательские классы нельзя использовать в качестве корневого элемента страницы, если они определены в той же сборке. Разделяемые классы не требуют сопоставления; должны быть сопоставлены только классы, которые не являются разделяемыми классами страницы в приложении, если планируется ссылка на них как на элементы в XAML.</p>
+<p><a name="Mapping_CLR_Namespaces_to_XML_Namespaces_in_an"></a></p>
+<h2 id="mapping-clr-namespaces-to-xml-namespaces-in-an-assembly">Сопоставление пространств имен CLR с пространствами имен XML в сборке</h2>
+<p>WPF определяет атрибут CLR, который обрабатывается процессорами XAML для сопоставления нескольких пространств имен CLR с одним пространством имен XAML. Этот атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a>, помещается на уровне сборки в исходном коде, который создает сборку. Исходный код сборки WPF использует этот атрибут для сопоставления различных общих пространств имен, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows">System.Windows</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls">System.Windows.Controls</a>, [!include[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)] пространства имен.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a> Принимает два параметра: имя пространства имен XML/XAML и имя пространства имен CLR. Более одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a> может существовать для сопоставления нескольких пространств имен CLR с одним пространством имен XML. После сопоставления на члены этих пространств имен при желании можно ссылаться без указания полного имени, предоставляя соответствующий оператор <code>using</code> на странице с выделенным кодом разделяемого класса. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xmlnsdefinitionattribute">XmlnsDefinitionAttribute</a>.</p>
+<h2 id="designer-namespaces-and-other-prefixes-from-xaml-templates">Пространства имен конструктора и другие префиксы из шаблонов XAML</h2>
+<p>При работе в средах разработки или со средствами разработки для WPF XAML можно заметить, что в разметке XAML определены и другие пространства имен и префиксы XAML.</p>
+<p>Конструктор WPF для Visual Studio использует пространство имен конструктора, который обычно сопоставляется префикс <code>d:</code>. В новейших шаблонах проектов для WPF это пространство имен XAML иногда заранее сопоставляется так, чтобы обеспечить поддержку переноса кода XAML между Конструктор WPF для Visual Studio и другими средами разработки. Это пространство имен XAML для разработки используется с целью сохранения состояния среды разработки при переносе пользовательского интерфейса, созданного на основе XAML, из одного средства разработки в другое. Оно также используется в таких функциях как <code>d:IsDataSource</code>, позволяющих использовать источники данных среды выполнения в конструкторе.</p>
+<p>Среди сопоставленных префиксов также встречается <code>mc:</code>. <code>mc:</code> для обеспечения совместимости разметки и возможности совместимости разметки, не обязательно определенного XAML. Функции обеспечения совместимости разметки в некоторой степени можно использовать для обмена кодом XAML между различными платформами, взаимодействия между различными схемами XAML, обеспечения совместимости для ограниченных режимов в конструкторах и т. п. Дополнительные сведения о принципах обеспечения совместимости разметки и как они связаны с WPF, см. в разделе <a href="markup-compatibility-mc-language-features.html">совместимость разметки (mc:) Возможности языка</a>.</p>
+<h2 id="wpf-and-assembly-loading">WPF и загрузка сборок</h2>
+<p>Контекст схемы XAML для WPF интегрируется с моделью приложения WPF, которая в свою очередь, использует определенное в среде CLR понятие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a>. Ниже описана последовательность действий как контекст схемы XAML интерпретирует либо порядок загрузки сборок либо поиска типов во время выполнения или во время разработки, основываясь на работу с WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> и других факторов.</p>
+<ol>
+<li><p>Итерации по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a>, целью поиска уже загруженной сборки, соответствующей всем аспектам имени, начиная с последней загруженной сборки.</p>
+</li>
+<li><p>Если определено полное имя, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load#System_Reflection_Assembly_Load_System_String_">Assembly.Load(String)</a> для полного имени.</p>
+</li>
+<li><p>Если сборке, из которой была загружена разметка, соответствует сочетание &quot;короткое имя + токен открытого ключа полного имени&quot;, возвратите эту сборку.</p>
+</li>
+<li><p>Использовать короткое имя + токен открытого ключа для вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load#System_Reflection_Assembly_Load_System_String_">Assembly.Load(String)</a>.</p>
+</li>
+<li><p>Если определено неполное имя, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadwithpartialname">Assembly.LoadWithPartialName</a>.</p>
+</li>
+</ol>
+<p>Свободный XAML не использует шаг 3, так как нет сборки, из которой выполнялась загрузка.</p>
+<p>Скомпилированный XAML для WPF (сформированный с помощью XamlBuildTask) не использует уже загруженные сборки из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> (шаг 1). Кроме того, имя из выходных данных XamlBuildTask не должно быть неполным, поэтому шаг 5 не применяется.</p>
+<p>Скомпилированный BAML (сформированный с помощью PresentationBuildTask) использует все шаги, хотя BAML также не должен содержать неполные имена сборок.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=98069">Основные сведения о пространствах имен XML</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

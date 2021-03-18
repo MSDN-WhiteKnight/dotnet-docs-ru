@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1080; &#1086;&#1090;&#1083;&#1072;&#1076;&#1082;&#1072; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1089; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1100;&#1102; &#1074;&#1099;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080; &#1074; .NET Core | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1080; &#1086;&#1090;&#1083;&#1072;&#1076;&#1082;&#1072; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1089; &#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1100;&#1102; &#1074;&#1099;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080; &#1074; .NET Core | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-use-and-debug-assembly-unloadability-in-net-core">Использование и отладка сборок с возможностью выгрузки в .NET Core</h1>
+
+<p>Начиная с .NET Core 3.0 поддерживается возможность загрузки и последующей выгрузки набора сборок. В .NET Framework для этой цели использовались пользовательские домены приложений, но .NET Core поддерживает только один домен приложения по умолчанию.</p>
+<p>.NET Core 3.0 и более поздние версии поддерживают выгрузку с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext">AssemblyLoadContext</a>. Вы можете загрузить набор сборок в собираемые <code>AssemblyLoadContext</code>, выполнять в них методы или просто проверять их с помощью отражения и, наконец, выгрузить <code>AssemblyLoadContext</code>. Эта операция выгружает сборки, загруженные в <code>AssemblyLoadContext</code>.</p>
+<p>Между выгрузкой с помощью <code>AssemblyLoadContext</code> и доменов приложений есть одно важное различие. При использовании доменов приложений выгрузка выполняется принудительно. В момент выгрузки все потоки, работающие в целевом домене приложения, прерываются, управляемые COM-объекты, созданные в целевом домене приложения, уничтожаются и т. д. При использовании <code>AssemblyLoadContext</code> выгрузка выполняется в режиме &quot;сотрудничества&quot;. Вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext.unload">AssemblyLoadContext.Unload</a> просто инициирует выгрузку. Выгрузка завершается после того, как:</p>
+<ul>
+<li>Ни один из потоков не имеет методов из сборок, загруженных в <code>AssemblyLoadContext</code> в стеках вызовов.</li>
+<li>Ни на один из типов из сборок, загруженных в <code>AssemblyLoadContext</code>, экземпляры этих типов и сами сборки не ссылаются:
+<ul>
+<li>Ссылки за пределами <code>AssemblyLoadContext</code>, за исключением слабых ссылок (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.weakreference">WeakReference</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.weakreference-1">WeakReference&lt;T&gt;</a>).</li>
+<li>Строгие дескрипторы сборщика мусора (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.gchandletype#System_Runtime_InteropServices_GCHandleType_Normal">GCHandleType.Normal</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.gchandletype#System_Runtime_InteropServices_GCHandleType_Pinned">GCHandleType.Pinned</a>) как внутри, так и за пределами <code>AssemblyLoadContext</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="use-collectible-assemblyloadcontext">Использование забираемого AssemblyLoadContext</h2>
+<p>В этом разделе содержится подробное пошаговое руководство, в котором показан простой способ загрузки приложения .NET Core в собираемый <code>AssemblyLoadContext</code>, выполнения его точки входа и последующей выгрузки. Полный пример см. по адресу <a href="https://github.com/dotnet/samples/tree/master/core/tutorials/Unloading">https://github.com/dotnet/samples/tree/master/core/tutorials/Unloading</a>.</p>
+<h3 id="create-a-collectible-assemblyloadcontext">Создание собираемого AssemblyLoadContext</h3>
+<p>Необходимо получить класс от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext">AssemblyLoadContext</a> и переопределить его метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext.load">AssemblyLoadContext.Load</a>. Этот метод разрешает ссылки на все сборки, которые являются зависимостями загруженных в <code>AssemblyLoadContext</code> сборок.</p>
+<p>Следующий код является примером простейшего пользовательского <code>AssemblyLoadContext</code>:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Как видите, метод <code>Load</code> возвращает <code>null</code>. Это означает, что все сборки зависимостей загружаются в контекст по умолчанию, а новый контекст содержит только те сборки, которые были явно загружены в него.</p>
+<p>Если требуется загрузить некоторые или все зависимости в <code>AssemblyLoadContext</code> тоже, можно использовать <code>AssemblyDependencyResolver</code> в методе <code>Load</code>. <code>AssemblyDependencyResolver</code> разрешает имена сборок в абсолютные пути к файлам сборки. Сопоставитель использует файл <em>.deps.json</em> и файлы сборки в каталоге основной сборки, загруженной в контекст.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="use-a-custom-collectible-assemblyloadcontext">Использование пользовательского собираемого AssemblyLoadContext</h3>
+<p>В этом разделе предполагается, что используется более простая версия <code>TestAssemblyLoadContext</code>.</p>
+<p>Вы можете создать экземпляр пользовательского <code>AssemblyLoadContext</code> и загрузить в него сборку следующим образом:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Для каждой сборки, на которую ссылается загруженная сборка, вызывается метод <code>TestAssemblyLoadContext.Load</code>, чтобы <code>TestAssemblyLoadContext</code> мог решить, откуда получить сборку. В нашем случае он возвращает <code>null</code>, чтобы указать, что он должен быть загружен в контекст по умолчанию из расположений, используемых средой выполнения для загрузки сборок по умолчанию.</p>
+<p>Теперь, когда сборка загружена, можно выполнить из нее метод. Выполните метод <code>Main</code>:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>После возврата метода <code>Main</code> можно инициировать выгрузку путем вызова метода <code>Unload</code> для пользовательского <code>AssemblyLoadContext</code> или удаления имеющейся ссылки на <code>AssemblyLoadContext</code>:</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Этого достаточно для выгрузки тестовой сборки. Давайте разместим все это в отдельном невстраиваемом методе, чтобы гарантировать, что, <code>TestAssemblyLoadContext</code>, <code>Assembly</code> и <code>MethodInfo</code> (<code>Assembly.EntryPoint</code>) не могут поддерживаться в активном состоянии ссылками слота стека (в реальных или введенных JIT локальных переменных). Это поможет поддерживать <code>TestAssemblyLoadContext</code> и предотвратить выгрузку.</p>
+<p>Кроме того, верните слабую ссылку на <code>AssemblyLoadContext</code>, чтобы можно было использовать его позже для обнаружения завершения выгрузки.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Теперь эту функцию можно использовать для загрузки, выполнения и выгрузки сборки.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Однако выгрузка не завершается немедленно. Как упоминалось ранее, она полагается на сборщика мусора для сбора всех объектов из тестовой сборки. Во многих случаях нет необходимости ждать завершения выгрузки. Однако в некоторых случаях полезно знать, что выгрузка завершена. Например, вы хотите удалить файл сборки, который был загружен в пользовательский <code>AssemblyLoadContext</code> с диска. В этом случае можно использовать следующий фрагмент кода. Он запускает сборку мусора и ожидает методы завершения ожидания в цикле, пока слабая ссылка на пользовательский <code>AssemblyLoadContext</code> не будет установлена на <code>null</code>, указывая, что целевой объект был собран. В большинстве случаев требуется только один проход по циклу. Однако в более сложных случаях, когда объекты, создаваемые кодом, выполняющимися в <code>AssemblyLoadContext</code>, имеют методы завершения, может потребоваться больше проходов.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="the-unloading-event">Событие выгрузки</h3>
+<p>В некоторых случаях может потребоваться, чтобы код был загружен в пользовательский <code>AssemblyLoadContext</code> для выполнения очистки при инициации выгрузки. Например, может потребоваться отключить потоки или очистить некоторые строгие дескрипторы сборки мусора. В таких случаях можно использовать событие <code>Unloading</code>. Обработчик, выполняющий необходимую очистку, может быть подключен к этому событию.</p>
+<h3 id="troubleshoot-unloadability-issues">Устранение проблем с выгрузкой</h3>
+<p>Из-за сотрудничающей природы выгрузки можно легко забыть о ссылках, которые поддерживают активность элементов в собираемом <code>AssemblyLoadContext</code> и предотвращают выгрузку. Ниже описываются сущности (некоторые из них не очевидны), которые могут содержать ссылки:</p>
+<ul>
+<li>Обычные ссылки за пределами собираемого <code>AssemblyLoadContext</code>, хранящегося в слоте стека или в регистре процессора (локальные переменные метода, явно созданные пользовательским кодом или неявно JIT-компилятором), статическая переменная или строгий/закрепляющий обработчик сборки мусора, транзитивно указывающие на следующие элементы:
+<ul>
+<li>Сборка, загруженная в собираемый <code>AssemblyLoadContext</code>.</li>
+<li>Тип из такой сборки.</li>
+<li>Экземпляр типа из такой сборки.</li>
+</ul>
+</li>
+<li>Потоки, выполняющие код из сборки, загруженной в собираемый <code>AssemblyLoadContext</code>.</li>
+<li>Экземпляры пользовательских несобираемых типов <code>AssemblyLoadContext</code>, созданных в собираемом <code>AssemblyLoadContext</code>.</li>
+<li>Ожидающие обработки экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.registeredwaithandle">RegisteredWaitHandle</a> с обратными вызовами, настроенными на методы в пользовательском <code>AssemblyLoadContext</code>.</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Ссылки на объекты, которые хранятся в слотах стека или регистрах процессора и которые могут предотвратить выгрузку <code>AssemblyLoadContext</code>, могут возникать в следующих ситуациях:</p>
+<ul>
+<li>Когда результаты вызова функции передаются непосредственно в другую функцию, несмотря на отсутствие созданной пользователем локальной переменной.</li>
+<li>Когда JIT-компилятор сохраняет ссылку на объект, который был доступен в определенный момент в методе.</li>
+</ul>
+</div>
+<h2 id="debug-unloading-issues">Отладка проблем с выгрузкой</h2>
+<p>Отладка проблем с выгрузкой может быть утомительной. Иногда вы не знаете, что поддерживает активность <code>AssemblyLoadContext</code>, но выгрузка завершается ошибкой. Лучшим решением станет WinDbg (LLDB в UNIX) с подключаемым модулем SOS. Необходимо найти сведения о том, что поддерживает активность <code>LoaderAllocator</code>, принадлежащего конкретному <code>AssemblyLoadContext</code>. Подключаемый модуль SOS позволяет просматривать объекты кучи GC, их иерархии и корни.</p>
+<p>Чтобы загрузить подключаемый модуль в отладчик, введите следующую команду в командной строке отладчика:</p>
+<p>В WinDbg (кажется, что WinDbg делает это автоматически при прерывании приложения .NET Core):</p>
+<pre><code class="lang-console">.loadby sos coreclr
+</code></pre>
+<p>В LLDB:</p>
+<pre><code class="lang-console">plugin load /path/to/libsosplugin.so
+</code></pre>
+<p>Давайте выполним отладку примера программы, в которой возникли проблемы с выгрузкой. Исходный код приводится ниже. При запуске с помощью WinDbg программа переключается в отладчике сразу после попытки проверить успешность выгрузки. После этого вы можете начать поиск причины проблемы.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>При отладке с помощью LLDB в Unix команды SOS в следующих примерах не содержат перед собой <code>!</code>.</p>
+</div>
+<pre><code class="lang-console">!dumpheap -type LoaderAllocator
+</code></pre>
+<p>Эта команда выполняет дамп всех объектов с именем типа, содержащим <code>LoaderAllocator</code> в куче сборщика мусора. Например:</p>
+<pre><code class="lang-console">         Address               MT     Size
+000002b78000ce40 00007ffadc93a288       48
+000002b78000ceb0 00007ffadc93a218       24
+
+Statistics:
+              MT    Count    TotalSize Class Name
+00007ffadc93a218        1           24 System.Reflection.LoaderAllocatorScout
+00007ffadc93a288        1           48 System.Reflection.LoaderAllocator
+Total 2 objects
+</code></pre>
+<p>В разделе &quot;Statistics:&quot; ниже проверьте <code>MT</code> (<code>MethodTable</code>), который принадлежит <code>System.Reflection.LoaderAllocator</code>, и именно этот объект нас интересует. Затем в списке в начале найдите запись с <code>MT</code>, соответствующим этому объекту, и получите адрес самого объекта. В нашем случае это 000002b78000ce40.</p>
+<p>Теперь, когда мы знаем адрес объекта <code>LoaderAllocator</code>, можно использовать другую команду для поиска его корней в сборке мусора:</p>
+<pre><code class="lang-console">!gcroot -all 0x000002b78000ce40
+</code></pre>
+<p>Эта команда выполняет дампы цепочки ссылок на объекты, ведущих к экземпляру <code>LoaderAllocator</code>. Список начинается с корня, который поддерживает активность <code>LoaderAllocator</code>, и, таким образом, является причиной проблемы. Корнем может быть слот стека, регистр процессора, обработчик сборки мусора или статическая переменная.</p>
+<p>Вот пример результата выходных данных команды <code>gcroot</code>:</p>
+<pre><code class="lang-console">Thread 4ac:
+    000000cf9499dd20 00007ffa7d0236bc example.Program.Main(System.String[]) [E:\unloadability\example\Program.cs @ 70]
+        rbp-20: 000000cf9499dd90
+            -&gt;  000002b78000d328 System.Reflection.RuntimeMethodInfo
+            -&gt;  000002b78000d1f8 System.RuntimeType+RuntimeTypeCache
+            -&gt;  000002b78000d1d0 System.RuntimeType
+            -&gt;  000002b78000ce40 System.Reflection.LoaderAllocator
+
+HandleTable:
+    000002b7f8a81198 (strong handle)
+    -&gt; 000002b78000d948 test.Test
+    -&gt; 000002b78000ce40 System.Reflection.LoaderAllocator
+
+    000002b7f8a815f8 (pinned handle)
+    -&gt; 000002b790001038 System.Object[]
+    -&gt; 000002b78000d390 example.TestInfo
+    -&gt; 000002b78000d328 System.Reflection.RuntimeMethodInfo
+    -&gt; 000002b78000d1f8 System.RuntimeType+RuntimeTypeCache
+    -&gt; 000002b78000d1d0 System.RuntimeType
+    -&gt; 000002b78000ce40 System.Reflection.LoaderAllocator
+
+Found 3 roots.
+</code></pre>
+<p>Следующий шаг — выяснить, где находится корень, чтобы его можно было исправить. Самый простой случай: корень — это слот стека или регистр процессора. В этом случае в <code>gcroot</code> отображается имя функции, фрейм которой содержит корень, и поток, в котором выполняется эта функция. Сложный случай: корень является статической переменной или обработчиком сборки мусора.</p>
+<p>В предыдущем примере первый корень является локальной переменной типа <code>System.Reflection.RuntimeMethodInfo</code>, хранимого во фрейме функции <code>example.Program.Main(System.String[])</code> по адресу <code>rbp-20</code> (<code>rbp</code> — это регистр процессора <code>rbp</code>, а –20 — шестнадцатеричное смещение от этого регистра).</p>
+<p>Второй корень является нормальным (строгим) <code>GCHandle</code>, который содержит ссылку на экземпляр класса <code>test.Test</code>.</p>
+<p>Третий корень является закрепленным <code>GCHandle</code>. На самом деле это статическая переменная, но к сожалению, нет способа определить это. Статические переменные для ссылочных типов хранятся в управляемом массиве объектов во внутренних структурах среды выполнения.</p>
+<p>Другой вариант, который может помешать выгрузке <code>AssemblyLoadContext</code>, — когда поток содержит фрейм метода из сборки, загруженной в стек <code>AssemblyLoadContext</code>. Это можно проверить, выполнив дамп управляемых стеков вызовов всех потоков:</p>
+<pre><code class="lang-console">~*e !clrstack
+</code></pre>
+<p>Команда означает &quot;Применить ко всем потокам команду <code>!clrstack</code>&quot;. Ниже приведен результат выполнения команды для примера. К сожалению, в LLDB в Unix нет способа применить команду ко всем потокам, поэтому необходимо будет вручную переключать потоки и повторять команду <code>clrstack</code>. Игнорируйте все потоки, в которых отладчик сообщает: &quot;Не удалось пройти по управляемому стеку&quot;.</p>
+<pre><code class="lang-console">OS Thread Id: 0x6ba8 (0)
+        Child SP               IP Call Site
+0000001fc697d5c8 00007ffb50d9de12 [HelperMethodFrame: 0000001fc697d5c8] System.Diagnostics.Debugger.BreakInternal()
+0000001fc697d6d0 00007ffa864765fa System.Diagnostics.Debugger.Break()
+0000001fc697d700 00007ffa864736bc example.Program.Main(System.String[]) [E:\unloadability\example\Program.cs @ 70]
+0000001fc697d998 00007ffae5fdc1e3 [GCFrame: 0000001fc697d998]
+0000001fc697df28 00007ffae5fdc1e3 [GCFrame: 0000001fc697df28]
+OS Thread Id: 0x2ae4 (1)
+Unable to walk the managed stack. The current thread is likely not a
+managed thread. You can run !threads to get a list of managed threads in
+the process
+Failed to start stack walk: 80070057
+OS Thread Id: 0x61a4 (2)
+Unable to walk the managed stack. The current thread is likely not a
+managed thread. You can run !threads to get a list of managed threads in
+the process
+Failed to start stack walk: 80070057
+OS Thread Id: 0x7fdc (3)
+Unable to walk the managed stack. The current thread is likely not a
+managed thread. You can run !threads to get a list of managed threads in
+the process
+Failed to start stack walk: 80070057
+OS Thread Id: 0x5390 (4)
+Unable to walk the managed stack. The current thread is likely not a
+managed thread. You can run !threads to get a list of managed threads in
+the process
+Failed to start stack walk: 80070057
+OS Thread Id: 0x5ec8 (5)
+        Child SP               IP Call Site
+0000001fc70ff6e0 00007ffb5437f6e4 [DebuggerU2MCatchHandlerFrame: 0000001fc70ff6e0]
+OS Thread Id: 0x4624 (6)
+        Child SP               IP Call Site
+GetFrameContext failed: 1
+0000000000000000 0000000000000000
+OS Thread Id: 0x60bc (7)
+        Child SP               IP Call Site
+0000001fc727f158 00007ffb5437fce4 [HelperMethodFrame: 0000001fc727f158] System.Threading.Thread.SleepInternal(Int32)
+0000001fc727f260 00007ffb37ea7c2b System.Threading.Thread.Sleep(Int32)
+0000001fc727f290 00007ffa865005b3 test.Program.ThreadProc() [E:\unloadability\test\Program.cs @ 17]
+0000001fc727f2c0 00007ffb37ea6a5b System.Threading.Thread.ThreadMain_ThreadStart()
+0000001fc727f2f0 00007ffadbc4cbe3 System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, System.Object)
+0000001fc727f568 00007ffae5fdc1e3 [GCFrame: 0000001fc727f568]
+0000001fc727f7f0 00007ffae5fdc1e3 [DebuggerU2MCatchHandlerFrame: 0000001fc727f7f0]
+
+</code></pre>
+<p>Как видите, последний поток имеет <code>test.Program.ThreadProc()</code>. Это функция из сборки, загруженной в <code>AssemblyLoadContext</code>, и поэтому она сохраняет активность <code>AssemblyLoadContext</code>.</p>
+<h2 id="example-source-with-unloadability-issues">Пример источника с проблемами выгрузки</h2>
+<p>В предыдущем примере отладки используется следующий код.</p>
+<h3 id="main-testing-program">Основная программа тестирования</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="program-loaded-into-the-testassemblyloadcontext">Программа, загруженная в TestAssemblyLoadContext</h2>
+<p>Следующий код представляет <em>test.dll</em>, переданный в метод <code>ExecuteAndUnload</code> в основной программе тестирования.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

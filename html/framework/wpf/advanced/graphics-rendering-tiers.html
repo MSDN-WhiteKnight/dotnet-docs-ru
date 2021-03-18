@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1088;&#1086;&#1074;&#1085;&#1080; &#1075;&#1088;&#1072;&#1092;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1088;&#1086;&#1074;&#1085;&#1080; &#1075;&#1088;&#1072;&#1092;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="graphics-rendering-tiers">Уровни графической отрисовки</h1>
+
+<p>Уровень отрисовки определяет уровень возможностей графического оборудования и производительность для устройства, на котором выполняется приложение WPF.</p>
+<p><a name="graphics_hardware"></a></p>
+<h2 id="graphics-hardware">Графическое оборудование</h2>
+<p>Ниже перечислены возможности графического оборудования, которые сильнее всего влияют на уровни отрисовки.</p>
+<ul>
+<li><p><strong>Видеопамять</strong>. Объем видеопамяти графического оборудования определяет размер и число буферов, которые можно использовать для компоновки графики.</p>
+</li>
+<li><p><strong>Построитель текстуры</strong>. Построитель текстуры — это функция обработки графики, вычисляющая эффекты на уровне пикселей. В зависимости от разрешения отображаемой графики может быть несколько миллионов пикселей, которые необходимо обработать для каждого отображаемого кадра.</p>
+</li>
+<li><p><strong>Вершинный построитель текстуры</strong>. Вершинный построитель текстуры — это функция обработки графики для выполнения математических операций над данными вершин объекта.</p>
+</li>
+<li><p><strong>Поддержка мультитекстурирования</strong>. Поддержка мультитекстурирования относится к возможности применить две и более разных текстур во время операции смешения на объекте трехмерной графики. Степень многотекстурной поддержки определяется числом мультитекстурных модулей на графическом оборудовании.</p>
+</li>
+</ul>
+<p><a name="rendering_tier_definitions"></a></p>
+<h2 id="rendering-tier-definitions">Определения уровней отрисовки</h2>
+<p>Возможности графического оборудования определяют возможности отрисовки приложения WPF. Система WPF определяет три уровня отрисовки.</p>
+<ul>
+<li><p><strong>Уровень отрисовки 0</strong>. Аппаратное ускорение графики отсутствует. Все графические возможности реализуются с использованием программного ускорения. Уровень версии DirectX меньше версии 9.0.</p>
+</li>
+<li><p><strong>Уровень отрисовки 1</strong>. Некоторые графические функции используют аппаратное ускорение графики. Уровень версии DirectX больше или равен версии 9.0.</p>
+</li>
+<li><p><strong>Уровень отрисовки 2</strong>. Большинство графических функций используют аппаратное ускорение графики. Уровень версии DirectX больше или равен версии 9.0.</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rendercapability.tier">RenderCapability.Tier</a> Свойство позволяет извлечь уровень отрисовки во время выполнения приложения. Уровень отрисовки используется, чтобы определить, поддерживает ли устройство те или иные функции графики аппаратного ускорения. Затем приложение может принимать разные пути кода во время выполнения в зависимости от поддерживаемого устройством уровня отрисовки.</p>
+<h3 id="rendering-tier-0">Уровень отрисовки 0</h3>
+<p>Значение 0 для уровня отрисовки означает, что аппаратное ускорение графики недоступно для приложения на устройстве. На этом уровне нужно исходить из того, что вся графика будет отрисовываться программным обеспечением без аппаратного ускорения. Функциональность этого уровня соответствует версии DirectX меньше 9.0.</p>
+<h3 id="rendering-tier-1-and-rendering-tier-2">Уровень отрисовки 1 и уровень отрисовки 2</h3>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Начиная с .NET Framework 4, уровень отрисовки 1 переопределен и включает только графическое оборудование, которое поддерживает DirectX 9.0 и выше. Графическое оборудование, которое поддерживает DirectX 7 или 8, теперь определяется как уровень отрисовки 0.</p>
+</div>
+<p>Отрисовка уровня 1 или 2 означает, что большая часть графических возможностей WPF будет использовать аппаратное ускорение, если необходимые системные ресурсы доступны и не исчерпаны. Это соответствует версии DirectX, которая больше или равна 9.0.</p>
+<p>В таблице ниже приводятся различия в требованиях к графическому оборудованию для уровней отрисовки 1 и 2:</p>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Уровень 1</th>
+<th>Уровень 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DirectX version</td>
+<td>Должно быть больше или равно 9.0.</td>
+<td>Должно быть больше или равно 9.0.</td>
+</tr>
+<tr>
+<td>Видеопамять</td>
+<td>Должно быть больше или равно 60 МБ.</td>
+<td>Должно быть больше или равно 120 МБ.</td>
+</tr>
+<tr>
+<td>Построитель текстуры</td>
+<td>Уровень версии должен быть больше или равен версии 2.0.</td>
+<td>Уровень версии должен быть больше или равен версии 2.0.</td>
+</tr>
+<tr>
+<td>Вершинный построитель текстуры</td>
+<td>Без требований.</td>
+<td>Уровень версии должен быть больше или равен версии 2.0.</td>
+</tr>
+<tr>
+<td>Модули мультитекстурирования</td>
+<td>Без требований.</td>
+<td>Число модулей должно быть больше или равно 4.</td>
+</tr>
+</tbody>
+</table>
+<p>Следующие функции и возможности обеспечиваются аппаратным ускорением для уровней отрисовки 1 и 2.</p>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Двухмерная отрисовка</td>
+<td>Поддерживается большинство двухмерных отрисовок.</td>
+</tr>
+<tr>
+<td>Растеризация 3D</td>
+<td>Поддерживается большинство трехмерных растеризаций.</td>
+</tr>
+<tr>
+<td>Трехмерная анизотропная фильтрация</td>
+<td>WPF пытается использовать анизотропную фильтрацию при отрисовке трехмерного содержимого. Анизотропная фильтрация используется для повышения качества изображения текстур на удаленных поверхностях, которые находятся под большим углом по отношению к камере.</td>
+</tr>
+<tr>
+<td>Трехмерное MIP-сопоставление</td>
+<td>WPF пытается использовать MIP-сопоставление при отрисовке трехмерного содержимого. MIP-сопоставление повышает качество отрисовки текстуры, если текстура занимает небольшое поле зрения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewport3d">Viewport3D</a>.</td>
+</tr>
+<tr>
+<td>Радиальные градиенты</td>
+<td>Хотя поддерживается, избегайте использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.radialgradientbrush">RadialGradientBrush</a> с крупными объектами.</td>
+</tr>
+<tr>
+<td>Вычисления трехмерного освещения</td>
+<td>WPF выполняет освещение на уровне вершин, это означает, что интенсивность света вычисляется на каждой вершине для каждого материала, применяемого к сетке.</td>
+</tr>
+<tr>
+<td>Отрисовка текста</td>
+<td>В отрисовке шрифта на субпиксельном уровне используются доступные построители текстур на графическом оборудовании.</td>
+</tr>
+</tbody>
+</table>
+<p>Следующие функции и возможности обеспечиваются аппаратным ускорением для уровня отрисовки 2.</p>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Трехмерное сглаживание</td>
+<td>Трехмерное сглаживание поддерживается только в операционных системах, поддерживающих Windows Display Driver Model (WDDM), например Windows Vista и Windows 7.</td>
+</tr>
+</tbody>
+</table>
+<p>Следующие функции и возможности <strong>не</strong> обеспечиваются аппаратным ускорением.</p>
+<table>
+<thead>
+<tr>
+<th>Функция</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Содержимое вывода</td>
+<td>Все содержимое вывода отображается с помощью программного конвейера WPF.</td>
+</tr>
+<tr>
+<td>Растровое содержимое, использующее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a></td>
+<td>Любое содержимое отображается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap.render">Render</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a>.</td>
+</tr>
+<tr>
+<td>Мозаичное содержимое, использующее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a></td>
+<td>Любое Мозаичное содержимое, в котором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.tilemode">TileMode</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_Tile">Tile</a>.</td>
+</tr>
+<tr>
+<td>Поверхности, которые превышают максимальный размер текстуры графического оборудования</td>
+<td>Для большинства графических устройств большие поверхности имеют размер 2048 x 2048 или 4096 x 4096 пикселей.</td>
+</tr>
+<tr>
+<td>Любая операция, требования к видеопамяти которой превышают объем памяти графического оборудования</td>
+<td>Можно отслеживать использование видеопамяти приложения, используя средство Perforator, включенное в <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/aa969767(v=vs.100)">WPF Performance Suite</a> в комплекте SDK Windows.</td>
+</tr>
+<tr>
+<td>Многослойные окна</td>
+<td>Многослойные окна позволяют приложениям WPF отображать содержимое на экране в непрямоугольных окнах. В операционных системах, поддерживающих Windows Display Driver Model (WDDM), например Windows Vista и Windows 7, многослойные окна реализованы с аппаратным ускорением. В других системах, таких как Windows XP, многоуровневые окна отрисовываются программным обеспечением без аппаратного ускорения.<br><br> Вы можете включить многослойные окна в WPF , задав следующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> свойства:<br><br> -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.windowstyle">WindowStyle</a> = <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.windowstyle#System_Windows_WindowStyle_None">None</a><br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.allowstransparency">AllowsTransparency</a> = <code>true</code><br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> = <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brushes.transparent">Transparent</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="other_resources"></a></p>
+<h2 id="other-resources">Другие ресурсы</h2>
+<p>Следующие ресурсы могут помочь проанализировать характеристики производительности вашего приложения WPF.</p>
+<h3 id="graphics-rendering-registry-settings">Настройки реестра графической отрисовки</h3>
+<p>WPF предоставляет четыре параметра реестра для управления WPF отрисовки:</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Отключить аппаратное ускорение</strong></td>
+<td>Указывает, следует ли включить аппаратное ускорение.</td>
+</tr>
+<tr>
+<td><strong>Максимальное значение мультисэмплинга</strong></td>
+<td>Определяет степень мультисэмплинга для сглаживания содержимого Трехмерный.</td>
+</tr>
+<tr>
+<td><strong>Требуемая дата видеодрайвера</strong></td>
+<td>Указывает, отключает ли система аппаратное ускорение для драйверов, выпущенных до ноября 2004 г.</td>
+</tr>
+<tr>
+<td><strong>Использовать средство программной прорисовки</strong></td>
+<td>Указывает, следует ли WPF использовать средство программной прорисовки.</td>
+</tr>
+</tbody>
+</table>
+<p>Эти параметры доступны любой внешней служебной программе настройки, которая знает, как ссылаться на параметры реестра WPF. Эти параметры также можно создать или изменить через прямой доступ к значениям с использованием редактора реестра Windows. Более подробную информацию см. в разделе <a href="../graphics-multimedia/graphics-rendering-registry-settings.html">Настройки реестра графической отрисовки</a>.</p>
+<h3 id="wpf-performance-profiling-tools">Средства профилирования производительности WPF</h3>
+<p>WPF предоставляет набор средств профилирования производительности, позволяющие анализировать поведение времени выполнения приложения и определить, какие оптимизации производительности, которые можно применить. В следующей таблице перечислены средства профилирования производительности, включенные в средство Windows SDK, WPF Performance Suite.</p>
+<table>
+<thead>
+<tr>
+<th>Средство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perforator</td>
+<td>Используется для анализа поведения отрисовки.</td>
+</tr>
+<tr>
+<td>Visual Profiler</td>
+<td>Служит для профилирования использования служб WPF, например обработки макета и событий, по элементам в визуальном дереве.</td>
+</tr>
+</tbody>
+</table>
+<p>WPF Performance Suite обеспечивает многофункциональное графическое представление данных производительности. Дополнительные сведения о средствах производительности WPF см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/aa969767(v=vs.100)">WPF Performance Suite</a>.</p>
+<h3 id="directx-diagnostic-tool">средство диагностики DirectX</h3>
+<p>Диагностическое средство DirectX, Dxdiag.exe, поможет в диагностике и устранении проблем, связанных с DirectX. Папка установки по умолчанию для средства диагностики DirectX.</p>
+<p><code>~\Windows\System32</code></p>
+<p>При запуске средства диагностики DirectX главное окно содержит набор вкладок, которые позволяют отображать и диагностировать связанные с DirectX сведения. Например, на вкладке <strong>Система</strong> представлена системная информация о вашем компьютере и указана версия DirectX, установленная на вашем ПК.</p>
+<p><img src="media/directxdiagnostictool-01.png" alt="Снимок экрана: Инструмент диагностики DirectX" title="DirectXDiagnosticTool_01"><br>
+Главное окно инструмента диагностики DirectX</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rendercapability">RenderCapability</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions">RenderOptions</a></li>
+<li><a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/aa969767(v=vs.100)">WPF Performance Suite</a></li>
+<li><a href="../graphics-multimedia/graphics-rendering-registry-settings.html">Настройки реестра графической отрисовки</a></li>
+<li><a href="../graphics-multimedia/animation-tips-and-tricks.html">Советы и рекомендации по анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

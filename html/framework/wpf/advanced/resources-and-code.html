@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; &#1080; &#1082;&#1086;&#1076; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; &#1080; &#1082;&#1086;&#1076; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="resources-and-code">Ресурсы и код</h1>
+
+<p>Этот обзор посвящен преимущественно доступу к ресурсам Windows Presentation Foundation (WPF) и их созданию с использованием кода, а не синтаксиса Язык XAML. Дополнительные сведения об общем использовании ресурсов и ресурсах с точки зрения синтаксиса XAML см. в разделе <a href="xaml-resources.html">Ресурсы XAML</a>.</p>
+<p><a name="accessing"></a></p>
+<h2 id="accessing-resources-from-code">Доступ к ресурсам из кода</h2>
+<p>Ключи, идентифицирующие ресурсы, если они определены через XAML, также используются для извлечения определенных ресурсов при запросе ресурса из кода. Самый простой способ извлечения ресурса из кода является вызов либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findresource">FindResource</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.tryfindresource">TryFindResource</a> метода из объектов уровня среды приложения. Различие между этими методами проявляется, если запрошенный ключ не найден. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findresource">FindResource</a> приводит к появлению исключения; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.tryfindresource">TryFindResource</a> не вызовут исключения, но возвращает <code>null</code>. Каждый из этих методов принимает ключ ресурса в качестве входного параметра и возвращает объект со слабой типизацией. Как правило, ключ ресурса является строкой, но иногда используются и нестроковые ключи. Подробнее см. в разделе <a href="#objectaskey">Использование объектов в качестве ключей</a>. Как правило, возвращаемый объект приводится к типу, необходимому для свойства, которое устанавливается при запросе ресурса. Логика поиска разрешения ресурса кода такая же, как и в случае динамической ссылки на ресурс XAML. Поиск ресурсов начинается с вызывающего элемента, затем продолжается в последовательных родительских элементах в логическом дереве. При необходимости поиск продолжается в ресурсах приложений, темах и системных ресурсах. Запрос кода для ресурса будет правильно учитывать изменения во время выполнения в словарях ресурсов, которые могли быть сделаны после загрузки данного словаря из XAML, а также изменения системных ресурсов в реальном времени.</p>
+<p>Ниже приведен пример кода, который находит ресурс по ключу и использует возвращаемое значение, чтобы задать свойство, реализованы в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> обработчик событий.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#ResourceProceduralGet">void SetBGByResource(object sender, RoutedEventArgs e)
+{
+  Button b = sender as Button;
+  b.Background = (Brush)this.FindResource(&quot;RainbowBrush&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Альтернативный метод для назначения является ссылкой на ресурс является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.setresourcereference">SetResourceReference</a>. Этот метод принимает два параметра — ключ ресурса и идентификатор конкретного свойства зависимостей из экземпляра элемента, которому должно быть присвоено значение ресурса. Функционально этот метод аналогичен, но имеет преимущество в том плане, что не требует приведения возвращаемых значений.</p>
+<p>Еще одним способом программного доступа к ресурсам является доступ к содержимому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> свойство как словарь. Доступ к словарю, содержащемуся в этом свойстве, включает добавление новых ресурсов в существующие коллекции, проверку оригинальности имени ключа в коллекции, а также другие операции со словарем/коллекцией. Если вы создаете WPF приложения полностью в коде, можно также создать всю коллекцию в коде, присвоить ей ключи и затем присвоить законченную коллекцию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> свойство установленного элемента. Это будет описано в следующем разделе.</p>
+<p>Можно индексировать любую заданную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> коллекцию, используя указанный ключ индекса, но следует иметь в виду, что доступ к ресурсу таким образом не соответствует обычным правилам времени выполнения для разрешения ресурса. У вас будет только доступ к этой конкретной коллекции. Поиск ресурсов не будет пересекать область действия корня или приложения, если в запрашиваемом ключе не найден действительный объект. Тем не менее в некоторых случаях этот подход может иметь преимущество в производительности, поскольку область поиска ключа более ограничена. См. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> Дополнительные сведения о том, как работать со словарями ресурсов напрямую.</p>
+<p><a name="creating"></a></p>
+<h2 id="creating-resources-with-code">Создание ресурсов с помощью кода</h2>
+<p>Пи создании приложения WPF полностью в коде может также понадобиться создать в коде все ресурсы в этом приложении. Чтобы добиться этого, создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> экземпляра, а затем добавьте все ресурсы в словарь, с помощью последовательных вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary.add">ResourceDictionary.Add</a>. Затем с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> созданный таким образом, чтобы задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> свойство на элементе, который присутствует в области страницы, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.resources">Application.Resources</a>. Можно также хранить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> как с автономным объектом, не добавляя ее к элементу. Однако в этом случае для доступа к ресурсам внутри него потребуется ключ элемента, как для общего словаря. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> , не присоединенные к элементу <code>Resources</code> свойство не будет существовать как часть дерева элементов и не имел бы области в последовательности поиска, которая может использоваться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.findresource">FindResource</a> и связанными методами.</p>
+<p><a name="objectaskey"></a></p>
+<h2 id="using-objects-as-keys">Использование объектов в качестве ключей</h2>
+<p>В большинстве случаев использования ресурса ключ ресурса устанавливается в виде строки. Однако различные функции WPF намеренно не используют строковый тип для указания ключей, вместо этого параметр является объектом. Возможность доступа объекта к ресурсу по ключу используется в поддержке стилей и тем WPF. Стили в темах, которые становятся стилем по умолчанию для элемента управления без стиля по ключу с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> элемента управления, они должны применяться. Ввод с помощью ключа по типу обеспечивает надежный механизм поиска, который работает со стандартными экземплярами каждого типа элемента управления, а тип может быть обнаружен отражением и использоваться для создания стилей производных классов, даже если у производного типа нет стиля по умолчанию. Можно указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> ключей для ресурса, определенного в XAML с помощью <a href="../../xaml-services/x-type-markup-extension.md">расширение разметки x: Type</a>. Аналогичные расширения существуют для других случаев использования нестрокового ключа, поддерживающих функции WPF, такие как <a href="componentresourcekey-markup-extension.html">Расширение разметки ComponentResourceKey</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="xaml-resources.html">Ресурсы XAML</a></li>
+<li><a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

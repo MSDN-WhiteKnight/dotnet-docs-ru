@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1080;&#1079;&#1091;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1082;&#1072;&#1078;&#1076;&#1086;&#1075;&#1086; &#1082;&#1072;&#1076;&#1088;&#1072; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; CompositionTarget | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1080;&#1079;&#1091;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1082;&#1072;&#1078;&#1076;&#1086;&#1075;&#1086; &#1082;&#1072;&#1076;&#1088;&#1072; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; CompositionTarget | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-render-on-a-per-frame-interval-using-compositiontarget">Практическое руководство. Визуализация каждого кадра с помощью CompositionTarget</h1>
+
+<p>Подсистема анимации WPF предоставляет множество возможностей для создания анимации на основе кадров. Однако существуют сценарии приложений, в которых необходим детальный контроль отрисовки каждого кадра. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a> Предоставляет возможность создания пользовательской анимации на основе покадрового обратного вызова.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a> является статическим классом, который представляет отображаемую поверхность, на котором рисуется приложение. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> Событие возникает каждый раз при рисовании сцены приложения. Частота кадров отрисовки — это количество отрисовок сцены за секунду.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Пример полного кода с использованием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a>, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160045">пример использования CompositionTarget</a>.</p>
+</div>
+<h2 id="example">Пример</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> Событие запускается во время WPF процесс подготовки отчета. В следующем примере показано, как зарегистрировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегировать статического <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a>.</p>
+<pre><code class="lang-csharp" name="CompositionTargetSample#CompositionTarget1">// Add an event handler to update canvas background color just before it is rendered.
+CompositionTarget.Rendering += UpdateColor;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Можно использовать собственный метод обработчика событий отрисовки для создания пользовательского графического содержимого. Метод обработчика событий вызывается один раз для каждого кадра. Каждый раз, когда WPF выполняет маршалинг сохраненных данных отрисовки в визуальном дереве через граф сцены композиции, вызывается метод обработчика событий. Кроме того, если изменения в визуальном дереве принудительно обновляют граф сцены композиции, метод обработчика событий также вызывается. Обратите внимание, что метод обработчика событий вызывается после вычисления макета. Однако можно изменить макет в методе обработчика событий, что означает повторное вычисление макета перед отрисовкой.</p>
+<p>В следующем примере показано как можно реализовать пользовательское рисование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a> метод обработчика событий. В данном случае цвет фона <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> рисуется пером значение цвета на основе координат положения указателя мыши. При перемещении указателя мыши внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>, ее изменения цвета фона. Кроме того вычисляется средняя частота кадров, на основе текущего значения прошедшего времени и общего числа отрисованных кадров.</p>
+<pre><code class="lang-csharp" name="CompositionTargetSample#CompositionTarget2">// Called just before frame is rendered to allow custom drawing.
+protected void UpdateColor(object sender, EventArgs e)
+{
+    if (_frameCounter++ == 0)
+    {
+        // Starting timing.
+        _stopwatch.Start();
+    }
+
+    // Determine frame rate in fps (frames per second).
+    long frameRate = (long)(_frameCounter / this._stopwatch.Elapsed.TotalSeconds);
+    if (frameRate &gt; 0)
+    {
+        // Update elapsed time, number of frames, and frame rate.
+        myStopwatchLabel.Content = _stopwatch.Elapsed.ToString();
+        myFrameCounterLabel.Content = _frameCounter.ToString();
+        myFrameRateLabel.Content = frameRate.ToString();
+    }
+
+    // Update the background of the canvas by converting MouseMove info to RGB info.
+    byte redColor = (byte)(_pt.X / 3.0);
+    byte blueColor = (byte)(_pt.Y / 2.0);
+    myCanvas.Background = new SolidColorBrush(Color.FromRgb(redColor, 0x0, blueColor));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Может оказаться, что пользовательское рисование выполняется на разных компьютерах с разной скоростью. Это потому, что пользовательское рисование не является независимым от частоты кадров. В зависимости от используемой системы и рабочей нагрузки этой системы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> событие может вызываться Разное количество раз в секунду. Дополнительные сведения об определении возможностей графического оборудования и производительности для устройства, которое запускает приложение WPF см. в разделе <a href="../advanced/graphics-rendering-tiers.html">Уровни отрисовки графики</a>.</p>
+<p>Добавление или удаление визуализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегата во время срабатывания события будет отложено до момента завершения события обработки. Это согласуется с тем, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.multicastdelegate">MulticastDelegate</a>-на основе события обрабатываются в Common Language Runtime (CLR). Также обратите внимание, что порядок вызова событий отрисовки не гарантируется. Если имеется несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегаты, которые зависят от определенного порядка, необходимо зарегистрировать один <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> событий и мультиплексировать делегаты в правильном порядке.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a></li>
+<li><a href="wpf-graphics-rendering-overview.html">Общие сведения об отрисовке графики в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

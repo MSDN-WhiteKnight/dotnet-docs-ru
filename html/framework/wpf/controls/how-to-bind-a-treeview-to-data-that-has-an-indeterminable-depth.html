@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; TreeView &#1082; &#1076;&#1072;&#1085;&#1085;&#1099;&#1084; &#1085;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1085;&#1086;&#1081; &#1075;&#1083;&#1091;&#1073;&#1080;&#1085;&#1099; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; TreeView &#1082; &#1076;&#1072;&#1085;&#1085;&#1099;&#1084; &#1085;&#1077;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1085;&#1086;&#1081; &#1075;&#1083;&#1091;&#1073;&#1080;&#1085;&#1099; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-bind-a-treeview-to-data-that-has-an-indeterminable-depth">Практическое руководство. Привязка элемента управления TreeView к данным неопределенной глубины</h1>
+
+<p>Возможны ситуации, когда необходимо выполнить привязку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a> к источнику данных, глубина которого неизвестно.  Это может произойти, когда данные рекурсивных по своей природе, например в файловой системе, где папок может содержать папки, или организационной структуры компании, где у сотрудников были другими сотрудниками в качестве непосредственных подчиненных.</p>
+<p>Источник данных должен иметь иерархическую объектную модель. Например <code>Employee</code> класс может содержать коллекцию объектов Employee, подчиненных этого сотрудника. Если данные представлены в виде, не является иерархической, необходимо построить иерархическое представление данных.</p>
+<p>При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemtemplate">ItemsControl.ItemTemplate</a> свойства и, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> приводит к возникновению ошибки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> для каждого дочернего элемента, а затем дочерние <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> использует тот же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemtemplate">ItemTemplate</a> как родительский. Например, если задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemtemplate">ItemTemplate</a> свойство привязкой к данным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a>, каждая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a> то есть созданный использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> , присвоенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemtemplate">ItemTemplate</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate">HierarchicalDataTemplate</a> Позволяет указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a>, или любой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol">HeaderedItemsControl</a>, в шаблоне данных. При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate.itemssource">HierarchicalDataTemplate.ItemsSource</a> свойство, значение используется, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate">HierarchicalDataTemplate</a> применяется. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate">HierarchicalDataTemplate</a>, можно рекурсивно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a>.</p>
+<h2 id="example">Пример</h2>
+<p>Следующий пример демонстрирует способ привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a> иерархических данных и используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate">HierarchicalDataTemplate</a> для указания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a> Привязывается к XML-данные о сотрудниках компании.  Каждый <code>Employee</code> элемент может содержать другие <code>Employee</code> элементы, чтобы указать, кому подчиняется. Так как данные является рекурсивной, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.hierarchicaldatatemplate">HierarchicalDataTemplate</a> могут применяться для каждого уровня.</p>
+<pre><code class="lang-xaml" name="TreeViewWithUnknownDepth#1">&lt;Page 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+  &lt;Page.Resources&gt;
+    &lt;XmlDataProvider x:Key=&quot;myCompany&quot; XPath=&quot;Company/Employee&quot;&gt;
+      &lt;x:XData&gt;
+        &lt;Company xmlns=&quot;&quot;&gt;
+          &lt;Employee Name=&quot;Don Hall&quot;&gt;
+            &lt;Employee Name=&quot;Alice Ciccu&quot;&gt;
+              &lt;Employee Name=&quot;David Pelton&quot;&gt;
+                &lt;Employee Name=&quot;Vivian Atlas&quot;/&gt;
+              &lt;/Employee&gt;
+              &lt;Employee Name=&quot;Jeff Price&quot;/&gt;
+              &lt;Employee Name=&quot;Andy Jacobs&quot;/&gt;
+            &lt;/Employee&gt;
+            &lt;Employee Name=&quot;Bill Malone&quot;&gt;
+              &lt;Employee Name=&quot;Maurice Taylor&quot;/&gt;
+              &lt;Employee Name=&quot;Sunil Uppal&quot;/&gt;
+              &lt;Employee Name=&quot;Qiang Wang&quot;/&gt;
+            &lt;/Employee&gt;
+          &lt;/Employee&gt;
+        &lt;/Company&gt;
+      &lt;/x:XData&gt;
+    &lt;/XmlDataProvider&gt;
+
+    &lt;!-- Bind the HierarchicalDataTemplate.ItemsSource property to the employees under
+         each Employee element. --&gt;
+    &lt;HierarchicalDataTemplate x:Key=&quot;EmployeeTemplate&quot; 
+                              ItemsSource=&quot;{Binding XPath=Employee}&quot;&gt;
+      &lt;TextBlock Text=&quot;{Binding XPath=@Name}&quot; &gt;&lt;/TextBlock&gt;
+    &lt;/HierarchicalDataTemplate&gt;
+
+    &lt;Style TargetType=&quot;TreeViewItem&quot;&gt;
+      &lt;Setter Property=&quot;IsExpanded&quot; Value=&quot;True&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/Page.Resources&gt;
+
+  &lt;Grid&gt;
+    &lt;TreeView ItemsSource=&quot;{Binding Source={StaticResource myCompany}}&quot; 
+              ItemTemplate=&quot;{StaticResource EmployeeTemplate}&quot;/&gt;
+  &lt;/Grid&gt;
+&lt;/Page&gt;
+</code></pre><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

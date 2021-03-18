@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1072;&#1082;&#1077;&#1090; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1072;&#1082;&#1077;&#1090; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="layout">Макет</h1>
+
+<p>В этом разделе описывается система макета Windows Presentation Foundation (WPF). Для создания пользовательских интерфейсов в WPF важно понимание того, как и когда происходят вычисления макета.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#LayoutSystem_BoundingBox">Ограничивающие прямоугольники элемента</a></p>
+</li>
+<li><p><a href="#LayoutSystem_Overview">Система макета</a></p>
+</li>
+<li><p><a href="#LayoutSystem_Measure_Arrange">Измерение и расположение дочерних элементов</a></p>
+</li>
+<li><p><a href="#LayoutSystem_PanelsCustom">Элементы панели и пользовательские расширения функциональности макета</a></p>
+</li>
+<li><p><a href="#LayoutSystem_Performance">Вопросы производительности макета</a></p>
+</li>
+<li><p><a href="#LayoutSystem_LayoutRounding">Субпиксельная отрисовка и округление макета</a></p>
+</li>
+<li><p><a href="#LayoutSystem_whatsnext">Что дальше?</a></p>
+</li>
+</ul>
+<p><a name="LayoutSystem_BoundingBox"></a></p>
+<h2 id="element-bounding-boxes">Ограничивающие прямоугольники элемента</h2>
+<p>При планировании макета в WPF важно понимать принцип функционирования ограничивающих прямоугольников, которые окружают все элементы. Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> потребления макета системы может рассматриваться как прямоугольник, вставленный в макет. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.layoutinformation">LayoutInformation</a> Класс возвращает границы элемента макета, или ячейки. Размер прямоугольника определяется путем вычисления доступного пространства на экране, размера любых ограничений, свойств макета (например, поля и заполнение) и также индивидуального поведения родительского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент. Обработка этих данных, система макета имеет возможность вычислить положение всех потомков конкретного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>. Важно помнить, что характеристики размеров, определенные в родительском элементе, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>, влияют на его дочерние элементы.</p>
+<p>На рисунке ниже представлен простой макет.</p>
+<p><img src="media/layout/grid-no-bounding-box-superimpose.png" alt="Снимок экрана, показывающий обычная сетка, без обрамляющего прямоугольника."></p>
+<p>Этот макет можно получить с помощью приведенного ниже кода XAML.</p>
+<pre><code class="lang-xaml" name="LayoutInformation#1">&lt;Grid Name=&quot;myGrid&quot; Background=&quot;LightSteelBlue&quot; Height=&quot;150&quot;&gt;
+  &lt;Grid.ColumnDefinitions&gt;
+    &lt;ColumnDefinition Width=&quot;250&quot;/&gt;
+  &lt;/Grid.ColumnDefinitions&gt;
+  &lt;Grid.RowDefinitions&gt;
+    &lt;RowDefinition /&gt;
+    &lt;RowDefinition /&gt;
+    &lt;RowDefinition /&gt;
+  &lt;/Grid.RowDefinitions&gt;
+  &lt;TextBlock Name=&quot;txt1&quot; Margin=&quot;5&quot; FontSize=&quot;16&quot; FontFamily=&quot;Verdana&quot; Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot;&gt;Hello World!&lt;/TextBlock&gt;
+  &lt;Button Click=&quot;getLayoutSlot1&quot; Width=&quot;125&quot; Height=&quot;25&quot; Grid.Column=&quot;0&quot; Grid.Row=&quot;1&quot;&gt;Show Bounding Box&lt;/Button&gt;
+  &lt;TextBlock Name=&quot;txt2&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot;/&gt;
+&lt;/Grid&gt;
+</code></pre>
+<p>Один <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемент размещается внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>. Хотя текст заполняет только верхний левый угол первого столбца, выделенное пространство для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> самом деле гораздо больше. Ограничивающий прямоугольник любого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> можно получить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.layoutinformation.getlayoutslot">GetLayoutSlot</a> метод. На следующем рисунке показан ограничивающий прямоугольник для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемент.</p>
+<p><img src="media/layout/visible-textblock-bounding-box.png" alt="Снимок экрана, показывающий, что ограничивающий прямоугольник для TextBlock теперь является видимым."></p>
+<p>Как показано желтым прямоугольником, выделенное пространство для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемент деле гораздо больше, чем кажется. При добавлении дополнительных элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>, это выделение может сжиматься или растягиваться в зависимости от типа и размера добавляемых элементов.</p>
+<p>Ячейка макета элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> преобразуется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.layoutinformation.getlayoutslot">GetLayoutSlot</a> метод. Этот способ может быть полезен для отображения ограничивающего прямоугольника элемента.</p>
+<pre><code class="lang-csharp" name="LayoutInformation#2">private void getLayoutSlot1(object sender, System.Windows.RoutedEventArgs e)
+{
+    RectangleGeometry myRectangleGeometry = new RectangleGeometry();
+    myRectangleGeometry.Rect = LayoutInformation.GetLayoutSlot(txt1);
+    Path myPath = new Path();
+    myPath.Data = myRectangleGeometry;
+    myPath.Stroke = Brushes.LightGoldenrodYellow;
+    myPath.StrokeThickness = 5;
+    Grid.SetColumn(myPath, 0);
+    Grid.SetRow(myPath, 0);
+    myGrid.Children.Add(myPath);
+    txt2.Text = &quot;LayoutSlot is equal to &quot; + LayoutInformation.GetLayoutSlot(txt1).ToString();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="LayoutSystem_Overview"></a></p>
+<h2 id="the-layout-system">Система макета</h2>
+<p>В самом простом случае макет является рекурсивной системой, которая изменяет размер и расположение элемента и отображает его на экране. В частности, макет описывает процесс измерения и упорядочения объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции. Макет является интенсивным процессом. Чем больше <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции, тем больше количества вычислений, которые должны выполняться. Сложность может также быть вызвана поведением макета, определяемым <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент, которому принадлежит коллекция. Относительно простой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>, может иметь лучшую производительность, чем более сложный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a>.</p>
+<p>Каждый раз, дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> изменяет свое положение, он потенциально имеет возможность запустить новый проход системы макета. Таким образом, важно понимать события, которые может вызывать система макета, так как ненужный вызов может привести к ухудшению производительности приложения. Далее описывается процесс, который происходит при вызове системы макета.</p>
+<ol>
+<li><p>Дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> начинает процесс разметки первым, задав его основные измеряемые свойства.</p>
+</li>
+<li><p>Свойства, определенные для размера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> вычисляются, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>-применяется специальная логика, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dock">Dock</a> направление или наложение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel.orientation">Orientation</a>.</p>
+</li>
+<li><p>Содержимое располагается после того, как все потомки были измерены.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> Коллекции рисуется на экране.</p>
+</li>
+<li><p>Процесс вызывается снова, если дополнительные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> добавляются в коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> применяется, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.updatelayout">UpdateLayout</a> вызывается метод.</p>
+</li>
+</ol>
+<p>Этот процесс и порядок его вызова более подробно рассматриваются в следующих разделах.</p>
+<p><a name="LayoutSystem_Measure_Arrange"></a></p>
+<h2 id="measuring-and-arranging-children">Измерение и расположение дочерних элементов</h2>
+<p>Система макета совершает два прохода для каждого члена <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции, проход измерения и проход компоновки. Каждый дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> предоставляет собственное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> способа установления собственное поведение конкретного макета.</p>
+<p>При проходе измерения каждый член <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции оценивается. Процесс начинается с вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.measure">Measure</a> метод. Этот метод вызывается в реализации родительского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент и не обязательно должен вызываться явным образом для вызова макета.</p>
+<p>Во-первых, собственный размер свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> вычисляются, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.clip">Clip</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a>. Это создает значение с именем <code>constraintSize</code> передаваемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measurecore">MeasureCore</a>.</p>
+<p>Во-вторых, определенные свойства исполняющей среды на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> обрабатываются, что негативно влияет на значение <code>constraintSize</code>. Эти свойства в основном описывают размерные характеристики базового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, такие как его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a>. Каждое из этих свойств может изменить пространство, необходимое для отображения элемента. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> Затем вызывается с <code>constraintSize</code> как параметр.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Есть разница между свойствами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualheight">ActualHeight</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualwidth">ActualWidth</a>. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualheight">ActualHeight</a> свойство имеет значение, вычисленное на основе других вводимых высот и системы макета. Значение задается самой системой макета в зависимости от фактического прохода отрисовки и поэтому может отставать немного набор значений свойств, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a>, которые являются основой для изменения ввода.</p>
+<p>Поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualheight">ActualHeight</a> является вычисляемым значением, следует иметь в виду, могут производиться многократные или добавочные сообщаемые изменения к нему в результате различных операций системой макета. Система макета может вычислять требуемое место измерения для дочерних элементов, ограничения родительского элемента и т. д.</p>
+</div>
+<p>Является конечной целью прохода измерения для дочернего элемента для определения его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.desiredsize">DesiredSize</a>, которое происходит во время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measurecore">MeasureCore</a> вызова. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.desiredsize">DesiredSize</a> Значение сохраняется командлетом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.measure">Measure</a> для использования во время компоновки содержимого.</p>
+<p>Процесс компоновки начинается с вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.arrange">Arrange</a> метод. Во время прохода компоновки родительский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент создает прямоугольник, представляющий границы потомка. Это значение передается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangecore">ArrangeCore</a> метод для обработки.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangecore">ArrangeCore</a> Метод оценивает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.desiredsize">DesiredSize</a> дочернего элемента и оценивает все дополнительные поля, которые могут повлиять на отображаемый размер элемента. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangecore">ArrangeCore</a> Создает <code>arrangeSize</code>, который передается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> как параметр. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> Создает <code>finalSize</code> дочернего элемента. Наконец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangecore">ArrangeCore</a> метод выполняет окончательную оценку свойств смещения, таких как поле и выравнивание и помещает дочерний объект в его ячейку макета. Дочерний объект не должен обязательно заполнять все выделенное пространство (и в большинстве случаев не делает этого). Затем управление возвращается родительский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> и обработка макета завершается.</p>
+<p><a name="LayoutSystem_PanelsCustom"></a></p>
+<h2 id="panel-elements-and-custom-layout-behaviors">Элементы панели и пользовательские расширения функциональности макета</h2>
+<p>WPF включает в себя группу элементов, которые являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>. Эти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементы включают многие сложные макеты. Например, наложение элементов можно легко реализовать с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элемент, хотя более сложные и свободно располагаемые макеты создаются с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>.</p>
+<p>В следующей таблице перечислены доступные макета <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементов.</p>
+<table>
+<thead>
+<tr>
+<th>Имя панели</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a></td>
+<td>Определяет область, внутри которой можно явным образом разместить дочерние элементы с помощью координатах по отношению к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> области.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a></td>
+<td>Определяет область, в которой можно горизонтально либо вертикально упорядочивать дочерние элементы относительно друг друга.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a></td>
+<td>Задание области с таблицей переменного размера, состоящей из столбцов и строк.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a></td>
+<td>Выравнивает дочерние элементы в одну линию, ориентированную горизонтально или вертикально.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingpanel">VirtualizingPanel</a></td>
+<td>Предоставляет платформу для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементов, виртуализирующих свои дочерние коллекции данных. Этот класс является абстрактным.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.wrappanel">WrapPanel</a></td>
+<td>Размещает дочерние элементы последовательно слева направо, перенося содержимое на следующую строку на краю содержащего поля. Дальнейшее упорядочивание происходит последовательно сверху вниз или слева направо в зависимости от значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.wrappanel.orientation">Orientation</a> свойство.</td>
+</tr>
+</tbody>
+</table>
+<p>Для приложений, которым требуется макет, который не поддерживается с помощью любого из предварительно определенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементы, пользовательские расширения функциональности макета можно получить путем наследования из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> и переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> методы. Пример см. на странице <a href="https://go.microsoft.com/fwlink/?LinkID=159982">Пример Custom Radial Panel</a>.</p>
+<p><a name="LayoutSystem_Performance"></a></p>
+<h2 id="layout-performance-considerations">Вопросы производительности макета</h2>
+<p>Макет является рекурсивным процессом. Каждый дочерний элемент в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции обрабатываются при каждом вызове системы макета. Это означает, что следует избегать запуска системы макета при отсутствии необходимости. Выполнение приведенных ниже рекомендаций поможет добиться более высокой производительности.</p>
+<ul>
+<li><p>Следует учитывать, что определенные изменения значений свойств могут привести к выполнению системой макета рекурсивного обновления.</p>
+<p>Свойства зависимостей, значения которых могут привести к инициализации системы макета, помечаются общими флагами. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.affectsmeasure">AffectsMeasure</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.affectsarrange">AffectsArrange</a> предоставляют полезные указания о том, какое свойство изменяется вызовут рекурсивное обновление системой макета. Как правило, должен иметь любое свойство, которое может повлиять на размер ограничивающего прямоугольника элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.affectsmeasure">AffectsMeasure</a> флаг задано значение true. Дополнительные сведения см. в <a href="dependency-properties-overview.html">обзоре свойств зависимостей</a>.</p>
+</li>
+<li><p>По возможности используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a>.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> может быть очень полезным инструментом для определения содержимого пользовательский интерфейс. Тем не менее, если результат преобразования не влияет на положение других элементов, лучше всего использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> вместо этого, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> не вызывает систему макета. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.layouttransform">LayoutTransform</a> применяет свое преобразование и вызывает рекурсивное обновление макета для учета нового положения затронутого элемента.</p>
+</li>
+<li><p>Избегайте ненужных вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.updatelayout">UpdateLayout</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.updatelayout">UpdateLayout</a> Метод вызывает рекурсивное обновление макета и часто не является обязательным. Если нет уверенности в необходимости обновления, следует предоставить вызов этого метода системе макета.</p>
+</li>
+<li><p>При работе с большим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> коллекции, рассмотрите возможность использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingstackpanel">VirtualizingStackPanel</a> вместо обычного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>.</p>
+<p>Благодаря виртуализации дочернюю коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingstackpanel">VirtualizingStackPanel</a> только сохраняет объекты в памяти, которые в настоящее время находятся внутри элемента ViewPort родительского элемента. В результате этого производительность значительно увеличивается в большинстве сценариев.</p>
+</li>
+</ul>
+<p><a name="LayoutSystem_LayoutRounding"></a></p>
+<h2 id="sub-pixel-rendering-and-layout-rounding">Субпиксельная отрисовка и округление макета</h2>
+<p>Графическая система WPF использует аппаратно-независимые модули для обеспечения независимости от разрешения и устройства. Каждый аппаратно-независимый пиксель автоматически масштабируется согласно параметру точек на дюйм (dpi) системы. Это обеспечивает приложениям WPF корректное масштабирование для различных параметров точек на дюйм и автоматически предоставляет приложениям поддержку точек на дюйм.</p>
+<p>Однако такая независимость от точек на дюйм может привести к неравномерной отрисовке границ из-за сглаживания. Эти эффекты, обычно выглядящие как смазанные или полупрозрачные границы, могут появиться, когда положение границы попадает в середину пикселя устройства, а не между пикселями. В системе макета имеется способ настройки границ с помощью округления макета. Округление макета заключается в том, что система макета округляет все нецелочисленные значения пикселей во время прохода макета.</p>
+<p>По умолчанию округление макета отключено. Чтобы включить округление макета, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.uselayoutrounding">UseLayoutRounding</a> свойства <code>true</code> на любом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>. Так как это свойство зависимости, значение будет распространено на все дочерние объекты в визуальном дереве. Чтобы включить округление макета для всего пользовательского интерфейса, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.uselayoutrounding">UseLayoutRounding</a> для <code>true</code> в корневом контейнере. Пример см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.uselayoutrounding">UseLayoutRounding</a>.</p>
+<p><a name="LayoutSystem_whatsnext"></a></p>
+<h2 id="whats-next">Что дальше?</h2>
+<p>Понимание механизма измерения и упорядочивания элементов — это первый шаг к пониманию макета. Дополнительные сведения о доступных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементов, см. в разделе <a href="../controls/panels-overview.html">Общие сведения о панелях</a>. Чтобы лучше понять различные свойства размещения, которые могут повлиять на макет, см. раздел <a href="alignment-margins-and-padding-overview.html">Общие сведения о свойствах Alignment, Margin, Padding</a>. Пример настраиваемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159982">пример Custom Radial Panel</a>. Когда будете готовы к помещению все вместе в облегченное приложение, см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a></li>
+<li><a href="../controls/panels-overview.html">Общие сведения о панелях</a></li>
+<li><a href="alignment-margins-and-padding-overview.html">Общие сведения о свойствах Alignment, Margin, Padding</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="control-authoring-overview">Общие сведения о разработке элементов управления</h1>
+
+<p>Расширяемость модели элементов управления Windows Presentation Foundation (WPF) значительно уменьшает необходимость создания новых элементов управления. Однако в некоторых случаях может потребоваться создать пользовательский элемент управления. В этом разделе обсуждаются функции, которые уменьшают необходимость создания пользовательских элементов управления, а также различные модели создания элементов управления в Windows Presentation Foundation (WPF). Также здесь демонстрируется создание нового элемента управления.</p>
+<p><a name="when_to_write_a_new_control"></a></p>
+<h2 id="alternatives-to-writing-a-new-control">Альтернативы написанию нового элемента управления</h2>
+<p>Исторически сложилось, что если нужно настроить вид существующего элемента управления, то ограничиваются изменением его стандартных свойств, таких как цвет фона, ширина границы и размер шрифта. Если необходимо расширить внешний вид или поведение элемента управления за пределы этих предопределенных параметров, то необходимо создать новый элемент управления, как правило, путем наследования от существующего элемента управления и переопределения метода, ответственного за отрисовку элемента управления.  Кроме того, WPF позволяет настраивать существующие элементы управления с помощью модели форматированного содержимого, стилей, шаблонов и триггеров. Ниже представлены примеры использования этих функций для создания настраиваемых и согласованных функциональных возможностей без необходимости создания нового элемента управления.</p>
+<ul>
+<li><p><strong>Форматированное содержимое.</strong> Многие стандартные элементы управления WPF поддерживают форматированное содержимое. Например, свойство содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> имеет тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>, поэтому теоретически все может отображаться на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.  Чтобы в кнопке отображалось изображение и текст, можно добавить изображение и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> и назначить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> свойство. Поскольку элементы управления могут отображать визуальные элементы WPF и произвольные данные, это уменьшает необходимость создания нового элемента управления или изменения существующего для поддержки сложной визуализации. Дополнительные сведения о модели содержимого для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и других моделях содержимого в WPF, см. в разделе <a href="wpf-content-model.html">модель содержимого WPF</a>.</p>
+</li>
+<li><p><strong>Стили.</strong> Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> — это совокупность значений, представляющих свойства для элемента управления. С помощью стилей можно создать повторно используемое представление нужного внешнего вида и поведения элемента управления без написания нового элемента управления. Например, предположим, что все ваши <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементам управления иметь красный, сделанные шрифтом Arial с размером шрифта из 14. Можно создать стиль как ресурс и задать соответствующие свойства. Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> добавить в приложение будет выглядеть одинаково.</p>
+</li>
+<li><p><strong>Шаблоны данных.</strong> Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> позволяет настроить способ отображения данных в элементе управления. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> может использоваться для указания способа отображения данных в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>.  Пример см. в разделе <a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a>.  В дополнение к настройке внешнего вида данных, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> может включать элементы пользовательского интерфейса, который обеспечивает большую гибкость в пользовательских интерфейсах.  Например, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>, можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> в котором каждый элемент содержит типа &quot;флажок&quot;.</p>
+</li>
+<li><p><strong>Шаблоны элементов управления.</strong> Многие элементы управления в WPF использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для определения структуры элемента управления и внешний вид, который отделяет внешний вид элемента управления от функциональности элемента управления. Можно существенно изменить внешний вид элемента управления путем переопределения его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  Предположим, что нужен элемент управления, который выглядит как светофор. Этот элемент управления имеет простой пользовательский интерфейс и функциональные возможности.  Элемент управления состоит из трех кругов, из которых одновременно загорается только один. Позже вы можете осознать, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> предлагает функциональные возможности выбора только один раз, но внешний вид по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> похож индикаторы на светофор.  Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> использует шаблон элемента управления для определения внешнего вида, он может легко переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> согласно требованиям элемента управления и использовать переключатели, чтобы сделать Светофор.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> не хватает в этом примере.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> Определяет внешний вид содержимого элемента управления. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a>, содержимое отображается справа от круга, который указывает ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a> выбран.  В примере светофора переключатель должен быть тем кругом, который может &quot;загораться&quot;. Так как требования к внешнему вида для светофора отличаются от внешнего вида по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a>, необходимо переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  В целом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> используется для определения содержимого (или данных) элемента управления, а также <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> используется для определения того, как структурирован элемент управления.</p>
+</div>
+</li>
+<li><p><strong>Триггеры.</strong> Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> позволяет динамически изменять внешний вид и поведение элемента управления без создания нового элемента управления. Например, предположим, имеется несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элементы управления в приложении и элементы в каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> должен выделяться полужирным красным при их выборе. Очевидным может быть попытка создать класс, наследующий от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> и переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.onselectionchanged">OnSelectionChanged</a> способ изменения внешнего вида выбранного элемента, но более эффективный подход — добавить триггер к стилю <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a> , изменяет внешний вид Выбранный элемент. Триггер позволяет изменять значения свойств или выполнять действия в зависимости от значения свойства. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> Позволяет выполнять действия при возникновении события.</p>
+</li>
+</ul>
+<p>Дополнительные сведения о стилях, шаблонах и триггерах см. в разделе <a href="styling-and-templating.html">Использование стилей и шаблонов</a>.</p>
+<p>В целом, если элемент управления отражает функциональность существующего элемента управления, но должен выглядеть по-другому, сначала следует рассмотреть возможность использования какого-либо из методов, описанных в этом разделе, для изменения внешнего вида существующего элемента.</p>
+<p><a name="models_for_control_authoring"></a></p>
+<h2 id="models-for-control-authoring">Модели для создания элементов управления</h2>
+<p>Модель форматированного содержимого, стили, шаблоны и триггеры уменьшают необходимость создания новых элементов управления. Тем не менее, если необходимо создать новый элемент управления, важно понимать различные модели создания элементов управления в WPF. WPF предоставляет три общих модели для создания элементов управления, каждый из которых имеет собственный набор функций и уровень гибкости. Базовыми классами для трех моделей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+<h3 id="deriving-from-usercontrol">Создание производных классов от UserControl</h3>
+<p>Самый простой способ создания элемента управления в WPF является наследование от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>. При создании элемента управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, вы добавляете существующие компоненты к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>компонентам имя и ссылки на обработчики событий в Язык XAML. Затем можно ссылаться на именованные элементы и определять обработчики событий в коде. Эта модель разработки очень схожа с моделью, используемой для разработки приложений в WPF.</p>
+<p>При правильном, построении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> можно воспользоваться преимуществами форматированного содержимого, стилей и триггеров. Тем не менее если элемент управления наследуется из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, люди, использующие элемент управления не будет иметь возможность использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для настройки внешнего вида.  Это необходимо для являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класс или один из его производных классов (отличное от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>) для создания пользовательского элемента управления, поддерживающего шаблоны.</p>
+<h4 id="benefits-of-deriving-from-usercontrol">Преимущества использования производного класса от UserControl</h4>
+<p>Рассмотрите возможность наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> применимости всем следующим условиям:</p>
+<ul>
+<li><p>Нужно создать элемент управления аналогично созданию приложения.</p>
+</li>
+<li><p>Элемент управления состоит только из существующих компонентов.</p>
+</li>
+<li><p>Не нужно поддерживать сложные настройки.</p>
+</li>
+</ul>
+<h3 id="deriving-from-control">Создание производного от элемента управления</h3>
+<p>Наследование от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класс является модель, используемая в большинстве существующих WPF элементов управления. При создании элемента управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класса, его внешний вид определяется с помощью шаблонов. Таким образом, можно отделить рабочую логику от визуального представления. Также можно обеспечить разделение пользовательского интерфейса и логики с помощью команд и привязок вместо событий и использования ссылок на элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> по возможности.  Если пользовательский Интерфейс и логика элемента управления правильно разделены, пользователи элемента управления могут переопределить элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для настройки внешнего вида. Несмотря на то, что построение пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> не так просто, как строительные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> обеспечивает наибольшую гибкость.</p>
+<h4 id="benefits-of-deriving-from-control">Преимущества использования производного от элемента управления</h4>
+<p>Рассмотрите возможность наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> вместо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> класса, если выполняется одно из следующих условий:</p>
+<ul>
+<li><p>Внешний вид элемента управления нужно настраивать через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+</li>
+<li><p>Элемент управления должен поддерживать различные темы.</p>
+</li>
+</ul>
+<h3 id="deriving-from-frameworkelement">Создание производного от FrameworkElement</h3>
+<p>Элементы управления, которые являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> основываются на сочетании существующих элементов. Во многих сценариях это приемлемое решение, так как любой объект, который наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> может находиться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Однако бывают случаи, когда для внешнего вида элемента управления требуется больше, чем функциональность простой композиции элементов. В таких случаях компонент создание на основе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> является правильным выбором.</p>
+<p>Существует два стандартных метода построения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>-компонентов на основе: прямая отрисовка и пользовательская композиция элемента. Прямая отрисовка включает переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onrender">OnRender</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> и предоставляя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> операций, которые явно определяют графические параметры компонента. Это метод, используемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>. Пользовательская композиция элемента включает использование объектов типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> для создания внешнего вида компонента. Например, см. раздел <a href="../graphics-multimedia/using-drawingvisual-objects.html">Использование объектов DrawingVisual</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.track">Track</a> является примером элемента управления в WPF , использует пользовательскую композицию элемента. Можно также комбинировать прямую отрисовку и пользовательскую композицию элемента в одном элементе управления.</p>
+<h4 id="benefits-of-deriving-from-frameworkelement">Преимущества использования производного от FrameworkElement</h4>
+<p>Рассмотрите возможность наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> Если какой-либо из указанных ниже условий:</p>
+<ul>
+<li><p>Требуется точный контроль над внешним видом элемента управления помимо того, который обеспечивается простой композицией элемента.</p>
+</li>
+<li><p>Необходимо определить внешний вид элемента управления путем определения собственной логики отрисовки.</p>
+</li>
+<li><p>Требуется построить существующие элементы нестандартными способами, выходящими за рамки возможностей в средстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>.</p>
+</li>
+</ul>
+<p><a name="control_authoring_basics"></a></p>
+<h2 id="control-authoring-basics">Основы создания элементов управления</h2>
+<p>Как обсуждалось выше, одной из наиболее мощных функций WPF является возможность выхода за пределы задания базовых свойств элемента управления, чтобы изменить его внешний вид и поведение, но без необходимости создания пользовательского элемента управления. Функции стилей, привязки данных и триггеров предоставляются системой свойств WPF и системой событий WPF. В следующих разделах описаны некоторые рекомендации, которым нужно следовать независимо от модели, используемой для создания пользовательского элемента управления. Это необходимо, чтобы пользователи вашего пользовательского элемента управления могли использовать эти функции точно так же, как для элемента управления, входящего в WPF.</p>
+<h3 id="use-dependency-properties">Использование свойств зависимостей</h3>
+<p>Если свойство является свойством зависимостей, то можно сделать следующее:</p>
+<ul>
+<li><p>Установить свойство в стиле.</p>
+</li>
+<li><p>Привязать свойство к источнику данных.</p>
+</li>
+<li><p>Использовать динамический ресурс в качестве значения свойства.</p>
+</li>
+<li><p>Анимировать свойство.</p>
+</li>
+</ul>
+<p>Если свойство элемента управления должно поддерживать подобную функциональность, то следует реализовать его как свойство зависимостей. В следующем примере определяется свойство зависимостей с именем <code>Value</code> следующим способом:</p>
+<ul>
+<li><p>Определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор с именем <code>ValueProperty</code> как <code>public</code> <code>static</code> <code>readonly</code> поля.</p>
+</li>
+<li><p>Зарегистрируйте имя свойства в системе свойств с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">DependencyProperty.Register</a>, чтобы указать следующее:</p>
+<ul>
+<li><p>Имя свойства.</p>
+</li>
+<li><p>Тип свойства.</p>
+</li>
+<li><p>Тип, к которому принадлежит это свойство.</p>
+</li>
+<li><p>Метаданные для свойства. Метаданные содержат значение свойства по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a>.</p>
+</li>
+</ul>
+</li>
+<li><p>Определите свойство программы-оболочки CLR с именем <code>Value</code>, которое используется для регистрации свойства зависимостей, путем реализации методов доступа <code>get</code> и <code>set</code> свойства. Обратите внимание, что <code>get</code> и <code>set</code> вызывать только методы доступа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> соответственно. Рекомендуется, чтобы методы доступа свойств зависимостей не содержали дополнительной логики, так как клиенты и WPF может обойти методы доступа и вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> напрямую. Например, если свойство привязано к источнику данных, то метод доступа <code>set</code> свойства не вызывается.  Вместо добавления дополнительной логики для получения и установки методов доступа, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.validatevaluecallback">ValidateValueCallback</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a> реагировать на них или проверьте значение, при его изменении делегаты.  Дополнительные сведения об этих обратных вызовах см. в разделе <a href="../advanced/dependency-property-callbacks-and-validation.html">Проверка и обратные вызовы свойства зависимостей</a>.</p>
+</li>
+<li><p>Определите метод для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> с именем <code>CoerceValue</code>. <code>CoerceValue</code> гарантирует, что <code>Value</code> больше или равно <code>MinValue</code> и меньше или равно <code>MaxValue</code>.</p>
+</li>
+<li><p>Определите метод для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a>с именем <code>OnValueChanged</code>. <code>OnValueChanged</code> Создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventargs-1">RoutedPropertyChangedEventArgs&lt;T&gt;</a> объекта и готовится к <code>ValueChanged</code> перенаправленного события. Перенаправляемые события рассматриваются в следующем разделе.</p>
+</li>
+</ul>
+<pre><code class="lang-csharp" name="UserControlNumericUpDown#DependencyProperty">/// &lt;summary&gt;
+/// Identifies the Value dependency property.
+/// &lt;/summary&gt;
+public static readonly DependencyProperty ValueProperty =
+    DependencyProperty.Register(
+        &quot;Value&quot;, typeof(decimal), typeof(NumericUpDown),
+        new FrameworkPropertyMetadata(MinValue, new PropertyChangedCallback(OnValueChanged),
+                                      new CoerceValueCallback(CoerceValue)));
+
+/// &lt;summary&gt;
+/// Gets or sets the value assigned to the control.
+/// &lt;/summary&gt;
+public decimal Value
+{
+    get { return (decimal)GetValue(ValueProperty); }
+    set { SetValue(ValueProperty, value); }
+}
+
+private static object CoerceValue(DependencyObject element, object value)
+{
+    decimal newValue = (decimal)value;
+    NumericUpDown control = (NumericUpDown)element;
+
+    newValue = Math.Max(MinValue, Math.Min(MaxValue, newValue));
+
+    return newValue;
+}
+
+private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+{
+    NumericUpDown control = (NumericUpDown)obj;			
+
+    RoutedPropertyChangedEventArgs&lt;decimal&gt; e = new RoutedPropertyChangedEventArgs&lt;decimal&gt;(
+        (decimal)args.OldValue, (decimal)args.NewValue, ValueChangedEvent);
+    control.OnValueChanged(e);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения см. в разделе <a href="../advanced/custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+<h3 id="use-routed-events">Использование перенаправляемых событий</h3>
+<p>Аналогично тому, как свойства зависимостей расширяют представление свойств CLR дополнительной функциональностью, перенаправляемые события расширяют представление стандартных событий CLR. При создании нового элемента управления WPF рекомендуется также реализовывать событие как перенаправляемое, так как такие события поддерживают следующее поведение:</p>
+<ul>
+<li><p>События могут обрабатываться в родительском элементе нескольких элементов управления. Если событие является событием восходящей маршрутизации, то один родительский элемент в дереве элементов может подписаться на это событие. Разработчики приложений могут использовать один обработчик для реагирования на событие нескольких элементов управления. Например, если элемент управления является частью каждого элемента в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> (так как он включен в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>), разработчик приложения может определить обработчик событий для события элемента управления на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Обработчик событий вызывается при возникновении события в любом элементе управления.</p>
+</li>
+<li><p>Перенаправленные события могут использоваться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventsetter">EventSetter</a>, что позволяет разработчикам приложений указать обработчик события в стиле.</p>
+</li>
+<li><p>Перенаправленные события могут использоваться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>, что удобно для анимации свойств с помощью XAML. Более подробную информацию см. в разделе <a href="../graphics-multimedia/animation-overview.html">Общие сведения об эффектах анимации</a>.</p>
+</li>
+</ul>
+<p>Следующий пример определяет перенаправляемое событие:</p>
+<ul>
+<li><p>Определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> идентификатор с именем <code>ValueChangedEvent</code> как <code>public</code> <code>static</code> <code>readonly</code> поля.</p>
+</li>
+<li><p>Зарегистрируйте перенаправляемое событие путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager.registerroutedevent">EventManager.RegisterRoutedEvent</a> метод. В примере указывается следующие сведения при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager.registerroutedevent">RegisterRoutedEvent</a>:</p>
+<ul>
+<li><p>Имя события <code>ValueChanged</code>.</p>
+</li>
+<li><p>Стратегия маршрутизации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routingstrategy#System_Windows_RoutingStrategy_Bubble">Bubble</a>, что означает, что сначала вызывается обработчик событий в источнике (объект, вызывающий событие) и затем вызываются обработчики событий родительских элементов источника подряд, начиная с обработчика события для ближайшего родительский элемент.</p>
+</li>
+<li><p>Тип обработчика событий — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedpropertychangedeventhandler-1">RoutedPropertyChangedEventHandler&lt;T&gt;</a>, созданный с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.decimal">Decimal</a> типа.</p>
+</li>
+<li><p>Тип — владелец события — <code>NumericUpDown</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>Объявите общее событие с именем <code>ValueChanged</code>, которое включает объявления метода доступа к событию. В примере вызывается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> в <code>add</code> объявление метода доступа и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.removehandler">RemoveHandler</a> в <code>remove</code> объявление метода доступа для использования WPF служб событий.</p>
+</li>
+<li><p>Создайте защищенный виртуальный метод с именем <code>OnValueChanged</code>, вызывающий событие <code>ValueChanged</code>.</p>
+</li>
+</ul>
+<pre><code class="lang-csharp" name="UserControlNumericUpDown#RoutedEvent">/// &lt;summary&gt;
+/// Identifies the ValueChanged routed event.
+/// &lt;/summary&gt;
+public static readonly RoutedEvent ValueChangedEvent = EventManager.RegisterRoutedEvent(
+    &quot;ValueChanged&quot;, RoutingStrategy.Bubble,
+    typeof(RoutedPropertyChangedEventHandler&lt;decimal&gt;), typeof(NumericUpDown));
+
+/// &lt;summary&gt;
+/// Occurs when the Value property changes.
+/// &lt;/summary&gt;
+public event RoutedPropertyChangedEventHandler&lt;decimal&gt; ValueChanged
+{
+    add { AddHandler(ValueChangedEvent, value); }
+    remove { RemoveHandler(ValueChangedEvent, value); }
+}
+
+/// &lt;summary&gt;
+/// Raises the ValueChanged event.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;args&quot;&gt;Arguments associated with the ValueChanged event.&lt;/param&gt;
+protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs&lt;decimal&gt; args)
+{
+    RaiseEvent(args);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения см. в разделах <a href="../advanced/routed-events-overview.html">Общие сведения о перенаправляемых событиях</a> и <a href="../advanced/how-to-create-a-custom-routed-event.html">Создание пользовательских перенаправляемых событий</a>.</p>
+<h3 id="use-binding">Использование привязки</h3>
+<p>Для отделения пользовательского интерфейса от логики элемента управления можно использовать привязку данных. Это особенно важно в том случае, если внешний вид элемента управления с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. При использовании привязки данных можно избавиться от необходимости ссылаться на определенные части пользовательского интерфейса из кода. Рекомендуется избегать ссылок на элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> потому, что если код ссылается на элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> изменяется, указанный ссылками элемент должен быть включен в новом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
+<p>В следующем примере обновляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> из <code>NumericUpDown</code> элемента управления, присвоение имени и ссылается на текстовое поле по имени в коде.</p>
+<pre><code class="lang-xaml" name="UserControlNumericUpDownSimple#UIRefMarkup">&lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot; Margin=&quot;2&quot; 
+        Grid.RowSpan=&quot;2&quot; VerticalAlignment=&quot;Center&quot; HorizontalAlignment=&quot;Stretch&quot;&gt;
+  &lt;TextBlock Name=&quot;valueText&quot; Width=&quot;60&quot; TextAlignment=&quot;Right&quot; Padding=&quot;5&quot;/&gt;
+&lt;/Border&gt;
+</code></pre><pre><code class="lang-csharp" name="UserControlNumericUpDownSimple#UIRefCode">private void UpdateTextBlock()
+{
+    valueText.Text = Value.ToString();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следующий пример использует привязку для достижения такого же результата.</p>
+<pre><code class="lang-xaml" name="UserControlNumericUpDown#Binding">&lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot; Margin=&quot;2&quot; 
+        Grid.RowSpan=&quot;2&quot; VerticalAlignment=&quot;Center&quot; HorizontalAlignment=&quot;Stretch&quot;&gt;
+
+    &lt;!--Bind the TextBlock to the Value property--&gt;
+    &lt;TextBlock 
+        Width=&quot;60&quot; TextAlignment=&quot;Right&quot; Padding=&quot;5&quot;
+        Text=&quot;{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type local:NumericUpDown}}, 
+                       Path=Value}&quot;/&gt;
+
+&lt;/Border&gt;
+</code></pre>
+<p>Дополнительные сведения о привязке данных см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<h3 id="design-for-designers">Разработка для конструкторов</h3>
+<p>Чтобы получить поддержку пользовательских элементов управления WPF в Конструктор WPF для Visual Studio (например, редактирование свойства с помощью окна &quot;Свойства&quot;), следуйте приведенным ниже рекомендациям.  Дополнительные сведения о разработке для Конструктор WPF, см. в разделе <a href="/visualstudio/designers/designing-xaml-in-visual-studio">конструктора XAML в Visual Studio</a>.</p>
+<h4 id="dependency-properties">Свойства зависимостей</h4>
+<p>Следует реализовать методы доступа CLR <code>get</code> и <code>set</code>, как описано ранее в разделе &quot;Использование свойств зависимостей&quot;. Конструкторы могут использовать программы-оболочки для обнаружения свойства зависимостей, но им, как WPF и клиентам элемента управления, не требуется вызывать методы доступа при получении или настройке свойства.</p>
+<h4 id="attached-properties">Вложенные свойства</h4>
+<p>При реализации вложенных свойств в пользовательских элементах управления учитывайте следующие рекомендации:</p>
+<ul>
+<li><p>У <code>public</code> <code>static</code> <code>readonly</code> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> формы <em>PropertyName</em> <code>Property</code> , создании с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerattached">RegisterAttached</a> метод. Имя свойства, которое передается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerattached">RegisterAttached</a> должно соответствовать <em>PropertyName</em>.</p>
+</li>
+<li><p>Реализуйте пару методов CLR <code>public</code> <code>static</code> с именем <code>Set</code><em>PropertyName</em> и <code>Get</code><em>PropertyName</em>. Оба метода должны принимать производный класс от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> качестве первого аргумента. Метод <code>Set</code><em>PropertyName</em> также принимает аргумент, тип которого соответствует зарегистрированному типу данных для свойства. Метод <code>Get</code><em>PropertyName</em> должен возвращать значение такого же типа. Если метод <code>Set</code> <em>PropertyName</em> отсутствует, свойство отмечается как &quot;только для чтения&quot;.</p>
+</li>
+<li><p><code>Set</code> *<em>PropertyName</em> и <code>Get</code> <em>PropertyName</em> должны перенаправляться непосредственно в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> методы от зависимости целевого объекта, соответственно.DРазработчики могут получить доступ к вложенному свойству, вызвав программу-оболочку метода или с помощью прямого вызова целевого объекта зависимостей.</p>
+</li>
+</ul>
+<p>Дополнительные сведения о вложенных свойствах см. в разделе <a href="../advanced/attached-properties-overview.html">Общие сведения о вложенных свойствах</a>.</p>
+<h3 id="define-and-use-shared-resources">Определение и использование общих ресурсов</h3>
+<p>Можно включить элемент управления в ту же сборку, что и приложение, или упаковать его в отдельную сборку, которая может использоваться в нескольких приложениях. В большинстве случаев сведения, рассматриваемые в данном разделе, применяются независимо от используемого метода.  Однако есть одно отличие, о котором следует упомянуть.  При помещении элемента управления в ту же сборку, что и приложение, можно добавить глобальные ресурсы в файл App.xaml. Но не сборку, содержащую только элементы управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> объект, связанный с ним, поэтому файл App.xaml недоступно.</p>
+<p>Приложение выполняет поиск ресурса на трех уровнях в следующем порядке:</p>
+<ol>
+<li><p>Уровень элемента.</p>
+<p>Система начинает с элемента, который ссылается на ресурс, а затем ищет ресурсы логического родительского элемента и так далее, пока не будет достигнут корневой элемент.</p>
+</li>
+<li><p>Уровень приложения.</p>
+<p>Ресурсы, определенные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> объекта.</p>
+</li>
+<li><p>Уровень темы.</p>
+<p>Словари уровня темы хранятся в подпапке &quot;Темы&quot;.  Файлы в папке &quot;Темы&quot; соответствуют темам.  Например, могут присутствовать файлы Aero.NormalColor.xaml, Luna.NormalColor.xaml, Royale.NormalColor.xaml и т. д.  Также может присутствовать файл с именем generic.xaml.  Когда система ищет ресурс на уровне темы, она сначала ищет его в файле конкретной темы, а затем в файле generic.xaml.</p>
+</li>
+</ol>
+<p>Если элемент управления находится в сборке отдельно от приложения, глобальные ресурсы необходимо поместить на уровень элемента или на уровень темы. Оба метода имеют свои преимущества.</p>
+<h4 id="defining-resources-at-the-element-level">Определение ресурсов на уровне элемента</h4>
+<p>Общие ресурсы на уровне элемента можно определить путем создания пользовательского словаря ресурсов и его объединения со словарем ресурсов элемента управления.  При использовании этого метода можно присвоить файлу ресурсов любое имя и его можно поместить в одну папку с элементами управления. Ресурсы на уровне элемента также могут использовать простые строки как ключи. В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> файл ресурсов с именем Dictionary1.xaml.</p>
+<pre><code class="lang-xaml" name="SharedResources#1">&lt;ResourceDictionary 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+  &lt;LinearGradientBrush 
+    x:Key=&quot;myBrush&quot;  
+    StartPoint=&quot;0,0&quot; EndPoint=&quot;1,1&quot;&gt;
+    &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;0.25&quot; /&gt;
+    &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.75&quot; /&gt;
+  &lt;/LinearGradientBrush&gt;
+  
+&lt;/ResourceDictionary&gt;
+</code></pre>
+<p>После определения словаря необходимо его объединить со словарем ресурсов элемента управления.  Это можно сделать с помощью XAML или кода.</p>
+<p>Следующий пример объединяет словарь ресурса с помощью XAML.</p>
+<pre><code class="lang-xaml" name="SharedResources#2">&lt;UserControl.Resources&gt;
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;ResourceDictionary Source=&quot;Dictionary1.xaml&quot;/&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+&lt;/UserControl.Resources&gt;
+</code></pre>
+<p>Недостаток этого подхода заключается в том, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> создается каждый раз, ссылки на объект.  Например, если у вас 10 пользовательских элементов управления в библиотеке и объединение словарей общих ресурсов для каждого элемента управления с помощью XAML, будут созданы 10 идентичных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> объектов.  Этого можно избежать, создав статический класс, который объединяет ресурсы в коде и возвращает результат в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>.</p>
+<p>В следующем примере создается класс, который возвращает общий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>.</p>
+<pre><code class="lang-csharp" name="SharedResources#3">internal static class SharedDictionaryManager
+{
+    internal static ResourceDictionary SharedDictionary
+    {
+        get
+        {
+            if (_sharedDictionary == null)
+            {
+                System.Uri resourceLocater =
+                    new System.Uri(&quot;/ElementResourcesCustomControlLibrary;component/Dictionary1.xaml&quot;,
+                                    System.UriKind.Relative);
+
+                _sharedDictionary =
+                    (ResourceDictionary)Application.LoadComponent(resourceLocater);
+            }
+
+            return _sharedDictionary;
+        }
+    }
+
+    private static ResourceDictionary _sharedDictionary;
+}
+</code></pre>
+<p>В следующем примере общий ресурс объединяется с ресурсами пользовательского элемента управления в конструкторе элемента управления, прежде чем он вызывает <code>InitializeComponent</code>.  Так как <code>SharedDictionaryManager.SharedDictionary</code> является статическим свойством, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> создается только один раз. Поскольку словарь ресурсов был объединен до вызова <code>InitializeComponent</code>, ресурсы доступны для элемента управления в его файле XAML.</p>
+<pre><code class="lang-csharp" name="SharedResources#4">public NumericUpDown()
+{
+    this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
+    InitializeComponent();
+}
+</code></pre><h4 id="defining-resources-at-the-theme-level">Определение ресурсов на уровне темы</h4>
+<p>WPF позволяет создавать ресурсы для разных тем Windows.  Как разработчик элемента управления, вы можете определить ресурс для определенной темы, чтобы изменить внешний вид элемента управления в зависимости от того, какая тема используется. Например, внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в классическом Windows темы (тема по умолчанию для Windows 2000) отличается от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в теме Windows Luna (тема по умолчанию для Windows XP) так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> использует другое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для каждой темы.</p>
+<p>Ресурсы, относящиеся к теме, хранятся в словаре ресурсов с заданным именем файла. Эти файлы должны находиться в папке с именем <code>Themes</code>, которая является подпапкой папки, содержащей элемент управления. В следующей таблице перечислены файлы словаря ресурсов и темы, связанные с каждым файлом.</p>
+<table>
+<thead>
+<tr>
+<th>Имя файла словаря ресурсов</th>
+<th>Тема Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Classic.xaml</code></td>
+<td>Классический вид Windows 9x/2000 для Windows XP</td>
+</tr>
+<tr>
+<td><code>Luna.NormalColor.xaml</code></td>
+<td>Синяя тема по умолчанию в Windows XP</td>
+</tr>
+<tr>
+<td><code>Luna.Homestead.xaml</code></td>
+<td>Оливковая тема в Windows XP</td>
+</tr>
+<tr>
+<td><code>Luna.Metallic.xaml</code></td>
+<td>Серебристая тема в Windows XP</td>
+</tr>
+<tr>
+<td><code>Royale.NormalColor.xaml</code></td>
+<td>Тема по умолчанию в Windows XP Media Center Edition</td>
+</tr>
+<tr>
+<td><code>Aero.NormalColor.xaml</code></td>
+<td>Тема по умолчанию в Windows Vista</td>
+</tr>
+</tbody>
+</table>
+<p>Не нужно определять ресурс для каждой темы. Если ресурс не определен для конкретной темы, элемент управления проверяет <code>Classic.xaml</code> для ресурса. Если ресурс не определен в файле, соответствующем текущей теме, или в <code>Classic.xaml</code>, то элемент управления использует общий ресурс, который находится в файле словаря ресурса с именем <code>generic.xaml</code>.  Файл <code>generic.xaml</code> расположен в той же папке, что и файлы словаря ресурсов, связанные с темами. Хотя <code>generic.xaml</code> не соответствует конкретной теме Windows, он по-прежнему является словарем уровня темы.</p>
+<p><a href="https://go.microsoft.com/fwlink/?LinkID=160025">Пример пользовательского элемента управления NumericUpDown с темами и поддержкой автоматизации пользовательского интерфейса</a> содержит два словаря ресурсов для элемента управления <code>NumericUpDown</code>: один — в файле generic.xaml, а второй — в Luna.NormalColor.xaml.  Можно запустить приложение и переключаться между серебристой темой в Windows XP и другой темой, чтобы увидеть разницу между двумя шаблонами элемента управления. (Если вы используете Windows Vista, можно переименовать Luna.NormalColor.xaml в Aero.NormalColor.xaml и переключаться между двумя темами, например между классической и темой по умолчанию для Windows Vista.)</p>
+<p>При переводе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> в любом из файлы словарей тематических ресурсов, необходимо создать статический конструктор для элемента управления и вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.overridemetadata#System_Windows_DependencyProperty_OverrideMetadata_System_Type_System_Windows_PropertyMetadata_">OverrideMetadata(Type, PropertyMetadata)</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a>, как показано в следующем примере.</p>
+<pre><code class="lang-csharp" name="CustomControlNumericUpDownOneProject#StaticConstructor">static NumericUpDown()
+{
+    DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown),
+               new FrameworkPropertyMetadata(typeof(NumericUpDown)));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h5 id="defining-and-referencing-keys-for-theme-resources">Определение и создание ссылок на ключи для ресурсов тем</h5>
+<p>При определении ресурса на уровне элемента можно назначить строку в качестве его ключа и получить доступ к ресурсу через эту строку. При определении ресурса на уровне темы необходимо использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.componentresourcekey">ComponentResourceKey</a> как ключ.  В следующем примере определяется ресурс в файле generic.xaml.</p>
+<pre><code class="lang-xaml" name="ThemeResourcesControlLibrary#5">&lt;LinearGradientBrush 
+     x:Key=&quot;{ComponentResourceKey TypeInTargetAssembly={x:Type local:Painter}, 
+                                  ResourceId=MyEllipseBrush}&quot;  
+                                  StartPoint=&quot;0,0&quot; EndPoint=&quot;1,0&quot;&gt;
+    &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0&quot; /&gt;
+    &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;0.5&quot; /&gt;
+    &lt;GradientStop Color=&quot;Green&quot; Offset=&quot;1&quot;/&gt;
+&lt;/LinearGradientBrush&gt;
+</code></pre>
+<p>Следующий пример ссылается на ресурс, указав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.componentresourcekey">ComponentResourceKey</a> как ключ.</p>
+<pre><code class="lang-xaml" name="ThemeResourcesControlLibrary#6">&lt;RepeatButton 
+    Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;
+    Background=&quot;{StaticResource {ComponentResourceKey 
+                        TypeInTargetAssembly={x:Type local:NumericUpDown}, 
+                        ResourceId=ButtonBrush}}&quot;&gt;
+    Up
+&lt;/RepeatButton&gt;
+&lt;RepeatButton 
+    Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;
+    Background=&quot;{StaticResource {ComponentResourceKey 
+                    TypeInTargetAssembly={x:Type local:NumericUpDown}, 
+                    ResourceId=ButtonBrush}}&quot;&gt;
+    Down
+ &lt;/RepeatButton&gt;
+</code></pre><h5 id="specifying-the-location-of-theme-resources">Определение местоположения ресурсов тем</h5>
+<p>Чтобы найти ресурсы для элемента управления, ведущее приложение должно знать, что сборка содержит ресурсы для элемента управления. Можно сделать, добавив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute">ThemeInfoAttribute</a> на сборку, содержащую элемент управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute">ThemeInfoAttribute</a> Имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.genericdictionarylocation">GenericDictionaryLocation</a> свойство, указывающее местоположение общих ресурсов и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.themedictionarylocation">ThemeDictionaryLocation</a> свойство, указывающее расположение тематических ресурсов.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.genericdictionarylocation">GenericDictionaryLocation</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.themedictionarylocation">ThemeDictionaryLocation</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionarylocation#System_Windows_ResourceDictionaryLocation_SourceAssembly">SourceAssembly</a>, чтобы указать, что универсальных и тематических ресурсы находятся в той же сборке, в качестве элемента управления.</p>
+<pre><code class="lang-csharp" name="CustomControlNumericUpDown#ThemesSection">[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly,
+           ResourceDictionaryLocation.SourceAssembly)]
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="/visualstudio/designers/designing-xaml-in-visual-studio">Проектирование XAML в Visual Studio</a></li>
+<li><a href="../app-development/pack-uris-in-wpf.html">URI типа &quot;pack&quot; в WPF</a></li>
+<li><a href="control-customization.html">Настройка элементов управления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,745 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1086;&#1076;&#1077;&#1083;&#1100; &#1087;&#1086;&#1090;&#1086;&#1082;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1086;&#1076;&#1077;&#1083;&#1100; &#1087;&#1086;&#1090;&#1086;&#1082;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="threading-model">Модель потоков</h1>
+
+<p>Windows Presentation Foundation (WPF) призвана помочь разработчикам избежать трудностей при разработке потоков. Как следствие, большинство WPF разработчикам не требуется писать интерфейс, использующий более одного потока. Поскольку многопотоковые программы являются сложными и трудно отлаживаемыми, их следует избегать, если существуют однопоточные решения.</p>
+<p>Независимо от того, насколько хорошо качества архитектуры, нет ИП framework никогда не будут иметь возможность предоставить однопоточное решение для каждого типа задач. WPF приблизилось, но по-прежнему существуют ситуации, в которых несколько потоков улучшают пользовательский интерфейс скорость реагирования или производительность приложения. После рассмотрения некоторых основных материалов в данном документе рассматриваются подобные ситуации и в завершение обсуждаются некоторые более подробные сведения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом разделе обсуждается создание потоков с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> метод для асинхронных вызовов. Вы также можете асинхронных вызовов, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invokeasync">InvokeAsync</a> метод, который занять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func&lt;TResult&gt;</a> как параметр.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invokeasync">InvokeAsync</a> Возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation">DispatcherOperation</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation-1">DispatcherOperation&lt;TResult&gt;</a>, который имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation.task">Task</a> свойства. Можно использовать <code>await</code> ключевого слова with либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation">DispatcherOperation</a> или связанного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>. Если требуется синхронно дождаться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> , возвращаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation">DispatcherOperation</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcheroperation-1">DispatcherOperation&lt;TResult&gt;</a>, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.taskextensions.dispatcheroperationwait">DispatcherOperationWait</a> метода расширения.  Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.wait">Task.Wait</a> приведет к взаимоблокировке. Дополнительные сведения об использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> для выполнения асинхронных операций, см. в разделе параллелизм задач.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> Метод также имеются перегрузки, принимающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func&lt;TResult&gt;</a> как параметр.  Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> вызывает синхронный метод, передав делегат, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.action">Action</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.func-1">Func&lt;TResult&gt;</a>.</p>
+</div>
+<p><a name="threading_overview"></a></p>
+<h2 id="overview-and-the-dispatcher">Общие сведения и Dispatcher</h2>
+<p>Как правило WPF приложения начинается с двух потоков: одного для обработки визуализации, а другой — для управления ИП. Поток визуализации эффективно выполняется незаметно для пользователя в фоновом режиме при ИП поток получает входные данные, обрабатывает события, выводит изображение на экран и выполняет код приложения. Большинство приложений используют один ИП поток, несмотря на то, что в некоторых ситуациях лучше использовать несколько. Позже это будет рассмотрено на примере.</p>
+<p>ИП Очереди потоков рабочие элементы внутри объекта, называемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> выбирает рабочие элементы на основе приоритетов и выполняет каждый из них до завершения.  Каждый ИП поток должен иметь по крайней мере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>и каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> может выполнять рабочие элементы только в одном потоке.</p>
+<p>Условием для построения быстро реагирующих, понятных пользователю приложений является максимальное повышение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> пропускной способности путем сохранения небольших рабочие элементы. Таком методе элементы никогда не устаревают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> очереди, ожидающих обработки. Любая задержка между входными данными и ответами может разочаровать пользователя.</p>
+<p>Как в таком WPF приложения должны обрабатывать большие операции? Что если код включает большие вычисления или требуется запрос к базе данных на удаленном сервере? Обычно ответ заключается в большие операции обрабатываются в отдельном потоке, оставляя ИП поток для обслуживания элементов в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> очереди. После завершения большой операции она может передать результат обратно ИП поток для отображения.</p>
+<p>Исторически сложилось так, что Windows позволяет ИП элементов был доступен только создавшему их потоку. Это означает, что фоновый поток, отвечающий за некоторую длительную задачу, не может обновить текстовое поле при своем завершении. Windows Это делается, чтобы обеспечить целостность ИП компонентов. Список может выглядеть странно, если его содержимое обновляется фоновым потоком в процессе отображения.</p>
+<p>WPF имеет встроенный механизм взаимного исключения, осуществляет эту координацию. Большинство классов в WPF являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a>. При конструировании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a> хранит ссылку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> связанный с текущим выполняемым потоком. По сути <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a> связывается с потоком, который его создал. Во время выполнения программы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a> может вызвать свой открытый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject.verifyaccess">VerifyAccess</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject.verifyaccess">VerifyAccess</a> проверяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> связанный с текущим потоком и сравнивает его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> ссылка сохраняется во время создания. Если они не совпадают, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject.verifyaccess">VerifyAccess</a> возникло исключение. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject.verifyaccess">VerifyAccess</a> предназначен для вызова в начале каждого метода, принадлежащего к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a>.</p>
+<p>Если только один поток может изменить ИП, как фоновые потоки взаимодействуют с пользователем? Фоновый поток может попросить ИП поток, выполняющий операцию от его имени. Это достигается путем регистрации рабочего элемента с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> из ИП потока. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> Класс предоставляет два метода для регистрации рабочих элементов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a>. Оба метода назначают делегат для выполнения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> является синхронным вызовом — то есть он не возвращает до ИП потока не закончит выполнение делегата. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> является асинхронным и немедленно возвращает.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> Упорядочивает элементы в своей очереди по приоритету. Существуют десять уровней, которые могут быть указаны при добавлении элемента к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> очереди. Эти приоритеты сохраняются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherpriority">DispatcherPriority</a> перечисления. Подробные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherpriority">DispatcherPriority</a> уровней можно найти в Windows SDK документации.</p>
+<p><a name="samples"></a></p>
+<h2 id="threads-in-action-the-samples">Потоки в действии: Примеры</h2>
+<p><a name="prime_number"></a></p>
+<h3 id="a-single-threaded-application-with-a-long-running-calculation">Пример однопоточного приложения с длительным выполнением вычислений</h3>
+<p>Большинство графические пользовательские интерфейсы (GUI) тратят большую часть своего времени, простаивая в ожидании событий, которые создаются в ответ на действия пользователя. При внимательном программировании это время простоя можно использовать конструктивно, не влияя на скорость реагирования ИП. WPF Потоковая модель не позволяет вводу прерывать операцию, которая происходит в ИП потока. Это означает, что необходимо убедиться, чтобы вернуться к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> периодически, чтобы обработать отложенные события ввода, прежде чем они станут устаревшими.</p>
+<p>Рассмотрим следующий пример.</p>
+<p><img src="media/threading-model/threading-prime-numbers.png" alt="Снимок экрана, показывающий threading простых чисел."></p>
+<p>Это простое приложение ищет простые числа, начиная от трех и далее. Когда пользователь щелкает <strong>запустить</strong> кнопки, поиск начинается. Когда программа находит простое число, она обновляет пользовательский интерфейс. В любой момент пользователь может остановить поиск.</p>
+<p>При всей простоте операции поиск простых чисел может происходить бесконечно, что представляет некоторые трудности.  Если бы обработка всех операций поиска в обработчик события нажатия кнопки, никогда бы не получил ИП потоков возможность обработки других событий. ИП Бы ответить на входные данные или обработать сообщения. Он бы никогда не обновил отображение и не ответил бы на нажатие кнопки.</p>
+<p>Можно провести поиск простого числа в отдельном потоке, но тогда пришлось бы иметь дело с проблемами синхронизации. С помощью однопотокового подхода можно непосредственно обновить подпись, в которой перечислено наибольшее простое число.</p>
+<p>Если разбить задачу вычисления на управляемые фрагменты, можно периодически возвращаться к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> и обработки событий. Мы можем дать WPF возможность обновлять и обрабатывать ввод.</p>
+<p>Лучшим способом разбиения времени обработки между вычислением и обработкой события является управление вычислением из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> метод, можно запланировать проверку простого числа в той же очереди, ИП события, являются производными от. В приведенном примере запланирована проверка только одного простого числа в каждый момент времени. После завершения проверки простого числа немедленно планируется следующая проверка. Эта проверка выполняется только после ожидающих ИП обработки событий.</p>
+<p><img src="media/threading-model/threading-dispatcher-queue.png" alt="Снимок экрана, показывающий очереди диспетчера."></p>
+<p>Microsoft Word выполняет проверку орфографии с помощью этого механизма. Проверка орфографии выполняется в фоновом режиме, используя время простоя ИП потока. Давайте посмотрим на код.</p>
+<p>В следующем примере показан код XAML, который создает пользовательский интерфейс.</p>
+<pre><code class="lang-xaml" name="ThreadingPrimeNumbers#ThreadingPrimeNumberXAML">&lt;Window x:Class=&quot;SDKSamples.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Prime Numbers&quot; Width=&quot;260&quot; Height=&quot;75&quot;
+    &gt;
+  &lt;StackPanel Orientation=&quot;Horizontal&quot; VerticalAlignment=&quot;Center&quot; &gt;
+    &lt;Button Content=&quot;Start&quot;  
+            Click=&quot;StartOrStop&quot;
+            Name=&quot;startStopButton&quot;
+            Margin=&quot;5,0,5,0&quot;
+            /&gt;
+    &lt;TextBlock Margin=&quot;10,5,0,0&quot;&gt;Biggest Prime Found:&lt;/TextBlock&gt;
+    &lt;TextBlock Name=&quot;bigPrime&quot; Margin=&quot;4,5,0,0&quot;&gt;3&lt;/TextBlock&gt;
+  &lt;/StackPanel&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>В следующем примере показан код программной части.</p>
+<pre><code class="lang-csharp" name="ThreadingPrimeNumbers#ThreadingPrimeNumberCodeBehind">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using System.Threading;
+
+namespace SDKSamples
+{
+    public partial class Window1 : Window
+    {
+        public delegate void NextPrimeDelegate();
+
+        //Current number to check
+        private long num = 3;
+
+        private bool continueCalculating = false;
+
+        public Window1() : base()
+        {
+            InitializeComponent();
+        }
+
+        private void StartOrStop(object sender, EventArgs e)
+        {
+            if (continueCalculating)
+            {
+                continueCalculating = false;
+                startStopButton.Content = &quot;Resume&quot;;
+            }
+            else
+            {
+                continueCalculating = true;
+                startStopButton.Content = &quot;Stop&quot;;
+                startStopButton.Dispatcher.BeginInvoke(
+                    DispatcherPriority.Normal,
+                    new NextPrimeDelegate(CheckNextNumber));
+            }
+        }
+
+        public void CheckNextNumber()
+        {
+            // Reset flag.
+            NotAPrime = false;
+
+            for (long i = 3; i &lt;= Math.Sqrt(num); i++)
+            {
+                if (num % i == 0)
+                {
+                    // Set not a prime flag to true.
+                    NotAPrime = true;
+                    break;
+                }
+            }
+
+            // If a prime number.
+            if (!NotAPrime)
+            {
+                bigPrime.Text = num.ToString();
+            }
+
+            num += 2;
+            if (continueCalculating)
+            {
+                startStopButton.Dispatcher.BeginInvoke(
+                    System.Windows.Threading.DispatcherPriority.SystemIdle,
+                    new NextPrimeDelegate(this.CheckNextNumber));
+            }
+        }
+
+        private bool NotAPrime = false;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показан обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<pre><code class="lang-csharp" name="ThreadingPrimeNumbers#ThreadingPrimeNumberStartOrStop">private void StartOrStop(object sender, EventArgs e)
+{
+    if (continueCalculating)
+    {
+        continueCalculating = false;
+        startStopButton.Content = &quot;Resume&quot;;
+    }
+    else
+    {
+        continueCalculating = true;
+        startStopButton.Content = &quot;Stop&quot;;
+        startStopButton.Dispatcher.BeginInvoke(
+            DispatcherPriority.Normal,
+            new NextPrimeDelegate(CheckNextNumber));
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Помимо обновления текста в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, этот обработчик отвечает за планирование проверки первого простого числа путем добавления делегата к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> очереди. Иногда после завершения работы, этот обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> выберет этот делегат для выполнения.</p>
+<p>Как было упомянуто ранее, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> членом, который используется при планировании делегата для выполнения. В этом случае мы выбираем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherpriority#System_Windows_Threading_DispatcherPriority_SystemIdle">SystemIdle</a> приоритет. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> Будет выполнять данный делегат только в том случае, если отсутствуют важные события для обработки. ИП скорость реагирования важнее, чем проверка числа. Также передается новый делегат, представляющий подпрограмму проверки числа.</p>
+<pre><code class="lang-csharp" name="ThreadingPrimeNumbers#ThreadingPrimeNumberCheckNextNumber">public void CheckNextNumber()
+{
+    // Reset flag.
+    NotAPrime = false;
+
+    for (long i = 3; i &lt;= Math.Sqrt(num); i++)
+    {
+        if (num % i == 0)
+        {
+            // Set not a prime flag to true.
+            NotAPrime = true;
+            break;
+        }
+    }
+
+    // If a prime number.
+    if (!NotAPrime)
+    {
+        bigPrime.Text = num.ToString();
+    }
+
+    num += 2;
+    if (continueCalculating)
+    {
+        startStopButton.Dispatcher.BeginInvoke(
+            System.Windows.Threading.DispatcherPriority.SystemIdle,
+            new NextPrimeDelegate(this.CheckNextNumber));
+    }
+}
+
+private bool NotAPrime = false;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Этот метод проверяет, является ли следующее нечетное число простым. Если оно простое, метод непосредственно обновляет <code>bigPrime</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> в соответствии с его обнаружения. Мы можем сделать так потому, что вычисление происходит в том же потоке, который был использован для создания компонента. Бы мы решили использовать отдельный поток для вычислений, нам пришлось бы использовать более сложный механизм синхронизации и выполнять обновления в ИП потока. Эта ситуация будет продемонстрирована далее.</p>
+<p>Полный исходный код для этого примера, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160038">Пример однопоточного приложения с образцом выполняющейся длительное время вычисления</a></p>
+<p><a name="weather_sim"></a></p>
+<h3 id="handling-a-blocking-operation-with-a-background-thread">Обработка блокирующей операции с фоновым потоком</h3>
+<p>Обработка блокировки операций в графическом приложении может оказаться трудной задачей. Мы не будем вызывать методы блокировки из обработчиков событий, так как приложение будет остановлено. Можно использовать отдельный поток для обработки этих операций, но когда все готово, у нас есть для синхронизации с ИП потоков, поскольку нельзя непосредственно изменить Графический интерфейс (GUI) из рабочего потока. Мы можем использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> вставку делегатов в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> из ИП потока. Наконец, эти делегаты будут выполнены с разрешением на изменение ИП элементов.</p>
+<p>В этом примере мы имитируем вызов удаленной процедуры, который получает прогноз погоды. Мы используем отдельный рабочий поток для выполнения этого вызова и планируем метод обновления в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> из ИП потоков, когда мы закончили.</p>
+<p><img src="media/threading-model/threading-weather-ui.png" alt="Снимок экрана, показывающий погоды пользовательского интерфейса."></p>
+<pre><code class="lang-csharp" name="ThreadingWeatherForecast#ThreadingWeatherCodeBehind">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Threading;
+
+namespace SDKSamples
+{
+    public partial class Window1 : Window
+    {
+        // Delegates to be used in placking jobs onto the Dispatcher.
+        private delegate void NoArgDelegate();
+        private delegate void OneArgDelegate(String arg);
+
+        // Storyboards for the animations.
+        private Storyboard showClockFaceStoryboard;
+        private Storyboard hideClockFaceStoryboard;
+        private Storyboard showWeatherImageStoryboard;
+        private Storyboard hideWeatherImageStoryboard;
+
+        public Window1(): base()
+        {
+            InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Load the storyboard resources.
+            showClockFaceStoryboard =
+                (Storyboard)this.Resources[&quot;ShowClockFaceStoryboard&quot;];
+            hideClockFaceStoryboard =
+                (Storyboard)this.Resources[&quot;HideClockFaceStoryboard&quot;];
+            showWeatherImageStoryboard =
+                (Storyboard)this.Resources[&quot;ShowWeatherImageStoryboard&quot;];
+            hideWeatherImageStoryboard =
+                (Storyboard)this.Resources[&quot;HideWeatherImageStoryboard&quot;];
+        }
+
+        private void ForecastButtonHandler(object sender, RoutedEventArgs e)
+        {
+            // Change the status image and start the rotation animation.
+            fetchButton.IsEnabled = false;
+            fetchButton.Content = &quot;Contacting Server&quot;;
+            weatherText.Text = &quot;&quot;;
+            hideWeatherImageStoryboard.Begin(this);
+
+            // Start fetching the weather forecast asynchronously.
+            NoArgDelegate fetcher = new NoArgDelegate(
+                this.FetchWeatherFromServer);
+
+            fetcher.BeginInvoke(null, null);
+        }
+
+        private void FetchWeatherFromServer()
+        {
+            // Simulate the delay from network access.
+            Thread.Sleep(4000);
+
+            // Tried and true method for weather forecasting - random numbers.
+            Random rand = new Random();
+            String weather;
+
+            if (rand.Next(2) == 0)
+            {
+                weather = &quot;rainy&quot;;
+            }
+            else
+            {
+                weather = &quot;sunny&quot;;
+            }
+
+            // Schedule the update function in the UI thread.
+            tomorrowsWeather.Dispatcher.BeginInvoke(
+                System.Windows.Threading.DispatcherPriority.Normal,
+                new OneArgDelegate(UpdateUserInterface),
+                weather);
+        }
+
+        private void UpdateUserInterface(String weather)
+        {
+            //Set the weather image
+            if (weather == &quot;sunny&quot;)
+            {
+                weatherIndicatorImage.Source = (ImageSource)this.Resources[
+                    &quot;SunnyImageSource&quot;];
+            }
+            else if (weather == &quot;rainy&quot;)
+            {
+                weatherIndicatorImage.Source = (ImageSource)this.Resources[
+                    &quot;RainingImageSource&quot;];
+            }
+
+            //Stop clock animation
+            showClockFaceStoryboard.Stop(this);
+            hideClockFaceStoryboard.Begin(this);
+
+            //Update UI text
+            fetchButton.IsEnabled = true;
+            fetchButton.Content = &quot;Fetch Forecast&quot;;
+            weatherText.Text = weather;
+        }
+
+        private void HideClockFaceStoryboard_Completed(object sender,
+            EventArgs args)
+        {
+            showWeatherImageStoryboard.Begin(this);
+        }
+
+        private void HideWeatherImageStoryboard_Completed(object sender,
+            EventArgs args)
+        {
+            showClockFaceStoryboard.Begin(this, true);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже приведены некоторые подробности, на которые следует обратить внимание.</p>
+<ul>
+<li><p>Создание обработчика кнопки</p>
+<pre><code class="lang-csharp" name="ThreadingWeatherForecast#ThreadingWeatherButtonHandler">private void ForecastButtonHandler(object sender, RoutedEventArgs e)
+{
+    // Change the status image and start the rotation animation.
+    fetchButton.IsEnabled = false;
+    fetchButton.Content = &quot;Contacting Server&quot;;
+    weatherText.Text = &quot;&quot;;
+    hideWeatherImageStoryboard.Begin(this);
+
+    // Start fetching the weather forecast asynchronously.
+    NoArgDelegate fetcher = new NoArgDelegate(
+        this.FetchWeatherFromServer);
+
+    fetcher.BeginInvoke(null, null);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<p>При нажатии кнопки мы отображаем рисунок часов и запускаем анимацию. Мы отключаем кнопку. Мы вызываем <code>FetchWeatherFromServer</code> метод в новом потоке, а затем мы возвращаем, позволяя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> для обработки событий во время ожидания сбора прогноза погоды.</p>
+<ul>
+<li><p>Выборка погоды</p>
+<pre><code class="lang-csharp" name="ThreadingWeatherForecast#ThreadingWeatherFetchWeather">private void FetchWeatherFromServer()
+{
+    // Simulate the delay from network access.
+    Thread.Sleep(4000);
+
+    // Tried and true method for weather forecasting - random numbers.
+    Random rand = new Random();
+    String weather;
+
+    if (rand.Next(2) == 0)
+    {
+        weather = &quot;rainy&quot;;
+    }
+    else
+    {
+        weather = &quot;sunny&quot;;
+    }
+
+    // Schedule the update function in the UI thread.
+    tomorrowsWeather.Dispatcher.BeginInvoke(
+        System.Windows.Threading.DispatcherPriority.Normal,
+        new OneArgDelegate(UpdateUserInterface),
+        weather);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<p>Для простоты мы фактически не используем никакого сетевого кода в данном примере. Вместо этого мы моделируем задержку доступа к сети, задав для нашего нового потока спящий режим в течение четырех секунд. В настоящее время исходного ИП поток по-прежнему выполняется и реагирование на события. Чтобы показать это, была оставлена запущенная анимация, и кнопки свертывания и развертывания также продолжают работать.</p>
+<p>После завершения задержки и случайного выбора прогноза погоды, настала пора докладываю ИП потока. Это делается путем создания расписания для вызова <code>UpdateUserInterface</code> в ИП потока с помощью этого потока <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>. В запланированный вызов этого метода передается строка, описывающая погоду.</p>
+<ul>
+<li><p>Обновление ИП</p>
+<pre><code class="lang-csharp" name="ThreadingWeatherForecast#ThreadingWeatherUpdateUI">private void UpdateUserInterface(String weather)
+{
+    //Set the weather image
+    if (weather == &quot;sunny&quot;)
+    {
+        weatherIndicatorImage.Source = (ImageSource)this.Resources[
+            &quot;SunnyImageSource&quot;];
+    }
+    else if (weather == &quot;rainy&quot;)
+    {
+        weatherIndicatorImage.Source = (ImageSource)this.Resources[
+            &quot;RainingImageSource&quot;];
+    }
+
+    //Stop clock animation
+    showClockFaceStoryboard.Stop(this);
+    hideClockFaceStoryboard.Begin(this);
+
+    //Update UI text
+    fetchButton.IsEnabled = true;
+    fetchButton.Content = &quot;Fetch Forecast&quot;;
+    weatherText.Text = weather;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> в ИП времени у потока, он выполняет запланированный вызов метода <code>UpdateUserInterface</code>. Этот метод останавливает анимацию часов и выбирает изображение для описания погоды. Он отображает это изображение и восстанавливает кнопку &quot;Получить прогноз погоды&quot;.</p>
+<p><a name="multi_browser"></a></p>
+<h3 id="multiple-windows-multiple-threads">Несколько окон, несколько потоков</h3>
+<p>Некоторые WPF приложениям требуется несколько окон верхнего уровня. Тогда вполне приемлемым для одного потока /<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> наилучшим образом сочетания для управления окнами, но иногда несколько потоков. Это особенно верно, когда существует возможность, что одно из окон будет монополизировать поток.</p>
+<p>Windows Обозреватель работает таким образом. Каждое новое окно проводника принадлежит исходному процессу, однако оно создается под управлением независимого потока.</p>
+<p>С помощью WPF<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> элемента управления, мы можем отобразить веб-страниц. Можно легко создать простой Internet Explorer заменить. Начнем с важной функции: возможности открыть новое окно браузера. Когда пользователь нажимает кнопку &quot;Новое окно&quot;, запускается копия окна в отдельном потоке. Таким образом, долго выполняющиеся или блокирующие операции в одном из окон не блокируют все остальные окна.</p>
+<p>На самом деле у браузера имеется своя собственная сложная поточная модель. Мы выбрали его, поскольку он знаком большинству читателей.</p>
+<p>В следующем примере показан код.</p>
+<pre><code class="lang-xaml" name="ThreadingMultipleBrowsers#ThreadingMultiBrowserXAML">&lt;Window x:Class=&quot;SDKSamples.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;MultiBrowse&quot;
+    Height=&quot;600&quot; 
+    Width=&quot;800&quot;
+    Loaded=&quot;OnLoaded&quot;
+    &gt;
+  &lt;StackPanel Name=&quot;Stack&quot; Orientation=&quot;Vertical&quot;&gt;
+    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+      &lt;Button Content=&quot;New Window&quot;
+              Click=&quot;NewWindowHandler&quot; /&gt;
+      &lt;TextBox Name=&quot;newLocation&quot;
+               Width=&quot;500&quot; /&gt;
+      &lt;Button Content=&quot;GO!&quot;
+              Click=&quot;Browse&quot; /&gt;
+    &lt;/StackPanel&gt;
+
+    &lt;Frame Name=&quot;placeHolder&quot;
+            Width=&quot;800&quot;
+            Height=&quot;550&quot;&gt;&lt;/Frame&gt;
+  &lt;/StackPanel&gt;
+&lt;/Window&gt;
+</code></pre><pre><code class="lang-csharp" name="ThreadingMultipleBrowsers#ThreadingMultiBrowserCodeBehind">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Threading;
+using System.Threading;
+
+namespace SDKSamples
+{
+    public partial class Window1 : Window
+    {
+
+        public Window1() : base()
+        {
+            InitializeComponent();
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+           placeHolder.Source = new Uri(&quot;http://www.msn.com&quot;);
+        }
+
+        private void Browse(object sender, RoutedEventArgs e)
+        {
+            placeHolder.Source = new Uri(newLocation.Text);
+        }
+
+        private void NewWindowHandler(object sender, RoutedEventArgs e)
+        {
+            Thread newWindowThread = new Thread(new ThreadStart(ThreadStartingPoint));
+            newWindowThread.SetApartmentState(ApartmentState.STA);
+            newWindowThread.IsBackground = true;
+            newWindowThread.Start();
+        }
+
+        private void ThreadStartingPoint()
+        {
+            Window1 tempWindow = new Window1();
+            tempWindow.Show();
+            System.Windows.Threading.Dispatcher.Run();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В данном контексте наиболее интересными являются следующие сегменты потоков этого кода:</p>
+<pre><code class="lang-csharp" name="ThreadingMultipleBrowsers#ThreadingMultiBrowserNewWindow">private void NewWindowHandler(object sender, RoutedEventArgs e)
+{
+    Thread newWindowThread = new Thread(new ThreadStart(ThreadStartingPoint));
+    newWindowThread.SetApartmentState(ApartmentState.STA);
+    newWindowThread.IsBackground = true;
+    newWindowThread.Start();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Этот метод вызывается при нажатии кнопки &quot;Новое окно&quot;. Она создает новый поток и запускает его в асинхронном режиме.</p>
+<pre><code class="lang-csharp" name="ThreadingMultipleBrowsers#ThreadingMultiBrowserThreadStart">private void ThreadStartingPoint()
+{
+    Window1 tempWindow = new Window1();
+    tempWindow.Show();
+    System.Windows.Threading.Dispatcher.Run();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Этот метод является начальной точкой для нового потока. Мы создаем новое окно под элементом управления этого потока. WPF автоматически создает новую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> для управления новым потоком. Все что нужно сделать для обеспечения функциональности окна — начать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>.</p>
+<p><a name="stumbling_points"></a></p>
+<h2 id="technical-details-and-stumbling-points">Технические подробности и важные моменты</h2>
+<h3 id="writing-components-using-threading">Написание компонентов, использующих поток</h3>
+<p>Руководство разработчика Microsoft .NET Framework описывается шаблон того, как компонент может предоставлять асинхронное поведение для своих клиентов (см. в разделе <a href="../../../standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview.md">Обзор асинхронной модели на основе событий</a>). Например, предположим, что нужно упаковать <code>FetchWeatherFromServer</code> метод в неграфический компонент многократного использования. Следующий стандартный шаблон Microsoft .NET Framework это будет выглядеть примерно следующим образом.</p>
+<pre><code class="lang-csharp" name="CommandingOverviewSnippets#ThreadingArticleWeatherComponent1">public class WeatherComponent : Component
+{
+    //gets weather: Synchronous
+    public string GetWeather()
+    {
+        string weather = &quot;&quot;;
+
+        //predict the weather
+
+        return weather;
+    }
+
+    //get weather: Asynchronous
+    public void GetWeatherAsync()
+    {
+        //get the weather
+    }
+
+    public event GetWeatherCompletedEventHandler GetWeatherCompleted;
+}
+
+public class GetWeatherCompletedEventArgs : AsyncCompletedEventArgs
+{
+    public GetWeatherCompletedEventArgs(Exception error, bool canceled,
+        object userState, string weather)
+        :
+        base(error, canceled, userState)
+    {
+        _weather = weather;
+    }
+
+    public string Weather
+    {
+        get { return _weather; }
+    }
+    private string _weather;
+}
+
+public delegate void GetWeatherCompletedEventHandler(object sender,
+    GetWeatherCompletedEventArgs e);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>GetWeatherAsync</code> использовать один из методов, описанных выше, таких как создание фонового потока, для работы в асинхронном режиме, не блокируя вызывающий поток.</p>
+<p>Одна из наиболее важных частей этого шаблона является вызов <em>имя_метода</em> <code>Completed</code> метод в том же потоке, который вызвал <em>имя_метода</em> <code>Async</code> метод начинается с. Это можно сделать с помощью WPF довольно просто, сохранив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.currentdispatcher">CurrentDispatcher</a>, но затем неграфический компонент может использоваться только в WPF приложений, не в Windows Forms или ASP.NET программы.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatchersynchronizationcontext">DispatcherSynchronizationContext</a> Класс адреса этой задачи — представляйте его упрощенную версию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> , работает с другими ИП также платформ.</p>
+<pre><code class="lang-csharp" name="CommandingOverviewSnippets#ThreadingArticleWeatherComponent2">public class WeatherComponent2 : Component
+{
+    public string GetWeather()
+    {
+        return fetchWeatherFromServer();
+    }
+
+    private DispatcherSynchronizationContext requestingContext = null;
+
+    public void GetWeatherAsync()
+    {
+        if (requestingContext != null)
+            throw new InvalidOperationException(&quot;This component can only handle 1 async request at a time&quot;);
+
+        requestingContext = (DispatcherSynchronizationContext)DispatcherSynchronizationContext.Current;
+
+        NoArgDelegate fetcher = new NoArgDelegate(this.fetchWeatherFromServer);
+
+        // Launch thread
+        fetcher.BeginInvoke(null, null);
+    }
+
+    private void RaiseEvent(GetWeatherCompletedEventArgs e)
+    {
+        if (GetWeatherCompleted != null)
+            GetWeatherCompleted(this, e);
+    }
+
+    private string fetchWeatherFromServer()
+    {
+        // do stuff
+        string weather = &quot;&quot;;
+
+        GetWeatherCompletedEventArgs e =
+            new GetWeatherCompletedEventArgs(null, false, null, weather);
+
+        SendOrPostCallback callback = new SendOrPostCallback(DoEvent);
+        requestingContext.Post(callback, e);
+        requestingContext = null;
+
+        return e.Weather;
+    }
+
+    private void DoEvent(object e)
+    {
+        //do stuff
+    }
+
+    public event GetWeatherCompletedEventHandler GetWeatherCompleted;
+    public delegate string NoArgDelegate();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="nested-pumping">Вложенная накачка</h3>
+<p>Иногда нецелесообразно полностью заблокировать ИП потока. Давайте рассмотрим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox.show">Show</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox">MessageBox</a> класса. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox.show">Show</a> не возвращает, пока пользователь не щелкнет &quot;ОК&quot;. Однако он создает окно, которое должно иметь цикл обработки сообщений, чтобы быть интерактивным. Ожидая, когда пользователь нажмет кнопку &quot;ОК&quot;, исходное окно приложения не отвечает на ввод данных пользователем. Тем не менее оно продолжает обрабатывать сообщения отображения. Исходное окно перерисовывается при его перекрытии и выведении.</p>
+<p><img src="media/threading-model/threading-message-loop.png" alt="Снимок экрана, показывающий MessageBox с кнопку &quot;ОК&quot;"></p>
+<p>Данное окно сообщения должно подчиняться какому-либо потоку. WPF создать новый поток специально для данного окна сообщения, но этот поток сможет отображать отключенные элементы в исходном окне (вспомните предыдущее обсуждение взаимного исключения). Вместо этого WPF использует систему обработки вложенных сообщений. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> Класс включает специальный метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.pushframe">PushFrame</a>, который хранит текущей точки выполнения приложения, затем начинает новый цикл обработки сообщений. После завершения цикла обработки вложенных сообщений выполнение возобновляется после исходного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.pushframe">PushFrame</a> вызова.</p>
+<p>В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.pushframe">PushFrame</a> поддерживает программный контекст при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox">MessageBox</a>.<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox.show">Show</a>, и он начинает новый цикл обработки сообщений для перерисовки фона окна и обработки входных данных для окна сообщения. Когда пользователь нажимает кнопку ОК и очищает всплывающее окно, вложенные циклы завершаются и управление возобновляется после вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox.show">Show</a>.</p>
+<h3 id="stale-routed-events">Устаревшие перенаправленные события</h3>
+<p>Маршрутизация системы обработки событий в WPF уведомляет все деревья, когда вызываются события.</p>
+<pre><code class="lang-xaml" name="InputOvw#ThreadingArticleStaticRoutedEvent">&lt;Canvas MouseLeftButtonDown=&quot;handler1&quot; 
+        Width=&quot;100&quot;
+        Height=&quot;100&quot;
+        &gt;
+  &lt;Ellipse Width=&quot;50&quot;
+           Height=&quot;50&quot;
+           Fill=&quot;Blue&quot; 
+           Canvas.Left=&quot;30&quot;
+           Canvas.Top=&quot;50&quot; 
+           MouseLeftButtonDown=&quot;handler2&quot;
+           /&gt;
+&lt;/Canvas&gt;
+</code></pre>
+<p>При нажатии левой кнопки мыши над эллипсом, <code>handler2</code> выполняется. После <code>handler2</code> окончания события передается вдоль <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> объект, который использует <code>handler1</code> для его обработки. Это происходит только в том случае, если <code>handler2</code> не задает явно пометить объект события как обработанные.</p>
+<p>Возможно, <code>handler2</code> займет немало времени, обработка этого события. <code>handler2</code> может использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.pushframe">PushFrame</a> для начала цикла вложенных сообщений, который не возвращает часов. Если <code>handler2</code> не помечает событие как обработанное после цикла обработки сообщений завершить, событие передается вверх по дереву, несмотря на то, что оно является очень старым.</p>
+<h3 id="reentrancy-and-locking">Повторный вход и блокировка</h3>
+<p>Механизм блокировки среда CLR не ведут себя точно так, как это можно представить; можно ожидать, что поток полностью завершает операцию, запрашивая блокировку. В действительности поток продолжает получать и обрабатывать сообщения с высоким приоритетом. Это помогает избежать взаимоблокировок и максимально повышает скорость отклика интерфейсов, но может приводить к незначительным ошибкам.  Подавляющее большинство времени, не нужно ничего знать об этом, но в редких случаях (как правило с участием Win32 сообщения окна или компоненты COM STA) это может быть знания.</p>
+<p>Большинство интерфейсов построено без учета безопасности потоков не так, как разработчики работают в предположении, что ИП никогда не осуществляется более чем одним потоком. В данном случае, что вносимые одним потоком при изменении среды в непредвиденное время неблагоприятные последствия, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcherobject">DispatcherObject</a> предполагается механизм взаимного исключения. Рассмотрим следующий псевдокод:</p>
+<p><img src="media/threading-model/threading-reentrancy.png" alt="Схема, показывает, работа с потоками повторный вход. " title="ThreadingReentrancy"></p>
+<p>Большую часть времени все работает правильно, но бывают случаи, в WPF где непредвиденный повторный вход может действительно вызвать проблемы. В этом случае в некий ключевой момент WPF вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.disableprocessing">DisableProcessing</a>, который меняет инструкцию блокировки для этого потока использовать WPF свободную от повторного входа блокировку, вместо обычной CLR блокировки.</p>
+<p>Так почему было CLR team выбрала такое поведение? Это было связано с объектами COM STA и завершением потока. Когда объект удаляется сборщиком мусора, его <code>Finalize</code> метод выполняется в выделенном потоке метода завершения, не ИП потока. Этой последовательности заключена проблема, так как объект COM STA, который был создан на ИП поток может быть удален только в ИП потока. CLR Предоставляет эквивалент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a> (в данном случае с помощью Win32 <code>SendMessage</code>). Но если ИП поток занят, поток метода завершения устаревает, и объект COM STA не удается завершить, что приводит к серьезной утечке памяти. Поэтому CLR создала сложный вызов для создания блокировки работать так, они делают.</p>
+<p>Задача для WPF — избежать непредвиденного повторного входа без внесения утечки памяти, поэтому мы не блокируем где.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160038">Однопоточного приложения с образцом выполняющейся длительное время вычисления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

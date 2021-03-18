@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1072;&#1079;&#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1077; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1072;&#1079;&#1088;&#1077;&#1096;&#1077;&#1085;&#1080;&#1077; &#1079;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="resolve-assembly-loads">Разрешение загрузки сборок</h1>
+
+<p>В .NET имеется событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AppDomain.AssemblyResolve</a> для приложений, требующих дополнительного управления загрузкой сборок. Обрабатывая это событие, приложение может загружать сборку в контекст загрузки не из каталогов, где обычно осуществляется поиск, выбирать, какую из версий сборки загрузить, создавать динамическую сборку и возвращать ее и многое другое. В этом разделе описывается использование события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Для разрешения загрузки сборок в контексте только для отражения используйте событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.reflectiononlyassemblyresolve">AppDomain.ReflectionOnlyAssemblyResolve</a>.</p>
+</div>
+<h2 id="how-the-assemblyresolve-event-works">Принцип действия события AssemblyResolve</h2>
+<p>При регистрации обработчика для события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a> обработчик вызывается каждый раз, когда среда выполнения не может связать сборку по имени. Например, вызов следующих методов из пользовательского кода может привести к возникновению события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a>.</p>
+<ul>
+<li><p>Перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.load">AppDomain.Load</a> или перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load">Assembly.Load</a>, где первым аргументом является строка, представляющая отображаемое имя загружаемой сборки (то есть строка, возвращаемая свойством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.fullname">Assembly.FullName</a>).</p>
+</li>
+<li><p>Перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.load">AppDomain.Load</a> или перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load">Assembly.Load</a>, где первым аргументом является объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname">AssemblyName</a>, идентифицирующий загружаемую сборку.</p>
+</li>
+<li><p>Перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadwithpartialname">Assembly.LoadWithPartialName</a>.</p>
+</li>
+<li><p>Перегрузка метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.createinstance">AppDomain.CreateInstance</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.createinstanceandunwrap">AppDomain.CreateInstanceAndUnwrap</a>, создающая объект в другом домене приложения.</p>
+</li>
+</ul>
+<h3 id="what-the-event-handler-does">Действия обработчика событий</h3>
+<p>Обработчик события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a> получает отображаемое имя сборки, которую необходимо загрузить, в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resolveeventargs.name">ResolveEventArgs.Name</a>. Если обработчик не распознает имя сборки, он возвращает значение <code>null</code> (C#), <code>Nothing</code> (Visual Basic) или <code>nullptr</code> (Visual C++).</p>
+<p>Если обработчик распознает имя сборки, он может загрузить и вернуть сборку, отвечающую запросу. Ниже перечислены некоторые возможные сценарии.</p>
+<ul>
+<li><p>Если обработчик знает место расположения версии сборки, он может загрузить сборку с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadfrom">Assembly.LoadFrom</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadfile">Assembly.LoadFile</a> и, если все прошло удачно, вернуть загруженную сборку.</p>
+</li>
+<li><p>Если у обработчика есть доступ к базе данных сборок, хранимых в виде массивов байтов, он может загрузить массив байтов с помощью одной из перегрузок метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load">Assembly.Load</a>, принимающих массив байтов.</p>
+</li>
+<li><p>Обработчик может создать динамическую сборку и вернуть ее.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Обработчик должен загружать сборку в контекст, из которого ведется загрузка, в контекст загрузки или без контекста. Если обработчик загружает сборку в контекст только для отражения с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.reflectiononlyload">Assembly.ReflectionOnlyLoad</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.reflectiononlyloadfrom">Assembly.ReflectionOnlyLoadFrom</a>, попытка загрузки, вызвавшая событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a>, завершается неудачно.</p>
+</div>
+<p>Ответственность за возврат подходящей сборки лежит на обработчике событий. Обработчик может обработать отображаемое имя запрошенной сборки, передав значение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resolveeventargs.name">ResolveEventArgs.Name</a> в конструктор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assemblyname.-ctor#System_Reflection_AssemblyName__ctor_System_String_">AssemblyName(String)</a>. Начиная с .NET Framework 4, обработчик может использовать свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resolveeventargs.requestingassembly">ResolveEventArgs.RequestingAssembly</a> для определения, находится ли текущий запрос в зависимости от другой сборки. Эта информация может помочь найти сборку, которая удовлетворит зависимость.</p>
+<p>Обработчик событий может вернуть версию сборки, отличную от запрошенной.</p>
+<p>В большинстве случаев сборка, возвращенная обработчиком, появляется в контексте загрузки, независимо от контекста, в который загружает ее обработчик. Например, если обработчик использует метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadfrom">Assembly.LoadFrom</a> для загрузки сборки в контекст, из которого ведется загрузка, сборка появляется в контексте загрузки, когда обработчик возвращает ее. Но в следующем случае возвращенная обработчиком сборка появится без контекста.</p>
+<ul>
+<li><p>Обработчик загружает сборку без контекста.</p>
+</li>
+<li><p>Значение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resolveeventargs.requestingassembly">ResolveEventArgs.RequestingAssembly</a> отличается от NULL.</p>
+</li>
+<li><p>Запрашивающая сборка (то есть сборка, возвращенная свойством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.resolveeventargs.requestingassembly">ResolveEventArgs.RequestingAssembly</a>) загружена без контекста.</p>
+</li>
+</ul>
+<p>Сведения о контекстах см. в разделе о перегрузке метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.loadfrom#System_Reflection_Assembly_LoadFrom_System_String_">Assembly.LoadFrom(String)</a>.</p>
+<p>Несколько версий одной сборки можно загрузить в один домен приложения. Делать так не рекомендуется, так как это может привести к проблемам назначения типа. См. раздел <a href="../../framework/deployment/best-practices-for-assembly-loading.md">Рекомендации для загрузки сборок</a>.</p>
+<h3 id="what-the-event-handler-should-not-do">Чего не должен делать обработчик событий</h3>
+<p>Основное правило обработки события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a> заключается в том, что не следует пытаться вернуть сборку, которая не распознается. При написании обработчика следует учитывать, какие сборки могут вызвать событие. Обработчик должен возвращать значение NULL для других сборок.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Начиная с .NET Framework 4 событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a> вызывается для вспомогательных сборок. Это изменение затрагивает обработчик событий, написанный для более ранней версии .NET Framework, если обработчик пытается разрешить все запросы на загрузку сборок. Это изменение не затрагивает обработчики событий, игнорирующие нераспознанные сборки. Такие обработчики возвращают значение NULL, и срабатывают обычные резервные механизмы.</p>
+</div>
+<p>При загрузке сборки обработчик событий не должен использовать какую-либо из перегрузок метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.load">AppDomain.Load</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.load">Assembly.Load</a>, которые могут вызвать рекурсивное возникновение события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain.assemblyresolve">AssemblyResolve</a>, так как это может привести к переполнению стека. (См. список выше в этом разделе.) Это происходит, даже если обрабатывать исключения, так как исключение не создается, пока все обработчики событий не закончат возврат. Таким образом, следующий код приведет к переполнению стека, если объект <code>MyAssembly</code> не будет найден.</p>
+<pre><code class="lang-cpp">using namespace System;
+using namespace System::Reflection;
+
+ref class Example
+{
+internal:
+    static Assembly^ MyHandler(Object^ source, ResolveEventArgs^ e)
+    {
+        Console::WriteLine(&quot;Resolving {0}&quot;, e-&gt;Name);
+        return Assembly::Load(e-&gt;Name);
+    }
+};
+
+void main()
+{
+    AppDomain^ ad = AppDomain::CreateDomain(&quot;Test&quot;);
+    ad-&gt;AssemblyResolve += gcnew ResolveEventHandler(&amp;Example::MyHandler);
+
+    try
+    {
+        Object^ obj = ad-&gt;CreateInstanceAndUnwrap(
+            &quot;MyAssembly, version=1.2.3.4, culture=neutral, publicKeyToken=null&quot;,
+            &quot;MyType&quot;);
+    }
+    catch (Exception^ ex)
+    {
+        Console::WriteLine(ex-&gt;Message);
+    }
+}
+
+/* This example produces output similar to the following:
+
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+...
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+
+Process is terminated due to StackOverflowException.
+ */
+</code></pre>
+<pre><code class="lang-csharp">using System;
+using System.Reflection;
+
+class BadExample
+{
+    static void Main()
+    {
+        AppDomain ad = AppDomain.CreateDomain(&quot;Test&quot;);
+        ad.AssemblyResolve += MyHandler;
+
+        try
+        {
+            object obj = ad.CreateInstanceAndUnwrap(
+                &quot;MyAssembly, version=1.2.3.4, culture=neutral, publicKeyToken=null&quot;,
+                &quot;MyType&quot;);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    static Assembly MyHandler(object source, ResolveEventArgs e)
+    {
+        Console.WriteLine(&quot;Resolving {0}&quot;, e.Name);
+        return Assembly.Load(e.Name);
+    }
+}
+
+/* This example produces output similar to the following:
+
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+...
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+
+Process is terminated due to StackOverflowException.
+ */
+</code></pre>
+<pre><code class="lang-vb">Imports System.Reflection
+
+Class BadExample
+
+    Shared Sub Main()
+
+        Dim ad As AppDomain = AppDomain.CreateDomain(&quot;Test&quot;)
+        AddHandler ad.AssemblyResolve, AddressOf MyHandler
+
+        Try
+            Dim obj As object = ad.CreateInstanceAndUnwrap(
+                &quot;MyAssembly, version=1.2.3.4, culture=neutral, publicKeyToken=null&quot;,
+                &quot;MyType&quot;)
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
+
+    Shared Function MyHandler(ByVal source As Object, _
+                              ByVal e As ResolveEventArgs) As Assembly
+        Console.WriteLine(&quot;Resolving {0}&quot;, e.Name)
+        Return Assembly.Load(e.Name)
+    End Function
+End Class
+
+' This example produces output similar to the following:
+'
+'Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+'Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+'...
+'Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+'Resolving MyAssembly, Version=1.2.3.4, Culture=neutral, PublicKeyToken=null
+'
+'Process is terminated due to StackOverflowException.
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../framework/deployment/best-practices-for-assembly-loading.md">Рекомендации для загрузки сборок</a></li>
+<li><a href="../../framework/app-domains/use.md">Использование доменов приложений</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

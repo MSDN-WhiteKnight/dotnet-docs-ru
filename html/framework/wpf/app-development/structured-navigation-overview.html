@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1085;&#1086;&#1081; &#1085;&#1072;&#1074;&#1080;&#1075;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1085;&#1086;&#1081; &#1085;&#1072;&#1074;&#1080;&#1075;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="structured-navigation-overview">Общие сведения о структурной навигации</h1>
+
+<p>Содержимое, которое может размещаться в Приложение обозревателя XAML (XBAP), <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> состоит из страниц, которые могут быть идентифицированы пакетом универсальные идентификаторы ресурсов (URI) и просматриваться с помощью гиперссылок. Структура страниц и способы навигации по ним с помощью гиперссылок называется топологией навигации. Такая топология подходит для различных типов приложений, особенно тех, в которых необходим переход по документам. В таких приложениях пользователь может перемещаться с одной страницы на другую даже при отсутствии связи между ними.</p>
+<p>Тем не менее другие типы приложений содержат страницы, которым необходимо ссылаться друг на друга. Например, рассмотрим приложение управления персоналом, в котором есть одна страница со списком всех сотрудников организации — страница &quot;Список сотрудников&quot;. На этой странице пользователи также могут добавить нового сотрудника, щелкнув гиперссылку. При ее щелчке открывается новая страница &quot;Добавить сотрудника&quot;, на которой собираются сведения о новом сотруднике и возвращаются на страницу &quot;Список сотрудников&quot;. При этом создается новый сотрудник и обновляется список. Этот стиль навигации аналогичен вызову метода для выполнения обработки и возврата значения, который называется структурным программированием. Таким образом, этот стиль навигации называется <em>структурной навигацией</em>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> Класс не реализует поддержку структурной навигации. Вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> класс является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и расширяет его с помощью основных конструкций, необходимых для структурной навигации. В этом разделе показано, как установить структурной навигации с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>.</p>
+<p><a name="Structured_Navigation"></a></p>
+<h2 id="structured-navigation">Структурная навигация</h2>
+<p>Когда одна страница вызывает другую в структурной навигации, необходимы некоторые или все из следующих видов поведения.</p>
+<ul>
+<li><p>Переход выполняется с вызывающей страницы на вызываемую. При этом могут передаваться параметры, необходимые вызываемой странице.</p>
+</li>
+<li><p>Когда пользователь завершает работу с вызывающей страницей, вызванная страница может возвращать вызывающей странице следующее:</p>
+<ul>
+<li><p>Возврат информации о состоянии, которая описывает, как была завершена работа с вызывающей страницей (например, пользователь нажал кнопку &quot;ОК&quot; или &quot;Отмена&quot;).</p>
+</li>
+<li><p>Возврат данных, которые были получены от пользователя (например, сведения о новом сотруднике).</p>
+</li>
+</ul>
+</li>
+<li><p>Когда вызывающая страница возвращается к вызываемой, вызванная страница удаляется из журнала навигации, чтобы изолировать один экземпляр вызываемой страницы от другого.</p>
+</li>
+</ul>
+<p>Эти виды поведения показаны на следующем рисунке:</p>
+<p><img src="media/structured-navigation-overview/flow-between-calling-page-called-page.png" alt="Снимок экрана показан поток между вызывающей и вызываемой страницей."></p>
+<p>Эти поведения можно реализовать с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> качестве вызываемой страницы.</p>
+<p><a name="Structured_Navigation_with_PageFunction"></a></p>
+<h2 id="structured-navigation-with-pagefunction">Структурная навигация с помощью PageFunction</h2>
+<p>В этом разделе показано, как реализовать основной механизм структурной навигации с одним <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>. В этом образце <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> для получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a> от пользователя и вернуть его.</p>
+<h3 id="creating-a-calling-page">Создание вызывающей страницы</h3>
+<p>Страница, которая вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> может быть либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>. В этом примере это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, как показано в следующем коде.</p>
+<pre><code class="lang-xaml" name="StructuredNavigationSample#CallingPageDefaultMARKUP1">&lt;Page 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;StructuredNavigationSample.CallingPage&quot;
+    WindowTitle=&quot;Calling Page&quot; 
+    WindowWidth=&quot;250&quot; WindowHeight=&quot;150&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="StructuredNavigationSample#CallingPageDefaultMARKUP2">&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="StructuredNavigationSample#CallingPageDefaultCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CallingPage : Page
+    {
+        public CallingPage()
+        {
+            InitializeComponent();
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#CallingPageDefaultCODEBEHIND2">}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#CallingPageDefaultCODEBEHIND3">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="creating-a-page-function-to-call">Создание страничной функции для вызова</h3>
+<p>Поскольку вызывающая страница может использовать вызываемую страницу для сбора и возврата данных от пользователя, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> реализуется в виде универсального класса, тип аргумента которого определяет тип значения, возвращаемого вызываемой страницей. Следующий код показывает начальную реализацию вызываемой страницы, используя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>, который возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>.</p>
+<pre><code class="lang-xaml" name="StructuredNavigationSample#CalledPageFunctionMARKUP">&lt;PageFunction
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:sys=&quot;clr-namespace:System;assembly=mscorlib&quot; 
+    x:Class=&quot;StructuredNavigationSample.CalledPageFunction&quot;
+    x:TypeArguments=&quot;sys:String&quot;
+    Title=&quot;Page Function&quot; 
+    WindowWidth=&quot;250&quot; WindowHeight=&quot;150&quot;&gt;
+
+  &lt;Grid Margin=&quot;10&quot;&gt;
+
+    &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+      &lt;ColumnDefinition /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;!-- Data --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot;&gt;DataItem1:&lt;/Label&gt;
+    &lt;TextBox Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot; Name=&quot;dataItem1TextBox&quot;&gt;&lt;/TextBox&gt;
+
+    &lt;!-- Accept/Cancel buttons --&gt;
+    &lt;TextBlock Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot; HorizontalAlignment=&quot;Right&quot;&gt;
+      &lt;Button Name=&quot;okButton&quot; IsDefault=&quot;True&quot; MinWidth=&quot;50&quot;&gt;OK&lt;/Button&gt;
+      &lt;Button Name=&quot;cancelButton&quot; IsCancel=&quot;True&quot; MinWidth=&quot;50&quot;&gt;Cancel&lt;/Button&gt;
+    &lt;/TextBlock&gt;
+
+  &lt;/Grid&gt;
+
+&lt;/PageFunction&gt;
+</code></pre><pre><code class="lang-csharp" name="StructuredNavigationSample#CalledPageFunctionCODEBEHIND1">using System;
+using System.Windows;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CalledPageFunction : PageFunction&lt;String&gt;
+    {
+        public CalledPageFunction()
+        {
+            InitializeComponent();
+        }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#CalledPageFunctionCODEBEHIND2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Объявление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> похоже на объявление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с добавлением аргументов типа. Как видно из примера кода, аргументы типа указаны и в разметке XAML с помощью атрибута <code>x:TypeArguments</code>, и в коде программной части с помощью стандартного синтаксиса аргумента универсального типа.</p>
+<p>Не нужно использовать только классы .NET Framework в качестве аргументов типа. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> может быть вызван для сбора данных отдельного домена, которые абстрагированы как пользовательский тип. Ниже показано, как использовать пользовательский тип в качестве аргумента типа для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>.</p>
+<pre><code class="lang-csharp" name="CustomTypePageFunctionSnippets#CustomTypeCODE1">namespace SDKSample
+{
+    public class CustomType
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="CustomTypePageFunctionSnippets#CustomTypeCODE2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="CustomTypePageFunctionSnippets#CustomTypePageFunctionMARKUP1">&lt;PageFunction
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:local=&quot;clr-namespace:SDKSample&quot; 
+    x:Class=&quot;SDKSample.CustomTypePageFunction&quot;
+    x:TypeArguments=&quot;local:CustomType&quot;&gt;
+</code></pre><pre><code class="lang-xaml" name="CustomTypePageFunctionSnippets#CustomTypePageFunctionMARKUP2">&lt;/PageFunction&gt;
+</code></pre><pre><code class="lang-csharp" name="CustomTypePageFunctionSnippets#CustomTypePageFunctionCODEBEHIND1">using System.Windows.Navigation;
+
+namespace SDKSample
+{
+    public partial class CustomTypePageFunction : PageFunction&lt;CustomType&gt;
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="CustomTypePageFunctionSnippets#CustomTypePageFunctionCODEBEHIND2">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Аргументы типа для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> обеспечивают основу для связи между вызывающей и вызываемой страницами, которые рассматриваются в следующих разделах.</p>
+<p>Как вы увидите, тип, который идентифицируется с помощью объявления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> играет важную роль в возврате данных из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> вызывающей странице.</p>
+<h3 id="calling-a-pagefunction-and-passing-parameters">Вызов PageFunction и передача параметров</h3>
+<p>Чтобы вызвать страницу, вызывающая страница должна создать экземпляр вызываемой страницы и перейдите к нему с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice.navigate">Navigate</a> метод. Это позволяет вызывающей странице передавать вызываемой начальные данные, например, значения по умолчанию для данных, собираемых вызываемой страницей.</p>
+<p>В следующем коде показана вызываемая страница с нестандартным конструктором, который принимает параметры от вызывающей страницы.</p>
+<pre><code class="lang-csharp" name="StructuredNavigationSample#AcceptsInitialDataCODEBEHIND1">using System;
+using System.Windows;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CalledPageFunction : PageFunction&lt;String&gt;
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#AcceptsInitialDataCODEBEHIND2">public CalledPageFunction(string initialDataItem1Value)
+{
+    InitializeComponent();
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#AcceptsInitialDataCODEBEHIND3">    // Set initial value
+    this.dataItem1TextBox.Text = initialDataItem1Value;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#AcceptsInitialDataCODEBEHIND4">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем коде показано вызывающая страница, обрабатывающая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink.click">Click</a> событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> для создания экземпляра вызываемой страницы и передачи ей исходного строкового параметра.</p>
+<pre><code class="lang-xaml" name="StructuredNavigationSample#PassingDataMARKUP2">&lt;Hyperlink Name=&quot;pageFunctionHyperlink&quot;&gt;Call Page Function&lt;/Hyperlink&gt;
+</code></pre><pre><code class="lang-csharp" name="StructuredNavigationSample#PassingDataCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CallingPage : Page
+    {
+        public CallingPage()
+        {
+            InitializeComponent();
+            this.pageFunctionHyperlink.Click += new RoutedEventHandler(pageFunctionHyperlink_Click);
+        }
+        void pageFunctionHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Instantiate and navigate to page function
+            CalledPageFunction CalledPageFunction = new CalledPageFunction(&quot;Initial Data Item Value&quot;);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#PassingDataCODEBEHIND2">}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#PassingDataCODEBEHIND3">    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Необязательно передавать параметры вызываемой странице. Вместо этого можно сделать следующее.</p>
+<ul>
+<li><p>Из вызывающей страницы:</p>
+<ol>
+<li><p>Создать экземпляр вызываемой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> с помощью конструктора по умолчанию.</p>
+</li>
+<li><p>Параметры в Store <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.properties">Properties</a>.</p>
+</li>
+<li><p>Перейдите к вызываемому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>.</p>
+</li>
+</ol>
+</li>
+<li><p>Из вызванной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>:</p>
+<ul>
+<li>Получить и использовать параметры, сохраненные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.properties">Properties</a>.</li>
+</ul>
+</li>
+</ul>
+<p>Однако вскоре вы увидите, что и в этом случае потребуется код для создания экземпляра и перехода к вызываемой странице для сбора данных, возвращаемых вызываемой страницей. По этой причине <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> должен поддерживаться; в противном случае — значение, в следующий раз вы переходите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>, WPF создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> с помощью конструктора по умолчанию.</p>
+<p>Однако до возврата вызываемой страницы она должна вернуть данные, которые могут быть получены вызывающей страницей.</p>
+<h3 id="returning-task-result-and-task-data-from-a-task-to-a-calling-page">Возврат результата и данных задачи из задачи на вызывающую страницу</h3>
+<p>Когда пользователь закончит использовать вызываемую страницу (в данном примере он нажимает кнопку &quot;ОК&quot; или &quot;Отмена&quot;), необходим возврат вызываемой страницы. Поскольку вызывающая страница использовала вызываемую для сбора данных от пользователя, вызывающей странице необходимо два типа информации:</p>
+<ol>
+<li><p>Отменил ли пользователь вызываемую страницу (нажав кнопку &quot;ОК&quot; или &quot;Отмена&quot; в этом примере). Это позволяет вызывающей странице определить, следует ли обрабатывать данные, собранные вызывающей страницей от пользователя.</p>
+</li>
+<li><p>Данные, предоставленные пользователем.</p>
+</li>
+</ol>
+<p>Для получения сведений, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> метод. В следующем коде показан его вызов.</p>
+<pre><code class="lang-csharp" name="StructuredNavigationSample#ReturnCODEBEHIND1">using System;
+using System.Windows;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CalledPageFunction : PageFunction&lt;String&gt;
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#ReturnCODEBEHIND2">        void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Accept when Ok button is clicked
+            OnReturn(new ReturnEventArgs&lt;string&gt;(this.dataItem1TextBox.Text));
+        }
+
+        void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Cancel
+            OnReturn(null);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В этом примере, если пользователь нажимает кнопку &quot;Отмена&quot;, значение <code>null</code> возвращается вызывающей странице. Если нажата кнопка &quot;ОК&quot;, возвращается строковый параметр, предоставленный пользователем. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> является <code>protected virtual</code> метод, который вы вызываете для возврата данных вызывающей странице. Данные необходимо упаковать в экземпляре универсального <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.returneventargs-1">ReturnEventArgs&lt;T&gt;</a> тип, тип аргумента которого определяет тип значения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.returneventargs-1.result">Result</a> возвращает. Таким образом, при объявлении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> с определенным аргументом типа, вы заявляете, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> возвращает экземпляр типа, указанного аргументом типа. В этом примере аргумент типа и, следовательно, возвращаемое значение имеет тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>.</p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> называется вызывающей странице требуется способ получения возвращаемого значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a>. По этой причине <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.return">Return</a> событие для вызывающей страницы для обработки. При <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.return">Return</a> вызывается, поэтому вызывающая страница может зарегистрироваться с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.return">Return</a> для получения уведомлений.</p>
+<pre><code class="lang-csharp" name="StructuredNavigationSample#ProcessResultCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace StructuredNavigationSample
+{
+    public partial class CallingPage : Page
+    {
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="StructuredNavigationSample#ProcessResultCODEBEHIND2">        void pageFunctionHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Instantiate and navigate to page function
+            CalledPageFunction CalledPageFunction = new CalledPageFunction(&quot;Initial Data Item Value&quot;);
+            CalledPageFunction.Return += pageFunction_Return;
+            this.NavigationService.Navigate(CalledPageFunction);
+        }
+        void pageFunction_Return(object sender, ReturnEventArgs&lt;string&gt; e)
+        {
+            this.pageFunctionResultsTextBlock.Visibility = Visibility.Visible;
+
+            // Display result
+            this.pageFunctionResultsTextBlock.Text = (e != null ? &quot;Accepted&quot; : &quot;Canceled&quot;);
+
+            // If page function returned, display result and data
+            if (e != null)
+            {
+                this.pageFunctionResultsTextBlock.Text += &quot;\n&quot; + e.Result;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="removing-task-pages-when-a-task-completes">Удаление страниц задачи после завершения задачи</h3>
+<p>Когда вызываемая страница возвращается и пользователь не отменяет ее, вызывающая страница будет обрабатывать данные, предоставленные пользователем и возвращенные вызываемой страницей. Сбор данных таким способом, как правило, является изолированным действием. Когда возвращается вызываемая страница, вызывающей странице необходимо создать новую вызывающую страницу и перейти к ней для сбора дополнительных данных.</p>
+<p>Однако, если вызываемая страница не удалена из журнала, пользователь сможет перейти обратно к предыдущему экземпляру вызывающей страницы. Ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> сохраняется в журнале, определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunctionbase.removefromjournal">RemoveFromJournal</a> свойство. По умолчанию — страничная функция автоматически удаляется, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> называется, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunctionbase.removefromjournal">RemoveFromJournal</a> присваивается <code>true</code>. Чтобы сохранить страничную функцию в журнале навигации после <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1.onreturn">OnReturn</a> вызывается, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunctionbase.removefromjournal">RemoveFromJournal</a> для <code>false</code>.</p>
+<p><a name="Other_Types_of_Structured_Navigation"></a></p>
+<h2 id="other-types-of-structured-navigation">Другие типы структурной навигации</h2>
+<p>В этом разделе показан самый простой метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a> для поддержки вызова/возврата структурной навигации. На этой основе можно создавать более сложные типы структурной навигации.</p>
+<p>Например, иногда вызывающей странице требуется несколько страниц для сбора достаточного количества данных от пользователя или выполнения задачи. Использование нескольких страниц называется &quot;мастер&quot;.</p>
+<p>В других случаях для эффективной работы приложения могут иметь сложные топологии переходов, зависящие от структурной навигации. Дополнительную информацию см. в разделе <a href="navigation-topologies-overview.html">Общие сведения о топологиях навигации</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.pagefunction-1">PageFunction&lt;T&gt;</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a></li>
+<li><a href="navigation-topologies-overview.html">Общие сведения о топологии переходов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

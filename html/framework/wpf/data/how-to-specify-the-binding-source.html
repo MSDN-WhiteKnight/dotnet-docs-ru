@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1077; &#1080;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;&#1072; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1077; &#1080;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;&#1072; &#1087;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-specify-the-binding-source">Практическое руководство. Указание источника привязки</h1>
+
+<p>В привязке данных объект источника привязки означает объект, из которого вы получаете данные. В этом разделе описываются различные способы указания источника привязки.</p>
+<h2 id="example">Пример</h2>
+<p>При привязке нескольких свойств к общему источнику вы хотите использовать свойство <code>DataContext</code>, которое предоставляет удобный способ для установления области применения, внутри которой все свойства с привязкой к данным наследуют общий источник.</p>
+<p>В следующем примере контекст данных устанавливается для корневого элемента приложения. Это позволяет всем дочерним элементам наследовать этот контекст данных. Данные для привязки поступают из настраиваемого класса данных <code>NetIncome</code>, ссылка на который устанавливается напрямую через сопоставления и которому присвоен ключ ресурса <code>incomeDataSource</code>.</p>
+<pre><code class="lang-xaml" name="DirectionalBinding#DataContext1">&lt;Grid
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;SDKSample.DirectionalBinding&quot;
+  xmlns:c=&quot;clr-namespace:SDKSample&quot;
+  Name=&quot;Page1&quot;
+&gt;
+  &lt;Grid.Resources&gt;
+    &lt;c:NetIncome x:Key=&quot;incomeDataSource&quot;/&gt;
+    &lt;Style TargetType=&quot;{x:Type TextBlock}&quot;&gt;
+      &lt;Setter Property=&quot;Padding&quot; Value=&quot;8&quot;/&gt;
+    &lt;/Style&gt;
+    &lt;Style TargetType=&quot;{x:Type TextBox}&quot;&gt;
+      &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,6,0,0&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/Grid.Resources&gt;
+  &lt;Grid.DataContext&gt;
+    &lt;Binding Source=&quot;{StaticResource incomeDataSource}&quot;/&gt;
+  &lt;/Grid.DataContext&gt;
+</code></pre><pre><code class="lang-xaml" name="DirectionalBinding#DataContext2">&lt;/Grid&gt;
+</code></pre>
+<p>В следующем примере показано определение класса <code>NetIncome</code>.</p>
+<pre><code class="lang-csharp" name="DirectionalBinding#DataObject">public class NetIncome : INotifyPropertyChanged
+{
+    private int totalIncome = 5000;
+    private int rent = 2000;
+    private int food = 0;
+    private int misc = 0;
+    private int savings = 0;
+    public NetIncome()
+    {
+        savings = totalIncome - (rent+food+misc);
+    }
+
+    public int TotalIncome
+    {
+        get
+        {
+            return totalIncome;
+        }
+        set
+        {
+            if( TotalIncome != value)
+            {
+                totalIncome = value;
+                OnPropertyChanged(&quot;TotalIncome&quot;);
+            }
+        }
+    }
+    public int Rent
+    {
+        get
+        {
+            return rent;
+        }
+        set
+        {
+            if( Rent != value)
+            {
+                rent = value;
+                OnPropertyChanged(&quot;Rent&quot;);
+                UpdateSavings();
+            }
+        }
+    }
+    public int Food
+    {
+        get
+        {
+            return food;
+        }
+        set
+        {
+            if( Food != value)
+            {
+                food = value;
+                OnPropertyChanged(&quot;Food&quot;);
+                UpdateSavings();
+            }
+        }
+    }
+    public int Misc
+    {
+        get
+        {
+            return misc;
+        }
+        set
+        {
+            if( Misc != value)
+            {
+                misc = value;
+                OnPropertyChanged(&quot;Misc&quot;);
+                UpdateSavings();
+            }
+        }
+    }
+    public int Savings
+    {
+        get
+        {
+            return savings;
+        }
+        set
+        {
+            if( Savings != value)
+            {
+                savings = value;
+                OnPropertyChanged(&quot;Savings&quot;);
+                UpdateSavings();
+            }
+        }
+    }
+
+    private void UpdateSavings()
+    {
+        Savings = TotalIncome - (Rent+Misc+Food);
+        if(Savings &lt; 0)
+        {}
+        else if(Savings &gt;= 0)
+        {}
+    }
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged(String info)
+    {
+        PropertyChangedEventHandler handler = PropertyChanged;
+        if (handler !=null)
+        {
+            handler(this, new PropertyChangedEventArgs(info));
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Приведенный выше пример создает экземпляр объекта в разметке и использует его в качестве ресурса. Если вы хотите выполнить привязку к объекту, экземпляр которого уже создан в коде, необходимо задать свойство <code>DataContext</code> программным способом. Пример см. в разделе <a href="how-to-make-data-available-for-binding-in-xaml.html">Обеспечение доступности данных для привязки в XAML</a>.</p>
+</div>
+<p>Кроме того, если вы хотите указать источник в отдельных привязках явным образом, доступны следующие варианты. Они имеют приоритет над наследуемым контекстом данных.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a></td>
+<td>Это свойство используется для задания экземпляра объекта в качестве источника. Если не требуется функциональность установки области видимости, в которой несколько свойств наследуют тот же контекст данных, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> вместо свойства <code>DataContext</code> свойство. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a></td>
+<td>Это полезно, когда требуется указать источник относительно того, где расположен целевой объект привязки. Это свойство можно использовать в некоторых типичных сценариях, например, если вы хотите выполнить привязку одного свойства элемента к другому свойству этого же элемента или при определении привязки в стиле или шаблоне. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a></td>
+<td>Укажите строку, представляющую элемент, к которому требуется привязать. Это полезно, когда требуется выполнить привязку к свойству другого элемента в вашем приложении. Например, если вы хотите использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.slider">Slider</a> для управления высотой другого элемента управления в приложении, или если вы хотите выполнить привязку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> элемента управления должно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.selectedvalue">SelectedValue</a> свойство вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элемента управления. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">FrameworkElement.DataContext</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement.datacontext">FrameworkContentElement.DataContext</a></li>
+<li><a href="../advanced/property-value-inheritance.html">Наследование значения свойства</a></li>
+<li><a href="data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="binding-declarations-overview.html">Общие сведения об объявлении привязок</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

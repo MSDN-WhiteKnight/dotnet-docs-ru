@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1077; &#1075;&#1088;&#1072;&#1092;&#1080;&#1082;&#1080; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1077; &#1075;&#1088;&#1072;&#1092;&#1080;&#1082;&#1080; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-graphics-rendering-overview">Общие сведения об отрисовке графики в WPF</h1>
+
+<p>В этом разделе приведены общие сведения о визуальном слое WPF. Основное внимание в нем уделено роли класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> в поддержке отрисовки в модели WPF.</p>
+<p><a name="role_of_visual_object"></a></p>
+<h2 id="role-of-the-visual-object">Роль объекта Visual</h2>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> — это базовая абстракция, и каждый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> является производным от него. Эта абстракция также служит точкой входа для написания новых элементов управления WPF, и во многих случаях ее можно рассматривать как аналог дескриптора окна (HWND) в модели приложений Win32.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> — это основной объект WPF, главная роль которого заключается в поддержке отрисовки. Элементы управления пользовательского интерфейса, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, являются производными от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> и используют его для сохранения данных отрисовки. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> обеспечивает поддержку следующих функций:</p>
+<ul>
+<li><p>Отображение выходных данных: Визуализация сохраненного, сериализованного содержимого визуального элемента.</p>
+</li>
+<li><p>Преобразования. Выполнение преобразования визуального элемента.</p>
+</li>
+<li><p>Отсечение: Позволяет указать область отсечения для визуального элемента.</p>
+</li>
+<li><p>Проверка нажатия: Определяет, содержится ли координата или геометрическая фигура в пределах границ визуального объекта.</p>
+</li>
+<li><p>Расчеты ограничивающих прямоугольников: Определение ограничивающего прямоугольника визуального объекта.</p>
+</li>
+</ul>
+<p>Однако объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> не включает поддержку функций, не относящихся к отрисовке, например:</p>
+<ul>
+<li><p>Обработка событий</p>
+</li>
+<li><p>Макет</p>
+</li>
+<li><p>Стили</p>
+</li>
+<li><p>Привязка данных</p>
+</li>
+<li><p>Глобализация</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> указывается в виде открытого абстрактный класс, из которого должны наследоваться дочерние классы. На следующем рисунке показана иерархия визуальных объектов, которые предоставляются в WPF.</p>
+<p><img src="media/wpf-graphics-rendering-overview/classes-derived-visual-object.png" alt="Схема классов, производных от Visual-объекта"></p>
+<h3 id="drawingvisual-class">Класс DrawingVisual</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> — упрощенный класс, используемый для отрисовки фигур, изображений и текста. Этот класс считается упрощенным, так как не предоставляет средств для работы с разметкой и обработку событий, что повышает его производительность. Поэтому этот класс идеально подходит для фоновых рисунков или клипов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> может быть использован для создания пользовательского визуального объекта. Дополнительные сведения см. в разделе <a href="using-drawingvisual-objects.html">Использование объектов DrawingVisual</a>.</p>
+<h3 id="viewport3dvisual-class">Класс Viewport3DVisual</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.viewport3dvisual">Viewport3DVisual</a> обеспечивает связь между двухмерными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> и объектами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.visual3d">Visual3D</a>. Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.visual3d">Visual3D</a> является базовым классом для всех трехмерных визуальных элементов. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.viewport3dvisual">Viewport3DVisual</a> необходимо определить значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.viewport3dvisual.camera">Camera</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.viewport3dvisual.viewport">Viewport</a>. Камера (Camera) позволяет просмотреть сцену. Окно просмотра (Viewport) определяет, где проекция преобразуется в двумерную поверхность. Дополнительные сведения о трехмерной графике в WPF см. в разделе <a href="3-d-graphics-overview.html">Общие сведения о трехмерной графике</a>.</p>
+<h3 id="containervisual-class">Класс ContainerVisual</h3>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.containervisual">ContainerVisual</a> используется как контейнер для коллекции объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a>. Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> является производным от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.containervisual">ContainerVisual</a>, поэтому он может содержать коллекцию визуальных объектов.</p>
+<h3 id="drawing-content-in-visual-objects">Рисование содержимого в объектах Visual</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> хранит свои данные отрисовки в виде <strong>списка инструкций векторной графики</strong>. Каждый элемент в списке инструкций представляет низкоуровневый набор графических данных и связанных ресурсов в сериализованном формате. Существует четыре различных типа данных отрисовки, которые могут включать графическое содержимое.</p>
+<table>
+<thead>
+<tr>
+<th>Тип содержимого для отрисовки</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Векторная графика</td>
+<td>Представляет векторные графические данные и все связанные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pen">Pen</a>.</td>
+</tr>
+<tr>
+<td>Изображение</td>
+<td>Представляет изображение в пределах области, определяемой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.rect">Rect</a>.</td>
+</tr>
+<tr>
+<td>Глиф</td>
+<td>Представляет рисунок, отображающий объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrun">GlyphRun</a>, который представляет собой последовательность глифов для указанного ресурса шрифта. Таким образом представляется текст.</td>
+</tr>
+<tr>
+<td>Видео</td>
+<td>Представляет рисунок, отображающий видео.</td>
+</tr>
+</tbody>
+</table>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> позволяет заполнять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> визуальным содержимым. При использовании команд рисования объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> фактически происходит сохранение набора данных отрисовки, которые позже будут использоваться графической системой; рисование на экране в режиме реального времени не выполняется.</p>
+<p>При создании элементов управления WPF, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, элемент управления неявно создает данные для своей отрисовки. Например, установка свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> заставляет его сохранить представление отрисовки для глифа.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> описывает свое содержимое в виде одного или нескольких объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a>, содержащихся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a>. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a> также описывает маски непрозрачности, преобразования, эффекты для точечных рисунков и другие операции, которые применяются к его содержимому. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a> При отрисовке содержимого операции, применяются в следующем порядке: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.opacitymask">OpacityMask</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.opacity">Opacity</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.bitmapeffect">BitmapEffect</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.clipgeometry">ClipGeometry</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.guidelineset">GuidelineSet</a>, а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.transform">Transform</a>.</p>
+<p>Ниже показан порядок, в котором операции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a> применяются при отрисовке.</p>
+<p><img src="media/graphcismm-drawinggroup-order.png" alt="Порядок операций для DrawingGroup" title="graphcismm_drawinggroup_order"><br>
+Порядок операций для DrawingGroup</p>
+<p>Дополнительные сведения см. в разделе <a href="drawing-objects-overview.html">Обзор объектов Drawing</a>.</p>
+<h4 id="drawing-content-at-the-visual-layer">Отображение содержимого на визуальном уровне</h4>
+<p>Вы никогда непосредственно не создаете экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>, однако можете получить контекст рисования с помощью определенных методов, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup.open">DrawingGroup.Open</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual.renderopen">DrawingVisual.RenderOpen</a>. В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> извлекается из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> и используется для рисования прямоугольника.</p>
+<pre><code class="lang-csharp" name="drawingvisualsample#101">// Create a DrawingVisual that contains a rectangle.
+private DrawingVisual CreateDrawingVisualRectangle()
+{
+    DrawingVisual drawingVisual = new DrawingVisual();
+
+    // Retrieve the DrawingContext in order to create new drawing content.
+    DrawingContext drawingContext = drawingVisual.RenderOpen();
+
+    // Create a rectangle and draw it in the DrawingContext.
+    Rect rect = new Rect(new System.Windows.Point(160, 100), new System.Windows.Size(320, 80));
+    drawingContext.DrawRectangle(System.Windows.Media.Brushes.LightBlue, (System.Windows.Media.Pen)null, rect);
+
+    // Persist the drawing content.
+    drawingContext.Close();
+
+    return drawingVisual;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h4 id="enumerating-drawing-content-at-the-visual-layer">Перечисление содержимого рисования на визуальном уровне</h4>
+<p>Наряду с другими своими возможностями, объекты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> также предоставляют объектную модель для перечисления содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При перечислении содержимого визуального элемента извлекаются объекты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a>, а не базовое представление данных отрисовки в виде списка инструкций векторной графики.</p>
+</div>
+<p>В следующем примере метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getdrawing">GetDrawing</a> используется для извлечения значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> и перечисления содержимого группы.</p>
+<pre><code class="lang-csharp" name="DrawingMiscSnippets_snip#GraphicsMMRetrieveDrawings">public void RetrieveDrawing(Visual v)
+{
+    DrawingGroup drawingGroup = VisualTreeHelper.GetDrawing(v);
+    EnumDrawingGroup(drawingGroup);
+}
+
+// Enumerate the drawings in the DrawingGroup.
+public void EnumDrawingGroup(DrawingGroup drawingGroup)
+{
+    DrawingCollection dc = drawingGroup.Children;
+
+    // Enumerate the drawings in the DrawingCollection.
+    foreach (Drawing drawing in dc)
+    {
+        // If the drawing is a DrawingGroup, call the function recursively.
+        if (drawing is DrawingGroup group)
+        {
+            EnumDrawingGroup(group);
+        }
+        else if (drawing is GeometryDrawing)
+        {
+            // Perform action based on drawing type.
+        }
+        else if (drawing is ImageDrawing)
+        {
+            // Perform action based on drawing type.
+        }
+        else if (drawing is GlyphRunDrawing)
+        {
+            // Perform action based on drawing type.
+        }
+        else if (drawing is VideoDrawing)
+        {
+            // Perform action based on drawing type.
+        }
+    }
+}
+
+</code></pre>
+<p><a name="how_visual_objects_are_used_to_build_controls"></a></p>
+<h2 id="how-visual-objects-are-used-to-build-controls">Использование визуальных объектов для создания элементов управления</h2>
+<p>Многие из объектов в WPF состоят из других визуальных объектов, то есть они могут содержать различные иерархии объектов-потомков. Многие элементы пользовательского интерфейса в WPF, например элементы управления, состоят из множества визуальных объектов, которые представляют различные типы отрисовываемых элементов. Например, элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> может содержать ряд других объектов, в том числе <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.</p>
+<p>В следующем коде показано определение элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в разметке.</p>
+<pre><code class="lang-xaml" name="VisualsOverview#VisualsOverviewSnippet1">&lt;Button Click=&quot;OnClick&quot;&gt;OK&lt;/Button&gt;
+</code></pre>
+<p>Если бы мы перечислили визуальные объекты, составляющие стандартный элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, обнаружилась бы показанная ниже иерархия визуальных объектов:</p>
+<p><img src="media/wpf-graphics-rendering-overview/visual-object-diagram.gif" alt="Схема иерархии визуального дерева"></p>
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> содержит элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a>, который, в свою очередь, содержит элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a>. Элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a> отвечает за рисование границ и фона для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> отвечает за отображение содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. В данном случае, поскольку отображается текст, элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> содержит элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>. Тот факт, что элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a>, означает, что его содержимое можно представить в виде других элементов, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a>, или геометрического объекта, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry">EllipseGeometry</a>.</p>
+<h3 id="control-templates">Шаблоны элементов управления</h3>
+<p>Ключевую роль в развертывании элементов управления в иерархию играет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Шаблон элемента управления определяет его визуальную иерархию по умолчанию. При явной ссылке на элемент управления вы неявно ссылаетесь на его визуальную иерархию. Для изменения внешнего вида элемента управления вы можете переопределить значения по умолчанию для его шаблона. Например, можно изменить значение цвета фона элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> так, чтобы использовалось значение линейного градиента цвета вместо значения сплошного цвета. Дополнительные сведения см. в разделе <a href="../controls/button-styles-and-templates.html">Стили и шаблоны кнопок</a>.</p>
+<p>Элемент пользовательского интерфейса, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> управления, содержит несколько списков инструкций векторной графики, которые описывают полностью определяют отрисовку элемента управления. В следующем коде показано определение элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в разметке.</p>
+<pre><code class="lang-xaml" name="VisualsOverview#VisualsOverviewSnippet2">&lt;Button Click=&quot;OnClick&quot;&gt;
+  &lt;Image Source=&quot;images\greenlight.jpg&quot;&gt;&lt;/Image&gt;
+&lt;/Button&gt;
+</code></pre>
+<p>Если перечислить визуальные объекты и списки инструкций векторной графики, которые составляют элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, обнаружится показанная ниже иерархия объектов:</p>
+<p><img src="media/wpf-graphics-rendering-overview/visual-tree-rendering-data.png" alt="Схема визуального дерева и отрисовки данных"></p>
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> содержит элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a>, который, в свою очередь, содержит элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a> Элемент отвечает за рисование всех отдельных графических элементов, составляющих границу и фон кнопки. Элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> отвечает за отображение содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. В этом случае, поскольку выполняется отображение изображения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> элемент содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> элемент.</p>
+<p>При работе с иерархией визуальных объектов и списками инструкций векторной графики следует учитывать несколько моментов.</p>
+<ul>
+<li><p>Порядок иерархии представляет порядок отрисовки графической информации. От корневого визуального элемента проход дочерних элементов осуществляется слева направо и сверху вниз. Если у элемента есть дочерние визуальные элементы, они проходятся до элементов того же уровня.</p>
+</li>
+<li><p>Неконечные элементы в иерархии, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a>, используются для хранения дочерних элементов — они не содержат списков инструкций.</p>
+</li>
+<li><p>Если визуальный элемент содержит как список инструкций векторной графики, так и визуальные дочерние объекты, то список инструкций в родительском визуальном элементе выполняется перед тем, как будут прорисованы любые визуальные дочерние объекты.</p>
+</li>
+<li><p>Элементы в списке инструкций векторной графики обрабатываются слева направо.</p>
+</li>
+</ul>
+<p><a name="visual_tree"></a></p>
+<h2 id="visual-tree">Визуальное дерево</h2>
+<p>Визуальное дерево содержит все визуальные элементы, содержащиеся в пользовательском интерфейсе приложения. Поскольку визуальный элемент содержит сохраняемую графическую информацию, визуальное дерево можно представить как граф сцены, содержащий все сведения об отрисовке, необходимые для формирования данных, выводимых на устройство отображения. Это дерево представляет собой совокупность всех визуальных элементов, создаваемых непосредственно в приложении (в коде или в разметке). Визуальное дерево также содержит все визуальные элементы, создаваемые путем расширения шаблона элементов, например элементы управления и объекты данных.</p>
+<p>В следующем коде показан элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>, определенный в разметке.</p>
+<pre><code class="lang-xaml" name="VisualsOverview#VisualsOverviewSnippet3">&lt;StackPanel&gt;
+  &lt;Label&gt;User name:&lt;/Label&gt;
+  &lt;TextBox /&gt;
+  &lt;Button Click=&quot;OnClick&quot;&gt;OK&lt;/Button&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Если перечислить визуальные объекты, которые составляют элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> в примере разметки, обнаружится показанная ниже иерархия визуальных объектов:</p>
+<p><img src="media/wpf-graphics-rendering-overview/visual-tree-hierarchy.gif" alt="Схема иерархии визуального дерева"></p>
+<h3 id="rendering-order">Порядок отрисовки</h3>
+<p>Визуальное дерево определяет порядок отрисовки визуальных элементов и графических объектов WPF. Обработка начинается с корневого визуального элемента, самого верхнего узла в визуальном дереве. Затем обрабатываются дочерние элементы корневого визуального элемента слева направо. Если у визуального элемента есть дочерние элементы, они обрабатываются перед элементами, находящимися на одном уровне с визуальным элементом. Это означает, что содержимое дочерних визуальных элементов отображается перед содержимым самого визуального элемента.</p>
+<p><img src="media/wpf-graphics-rendering-overview/visual-tree-rendering-order.gif" alt="Схема порядка отрисовки визуального дерева"></p>
+<h3 id="root-visual">Корневой визуальный элемент</h3>
+<p><strong>Корневой визуальный элемент</strong> — это самый верхний элемент в иерархии визуального дерева. В большинстве приложений базовым классом корневого визуального элемента является либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>. Однако при размещении визуальных объектов в приложении Win32 корневым визуальным элементом будет самый верхний визуальный элемент в окне Win32. Дополнительные сведения см. в статье <a href="tutorial-hosting-visual-objects-in-a-win32-application.html">Руководство по размещению визуальных объектов в приложении Win32</a>.</p>
+<h3 id="relationship-to-the-logical-tree">Связь с логическом деревом</h3>
+<p>Логическое дерево в WPF представляет элементы приложения во время выполнения. Хотя этим деревом нельзя управлять напрямую, с помощью этой схемы удобно представить наследование свойств и маршрутизацию событий. В отличие от визуального дерева, логическое дерево может представлять и невизуальные объекты, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.listitem">ListItem</a>. Во многих случаях логическое дерево приближается к определению разметки приложения. В следующем коде показан элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, определенный в разметке.</p>
+<pre><code class="lang-xaml" name="VisualsOverview#VisualsOverviewSnippet5">&lt;DockPanel&gt;
+  &lt;ListBox&gt;
+    &lt;ListBoxItem&gt;Dog&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;Cat&lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;Fish&lt;/ListBoxItem&gt;
+  &lt;/ListBox&gt;
+  &lt;Button Click=&quot;OnClick&quot;&gt;OK&lt;/Button&gt;
+&lt;/DockPanel&gt;
+</code></pre>
+<p>Если перечислить логические объекты, которые составляют элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> в примере разметки, обнаружится иерархия логических объектов, показанная ниже:</p>
+<p><img src="media/tree1-wcp.gif" alt="Диаграмма дерева" title="Tree1_wcp"><br>
+Схема логического дерева</p>
+<p>Визуальное дерево и логическое дерево синхронизируются с текущим набором элементов приложения, отражая добавление, удаление или изменение элементов. Однако эти деревья отражают различные представления приложения. В отличие от визуального дерева, в логическом дереве не ракрываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> элементов управления. Это означает, что между логическим деревом и визуальным деревом для одного и того же набора объектов нет прямого однозначного соответствия. На самом деле, вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper.getchildren">GetChildren</a> объекта <strong>LogicalTreeHelper</strong> и метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getchild">GetChild</a> объекта <strong>VisualTreeHelper</strong> с одним и тем же элементом в качестве параметра дает разные результаты.</p>
+<p>Дополнительные сведения о логическом дереве см. в разделе <a href="../advanced/trees-in-wpf.html">Деревья в WPF</a>.</p>
+<h3 id="viewing-the-visual-tree-with-xamlpad">Просмотр визуального дерева с помощью XamlPad</h3>
+<p>Средство WPF XamlPad позволяет просматривать и изучать визуальное дерево, соответствующее текущему содержимому XAML. Для отображения визуального дерева нажмите кнопку <strong>Показать визуальное дерево</strong>. Ниже показано расширение содержимого XAML в узлы визуального дерева на панели <strong>Обозреватель визуального дерева</strong> XamlPad.</p>
+<p><img src="media/wpf-graphics-rendering-overview/visual-tree-explorer.png" alt="Панель обозревателя визуального дерева в XamlPad"></p>
+<p>Обратите внимание, что каждый из элементов управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> отображает отдельную иерархию визуальных объектов в панели <strong>Обозреватель визуального дерева</strong> XamlPad. Это обусловлено тем, что элементы управления WPF имеют шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, который содержит визуальное дерево этого элемента управления. При явной ссылке на элемент управления вы неявно ссылаетесь на его визуальную иерархию.</p>
+<h3 id="profiling-visual-performance">Профилирование производительности для объекта Visual</h3>
+<p>WPF предоставляет набор средств профилирования производительности, позволяющие анализировать поведение времени выполнения приложения и определить, какие оптимизации производительности, которые можно применить. Средство Visual Profiler предоставляет подробные данные о производительности в удобном графическом формате, сопоставляя их напрямую с визуальным деревом приложения. На этом снимке экрана показан раздел <strong>Использование ЦП</strong> средства Visual Profiler. В этом разделе вы можете получить точное представление об использовании объектом служб WPF, таких как отрисовка и разметка.</p>
+<p><img src="media/wpfperf-visualprofiler-04.png" alt="Visual Profiler отображает выходные данные" title="WPFPerf_VisualProfiler_04"><br>
+Отображение данных Visual Profiler</p>
+<p><a name="visual_rendering_behavior"></a></p>
+<h2 id="visual-rendering-behavior">Поведение отрисовки для объекта Visual</h2>
+<p>WPF включает несколько возможностей, влияющих на отрисовку визуальных объектов: графика, векторная графика и аппаратно независимая графика.</p>
+<h3 id="retained-mode-graphics">Абстрактный графический режим</h3>
+<p>Для понимания роли объекта Visual необходимо хорошо представлять различие между системами с <strong>непосредственным</strong> и <strong>абстрактным</strong> графическими режимами. В стандартном приложении Win32 на основе GDI или GDI+ используется непосредственный графический режим. Это означает, что приложение отвечает за перерисовку той части клиентской области, которая стала недействительной из-за таких действий, как изменение размера окна или изменение внешнего вида объекта.</p>
+<p><img src="media/wpf-graphics-rendering-overview/win32-rendering-squence.png" alt="Схема последовательности отрисовки Win32"></p>
+<p>В WPF, напротив, используется абстрактный графический режим. Это означает, что в объектах приложения, у которых есть внешний облик, определяется набор сериализованных графических данных. После определения графических данных система отвечает на все запросы перерисовки для отрисовки объектов приложения. Даже во время выполнения можно изменять или создавать объекты приложения, при этом система будет обрабатывать запросы на перерисовку. Преимущество абстрактного режима состоит в том, что данные отрисовки всегда сохраняются приложением в сериализованном виде, при этом за отрисовку отвечает система. На следующей схеме показано, как приложение полагается на WPF в обработке запросов на отрисовку.</p>
+<p><img src="media/wpf-graphics-rendering-overview/wpf-rendering-sequence.png" alt="Схема последовательности отрисовки WPF"></p>
+<h4 id="intelligent-redrawing">Интеллектуальная перерисовка</h4>
+<p>Одним из основных преимуществ использования абстрактного графического режима является то, что WPF может эффективно оптимизировать элементы приложения, которые требуют перерисовки. Даже при наличии сложной сцены с различными уровнями прозрачности разработчикам обычно не нужно писать специальный код для оптимизации перерисовки. Сравните это с программированием для Win32, в котором можно потратить значительные усилия на оптимизацию приложения, уменьшая объем перерисовки в области обновления. Пример сложного случая оптимизации перерисовки для приложений Win32 см. в разделе <a href="/windows/desktop/gdi/redrawing-in-the-update-region">Перерисовка в области обновления</a>.</p>
+<h3 id="vector-graphics">Векторная графика</h3>
+<p>WPF использует <strong>векторную графику</strong> качестве формата данных отрисовки. Векторная графика, к которой относятся масштабируемые векторные рисунки (SVG), метафайлы Windows (WMF) и шрифты TrueType, хранит данные отрисовки и передает их в виде списка инструкций, которые описывают, как воссоздать изображение с помощью графических примитивов. Например, шрифты TrueType — это контурные шрифты, которые описывают набор линий, кривых и команд, а не массив точек. Одним из основных преимуществ векторной графики является возможность масштабирования до любого размера и разрешения.</p>
+<p>В отличие от векторной графики в растровой графике данные отрисовки представлены в попиксельном виде для определенного разрешения. Одним из ключевых различий между растровой и векторной графикой является соответствие исходному изображению. Например, при изменении размера исходного изображения в растровой графике изображение растягивается, тогда как в векторной — масштабируется с сохранением качества.</p>
+<p>На следующем рисунке показано исходное изображение, которое было увеличено в 3 раза (масштаб 300 %). Обратите внимание на искажения, которые появляются при растяжении исходного изображения в растровом формате по сравнению с векторным.</p>
+<p><img src="media/wpf-graphics-rendering-overview/raster-vector-differences.png" alt="Различия между растровой и векторной графикой"></p>
+<p>В следующем примере показано определение двух элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>. Во втором элементе с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform">ScaleTransform</a> к инструкциям отрисовки первого элемента применяется операция изменения размера на 300 %. Обратите внимание, что инструкции отрисовки в элементе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> остаются без изменений.</p>
+<pre><code class="lang-xaml" name="VectorGraphicsSnippets#VectorGraphicsSnippet1">&lt;Path
+  Data=&quot;M10,100 C 60,0 100,200 150,100 z&quot;
+  Fill=&quot;{StaticResource linearGradientBackground}&quot;
+  Stroke=&quot;Black&quot;
+  StrokeThickness=&quot;2&quot; /&gt;
+
+&lt;Path
+  Data=&quot;M10,100 C 60,0 100,200 150,100 z&quot;
+  Fill=&quot;{StaticResource linearGradientBackground}&quot;
+  Stroke=&quot;Black&quot;
+  StrokeThickness=&quot;2&quot; &gt;
+  &lt;Path.RenderTransform&gt;
+    &lt;ScaleTransform ScaleX=&quot;3.0&quot; ScaleY=&quot;3.0&quot; /&gt;
+  &lt;/Path.RenderTransform&gt;
+&lt;/Path&gt;
+</code></pre><h3 id="about-resolution-and-device-independent-graphics">О разрешении и аппаратно независимой графике</h3>
+<p>Существуют два фактора, которые определяют размер текста и графики на экране: разрешение и количество точек на дюйм. Разрешение определяет число пикселей, отображаемых на экране. Чем выше разрешение, тем меньше размер пикселей и тем меньше отображаемые объекты и текст. Изображение на мониторе с разрешением 1024 x 768 значительно уменьшится, если изменить разрешение на 1600 x 1200.</p>
+<p>Другой системный параметр, количество точек на дюйм, описывает размер дюйма экрана в пикселях. Для большинства систем Windows количество точек на дюйм составляет 96, т. е. на одном дюйме экрана находится 96 пикселей. При повышении количества точек на дюйм экранный дюйм увеличивается, при понижении — уменьшается. Это означает, что дюйм экрана не совпадает с размером настоящего дюйма, по крайней мере в большинстве систем. При увеличении количества точек на дюйм изображения и текст становятся больше, так как увеличивается размер экранного дюйма. Увеличение количества точек на дюйм может сделать текст более удобным для чтения, особенно при высоких разрешениях.</p>
+<p>Не все приложения поддерживают количество точек на дюйм: в некоторых приложениях в качестве основной единицы измерения используются аппаратно зависимые пиксели, и изменение количества точек на дюйм не влияет на такие приложения. Во многих других приложениях количество точек на дюйм используется при описании размеров шрифта, но для остальных элементов используются пиксели. Слишком маленькое или слишком большое количество точек на дюйм может вызвать проблемы с разметкой для этих приложений, так как размер текста приложения будет изменяться с изменением системного количества точек на дюйм, тогда как интерфейс приложения изменяться не будет. Для приложений, разработанных с помощью WPF, эта проблема устранена.</p>
+<p>WPF поддерживает автоматическое масштабирование с помощью аппаратно независимых пикселей в качестве основной единицы измерения, вместо аппаратно зависимые пиксели; изображения и текст масштабируются правильно без дополнительных усилий от разработчика приложения. На следующем рисунке показан пример отображения текста и графики WPF с различными параметрами количества точек на дюйм.</p>
+<p><img src="media/graphicsmm-dpi-setting-examples.png" alt="Изображения и текст с различными параметрами DPI" title="graphicsmm_dpi_setting_examples"><br>
+Изображения и текст с различными параметрами количества точек на дюйм</p>
+<p><a name="visualtreehelper_class"></a></p>
+<h2 id="visualtreehelper-class">Класс VisualTreeHelper</h2>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a> — это статический вспомогательный класс, предоставляющий низкоуровневые функции для программирования на уровне визуального объекта, что полезно в определенных случаях, например при разработке пользовательских элементов управления высокой производительности. В большинстве случаев высокоуровневые объекты WPF, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>, обладают большей гибкостью и простотой использования.</p>
+<h3 id="hit-testing">Проверка нажатия</h3>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a> предоставляет методы проверки нажатия визуальных объектов, если поддержка проверки нажатия по умолчанию не соответствует вашим потребностям. Можно использовать методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a>, чтобы определить, находится ли геометрический объект или значение координат точки в пределах границ заданного объекта, например элемента управления или графического элемента. Например, с помощью проверки нажатия можно определить, попадает ли щелчок мыши в пределах ограничивающего прямоугольника объекта в окружность. Также можно переопределить реализацию проверки нажатия по умолчанию и выполнять собственные вычисления для проверки нажатия.</p>
+<p>Дополнительные сведения о проверке нажатия см. в разделе <a href="hit-testing-in-the-visual-layer.html">Проверка нажатия на визуальном уровне</a>.</p>
+<h3 id="enumerating-the-visual-tree">Перечисление визуального дерева</h3>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a> предоставляет функциональные возможности для перечисления элементов визуального дерева. Чтобы извлечь родительский объект, вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getparent">GetParent</a>. Чтобы получить дочерний элемент или прямого потомка визуального объекта, вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getchild">GetChild</a>. Этот метод возвращает дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> родительского элемента по указанному индексу.</p>
+<p>В следующем примере показано, как перечислить всех потомков визуального объекта. Этот метод можно использовать для сериализации всех данных отрисовки в иерархии визуального объекта.</p>
+<pre><code class="lang-csharp" name="VisualsOverview#101">// Enumerate all the descendants of the visual object.
+static public void EnumVisual(Visual myVisual)
+{
+    for (int i = 0; i &lt; VisualTreeHelper.GetChildrenCount(myVisual); i++)
+    {
+        // Retrieve child visual at specified index value.
+        Visual childVisual = (Visual)VisualTreeHelper.GetChild(myVisual, i);
+
+        // Do processing of the child visual object.
+
+        // Enumerate children of the child visual object.
+        EnumVisual(childVisual);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В большинстве случаев логическое дерево более удобно для представления элементов приложения WPF. Хотя логическое дерево нельзя изменить напрямую, с помощью этой схемы удобно представить наследование свойств и маршрутизацию событий. В отличие от визуального дерева, логическое дерево может представлять и невизуальные объекты, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.listitem">ListItem</a>. Дополнительные сведения о логическом дереве см. в разделе <a href="../advanced/trees-in-wpf.html">Деревья в WPF</a>.</p>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a> предоставляет методы для получения ограничивающего прямоугольника визуальных объектов. Ограничивающий прямоугольник визуального объекта возвращается методом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getcontentbounds">GetContentBounds</a>. Ограничивающий прямоугольник всех потомков визуального объекта, включая сам визуальный объект, возвращается методом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.getdescendantbounds">GetDescendantBounds</a>. В следующем коде показано, как вычислить ограничивающий прямоугольник для визуального объекта и всех его потомков.</p>
+<pre><code class="lang-csharp" name="VisualsOverview#102">// Return the bounding rectangle of the parent visual object and all of its descendants.
+Rect rectBounds = VisualTreeHelper.GetDescendantBounds(parentVisual);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a></li>
+<li><a href="../advanced/optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="hit-testing-in-the-visual-layer.html">Проверка попадания на визуальном уровне</a></li>
+<li><a href="using-drawingvisual-objects.html">Использование объектов DrawingVisual</a></li>
+<li><a href="tutorial-hosting-visual-objects-in-a-win32-application.html">Учебник. Размещение визуальных объектов в приложении Win32</a></li>
+<li><a href="../advanced/optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

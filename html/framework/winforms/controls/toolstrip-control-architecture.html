@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; ToolStrip | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; ToolStrip | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="toolstrip-control-architecture">Архитектура элемента управления ToolStrip</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> классы предоставляют гибкую, расширяемую систему для отображения элементов панели инструментов, состояния и меню. Все эти классы содержатся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms">System.Windows.Forms</a> пространство имен и они обычно именуются с префиксом «ToolStrip» (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripoverflow">ToolStripOverflow</a>) или с суффиксом «Лента» (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>).</p>
+<h2 id="toolstrip">ToolStrip</h2>
+<p>В следующих разделах описываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и элементов управления, которые являются производными от него.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> является абстрактным базовым классом для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a>. Следующий объект модели показана <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> иерархии наследования.</p>
+<p><img src="media/toolstrip-control-architecture/toolstrip-object-model.gif" alt="Схема, показывающая модель объекта ToolStrip."></p>
+<p>Вы можете получить доступ к все элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.items">Items</a> коллекции. Вы можете получить доступ к все элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem">ToolStripDropDownItem</a> через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem.dropdownitems">DropDownItems</a> коллекции. В классе, производном от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.displayeditems">DisplayedItems</a> свойство для доступа к только элементы, отображаемые в данный момент. Ниже приведены элементы, которые в настоящее время не находятся в меню переполнения.</p>
+<p>Следующие элементы специально предназначены для эффективной работы с обоими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> во всех направлениях. Они доступны по умолчанию во время разработки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> управления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a></p>
+</li>
+</ul>
+<h3 id="menustrip">MenuStrip</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> является контейнером верхнего уровня, которое заменяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mainmenu">MainMenu</a>. Она также предоставляет управления ключами и несколько документов интерфейса (MDI) функции. С функциональной точки зрения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem">ToolStripDropDownItem</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a> работают вместе с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, несмотря на то, что они являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>.</p>
+<p>Следующие элементы специально предназначены для эффективной работы с обоими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> во всех направлениях. Они доступны по умолчанию во время разработки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> управления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a></p>
+</li>
+</ul>
+<h3 id="statusstrip">StatusStrip</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a> заменяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusbar">StatusBar</a> элемента управления. Специальные возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a> включают макет пользовательской таблицы, поддержка изменения размера и перемещения захватов, формы и <code>Spring</code> свойство, которое позволяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel">ToolStripStatusLabel</a> для автоматического заполнения доступного пространства.</p>
+<p>Следующие элементы специально предназначены для эффективной работы с обоими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> во всех направлениях. Они доступны по умолчанию во время разработки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a> управления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel">ToolStripStatusLabel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a></p>
+</li>
+</ul>
+<h3 id="contextmenustrip">ContextMenuStrip</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> заменяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenu">ContextMenu</a>. Можно связать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> с любым элементом управления и правой кнопкой мыши щелкните автоматически отображает контекстное меню (или контекстное меню). Вы можете отобразить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> программно с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.show">Show</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> поддерживает отменяемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.opening">Opening</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.closing">Closing</a> событий для обработки динамического заполнения и ситуации с несколькими щелчками. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> поддерживает образы, состояние пометки элемента меню, текст, клавиши доступа, сочетания клавиш и вложенные меню.</p>
+<p>Следующие элементы специально предназначены для эффективной работы с обоими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> во всех направлениях. Они доступны по умолчанию во время разработки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> управления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a></p>
+</li>
+</ul>
+<h3 id="toolstrip-generic-features">Функции универсального элемента управления ToolStrip</h3>
+<p>Ниже описываются возможности и поведение, являющиеся общими для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и производных элементов управления.</p>
+<h4 id="painting">Рисование</h4>
+<p>Пользовательская отрисовка можно сделать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементы управления несколькими способами. Как и для других элементов управления Windows Forms, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> обладают переопределяемыми <code>OnPaint</code> методы и <code>Paint</code> события. Как при обычном рисовании система координат определяется относительно клиентской области элемента управления; левый верхний угол элемента управления является 0, 0. <code>Paint</code> Событий и <code>OnPaint</code> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> ведут себя как другие события рисования элемента управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> Элементы управления также предоставляет более подробный доступ к отрисовке элементов и контейнера с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a> класс, обладающий переопределяемые методы рисования фона, фоновый цвет элемента, изображения элемента, стрелки элемента, текста элемента и границу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Аргументы события для этих методов предоставляют ряд свойств, таких как прямоугольники, цвета и текстовых форматов, которые можно настраивать при необходимости.</p>
+<p>Чтобы настроить несколько аспектов способ рисования элемента, обычно следует переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a>.</p>
+<p>Если вы создаете новый элемент и хотите управлять всеми аспектами заливку, переопределить <code>OnPaint</code> метод. Изнутри <code>OnPaint</code>, можно использовать методы из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a>.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> включена двойная буферизация преимуществами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.controlstyles#System_Windows_Forms_ControlStyles_OptimizedDoubleBuffer">OptimizedDoubleBuffer</a> параметр.</p>
+<h4 id="parenting">Родительские связи</h4>
+<p>Концепция контейнеров владения и родительские связи более сложен в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> чем элементы управления других контейнерных элементов управления Windows Forms. Это необходимо для поддержки динамических сценариев, таких как переполнение, совместное использование элементов раскрывающегося списка в нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементов и для поддержки создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> из элемента управления.</p>
+<p>В следующем списке описаны элементы, связанные с родительской и объясняет их использование.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.owneritem">OwnerItem</a> Получает элемент, который является источником раскрывающегося элемента. Это похоже на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip.sourcecontrol">SourceControl</a>, но вместо возвращения элемента управления, он возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip.sourcecontrol">SourceControl</a> Определяет, какой элемент управления является источником объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> при нескольких элементов управления одного и того же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.getcurrentparent">GetCurrentParent</a> метод доступа только для чтения к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.parent">Parent</a> свойство. Родительский элемент отличается от владельца, что родительский элемент обозначает возвращаемый текущим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> в котором отображается элемент, который может быть в области переполнения.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.owner">Owner</a> Возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> коллекция элементов которого содержит текущий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>. Это лучший способ ссылаться <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.imagelist">ImageList</a> или другие свойства верхнего уровня <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> без написания специального кода для обработки переполнения.</p>
+</li>
+</ul>
+<h4 id="behavior-of-inherited-controls">Поведение унаследованных элементов управления</h4>
+<p>Следующие элементы управления заблокированы, каждый раз, когда они используются в наследования:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> включающий панелей в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> а также отдельные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> элементов управления.</p>
+</li>
+</ul>
+<p>Например можно создайте новое приложение Windows Forms с помощью одного или нескольких элементов управления в списке выше. Задайте модификатор доступа одного или нескольких элементов управления к <code>public</code> или <code>protected</code>, а затем постройте проект. Добавить форму, которая наследуется из первой формы, а затем выберите наследуемого элемента управления. Элемент управления выглядит заблокированным, как в случае его модификатор доступа <code>private</code>.</p>
+<h4 id="toolstripcontainer-support-of-inheritance">Поддержка наследования элемента управления ToolStripContainer</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> Элемент управления поддерживает ограниченные сценарии наследования, аналогичный приведенному ниже:</p>
+<ol>
+<li><p>Создайте новое приложение Windows Forms.</p>
+</li>
+<li><p>Добавьте на форму элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a>.</p>
+</li>
+<li><p>Задайте модификатор доступа для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> для <code>public</code> или <code>protected</code>.</p>
+</li>
+<li><p>Добавлять любые сочетания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> элементы управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> областей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a>.</p>
+</li>
+<li><p>Выполните построение проекта.</p>
+</li>
+<li><p>Добавите форму, которая наследуется из первой формы.</p>
+</li>
+<li><p>Выберите наследуемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> в форме.</p>
+</li>
+</ol>
+<h4 id="inherited-behavior-of-child-controls">Унаследованное поведение дочерних элементов управления</h4>
+<p>После выполнения предыдущих шагов, наследуемых происходит следующее:</p>
+<ul>
+<li><p>В конструкторе элемента управления отображается со значком, унаследованные.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> Элементы управления заблокированы; нельзя выбрать или изменить порядок их содержимое.</p>
+</li>
+<li><p>Элементы можно добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontentpanel">ToolStripContentPanel</a>, переместите элементы управления и сделать их дочерние элементы управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontentpanel">ToolStripContentPanel</a>.</p>
+</li>
+<li><p>Изменения сохраняются после создания формы.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Удалите модификатор доступа из всех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> элементов управления, которые являются частью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a>. Модификатор доступа для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> управляет элемента управления целиком.</p>
+</div>
+</li>
+</ul>
+<h4 id="partial-trust">Частичное доверие</h4>
+<p>Ограничения <code>ToolStrip</code>разработана при частичном доверии, чтобы предотвратить случайный ввод личных сведений, которые могут быть использованы неавторизованными пользователями или службами. Ниже приведены защитные меры.</p>
+<ul>
+<li><p><code>ToolStripDropDown</code> элементы управления требуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_AllWindows">AllWindows</a> для отображения элементов в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a>. Это относится к обоих встроенные элементы управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a> как хорошо созданным пользователем элементы управления. Если это требование не удовлетворяется, эти элементы не отображаются. Исключение не возникает.</p>
+</li>
+<li><p>Установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.autoclose">AutoClose</a> свойства <code>false</code> не разрешен и поддерживающий отмену <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown.closing">Closing</a> событий параметр учитывается. Это делает невозможным введите более одного нажатия клавиш без отключения раскрывающегося элемента. Если это требование не удовлетворяется, такие элементы не отображаются. Исключение не возникает.</p>
+</li>
+<li><p>Многие регистрации нажатия клавиш, обработка событий не будет вызываться, если они встречаются в контексте с частичным доверием, отличных от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_AllWindows">AllWindows</a>.</p>
+</li>
+<li><p>Ключи доступа не обрабатываются, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_AllWindows">AllWindows</a> не предоставляется.</p>
+</li>
+</ul>
+<h4 id="usage">Использование</h4>
+<p>Следующие шаблоны использования иметь влияют на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> макет, взаимодействие с клавиатурой и пользовательское поведение:</p>
+<ul>
+<li><p>Пришел в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> Может быть перемещен в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> и по горизонтали <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a>s. <code>Dock</code> Свойство игнорируется и если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.stretch">Stretch</a> свойство <code>false</code>, размер <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> увеличивается по мере добавления элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a>. Как правило <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> не участвует в последовательности табуляции.</p>
+</li>
+<li><p>Закрепленное</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> Помещается на одной стороне контейнера в фиксированное положение, а его размер увеличивается по всему краю, к которой она закреплена. Как правило <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> не участвует в последовательности табуляции.</p>
+</li>
+<li><p>Абсолютное положение</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> — Как и другие элементы управления, в том, что он помещает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.location">Location</a> свойство, имеет фиксированный размер и обычно участвует в последовательности табуляции.</p>
+</li>
+</ul>
+<h4 id="keyboard-interaction">Взаимодействие с клавиатурой</h4>
+<h5 id="access-keys">Ключи доступа</h5>
+<p>Вместе с или после клавишу ALT, ключи доступа являются одним из способов активации элемента управления с помощью клавиатуры. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> поддерживает оба явные и неявные комбинации клавиш. Явное определение использует символ амперсанда (&amp;) перед буквой. Неявное определение использует алгоритм, который пытается найти соответствующий элемент на основе порядка символов в заданной <code>Text</code> свойство.</p>
+<h5 id="shortcut-keys">Сочетания клавиш</h5>
+<p>Сочетания клавиш, используемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> сочетанием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.keys">Keys</a> перечисления (который не от заказа) для определения сочетания клавиш. Можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem.shortcutkeydisplaystring">ShortcutKeyDisplayString</a> свойство для отображения сочетания клавиш только с текстом, например при отображении «Del» вместо «Удалить».</p>
+<h5 id="navigation">Навигация</h5>
+<p>Клавиша ALT активирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> , на которые указывают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.mainmenustrip">MainMenuStrip</a>. После этого сочетания клавиш CTRL + TAB переходит между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> внутри элементов управления <code>ToolStripPanel</code>s. Клавиши TAB и клавиш со стрелками на цифровой клавиатуре переходить между элементами в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Специальный алгоритм обрабатывает навигации в области переполнения. Выбирает пробел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a>.</p>
+<h5 id="focus-and-validation">Фокус и проверки</h5>
+<p>При активации клавишей ALT, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> обычно не переключает фокус от элемента управления, который в данный момент имеет фокус. Если имеется элемент управления, размещенные на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> или раскрывающегося списка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, элемент управления получает фокус, когда пользователь нажимает клавишу TAB. В общем случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.gotfocus">GotFocus</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.lostfocus">LostFocus</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enter">Enter</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.leave">Leave</a> события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a> могут не вызываться при активации с помощью клавиатуры. В таких случаях используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip.menuactivate">MenuActivate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip.menudeactivate">MenuDeactivate</a> события вместо этого.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.causesvalidation">CausesValidation</a> является <code>false</code>. Вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.validate">Validate</a> явным образом в форме для выполнения проверки.</p>
+<h4 id="layout">Макет</h4>
+<p>Вы управляете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> макет, выбрав один из членов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle">ToolStripLayoutStyle</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutstyle">LayoutStyle</a> свойство.</p>
+<h5 id="stack-layouts">Размещение в стопку</h5>
+<p>Размещение в стопку — это расположение элементов рядом друг с другом на обоих концах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Ниже перечислены макеты стека.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_StackWithOverflow">StackWithOverflow</a> значение по умолчанию. Этот параметр задан, то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> к изменению макета автоматически в соответствии с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.orientation">Orientation</a> свойства для обработки скриптов перетаскивания и закрепления.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_VerticalStackWithOverflow">VerticalStackWithOverflow</a> Выполняет визуализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементы рядом друг с другом по вертикали.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_HorizontalStackWithOverflow">HorizontalStackWithOverflow</a> Выполняет визуализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементы рядом друг с другом по горизонтали.</p>
+</li>
+</ul>
+<h5 id="other-features-of-stack-layouts">Другие функции размещения в стопку</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.alignment">Alignment</a> Определяет конец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> выравнивание элемента.</p>
+<p>Если элементы не соответствуют размерам <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, автоматически отображается кнопка переполнения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.overflow">Overflow</a> Параметр свойства определяет, отображается ли элемент в области переполнения при необходимости или никогда.</p>
+<p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutcompleted">LayoutCompleted</a> событий, вы можете проверить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.placement">Placement</a> свойства, чтобы определить, был ли элемент расположен в основном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, переполнение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, или если она не отображается в данный момент вообще. Типичные причины, почему не отображается элемент, что он не помещается в основном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.overflow">Overflow</a> было установлено на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemoverflow#System_Windows_Forms_ToolStripItemOverflow_Never">Never</a>.</p>
+<p>Сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> подвижной, поместив ее в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> и установив его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.gripstyle">GripStyle</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripgripstyle#System_Windows_Forms_ToolStripGripStyle_Visible">Visible</a>.</p>
+<h5 id="other-layout-options">Другие параметры макета</h5>
+<p>Параметры макета, являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Flow">Flow</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Table">Table</a>.</p>
+<h5 id="flow-layout">Потоковый макет</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Flow">Flow</a> макет по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownmenu">ToolStripDropDownMenu</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripoverflow">ToolStripOverflow</a>. Это похоже на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutpanel">FlowLayoutPanel</a>. Возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Flow">Flow</a> макета, следующим образом:</p>
+<ul>
+<li><p>Все функции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutpanel">FlowLayoutPanel</a> предоставляемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutsettings">LayoutSettings</a> свойство. Необходимо привести <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.layoutsettings">LayoutSettings</a> класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutsettings">FlowLayoutSettings</a> класса.</p>
+</li>
+<li><p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.dock">Dock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.anchor">Anchor</a> свойства в коде для выравнивания элементов в строке.</p>
+</li>
+<li><p>Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.alignment">Alignment</a> не учитывается.</p>
+</li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutcompleted">LayoutCompleted</a> событий, вы можете проверить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.placement">Placement</a> свойства, чтобы определить, был ли элемент расположен в основном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> или не поместились.</p>
+</li>
+<li><p>Захват не отображается и поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Flow">Flow</a> стиль макета в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> нельзя переместить.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> Не отображается кнопка переполнения, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.overflow">Overflow</a> учитывается.</p>
+</li>
+</ul>
+<h5 id="table-layout">Табличный макет</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Table">Table</a> макет по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a>. Это похоже на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutpanel">TableLayoutPanel</a>. Возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Flow">Flow</a> макета, следующим образом:</p>
+<ul>
+<li><p>Все функции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutpanel">TableLayoutPanel</a> предоставляемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutsettings">LayoutSettings</a> свойство. Необходимо привести <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.layoutsettings">LayoutSettings</a> класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutsettings">TableLayoutSettings</a> класса.</p>
+</li>
+<li><p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.dock">Dock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.anchor">Anchor</a> свойства в коде для выравнивания элементов в пределах ячейки таблицы.</p>
+</li>
+<li><p>Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.alignment">Alignment</a> не учитывается.</p>
+</li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.layoutcompleted">LayoutCompleted</a> событий, вы можете проверить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.placement">Placement</a> свойства, чтобы определить, был ли элемент расположен в основном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> или не поместились.</p>
+</li>
+<li><p>Захват не отображается и поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplayoutstyle#System_Windows_Forms_ToolStripLayoutStyle_Table">Table</a> стиль макета в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> нельзя переместить.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> Не отображается кнопка переполнения, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.overflow">Overflow</a> учитывается.</p>
+</li>
+</ul>
+<h2 id="toolstripitem">ToolStripItem</h2>
+<p>В следующих разделах описываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> и элементов управления, которые являются производными от него.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> — Абстрактный базовый класс для всех элементов, входящих в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Следующий объект модели показана <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> иерархии наследования.</p>
+<p><img src="media/toolstrip-control-architecture/toolstripitem-object-model.gif" alt="Схема, показывающая модель объекта ToolStripItem."></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> классы, которые наследуются непосредственно из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>, или они неявно наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem">ToolStripDropDownItem</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> элементы управления должны размещаться в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> и не может быть добавлен непосредственно в форму. Различные классы контейнеров предназначены для размещения соответствующего подмножества <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> элементов управления.</p>
+<p>В следующей таблице перечислены акции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> элементы управления и контейнеры, в которых они лучше всего выглядят. Хотя любой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элемент можно разместить в любом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>-контейнере, производном эти элементы были разработаны для поиска рекомендации в следующих контейнерах:</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown">ToolStripDropDown</a> не отображается в области элементов конструктора.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Элемент в контейнере</th>
+<th>ToolStrip</th>
+<th>MenuStrip</th>
+<th>ContextMenuStrip</th>
+<th>StatusStrip</th>
+<th>ToolStripDropDown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a></td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a></td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a></td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a></td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a></td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a></td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a></td>
+<td>Да</td>
+<td>Да</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Да</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a></td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel">ToolStripStatusLabel</a></td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a></td>
+<td>Да</td>
+<td>Нет</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Нет</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a></td>
+<td>Да</td>
+<td>Да</td>
+<td>Нет</td>
+<td>Да</td>
+<td>Да</td>
+</tr>
+</tbody>
+</table>
+<h3 id="toolstripbutton">ToolStripButton</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a> элемент кнопки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Можно отобразить его с различными стилями границы, и его можно использовать для представления и активировать операционные состояния. Можно также определить, оно должно иметь фокус по умолчанию.</p>
+<h3 id="toolstriplabel">ToolStripLabel</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a> Предоставляет функциональные возможности метки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементов управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a> Аналогичен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a> , не получает фокус по умолчанию и не отображается в нажатом или выделенном.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a> в качестве размещенный элемент поддерживает ключи доступа.</p>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.linklabel.linkcolor">LinkColor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.linklabel.linkvisited">LinkVisited</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.linklabel.linkbehavior">LinkBehavior</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a> для поддержки элемента управления ссылки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>.</p>
+<h3 id="toolstripstatuslabel">ToolStripStatusLabel</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel">ToolStripStatusLabel</a> — Это версия <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriplabel">ToolStripLabel</a> разработан специально для использования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a>. Число специальных функций входят <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel.borderstyle">BorderStyle</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel.bordersides">BorderSides</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripstatuslabel.spring">Spring</a>.</p>
+<h3 id="toolstripseparator">ToolStripSeparator</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a> Добавляет вертикальной или горизонтальной линией, панели инструментов или меню, в зависимости от ориентации. Он предоставляет, группирование или разделение элементов, например пунктов меню.</p>
+<p>Вы можете добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a> во время разработки, выбрав его из раскрывающегося списка. Тем не менее, можно автоматически создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripseparator">ToolStripSeparator</a> , введя дефис (-) в узле шаблона конструктора или в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemcollection.add">Add</a> метод.</p>
+<h3 id="toolstripcontrolhost">Руководство.</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a> является абстрактным базовым классом для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a> можно размещать другие элементы управления, включая пользовательские элементы управления, двумя способами:</p>
+<ul>
+<li><p>Создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a> с классом, который является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. Для полного доступа к размещенным элементом управления и свойства, необходимо привести <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost.control">Control</a> свойство обратно к реальному класса, он представляет.</p>
+</li>
+<li><p>Расширить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a>и в конструктор по умолчанию наследуемого класса, вызывает конструктор базового класса, передав класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. Этот параметр позволяет включить общие методы управления и свойства для быстрого доступа в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>.</p>
+</li>
+</ul>
+<h3 id="toolstripcombobox">ToolStripComboBox</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> оптимизированная для размещения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Подмножество свойств размещаемого элемента управления и события представлены на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox">ToolStripComboBox</a> уровень, но базовый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> управления полностью доступен через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcombobox.combobox">ComboBox</a> свойство.</p>
+<h3 id="toolstriptextbox">ToolStripTextBox пространства</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> оптимизированная для размещения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Подмножество свойств размещаемого элемента управления и события представлены на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox">ToolStripTextBox</a> уровень, но базовый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> управления полностью доступен через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriptextbox.textbox">TextBox</a> свойство.</p>
+<h3 id="toolstripprogressbar">ToolStripProgressBar</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> оптимизированная для размещения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>. Подмножество свойств размещаемого элемента управления и события представлены на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar">ToolStripProgressBar</a> уровень, но базовый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> управления полностью доступен через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprogressbar.progressbar">ProgressBar</a> свойство.</p>
+<h3 id="toolstripdropdownitem">ToolStripDropDownItem</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem">ToolStripDropDownItem</a> является абстрактным базовым классом для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a>, который можно разместить элементы непосредственно или узла дополнительные элементы в контейнере раскрывающегося списка. Это можно сделать, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem.dropdown">DropDown</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown">ToolStripDropDown</a> и параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.items">Items</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdown">ToolStripDropDown</a>. Доступ к этим напрямую с помощью раскрывающегося списка элементам <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem.dropdownitems">DropDownItems</a> свойство.</p>
+<h3 id="toolstripmenuitem">ToolStripMenuItem</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmenuitem">ToolStripMenuItem</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownitem">ToolStripDropDownItem</a> , работающее с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownmenu">ToolStripDropDownMenu</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> для обработки специальных выделение, макета и расположения столбцов для меню.</p>
+<h3 id="toolstripdropdownbutton">ToolStripDropDownButton</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a> как выглядит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripbutton">ToolStripButton</a>, но он показывает раскрывающейся области, когда пользователь щелкает его. Скрыть или отобразить стрелку раскрывающегося списка, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton.showdropdownarrow">ShowDropDownArrow</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripdropdownbutton">ToolStripDropDownButton</a> Узлы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripoverflowbutton">ToolStripOverflowButton</a> , отображающий элементы, которые вызывают переполнение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>.</p>
+<h3 id="toolstripsplitbutton">ToolStripSplitButton</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton">ToolStripSplitButton</a> объединяет кнопку и кнопку раскрывающегося списка функциональные возможности.</p>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsplitbutton.defaultitem">DefaultItem</a> свойство для синхронизации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> событие выбранный элемент списка с элемента, отображаемое на кнопке.</p>
+<h3 id="toolstripitem-generic-features">Функции универсальный элемент ToolStripItem</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> предоставляет следующие общие возможности и параметры для наследуемые элементы управления:</p>
+<ul>
+<li><p>Основные события</p>
+</li>
+<li><p>Обработки изображений</p>
+</li>
+<li><p>Выравнивание</p>
+</li>
+<li><p>Связь текста и изображений</p>
+</li>
+<li><p>Стиль отображения</p>
+</li>
+</ul>
+<h4 id="core-events">Основные события</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> элементы управления получают свои собственные нажмите кнопку мыши и события paint и можно выполнить предварительную обработку также клавиатуры.</p>
+<h4 id="image-handling">Обработки изображений</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.image">Image</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.imagealign">ImageAlign</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.imageindex">ImageIndex</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.imagekey">ImageKey</a>, И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.imagescaling">ImageScaling</a> свойства относятся к различным функциям обработки изображений. Использование изображений в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементов управления с такими значениями этих свойств напрямую или задав выполнения — только во время <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.imagelist">ImageList</a> свойство.</p>
+<p>Масштабирование определяется взаимодействие свойств в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>, как показано ниже:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.imagescalingsize">ImageScalingSize</a> Масштаб конечного изображения определяется сочетанием изображения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.imagescaling">ImageScaling</a> и параметра контейнера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.autosize">AutoSize</a> параметр.</p>
+<ul>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.autosize">AutoSize</a> — <code>true</code> (по умолчанию) и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemimagescaling">ToolStripItemImageScaling</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemimagescaling#System_Windows_Forms_ToolStripItemImageScaling_SizeToFit">SizeToFit</a>, происходит без масштабирования изображения и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> является размер самого большого элемента или предписанный минимальный размер.</p>
+</li>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip.autosize">AutoSize</a> — <code>false</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemimagescaling">ToolStripItemImageScaling</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemimagescaling#System_Windows_Forms_ToolStripItemImageScaling_None">None</a>, ни изображения, ни <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> масштабирование происходит.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="alignment">Выравнивание</h4>
+<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.alignment">Alignment</a> свойство определяет конец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> в которой появляется элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.alignment">Alignment</a> Работает только тогда, когда свойство стиля макета <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> присваивается одно из значений переполнения стека.</p>
+<p>Элементы размещаются на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> в порядке, в котором элементы отображаются в коллекции элементов. Чтобы программно изменить, где располагается элемент, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitemcollection.insert">Insert</a> метод, чтобы переместить элемент в коллекции. Этот метод перемещает элемент, но не является его копией.</p>
+<h4 id="text-and-image-relationship">Текст и изображение связи</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.textimagerelation">TextImageRelation</a> Свойство определяет относительное расположение изображения относительно текста на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a>. Элементы, в которых отсутствует изображение и текст, рассматриваются как особые случаи, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem">ToolStripItem</a> не отображает пустую область на месте отсутствует один или несколько элементов.</p>
+<h4 id="display-style">Стиль отображения</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripitem.displaystyle">DisplayStyle</a> позволяет задать значения свойств элемента текста и изображения при отображении только то, что нужно. Обычно это используется для изменения только стиль отображения при отображении и тот же элемент в другом контексте.</p>
+<h2 id="accessory-classes">Вспомогательные классы</h2>
+<p>Классы, которые предоставляют различные дополнительные функциональные возможности:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripmanager">ToolStripManager</a> поддерживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>-связанные задачи для всего приложения, такие как слияние, параметры и модуль подготовки отчетов.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstriprenderer">ToolStripRenderer</a> позволяет применить определенный стиль или тему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> легко.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripprofessionalrenderer">ToolStripProfessionalRenderer</a> создает перья и кисти, на основе таблицы можно заменить цвета (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.professionalcolortable">ProfessionalColorTable</a>).</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripsystemrenderer">ToolStripSystemRenderer</a> применяет системных цветов и плоского визуального стиля для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> приложений.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> аналогичен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.splitcontainer">SplitContainer</a>. Она использует четыре закрепленные боковые панели (экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a>) и одна центральная панель (экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontentpanel">ToolStripContentPanel</a>) для создания типового расположения. Не удается удалить на боковой панели, но их можно скрыть. Можно удалить ни скрыть центральную панель. Можно упорядочить один или несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.menustrip">MenuStrip</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.statusstrip">StatusStrip</a> элементов управления в на боковой панели, а также можно использовать центральную панель для других элементов управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontentpanel">ToolStripContentPanel</a> Также предоставляет способ для получения поддержки модуля подготовки отчетов в текст формы для согласованного внешнего вида. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontainer">ToolStripContainer</a> не поддерживает многодокументного интерфейса (MDI).</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> Предоставляет место для перемещения и расположения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> элементов управления. Если это необходимо, можно использовать только одну панель и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrippanel">ToolStripPanel</a> хорошо работает в сценариях MDI.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="toolstrip-control-overview-windows-forms.html">Общие сведения об элементе управления ToolStrip</a></li>
+<li><a href="toolstrip-technology-summary.html">Технологии, положенные в основу работы элемента управления ToolStrip</a></li>
+<li><a href="toolstrip-control-windows-forms.html">Элемент управления ToolStrip</a></li>
+<li><a href="menustrip-control-windows-forms.html">Элемент управления MenuStrip</a></li>
+<li><a href="statusstrip-control.html">Элемент управления StatusStrip</a></li>
+<li><a href="contextmenustrip-control.html">Элемент управления ContextMenuStrip</a></li>
+<li><a href="bindingnavigator-control-windows-forms.html">BindingNavigator — элемент управления</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

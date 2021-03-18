@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Direct3D9 &#1076;&#1083;&#1103; &#1088;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Direct3D9 &#1076;&#1083;&#1103; &#1088;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-creating-direct3d9-content-for-hosting-in-wpf">Пошаговое руководство. Создание содержимого Direct3D9 для размещения в WPF</h1>
+
+<p>В этом пошаговом руководстве демонстрируется создание содержимого Direct3D9 для размещения в приложении Windows Presentation Foundation (WPF). Дополнительные сведения о размещении содержимого Direct3D9 в WPF-приложениях, см. в разделе <a href="wpf-and-direct3d9-interoperation.html">взаимодействие WPF и Direct3D9</a>.</p>
+<p>В руководстве выполняются следующие задачи:</p>
+<ul>
+<li><p>Создайте проект Direct3D9.</p>
+</li>
+<li><p>Настройка проекта Direct3D9 для размещения в приложении WPF.</p>
+</li>
+</ul>
+<p>Когда вы закончите, вы получите библиотеку DLL, содержащую содержимого Direct3D9 для использования в приложении WPF.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.</p>
+<ul>
+<li><p>Visual Studio 2010.</p>
+</li>
+<li><p>DirectX SDK, 9 или более поздней версии.</p>
+</li>
+</ul>
+<h2 id="creating-the-direct3d9-project">Создание проекта Direct3D9</h2>
+<p>Первый шаг — создание и настройка проекта Direct3D9.</p>
+<h4 id="to-create-the-direct3d9-project">Чтобы создать проект Direct3D9</h4>
+<ol>
+<li><p>Создание проекта Win32 в C++ с именем <code>D3DContent</code>.</p>
+<p>Мастер приложений Win32 открывает и отображает экран приветствия.</p>
+</li>
+<li><p>Нажмите кнопку <strong>Далее</strong>.</p>
+<p>На экране параметров приложения.</p>
+</li>
+<li><p>В <strong>тип приложения:</strong> выберите <strong>DLL</strong> параметр.</p>
+</li>
+<li><p>Нажмите кнопку <strong>Готово</strong>.</p>
+<p>Создается проект D3DContent.</p>
+</li>
+<li><p>В обозревателе решений щелкните правой кнопкой мыши проект D3DContent и выберите <strong>свойства</strong>.</p>
+<p><strong>Свойств D3dcontent</strong> откроется диалоговое окно.</p>
+</li>
+<li><p>Выберите <strong>C/C++</strong> узла.</p>
+</li>
+<li><p>В <strong>Дополнительные каталоги включаемых файлов</strong> укажите расположение с DirectX включать папку. Находится в папке по умолчанию для этой папки %ProgramFiles%\Microsoft DirectX SDK (<em>версии</em>) \Include.</p>
+</li>
+<li><p>Дважды щелкните <strong>компоновщика</strong> узел, чтобы развернуть его.</p>
+</li>
+<li><p>В <strong>Дополнительные каталоги библиотек</strong> укажите расположение папки библиотек DirectX. Находится в папке по умолчанию для этой папки %ProgramFiles%\Microsoft DirectX SDK (<em>версии</em>) \Lib\x86.</p>
+</li>
+<li><p>Выберите <strong>ввода</strong> узла.</p>
+</li>
+<li><p>В <strong>Дополнительные зависимости</strong> поле, добавьте <code>d3d9.lib</code> и <code>d3dx9.lib</code> файлы.</p>
+</li>
+<li><p>В обозревателе решений добавьте новый файл определения модуля (.def) с именем <code>D3DContent.def</code> в проект.</p>
+</li>
+</ol>
+<h2 id="creating-the-direct3d9-content">Создание содержимого Direct3D9</h2>
+<p>Чтобы получить наилучшую производительность, содержимого Direct3D9 необходимо использовать определенные параметры. Приведенный ниже показано, как создать Direct3D9 поверхности, которая имеет лучшие характеристики производительности. Дополнительные сведения см. в разделе <a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">рекомендации по ускорению взаимодействием Direct3D9 и WPF</a>.</p>
+<h4 id="to-create-the-direct3d9-content">Создание содержимого Direct3D9</h4>
+<ol>
+<li><p>С помощью обозревателя решений, добавьте в проект с именем следующие три класса C++.</p>
+<p><code>CRenderer</code> (с виртуальным деструктором)</p>
+<p><code>CRendererManager</code></p>
+<p><code>CTriangleRenderer</code></p>
+</li>
+<li><p>Откройте Renderer.h в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте Renderer.cpp в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте RendererManager.h в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте RendererManager.cpp в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте TriangleRenderer.h в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте TriangleRenderer.cpp в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте файл stdafx.h в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте dllmain.cpp в редакторе кода и замените автоматически созданный код следующим кодом.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Откройте D3DContent.def в редакторе кода.</p>
+</li>
+<li><p>Замените автоматически созданный код следующим кодом.</p>
+<pre><code>LIBRARY &quot;D3DContent&quot;
+
+EXPORTS
+
+SetSize
+SetAlpha
+SetNumDesiredSamples
+SetAdapter
+
+GetBackBufferNoRef
+Render
+Destroy
+</code></pre>
+</li>
+<li><p>Выполните построение проекта.</p>
+</li>
+</ol>
+<h2 id="next-steps">Следующие шаги</h2>
+<ul>
+<li>Размещение содержимого Direct3D9 в WPF-приложение. Дополнительные сведения см. в разделе <a href="walkthrough-hosting-direct3d9-content-in-wpf.html">Пошаговое руководство: Размещение содержимого Direct3D9 в WPF</a>.</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a></li>
+<li><a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">Вопросы производительности, связанные с взаимодействием Direct3D9 и WPF</a></li>
+<li><a href="walkthrough-hosting-direct3d9-content-in-wpf.html">Пошаговое руководство. Размещение содержимого Direct3D9 в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

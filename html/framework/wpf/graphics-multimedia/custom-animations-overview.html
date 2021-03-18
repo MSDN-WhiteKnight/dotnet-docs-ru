@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1086;&#1081; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1086;&#1081; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-animations-overview">Общие сведения о пользовательской анимации</h1>
+
+<p>В этом разделе описывается, как и когда расширять систему анимации WPF путем создания пользовательских ключевых кадров и классов анимации или путем использования покадрового обратного вызова, чтобы пропустить ее.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Чтобы понять материал этого раздела, необходимо ознакомиться с различными типами анимации, предоставляемыми WPF. Дополнительные сведения см. в разделах &quot;Общие сведения об анимациях From/To/By&quot;, <a href="key-frame-animations-overview.html">Общие сведения об анимации по ключевым кадрам</a> и <a href="path-animations-overview.html">Общие сведения об анимация с использованием пути</a>.</p>
+<p>Поскольку классы анимации наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класса, вы должны быть знакомы с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекты и способами наследования от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>. Дополнительные сведения см. в разделе <a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a>.</p>
+<p><a name="extendingtheanimationsystem"></a></p>
+<h2 id="extending-the-animation-system">Расширение системы анимации</h2>
+<p>Существует несколько способов расширения системы анимации WPF, которые зависят от уровня встроенного функционала, который будет использоваться.  В механизме анимации WPF имеются три основных точки расширяемости.</p>
+<ul>
+<li><p>Создание пользовательского объекта ключевого кадра путем наследования от одной из  <em>&lt;тип &gt;</em> классы опорного кадра, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doublekeyframe">DoubleKeyFrame</a>. Этот подход использует большую часть встроенных функциональных возможностей механизма анимации WPF.</p>
+</li>
+<li><p>Создание собственного класса анимации путем наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> или один из  <em>&lt;тип &gt;</em> классы AnimationBase.</p>
+</li>
+<li><p>Использование покадрового обратного вызова для создания анимаций на основе отдельных кадров. Такой подход предусматривает полный обход анимации и систему времени.</p>
+</li>
+</ul>
+<p>В следующей таблице описаны некоторые сценарии для расширения системы анимации.</p>
+<table>
+<thead>
+<tr>
+<th>Требуемое действие</th>
+<th>Используемый подход</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Настройка интерполяции между значениями типа, имеющего соответствующий класс <em>&lt;Type&gt;</em> AnimationUsingKeyFrames</td>
+<td>Создайте пользовательский ключевой кадр. Дополнительные сведения см. в разделе <a href="#createacustomkeyframe">Создание пользовательского ключевого кадра</a>.</td>
+</tr>
+<tr>
+<td>Настройка не только интерполяции между значениями типа, имеющего соответствующий класс <em>&lt;Type&gt;</em> Animation.</td>
+<td>Создайте пользовательский класс анимации, наследующий от класса <em>&lt;Type&gt;</em> AnimationBase, соответствующего типу, который требуется анимировать. Дополнительные сведения см. в разделе <a href="#createacustomanimationtype">Создание пользовательского класса анимации</a>.</td>
+</tr>
+<tr>
+<td>Анимация типа, не имеющего соответствующей анимации WPF</td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a> или создать класс, наследуемый от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a>. Дополнительные сведения см. в разделе <a href="#createacustomanimationtype">Создание пользовательского класса анимации</a>.</td>
+</tr>
+<tr>
+<td>Анимация нескольких объектов со значениями, которые вычисляются для каждого кадра и основаны на последнем наборе взаимодействий объектов</td>
+<td>Используйте покадровый обратный вызов. Дополнительные сведения см. в разделе <a href="#useperframecallback">Использование покадрового обратного вызова</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="createacustomkeyframe"></a></p>
+<h2 id="create-a-custom-key-frame">Создание пользовательского ключевого кадра</h2>
+<p>Создание пользовательского ключевого кадра является простейшим способом расширения системы анимации. Этот подход следует использовать в случае, если требуется другой метод интерполяции для анимации по ключевым кадрам.  Как описано в разделе <a href="key-frame-animations-overview.html">Общие сведения об анимации по ключевым кадрам</a>, в анимации по ключевым кадрам используются объекты ключевых кадров для создания выходных значений. Каждый объект ключевого кадра выполняет три функции:</p>
+<ul>
+<li><p>Указывает целевое значение с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> свойство.</p>
+</li>
+<li><p>Указывает время, по которому это значение следует связаться с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> свойство.</p>
+</li>
+<li><p>выполняет интерполяцию между значением предыдущего ключевого кадра и собственным значением с помощью метода InterpolateValueCore.</p>
+</li>
+</ul>
+<p><strong>Инструкции по реализации</strong></p>
+<p>Выполните наследование от абстрактного класса <em>&lt;Type&gt;</em> KeyFrame и реализуйте метод InterpolateValueCore. Метод InterpolateValueCore возвращает текущее значение ключевого кадра. Он принимает два параметра: значение предыдущего ключевого кадра и значение хода выполнения в диапазоне от 0 до 1. 0 означает ключевой кадр только что запущен, а значение 1 указывает, что ключевой кадр завершил работу и должен возвращать значение, заданное его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> свойство.</p>
+<p>Так как  <em>&lt;тип &gt;</em> опорный кадр классы наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класса, необходимо также переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> core для возврата нового экземпляра класса. Если класс не использует свойства зависимостей для хранения своих данных или требует дополнительной инициализации после создания, может потребоваться переопределить дополнительные методы. Дополнительные сведения см. в разделе <a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a>.</p>
+<p>После создания пользовательской анимации <em>&lt;Type&gt;</em> KeyFrame ее можно использовать <em>&lt;Type&gt;</em> AnimationUsingKeyFrames для данного типа.</p>
+<p><a name="createacustomanimationtype"></a></p>
+<h2 id="create-a-custom-animation-class">Создание пользовательского класса анимации</h2>
+<p>Создание собственного типа анимации обеспечивает больший уровень контроля над способом анимации объекта. Существуют два рекомендованных способа создания собственного типа анимации: можно унаследовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> класса или  <em>&lt;тип &gt;</em> класс AnimationBase. Наследование от классов <em>&lt;Type&gt;</em> Animation или <em>&lt;Type&gt;</em> AnimationUsingKeyFrames не рекомендуется.</p>
+<h3 id="derive-from-typeanimationbase">Наследование от класса &lt;Type&gt;AnimationBase</h3>
+<p>Наследование от класса <em>&lt;Type&gt;</em> AnimationBase является самым простым способом создания типа анимации. Этот подход следует использовать в случае, если требуется создать анимацию для типа, у которого уже есть соответствующий класс <em>&lt;Type&gt;</em> AnimationBase.</p>
+<p><strong>Инструкции по реализации</strong></p>
+<p>Выполните наследование от класса <em>&lt;Type&gt;</em> Animation и реализуйте метод GetCurrentValueCore. Метод GetCurrentValueCore возвращает текущее значение анимации. Он принимает три параметра: предлагаемое начальное значение, предлагаемое конечное значение и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>, используемый для определения хода выполнения анимации.</p>
+<p>Так как  <em>&lt;тип &gt;</em> AnimationBase наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> класса, необходимо также переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> core для возврата нового экземпляра класса. Если класс не использует свойства зависимостей для хранения своих данных или требует дополнительной инициализации после создания, может потребоваться переопределить дополнительные методы. Дополнительные сведения см. в разделе <a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a>.</p>
+<p>Дополнительные сведения см. в документации по методу GetCurrentValueCore для класса <em>&lt;Type&gt;</em> AnimationBase по типу, который требуется анимировать. Например, см. раздел <a href="https://go.microsoft.com/fwlink/?LinkID=159981">Пример пользовательской анимации</a>.</p>
+<p><strong>Альтернативные подходы</strong></p>
+<p>Если просто требуется изменить способ интерполяции значений анимации, следует рассмотреть возможность наследования от одного из классов <em>&lt;Type&gt;</em> KeyFrame. Создаваемый ключевой кадр может использоваться с соответствующим классом <em>&lt;Type&gt;</em> AnimationUsingKeyFrames, предоставляемым WPF.</p>
+<h3 id="derive-from-animationtimeline">Наследование от AnimationTimeline</h3>
+<p>Являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> класса, если требуется создать анимацию для типа, который уже не имеет соответствующего WPF анимацию или вы хотите создать анимацию, которая не является строго типизированным.</p>
+<p><strong>Инструкции по реализации</strong></p>
+<p>Являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> класса и переопределить следующие члены:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> — Если новый класс является конкретным, необходимо переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> для возврата нового экземпляра класса.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.getcurrentvalue">GetCurrentValue</a> — Переопределите этот метод для возврата текущего значения анимации. Он принимает три параметра: начальное значение, конечное значение по умолчанию и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a>. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> для получения текущего времени или ход выполнения анимации. Можно выбрать, какие значения будут использоваться: начальное значение по умолчанию или конечное значение по умолчанию.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.isdestinationdefault">IsDestinationDefault</a> — Нужно переопределить это свойство позволяет указать, использует ли анимация конечное значение по умолчанию, определяемое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.getcurrentvalue">GetCurrentValue</a> метод.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.targetpropertytype">TargetPropertyType</a> — Нужно переопределить это свойство позволяет указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.type">Type</a> выходных данных анимации.</p>
+</li>
+</ul>
+<p>Если класс не использует свойства зависимостей для хранения своих данных или требует дополнительной инициализации после создания, может потребоваться переопределить дополнительные методы. Дополнительные сведения см. в разделе <a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a>.</p>
+<p>Рекомендуемой концепцией (используемой анимациями WPF) является использование двух уровней наследования.</p>
+<ol>
+<li><p>Создание абстрактного  <em>&lt;тип &gt;</em> AnimationBase класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a>. Этот класс должен переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.targetpropertytype">TargetPropertyType</a> метод. Он должен также представить новый абстрактный метод GetCurrentValueCore и переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.getcurrentvalue">GetCurrentValue</a> таким образом, чтобы он проверял типы параметров значение по умолчанию назначения и начальное значение по умолчанию, затем метод GetCurrentValueCore.</p>
+</li>
+<li><p>Создайте еще один класс, который наследует от нового  <em>&lt;тип &gt;</em> класс AnimationBase и переопределяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.createinstancecore">CreateInstanceCore</a> метод, представленный, метод GetCurrentValueCore и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline.isdestinationdefault">IsDestinationDefault</a> свойство.</p>
+</li>
+</ol>
+<p><strong>Альтернативные подходы</strong></p>
+<p>Если вы хотите анимировать тип, не имеет соответствующей анимации From/To/By или анимации по ключевым кадрам, рассмотрите возможность использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a>. Так как для нее характерна слабая типизация, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a> можно анимировать любой тип значения. Недостаток этого подхода заключается в том, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a> поддерживает только дискретную интерполяцию.</p>
+<p><a name="useperframecallback"></a></p>
+<h2 id="use-per-frame-callback">Использование покадрового обратного вызова</h2>
+<p>Этот подход следует использовать, если требуется полностью обойти систему анимации WPF WPF. Один из сценариев для такого подхода — анимация физики, при которой на каждом шаге анимации требуется пересчитывать новое направление или положение анимированных объектов на основе последнего набора взаимодействий объектов.</p>
+<p><strong>Инструкции по реализации</strong></p>
+<p>В отличие от других подходов, описанных в этом обзоре, здесь для использования покадрового обратного вызова не требуется создавать пользовательскую анимацию или класс ключевого кадра.</p>
+<p>Вместо этого следует регистрировать для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> события объекта, который содержит объекты, которые требуется анимировать. Метод обработчика событий вызывается один раз для каждого кадра. Каждый раз, когда WPF выполняет маршалинг сохраненных данных отрисовки в визуальном дереве через дерево композиции, вызывается метод обработчика событий.</p>
+<p>В обработчике событий выполняются все вычисления, необходимые для эффекта анимации, и задаются свойства объектов, которые требуется анимировать с этими значениями.</p>
+<p>Чтобы получить время представления текущего кадра, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a> связанный с данным событий может быть приведен как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderingeventargs">RenderingEventArgs</a>, которые предоставляют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderingeventargs.renderingtime">RenderingTime</a> времени отрисовки свойство, которое можно использовать для получения текущего кадра.</p>
+<p>Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> страницы.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe">IKeyFrame</a></li>
+<li><a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a></li>
+<li><a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a></li>
+<li><a href="key-frame-animations-overview.html">Общие сведения об анимации по ключевым кадрам</a></li>
+<li><a href="path-animations-overview.html">Общие сведения об анимация с использованием пути</a></li>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="animation-and-timing-system-overview.html">Общие сведения об анимации и системе управления временем</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=159981">Пример пользовательской анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

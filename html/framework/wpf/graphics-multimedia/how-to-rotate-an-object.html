@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1088;&#1072;&#1097;&#1077;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1088;&#1072;&#1097;&#1077;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-rotate-an-object">Практическое руководство. Вращение объекта</h1>
+
+<p>В данном примере показано, как можно вращать объект. В примере сначала создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> и затем задает его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> в градусах.</p>
+<p>В следующем примере Ломаная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a> объекта 45 градусов относительно его верхнего левого угла.</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-xaml" name="Transforms_snip#RotatePolylineAboutTopLeft">&lt;Canvas Height=&quot;200&quot; Width=&quot;200&quot;&gt;
+
+  &lt;!-- Rotates the Polyline 45 degrees about the point (0,0). --&gt;
+  &lt;Polyline Points=&quot;25,25 0,50 25,75 50,50 25,25 25,0&quot; 
+    Stroke=&quot;Blue&quot; StrokeThickness=&quot;10&quot;
+    Canvas.Left=&quot;75&quot; Canvas.Top=&quot;50&quot;&gt;
+    &lt;Polyline.RenderTransform&gt;
+      &lt;RotateTransform CenterX=&quot;0&quot; CenterY=&quot;0&quot; Angle=&quot;45&quot; /&gt;
+    &lt;/Polyline.RenderTransform&gt;
+  &lt;/Polyline&gt;
+&lt;/Canvas&gt;
+</code></pre><pre><code class="lang-csharp" name="Transforms_Procedural_snip#RotatePolylineAboutTopLeft">// Create a Polyline.
+Polyline polyline1 = new Polyline();
+polyline1.Points.Add(new Point(25, 25));
+polyline1.Points.Add(new Point(0, 50));
+polyline1.Points.Add(new Point(25, 75));
+polyline1.Points.Add(new Point(50, 50));
+polyline1.Points.Add(new Point(25, 25));
+polyline1.Points.Add(new Point(25, 0));
+polyline1.Stroke = Brushes.Blue;
+polyline1.StrokeThickness = 10;
+
+// Create a RotateTransform to rotate
+// the Polyline 45 degrees about its
+// top-left corner.
+RotateTransform rotateTransform1 =
+    new RotateTransform(45);
+polyline1.RenderTransform = rotateTransform1;
+
+// Create a Canvas to contain the Polyline.
+Canvas canvas1 = new Canvas();
+canvas1.Width = 200;
+canvas1.Height = 200;
+Canvas.SetLeft(polyline1, 75);
+Canvas.SetTop(polyline1, 50);
+canvas1.Children.Add(polyline1);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centerx">CenterX</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centery">CenterY</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> укажите точку, вокруг которой будет поворачиваться объект. Это центральная точка выражается в пространстве координат преобразуемого элемента. По умолчанию поворот выполняется относительно точки (0,0), которая является верхним левым углом объекта для преобразования.</p>
+<p>В следующем примере Ломаная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a> объекта по часовой стрелке на 45 градусов относительно точки (25,50).</p>
+<pre><code class="lang-xaml" name="Transforms_snip#RotatePolylineAboutCenter">&lt;Canvas Height=&quot;200&quot; Width=&quot;200&quot;&gt;
+
+  &lt;!-- Rotates the Polyline 45 degrees about the point (25,50). --&gt;
+  &lt;Polyline Points=&quot;25,25 0,50 25,75 50,50 25,25 25,0&quot; 
+    Stroke=&quot;Blue&quot; StrokeThickness=&quot;10&quot;
+    Canvas.Left=&quot;75&quot; Canvas.Top=&quot;50&quot;&gt;
+    &lt;Polyline.RenderTransform&gt;
+      &lt;RotateTransform CenterX=&quot;25&quot; CenterY=&quot;50&quot; Angle=&quot;45&quot; /&gt;
+    &lt;/Polyline.RenderTransform&gt;
+  &lt;/Polyline&gt;
+&lt;/Canvas&gt;
+</code></pre><pre><code class="lang-csharp" name="Transforms_Procedural_snip#RotatePolylineAboutCenter">// Create a Polyline.
+Polyline polyline2 = new Polyline();
+polyline2.Points = polyline1.Points;
+polyline2.Stroke = Brushes.Blue;
+polyline2.StrokeThickness = 10;
+
+// Create a RotateTransform to rotate
+// the Polyline 45 degrees about the
+// point (25,50).
+RotateTransform rotateTransform2 =
+    new RotateTransform(45);
+rotateTransform2.CenterX = 25;
+rotateTransform2.CenterY = 50;
+polyline2.RenderTransform = rotateTransform2;
+
+// Create a Canvas to contain the Polyline.
+Canvas canvas2 = new Canvas();
+canvas2.Width = 200;
+canvas2.Height = 200;
+Canvas.SetLeft(polyline2, 75);
+Canvas.SetTop(polyline2, 50);
+canvas2.Children.Add(polyline2);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке показан результат применения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> к двум объектам.</p>
+<p><img src="media/wcpsdk-graphicsmm-rotatetransform45degrees.gif" alt="Поворот на 45 градусов вокруг различных точек" title="wcpsdk_graphicsmm_rotatetransform45degrees"><br>
+Два объекта, повернутые на 45 градусов, с разными центрами вращения</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a> В предыдущих примерах является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>. При применении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransformorigin">RenderTransformOrigin</a> свойство для указания источника для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> , примененные к элементу. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransformorigin">RenderTransformOrigin</a> свойство использует относительные координаты, преобразование можно применять к центру элемента, даже если вы не знаете его размер. Дополнительные сведения и пример см. в разделе <a href="how-to-specify-the-origin-of-a-transform-by-using-relative-values.html">задание источника преобразования с помощью относительных значений</a>.</p>
+<p>Полный пример см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=158252">Примеры двумерных преобразований</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a></li>
+<li><a href="transforms-overview.html">Общие сведения о классах Transform</a></li>
+<li><a href="transformations-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1044;&#1086;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1074;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099; &#1073;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1080; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1093; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1044;&#1086;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1074;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099; &#1073;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1080; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1093; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="additional-security-considerations-in-windows-forms">Дополнительные вопросы безопасности в формах Windows Forms</h1>
+
+<p>.NET Framework параметры безопасности может привести к вашему приложению работать по-разному в среде с частичным доверием на локальном компьютере. .NET Framework ограничивает доступ, помимо прочего, к таким важным локальным ресурсам, как файловая система, сеть и неуправляемые API. Параметры безопасности влияют на возможность вызова Microsoft Windows API или другие API, которые не могут быть проверены системой безопасности. Безопасность также влияет на другие аспекты приложения, включая доступ к файлам и данным, и вывод на печать. Дополнительные сведения о доступе к файлам и данным в среде с частичным доверием см. в разделе <a href="more-secure-file-and-data-access-in-windows-forms.html">Более безопасный доступ к файлам и данным в Windows Forms</a>. Дополнительные сведения о выводе на печать в среде с частичным доверием см. в разделе <a href="more-secure-printing-in-windows-forms.html">Более безопасная печать в Windows Forms</a>.</p>
+<p>В следующих разделах рассматриваются способы работы с буфером обмена, окнами и вызов Windows API из приложений, работающих в среде с частичным доверием.</p>
+<h2 id="clipboard-access">Доступ к буферу обмена</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermission">UIPermission</a> Класс управляет доступом к буфера обмена, а также <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard">UIPermissionClipboard</a> значение перечисления указывает уровень доступа. В следующей таблице приведены возможные уровни разрешения.</p>
+<table>
+<thead>
+<tr>
+<th>Значение UIPermissionClipboard</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard#System_Security_Permissions_UIPermissionClipboard_AllClipboard">AllClipboard</a></td>
+<td>Буфер обмена можно использовать без ограничений.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard#System_Security_Permissions_UIPermissionClipboard_OwnClipboard">OwnClipboard</a></td>
+<td>Буфер обмена можно использовать с некоторыми ограничениями. Возможность размещения данных в буфере обмена (операции с командами копирования и вырезания) не ограничена. Встроенные элементы управления, которые принимают операцию вставки, например текстовое поле, могут принимать данные из буфера обмена, но пользовательские элементы управления не могут программно считывать данные из буфера обмена.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard#System_Security_Permissions_UIPermissionClipboard_NoClipboard">NoClipboard</a></td>
+<td>Буфер обмена использовать нельзя.</td>
+</tr>
+</tbody>
+</table>
+<p>По умолчанию в зону локальной интрасети получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard#System_Security_Permissions_UIPermissionClipboard_AllClipboard">AllClipboard</a> доступа и зона Интернета получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionclipboard#System_Security_Permissions_UIPermissionClipboard_OwnClipboard">OwnClipboard</a> доступа. Это означает, что приложение может копировать данные в буфер обмена, но не может программно вставлять или считывать данные из буфера обмена. Благодаря таким ограничениям программы, не имеющие полного доверия, не могут считывать содержимое из буфера обмена, скопированное другим приложением. Если приложению требуется полный доступ к буферу обмена, но у вас нет соответствующих разрешений, для приложения необходимо повысить уровень разрешений. Дополнительные сведения о повышении уровня разрешений см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ed5htz45(v=vs.100)">Общее администрирование политик безопасности</a>.</p>
+<h2 id="window-manipulation">Управление окнами</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermission">UIPermission</a> Класс также управляет разрешениями для выполнения работы с окнами и других действий, связанных с пользовательского интерфейса, а также <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow">UIPermissionWindow</a> значение перечисления указывает уровень доступа. В следующей таблице приведены возможные уровни разрешения.</p>
+<p>По умолчанию в зону локальной интрасети получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_AllWindows">AllWindows</a> доступа и зона Интернета получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeTopLevelWindows">SafeTopLevelWindows</a> доступа. Это означает, что в зоне Интернета приложение может выполнять большинство операций с окнами и пользовательским интерфейсом, но внешний вид окна будет изменяться. В измененном окне при первом запуске отображается всплывающее уведомление. В таком окне также изменен заголовок, а в строке заголовка должна быть кнопка &quot;Закрыть&quot;. Всплывающее уведомление и строка заголовка информируют пользователя приложения о том, что данное приложение выполняется в режиме частичного доверия.</p>
+<table>
+<thead>
+<tr>
+<th>Значение UIPermissionWindow</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_AllWindows">AllWindows</a></td>
+<td>Пользователи могут использовать все окна и события пользовательского ввода без каких-либо ограничений.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeTopLevelWindows">SafeTopLevelWindows</a></td>
+<td>Пользователи могут использовать для рисования только более безопасные окна верхнего уровня и дочерние окна, а также события пользовательского ввода для пользовательского интерфейса в таких окнах и дочерних окнах. Такие более безопасные окна имеют специальные метки, а также ограничения на минимальный и максимальный размер. Эти ограничения предотвращают потенциально опасные атаки с подменой, такие как имитация экрана входа в систему или рабочего стола системы и ограничивают программный доступ к родительским windows API, связанные с фокусом и использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tooltip">ToolTip</a> элемента управления,</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeSubWindows">SafeSubWindows</a></td>
+<td>Пользователи могут использовать для рисования только более безопасные дочерние окна, а также события пользовательского ввода для пользовательского интерфейса в таких дочерних окнах. Примером такого более безопасного дочернего окна является элемент управления, отображаемый в браузере.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_NoWindows">NoWindows</a></td>
+<td>Пользователи не могут использовать никакие окна и события пользовательского интерфейса. Пользовательский интерфейс использовать нельзя.</td>
+</tr>
+</tbody>
+</table>
+<p>Каждый уровень разрешений, определенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow">UIPermissionWindow</a> перечисление позволяет выполнять меньшее количество действий, чем на уровень выше. В следующих таблицах указаны действия, которые ограничены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeTopLevelWindows">SafeTopLevelWindows</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeSubWindows">SafeSubWindows</a> значения. Точные разрешения, необходимые для каждого члена, представлены в справочном разделе для этого члена в документации по библиотеке классов .NET Framework.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeTopLevelWindows">SafeTopLevelWindows</a> разрешение ограничивает действия, приведенные в следующей таблице.</p>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Ограниченные действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application">Application</a></td>
+<td>— Задание значения для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.safetoplevelcaptionformat">SafeTopLevelCaptionFormat</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a></td>
+<td>— Получение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.parent">Parent</a> свойство.<br>— Задание значения для свойства <code>Region</code>.<br>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.findform">FindForm</a> , <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.focus">Focus</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.fromchildhandle">FromChildHandle</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.fromhandle">FromHandle</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.preprocessmessage">PreProcessMessage</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.reflectmessage">ReflectMessage</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.settoplevel">SetTopLevel</a> метод.<br>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.getchildatpoint">GetChildAtPoint</a> метод, если возвращенный элемент управления не является дочерним элементом вызывающего элемента управления.<br>— Изменение фокуса элемента управления в контейнерном элементе управления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor">Cursor</a></td>
+<td>— Задание значения для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor.clip">Clip</a>.<br>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.hide">Hide</a> метод.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagrid">DataGrid</a></td>
+<td>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.processtabkey">ProcessTabKey</a> метод.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a></td>
+<td>— Получение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.activeform">ActiveForm</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.mdiparent">MdiParent</a> свойство.<br>— Задание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.controlbox">ControlBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.showintaskbar">ShowInTaskbar</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.topmost">TopMost</a> свойство.<br>— Задание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.opacity">Opacity</a> свойство ниже 50%.<br>— Задание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.windowstate">WindowState</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.formwindowstate#System_Windows_Forms_FormWindowState_Minimized">Minimized</a> программным способом.<br>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.activate">Activate</a> метод.<br>— Использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.formborderstyle#System_Windows_Forms_FormBorderStyle_None">None</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.formborderstyle#System_Windows_Forms_FormBorderStyle_FixedToolWindow">FixedToolWindow</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.formborderstyle#System_Windows_Forms_FormBorderStyle_SizableToolWindow">SizableToolWindow</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.formborderstyle">FormBorderStyle</a> значений перечисления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.notifyicon">NotifyIcon</a></td>
+<td>— Использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.notifyicon">NotifyIcon</a> компонент полностью запрещено.</td>
+</tr>
+</tbody>
+</table>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeSubWindows">SafeSubWindows</a> Ограничивает действия, перечисленные в следующей таблице, кроме ограничений, налагаемых по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.uipermissionwindow#System_Security_Permissions_UIPermissionWindow_SafeTopLevelWindows">SafeTopLevelWindows</a> значение.</p>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Ограниченные действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog">CommonDialog</a></td>
+<td>-Отображение диалогового окна производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog">CommonDialog</a> класса.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a></td>
+<td>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.creategraphics">CreateGraphics</a> метод.<br>— Задание значения для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.cursor">Cursor</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.cursor">Cursor</a></td>
+<td>— Задание значения для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor.current">Current</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.messagebox">MessageBox</a></td>
+<td>— Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.show">Show</a> метод.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hosting-third-party-controls">Размещение элементов управления сторонних производителей</h3>
+<p>Если ваши формы размещают элементы управления сторонних производителей, могут возникать другие операции управления окнами. Элемент управления стороннего производителя — любой пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> наличие не разработан и скомпилирован, самостоятельно. Несмотря на то, что вариантом размещения воспользоваться довольно сложно, теоретически элемент управления стороннего производителя может расширить свою поверхность отрисовки и полностью занять область вашей формы. Затем такой элемент управления может сымитировать важное диалоговое окно и запросить у ваших пользователей такие сведения, как сочетание имени пользователя и пароля или номера банковских счетов.</p>
+<p>Чтобы ограничить такой потенциальный риск, используйте элементы управления только доверенных сторонних производителей. Если вы используете элементы управления стороннего производителя, загруженные из непроверяемого источника, рекомендуем просмотреть исходный код на предмет наличия потенциальной уязвимости. Убедившись, что источник не является вредоносным, скомпилируйте сборку самостоятельно и проверьте, соответствует ли исходный код сборке.</p>
+<h2 id="windows-api-calls">Вызовы API Windows</h2>
+<p>При разработке приложения требуется вызов функции из интерфейса Windows API, вы обращаетесь к неуправляемым кодом. В этом случае действия кода с окном или операционной системе не удается определить, при работе с вызовами Windows API или значения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermission">SecurityPermission</a> Класс и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermissionflag#System_Security_Permissions_SecurityPermissionFlag_UnmanagedCode">UnmanagedCode</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermissionflag">SecurityPermissionFlag</a> перечисления управления доступом к неуправляемому коду. Приложение можно получать доступ к неуправляемым кодом только в том случае, если ему предоставлено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermissionflag#System_Security_Permissions_SecurityPermissionFlag_UnmanagedCode">UnmanagedCode</a> разрешение. По умолчанию вызывать неуправляемый код могут только приложения, которые выполняются локально.</p>
+<p>Некоторые элементы Windows Forms предоставляют неуправляемый доступ, требующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermissionflag#System_Security_Permissions_SecurityPermissionFlag_UnmanagedCode">UnmanagedCode</a> разрешение. В следующей таблице перечислены элементы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms">System.Windows.Forms</a> пространства имен, которым требуется это разрешение. Дополнительные сведения о разрешениях, требуемых для элемента, см. в разделе документации по библиотеке классов .NET Framework.</p>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Член</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application">Application</a></td>
+<td>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.addmessagefilter">AddMessageFilter</a><br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.currentinputlanguage">CurrentInputLanguage</a> Свойство<br>Метод -   <code>Exit</code><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.exitthread">ExitThread</a><br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.application.threadexception">ThreadException</a> Событие</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog">CommonDialog</a></td>
+<td>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.hookproc">HookProc</a><br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.ownerwndproc">OwnerWndProc</a>\ метод<br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.reset">Reset</a><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.commondialog.rundialog">RunDialog</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a></td>
+<td>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.createparams">CreateParams</a><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.defwndproc">DefWndProc</a><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.destroyhandle">DestroyHandle</a><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.wndproc">WndProc</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.help">Help</a></td>
+<td>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.help.showhelp">ShowHelp</a> Методы<br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.help.showhelpindex">ShowHelpIndex</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.nativewindow">NativeWindow</a></td>
+<td>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.nativewindow">NativeWindow</a> Класс</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.screen">Screen</a></td>
+<td>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.screen.fromhandle">FromHandle</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a></td>
+<td>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.send">Send</a><br>Метод -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.sendwait">SendWait</a></td>
+</tr>
+</tbody>
+</table>
+<p>Если приложение не имеет разрешения на вызов неуправляемого кода, приложение должно запросить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.securitypermissionflag#System_Security_Permissions_SecurityPermissionFlag_UnmanagedCode">UnmanagedCode</a> разрешение, или необходимо подумать о других способах реализации таких возможностей, во многих случаях Windows Forms предоставляет управляемую альтернативу Windows Функции API. Если альтернативного способа нет, а приложению необходимо получать доступ к неуправляемому коду, повысьте уровень разрешений для такого приложения.</p>
+<p>Благодаря разрешению на вызов неуправляемого кода приложение может выполнять практически любые действия. Следовательно, разрешение на вызов неуправляемого кода должно предоставляться только приложениям из доверенного источника. Кроме того, в зависимости от приложения, часть функциональных возможностей приложения, вызывающих неуправляемый код, может быть необязательной или использоваться только в среде с полным доверием. Дополнительные сведения об опасных разрешениях см. в разделе <a href="../misc/dangerous-permissions-and-policy-administration.md">Опасные разрешения и администрирование политик</a>. Дополнительные сведения о повышении уровня разрешений см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ed5htz45(v=vs.100)">Общее администрирование политик безопасности</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="more-secure-file-and-data-access-in-windows-forms.html">Более безопасный доступ к файлам и данным в Windows Forms</a></li>
+<li><a href="more-secure-printing-in-windows-forms.html">Более безопасная печать в Windows Forms</a></li>
+<li><a href="security-in-windows-forms-overview.html">Общие сведения о безопасности в Windows Forms</a></li>
+<li><a href="windows-forms-security.html">Безопасность Windows Forms</a></li>
+<li><a href="/visualstudio/deployment/securing-clickonce-applications">Защита приложений ClickOnce</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; Visual Basic | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1089;&#1086;&#1089;&#1090;&#1072;&#1074;&#1085;&#1086;&#1075;&#1086; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; Visual Basic | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-authoring-a-composite-control-with-visual-basic">Пошаговое руководство. Создание составного элемента управления с помощью Visual Basic</h1>
+
+<p>Составные элементы управления предоставляют средства для создания и повторного использования настраиваемых графических интерфейсов. Составной элемент управления — это компонент, имеющий визуальное представление. Таким образом, он может состоять из одного или нескольких элементов управления, компонентов или блоков кода Windows Forms, позволяющих расширить функциональные возможности за счет проверки введенных пользователем данных, изменения свойств отображения или выполнения других предусмотренных разработчиком действий. Составные элементы управления можно вставлять в Windows Forms точно так же, как другие элементы управления. В первой части этого пошагового руководства мы создадим простой составной элемент управления с именем <code>ctlClock</code>. Во второй части мы расширим функциональность <code>ctlClock</code> за счет наследования.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Отображаемые диалоговые окна и команды меню могут отличаться от описанных в справке в зависимости от текущих параметров или выпуска. Чтобы изменить параметры, выберите в меню <strong>Сервис</strong> пункт <strong>Импорт и экспорт параметров</strong> . Дополнительные сведения см. в разделе <a href="/visualstudio/ide/personalizing-the-visual-studio-ide">Персонализация интегрированной среды разработки Visual Studio</a>.</p>
+</div>
+<h2 id="creating-the-project">Создание проекта</h2>
+<p>Создавая проект, вы указываете для него имя, чтобы задать корневое пространство имен, имя сборки и имя проекта, и необходимо убедиться в том, что компонент по умолчанию попадет в нужное пространство имен.</p>
+<h4 id="to-create-the-ctlclocklib-control-library-and-the-ctlclock-control">Создание библиотеки элементов управления ctlClockLib и элемента управления ctlClock</h4>
+<ol>
+<li><p>В меню <strong>Файл</strong> наведите указатель мыши на пункт <strong>Создать</strong> и выберите <strong>Проект</strong>, чтобы открыть диалоговое окно <strong>Создание проекта</strong>.</p>
+</li>
+<li><p>В списке проектов Visual Basic, выберите <strong>Windows Control Library</strong> шаблон проекта, тип <code>ctlClockLib</code> в <strong>имя</strong> , а затем щелкните <strong>ОК</strong>.</p>
+<p>Имя проекта, <code>ctlClockLib</code>, по умолчанию также назначается корневому пространству имен. Корневое пространство имен используется для определения имен компонентов в сборке. Например, если в двух сборках содержатся компоненты с именем <code>ctlClock</code>, можно указать ваш <code>ctlClock</code> компонента с помощью <code>ctlClockLib.ctlClock.</code></p>
+</li>
+<li><p>В обозревателе решений щелкните файл <strong>UserControl1.vb</strong> правой кнопкой мыши и выберите команду <strong>Переименовать</strong>. Измените имя файла на <code>ctlClock.vb</code>. Чтобы переименовать все ссылки на элемент кода UserControl1, в соответствующем запросе нажмите кнопку <strong>Да</strong>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>По умолчанию составной элемент управления наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> класса, предоставляемого системой. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.usercontrol">UserControl</a> Класс обеспечивает функциональность, необходимую всем составным элементам управления и реализует стандартные методы и свойства.</p>
+</div>
+</li>
+<li><p>Сохраните проект, открыв меню <strong>Файл</strong> и выбрав пункт <strong>Сохранить все</strong>.</p>
+</li>
+</ol>
+<h2 id="adding-windows-controls-and-components-to-the-composite-control">Добавление элементов управления и компонентов Windows в составной элемент управления</h2>
+<p>Визуальный интерфейс представляет собой важную часть составного элемента управления. Он реализуется путем добавления одного или нескольких элементов управления Windows на поверхность конструктора. В следующем примере мы добавим элементы управления Windows в составной элемент управления и напишем код для реализации функциональных возможностей.</p>
+<h4 id="to-add-a-label-and-a-timer-to-your-composite-control">Добавление метки и таймера в составной элемент управления</h4>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlClock.vb</strong> правой кнопкой мыши и выберите пункт <strong>Открыть в конструкторе</strong>.</p>
+</li>
+<li><p>На панели элементов разверните узел <strong>Общие элементы управления</strong>, а затем дважды щелкните пункт <strong>Метка</strong>.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> управления с именем <code>Label1</code> добавляется в элемент управления на поверхности конструктора.</p>
+</li>
+<li><p>В конструкторе щелкните пункт <strong>Label1</strong>. В окне &quot;Свойства&quot; задайте следующие свойства.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство.</th>
+<th>Измените на</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><code>lblDisplay</code></td>
+</tr>
+<tr>
+<td><strong>Текста</strong></td>
+<td><code>(blank space)</code></td>
+</tr>
+<tr>
+<td><strong>TextAlign</strong></td>
+<td><code>MiddleCenter</code></td>
+</tr>
+<tr>
+<td><strong>Font.Size</strong></td>
+<td><code>14</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>На <strong>панели элементов</strong> разверните узел <strong>Компоненты</strong>, а затем дважды щелкните пункт <strong>Таймер</strong>.</p>
+<p>Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer">Timer</a> — это компонент, он не имеет визуального представления во время выполнения. В связи с этим он отображается не с элементами управления на поверхности конструктора, а в конструкторе компонентов (область в нижней части поверхности конструктора).</p>
+</li>
+<li><p>В конструкторе компонентов щелкните <strong>Timer1</strong>и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer.interval">Interval</a> свойства <code>1000</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer.enabled">Enabled</a> свойства <code>True</code>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer.interval">Interval</a> Свойство определяет частоту, с которой тактов для компонента таймера. При каждом такте <code>Timer1</code> оно запускает код в событии <code>Timer1_Tick</code>. Интервал представляет время между тактами в миллисекундах.</p>
+</li>
+<li><p>В конструкторе компонентов дважды щелкните <strong>Timer1</strong>, чтобы перейти к событию <code>Timer1_Tick</code> для <code>ctlClock</code>.</p>
+</li>
+<li><p>Измените код, как показано в следующем примере. Измените модификатор доступа с <code>Private</code> на <code>Protected</code>.</p>
+<pre><code class="lang-vb">Protected Sub Timer1_Tick(ByVal sender As Object, ByVal e As _  
+    System.EventArgs) Handles Timer1.Tick  
+    ' Causes the label to display the current time.    
+    lblDisplay.Text = Format(Now, &quot;hh:mm:ss&quot;)  
+End Sub  
+</code></pre>
+<p>Этот код вызывает отображение текущего времени в <code>lblDisplay</code>. Поскольку для интервала <code>Timer1</code> было задано значение <code>1000</code>, это событие возникает через каждую тысячу миллисекунд, а значит, текущее время обновляется каждую секунду.</p>
+</li>
+<li><p>Измените метод для переопределения. Дополнительные сведения см. ниже в разделе &quot;Наследование из пользовательского элемента управления&quot;.</p>
+<pre><code class="lang-vb">Protected Overridable Sub Timer1_Tick(ByVal sender As Object, ByVal _  
+    e As System.EventArgs) Handles Timer1.Tick  
+</code></pre>
+</li>
+<li><p>Сохраните проект, открыв меню <strong>Файл</strong> и выбрав пункт <strong>Сохранить все</strong>.</p>
+</li>
+</ol>
+<h2 id="adding-properties-to-the-composite-control">Добавление свойств в составной элемент управления</h2>
+<p>Теперь инкапсулирует элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> управления и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.timer">Timer</a> компонента, каждый из которых свой собственный набор унаследованных свойств. Несмотря на то что отдельные свойства этих элементов управления не будут доступны последующим пользователям вашего элемента управления, вы можете создать и предоставить настраиваемые свойства, написав соответствующие блоки кода. Выполняя следующую процедуру, вы добавите в элемент управления свойства, позволяющие пользователю изменять цвет фона и текста.</p>
+<h4 id="to-add-a-property-to-your-composite-control">Добавление свойства в составной элемент управления</h4>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlClock.vb</strong> правой кнопкой мыши и выберите пункт <strong>Показать код</strong>.</p>
+<p>Откроется редактор кода для элемента управления.</p>
+</li>
+<li><p>Найдите оператор <code>Public Class ctlClock</code>. Под этим оператором введите следующий код.</p>
+<pre><code class="lang-vb">Private colFColor as Color  
+Private colBColor as Color  
+</code></pre>
+<p>Эти операторы создают закрытые переменные для хранения значений свойств, которые вы собираетесь создать.</p>
+</li>
+<li><p>Вставьте следующий код под объявлениями переменных, созданными в шаге 2.</p>
+<pre><code class="lang-vb">' Declares the name and type of the property.  
+Property ClockBackColor() as Color  
+    ' Retrieves the value of the private variable colBColor.  
+    Get  
+        Return colBColor  
+    End Get  
+    ' Stores the selected value in the private variable colBColor, and   
+    ' updates the background color of the label control lblDisplay.  
+    Set(ByVal value as Color)  
+        colBColor = value  
+        lblDisplay.BackColor = colBColor     
+    End Set  
+
+End Property  
+' Provides a similar set of instructions for the foreground color.  
+Property ClockForeColor() as Color  
+    Get  
+        Return colFColor  
+    End Get  
+    Set(ByVal value as Color)  
+        colFColor = value  
+        lblDisplay.ForeColor = colFColor  
+    End Set  
+End Property  
+</code></pre>
+<p>Приведенный выше код обеспечивает доступ к двум настраиваемым свойствам, <code>ClockForeColor</code> и <code>ClockBackColor</code>, для последующих пользователей данного элемента управления, вызывая оператор <code>Property</code>. Операторы <code>Get</code> и <code>Set</code> позволяют хранить и извлекать значение свойства, а также предоставляют код для реализации соответствующих этому свойству функциональных возможностей.</p>
+</li>
+<li><p>Сохраните проект, открыв меню <strong>Файл</strong> и выбрав пункт <strong>Сохранить все</strong>.</p>
+</li>
+</ol>
+<h2 id="testing-the-control">Тестирование элемента управления</h2>
+<p>Элементы управления не являются автономными проектами и должны размещаться в контейнере. Проверьте поведение элемента управления в среде выполнения и испытайте его свойства в <strong>тестовом контейнере пользовательских элементов управления</strong>. Дополнительные сведения см. в разделе <a href="how-to-test-the-run-time-behavior-of-a-usercontrol.html">Как Тестирование во время выполнения поведения элемента UserControl</a>.</p>
+<h4 id="to-test-your-control">Проверка элемента управления</h4>
+<ol>
+<li><p>Нажмите клавишу F5, чтобы собрать проект и запустить элемент управления в <strong>тестовом контейнере элементов управления</strong>.</p>
+</li>
+<li><p>В таблице свойств тестового контейнера выберите свойство <code>ClockBackColor</code>, а затем щелкните стрелку раскрывающегося списка, чтобы открыть палитру цветов.</p>
+</li>
+<li><p>Щелкните нужный цвет.</p>
+<p>Цвет фона элемента управления изменится на выбранный.</p>
+</li>
+<li><p>Используя аналогичную последовательность событий, проверьте, функционирует ли свойство <code>ClockForeColor</code> должным образом.</p>
+</li>
+<li><p>Нажмите <strong>Закрыть</strong>, чтобы закрыть <strong>тестовый контейнер пользовательских элементов управления</strong>.</p>
+<p>Из этого и предыдущих разделов вы узнали, как объединить компоненты и элементы управления Windows с кодом и упаковкой и, таким образом, предоставить настраиваемые функциональные возможности в виде составного элемента управления. Вы узнали, как вывести свойства в составной элемент управления и проверить элемент управления после того, как он будет готов. В следующем разделе вы узнаете, как сконструировать производный составной элемент управления, используя в качестве базы <code>ctlClock</code>.</p>
+</li>
+</ol>
+<h2 id="inheriting-from-a-composite-control">Наследование из составного элемента управления</h2>
+<p>В предыдущих разделах вы узнали, как объединить элементы управления, компоненты и код Windows в составные элементы управления, доступные для повторного использования. После этого составной элемент управления можно использовать как базу, на основе которой будут создаваться другие элементы управления. Процесс создания класса, производного от базового, называется <em>наследованием</em>. В этом разделе вы создадите составной элемент управления с именем <code>ctlAlarmClock</code>. Он будет производным от родительского элемента управления, <code>ctlClock</code>. Вы узнаете, как расширить функциональные возможности <code>ctlClock</code>, переопределив методы родительского класса и добавив новые методы и свойства.</p>
+<p>Первый шаг в создании производного элемента управления — это его наследование из родительского элемента. Это действие создает новый элемент управления, обладающий всеми свойствами, методами и графическими характеристиками родительского элемента управления, а также может служить основой для добавления или изменения функциональных возможностей.</p>
+<h4 id="to-create-the-inherited-control">Создание производного элемента управления</h4>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlClockLib</strong> правой кнопкой мыши, наведите указатель мыши на пункт <strong>Добавить</strong> и выберите <strong>Пользовательский элемент управления</strong>.</p>
+<p>Откроется диалоговое окно <strong>Добавление нового элемента</strong>.</p>
+</li>
+<li><p>Выберите шаблон <strong>Производный пользовательский элемент управления</strong>.</p>
+</li>
+<li><p>В поле <strong>Имя</strong> введите <code>ctlAlarmClock.vb</code> и нажмите кнопку <strong>Добавить</strong>.</p>
+<p>Откроется диалоговое окно <strong>Выбор компонентов для наследования</strong>.</p>
+</li>
+<li><p>В разделе <strong>Имя компонента</strong> дважды щелкните файл <strong>ctlClock</strong>.</p>
+</li>
+<li><p>В обозревателе решений просмотрите список текущих проектов.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Файл с именем <strong>элемент ctlAlarmClock.vb</strong> будет добавлен в текущий проект.</p>
+</div>
+</li>
+</ol>
+<h3 id="adding-the-alarm-properties">Добавление свойств будильника</h3>
+<p>Свойства, добавляются в производный элемент управления точно так же, как в составной элемент управления. Теперь, используя синтаксис объявления свойств, добавим в элемент управления два свойства: свойство <code>AlarmTime</code>, в котором хранится значение даты и времени отключения будильника, и свойство <code>AlarmSet</code>, определяющее время срабатывания будильника.</p>
+<h5 id="to-add-properties-to-your-composite-control">Добавление свойств в составной элемент управления</h5>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlAlarmClock</strong> правой кнопкой мыши и выберите пункт <strong>Показать код</strong>.</p>
+</li>
+<li><p>Найдите объявление класса для элемента управления ctlAlarmClock, которое выглядит как <code>Public Class ctlAlarmClock</code>.  В это объявление класса вставьте следующий код.</p>
+<pre><code class="lang-vb">Private dteAlarmTime As Date  
+Private blnAlarmSet As Boolean  
+' These properties will be declared as Public to allow future   
+' developers to access them.  
+Public Property AlarmTime() As Date  
+    Get  
+        Return dteAlarmTime  
+    End Get  
+    Set(ByVal value as Date)  
+        dteAlarmTime = value  
+    End Set  
+End Property  
+Public Property AlarmSet() As Boolean  
+    Get  
+        Return blnAlarmSet  
+    End Get  
+    Set(ByVal value as Boolean)  
+        blnAlarmSet = value  
+    End Set  
+End Property  
+</code></pre>
+</li>
+</ol>
+<h3 id="adding-to-the-graphical-interface-of-the-control">Добавление графического интерфейса элементу управления</h3>
+<p>Производный элемент управления получает такой же графический интерфейс, как у того элемента, из которого он наследуется. Кроме того, он включает те же составные элементы управления, что и родительский элемент управления, однако свойства этих составных элементов будут доступны, только если предоставить их напрямую. Графический интерфейс производного элемента управления добавляется точно так же, как и для любого составного элемента управления. Чтобы продолжить добавление графического интерфейса для будильника, добавим элемент управления Label, который будет мигать при срабатывании будильника.</p>
+<h5 id="to-add-the-label-control">Добавление элемента управления Label</h5>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlAlarmClock</strong> правой кнопкой мыши и выберите пункт <strong>Показать конструктор</strong>.</p>
+<p>Конструктор для <code>ctlAlarmClock</code> откроется в главном окне.</p>
+</li>
+<li><p>Нажмите <code>lblDisplay</code> (отображаемая область элемента управления) и просмотрите окно свойств.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Все свойства отображаются, но недоступны. Это означает, что эти свойства являются собственными свойствами <code>lblDisplay</code>, в окне свойств изменить их или получить к ним доступ нельзя. По умолчанию элементы управления, входящие в составной элемент управления, имеют статус <code>Private</code> и их свойства недоступны.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Чтобы последующие пользователи составного элемента управления получили доступ к входящим в него элементам управления, объявите их как <code>Public</code> или <code>Protected</code>. Это позволит вам задавать и изменять свойства элементов управления в составном элементе управления, используя соответствующий код.</p>
+</div>
+</li>
+<li><p>Добавление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> элемента управления в составной элемент управления.</p>
+</li>
+<li><p>С помощью мыши, перетащите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> управления непосредственно под окно отображения. В окне &quot;Свойства&quot; задайте следующие свойства.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство.</th>
+<th>Параметр</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>name</strong></td>
+<td><code>lblAlarm</code></td>
+</tr>
+<tr>
+<td><strong>Текста</strong></td>
+<td><strong>Сигнал!</strong></td>
+</tr>
+<tr>
+<td><strong>TextAlign</strong></td>
+<td><code>MiddleCenter</code></td>
+</tr>
+<tr>
+<td><strong>Видимый</strong></td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h3 id="adding-the-alarm-functionality">Добавление функциональных возможностей будильника</h3>
+<p>Выполняя предыдущие процедуры, вы добавили свойства и элемент управления, которые обеспечат функциональность будильника в составном элементе управления. В ходе этой процедуры вы добавите код, который будет сравнивать текущее время со временем будильника и, если они совпадают, запускать звуковой сигнал и мигающее оповещение. Переопределив метод <code>Timer1_Tick</code> в <code>ctlClock</code> и добавив в него дополнительный код, вы расширите возможности <code>ctlAlarmClock</code>, сохранив при этом все унаследованные функции <code>ctlClock</code>.</p>
+<h5 id="to-override-the-timer1tick-method-of-ctlclock">Переопределение метода Timer1_Tick в ctlClock</h5>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlAlarmClock.vb</strong> правой кнопкой мыши и выберите пункт <strong>Показать код</strong>.</p>
+</li>
+<li><p>Найдите оператор <code>Private blnAlarmSet As Boolean</code>. Сразу после него добавьте следующий оператор.</p>
+<pre><code class="lang-vb">Dim blnColorTicker as Boolean  
+</code></pre>
+</li>
+<li><p>Найдите оператор <code>End Class</code> в нижней части страницы. Непосредственно перед оператором <code>End Class</code> добавьте следующий код.</p>
+<pre><code class="lang-vb">Protected Overrides Sub Timer1_Tick(ByVal sender As Object, ByVal e _  
+    As System.EventArgs)  
+    ' Calls the Timer1_Tick method of ctlClock.  
+    MyBase.Timer1_Tick(sender, e)  
+    ' Checks to see if the Alarm is set.  
+    If AlarmSet = False Then  
+        Exit Sub  
+    End If  
+    ' If the date, hour, and minute of the alarm time are the same as  
+    ' now, flash and beep an alarm.   
+    If AlarmTime.Date = Now.Date And AlarmTime.Hour = Now.Hour And _  
+        AlarmTime.Minute = Now.Minute Then  
+        ' Sounds an audible beep.  
+        Beep()  
+        ' Sets lblAlarmVisible to True, and changes the background color based on the   
+        ' value of blnColorTicker. The background color of the label will   
+        ' flash once per tick of the clock.  
+        lblAlarm.Visible = True  
+        If blnColorTicker = False Then  
+            lblAlarm.BackColor = Color.PeachPuff  
+            blnColorTicker = True  
+        Else  
+            lblAlarm.BackColor = Color.Plum  
+            blnColorTicker = False  
+        End If  
+    Else  
+        ' Once the alarm has sounded for a minute, the label is made   
+        ' invisible again.  
+        lblAlarm.Visible = False  
+    End If  
+End Sub  
+</code></pre>
+<p>Добавление этого кода решает сразу несколько задач. Оператор <code>Overrides</code> указывает элементу управления использовать этот метод вместо метода, унаследованного из базового элемента управления. При вызове этого метода он вызывает переопределяемый метод, используя оператор <code>MyBase.Timer1_Tick</code>, и следит за тем, чтобы в этом элементе управления были реализованы все функции исходного элемента управления. Затем он выполняет дополнительный код, реализующий функции будильника. Когда будильник срабатывает, появляется мигающая метка и раздается звуковой сигнал.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поскольку вы переопределяете производный обработчик событий, указывать событие с помощью ключевого слова <code>Handles</code> не требуется. Событие уже подключено. Переопределяется только реализация обработчика.</p>
+</div>
+<p>Элемент управления &quot;Будильник&quot; почти готов. Осталось реализовать только его отключение. Для этого нужно добавить код в метод <code>lblAlarm_Click</code>.</p>
+</li>
+</ol>
+<h5 id="to-implement-the-shutoff-method">Реализация метода отключения</h5>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlAlarmClock.vb</strong> правой кнопкой мыши и выберите пункт <strong>Показать конструктор</strong>.</p>
+</li>
+<li><p>В конструкторе дважды щелкните <strong>lblAlarm</strong>. Откроется <strong>редактор кода</strong> со строкой <code>Private Sub lblAlarm_Click</code>.</p>
+</li>
+<li><p>Измените метод, как показано в следующем коде.</p>
+<pre><code class="lang-vb">Private Sub lblAlarm_Click(ByVal sender As Object, ByVal e As _  
+ System.EventArgs) Handles lblAlarm.Click  
+    ' Turns off the alarm.  
+    AlarmSet = False  
+    ' Hides the flashing label.  
+    lblAlarm.Visible = False  
+End Sub  
+</code></pre>
+</li>
+<li><p>Сохраните проект, открыв меню <strong>Файл</strong> и выбрав пункт <strong>Сохранить все</strong>.</p>
+</li>
+</ol>
+<h3 id="using-the-inherited-control-on-a-form">Использование производного элемента управления в форме</h3>
+<p>Производный элемент управления можно проверить так же, как Вы протестировали управления базового класса, <code>ctlClock</code>: Нажмите клавишу F5, чтобы собрать проект и запустить элемент управления в <strong>тестовом контейнере элементов управления</strong>. Дополнительные сведения см. в разделе <a href="how-to-test-the-run-time-behavior-of-a-usercontrol.html">Как Тестирование во время выполнения поведения элемента UserControl</a>.</p>
+<p>Чтобы элемент управления можно было использовать, необходимо поместить его в форму. Производный составной элемент управления, как и стандартный, не может быть автономным и должен быть размещен в форме или другом контейнере. Поскольку <code>ctlAlarmClock</code> отличается более широкими функциональными возможностями, для его проверки требуется дополнительный код. В ходе этой процедуры вы напишете простую программу для проверки функциональных возможностей <code>ctlAlarmClock</code>. Вы напишете код, задающий и отображающий свойство <code>AlarmTime</code> в <code>ctlAlarmClock</code> и проверяющий его унаследованные функции.</p>
+<h5 id="to-build-and-add-your-control-to-a-test-form">Сборка и добавление элемента управления в тестовую форму</h5>
+<ol>
+<li><p>В обозревателе решений щелкните файл <strong>ctlClockLib</strong> правой кнопкой мыши и выберите пункт <strong>Построить</strong>.</p>
+</li>
+<li><p>В меню <strong>Файл</strong> выберите команду <strong>Добавить</strong>, а затем <strong>Создать проект</strong>.</p>
+</li>
+<li><p>Добавьте в решение новый проект <strong>приложения Windows</strong> с именем <code>Test</code>.</p>
+<p>Проект <strong>Test</strong> будет добавлен в обозреватель решений.</p>
+</li>
+<li><p>В обозревателе решений щелкните правой кнопкой мыши узел проекта <code>Test</code> и выберите пункт <strong>Добавить ссылку</strong>, чтобы открыть диалоговое окно <strong>Добавление ссылки</strong>.</p>
+</li>
+<li><p>Выберите вкладку <strong>Проекты</strong>. Проект <strong>ctlClockLib</strong> будет указан под полем <strong>Имя проекта</strong>. Дважды щелкните файл <strong>ctlClockLib</strong>, чтобы добавить ссылку на тестовый проект.</p>
+</li>
+<li><p>В обозревателе решений щелкните <strong>Тест</strong> правой кнопкой мыши и выберите пункт <strong>Построить</strong>.</p>
+</li>
+<li><p>На <strong>панели элементов</strong> разверните узел <strong>Компоненты ctlClockLib</strong>.</p>
+</li>
+<li><p>Дважды щелкните <strong>ctlAlarmClock</strong>, чтобы добавить экземпляр <code>ctlAlarmClock</code> в свою форму.</p>
+</li>
+<li><p>В <strong>элементов</strong>, найдите и дважды щелкните <strong>DateTimePicker</strong> добавление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepicker">DateTimePicker</a> в форму элемент управления, а затем добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> элемента управления, дважды щелкнув <strong>метка</strong>.</p>
+</li>
+<li><p>С помощью мыши разместите элементы управления в удобном месте формы.</p>
+</li>
+<li><p>Задайте свойства этих элементов управления следующим образом.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления</th>
+<th>Свойство</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label1</code></td>
+<td><strong>Текста</strong></td>
+<td><code>(blank space)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>name</strong></td>
+<td><code>lblTest</code></td>
+</tr>
+<tr>
+<td><code>dateTimePicker1</code></td>
+<td><strong>name</strong></td>
+<td><code>dtpTest</code></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Формат</strong></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepickerformat#System_Windows_Forms_DateTimePickerFormat_Time">Time</a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>В конструкторе дважды щелкните <strong>dtpTest</strong>.</p>
+<p>В <strong>редакторе кода</strong> откроется <code>Private Sub dtpTest_ValueChanged</code>.</p>
+</li>
+<li><p>Измените код, как показано в следующем примере.</p>
+<pre><code class="lang-vb">Private Sub dtpTest_ValueChanged(ByVal sender As Object, ByVal e As _  
+    System.EventArgs) Handles dtpTest.ValueChanged  
+    ctlAlarmClock1.AlarmTime = dtpTest.Value  
+    ctlAlarmClock1.AlarmSet = True  
+    lblTest.Text = &quot;Alarm Time is &quot; &amp; Format(ctlAlarmClock1.AlarmTime, _  
+        &quot;hh:mm&quot;)  
+End Sub  
+</code></pre>
+</li>
+<li><p>В обозревателе решений щелкните правой кнопкой мыши <strong>Тест</strong> и выберите пункт <strong>Назначить запускаемым проектом</strong>.</p>
+</li>
+<li><p>В меню <strong>Отладка</strong> щелкните <strong>Начать отладку</strong>.</p>
+<p>Запустится тестовая программа. Обратите внимание, что текущее время обновляется в <code>ctlAlarmClock</code> управления и отображение время начала в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepicker">DateTimePicker</a> элемента управления.</p>
+</li>
+<li><p>Нажмите кнопку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datetimepicker">DateTimePicker</a> где отображаются минуты часа.</p>
+</li>
+<li><p>С помощью клавиатуры укажите значение минут, составляющее на одну минуту больше текущего времени, отображаемого <code>ctlAlarmClock</code>.</p>
+<p>Время включения будильника отображается в <code>lblTest</code>. Дождитесь момента, когда отображаемое время совпадет с установленным временем будильника. Когда это произойдет, раздастся звуковой сигнал, и <code>lblAlarm</code> начнет мигать.</p>
+</li>
+<li><p>Отключите сигнал, нажав <code>lblAlarm</code>. Теперь будильник можно сбросить.</p>
+<p>В этом пошаговом руководстве был проиллюстрирован ряд ключевых понятий. Вы узнали, как создать составной элемент управления, объединив элементы управления и компоненты в контейнер составного элемента управления. Вы узнали, как добавить свойства в элемент управления и написать код для реализации настраиваемых функциональных возможностей. В последнем разделе вы узнали, как расширять функциональные возможности заданного составного элемента управления с помощью наследования и как изменять функциональные возможности методов узла путем переопределения методов.</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="varieties-of-custom-controls.html">Создание собственных элементов управления</a></li>
+<li><a href="how-to-author-composite-controls.html">Практическое руководство. Создание составных элементов управления</a></li>
+<li><a href="how-to-display-a-control-in-the-choose-toolbox-items-dialog-box.html">Практическое руководство. Отображение элемента управления в диалоговом окне выбора элементов панели элементов</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

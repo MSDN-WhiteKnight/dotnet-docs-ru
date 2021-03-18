@@ -1,0 +1,896 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;, &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1102;&#1097;&#1077;&#1075;&#1086; &#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1089;&#1089; &#1074; &#1092;&#1086;&#1088;&#1084;&#1077; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;, &#1087;&#1086;&#1082;&#1072;&#1079;&#1099;&#1074;&#1072;&#1102;&#1097;&#1077;&#1075;&#1086; &#1087;&#1088;&#1086;&#1075;&#1088;&#1077;&#1089;&#1089; &#1074; &#1092;&#1086;&#1088;&#1084;&#1077; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-create-a-windows-forms-control-that-shows-progress">Практическое руководство. Создание элемента управления, показывающего прогресс в форме Windows Forms</h1>
+
+<p>В следующем примере кода показан пользовательский элемент управления <code>FlashTrackBar</code>, который позволяет показывать пользователю уровень или ход выполнения приложения. Ход выполнения отображается с помощью градиента.</p>
+<p>Элемент управления <code>FlashTrackBar</code> иллюстрирует следующие концепции.</p>
+<ul>
+<li><p>Определение пользовательских свойств.</p>
+</li>
+<li><p>Определение пользовательских событий. (<code>FlashTrackBar</code> определяет событие <code>ValueChanged</code>.)</p>
+</li>
+<li><p>Переопределение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a> метод для предоставления логики для отрисовки элемента управления.</p>
+</li>
+<li><p>Расчет области, доступной для рисования элемента управления с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.clientrectangle">ClientRectangle</a> свойство. <code>FlashTrackBar</code> делает это в его <code>OptimizedInvalidate</code> метод.</p>
+</li>
+<li><p>Реализация сериализации (устойчивости) для свойства при его изменении в конструкторе Windows Forms. <code>FlashTrackBar</code> Определяет <code>ShouldSerializeStartColor</code> и <code>ShouldSerializeEndColor</code> методы для сериализации его <code>StartColor</code> и <code>EndColor</code> свойства.</p>
+</li>
+</ul>
+<p>В приведенной ниже таблице показаны пользовательские свойства, которые определяет <code>FlashTrackBar</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AllowUserEdit</code></td>
+<td>Указывает, может ли пользователь изменить значение полосы прокрутки флеш-памяти, щелкнув его и перетащив.</td>
+</tr>
+<tr>
+<td><code>EndColor</code></td>
+<td>Определяет конечный цвет полосы прокрутки.</td>
+</tr>
+<tr>
+<td><code>DarkenBy</code></td>
+<td>Определяет степень затемнения фона относительно градиента переднего плана.</td>
+</tr>
+<tr>
+<td><code>Max</code></td>
+<td>Определяет максимальное значение полосы прокрутки.</td>
+</tr>
+<tr>
+<td><code>Min</code></td>
+<td>Определяет минимальное значение полосы прокрутки.</td>
+</tr>
+<tr>
+<td><code>StartColor</code></td>
+<td>Определяет начальный цвет градиента.</td>
+</tr>
+<tr>
+<td><code>ShowPercentage</code></td>
+<td>Указывает, следует ли отображать процент поверх градиента.</td>
+</tr>
+<tr>
+<td><code>ShowValue</code></td>
+<td>Указывает, следует ли отображать текущее значение поверх градиента.</td>
+</tr>
+<tr>
+<td><code>ShowGradient</code></td>
+<td>Указывает, следует ли отображать на полосе прокрутки цветной градиент, отображающий текущее значение.</td>
+</tr>
+<tr>
+<td>-   <code>Value</code></td>
+<td>Определяет текущее значение полосы ползунка.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующей таблице показаны дополнительные элементы, определяемые событием изменения свойства <code>FlashTrackBar:</code> и методом, который вызывает это событие.</p>
+<table>
+<thead>
+<tr>
+<th>Член</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ValueChanged</code></td>
+<td>Событие, которое возникает при изменении свойства <code>Value</code> полосы ползунка.</td>
+</tr>
+<tr>
+<td><code>OnValueChanged</code></td>
+<td>Метод, который вызывает событие <code>ValueChanged</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>FlashTrackBar</code> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a> класс данных события и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> для делегата события.</p>
+</div>
+<p>Для обработки соответствующих <em>EventName</em> события, <code>FlashTrackBar</code> переопределяет следующие методы, которые он наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onpaint">OnPaint</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onmousedown">OnMouseDown</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onmousemove">OnMouseMove</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onmouseup">OnMouseUp</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onresize">OnResize</a></p>
+</li>
+</ul>
+<p>Для обработки соответствующих событий изменения свойств <code>FlashTrackBar</code> переопределяет следующие методы, которые он наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onbackcolorchanged">OnBackColorChanged</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onbackgroundimagechanged">OnBackgroundImageChanged</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.ontextchanged">OnTextChanged</a></p>
+</li>
+</ul>
+<h2 id="example">Пример</h2>
+<p>Элемент управления <code>FlashTrackBar</code> определяет два редактора типов пользовательского интерфейса, <code>FlashTrackBarValueEditor</code> и <code>FlashTrackBarDarkenByEditor</code>, указанные в приведенных ниже листингах кода. Класс <code>HostApp</code> использует элемент управления <code>FlashTrackBar</code> в форме Windows.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#1">namespace Microsoft.Samples.WinForms.Cs.FlashTrackBar {
+    using System;
+    using System.ComponentModel;
+    using System.ComponentModel.Design;
+    using System.Drawing;
+    using System.Drawing.Drawing2D;
+    using System.Drawing.Design;
+    using System.Windows.Forms;
+    using System.Diagnostics;
+
+    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = &quot;FullTrust&quot;)] 
+    public class FlashTrackBar : System.Windows.Forms.Control {
+        /// &lt;summary&gt;
+        ///    Required designer variable.
+        /// &lt;/summary&gt;
+        private System.ComponentModel.Container components;
+
+        private const int LeftRightBorder = 10;
+        private int value = 0;
+        private int min = 0;
+        private int max = 100;
+        private bool showPercentage = false;
+        private bool showValue = false;
+        private bool allowUserEdit = true;
+        private bool showGradient = true;
+        private int dragValue = 0;
+        private bool dragging = false;
+        private Color startColor = Color.Red;
+        private Color endColor = Color.LimeGreen;
+        private EventHandler onValueChanged;
+        private Brush baseBackground = null;
+        private Brush backgroundDim = null;
+        private byte darkenBy = 200;
+
+
+        public FlashTrackBar() {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+
+            SetStyle(ControlStyles.Opaque, true);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            Debug.Assert(GetStyle(ControlStyles.ResizeRedraw), &quot;Should be redraw!&quot;);
+        }
+
+        /// &lt;summary&gt;
+        ///    Clean up any resources being used.
+        /// &lt;/summary&gt;
+        protected override void Dispose(bool disposing)
+        {
+           if (disposing) {
+                if (components != null) {
+                    components.Dispose();
+                }
+           }
+           base.Dispose(disposing);
+        }
+
+        /// &lt;summary&gt;
+        ///    Required method for Designer support - do not modify
+        ///    the contents of this method with the code editor.
+        /// &lt;/summary&gt;
+        void InitializeComponent () {
+            this.components = new System.ComponentModel.Container ();
+            this.ForeColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Black;
+            this.Size = new System.Drawing.Size(100, 23);
+            this.Text = &quot;FlashTrackBar&quot;;
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            DefaultValue(true)
+        ]
+        public bool AllowUserEdit {
+            get {
+                return allowUserEdit;
+            }
+            set {
+                if (value != allowUserEdit) {
+                    allowUserEdit = value;
+                    if (!allowUserEdit) {
+                        Capture = false;
+                        dragging = false;
+                    }
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;)
+        ]
+        public Color EndColor {
+            get {
+                return endColor;
+            }
+            set {
+                endColor = value;
+                if (baseBackground != null &amp;&amp; showGradient) {
+                    baseBackground.Dispose();
+                    baseBackground = null;
+                }
+                Invalidate();
+            }
+        }
+
+        public bool ShouldSerializeEndColor() {
+            return !(endColor == Color.LimeGreen);
+        }
+
+
+        [
+            Category(&quot;Flash&quot;),
+            Editor(typeof(FlashTrackBarDarkenByEditor), typeof(UITypeEditor)),
+            DefaultValue((byte)200)
+        ]
+        public byte DarkenBy {
+            get {
+                return darkenBy;
+            }
+            set {
+                if (value != darkenBy) {
+                    darkenBy = value;
+                    if (backgroundDim != null) {
+                        backgroundDim.Dispose();
+                        backgroundDim = null;
+                    }
+                    OptimizedInvalidate(Value, max);
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            DefaultValue(100)
+        ]
+        public int Max {
+            get {
+                return max;
+            }
+            set {
+                if (max != value) {
+                    max = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            DefaultValue(0)
+        ]
+        public int Min {
+            get {
+                return min;
+            }
+            set {
+                if (min != value) {
+                    min = value;
+                    Invalidate();
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;)
+        ]
+        public Color StartColor {
+            get {
+                return startColor;
+            }
+            set {
+                startColor = value;
+                if (baseBackground != null &amp;&amp; showGradient) {
+                    baseBackground.Dispose();
+                    baseBackground = null;
+                }
+                Invalidate();
+            }
+        }
+
+        public bool ShouldSerializeStartColor() {
+            return !(startColor == Color.Red);
+        }
+
+
+
+        [
+            Category(&quot;Flash&quot;),
+            RefreshProperties(RefreshProperties.Repaint),
+            DefaultValue(false)
+        ]
+        public bool ShowPercentage {
+            get {
+                return showPercentage;
+            }
+            set {
+                if (value != showPercentage) {
+                    showPercentage = value;
+                    if (showPercentage) {
+                        showValue = false;
+                    }
+                    Invalidate();
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            RefreshProperties(RefreshProperties.Repaint),
+            DefaultValue(false)
+        ]
+        public bool ShowValue {
+            get {
+                return showValue;
+            }
+            set {
+                if (value != showValue) {
+                    showValue = value;
+                    if (showValue) {
+                        showPercentage = false;
+                    }
+                    Invalidate();
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            DefaultValue(true)
+        ]
+        public bool ShowGradient {
+            get {
+                return showGradient;
+            }
+            set {
+                if (value != showGradient) {
+                    showGradient = value;
+                    if (baseBackground != null) {
+                        baseBackground.Dispose();
+                        baseBackground = null;
+                    }
+                    Invalidate();
+                }
+            }
+        }
+
+        [
+            Category(&quot;Flash&quot;),
+            Editor(typeof(FlashTrackBarValueEditor), typeof(UITypeEditor)),
+            DefaultValue(0)
+        ]
+        public int Value {
+            get {
+                if (dragging) {
+                    return dragValue;
+                }
+                return value;
+            }
+            set {
+                if (value != this.value) {
+                    int old = this.value;
+                    this.value = value;
+                    OnValueChanged(EventArgs.Empty);
+                    OptimizedInvalidate(old, this.value);
+                }
+            }
+        }
+
+        // ValueChanged Event
+        [Description(&quot;Raised when the Value displayed changes&quot;)]
+        public event EventHandler ValueChanged {
+            add {
+                onValueChanged += value;
+            }
+            remove {
+                onValueChanged -= value;
+            }
+        }
+
+        private void OptimizedInvalidate(int oldValue, int newValue) {
+            Rectangle client = ClientRectangle;
+
+            float oldPercentValue = ((float)oldValue / ((float)Max - (float)Min));
+            int oldNonDimLength = (int)(oldPercentValue * (float)client.Width);
+
+            float newPercentValue = ((float)newValue / ((float)Max - (float)Min));
+            int newNonDimLength = (int)(newPercentValue * (float)client.Width);
+
+            int min = Math.Min(oldNonDimLength, newNonDimLength);
+            int max = Math.Max(oldNonDimLength, newNonDimLength);
+
+            Rectangle invalid = new Rectangle(
+                client.X + min, 
+                client.Y, 
+                max - min, 
+                client.Height);
+
+            Invalidate(invalid);
+
+            string oldToDisplay;
+            string newToDisplay;
+
+            if (ShowPercentage) {
+                oldToDisplay = Convert.ToString((int)(oldPercentValue * 100f)) + &quot;%&quot;;
+                newToDisplay = Convert.ToString((int)(newPercentValue * 100f)) + &quot;%&quot;;
+            }
+            else if (ShowValue) {
+                oldToDisplay = Convert.ToString(oldValue);
+                newToDisplay = Convert.ToString(newValue);
+            }
+            else {
+                oldToDisplay = null;
+                newToDisplay = null;
+            }
+
+            if (oldToDisplay != null &amp;&amp; newToDisplay != null) {
+                Graphics g = CreateGraphics();
+                SizeF oldFontSize = g.MeasureString(oldToDisplay, Font);
+                SizeF newFontSize = g.MeasureString(newToDisplay, Font);
+                RectangleF oldFontRect = new RectangleF(new PointF(0, 0), oldFontSize);
+                RectangleF newFontRect = new RectangleF(new PointF(0, 0), newFontSize);
+                oldFontRect.X = (client.Width - oldFontRect.Width) / 2;
+                oldFontRect.Y = (client.Height - oldFontRect.Height) / 2;
+                newFontRect.X = (client.Width - newFontRect.Width) / 2;
+                newFontRect.Y = (client.Height - newFontRect.Height) / 2;
+
+                Invalidate(new Rectangle((int)oldFontRect.X, (int)oldFontRect.Y, (int)oldFontRect.Width, (int)oldFontRect.Height));
+                Invalidate(new Rectangle((int)newFontRect.X, (int)newFontRect.Y, (int)newFontRect.Width, (int)newFontRect.Height));
+            }
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e) {
+            base.OnMouseDown(e);
+            if (!allowUserEdit) {
+                return;
+            }
+            Capture = true;
+            dragging = true;
+            SetDragValue(new Point(e.X, e.Y));
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e) {
+            base.OnMouseMove(e);
+            if (!allowUserEdit || !dragging) {
+                return;
+            }
+            SetDragValue(new Point(e.X, e.Y));
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e) {
+            base.OnMouseUp(e);
+            if (!allowUserEdit || !dragging) {
+                return;
+            }
+            Capture = false;
+            dragging = false;
+            value = dragValue;
+            OnValueChanged(EventArgs.Empty);
+        }
+
+        protected override void OnPaint(PaintEventArgs e) {
+
+            base.OnPaint(e);
+            if (baseBackground == null) {
+                if (showGradient) {
+                    baseBackground = new LinearGradientBrush(new Point(0, 0),
+                                                             new Point(ClientSize.Width, 0),
+                                                             StartColor,
+                                                             EndColor);
+                }
+                else if (BackgroundImage != null) {
+                    baseBackground = new TextureBrush(BackgroundImage);
+                }
+                else {
+                    baseBackground = new SolidBrush(BackColor);
+                }
+            }
+
+            if (backgroundDim == null) {
+                backgroundDim = new SolidBrush(Color.FromArgb(DarkenBy, Color.Black));
+            }
+
+            Rectangle toDim = ClientRectangle;
+            float percentValue = ((float)Value / ((float)Max - (float)Min));
+            int nonDimLength = (int)(percentValue * (float)toDim.Width);
+            toDim.X += nonDimLength;
+            toDim.Width -= nonDimLength;
+
+
+            string text = Text;
+            string toDisplay = null;
+            RectangleF textRect = new RectangleF();
+
+            if (ShowPercentage || ShowValue || text.Length &gt; 0) {
+
+                if (ShowPercentage) {
+                    toDisplay = Convert.ToString((int)(percentValue * 100f)) + &quot;%&quot;;
+                }
+                else if (ShowValue) {
+                    toDisplay = Convert.ToString(Value);
+                }
+                else {
+                    toDisplay = text;
+                }
+
+                SizeF textSize = e.Graphics.MeasureString(toDisplay, Font);
+                textRect.Width = textSize.Width;
+                textRect.Height = textSize.Height;
+                textRect.X = (ClientRectangle.Width - textRect.Width) / 2;
+                textRect.Y = (ClientRectangle.Height - textRect.Height) / 2;
+            }
+
+            e.Graphics.FillRectangle(baseBackground, ClientRectangle);
+            e.Graphics.FillRectangle(backgroundDim, toDim);
+            e.Graphics.Flush();
+            if (toDisplay != null &amp;&amp; toDisplay.Length &gt; 0) {
+                e.Graphics.DrawString(toDisplay, Font, new SolidBrush(ForeColor), textRect);
+            }
+        }
+
+        protected override void OnTextChanged(EventArgs e) {
+            base.OnTextChanged(e);
+            Invalidate();
+        }
+
+        protected override void OnBackColorChanged(EventArgs e) {
+            base.OnBackColorChanged(e);
+            if ((baseBackground != null) &amp;&amp; (!showGradient)) {
+                        baseBackground.Dispose();
+                        baseBackground = null;
+            }
+        }
+
+        protected override void OnBackgroundImageChanged(EventArgs e) {
+            base.OnTextChanged(e);
+            if ((baseBackground != null) &amp;&amp; (!showGradient)) {
+                        baseBackground.Dispose();
+                        baseBackground = null;
+            }
+        }
+
+        protected override void OnResize(EventArgs e) {
+            base.OnResize(e);
+            if (baseBackground != null) {
+                baseBackground.Dispose();
+                baseBackground = null;
+            }
+        }
+
+        protected virtual void OnValueChanged(EventArgs e) {
+            if (onValueChanged != null) {
+                onValueChanged.Invoke(this, e);
+            }
+        }
+
+        private void SetDragValue(Point mouseLocation) {
+
+            Rectangle client = ClientRectangle;
+
+            if (client.Contains(mouseLocation)) {
+                float percentage = (float)mouseLocation.X / (float)ClientRectangle.Width;
+                int newDragValue = (int)(percentage * (float)(max - min));
+                if (newDragValue != dragValue) {
+                    int old = dragValue;
+                    dragValue = newDragValue;
+                    OptimizedInvalidate(old, dragValue);
+                }
+            }
+            else {
+                if (client.Y &lt;= mouseLocation.Y &amp;&amp; mouseLocation.Y &lt;= client.Y + client.Height) {
+                    if (mouseLocation.X &lt;= client.X &amp;&amp; mouseLocation.X &gt; client.X - LeftRightBorder) {
+                        int newDragValue = min;
+                        if (newDragValue != dragValue) {
+                            int old = dragValue;
+                            dragValue = newDragValue;
+                            OptimizedInvalidate(old, dragValue);
+                        }
+                    }
+                    else if (mouseLocation.X &gt;= client.X + client.Width &amp;&amp; mouseLocation.X &lt; client.X + client.Width + LeftRightBorder) {
+                        int newDragValue = max;
+                        if (newDragValue != dragValue) {
+                            int old = dragValue;
+                            dragValue = newDragValue;
+                            OptimizedInvalidate(old, dragValue);
+                        }
+                    }
+                }
+                else {
+                    if (dragValue != value) {
+                        int old = dragValue;
+                        dragValue = value;
+                        OptimizedInvalidate(old, dragValue);
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#10">namespace Microsoft.Samples.WinForms.Cs.FlashTrackBar {
+   using System;
+   using System.ComponentModel;
+   using System.ComponentModel.Design;
+   using System.Diagnostics;
+   using System.Drawing;
+   using System.Drawing.Drawing2D;
+   using System.Drawing.Design;
+   using System.Windows.Forms;
+   using System.Windows.Forms.ComponentModel;
+   using System.Windows.Forms.Design;
+
+   public class FlashTrackBarDarkenByEditor : FlashTrackBarValueEditor {
+       protected override void SetEditorProps(FlashTrackBar editingInstance, FlashTrackBar editor) {
+           base.SetEditorProps(editingInstance, editor);
+           editor.Min = 0;
+           editor.Max = byte.MaxValue;
+       }
+   }
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#20">namespace Microsoft.Samples.WinForms.Cs.FlashTrackBar {
+    using System;
+    using System.ComponentModel;
+    using System.ComponentModel.Design;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Drawing.Drawing2D;
+    using System.Drawing.Design;
+    using System.Windows.Forms;
+    using System.Windows.Forms.ComponentModel;
+    using System.Windows.Forms.Design;
+
+    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = &quot;FullTrust&quot;)] 
+    public class FlashTrackBarValueEditor : System.Drawing.Design.UITypeEditor {
+
+        private IWindowsFormsEditorService edSvc = null;
+
+        protected virtual void SetEditorProps(FlashTrackBar editingInstance, FlashTrackBar editor) {
+            editor.ShowValue = true;
+            editor.StartColor = Color.Navy;
+            editor.EndColor = Color.White;
+            editor.ForeColor = Color.White;
+            editor.Min = editingInstance.Min;
+            editor.Max = editingInstance.Max;
+        }
+
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value) {
+
+            if (context != null
+                &amp;&amp; context.Instance != null
+                &amp;&amp; provider != null) {
+
+                edSvc = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+
+                if (edSvc != null) {
+                    FlashTrackBar trackBar = new FlashTrackBar();
+                    trackBar.ValueChanged += new EventHandler(this.ValueChanged);
+                    SetEditorProps((FlashTrackBar)context.Instance, trackBar);
+                    bool asInt = true;
+                    if (value is int) {
+                        trackBar.Value = (int)value;
+                    }
+                    else if (value is byte) {
+                        asInt = false;
+                        trackBar.Value = (byte)value;
+                    }
+                    edSvc.DropDownControl(trackBar);
+                    if (asInt) {
+                        value = trackBar.Value;
+                    }
+                    else {
+                        value = (byte)trackBar.Value;
+                    }
+                }
+            }
+
+            return value;
+        }
+
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) {
+            if (context != null &amp;&amp; context.Instance != null) {
+                return UITypeEditorEditStyle.DropDown;
+            }
+            return base.GetEditStyle(context);
+        }
+
+        private void ValueChanged(object sender, EventArgs e) {
+            if (edSvc != null) {
+                edSvc.CloseDropDown();
+            }
+        }
+    }
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#30">namespace Microsoft.Samples.WinForms.Cs.HostApp {
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Microsoft.Samples.WinForms.Cs.FlashTrackBar;
+
+    public class HostApp : System.Windows.Forms.Form {
+        /// &lt;summary&gt;
+        ///    Required designer variable.
+        /// &lt;/summary&gt;
+        private System.ComponentModel.Container components;
+        protected internal Microsoft.Samples.WinForms.Cs.FlashTrackBar.FlashTrackBar flashTrackBar1;
+
+        public HostApp() {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
+
+        }
+
+        /// &lt;summary&gt;
+        ///    Clean up any resources being used.
+        /// &lt;/summary&gt;
+        protected override void Dispose(bool disposing)
+        {
+           if (disposing) {
+                if (components != null) {
+                    components.Dispose();
+                }
+           }
+           base.Dispose(disposing);
+        }
+
+        /// &lt;summary&gt;
+        ///    Required method for Designer support - do not modify
+        ///    the contents of this method with the code editor.
+        /// &lt;/summary&gt;
+        private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container ();
+            this.flashTrackBar1 = new Microsoft.Samples.WinForms.Cs.FlashTrackBar.FlashTrackBar ();
+            this.Text = &quot;Control Example&quot;;
+            this.ClientSize = new System.Drawing.Size (600, 450);
+            flashTrackBar1.BackColor = System.Drawing.Color.Black;
+            flashTrackBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            flashTrackBar1.TabIndex = 0;
+            flashTrackBar1.ForeColor = System.Drawing.Color.White;
+            flashTrackBar1.Text = &quot;Drag the Mouse and say Wow!&quot;;
+            flashTrackBar1.Value = 73;
+            flashTrackBar1.Size = new System.Drawing.Size (600, 450);
+            this.Controls.Add (this.flashTrackBar1);
+        }
+
+        /// &lt;summary&gt;
+        /// The main entry point for the application.
+        /// &lt;/summary&gt;
+        [STAThread]
+        public static void Main(string[] args) {
+            Application.Run(new HostApp());
+        }
+
+    }
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/37899azc(v=vs.120)">Расширение поддержки времени разработки</a></li>
+<li><a href="windows-forms-control-development-basics.html">Основы разработки элементов управления форм Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dependency-properties-overview">Общие сведения о свойствах зависимости</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет набор служб, которые можно использовать для расширения функциональных возможностей <a href="../../../standard/base-types/common-type-system.md#Properties">свойства</a>. В совокупности эти службы обычно называются системой свойств WPF. Свойство, поддерживаемое системой свойств WPF, называется свойством зависимостей. В этом обзоре описывается система свойств WPF и возможности свойства зависимостей. В обзоре также описывается использование существующих свойств зависимостей в языке XAML и коде. Кроме того, в обзоре представлены общие сведения о специальных аспектах свойств зависимостей, таких как метаданные свойств зависимостей и способы создания собственного свойства зависимостей в пользовательском классе.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что у вас есть базовые знания о системе типа .NET и объектно-ориентированном программировании. Чтобы выполнить примеры в этом разделе, следует также иметь представление о XAML и написании простых приложений WPF. Дополнительные сведения см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a>.</p>
+<h2 id="dependency-properties-and-clr-properties">Свойства зависимостей и свойства CLR</h2>
+<p>В WPF свойства обычно представляются как стандартные <a href="../../../standard/base-types/common-type-system.md#Properties">свойства</a> .NET. На базовом уровне можно взаимодействовать с этими свойствами непосредственно и не знать, что они реализуются как свойства зависимостей. Тем не менее настоятельно рекомендуется ознакомиться с некоторыми, а лучше со всеми, функциями системы свойств WPF, чтобы воспользоваться преимуществами этих функций.</p>
+<p>Свойства зависимостей предназначены для предоставления способа вычисления значения свойства по значениям других входных данных. Эти входные данные могут включать в себя системные свойства, такие как темы и пользовательские параметры, JIT-механизмы определения свойств, такие как привязка данных и анимации (раскадровки), шаблоны многократного использования, например ресурсы и стили, а также значения, известные благодаря отношениям между родительскими и дочерними элементами с другими элементами в дереве. Кроме того, свойство зависимостей может быть реализовано для обеспечения автономной проверки, значений по умолчанию, обратных вызовов, отслеживающих изменения других свойств, и системы, которая может приводить значения свойств на основе информации потенциальной среды выполнения. Производные классы также могут изменять некоторые специфические характеристики существующего свойства путем переопределения метаданных свойства зависимостей вместо того, чтобы переопределять фактические реализации существующих свойств или создавать новые свойства.</p>
+<p>В справочнике по SDK можно определить, что это свойство является свойством зависимостей по наличию раздела сведений о свойстве зависимостей на странице управляемой ссылки для этого свойства. В разделе сведений о свойстве зависимостей есть ссылка на идентификатор поля для этого свойства зависимостей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>, список параметров метаданных, заданных для этого свойства, информацию по переопределению для каждого класса и другие сведения.</p>
+<h2 id="dependency-properties-back-clr-properties">Свойства зависимостей поддерживают свойства CLR</h2>
+<p>Свойства зависимостей и система свойств WPF расширяют функциональные возможности свойства, предоставляя тип, который поддерживает свойство, в качестве альтернативной реализации для стандартного способа обеспечения свойства с помощью закрытого поля. Имя этого типа — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. Другим важным типом, который определяет систему свойств WPF, является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> Определяет базовый класс для регистрации и свойства зависимостей.</p>
+<p>Далее перечислены термины, используемые для свойств зависимостей.</p>
+<ul>
+<li><p><strong>Свойства зависимостей:</strong> Свойство, поддерживаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>.</p>
+</li>
+<li><p><strong>Идентификатор свойства зависимостей.</strong> Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> экземпляр, который извлекается как возвращаемое значение при регистрации свойства зависимостей и затем сохраняется как статический член класса. Этот идентификатор используется в качестве параметра для многих API, взаимодействующих с системой свойств WPF.</p>
+</li>
+<li><p><strong>CLR-«оболочка»:</strong> Фактические реализации получения и задания для свойства. Эти реализации включают идентификатор свойства зависимостей, используя его в вызовах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> и, таким образом, обеспечивая поддержку для свойства с помощью системы свойств WPF.</p>
+</li>
+</ul>
+<p>В следующем примере определяется свойство зависимостей <code>IsSpinning</code> и демонстрируется связь между идентификатором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> и свойством, которое он поддерживает.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#DPFormBasic">public static readonly DependencyProperty IsSpinningProperty =
+    DependencyProperty.Register(
+    &quot;IsSpinning&quot;, typeof(Boolean),
+    typeof(MyCode)
+    );
+public bool IsSpinning
+{
+    get { return (bool)GetValue(IsSpinningProperty); }
+    set { SetValue(IsSpinningProperty, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Соглашение об именовании свойства и его поддерживающего поля <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> имеет важное значение. Имя поля всегда определяется как имя свойства с добавленным суффиксом <code>Property</code>. Дополнительные сведения об этом соглашении и разъяснения по нему см. в разделе <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+<h2 id="setting-property-values">Задание значений свойств</h2>
+<p>Свойства можно задать с помощью кода или XAML.</p>
+<h3 id="setting-property-values-in-xaml">Задание значений свойств с помощью XAML</h3>
+<p>В следующем примере на XAML задается красный цвет фона кнопки. В этом примере показан случай, когда простое строковое значение атрибута на языке XAML преобразуется синтаксическим анализатором WPF XAML в тип WPF (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a> посредством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>) в созданном коде.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#MostBasicProperty">&lt;Button Background=&quot;Red&quot; Content=&quot;Button!&quot;/&gt;
+</code></pre>
+<p>Язык XAML поддерживает различные синтаксические формы для задания свойств. Выбор синтаксиса для конкретного свойства зависит от типа значения, которое использует свойство, а также других факторов, например наличия преобразователя типов. Дополнительные сведения об использовании синтаксиса XAML для задания свойств см. в разделе <a href="xaml-overview-wpf.html">Общие сведения о XAML (WPF)</a> и <a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a>.</p>
+<p>В следующем примере на языке XAML в качестве примера синтаксиса без атрибутов показан другой цвет фона кнопки. Здесь вместо задания простой заливки цветом в качестве фона определяется изображение. Это делается с помощью элемента, представляющего изображение, и источника изображения, указанного как атрибут вложенного элемента. Это пример синтаксиса элемента свойства.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#PESyntaxProperty">&lt;Button Content=&quot;Button!&quot;&gt;
+  &lt;Button.Background&gt;
+    &lt;ImageBrush ImageSource=&quot;wavy.jpg&quot;/&gt;
+  &lt;/Button.Background&gt;
+&lt;/Button&gt;
+</code></pre><h3 id="setting-properties-in-code">Задание свойств с помощью кода</h3>
+<p>Задание значений свойств зависимостей с помощью кода обычно представляет собой обращение к реализации метода установки, предоставленного &quot;оболочкой&quot; CLR.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#ProceduralPropertySet">Button myButton = new Button();
+myButton.Width = 200.0;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Получение значения свойства также является фактически вызовом реализации метода получения, имеющегося в &quot;оболочке&quot;:</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#ProceduralPropertyGet">double whatWidth;
+whatWidth = myButton.Width;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Систему свойств API - интерфейсы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> также можно вызывать напрямую. Обычно в этом нет необходимости при использовании существующих свойств (оболочки более удобны и дают лучшее предоставление свойства для средств разработчика), но в некоторых сценариях удобнее использовать непосредственный вызов API - интерфейсы.</p>
+<p>Свойства можно задать на языке XAML, а затем использовать их в коде, с помощью кода программной части. Дополнительные сведения см. в разделе <a href="code-behind-and-xaml-in-wpf.html">Код программной части и XAML в WPF</a>.</p>
+<h2 id="property-functionality-provided-by-a-dependency-property">Функциональные возможности свойства, предоставленные свойством зависимостей</h2>
+<p>Свойство зависимостей предоставляет дополнительные функциональные возможности в сравнении с теми, которые предоставляются свойством, поддерживаемым полем. Часто такая функция представляет или поддерживает одну из следующих возможностей:</p>
+<ul>
+<li><p><a href="#resources">Ресурсы</a></p>
+</li>
+<li><p><a href="#data-binding">Привязка данных</a></p>
+</li>
+<li><p><a href="#styles">Стили</a></p>
+</li>
+<li><p><a href="#animations">Анимации</a></p>
+</li>
+<li><p><a href="#metadata-overrides">Переопределения метаданных</a></p>
+</li>
+<li><p><a href="#property-value-inheritance">Наследование значения свойства</a></p>
+</li>
+<li><p><a href="#wpf-designer-integration">Интеграция конструктора WPF</a></p>
+</li>
+</ul>
+<h3 id="resources">Ресурсы</h3>
+<p>Значение свойства зависимостей можно задать ссылкой на ресурс. Ресурсы обычно указываются как значение свойства <code>Resources</code> корневого элемента страницы или приложения. (Эти расположения делают возможным наиболее удобный доступ к ресурсу.) В следующем примере показано, как определить ресурс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#ResourcesResource">&lt;DockPanel.Resources&gt;
+  &lt;SolidColorBrush x:Key=&quot;MyBrush&quot; Color=&quot;Gold&quot;/&gt;
+&lt;/DockPanel.Resources&gt;
+</code></pre>
+<p>После определения ресурса можно ссылаться на него и использовать для предоставления значения свойства:</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#ResourcesReference">&lt;Button Background=&quot;{DynamicResource MyBrush}&quot; Content=&quot;I am gold&quot; /&gt;
+</code></pre>
+<p>Этот конкретный ресурс называется <a href="dynamicresource-markup-extension.html">Расширение разметки DynamicResource</a> (в WPF XAML можно использовать статическую или динамическую ссылку на ресурс). Чтобы использовать динамическую ссылку на ресурс, необходимо задать значение для свойства зависимостей. Это явное использование динамической ссылки на ресурс, разрешенное системой свойств WPF. Дополнительные сведения см. в разделе <a href="xaml-resources.html">Ресурсы XAML</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Ресурсы считаются локальными значениями. Это означает, что если задается другое локальное значение, ссылка на ресурс удаляется. Дополнительные сведения см. в разделе <a href="dependency-property-value-precedence.html">Приоритет значений свойств зависимостей</a>.</p>
+</div>
+<h3 id="data-binding">Привязка данных</h3>
+<p>Свойства зависимостей могут ссылаться на значения через привязки данных. Привязка данных использует специальный синтаксис расширения разметки на языке XAML или объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> в коде. Благодаря функции привязки данных определение окончательного значения свойства откладывается до времени выполнения. Затем значение извлекается из источника данных.</p>
+<p>В следующем примере свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> задается для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> с помощью привязки, объявленной в XAML. Привязка использует наследуемый контекст данных и источник данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a> (не показан). Привязка сама определяет нужный источник с помощью свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> в источнике данных.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#BasicInlineBinding">&lt;Button Content=&quot;{Binding XPath=Team/@TeamName}&quot;/&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Привязки считаются локальными значениями. Это означает, что если задается другое локальное значение, привязка удаляется. Дополнительные сведения см. в разделе <a href="dependency-property-value-precedence.html">Приоритет значений свойств зависимостей</a>.</p>
+</div>
+<p>Для свойств зависимостей (или класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>) не предусмотрена собственная поддержка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> для формирования уведомлений об изменениях в исходном значении свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> для операций привязки данных. Дополнительные сведения о создании свойств для использования в привязках данных, которые могут передавать сообщения об изменениях в целевой объект привязки данных, см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязках данных</a>.</p>
+<h3 id="styles">Стили</h3>
+<p>Существует два основных направления применения свойств зависимостей — стили и шаблоны. Стили особенно полезны для настройки свойств, определяющих приложение пользовательский интерфейс. Обычно стили определяются в XAML в качестве ресурсов. Стили взаимодействуют с системой свойств, так как они обычно содержат код для задания значения конкретного свойства, а также &quot;правила срабатывания&quot;, которые определяют изменение значения свойства в зависимости от значения другого свойства в режиме реального времени.</p>
+<p>В следующем примере создается очень простой стиль, который будет определяться внутри словаря <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> (не показан). Затем этот стиль применяется непосредственно к свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Метод задания в стиле задает для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> значение &quot;зеленый&quot;.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#SimpleStyleDef">&lt;Style x:Key=&quot;GreenButtonStyle&quot;&gt;
+  &lt;Setter Property=&quot;Control.Background&quot; Value=&quot;Green&quot;/&gt;
+&lt;/Style&gt;
+</code></pre><pre><code class="lang-xaml" name="PropertiesOvwSupport#SimpleStyle">&lt;Button Style=&quot;{StaticResource GreenButtonStyle}&quot;&gt;I am green!&lt;/Button&gt;
+</code></pre>
+<p>Более подробную информацию см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<h3 id="animations">Анимации</h3>
+<p>Свойства зависимостей могут быть анимированы. При выполнении анимации анимированное значение действует с более высоким приоритетом, чем любое другое значение (например, локальное значение), которое имелось бы у свойства.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> анимируется для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> (с технической точки зрения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> анимируется с помощью синтаксиса элемента свойства для указания пустого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>, тогда свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> этого элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> — это свойство, которое непосредственно анимируется).</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#MiniAnimate">&lt;Button&gt;I am animated
+  &lt;Button.Background&gt;
+    &lt;SolidColorBrush x:Name=&quot;AnimBrush&quot;/&gt;
+  &lt;/Button.Background&gt;
+  &lt;Button.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Button.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;ColorAnimation
+            Storyboard.TargetName=&quot;AnimBrush&quot; 
+            Storyboard.TargetProperty=&quot;(SolidColorBrush.Color)&quot;
+            From=&quot;Red&quot; To=&quot;Green&quot; Duration=&quot;0:0:5&quot; 
+            AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Button.Triggers&gt;
+&lt;/Button&gt;
+</code></pre>
+<p>Дополнительные сведения об анимации свойств см. в разделах <a href="../graphics-multimedia/animation-overview.html">Общие сведения об анимации</a> и <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
+<h3 id="metadata-overrides">Переопределения метаданных</h3>
+<p>Правила взаимодействия свойства зависимостей можно изменять путем переопределения метаданных свойства при наследовании от класса, в котором это свойство зависимостей было изначально зарегистрировано. Переопределение метаданных зависит от идентификатора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. Переопределение метаданных не требует повторной реализации свойства. Изменение метаданных изначально обрабатывается системой свойств. Каждый класс потенциально содержит отдельные метаданные для всех свойств, которые наследуются от базовых классов, отдельно по каждому типу.</p>
+<p>В следующем примере метаданные переопределяются для свойства зависимостей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.defaultstylekey">DefaultStyleKey</a>. Переопределение метаданных этого конкретного свойства зависимостей включено в состав шаблона реализации, с помощью которого создаются элементы управления, которые могут использовать стили, заданные по умолчанию в темах.</p>
+<pre><code class="lang-csharp" name="PropertiesOvwSupport#OverrideMetadata">public class SpinnerControl : ItemsControl
+{
+    static SpinnerControl()
+    {
+        DefaultStyleKeyProperty.OverrideMetadata(
+            typeof(SpinnerControl),
+            new FrameworkPropertyMetadata(typeof(SpinnerControl))
+        );
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о переопределении и получении метаданных свойства см. в разделе <a href="dependency-property-metadata.html">Метаданные свойств зависимостей</a>.</p>
+<h3 id="property-value-inheritance">Наследование значения свойства</h3>
+<p>Элемент может наследовать значение свойства зависимостей от своего родительского элемента в дереве объектов.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Наследование значений свойств не включено глобально для всех свойств зависимостей, потому что выполнение вычислений при наследовании отрицательно сказывается на производительности. Наследование значений свойств обычно включается только для тех свойств, для которых в конкретном сценарии предполагается, что это наследование является оправданным. Определить, наследуется ли данное свойство зависимостей, можно, просмотрев раздел <strong>Сведения о свойствах зависимостей</strong> для этого свойства в справочнике по SDK.</p>
+</div>
+<p>В следующем примере показано, как для привязки задается свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a>, указывающее источник привязки, который не был показан в предыдущем примере. Все последующие привязки в дочерних объектах не должны указывать источник: они могут использовать унаследованное значение из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> в родительском объекте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>. (Кроме того, вместо этого дочерний объект может напрямую указывать свой собственный контекст <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> и намеренно не использовать унаследованное значение для контекста данных своих привязок.)</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#InheritanceContext">&lt;StackPanel Canvas.Top=&quot;50&quot; DataContext=&quot;{Binding Source={StaticResource XmlTeamsSource}}&quot;&gt;
+  &lt;Button Content=&quot;{Binding XPath=Team/@TeamName}&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Дополнительные сведения см. в разделе <a href="property-value-inheritance.html">Наследование значения свойства</a>.</p>
+<h3 id="wpf-designer-integration">Интеграция конструктора WPF</h3>
+<p>Пользовательский элемент управления со свойствами, которые реализуются как свойства зависимостей, получает соответствующую поддержку Конструктор WPF для Visual Studio. Один из примеров этого — возможность редактирования прямых и присоединенных свойств зависимостей с помощью окна <strong>Свойства</strong>. Дополнительные сведения см. в разделе <a href="../controls/control-authoring-overview.html">Общие сведения о разработке элементов управления</a>.</p>
+<h2 id="dependency-property-value-precedence">Приоритет значения свойств зависимостей</h2>
+<p>Получая значение свойства зависимостей, вы, вероятно, получаете значение, которое было установлено для этого свойства с использованием какого-либо другого свойства, дающего входное значение и участвующего в системе свойств WPF. Для значений свойств зависимостей установлена система приоритетов, благодаря чему различные сценарии получения свойствами своих значений могут выполняться вполне предсказуемо.</p>
+<p>Рассмотрим следующий пример. В примере представлен стиль, применяемый ко всем кнопкам и их свойствам <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>, однако также указывается одна кнопка с локально заданным значением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В документации по SDK при описании свойств зависимостей используется термин &quot;локальное значение&quot; или иногда &quot;локально заданное значение&quot;. Локально заданное значение — это значение свойства, которое задается непосредственно для экземпляра объекта в коде или как атрибут элемента на языке XAML.</p>
+</div>
+<p>Фактически для первой кнопки свойство задано дважды, но применяется только одно значение, то, у которого наивысший приоритет. Локально заданное значение имеет наивысший приоритет (исключение — выполняющаяся анимация, но анимаций нет в этом примере), поэтому вместо значения цвета фона первой кнопки, определенного стилем, используется локально заданное значение. Для второй кнопки не задано локальное значение (или другое значение с более высоким приоритетом, чем у стиля), поэтому цвет фона для этой кнопки определяется стилем.</p>
+<pre><code class="lang-xaml" name="PropertiesOvwSupport#MiniPrecedence">&lt;StackPanel&gt;
+  &lt;StackPanel.Resources&gt;
+    &lt;Style x:Key=&quot;{x:Type Button}&quot; TargetType=&quot;{x:Type Button}&quot;&gt;
+     &lt;Setter Property=&quot;Background&quot; Value=&quot;Red&quot;/&gt;
+    &lt;/Style&gt;
+  &lt;/StackPanel.Resources&gt;
+  &lt;Button Background=&quot;Green&quot;&gt;I am NOT red!&lt;/Button&gt;
+  &lt;Button&gt;I am styled red&lt;/Button&gt;
+&lt;/StackPanel&gt;
+</code></pre><h3 id="why-does-dependency-property-precedence-exist">Для чего нужны приоритеты свойств зависимостей?</h3>
+<p>Обычно не требуется постоянное применение стиля, переопределяющее локально заданные значения отдельных элементов (в противном случае было бы вообще очень сложно использовать стили и элементы). Поэтому значения, определяемые стилем, имеют более низкий приоритет, чем локально заданные значения. Более полный список свойств зависимостей и порядок определения их действующих значений см. в разделе <a href="dependency-property-value-precedence.html">Приоритет значений свойств зависимостей</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Не все свойства, определенные для элементов WPF, являются свойствами зависимостей. Как правило, свойства реализуются в виде свойств зависимостей только в тех случаях, когда возникает потребность поддерживать по крайней мере один из сценариев, реализуемых системой свойств (привязку данных, применение стилей, анимацию, поддержку значений по умолчанию, наследование, присоединенные свойства или проверку).</p>
+</div>
+<h2 id="learning-more-about-dependency-properties">Дополнительные сведения о свойствах зависимостей</h2>
+<ul>
+<li><p>Присоединенное свойство — это тип свойства, поддерживающий специализированный синтаксис на языке XAML. Присоединенные свойства часто не имеют однозначного соответствия со свойствами среда CLR и не обязательно являются свойствами зависимостей. Обычным назначением присоединенного свойства является разрешение дочерним элементам передавать значения свойств родительским элементам, даже если это свойство не включено в список элементов класса обоих элементов — родительского и дочернего. Как правило, требуется разрешить дочерним элементам уведомлять родительский элемент о том, как они должны быть представлены в ИП (пример см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">Dock</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas.left">Left</a>). Дополнительные сведения см. в разделе <a href="attached-properties-overview.html">Общие сведения о присоединенных свойствах</a>.</p>
+</li>
+<li><p>У разработчиков компонентов и разработчиков приложений может возникнуть потребность в создании собственных свойств зависимостей для получения таких возможностей, как привязка данных, поддержка стилей, проверка и приведение данных. Дополнительные сведения см. в разделе <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
+</li>
+<li><p>Обычно свойства зависимостей определяются как открытые свойства, доступные или, по крайней мере, видимые любому вызывающему объекту, имеющему доступ к экземпляру. Дополнительные сведения см. в разделе <a href="dependency-property-security.html">Безопасность свойств зависимостей</a>.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+<li><a href="read-only-dependency-properties.html">Свойства зависимости &quot;только для чтения&quot;</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="wpf-architecture.html">Архитектура WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

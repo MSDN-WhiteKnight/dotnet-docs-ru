@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1072;&#1103; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1100;&#1089;&#1082;&#1072;&#1103; &#1086;&#1090;&#1088;&#1080;&#1089;&#1086;&#1074;&#1082;&#1072; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="custom-rendering-ink">Пользовательская отрисовка рукописных данных</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.drawingattributes">DrawingAttributes</a> Свойство штриха позволяет задавать внешний вид штриха, включая его размер, цвет и форму, но могут возникнуть ситуации, которые вы хотите настроить внешний вид что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.drawingattributes">DrawingAttributes</a> разрешить. Может потребоваться настроить отображение рукописного фрагмента с эффектом аэрографа, масляной живописи и т. д. Windows Presentation Foundation (WPF) позволяет настроить отрисовку рукописных фрагментов путем реализации пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объекта.</p>
+<p>В этом разделе содержатся следующие подразделы:</p>
+<ul>
+<li><p><a href="#Architecture">Архитектура</a></p>
+</li>
+<li><p><a href="#ImplementingADynamicRenderer">Реализация динамического отрисовщика</a></p>
+</li>
+<li><p><a href="#ImplementingCustomStrokes">Реализация пользовательских штрихов</a></p>
+</li>
+<li><p><a href="#ImplementingACustomInkCanvas">Реализация пользовательского объекта InkCanvas</a></p>
+</li>
+<li><p><a href="#Conclusion">Заключение</a></p>
+</li>
+</ul>
+<p><a name="Architecture"></a></p>
+<h2 id="architecture">Архитектура</h2>
+<p>Отрисовка рукописных фрагментов происходит два раза: когда пользователь осуществляет рукописный ввод на поверхности рукописного ввода, а затем еще раз после добавления штриха в область с поддержкой рукописного ввода. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Отрисовывает рукописные фрагменты при перемещении пера планшета по дигитайзеру, а <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> отрисовывает сам себя после его добавления в элемент.</p>
+<p>Предусмотрено три класса для реализации динамической отрисовки рукописных фрагментов.</p>
+<ol>
+<li><p><strong>DynamicRenderer</strong>: Реализация класса, унаследованного от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>. Этот класс является специализированным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> , отображающий штрих, так как он отрисовывается. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> Осуществляет отрисовку в отдельном потоке, поэтому поверхность рукописного ввода появляется для сбора рукописных фрагментов даже при блокировке потока пользовательского интерфейса приложения. Дополнительные сведения о потоковой модели см. в статье <a href="the-ink-threading-model.html">Потоковая модель рукописного ввода</a>. Чтобы настроить динамическую отрисовку штриха, переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.ondraw">OnDraw</a> метод.</p>
+</li>
+<li><p><strong>Stroke</strong>: Реализация класса, унаследованного от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a>. Этот класс отвечает за статическую отрисовку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные после преобразования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объекта. Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.drawcore">DrawCore</a> согласуется метод, чтобы гарантировать статической отрисовки штриха с динамической отрисовкой.</p>
+</li>
+<li><p><strong>InkCanvas:</strong> Реализация класса, унаследованного от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>. Назначьте пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.dynamicrenderer">DynamicRenderer</a> свойство. Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.onstrokecollected">OnStrokeCollected</a> метод и добавьте пользовательский штрих в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.strokes">Strokes</a> свойство. Это гарантирует согласованность внешнего вида рукописных фрагментов.</p>
+</li>
+</ol>
+<p><a name="ImplementingADynamicRenderer"></a></p>
+<h2 id="implementing-a-dynamic-renderer">Реализация динамического отрисовщика</h2>
+<p>Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> класс является стандартной частью WPF, для осуществления более специализированной отрисовки, необходимо создать настроенный динамический отрисовщик, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> и переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.ondraw">OnDraw</a> метод.</p>
+<p>В следующем примере настраиваемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> , который выполняет отрисовку рукописного ввода с эффектом кисти линейного градиента.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#19">using System;
+using System.Windows.Media;
+using System.Windows;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Input;
+using System.Windows.Ink;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#1">// A StylusPlugin that renders ink with a linear gradient brush effect.
+class CustomDynamicRenderer : DynamicRenderer
+{
+    [ThreadStatic]
+    static private Brush brush = null;
+
+    [ThreadStatic]
+    static private Pen pen = null;
+
+    private Point prevPoint;
+
+    protected override void OnStylusDown(RawStylusInput rawStylusInput)
+    {
+        // Allocate memory to store the previous point to draw from.
+        prevPoint = new Point(double.NegativeInfinity, double.NegativeInfinity);
+        base.OnStylusDown(rawStylusInput);
+    }
+
+    protected override void OnDraw(DrawingContext drawingContext,
+                                   StylusPointCollection stylusPoints,
+                                   Geometry geometry, Brush fillBrush)
+    {
+        // Create a new Brush, if necessary.
+        brush ??= new LinearGradientBrush(Colors.Red, Colors.Blue, 20d);
+
+        // Create a new Pen, if necessary.
+        pen ??= new Pen(brush, 2d);
+
+        // Draw linear gradient ellipses between
+        // all the StylusPoints that have come in.
+        for (int i = 0; i &lt; stylusPoints.Count; i++)
+        {
+            Point pt = (Point)stylusPoints[i];
+            Vector v = Point.Subtract(prevPoint, pt);
+
+            // Only draw if we are at least 4 units away
+            // from the end of the last ellipse. Otherwise,
+            // we're just redrawing and wasting cycles.
+            if (v.Length &gt; 4)
+            {
+                // Set the thickness of the stroke based
+                // on how hard the user pressed.
+                double radius = stylusPoints[i].PressureFactor * 10d;
+                drawingContext.DrawEllipse(brush, pen, pt, radius, radius);
+                prevPoint = pt;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="ImplementingCustomStrokes"></a></p>
+<h2 id="implementing-custom-strokes">Реализация пользовательских штрихов</h2>
+<p>Реализация класса, унаследованного от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a>. Этот класс отвечает за отрисовку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные после преобразования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объекта. Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.drawcore">DrawCore</a> класс для фактического рисования.</p>
+<p>Класс Stroke также может хранить пользовательские данные с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.addpropertydata">AddPropertyData</a> метод. Эти данные хранятся с данными штриха при сохранении.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> Класс также может выполнять проверку нажатия. Вы также можете реализовать собственный алгоритм проверки совпадений путем переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke.hittest">HitTest</a> метода в текущем классе.</p>
+<p>Следующие C# код демонстрирует пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> класс, который выполняет визуализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspoint">StylusPoint</a> данные в виде трехмерного штриха.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#19">using System;
+using System.Windows.Media;
+using System.Windows;
+using System.Windows.Input.StylusPlugIns;
+using System.Windows.Input;
+using System.Windows.Ink;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#2">// A class for rendering custom strokes
+class CustomStroke : Stroke
+{
+    Brush brush;
+    Pen pen;
+
+    public CustomStroke(StylusPointCollection stylusPoints)
+        : base(stylusPoints)
+    {
+        // Create the Brush and Pen used for drawing.
+        brush = new LinearGradientBrush(Colors.Red, Colors.Blue, 20d);
+        pen = new Pen(brush, 2d);
+    }
+
+    protected override void DrawCore(DrawingContext drawingContext,
+                                     DrawingAttributes drawingAttributes)
+    {
+        // Allocate memory to store the previous point to draw from.
+        Point prevPoint = new Point(double.NegativeInfinity,
+                                    double.NegativeInfinity);
+
+        // Draw linear gradient ellipses between
+        // all the StylusPoints in the Stroke.
+        for (int i = 0; i &lt; this.StylusPoints.Count; i++)
+        {
+            Point pt = (Point)this.StylusPoints[i];
+            Vector v = Point.Subtract(prevPoint, pt);
+
+            // Only draw if we are at least 4 units away
+            // from the end of the last ellipse. Otherwise,
+            // we're just redrawing and wasting cycles.
+            if (v.Length &gt; 4)
+            {
+                // Set the thickness of the stroke
+                // based on how hard the user pressed.
+                double radius = this.StylusPoints[i].PressureFactor * 10d;
+                drawingContext.DrawEllipse(brush, pen, pt, radius, radius);
+                prevPoint = pt;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="ImplementingACustomInkCanvas"></a></p>
+<h2 id="implementing-a-custom-inkcanvas">Реализация пользовательского объекта InkCanvas</h2>
+<p>Самый простой способ применения пользовательского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> и штриха является реализация класса, производного от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> и использует эти классы. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.dynamicrenderer">DynamicRenderer</a> свойство, которое указывает, каким образом отображается штрих, когда пользователь рисует его.</p>
+<p>Для отображения пользовательских штрихов на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> выполните следующие действия:</p>
+<ul>
+<li><p>Создайте класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>.</p>
+</li>
+<li><p>Назначьте пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.dynamicrenderer">InkCanvas.DynamicRenderer</a> свойство.</p>
+</li>
+<li><p>Переопределите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.onstrokecollected">OnStrokeCollected</a> . В этом методе удалите исходный штрих, который был добавлен в InkCanvas. Затем создайте пользовательский штрих, добавьте ее в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.strokes">Strokes</a> и вызовите базовый класс с новым <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvasstrokecollectedeventargs">InkCanvasStrokeCollectedEventArgs</a> , содержащим пользовательский штрих.</p>
+</li>
+</ul>
+<p>Следующие C# код демонстрирует пользовательский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> класс, который использует настраиваемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> и сбор пользовательских штрихов.</p>
+<pre><code class="lang-csharp" name="AdvancedInkTopicsSamples#9">public class CustomRenderingInkCanvas : InkCanvas
+{
+    CustomDynamicRenderer customRenderer = new CustomDynamicRenderer();
+
+    public CustomRenderingInkCanvas() : base()
+    {
+        // Use the custom dynamic renderer on the
+        // custom InkCanvas.
+        this.DynamicRenderer = customRenderer;
+    }
+
+    protected override void OnStrokeCollected(InkCanvasStrokeCollectedEventArgs e)
+    {
+        // Remove the original stroke and add a custom stroke.
+        this.Strokes.Remove(e.Stroke);
+        CustomStroke customStroke = new CustomStroke(e.Stroke.StylusPoints);
+        this.Strokes.Add(customStroke);
+
+        // Pass the custom stroke to base class' OnStrokeCollected method.
+        InkCanvasStrokeCollectedEventArgs args =
+            new InkCanvasStrokeCollectedEventArgs(customStroke);
+        base.OnStrokeCollected(args);
+    }
+}
+</code></pre>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> Может иметь несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>. Можно добавить несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> , добавив их в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> свойство.</p>
+<p><a name="Conclusion"></a></p>
+<h2 id="conclusion">Заключение</h2>
+<p>Можно настроить отображение рукописного фрагмента путем наследования своих собственных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> классы. Вместе эти классы гарантируют согласованность внешнего вида штриха в момент, когда пользователь рисует штрих, и после его сбора.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="advanced-ink-handling.html">Дополнительная обработка рукописных данных</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

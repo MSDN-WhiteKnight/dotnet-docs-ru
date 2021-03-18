@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1093; &#1073;&#1088;&#1072;&#1091;&#1079;&#1077;&#1088;&#1072; WPF XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1093; &#1073;&#1088;&#1072;&#1091;&#1079;&#1077;&#1088;&#1072; WPF XAML | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-xaml-browser-applications-overview">Общие сведения о приложениях браузера WPF XAML</h1>
+
+<p><a name="introduction"></a>
+XAML-приложения браузера (XBAP) объединяет возможности веб-приложений и многофункциональных клиентских приложений. Как веб-приложения, XBAP можно развертывать на веб-сервере и запускать из Internet Explorer или Firefox. Как многофункциональные клиентские приложения XBAP могут воспользоваться преимуществами возможностей WPF. Кроме того, XBAP разрабатываются аналогично многофункциональным клиентским приложениям. Этот раздел содержит простое, общее введение в разработку XBAP и показывает, чем она отличается от разработки стандартных многофункциональных клиентов.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#creating_a_new_xaml_browser_application_xbap">Создание приложения обозревателя XAML (XBAP)</a></p>
+</li>
+<li><p><a href="#deploying_a_xbap">Развертывание XBAP</a></p>
+</li>
+<li><p><a href="#communicating_with_the_host_web_page">Связь с веб-страницей размещения</a></p>
+</li>
+<li><p><a href="#xbap_security_considerations">Вопросы безопасности XBAP</a></p>
+</li>
+<li><p><a href="#xbap_start_time_performance_considerations">Влияние времени запуска XBAP на производительность</a></p>
+</li>
+</ul>
+<p><a name="creating_a_new_xaml_browser_application_xbap"></a></p>
+<h2 id="creating-a-new-xaml-browser-application-xbap">Создание приложения обозревателя XAML (XBAP)</h2>
+<p>Самый простой способ создать проект XBAP — с помощью Microsoft Visual Studio. При создании нового проекта выберите из списка шаблонов <strong>приложение браузера WPF</strong>. Дополнительные сведения см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628663(v=vs.100)">Как Создание нового проекта приложения браузера WPF</a>.</p>
+<p>При запуске проект XBAP откроется в окне браузера, а не в отдельном окне. При отладке XBAP в Visual Studio, приложение запускается с разрешениями зоны Интернета и, следовательно, если эти разрешения будут превышены исключения безопасности. Дополнительные сведения см. в разделах <a href="../security-wpf.html">Безопасность</a> и <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы не разрабатываете с помощью Visual Studio или желаете узнать больше о файлы проекта, см. в разделе <a href="building-a-wpf-application-wpf.html">построение приложения WPF</a>.</p>
+</div>
+<p><a name="deploying_a_xbap"></a></p>
+<h2 id="deploying-an-xbap">Развертывание XBAP</h2>
+<p>При построении XBAP создаются следующие три файла:</p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Исполняемый файл (.EXE)</td>
+<td>Содержит скомпилированный код и имеет расширение EXE.</td>
+</tr>
+<tr>
+<td>Манифест приложения (.MANIFEST)</td>
+<td>Содержит метаданные, связанные с приложением, и имеет расширение MANIFEST.</td>
+</tr>
+<tr>
+<td>Манифест развертывания (.XBAP)</td>
+<td>Этот файл содержит сведения, что ClickOnce использует для развертывания приложения и имеет расширение XBAP.</td>
+</tr>
+</tbody>
+</table>
+<p>XBAP развертывается на веб-сервере, например Службы Microsoft IIS 5.0 или более поздней версии. Необходимо установить .NET Framework на веб-сервере, но вам необходимо зарегистрировать WPF Стандарт MIME (Multipurpose Internet Mail Extensions) типы и расширения имен файлов. Дополнительные сведения см. в разделе <a href="how-to-configure-iis-5-0-and-iis-6-0-to-deploy-wpf-applications.html">Практическое руководство. Настройка служб IIS 5.0 и IIS 6.0 для развертывания приложений WPF</a>.</p>
+<p>Чтобы подготовить XBAP для развертывания, скопируйте файл EXE и связанные с ним манифесты на веб-сервер. Создайте HTML-страницу, содержащую гиперссылку, чтобы открыть манифест развертывания, который является файлом с расширением XBAP. Когда пользователь щелкает ссылку на файл XBAP, ClickOnce автоматически обрабатывает механизм загрузки и запуска приложения. В следующем примере кода показана HTML-страница, которая содержит гиперссылку, указывающую на XBAP.</p>
+<pre><code class="lang-html">&lt;html&gt;   
+    &lt;head&gt;&lt;/head&gt;  
+    &lt;body&gt;   
+        &lt;a href=&quot;XbapEx.xbap&quot;&gt;Click this link to launch the application&lt;/a&gt;  
+    &lt;/body&gt;   
+&lt;/html&gt;  
+</code></pre>
+<p>Кроме того, XBAP можно разместить во фрейме веб-страницы. Создайте веб-страницу с одним или несколькими фреймами. Назначьте исходное свойство фрейма файлу манифеста развертывания. Чтобы использовать встроенный механизм взаимодействия между веб-страницей размещения и XBAP, необходимо разместить приложение во фрейме. В следующем примере кода показана HTML-страница с двумя фреймами; в качестве источника для второго фрейма выбран XBAP.</p>
+<pre><code class="lang-html">&lt;html&gt;   
+    &lt;head&gt;
+        &lt;title&gt;A page with frames&lt;/title&gt;
+    &lt;/head&gt;  
+    &lt;frameset cols=&quot;50%,50%&quot;&gt;   
+        &lt;frame src=&quot;introduction.htm&quot;&gt;   
+        &lt;frame src=&quot;XbapEx.xbap&quot;&gt;   
+    &lt;/frameset&gt;   
+&lt;/html&gt;  
+</code></pre>
+<h3 id="clearing-cached-xbaps">Очистка кэшированных XBAP</h3>
+<p>В некоторых случаях после повторной сборки и запуска XBAP может оказаться, что открывается более ранняя версия XBAP. Это может произойти, например, если номер версии сборки XBAP статичен и XBAP запускается из командной строки. В этом случае в связи с тем, что номер кэшированной версии (версии, запущенной ранее) и новой версии остаются прежними, новая версия XBAP не загружается. Вместе нее загружается кэшированная версия.</p>
+<p>В таких ситуациях можно удалить кэшированную версию с помощью <strong>Mage</strong> команды (устанавливается с Visual Studio или пакет SDK для Windows) в командной строке. Следующая команда очищает кэш приложения.</p>
+<pre><code class="lang-console">Mage.exe -cc
+</code></pre>
+<p>Она обеспечивает запуск последней версии XBAP. При отладке приложения в Visual Studio, должен запускаться последняя версия XBAP. Как правило, номер версии развертывания необходимо обновлять при каждой сборке. Дополнительные сведения о команде Mage см. в разделе <a href="../../tools/mage-exe-manifest-generation-and-editing-tool.md">Mage.exe (средство создания и редактирования манифеста)</a>.</p>
+<p><a name="communicating_with_the_host_web_page"></a></p>
+<h2 id="communicating-with-the-host-web-page">Связь с веб-страницей размещения</h2>
+<p>Если приложение находится во фрейме HTML, вы можете взаимодействовать с веб-страницей, которая содержит XBAP. Это делается путем извлечения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.browserinterophelper.hostscript">HostScript</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.browserinterophelper">BrowserInteropHelper</a>. Оно возвращает объект скрипта, представляющий окно HTML. Доступ к свойствам, методам и событиям можно получить в <a href="https://go.microsoft.com/fwlink/?LinkId=160274">объекте окна</a>, используя обычный синтаксис с точками. Также можно получить доступ к методам скрипта и глобальным переменным. В следующем примере показано, как извлечь объект скрипта и закрыть браузер.</p>
+<pre><code class="lang-csharp" name="XbapBrowserInterop#10">private void Button_Click(object sender, RoutedEventArgs e)
+{
+    // Retrieve the script object. The XBAP must be hosted in a frame or
+    // the HostScript object will be null.
+    var scriptObject = BrowserInteropHelper.HostScript;
+
+    // Call close to close the browser window.
+    scriptObject.Close();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="debugging-xbaps-that-use-hostscript">Отладка XBAP, в котором используется HostScript</h3>
+<p>Если XBAP использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.browserinterophelper.hostscript">HostScript</a> объект для связи с окном HTML, существует два параметра, которые необходимо задать для запуска и отладки приложения в Visual Studio. Приложение должно иметь доступ к своему исходному сайту, а запустить его необходимо с HTML-страницы, которая содержит XBAP. Ниже описаны процедуры проверки двух этих параметров:</p>
+<ol>
+<li><p>В Visual Studio откройте свойства проекта.</p>
+</li>
+<li><p>На вкладке <strong>Безопасность</strong> нажмите кнопку <strong>Дополнительно</strong>.</p>
+<p>Откроется диалоговое окно &quot;Дополнительные параметры безопасности&quot;.</p>
+</li>
+<li><p>Убедитесь, что флажок <strong>Предоставить приложению доступ к своему исходному сайту</strong> установлен, и нажмите кнопку <strong>ОК</strong>.</p>
+</li>
+<li><p>На вкладке <strong>Отладка</strong> выберите параметр <strong>Запустить браузер, используя URL-адрес</strong> и укажите URL-адрес HTML-страницы, содержащей XBAP.</p>
+</li>
+<li><p>В Internet Explorer нажмите кнопку <strong>Сервис</strong> и выберите <strong>Свойства обозревателя</strong>.</p>
+<p>Откроется диалоговое окно «Свойства веб-обозревателя».</p>
+</li>
+<li><p>Откройте вкладку <strong>Дополнительно</strong> .</p>
+</li>
+<li><p>В списке <strong>Параметры</strong> в разделе <strong>Безопасность</strong> установите флажок <strong>Разрешать запуск активного содержимого файлов на моем компьютере</strong>.</p>
+</li>
+<li><p>Нажмите кнопку <strong>ОК</strong>.</p>
+<p>Чтобы изменения вступили в силу, Internet Explorer необходимо перезапустить.</p>
+</li>
+</ol>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Включение активного содержимого в Internet Explorer может подвергнуть компьютер риску. Если вы не хотите изменить параметры безопасности Internet Explorer, можно запустить HTML-страницу с сервера и присоединение к процессу отладчик Visual Studio.</p>
+</div>
+<p><a name="xbap_security_considerations"></a></p>
+<h2 id="xbap-security-considerations">Вопросы безопасности XBAP</h2>
+<p>Обычно XBAP выполняются в изолированной среде безопасности частичного доверия, ограниченной набором разрешений зоны Интернета. Следовательно ваша реализация должна поддерживать подмножество элементов WPF, которые поддерживаются в зоне Интернета, или необходимо повысить уровень разрешений приложения. Дополнительные сведения см. в разделе <a href="../security-wpf.html">Безопасность</a>.</p>
+<p>При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемента управления в приложении WPF внутренним образом устанавливает собственный элемент управления WebBrowser ActiveX. Если ваше приложение — это XBAP частичного доверия, запущенный в браузере Internet Explorer, элемент управления ActiveX выполняется в выделенном потоке процесса Internet Explorer. В связи с этим применяются указанные ниже ограничения.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> Элемент управления должен обеспечивать поведение, аналогичное браузеру узла, включая ограничения безопасности. Некоторыми из этих ограничений безопасности можно управлять с помощью параметров безопасности Internet Explorer. Дополнительные сведения см. в разделе <a href="../security-wpf.html">Безопасность</a>.</p>
+</li>
+<li><p>Если XBAP загружается на HTML-странице в междоменном режиме, возникнет исключение.</p>
+</li>
+<li><p>Входные данные поступают как отдельный поток из WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a>, поэтому ввод с клавиатуры перехватить нельзя, а состояние IME не является общим.</p>
+</li>
+<li><p>Время или порядок навигации могут отличаться, если элемент управления ActiveX выполняется в другом потоке. Например, переход на какую-либо страницу не всегда отменяется при запуске другого запроса навигации.</p>
+</li>
+<li><p>Настраиваемый элемент управления ActiveX может испытывать проблемы со связью, поскольку приложение WPF выполняется в отдельном потоке.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> вызывается, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> нельзя подкласс окно, выполняемое в другом потоке или процессе.</p>
+</li>
+</ul>
+<h3 id="creating-a-full-trust-xbap">Создание XBAP с полным доверием</h3>
+<p>Если XBAP требует полного доверия, проект можно изменить, предоставив ему соответствующее разрешение. Чтобы предоставить полное доверие, необходимо выполнить указанные ниже действия.</p>
+<ol>
+<li><p>В Visual Studio откройте свойства проекта.</p>
+</li>
+<li><p>На вкладке <strong>Безопасность</strong> выберите параметр <strong>Это приложение с полным доверием</strong>.</p>
+</li>
+</ol>
+<p>При этом происходят следующие изменения:</p>
+<ul>
+<li><p>В файле проекта значение элемента <code>&lt;TargetZone&gt;</code> изменяется на <code>Custom</code>.</p>
+</li>
+<li><p>В манифесте приложения (app.manifest) <code>Unrestricted=&quot;true&quot;</code> добавляется атрибут &quot;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissionset">PermissionSet</a> элемент.</p>
+<pre><code class="lang-xml">&lt;PermissionSet class=&quot;System.Security.PermissionSet&quot;   
+               version=&quot;1&quot;   
+               ID=&quot;Custom&quot;   
+               SameSite=&quot;site&quot;   
+               Unrestricted=&quot;true&quot; /&gt;  
+</code></pre>
+</li>
+</ul>
+<h3 id="deploying-a-full-trust-xbap">Развертывание XBAP с полным доверием</h3>
+<p>При развертывании XBAP с полным доверием, не основанного на модели доверенного развертывания ClickOnce, действия, выполняемые после того, как пользователь запустит приложение, зависят от зоны безопасности. В некоторых случаях пользователь получит предупреждение при попытке установить приложение. Пользователь может выбрать продолжение или отмену установки. В следующей таблице описаны поведение приложения для каждой зоны безопасности и действия, необходимые для получения приложением полного доверия.</p>
+<table>
+<thead>
+<tr>
+<th>Зона безопасности</th>
+<th>Поведение</th>
+<th>Получение полного доверия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Локальный компьютер</td>
+<td>Автоматическое получение полного доверия</td>
+<td>Никаких действий не требуется.</td>
+</tr>
+<tr>
+<td>Интрасеть и надежные веб-сайты</td>
+<td>Запрос полного доверия</td>
+<td>Подпишите приложение XBAP с помощью сертификата, чтобы пользователь видел источник в запросе.</td>
+</tr>
+<tr>
+<td>Интернет</td>
+<td>Сбой с сообщением &quot;Доверие не оказано&quot;</td>
+<td>Подпишите приложение XBAP с помощью сертификата.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поведение, описанное в предыдущей таблице, относится к приложениям XBAP с полным доверием, не следующим модели доверенного развертывания ClickOnce.</p>
+</div>
+<p>Для развертывания XBAP с полным доверием рекомендуется использовать модель доверенного развертывания ClickOnce. Она позволяет XBAP получать полное доверие автоматически, независимо от зоны безопасности и не запрашивая подтверждение пользователя. При использовании этой модели приложение должно быть подписано сертификатом надежного издателя. Дополнительные сведения см. в разделах <a href="/visualstudio/deployment/trusted-application-deployment-overview">Общие сведения о развертывании доверенных приложений</a> и <a href="https://go.microsoft.com/fwlink/?LinkId=166327">Знакомство с подписыванием кода</a>.</p>
+<p><a name="xbap_start_time_performance_considerations"></a></p>
+<h2 id="xbap-start-time-performance-considerations">Влияние времени запуска XBAP на производительность</h2>
+<p>Важную роль в производительности XBAP играет время его запуска. Если XBAP является первым загружаемым приложением WPF, время <em>холодного запуска</em> может составить от десяти секунд. Это связано с тем, что страницу хода выполнения обрабатывает WPF, а для того, чтобы отображать приложение, требуется холодный запуск CLR и WPF.</p>
+<p>Начиная с версии .NET Framework 3.5 SP1, время холодного запуска XBAP уменьшается за счет того, что неуправляемая страница хода выполнения отображается на более раннем этапе цикла развертывания. Она открывается практически сразу после того, как приложение будет запущено, поскольку отображается машинным кодом размещения и выводится на экран в формате HTML.</p>
+<p>Кроме того улучшенный параллелизм последовательности загрузки ClickOnce сокращает время запуска почти на десять процентов. После ClickOnce загрузит и проверит манифесты, запускается загрузка приложения и индикатор выполнения начинает обновляться.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="configure-vs-to-debug-a-xaml-browser-to-call-a-web-service.html">Настройка Visual Studio для отладки приложений браузера XAML для вызова веб-службы</a></li>
+<li><a href="deploying-a-wpf-application-wpf.html">Развертывание приложения WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

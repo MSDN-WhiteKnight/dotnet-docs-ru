@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1080; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1089;&#1086; &#1089;&#1090;&#1088;&#1086;&#1075;&#1080;&#1084;&#1080; &#1080;&#1084;&#1077;&#1085;&#1072;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1080; &#1080;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; &#1089;&#1086; &#1089;&#1090;&#1088;&#1086;&#1075;&#1080;&#1084;&#1080; &#1080;&#1084;&#1077;&#1085;&#1072;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="create-and-use-strong-named-assemblies">Создание и использование сборок со строгими именами</h1>
+
+<p>Строгое имя состоит из удостоверения сборки, включающего ее простое текстовое имя, номер версии и сведения о языке и региональных параметрах (если они имеются), а также открытый ключ и цифровую подпись. Оно создается из файла сборки с использованием соответствующего закрытого ключа. (В файле сборки содержится манифест сборки, в котором указаны имена и хэши всех файлов, составляющих эту сборку.)</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Строгие имена не являются средством обеспечения безопасности. Они служат только для однозначной идентификации.</p>
+</div>
+<p>Сборка со строгими именами может использовать только типы из других сборок со строгими именами. В противном случае нарушается целостность сборки со строгими именами.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Хотя .NET Core поддерживает сборки со строгими именами и все сборки в библиотеке .NET Core подписаны, большинству сборок сторонних разработчиков строгие имена не требуются. Дополнительные сведения см. в разделе <a href="https://github.com/dotnet/runtime/blob/master/docs/project/strong-name-signing.md">Подпись строгим именем</a> в GitHub.</p>
+</div>
+<h2 id="strong-name-scenario">Сценарий со строгим именем</h2>
+<p>В следующем сценарии описывается процедура подписи сборки со строгим именем и последующая ссылка на сборку с использованием этого имени.</p>
+<ol>
+<li><p>Сборка A создается со строгим именем с помощью одного из следующих методов.</p>
+<ul>
+<li><p>Использование среды разработки, поддерживающей создание строгих имен, например Visual Studio.</p>
+</li>
+<li><p>Создание пары ключей шифрования с использованием <a href="../../framework/tools/sn-exe-strong-name-tool.md">Программы строгих имен (Sn.exe)</a> и назначение этой пары ключей сборке с использованием компилятора командной строки или <a href="../../framework/tools/al-exe-assembly-linker.md">компоновщика сборок (Al.exe)</a>. Windows SDK содержит оба инструмента: Sn.exe и Al.exe.</p>
+</li>
+</ul>
+</li>
+<li><p>Среда разработки или средство подписывает хэш файла, содержащего манифест сборки, закрытым ключом разработчика. Эта цифровая подпись хранится в переносимом исполняемом файле (PE), который содержит манифест сборки А.</p>
+</li>
+<li><p>Сборка B является потребителем сборки A. Раздел ссылок манифеста сборки B содержит токен, представляющий открытый ключ сборки А. Токен является частью полного открытого ключа и используется вместо самого ключа в целях экономии пространства.</p>
+</li>
+<li><p>Среда CLR проверяет подпись строгого имени, когда сборка помещается в глобальный кэш сборок. При привязке по строгому имени во время выполнения среда CLR сравнивает ключ, сохраненный в манифесте сборки B, с ключом, используемым для создания строгого имени для сборки А. Если проверки безопасности .NET пройдены и привязка выполнена успешно, у сборки B есть гарантия, что биты сборки A не были изменены и действительно получены от разработчиков сборки А.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом сценарии не рассматриваются вопросы доверия. Помимо строгого имени сборки могут содержать полные подписи кода аутентификации Microsoft Authenticode. Подписи Authenticode включают сертификат, который устанавливает отношения доверия. Важно отметить, что строгие имена не требуют подписи кода таким способом. Строгие имена служат только для однозначной идентификации.</p>
+</div>
+<h2 id="bypass-signature-verification-of-trusted-assemblies">Обход проверки подписей в доверенных сборках</h2>
+<p>Начиная с .NET Framework 3.5 с пакетом обновления 1 (SP1), подписи строгого имени не проверяются, если сборка загружается в домен приложения с полным доверием, например в домен приложения по умолчанию для зоны <code>MyComputer</code>. Это называется функцией обхода строгих имен. В среде с полным доверием всегда успешно обрабатываются запросы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.strongnameidentitypermission">StrongNameIdentityPermission</a> для подписанных сбором с полным доверием независимо от их подписи. Функция обхода строгих имен позволяет избежать ненужных затрат ресурсов для проверки подписей строгих имен в сборках с полным доверием, что позволяет быстрее загружать такие сборки.</p>
+<p>Функция обхода применима к любой сборке, подписанной со строгим именем и имеющей следующие характеристики.</p>
+<ul>
+<li><p>Полное доверие без доказательства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.policy.strongname">StrongName</a> (например, при наличии доказательства зоны <code>MyComputer</code>).</p>
+</li>
+<li><p>Загрузка в домен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> с полным доверием.</p>
+</li>
+<li><p>Загрузка из расположения со свойством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomainsetup.applicationbase">ApplicationBase</a> домена <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a>.</p>
+</li>
+<li><p>Подпись осуществлена без задержки.</p>
+</li>
+</ul>
+<p>Эту возможность можно отключить для отдельных приложений или для компьютера. См. практическое руководство по <a href="disable-strong-name-bypass-feature.html"> Отключение функции пропуска строгих имен</a>.</p>
+<h2 id="related-topics">См. также</h2>
+<table>
+<thead>
+<tr>
+<th>Заголовок</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="create-public-private-key-pair.html">Практическое руководство. Создание пары открытого и закрытого ключей</a></td>
+<td>Описывает способ создания пары криптографических ключей для подписи сборки.</td>
+</tr>
+<tr>
+<td><a href="sign-strong-name.html">Практическое руководство. Подписание сборки строгим именем</a></td>
+<td>Описывает способ создания сборки со строгим именем.</td>
+</tr>
+<tr>
+<td><a href="enhanced-strong-naming.html">Усовершенствованное строгое именование</a></td>
+<td>Описывает усовершенствования в использовании строгих имен в .NET Framework 4.5.</td>
+</tr>
+<tr>
+<td><a href="reference-strong-named.html">Практическое руководство. Ссылка на сборку со строгим именем</a></td>
+<td>Содержит инструкции по созданию ссылок на типы или ресурсы в сборке со строгим именем во время компиляции или выполнения.</td>
+</tr>
+<tr>
+<td><a href="disable-strong-name-bypass-feature.html">Практическое руководство. Отключение функции пропуска строгих имен</a></td>
+<td>Содержит инструкции по отключению возможности обхода проверки подписей строгих имен. Эту возможность можно отключить для всех приложений или только для некоторых из них.</td>
+</tr>
+<tr>
+<td><a href="create.html">Создание сборок</a></td>
+<td>Содержит обзор однофайловых и многофайловых сборок.</td>
+</tr>
+<tr>
+<td><a href="/visualstudio/ide/managing-assembly-and-manifest-signing#how-to-sign-an-assembly-in-visual-studio">Использование задержки при подписи сборки в Visual Studio</a></td>
+<td>Содержит инструкции по подписи сборки строгим именем после создания сборки.</td>
+</tr>
+<tr>
+<td><a href="../../framework/tools/sn-exe-strong-name-tool.md">Sn.exe (средство строгих имен)</a></td>
+<td>Описывает средство в составе .NET Framework, которое помогает создавать сборки со строгими именами. Это средство предусматривает параметры для управления ключами, генерации подписи и ее проверки.</td>
+</tr>
+<tr>
+<td><a href="../../framework/tools/al-exe-assembly-linker.md">Al.exe (компоновщик сборок)</a></td>
+<td>Описывает средство, включенное в .NET Framework, которое создает файл с манифестом сборки из модулей или файлов ресурсов.</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

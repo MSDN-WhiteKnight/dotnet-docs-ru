@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1087;&#1072;&#1082;&#1086;&#1074;&#1082;&#1072; &#1096;&#1088;&#1080;&#1092;&#1090;&#1086;&#1074; &#1089; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1087;&#1072;&#1082;&#1086;&#1074;&#1082;&#1072; &#1096;&#1088;&#1080;&#1092;&#1090;&#1086;&#1074; &#1089; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1103;&#1084;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="packaging-fonts-with-applications">Упаковка шрифтов с приложениями</h1>
+
+<p>Этот раздел содержит общие сведения об упаковке шрифтов с вашей Windows Presentation Foundation (WPF) приложения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Как и с большинством типов программного обеспечения, файлы шрифтов предоставляются по лицензии, а не продаются. Лицензии, регулирующие использование шрифтов, отличаются в зависимости от производителя, но в целом большинство лицензий, в том числе охватывающие шрифты, Майкрософт с приложениями и Windows, не допускают шрифтов, внедренных в приложениях или в противном случае распространение. Ответственность разработчика состоит в том, чтобы гарантировать наличие требуемых лицензионных прав на любой шрифт, встраиваемый в приложение или распространяемый иными путями.</p>
+</div>
+<p><a name="introduction_to_packaging_fonts"></a></p>
+<h2 id="introduction-to-packaging-fonts">Общие сведения об упаковке шрифтов</h2>
+<p>Можно легко упаковать шрифты в качестве ресурсов в вашей WPF приложения для отображения текста пользовательского интерфейса и других типов текста на основе содержимого. Шрифты могут быть отдельными от файлов сборки приложения или включенными в них. Можно также создать библиотеку шрифтов только для ресурсов, на которую может ссылаться приложение.</p>
+<p>OpenType и TrueType® шрифты содержат флаг типа fsType, указывающее, права лицензирования на встраивание шрифта для шрифта. Однако этот флаг типа относится только к внедренным шрифтам, хранящимся в документе; он не относится к шрифтам, внедренным в приложении. Вы можете получить права для шрифта на внедрение путем создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphtypeface">GlyphTypeface</a> и ссылки на его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphtypeface.embeddingrights">EmbeddingRights</a> свойство. См. в разделе «OS/2 и Windows метрики» <a href="https://www.microsoft.com/typography/otspec/os2.htm">спецификация OpenType</a> Дополнительные сведения о флаге fstype см.</p>
+<p><a href="https://docs.microsoft.com/typography/">Microsoft Typography</a> веб-узел содержит контактную информацию, которая может помочь вам найти поставщика определенного шрифта или поставщика шрифтов для пользовательских рабочих.</p>
+<p><a name="adding_fonts_as_content_items"></a></p>
+<h2 id="adding-fonts-as-content-items">Добавление шрифтов как элементов содержимого</h2>
+<p>Вы можете добавить шрифты в приложение в виде элементов содержимого проекта, которые отделены от файлов сборки приложения. Это означает, что элементы содержимого не внедряются в сборку в качестве ресурсов. В следующем примере файла проекта показано, как определить элементы содержимого.</p>
+<pre><code class="lang-xml">&lt;Project DefaultTargets=&quot;Build&quot;  
+                xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
+  &lt;!-- Other project build settings ... --&gt;  
+  
+  &lt;ItemGroup&gt;  
+    &lt;Content Include=&quot;Peric.ttf&quot; /&gt;  
+    &lt;Content Include=&quot;Pericl.ttf&quot; /&gt;  
+  &lt;/ItemGroup&gt;  
+&lt;/Project&gt;  
+</code></pre>
+<p>Чтобы приложение могло использовать шрифты во время выполнения, эти шрифты должны быть доступны в каталоге развертывания приложения. <code>&lt;CopyToOutputDirectory&gt;</code> Элемент в файле проекта приложения позволяет автоматически копировать шрифты в каталог развертывания приложения в процессе сборки. В следующем примере файла проекта показано, как скопировать шрифты в каталог развертывания.</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;  
+  &lt;Content Include=&quot;Peric.ttf&quot;&gt;  
+    &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;  
+  &lt;/Content&gt;  
+  &lt;Content Include=&quot;Pericl.ttf&quot;&gt;  
+    &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;  
+  &lt;/Content&gt;  
+&lt;/ItemGroup&gt;  
+</code></pre>
+<p>В следующем примере кода показано, как ссылаться на шрифт приложения как на элемент содержимого: ссылочный элемент содержимого должен быть в том же каталоге, что и файлы сборки приложения.</p>
+<pre><code class="lang-xaml" name="FontSnippets#FontPackageSnippet8">&lt;TextBlock FontFamily=&quot;./#Pericles Light&quot;&gt;
+  Aegean Sea
+&lt;/TextBlock&gt;
+</code></pre>
+<p><a name="adding_fonts_as_resource_items"></a></p>
+<h2 id="adding-fonts-as-resource-items">Добавление шрифтов как элементов ресурсов</h2>
+<p>Вы можете добавить шрифты в приложение в виде элементов ресурсов проекта, которые внедряются в файлы сборки приложения. Использование отдельного подкаталога для ресурсов помогает упорядочить файлы проекта приложения. В следующем примере файла проекта показано, как определить шрифты в виде элементов ресурсов в отдельном подкаталоге.</p>
+<pre><code class="lang-xml">&lt;Project DefaultTargets=&quot;Build&quot;  
+                xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;  
+  &lt;!-- Other project build settings ... --&gt;  
+  
+  &lt;ItemGroup&gt;  
+    &lt;Resource Include=&quot;resources\Peric.ttf&quot; /&gt;  
+    &lt;Resource Include=&quot;resources\Pericl.ttf&quot; /&gt;  
+  &lt;/ItemGroup&gt;  
+&lt;/Project&gt;  
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При добавлении шрифтов как ресурсов в приложение, убедитесь, что при установке <code>&lt;Resource&gt;</code> элемент, а не <code>&lt;EmbeddedResource&gt;</code> элемент в файле проекта приложения. <code>&lt;EmbeddedResource&gt;</code> Элемент для действия сборки не поддерживается.</p>
+</div>
+<p>В следующем примере разметки показано, как ссылаться на ресурсы шрифтов приложения.</p>
+<pre><code class="lang-xaml" name="FontSnippets#FontPackageSnippet1">&lt;TextBlock FontFamily=&quot;./resources/#Pericles Light&quot;&gt;
+  Aegean Sea
+&lt;/TextBlock&gt;
+</code></pre><h3 id="referencing-font-resource-items-from-code">Ссылка на элементы ресурсов шрифтов из кода</h3>
+<p>Чтобы ссылаться на элементы ресурсов шрифтов из кода, необходимо указать ссылку на ресурс шрифта двух частей: базовый универсальный идентификатор ресурса (URI); и ссылку на расположение шрифта. Эти значения используются в качестве параметров для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily.-ctor">FontFamily</a> метод. В следующем примере кода показано, как ссылаться на ресурсы шрифтов приложения в подкаталоге проекта с именем <code>resources</code>.</p>
+<pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet2">// The font resource reference includes the base URI reference (application directory level),
+// and a relative URI reference.
+myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/#Pericles Light&quot;);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Базовый универсальный идентификатор ресурса (URI) может включать подкаталог приложения, где находится ресурс шрифта. В этом случае ссылка на расположение шрифта не нужно указать каталог, но пришлось бы включить в начале префикс &quot;<code>./</code>«, указывает, что ресурс шрифта находится в том же каталоге, который указан с помощью базового универсальный идентификатор ресурса (URI). В следующем примере кода показан другой способ ссылки на элемент ресурса шрифта — он эквивалентен предыдущему примеру кода.</p>
+<pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet5">// The base URI reference can include an application subdirectory.
+myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/resources/&quot;), &quot;./#Pericles Light&quot;);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="referencing-fonts-from-the-same-application-subdirectory">Ссылка на шрифты из одного подкаталога приложения</h3>
+<p>Вы можете разместить файл содержимого и файл ресурсов приложения в одном пользовательском подкаталоге проекта приложения. В следующем примере файла проекта показаны страница содержимого и ресурсы шрифтов, определенные в одном подкаталоге.</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;  
+  &lt;Page Include=&quot;pages\HomePage.xaml&quot; /&gt;  
+&lt;/ItemGroup&gt;  
+&lt;ItemGroup&gt;  
+  &lt;Resource Include=&quot;pages\Peric.ttf&quot; /&gt;  
+  &lt;Resource Include=&quot;pages\Pericl.ttf&quot; /&gt;  
+&lt;/ItemGroup&gt;  
+</code></pre>
+<p>Поскольку содержимое приложения и шрифт находятся в одном подкаталоге, ссылка на шрифт указывается относительно содержимого приложения. В следующих примерах показывается, как ссылаться на ресурс шрифтов приложения, когда шрифт находится в том же каталоге, что и приложение.</p>
+<pre><code class="lang-xaml" name="FontSnippets#FontPackageSnippet3">&lt;TextBlock FontFamily=&quot;./#Pericles Light&quot;&gt;
+  Aegean Sea
+&lt;/TextBlock&gt;
+</code></pre><pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet4">// The font resource reference includes the base Uri (application directory level),
+// and the file resource location, which is relative to the base Uri.
+myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&quot;), &quot;/pages/#Pericles Light&quot;);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="enumerating-fonts-in-an-application">Перечисление шрифтов в приложении</h3>
+<p>Для перечисления шрифтов как элементов ресурса в приложении, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.getfontfamilies">GetFontFamilies</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.gettypefaces">GetTypefaces</a> метод. В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.getfontfamilies">GetFontFamilies</a> метод, чтобы вернуть коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a> объектов из расположения шрифтов приложения. В данном случае приложение содержит подкаталог с именем resources.</p>
+<pre><code class="lang-csharp" name="FontSnippets#FontsSnippet3">foreach (FontFamily fontFamily in Fonts.GetFontFamilies(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/&quot;))
+{
+    // Perform action.
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.gettypefaces">GetTypefaces</a> метод, чтобы вернуть коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.typeface">Typeface</a> объектов из расположения шрифтов приложения. В данном случае приложение содержит подкаталог с именем resources.</p>
+<pre><code class="lang-csharp" name="FontSnippets#FontsSnippet7">foreach (Typeface typeface in Fonts.GetTypefaces(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/&quot;))
+{
+    // Perform action.
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="creating_a_font_resource_library"></a></p>
+<h2 id="creating-a-font-resource-library">Создание библиотеки ресурсов шрифтов</h2>
+<p>Вы можете создать библиотеку только для ресурсов, которая содержит только шрифты; в проекте библиотеки этого типа никакой код не включается. Создание библиотеки ресурсов является общим приемом для разделения ресурсов и использующего их кода приложения. Это также позволяет включать сборку библиотеки в несколько проектов приложений. В следующем примере файла проекта показаны основные части проекта библиотеки ресурсов.</p>
+<pre><code class="lang-xml">&lt;PropertyGroup&gt;  
+  &lt;AssemblyName&gt;FontLibrary&lt;/AssemblyName&gt;  
+  &lt;OutputType&gt;library&lt;/OutputType&gt;  
+  ...  
+&lt;/PropertyGroup&gt;  
+...  
+&lt;ItemGroup&gt;  
+  &lt;Resource Include=&quot;Kooten.ttf&quot; /&gt;  
+  &lt;Resource Include=&quot;Pesca.ttf&quot; /&gt;  
+&lt;/ItemGroup  
+</code></pre>
+<h3 id="referencing-a-font-in-a-resource-library">Ссылка на шрифт в библиотеке ресурсов</h3>
+<p>Чтобы сослаться на шрифт в библиотеке ресурсов из приложения, необходимо добавить в ссылку на шрифт префикс с именем сборки библиотеки. В данном случае сборкой ресурсов шрифтов является FontLibrary. Для отделения имени сборки от ссылки в сборке используйте символ «;». Добавив ключевое слово Component и ссылку на имя шрифта, вы получите полную ссылку на ресурс библиотеки шрифтов. В следующем примере кода показано, как сослаться на шрифт в сборке библиотеки ресурсов.</p>
+<pre><code class="lang-xaml" name="OpenTypeFontsSample#OpenTypeFontsSample1">&lt;Run FontFamily=&quot;/FontLibrary;Component/#Kootenay&quot; FontSize=&quot;36&quot;&gt;
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+&lt;/Run&gt;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот пакет SDK содержит набор образцов OpenType шрифты, которые можно использовать с WPF приложений. Эти шрифты определяются в библиотеке ресурсов. Дополнительные сведения см. в разделе <a href="sample-opentype-font-pack.html">Пакет образцов шрифтов OpenType</a>.</p>
+</div>
+<p><a name="limitations_on_font_usage"></a></p>
+<h2 id="limitations-on-font-usage">Ограничения в использовании шрифтов</h2>
+<p>Ниже приведены некоторые ограничения по упаковке и использованию шрифтов в WPF приложений:</p>
+<ul>
+<li><p><strong>Биты разрешений на внедрение шрифтов:</strong> WPF приложения не проверяют и не применяют принудительно никакие биты разрешений на внедрение шрифтов. См. в разделе <a href="#introduction_to_packaging_fonts">ntroduction_to_packing Fonts</a> Дополнительные сведения.</p>
+</li>
+<li><p><strong>Сайт исходных шрифтов:</strong> WPF приложения не разрешают ссылка на шрифт для http или ftp универсальный идентификатор ресурса (URI).</p>
+</li>
+<li><p><strong>Абсолютный URI, с помощью пакета: нотации:</strong> WPF приложения не разрешают создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a> программным способом с помощью «pack:» как часть абсолютное универсальный идентификатор ресурса (URI) ссылки на шрифт. Например <code>&quot;pack://application:,,,/resources/#Pericles Light&quot;</code> является недопустимой ссылкой на шрифт.</p>
+</li>
+<li><p><strong>Автоматическое внедрение шрифтов.</strong> Во время разработки не поддерживается поиск шрифтов, используемых приложением, и автоматическое внедрение шрифтов в ресурсы приложения.</p>
+</li>
+<li><p><strong>Подмножества шрифтов:</strong> WPF приложения не поддерживают создание подмножеств шрифтов для нефиксированных документов.</p>
+</li>
+<li><p>Если обнаруживается неправильная ссылка, приложение прибегает к использованию доступного шрифта.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.typography">Typography</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a></li>
+<li><a href="https://docs.microsoft.com/typography/">Microsoft Typography: Ссылки, новости и контакты</a></li>
+<li><a href="https://www.microsoft.com/typography/otspec/">Спецификация OpenType</a></li>
+<li><a href="opentype-font-features.html">Возможности шрифта OpenType</a></li>
+<li><a href="sample-opentype-font-pack.html">Образец пакета шрифтов OpenType</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

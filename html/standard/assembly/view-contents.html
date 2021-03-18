@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1089;&#1084;&#1086;&#1090;&#1088; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1089;&#1084;&#1086;&#1090;&#1088; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-view-assembly-contents">Практическое руководство. Просмотр содержимого сборки</h1>
+
+<p>Можно использовать <a href="../../framework/tools/ildasm-exe-il-disassembler.md">Ildasm.exe (дизассемблер IL)</a> для просмотра сведений промежуточного языка MSIL в файле. Если анализируемый файл является сборкой, то эти данные могут включать в себя атрибуты сборки, а также ссылки на другие модули и сборки. Эти данные полезны для определения того, является ли файл сборкой или частью сборки и содержит ли он ссылки на другие модули и сборки.</p>
+<p>Чтобы отобразить содержимое сборки с помощью <em>Ildasm.exe</em> , введите <strong>ildasm &lt;assembly name&gt;</strong> в командной строке. Например, следующая команда дизассемблирует сборку <em>Hello.exe</em>.</p>
+<pre><code class="lang-cmd">ildasm Hello.exe
+</code></pre>
+<p>Для просмотра сведений о манифесте сборки дважды щелкните значок <strong>Манифест</strong> в окне дизассемблера MSIL.</p>
+<h2 id="example">Пример</h2>
+<p>Следующий пример начинается с простой программы &quot;Hello World&quot;. После компиляции программы используйте <em>Ildasm.exe</em> , чтобы декомпилировать сборку <em>Hello.exe</em> и просмотреть манифест сборки.</p>
+<pre><code class="lang-cpp">using namespace System;
+
+class MainApp
+{
+public:
+    static void Main()
+    {
+        Console::WriteLine(&quot;Hello World using C++/CLI!&quot;);
+    }
+};
+
+int main()
+{
+    MainApp::Main();
+}
+</code></pre>
+<pre><code class="lang-csharp">using System;
+
+class MainApp
+{
+    public static void Main()
+    {
+        Console.WriteLine(&quot;Hello World using C#!&quot;);
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">Class MainApp
+    Public Shared Sub Main()
+        Console.WriteLine(&quot;Hello World using Visual Basic!&quot;)
+    End Sub
+End Class
+</code></pre>
+<p>Выполните команду <em>ildasm.exe</em> над сборкой <em>Hello.exe</em> и дважды щелкните значок <strong>Манифест</strong> в окне дизассемблера MSIL, чтобы получить следующие выходные данные:</p>
+<pre><code class="lang-output">// Metadata version: v4.0.30319
+.assembly extern mscorlib
+{
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 )                         // .z\V.4..
+  .ver 4:0:0:0
+}
+.assembly Hello
+{
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.CompilationRelaxationsAttribute::.ctor(int32) = ( 01 00 08 00 00 00 00 00 )
+  .custom instance void [mscorlib]System.Runtime.CompilerServices.RuntimeCompatibilityAttribute::.ctor() = ( 01 00 01 00 54 02 16 57 72 61 70 4E 6F 6E 45 78   // ....T..WrapNonEx
+                                                                                                             63 65 70 74 69 6F 6E 54 68 72 6F 77 73 01 )       // ceptionThrows.
+  .hash algorithm 0x00008004
+  .ver 0:0:0:0
+}
+.module Hello.exe
+// MVID: {7C2770DB-1594-438D-BAE5-98764C39CCCA}
+.imagebase 0x00400000
+.file alignment 0x00000200
+.stackreserve 0x00100000
+.subsystem 0x0003       // WINDOWS_CUI
+.corflags 0x00000001    //  ILONLY
+// Image base: 0x00600000
+</code></pre>
+<p>В следующей таблице описаны все директивы в манифесте сборки <em>Hello.exe</em> , используемой в этом примере.</p>
+<table>
+<thead>
+<tr>
+<th>Директива</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>.assembly extern &lt;assembly name&gt;</strong></td>
+<td>Определяет другую сборку, содержащую элементы, на которые имеются ссылки в текущем модуле (в этом примере — <code>mscorlib</code>).</td>
+</tr>
+<tr>
+<td><strong>.publickeytoken &lt;token&gt;</strong></td>
+<td>Определяет маркер действующего ключа сборки, на которую имеется ссылка.</td>
+</tr>
+<tr>
+<td><strong>.ver &lt;version number&gt;</strong></td>
+<td>Задает номер версии, на которую имеется ссылка.</td>
+</tr>
+<tr>
+<td><strong>.assembly &lt;assembly name&gt;</strong></td>
+<td>Задает имя сборки.</td>
+</tr>
+<tr>
+<td><strong>.hash algorithm &lt;int32 value&gt;</strong></td>
+<td>Задает используемый хэш-алгоритм.</td>
+</tr>
+<tr>
+<td><strong>.ver &lt;version number&gt;</strong></td>
+<td>Задает номер версии сборки.</td>
+</tr>
+<tr>
+<td><strong>.module &lt;file name&gt;</strong></td>
+<td>Задает имена модулей, составляющих сборку. В этом примере сборка состоит только из одного файла.</td>
+</tr>
+<tr>
+<td><strong>.subsystem &lt;value&gt;</strong></td>
+<td>Указывает требуемую для программы среду приложения. В этом примере значение &quot;3&quot; указывает на то, что выполняемый модуль запускается на консоли.</td>
+</tr>
+<tr>
+<td><strong>.corflags</strong></td>
+<td>В настоящее время представляет собой зарезервированное поле метаданных.</td>
+</tr>
+</tbody>
+</table>
+<p>Манифест сборки может содержать несколько различных директив, зависящих от содержимого сборки. Расширенный список директив манифеста сборки содержится в документации ECMA, в том числе в частях &quot;Раздел II. Определение метаданных и семантика&quot; и &quot;Раздел III. Набор инструкций CIL&quot;.</p>
+<ul>
+<li><a href="../components.md#applicable-standards">Стандарты ECMA для C# и Common Language Infrastructure</a></li>
+<li><a href="http://www.ecma-international.org/publications/standards/Ecma-335.htm">Стандарт ECMA-335 — Common Language Infrastructure (CLI)</a></li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../../framework/app-domains/application-domains.md#application-domains-and-assemblies">Домены приложений и сборки</a></li>
+<li><a href="../../framework/app-domains/application-domains-and-assemblies-how-to-topics.md">Руководства по работе с доменами приложений и сборками</a></li>
+<li><a href="../../framework/tools/ildasm-exe-il-disassembler.md">Ildasm.exe (дизассемблер IL)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

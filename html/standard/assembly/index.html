@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1073;&#1086;&#1088;&#1082;&#1080; &#1074; .NET | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1073;&#1086;&#1088;&#1082;&#1080; &#1074; .NET | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="assemblies-in-net">Сборки в .NET</h1>
+
+<p>Сборки представляют собой базовые элементы развертывания, управления версиями, повторного использования, назначения областей активации и прав доступа для приложений на основе платформы .NET. Сборка представляет собой коллекцию типов и ресурсов, собранных для совместной работы и образующих логическую функциональную единицу. Сборки создаются в виде исполняемого файла (<em>EXE</em>) или файла библиотеки динамической компоновки (<em>DLL</em>) и являются стандартными блоками приложений .NET. Они предоставляют сведения для среды CLR, которые нужны для распознавания реализаций типов.</p>
+<p>В .NET Core и .NET Framework сборку можно создать из одного или нескольких файлов исходного кода. В .NET Framework сборки могут содержать один или несколько модулей. Благодаря этому в крупных проектах несколько разработчиков могут работать с отдельными файлами или модулями исходного кода, которые вместе образуют единую сборку. Дополнительные сведения см. в статье <a href="../../framework/app-domains/build-multifile-assembly.md">Практическое Создание многофайловой сборки</a>.</p>
+<p>Сборки имеют следующие свойства.</p>
+<ul>
+<li><p>Сборки реализованы как файлы <em>EXE</em> или <em>DLL</em>.</p>
+</li>
+<li><p>Для библиотек, предназначенных для .NET Framework, сборки можно совместно использовать в нескольких приложениях, поместив их в <a href="../../framework/app-domains/gac.md">глобальный кэш сборок (GAC)</a>. Прежде чем включить сборки в глобальный кэш сборок, нужно назначить им строгие имена. Подробнее см. в разделе <a href="strong-named.html">Сборки со строгими именами</a>.</p>
+</li>
+<li><p>Сборки загружаются в память только в том случае, если они реально используются. Если они не используются, то они не загружаются. Благодаря этому свойству сборки могут быть эффективным средством для управления ресурсами в крупных проектах.</p>
+</li>
+<li><p>Сведения о сборке можно получить программным путем с помощью отражения. Дополнительные сведения см. в статьях <a href="../../csharp/programming-guide/concepts/reflection.md">Отражение (C#)</a> и <a href="../../visual-basic/programming-guide/concepts/reflection.md">Отражение (Visual Basic)</a>.</p>
+</li>
+<li><p>Сборку можно загрузить только для ее проверки, используя класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a> в .NET Core и методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.reflectiononlyload">Assembly.ReflectionOnlyLoad</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.reflectiononlyloadfrom">Assembly.ReflectionOnlyLoadFrom</a> в .NET Core и .NET Framework.</p>
+</li>
+</ul>
+<h2 id="assemblies-in-the-common-language-runtime">Сборки в среде CLR</h2>
+<p>Сборки предоставляют сведения для среды CLR, которые нужны для распознавания реализаций типов. Для среды выполнения тип не существует вне контекста сборки.</p>
+<p>Сборка определяет следующие сведения:</p>
+<ul>
+<li><p>Код, выполняемый средой CLR. Имейте в виду, что каждая сборка может иметь только одну точку входа: <code>DllMain</code>, <code>WinMain</code> или <code>Main</code>.</p>
+</li>
+<li><p>Граница безопасности. Сборка представляет собой единицу, для которой запрашиваются и предоставляются разрешения. Дополнительные сведения о границах безопасности в сборках см. в разделе <a href="security-considerations.html">Вопросы безопасности сборок</a>.</p>
+</li>
+<li><p>Граница типа. Каждое удостоверение типа включает имя сборки, в которой располагается данный тип. Тип с именем <code>MyType</code>, загруженный в области действия одной сборки, не совпадает с типом <code>MyType</code>, загруженным в области действия другой сборки.</p>
+</li>
+<li><p>Граница области действия ссылок. <a href="#assembly-manifest">Манифест сборки</a> содержит метаданные, используемые для разрешения типов и для выполнения связанных с ресурсами запросов. Манифест указывает типы и ресурсы, предоставляемые за пределами сборки, а также перечисляет другие сборки, от которых она зависит. При отсутствии связанного <a href="#assembly-manifest">манифеста сборки</a> код на промежуточном языке MSIL, находящийся в переносимом исполняемом (PE) файле, выполняться не будет.</p>
+</li>
+<li><p>Граница версий. Сборка является наименьшей единицей с поддержкой версий в среде CLR. Версия для всех типов и ресурсов в одной сборке назначается как единому целому. В <a href="#assembly-manifest">манифесте сборки</a> описываются зависимости определенных версий от других сборок. Дополнительные сведения об управлении версиями см. в разделе <a href="versioning.html">Управление версиями сборки</a>.</p>
+</li>
+<li><p>Единица развертывания. При запуске приложения могут присутствовать лишь сборки, первоначально вызываемые приложением. Другие сборки, например, содержащие ресурсы локализации или вспомогательные классы, могут извлекаться по требованию. Это позволяет приложениям сохранять простую структуру и малый размер при первоначальном скачивании. Дополнительные сведения о развертывании сборок см. в разделе <a href="../../framework/deployment/index.md">Развертывание приложений</a>.</p>
+</li>
+<li><p>Единица параллельного выполнения. Дополнительные сведения о выполнении нескольких версий сборок см. в разделе <a href="side-by-side-execution.html">Сборки и параллельное выполнение</a>.</p>
+</li>
+</ul>
+<h2 id="create-an-assembly">Создание сборки</h2>
+<p>Сборки могут быть статическими или динамическими. Статические сборки хранятся на диске в виде переносимых исполняемых (PE) файлов. Статические сборки могут включать интерфейсы, классы и ресурсы, такие как точечные рисунки, файлы JPEG и другие файлы ресурсов. Кроме того, можно создавать динамические сборки, которые запускаются непосредственно из памяти и не сохраняются на диск перед выполнением. Динамические сборки можно сохранить на диске после выполнения.</p>
+<p>Существует несколько способов создания сборок. Можно использовать средства разработки, такие как Visual Studio, позволяющие создавать файлы <em>DLL</em> или <em>EXE</em>. Чтобы создать сборки с использованием модулей из других средств разработки, можно воспользоваться средствами из Windows SDK. Для создания динамических сборок также можно использовать интерфейсы CLR такие, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.emit">System.Reflection.Emit</a>.</p>
+<p>Скомпилируйте сборки, выполнив сборку в Visual Studio, с помощью средств интерфейса командной строки .NET Core или создав сборки .NET Framework с помощью компилятора командной строки. Дополнительные сведения о компиляции сборок с помощью .NET Core CLI см. в <a href="../../core/tools/index.md">этой статье</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Чтобы создать сборку в Visual Studio, выберите пункт <strong>Сборка</strong> в меню <strong>Сборка</strong>.</p>
+</div>
+<h2 id="assembly-manifest">Манифест сборки</h2>
+<p>Каждая сборка имеет файл <em>манифеста сборки</em>. Манифест сборки выполняет роль оглавления и содержит следующее:</p>
+<ul>
+<li><p>Идентификатор сборки (ее имя и версию).</p>
+</li>
+<li><p>Таблица с описанием всех файлов, входящих в сборку. Например, сюда относятся другие ваши сборки, от которых зависит файл <em>EXE</em> или <em>DLL</em>, а также растровые изображения или файлы сведений.</p>
+</li>
+<li><p><em>Список ссылок сборки</em>, то есть список всех внешних зависимостей, таких как библиотеки <em>DLL</em> или другие файлы. Ссылки на сборки содержат ссылки на глобальные и частные объекты. Глобальные объекты доступны для всех других приложений. В .NET Core глобальные объекты связаны с определенной средой выполнения. В .NET Framework они расположены в глобальном кэше сборок (GAC). <em>System.IO.dll</em> служит примером сборки в глобальном кэше сборок. Закрытые объекты должны находиться в каталоге установки приложения или в одном из его подкаталогов.</p>
+</li>
+</ul>
+<p>Так как сборки содержат сведения о содержимом, версиях и зависимостях, работа связанных с ними приложений не зависит от внешних источников, таких как реестр в системах Windows. Сборки снижают риск конфликта библиотек <em>DLL</em>, а также повышают надежность и простоту развертывания приложений. Во многих случаях для установки приложения на базе .NET достаточно просто скопировать его файлы на целевой компьютер. Дополнительные сведения см. в разделе <a href="manifest.html">Манифест сборки</a>.</p>
+<h2 id="add-a-reference-to-an-assembly">Добавление ссылки на сборку</h2>
+<p>Чтобы использовать сборку в приложении, нужно добавить ссылку на нее. Когда вы добавите ссылку на сборку, в вашем приложении станут доступны все предоставленные в сборке типы, свойства, методы и другие члены пространств имен, как если бы их код являлся частью файла с исходным кодом вашего приложения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Ссылки на большинство сборок из библиотеки классов .NET создаются автоматически. Если системная сборка не упоминается в ссылке автоматически, для .NET Core можно добавить ссылку на пакет NuGet, содержащий эту сборку. Используйте диспетчер пакетов NuGet в Visual Studio или добавьте элемент <a href="../../core/tools/dependencies.md#the-packagereference-element">&lt;PackageReference&gt;</a> для сборки в файл проекта с расширением <em>.csproj</em> или <em>.vbproj</em>. В .NET Framework можно добавить ссылку на сборку с помощью диалогового окна <strong>Добавить ссылку</strong> в Visual Studio или параметра командной строки <code>-reference</code> для компиляторов <a href="../../csharp/language-reference/compiler-options/inputs.md#references">C#</a> или <a href="../../visual-basic/reference/command-line-compiler/reference.md">Visual Basic</a>.</p>
+</div>
+<p>На C# вы можете использовать две версии одной и той же сборки в одном приложении. Дополнительные сведения см. в разделе <a href="../../csharp/language-reference/keywords/extern-alias.md">Псевдоним extern</a>.</p>
+<h2 id="related-content">Связанная информация</h2>
+<table>
+<thead>
+<tr>
+<th>Заголовок</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="contents.html">Содержимое сборок</a></td>
+<td>Элементы, составляющие сборку.</td>
+</tr>
+<tr>
+<td><a href="manifest.html">Манифест сборки</a></td>
+<td>Данные в манифесте сборки и способ их хранения в сборках.</td>
+</tr>
+<tr>
+<td><a href="../../framework/app-domains/gac.md">Глобальный кэш сборок</a></td>
+<td>Способ сохранения и использования сборок в глобальном кэше сборок.</td>
+</tr>
+<tr>
+<td><a href="strong-named.html">Сборки со строгими именами</a></td>
+<td>Характеристики сборок со строгими именами.</td>
+</tr>
+<tr>
+<td><a href="security-considerations.html">Вопросы безопасности сборок</a></td>
+<td>Обеспечение безопасности сборок.</td>
+</tr>
+<tr>
+<td><a href="versioning.html">Управление версиями сборок</a></td>
+<td>Общие сведения о политике управления версиями платформы .NET Framework.</td>
+</tr>
+<tr>
+<td><a href="../../framework/app-domains/assembly-placement.md">Размещение сборок</a></td>
+<td>Вопросы размещения сборок.</td>
+</tr>
+<tr>
+<td><a href="side-by-side-execution.html">Сборки и параллельное выполнение</a></td>
+<td>Использование нескольких версий среды выполнения или сборки.</td>
+</tr>
+<tr>
+<td><a href="../../framework/reflection-and-codedom/emitting-dynamic-methods-and-assemblies.md">Предоставление динамических методов и сборок</a></td>
+<td>Способы создания динамических сборок.</td>
+</tr>
+<tr>
+<td><a href="../../framework/deployment/how-the-runtime-locates-assemblies.md">Обнаружение сборок в среде выполнения</a></td>
+<td>Способы разрешения платформой .NET Framework ссылок на сборки во время выполнения.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Справочник</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly">System.Reflection.Assembly</a></p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="file-format.html">Формат файла сборки .NET</a></li>
+<li><a href="friend.html">Дружественные сборки</a></li>
+<li><a href="reference-assemblies.html">Ссылочные сборки</a></li>
+<li><a href="load-unload.html">Практическое руководство. Загрузка и выгрузка сборок</a></li>
+<li><a href="unloadability.html">Практическое руководство. Использование и отладка сборок с возможностью выгрузки в .NET Core</a></li>
+<li><a href="identify.html">Практическое руководство. Определение того, является ли файл сборкой</a></li>
+<li><a href="inspect-contents-using-metadataloadcontext.html">Практическое руководство. Проверка содержимого сборки с помощью MetadataLoadContext</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

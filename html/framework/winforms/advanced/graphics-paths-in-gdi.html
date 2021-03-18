@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1050;&#1086;&#1085;&#1090;&#1091;&#1088;&#1099; &#1074; GDI+ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1050;&#1086;&#1085;&#1090;&#1091;&#1088;&#1099; &#1074; GDI+ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="graphics-paths-in-gdi">Контуры в GDI+</h1>
+
+<p>Пути сформированном путем объединения линии, прямоугольники и простой кривых. Как следует из <a href="vector-graphics-overview.html">Общие сведения о векторной графики</a> что следующих основных блоков оказались наиболее подходят для рисования изображений:</p>
+<ul>
+<li><p>Прямых линий</p>
+</li>
+<li><p>Прямоугольники</p>
+</li>
+<li><p>Многоточие</p>
+</li>
+<li><p>Дуги</p>
+</li>
+<li><p>Многоугольники</p>
+</li>
+<li><p>Фундаментальные сплайны</p>
+</li>
+<li><p>Сплайны Безье</p>
+</li>
+</ul>
+<p>В GDI + <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">GraphicsPath</a> объект позволяет собирать последовательность из этих блоков в единое целое. Вся последовательность линии, прямоугольники, многоугольники и кривых могут быть нарисована за одно обращение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawpath">DrawPath</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> класса. Ниже показан путь, полученное путем объединения строки, дуги, сплайна Безье и фундаментальный сплайн.</p>
+<p><img src="media/aboutgdip02-art14.gif" alt="Путь" title="Aboutgdip02_art14"></p>
+<h2 id="using-a-path">С помощью пути</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">GraphicsPath</a> Класс предоставляет следующие методы для создания последовательность элементов для отрисовки: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addline">AddLine</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addrectangle">AddRectangle</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addellipse">AddEllipse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addarc">AddArc</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addpolygon">AddPolygon</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addcurve">AddCurve</a> (для фундаментальные сплайны), и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addbezier">AddBezier</a>. Каждый из этих методов перегружена; то есть каждый метод поддерживает несколько различными списками параметров. Например, один из вариантов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addline">AddLine</a> метод получает четырех целых чисел, а в другом варианте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addline">AddLine</a> метод получает два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.point">Point</a> объектов.</p>
+<p>Методы для добавления линии, прямоугольники и сплайны Безье в пути имеют вспомогательные методы, выполняющие добавьте несколько элементов пути за один вызов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addlines">AddLines</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addrectangles">AddRectangles</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addbeziers">AddBeziers</a>. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addcurve">AddCurve</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addarc">AddArc</a> методы существуют вспомогательные методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addclosedcurve">AddClosedCurve</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath.addpie">AddPie</a>, которые расширяют секции замкнутой кривой или круговой путь.</p>
+<p>Чтобы нарисовать контур, вам потребуется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объекта и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">GraphicsPath</a> объекта. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawpath">DrawPath</a> метод и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объект сохраняет атрибуты, например, ширина и цвет линии, используемый для визуализации путь. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">GraphicsPath</a> Объект сохраняет последовательность линий и кривых линий, составляющих путь. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> Объекта и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">GraphicsPath</a> объекта передаются как аргументы для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawpath">DrawPath</a> метод. В следующем примере рисуется путь, который состоит из строки, эллипс и сплайн Безье:</p>
+<pre><code class="lang-csharp" name="LinesCurvesAndShapes#101">myGraphicsPath.AddLine(0, 0, 30, 20);
+myGraphicsPath.AddEllipse(20, 20, 20, 40);
+myGraphicsPath.AddBezier(30, 60, 70, 60, 50, 30, 100, 10);
+myGraphics.DrawPath(myPen, myGraphicsPath);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке путь.</p>
+<p><img src="media/aboutgdip02-art15.gif" alt="Путь" title="Aboutgdip02_art15"></p>
+<p>Помимо добавления линии, прямоугольники и кривые к пути, можно добавить пути к пути. Это позволяет объединять существующие пути для формирования больших и сложных путей.</p>
+<pre><code class="lang-csharp" name="LinesCurvesAndShapes#102">myGraphicsPath.AddPath(graphicsPath1, false);
+myGraphicsPath.AddPath(graphicsPath2, false);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Два других элемента, можно добавить в путь: строку и сектор. Сектор — часть внутреннюю часть эллипса. В следующем примере создается путь из дуги, фундаментальный сплайн, строка и сектора:</p>
+<pre><code class="lang-csharp" name="LinesCurvesAndShapes#103">     GraphicsPath myGraphicsPath = new GraphicsPath();
+
+     Point[] myPointArray = {
+new Point(5, 30), 
+new Point(20, 40), 
+new Point(50, 30)};
+
+     FontFamily myFontFamily = new FontFamily(&quot;Times New Roman&quot;);
+     PointF myPointF = new PointF(50, 20);
+     StringFormat myStringFormat = new StringFormat();
+
+     myGraphicsPath.AddArc(0, 0, 30, 20, -90, 180);
+     myGraphicsPath.StartFigure();
+     myGraphicsPath.AddCurve(myPointArray);
+     myGraphicsPath.AddString(&quot;a string in a path&quot;, myFontFamily,
+        0, 24, myPointF, myStringFormat);
+     myGraphicsPath.AddPie(230, 10, 40, 40, 40, 110);
+     myGraphics.DrawPath(myPen, myGraphicsPath);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке путь. Обратите внимание, что путь не обязательно должен быть подключен; arc, фундаментальный сплайн, строка и круговой разделены.</p>
+<p><img src="media/aboutgdip02-art16.gif" alt="Пути" title="Aboutgdip02_Art16"></p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.graphicspath">System.Drawing.Drawing2D.GraphicsPath</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.point">System.Drawing.Point</a></li>
+<li><a href="lines-curves-and-shapes.html">Прямые и кривые линии и фигуры</a></li>
+<li><a href="how-to-create-graphics-objects-for-drawing.html">Практическое руководство. Создание графических объектов для рисования</a></li>
+<li><a href="constructing-and-drawing-paths.html">Построение и рисование контуров</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

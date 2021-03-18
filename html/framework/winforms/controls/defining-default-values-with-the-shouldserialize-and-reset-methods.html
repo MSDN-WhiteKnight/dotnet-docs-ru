@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1081; &#1087;&#1086; &#1091;&#1084;&#1086;&#1083;&#1095;&#1072;&#1085;&#1080;&#1102; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1084;&#1077;&#1090;&#1086;&#1076;&#1086;&#1074; ShouldSerialize &#1080; Reset | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1077; &#1079;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1081; &#1087;&#1086; &#1091;&#1084;&#1086;&#1083;&#1095;&#1072;&#1085;&#1080;&#1102; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1084;&#1077;&#1090;&#1086;&#1076;&#1086;&#1074; ShouldSerialize &#1080; Reset | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="defining-default-values-with-the-shouldserialize-and-reset-methods">Определение значений по умолчанию с помощью методов ShouldSerialize и Reset</h1>
+
+<p><code>ShouldSerialize</code> и <code>Reset</code> — необязательные методы, которые могут использоваться для свойства, в том случае, если свойство не имеет значения по умолчанию. Если свойство имеет значение по умолчанию, необходимо применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.defaultvalueattribute">DefaultValueAttribute</a> и вместо этого укажите значение по умолчанию для конструктора класса атрибутов. Любой из этих механизмов обеспечивает следующие возможности в конструкторе:</p>
+<ul>
+<li><p>Свойство предоставляет визуальную индикацию в обозревателе свойств, если он был изменен со значения по умолчанию.</p>
+</li>
+<li><p>Пользователь может щелкнуть свойства и выберите <strong>Сброс</strong> восстановить значение свойства к значению по умолчанию.</p>
+</li>
+<li><p>Конструктор создает более эффективный код.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Либо применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.defaultvalueattribute">DefaultValueAttribute</a> или предоставить <code>Reset</code> <em>PropertyName</em> и <code>ShouldSerialize</code> <em>PropertyName</em> методы. Не используйте их вместе.</p>
+</div>
+</li>
+</ul>
+<p><code>Reset</code> <em>PropertyName</em> метод задает свойство к значению по умолчанию, как показано в следующем фрагменте кода.</p>
+<pre><code class="lang-vb">Public Sub ResetMyFont()  
+   MyFont = Nothing  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">public void ResetMyFont() {  
+   MyFont = null;  
+}  
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если свойство не является <code>Reset</code> метод, не помечен атрибутом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.defaultvalueattribute">DefaultValueAttribute</a>и не имеет значения по умолчанию, указанного в его объявлении <code>Reset</code> для этого свойства отключен в контекстном меню <strong>свойства</strong> окна конструктора Windows Forms в Visual Studio.</p>
+</div>
+<p>Конструкторы, такой как Visual Studio используют <code>ShouldSerialize</code> <em>PropertyName</em> метод проверьте, изменено ли значение свойства по умолчанию и создание кода в форме, только если свойство изменяется, что позволяет более эффективный код поколение. Пример:</p>
+<pre><code class="lang-vb">'Returns true if the font has changed; otherwise, returns false.  
+' The designer writes code to the form only if true is returned.  
+Public Function ShouldSerializeMyFont() As Boolean  
+   Return Not (thefont Is Nothing)  
+End Function  
+</code></pre>
+<pre><code class="lang-csharp">// Returns true if the font has changed; otherwise, returns false.  
+// The designer writes code to the form only if true is returned.  
+public bool ShouldSerializeMyFont() {  
+   return thefont != null;  
+}  
+</code></pre>
+<p>Полный пример кода ниже.</p>
+<pre><code class="lang-vb">Option Explicit  
+Option Strict  
+  
+Imports System  
+Imports System.Windows.Forms  
+Imports System.Drawing  
+  
+Public Class MyControl  
+   Inherits Control  
+  
+   ' Declare an instance of the Font class  
+   ' and set its default value to Nothing.  
+   Private thefont As Font = Nothing  
+  
+   ' The MyFont property.   
+   Public Property MyFont() As Font  
+      ' Note that the Font property never  
+      ' returns null.  
+      Get  
+         If Not (thefont Is Nothing) Then  
+            Return thefont  
+         End If  
+         If Not (Parent Is Nothing) Then  
+            Return Parent.Font  
+         End If  
+         Return Control.DefaultFont  
+      End Get  
+      Set  
+         thefont = value  
+      End Set  
+   End Property  
+  
+   Public Function ShouldSerializeMyFont() As Boolean  
+      Return Not (thefont Is Nothing)  
+   End Function  
+  
+   Public Sub ResetMyFont()  
+      MyFont = Nothing  
+   End Sub  
+End Class  
+</code></pre>
+<pre><code class="lang-csharp">using System;  
+using System.Windows.Forms;  
+using System.Drawing;  
+  
+public class MyControl : Control {  
+   // Declare an instance of the Font class  
+   // and set its default value to null.  
+   private Font thefont = null;  
+  
+   // The MyFont property.      
+   public Font MyFont {  
+      // Note that the MyFont property never  
+      // returns null.  
+      get {  
+         if (thefont != null) return thefont;  
+         if (Parent != null) return Parent.Font;  
+         return Control.DefaultFont;  
+      }  
+      set {  
+         thefont = value;  
+      }  
+   }  
+  
+   public bool ShouldSerializeMyFont() {  
+      return thefont != null;  
+   }  
+  
+   public void ResetMyFont() {  
+      MyFont = null;  
+   }  
+}  
+</code></pre>
+<p>В данном случае, даже в том случае, если значение переменной закрытого обращается к <code>MyFont</code> свойство <code>null</code>, браузер свойств не отображается <code>null</code>; вместо этого он отображает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a> свойство родительского объекта, если это не <code>null</code>, или значение по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a> значения, определенного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a>. Таким образом, значение по умолчанию для <code>MyFont</code> нельзя просто установить и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.defaultvalueattribute">DefaultValueAttribute</a> не может использоваться для этого свойства. Вместо этого <code>ShouldSerialize</code> и <code>Reset</code> методы должны быть реализованы для <code>MyFont</code> свойство.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="properties-in-windows-forms-controls.html">Свойства элементов управления Windows Forms</a></li>
+<li><a href="defining-a-property-in-windows-forms-controls.html">Определение свойства</a></li>
+<li><a href="property-changed-events.html">События изменения свойств</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1074;&#1074;&#1077;&#1076;&#1077;&#1085;&#1085;&#1099;&#1093; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1077;&#1084; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1074;&#1074;&#1077;&#1076;&#1077;&#1085;&#1085;&#1099;&#1093; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1077;&#1084; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="handling-user-input">Обработка введенных пользователем данных</h1>
+
+<p>В этом разделе описываются основные события клавиатуры и мыши, предоставляемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">System.Windows.Forms.Control</a>. При обработке события разработчики элементов управления должны переопределить защищенный <code>On</code> метод <em>EventName</em>, а не подключить делегат к событию. Сведения о событиях см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/sh2e3k5z(v=vs.120)">Инициирование событий из компонента</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если нет данных связанные с событием, экземпляр базового класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a> передается в качестве аргумента для <code>On</code> <em>EventName</em> метод.</p>
+</div>
+<h2 id="keyboard-events">События клавиатуры</h2>
+<p>Общими событиями клавиатуры, которые может обрабатывать элемент управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keyup">KeyUp</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Имя события</th>
+<th>Метод для переопределения</th>
+<th>Описание события</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeyDown</code></td>
+<td><code>void OnKeyDown(KeyEventArgs)</code></td>
+<td>Возникает только при первоначальном нажатии клавиши.</td>
+</tr>
+<tr>
+<td><code>KeyPress</code></td>
+<td><code>void OnKeyPress</code><br><br> <code>(KeyPressEventArgs)</code></td>
+<td>Возникает при каждом нажатии клавиши. Если удерживается клавиша, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keypress">KeyPress</a> события с частотой повторения, определенные операционной системой.</td>
+</tr>
+<tr>
+<td><code>KeyUp</code></td>
+<td><code>void OnKeyUp(KeyEventArgs)</code></td>
+<td>Возникает при отпускании клавиши.</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Обработка ввода с клавиатуры значительно сложнее, чем переопределение событий в предыдущей таблице и в данном разделе не рассматривается. Дополнительные сведения см. в разделе <a href="../user-input-in-windows-forms.html">Ввод данных пользователем в Windows Forms</a>.</p>
+</div>
+<h2 id="mouse-events">События мыши</h2>
+<p>События мыши, которые может обрабатывать элемент управления: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseenter">MouseEnter</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousehover">MouseHover</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseleave">MouseLeave</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousemove">MouseMove</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseup">MouseUp</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Имя события</th>
+<th>Метод для переопределения</th>
+<th>Описание события</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MouseDown</code></td>
+<td><code>void OnMouseDown(MouseEventArgs)</code></td>
+<td>Возникает при нажатии кнопки мыши, когда указатель мыши находится на элементе управления.</td>
+</tr>
+<tr>
+<td><code>MouseEnter</code></td>
+<td><code>void OnMouseEnter(EventArgs)</code></td>
+<td>Возникает, когда указатель мыши впервые входит в область элемента управления.</td>
+</tr>
+<tr>
+<td><code>MouseHover</code></td>
+<td><code>void OnMouseHover(EventArgs)</code></td>
+<td>Возникает, когда указатель мыши наводится на элемент управления.</td>
+</tr>
+<tr>
+<td><code>MouseLeave</code></td>
+<td><code>void OnMouseLeave(EventArgs)</code></td>
+<td>Возникает, когда указатель мыши покидает область элемента управления.</td>
+</tr>
+<tr>
+<td><code>MouseMove</code></td>
+<td><code>void OnMouseMove(MouseEventArgs)</code></td>
+<td>Возникает, когда указатель мыши перемещается в область элемента управления.</td>
+</tr>
+<tr>
+<td><code>MouseUp</code></td>
+<td><code>void OnMouseUp(MouseEventArgs)</code></td>
+<td>Возникает при отпускании кнопки мыши, когда указатель мыши находится на элементе управления или покидает область элемента управления.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующем фрагменте кода показан пример переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> событий.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#7">protected override void OnMouseDown(MouseEventArgs e) {
+    base.OnMouseDown(e);
+    if (!allowUserEdit) {
+        return;
+    }
+    Capture = true;
+    dragging = true;
+    SetDragValue(new Point(e.X, e.Y));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем фрагменте кода показан пример переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousemove">MouseMove</a> событий.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#8">protected override void OnMouseMove(MouseEventArgs e) {
+    base.OnMouseMove(e);
+    if (!allowUserEdit || !dragging) {
+        return;
+    }
+    SetDragValue(new Point(e.X, e.Y));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем фрагменте кода показан пример переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseup">MouseUp</a> событий.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#9">protected override void OnMouseUp(MouseEventArgs e) {
+    base.OnMouseUp(e);
+    if (!allowUserEdit || !dragging) {
+        return;
+    }
+    Capture = false;
+    dragging = false;
+    value = dragValue;
+    OnValueChanged(EventArgs.Empty);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Полный исходный код для <code>FlashTrackBar</code> пример, см. в разделе <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="events-in-windows-forms-controls.html">События элементов управления Windows Forms</a></li>
+<li><a href="defining-an-event-in-windows-forms-controls.html">Определение событий</a></li>
+<li><a href="../../../standard/events/index.md">События</a></li>
+<li><a href="../user-input-in-windows-forms.html">Ввод данных пользователем в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

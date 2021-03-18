@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dependency-property-security">Безопасность свойства зависимости</h1>
+
+<p>Свойства зависимости, как правило, считаются открытыми. Суть системы свойств Windows Presentation Foundation (WPF) такова, что дать гарантии безопасности о значении свойства зависимости невозможно.</p>
+<p><a name="AccessSecurity"></a></p>
+<h2 id="access-and-security-of-wrappers-and-dependency-properties">Доступ к программам-оболочкам и свойствам зависимости и их безопасность</h2>
+<p>Как правило, свойства зависимости реализуются вместе со свойствами среда CLR программы-оболочки, которые упрощают получение или настройку свойства от экземпляра. Но программы-оболочки — на самом деле, лишь удобные способы реализации базового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> статические вызовы, которые используются при взаимодействии со свойствами зависимости. Другими словами, свойства предоставляются как свойства среда CLR, поддерживаемые свойством зависимости, а не закрытым полем. Механизмы безопасности, применяемые к программам-оболочкам, не поддерживают параллели между поведением системы свойств и доступом базового свойства зависимости. Помещение требования безопасности на оболочку помешает только использованию удобного метода, но не блокирует вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getvalue">GetValue</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>. Аналогично: размещение защищенного или закрытого уровня доступа в программе-разработчике не обеспечивает эффективную защиту.</p>
+<p>При написании собственных свойств зависимости необходимо объявить программы-оболочки и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> поле идентификатора как открытые элементы, чтобы вызывающие объекты не получали противоречивую информацию об истинном уровне доступа этого свойства (из-за его хранилища, реализовано как свойство зависимостей).</p>
+<p>Для настраиваемого свойства зависимости, можно зарегистрировать свойство как свойство зависимостей только для чтения, и это обеспечивают эффективные способы предотвратить устанавливаемое любым пользователем, не содержит ссылку на свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> для этого свойства. Дополнительные сведения см. в разделе <a href="read-only-dependency-properties.html">Свойства зависимостей &quot;только для чтения&quot;</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Объявление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> закрытого поля идентификатора не запрещено и он может быть использован для уменьшения немедленно предоставляемого пространства имен пользовательского класса, но такое свойство не считается «private», в том же смысле, как среда CLR язык определения определяют этот уровень доступа, по причинам, описанным в следующем разделе.</p>
+</div>
+<p><a name="PropertySystemExposure"></a></p>
+<h2 id="property-system-exposure-of-dependency-properties">Предоставление системы свойств свойствам зависимости</h2>
+<p>Он обычно не имеет смысла, и это ложная для объявления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> как любого уровня доступа, отличный от открытого. Такая настройка уровня доступа просто лишит возможности получить ссылку на экземпляр из объявляющего класса. Но существует несколько аспектов системы свойств, который будет возвращать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> как средства для идентификации конкретного свойства, как он существует на экземпляре класса или экземпляре производного класса, и этот идентификатор является по-прежнему можно использовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a> даже вызвать Если исходный статический идентификатор объявляется неоткрытым. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.onpropertychanged">OnPropertyChanged</a> виртуальные методы получают сведения о любом существующем свойстве зависимости, которое изменило значение. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.getlocalvalueenumerator">GetLocalValueEnumerator</a> метод возвращает идентификаторы для любого свойства в экземплярах с локально заданное значение.</p>
+<h3 id="validation-and-security">Проверка и безопасность</h3>
+<p>Применение требований <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.validatevaluecallback">ValidateValueCallback</a> и ожидается сбой проверки при сбое требования для предотвращения задаваемое свойство не является достаточно безопасным механизмом. Реализацию недействительности заданного значения регламентирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.validatevaluecallback">ValidateValueCallback</a> может подавляться вредоносные вызывающие объекты, если эти вызывающие объекты работают внутри домена приложения.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

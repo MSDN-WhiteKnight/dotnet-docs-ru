@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1077; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; RelativeSource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1077; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; RelativeSource | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="relativesource-markupextension">Расширение разметки RelativeSource</h1>
+
+<p>Задает свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> источника привязки, которые будут использоваться в <a href="binding-markup-extension.html">расширения разметки привязки</a>, или при задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> определенного в XAML.</p>
+<h2 id="xaml-attribute-usage">Использование атрибута XAML</h2>
+<pre><code class="lang-xml">&lt;Binding RelativeSource=&quot;{RelativeSource modeEnumValue}&quot; .../&gt;
+</code></pre>
+<h2 id="xaml-attribute-usage-nested-within-binding-extension">Использование атрибута XAML (вложенный в расширение Binding)</h2>
+<pre><code class="lang-xml">&lt;object property=&quot;{Binding RelativeSource={RelativeSource modeEnumValue} ...}&quot; .../&gt;
+</code></pre>
+<h2 id="xaml-object-element-usage">Использование элемента объекта XAML</h2>
+<pre><code class="lang-xml">&lt;Binding&gt;
+  &lt;Binding.RelativeSource&gt;
+    &lt;RelativeSource Mode=&quot;modeEnumValue&quot;/&gt;
+  &lt;/Binding.RelativeSource&gt;
+&lt;/Binding&gt;
+</code></pre>
+<ul>
+<li>или -</li>
+</ul>
+<pre><code class="lang-xml">&lt;Binding&gt;
+  &lt;Binding.RelativeSource&gt;
+    &lt;RelativeSource
+      Mode=&quot;FindAncestor&quot;
+      AncestorType=&quot;{x:Type typeName}&quot;
+      AncestorLevel=&quot;intLevel&quot;
+    /&gt;
+  &lt;/Binding.RelativeSource&gt;
+&lt;/Binding&gt;
+</code></pre>
+<h2 id="xaml-values">Значения XAML</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modeEnumValue</code></td>
+<td>Один из следующих вариантов:<br><br> -Строковая лексема <code>Self</code>; соответствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> , созданного с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.mode">Mode</a> свойство значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesourcemode#System_Windows_Data_RelativeSourceMode_Self">Self</a>.<br>-Строковая лексема <code>TemplatedParent</code>; соответствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> , созданного с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.mode">Mode</a> свойство значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesourcemode#System_Windows_Data_RelativeSourceMode_TemplatedParent">TemplatedParent</a>.<br>-Строковая лексема <code>PreviousData</code>; соответствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> , созданного с помощью его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.mode">Mode</a> свойство значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesourcemode#System_Windows_Data_RelativeSourceMode_PreviousData">PreviousData</a>.<br>-Сведения см. ниже на <code>FindAncestor</code> режим.</td>
+</tr>
+<tr>
+<td><code>FindAncestor</code></td>
+<td>Строковая лексема <code>FindAncestor</code>. Использовании этой лексемы осуществляет переход в режим, где <code>RelativeSource</code> задает тип предка и (при необходимости) уровень предка. Это соответствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> при создании со свойством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.mode">Mode</a>, для которого задано значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesourcemode#System_Windows_Data_RelativeSourceMode_FindAncestor">FindAncestor</a>.</td>
+</tr>
+<tr>
+<td><code>typeName</code></td>
+<td>Требуется для режима <code>FindAncestor</code>. Имя типа, которое заполняет свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.ancestortype">AncestorType</a>.</td>
+</tr>
+<tr>
+<td><code>intLevel</code></td>
+<td>Необязательно для режима <code>FindAncestor</code>. Уровень предка (вычисляется в направлении родителя в логическом дереве).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remarks">Примечания</h2>
+<p><code>{RelativeSource TemplatedParent}</code> Использование привязки — это ключевая методика, которая решает большего размера концепцию разделения элемента управления пользовательского интерфейса и логики элемента управления. Это делает возможным привязку из определения шаблона к созданному по шаблону родительскому элементу (экземпляр объекта времени выполнения, в котором применяется шаблон). В этом случае <a href="templatebinding-markup-extension.html">расширения разметки TemplateBinding</a> на самом деле является сокращением для следующего выражения привязки: <code>{Binding RelativeSource={RelativeSource TemplatedParent}}</code>. <code>TemplateBinding</code> или <code>{RelativeSource TemplatedParent}</code> использования включены только соответствующие в XAML, который определяет шаблон. Дополнительные сведения см. в разделе <a href="templatebinding-markup-extension.html">расширения разметки TemplateBinding</a></p>
+<p><code>{RelativeSource FindAncestor}</code> является главным образом используется в шаблонах элементов управления или прогнозируемый автономных композициях пользовательского интерфейса, для случаев, где элемент управления всегда должен быть в визуальном дереве определенного типа предка. Например, элементы в элементе управления элементами могут использовать вхождения <code>FindAncestor</code> для привязки к свойствам предка элемента управления элементами. Либо элементы, которые являются частью композиции элемента управления в шаблоне, могут использовать привязки <code>FindAncestor</code> к родительским элементам в той же структуре композиции.</p>
+<p>В синтаксисе объектного элемента для режима <code>FindAncestor</code>, показанного выше в разделах синтаксиса XAML, второй синтаксис объектного элемента используется специально для режима <code>FindAncestor</code>. Режим <code>FindAncestor</code> требует значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.ancestortype">AncestorType</a>. Необходимо задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.ancestortype">AncestorType</a> как атрибут <a href="../../xaml-services/x-type-markup-extension.md">расширение разметки x: Type</a> ссылка на тип искомого предка. Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.ancestortype">AncestorType</a> используется при обработке запроса привязки во время выполнения.</p>
+<p>Для режима <code>FindAncestor</code> необязательное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource.ancestorlevel">AncestorLevel</a> может помочь устранить неоднозначность поиска предка в случаях, где в дереве элементов, возможно, существует более одного предка данного типа.</p>
+<p>Дополнительные сведения об использовании режима <code>FindAncestor</code> см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a>.</p>
+<p><code>{RelativeSource Self}</code> полезно для сценариев, где одно свойство экземпляра должно зависеть от значения другого свойства и тот же экземпляр, и нет общего отношения свойства зависимостей (например, приведение) уже существует между этими двумя свойствами. Хотя изредка случается, что в объекте существует два свойства, таким образом, значения буквально одинаковыми (и идентичными типами), также можно применить <code>Converter</code> параметр привязку, в которой <code>{RelativeSource Self}</code>и использовать этот преобразователь выполнить преобразование между исходной и типы целевых объектов. Другой сценарий для <code>{RelativeSource Self}</code> как часть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.multidatatrigger">MultiDataTrigger</a>.</p>
+<p>Например, следующий код XAML определяет такой элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>, что независимо от того, какое значение вводится для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a>, объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> всегда является квадрат: <code>&lt;Rectangle Width=&quot;200&quot; Height=&quot;{Binding RelativeSource={RelativeSource Self}, Path=Width}&quot; .../&gt;</code></p>
+<p><code>{RelativeSource PreviousData}</code> используется в шаблонах данных, или в случаях, когда привязки используют коллекцию в качестве источника данных. Можно использовать <code>{RelativeSource PreviousData}</code> для выделения связей между соседними элементами данных в коллекции. Соответствующей методикой является установление привязки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> между текущим и предыдущим элементами в источнике данных и использование преобразователя в этой привязке для определения различия между двумя элементами и их свойствами.</p>
+<p>В следующем примере первый элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> в шаблоне элементов отображает текущий номер. Второй <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> привязка является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> которая номинально состоит двух <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> составляющих: текущей записи и привязки, в которой намеренно используется предыдущая запись данных с помощью <code>{RelativeSource PreviousData}</code>. Затем преобразователь в объекте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> вычисляет разницу и возвращает ее в привязку.</p>
+<pre><code class="lang-xml">&lt;ListBox Name=&quot;fibolist&quot;&gt;
+    &lt;ListBox.ItemTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+            &lt;TextBlock Text=&quot;{Binding}&quot;/&gt;
+            &lt;TextBlock&gt;, difference = &lt;/TextBlock&gt;
+                &lt;TextBlock&gt;
+                    &lt;TextBlock.Text&gt;
+                        &lt;MultiBinding Converter=&quot;{StaticResource DiffConverter}&quot;&gt;
+                            &lt;Binding/&gt;
+                            &lt;Binding RelativeSource=&quot;{RelativeSource PreviousData}&quot;/&gt;
+                        &lt;/MultiBinding&gt;
+                    &lt;/TextBlock.Text&gt;
+                &lt;/TextBlock&gt;
+            &lt;/StackPanel&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/ListBox.ItemTemplate&gt;
+</code></pre>
+<p>Описание привязки данных, так как не рассматриваются здесь, см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<p>В WPF реализации обработчика XAML обработка данного расширения разметки определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.relativesource">RelativeSource</a> класса.</p>
+<p><code>RelativeSource</code> является расширением разметки. Расширения разметки обычно реализуются, если требуется заменить значения атрибутов на нелитеральные значения или имена обработчиков и если требуется больше, чем простая настройка преобразователей типов на работу с определенными типами или свойствами. Все расширения разметки в XAML используют <code>{</code> и <code>}</code> символов в синтаксисе их атрибутов, который является соглашением, по которому обработчик XAML узнает, что расширение разметки должно обработать атрибут. Дополнительные сведения см. в разделе <a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a></li>
+<li><a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a></li>
+<li><a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a></li>
+<li><a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="../data/binding-declarations-overview.html">Общие сведения об объявлении привязок</a></li>
+<li><a href="../../xaml-services/x-type-markup-extension.md">Расширение разметки x:Type</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

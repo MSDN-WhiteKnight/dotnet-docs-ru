@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; DrawingVisual | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; DrawingVisual | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-drawingvisual-objects">Использование объектов DrawingVisual</h1>
+
+<p>В этом разделе представлен обзор использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> объекты в WPF визуальном уровне.</p>
+<p><a name="drawingvisual_object"></a></p>
+<h2 id="drawingvisual-object">Объект DrawingVisual</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> — упрощенный класс, используемый для отрисовки фигур, изображений и текста. Этот класс считается упрощенным, так как не предоставляет средств для работы с разметкой и обработку событий, что повышает его производительность. Поэтому этот класс идеально подходит для фоновых рисунков или клипов.</p>
+<p><a name="drawingvisual_host_container"></a></p>
+<h2 id="drawingvisual-host-container">Контейнер размещения DrawingVisual</h2>
+<p>Чтобы использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> объектов, необходимо создать контейнер размещения для объектов. Объект контейнера размещения должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класс, который предоставляет макет и обработка событий поддерживает, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> класса отсутствует. Объект контейнера размещения не отображает видимых свойств, так как его основное назначение — включать дочерние объекты. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a> свойство контейнера узла должно быть присвоено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Visible">Visible</a>; в противном случае будет отображаться ни один из его дочерних элементов.</p>
+<p>При создании объекта контейнера размещения для визуальных объектов, вам необходимо сохранить ссылки визуального объекта в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualcollection">VisualCollection</a>. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualcollection.add">Add</a> метод для добавления визуального объекта в контейнер размещения. В следующем примере создается объект контейнера размещения, а также добавляются три визуальных объектов его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualcollection">VisualCollection</a>.</p>
+<pre><code class="lang-csharp" name="DrawingVisualSample#100">// Create a host visual derived from the FrameworkElement class.
+// This class provides layout, event handling, and container support for
+// the child visual objects.
+public class MyVisualHost : FrameworkElement
+{
+    // Create a collection of child visual objects.
+    private VisualCollection _children;
+
+    public MyVisualHost()
+    {
+        _children = new VisualCollection(this);
+        _children.Add(CreateDrawingVisualRectangle());
+        _children.Add(CreateDrawingVisualText());
+        _children.Add(CreateDrawingVisualEllipses());
+
+        // Add the event handler for MouseLeftButtonUp.
+        this.MouseLeftButtonUp += new System.Windows.Input.MouseButtonEventHandler(MyVisualHost_MouseLeftButtonUp);
+    }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Полный код примера, из которого был взят предыдущий пример кода, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159994">Проверка нажатия с помощью примера DrawingVisuals</a>.</p>
+</div>
+<p><a name="creating_drawingvisual_objects"></a></p>
+<h2 id="creating-drawingvisual-objects">Создание объектов DrawingVisual</h2>
+<p>При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> объекта, он не имеет графического содержимого. Можно добавить текст, графика или содержимое изображения путем извлечения объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> и рисования в него. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> возвращается путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual.renderopen">RenderOpen</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> объекта.</p>
+<p>Чтобы нарисовать прямоугольник в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>, использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext.drawrectangle">DrawRectangle</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> объекта. Существуют аналогичные методы для рисования других объектов. После завершения рисования содержимое в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext.close">Close</a> метод для закрытия <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a> и сохранить содержимое.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> создания объекта и прямоугольник в его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>.</p>
+<pre><code class="lang-csharp" name="DrawingVisualSample#101">// Create a DrawingVisual that contains a rectangle.
+private DrawingVisual CreateDrawingVisualRectangle()
+{
+    DrawingVisual drawingVisual = new DrawingVisual();
+
+    // Retrieve the DrawingContext in order to create new drawing content.
+    DrawingContext drawingContext = drawingVisual.RenderOpen();
+
+    // Create a rectangle and draw it in the DrawingContext.
+    Rect rect = new Rect(new System.Windows.Point(160, 100), new System.Windows.Size(320, 80));
+    drawingContext.DrawRectangle(System.Windows.Media.Brushes.LightBlue, (System.Windows.Media.Pen)null, rect);
+
+    // Persist the drawing content.
+    drawingContext.Close();
+
+    return drawingVisual;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="creating_overrides"></a></p>
+<h2 id="creating-overrides-for-frameworkelement-members">Создание переопределений для членов класса FrameworkElement</h2>
+<p>Объект контейнера размещения отвечает за управление своей коллекцией визуальных объектов. Для этого требуется, чтобы контейнера размещения реализован переопределения члена производного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класса.</p>
+<p>Ниже приводятся два члена класса, которые необходимо переопределить.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.getvisualchild">GetVisualChild</a>: Возвращает дочерний элемент по указанному индексу из коллекции дочерних элементов.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.visualchildrencount">VisualChildrenCount</a>: Получает количество визуальных дочерних элементов внутри этого элемента.</p>
+</li>
+</ul>
+<p>В следующем примере, переопределения для двух <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> члены реализуются.</p>
+<pre><code class="lang-csharp" name="DrawingVisualSample#102">
+// Provide a required override for the VisualChildrenCount property.
+protected override int VisualChildrenCount
+{
+    get { return _children.Count; }
+}
+
+// Provide a required override for the GetVisualChild method.
+protected override Visual GetVisualChild(int index)
+{
+    if (index &lt; 0 || index &gt;= _children.Count)
+    {
+        throw new ArgumentOutOfRangeException();
+    }
+
+    return _children[index];
+}
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="providing_hit_testing_support"></a></p>
+<h2 id="providing-hit-testing-support">Поддержка проверки нажатия</h2>
+<p>Объект контейнера размещения может предоставлять обработку событий в случае, даже если он не содержит ни одного видимого свойства, однако его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a> свойству должно быть присвоено <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Visible">Visible</a>. Это позволяет создать процедуру обработки событий для контейнера размещения. Эта процедура сможет перехватывать события мыши, например отпускание левой кнопки мыши. Процедура обработки события можно реализовать проверку попадания путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> метод. Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.hittestresultcallback">HitTestResultCallback</a> параметр ссылается на определяемой пользователем процедуры, можно использовать для определения результата проверки нажатия.</p>
+<p>В следующем примере реализована поддержка проверки нажатия для объекта узла контейнера и его дочерних объектов.</p>
+<pre><code class="lang-csharp" name="DrawingVisualSample#103">// Capture the mouse event and hit test the coordinate point value against
+// the child visual objects.
+void MyVisualHost_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+{
+    // Retrieve the coordinates of the mouse button event.
+    System.Windows.Point pt = e.GetPosition((UIElement)sender);
+
+    // Initiate the hit test by setting up a hit test result callback method.
+    VisualTreeHelper.HitTest(this, null, new HitTestResultCallback(myCallback), new PointHitTestParameters(pt));
+}
+
+// If a child visual object is hit, toggle its opacity to visually indicate a hit.
+public HitTestResultBehavior myCallback(HitTestResult result)
+{
+    if (result.VisualHit.GetType() == typeof(DrawingVisual))
+    {
+        if (((DrawingVisual)result.VisualHit).Opacity == 1.0)
+        {
+            ((DrawingVisual)result.VisualHit).Opacity = 0.4;
+        }
+        else
+        {
+            ((DrawingVisual)result.VisualHit).Opacity = 1.0;
+        }
+    }
+
+    // Stop the hit test enumeration of objects in the visual tree.
+    return HitTestResultBehavior.Stop;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a></li>
+<li><a href="wpf-graphics-rendering-overview.html">Общие сведения об отрисовке графики в WPF</a></li>
+<li><a href="hit-testing-in-the-visual-layer.html">Проверка попадания на визуальном уровне</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

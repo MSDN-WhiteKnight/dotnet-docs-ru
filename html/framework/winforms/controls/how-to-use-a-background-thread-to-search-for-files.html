@@ -1,0 +1,845 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1077; &#1092;&#1086;&#1085;&#1086;&#1074;&#1086;&#1075;&#1086; &#1087;&#1086;&#1090;&#1086;&#1082;&#1072; &#1076;&#1083;&#1103; &#1087;&#1086;&#1080;&#1089;&#1082;&#1072; &#1092;&#1072;&#1081;&#1083;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1077; &#1092;&#1086;&#1085;&#1086;&#1074;&#1086;&#1075;&#1086; &#1087;&#1086;&#1090;&#1086;&#1082;&#1072; &#1076;&#1083;&#1103; &#1087;&#1086;&#1080;&#1089;&#1082;&#1072; &#1092;&#1072;&#1081;&#1083;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-use-a-background-thread-to-search-for-files">Практическое руководство. Применение фонового потока для поиска файлов</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> Компонент заменяет и расширяет его функциональные возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading">System.Threading</a> пространства имен, однако <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.threading">System.Threading</a> пространство имен сохраняется для обратной совместимости и использования в будущем, если выбран. Дополнительные сведения см. в разделе <a href="backgroundworker-component-overview.html">Общие сведения о компоненте BackgroundWorker</a>.</p>
+<p>Windows Forms использует однопотоковое подразделение (STA) модели так, как Windows Forms основан на Win32 для windows, которые являются по своей природе поддержкой потоков. Модель STA подразумевает окна могут создаваться в любом потоке, но не может переключать созданные потоки, что все вызовы функций к нему должно находиться в своем потоке создания. За пределами Windows Forms классы в .NET Framework используют бесплатный потоковой модели. Сведения о работе с потоками в платформе .NET Framework, см. в разделе <a href="../../../standard/threading/index.md">работа с потоками</a>.</p>
+<p>Модель STA требует, что все методы управления, которые должны вызывать не из необходимо маршалировать в (которые выполняются на) поток создания элемента управления. Базовый класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> предоставляет несколько методов (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invoke">Invoke</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.endinvoke">EndInvoke</a>) для этой цели. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invoke">Invoke</a> осуществляет синхронные вызовы метода; <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a> вызывает асинхронный метод.</p>
+<p>При использовании многопоточности в элементе управления для ресурсоемких задач, пользовательский интерфейс, может оставаться работоспособной во время ресурсоемкие вычисления в фоновом потоке.</p>
+<p>Следующий пример (<code>DirectorySearcher</code>) показан многопоточных управления Windows Forms, который использует фоновый поток для рекурсивного поиска каталога для файлов, соответствующих заданной строке поиска, а затем заполняет поле со списком с результатами поиска. Ниже приведены основные понятия, как показано в примере.</p>
+<ul>
+<li><p><code>DirectorySearcher</code> запускает новый поток для выполнения поиска. Поток выполняет <code>ThreadProcedure</code> метод, который в свою очередь вызывает вспомогательный метод <code>RecurseDirectory</code> метод для выполнения фактического поиска и для заполнения списка. Тем не менее заполнение списка требует между потоками, как описано в следующих двух объектов.</p>
+</li>
+<li><p><code>DirectorySearcher</code> Определяет <code>AddFiles</code> метод для добавления файлов в список; Однако <code>RecurseDirectory</code> не может напрямую вызвать <code>AddFiles</code> поскольку <code>AddFiles</code> может выполняться только в создавшем его потоке STA <code>DirectorySearcher</code>.</p>
+</li>
+<li><p>Единственным способом <code>RecurseDirectory</code> можно вызвать <code>AddFiles</code> — посредством вызова между потоками, то есть путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.invoke">Invoke</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a> для маршалинга <code>AddFiles</code> для создающего потока из <code>DirectorySearcher</code>. <code>RecurseDirectory</code> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a> таким образом, вызов может быть выполнен асинхронно.</p>
+</li>
+<li><p>Маршалинг метода требует эквивалент указателя функции или обратного вызова. Это можно сделать с помощью делегатов в платформе .NET Framework. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a> принимает делегат в качестве аргумента. <code>DirectorySearcher</code> Таким образом определяется делегат (<code>FileListDelegate</code>), привязывает <code>AddFiles</code> к экземпляру <code>FileListDelegate</code> в конструкторе и передает этот экземпляр делегата для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.begininvoke">BeginInvoke</a>. <code>DirectorySearcher</code> также определяет делегат события, который маршалируется по завершении поиска.</p>
+</li>
+</ul>
+<pre><code class="lang-vb">Option Strict  
+Option Explicit  
+  
+Imports System  
+Imports System.IO  
+Imports System.Threading  
+Imports System.Windows.Forms  
+  
+Namespace Microsoft.Samples.DirectorySearcher  
+   ' &lt;summary&gt;  
+   '      This class is a Windows Forms control that implements a simple directory searcher.  
+   '      You provide, through code, a search string and it will search directories on  
+   '      a background thread, populating its list box with matches.  
+   ' &lt;/summary&gt;  
+   Public Class DirectorySearcher  
+      Inherits Control  
+      ' Define a special delegate that handles marshaling  
+      ' lists of file names from the background directory search  
+      ' thread to the thread that contains the list box.  
+      Delegate Sub FileListDelegate(files() As String, startIndex As Integer, count As Integer)  
+  
+      Private _listBox As ListBox  
+      Private _searchCriteria As String  
+      Private _searching As Boolean  
+      Private _deferSearch As Boolean  
+      Private _searchThread As Thread  
+      Private _fileListDelegate As FileListDelegate  
+      Private _onSearchComplete As EventHandler  
+  
+      Public Sub New()  
+         _listBox = New ListBox()  
+         _listBox.Dock = DockStyle.Fill  
+  
+         Controls.Add(_listBox)  
+  
+         _fileListDelegate = New FileListDelegate(AddressOf AddFiles)  
+         _onSearchComplete = New EventHandler(AddressOf OnSearchComplete)  
+      End Sub  
+  
+      Public Property SearchCriteria() As String  
+         Get  
+            Return _searchCriteria  
+         End Get  
+         Set  
+            ' If currently searching, abort  
+            ' the search and restart it after  
+            ' setting the new criteria.  
+            '  
+            Dim wasSearching As Boolean = Searching  
+  
+            If wasSearching Then  
+               StopSearch()  
+            End If  
+  
+            _listBox.Items.Clear()  
+            _searchCriteria = value  
+  
+            If wasSearching Then  
+               BeginSearch()  
+            End If  
+         End Set  
+      End Property  
+  
+      Public ReadOnly Property Searching() As Boolean  
+         Get  
+            Return _searching  
+         End Get  
+      End Property  
+  
+      Public Event SearchComplete As EventHandler  
+  
+      ' &lt;summary&gt;  
+      ' This method is called from the background thread.  It is called through  
+      ' a BeginInvoke call so that it is always marshaled to the thread that  
+      ' owns the list box control.  
+      ' &lt;/summary&gt;  
+      ' &lt;param name=&quot;files&quot;&gt;&lt;/param&gt;  
+      ' &lt;param name=&quot;startIndex&quot;&gt;&lt;/param&gt;  
+      ' &lt;param name=&quot;count&quot;&gt;&lt;/param&gt;  
+      Private Sub AddFiles(files() As String, startIndex As Integer, count As Integer)  
+         While count &gt; 0  
+            count -= 1  
+            _listBox.Items.Add(files((startIndex + count)))  
+         End While  
+      End Sub  
+  
+      Public Sub BeginSearch()  
+         ' Create the search thread, which   
+         ' will begin the search.  
+         ' If already searching, do nothing.  
+         '  
+         If Searching Then  
+            Return  
+         End If  
+  
+         ' Start the search if the handle has  
+         ' been created. Otherwise, defer it until the  
+         ' handle has been created.  
+         If IsHandleCreated Then  
+            _searchThread = New Thread(New ThreadStart(AddressOf ThreadProcedure))  
+            _searching = True  
+            _searchThread.Start()  
+         Else  
+            _deferSearch = True  
+         End If  
+      End Sub  
+  
+      Protected Overrides Sub OnHandleDestroyed(e As EventArgs)  
+         ' If the handle is being destroyed and you are not  
+         ' recreating it, then abort the search.  
+         If Not RecreatingHandle Then  
+            StopSearch()  
+         End If  
+         MyBase.OnHandleDestroyed(e)  
+      End Sub  
+  
+      Protected Overrides Sub OnHandleCreated(e As EventArgs)  
+         MyBase.OnHandleCreated(e)  
+         If _deferSearch Then  
+            _deferSearch = False  
+            BeginSearch()  
+         End If  
+      End Sub  
+  
+      ' &lt;summary&gt;  
+      ' This method is called by the background thread when it has  
+      ' finished the search.  
+      ' &lt;/summary&gt;  
+      ' &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;  
+      ' &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;  
+      Private Sub OnSearchComplete(sender As Object, e As EventArgs)  
+         RaiseEvent SearchComplete(sender, e)  
+      End Sub  
+  
+      Public Sub StopSearch()  
+         If Not _searching Then  
+            Return  
+         End If  
+  
+         If _searchThread.IsAlive Then  
+            _searchThread.Abort()  
+            _searchThread.Join()  
+         End If  
+  
+         _searchThread = Nothing  
+         _searching = False  
+      End Sub  
+  
+      ' &lt;summary&gt;  
+      ' Recurses the given path, adding all files on that path to   
+      ' the list box. After it finishes with the files, it  
+      ' calls itself once for each directory on the path.  
+      ' &lt;/summary&gt;  
+      ' &lt;param name=&quot;searchPath&quot;&gt;&lt;/param&gt;  
+      Private Sub RecurseDirectory(searchPath As String)  
+         ' Split searchPath into a directory and a wildcard specification.  
+         '  
+         Dim directoryPath As String = Path.GetDirectoryName(searchPath)  
+         Dim search As String = Path.GetFileName(searchPath)  
+  
+         ' If a directory or search criteria are not specified, then return.  
+         '  
+         If directoryPath Is Nothing Or search Is Nothing Then  
+            Return  
+         End If  
+  
+         Dim files() As String  
+  
+         ' File systems like NTFS that have  
+         ' access permissions might result in exceptions  
+         ' when looking into directories without permission.  
+         ' Catch those exceptions and return.  
+         Try  
+            files = Directory.GetFiles(directoryPath, search)  
+         Catch e As UnauthorizedAccessException  
+            Return  
+         Catch e As DirectoryNotFoundException  
+            Return  
+         End Try  
+  
+         ' Perform a BeginInvoke call to the list box  
+         ' in order to marshal to the correct thread. It is not  
+         ' very efficient to perform this marshal once for every  
+         ' file, so batch up multiple file calls into one  
+         ' marshal invocation.  
+         Dim startingIndex As Integer = 0  
+         While startingIndex &lt; files.Length  
+            ' Batch up 20 files at once, unless at the  
+            ' end.  
+            '  
+            Dim count As Integer = 20  
+            If count + startingIndex &gt;= files.Length Then  
+               count = files.Length - startingIndex  
+            End If  
+            ' Begin the cross-thread call. Because you are passing  
+            ' immutable objects into this invoke method, you do not have to  
+            ' wait for it to finish. If these were complex objects, you would  
+            ' have to either create new instances of them or   
+            ' wait for the thread to process this invoke before modifying  
+            ' the objects.  
+            Dim r As IAsyncResult = BeginInvoke(_fileListDelegate, New Object() {files, startingIndex, count})  
+            startingIndex += count  
+         End While  
+         ' Now that you have finished the files in this directory, recurse  
+         ' for each subdirectory.  
+         Dim directories As String() = Directory.GetDirectories(directoryPath)  
+         Dim d As String  
+         For Each d In  directories  
+            RecurseDirectory(Path.Combine(d, search))  
+         Next d  
+      End Sub  
+  
+      '/ &lt;summary&gt;  
+      '/ This is the actual thread procedure. This method runs in a background  
+      '/ thread to scan directories. When finished, it simply exits.  
+      '/ &lt;/summary&gt;  
+      Private Sub ThreadProcedure()  
+         ' Get the search string. Individual   
+         ' field assigns are atomic in .NET, so you do not  
+         ' need to use any thread synchronization to grab  
+         ' the string value here.  
+         Try  
+            Dim localSearch As String = SearchCriteria  
+  
+            ' Now, search the file system.  
+            '  
+            RecurseDirectory(localSearch)  
+         Finally  
+            ' You are done with the search, so update.  
+            '  
+            _searching = False  
+  
+            ' Raise an event that notifies the user that  
+            ' the search has terminated.    
+            ' You do not have to do this through a marshaled call, but  
+            ' marshaling is recommended for the following reason:  
+            ' Users of this control do not know that it is  
+            ' multithreaded, so they expect its events to   
+            ' come back on the same thread as the control.  
+            BeginInvoke(_onSearchComplete, New Object() {Me, EventArgs.Empty})  
+         End Try  
+      End Sub  
+   End Class  
+End Namespace  
+</code></pre>
+<pre><code class="lang-csharp">namespace Microsoft.Samples.DirectorySearcher  
+{  
+   using System;  
+   using System.IO;  
+   using System.Threading;  
+   using System.Windows.Forms;  
+  
+   /// &lt;summary&gt;  
+   ///      This class is a Windows Forms control that implements a simple directory searcher.  
+   ///      You provide, through code, a search string and it will search directories on  
+   ///      a background thread, populating its list box with matches.  
+   /// &lt;/summary&gt;  
+   public class DirectorySearcher : Control  
+   {  
+      // Define a special delegate that handles marshaling  
+      // lists of file names from the background directory search  
+      // thread to the thread that contains the list box.  
+      private delegate void FileListDelegate(string[] files, int startIndex, int count);  
+  
+      private ListBox listBox;  
+      private string  searchCriteria;  
+      private bool searching;  
+      private bool deferSearch;  
+      private Thread searchThread;  
+      private FileListDelegate fileListDelegate;  
+      private EventHandler onSearchComplete;  
+  
+      public DirectorySearcher()  
+      {  
+         listBox = new ListBox();  
+         listBox.Dock = DockStyle.Fill;  
+  
+         Controls.Add(listBox);  
+  
+         fileListDelegate = new FileListDelegate(AddFiles);  
+         onSearchComplete = new EventHandler(OnSearchComplete);  
+      }  
+  
+      public string SearchCriteria   
+      {  
+         get   
+         {  
+            return searchCriteria;  
+         }  
+         set   
+         {  
+            // If currently searching, abort  
+            // the search and restart it after  
+            // setting the new criteria.  
+            //  
+            bool wasSearching = Searching;  
+  
+            if (wasSearching)  
+            {  
+               StopSearch();  
+            }  
+  
+            listBox.Items.Clear();  
+            searchCriteria = value;  
+  
+            if (wasSearching)  
+            {  
+               BeginSearch();  
+            }  
+         }  
+      }  
+  
+      public bool Searching   
+      {  
+         get   
+         {  
+            return searching;  
+         }  
+      }  
+  
+      public event EventHandler SearchComplete;  
+  
+      /// &lt;summary&gt;  
+      /// This method is called from the background thread. It is called through  
+      /// a BeginInvoke call so that it is always marshaled to the thread that  
+      /// owns the list box control.  
+      /// &lt;/summary&gt;  
+      /// &lt;param name=&quot;files&quot;&gt;&lt;/param&gt;  
+      /// &lt;param name=&quot;startIndex&quot;&gt;&lt;/param&gt;  
+      /// &lt;param name=&quot;count&quot;&gt;&lt;/param&gt;  
+      private void AddFiles(string[] files, int startIndex, int count)  
+      {  
+         while(count-- &gt; 0)  
+         {  
+            listBox.Items.Add(files[startIndex + count]);  
+         }  
+      }  
+  
+      public void BeginSearch()   
+      {  
+         // Create the search thread, which   
+         // will begin the search.  
+         // If already searching, do nothing.  
+         //  
+         if (Searching)  
+         {  
+            return;  
+         }  
+  
+         // Start the search if the handle has  
+         // been created. Otherwise, defer it until the  
+         // handle has been created.  
+         if (IsHandleCreated)  
+         {  
+            searchThread = new Thread(new ThreadStart(ThreadProcedure));  
+            searching = true;  
+            searchThread.Start();  
+         }  
+         else  
+         {  
+            deferSearch = true;  
+         }  
+      }  
+  
+      protected override void OnHandleDestroyed(EventArgs e)  
+      {  
+         // If the handle is being destroyed and you are not  
+         // recreating it, then abort the search.  
+         if (!RecreatingHandle)  
+         {  
+            StopSearch();  
+         }  
+         base.OnHandleDestroyed(e);  
+      }  
+  
+      protected override void OnHandleCreated(EventArgs e)   
+      {  
+         base.OnHandleCreated(e);  
+         if (deferSearch)  
+         {  
+            deferSearch = false;  
+            BeginSearch();  
+         }  
+      }  
+  
+      /// &lt;summary&gt;  
+      /// This method is called by the background thread when it has finished  
+      /// the search.  
+      /// &lt;/summary&gt;  
+      /// &lt;param name=&quot;sender&quot;&gt;&lt;/param&gt;  
+      /// &lt;param name=&quot;e&quot;&gt;&lt;/param&gt;  
+      private void OnSearchComplete(object sender, EventArgs e)  
+      {  
+         if (SearchComplete != null)  
+         {  
+            SearchComplete(sender, e);  
+         }  
+      }  
+  
+      public void StopSearch()  
+      {  
+         if (!searching)  
+         {  
+            return;  
+         }  
+  
+         if (searchThread.IsAlive)  
+         {  
+            searchThread.Abort();  
+            searchThread.Join();  
+         }  
+  
+         searchThread = null;  
+         searching = false;  
+      }  
+  
+      /// &lt;summary&gt;  
+      /// Recurses the given path, adding all files on that path to   
+      /// the list box. After it finishes with the files, it  
+      /// calls itself once for each directory on the path.  
+      /// &lt;/summary&gt;  
+      /// &lt;param name=&quot;searchPath&quot;&gt;&lt;/param&gt;  
+      private void RecurseDirectory(string searchPath)  
+      {  
+         // Split searchPath into a directory and a wildcard specification.  
+         //  
+         string directory = Path.GetDirectoryName(searchPath);  
+         string search = Path.GetFileName(searchPath);  
+  
+         // If a directory or search criteria are not specified, then return.  
+         //  
+         if (directory == null || search == null)  
+         {  
+            return;  
+         }  
+  
+         string[] files;  
+  
+         // File systems like NTFS that have  
+         // access permissions might result in exceptions  
+         // when looking into directories without permission.  
+         // Catch those exceptions and return.  
+         try   
+         {  
+            files = Directory.GetFiles(directory, search);  
+         }  
+         catch(UnauthorizedAccessException)  
+         {  
+            return;  
+         }  
+         catch(DirectoryNotFoundException)  
+         {  
+            return;  
+         }  
+  
+         // Perform a BeginInvoke call to the list box  
+         // in order to marshal to the correct thread. It is not  
+         // very efficient to perform this marshal once for every  
+         // file, so batch up multiple file calls into one  
+         // marshal invocation.  
+         int startingIndex = 0;  
+  
+         while(startingIndex &lt; files.Length)  
+         {  
+            // Batch up 20 files at once, unless at the  
+            // end.  
+            //  
+            int count = 20;  
+            if (count + startingIndex &gt;= files.Length)  
+            {  
+               count = files.Length - startingIndex;  
+            }  
+  
+            // Begin the cross-thread call. Because you are passing  
+            // immutable objects into this invoke method, you do not have to  
+            // wait for it to finish. If these were complex objects, you would  
+            // have to either create new instances of them or   
+            // wait for the thread to process this invoke before modifying  
+            // the objects.  
+            IAsyncResult r = BeginInvoke(fileListDelegate, new object[] {files, startingIndex, count});  
+            startingIndex += count;  
+         }  
+  
+         // Now that you have finished the files in this directory, recurse for  
+         // each subdirectory.  
+         string[] directories = Directory.GetDirectories(directory);  
+         foreach(string d in directories)  
+         {  
+            RecurseDirectory(Path.Combine(d, search));  
+         }  
+      }  
+  
+      /// &lt;summary&gt;  
+      /// This is the actual thread procedure. This method runs in a background  
+      /// thread to scan directories. When finished, it simply exits.  
+      /// &lt;/summary&gt;  
+      private void ThreadProcedure()  
+      {  
+         // Get the search string. Individual   
+         // field assigns are atomic in .NET, so you do not  
+         // need to use any thread synchronization to grab  
+         // the string value here.  
+         try   
+         {  
+            string localSearch = SearchCriteria;  
+  
+            // Now, search the file system.  
+            //  
+            RecurseDirectory(localSearch);  
+         }  
+         finally  
+         {  
+            // You are done with the search, so update.  
+            //  
+            searching = false;  
+  
+            // Raise an event that notifies the user that  
+            // the search has terminated.    
+            // You do not have to do this through a marshaled call, but  
+            // marshaling is recommended for the following reason:  
+            // Users of this control do not know that it is  
+            // multithreaded, so they expect its events to   
+            // come back on the same thread as the control.  
+            BeginInvoke(onSearchComplete, new object[] {this, EventArgs.Empty});  
+         }  
+      }  
+   }  
+}  
+</code></pre>
+<h2 id="using-the-multithreaded-control-on-a-form">С помощью многопоточного элемента управления в форме</h2>
+<p>В следующем примере показан как многопоточный <code>DirectorySearcher</code> элемент управления может использоваться в форме.</p>
+<pre><code class="lang-vb">Option Explicit  
+Option Strict  
+  
+Imports Microsoft.Samples.DirectorySearcher  
+Imports System  
+Imports System.Drawing  
+Imports System.Collections  
+Imports System.ComponentModel  
+Imports System.Windows.Forms  
+Imports System.Data  
+  
+Namespace SampleUsage  
+  
+   ' &lt;summary&gt;  
+   '      Summary description for Form1.  
+   ' &lt;/summary&gt;  
+   Public Class Form1  
+      Inherits System.Windows.Forms.Form  
+      Private WithEvents directorySearcher As DirectorySearcher  
+      Private searchText As System.Windows.Forms.TextBox  
+      Private searchLabel As System.Windows.Forms.Label  
+      Private WithEvents searchButton As System.Windows.Forms.Button  
+  
+      Public Sub New()  
+         '  
+         ' Required for Windows Forms designer support.  
+         '  
+         InitializeComponent()  
+         '  
+         ' Add any constructor code after InitializeComponent call here.  
+         '  
+      End Sub  
+  
+      #Region &quot;Windows Form Designer generated code&quot;  
+      ' &lt;summary&gt;  
+      '      Required method for designer support. Do not modify  
+      '      the contents of this method with the code editor.  
+      ' &lt;/summary&gt;  
+      Private Sub InitializeComponent()  
+         Me.directorySearcher = New Microsoft.Samples.DirectorySearcher.DirectorySearcher()  
+         Me.searchButton = New System.Windows.Forms.Button()  
+         Me.searchText = New System.Windows.Forms.TextBox()  
+         Me.searchLabel = New System.Windows.Forms.Label()  
+         Me.directorySearcher.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right  
+         Me.directorySearcher.Location = New System.Drawing.Point(8, 72)  
+         Me.directorySearcher.SearchCriteria = Nothing  
+         Me.directorySearcher.Size = New System.Drawing.Size(271, 173)  
+         Me.directorySearcher.TabIndex = 2  
+         Me.searchButton.Location = New System.Drawing.Point(8, 16)  
+         Me.searchButton.Size = New System.Drawing.Size(88, 40)  
+         Me.searchButton.TabIndex = 0  
+         Me.searchButton.Text = &quot;&amp;Search&quot;  
+         Me.searchText.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right  
+         Me.searchText.Location = New System.Drawing.Point(104, 24)  
+         Me.searchText.Size = New System.Drawing.Size(175, 20)  
+         Me.searchText.TabIndex = 1  
+         Me.searchText.Text = &quot;c:\*.cs&quot;  
+         Me.searchLabel.ForeColor = System.Drawing.Color.Red  
+         Me.searchLabel.Location = New System.Drawing.Point(104, 48)  
+         Me.searchLabel.Size = New System.Drawing.Size(176, 16)  
+         Me.searchLabel.TabIndex = 3  
+         Me.ClientSize = New System.Drawing.Size(291, 264)  
+         Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.searchLabel, Me.directorySearcher, Me.searchText, Me.searchButton})  
+         Me.Text = &quot;Search Directories&quot;  
+      End Sub  
+      #End Region  
+  
+      ' &lt;summary&gt;  
+      '    The main entry point for the application.  
+      ' &lt;/summary&gt;  
+      &lt;STAThread()&gt; _  
+      Shared Sub Main()  
+         Application.Run(New Form1())  
+      End Sub  
+  
+      Private Sub searchButton_Click(sender As Object, e As System.EventArgs) Handles searchButton.Click  
+         directorySearcher.SearchCriteria = searchText.Text  
+         searchLabel.Text = &quot;Searching...&quot;  
+         directorySearcher.BeginSearch()  
+      End Sub  
+  
+      Private Sub directorySearcher_SearchComplete(sender As Object, e As System.EventArgs) Handles directorySearcher.SearchComplete  
+         searchLabel.Text = String.Empty  
+      End Sub  
+   End Class  
+End Namespace  
+</code></pre>
+<pre><code class="lang-csharp">namespace SampleUsage  
+{  
+   using Microsoft.Samples.DirectorySearcher;  
+   using System;  
+   using System.Drawing;  
+   using System.Collections;  
+   using System.ComponentModel;  
+   using System.Windows.Forms;  
+   using System.Data;  
+  
+   /// &lt;summary&gt;  
+   ///      Summary description for Form1.  
+   /// &lt;/summary&gt;  
+   public class Form1 : System.Windows.Forms.Form  
+   {  
+      private DirectorySearcher directorySearcher;  
+      private System.Windows.Forms.TextBox searchText;  
+      private System.Windows.Forms.Label searchLabel;  
+      private System.Windows.Forms.Button searchButton;  
+  
+      public Form1()  
+      {  
+         //  
+         // Required for Windows Forms designer support.  
+         //  
+         InitializeComponent();  
+  
+         //  
+         // Add any constructor code after InitializeComponent call here.  
+         //  
+      }  
+  
+      #region Windows Form Designer generated code  
+      /// &lt;summary&gt;  
+      ///      Required method for designer support. Do not modify  
+      ///      the contents of this method with the code editor.  
+      /// &lt;/summary&gt;  
+      private void InitializeComponent()  
+      {  
+         this.directorySearcher = new Microsoft.Samples.DirectorySearcher.DirectorySearcher();  
+         this.searchButton = new System.Windows.Forms.Button();  
+         this.searchText = new System.Windows.Forms.TextBox();  
+         this.searchLabel = new System.Windows.Forms.Label();  
+         this.directorySearcher.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)   
+            | System.Windows.Forms.AnchorStyles.Left)   
+            | System.Windows.Forms.AnchorStyles.Right);  
+         this.directorySearcher.Location = new System.Drawing.Point(8, 72);  
+         this.directorySearcher.SearchCriteria = null;  
+         this.directorySearcher.Size = new System.Drawing.Size(271, 173);  
+         this.directorySearcher.TabIndex = 2;  
+         this.directorySearcher.SearchComplete += new System.EventHandler(this.directorySearcher_SearchComplete);  
+         this.searchButton.Location = new System.Drawing.Point(8, 16);  
+         this.searchButton.Size = new System.Drawing.Size(88, 40);  
+         this.searchButton.TabIndex = 0;  
+         this.searchButton.Text = &quot;&amp;Search&quot;;  
+         this.searchButton.Click += new System.EventHandler(this.searchButton_Click);  
+         this.searchText.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)   
+            | System.Windows.Forms.AnchorStyles.Right);  
+         this.searchText.Location = new System.Drawing.Point(104, 24);  
+         this.searchText.Size = new System.Drawing.Size(175, 20);  
+         this.searchText.TabIndex = 1;  
+         this.searchText.Text = &quot;c:\\*.cs&quot;;  
+         this.searchLabel.ForeColor = System.Drawing.Color.Red;  
+         this.searchLabel.Location = new System.Drawing.Point(104, 48);  
+         this.searchLabel.Size = new System.Drawing.Size(176, 16);  
+         this.searchLabel.TabIndex = 3;  
+         this.ClientSize = new System.Drawing.Size(291, 264);  
+         this.Controls.AddRange(new System.Windows.Forms.Control[] {this.searchLabel,  
+                                                        this.directorySearcher,  
+                                                        this.searchText,  
+                                                        this.searchButton});  
+         this.Text = &quot;Search Directories&quot;;  
+  
+      }  
+      #endregion  
+  
+      /// &lt;summary&gt;  
+      ///    The main entry point for the application.  
+      /// &lt;/summary&gt;  
+      [STAThread]  
+      static void Main()   
+      {  
+         Application.Run(new Form1());  
+      }  
+  
+      private void searchButton_Click(object sender, System.EventArgs e)  
+      {  
+         directorySearcher.SearchCriteria = searchText.Text;  
+         searchLabel.Text = &quot;Searching...&quot;;  
+         directorySearcher.BeginSearch();  
+      }  
+  
+      private void directorySearcher_SearchComplete(object sender, System.EventArgs e)  
+      {  
+         searchLabel.Text = string.Empty;  
+      }  
+   }  
+}  
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a></li>
+<li><a href="developing-custom-windows-forms-controls.html">Разработка пользовательских элементов управления Windows Forms в .NET Framework</a></li>
+<li><a href="../../../standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview.md">Обзор асинхронной модели, основанной на событиях</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

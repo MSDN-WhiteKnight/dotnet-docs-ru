@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1050;&#1086;&#1076; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1085;&#1086;&#1081; &#1095;&#1072;&#1089;&#1090;&#1080; &#1080; XAML &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1050;&#1086;&#1076; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1085;&#1086;&#1081; &#1095;&#1072;&#1089;&#1090;&#1080; &#1080; XAML &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="code-behind-and-xaml-in-wpf">Код программной части и XAML в WPF</h1>
+
+<p><a name="introduction"></a> Выделенный код — это термин, используемый для описания код, соединяемый с созданными в разметке объектами, когда XAML страницы, скомпилированного с разметкой. В этом разделе описываются требования для кода, а также альтернативный механизм встроенного кода для кода в XAML.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#Prerequisites">Предварительные требования</a></p>
+</li>
+<li><p><a href="#codebehind_and_the_xaml_language">Код программной части и язык XAML</a></p>
+</li>
+<li><p><a href="#Code_behind__Event_Handler__and_Partial_Class">Кода, обработчик событий и требования частичного класса в WPF</a></p>
+</li>
+<li><p><a href="#x_Code">x: Code</a></p>
+</li>
+<li><p><a href="#Inline_Code_Limitations">Ограничения встроенного кода</a></p>
+</li>
+</ul>
+<p><a name="Prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы прочитали <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a> и иметь базовые знания о CLR и объектно ориентированного программирования.</p>
+<p><a name="codebehind_and_the_xaml_language"></a></p>
+<h2 id="code-behind-and-the-xaml-language">Код программной части и язык XAML</h2>
+<p>Язык XAML включает в себя возможности языка, которые позволяют связать файлы кода в файлах разметки, со стороны файла разметки. В частности, язык XAML определяет возможности языка <a href="../../xaml-services/x-class-directive.md">директива x: Class</a>, <a href="../../xaml-services/x-subclass-directive.md">директива x: Subclass</a>, и <a href="../../xaml-services/x-classmodifier-directive.md">директива x: ClassModifier</a>. Точно как код должен создаваться и как интегрировать разметки и кода, не является частью указывает на языке XAML. Он остается до платформ, таких как WPF, чтобы определить, как интегрировать код, как использовать XAML в приложение и модели программирования и построение действия или другие поддерживает, что все это требует.</p>
+<p><a name="Code_behind__Event_Handler__and_Partial_Class"></a></p>
+<h2 id="code-behind-event-handler-and-partial-class-requirements-in-wpf">Кода, обработчик событий и требования частичного класса в WPF</h2>
+<ul>
+<li><p>Разделяемый класс должен быть производным от типа, который возвращает корневой элемент.</p>
+</li>
+<li><p>Обратите внимание на то, что в группе по умолчанию поведение действий сборки для компиляции разметки, можно оставить наследование пустым в определении разделяемого класса со стороны кода. Скомпилированный результат предполагает резервный тип корневой страницы, чтобы служить основой для разделяемого класса, даже если он не указан. Тем не менее полагаться на это поведение не рекомендуется.</p>
+</li>
+<li><p>Обработчики событий, который включается в код программной части должны быть методами экземпляра и не может быть статическими методами. Эти методы должны быть определены разделяемым классом в пространстве имен CLR, определяемый <code>x:Class</code>. Нельзя уточнить имя обработчика событий, чтобы указать XAML процессора для поиска для обработчика событий для события, написанного в другой области класса.</p>
+</li>
+<li><p>Обработчик должен соответствовать делегат для соответствующего события в системе резервных типов.</p>
+</li>
+<li><p>Для языка Microsoft Visual Basic в частности, можно использовать конкретного языка <code>Handles</code> ключевое слово, чтобы связать обработчики с экземплярами и событиями в объявлении обработчика, вместо присоединения обработчиков с атрибутами в XAML. Тем не менее, этот метод имеет некоторые ограничения, так как <code>Handles</code> ключевое слово не поддерживает все функции WPF системы событий, такие как определенные сценарии перенаправленных событий или вложенные события. Дополнительные сведения см. в разделе <a href="visual-basic-and-wpf-event-handling.html">Visual Basic и обработка событий WPF</a>.</p>
+</li>
+</ul>
+<p><a name="x_Code"></a></p>
+<h2 id="xcode">x: Code</h2>
+<p><a href="../../xaml-services/x-code-intrinsic-xaml-type.md">x: Code</a> определен элемент директивы в XAML. <code>x:Code</code> Директива может содержать встроенный программный код. Код, определенный встроенным можно взаимодействовать с XAML на одной странице. В следующем примере показано встроенного кода C#. Обратите внимание, что код находится внутри <code>x:Code</code> элемента и что код должен быть заключен в <code>&lt;CDATA[</code>... <code>]]&gt;</code> для экранирования содержимое для XML, так что XAML процессора (Интерпретация либо XAML схемы или WPF схемы) не будет пытаться интерпретировать содержимое буквально как XML.</p>
+<pre><code class="lang-xaml" name="XAMLOvwSupport#ButtonWithInlineCode">&lt;Page
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;MyNamespace.MyCanvasCodeInline&quot;
+&gt;
+  &lt;Button Name=&quot;button1&quot; Click=&quot;Clicked&quot;&gt;Click Me!&lt;/Button&gt;
+  &lt;x:Code&gt;&lt;![CDATA[
+    void Clicked(object sender, RoutedEventArgs e)
+    {
+        button1.Content = &quot;Hello World&quot;;
+    }
+  ]]&gt;&lt;/x:Code&gt;
+&lt;/Page&gt;
+</code></pre>
+<p><a name="Inline_Code_Limitations"></a></p>
+<h2 id="inline-code-limitations">Ограничения встроенного кода</h2>
+<p>Следует избегать или ограничивать использование встроенного кода. С точки зрения архитектуры и философии кодирования обеспечение разделения разметки и кода сохраняет ролей дизайнеры и разработчики гораздо больше отдельных. На более техническом уровне, код, написанный для встроенного кода может быть неудобно записи, так как вы записываете всегда в XAML создается разделяемый класс и можно использовать только сопоставления пространства имен XML по умолчанию. Поскольку невозможно добавить <code>using</code> инструкций, необходимо полностью указать многие API вызовов. Значение по умолчанию WPF сопоставления включают большинство, но не все CLR пространства имен, которые присутствуют в WPF сборок; необходимо будет полностью определить вызовы к типам и членам, содержащихся в других пространствах имен среды CLR. Также любых других разделяемый класс не может определить во встроенном коде, и все сущности пользовательского кода, ссылки на которые должны существовать в качестве членов или переменных внутри созданного разделяемого класса. Другие программирования функции для конкретных языков, таких как макросы или <code>#ifdef</code> глобальные переменные или переменные сборки, также не доступны. Дополнительные сведения см. в разделе <a href="../../xaml-services/x-code-intrinsic-xaml-type.md">встроенный тип XAML x: Code</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="../../xaml-services/x-code-intrinsic-xaml-type.md">Встроенный тип XAML x:Code</a></li>
+<li><a href="../app-development/building-a-wpf-application-wpf.html">Построение приложения WPF</a></li>
+<li><a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

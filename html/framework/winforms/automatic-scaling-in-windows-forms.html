@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1040;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1084;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1040;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1084;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="automatic-scaling-in-windows-forms">Автоматическое масштабирование в Windows Forms</h1>
+
+<p>Автоматическое масштабирование позволяет форме и ее элементам управления, разработанным на одном компьютере с использованием определенного разрешения или системных шрифтов, правильно отображаться на другом компьютере с другим разрешением или системным шрифтом. Оно гарантирует, что размеры формы и ее элементов управления будут изменяться автоматически в соответствии с приложениями Windows и другими приложениями на компьютерах пользователя и разработчика. Поддержка автоматического масштабирования и стилей оформления в .NET Framework позволяет приложениям .NET Framework сохранять согласованный внешний вид и поведение на различных компьютерах пользователей, так же как в случае с обычными приложениями Windows.</p>
+<p>В большинстве случаев автоматическое масштабирование работает должным образом в .NET Framework 2.0 и более поздних версий. Однако внесение изменений в схему шрифтов может быть проблематичным. Пример того, как устранить эту проблему, см. в разделе <a href="how-to-respond-to-font-scheme-changes-in-a-windows-forms-application.html">как: реагирование на изменения схемы шрифтов в приложении Windows Forms</a>.</p>
+<h2 id="need-for-automatic-scaling">Необходимость автоматического масштабирования</h2>
+<p>Без автоматического масштабирования приложения, разработанные для определенного разрешения экрана или шрифта, будут выглядеть либо слишком маленькими, либо слишком большими при изменении разрешения или шрифта. Например, если приложение разработано с использованием базового шрифта Tahoma размером 9 пунктов, то без коррекции оно будет выглядеть слишком маленьким при запуске на компьютере, на котором в качестве системного шрифта используется Tahoma размером 12 пунктов. Текстовые элементы, такие как заголовки, меню, содержимое текстовых полей и т. д., будут меньше, чем в других приложениях. Более того, размер содержащих текст элементов пользовательского интерфейса, таких как строки заголовков, меню и т. д., зависит от используемого шрифта. В рассматриваемом примере эти элементы также будут выглядеть относительно меньше.</p>
+<p>Аналогичная ситуация возникает, когда приложение разработано для определенного разрешения экрана. Наиболее частое разрешение экрана — 96 точек на дюйм (DPI), который равен 100% масштаб отображения, но выше отображает разрешение поддержкой 125%, 150%, 200% (какие соответственно равен 120, 144 и 192 DPI) и более поздних версий более распространенными становятся. Без коррекции приложение, особенно графическое, разработанное для одного разрешения, будет отображаться либо слишком большим, либо слишком маленьким при запуске с другим разрешением.</p>
+<p>Автоматическое масштабирование предназначено для решения таких проблем путем автоматического изменения размеров формы и ее дочерних элементов управления согласно относительному размеру шрифтов и разрешению экрана. Операционная система Windows поддерживает автоматическое масштабирование диалоговых окон с помощью относительной единицы измерения, называемой единицей размера диалогового окна. Единица размера диалогового окна основана на системном шрифте, а ее связь с пикселями можно определить с помощью функции <code>GetDialogBaseUnits</code> пакета Win32 SDK. При изменении темы, используемой Windows, все диалоговые окна автоматически настраиваются соответствующим образом. Кроме того .NET Framework поддерживает автоматическое масштабирование в соответствии со стандартным системным шрифтом или разрешением экрана. При необходимости автоматическое масштабирование можно отключить в приложении.</p>
+<h2 id="original-support-for-automatic-scaling">Исходная поддержка автоматического масштабирования</h2>
+<p>в .NET Framework 1.0 и 1.1 автоматическое масштабирование поддерживалось простым способом и зависело от шрифта Windows, используемого по умолчанию для пользовательского интерфейса. Этот шрифт представлен в пакете Win32 SDK значением <strong>DEFAULT_GUI_FONT</strong>. Обычно этот шрифт изменяется только при изменении разрешения экрана. Для реализации автоматического масштабирования применялся описанный ниже механизм.</p>
+<ol>
+<li><p>Во время разработки свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscalebasesize">AutoScaleBaseSize</a> (которое теперь устарело) присваивалась высота и ширина системного шрифта по умолчанию на компьютере разработчика.</p>
+</li>
+<li><p>Во время выполнения для инициализации свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a> использовался стандартный системный шрифт компьютера пользователя.</p>
+</li>
+<li><p>Перед отображением формы вызывался метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.applyautoscaling">ApplyAutoScaling</a> для ее масштабирования. Этот метод вычислял относительный масштаб с помощью свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscalebasesize">AutoScaleBaseSize</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a>, а затем вызывал метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scale">Scale</a> для масштабирования формы и ее дочерних элементов.</p>
+</li>
+<li><p>Значение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscalebasesize">AutoScaleBaseSize</a> обновлялось таким образом, чтобы последующие вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.applyautoscaling">ApplyAutoScaling</a> не продолжали изменять размер формы.</p>
+</li>
+</ol>
+<p>Этого механизма было достаточно для большинства целей, но он имел ряд ограничений.</p>
+<ul>
+<li><p>Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscalebasesize">AutoScaleBaseSize</a> свойство представляет базовый размер шрифта в виде целочисленные значения, погрешности округления становились заметны, когда форма проходила через ряд разрешений.</p>
+</li>
+<li><p>Автоматическое масштабирование было реализовано только в классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a>, но не в классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a>. В результате пользовательский элемент управления масштабировался корректно, только если он был разработан с тем же разрешением, что и форма, и был помещен в форму во время разработки.</p>
+</li>
+<li><p>Несколько разработчиков могли параллельно разрабатывать формы и их дочерние элементы управления, только если разрешение экрана на их компьютерах совпадало. Аналогичным образом наследование форм зависело от разрешения родительской формы.</p>
+</li>
+<li><p>Механизм несовместим с новыми диспетчерами макетов, добавленными в .NET Framework версии 2.0, такими как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutpanel">FlowLayoutPanel</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutpanel">TableLayoutPanel</a>.</p>
+</li>
+<li><p>Механизм не поддерживает масштабирование непосредственно на основе разрешения экрана, необходимое для совместимости с .NET Compact Framework.</p>
+</li>
+</ul>
+<p>Хотя этот механизм сохранился в .NET Framework версии 2.0 для обеспечения обратной совместимости, на смену ему пришел более надежный механизм масштабирования, описанный ниже. Как следствие, методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscale">AutoScale</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.applyautoscaling">ApplyAutoScaling</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.autoscalebasesize">AutoScaleBaseSize</a> и некоторые перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scale">Scale</a> помечены как устаревшие.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Вы можете спокойно удалить ссылки на эти члены при обновлении старого кода до .NET Framework версии 2.0.</p>
+</div>
+<h2 id="current-support-for-automatic-scaling">Текущая поддержка автоматического масштабирования</h2>
+<p>В .NET Framework версии 2.0 ограничения предыдущих версий снимаются благодаря описанным ниже изменениям, внесенным в механизм автоматического масштабирования форм Windows Forms.</p>
+<ul>
+<li><p>Базовая поддержка масштабирования была перемещена в класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a>, чтобы формы, собственные составные элементы управления и пользовательские элементы управления получали единообразную поддержку масштабирования. Были добавлены новые члены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalefactor">AutoScaleFactor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalemode">AutoScaleMode</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.performautoscale">PerformAutoScale</a>.</p>
+</li>
+<li><p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> также имеет несколько новых членов, которые позволяют ему участвовать в масштабировании и поддерживать смешанное масштабирование в одной и той же форме. В частности, члены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scale">Scale</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scalechildren">ScaleChildren</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.getscaledbounds">GetScaledBounds</a> поддерживают масштабирование.</p>
+</li>
+<li><p>В дополнение к поддержке системного шрифта была добавлена поддержка масштабирования на основе разрешения экрана в соответствии со значениями перечисления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autoscalemode">AutoScaleMode</a>. Этот режим обеспечивает совместимость с автоматическим масштабированием, поддерживаемым .NET Compact Framework, что упрощает миграцию приложений.</p>
+</li>
+<li><p>В реализацию автоматического масштабирования была добавлена совместимость с диспетчерами макетов, такими как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutpanel">FlowLayoutPanel</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutpanel">TableLayoutPanel</a>.</p>
+</li>
+<li><p>Коэффициенты масштабирования теперь представляются в виде чисел с плавающей запятой, обычно с помощью структуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.sizef">SizeF</a>, что позволило практически устранить ошибки округления.</p>
+</li>
+</ul>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Произвольные сочетания режимов масштабирования на основе разрешения экрана и размера шрифта не поддерживаются. Вы без всяких проблем можете масштабировать пользовательский элемент управления в одном режиме (например, на основе разрешения экрана) и поместить его в форму с помощью другого режима (на основе размера шрифта), но использование базовой формы в одном режиме и производной формы в другом может привести к непредвиденным результатам.</p>
+</div>
+<h3 id="automatic-scaling-in-action">Автоматическое масштабирование в действии</h3>
+<p>В Windows Forms для автоматического масштабирования формы и ее содержимого теперь используется описанная ниже логика.</p>
+<ol>
+<li><p>Во время разработки каждый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a> регистрирует режим масштабирования и его текущее разрешение в свойствах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalemode">AutoScaleMode</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a> соответственно.</p>
+</li>
+<li><p>Во время выполнения фактическое разрешение хранится в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.currentautoscaledimensions">CurrentAutoScaleDimensions</a>. Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalefactor">AutoScaleFactor</a> динамически вычисляет отношение между разрешением во время выполнения и разрешением во время разработки.</p>
+</li>
+<li><p>Если при загрузке формы значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.currentautoscaledimensions">CurrentAutoScaleDimensions</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a> различны, то для масштабирования элемента управления и его дочерних элементов вызывается метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.performautoscale">PerformAutoScale</a>. Этот метод приостанавливает размещение и вызывает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scale">Scale</a> для выполнения фактического масштабирования. Впоследствии значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a> обновляется во избежание прогрессивного масштабирования.</p>
+</li>
+<li><p>Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.performautoscale">PerformAutoScale</a> также вызывается автоматически в перечисленных ниже ситуациях.</p>
+<ul>
+<li><p>В ответ на событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onfontchanged">OnFontChanged</a>, если используется режим масштабирования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.autoscalemode#System_Windows_Forms_AutoScaleMode_Font">Font</a>.</p>
+</li>
+<li><p>Если при возобновлении размещения элементов управления внутри контейнера обнаруживается изменение свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalemode">AutoScaleMode</a>.</p>
+</li>
+<li><p>При масштабировании родительского объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a>, как указанно выше. Каждый контейнерный элемент управления отвечает за масштабирование своих дочерних элементов с помощью своих собственных коэффициентов масштабирования, а не коэффициентов его родительского контейнера.</p>
+</li>
+</ul>
+</li>
+<li><p>Поведение дочерних элементов управления при масштабировании может изменяться несколькими способами.</p>
+<ul>
+<li><p>Можно переопределить свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scalechildren">ScaleChildren</a>, чтобы указать, следует ли масштабировать дочерние элементы управления.</p>
+</li>
+<li><p>Можно переопределить метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.getscaledbounds">GetScaledBounds</a> для корректировки границ, до которых масштабируется элемент управления, но не логики масштабирования.</p>
+</li>
+<li><p>Можно переопределить метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scalecontrol">ScaleControl</a> для изменения логики масштабирования текущего элемента управления.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscalemode">AutoScaleMode</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.scale">Scale</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.performautoscale">PerformAutoScale</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol.autoscaledimensions">AutoScaleDimensions</a></li>
+<li><a href="controls/rendering-controls-with-visual-styles.html">Отрисовка элементов управления с применением визуальных стилей</a></li>
+<li><a href="advanced/how-to-improve-performance-by-avoiding-automatic-scaling.html">Практическое руководство. Повышение производительности за счет отключения автоматического масштабирования</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

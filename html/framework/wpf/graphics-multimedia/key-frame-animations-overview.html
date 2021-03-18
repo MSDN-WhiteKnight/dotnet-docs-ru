@@ -1,0 +1,767 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1082;&#1083;&#1102;&#1095;&#1077;&#1074;&#1099;&#1084; &#1082;&#1072;&#1076;&#1088;&#1072;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; &#1087;&#1086; &#1082;&#1083;&#1102;&#1095;&#1077;&#1074;&#1099;&#1084; &#1082;&#1072;&#1076;&#1088;&#1072;&#1084; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="key-frame-animations-overview">Общие сведения об анимации по ключевым кадрам</h1>
+
+<p>В этом разделе рассказывается об анимации по ключевым кадрам. Методика анимации по ключевым кадрам позволяет использовать более двух целевых значений и контролировать применяемый метод интерполяции.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания предлагаемого материала необходимо знакомство с принципами анимации Windows Presentation Foundation (WPF) и понятием временной шкалы. Общие сведения об анимации см. в разделе <a href="animation-overview.html">Общие сведения об анимации</a>. Также полезно иметь знания по анимации From/To/By. Дополнительные сведения см. в разделе &quot;Общие сведения об анимации From/To/By&quot;.</p>
+<p><a name="whatisakeyframeanimation"></a></p>
+<h2 id="what-is-a-key-frame-animation">Что такое анимации по ключевым кадрам?</h2>
+<p>Так же как при анимации From/To/By при анимации по ключевым кадрам выполняется анимация значения целевого свойства. Она создает переход между заданными значениями над его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>. Но в отличие от анимации From/To/By, при которой создается переход между двумя значениями, при анимации по ключевым кадрам можно создавать переходы между любым числом целевых значений за один раз. В анимации по ключевым кадрам не используются свойства From, To и By для задания целевых значений. Целевые значения для анимации по ключевым кадрам описываются с помощью объектов ключевых кадров (отсюда термин — &quot;анимация по ключевым кадрам&quot;). Для указания целевых значений анимации, создайте объекты ключевых кадров и добавить их в анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes.keyframes">KeyFrames</a> коллекции. При выполнении анимации создаются переходы между заданными кадрами.</p>
+<p>Кроме того, что при анимации по ключевым кадрам поддерживается обработка нескольких целевых значений, некоторые методы анимации по ключевым кадрам поддерживают использование нескольких методов интерполяции. Метод интерполяции анимации определяет, как выполняется переход от одного значения к другому. Существует три типа интерполяции: дискретная, линейная и интерполяция сплайнами.</p>
+<p>Чтобы выполнить анимацию по ключевым кадрам, сделайте следующее.</p>
+<ul>
+<li><p>Объявите анимацию и указать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>, так же, как и для анимации from/to/by.</p>
+</li>
+<li><p>Для каждого целевого значения создайте ключевой кадр соответствующего типа, задайте для него значение и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a>и его добавления анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes.keyframes">KeyFrames</a> коллекции.</p>
+</li>
+<li><p>Свяжите анимацию со свойством так же как при анимации From/To/By. Дополнительные сведения о применении анимации к свойству с помощью раскадровки см. в разделе <a href="storyboards-overview.html">Общие сведения о раскадровке</a>.</p>
+</li>
+</ul>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a> для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент в четырех разных местах.</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#BasicKeyFrameExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;Microsoft.Samples.KeyFrameAnimations.KeyFramesIntroduction&quot;
+  WindowTitle=&quot;KeyFrame Animations&quot;&gt;
+
+  &lt;Border Width=&quot;400&quot; BorderBrush=&quot;Black&quot;&gt;  
+    
+    &lt;Rectangle Fill=&quot;Blue&quot; 
+      Width=&quot;50&quot; Height=&quot;50&quot;
+      HorizontalAlignment=&quot;Left&quot;&gt;
+      &lt;Rectangle.RenderTransform&gt;
+        &lt;TranslateTransform 
+          x:Name=&quot;MyAnimatedTranslateTransform&quot; 
+          X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+      &lt;/Rectangle.RenderTransform&gt;
+      &lt;Rectangle.Triggers&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Rectangle.MouseLeftButtonDown&quot;&gt;
+          &lt;BeginStoryboard&gt;
+            &lt;Storyboard&gt;
+            
+              &lt;!-- Animate the TranslateTransform's X property
+                   from 0 to 350, then 50,
+                   then 200 over 10 seconds. --&gt;
+
+              &lt;DoubleAnimationUsingKeyFrames
+                Storyboard.TargetName=&quot;MyAnimatedTranslateTransform&quot;
+                Storyboard.TargetProperty=&quot;X&quot;
+                Duration=&quot;0:0:10&quot;&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;0&quot; KeyTime=&quot;0:0:0&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;350&quot; KeyTime=&quot;0:0:2&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;50&quot; KeyTime=&quot;0:0:7&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;0:0:8&quot; /&gt;                          
+              &lt;/DoubleAnimationUsingKeyFrames&gt;
+            &lt;/Storyboard&gt;
+          &lt;/BeginStoryboard&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Rectangle.Triggers&gt; 
+    &lt;/Rectangle&gt;
+  &lt;/Border&gt; 
+&lt;/Page&gt;
+</code></pre>
+<p>From/To/By, такие как анимации, анимации по полным кадрам может применяться к свойству с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в разметке и коде или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> метод в коде. Анимации по полным кадрам может также использовать для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationclock">AnimationClock</a> и применить его к одному или нескольким свойствам. Дополнительные сведения о различных способах применения анимации см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<p><a name="animation_types"></a></p>
+<h2 id="key-frame-animation-types">Типы анимации по ключевым кадрам</h2>
+<p>Так как при анимации создаются значения свойств, существуют различные типы анимаций для различных типов свойств. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> (например, элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойство), используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a>, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значений и т. д.</p>
+<p>Классы анимации по ключевым кадрам принадлежат к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation">System.Windows.Media.Animation</a> пространства имен и соответствовать следующее соглашение об именовании:</p>
+<p><em>&lt;Тип &gt;</em> <code>AnimationUsingKeyFrames</code></p>
+<p>Где <em>&lt;Type&gt;</em> — тип значения, которое выполняет анимацию класса.</p>
+<p>WPF предоставляет следующие классы анимации по ключевым кадрам.</p>
+<table>
+<thead>
+<tr>
+<th>Тип свойства</th>
+<th>Соответствующий класс анимации From/To/By</th>
+<th>Поддерживаемые методы интерполяции</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.booleananimationusingkeyframes">BooleanAnimationUsingKeyFrames</a></td>
+<td>Дискретная</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.byteanimationusingkeyframes">ByteAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimationusingkeyframes">ColorAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.decimal">Decimal</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.decimalanimationusingkeyframes">DecimalAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int16">Int16</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int16animationusingkeyframes">Int16AnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int32animationusingkeyframes">Int32AnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int64">Int64</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.int64animationusingkeyframes">Int64AnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.matrix">Matrix</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.matrixanimationusingkeyframes">MatrixAnimationUsingKeyFrames</a></td>
+<td>Дискретная</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.objectanimationusingkeyframes">ObjectAnimationUsingKeyFrames</a></td>
+<td>Дискретная</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingkeyframes">PointAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.quaternion">Quaternion</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.quaternionanimationusingkeyframes">QuaternionAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.rect">Rect</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.rectanimationusingkeyframes">RectAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.rotation3d">Rotation3D</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.rotation3danimationusingkeyframes">Rotation3DAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.single">Single</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.singleanimationusingkeyframes">SingleAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.stringanimationusingkeyframes">StringAnimationUsingKeyFrames</a></td>
+<td>Дискретная</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.size">Size</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.sizeanimationusingkeyframes">SizeAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.thickness">Thickness</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.thicknessanimationusingkeyframes">ThicknessAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.vector3d">Vector3D</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vector3danimationusingkeyframes">Vector3DAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.vector">Vector</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vectoranimationusingkeyframes">VectorAnimationUsingKeyFrames</a></td>
+<td>Дискретная, линейная, сплайнами</td>
+</tr>
+</tbody>
+</table>
+<p><a name="animation_target_values"></a></p>
+<h2 id="target-values-key-frames-and-key-times">Целевые значения (ключевые кадры) и временная шкала</h2>
+<p>Для анимации различных типов свойств существуют различные типы анимации по ключевым кадрам и, соответственно, различные типы объектов ключевых кадров — по одному для каждого типа анимированного значения и поддерживаемого метода интерполяции. Типы ключевых кадров удовлетворяют требованиям следующего соглашения об именах.</p>
+<p><em>&lt;InterpolationMethod &gt;&lt;тип &gt;</em> <code>KeyFrame</code></p>
+<p>Где <em>&lt;InterpolationMethod&gt;</em> — метод интерполяции, используемый при анимации по ключевым кадрам, а <em>&lt;Type&gt;</em> — тип значения, анимируемый классом. Метод анимации по ключевым кадрам, поддерживающий все три метода интерполяции, будет включать в себя три типа ключевых кадров, которые можно использовать. Например, можно использовать три типа ключевых кадров с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.discretedoublekeyframe">DiscreteDoubleKeyFrame</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.lineardoublekeyframe">LinearDoubleKeyFrame</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.splinedoublekeyframe">SplineDoubleKeyFrame</a>. (Методы интерполяции подробно описаны в следующем разделе.)</p>
+<p>Основная цель ключевого кадра является указание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a>. Все типы ключевых кадров предоставляют эти два свойства.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> Свойство определяет целевое значение для этого ключевого кадра.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> Указывает время (в пределах анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>) достигается значение ключевого кадра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> достижения.</p>
+</li>
+</ul>
+<p>Когда начинается анимацию по ключевым кадрам, проходит по кадрам в порядке, определяемом их <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> свойства.</p>
+<ul>
+<li><p>Если в момент 0 нет ключевого кадра, анимация создает переход между текущее значение целевого свойства и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> первого ключевого кадра; в противном случае анимация выходных данных значение становится значением первого ключевого кадра.</p>
+</li>
+<li><p>Анимация создает переход между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> первого и второго ключевого кадра с помощью метода интерполяции, определяемого второго ключевого кадра. Переход начинается с первого ключевого кадра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> и заканчивается при второй ключевой кадр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> достижения.</p>
+</li>
+<li><p>Анимация продолжается, создавая переходы от каждого предыдущего ключевого кадра к последующему.</p>
+</li>
+<li><p>Наконец, анимация переходит к значению ключевого кадра с наиболее поздним моментом времени, равным или меньшим, чем анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>.</p>
+</li>
+</ul>
+<p>Если продолжительность анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration.automatic">Automatic</a> или его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> равно времени последнего ключевого кадра, анимация завершается. В противном случае, если продолжительность анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> больше, чем время последнего ключевого кадра, анимация удерживает значение ключевого кадра, пока не достигнет конца своего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a>. Как и анимациях при анимации по ключевым кадрам использует его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойства, чтобы определить, является ли он сохраняется ее конечное значение при достижении конца активного периода. Дополнительные сведения см. в разделе <a href="timing-behaviors-overview.html">Общие сведения о характере поведения во времени</a>.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a> объект, определенный в предыдущем примере для демонстрации как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> работают свойства.</p>
+<ul>
+<li><p>Первый кадр немедленно устанавливает выходное значение анимации равное 0.</p>
+</li>
+<li><p>Второй ключевой кадр выполняет анимацию от 0 до 350. Она запускается после окончания первого ключевого кадра (в момент времени 0 секунд), выполняется в течение 2 секунд и заканчивается в момент времени = 0:0:2.</p>
+</li>
+<li><p>Третий ключевой кадр выполняет анимацию от 350 до 50. Она запускается после окончания второго ключевого кадра (в момент времени 2 секунды), выполняется в течение 5 секунд и заканчивается в момент времени = 0:0:7.</p>
+</li>
+<li><p>Четвертый ключевой кадр выполняет анимацию от 50 до 200. Она запускается после окончания третьего ключевого кадра (в момент времени 7 секунд), выполняется в течение 1 секунды и заканчивается в момент времени = 0:0:8.</p>
+</li>
+<li><p>Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> анимации было установлено на 10 секунд, анимация поддерживает конечное значение для двух секунд до окончания во время = 0:0:10.</p>
+</li>
+</ul>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#BasicKeyFrameExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  x:Class=&quot;Microsoft.Samples.KeyFrameAnimations.KeyFramesIntroduction&quot;
+  WindowTitle=&quot;KeyFrame Animations&quot;&gt;
+
+  &lt;Border Width=&quot;400&quot; BorderBrush=&quot;Black&quot;&gt;  
+    
+    &lt;Rectangle Fill=&quot;Blue&quot; 
+      Width=&quot;50&quot; Height=&quot;50&quot;
+      HorizontalAlignment=&quot;Left&quot;&gt;
+      &lt;Rectangle.RenderTransform&gt;
+        &lt;TranslateTransform 
+          x:Name=&quot;MyAnimatedTranslateTransform&quot; 
+          X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+      &lt;/Rectangle.RenderTransform&gt;
+      &lt;Rectangle.Triggers&gt;
+        &lt;EventTrigger RoutedEvent=&quot;Rectangle.MouseLeftButtonDown&quot;&gt;
+          &lt;BeginStoryboard&gt;
+            &lt;Storyboard&gt;
+            
+              &lt;!-- Animate the TranslateTransform's X property
+                   from 0 to 350, then 50,
+                   then 200 over 10 seconds. --&gt;
+
+              &lt;DoubleAnimationUsingKeyFrames
+                Storyboard.TargetName=&quot;MyAnimatedTranslateTransform&quot;
+                Storyboard.TargetProperty=&quot;X&quot;
+                Duration=&quot;0:0:10&quot;&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;0&quot; KeyTime=&quot;0:0:0&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;350&quot; KeyTime=&quot;0:0:2&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;50&quot; KeyTime=&quot;0:0:7&quot; /&gt;
+                &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;0:0:8&quot; /&gt;                          
+              &lt;/DoubleAnimationUsingKeyFrames&gt;
+            &lt;/Storyboard&gt;
+          &lt;/BeginStoryboard&gt;
+        &lt;/EventTrigger&gt;
+      &lt;/Rectangle.Triggers&gt; 
+    &lt;/Rectangle&gt;
+  &lt;/Border&gt; 
+&lt;/Page&gt;
+</code></pre>
+<p><a name="interpolationmethods"></a></p>
+<h2 id="interpolation-methods">Методы интерполяции</h2>
+<p>В предыдущих разделах упоминалось, что некоторые методы анимации по ключевым кадрам поддерживают несколько методов интерполяции. Метод интерполяции определяет, как должен выполняться переход от одного значения к другому во время анимации. Выбрав тип ключевого кадра, используемого при анимации, можно определить метод интерполяции для этого сегмента ключевого кадра. Существуют три метода интерполяции: линейная интерполяция, дискретная и интерполяция сплайнами.</p>
+<h3 id="linear-interpolation">Линейная интерполяция</h3>
+<p>При линейной интерполяции переход выполняется с постоянной скоростью на протяжении сегмента. Например, если в сегменте ключевого кадра происходит переход от 0 до 10 в течение 5 секунд, выходные данные анимации будут принимать следующие значения в указанные моменты времени.</p>
+<table>
+<thead>
+<tr>
+<th>Время</th>
+<th>Выходное значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td>4.25</td>
+<td>8.5</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>9</td>
+</tr>
+<tr>
+<td>5</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="discrete-interpolation">Дискретная интерполяция</h3>
+<p>При дискретной интерполяции функция анимации выполняет переходы от одного значения к другому без интерполяции. Если в сегменте ключевого кадра происходит переход от 0 до 10 в течение 5 секунд, выходные данные анимации будут принимать следующие значения в указанные моменты времени.</p>
+<table>
+<thead>
+<tr>
+<th>Время</th>
+<th>Выходное значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4.25</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание на то, что выходное значение не изменяется до окончания длительности сегмента.</p>
+<p>Интерполяция сплайнами более сложная. Она описана в следующем разделе.</p>
+<p><a name="anim_spline"></a></p>
+<h3 id="splined-interpolation">Интерполяция сплайнами</h3>
+<p>Интерполяция сплайнами может использоваться для достижения более реалистичных временных эффектов. Так как анимация часто используется для имитации эффектов, возникающих в реальном мире, разработчикам могут потребоваться полный контроль над ускорением и замедлением объектов и точная манипуляция временными сегментами. Ключевые кадры-сплайны позволяют выполнять анимацию с интерполяцией сплайнами. С другими ключевыми кадрами задаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.value">Value</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a>. С помощью опорных кадров сплайна, также следует указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.splinedoublekeyframe.keyspline">KeySpline</a>. В следующем примере показан один сплайновый опорный кадр для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a>. Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a> свойство; что отличает ключевой кадр-сплайн от других типов ключевых кадров.</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#SingleSplineKeyFrameExample">&lt;SplineDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;0:0:7&quot; KeySpline=&quot;0.0,1.0 1.0,0.0&quot; /&gt;
+</code></pre>
+<p>Кривая Безье третьего порядка определяется начальной точкой, конечной точкой и двумя контрольными точками. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a> Свойство ключевого кадра-сплайна определяет две контрольные точки кривой Безье, которая расширяет от (0,0) и (1,1). Первая контрольная точка управляет коэффициентом кривизны первой половины кривой Безье, а вторая контрольная точка — коэффициентом кривизны второй половины сегмента. Полученная кривая описывает скорость изменения для этого ключевого кадра-сплайна. Чем круче кривая, тем быстрее ключевой кадр изменяет свои значения. Когда кривая становится более пологой, ключевой кадр медленнее изменяет свои значения.</p>
+<p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a> для имитации физических траекторий, таких как падающая вода или прыгающий шарик, или применить другие «замедлить в» и «замедлить» эффекты анимации. Для реализации эффектов взаимодействия с пользователем, таких как затухание фона или отпускание кнопки элемента управления, можно применять интерполяцию сплайнами, чтобы ускорить или замедлить скорость изменения при анимации конкретных движений.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a> 0,1 1,0, которое создает следующую кривую Безье.</p>
+<p><img src="media/graphicsmm-keyspline-0-1-1-0.png" alt="Кривая Безье" title="graphicsmm_keyspline_0_1_1_0"><br>
+Ключевой сплайн с контрольными точками (0,0, 1,0) и (1,0, 0,0)</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#SingleSplineKeyFrameExample">&lt;SplineDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;0:0:7&quot; KeySpline=&quot;0.0,1.0 1.0,0.0&quot; /&gt;
+</code></pre>
+<p>Этот ключевой кадр вначале выполняет быстрое движение, затем замедляется и снова ускоряется перед завершением.</p>
+<p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a> из 0.75,1.0 0.5,0.25, который создает следующую кривую Безье.</p>
+<p><img src="media/graphicsmm-keyspline-025-050-075-10.png" alt="Кривая Безье" title="graphicsmm_keyspline_025_050_075_10"><br>
+Ключевой сплайн с контрольными точками (0,25, 0,5) и (0,75, 1,0)</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#SingleSplineKeyFrameExampleInline3">&lt;SplineDoubleKeyFrame Value=&quot;350&quot; KeyTime=&quot;0:0:15&quot;  KeySpline=&quot;0.25,0.5 0.75,1&quot; /&gt;
+</code></pre>
+<p>Так как кривизна кривой Безье изменяется незначительно, этот ключевой кадр выполняет движение почти с постоянной скоростью, несколько замедляясь перед завершением.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a> для анимации положения прямоугольника. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.splinedoublekeyframe">SplineDoubleKeyFrame</a> объектов, переход от одного значения ключевого кадра использует интерполяцию сплайнами.</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#SplinedInterpolationExample">&lt;!-- This rectangle is animated using a key frame animation
+     with splined interpolation. --&gt;
+&lt;Rectangle 
+  Width=&quot;50&quot;
+  Height=&quot;50&quot;
+  Fill=&quot;Purple&quot;&gt;  
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform 
+      x:Name=&quot;SplineAnimatedTranslateTransform&quot; 
+      X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+
+          &lt;!-- Animate the TranslateTransform's X property
+               from its base value (0) to 500, then 200,
+               then 350 over 15 seconds. --&gt;
+          &lt;DoubleAnimationUsingKeyFrames
+            Storyboard.TargetName=&quot;SplineAnimatedTranslateTransform&quot;
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:15&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;                
+            &lt;SplineDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;0:0:7&quot; KeySpline=&quot;0.0,1.0 1.0,0.0&quot; /&gt;
+            
+            &lt;SplineDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;0:0:10&quot;  KeySpline=&quot;0.0,0.0 1.0,0.0&quot; /&gt;
+
+            &lt;SplineDoubleKeyFrame Value=&quot;350&quot; KeyTime=&quot;0:0:15&quot;  KeySpline=&quot;0.25,0.5 0.75,1&quot; /&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;           
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt; 
+&lt;/Rectangle&gt;
+</code></pre>
+<p>Интерполяцию сплайнами не так просто понять. Попробуйте поэкспериментировать с различными параметрами. <a href="https://go.microsoft.com/fwlink/?LinkID=160011">Пример анимации по ключевым сплайнам</a> позволяет, изменяя значения ключевого сплайна, просмотреть результат на анимации.</p>
+<p><a name="combininginterpolationmethods"></a></p>
+<h3 id="combining-interpolation-methods">Комбинирование методов интерполяции</h3>
+<p>Можно использовать ключевые кадры с различными типами интерполяции в одной операции анимации. Если два ключевых кадра анимации с различными методами интерполяции следуют друг за другом, то для создания перехода от первого значения ко второму используется метод интерполяции второго ключевого кадра.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a> создается, используется линейная, сплайнами и дискретную интерполяцию.</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#ComboInterpolationExample">&lt;!-- This rectangle is animated using a key frame animation
+     with a combination of interpolation methods. --&gt;
+&lt;Rectangle 
+  Width=&quot;50&quot;
+  Height=&quot;50&quot;
+  Fill=&quot;Orange&quot;&gt;  
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform 
+      x:Name=&quot;ComboAnimatedTranslateTransform&quot; 
+      X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+
+          &lt;!-- Animate the TranslateTransform's X property
+               from its base value (0) to 500, then 200,
+               then 350 over 15 seconds. --&gt;
+          &lt;DoubleAnimationUsingKeyFrames
+            Storyboard.TargetName=&quot;ComboAnimatedTranslateTransform&quot;
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:15&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;
+            &lt;DiscreteDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;0:0:7&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;0:0:10&quot; /&gt;
+            &lt;SplineDoubleKeyFrame Value=&quot;350&quot; KeyTime=&quot;0:0:15&quot;  
+              KeySpline=&quot;0.25,0.5 0.75,1&quot; /&gt;                      
+          &lt;/DoubleAnimationUsingKeyFrames&gt;           
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt; 
+&lt;/Rectangle&gt;
+</code></pre>
+<p><a name="keytimes"></a></p>
+<h2 id="more-about-duration-and-key-times">Дополнительные сведения о длительности и временной шкале</h2>
+<p>Как и другие виды анимации, имеют покадровой анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> свойство. Помимо задания длительности анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a>, необходимо указать, какая часть длительности предоставляется для каждого ключевого кадра. Это можно сделать с описанием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> для каждого из ключевых кадров анимации. Шкала каждого ключевого кадра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> указывает, когда заканчивается этот ключевой кадр.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ikeyframe.keytime">KeyTime</a> Свойство не указывает продолжительность воспроизведения ключевого времени. Продолжительность выполнения ключевого кадра определяется моментом окончания ключевого кадра, моментом окончания предыдущего ключевого кадра и длительностью анимации. Время может быть указан как значение времени, в процентах, или как специальные значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a>.</p>
+<p>Ниже описаны различные способы определения времени ключевого кадра.</p>
+<h3 id="timespan-values">Значения временного диапазона</h3>
+<p>Вы можете использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> значения следует задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a>. Значение должно быть больше или равно 0 и меньше или равно длительности анимации. В следующем примере показана анимация длительностью 10 секунд с четырьмя ключевыми кадрами, время которых указывается в виде значений времени.</p>
+<ul>
+<li><p>Первый ключевой кадр выполняет анимацию от базового значения до 100 в течение первых 3 секунд и заканчивает в момент времени = 0:0:03.</p>
+</li>
+<li><p>Второй ключевой кадр выполняет анимацию от 100 до 200. Она запускается после окончания первого ключевого кадра (в момент времени 3 секунды), выполняется в течение 5 секунд и заканчивается в момент времени = 0:0:8.</p>
+</li>
+<li><p>Третий ключевой кадр выполняет анимацию от 200 до 500. Она запускается после окончания второго ключевого кадра (в момент времени 8 секунд), выполняется в течение 1 секунды и заканчивается в момент времени = 0:0:9.</p>
+</li>
+<li><p>Четвертый ключевой кадр выполняет анимацию от 500 до 600. Она запускается после окончания третьего ключевого кадра (в момент времени 9 секунд), выполняется в течение 1 секунды и заканчивается в момент времени = 0:0:10.</p>
+</li>
+</ul>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#TimeSpanKeyTimeExample">&lt;!-- This rectangle is animated with KeyTimes using TimeSpan values. 
+     Goes to 100 in the first 3 seconds, 100 to 200 in 
+     the next 5 seconds, 300 to 500 in the next second,
+     and 500 to 600 in the final second. --&gt;
+&lt;Rectangle Width=&quot;50&quot; Height=&quot;50&quot; Fill=&quot;Blue&quot;&gt;
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform x:Name=&quot;TranslateTransform01&quot; X=&quot;10&quot; Y=&quot;30&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName=&quot;TranslateTransform01&quot; 
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:10&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;
+
+            &lt;!-- KeyTime properties are expressed as TimeSpan values 
+                 which are in the form of &quot;hours:minutes:seconds&quot;. --&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;100&quot; KeyTime=&quot;0:0:3&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;0:0:8&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;0:0:9&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;600&quot; KeyTime=&quot;0:0:10&quot; /&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre><h3 id="percentage-values">Значения в процентах</h3>
+<p>Процентное значение указывает, что окончания опорного кадра в определенный процент анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>. В XAML значение в процентах указывается как число, за которым следует символ <code>%</code>. В коде используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.frompercent">FromPercent</a> метод и передать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> в процентах. Значение должно быть больше или равно 0 и меньше или равно 100 %. В следующем примере показана анимация длительностью 10 секунд с четырьмя ключевыми кадрами, время которых указывается в виде значений в процентах.</p>
+<ul>
+<li><p>Первый ключевой кадр выполняет анимацию от базового значения до 100 в течение первых 3 секунд и заканчивает в момент времени = 0:0:3.</p>
+</li>
+<li><p>Второй ключевой кадр выполняет анимацию от 100 до 200. Она запускается после окончания первого ключевого кадра (в момент времени 3 секунды), выполняется в течение 5 секунд и заканчивается в момент времени = 0:0:8 (0,8 * 10 = 8).</p>
+</li>
+<li><p>Третий ключевой кадр выполняет анимацию от 200 до 500. Она запускается после окончания второго ключевого кадра (в момент времени 8 секунд), выполняется в течение 1 секунды и заканчивается в момент времени = 0:0:9 (0,9 * 10 = 9).</p>
+</li>
+<li><p>Четвертый ключевой кадр выполняет анимацию от 500 до 600. Она запускается после окончания третьего ключевого кадра (в момент времени 9 секунд), выполняется в течение 1 секунды и заканчивается в момент времени = 0:0:10 (1 * 10 = 10).</p>
+</li>
+</ul>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#PercentageKeyTimeExample">&lt;!-- Identical animation behavior to the previous rectangle 
+     but using percentage values for KeyTimes rather then TimeSpan. --&gt;
+&lt;Rectangle Height=&quot;50&quot; Width=&quot;50&quot; Fill=&quot;Purple&quot;&gt;
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform x:Name=&quot;TranslateTransform02&quot; X=&quot;10&quot; Y=&quot;110&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName=&quot;TranslateTransform02&quot; 
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:10&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;
+
+            &lt;!-- KeyTime properties are expressed as Percentages. --&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;100&quot; KeyTime=&quot;30%&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;80%&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;90%&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;600&quot; KeyTime=&quot;100%&quot; /&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre><h3 id="special-value-uniform">Специальное значение, равномерный метод</h3>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> о времени, когда требуется, чтобы каждый опорный кадр продолжался одинаковое время.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> делит доступное время одинаково на число ключевых кадров для определения времени окончания каждого кадра. Ниже примере показана анимация длительностью 10 секунд и четырьмя ключевыми кадрами, время задаются в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a>.</p>
+<ul>
+<li><p>Первый ключевой кадр выполняет анимацию от базового значения до 100 в течение первых 2,5 секунды и заканчивает в момент времени = 0:0:2,5.</p>
+</li>
+<li><p>Второй ключевой кадр выполняет анимацию от 100 до 200. Она запускается после окончания первого ключевого кадра (в момент времени 2,5 секунды), выполняется в течение примерно 2,5 секунды и заканчивается в момент времени = 0:0:5.</p>
+</li>
+<li><p>Третий ключевой кадр выполняет анимацию от 200 до 500. Она запускается после окончания второго ключевого кадра (в момент времени 5 секунд), выполняется в течение 2,5 секунды и заканчивается в момент времени = 0:0:7,5.</p>
+</li>
+<li><p>Четвертый ключевой кадр выполняет анимацию от 500 до 600. Она запускается после окончания второго ключевого кадра (в момент времени 7,5 секунды), выполняется в течение 2,5 секунд и заканчивается в момент времени = 0:0:1.</p>
+</li>
+</ul>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#UniformKeyTimeExample">&lt;!-- This rectangle is animated with KeyTimes using Uniform values.  --&gt;
+&lt;Rectangle Height=&quot;50&quot; Width=&quot;50&quot; Fill=&quot;Red&quot;&gt;
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform x:Name=&quot;TranslateTransform03&quot; X=&quot;10&quot; Y=&quot;190&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName=&quot;TranslateTransform03&quot; 
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:10&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;
+
+            &lt;!-- KeyTime properties are expressed with values of Uniform. 
+                 When a key time is set to &quot;Uniform&quot; the total allotted 
+                 time of the animation is divided evenly between key frames.  
+                 In this example, the total duration of the animation is 
+                 ten seconds and there are four key frames each of which 
+                 are set to &quot;Uniform&quot;, therefore, the duration of each key frame 
+                 is 3.3 seconds (10/3). --&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;100&quot; KeyTime=&quot;Uniform&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;Uniform&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;Uniform&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;600&quot; KeyTime=&quot;Uniform&quot; /&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre><h3 id="special-value-paced">Определенное значение, пошаговый метод</h3>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> о времени, когда требуется анимировать с постоянной скоростью.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> ключевое время выделяет доступное время в соответствии с длиной каждого ключевого кадра для определения длительности каждого кадра.  Это приводит к тому, что скорость или темп анимации остается постоянной.  Ниже примере показана анимация длительностью 10 секунд и три ключевых кадра, время задаются в виде <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a>.</p>
+<pre><code class="lang-xaml" name="keyframes_ovw_snippet#PacedKeyTimeExample">&lt;!-- Using Paced Values. Rectangle moves between key frames at 
+     uniform rate except for first key frame
+     because using a Paced value on the first KeyFrame in a 
+     collection of frames gives a time of zero. --&gt;
+&lt;Rectangle Height=&quot;50&quot; Width=&quot;50&quot; Fill=&quot;Orange&quot;&gt;
+  &lt;Rectangle.RenderTransform&gt;
+    &lt;TranslateTransform x:Name=&quot;TranslateTransform04&quot; X=&quot;10&quot; Y=&quot;270&quot; /&gt;
+  &lt;/Rectangle.RenderTransform&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimationUsingKeyFrames 
+            Storyboard.TargetName=&quot;TranslateTransform04&quot; 
+            Storyboard.TargetProperty=&quot;X&quot;
+            Duration=&quot;0:0:10&quot;
+            RepeatBehavior=&quot;Forever&quot;&gt;
+
+            &lt;!-- KeyTime properties are expressed with values of Paced. 
+                 Paced values are used when a constant rate is desired. 
+                 The time allocated to a key frame with a KeyTime of &quot;Paced&quot; 
+                 is determined by the time allocated to the other key 
+                 frames of the animation. This time is calculated to 
+                 attempt to give a &quot;paced&quot; or &quot;constant velocity&quot; 
+                 for the animation. --&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;100&quot; KeyTime=&quot;Paced&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;200&quot; KeyTime=&quot;Paced&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;500&quot; KeyTime=&quot;Paced&quot; /&gt;
+            &lt;LinearDoubleKeyFrame Value=&quot;600&quot; KeyTime=&quot;Paced&quot; /&gt;
+          &lt;/DoubleAnimationUsingKeyFrames&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre>
+<p>Обратите внимание, что, если время последнего ключевого кадра является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a>, его расчетное время будет задано до 100 процентов. Если первый ключевой кадр в многокадровой анимации является пошаговым, его расчетное время будет задано в размере 0. (Если коллекция ключевых кадров содержит только один кадр и этот кадр пошаговый, его расчетное время будет задано в размере 100 %.)</p>
+<p>Разные ключевые кадры в однокадровой анимации могут использовать разные типы времени кадра.</p>
+<p><a name="combiningkeytimes"></a></p>
+<h2 id="combining-key-times-out-of-order-key-frames">Объединение времени ключевых кадров, неупорядоченные ключевые кадры</h2>
+<p>Можно использовать ключевые кадры с разными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> типы значений в одной анимации. И хотя рекомендуется добавлять ключевые кадры в том порядке, в каком они должны выполняться, в этом нет необходимости. Система выполнения анимации и расчета времени способна обрабатывать неупорядоченные ключевые кадры. Ключевые кадры с недопустимым временем игнорируются.</p>
+<p>Ниже приводятся процедуры, с помощью которых рассчитывается время кадра при анимации по ключевым кадрам.</p>
+<ol>
+<li><p>Разрешить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения.</p>
+</li>
+<li><p>Определение <em>общего времени интерполяции</em> анимации (общего времени, необходимого для выполнения прямой итерации при анимации по ключевым кадрам).</p>
+<ol>
+<li><p>Если продолжительность анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration.automatic">Automatic</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration.forever">Forever</a>, общее время интерполяции является значением анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> свойство.</p>
+</li>
+<li><p>В противном случае — самое большое общее время интерполяции <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значение, указанное кадрам, если таковые существуют.</p>
+</li>
+<li><p>В остальных случаях общее время интерполяции равно 1 секунде.</p>
+</li>
+</ol>
+</li>
+<li><p>Использовать значения времени интерполяции для разрешения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytimetype#System_Windows_Media_Animation_KeyTimeType_Percent">Percent</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения.</p>
+</li>
+<li><p>Расчет времени последнего кадра в случае, если оно не было рассчитано на предыдущих шагах. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> последнего ключевого кадра является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a>, его расчетное время будет равно общему времени интерполяции.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> первого ключевого кадра является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> и эта анимация имеет более одного ключевого кадра, устраните ее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значение равно нулю, в том случае, если имеется только один ключевой кадр и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a>, он разрешен в общей сумме время интерполяции, как описано в предыдущем шаге.</p>
+</li>
+<li><p>Определите оставшиеся <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения: каждое из них получает равную долю доступного времени.  В ходе этого процесса неразрешенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения считаются временно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.uniform">Uniform</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения и получают временно определенное время.</p>
+</li>
+<li><p>Разрешить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения ключевых кадров с неуказанным временем кадра с использованием соседних объявленных ключевых кадров, которые были устранены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения.</p>
+</li>
+<li><p>Определите оставшиеся <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime.paced">Paced</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значений соседних ключевые кадры для определения их расчетного времени.  Цель — убедиться, что скорость анимации является постоянной в течение расчетного времени этого ключевого кадра.</p>
+</li>
+<li><p>Сортировка ключевых кадров в порядке расчетного времени (первичный ключ) и в порядке объявления (вторичный ключ), т. е., использование строгой сортировки в зависимости от полных кадров <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a> значения.</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keytime">KeyTime</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.keyspline">KeySpline</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160011">Пример анимации ключевого сплайна</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160012">Пример анимации по ключевым кадрам</a></li>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+<li><a href="storyboards-overview.html">Общие сведения о Storyboard</a></li>
+<li><a href="key-frame-animation-how-to-topics.html">Практические руководства, посвященные анимации по ключевым кадрам</a></li>
+<li><a href="timing-behaviors-overview.html">Общие сведения о характере поведения во времени</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

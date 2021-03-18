@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1072;&#1085;&#1080;&#1092;&#1077;&#1089;&#1090; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1072;&#1085;&#1080;&#1092;&#1077;&#1089;&#1090; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="assembly-manifest">Манифест сборки</h1>
+
+<p>Любая сборка, статическая или динамическая, содержит коллекцию данных с описанием того, как ее элементы связаны друг с другом. Эти метаданные содержатся в манифесте сборки. Манифест сборки содержит все метаданные, необходимые для задания требований сборки к версиям и удостоверения безопасности, а также все метаданные, необходимые для определения области действия сборки и разрешения ссылок на ресурсы и классы. Манифест сборки может храниться в PE-файле (<em>EXE</em> или <em>DLL</em>) с кодом MSIL или же в отдельном PE-файле, содержащем только данные манифеста.</p>
+<p>На следующей иллюстрации показаны различные способы хранения манифеста сборки.</p>
+<p><img src="media/manifest/assembly-types-diagram.gif" alt="Схема, показывающая манифест в конфигурации однофайловой и многофайловой сборки."></p>
+<p>Для сборки с одним связанным файлом манифест включается в PE-файл, чтобы получить однофайловую сборку. Создать многофайловую сборку можно, включив в нее отдельный файл манифеста или же добавив манифест в один из PE-файлов сборки.</p>
+<p>Манифест сборки предназначен для следующих задач:</p>
+<ul>
+<li><p>перечисление файлов, составляющих сборку;</p>
+</li>
+<li><p>сопоставление ссылок на типы и ресурсы сборки с файлами, содержащими объявления и реализации этих типов и ресурсов;</p>
+</li>
+<li><p>перечисление других сборок, от которых зависит эта сборка;</p>
+</li>
+<li><p>обеспечение косвенного обращения пользователей сборки к подробностям ее реализации;</p>
+</li>
+<li><p>предоставление собственного описания сборки;</p>
+</li>
+</ul>
+<h2 id="assembly-manifest-contents">Содержание манифеста сборки</h2>
+<p>В следующей таблице показаны данные, содержащиеся в манифесте сборки. Первые четыре элемента — имя сборки, номер версии, язык и региональные параметры и данные строгого имени — составляют удостоверение сборки.</p>
+<table>
+<thead>
+<tr>
+<th>Сведения</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Имя сборки</td>
+<td>Текстовая строка, задающая имя сборки.</td>
+</tr>
+<tr>
+<td>Номер версии</td>
+<td>Основной и дополнительный номера версии, номер редакции и номер построения. Среда CLR использует их для применения политики управления версиями.</td>
+</tr>
+<tr>
+<td>culture</td>
+<td>Сведения о поддерживаемых сборкой языке или региональных параметрах. Эти сведения должны использоваться только для назначения сборки в качестве сопутствующей сборки, содержащей сведения о языке или региональных параметрах (сборка, содержащая сведения о языке и региональных параметрах, автоматически считается сопутствующей).</td>
+</tr>
+<tr>
+<td>Данные о строгом имени</td>
+<td>Открытый ключ издателя, если для сборки задано строгое имя.</td>
+</tr>
+<tr>
+<td>Список всех файлов сборки</td>
+<td>Хэш и имя каждого входящего в сборку файла. Обратите внимание, что все входящие в сборку файлы должны находиться в той же папке, что и файл с манифестом сборки.</td>
+</tr>
+<tr>
+<td>Сведения о ссылках на типы</td>
+<td>Сведения, используемые средой выполнения для сопоставления ссылок на типы с файлами, содержащими их объявления и реализации. Это касается типов, которые экспортируются сборкой.</td>
+</tr>
+<tr>
+<td>Сведения о ссылках на сборки</td>
+<td>Список других сборок, на которые имеются статические ссылки из данной сборки. Каждая ссылка включает в себя имя зависимой сборки, метаданные сборки (версию, язык и региональные параметры, операционную систему и т.д.) и открытый ключ, если у сборки есть строгое имя.</td>
+</tr>
+</tbody>
+</table>
+<p>С помощью задания атрибутов сборки в коде можно добавить или изменить некоторые данные в манифесте сборки. Можно изменить данные о версии и информационные атрибуты, включая сведения о товарном знаке, авторском праве, продукте, компании и информационной версии. Полный список атрибутов сборки см. в разделе <a href="set-attributes.html">Настройка атрибутов сборки</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="contents.html">Содержимое сборок</a></li>
+<li><a href="versioning.html">Управление версиями сборок</a></li>
+<li><a href="../../framework/resources/creating-satellite-assemblies-for-desktop-apps.md">Создание вспомогательных сборок</a></li>
+<li><a href="strong-named.html">Сборки со строгими именами</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; Windows Forms &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; Windows Forms &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="windows-forms-and-wpf-property-mapping">Сопоставление свойств Windows Forms и WPF</h1>
+
+<p>Windows Forms И WPF технологий есть две модели похожие, но разные свойства. <em>Сопоставление свойств</em> поддерживает взаимодействие между этими двумя архитектурами и предоставляет следующие возможности:</p>
+<ul>
+<li><p>Упрощает сопоставление изменений соответствующего свойства в среде узла для размещаемого элемента управления или элемента.</p>
+</li>
+<li><p>Предоставляет значение по умолчанию для сопоставления наиболее часто используемые свойства.</p>
+</li>
+<li><p>Позволяет легко удалять, переопределять или расширять свойств по умолчанию.</p>
+</li>
+<li><p>Гарантирует, что изменения значений свойств на узле автоматически обнаруживаются и преобразованный в размещенный элемент управления или элемент.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>События изменения свойств не распространяются вверх размещения элемента управления или элемент иерархии. Преобразование свойства выполняется не в том случае, если локальное значение свойства не будет изменяться из-за прямую настройку, Управление стилями, наследования, привязки данных и другие механизмы, которые изменяют значение свойства.</p>
+</div>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">PropertyMap</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.propertymap">PropertyMap</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления для доступа к сопоставление свойств.</p>
+<h2 id="property-mapping-with-the-windowsformshost-element">Сопоставление свойств с помощью элемента WindowsFormsHost</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент преобразует значение по умолчанию WPF свойства, чтобы их Windows Forms эквиваленты, с помощью следующей таблицы преобразования.</p>
+<table>
+<thead>
+<tr>
+<th>Размещение Windows Presentation Foundation</th>
+<th>Windows Forms</th>
+<th>Возможности взаимодействия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">System.Windows.Media.Brush</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color">System.Drawing.Color</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Наборов элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> свойств размещаемого элемента управления и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a> свойств размещаемого элемента управления. Сопоставление выполняется с помощью следующих правил:<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> представляет собой сплошной цвет, он преобразуется и используемый для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> свойств размещаемого элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> Свойство не задано размещаемого элемента управления, поскольку размещаемый элемент управления может наследовать значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> свойства. <strong>Примечание.</strong>  Размещаемый элемент управления не поддерживает прозрачность. Любой цвет, назначенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> должен быть полностью непрозрачным, со значением альфа 0xFF. <br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> не сплошным цветом, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент управления создает точечный рисунок из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Управления назначает этой битовой карты для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a> свойств размещаемого элемента управления. Это дает результат, который аналогичен прозрачности. <strong>Примечание.</strong>  Это поведение можно переопределить или удалением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> сопоставление свойств.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.cursor">Cursor</a></td>
+<td>Если не была переназначена сопоставление по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления проходит по иерархии предков, пока не найдет узел-предок с его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a> набор свойств. Это значение преобразуется в ближайший соответствующий Windows Forms курсора.<br><br> Если сопоставление по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.forcecursor">ForceCursor</a> свойство не было назначено заново, поиск завершается на первого предка с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.forcecursor">ForceCursor</a> присвоено <code>true</code>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">System.Windows.FlowDirection</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.righttoleft">RightToLeft</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft">System.Windows.Forms.RightToLeft</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_No">No</a>.<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_Yes">Yes</a>.<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_Inherit">Inherit</a> не сопоставлен.<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">FlowDirection.RightToLeft</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_Yes">RightToLeft.Yes</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.style">Style</a> размещаемого элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">System.Drawing.Font</a></td>
+<td>Набор WPF свойства преобразуется в соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a>. При изменении одного из этих свойств, новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a> создается. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontstyles.normal">Normal</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.fontstyle#System_Drawing_FontStyle_Italic">Italic</a> отключена. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontstyles.italic">Italic</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontstyles.oblique">Oblique</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.fontstyle#System_Drawing_FontStyle_Italic">Italic</a> включен.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.style">Style</a> размещаемого элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">System.Drawing.Font</a></td>
+<td>Набор WPF свойства преобразуется в соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a>. При изменении одного из этих свойств, новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a> создается. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.black">Black</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.bold">Bold</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.demibold">DemiBold</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.extrabold">ExtraBold</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.heavy">Heavy</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.medium">Medium</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.semibold">SemiBold</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.ultrabold">UltraBold</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.fontstyle#System_Drawing_FontStyle_Bold">Bold</a> включен. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.extralight">ExtraLight</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.light">Light</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.normal">Normal</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.regular">Regular</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.thin">Thin</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.ultralight">UltraLight</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.fontstyle#System_Drawing_FontStyle_Bold">Bold</a> отключена.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontfamily">FontFamily</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstretch">FontStretch</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">System.Drawing.Font</a>)</td>
+<td>Набор WPF свойства преобразуется в соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a>. При изменении одного из этих свойств, новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">Font</a> создается. Размещаемый Windows Forms элемент управления на основе размера шрифта.<br><br> Размер шрифта в WPF выражается как одну девяносто шестую дюйма, а в Windows Forms как одна секунда семьдесят дюйма. Является соответствующее преобразование:<br><br> Windows Forms размер шрифта = WPF размер шрифта * 72,0 / 96,0.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">System.Windows.Media.Brush</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.forecolor">ForeColor</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color">System.Drawing.Color</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> Сопоставление свойств выполняется с помощью следующих правил:<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>, использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.forecolor">ForeColor</a>.<br>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientbrush">GradientBrush</a>, использование цвета <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a> с наименьшим значением смещения для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.forecolor">ForeColor</a>.<br>— Для любого другого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> введите, оставьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.forecolor">ForeColor</a> без изменений. Это означает, что используется значение по умолчанию.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isenabled">IsEnabled</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enabled">Enabled</a></td>
+<td>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isenabled">IsEnabled</a> имеет значение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> наборов элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enabled">Enabled</a> свойств размещаемого элемента управления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.padding">Padding</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.padding">Padding</a></td>
+<td>Все четыре значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.padding">Padding</a> свойство размещаемого Windows Forms управления устанавливаются на тот же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.thickness">Thickness</a> значение.<br><br> -Значения, превышающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a>.<br>-Значения меньше, чем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.minvalue">MinValue</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.minvalue">MinValue</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a></td>
+<td>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Visible">Visible</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a>  =  <code>true</code>. Размещаемый Windows Forms элемент управления является видимым. Явная установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a> свойств размещаемого элемента управления к <code>false</code> не рекомендуется.<br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Collapsed">Collapsed</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a>  =  <code>true</code> или <code>false</code>. Размещаемый Windows Forms элемент управления не создается, и его область свернута.<br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Hidden">Hidden</a> : Размещаемый Windows Forms управления занимает место в макете, но не отображается. В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a> свойству <code>true</code>. Явная установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a> свойств размещаемого элемента управления к <code>false</code> не рекомендуется.</td>
+</tr>
+</tbody>
+</table>
+<p>Вложенные свойства элементов контейнера полностью поддерживаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент.</p>
+<p>Дополнительные сведения см. в разделе <a href="walkthrough-mapping-properties-using-the-windowsformshost-element.html">Пошаговое руководство: Сопоставление свойств с помощью элемента WindowsFormsHost</a>.</p>
+<h2 id="updates-to-parent-properties">Обновление свойств родительского элемента</h2>
+<p>Изменения для большинства свойств родительского вызвать уведомления размещенной дочернему элементу управления. Ниже перечислены свойства, которые не вызывают уведомления при изменении их значений.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.forcecursor">ForceCursor</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a></p>
+</li>
+</ul>
+<p>Например, если изменить значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> свойств размещаемого элемента управления остается неизменным.</p>
+<h2 id="property-mapping-with-the-elementhost-control">Сопоставление свойств с помощью элемента управления ElementHost</h2>
+<p>Следующие свойства предоставляют встроенные уведомления об изменении. Не вызывайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onpropertychanged">OnPropertyChanged</a> метод при сопоставлении этих свойств:</p>
+<ul>
+<li><p>AutoSize</p>
+</li>
+<li><p>BackColor</p>
+</li>
+<li><p>BackgroundImage</p>
+</li>
+<li><p>BackgroundImageLayout</p>
+</li>
+<li><p>BindingContext</p>
+</li>
+<li><p>CausesValidation</p>
+</li>
+<li><p>ContextMenu</p>
+</li>
+<li><p>ContextMenuStrip</p>
+</li>
+<li><p>Курсор</p>
+</li>
+<li><p>Закрепить</p>
+</li>
+<li><p>Включено</p>
+</li>
+<li><p>Шрифт</p>
+</li>
+<li><p>ForeColor</p>
+</li>
+<li><p>Расположение</p>
+</li>
+<li><p>Поля</p>
+</li>
+<li><p>Заполнение</p>
+</li>
+<li><p>Родительский</p>
+</li>
+<li><p>Region</p>
+</li>
+<li><p>RightToLeft</p>
+</li>
+<li><p>Размер</p>
+</li>
+<li><p>TabIndex</p>
+</li>
+<li><p>TabStop</p>
+</li>
+<li><p>Текста</p>
+</li>
+<li><p>Видимый</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> Управления преобразует значение по умолчанию Windows Forms свойства, чтобы их WPF эквиваленты с помощью следующей таблицы преобразования.</p>
+<p>Дополнительные сведения см. в разделе <a href="walkthrough-mapping-properties-using-the-elementhost-control.html">Пошаговое руководство: Сопоставление свойств с помощью элемента управления ElementHost</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Windows Forms размещения</th>
+<th>Windows Presentation Foundation</th>
+<th>Возможности взаимодействия</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color">System.Drawing.Color</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">System.Windows.Media.Brush</a>) размещаемого элемента</td>
+<td>Задание этого свойства принудительно перекрашивает с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> свойству <code>false</code> (значение по умолчанию), это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> зависит от вида <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> управления, включая его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimagelayout">BackgroundImageLayout</a> свойства и все присоединенные рисования обработчики.<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.backcolortransparent">BackColorTransparent</a> свойству <code>true</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> зависит от вида <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> родительского элемента управления, включая родительского элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimagelayout">BackgroundImageLayout</a> свойства и все присоединенные рисования обработчики.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image">System.Drawing.Image</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">System.Windows.Media.Brush</a>) размещаемого элемента</td>
+<td>Это свойство, то же поведение, описанным для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> сопоставления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimagelayout">BackgroundImageLayout</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">System.Windows.Media.Brush</a>) размещаемого элемента</td>
+<td>Это свойство, то же поведение, описанным для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backcolor">BackColor</a> сопоставления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.cursor">Cursor</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor">System.Windows.Forms.Cursor</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.cursor">System.Windows.Input.Cursor</a>)</td>
+<td>Windows Forms Стандартный курсор преобразуется в соответствующий WPF стандартным курсором. Если Windows Forms не является стандартным курсором, назначается значение по умолчанию.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enabled">Enabled</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isenabled">IsEnabled</a></td>
+<td>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enabled">Enabled</a> имеет значение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> задает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isenabled">IsEnabled</a> свойств размещаемого элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font">System.Drawing.Font</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontfamily">FontFamily</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstretch">FontStretch</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a><br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.font">Font</a> Значение преобразуется в соответствующий набор WPF свойств шрифта.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.bold">Bold</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a> размещаемого элемента</td>
+<td>Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.bold">Bold</a> равно <code>true</code>, то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a> присваивается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.bold">Bold</a>.<br><br> Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.bold">Bold</a> равно <code>false</code>, то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontweight">FontWeight</a> присваивается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontweights.normal">Normal</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.italic">Italic</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a> размещаемого элемента</td>
+<td>Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.italic">Italic</a> равно <code>true</code>, то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a> присваивается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontstyles.italic">Italic</a>.<br><br> Если значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.italic">Italic</a> равно <code>false</code>, то <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontstyle">FontStyle</a> присваивается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.fontstyles.normal">Normal</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.strikeout">Strikeout</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textdecorations">TextDecorations</a> размещаемого элемента</td>
+<td>Применимо только в том случае, если размещение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемента управления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.font.underline">Underline</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textdecorations">TextDecorations</a> размещаемого элемента</td>
+<td>Применимо только в том случае, если размещение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемента управления.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.righttoleft">RightToLeft</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft">System.Windows.Forms.RightToLeft</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a><br><br> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_No">No</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_LeftToRight">LeftToRight</a>.<br><br> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.righttoleft#System_Windows_Forms_RightToLeft_Yes">Yes</a> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> Задает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.visibility">Visibility</a> свойств размещаемого элемента с помощью следующих правил:<br><br> -   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a> = <code>true</code> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Visible">Visible</a>.<br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.visible">Visible</a> = <code>false</code> сопоставляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visibility#System_Windows_Visibility_Hidden">Hidden</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a></li>
+<li><a href="wpf-and-windows-forms-interoperation.html">Взаимодействие WPF и Windows Forms</a></li>
+<li><a href="walkthrough-mapping-properties-using-the-windowsformshost-element.html">Пошаговое руководство. Сопоставление свойств с помощью элемента WindowsFormsHost</a></li>
+<li><a href="walkthrough-mapping-properties-using-the-elementhost-control.html">Пошаговое руководство. Сопоставление свойств с помощью элемента управления ElementHost</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

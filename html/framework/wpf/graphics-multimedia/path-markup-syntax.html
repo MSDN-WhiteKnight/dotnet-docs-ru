@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1089; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; &#1087;&#1091;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1089; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; &#1087;&#1091;&#1090;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="path-markup-syntax">Синтаксис разметки пути</h1>
+
+<p>Путями, рассматриваются в <a href="shapes-and-basic-drawing-in-wpf-overview.html">фигур и базовых средств рисования в WPF Обзор</a> и <a href="geometry-overview.html">Общие сведения о геометрии</a>, однако в этом разделе подробно описываются сложной и мощной мини-язык, который можно использовать для указания пути более Язык XAML.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания этого раздела необходимо ознакомиться с основным функциям <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объектов. Дополнительные сведения см. в разделе <a href="geometry-overview.html">Общие сведения о геометрии</a>.</p>
+<p><a name="abouthisdocument"></a></p>
+<h2 id="streamgeometry-and-pathfigurecollection-mini-languages">Мини-языки StreamGeometry и PathFigureCollection</h2>
+<p>WPF предоставляет два класса, обеспечивающих мини языки для описания геометрических путей: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigurecollection">PathFigureCollection</a>.</p>
+<ul>
+<li><p>Использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> мини-язык, при задании свойства типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.clip">Clip</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path.data">Data</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> элемент. В следующем примере синтаксис атрибутов для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a>.</p>
+<pre><code class="lang-xaml" name="GeometrySample_snip_XAML#GraphicsMMStreamGeometryAttributeSyntaxInline">&lt;Path Stroke=&quot;Black&quot; Fill=&quot;Gray&quot;
+      Data=&quot;M 10,100 C 10,300 300,-200 300,100&quot; /&gt;
+</code></pre></li>
+<li><p>Использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigurecollection">PathFigureCollection</a> мини-язык, при задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry.figures">Figures</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>. В следующем примере синтаксис атрибутов для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigurecollection">PathFigureCollection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>.</p>
+<pre><code class="lang-xaml" name="GeometrySample_snip_XAML#GraphicsMMPathFigureCollectionAttributeSyntaxInline">&lt;Path Stroke=&quot;Black&quot; Fill=&quot;Gray&quot;&gt;
+  &lt;Path.Data&gt;
+    &lt;PathGeometry Figures=&quot;M 10,100 C 10,300 300,-200 300,100&quot; /&gt;
+  &lt;/Path.Data&gt;
+&lt;/Path&gt;
+</code></pre></li>
+</ul>
+<p>Как видно из предыдущих примеров мини-языки очень похожи. Это всегда можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> в любой ситуации, когда можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a>; поэтому какой из них следует использовать? Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> при не требуется изменять путь после его создания; используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> Если вам нужно изменить путь.</p>
+<p>Дополнительные сведения о различиях между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> объектов, см. в разделе <a href="geometry-overview.html">Общие сведения о геометрии</a>.</p>
+<h3 id="a-note-about-white-space">Примечание о пробелах</h3>
+<p>В следующих разделах для краткости в примерах синтаксиса показан один пробел, но допускается использовать по нескольку пробелов везде, где указан один пробел.</p>
+<p>Два числа не обязательно должны быть разделены запятыми или пробелы, но это может быть выполнено, только если результирующая строка получается неоднозначной. Например <code>2..3</code> фактически представляет два числа: &quot;2.&quot; и 3. Аналогичным образом <code>2-3</code> «2» и «-3&quot;. Пробелы до и после команд ставить необязательно.</p>
+<h3 id="syntax">Синтаксис</h3>
+<p>Язык XAML Атрибута синтаксис для использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> состоит из необязательного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule">FillRule</a> значение и один или несколько следующих описаний.</p>
+<table>
+<thead>
+<tr>
+<th>Использование атрибута XAML на StreamGeometry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;</code> <em>Объект</em> <em>свойство</em> <code>=&quot;</code>[ <code>fillRule</code>] <code>figureDescription</code>[ <code>figureDescription</code>] * <code>&quot; ... /&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Язык XAML Атрибута синтаксис для использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigurecollection">PathFigureCollection</a> состоит из одного или нескольких описаний.</p>
+<table>
+<thead>
+<tr>
+<th>Использование атрибута XAML на PathFigureCollection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;</code> <em>Объект</em> <em>свойство</em> <code>=&quot;</code> <code>figureDescription</code>[ <code>figureDescription</code>] * <code>&quot; ... /&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>fillRule</em></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule">System.Windows.Media.FillRule</a><br><br> Указывает, является ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule#System_Windows_Media_FillRule_EvenOdd">EvenOdd</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule#System_Windows_Media_FillRule_Nonzero">Nonzero</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry.fillrule">FillRule</a>.<br><br> -   <code>F0</code> Указывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule#System_Windows_Media_FillRule_EvenOdd">EvenOdd</a> правило заполнения.<br>-   <code>F1</code> Указывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule#System_Windows_Media_FillRule_Nonzero">Nonzero</a> правило заполнения.<br><br> Если опустить эту команду, во вложенном пути используется поведение по умолчанию, которое является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fillrule#System_Windows_Media_FillRule_EvenOdd">EvenOdd</a>. Если эта команда используется, ее необходимо размещать вначале.</td>
+</tr>
+<tr>
+<td><em>figureDescription</em></td>
+<td>Фигура, состоящая из команды перемещения, команд рисования и необязательной команды закрытия.<br><br> <code>moveCommand</code> <code>drawCommands</code>  <code>[</code> <code>closeCommand</code> <code>]</code></td>
+</tr>
+<tr>
+<td><em>moveCommand</em></td>
+<td>Команда перемещения, которая указывает начальную точку фигуры. См. в разделе <a href="#themovecommand">команда перемещения</a> раздел.</td>
+</tr>
+<tr>
+<td><em>drawCommands</em></td>
+<td>Одна или несколько команд рисования, описывающих содержимое фигуры. См. в разделе <a href="#drawcommands">команда рисования</a> раздел.</td>
+</tr>
+<tr>
+<td><em>closeCommand</em></td>
+<td>Необязательная команда, которая закрывает фигуру. См. в разделе <a href="#closecommand">команда закрытия</a> раздел.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="themovecommand"></a></p>
+<h2 id="move-command">Команда перемещения</h2>
+<p>Задает начальную точку новой фигуры.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M</code> <em>startPoint</em><br><br> -или-<br><br> <code>m</code> <em>startPoint</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>startPoint</em></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Начальная точка новой фигуры.</td>
+</tr>
+</tbody>
+</table>
+<p>Верхнерегистровая <code>M</code> указывает, что <code>startPoint</code> значение является абсолютным; строчных букв <code>m</code> указывает, что <code>startPoint</code> — это смещение к предыдущей точке, или (0,0), если он не существует. Если после команды перемещения указано несколько точек, будет нарисована линия к этим точкам, как в случае указания команды рисования линии.</p>
+<p><a name="drawcommands"></a></p>
+<h2 id="draw-commands">Команды рисования</h2>
+<p>Команда рисования может состоять из нескольких команд формы. Имеются следующие команды формы: линия, горизонтальная линия, вертикальная линия, кривая Безье третьего порядка, кривая Безье второго порядка, гладкая кривая Безье третьего порядка, гладкая кривая Безье второго порядка и эллиптическая дуга.</p>
+<p>Все команды можно вводить как прописными, так и строчными буквами. Прописными буквами определяются абсолютные значения, а строчными —относительные. Контрольная точка для этого сегмента указывается относительно конечной точки в предыдущем примере. При последовательном вводе нескольких команд одного типа, можно опустить Повторяющийся заголовок команды; например <code>L 100,200 300,400</code> эквивалентен <code>L 100,200 L 300,400</code>. В следующей таблице описаны <strong>переместить</strong> и <strong>рисования</strong> команды.</p>
+<h3 id="line-command">Команда рисования линии</h3>
+<p>Создает прямую линию между текущей и заданной конечной точками. <code>l 20 30</code> и <code>L 20,30</code> — примеры допустимых <strong>строки</strong> команды.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>L</code> <em>Конечная точка</em><br><br> -или-<br><br> <code>l</code> <em>Конечная точка</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Конечная точка</em></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Конечная точка строки.</td>
+</tr>
+</tbody>
+</table>
+<p>Верхнерегистровая <code>L</code> указывает, что <code>endPoint</code> значение является абсолютным; строчных букв <code>l</code> указывает, что <code>endPoint</code> — это смещение к предыдущей точке, или (0,0), если он не существует.</p>
+<h3 id="horizontal-line-command">Команда рисования горизонтальной линии</h3>
+<p>Создает горизонтальную линию между текущей точкой и заданной координатой X. <code>H 90</code> приведен пример допустимой команды горизонтальной линии.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>H</code>  <em>x</em><br><br> -или-<br><br> <code>h</code>  <em>x</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>x</em></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">System.Double</a><br><br> Координата X конечной точки линии.</td>
+</tr>
+</tbody>
+</table>
+<p>Верхнерегистровая <code>H</code> указывает, что <code>x</code> значение является абсолютным; строчных букв <code>h</code> указывает, что <code>x</code> — это смещение к предыдущей точке, или (0,0), если он не существует.</p>
+<h3 id="vertical-line-command">Команда рисования вертикальной линии</h3>
+<p>Создает вертикальную линию между текущей точкой и заданной координатой Y. <code>v 90</code> приведен пример допустимой команды вертикальной линии.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>V</code>  <em>y</em><br><br> -или-<br><br> <code>v</code>  <em>y</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>y</em></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">System.Double</a><br><br> Координата Y конечной точки линии.</td>
+</tr>
+</tbody>
+</table>
+<p>Верхнерегистровая <code>V</code> указывает, что <code>y</code> значение является абсолютным; строчных букв <code>v</code> указывает, что <code>y</code> — это смещение к предыдущей точке, или (0,0), если он не существует.</p>
+<h3 id="cubic-bezier-curve-command">Команда рисования кривой Безье третьего порядка</h3>
+<p>Создает кривую Безье третьего порядка между текущей точкой и заданной конечной точкой с помощью двух заданных контрольных точек (<code>controlPoint</code>1 и <code>controlPoint</code>2). <code>C 100,200 200,400 300,200</code> приведен пример команды допустимым кривой.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C</code> <code>controlPoint</code>1<code>controlPoint</code>2<code>endPoint</code><br><br> -или-<br><br> <code>c</code> <code>controlPoint</code>1<code>controlPoint</code>2<code>endPoint</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controlPoint</code>1</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Первая контрольная точка кривой, которая определяет начальную касательную к кривой.</td>
+</tr>
+<tr>
+<td><code>controlPoint</code>2</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Вторая контрольная точка кривой, которая определяет конечную касательную к кривой.</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Точка для рисования кривой.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quadratic-bezier-curve-command">Команда рисования кривой Безье второго порядка</h3>
+<p>Создает кривую Безье второго порядка между текущей точкой и заданной конечной точкой с использованием заданной контрольной точки (<code>controlPoint</code>). <code>q 100,200 300,200</code> приведен пример допустимой команды кривой Безье второго порядка.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Q</code> <code>controlPoint</code> <code>endPoint</code><br><br> -или-<br><br> <code>q</code> <code>controlPoint</code> <code>endPoint</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controlPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Контрольная точка кривой, которая определяет начальную и конечную касательные к кривой.</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Точка для рисования кривой.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smooth-cubic-bezier-curve-command">Команда рисования гладкой кривой Безье третьего порядка</h3>
+<p>Создает кривую Безье третьего порядка между текущей и заданной конечной точками. Предполагается, что первая контрольная точка является отражением второй контрольной точки предыдущей команды относительно текущей точки. Если нет предыдущей команды или если предыдущая команда не является командой рисования кривой Безье третьего порядка или командой рисования гладкой кривой Безье третьего порядка, считается, что первая контрольная точка совпадает с текущей точкой. Вторая контрольная точка, контрольная точка конца кривой, задается <code>controlPoint</code>2. Например <code>S 100,200 200,300</code> — это допустимая команда гладкой кривой Безье третьего порядка.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S</code> <code>controlPoint</code>2<code>endPoint</code><br><br> -или-<br><br> <code>s</code> <code>controlPoint</code>2<code>endPoint</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controlPoint</code>2</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Контрольная точка кривой, которая определяет конечную касательную к кривой.</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Точка для рисования кривой.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="smooth-quadratic-bezier-curve-command">Команда рисования гладкой кривой Безье второго порядка</h3>
+<p>Создает кривую Безье второго порядка между текущей и заданной конечной точками. Предполагается, что контрольная точка является отражением контрольной точки предыдущей команды относительно текущей точки. Если нет предыдущей команды или если предыдущая команда не является командой рисования кривой Безье второго порядка или командой рисования гладкой кривой Безье второго порядка, считается, что контрольная точка совпадает с текущей точкой.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T</code> <code>controlPoint</code> <code>endPoint</code><br><br> -или-<br><br> <code>t</code> <code>controlPoint</code> <code>endPoint</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>controlPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Контрольная точка кривой, которая определяет начальную касательную к кривой.</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Точка для рисования кривой.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="elliptical-arc-command">Команда рисования эллиптической дуги</h3>
+<p>Создает эллиптическую дугу между текущей и заданной конечной точками.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A</code> <code>size</code> <code>rotationAngle</code> <code>isLargeArcFlag</code> <code>sweepDirectionFlag</code> <code>endPoint</code><br><br> -или-<br><br> <code>a</code> <code>size</code> <code>rotationAngle</code> <code>isLargeArcFlag</code> <code>sweepDirectionFlag</code> <code>endPoint</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.size">System.Windows.Size</a><br><br> Радиусы арки X и Y.</td>
+</tr>
+<tr>
+<td><code>rotationAngle</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">System.Double</a><br><br> Поворот эллипса в градусах.</td>
+</tr>
+<tr>
+<td><code>isLargeArcFlag</code></td>
+<td>Значение 1, если угол дуги должен быть 180 градусов или больше, в противном случае — значение 0.</td>
+</tr>
+<tr>
+<td><code>sweepDirectionFlag</code></td>
+<td>Значение 1, если дуга рисуется в направлении положительного угла, в противном случае — значение 0.</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">System.Windows.Point</a><br><br> Точка, в которую рисуется дуга.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="closecommand"></a></p>
+<h2 id="the-close-command">Команда закрытия</h2>
+<p>Заканчивает текущую фигуру и создает линию, соединяющую текущую точку с начальной точкой фигуры. Эта команда создает соединительную линию (угол) между последним и первым сегментами фигуры.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Z</code><br><br> -или-<br><br> <code>z</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="pointsyntax"></a></p>
+<h2 id="point-syntax">Синтаксис точки</h2>
+<p>Описывает x и y координаты точки где (0,0) находится в левом верхнем углу.</p>
+<table>
+<thead>
+<tr>
+<th>Синтаксис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code> <code>,</code> <code>y</code><br><br> -или-<br><br> <code>x</code> <code>y</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Термин</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">System.Double</a><br><br> Координата X точки.</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">System.Double</a><br><br> Координата Y точки.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="specialvalues"></a></p>
+<h2 id="special-values">Специальные значения</h2>
+<p>Вместо стандартных числовых значений можно использовать следующие специальные значения. Эти значения чувствительны к регистру.</p>
+<p>Бесконечность<br>
+Представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.positiveinfinity">Double.PositiveInfinity</a>.</p>
+<p>-бесконечность<br>
+Представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.negativeinfinity">Double.NegativeInfinity</a>.</p>
+<p>NaN<br>
+Представляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.nan">Double.NaN</a>.</p>
+<p>Можно также использовать экспоненциальное представление чисел. Например <code>+1.e17</code> является допустимым значением.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigurecollection">PathFigureCollection</a></li>
+<li><a href="shapes-and-basic-drawing-in-wpf-overview.html">Обзор фигур и базовых средств рисования в приложении WPF</a></li>
+<li><a href="geometry-overview.html">Общие сведения о классе Geometry</a></li>
+<li><a href="geometries-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

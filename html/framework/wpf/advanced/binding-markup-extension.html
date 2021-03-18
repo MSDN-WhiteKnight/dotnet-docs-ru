@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1088;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1103; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1088;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1103; &#1088;&#1072;&#1079;&#1084;&#1077;&#1090;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="binding-markup-extension">Привязка расширения разметки</h1>
+
+<p>Откладывает значение свойства значением привязкой к данным, создавая объект промежуточного выражения и интерпретируя контекст данных, который применяется к элементу и его привязке во время выполнения.</p>
+<h2 id="binding-expression-usage">Использование выражений привязки</h2>
+<pre><code>&lt;object property=&quot;{Binding}&quot; .../&gt;  
+-or-  
+&lt;object property=&quot;{Binding  bindProp1=value1[, bindPropN=valueN]*}&quot; ...  
+/&gt;  
+-or-  
+&lt;object property=&quot;{Binding path}&quot; .../&gt;  
+-or  
+&lt;object property=&quot;{Binding path[, bindPropN=valueN]*}&quot; .../&gt;  
+</code></pre>
+<h2 id="syntax-notes">Заметки о синтаксисе</h2>
+<p>В этих синтаксисов <code>[]</code> и <code>*</code> не являются литералами. Они являются частью нотации, чтобы указать, что ноль или более <em>платформы</em><code>=</code><em>значение</em> пар, можно создать с помощью <code>,</code> разделитель между ними и предыдущими <em>платформы</em>  <code>=</code> <em>значение</em> пары.</p>
+<p>Каких-либо свойств, перечисленных в разделе «Привязка свойства, можно будет задать с расширением Binding» может вместо этого задать с помощью атрибутов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объектного элемента. Тем не менее, не является полноценным использование расширения разметки из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, это просто XAML обработки атрибутов, задайте свойства среды CLR <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класса. Другими словами <code>&lt;Binding</code> <em>Свойство_привязки_1</em><code>=&quot;</code><em>значение1</em> <code>&quot;[</code> <em>bindPropN</em><code>=&quot;</code><em>valueN</em> <code>&quot;]*/&gt;</code> — это эквивалентный синтаксис атрибутов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта использование элемента вместо <code>Binding</code> использование выражений. Дополнительные сведения об использовании атрибута XAML конкретные свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a>, см. в разделе «Использование атрибута XAML» соответствующие свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> в библиотеке классов .NET Framework.</p>
+<h2 id="xaml-values">Значения XAML</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bindProp1, bindPropN</code></td>
+<td>Имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase">BindingBase</a> задаваемого свойства. Не все <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> свойства можно задать с помощью <code>Binding</code> расширения и некоторые свойства могут устанавливаться в <code>Binding</code> выражение только с помощью дополнительные вложенные расширения разметки. Ознакомьтесь с разделом «Привязка свойства, можно будет задать с расширением Binding».</td>
+</tr>
+<tr>
+<td><code>value1, valueN</code></td>
+<td>Задаваемое значение свойства. Способ обработки значения атрибута в конечном счете, характерные для типа и логики конкретную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> задаваемое свойство.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>Строка пути, который задает неявный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a> свойство. См. также <a href="propertypath-xaml-syntax.html">синтаксис PropertyPath XAML</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unqualified-binding">Неполное {Binding}</h2>
+<p><code>{Binding}</code> Использовании в «Использование выражений привязки» создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта со значениями по умолчанию, включая начальные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a> из <code>null</code>. Это по-прежнему полезно во многих сценариях, поскольку созданный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> может полагаться на ключевых свойств привязки например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Binding.Source</a> задаваемое в контекст данных времени выполнения. Дополнительные сведения о концепцию контекста данных, см. в разделе <a href="../data/data-binding-wpf.html">привязки данных</a>.</p>
+<h2 id="implicit-path">Неявный путь</h2>
+<p><code>Binding</code> Использует расширение разметки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a> как концептуальной «свойство по умолчанию», где <code>Path=</code> должен появляться в выражении. Если указать <code>Binding</code> выражение с неявный путь неявный путь должно быть первым в выражении, до любого другого <code>bindProp</code> = <code>value</code> где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> свойство указано по имени. Например: <code>{Binding PathString}</code>, где <code>PathString</code> — это строка, значение которого будет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> созданные расширения разметки. Можно добавить неявный путь с другими именованными свойствами после разделителя запятую, к примеру, <code>{Binding LastName, Mode=TwoWay}</code>.</p>
+<h2 id="binding-properties-that-can-be-set-with-the-binding-extension">Свойства привязки, которые можно задать с помощью расширения привязки</h2>
+<p>Синтаксис, показанный в этом разделе использует универсальный <code>bindProp</code> = <code>value</code> аппроксимацией, поскольку имеется много свойств чтения и записи из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase">BindingBase</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> , можно задать с помощью <code>Binding</code> расширение разметки / синтаксис выражения. Они могут задаваться в любом порядке, за исключением неявным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Binding.Path</a>. (Вы можете в явном виде <code>Path=</code>, в этом случае его можно установить в любом порядке). По сути, можно задать ноль или несколько свойств в списке ниже, с помощью <code>bindProp</code> = <code>value</code> пар, разделенных запятыми.</p>
+<p>Некоторые из этих значений свойств требуют типы объектов, которые не поддерживает собственный тип преобразование из текстового синтаксиса в XAML и таким образом требуется расширения разметки, чтобы задать в качестве значения атрибута. Проверьте в разделе &quot;Использование атрибута XAML&quot; в библиотеке классов .NET Framework для каждого свойства, Дополнительные сведения; Строка, используйте синтаксис атрибута XAML с или без дальнейшего расширения разметки использования является по сути таким же, как значение, указываемое в <code>Binding</code> выражения, за исключением, не размещайте кавычки вокруг каждой <code>bindProp</code> = <code>value</code> в <code>Binding</code> выражение.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.bindinggroupname">BindingGroupName</a>: строка, определяющая группу возможных привязки. Это — это понятие сравнительно сложный привязки; см. в разделе справочника, посвященных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.bindinggroupname">BindingGroupName</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.bindsdirectlytosource">BindsDirectlyToSource</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.converter">Converter</a>: можно задать в качестве <code>bindProp</code> = <code>value</code> строки в выражении, но для этого требуется ссылка на объект для значения, такие как <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a>. В этом случае, значение является экземпляром класса пользовательский преобразователь.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.converterculture">ConverterCulture</a>: может задаваться в выражение в виде идентификатора на основе стандартов; см. в разделе справки по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.converterculture">ConverterCulture</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.converterparameter">ConverterParameter</a>: можно задать в качестве <code>bindProp</code> = <code>value</code> строки в выражение, но это зависит от типа параметра, переданного. Если передача ссылочного типа для значения, это использование требуется ссылка на объект, например вложенный <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a>: взаимно исключают друг друга и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a>; каждый из этих свойств привязки представляет определенную методологию привязки. См. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.fallbackvalue">FallbackValue</a>: можно задать в качестве <code>bindProp</code> = <code>value</code> строки в выражение, но это зависит от типа передаваемого значения. Если передача ссылочного типа, требуется ссылка на объект, например вложенный <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.isasync">IsAsync</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.mode">Mode</a>: <em>значение</em> является именем константы из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode">BindingMode</a> перечисления. Например, <code>{Binding Mode=OneWay}</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.notifyonsourceupdated">NotifyOnSourceUpdated</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.notifyontargetupdated">NotifyOnTargetUpdated</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.notifyonvalidationerror">NotifyOnValidationError</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a>: строка, описывающая пути в объекте данных или общих объектов модели. Формат предоставляет несколько разных соглашений для обхода объектной модели, который не может быть адекватно описан в этом разделе. См. в разделе <a href="propertypath-xaml-syntax.html">синтаксис PropertyPath XAML</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a>: взаимно исключают друг друга и с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a>; каждый из этих свойств привязки представляет определенную методологию привязки. См. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>. Требуется вложенный <a href="relativesource-markupextension.html">расширение разметки RelativeSource</a> использования для указания значения.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a>: взаимно исключают друг друга и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a>; каждый из этих свойств привязки представляет определенную методологию привязки. См. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>. Обычно требуется использование вложенного расширения, <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a> , ссылающийся на источник данных объекта из словаря ресурсов с ключом.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.stringformat">StringFormat</a>: строка, описывающая соглашение формат строки для связанных данных. Это — это понятие сравнительно сложный привязки; см. в разделе справочника, посвященных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.stringformat">StringFormat</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingbase.targetnullvalue">TargetNullValue</a>: можно задать в качестве <code>bindProp</code> = <code>value</code> строки в выражение, но это зависит от типа параметра, переданного. Если передача ссылочного типа для значения, требуется ссылка на объект, например вложенный <a href="staticresource-markup-extension.html">расширение разметки StaticResource</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a>: <em>значение</em> является именем константы из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.updatesourcetrigger">UpdateSourceTrigger</a> перечисления. Например, <code>{Binding UpdateSourceTrigger=LostFocus}</code>. Потенциально определенные элементы управления имеют разные значения по умолчанию для этого свойства привязки. См. раздел <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourcetrigger">UpdateSourceTrigger</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesondataerrors">ValidatesOnDataErrors</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>. См. заметки.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesonexceptions">ValidatesOnExceptions</a>: Логическое значение может быть либо <code>true</code> или <code>false</code>. Значение по умолчанию — <code>false</code>. См. заметки.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a>: строка, описывающая путь в XMLDOM из источника данных XML. См. в разделе <a href="../data/how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries.html">привязка к данным XML с помощью XMLDataProvider и запросов XPath</a>.</p>
+</li>
+</ul>
+<p>Ниже приведены свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> , нельзя задать с помощью <code>Binding</code> расширение разметки /<code>{Binding}</code> форма выражения.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter">UpdateSourceExceptionFilter</a>: это свойство ожидает, что ссылка на реализацию обратного вызова. Обратные вызовы и методы, отличные от обработчиков событий нельзя ссылаться в синтаксисе XAML.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">ValidationRules</a>: свойство принимает базовую коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule">ValidationRule</a> объектов. Это можно выразить как элемент свойства в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объект элемента, но имеет не доступны метод разбора атрибута для использования в <code>Binding</code> выражение. См. в разделе справочника по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">ValidationRules</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xmlnamespacemanager">XmlNamespaceManager</a></p>
+</li>
+</ul>
+<h2 id="remarks">Примечания</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>С точки зрения приоритет свойств зависимостей <code>Binding</code> выражение эквивалентно локально заданное значение. Если вы задано локальное значение для свойства, которое ранее было <code>Binding</code> выражения, <code>Binding</code> полностью удаляется. Дополнительные сведения см. в разделе <a href="dependency-property-value-precedence.html">Приоритет значений свойств зависимостей</a>.</p>
+</div>
+<p>Описание привязки данных на базовом уровне не рассматривается в этом разделе. См. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.prioritybinding">PriorityBinding</a> не поддерживают XAML синтаксиса расширения. Можно использовать свойства элементов. См. в разделе справочные разделы по <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.multibinding">MultiBinding</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.prioritybinding">PriorityBinding</a>.</p>
+</div>
+<p>Логические значения для XAML учитывается регистр. Например можно указать либо <code>{Binding NotifyOnValidationError=true}</code> или <code>{Binding NotifyOnValidationError=True}</code>.</p>
+<p>Привязки, которые включают в себя проверку данных обычно определяются явно <code>Binding</code> элемент, а не как <code>{Binding ...}</code> выражения, а параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesondataerrors">ValidatesOnDataErrors</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validatesonexceptions">ValidatesOnExceptions</a> в выражении используется редко. Это обусловлено дополнительное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.validationrules">ValidationRules</a> невозможно легко задать в виде выражения. Дополнительные сведения см. в разделе <a href="../data/how-to-implement-binding-validation.html">проверки привязки реализуют</a>.</p>
+<p><code>Binding</code> является расширением разметки. Расширения разметки обычно реализуются, если требуется заменить значения атрибутов на нелитеральные значения или обработчик имена и если требуется более, чем преобразователи типов с атрибутами для определенных типов или свойств. Все расширения разметки в XAML используют <code>{</code> и <code>}</code> символов в синтаксисе их атрибутов, который является соглашением, по которому обработчик XAML узнает, что расширение разметки должно обработать содержимое строки. Дополнительные сведения см. в разделе <a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a>.</p>
+<p><code>Binding</code> является расширением нетипичное разметки тем, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класс, реализующий функциональные возможности расширения для реализации XAML в WPF также реализует несколько методов и свойств, которые не связаны с XAML. Другие элементы призваны сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> более гибким, автономное класс, который можно решить многие сценарии привязки данных в дополнение к работает как расширение разметки XAML.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+<li><a href="markup-extensions-and-wpf-xaml.html">Расширения разметки и XAML WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

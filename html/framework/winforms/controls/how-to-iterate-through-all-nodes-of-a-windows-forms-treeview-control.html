@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1088;&#1077;&#1073;&#1086;&#1088; &#1091;&#1079;&#1083;&#1086;&#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; TreeView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1077;&#1088;&#1077;&#1073;&#1086;&#1088; &#1091;&#1079;&#1083;&#1086;&#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; TreeView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-iterate-through-all-nodes-of-a-windows-forms-treeview-control">Практическое руководство. Перебор узлов элемента управления TreeView в Windows Forms</h1>
+
+<p>Иногда полезно изучить каждый узел в формах Windows <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a> управления для выполнения определенных расчетов со значениями узлов. Выполнить эту операции можно с помощью рекурсивной процедуры (рекурсивного метода в C# и C++), которая перебирает каждый узел в каждой коллекции дерева.</p>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode">TreeNode</a> объекта в виде дерева имеет свойства, которые можно использовать для перемещения по дереву: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.firstnode">FirstNode</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.lastnode">LastNode</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.nextnode">NextNode</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.prevnode">PrevNode</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.parent">Parent</a>. Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.parent">Parent</a> свойства служит родительским узлом текущего узла. Дочерние узлы текущего узла, если таковые имеются, перечисляются в его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.nodes">Nodes</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a> Сам элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview.topnode">TopNode</a> свойство, которое является корневым узлом для всего дерева.</p>
+<h3 id="to-iterate-through-all-nodes-of-the-treeview-control">Перебор всех узлов элемента управления в представлении в виде дерева</h3>
+<ol>
+<li><p>Создайте рекурсивную процедуру (рекурсивный метод в C# и C++) для проверки каждого узла.</p>
+</li>
+<li><p>Вызовите процедуру.</p>
+<p>Следующий пример описывает печать каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode">TreeNode</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode.text">Text</a> свойство:</p>
+<pre><code class="lang-vb">Private Sub PrintRecursive(ByVal n As TreeNode)  
+   System.Diagnostics.Debug.WriteLine(n.Text)  
+   MessageBox.Show(n.Text)  
+   Dim aNode As TreeNode  
+   For Each aNode In n.Nodes  
+      PrintRecursive(aNode)  
+   Next  
+End Sub  
+
+' Call the procedure using the top nodes of the treeview.  
+Private Sub CallRecursive(ByVal aTreeView As TreeView)  
+   Dim n As TreeNode  
+   For Each n In aTreeView.Nodes  
+      PrintRecursive(n)  
+   Next  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void PrintRecursive(TreeNode treeNode)  
+{  
+   // Print the node.  
+   System.Diagnostics.Debug.WriteLine(treeNode.Text);  
+   MessageBox.Show(treeNode.Text);  
+   // Print each node recursively.  
+   foreach (TreeNode tn in treeNode.Nodes)  
+   {  
+      PrintRecursive(tn);  
+   }  
+}  
+
+// Call the procedure using the TreeView.  
+private void CallRecursive(TreeView treeView)  
+{  
+   // Print each node recursively.  
+   TreeNodeCollection nodes = treeView.Nodes;  
+   foreach (TreeNode n in nodes)  
+   {  
+      PrintRecursive(n);  
+   }  
+}  
+</code></pre>
+<pre><code class="lang-cpp">private:  
+   void PrintRecursive( TreeNode^ treeNode )  
+   {  
+      // Print the node.  
+      System::Diagnostics::Debug::WriteLine( treeNode-&gt;Text );  
+      MessageBox::Show( treeNode-&gt;Text );  
+
+      // Print each node recursively.  
+      System::Collections::IEnumerator^ myNodes = (safe_cast&lt;System::Collections::IEnumerable^&gt;(treeNode-&gt;Nodes))-&gt;GetEnumerator();  
+      try  
+      {  
+         while ( myNodes-&gt;MoveNext() )  
+         {  
+            TreeNode^ tn = safe_cast&lt;TreeNode^&gt;(myNodes-&gt;Current);  
+            PrintRecursive( tn );  
+         }  
+      }  
+      finally  
+      {  
+         IDisposable^ disposable = dynamic_cast&lt;System::IDisposable^&gt;(myNodes);  
+         if ( disposable != nullptr )  
+                  disposable-&gt;Dispose();  
+      }  
+   }  
+
+   // Call the procedure using the TreeView.  
+   void CallRecursive( TreeView^ treeView )  
+   {  
+      // Print each node recursively.  
+      TreeNodeCollection^ nodes = treeView-&gt;Nodes;  
+      System::Collections::IEnumerator^ myNodes = (safe_cast&lt;System::Collections::IEnumerable^&gt;(nodes))-&gt;GetEnumerator();  
+      try  
+      {  
+         while ( myNodes-&gt;MoveNext() )  
+         {  
+            TreeNode^ n = safe_cast&lt;TreeNode^&gt;(myNodes-&gt;Current);  
+            PrintRecursive( n );  
+         }  
+      }  
+      finally  
+      {  
+         IDisposable^ disposable = dynamic_cast&lt;System::IDisposable^&gt;(myNodes);  
+         if ( disposable != nullptr )  
+                  disposable-&gt;Dispose();  
+      }  
+   }  
+</code></pre>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="treeview-control-windows-forms.html">Элемент управления TreeView</a></li>
+<li><a href="../../../visual-basic/programming-guide/language-features/procedures/recursive-procedures.md">Рекурсивные процедуры</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

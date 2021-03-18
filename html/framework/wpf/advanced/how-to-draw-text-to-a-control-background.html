@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; &#1076;&#1083;&#1103; &#1092;&#1086;&#1085;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; &#1076;&#1083;&#1103; &#1092;&#1086;&#1085;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-draw-text-to-a-controls-background">Практическое руководство. Рисование текста для фона элемента управления</h1>
+
+<p>Можно рисовать текст непосредственно на фоне элемента управления, преобразовав строку текста в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта, а затем рисуя объект элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>. Этот метод также можно использовать для рисования на фоне объектов, производных от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>.</p>
+<p><img src="media/drawtext2background01.png" alt="Элементы управления, отображающие текст в качестве фона" title="DrawText2Background01"><br>
+Пример элементов управления с фоном из пользовательского текста</p>
+<h2 id="example">Пример</h2>
+<p>Для рисования фона элемента управления, создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> объекта и нарисуйте преобразованный текст объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>. Затем назначьте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> свойству фона элемента управления.</p>
+<p>В следующем примере кода показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> и рисовать фон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> объекта.</p>
+<pre><code class="lang-csharp" name="DrawTextToControlBackground#DrawTextToControlBackground1">// Handle the WindowLoaded event for the window.
+private void WindowLoaded(object sender, EventArgs e)
+{
+    // Update the background property of the label and button.
+    myLabel.Background = new DrawingBrush(DrawMyText(&quot;My Custom Label&quot;));
+    myButton.Background = new DrawingBrush(DrawMyText(&quot;Display Text&quot;));
+}
+
+// Convert the text string to a geometry and draw it to the control's DrawingContext.
+private Drawing DrawMyText(string textString)
+{
+    // Create a new DrawingGroup of the control.
+    DrawingGroup drawingGroup = new DrawingGroup();
+
+    // Open the DrawingGroup in order to access the DrawingContext.
+    using (DrawingContext drawingContext = drawingGroup.Open())
+    {
+        // Create the formatted text based on the properties set.
+        FormattedText formattedText = new FormattedText(
+            textString,
+            CultureInfo.GetCultureInfo(&quot;en-us&quot;),
+            FlowDirection.LeftToRight,
+            new Typeface(&quot;Comic Sans MS Bold&quot;),
+            48,
+            System.Windows.Media.Brushes.Black // This brush does not matter since we use the geometry of the text.
+            );
+
+        // Build the geometry object that represents the text.
+        Geometry textGeometry = formattedText.BuildGeometry(new System.Windows.Point(20, 0));
+
+        // Draw a rounded rectangle under the text that is slightly larger than the text.
+        drawingContext.DrawRoundedRectangle(System.Windows.Media.Brushes.PapayaWhip, null, new Rect(new System.Windows.Size(formattedText.Width + 50, formattedText.Height + 5)), 5.0, 5.0);
+
+        // Draw the outline based on the properties that are set.
+        drawingContext.DrawGeometry(System.Windows.Media.Brushes.Gold, new System.Windows.Media.Pen(System.Windows.Media.Brushes.Maroon, 1.5), textGeometry);
+
+        // Return the updated DrawingGroup content to be used by the control.
+        return drawingGroup;
+    }
+}
+</code></pre><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a></li>
+<li><a href="drawing-formatted-text.html">Рисование форматированного текста</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

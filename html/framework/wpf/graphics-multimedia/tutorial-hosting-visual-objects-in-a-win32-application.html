@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1059;&#1095;&#1077;&#1073;&#1085;&#1080;&#1082;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1074;&#1080;&#1079;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1059;&#1095;&#1077;&#1073;&#1085;&#1080;&#1082;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1074;&#1080;&#1079;&#1091;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial-hosting-visual-objects-in-a-win32-application">Учебник. Размещение визуальных объектов в приложении Win32</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Тем не менее, если имеются существенные преимущества в Win32 код, он может быть более эффективно добавить WPF функциональные возможности приложения, а не переписывать код. Чтобы обеспечить поддержку Win32 и WPF графических подсистем, одновременно используемых в приложении, WPF предоставляет механизм для размещения объектов в Win32 окна.</p>
+<p>Этом руководстве описывается создание примера приложения, <a href="https://go.microsoft.com/fwlink/?LinkID=159995">проверка нажатия с помощью примера взаимодействия Win32</a>, в котором узлы WPF визуальные объекты в Win32 окна.</p>
+<p><a name="requirements"></a></p>
+<h2 id="requirements">Требования</h2>
+<p>В этом учебнике предполагается, что вы знакомы с основами программирования в WPF и Win32. Основные сведения о WPF программирования, см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a>. Общие сведения о Win32 программирования, см. в разделе любой из многочисленных книг по этой теме, в частности <em>программирования Windows</em> Чарльза Петцольда.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот учебник включает ряд примеров кода из связанного образца приложения. Однако для удобства чтения он не содержит полный пример кода. Полный образец кода, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159995">проверка нажатия с помощью примера взаимодействия Win32</a>.</p>
+</div>
+<p><a name="creating_the_host_win32_window"></a></p>
+<h2 id="creating-the-host-win32-window">Создание окна размещения Win32</h2>
+<p>Ключом к размещению WPF объекты в Win32 окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> класса. Этот класс заключает WPF объекты в Win32 окна, позволяя им должна быть включена в ваш пользовательский интерфейс как дочернего окна.</p>
+<p>В примере показан код для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объекта в виде Win32 окна контейнера для визуальных объектов. Чтобы задать стиль окна, положение и другие параметры для Win32 окно, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsourceparameters">HwndSourceParameters</a> объекта.</p>
+<pre><code class="lang-csharp" name="VisualsHitTesting#101">// Constant values from the &quot;winuser.h&quot; header file.
+internal const int WS_CHILD = 0x40000000,
+                   WS_VISIBLE = 0x10000000;
+
+internal static void CreateHostHwnd(IntPtr parentHwnd)
+{
+    // Set up the parameters for the host hwnd.
+    HwndSourceParameters parameters = new HwndSourceParameters(&quot;Visual Hit Test&quot;, _width, _height);
+    parameters.WindowStyle = WS_VISIBLE | WS_CHILD;
+    parameters.SetPosition(0, 24);
+    parameters.ParentWindow = parentHwnd;
+    parameters.HwndSourceHook = new HwndSourceHook(ApplicationMessageFilter);
+
+    // Create the host hwnd for the visuals.
+    myHwndSource = new HwndSource(parameters);
+
+    // Set the hwnd background color to the form's background color.
+    myHwndSource.CompositionTarget.BackgroundColor = System.Windows.Media.Brushes.OldLace.Color;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsourceparameters.extendedwindowstyle">ExtendedWindowStyle</a> свойство нельзя установить значение WS_EX_TRANSPARENT. Это означает, что узел Win32 окно не может быть прозрачным. По этой причине цвет фона узла Win32 окно присваивается один и тот же цвет фона родительского окна.</p>
+</div>
+<p><a name="adding_visual_objects_to_the_host_win32_window"></a></p>
+<h2 id="adding-visual-objects-to-the-host-win32-window">Добавление визуальных объектов в окно размещения Win32</h2>
+<p>После создания узла Win32 окна контейнера для визуальных объектов, к нему можно добавить визуальные объекты. Необходимо убедиться, что любые преобразования визуальных объектов, такие как анимация, не выходят за пределы узла Win32 ограничивающего прямоугольника окна.</p>
+<p>В примере показан код для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объекта и добавления в него визуальных объектов.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> присваивается первый визуальный объект, добавленный к узлу Win32 окна. Корневой визуальный объект определяет верхний узел дерева визуальных объектов. Все последующие визуальные объекты, добавленные в главное Win32 окна добавляются как дочерние объекты.</p>
+</div>
+<pre><code class="lang-csharp" name="VisualsHitTesting#100">public static void CreateShape(IntPtr parentHwnd)
+{
+    // Create an instance of the shape.
+    MyShape myShape = new MyShape();
+
+    // Determine whether the host container window has been created.
+    if (myHwndSource == null)
+    {
+        // Create the host container window for the visual objects.
+        CreateHostHwnd(parentHwnd);
+
+        // Associate the shape with the host container window.
+        myHwndSource.RootVisual = myShape;
+    }
+    else
+    {
+        // Assign the shape as a child of the root visual.
+        ((ContainerVisual)myHwndSource.RootVisual).Children.Add(myShape);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="implementing_the_win32_message_filter"></a></p>
+<h2 id="implementing-the-win32-message-filter">Реализация фильтра сообщений Win32</h2>
+<p>Узел Win32 окно для визуальных объектов требуется процедура фильтра сообщений окна для обработки сообщений, отправленных в окно из очереди приложения. Процедура окна получает сообщения от Win32 системы. Это могут быть входные сообщения или сообщения управления окнами. Сообщение можно обработать в процедуре окна или передать системе для обработки по умолчанию.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> Объект, который вы определили в качестве родительского для визуальных объектов необходимо обращаться вами процедуру фильтра сообщений окна. При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsourceparameters.hwndsourcehook">HwndSourceHook</a> свойство для ссылки на процедуру окна.</p>
+<pre><code class="lang-csharp" name="VisualsHitTesting#102">parameters.HwndSourceHook = new HwndSourceHook(ApplicationMessageFilter);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере показан код для обработки сообщений при отпускании левой и правой кнопок мыши. Значение координаты мыши была нажата содержится в значении параметра <code>lParam</code> параметр.</p>
+<pre><code class="lang-csharp" name="VisualsHitTesting#103">// Constant values from the &quot;winuser.h&quot; header file.
+internal const int WM_LBUTTONUP = 0x0202,
+                   WM_RBUTTONUP = 0x0205;
+
+internal static IntPtr ApplicationMessageFilter(
+    IntPtr hwnd, int message, IntPtr wParam, IntPtr lParam, ref bool handled)
+{
+    // Handle messages passed to the visual.
+    switch (message)
+    {
+        // Handle the left and right mouse button up messages.
+        case WM_LBUTTONUP:
+        case WM_RBUTTONUP:
+            System.Windows.Point pt = new System.Windows.Point();
+            pt.X = (uint)lParam &amp; (uint)0x0000ffff;  // LOWORD = x
+            pt.Y = (uint)lParam &gt;&gt; 16;               // HIWORD = y
+            MyShape.OnHitTest(pt, message);
+            break;
+    }
+
+    return IntPtr.Zero;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="processing_the_win32_messages"></a></p>
+<h2 id="processing-the-win32-messages">Обработка сообщений Win32</h2>
+<p>Код в следующем примере показано, как выполняется нажатия иерархии визуальных объектов, содержащихся в окне размещения Win32 окна. Можно определить, находится ли точка в пределах визуального объекта, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> метод, чтобы задать корневой визуальный объект и значение координаты для проверки нажатия. В этом случае корневой визуальный объект является значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объекта.</p>
+<pre><code class="lang-csharp" name="VisualsHitTesting#104">// Constant values from the &quot;winuser.h&quot; header file.
+public const int WM_LBUTTONUP = 0x0202,
+                 WM_RBUTTONUP = 0x0205;
+
+// Respond to WM_LBUTTONUP or WM_RBUTTONUP messages by determining which visual object was clicked.
+public static void OnHitTest(System.Windows.Point pt, int msg)
+{
+    // Clear the contents of the list used for hit test results.
+    hitResultsList.Clear();
+
+    // Determine whether to change the color of the circle or to delete the shape.
+    if (msg == WM_LBUTTONUP)
+    {
+        MyWindow.changeColor = true;
+    }
+    if (msg == WM_RBUTTONUP)
+    {
+        MyWindow.changeColor = false;
+    }
+
+    // Set up a callback to receive the hit test results enumeration.
+    VisualTreeHelper.HitTest(MyWindow.myHwndSource.RootVisual,
+                             null,
+                             new HitTestResultCallback(CircleHitTestResult),
+                             new PointHitTestParameters(pt));
+
+    // Perform actions on the hit test results list.
+    if (hitResultsList.Count &gt; 0)
+    {
+        ProcessHitTestResultsList();
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о проверке нажатия для визуальных объектов, см. в разделе <a href="hit-testing-in-the-visual-layer.html">проверка нажатия на визуальном уровне</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=159995">Попадания с помощью примера взаимодействия Win32</a></li>
+<li><a href="hit-testing-in-the-visual-layer.html">Проверка попадания на визуальном уровне</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

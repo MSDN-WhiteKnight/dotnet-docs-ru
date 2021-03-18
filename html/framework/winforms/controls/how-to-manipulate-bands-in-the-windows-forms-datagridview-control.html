@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1086;&#1083;&#1086;&#1089;&#1072;&#1084;&#1080; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1086;&#1083;&#1086;&#1089;&#1072;&#1084;&#1080; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-manipulate-bands-in-the-windows-forms-datagridview-control">Практическое руководство. Управление полосами в элементе управления DataGridView в Windows Forms</h1>
+
+<p>В примерах кода ниже показаны различные способы работы со строками и столбцами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> с помощью свойств класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband">DataGridViewBand</a>, от которого наследуются классы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>.</p>
+<h2 id="example">Пример</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.ButtonDemos#0">using System.Drawing;
+using System.Windows.Forms;
+using System;
+
+public class DataGridViewBandDemo : Form
+{
+    #region &quot;form setup&quot;
+    public DataGridViewBandDemo()
+    {
+        InitializeComponent();
+
+        AddButton(Button1, &quot;Reset&quot;,
+            new EventHandler(Button1_Click));
+        AddButton(Button2, &quot;Change Column 3 Header&quot;,
+            new EventHandler(Button2_Click));
+        AddButton(Button3, &quot;Change Meatloaf Recipe&quot;,
+            new EventHandler(Button3_Click));
+        AddAdditionalButtons();
+
+        InitializeDataGridView();
+    }
+
+    DataGridView dataGridView;
+    Button Button1 = new Button();
+    Button Button2 = new Button();
+    Button Button3 = new Button();
+    Button Button4 = new Button();
+    Button Button5 = new Button();
+    Button Button6 = new Button();
+    Button Button7 = new Button();
+    Button Button8 = new Button();
+    Button Button9 = new Button();
+    Button Button10 = new Button();
+    FlowLayoutPanel FlowLayoutPanel1 = new FlowLayoutPanel();
+
+    private void InitializeComponent()
+    {
+        FlowLayoutPanel1.Location = new Point(454, 0);
+        FlowLayoutPanel1.AutoSize = true;
+        FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+        AutoSize = true;
+        ClientSize = new System.Drawing.Size(614, 360);
+        FlowLayoutPanel1.Name = &quot;flowlayoutpanel&quot;;
+        Controls.Add(this.FlowLayoutPanel1);
+        Text = this.GetType().Name;
+    }
+    #endregion
+
+    #region &quot;setup DataGridView&quot;
+
+    private string thirdColumnHeader = &quot;Main Ingredients&quot;;
+    private string boringMeatloaf = &quot;ground beef&quot;;
+    private string boringMeatloafRanking = &quot;*&quot;;
+    private bool boringRecipe;
+    private bool shortMode;
+
+    private void InitializeDataGridView()
+    {
+        dataGridView = new System.Windows.Forms.DataGridView();
+        Controls.Add(dataGridView);
+        dataGridView.Size = new Size(300, 200);
+
+        // Create an unbound DataGridView by declaring a
+        // column count.
+        dataGridView.ColumnCount = 4;
+        AdjustDataGridViewSizing();
+
+        // Set the column header style.
+        DataGridViewCellStyle columnHeaderStyle =
+            new DataGridViewCellStyle();
+        columnHeaderStyle.BackColor = Color.Aqua;
+        columnHeaderStyle.Font =
+            new Font(&quot;Verdana&quot;, 10, FontStyle.Bold);
+        dataGridView.ColumnHeadersDefaultCellStyle =
+            columnHeaderStyle;
+
+        // Set the column header names.
+        dataGridView.Columns[0].Name = &quot;Recipe&quot;;
+        dataGridView.Columns[1].Name = &quot;Category&quot;;
+        dataGridView.Columns[2].Name = thirdColumnHeader;
+        dataGridView.Columns[3].Name = &quot;Rating&quot;;
+
+        // Populate the rows.
+        string[] row1 = new string[]{&quot;Meatloaf&quot;, 
+                                        &quot;Main Dish&quot;, boringMeatloaf, boringMeatloafRanking};
+        string[] row2 = new string[]{&quot;Key Lime Pie&quot;, 
+                                        &quot;Dessert&quot;, &quot;lime juice, evaporated milk&quot;, &quot;****&quot;};
+        string[] row3 = new string[]{&quot;Orange-Salsa Pork Chops&quot;, 
+                                        &quot;Main Dish&quot;, &quot;pork chops, salsa, orange juice&quot;, &quot;****&quot;};
+        string[] row4 = new string[]{&quot;Black Bean and Rice Salad&quot;, 
+                                        &quot;Salad&quot;, &quot;black beans, brown rice&quot;, &quot;****&quot;};
+        string[] row5 = new string[]{&quot;Chocolate Cheesecake&quot;, 
+                                        &quot;Dessert&quot;, &quot;cream cheese&quot;, &quot;***&quot;};
+        string[] row6 = new string[]{&quot;Black Bean Dip&quot;, &quot;Appetizer&quot;,
+                                        &quot;black beans, sour cream&quot;, &quot;***&quot;};
+        object[] rows = new object[] { row1, row2, row3, row4, row5, row6 };
+
+        foreach (string[] rowArray in rows)
+        {
+            dataGridView.Rows.Add(rowArray);
+        }
+
+        PostRowCreation();
+
+        shortMode = false;
+        boringRecipe = true;
+    }
+
+
+    void AddButton(Button button, string buttonLabel,
+        EventHandler handler)
+    {
+        FlowLayoutPanel1.Controls.Add(button);
+        button.TabIndex = FlowLayoutPanel1.Controls.Count;
+        button.Text = buttonLabel;
+        button.AutoSize = true;
+        button.Click += handler;
+    }
+
+    // Reset columns to initial disorderly arrangement.
+    private void Button1_Click(object sender, System.EventArgs e)
+    {
+        Controls.Remove(dataGridView);
+        dataGridView.Dispose();
+        InitializeDataGridView();
+    }
+
+    // Change the header in column three.
+    private void Button2_Click(object sender,
+        System.EventArgs e)
+    {
+        Toggle(ref shortMode);
+        if (shortMode)
+        { dataGridView.Columns[2].HeaderText = &quot;S&quot;; }
+        else
+        { dataGridView.Columns[2].HeaderText = thirdColumnHeader; }
+    }
+
+    private static void Toggle(ref bool toggleThis)
+    {
+        toggleThis = !toggleThis;
+    }
+
+    // Change the meatloaf recipe.
+    private void Button3_Click(object sender,
+        System.EventArgs e)
+    {
+        Toggle(ref boringRecipe);
+        if (boringRecipe)
+        {
+            SetMeatloaf(boringMeatloaf, boringMeatloafRanking);
+        }
+        else
+        {
+            string greatMeatloafRecipe =
+                &quot;1 lb. lean ground beef, &quot; +
+                &quot;1/2 cup bread crumbs, 1/4 cup ketchup,&quot; +
+                &quot;1/3 tsp onion powder, &quot; +
+                &quot;1 clove of garlic, 1/2 pack onion soup mix &quot; +
+                &quot; dash of your favorite BBQ Sauce&quot;;
+            SetMeatloaf(greatMeatloafRecipe, &quot;***&quot;);
+        }
+    }
+
+    private void SetMeatloaf(string recipe, string rating)
+    {
+        dataGridView.Rows[0].Cells[2].Value = recipe;
+        dataGridView.Rows[0].Cells[3].Value = rating;
+    }
+    #endregion
+
+    #region &quot;demonstration code&quot;
+    private void AddAdditionalButtons()
+    {
+        AddButton(Button4, &quot;Freeze First Row&quot;,
+            new EventHandler(Button4_Click));
+        AddButton(Button5, &quot;Freeze Second Column&quot;,
+            new EventHandler(Button5_Click));
+        AddButton(Button6, &quot;Hide Salad Row&quot;,
+            new EventHandler(Button6_Click));
+        AddButton(Button7, &quot;Disable First Column Resizing&quot;,
+            new EventHandler(Button7_Click));
+        AddButton(Button8, &quot;Make ReadOnly&quot;,
+            new EventHandler(Button8_Click));
+        AddButton(Button9, &quot;Style Using Tag&quot;,
+            new EventHandler(Button9_Click));
+    }
+
+    private void AdjustDataGridViewSizing()
+    {
+        dataGridView.AutoSizeRowsMode =
+            DataGridViewAutoSizeRowsMode.AllCells;
+        dataGridView.ColumnHeadersHeightSizeMode = 
+            DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+    }
+
+    // Freeze the first row.
+    private void Button4_Click(object sender, System.EventArgs e)
+    {
+
+        FreezeBand(dataGridView.Rows[0]);
+    }
+
+    private void Button5_Click(object sender, System.EventArgs e)
+    {
+
+        FreezeBand(dataGridView.Columns[1]);
+    }
+
+    private static void FreezeBand(DataGridViewBand band)
+    {
+        band.Frozen = true;
+        DataGridViewCellStyle style = new DataGridViewCellStyle();
+        style.BackColor = Color.WhiteSmoke;
+        band.DefaultCellStyle = style;
+    }
+
+    // Hide a band of cells.
+    private void Button6_Click(object sender, System.EventArgs e)
+    {
+
+        DataGridViewBand band = dataGridView.Rows[3];
+        band.Visible = false;
+    }
+
+    // Turn off user's ability to resize a column.
+    private void Button7_Click(object sender, EventArgs e)
+    {
+
+        DataGridViewBand band = dataGridView.Columns[0];
+        band.Resizable = DataGridViewTriState.False;
+    }
+
+    // Make the entire DataGridView read only.
+    private void Button8_Click(object sender, System.EventArgs e)
+    {
+        foreach (DataGridViewBand band in dataGridView.Columns)
+        {
+            band.ReadOnly = true;
+        }
+    }
+
+    private void PostRowCreation()
+    {
+        SetBandColor(dataGridView.Columns[0], Color.CadetBlue);
+        SetBandColor(dataGridView.Rows[1], Color.Coral);
+        SetBandColor(dataGridView.Columns[2], Color.DodgerBlue);
+    }
+
+    private static void SetBandColor(DataGridViewBand band, Color color)
+    {
+        band.Tag = color;
+    }
+
+    // Color the bands by the value stored in their tag.
+    private void Button9_Click(object sender, System.EventArgs e)
+    {
+
+        foreach (DataGridViewBand band in dataGridView.Columns)
+        {
+            if (band.Tag != null)
+            {
+                band.DefaultCellStyle.BackColor = (Color)band.Tag;
+            }
+        }
+
+        foreach (DataGridViewBand band in dataGridView.Rows)
+        {
+            if (band.Tag != null)
+            {
+                band.DefaultCellStyle.BackColor = (Color)band.Tag;
+            }
+        }
+    }
+    #endregion
+
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new DataGridViewBandDemo());
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li>ссылки на сборки System, System.Drawing и System.Windows.Forms.</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband">DataGridViewBand</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a></li>
+<li><a href="programming-with-cells-rows-and-columns-in-the-datagrid.html">Программирование с использование ячеек, строк и столбцов в элементе управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

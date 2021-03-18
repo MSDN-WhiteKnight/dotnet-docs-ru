@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1077; &#1082;&#1086;&#1084;&#1072;&#1085;&#1076; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1077; &#1082;&#1086;&#1084;&#1072;&#1085;&#1076; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="commanding-overview">Общие сведения о системе команд</h1>
+
+<p>Система команд <a name="introduction"></a> представляет собой механизм ввода в Windows Presentation Foundation (WPF), обеспечивающий обработку входных данных на более семантическом уровне по сравнению с вводом устройств. Примеры команд включают операции <strong>Копировать</strong>, <strong>Вырезать</strong> и <strong>Вставить</strong>, доступные во многих приложениях.</p>
+<p>В этом обзоре определяется понятие команд в WPF, классы, входящие в модель команд, и способы использования и создания команд в приложениях.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#commands_at_10000_feet">Что представляют собой команды?</a></p>
+</li>
+<li><p><a href="#simple_command">Пример простой команды в WPF</a></p>
+</li>
+<li><p><a href="#Four_main_Concepts">Четыре основных понятия в системе команд WPF</a></p>
+</li>
+<li><p><a href="#Command_Library">Библиотека команд</a></p>
+</li>
+<li><p><a href="#creating_commands">Создание настраиваемых команд</a></p>
+</li>
+</ul>
+<p><a name="commands_at_10000_feet"></a></p>
+<h2 id="what-are-commands">Что представляют собой команды?</h2>
+<p>Команды применяются в различных целях. Первой задачей является отделение семантики и объекта, вызывающего команду, от логики, которая выполняет команду. Это позволяет нескольким и разнородным источникам вызывать одну логику команды, а также настраивать логику команды для различных целевых объектов. Например, операции редактирования <strong>Копировать</strong>, <strong>Вырезать</strong> и <strong>Вставить</strong>, которые встречаются во многих приложениях, могут вызываться с помощью разных действий пользователя, если они реализованы с помощью команд. Приложение может поддерживать вырезание выделенных объектов или текста путем нажатия определенной кнопки, выбора пункта меню или сочетания клавиш, например CTRL+X. С помощью команд можно привязать разные типы действий пользователя к одной логике.</p>
+<p>Другой целью применения команд является указание того, доступно ли действие. Продолжая пример вырезания объекта или текста, действие имеет смысл, только если что-либо выбрано. Если пользователь попытается вырезать объект или текст, не выбрав его, ничего не произойдет. Чтобы уведомить пользователя об этом, во многих приложениях кнопки и пункты меню отключаются, чтобы пользователь понял, что это действие выполнить невозможно. Команда может указывать, возможно ли действие, путем реализации метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a>. Кнопка может подписаться на событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> и отключаться, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a> возвращает <code>false</code>, или включаться, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a> возвращает <code>true</code>.</p>
+<p>Семантика команды может быть согласованной в разных приложениях и классах, однако логика действия зависит от конкретного объекта, к которому она применяется. Сочетание клавиш CTRL+X вызывает команду <strong>Вырезать</strong> в классах текста, классах изображений и веб-браузерах, однако фактическая логика для выполнения операции <strong>Вырезать</strong> определяется приложением, которое ее выполняет. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> позволяет клиентам реализовать логику. Текстовый объект может вырезать выделенный текст в буфер обмена, а объект изображения может вырезать выбранное изображение. Когда приложение обрабатывает событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a>, оно имеет доступ к целевому объекту команды и может выполнить соответствующее действие в зависимости от типа целевого объекта.</p>
+<p><a name="simple_command"></a></p>
+<h2 id="simple-command-example-in-wpf">Пример простой команды в WPF</h2>
+<p>Самый простой способ использования команды в WPF — использовать предопределенную команду <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> из одного из классов библиотеки команд, элемент управления с собственной поддержкой обработки команд или элемент управления с собственной поддержкой вызова команд.  Команда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a> является одной из предопределенных команд в классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands">ApplicationCommands</a>.  Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> содержит встроенную логику для обработки команды <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a>.  Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> включает собственную поддержку для вызова команд.</p>
+<p>В следующем примере показано, как настроить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> так, что при его выборе вызывается команда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, исходя из фокуса клавиатуры на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>.</p>
+<pre><code class="lang-xaml" name="CommandingOverviewSnippets#CommandingOverviewSimpleCommand">&lt;StackPanel&gt;
+  &lt;Menu&gt;
+    &lt;MenuItem Command=&quot;ApplicationCommands.Paste&quot; /&gt;
+  &lt;/Menu&gt;
+  &lt;TextBox /&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewCommandTargetCodeBehind">// Creating the UI objects
+StackPanel mainStackPanel = new StackPanel();
+TextBox pasteTextBox = new TextBox();
+Menu stackPanelMenu = new Menu();
+MenuItem pasteMenuItem = new MenuItem();
+
+// Adding objects to the panel and the menu
+stackPanelMenu.Items.Add(pasteMenuItem);
+mainStackPanel.Children.Add(stackPanelMenu);
+mainStackPanel.Children.Add(pasteTextBox);
+
+// Setting the command to the Paste command
+pasteMenuItem.Command = ApplicationCommands.Paste;
+
+// Setting the command target to the TextBox
+pasteMenuItem.CommandTarget = pasteTextBox;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="Four_main_Concepts"></a></p>
+<h2 id="four-main-concepts-in-wpf-commanding">Четыре основных понятия в системе команд WPF</h2>
+<p>Модель перенаправляемых команд WPF можно разбить на четыре основных понятия: команда, источник команды, цель команды и привязка команды.</p>
+<ul>
+<li><p><em>Команда</em> — это выполняемое действие.</p>
+</li>
+<li><p><em>Источник команды</em> — это объект, который вызывает команду.</p>
+</li>
+<li><p><em>Цель команды</em> — это объект, для которого выполняется команда.</p>
+</li>
+<li><p><em>Привязка команды</em> — это объект, сопоставляющий логику команды с командой.</p>
+</li>
+</ul>
+<p>В предыдущем примере команда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a> является командой, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> — источником команды, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> — целевым объектом команды, а привязка команды предоставляется элементом управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>.  Следует отметить, что привязка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> не всегда предоставляется элементом управления, который является целевым классом команды.  Довольно часто <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> должен создаваться разработчиком приложения, кроме того, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> может быть присоединен к предку целевого объекта команды.</p>
+<p><a name="Commands"></a></p>
+<h3 id="commands">Команды</h3>
+<p>Команды в WPF создаются путем реализации интерфейса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> предоставляет два метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a>и событие, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> выполняет действия, связанные с командой. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a> Определяет, может ли команда выполняться для текущего целевого объекта команды. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> вызывается, если диспетчер команд, команд, обнаруживает изменения в источнике команды, которые могут сделать недействительной команду, которая вызвана, но еще не выполнена привязкой команды.  Реализация WPF класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> — класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>, который рассматривается в этом обзоре.</p>
+<p>Основными источниками входных данных в WPF являются мышь, клавиатура, рукописный ввод и перенаправленные команды.  Более аппаратно-ориентированные входные данные используют событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> для уведомления объектов на странице приложения о том, что произошло событие ввода.  Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> ничем не отличается.  Методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.execute">Execute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.canexecute">CanExecute</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> не содержат логику приложения для команды, но вызывают перенаправленные события, которые проходят и поднимаются по дереву элементов, пока не обнаружат объект с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> содержит обработчики для этих событий, а также обработчики для выполнения команды.  Дополнительные сведения о маршрутизации событий в WPF см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p>Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.execute">Execute</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> вызывает события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.previewexecuted">PreviewExecuted</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a> для целевого объекта команды.  Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.canexecute">CanExecute</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> вызывает события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.canexecute">CanExecute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.previewcanexecute">PreviewCanExecute</a> для целевого объекта команды.  Эти события проходят и поднимаются по дереву элементов, пока не будет обнаружен объект, имеющий привязку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> для этой конкретной команды.</p>
+<p>WPF предоставляет набор общих перенаправленных команд, распределенных между несколькими классами: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands">MediaCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands">ApplicationCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands">NavigationCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.componentcommands">ComponentCommands</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.editingcommands">EditingCommands</a>.  Эти классы состоят только из объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> и не реализуют логику команды.  За реализацию логики команды отвечает объект, для которого выполняется команда.</p>
+<p><a name="Command_Sources"></a></p>
+<h3 id="command-sources">Источники команд</h3>
+<p>Источник команды — это объект, который вызывает команду.  Примерами источников команды являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a>.</p>
+<p>Источники команд в WPF обычно реализуют интерфейс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> предоставляет три свойства: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandparameter">CommandParameter</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> — Это команда, выполняемая при вызове источника команды.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a> — Это объект, для которого выполняется команда.  Следует отметить, что в WPF свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> применимо, только когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>.  Если для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> задано значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a>, и соответствующая команда — не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>, целевой объект команды не учитывается. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a> не задан, в качестве целевого объекта будет использоваться элемент с фокусом клавиатуры.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandparameter">CommandParameter</a> реализуется ли определяемый пользователем тип, используемый для передачи данных обработчикам команды.</p>
+</li>
+</ul>
+<p>Классы WPF, реализующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase">ButtonBase</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputbinding">InputBinding</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase">ButtonBase</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> вызвать команду при щелчке и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputbinding">InputBinding</a> вызывает команду при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesture">InputGesture</a> связанные с она выполняется.</p>
+<p>В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a> в качестве источника команды для команды <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.properties">Properties</a>.</p>
+<pre><code class="lang-xaml" name="CommandingOverviewSnippets#CommandingOverviewCmdSourceXAML">&lt;StackPanel&gt;
+  &lt;StackPanel.ContextMenu&gt;
+    &lt;ContextMenu&gt;
+      &lt;MenuItem Command=&quot;ApplicationCommands.Properties&quot; /&gt;
+    &lt;/ContextMenu&gt;
+  &lt;/StackPanel.ContextMenu&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewCmdSource">StackPanel cmdSourcePanel = new StackPanel();
+ContextMenu cmdSourceContextMenu = new ContextMenu();
+MenuItem cmdSourceMenuItem = new MenuItem();
+
+// Add ContextMenu to the StackPanel.
+cmdSourcePanel.ContextMenu = cmdSourceContextMenu;
+cmdSourcePanel.ContextMenu.Items.Add(cmdSourceMenuItem);
+
+// Associate Command with MenuItem.
+cmdSourceMenuItem.Command = ApplicationCommands.Properties;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Как правило, источник команды будет осуществлять прослушивание события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.canexecutechanged">CanExecuteChanged</a>.  Это событие сообщает источнику команды о том, что возможность выполнения команды для текущего целевого объекта команды может быть изменена.  Источник команды может запрашивать текущее состояние <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.canexecute">CanExecute</a>.  Источник команды может затем отключаться, если не удается выполнить команду.  Примером этого является переход <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> в неактивное состояние (серый цвет) в случае невозможности выполнить команду.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesture">InputGesture</a> можно использовать в качестве источника команды.  Два типа входных жестов в WPF: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mousegesture">MouseGesture</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a> можно представить как сочетание клавиш, например CTRL + C.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a> состоит из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key">Key</a> и набора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.modifierkeys">ModifierKeys</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mousegesture">MouseGesture</a> состоит из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouseaction">MouseAction</a> и необязательного набора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.modifierkeys">ModifierKeys</a>.</p>
+<p>Чтобы объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesture">InputGesture</a> мог служить источником команды, он должен быть связан с командой. Это можно настроить несколькими способами.  Один из способов — использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputbinding">InputBinding</a>.</p>
+<p>В следующем примере показано, как создать привязку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keybinding">KeyBinding</a> между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>.</p>
+<pre><code class="lang-xaml" name="CommandingOverviewSnippets#CommandingOverviewXAMLKeyBinding">&lt;Window.InputBindings&gt;
+  &lt;KeyBinding Key=&quot;B&quot;
+              Modifiers=&quot;Control&quot; 
+              Command=&quot;ApplicationCommands.Open&quot; /&gt;
+&lt;/Window.InputBindings&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewKeyBinding">KeyGesture OpenKeyGesture = new KeyGesture(
+    Key.B,
+    ModifierKeys.Control);
+
+KeyBinding OpenCmdKeybinding = new KeyBinding(
+    ApplicationCommands.Open,
+    OpenKeyGesture);
+
+this.InputBindings.Add(OpenCmdKeybinding);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Другой способ связать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesture">InputGesture</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> заключается в добавлении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesture">InputGesture</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesturecollection">InputGestureCollection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>.</p>
+<p>В следующем примере демонстрируется, как добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keygesture">KeyGesture</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputgesturecollection">InputGestureCollection</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>.</p>
+<pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewKeyGestureOnCmd">KeyGesture OpenCmdKeyGesture = new KeyGesture(
+    Key.B,
+    ModifierKeys.Control);
+
+ApplicationCommands.Open.InputGestures.Add(OpenCmdKeyGesture);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="Command_Binding"></a></p>
+<h3 id="commandbinding">CommandBinding</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> привязывает команду к обработчикам событий, которые реализуют команду.</p>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> содержит свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.command">Command</a> и события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.previewexecuted">PreviewExecuted</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.executed">Executed</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.previewcanexecute">PreviewCanExecute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.canexecute">CanExecute</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.command">Command</a> — Это команда, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> , связанного с.  Обработчики событий, присоединенные к событиям <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.previewexecuted">PreviewExecuted</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.executed">Executed</a>, реализуют логику команды.  Обработчики событий, присоединенные к событиям <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.previewcanexecute">PreviewCanExecute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.canexecute">CanExecute</a>, определяют, может ли эта команда выполняться для текущего целевого объекта команды.</p>
+<p>В следующем примере демонстрируется создание объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> в корневом объекте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> приложения.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> связывает команду <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.open">Open</a> с обработчиками <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.canexecute">CanExecute</a>.</p>
+<pre><code class="lang-xaml" name="commandwithhandler#CommandHandlerCommandBinding">&lt;Window.CommandBindings&gt;
+  &lt;CommandBinding Command=&quot;ApplicationCommands.Open&quot;
+                  Executed=&quot;OpenCmdExecuted&quot;
+                  CanExecute=&quot;OpenCmdCanExecute&quot;/&gt;
+&lt;/Window.CommandBindings&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandHandlerProcedural#CommandHandlerBindingInit">// Creating CommandBinding and attaching an Executed and CanExecute handler
+CommandBinding OpenCmdBinding = new CommandBinding(
+    ApplicationCommands.Open,
+    OpenCmdExecuted,
+    OpenCmdCanExecute);
+
+this.CommandBindings.Add(OpenCmdBinding);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Затем создаются объекты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.executedroutedeventhandler">ExecutedRoutedEventHandler</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.canexecuteroutedeventhandler">CanExecuteRoutedEventHandler</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.executedroutedeventhandler">ExecutedRoutedEventHandler</a> открывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.messagebox">MessageBox</a>, где отображается строка, сообщающая о выполнении команды.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.canexecuteroutedeventhandler">CanExecuteRoutedEventHandler</a> задает для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.canexecuteroutedeventargs.canexecute">CanExecute</a> значение <code>true</code>.</p>
+<pre><code class="lang-csharp" name="commandwithhandler#CommandHandlerExecutedHandler">void OpenCmdExecuted(object target, ExecutedRoutedEventArgs e)
+{
+    String command, targetobj;
+    command = ((RoutedCommand)e.Command).Name;
+    targetobj = ((FrameworkElement)target).Name;
+    MessageBox.Show(&quot;The &quot; + command +  &quot; command has been invoked on target object &quot; + targetobj);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="commandwithhandler#CommandHandlerCanExecuteHandler">void OpenCmdCanExecute(object sender, CanExecuteRoutedEventArgs e)
+{
+    e.CanExecute = true;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> присоединяется к конкретному объекту, например к корневому объекту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> приложения или элемента управления.  Объект, к которому присоединяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a>, определяет область привязки.  Например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a>, присоединенный к предку целевого объекта команды, достижим для события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding.executed">Executed</a>, а <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a>, присоединенный к потомку целевого объекта команды, недостижим.  Это напрямую связано со способом перехода события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> из объекта, который вызывает событие.</p>
+<p>В некоторых случаях <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> присоединяется к целевому объекту команды напрямую, например с помощью класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> и команд <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.cut">Cut</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.copy">Copy</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a>. Довольно часто, однако, более удобным будет подключение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> к предку целевого объекта команды, такому как главное окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> или объект приложения, особенно в том случае, если одну привязку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> можно использовать для нескольких целей команды.  Это необходимо учитывать при создании инфраструктуры системы команд.</p>
+<p><a name="Commane_Target"></a></p>
+<h3 id="command-target">Цель команды</h3>
+<p>Целью команды является элемент, для которого выполняется команда.  По отношению к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> целевой объект команды — это элемент, с которого начинается перенаправление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.canexecute">CanExecute</a>.  Как было отмечено ранее, в WPF свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> применимо, только когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>.  Если для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> задано значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.commandtarget">CommandTarget</a>, и соответствующая команда — не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>, целевой объект команды не учитывается.</p>
+<p>Источник команды может явно задавать целевой объект команды.  Если цель команды не определена, в качестве целевого объекта будет использоваться элемент с фокусом клавиатуры.  Одно из преимуществ использования элемента с фокусом клавиатуры в качестве цели команды является то, что это позволяет разработчику приложения использовать один источник команды для вызова команд для нескольких целей без необходимости отслеживания целевого объекта команды.  Например, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> вызывает команду <strong>Вставить</strong> в приложении, которое имеет элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> и элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.passwordbox">PasswordBox</a>, целевым объектом может быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.passwordbox">PasswordBox</a> в зависимости от того, какой элемент управления имеет фокус клавиатуры.</p>
+<p>В следующем примере показано явное задание цели команды в разметке и в коде программной части.</p>
+<pre><code class="lang-xaml" name="CommandingOverviewSnippets#CommandingOverviewXAMLCommandTarget">&lt;StackPanel&gt;
+  &lt;Menu&gt;
+    &lt;MenuItem Command=&quot;ApplicationCommands.Paste&quot;
+              CommandTarget=&quot;{Binding ElementName=mainTextBox}&quot; /&gt;
+  &lt;/Menu&gt;
+  &lt;TextBox Name=&quot;mainTextBox&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewCommandTargetCodeBehind">// Creating the UI objects
+StackPanel mainStackPanel = new StackPanel();
+TextBox pasteTextBox = new TextBox();
+Menu stackPanelMenu = new Menu();
+MenuItem pasteMenuItem = new MenuItem();
+
+// Adding objects to the panel and the menu
+stackPanelMenu.Items.Add(pasteMenuItem);
+mainStackPanel.Children.Add(stackPanelMenu);
+mainStackPanel.Children.Add(pasteTextBox);
+
+// Setting the command to the Paste command
+pasteMenuItem.Command = ApplicationCommands.Paste;
+
+// Setting the command target to the TextBox
+pasteMenuItem.CommandTarget = pasteTextBox;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="Command_Manager"></a></p>
+<h3 id="the-commandmanager">Диспетчер команд CommandManager</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager">CommandManager</a> выполняет ряд функций, связанных с командами.  Он предоставляет набор статических методов для добавления обработчиков событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.previewexecuted">PreviewExecuted</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.previewcanexecute">PreviewCanExecute</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.canexecute">CanExecute</a> в конкретный элемент и их удаления из него.  Он предоставляет средства для регистрации объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputbinding">InputBinding</a> для определенного класса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager">CommandManager</a> также предоставляет средства (с помощью события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.requerysuggested">RequerySuggested</a>) для уведомления команды о необходимости вызова события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a>.</p>
+<p>Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.invalidaterequerysuggested">InvalidateRequerySuggested</a> вынуждает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager">CommandManager</a> вызвать событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.requerysuggested">RequerySuggested</a>.  Это удобно для ситуаций, когда требуется отключить или включить команду, но отсутствуют условия, о которых известно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager">CommandManager</a>.</p>
+<p><a name="Command_Library"></a></p>
+<h2 id="command-library">Библиотека команд</h2>
+<p>WPF предоставляет набор встроенных команд.  Библиотека команд включает следующие классы: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands">ApplicationCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands">NavigationCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands">MediaCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.editingcommands">EditingCommands</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.componentcommands">ComponentCommands</a>.  Эти классы предоставляют команды, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.cut">Cut</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands.browseback">BrowseBack</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands.browseforward">BrowseForward</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands.play">Play</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands.stop">Stop</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands.pause">Pause</a>.</p>
+<p>Многие из этих команд содержат набор привязок ввода по умолчанию.  Например, если вы задаете обработку приложением команды копирования, вы автоматически получаете привязку CTRL+C. Кроме того, вы получаете привязки для других устройств ввода, таких как ввод с помощью пера и голосовых данных Планшетный ПК.</p>
+<p>При ссылке на команды в различных библиотеках команд с помощью XAML, обычно можно опустить имя класса библиотеки, который предоставляет статическое свойство команды. Как правило, имена команд задаются однозначно в виде строк и существуют типы владельца, которые обеспечивает логическую группировку команд, однако они не являются необходимыми для устранения неоднозначности. Например, можно указать <code>Command=&quot;Cut&quot;</code> вместо более подробной команды <code>Command=&quot;ApplicationCommands.Cut&quot;</code>. Этот удобный механизм встроен в обработчик команд WPF XAML (точнее, это поведение преобразователя типов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a>, на который обработчик WPF XAML ссылается во время загрузки).</p>
+<p><a name="creating_commands"></a></p>
+<h2 id="creating-custom-commands">Создание настраиваемых команд</h2>
+<p>Если команды в классах библиотеки команд не соответствуют вашим потребностям, вы можете создать собственные команды.  Настраиваемые команды можно создать двумя способами.  Первый способ подразумевает создание с нуля и реализацию интерфейса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a>.  Другой способ, а также наиболее распространенный подход, — создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routeduicommand">RoutedUICommand</a>.</p>
+<p>Пример создания настраиваемой команды <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> см. в разделе <a href="https://github.com/Microsoft/WPF-Samples/tree/master/Input%20and%20Commands/CustomRoutedCommand">Create a Custom RoutedCommand Sample</a> (Создание примера настраиваемой команды RoutedCommand).</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputbinding">InputBinding</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager">CommandManager</a></li>
+<li><a href="input-overview.html">Общие сведения о входных данных</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="how-to-implement-icommandsource.html">Реализация ICommandSource</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms741839(v=vs.90)">Практическое руководство. Добавление команды в объект MenuItem</a></li>
+<li><a href="https://github.com/Microsoft/WPF-Samples/tree/master/Input%20and%20Commands/CustomRoutedCommand">Создание примера настраиваемой команды RoutedCommand</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

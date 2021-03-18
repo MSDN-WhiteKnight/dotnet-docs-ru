@@ -1,0 +1,1248 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1077; &#1072;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1086;&#1074; &#1082; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1077; &#1072;&#1090;&#1088;&#1080;&#1073;&#1091;&#1090;&#1086;&#1074; &#1082; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072;&#1084; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-apply-attributes-in-windows-forms-controls">Практическое руководство. Применение атрибутов к элементам управления Windows Forms</h1>
+
+<p>Для разработки компонентов и элементов управления, которые правильно взаимодействуют со средой разработки и правильно выполнять во время выполнения, необходимо правильно применять атрибуты к классам и членам.</p>
+<h2 id="example">Пример</h2>
+<p>В следующем примере кода демонстрируется использование нескольких атрибутов в пользовательский элемент управления. Элемент управления демонстрирует возможности простые операции ведения журнала. Когда элемент управления привязан к источнику данных, он отображает значения, отправленные источником данных в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления. Если значение превышает значение, заданное параметром <code>Threshold</code> свойства <code>ThresholdExceeded</code> события.</p>
+<p><code>AttributesDemoControl</code> Записывает значения с <code>LogEntry</code> класса. <code>LogEntry</code> Класс — это класс шаблона, который означает, что он параметризован в типе, который он входит в систему. Например если <code>AttributesDemoControl</code> записывает значения типа <code>float</code>, каждая <code>LogEntry</code> экземпляра объявляется и используется следующим образом.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#110">// This method handles the timer's Elapsed event. It queries
+// the performance counter for the next value, packs the 
+// value in a LogEntry object, and adds the new LogEntry to
+// the list managed by the BindingSource.
+private void timer1_Elapsed(
+    object sender, 
+    System.Timers.ElapsedEventArgs e)
+{	
+    // Get the latest value from the performance counter.
+    float val = this.performanceCounter1.NextValue();
+
+    // The performance counter returns values of type float, 
+    // but any type that implements the IComparable interface
+    // will work.
+    LogEntry&lt;float&gt; entry = new LogEntry&lt;float&gt;(val, DateTime.Now);
+
+    // Add the new LogEntry to the BindingSource list.
+    this.bindingSource1.Add(entry);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Так как <code>LogEntry</code> параметризован произвольным типом, он должен использовать отражение для работы с типом параметра. Функция порогового значения для работы, тип параметра <code>T</code> должен реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable">IComparable</a> интерфейс.</p>
+</div>
+<p>Форма, содержащая <code>AttributesDemoControl</code> периодически опрашивает счетчик производительности. Каждое значение упаковывается в <code>LogEntry</code> соответствующего типа и добавления в форму <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>. <code>AttributesDemoControl</code> Получает значение через свою привязку данных и отображает значение в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#1">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Diagnostics;
+using System.Drawing;
+using System.Data;
+using System.Reflection;
+using System.Text;
+using System.Windows.Forms;
+
+// This sample demonstrates the use of various attributes for
+// authoring a control. 
+namespace AttributesDemoControlLibrary
+{
+    // This is the event handler delegate for the ThresholdExceeded event.
+    public delegate void ThresholdExceededEventHandler(ThresholdExceededEventArgs e);
+
+    // This control demonstrates a simple logging capability. 
+    [ComplexBindingProperties(&quot;DataSource&quot;, &quot;DataMember&quot;)]
+    [DefaultBindingProperty(&quot;TitleText&quot;)]
+    [DefaultEvent(&quot;ThresholdExceeded&quot;)]
+    [DefaultProperty(&quot;Threshold&quot;)]
+    [HelpKeywordAttribute(typeof(UserControl))]
+    [ToolboxItem(&quot;System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design&quot;)]
+    public class AttributesDemoControl : UserControl
+    {
+
+        // This backs the Threshold property.
+        private object thresholdValue;
+
+        // The default fore color value for DataGridView cells that
+        // contain values that exceed the threshold.
+        private static Color defaultAlertForeColorValue = Color.White;
+
+        // The default back color value for DataGridView cells that
+        // contain values that exceed the threshold.
+        private static Color defaultAlertBackColorValue = Color.Red;
+
+        // The ambient color value.
+        private static Color ambientColorValue = Color.Empty;
+
+        // The fore color value for DataGridView cells that
+        // contain values that exceed the threshold.
+        private Color alertForeColorValue = defaultAlertForeColorValue;
+
+        // The back color value for DataGridView cells that
+        // contain values that exceed the threshold.
+        private Color alertBackColorValue = defaultAlertBackColorValue;
+
+        // Child controls that comprise this UserControl.
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView dataGridView1;
+        private Label label1;
+
+        // Required for designer support.
+        private System.ComponentModel.IContainer components = null;
+
+        // Default constructor.
+        public AttributesDemoControl()
+        {
+            InitializeComponent();
+        }
+
+        [Category(&quot;Appearance&quot;)]
+        [Description(&quot;The title of the log data.&quot;)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Localizable(true)]
+        [HelpKeywordAttribute(&quot;AttributesDemoControlLibrary.AttributesDemoControl.TitleText&quot;)]
+        public string TitleText
+        {
+            get
+            {
+                return this.label1.Text;
+            }
+
+            set
+            {
+                this.label1.Text = value;
+            }
+        }
+
+        // The inherited Text property is hidden at design time and 
+        // raises an exception at run time. This enforces a requirement
+        // that client code uses the TitleText property instead.
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override string Text
+        {
+            get
+            {
+                throw new NotSupportedException();
+            }
+            set
+            {
+                throw new NotSupportedException();
+            }
+        }
+
+        [AmbientValue(typeof(Color), &quot;Empty&quot;)]
+        [Category(&quot;Appearance&quot;)]
+        [DefaultValue(typeof(Color), &quot;White&quot;)]
+        [Description(&quot;The color used for painting alert text.&quot;)]
+        public Color AlertForeColor
+        {
+            get
+            {
+                if (this.alertForeColorValue == Color.Empty &amp;&amp;
+                    this.Parent != null)
+                {
+                    return Parent.ForeColor;
+                }
+
+                return this.alertForeColorValue;
+            }
+
+            set
+            {
+                this.alertForeColorValue = value;
+            }
+        }
+
+        // This method is used by designers to enable resetting the
+        // property to its default value.
+        public void ResetAlertForeColor()
+        {
+            this.AlertForeColor = AttributesDemoControl.defaultAlertForeColorValue;
+        }
+
+        // This method indicates to designers whether the property
+        // value is different from the ambient value, in which case
+        // the designer should persist the value.
+        private bool ShouldSerializeAlertForeColor()
+        {
+            return (this.alertForeColorValue != AttributesDemoControl.ambientColorValue);
+        }
+
+        [AmbientValue(typeof(Color), &quot;Empty&quot;)]
+        [Category(&quot;Appearance&quot;)]
+        [DefaultValue(typeof(Color), &quot;Red&quot;)]
+        [Description(&quot;The background color for painting alert text.&quot;)]
+        public Color AlertBackColor
+        {
+            get
+            {
+                if (this.alertBackColorValue == Color.Empty &amp;&amp;
+                    this.Parent != null)
+                {
+                    return Parent.BackColor;
+                }
+
+                return this.alertBackColorValue;
+            }
+
+            set
+            {
+                this.alertBackColorValue = value;
+            }
+        }
+
+        // This method is used by designers to enable resetting the
+        // property to its default value.
+        public void ResetAlertBackColor()
+        {
+            this.AlertBackColor = AttributesDemoControl.defaultAlertBackColorValue;
+        }
+
+        // This method indicates to designers whether the property
+        // value is different from the ambient value, in which case
+        // the designer should persist the value.
+        private bool ShouldSerializeAlertBackColor()
+        {
+            return (this.alertBackColorValue != AttributesDemoControl.ambientColorValue);
+        }
+
+        [Category(&quot;Data&quot;)]
+        [Description(&quot;Indicates the source of data for the control.&quot;)]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public object DataSource
+        {
+            get
+            {
+                return this.dataGridView1.DataSource;
+            }
+
+            set
+            {
+                this.dataGridView1.DataSource = value;
+            }
+        }
+
+        [Category(&quot;Data&quot;)]
+        [Description(&quot;Indicates a sub-list of the data source to show in the control.&quot;)]
+        public string DataMember
+        {
+            get
+            {
+                return this.dataGridView1.DataMember;
+            }
+
+            set
+            {
+                this.dataGridView1.DataMember = value;
+            }
+        }
+
+        // This property would normally have its BrowsableAttribute 
+        // set to false, but this code demonstrates using 
+        // ReadOnlyAttribute, so BrowsableAttribute is true to show 
+        // it in any attached PropertyGrid control.
+        [Browsable(true)]
+        [Category(&quot;Behavior&quot;)]
+        [Description(&quot;The timestamp of the latest entry.&quot;)]
+        [ReadOnly(true)]
+        public DateTime CurrentLogTime
+        {
+            get
+            {
+                int lastRowIndex = 
+                    this.dataGridView1.Rows.GetLastRow(
+                    DataGridViewElementStates.Visible);
+
+                if (lastRowIndex &gt; -1)
+                {
+                    DataGridViewRow lastRow = this.dataGridView1.Rows[lastRowIndex];
+                    DataGridViewCell lastCell = lastRow.Cells[&quot;EntryTime&quot;];
+                    return ((DateTime)lastCell.Value);
+                }
+                else
+                {
+                    return DateTime.MinValue;
+                }
+            }
+
+            set
+            {
+            }
+        }
+
+        [Category(&quot;Behavior&quot;)]
+        [Description(&quot;The value above which the ThresholdExceeded event will be raised.&quot;)]
+        public object Threshold
+        {
+            get
+            {
+                return this.thresholdValue;
+            }
+
+            set
+            {
+                this.thresholdValue = value;
+            }
+        }
+
+        // This property exists only to demonstrate the 
+        // PasswordPropertyText attribute. When this control 
+        // is attached to a PropertyGrid control, the returned 
+        // string will be displayed with obscuring characters
+        // such as asterisks. This property has no other effect.
+        [Category(&quot;Security&quot;)]
+        [Description(&quot;Demonstrates PasswordPropertyTextAttribute.&quot;)]
+        [PasswordPropertyText(true)]
+        public string Password
+        {
+            get
+            {
+                return &quot;This is a demo password.&quot;;
+            }
+        }
+
+        // This property exists only to demonstrate the 
+        // DisplayName attribute. When this control 
+        // is attached to a PropertyGrid control, the
+        // property will be appear as &quot;RenamedProperty&quot;
+        // instead of &quot;MisnamedProperty&quot;.
+        [Description(&quot;Demonstrates DisplayNameAttribute.&quot;)]
+        [DisplayName(&quot;RenamedProperty&quot;)]
+        public bool MisnamedProperty
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        // This is the declaration for the ThresholdExceeded event.
+        public event ThresholdExceededEventHandler ThresholdExceeded;
+
+        #region Implementation
+
+        // This is the event handler for the DataGridView control's 
+        // CellFormatting event. Handling this event allows the 
+        // AttributesDemoControl to examine the incoming log entries
+        // from the data source as they arrive.
+        //
+        // If the cell for which this event is raised holds the
+        // log entry's timestamp, the cell value is formatted with 
+        // the full date/time pattern. 
+        // 
+        // Otherwise, the cell's value is assumed to hold the log 
+        // entry value. If the value exceeds the threshold value, 
+        // the cell is painted with the colors specified by the
+        // AlertForeColor and AlertBackColor properties, after which
+        // the ThresholdExceeded is raised. For this comparison to 
+        // succeed, the log entry's type must implement the IComparable 
+        // interface.
+        private void dataGridView1_CellFormatting(
+            object sender,
+            DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                if (e.Value != null)
+                {
+                    if (e.Value is DateTime)
+                    {
+                        // Display the log entry time with the 
+                        // full date/time pattern (long time).
+                        e.CellStyle.Format = &quot;F&quot;;
+                    }
+                    else
+                    {
+                        // Scroll to the most recent entry.
+                        DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                        DataGridViewCell cell = row.Cells[e.ColumnIndex];
+                        this.dataGridView1.FirstDisplayedCell = cell;
+
+                        if (this.thresholdValue != null)
+                        {
+                            // Get the type of the log entry.
+                            object val = e.Value;
+                            Type paramType = val.GetType();
+
+                            // Compare the log entry value to the threshold value.
+                            // Use reflection to call the CompareTo method on the
+                            // template parameter's type. 
+                            int compareVal = (int)paramType.InvokeMember(
+                                &quot;CompareTo&quot;,
+                                BindingFlags.Default | BindingFlags.InvokeMethod,
+                                null,
+                                e.Value,
+                                new object[] { this.thresholdValue },
+                                System.Globalization.CultureInfo.InvariantCulture);
+
+                            // If the log entry value exceeds the threshold value,
+                            // set the cell's fore color and back color properties
+                            // and raise the ThresholdExceeded event.
+                            if (compareVal &gt; 0)
+                            {
+                                e.CellStyle.BackColor = this.alertBackColorValue;
+                                e.CellStyle.ForeColor = this.alertForeColorValue;
+
+                                ThresholdExceededEventArgs teea =
+                                    new ThresholdExceededEventArgs(
+                                    this.thresholdValue,
+                                    e.Value);
+                                this.ThresholdExceeded(teea);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message);
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing &amp;&amp; (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel1.Name = &quot;tableLayoutPanel1&quot;;
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(425, 424);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font(&quot;Microsoft Sans Serif&quot;, 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 4;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(13, 57);
+            this.dataGridView1.Name = &quot;dataGridView1&quot;;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(399, 354);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = &quot;label1&quot;;
+            this.label1.Size = new System.Drawing.Size(399, 38);
+            this.label1.TabIndex = 2;
+            this.label1.Text = &quot;label1&quot;;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AttributesDemoControl
+            // 
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = &quot;AttributesDemoControl&quot;;
+            this.Padding = new System.Windows.Forms.Padding(10);
+            this.Size = new System.Drawing.Size(445, 444);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+    }
+
+    // This is the EventArgs class for the ThresholdExceeded event.
+    public class ThresholdExceededEventArgs : EventArgs
+    {
+        private object thresholdValue = null;
+        private object exceedingValue = null;
+
+        public ThresholdExceededEventArgs(
+            object thresholdValue,
+            object exceedingValue)
+        {
+            this.thresholdValue = thresholdValue;
+            this.exceedingValue = exceedingValue;
+        }
+
+        public object ThresholdValue
+        {
+            get
+            {
+                return this.thresholdValue;
+            }
+        }
+
+        public object ExceedingValue
+        {
+            get
+            {
+                return this.exceedingValue;
+            }
+        }
+    }
+
+    // This class encapsulates a log entry. It is a parameterized 
+    // type (also known as a template class). The parameter type T
+    // defines the type of data being logged. For threshold detection
+    // to work, this type must implement the IComparable interface.
+    [TypeConverter(&quot;LogEntryTypeConverter&quot;)]
+    public class LogEntry&lt;T&gt; where T : IComparable
+    {
+        private T entryValue;
+        private DateTime entryTimeValue;
+
+        public LogEntry(
+            T value,
+            DateTime time)
+        {
+            this.entryValue = value;
+            this.entryTimeValue = time;
+        }
+
+        public T Entry
+        {
+            get
+            {
+                return this.entryValue;
+            }
+        }
+
+        public DateTime EntryTime
+        {
+            get
+            {
+                return this.entryTimeValue;
+            }
+        }
+
+        // This is the TypeConverter for the LogEntry class.
+        public class LogEntryTypeConverter : TypeConverter
+        {
+            public override bool CanConvertFrom(
+                ITypeDescriptorContext context,
+                Type sourceType)
+            {
+                if (sourceType == typeof(string))
+                {
+                    return true;
+                }
+
+                return base.CanConvertFrom(context, sourceType);
+            }
+
+            public override object ConvertFrom(
+                ITypeDescriptorContext context,
+                System.Globalization.CultureInfo culture,
+                object value)
+            {
+                if (value is string)
+                {
+                    string[] v = ((string)value).Split(new char[] { '|' });
+
+                    Type paramType = typeof(T);
+                    T entryValue = (T)paramType.InvokeMember(
+                        &quot;Parse&quot;,
+                        BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
+                        null,
+                        null,
+                        new string[] { v[0] },
+                        culture);
+
+                    return new LogEntry&lt;T&gt;(
+                        entryValue,
+                        DateTime.Parse(v[2]));
+                }
+
+                return base.ConvertFrom(context, culture, value);
+            }
+
+            public override object ConvertTo(
+                ITypeDescriptorContext context,
+                System.Globalization.CultureInfo culture,
+                object value,
+                Type destinationType)
+            {
+                if (destinationType == typeof(string))
+                {
+                    LogEntry&lt;T&gt; le = value as LogEntry&lt;T&gt;;
+
+                    string stringRepresentation =
+                        String.Format(&quot;{0} | {1}&quot;,
+                        le.Entry,
+                        le.EntryTime);
+
+                    return stringRepresentation;
+                }
+
+                return base.ConvertTo(context, culture, value, destinationType);
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#100">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
+using AttributesDemoControlLibrary;
+
+// This sample demonstrates using the AttributesDemoControl to log
+// data from a data source. 
+namespace AttributesDemoControlTest
+{
+    public class Form1 : Form
+    {	
+        private BindingSource bindingSource1;
+        private System.Diagnostics.PerformanceCounter performanceCounter1;
+        private Button startButton;
+        private Button stopButton;
+        private System.Timers.Timer timer1;
+        private ToolStripStatusLabel statusStripPanel1;
+        private NumericUpDown numericUpDown1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private TableLayoutPanel tableLayoutPanel1;
+        private AttributesDemoControl attributesDemoControl1;
+        private System.ComponentModel.IContainer components = null;
+
+        // This form uses an AttributesDemoControl to display a stream
+        // of LogEntry objects. The data stream is generated by polling
+        // a performance counter and communicating the counter values 
+        // to the control with data binding.
+        public Form1()
+        {
+            InitializeComponent();
+
+            // Set the initial value of the threshold up/down control 
+            // to the control's threshold value.
+            this.numericUpDown1.Value = 
+                (decimal)(float)this.attributesDemoControl1.Threshold;
+
+            // Assign the performance counter's name to the control's 
+            // title text.
+            this.attributesDemoControl1.TitleText = 
+                this.performanceCounter1.CounterName;
+        }
+
+        // This method handles the ThresholdExceeded event. It posts
+        // the value that exceeded the threshold to the status strip.  
+        private void attributesDemoControl1_ThresholdExceeded(
+            ThresholdExceededEventArgs e)
+        {
+            string msg = String.Format(
+                &quot;{0}: Value {1} exceeded threshold {2}&quot;, 
+                this.attributesDemoControl1.CurrentLogTime, 
+                e.ExceedingValue, 
+                e.ThresholdValue);
+
+            this.ReportStatus( msg );
+        }
+
+        // This method handles the timer's Elapsed event. It queries
+        // the performance counter for the next value, packs the 
+        // value in a LogEntry object, and adds the new LogEntry to
+        // the list managed by the BindingSource.
+        private void timer1_Elapsed(
+            object sender, 
+            System.Timers.ElapsedEventArgs e)
+        {	
+            // Get the latest value from the performance counter.
+            float val = this.performanceCounter1.NextValue();
+
+            // The performance counter returns values of type float, 
+            // but any type that implements the IComparable interface
+            // will work.
+            LogEntry&lt;float&gt; entry = new LogEntry&lt;float&gt;(val, DateTime.Now);
+
+            // Add the new LogEntry to the BindingSource list.
+            this.bindingSource1.Add(entry);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            this.attributesDemoControl1.Threshold = 
+                (float)this.numericUpDown1.Value;
+
+            string msg = String.Format(
+                &quot;Threshold changed to {0}&quot;, 
+                this.attributesDemoControl1.Threshold);
+
+            this.ReportStatus(msg);
+        }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            this.ReportStatus(DateTime.Now + &quot;: Starting&quot;);
+
+            this.timer1.Start();
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            this.ReportStatus(DateTime.Now + &quot;: Stopping&quot;);
+
+            this.timer1.Stop();
+        }
+
+        private void ReportStatus(string msg)
+        {
+            if (msg != null)
+            {
+                this.statusStripPanel1.Text = msg;
+            }
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing &amp;&amp; (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+        
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            this.startButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Timers.Timer();
+            this.statusStripPanel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.attributesDemoControl1 = new AttributesDemoControlLibrary.AttributesDemoControl();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timer1)).BeginInit();
+            
+            
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // performanceCounter1
+            // 
+            this.performanceCounter1.CategoryName = &quot;.NET CLR Memory&quot;;
+            this.performanceCounter1.CounterName = &quot;Gen 0 heap size&quot;;
+            this.performanceCounter1.InstanceName = &quot;_Global_&quot;;
+            // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(31, 25);
+            this.startButton.Name = &quot;startButton&quot;;
+            this.startButton.TabIndex = 1;
+            this.startButton.Text = &quot;Start&quot;;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // stopButton
+            // 
+            this.stopButton.Location = new System.Drawing.Point(112, 25);
+            this.stopButton.Name = &quot;stopButton&quot;;
+            this.stopButton.TabIndex = 2;
+            this.stopButton.Text = &quot;Stop&quot;;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.SynchronizingObject = this;
+            this.timer1.Elapsed += new System.Timers.ElapsedEventHandler(this.timer1_Elapsed);
+            // 
+            // statusStripPanel1
+            // 
+            this.statusStripPanel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.statusStripPanel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.statusStripPanel1.Name = &quot;statusStripPanel1&quot;;
+            this.statusStripPanel1.Text = &quot;Ready&quot;;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(37, 29);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.numericUpDown1.Name = &quot;numericUpDown1&quot;;
+            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Location = new System.Drawing.Point(280, 326);
+            this.groupBox1.Name = &quot;groupBox1&quot;;
+            this.groupBox1.Size = new System.Drawing.Size(200, 70);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = &quot;Threshold Value&quot;;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.startButton);
+            this.groupBox2.Controls.Add(this.stopButton);
+            this.groupBox2.Location = new System.Drawing.Point(26, 327);
+            this.groupBox2.Name = &quot;groupBox2&quot;;
+            this.groupBox2.Size = new System.Drawing.Size(214, 68);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = &quot;Logging&quot;;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.attributesDemoControl1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = &quot;tableLayoutPanel1&quot;;
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(514, 411);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
+            // attributesDemoControl1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.attributesDemoControl1, 2);
+            this.attributesDemoControl1.DataMember = &quot;&quot;;
+            this.attributesDemoControl1.DataSource = this.bindingSource1;
+            this.attributesDemoControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attributesDemoControl1.Location = new System.Drawing.Point(13, 13);
+            this.attributesDemoControl1.Name = &quot;attributesDemoControl1&quot;;
+            this.attributesDemoControl1.Padding = new System.Windows.Forms.Padding(10);
+            this.attributesDemoControl1.Size = new System.Drawing.Size(488, 306);
+            this.attributesDemoControl1.TabIndex = 0;
+            this.attributesDemoControl1.Threshold = 200000F;
+            this.attributesDemoControl1.TitleText = &quot;TITLE&quot;;
+            this.attributesDemoControl1.ThresholdExceeded += new AttributesDemoControlLibrary.ThresholdExceededEventHandler(this.attributesDemoControl1_ThresholdExceeded);
+            // 
+            // Form1
+            // 
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(514, 430);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font(&quot;Microsoft Sans Serif&quot;, 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = &quot;Form1&quot;;
+            this.Text = &quot;Form1&quot;;
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В первом примере кода — <code>AttributesDemoControl</code> реализации. Во втором примере кода демонстрируется форму, которая использует <code>AttributesDemoControl</code>.</p>
+<h2 id="class-level-attributes">Атрибуты уровня класса</h2>
+<p>Некоторые атрибуты применяются на уровне класса. В следующем примере кода показаны атрибуты, которые обычно применяются к элементу управления Windows Forms.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#20">// This control demonstrates a simple logging capability. 
+[ComplexBindingProperties(&quot;DataSource&quot;, &quot;DataMember&quot;)]
+[DefaultBindingProperty(&quot;TitleText&quot;)]
+[DefaultEvent(&quot;ThresholdExceeded&quot;)]
+[DefaultProperty(&quot;Threshold&quot;)]
+[HelpKeywordAttribute(typeof(UserControl))]
+[ToolboxItem(&quot;System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design&quot;)]
+public class AttributesDemoControl : UserControl
+{
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="typeconverter-attribute">Атрибут TypeConverter</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverterattribute">TypeConverterAttribute</a> является еще одним часто используемые атрибутом уровня класса. В следующем примере кода показано его использование для <code>LogEntry</code> класса. В этом примере также показана реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typeconverter">TypeConverter</a> для <code>LogEntry</code> тип с именем <code>LogEntryTypeConverter</code>.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#5">// This class encapsulates a log entry. It is a parameterized 
+// type (also known as a template class). The parameter type T
+// defines the type of data being logged. For threshold detection
+// to work, this type must implement the IComparable interface.
+[TypeConverter(&quot;LogEntryTypeConverter&quot;)]
+public class LogEntry&lt;T&gt; where T : IComparable
+{
+    private T entryValue;
+    private DateTime entryTimeValue;
+
+    public LogEntry(
+        T value,
+        DateTime time)
+    {
+        this.entryValue = value;
+        this.entryTimeValue = time;
+    }
+
+    public T Entry
+    {
+        get
+        {
+            return this.entryValue;
+        }
+    }
+
+    public DateTime EntryTime
+    {
+        get
+        {
+            return this.entryTimeValue;
+        }
+    }
+
+    // This is the TypeConverter for the LogEntry class.
+    public class LogEntryTypeConverter : TypeConverter
+    {
+        public override bool CanConvertFrom(
+            ITypeDescriptorContext context,
+            Type sourceType)
+        {
+            if (sourceType == typeof(string))
+            {
+                return true;
+            }
+
+            return base.CanConvertFrom(context, sourceType);
+        }
+
+        public override object ConvertFrom(
+            ITypeDescriptorContext context,
+            System.Globalization.CultureInfo culture,
+            object value)
+        {
+            if (value is string)
+            {
+                string[] v = ((string)value).Split(new char[] { '|' });
+
+                Type paramType = typeof(T);
+                T entryValue = (T)paramType.InvokeMember(
+                    &quot;Parse&quot;,
+                    BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
+                    null,
+                    null,
+                    new string[] { v[0] },
+                    culture);
+
+                return new LogEntry&lt;T&gt;(
+                    entryValue,
+                    DateTime.Parse(v[2]));
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+
+        public override object ConvertTo(
+            ITypeDescriptorContext context,
+            System.Globalization.CultureInfo culture,
+            object value,
+            Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                LogEntry&lt;T&gt; le = value as LogEntry&lt;T&gt;;
+
+                string stringRepresentation =
+                    String.Format(&quot;{0} | {1}&quot;,
+                    le.Entry,
+                    le.EntryTime);
+
+                return stringRepresentation;
+            }
+
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="member-level-attributes">Атрибуты на уровне элемента</h2>
+<p>Некоторые атрибуты применяются на уровне членов. В следующих примерах кода некоторые атрибуты, которые обычно применяются к свойствам элементов управления Windows Forms.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#21">[Category(&quot;Appearance&quot;)]
+[Description(&quot;The title of the log data.&quot;)]
+[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+[Localizable(true)]
+[HelpKeywordAttribute(&quot;AttributesDemoControlLibrary.AttributesDemoControl.TitleText&quot;)]
+public string TitleText
+{
+    get
+    {
+        return this.label1.Text;
+    }
+
+    set
+    {
+        this.label1.Text = value;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="ambientvalue-attribute">Атрибут AmbientValue</h3>
+<p>В следующем примере демонстрируется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.ambientvalueattribute">AmbientValueAttribute</a> ; содержит код, поддерживающий взаимодействие со средой разработки. Это взаимодействие называется <em>окружением</em>.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#23">[AmbientValue(typeof(Color), &quot;Empty&quot;)]
+[Category(&quot;Appearance&quot;)]
+[DefaultValue(typeof(Color), &quot;White&quot;)]
+[Description(&quot;The color used for painting alert text.&quot;)]
+public Color AlertForeColor
+{
+    get
+    {
+        if (this.alertForeColorValue == Color.Empty &amp;&amp;
+            this.Parent != null)
+        {
+            return Parent.ForeColor;
+        }
+
+        return this.alertForeColorValue;
+    }
+
+    set
+    {
+        this.alertForeColorValue = value;
+    }
+}
+
+// This method is used by designers to enable resetting the
+// property to its default value.
+public void ResetAlertForeColor()
+{
+    this.AlertForeColor = AttributesDemoControl.defaultAlertForeColorValue;
+}
+
+// This method indicates to designers whether the property
+// value is different from the ambient value, in which case
+// the designer should persist the value.
+private bool ShouldSerializeAlertForeColor()
+{
+    return (this.alertForeColorValue != AttributesDemoControl.ambientColorValue);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="databinding-attributes">Атрибуты привязки данных</h3>
+<p>В следующих примерах показано реализацию сложную привязку данных. Уровня класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.complexbindingpropertiesattribute">ComplexBindingPropertiesAttribute</a>, показанный ранее, указывает <code>DataSource</code> и <code>DataMember</code> свойства, используемые для привязки данных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.attributeproviderattribute">AttributeProviderAttribute</a> Указывает тип, к которому <code>DataSource</code> будет привязано свойство.</p>
+<pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#25">[Category(&quot;Data&quot;)]
+[Description(&quot;Indicates the source of data for the control.&quot;)]
+[RefreshProperties(RefreshProperties.Repaint)]
+[AttributeProvider(typeof(IListSource))]
+public object DataSource
+{
+    get
+    {
+        return this.dataGridView1.DataSource;
+    }
+
+    set
+    {
+        this.dataGridView1.DataSource = value;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.AttributesDemoControl#26">[Category(&quot;Data&quot;)]
+[Description(&quot;Indicates a sub-list of the data source to show in the control.&quot;)]
+public string DataMember
+{
+    get
+    {
+        return this.dataGridView1.DataMember;
+    }
+
+    set
+    {
+        this.dataGridView1.DataMember = value;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<ul>
+<li>Форма, содержащая <code>AttributesDemoControl</code> необходима ссылка на <code>AttributesDemoControl</code> сборки для сборки.</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.icomparable">IComparable</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a href="developing-custom-windows-forms-controls.html">Разработка пользовательских элементов управления Windows Forms в .NET Framework</a></li>
+<li><a href="attributes-in-windows-forms-controls.html">Атрибуты в элементах управления Windows Forms</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/ms171833(v=vs.120)">Практическое руководство. Сериализация коллекций стандартных типов с использованием атрибута DesignerSerializationVisibilityAttribute</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

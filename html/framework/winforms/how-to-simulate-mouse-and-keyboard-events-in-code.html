@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1048;&#1084;&#1080;&#1090;&#1072;&#1094;&#1080;&#1103; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1084;&#1099;&#1096;&#1080; &#1080; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; &#1074; &#1082;&#1086;&#1076;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1048;&#1084;&#1080;&#1090;&#1072;&#1094;&#1080;&#1103; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1084;&#1099;&#1096;&#1080; &#1080; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; &#1074; &#1082;&#1086;&#1076;&#1077; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-simulate-mouse-and-keyboard-events-in-code">Практическое руководство. Имитация событий мыши и клавиатуры в коде</h1>
+
+<p>В Windows Forms предоставляется несколько возможностей для программной имитации ввода данных с помощью мыши и клавиатуры. В этом разделе приведен обзор этих возможностей.</p>
+<h2 id="simulating-mouse-input">Имитация ввода с помощью мыши</h2>
+<p>Наилучшим способом имитации событий мыши является вызов метода <code>On</code><em>EventName</em> , в результате чего происходит событие мыши, которое требуется имитировать. Этот вариант обычно возможен только в пределах пользовательских элементов управления и форм, так как методы, которые вызывают события, защищены и недоступны вне элемента управления или формы. Например, ниже показано, как имитировать нажатие правой кнопки мыши в коде.</p>
+<h4 id="to-programmatically-click-the-right-mouse-button">Чтобы нажать правую кнопку мыши программными средствами, выполните указанные ниже действия.</h4>
+<ol>
+<li><p>Создайте объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a> и установите для его свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs.button">Button</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mousebuttons#System_Windows_Forms_MouseButtons_Right">MouseButtons.Right</a> .</p>
+</li>
+<li><p>Вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.onmouseclick">OnMouseClick</a> с этим объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a> в качестве аргумента.</p>
+</li>
+</ol>
+<p>Дополнительные сведения о пользовательских элементах управления см. в разделе <a href="controls/developing-windows-forms-controls-at-design-time.html">Создание элементов управления Windows Forms во время разработки</a>.</p>
+<p>Существуют другие способы имитировать ввод с помощью мыши. Например, можно программно установить свойство элемента управления, которое представляет состояние, обычно устанавливаемое с помощью ввода мыши (например, свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox.checked">Checked</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox">CheckBox</a> ), или напрямую вызвать делегат, связанный с событием, которое нужно имитировать.</p>
+<h2 id="simulating-keyboard-input">Имитация ввода с клавиатуры</h2>
+<p>Хотя ввод данных с клавиатуры можно имитировать с помощью подходов, описанных выше для ввода с помощью мыши, Windows Forms также предоставляет класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> для отправки нажатий клавиш в активное приложение.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Если приложение предназначено для международного использования с различными клавиатурами, применение метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.send">SendKeys.Send</a> может иметь непредсказуемые результаты и его следует избегать.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> был обновлен в .NET Framework 3.0, что позволило использовать его в приложениях, работающих в Windows Vista. Усиленная система безопасности Windows Vista (известная как контроль учетных записей или UAC) не позволяет предыдущей реализации работать должным образом.</p>
+<p>Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> подвержен проблемам со временем, которые пришлось решать некоторым разработчикам. Обновленная реализация по-прежнему подвержена этим проблемам, но она работает немного быстрее, поэтому существующие решения может потребоваться переработать. Класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> сначала пытается использовать предыдущую реализацию, и если это не удается, использует новую реализацию. В результате класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> может работать по-разному в разных операционных системах. Кроме того, при использовании новой реализации класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.sendwait">SendWait</a> не будет дожидаться обработки сообщений, если они отправляются другому процессу.</p>
+<p>Если необходимо обеспечить согласованное поведение приложения независимо от операционной системы, можно заставить класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> использовать новую реализацию, добавив указанный ниже параметр приложения в файл app.config.</p>
+<p><code>&lt;appSettings&gt;</code></p>
+<p><code>&lt;add key=&quot;SendKeys&quot; value=&quot;SendInput&quot;/&gt;</code></p>
+<p><code>&lt;/appSettings&gt;</code></p>
+<p>Для принудительного использования классом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> предыдущей реализации задайте значение <code>&quot;JournalHook&quot;</code> .</p>
+</div>
+<h4 id="to-send-a-keystroke-to-the-same-application">Отправка нажатия клавиши в то же приложение</h4>
+<ol>
+<li><p>Вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.send">Send</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.sendwait">SendWait</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys">SendKeys</a> . Указанные нажатия клавиш будут получены активным элементом управления приложения. В примере кода ниже метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.send">Send</a> используется для имитации нажатия клавиши ВВОД, когда пользователь дважды щелкает по поверхности формы. В этом примере используется форма <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form">Form</a> с одним элементом управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> , имеющим индекс перехода по клавише TAB, равный 0.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.SimulateKeyPress#10">// Send a key to the button when the user double-clicks anywhere 
+// on the form.
+private void Form1_DoubleClick(object sender, EventArgs e)
+{
+    // Send the enter key to the button, which raises the click 
+    // event for the button. This works because the tab stop of 
+    // the button is 0.
+    SendKeys.Send(&quot;{ENTER}&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h4 id="to-send-a-keystroke-to-a-different-application">Отправка нажатия клавиши в другое приложение</h4>
+<ol>
+<li><p>Активируйте окно приложения, которое будет получать нажатия клавиш, а затем вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.send">Send</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.sendwait">SendWait</a> . Из-за отсутствия управляемого метода активации другого приложения необходимо использовать собственные методы Windows для принудительной установки фокуса на другие приложения. В примере кода ниже с помощью вызова неуправляемого кода вызываются методы <code>FindWindow</code> и <code>SetForegroundWindow</code> для активации окна приложения &quot;Калькулятор&quot;, а затем вызывается метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.sendkeys.sendwait">SendWait</a> для проведения ряда вычислений в этом приложении.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Параметры вызова <code>FindWindow</code> для определения положения Калькулятора зависят от версии Windows.  Приведенный ниже код находит Калькулятор в Windows 7. В Windows Vistaизмените первый параметр на SciCalc. Для определения нужных параметров можно использовать средство Spy++, входящее в состав Visual Studio.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.SimulateKeyPress#5">// Get a handle to an application window.
+[DllImport(&quot;USER32.DLL&quot;, CharSet = CharSet.Unicode)]
+public static extern IntPtr FindWindow(string lpClassName,
+    string lpWindowName);
+
+// Activate an application window.
+[DllImport(&quot;USER32.DLL&quot;)]
+public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+// Send a series of key presses to the Calculator application.
+private void button1_Click(object sender, EventArgs e)
+{
+    // Get a handle to the Calculator application. The window class
+    // and window name were obtained using the Spy++ tool.
+    IntPtr calculatorHandle = FindWindow(&quot;CalcFrame&quot;,&quot;Calculator&quot;);
+
+    // Verify that Calculator is a running process.
+    if (calculatorHandle == IntPtr.Zero)
+    {
+        MessageBox.Show(&quot;Calculator is not running.&quot;);
+        return;
+    }
+
+    // Make Calculator the foreground application and send it 
+    // a set of calculations.
+    SetForegroundWindow(calculatorHandle);
+    SendKeys.SendWait(&quot;111&quot;);
+    SendKeys.SendWait(&quot;*&quot;);
+    SendKeys.SendWait(&quot;11&quot;);
+    SendKeys.SendWait(&quot;=&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h2 id="example">Пример</h2>
+<p>В примере ниже полностью представлено приложение для предыдущих примеров кода.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.SimulateKeyPress#0">using System;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace SimulateKeyPress
+{
+    class Form1 : Form
+    {
+        private Button button1 = new Button();
+
+        [STAThread]
+        public static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+
+        public Form1()
+        {
+            button1.Location = new Point(10, 10);
+            button1.TabIndex = 0;
+            button1.Text = &quot;Click to automate Calculator&quot;;
+            button1.AutoSize = true;
+            button1.Click += new EventHandler(button1_Click);
+
+            this.DoubleClick += new EventHandler(Form1_DoubleClick);
+            this.Controls.Add(button1);
+        }
+
+        // Get a handle to an application window.
+        [DllImport(&quot;USER32.DLL&quot;, CharSet = CharSet.Unicode)]
+        public static extern IntPtr FindWindow(string lpClassName,
+            string lpWindowName);
+
+        // Activate an application window.
+        [DllImport(&quot;USER32.DLL&quot;)]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        // Send a series of key presses to the Calculator application.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Get a handle to the Calculator application. The window class
+            // and window name were obtained using the Spy++ tool.
+            IntPtr calculatorHandle = FindWindow(&quot;CalcFrame&quot;,&quot;Calculator&quot;);
+
+            // Verify that Calculator is a running process.
+            if (calculatorHandle == IntPtr.Zero)
+            {
+                MessageBox.Show(&quot;Calculator is not running.&quot;);
+                return;
+            }
+
+            // Make Calculator the foreground application and send it 
+            // a set of calculations.
+            SetForegroundWindow(calculatorHandle);
+            SendKeys.SendWait(&quot;111&quot;);
+            SendKeys.SendWait(&quot;*&quot;);
+            SendKeys.SendWait(&quot;11&quot;);
+            SendKeys.SendWait(&quot;=&quot;);
+        }
+
+        // Send a key to the button when the user double-clicks anywhere 
+        // on the form.
+        private void Form1_DoubleClick(object sender, EventArgs e)
+        {
+            // Send the enter key to the button, which raises the click 
+            // event for the button. This works because the tab stop of 
+            // the button is 0.
+            SendKeys.Send(&quot;{ENTER}&quot;);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li>ссылки на сборки System, System.Drawing и System.Windows.Forms.</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="user-input-in-windows-forms.html">Ввод данных пользователем в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

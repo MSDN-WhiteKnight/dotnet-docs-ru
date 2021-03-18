@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1056;&#1077;&#1089;&#1091;&#1088;&#1089;&#1099; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimizing-performance-application-resources">Оптимизация производительности: Ресурсы приложений</h1>
+
+<p>WPF позволяет совместно использовать ресурсы приложения таким образом, можно поддерживать согласованный вид или поведение с помощью элементов одинакового типа. Этот раздел содержит несколько рекомендаций в этой области, которые могут помочь повысить производительность приложений.</p>
+<p>Дополнительные сведения о ресурсах см. в разделе <a href="xaml-resources.html">Ресурсы XAML</a>.</p>
+<h2 id="sharing-resources">Совместное использование ресурсов</h2>
+<p>Если приложение использует пользовательские элементы управления и определяет ресурсы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> (или узел ресурсов XAML), рекомендуется определить ресурсы на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> объекта уровень, или их определения в тему по умолчанию для пользовательские элементы управления. Определение ресурсов в пользовательский элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> оказывает влияние на производительность для каждого экземпляра этого элемента управления. Например при наличии кисть производительность операций, определенных как часть определения ресурсов для пользовательского элемента управления и несколько экземпляров пользовательского элемента управления, рабочего набора приложения будет значительно увеличить.</p>
+<p>Чтобы проиллюстрировать это, необходимо учитывайте следующее. Предположим, вы разрабатываете карточки игр с помощью WPF. Для большинства карточных игр необходимо 52 карты с 52 разных лиц. Вы решили реализовать пользовательский элемент управления карты и определить 52 кисти (каждый из которых представляет лицевой стороны) в ресурсах карты пользовательского элемента управления. В главном приложении первоначально создается 52 экземпляра этого элемента управления. Каждый экземпляр элемента управления создает 52 экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> объекты, которые в итоге 52 * 52 дает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> объектов в приложении. Перемещая кисти из ресурсов пользовательского элемента управления к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> уровне объекта или определяя их в тему по умолчанию для пользовательского элемента управления, можно уменьшить рабочего набора приложения, так как теперь общего 52 кисти 52 экземпляра элемента управления.</p>
+<h2 id="sharing-a-brush-without-copying">Совместное использование кистей без копирования</h2>
+<p>Если у вас есть несколько элементов, используя те же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> объекта, определение кисть как ресурс и создание ссылки, но не определение встроенной кисти в XAML. Этот метод будет создать один экземпляр и повторно использует его, тогда как определение встроенной кисти в XAML создает новый экземпляр для каждого элемента.</p>
+<p>В следующем примере разметки показано этой точки.</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet7">&lt;StackPanel.Resources&gt;
+  &lt;LinearGradientBrush x:Key=&quot;myBrush&quot; StartPoint=&quot;0,0.5&quot; EndPoint=&quot;1,0.5&quot; Opacity=&quot;0.5&quot;&gt;
+    &lt;LinearGradientBrush.GradientStops&gt;
+      &lt;GradientStopCollection&gt;
+        &lt;GradientStop Color=&quot;GoldenRod&quot; Offset=&quot;0&quot; /&gt;
+        &lt;GradientStop Color=&quot;White&quot; Offset=&quot;1&quot; /&gt;
+      &lt;/GradientStopCollection&gt;
+    &lt;/LinearGradientBrush.GradientStops&gt;
+  &lt;/LinearGradientBrush&gt;
+&lt;/StackPanel.Resources&gt;
+
+&lt;!-- Non-shared Brush object. --&gt;
+&lt;Label&gt;
+  Label 1
+  &lt;Label.Background&gt;
+    &lt;LinearGradientBrush StartPoint=&quot;0,0.5&quot; EndPoint=&quot;1,0.5&quot; Opacity=&quot;0.5&quot;&gt;
+      &lt;LinearGradientBrush.GradientStops&gt;
+        &lt;GradientStopCollection&gt;
+          &lt;GradientStop Color=&quot;GoldenRod&quot; Offset=&quot;0&quot; /&gt;
+          &lt;GradientStop Color=&quot;White&quot; Offset=&quot;1&quot; /&gt;
+        &lt;/GradientStopCollection&gt;
+      &lt;/LinearGradientBrush.GradientStops&gt;
+    &lt;/LinearGradientBrush&gt;
+  &lt;/Label.Background&gt;
+&lt;/Label&gt;
+
+&lt;!-- Shared Brush object. --&gt;
+&lt;Label Background=&quot;{StaticResource myBrush}&quot;&gt;Label 2&lt;/Label&gt;
+&lt;Label Background=&quot;{StaticResource myBrush}&quot;&gt;Label 3&lt;/Label&gt;
+</code></pre><h2 id="use-static-resources-when-possible">Используйте статические ресурсы, когда это возможно</h2>
+<p>Статический ресурс обеспечивает значение для любого атрибута свойства XAML, поиска ссылки на уже определенный ресурс. Поведение подстановки для этого ресурса является аналогом во время компиляции.</p>
+<p>Динамический ресурс, с другой стороны, создаст временное выражение во время первоначальной компиляции и таким образом, отложит для ресурсов, пока значение запрошенного ресурса не нужен для создания объекта. Поведение подстановки для этого ресурса аналогичен во время выполнения, который оказывает влияние на производительность. Используйте статические ресурсы, когда это возможно в приложении, с помощью динамические ресурсы только при необходимости.</p>
+<p>В следующем примере разметки показано использование обоих типов ресурсов:</p>
+<pre><code class="lang-xaml" name="Performance#PerformanceSnippet8">&lt;StackPanel.Resources&gt;
+  &lt;SolidColorBrush x:Key=&quot;myBrush&quot; Color=&quot;Teal&quot;/&gt;
+&lt;/StackPanel.Resources&gt;
+
+&lt;!-- StaticResource reference --&gt;
+&lt;Label Foreground=&quot;{StaticResource myBrush}&quot;&gt;Label 1&lt;/Label&gt;
+
+&lt;!-- DynamicResource reference --&gt;
+&lt;Label Foreground=&quot;{DynamicResource {x:Static SystemColors.ControlBrushKey}}&quot;&gt;Label 2&lt;/Label&gt;
+</code></pre><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+<li><a href="planning-for-application-performance.html">Планирование производительности приложения</a></li>
+<li><a href="optimizing-performance-taking-advantage-of-hardware.html">Использование преимуществ оборудования</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+<li><a href="optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="optimizing-performance-object-behavior.html">Поведение объекта</a></li>
+<li><a href="optimizing-performance-text.html">Текста</a></li>
+<li><a href="optimizing-performance-data-binding.html">Привязка данных</a></li>
+<li><a href="optimizing-performance-other-recommendations.html">Дополнительные рекомендации по повышению производительности</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

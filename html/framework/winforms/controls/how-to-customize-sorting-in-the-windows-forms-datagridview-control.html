@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1082;&#1080; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1082;&#1080; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-customize-sorting-in-the-windows-forms-datagridview-control">Практическое руководство. Настройка сортировки данных элемента управления DataGridView в Windows Forms</h1>
+
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> обеспечивает автоматическую сортировку, но в определенных ситуациях может потребоваться настроить операции сортировки. Например, с помощью программной сортировки можно создать альтернативный пользовательский интерфейс. Кроме того, можно обработать событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sortcompare">SortCompare</a> или вызвать перегрузку <code>Sort(IComparer)</code> метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sort">Sort</a> для обеспечения большей гибкости сортировки, например для сортировки нескольких столбцов.</p>
+<p>В приведенных ниже примерах кода демонстрируются эти три подхода к пользовательской сортировке. Дополнительные сведения см. в разделе <a href="column-sort-modes-in-the-windows-forms-datagridview-control.html">Установка режимов сортировки для столбцов элемента управления DataGridView в Windows Forms</a>.</p>
+<h2 id="programmatic-sorting">Программная сортировка</h2>
+<p>В примере кода ниже демонстрируется программная сортировка с использованием свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sortorder">SortOrder</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sortedcolumn">SortedColumn</a> для определения направления сортировки и свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumnheadercell.sortglyphdirection">SortGlyphDirection</a> для ручной установки глифа сортировки. Перегрузка <code>Sort(DataGridViewColumn,ListSortDirection)</code> метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sort">Sort</a> используется для сортировки данных только в одном столбце.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridViewProgrammaticSort#00">using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+class Form1 : Form
+{
+    private Button sortButton = new Button();
+    private DataGridView dataGridView1 = new DataGridView();
+
+    // Initializes the form.
+    // You can replace this code with designer-generated code.
+    public Form1()
+    {
+        dataGridView1.Dock = DockStyle.Fill;
+        dataGridView1.AllowUserToAddRows = false;
+        dataGridView1.SelectionMode =
+            DataGridViewSelectionMode.ColumnHeaderSelect;
+        dataGridView1.MultiSelect = false;
+
+        sortButton.Dock = DockStyle.Bottom;
+        sortButton.Text = &quot;Sort&quot;;
+
+        Controls.Add(dataGridView1);
+        Controls.Add(sortButton);
+        Text = &quot;DataGridView programmatic sort demo&quot;;
+    }
+
+    // Establishes the main entry point for the application.
+    [STAThreadAttribute()]
+    static void Main()
+    {
+        Application.EnableVisualStyles();
+        Application.Run(new Form1());
+    }
+
+    // Populates the DataGridView.
+    // Replace this with your own code to populate the DataGridView.
+    public void PopulateDataGridView()
+    {
+        // Add columns to the DataGridView.
+        dataGridView1.ColumnCount = 2;
+        dataGridView1.Columns[0].HeaderText = &quot;Last Name&quot;;
+        dataGridView1.Columns[1].HeaderText = &quot;City&quot;;
+        // Put the new columns into programmatic sort mode
+        dataGridView1.Columns[0].SortMode = 
+            DataGridViewColumnSortMode.Programmatic;
+        dataGridView1.Columns[1].SortMode =
+            DataGridViewColumnSortMode.Programmatic;
+
+        // Populate the DataGridView.
+        dataGridView1.Rows.Add(new string[] { &quot;Parker&quot;, &quot;Seattle&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;Watson&quot;, &quot;Seattle&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;Osborn&quot;, &quot;New York&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;Jameson&quot;, &quot;New York&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;Brock&quot;, &quot;New Jersey&quot; });
+    }
+
+    protected override void OnLoad(EventArgs e)
+    {
+        sortButton.Click += new EventHandler(sortButton_Click);
+
+        PopulateDataGridView();
+        base.OnLoad(e);
+    }
+
+    private void sortButton_Click(object sender, System.EventArgs e)
+    {
+        // Check which column is selected, otherwise set NewColumn to null.
+        DataGridViewColumn newColumn =
+            dataGridView1.Columns.GetColumnCount(
+            DataGridViewElementStates.Selected) == 1 ?
+            dataGridView1.SelectedColumns[0] : null;
+
+        DataGridViewColumn oldColumn = dataGridView1.SortedColumn;
+        ListSortDirection direction;
+
+        // If oldColumn is null, then the DataGridView is not currently sorted.
+        if (oldColumn != null)
+        {
+            // Sort the same column again, reversing the SortOrder.
+            if (oldColumn == newColumn &amp;&amp;
+                dataGridView1.SortOrder == SortOrder.Ascending)
+            {
+                direction = ListSortDirection.Descending;
+            }
+            else
+            {
+                // Sort a new column and remove the old SortGlyph.
+                direction = ListSortDirection.Ascending;
+                oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+        }
+        else
+        {
+            direction = ListSortDirection.Ascending;
+        }
+
+        // If no column has been selected, display an error dialog  box.
+        if (newColumn == null)
+        {
+            MessageBox.Show(&quot;Select a single column and try again.&quot;,
+                &quot;Error: Invalid Selection&quot;, MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+        else
+        {
+            dataGridView1.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="custom-sorting-using-the-sortcompare-event">Пользовательская сортировка с помощью события SortCompare</h2>
+<p>В примере кода ниже демонстрируется пользовательская сортировка с использованием обработчика событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sortcompare">SortCompare</a>. Выбранный столбец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> сортируется, а при обнаружении в нем повторяющихся значений столбец ID используется для определения конечного порядка.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.SortCompare#00">#region Using directives
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+
+#endregion
+class Form1 : Form
+{
+    private DataGridView dataGridView1 = new DataGridView();
+
+    // Establish the main entry point for the application.
+    [STAThreadAttribute()]
+    static void Main()
+    {
+        Application.EnableVisualStyles();
+        Application.Run(new Form1());
+    }
+
+    public Form1()
+    {
+        // Initialize the form.
+        // This code can be replaced with designer generated code.
+        dataGridView1.AllowUserToAddRows = false;
+        dataGridView1.Dock = DockStyle.Fill;
+        dataGridView1.SortCompare += new DataGridViewSortCompareEventHandler(
+            this.dataGridView1_SortCompare);
+        Controls.Add(this.dataGridView1);
+        this.Text = &quot;DataGridView.SortCompare demo&quot;;
+
+        PopulateDataGridView();
+    }
+
+    // Replace this with your own population code.
+    public void PopulateDataGridView()
+    {
+        // Add columns to the DataGridView.
+        dataGridView1.ColumnCount = 3;
+
+        // Set the properties of the DataGridView columns.
+        dataGridView1.Columns[0].Name = &quot;ID&quot;;
+        dataGridView1.Columns[1].Name = &quot;Name&quot;;
+        dataGridView1.Columns[2].Name = &quot;City&quot;;
+        dataGridView1.Columns[&quot;ID&quot;].HeaderText = &quot;ID&quot;;
+        dataGridView1.Columns[&quot;Name&quot;].HeaderText = &quot;Name&quot;;
+        dataGridView1.Columns[&quot;City&quot;].HeaderText = &quot;City&quot;;
+
+        // Add rows of data to the DataGridView.
+        dataGridView1.Rows.Add(new string[] { &quot;1&quot;, &quot;Parker&quot;, &quot;Seattle&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;2&quot;, &quot;Parker&quot;, &quot;New York&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;3&quot;, &quot;Watson&quot;, &quot;Seattle&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;4&quot;, &quot;Jameson&quot;, &quot;New Jersey&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;5&quot;, &quot;Brock&quot;, &quot;New York&quot; });
+        dataGridView1.Rows.Add(new string[] { &quot;6&quot;, &quot;Conner&quot;, &quot;Portland&quot; });
+
+        // Autosize the columns.
+        dataGridView1.AutoResizeColumns();
+    }
+
+    private void dataGridView1_SortCompare(object sender,
+        DataGridViewSortCompareEventArgs e)
+    {
+        // Try to sort based on the cells in the current column.
+        e.SortResult = System.String.Compare(
+            e.CellValue1.ToString(), e.CellValue2.ToString());
+
+        // If the cells are equal, sort based on the ID column.
+        if (e.SortResult == 0 &amp;&amp; e.Column.Name != &quot;ID&quot;)
+        {
+            e.SortResult = System.String.Compare(
+                dataGridView1.Rows[e.RowIndex1].Cells[&quot;ID&quot;].Value.ToString(),
+                dataGridView1.Rows[e.RowIndex2].Cells[&quot;ID&quot;].Value.ToString());
+        }
+        e.Handled = true;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="custom-sorting-using-the-icomparer-interface">Пользовательская сортировка с помощью интерфейса IComparer</h2>
+<p>В примере кода ниже демонстрируется пользовательская сортировка с помощью перегрузки <code>Sort(IComparer)</code> метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sort">Sort</a>, которая принимает реализацию интерфейса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.icomparer">IComparer</a> для выполнения сортировки по нескольким столбцам.</p>
+<pre><code class="lang-csharp" name="System.Windows.Forms.DataGridViewIComparerSort#00">#region Using directives
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+#endregion
+
+class Form1 : Form
+{
+    private DataGridView DataGridView1 = new DataGridView();
+    private FlowLayoutPanel FlowLayoutPanel1 = new FlowLayoutPanel();
+    private Button Button1 = new Button();
+    private RadioButton RadioButton1 = new RadioButton();
+    private RadioButton RadioButton2 = new RadioButton();
+
+    // Establish the main entry point for the application.
+    [STAThreadAttribute()]
+    public static void Main()
+    {
+        Application.Run(new Form1());
+    }
+
+    public Form1()
+    {
+        // Initialize the form.
+        // This code can be replaced with designer generated code.
+        AutoSize = true;
+        Text = &quot;DataGridView IComparer sort demo&quot;;
+
+        FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+        FlowLayoutPanel1.Location = new System.Drawing.Point( 304, 0 );
+        FlowLayoutPanel1.AutoSize = true;
+
+        FlowLayoutPanel1.Controls.Add( RadioButton1 );
+        FlowLayoutPanel1.Controls.Add( RadioButton2 );
+        FlowLayoutPanel1.Controls.Add( Button1 );
+
+        Button1.Text = &quot;Sort&quot;;
+        RadioButton1.Text = &quot;Ascending&quot;;
+        RadioButton2.Text = &quot;Descending&quot;;
+        RadioButton1.Checked = true;
+
+        Controls.Add( FlowLayoutPanel1 );
+        Controls.Add( DataGridView1 );
+    }
+
+    protected override void OnLoad( EventArgs e )
+    {
+        PopulateDataGridView();
+        Button1.Click += new EventHandler(Button1_Click);
+
+        base.OnLoad( e );
+    }
+
+    // Replace this with your own code to populate the DataGridView.
+    private void PopulateDataGridView()
+    {
+
+        DataGridView1.Size = new Size(300, 300);
+
+        // Add columns to the DataGridView.
+        DataGridView1.ColumnCount = 2;
+
+        // Set the properties of the DataGridView columns.
+        DataGridView1.Columns[0].Name = &quot;First&quot;;
+        DataGridView1.Columns[1].Name = &quot;Last&quot;;
+        DataGridView1.Columns[&quot;First&quot;].HeaderText = &quot;First Name&quot;;
+        DataGridView1.Columns[&quot;Last&quot;].HeaderText = &quot;Last Name&quot;;
+        DataGridView1.Columns[&quot;First&quot;].SortMode = 
+            DataGridViewColumnSortMode.Programmatic;
+        DataGridView1.Columns[&quot;Last&quot;].SortMode = 
+            DataGridViewColumnSortMode.Programmatic;
+
+        // Add rows of data to the DataGridView.
+        DataGridView1.Rows.Add(new string[] { &quot;Peter&quot;, &quot;Parker&quot; });
+        DataGridView1.Rows.Add(new string[] { &quot;James&quot;, &quot;Jameson&quot; });
+        DataGridView1.Rows.Add(new string[] { &quot;May&quot;, &quot;Parker&quot; });
+        DataGridView1.Rows.Add(new string[] { &quot;Mary&quot;, &quot;Watson&quot; });
+        DataGridView1.Rows.Add(new string[] { &quot;Eddie&quot;, &quot;Brock&quot; });
+    }
+
+    private void Button1_Click( object sender, EventArgs e )
+    {
+        if ( RadioButton1.Checked == true )
+        {
+            DataGridView1.Sort( new RowComparer( SortOrder.Ascending ) );
+        }
+        else if ( RadioButton2.Checked == true )
+        {
+            DataGridView1.Sort( new RowComparer( SortOrder.Descending ) );
+        }
+    }
+
+    private class RowComparer : System.Collections.IComparer
+    {
+        private static int sortOrderModifier = 1;
+
+        public RowComparer(SortOrder sortOrder)
+        {
+            if (sortOrder == SortOrder.Descending)
+            {
+                sortOrderModifier = -1;
+            }
+            else if (sortOrder == SortOrder.Ascending)
+            {
+                sortOrderModifier = 1;
+            }
+        }
+
+        public int Compare(object x, object y)
+        {
+            DataGridViewRow DataGridViewRow1 = (DataGridViewRow)x;
+            DataGridViewRow DataGridViewRow2 = (DataGridViewRow)y;
+
+            // Try to sort based on the Last Name column.
+            int CompareResult = System.String.Compare(
+                DataGridViewRow1.Cells[1].Value.ToString(),
+                DataGridViewRow2.Cells[1].Value.ToString());
+
+            // If the Last Names are equal, sort based on the First Name.
+            if ( CompareResult == 0 )
+            {
+                CompareResult = System.String.Compare(
+                    DataGridViewRow1.Cells[0].Value.ToString(),
+                    DataGridViewRow2.Cells[0].Value.ToString());
+            }
+            return CompareResult * sortOrderModifier;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этих примеров требуются:</p>
+<ul>
+<li>ссылки на сборки System, System.Drawing и System.Windows.Forms.</li>
+</ul>
+<p>Сведения о сборке этих примеров из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a href="sorting-data-in-the-windows-forms-datagridview-control.html">Сортировка данных в элементе управления DataGridView в Windows Forms</a></li>
+<li><a href="column-sort-modes-in-the-windows-forms-datagridview-control.html">Установка режимов сортировки для столбцов элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="set-the-sort-modes-for-columns-wf-datagridview-control.html">Практическое руководство. Определение режимов сортировки для столбцов элемента управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

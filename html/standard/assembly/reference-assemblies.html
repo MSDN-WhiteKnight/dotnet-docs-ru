@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1041;&#1072;&#1079;&#1086;&#1074;&#1099;&#1077; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1041;&#1072;&#1079;&#1086;&#1074;&#1099;&#1077; &#1089;&#1073;&#1086;&#1088;&#1082;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="reference-assemblies">Базовые сборки</h1>
+
+<p><em>Базовые сборки</em> являются особым типом сборки, которая содержит только минимальный объем метаданных, необходимый для представления общедоступного API-интерфейса библиотеки. Такие сборки включают в себя объявления для всех элементов, которые важны при указании ссылки на сборку в средствах сборки, но исключают все реализации элементов, а также объявления закрытых элементов, не имеющих наблюдаемого влияния на их контракт API. Обычные сборки, напротив, называются <em>сборками реализации</em>.</p>
+<p>Базовые сборки не могут быть загружены для выполнения, но они могут передаваться как входные данные компилятора так же, как сборки реализации. Базовые сборки обычно распределяются с помощью пакета средств разработки программного обеспечения (SDK) определенной платформы или библиотеки.</p>
+<p>Использование базовой сборки позволяет разработчикам создавать программы, предназначенные для конкретной версии библиотеки, без наличия полной сборки реализации для этой версии. Допустим, на компьютере установлена только последняя версия определенной библиотеки, но требуется создать программу, предназначенную для более ранней версии этой библиотеки. При компиляции непосредственно из сборки реализации вы можете случайно использовать элементы API, которые недоступны в более ранней версии, и обнаружите эту ошибку только при проверке программы на целевом компьютере. При компиляции из базовой сборки для более ранней версии сразу же возникает ошибка времени компиляции.</p>
+<p>Базовая сборка также может представлять контракт, то есть набор API-интерфейсов, который не соответствует конкретной сборке реализации. Такие базовые сборки, называемые <em>сборками контракта</em>, можно использовать для нескольких платформ, поддерживающих один и тот же набор API-интерфейсов. Например, .NET Standard предоставляет сборку контракта, <em>netstandard.dll</em>, которая представляет набор общих API-интерфейсов, совместно используемых различными платформами .NET. Реализации этих API-интерфейсов содержатся в разных сборках на разных платформах, например <em>mscorlib.dll</em> в .NET Framework или <em>System.Private.CoreLib.dll</em> в .NET Core. Библиотека, нацеленная на .NET Standard, может выполняться на всех платформах, поддерживающих .NET Standard.</p>
+<h2 id="using-reference-assemblies">Использование базовых сборок</h2>
+<p>Чтобы использовать определенные API-интерфейсы из проекта, необходимо добавить ссылки на их сборки. Ссылки можно добавлять либо в сборки реализации, либо в базовые сборки. По возможности рекомендуется использовать базовые сборки если они доступны. Таким образом, вы будете гарантированно использовать в целевой версии только поддерживаемые члены API, которые были предназначены для этого разработчиками API. Применяя базовую сборку, вы гарантированно не будете зависеть от деталей реализации.</p>
+<p>Базовые сборки для библиотек .NET Framework распределяются с помощью пакетов нацеливания. Их можно получить, скачав автономный установщик или выбрав компонент в Visual Studio Installer. См. дополнительные сведения об <a href="../../framework/install/guide-for-developers.md">установке .NET Framework для разработчиков</a>. Для .NET Core и .NET Standard базовые сборки автоматически скачиваются при необходимости (через NuGet) и на них указываются ссылки. Для .NET Core 3.0 и более поздних версий базовые сборки для основной платформы находятся в пакете <a href="https://www.nuget.org/packages/Microsoft.NETCore.App.Ref">Microsoft.NETCore.App.Ref</a> (до версии 3.0 используется пакет <a href="https://www.nuget.org/packages/Microsoft.NETCore.App">Microsoft.NETCore.App</a>).</p>
+<p>При добавлении ссылок на сборки .NET Framework в Visual Studio с помощью диалогового окна <strong>Добавление ссылки</strong> вы выбираете сборку из списка, и Visual Studio автоматически находит базовые сборки, соответствующие требуемой версии .NET Framework, выбранной в проекте. То же самое применимо для добавления ссылок непосредственно в проект MSBuild с помощью элемента проекта <a href="/visualstudio/msbuild/common-msbuild-project-items#reference">Reference</a>. Вам необходимо указать только имя сборки, а не полный путь к файлу. При добавлении ссылок на эти сборки в командной строке с помощью параметра компилятора <code>-reference</code> (<a href="../../csharp/language-reference/compiler-options/reference-compiler-option.md">в C#</a> и в <a href="../../visual-basic/reference/command-line-compiler/reference.md">Visual Basic</a>) или с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation.addreferences">Compilation.AddReferences</a> в API Roslyn необходимо вручную указать файлы базовой сборки для правильной версии целевой платформы. Файлы базовой сборки .NET Framework находятся в каталоге <em>%ProgramFiles(x86)%\Reference Assemblies\Microsoft\Framework\.NETFramework</em>. Для .NET Core можно принудительно выполнить операцию публикации, чтобы скопировать базовые сборки для целевой платформы в подкаталог <em>publish/refs</em> выходного каталога, установив для свойства проекта <code>PreserveCompilationContext</code> значение <code>true</code>. Затем можно передать эти файлы базовой сборки компилятору. Для поиска их путей можно использовать <code>DependencyContext</code> из пакета <a href="https://www.nuget.org/packages/Microsoft.Extensions.DependencyModel/">Microsoft.Extensions.DependencyModel</a>.</p>
+<p>Так как базовые сборки не содержат реализации, они не могут быть загружены для выполнения. Любые попытки сделать это приведут к возникновению исключения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.badimageformatexception">System.BadImageFormatException</a>. Если вам нужно изучить содержимое базовой сборки, ее можно загрузить в контекст только для отражения в .NET Framework (с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.assembly.reflectiononlyload">Assembly.ReflectionOnlyLoad</a>) или в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a> в .NET Core.</p>
+<h2 id="generating-reference-assemblies">Создание базовых сборок</h2>
+<p>Рекомендуется создавать базовые сборки для библиотек в тех случаях, когда их пользователям требуется создавать программы на основе множества разных версий отдельной библиотеки. Распространение сборок реализации для всех этих версий может оказаться нецелесообразным из-за их большого размера. Базовые сборки имеют меньший размер, поэтому их распространение в составе пакета SDK для библиотеки уменьшает объем скачиваемых данных и экономит место на диске.</p>
+<p>Интегрированные среды разработки и средства сборки также могут использовать базовые сборки, чтобы сократить время сборки в случае больших решений, состоящих из нескольких библиотек классов. Как правило, в сценариях инкрементной сборки проект перестраивается при изменении любого из его входных файлов, включая сборки, от которых он зависит. Сборка реализации изменяется каждый раз, когда программист изменяет реализацию любого элемента. Базовая сборка изменяется только при ее влиянии на общедоступный API. Таким образом, использование базовой сборки в качестве входного файла вместо сборки реализации позволяет в некоторых случаях пропустить сборку зависимого проекта.</p>
+<p>Вы можете создавать базовые сборки:</p>
+<ul>
+<li>В проекте MSBuild с помощью <a href="/visualstudio/msbuild/common-msbuild-project-properties">свойства проекта <code>ProduceReferenceAssembly</code></a>.</li>
+<li>При компиляции программы из командной строки, указывая параметры компилятора <code>-refonly</code> (<a href="../../csharp/language-reference/compiler-options/refonly-compiler-option.md">C#</a> / <a href="../../visual-basic/reference/command-line-compiler/refonly-compiler-option.md">Visual Basic</a> ) или <code>-refout</code> (<a href="../../csharp/language-reference/compiler-options/refout-compiler-option.md">C#</a> / <a href="../../visual-basic/reference/command-line-compiler/refout-compiler-option.md">Visual Basic</a>).</li>
+<li>При использовании API Roslyn путем установки для параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.emit.emitoptions.emitmetadataonly#Microsoft_CodeAnalysis_Emit_EmitOptions_EmitMetadataOnly">EmitOptions.EmitMetadataOnly</a> значения <code>true</code>, а для параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.emit.emitoptions.includeprivatemembers#Microsoft_CodeAnalysis_Emit_EmitOptions_IncludePrivateMembers">EmitOptions.IncludePrivateMembers</a> значения <code>false</code> в объекте, переданном в метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation.emit">Compilation.Emit</a>.</li>
+</ul>
+<p>Если хотите распределить базовые сборки с помощью пакетов NuGet, их необходимо включить в подкаталог <em>ref\</em> каталога пакета, а не в подкаталог <em>lib\</em> , используемый для сборок реализации.</p>
+<h2 id="reference-assemblies-structure">Структура базовых сборок</h2>
+<p>Базовые сборки являются расширением связанной концепции — <em>сборок, содержащих только метаданные</em>. Тела методов в сборках, состоящих только из метаданных, заменяются одним телом <code>throw null</code>, но такие сборки включают все члены, кроме анонимных типов. Тело <code>throw null</code> используется для того, чтобы могло выполняться средство <strong>PEVerify</strong> для проверки полноты метаданных, что было бы невозможно при отсутствии тела.</p>
+<p>Базовые сборки удаляют метаданные (закрытые члены) из сборок, содержащих только метаданные.</p>
+<ul>
+<li>Базовая сборка содержит ссылки только на необходимые компоненты в слое доступа API. Реальная сборка может иметь дополнительные ссылки, связанные с конкретной реализацией. Например, базовая сборка для <code>class C { private void M() { dynamic d = 1; ... } }</code> не ссылается на типы, требуемые для <code>dynamic</code>.</li>
+<li>Закрытые функции-члены (методы, свойства и события) удаляются в случае, если их удаление не скажется заметно на компиляции. Если нет атрибутов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleTo</a>, внутренние элементы функции также удаляются.</li>
+</ul>
+<p>Метаданные в базовых сборках продолжают хранить следующие сведения:</p>
+<ul>
+<li>все типы, включая закрытые и вложенные;</li>
+<li>все атрибуты, даже внутренние;</li>
+<li>все виртуальные методы;</li>
+<li>явные реализации интерфейса;</li>
+<li>явно реализованные свойства и события, так как их методы доступа являются виртуальными;</li>
+<li>все поля структур.</li>
+</ul>
+<p>Базовые сборки содержат атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.referenceassemblyattribute">ReferenceAssembly</a> уровня сборки. Этот атрибут может быть задан в исходном коде, в таком случае компилятору не требуется его синтезировать. Из-за этого атрибута среды выполнения не будут загружать базовые сборки для выполнения (однако они могут загружаться в режиме только для отражения).</p>
+<p>Точные сведения о структуре базовой сборки зависят от версии компилятора. Более новые версии могут исключить дополнительные метаданные, если они не влияют на общедоступный API-интерфейса.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Сведения в этом разделе применимы только к базовым сборкам, которые созданы компиляторами Roslyn, начиная с C# версии 7.1 или Visual Basic версии 15.3. Структура базовых сборок для библиотек .NET Framework и .NET Core может отличаться некоторыми деталями, так как они используют собственный механизм создания базовых сборок. Например, они могут иметь совершенно пустые тела методов вместо тела <code>throw null</code>. Но общие принципы по-прежнему применяются: у них нет пригодных для использования реализаций методов и они содержат метаданные только для элементов, которые имеют наблюдаемый эффект с точки зрения общедоступного API-интерфейса.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="index.html">Сборки в .NET</a></li>
+<li><a href="/visualstudio/ide/visual-studio-multi-targeting-overview">Общие сведения о настройке для платформы</a></li>
+<li><a href="/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager">Практическое руководство. Добавление и удаление ссылок с помощью диспетчера ссылок</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

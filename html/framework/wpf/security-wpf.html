@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; (WPF) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1041;&#1077;&#1079;&#1086;&#1087;&#1072;&#1089;&#1085;&#1086;&#1089;&#1090;&#1100; (WPF) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="security-wpf">Безопасность (WPF)</h1>
+
+<p><a name="introduction"></a> При разработке Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере, необходимо учитывать модель безопасности. WPF Автономные приложения выполняются с неограниченными разрешениями ( CAS <strong>FullTrust</strong> набор разрешений), если развертываются с помощью установщика Windows (MSI), XCopy или ClickOnce. Развертывание автономных приложений WPF с частичным доверием с помощью ClickOnce не поддерживается. Тем не менее, полным доверием ведущего приложения можно создать с частичным доверием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> с помощью модели надстроек платформы .NET Framework. Дополнительные сведения см. в разделе <a href="app-development/wpf-add-ins-overview.html">Общие сведения о надстройках WPF</a>.</p>
+<p>WPF Браузерные приложения Windows Internet Explorer или Firefox, и может быть либо XAML-приложения браузера (XBAP) или свободными Язык XAML документов, Дополнительные сведения см. в разделе <a href="app-development/wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a>.</p>
+<p>WPF Браузерные приложения выполняются в песочнице с частичным доверием, по умолчанию, который ограничен по умолчанию CAS <strong>Internet</strong> набора разрешений зоны. Это позволяет эффективно изолировать WPF Браузерные приложения от клиентского компьютера так же, что можно ожидать изолируются обычные веб-приложения. Приложение XBAP может повысить привилегии вплоть до полного доверия в зависимости от зоны безопасности URL-адреса развертывания и конфигурации безопасности клиента. Дополнительные сведения см. в разделе <a href="wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p>В этом разделе рассматривается модель безопасности для Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере.</p>
+<p>В этом разделе содержатся следующие подразделы.</p>
+<ul>
+<li><p><a href="#SafeTopLevelNavigation">Безопасная навигация</a></p>
+</li>
+<li><p><a href="#InternetExplorerSecuritySettings">Параметры безопасности программного обеспечения для просмотра веб-страниц</a></p>
+</li>
+<li><p><a href="#webbrowser_control_and_feature_controls">Элемент управления WebBrowser и элементы управления функциями</a></p>
+</li>
+<li><p><a href="#APTCA">Отключение сборок APTCA для клиентских приложений с частичным доверием</a></p>
+</li>
+<li><p><a href="#LooseContentSandboxing">Режим песочницы для свободных файлов XAML</a></p>
+</li>
+<li><p><a href="#BestPractices">Ресурсы для разработки приложений WPF, обеспечивающих безопасность</a></p>
+</li>
+</ul>
+<p><a name="SafeTopLevelNavigation"></a></p>
+<h2 id="safe-navigation">Безопасная навигация</h2>
+<p>Для XBAP, WPF различает два типа навигации: приложения и браузера.</p>
+<p><em>Навигация в приложении</em> — это навигация между элементами содержимого в пределах приложения, размещенного в браузере. <em>Навигация в браузере</em> — это навигация, изменяющая содержимое и URL-адрес расположения самого браузера. Связь между Навигация в приложении (как правило, XAML) и навигацией в браузере (как правило, HTML) показана на следующем рисунке:</p>
+<p><img src="media/security-wpf/application-browser-navigation-relationship.png" alt="Отношение между навигации приложений и навигацией в браузере."></p>
+<p>Тип содержимого, которое считается безопасным для XBAP для перехода к главным образом определяется использование Навигация в приложении или в браузере.</p>
+<p><a name="Application_Navigation_Security"></a></p>
+<h3 id="application-navigation-security">Безопасность навигации в приложениях</h3>
+<p>Навигация в приложении считается безопасным, если его можно с помощью пакета URI, который поддерживает четыре типа содержимого:</p>
+<table>
+<thead>
+<tr>
+<th>Тип содержимого</th>
+<th>Описание</th>
+<th>Пример URI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ресурс</td>
+<td>Файлы, добавленные в проект с типом сборки <strong>ресурсов</strong>.</td>
+<td><code>pack://application:,,,/MyResourceFile.xaml</code></td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Файлы, добавленные в проект с типом сборки <strong>содержимого</strong>.</td>
+<td><code>pack://application:,,,/MyContentFile.xaml</code></td>
+</tr>
+<tr>
+<td>Исходный веб-сайт</td>
+<td>Файлы, добавленные в проект с типом сборки <strong>None</strong>.</td>
+<td><code>pack://siteoforigin:,,,/MySiteOfOriginFile.xaml</code></td>
+</tr>
+<tr>
+<td>Код приложения</td>
+<td>Ресурсы XAML, имеющие скомпилированный код программной части.<br><br> -или-<br><br> Файлы XAML, которые добавляются в проект с типом сборки <strong>страницы</strong>.</td>
+<td><code>pack://application:,,,/MyResourceFile</code> <code>.xaml</code></td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о файлах данных приложения и пакет Идентификаторы URI, см. в разделе <a href="app-development/wpf-application-resource-content-and-data-files.html">ресурса приложения WPF, содержимое и файлы данных</a>.</p>
+</div>
+<p>Файлы этих типов содержимого поддерживают навигацию, выполняемую пользователем или программно.</p>
+<ul>
+<li><p><strong>Навигация, выполняемая пользователем</strong>. Пользователь выполняет переходы, щелкая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> элемент.</p>
+</li>
+<li><p><strong>Программная навигация</strong>. Приложение выполняет переходы без участия пользователя, например, установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.source">NavigationWindow.Source</a> свойство.</p>
+</li>
+</ul>
+<p><a name="Browser_Navigation_Security"></a></p>
+<h3 id="browser-navigation-security">Безопасность навигации в браузере</h3>
+<p>Навигация в браузере считается безопасной только при выполнении следующих условий.</p>
+<ul>
+<li><p><strong>Навигация, выполняемая пользователем</strong>. Пользователь выполняет переходы, щелкая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a> элемент, расположенный в главном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, но не во вложенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>.</p>
+</li>
+<li><p><strong>Зона</strong>. Содержимое, к которому выполняется переход, находится в Интернете или в локальной интрасети.</p>
+</li>
+<li><p><strong>Протокол</strong>. Используемый протокол является либо <strong>http</strong>, <strong>https</strong>, <strong>файл</strong>, или <strong>mailto</strong>.</p>
+</li>
+</ul>
+<p>Если XBAP пытается перейти к содержимому таким способом, который не соответствует этим условиям, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.securityexception">SecurityException</a> возникает исключение.</p>
+<p><a name="InternetExplorerSecuritySettings"></a></p>
+<h2 id="web-browsing-software-security-settings">Параметры безопасности программного обеспечения для просмотра веб-страниц</h2>
+<p>Параметры безопасности компьютера определяют уровень доступа, который предоставляется программному обеспечению для просмотра веб-страниц. Веб-обозревателя включает любое приложение или компонент, который использует <a href="https://go.microsoft.com/fwlink/?LinkId=179379">WinINet</a> или <a href="https://go.microsoft.com/fwlink/?LinkId=179383">UrlMon</a> API, включая Internet Explorer и PresentationHost.exe.</p>
+<p>Internet Explorer предоставляет механизм, по которому можно настроить функции, которые разрешены для выполнения в Internet Explorer, включая следующие:</p>
+<ul>
+<li><p>Всему компоненты .NET</p>
+</li>
+<li><p>элементы управления ActiveX и подключаемые модули;</p>
+</li>
+<li><p>Загрузки</p>
+</li>
+<li><p>Скрипты</p>
+</li>
+<li><p>проверка подлинности пользователя.</p>
+</li>
+</ul>
+<p>Набор функциональных возможностей, которая может быть защищена таким образом настраивается для каждой зоны для <strong>Internet</strong>, <strong>интрасети</strong>, <strong>Надежные узлы</strong>, и  <strong>Ограниченные узлы</strong> зоны. Ниже приведена процедура для настройки параметров безопасности.</p>
+<ol>
+<li><p>Откройте <strong>панель управления</strong>.</p>
+</li>
+<li><p>Нажмите кнопку <strong>сеть и Интернет</strong> и нажмите кнопку <strong>обозревателя</strong>.</p>
+<p>Откроется диалоговое окно «Свойства веб-обозревателя».</p>
+</li>
+<li><p>На <strong>безопасности</strong> выберите зону для настройки параметров безопасности.</p>
+</li>
+<li><p>Нажмите кнопку <strong>другой</strong> кнопки.</p>
+<p><strong>Параметры безопасности</strong> откроется диалоговое окно, и можно настроить параметры безопасности для выбранной зоны.</p>
+<p><img src="media/security-wpf/windows-presentation-foundation-security-settings.png" alt="Снимок экрана: диалоговое окно параметров безопасности."></p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>К диалоговому окну &quot;Свойства обозревателя&quot; можно также перейти из Internet Explorer. Нажмите кнопку <strong>средства</strong> и нажмите кнопку <strong>обозревателя</strong>.</p>
+</div>
+<p>Начиная с Windows Internet Explorer 7, включены следующие параметры безопасности специально для .NET Framework:</p>
+<ul>
+<li><p><strong>Свободный XAML</strong>. Элементы управления ли Internet Explorer можно переходить к и свободный XAML файлов. (Варианты: &quot;Включить&quot;, &quot;Отключить&quot; и &quot;Запрашивать&quot;.)</p>
+</li>
+<li><p><strong>XAML-приложения браузера</strong>. Элементы управления ли Internet Explorer можно перейти и запустить XBAP. (Варианты: &quot;Включить&quot;, &quot;Отключить&quot; и &quot;Запрашивать&quot;.)</p>
+</li>
+</ul>
+<p>По умолчанию эти параметры включены для <strong>Internet</strong>, <strong>Местная интрасеть</strong>, и <strong>надежные сайты</strong> зоны и отключен для <strong>Ограниченные узлы</strong>  зоны.</p>
+<p><a name="Security_Settings_for_IE6_and_Below"></a></p>
+<h3 id="security-related-wpf-registry-settings">Параметры реестра WPF, связанные с безопасностью</h3>
+<p>Помимо параметров безопасности, доступных в окне &quot;Свойства обозревателя&quot;, для избирательного отключения некоторых функций WPF, влияющих на безопасность, предусмотрены перечисленные далее значения реестра. Значения определяются в следующем разделе.</p>
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\Windows Presentation Foundation\Features</code></p>
+<p>В таблице ниже перечислены возможные задаваемые значения.</p>
+<table>
+<thead>
+<tr>
+<th>Имя значения</th>
+<th>Тип значения</th>
+<th>Данные значения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XBAPDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>LooseXamlDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>WebBrowserDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>MediaAudioDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>MediaImageDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>MediaVideoDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+<tr>
+<td>ScriptInteropDisallow</td>
+<td>REG_DWORD</td>
+<td>1, чтобы запретить; 0, чтобы разрешить.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="webbrowser_control_and_feature_controls"></a></p>
+<h2 id="webbrowser-control-and-feature-controls">Элемент управления WebBrowser и элементы управления функциями</h2>
+<p>WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемент управления может использоваться для размещения веб-содержимого. WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> базового элемента управления WebBrowser ActiveX создает оболочку для элемента управления. WPF обеспечивает некоторую поддержку для защиты приложения при использовании WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> управления для размещения ненадежного веб-содержимого. Тем не менее, некоторые функции безопасности должны применяться непосредственно приложениями с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемента управления. Дополнительные сведения об элементе управления WebBrowser ActiveX см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=179388">элемента управления WebBrowser и учебники</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот раздел также относится к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> управления, поскольку он использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> для перехода к HTML-содержимое.</p>
+</div>
+<p>Если WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> управления используется для размещения ненадежного веб-содержимого, в приложении следует использовать с частичным доверием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.appdomain">AppDomain</a> для изоляции кода приложения от потенциально вредоносного кода сценариев HTML. Это особенно верно в случае, если приложение взаимодействует с размещенным сценарием с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser.invokescript">InvokeScript</a> метод и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser.objectforscripting">ObjectForScripting</a> свойство. Дополнительные сведения см. в разделе <a href="app-development/wpf-add-ins-overview.html">Общие сведения о надстройках WPF</a>.</p>
+<p>Если приложение использует WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемента управления, другой способ повышения безопасности и снижения угроз, — чтобы включить элементы управления функциями Internet Explorer. Элементы управления функциями — дополнения к Internet Explorer, позволяющие администраторам и разработчикам настраивать функции Internet Explorer и приложений, на которых размещается элемент управления WebBrowser ActiveX, который WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> оболочку управления. Элементы управления функциями можно настроить с помощью <a href="https://go.microsoft.com/fwlink/?LinkId=179394">CoInternetSetFeatureEnabled</a> функции или путем изменения значений в реестре. Дополнительные сведения об элементах управления функциями см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=179390">введение в элементы управления функциями</a> и <a href="https://go.microsoft.com/fwlink/?LinkId=179392">элементы управления функциями Интернета</a>.</p>
+<p>Если вы разрабатываете автономное приложение WPF, использующего WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемент управления, WPF автоматически включает следующие элементы управления функциями для вашего приложения.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления функцией</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FEATURE_MIME_HANDLING</td>
+</tr>
+<tr>
+<td>FEATURE_MIME_SNIFFING</td>
+</tr>
+<tr>
+<td>FEATURE_OBJECT_CACHING</td>
+</tr>
+<tr>
+<td>FEATURE_SAFE_BINDTOOBJECT</td>
+</tr>
+<tr>
+<td>FEATURE_WINDOW_RESTRICTIONS</td>
+</tr>
+<tr>
+<td>FEATURE_ZONE_ELEVATION</td>
+</tr>
+<tr>
+<td>FEATURE_RESTRICT_FILEDOWNLOAD</td>
+</tr>
+<tr>
+<td>FEATURE_RESTRICT_ACTIVEXINSTALL</td>
+</tr>
+<tr>
+<td>FEATURE_ADDON_MANAGEMENT</td>
+</tr>
+<tr>
+<td>FEATURE_HTTP_USERNAME_PASSWORD_DISABLE</td>
+</tr>
+<tr>
+<td>FEATURE_SECURITYBAND</td>
+</tr>
+<tr>
+<td>FEATURE_UNC_SAVEDFILECHECK</td>
+</tr>
+<tr>
+<td>FEATURE_VALIDATE_NAVIGATE_URL</td>
+</tr>
+<tr>
+<td>FEATURE_DISABLE_TELNET_PROTOCOL</td>
+</tr>
+<tr>
+<td>FEATURE_WEBOC_POPUPMANAGEMENT</td>
+</tr>
+<tr>
+<td>FEATURE_DISABLE_LEGACY_COMPRESSION</td>
+</tr>
+<tr>
+<td>FEATURE_SSLUX</td>
+</tr>
+</tbody>
+</table>
+<p>Поскольку эти элементы управления функциями включаются безусловно, они могут нарушать работу приложения с полным доверием. В этом случае, если нет риска безопасности для конкретного приложения и содержимого, размещенного в нем, можно отключить соответствующий элемент управления функцией.</p>
+<p>Элементы управления функциями применяются процессом, создающим экземпляры объекта WebBrowser ActiveX. Таким образом, при создании автономного приложения, которое может переходить к ненадежному содержимому, следует рассмотреть возможность включения дополнительных элементов управления функциями.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Эта рекомендация основана на общих рекомендациях по безопасности узлов MSHTML и SHDOCVW. Дополнительные сведения см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=179396">The MSHTML Host Security FAQ: Часть I из II</a> и <a href="https://go.microsoft.com/fwlink/?LinkId=179415">безопасности узлов MSHTML часто задаваемые вопросы: Часть II части II</a>.</p>
+</div>
+<p>Для исполняемого файла можно включить следующие элементы управления функциями путем установки значения реестра равным 1.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления функцией</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FEATURE_ACTIVEX_REPURPOSEDETECTION</td>
+</tr>
+<tr>
+<td>FEATURE_BLOCK_LMZ_IMG</td>
+</tr>
+<tr>
+<td>FEATURE_BLOCK_LMZ_OBJECT</td>
+</tr>
+<tr>
+<td>FEATURE_BLOCK_LMZ_SCRIPT</td>
+</tr>
+<tr>
+<td>FEATURE_RESTRICT_RES_TO_LMZ</td>
+</tr>
+<tr>
+<td>FEATURE_RESTRICT_ABOUT_PROTOCOL_IE7</td>
+</tr>
+<tr>
+<td>FEATURE_SHOW_APP_PROTOCOL_WARN_DIALOG</td>
+</tr>
+<tr>
+<td>FEATURE_LOCALMACHINE_LOCKDOWN</td>
+</tr>
+<tr>
+<td>FEATURE_FORCE_ADDR_AND_STATUS</td>
+</tr>
+<tr>
+<td>FEATURE_RESTRICTED_ZONE_WHEN_FILE_NOT_FOUND</td>
+</tr>
+</tbody>
+</table>
+<p>Для исполняемого файла можно отключить следующие элементы управления функциями путем установки значения реестра равным 0.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления функцией</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT</td>
+</tr>
+</tbody>
+</table>
+<p>При выполнении с частичным доверием Приложение обозревателя XAML (XBAP) , включает в себя WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> контролировать Windows Internet Explorer, WPF размещает элемент управления WebBrowser ActiveX в адресном пространстве процесса Internet Explorer. Поскольку элемент управления WebBrowser ActiveX размещается в Internet Explorer процесса, все элементы управления функциями для Internet Explorer также включены для элемента управления WebBrowser ActiveX.</p>
+<p>XBAP-приложения, выполняющиеся в Internet Explorer, также получают более высокий уровень безопасности по сравнению с обычными автономными приложениями. — Этот повышенный уровень безопасности, так как Internet Explorer и, следовательно, элемент управления WebBrowser ActiveX выполняются в защищенном режиме по умолчанию в Windows Vista и Windows 7. Дополнительные сведения о защищенном режиме, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=179393">Знакомство и работа в защищенный режим Internet Explorer</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При попытке запуска приложения XBAP, включающую WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> элемента управления в Firefox в зоне Интернета <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.securityexception">SecurityException</a> будет создано. Это связано с политикой безопасности WPF.</p>
+</div>
+<p><a name="APTCA"></a></p>
+<h2 id="disabling-aptca-assemblies-for-partially-trusted-client-applications">Отключение сборок APTCA для клиентских приложений с частичным доверием</h2>
+<p>Когда управляемые сборки устанавливаются в глобальный кэш сборок (GAC), они становятся полностью надежными, так как пользователь должен предоставить явное разрешение на их установку. Поскольку они пользуются полным доверием, их могут использовать только полностью доверенные управляемые клиентские приложения. Чтобы разрешить частично доверенных приложений использовать их, они должны быть отмечены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.allowpartiallytrustedcallersattribute">AllowPartiallyTrustedCallersAttribute</a> (APTCA). Этим атрибутом могут быть помечены только сборки, которые были протестированы для подтверждения безопасности при выполнении в режиме частичного доверия.</p>
+<p>Тем не менее, существует возможность сборка APTCA может представлять угрозу безопасности после установки в Глобальный кэш сборок. После обнаружения уязвимости безопасности издатели сборок могут создавать обновления безопасности для решения проблем существующих установок и защиты установок, которые могут выполняться после выявления проблемы. Одним из вариантов обновления является удаление сборки, хотя это может нарушить работу других полностью доверенных клиентских приложений, использующих сборку.</p>
+<p>WPF предоставляет механизм, по которому можно отключить сборку APTCA, для частично доверенных XBAP без удаления ЭТОЙ сборки.</p>
+<p>Чтобы отключить сборку APTCA, необходимо создать специальный раздел реестра.</p>
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\policy\APTCA\&lt;AssemblyFullName&gt;, FileVersion=&lt;AssemblyFileVersion&gt;</code></p>
+<p>Пример приведен ниже.</p>
+<p><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\policy\APTCA\aptcagac, Version=1.0.0.0, Culture=neutral, PublicKeyToken=215e3ac809a0fea7, FileVersion=1.0.0.0</code></p>
+<p>Этот раздел содержит запись для сборки APTCA. Вам также потребуется создать значение в этом разделе, включающее или отключающее сборку. Ниже приведены сведения об этом значении.</p>
+<ul>
+<li><p>Имя значения: <strong>APTCA_FLAG</strong>.</p>
+</li>
+<li><p>Тип значения: <strong>REG_DWORD</strong>.</p>
+</li>
+<li><p>Данные значения: <strong>1</strong> для отключения; <strong>0</strong> для включения.</p>
+</li>
+</ul>
+<p>Если сборку необходимо отключить для клиентских приложений с частичным доверием, можно написать обновление, создающее раздел реестра и значение.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Базовые сборки .NET Framework не затрагиваются, отключив их таким образом, так как они необходимы для запуска управляемых приложений. Поддержка отключения сборок APTCA в основном ориентирована на сторонние приложения.</p>
+</div>
+<p><a name="LooseContentSandboxing"></a></p>
+<h2 id="sandbox-behavior-for-loose-xaml-files">Режим песочницы для свободных файлов XAML</h2>
+<p>Свободные XAML файлы имеют только разметку XAML, не зависят от любого кода, обработчик событий или сборки приложения. Когда переход к свободным XAML файлов осуществляется непосредственно из браузера, они загружаются в изолированной среде безопасности, в соответствии с набором разрешений зоны Интернета по умолчанию.</p>
+<p>Тем не менее поведение безопасности отличается при свободные XAML файлов осуществляется либо из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> в автономном приложении.</p>
+<p>В обоих случаях свободный XAML файла, к которому осуществляется переход, наследует разрешения от ведущего приложения. Тем не менее, это поведение может быть нежелательным с точки зрения безопасности, особенно в том случае, если свободный XAML файл был создан небезопасной или неизвестной сущностью. Этот тип содержимого известен как <em>внешнее содержимое</em>и оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> можно настроить, чтобы изолировать его при переходе. Изоляция достигается путем установки <strong>SandboxExternalContent</strong> значение true, как показано в следующих примерах для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>:</p>
+<pre><code class="lang-xaml" name="SecurityOverviewSnippets#FrameMARKUP">&lt;Frame 
+  Source=&quot;ExternalContentPage.xaml&quot; 
+  SandboxExternalContent=&quot;True&quot;&gt;
+&lt;/Frame&gt;
+</code></pre><pre><code class="lang-xaml" name="SecurityOverviewSnippets#NavigationWindowMARKUP">&lt;!-- Sandboxing external content using NavigationWindow--&gt;
+&lt;NavigationWindow 
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+  Source=&quot;ExternalContentPage.xaml&quot; 
+  SandboxExternalContent=&quot;True&quot;&gt;
+&lt;/NavigationWindow&gt;
+</code></pre>
+<p>Этот параметр позволяет загружать внешнее содержимое в процесс, который отделен от процесса, содержащего приложение. Этот процесс ограничен набором разрешений зоны Интернета по умолчанию, что эффективно изолирует его от ведущего приложения и клиентского компьютера.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Несмотря на то что переход к свободным XAML файлов из любого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> в автономном приложении реализован на основе браузера WPF размещения инфраструктуры, включающей процесс PresentationHost, уровень безопасности, немного меньше, чем при загрузке содержимого непосредственно в Internet Explorer на Windows Vista и Windows 7 (которая все равно выполняется через процесс PresentationHost). Это обусловлено тем, что автономное приложение WPF, использующее веб-браузер, не предоставляет дополнительную функцию безопасности &quot;Защищенный режим&quot; Internet Explorer.</p>
+</div>
+<p><a name="BestPractices"></a></p>
+<h2 id="resources-for-developing-wpf-applications-that-promote-security">Ресурсы для разработки приложений WPF, обеспечивающих безопасность</h2>
+<p>Ниже приведены некоторые дополнительные ресурсы, помогающие при разработке WPF приложений, обеспечивающих безопасность:</p>
+<table>
+<thead>
+<tr>
+<th>Область</th>
+<th>Ресурс</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Управляемый код</td>
+<td><a href="https://go.microsoft.com/fwlink/?LinkId=117426">Шаблоны и рекомендации по обеспечению безопасности приложений</a></td>
+</tr>
+<tr>
+<td>CAS</td>
+<td><a href="../misc/code-access-security.md">Управление доступом для кода</a></td>
+</tr>
+<tr>
+<td>ClickOnce</td>
+<td><a href="/visualstudio/deployment/clickonce-security-and-deployment">Развертывание и безопасность технологии ClickOnce</a></td>
+</tr>
+<tr>
+<td>WPF</td>
+<td><a href="wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a></li>
+<li><a href="wpf-security-strategy-platform-security.html">Стратегия безопасности WPF — безопасность платформы</a></li>
+<li><a href="wpf-security-strategy-security-engineering.html">Стратегия безопасности WPF — проектирование безопасности</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=117426">Шаблоны и рекомендации по обеспечению безопасности приложений</a></li>
+<li><a href="../misc/code-access-security.md">Управление доступом для кода</a></li>
+<li><a href="/visualstudio/deployment/clickonce-security-and-deployment">Развертывание и безопасность технологии ClickOnce</a></li>
+<li><a href="advanced/xaml-overview-wpf.html">Обзор XAML (WPF)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

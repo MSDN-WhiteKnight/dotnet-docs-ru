@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1072; INotifyPropertyChanged | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1072; INotifyPropertyChanged | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-implement-the-inotifypropertychanged-interface">Практическое руководство. Реализация интерфейса INotifyPropertyChanged</h1>
+
+<p>В следующем примере кода показано, как реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> интерфейс. Реализуйте этот интерфейс для бизнес-объектов, которые используются в привязке данных Windows Forms. При реализации, этот интерфейс сообщает связанному элементу управления об изменениях свойств бизнес-объекта.</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-csharp" name="System.ComponentModel.IPropertyChangeExample#1">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
+
+// Change the namespace to the project name.
+namespace TestNotifyPropertyChangedCS
+{
+    // This form demonstrates using a BindingSource to bind
+    // a list to a DataGridView control. The list does not
+    // raise change notifications. However the DemoCustomer type 
+    // in the list does.
+    public partial class Form1 : Form
+    {
+        // This button causes the value of a list element to be changed.
+        private Button changeItemBtn = new Button();
+
+        // This DataGridView control displays the contents of the list.
+        private DataGridView customersDataGridView = new DataGridView();
+
+        // This BindingSource binds the list to the DataGridView control.
+        private BindingSource customersBindingSource = new BindingSource();
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            // Set up the &quot;Change Item&quot; button.
+            this.changeItemBtn.Text = &quot;Change Item&quot;;
+            this.changeItemBtn.Dock = DockStyle.Bottom;
+            this.changeItemBtn.Click +=
+                new EventHandler(changeItemBtn_Click);
+            this.Controls.Add(this.changeItemBtn);
+
+            // Set up the DataGridView.
+            customersDataGridView.Dock = DockStyle.Top;
+            this.Controls.Add(customersDataGridView);
+
+            this.Size = new Size(400, 200);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Create and populate the list of DemoCustomer objects
+            // which will supply data to the DataGridView.
+            BindingList&lt;DemoCustomer&gt; customerList = new BindingList&lt;DemoCustomer&gt;();
+            customerList.Add(DemoCustomer.CreateNewCustomer());
+            customerList.Add(DemoCustomer.CreateNewCustomer());
+            customerList.Add(DemoCustomer.CreateNewCustomer());
+
+            // Bind the list to the BindingSource.
+            this.customersBindingSource.DataSource = customerList;
+
+            // Attach the BindingSource to the DataGridView.
+            this.customersDataGridView.DataSource =
+                this.customersBindingSource;
+
+        }
+
+        // Change the value of the CompanyName property for the first 
+        // item in the list when the &quot;Change Item&quot; button is clicked.
+        void changeItemBtn_Click(object sender, EventArgs e)
+        {
+            // Get a reference to the list from the BindingSource.
+            BindingList&lt;DemoCustomer&gt; customerList =
+                this.customersBindingSource.DataSource as BindingList&lt;DemoCustomer&gt;;
+
+            // Change the value of the CompanyName property for the 
+            // first item in the list.
+            customerList[0].CustomerName = &quot;Tailspin Toys&quot;;
+            customerList[0].PhoneNumber = &quot;(708)555-0150&quot;;
+        }
+
+    }
+
+    // This is a simple customer class that 
+    // implements the IPropertyChange interface.
+    public class DemoCustomer : INotifyPropertyChanged
+    {
+        // These fields hold the values for the public properties.
+        private Guid idValue = Guid.NewGuid();
+        private string customerNameValue = String.Empty;
+        private string phoneNumberValue = String.Empty;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // This method is called by the Set accessor of each property.
+        // The CallerMemberName attribute that is applied to the optional propertyName
+        // parameter causes the property name of the caller to be substituted as an argument.
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = &quot;&quot;)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        // The constructor is private to enforce the factory pattern.
+        private DemoCustomer()
+        {
+            customerNameValue = &quot;Customer&quot;;
+            phoneNumberValue = &quot;(312)555-0100&quot;;
+        }
+
+        // This is the public factory method.
+        public static DemoCustomer CreateNewCustomer()
+        {
+            return new DemoCustomer();
+        }
+
+        // This property represents an ID, suitable
+        // for use as a primary key in a database.
+        public Guid ID
+        {
+            get
+            {
+                return this.idValue;
+            }
+        }
+
+        public string CustomerName
+        {
+            get
+            {
+                return this.customerNameValue;
+            }
+
+            set
+            {
+                if (value != this.customerNameValue)
+                {
+                    this.customerNameValue = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get
+            {
+                return this.phoneNumberValue;
+            }
+
+            set
+            {
+                if (value != this.phoneNumberValue)
+                {
+                    this.phoneNumberValue = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-apply-the-propertynamechanged-pattern.html">Практическое руководство. Применение шаблона PropertyNameChanged</a></li>
+<li><a href="windows-forms-data-binding.html">Привязка данных Windows Forms</a></li>
+<li><a href="controls/raise-change-notifications--bindingsource.html">Практическое руководство. Получение уведомления об изменении данных с использованием компонента BindingSource и интерфейса INotifyPropertyChanged</a></li>
+<li><a href="change-notification-in-windows-forms-data-binding.html">Получение уведомления об изменении данных, связанных с элементом управления, в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

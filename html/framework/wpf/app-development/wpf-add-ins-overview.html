@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1085;&#1072;&#1076;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072;&#1093; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1085;&#1072;&#1076;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072;&#1093; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-add-ins-overview">Общие сведения о надстройках WPF</h1>
+
+<p><a name="Introduction"></a> .NET Framework включает модель надстроек, разработчики могут использовать для создания приложений, поддерживающих расширяемость надстроек. Эта модель позволяет создавать надстройки, которые интегрируются с функциональностью приложения и расширяют ее. В некоторых сценариях приложения также должны отображать пользовательские интерфейсы, которые предоставляются надстройками. В этом разделе показано, как WPF расширяет модель надстроек платформы .NET Framework для поддержки таких сценариев, архитектуры, его преимущества и ограничения.</p>
+<p><a name="Requirements"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Знание модели надстроек платформы .NET Framework является обязательным. Дополнительные сведения см. в разделе <a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">Надстройки и расширяемость</a>.</p>
+<p><a name="AddInsOverview"></a></p>
+<h2 id="add-ins-overview">Общие сведения о надстройках</h2>
+<p>Чтобы избежать сложностей повторной компиляции и развертывания приложений для включения новых функциональных возможностей, приложения реализуют механизмы расширяемости, которые позволяют разработчикам (как собственным, так и сторонним) создавать другие приложения с поддержкой интеграции. Наиболее распространенным способом поддержки этого типа расширяемости является использование надстроек (также называемых &quot;подключаемыми модулями&quot;). Примеры реальных приложений, которые обеспечивают расширяемость с помощью надстроек:</p>
+<ul>
+<li><p>Надстройки Internet Explorer.</p>
+</li>
+<li><p>Надстройки проигрывателя Windows Media.</p>
+</li>
+<li><p>Надстройки Visual Studio.</p>
+</li>
+</ul>
+<p>Например, модель надстроек проигрывателя Windows Media позволяет сторонним разработчикам реализовать &quot;подключаемые модули&quot;, расширяющие возможности проигрывателя Windows Media различными способами, включая создание декодеров и кодировщиков для форматов мультимедиа, изначально не поддерживаемых проигрывателем Windows Media (например: DVD, MP3), а также звуковых эффектов и обложек. Каждая модель надстройки создается для предоставления функций, уникальных для приложения, хотя существует несколько элементов и поведений, общих для всех моделей.</p>
+<p>Тремя основными сущностями типичных решений расширяемости являются <em>контракты</em>, <em>надстройки</em> и <em>ведущие приложения</em>. Контракты определяют интеграцию надстроек с ведущими приложениями двумя способами:</p>
+<ul>
+<li><p>Надстройки интегрируются с функциональными возможностями, реализуемыми ведущими приложениями.</p>
+</li>
+<li><p>Ведущие приложения предоставляют функциональные возможности для надстроек, с которыми интегрируются.</p>
+</li>
+</ul>
+<p>Чтобы использовать надстройки, ведущие приложения должны найти их и загрузить во время выполнения. Следовательно, приложения, поддерживающие надстройки, имеют следующие дополнительные обязанности:</p>
+<ul>
+<li><p><strong>Обнаружение</strong>: Поиск надстроек, которые соответствуют контрактам, поддерживаемым ведущими приложениями.</p>
+</li>
+<li><p><strong>Активация</strong>: Загрузка, запуск и установка связи с надстройками.</p>
+</li>
+<li><p><strong>Изоляция</strong>: Использование доменов приложений или процессов для установления границ изоляции, защищающих приложения от потенциальных безопасности и выполнения проблем с надстройками.</p>
+</li>
+<li><p><strong>Обмен данными</strong>: Разрешение надстройкам и ведущим приложениям взаимодействовать друг с другом через границы изоляции путем вызова методов и передачи данных.</p>
+</li>
+<li><p><strong>Управление жизненным циклом</strong>: Загрузка и выгрузка доменов приложений и процессов ясным, прогнозируемым способом (см. в разделе <a href="../../app-domains/application-domains.md">домены приложений</a>).</p>
+</li>
+<li><p><strong>Управление версиями</strong>: Проверка того, что размещать приложения и надстройки могут взаимодействовать при создании новых версий.</p>
+</li>
+</ul>
+<p>В конечном счете разработка надежной модели надстройки является нетривиальный задачей. По этой причине .NET Framework предоставляет инфраструктуру для построения моделей надстроек.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Более подробные сведения о надстройках см. в разделе <a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">Надстройки и расширения среды</a>.</p>
+</div>
+<p><a name="NETFrameworkAddInModelOverview"></a></p>
+<h2 id="net-framework-add-in-model-overview">Общие сведения о модели надстроек платформы .NET Framework</h2>
+<p>Добавить в модель, найден в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin">System.AddIn</a> пространство имен, содержит набор типов, которые предназначены для упрощения разработки расширяемости. Основной единицей модели надстроек платформы .NET Framework является <em>контракта</em>, который определяет, как ведущее приложение и надстройка взаимодействуют друг с другом. Контракт предоставляется ведущему приложению с помощью специфичного для ведущего приложения <em>представления</em> контракта. Аналогичным образом надстройке предоставляется специфичное для нее <em>представление</em> контракта. <em>Адаптер</em> позволяет ведущему приложению и надстройке обмениваться данными между соответствующими представлениями контракта. Контракты, представления и адаптеры называются сегментами, а набор связанных сегментов составляет <em>конвейер</em>. Конвейеры — это основа, на которой модель надстроек платформы .NET Framework поддерживает обнаружение, активации, изоляции и безопасности, изоляцию выполнения (с использованием доменов приложений и процессов), обмен данными, управление жизненным циклом и управление версиями.</p>
+<p>Эта поддержка в целом позволяет разработчикам создавать надстройки, которые интегрируются с функциональностью ведущего приложения. Однако в некоторых сценариях требуется ведущее приложение должно отображать интерфейс пользователя надстройки. Поскольку каждая технология представления в .NET Framework имеет свою собственную модель для реализации пользовательских интерфейсов, модель надстроек платформы .NET Framework не поддерживает любой определенную технологию представления. Вместо этого WPF расширяет модель надстроек платформы .NET Framework с поддержкой пользовательского интерфейса для надстройки.</p>
+<p><a name="WPFAddInModel"></a></p>
+<h2 id="wpf-add-ins">Надстройки WPF</h2>
+<p>WPF, в сочетании с .NET Framework модель надстроек, позволяет решить широкий спектр сценариев, требующих ведущее приложение отображало пользовательских интерфейсов из надстройки. В частности эти сценарии реализованы в WPF с помощью следующих двух моделей программирования:</p>
+<ol>
+<li><p><strong>Надстройка возвращает пользовательский интерфейс</strong>. Надстройка возвращает пользовательский Интерфейс ведущему приложению с помощью вызова метода, как определено в контракте. Этот сценарий используется в следующих случаях.</p>
+<ul>
+<li><p>Внешний вид пользовательского интерфейса, который возвращается надстройке зависит от данных или условий, которые существуют только во время выполнения, такие как динамически создаваемые отчеты.</p>
+</li>
+<li><p>Пользовательский Интерфейс для службы, предоставляемые надстройки отличается от ведущих приложений, которые можно использовать надстройки пользовательского интерфейса.</p>
+</li>
+<li><p>Надстройки в основном выполняет службу для ведущего приложения и сообщает о состоянии ведущему приложению с пользовательским Интерфейсом.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Надстройка — это пользовательский интерфейс</strong>. Надстройка является пользовательским Интерфейсом, как определено в контракте. Этот сценарий используется в следующих случаях.</p>
+<ul>
+<li><p>Надстройка не предоставляет службы помимо отображения, например рекламного объявления.</p>
+</li>
+<li><p>Пользовательский Интерфейс для службы, предоставляемые надстройки являются общими для всех ведущих приложений, которые могут использовать эту надстройку, например калькулятор или палитру цветов.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Эти сценарии требуют, что объекты пользовательского интерфейса могут передаваться между ведущим приложением и доменами приложений надстроек. Поскольку платформа .NET Framework, модель надстроек использует удаленное взаимодействие между доменами приложений объекты, которые передаются между ними должны поддерживать удаленную обработку.</p>
+<p>Объект, поддерживающий удаленную обработку, является экземпляром класса, который выполняет одну или несколько из следующих функций:</p>
+<ul>
+<li><p>Является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.marshalbyrefobject">MarshalByRefObject</a> класса.</p>
+</li>
+<li><p>Реализует интерфейс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.serialization.iserializable">ISerializable</a>.</p>
+</li>
+<li><p>Имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.serializableattribute">SerializableAttribute</a> применен атрибут.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о создании объектов удаленного взаимодействия .NET Framework, см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/wcf3swha(v=vs.100)">внесения поддержки удаленного взаимодействия объектами</a>.</p>
+</div>
+<p>Типы пользовательского интерфейса WPF, не поддерживающие удаленное взаимодействие. Чтобы решить проблему, WPF расширяет модель надстроек платформы .NET Framework для включения пользовательского интерфейса WPF созданные надстройки для отображения из ведущих приложений. Эта поддержка обеспечивается WPF с двух типов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> интерфейс и два статических метода, реализуемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters">FrameworkElementAdapters</a> класса: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a>. На высоком уровне эти типы и методы используются следующим образом:</p>
+<ol>
+<li><p>Технология WPF требует, что пользовательские интерфейсы, предоставляемые надстройки являются классами, которые прямо или косвенно наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, таких как фигуры, элементы управления, пользовательские элементы управления, панели макета и страницы.</p>
+</li>
+<li><p>Везде, где в контракте объявляется, что пользовательский Интерфейс будет передаваться между надстройкой и ведущим приложением, он должен быть объявлен как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> (не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>); <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> является удаленным представлением надстройки пользовательского интерфейса, могут передаваться через границы изоляции.</p>
+</li>
+<li><p>Перед передачей из домена приложения надстройки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> входит в состав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a>.</p>
+</li>
+<li><p>После передачи домен приложения ведущего приложения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> нужно упаковать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a>.</p>
+</li>
+</ol>
+<p>Как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a> используются зависит от конкретного сценария. В следующих разделах содержатся сведения о каждой модели программирования.</p>
+<p><a name="ReturnUIFromAddInContract"></a></p>
+<h2 id="add-in-returns-a-user-interface">Надстройка возвращает пользовательский интерфейс</h2>
+<p>Для надстройки для возврата пользовательского интерфейса ведущего приложения необходимы следующие компоненты:</p>
+<ol>
+<li><p>Ведущее приложение, надстройка и конвейер должны создаваться, как описано в .NET Framework <a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">надстройки и расширения</a> документации.</p>
+</li>
+<li><p>Контракт должен реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.icontract">IContract</a> и, чтобы вернуть пользовательского интерфейса, контракт должен быть объявлен метод с возвращаемым значением типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>.</p>
+</li>
+<li><p>Пользовательский Интерфейс, который передается между надстройкой и ведущим приложением должен прямо или косвенно быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+</li>
+<li><p>Пользовательский Интерфейс, который возвращается методом надстройка должна быть преобразована из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> перед пересечением границы изоляции.</p>
+</li>
+<li><p>Пользовательский Интерфейс, который возвращается должны преобразовываться из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> после пересечения границы изоляции.</p>
+</li>
+<li><p>Ведущее приложение отображает возвращаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+</li>
+</ol>
+<p>Пример, демонстрирующий реализацию надстройки, возвращающей пользовательский Интерфейс, см. в разделе <a href="how-to-create-an-add-in-that-returns-a-ui.html">создание надстройки, возвращающей пользовательский Интерфейс</a>.</p>
+<p><a name="AddInIsAUI"></a></p>
+<h2 id="add-in-is-a-user-interface">Надстройка является пользовательским интерфейсом</h2>
+<p>Если надстройка является пользовательским Интерфейсом, необходимы следующие компоненты:</p>
+<ol>
+<li><p>Ведущее приложение, надстройка и конвейер должны создаваться, как описано в .NET Framework <a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">надстройки и расширения</a> документации.</p>
+</li>
+<li><p>Интерфейс контракта для надстройки должен реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>.</p>
+</li>
+<li><p>Надстройка, которая передается ведущему приложению должен прямо или косвенно быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+</li>
+<li><p>Надстройка должна быть преобразована из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> перед пересечением границы изоляции.</p>
+</li>
+<li><p>Надстройка должна быть преобразована из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> после пересечения границы изоляции.</p>
+</li>
+<li><p>Ведущее приложение отображает возвращаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
+</li>
+</ol>
+<p>Пример, демонстрирующий реализацию надстройки, являющейся пользовательским Интерфейсом, см. в разделе <a href="how-to-create-an-add-in-that-is-a-ui.html">надстройка — то есть создание пользовательского интерфейса</a>.</p>
+<p><a name="ReturningMultipleUIsFromAnAddIn"></a></p>
+<h2 id="returning-multiple-uis-from-an-add-in">Возвращение нескольких пользовательских интерфейсов из надстройки</h2>
+<p>Надстройки часто предоставляют несколько пользовательских интерфейсов для отображения ведущими приложениями. Например рассмотрим надстройки, являющейся пользовательским Интерфейсом, которая предоставляет сведения о состоянии ведущему приложению, также как пользовательский Интерфейс. Такие надстройки можно реализовать с помощью сочетания методов из моделей <a href="#ReturnUIFromAddInContract">Надстройка возвращает пользовательский интерфейс</a> и <a href="#AddInIsAUI">Надстройка является пользовательским интерфейсом</a>.</p>
+<p><a name="AddInsAndXBAPs"></a></p>
+<h2 id="add-ins-and-xaml-browser-applications">Надстройки и приложения браузера XAML</h2>
+<p>В приведенных примерах ведущее приложение было установленным автономным приложением. Однако XAML-приложения браузера (XBAP) также может размещать надстройки, хотя при этом применяются следующие дополнительные требования к сборке и реализации.</p>
+<ul>
+<li><p>Манифест приложения XBAP должен быть настроен специально для загрузки конвейера (папок и сборок) и сборки надстройки в кэш приложения ClickOnce на клиентской машине в той же папке, где находится XBAP.</p>
+</li>
+<li><p>Код XBAP для обнаружения и загрузки надстроек должен использовать кэш приложения ClickOnce для XBAP в качестве расположения конвейера и надстройки.</p>
+</li>
+<li><p>XBAP должен загрузить надстройку в специальный контекст безопасности, если надстройка ссылается на свободные файлы, расположенные на исходном узле. Если они размещаются в XBAP, надстройки могут ссылаться только на свободные файлы, расположенные на исходном узле ведущего приложения.</p>
+</li>
+</ul>
+<p>Эти задачи подробно описаны в следующих подразделах.</p>
+<h3 id="configuring-the-pipeline-and-add-in-for-clickonce-deployment">Настройка конвейера и надстройки для развертывания ClickOnce</h3>
+<p>XBAP скачиваются и запускать из безопасную папку в ClickOnce кэше развертывания. Для размещения надстройки в XBAP конвейер и сборка надстройки также должны быть загружены в безопасную папку. Для этого нужно настроить манифест приложения для включения и конвейера и сборки надстройки для загрузки. Проще всего это сделать в Visual Studio, хотя сборка конвейера и надстройки должна находиться в корневой папке проекта XBAP, чтобы Visual Studio мог обнаружить сборочные узлы конвейера.</p>
+<p>Следовательно, первый шаг — создать сборку конвейера и надстройки в корне проекта XBAP, настроив выходные данные построения для каждого проекта сборки конвейера и сборки надстройки. В следующей таблице показаны выходные пути построения для проектов сборки конвейера и проекта сборки надстройки, которые находятся в том же решении и корневой папке, что и проект ведущего приложения XBAP.</p>
+<p>Таблица 1. Создание выходных путей построения для сборок конвейера, размещенных в XBAP</p>
+<table>
+<thead>
+<tr>
+<th>Проект сборки конвейера</th>
+<th>Выходной путь сборки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Контракт</td>
+<td><code>..\HostXBAP\Contracts\</code></td>
+</tr>
+<tr>
+<td>Представление надстройки</td>
+<td><code>..\HostXBAP\AddInViews\</code></td>
+</tr>
+<tr>
+<td>Адаптер надстройки</td>
+<td><code>..\HostXBAP\AddInSideAdapters\</code></td>
+</tr>
+<tr>
+<td>Адаптер приложения</td>
+<td><code>..\HostXBAP\HostSideAdapters\</code></td>
+</tr>
+<tr>
+<td>Надстройка</td>
+<td><code>..\HostXBAP\AddIns\WPFAddIn1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Следующим шагом является указание сборок конвейера и сборки надстройки как файлов содержимого XBAP в Visual Studio следующим образом.</p>
+<ol>
+<li><p>Включение сборки конвейера и надстройки в проект. Для этого следует щелкнуть правой кнопкой мыши каждую папку конвейера в обозревателе решений и выбрать вариант <strong>Включить в проект</strong>.</p>
+</li>
+<li><p>Установка для <strong>Действия при построении</strong> для каждой сборки конвейера и надстройки значения <strong>Содержимое</strong> в окне <strong>Свойства</strong>.</p>
+</li>
+</ol>
+<p>Последним шагом является настройка манифеста приложения для включения файлов сборки конвейера и файла сборки надстройки для загрузки. Файлы должны располагаться в папках в корне папки в кэше ClickOnce, занимаемом приложением XBAP. Эта конфигурация может реализовываться в Visual Studio следующим образом:</p>
+<ol>
+<li><p>Щелкните правой кнопкой мыши проект XBAP, выберите <strong>Свойства</strong>, <strong>Публиковать</strong>, а затем нажмите кнопку <strong>Файлы приложения</strong>.</p>
+</li>
+<li><p>В диалоговом окне <strong>Файлы приложения</strong> установите для параметра <strong>Состояния публикации</strong> каждой DLL конвейера и надстройки значение <strong>Включить (авто)</strong>, а для <strong>Группы загрузки</strong> для каждой DLL конвейера и надстройки — значение <strong>(обязательно)</strong>.</p>
+</li>
+</ol>
+<h3 id="using-the-pipeline-and-add-in-from-the-application-base">Использование конвейера и надстройки из базовой папки приложения</h3>
+<p>Если конвейер и надстройка настроены для развертывания ClickOnce, они загружаются в ту же папку кэша ClickOnce, что и XBAP. Чтобы использовать конвейер и надстройку из XBAP, код XBAP должен получить их из базовой папки приложения. Различные типы и члены модели надстроек платформы .NET Framework для использования конвейеров и надстроек обеспечивают специальную поддержку для этого сценария. Во-первых, определяется путь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.pipelinestorelocation#System_AddIn_Hosting_PipelineStoreLocation_ApplicationBase">ApplicationBase</a> значение перечисления. Это значение используется при перегрузках соответствующих элементов надстройки для использования конвейеров, которые включают следующее:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addinstore.findaddins#System_AddIn_Hosting_AddInStore_FindAddIns_System_Type_System_AddIn_Hosting_PipelineStoreLocation_">AddInStore.FindAddIns(Type, PipelineStoreLocation)</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addinstore.findaddins#System_AddIn_Hosting_AddInStore_FindAddIns_System_Type_System_AddIn_Hosting_PipelineStoreLocation_System_String___">AddInStore.FindAddIns(Type, PipelineStoreLocation, String[])</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addinstore.rebuild#System_AddIn_Hosting_AddInStore_Rebuild_System_AddIn_Hosting_PipelineStoreLocation_">AddInStore.Rebuild(PipelineStoreLocation)</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addinstore.update#System_AddIn_Hosting_AddInStore_Update_System_AddIn_Hosting_PipelineStoreLocation_">AddInStore.Update(PipelineStoreLocation)</a></p>
+</li>
+</ul>
+<h3 id="accessing-the-hosts-site-of-origin">Доступ к исходному узлу ведущего приложения</h3>
+<p>Чтобы надстройка могла ссылаться на файлы с исходного узла, она должна быть загружена с изоляцией безопасности, эквивалентной ведущему приложению. Этот уровень безопасности определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addinsecuritylevel#System_AddIn_Hosting_AddInSecurityLevel_Host">AddInSecurityLevel.Host</a> значение перечисления и передается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.hosting.addintoken.activate">Activate</a> метод при активации надстройки.</p>
+<p><a name="WPFAddInModelArchitecture"></a></p>
+<h2 id="wpf-add-in-architecture">Архитектура надстроек WPF</h2>
+<p>На самом высоком уровне, как мы уже видели, WPF включает надстроек .NET Framework для реализации пользовательских интерфейсов (который непосредственно или косвенно наследующие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>) с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a>. Результатом является то, что ведущее приложение возвращается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> , отображаемыми в пользовательском Интерфейсе в ведущем приложении.</p>
+<p>Для простых сценариев пользовательского интерфейса надстройки это максимально подробно, достаточно для разработчиков. Для более сложных сценариев, особенно тех, которые пытаются использовать дополнительных служб WPF, таких как макет, ресурсы и привязки данных, необходимо понять ее преимущества более подробная информация о том, как WPF расширяет модель надстроек платформы .NET Framework с поддержкой пользовательского интерфейса и ограничения.</p>
+<p>По существу WPF не передавать пользовательского интерфейса из надстройки в ведущее приложение. Вместо этого WPF передает дескриптор окна Win32 для пользовательского интерфейса с помощью взаимодействие с WPF. Таким образом когда пользовательский Интерфейс из надстройки передается в ведущее приложение, происходит следующее:</p>
+<ul>
+<li><p>На стороне надстройки WPF Получает дескриптор окна для пользовательского интерфейса, который будет отображаться ведущим приложением. Дескриптор окна инкапсулируется внутренний класс WPF, который является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> и реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>. Экземпляр этого класса возвращается с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a> и упаковывается из домена приложения надстройки в домен приложения ведущего приложения.</p>
+</li>
+<li><p>На стороне ведущего приложения WPF переупаковывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> как внутренний класс WPF, который является производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>. Экземпляр этого класса возвращается с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a> ведущему приложению.</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> существует для отображения пользовательских интерфейсов, определенных с помощью дескрипторов окон, пользовательских интерфейсах WPF. Более подробную информацию см. в разделе <a href="../advanced/wpf-and-win32-interoperation.html">Взаимодействие WPF и Win32</a>.</p>
+<p>Таким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.contract.inativehandlecontract">INativeHandleContract</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a> позволяют использовать дескриптор окна для пользовательского интерфейса, WPF, передается из надстройки в ведущее приложение, где он инкапсулируется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и отображения пользовательского интерфейса ведущего приложения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поскольку ведущее приложение получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>, ведущее приложение не может преобразовать объект, который возвращается методом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.contracttoviewadapter">ContractToViewAdapter</a> к типу она реализуется как надстройки (например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>).</p>
+</div>
+<p>По своей природе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> имеет определенные ограничения, которые влияют на то, как ведущие приложения могут их использовать. Тем не менее, расширяет WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> несколькими возможностями для сценариев надстройки. Эти преимущества и ограничения описаны ниже.</p>
+<p><a name="WPFAddInModelBenefits"></a></p>
+<h2 id="wpf-add-in-benefits">Преимущества надстройки WPF</h2>
+<p>Поскольку надстройка пользователя интерфейсов WPF отображаются из ведущих приложений, используя внутренний класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>, эти пользовательские интерфейсы, ограничены возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> с точки зрения службы пользовательского интерфейса WPF, такие как макет, отрисовки, привязка данных, стили, шаблоны и ресурсы. Тем не менее, дополняет свой внутренний WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> подкласс дополнительными возможностями, которые включают следующее:</p>
+<ul>
+<li><p>Переход между пользовательского интерфейса ведущего приложения и надстройки пользовательского интерфейса. Обратите внимание, что модель программирования «надстройка является пользовательским Интерфейсом» add-адаптер надстройки для переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.contractbase.querycontract">QueryContract</a> для поддержки переходов по табуляции надстройки полным доверием или с частичным доверием.</p>
+</li>
+<li><p>Учитывая требований по специальным возможностям для надстройки пользовательские интерфейсы, которые выводятся из пользовательских интерфейсов приложений узла.</p>
+</li>
+<li><p>Включение приложений WPF для безопасной работы в нескольких сценариях домена приложений.</p>
+</li>
+<li><p>Предотвращение незаконного доступа к интерфейс пользователя надстройки окно обрабатывает при запуске надстройки в режиме изоляции безопасности (то есть изолированной среде безопасности частичного доверия). Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a> гарантирует эту безопасность:</p>
+<ul>
+<li><p>Для «Надстройка возвращает пользовательский Интерфейс» модель программирования, единственным способом передачи дескриптора окна для пользовательского интерфейса надстройки через границы изоляции является вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a>.</p>
+</li>
+<li><p>Для «надстройка является пользовательским Интерфейсом» модель программирования Переопределяя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.contractbase.querycontract">QueryContract</a> на адаптер на стороне надстройки и вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.addin.pipeline.frameworkelementadapters.viewtocontractadapter">ViewToContractAdapter</a> (как показано в предыдущих примерах) является обязательным, так как вызывается адаптер на стороне надстройки <code>QueryContract</code> реализации от адаптер на стороне узла.</p>
+</li>
+</ul>
+</li>
+<li><p>Предоставление защиты выполнения нескольких доменов приложений. Из-за ограничений, связанных с доменами приложений, необработанные исключения, которые появляются в доменах приложений надстроек, вызывают сбой всего приложения, несмотря на наличие границы изоляции. Тем не менее WPF и модель надстроек платформы .NET Framework предоставляют простой способ решения этой проблемы и повышают стабильность работы приложения. Надстройки WPF, который отображает пользовательский Интерфейс создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> для потока, который выполняется домен приложения, если ведущее приложение является приложением WPF. Можно обнаружить все необработанные исключения, возникающие в домене приложения, обрабатывая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.unhandledexception">UnhandledException</a> события WPF надстройки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>. Вы можете получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.currentdispatcher">CurrentDispatcher</a> свойство.</p>
+</li>
+</ul>
+<p><a name="WPFAddInModelLimitations"></a></p>
+<h2 id="wpf-add-in-limitations">Ограничения надстройки WPF</h2>
+<p>Помимо преимуществ, WPF добавляет к поведениям по умолчанию, предоставляемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>и дескрипторами окон, существуют также ограничения для надстройки пользовательские интерфейсы, которые отображаются из ведущих приложений:</p>
+<ul>
+<li><p>Добавьте в пользовательские интерфейсы, отображаемых из ведущего приложения не влияют на поведение при обрезке ведущего приложения.</p>
+</li>
+<li><p>Концепция <em>свободного пространства</em> в сценариях взаимодействия также применяется к надстройкам (см. <a href="../advanced/technology-regions-overview.html">Общие сведения о технологических областях</a>).</p>
+</li>
+<li><p>Пользовательского интерфейса ведущего приложения служб, таких как наследование ресурса, привязка данных и команды, недоступны автоматически для пользовательских интерфейсов. Чтобы предоставить эти службы для надстройки, необходимо обновить конвейер.</p>
+</li>
+<li><p>Пользовательского интерфейса надстройки нельзя (повернутый), масштабировать, наклонять или в противном случае преобразование влияет (см. в разделе <a href="../graphics-multimedia/transforms-overview.html">Общие сведения о преобразованиях</a>).</p>
+</li>
+<li><p>Содержимое внутри надстройки пользовательские интерфейсы, которые визуализируется посредством операций из рисования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing">System.Drawing</a> пространство имен может включать альфа-смешение. Тем не менее пользовательского интерфейса надстройки и ведущего приложения пользовательского интерфейса, содержащего его должны быть 100% непрозрачный; Другими словами <code>Opacity</code> свойства должно быть установлено в 1.</p>
+</li>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.allowstransparency">AllowsTransparency</a> окна в ведущем приложении, содержащий пользовательский Интерфейс свойству <code>true</code>, надстройка невидим. Это справедливо, даже при 100% непрозрачный надстройке пользовательского интерфейса (то есть <code>Opacity</code> свойство имеет значение 1).</p>
+</li>
+<li><p>Пользовательского интерфейса надстройки должно появляться поверх других элементов WPF, в том же окне верхнего уровня.</p>
+</li>
+<li><p>Часть пользовательского интерфейса надстройки может визуализироваться с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a>. Вместо этого надстройка может сделать снимок произведенный пользовательский Интерфейс для создания точечного рисунка, который может быть передан в ведущее приложение, используя методы, определенные в контракте.</p>
+</li>
+<li><p>Файлы мультимедиа невозможно воспроизвести из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.mediaelement">MediaElement</a> в пользовательском Интерфейсе.</p>
+</li>
+<li><p>События мыши, созданные для пользовательского интерфейса надстройки не получаются и не вызываются ведущим приложением и <code>IsMouseOver</code> свойство для ведущего приложения пользовательского интерфейса имеет значение <code>false</code>.</p>
+</li>
+<li><p>Когда фокус перемещается между элементами управления в надстройке пользовательского интерфейса, <code>GotFocus</code> и <code>LostFocus</code> события не получены, или вызывается ведущим приложением.</p>
+</li>
+<li><p>Часть ведущего приложения, содержащий пользовательский Интерфейс выглядит пустой при печати.</p>
+</li>
+<li><p>Все диспетчеры (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a>) созданные надстройки пользовательского интерфейса необходимо завершить работу вручную перед надстройка владельца будет выгружена, если ведущее приложение продолжит выполнение. Контракт может реализовывать методы, позволяющие ведущему приложению оповещать надстройку, прежде чем надстройка выгружается, тем самым позволяя надстройки пользовательского интерфейса, чтобы закрыть свои диспетчеры.</p>
+</li>
+<li><p>Если интерфейс пользователя надстройки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> или содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>, вы не сможете выгрузить надстройку.</p>
+</li>
+</ul>
+<p><a name="PerformanceOptimization"></a></p>
+<h2 id="performance-optimization">Оптимизация производительности</h2>
+<p>По умолчанию при использовании нескольких доменов приложений различные сборки .NET Framework, необходимые для каждого приложения все загружаются в домен приложения. В результате время, необходимое для создания новых доменов приложений и запуска приложений в них, может повлиять на производительность. Тем не менее платформа .NET Framework предоставляет способ сократить время запуска, предписывая приложения для совместного использования сборок в доменах приложений, если они уже загружены. Это делается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.loaderoptimizationattribute">LoaderOptimizationAttribute</a> атрибут, который должен применяться к методу точки входа (<code>Main</code>). В данном случае необходимо использовать только код для реализации определения приложения (см. <a href="application-management-overview.html">Общие сведения об управлении приложением</a>).</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.loaderoptimizationattribute">LoaderOptimizationAttribute</a></li>
+<li><a href="/previous-versions/dotnet/netframework-4.0/bb384200(v%3dvs.100)">Надстройки и расширения среды</a></li>
+<li><a href="../../app-domains/application-domains.md">Домены приложений</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/kwdt6w2k(v=vs.100)">Общие сведения о средствах удаленного взаимодействия платформы .NET Framework</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/wcf3swha(v=vs.100)">Обеспечение поддержки удаленного взаимодействия объектами</a></li>
+<li><a href="how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

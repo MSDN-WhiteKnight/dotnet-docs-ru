@@ -1,0 +1,385 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1079;&#1086;&#1088; &#1092;&#1080;&#1075;&#1091;&#1088; &#1080; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1088;&#1077;&#1076;&#1089;&#1090;&#1074; &#1088;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1079;&#1086;&#1088; &#1092;&#1080;&#1075;&#1091;&#1088; &#1080; &#1073;&#1072;&#1079;&#1086;&#1074;&#1099;&#1093; &#1089;&#1088;&#1077;&#1076;&#1089;&#1090;&#1074; &#1088;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="shapes-and-basic-drawing-in-wpf-overview">Обзор фигур и базовых средств рисования в приложении WPF</h1>
+
+<p>В этом разделе приводится обзор рисования с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объектов. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> , позволяет нарисовать фигуру на экране. Так как они являются элементами пользовательского интерфейса, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты могут использоваться внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементы и элементы управления.</p>
+<p>Windows Presentation Foundation (WPF) предоставляет несколько уровней доступа к графикой и службам рендеринга. На верхнем уровне <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты просты в использовании и предоставляют множество полезных функций, таких как макет и участие в Windows Presentation Foundation (WPF) системой событий.</p>
+<p><a name="shapes"></a></p>
+<h2 id="shape-objects">Объекты фигур</h2>
+<p>WPF предоставляет ряд готовых к использованию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объектов.  Все объекты фигур наследуются от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> класса. Доступные объекты фигур включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты используют перечисленные ниже общие свойства.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.stroke">Stroke</a>: Описывает способ рисования контура фигуры.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.strokethickness">StrokeThickness</a>: Определяет толщину контура фигуры.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a>: Описывает способ рисования внутренней части фигуры.</p>
+</li>
+<li><p>Свойства данных, определяющие координаты и вершины, измеряются в аппаратно-независимых пикселях.</p>
+</li>
+</ul>
+<p>Так как они являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, объекты фигур можно использовать внутри панелей и большинства элементов управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> Панели особенно хорошо подходит для создания сложных рисунков, так как она поддерживает абсолютное позиционирование дочерних объектов.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a> Класс позволяет нарисовать линию между двумя точками. В следующем примере показано несколько способов указания координат линии и свойств штриха.</p>
+<pre><code class="lang-xaml" name="drawingwithshapeelements#LineExample1">&lt;Canvas Height=&quot;300&quot; Width=&quot;300&quot;&gt;
+
+  &lt;!-- Draws a diagonal line from (10,10) to (50,50). --&gt;
+  &lt;Line
+    X1=&quot;10&quot; Y1=&quot;10&quot;
+    X2=&quot;50&quot; Y2=&quot;50&quot;
+    Stroke=&quot;Black&quot;
+    StrokeThickness=&quot;4&quot; /&gt;
+
+  &lt;!-- Draws a diagonal line from (10,10) to (50,50)
+       and moves it 100 pixels to the right. --&gt;
+  &lt;Line
+    X1=&quot;10&quot; Y1=&quot;10&quot;
+    X2=&quot;50&quot; Y2=&quot;50&quot;
+    StrokeThickness=&quot;4&quot;
+    Canvas.Left=&quot;100&quot;&gt;
+    &lt;Line.Stroke&gt;
+      &lt;RadialGradientBrush GradientOrigin=&quot;0.5,0.5&quot; Center=&quot;0.5,0.5&quot; RadiusX=&quot;0.5&quot; RadiusY=&quot;0.5&quot;&gt;
+        &lt;RadialGradientBrush.GradientStops&gt;
+          &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;0&quot; /&gt;
+          &lt;GradientStop Color=&quot;Blue&quot; Offset=&quot;0.25&quot; /&gt;
+        &lt;/RadialGradientBrush.GradientStops&gt;
+      &lt;/RadialGradientBrush&gt;
+    &lt;/Line.Stroke&gt;
+  &lt;/Line&gt;
+
+  &lt;!-- Draws a horizontal line from (10,60) to (150,60). --&gt;
+  &lt;Line
+     X1=&quot;10&quot; Y1=&quot;60&quot;
+     X2=&quot;150&quot; Y2=&quot;60&quot;
+     Stroke=&quot;Black&quot;
+     StrokeThickness=&quot;4&quot;/&gt;
+
+&lt;/Canvas&gt;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="shapesprocedural#ShapesProceduralLine">
+// Add a Line Element
+myLine = new Line();
+myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+myLine.X1 = 1;
+myLine.X2 = 50;
+myLine.Y1 = 1;
+myLine.Y2 = 50;
+myLine.HorizontalAlignment = HorizontalAlignment.Left;
+myLine.VerticalAlignment = VerticalAlignment.Center;
+myLine.StrokeThickness = 2;
+myGrid.Children.Add(myLine);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке показано создаваемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a>.</p>
+<p><img src="media/shape-ovw-line2.gif" alt="Рисунок линии" title="shape_ovw_line2"></p>
+<p>Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a> предоставляют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> , его установка не оказывает никакого влияния поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a> нет области.</p>
+<p>Еще одна распространенная фигура — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>.  Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> путем определения фигуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> свойства. Чтобы нарисовать круг, укажите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> которого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> значения равны.</p>
+<pre><code class="lang-xaml" name="ShapeOverviews#ShapesOVW1">&lt;Ellipse
+Fill=&quot;Yellow&quot;
+Height=&quot;100&quot;
+Width=&quot;200&quot;
+StrokeThickness=&quot;2&quot;
+Stroke=&quot;Black&quot;/&gt;
+
+</code></pre><pre><code class="lang-csharp" name="brushesmiscsnippets_procedural_snip#SetBackgroundColorOfShapeCodeExampleWholePage">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
+
+namespace SDKSample
+{
+    public partial class SetBackgroundColorOfShapeExample : Page
+    {
+        public SetBackgroundColorOfShapeExample()
+        {
+            // Create a StackPanel to contain the shape.
+            StackPanel myStackPanel = new StackPanel();
+
+            // Create a red Ellipse.
+            Ellipse myEllipse = new Ellipse();
+
+            // Create a SolidColorBrush with a red color to fill the
+            // Ellipse with.
+            SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+
+            // Describes the brush's color using RGB values.
+            // Each value has a range of 0-255.
+            mySolidColorBrush.Color = Color.FromArgb(255, 255, 255, 0);
+            myEllipse.Fill = mySolidColorBrush;
+            myEllipse.StrokeThickness = 2;
+            myEllipse.Stroke = Brushes.Black;
+
+            // Set the width and height of the Ellipse.
+            myEllipse.Width = 200;
+            myEllipse.Height = 100;
+
+            // Add the Ellipse to the StackPanel.
+            myStackPanel.Children.Add(myEllipse);
+
+            this.Content = myStackPanel;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже показан пример отображаемого объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>.</p>
+<p><img src="media/shape-ovw-ellipse2.png" alt="Рисунок эллипса" title="shape_ovw_ellipse2"></p>
+<p><a name="paths"></a></p>
+<h2 id="using-paths-and-geometries">Использование путей и геометрических фигур</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> Класс позволяет рисовать кривые и сложные фигуры. Эти кривые и сложные фигуры описываются с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объектов. Чтобы использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>, создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> и использовать его для задания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path.data">Data</a> свойство.</p>
+<p>Существуют разнообразные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объектов для выбора. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linegeometry">LineGeometry</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rectanglegeometry">RectangleGeometry</a>, И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry">EllipseGeometry</a> классы описывают относительно простые фигуры. Для создания более сложных фигур или кривых используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>.</p>
+<p><a name="pathgeometry"></a></p>
+<h3 id="pathgeometry-and-pathsegments">Классы PathGeometry и PathSegment</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объекты состоят из одного или нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> объектов, каждый из которых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> представляет различные «рисунок» или фигуры. Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathfigure">PathFigure</a> состоит из одного или нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathsegment">PathSegment</a> объектов, каждый из которых представляет переходную часть фигуры. Следующие типы сегмента: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.linesegment">LineSegment</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.beziersegment">BezierSegment</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.arcsegment">ArcSegment</a>.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> используется для рисования кривой Безье второго порядка.</p>
+<pre><code class="lang-xaml" name="geometrysample#34">&lt;Path Stroke=&quot;Black&quot; StrokeThickness=&quot;1&quot;&gt;
+  &lt;Path.Data&gt;
+    &lt;PathGeometry&gt;
+      &lt;PathGeometry.Figures&gt;
+        &lt;PathFigureCollection&gt;
+          &lt;PathFigure StartPoint=&quot;10,100&quot;&gt;
+            &lt;PathFigure.Segments&gt;
+              &lt;PathSegmentCollection&gt;
+                &lt;QuadraticBezierSegment Point1=&quot;200,200&quot; Point2=&quot;300,100&quot; /&gt;
+              &lt;/PathSegmentCollection&gt;
+            &lt;/PathFigure.Segments&gt;
+          &lt;/PathFigure&gt;
+        &lt;/PathFigureCollection&gt;
+      &lt;/PathGeometry.Figures&gt;
+    &lt;/PathGeometry&gt;
+  &lt;/Path.Data&gt;
+&lt;/Path&gt;
+</code></pre>
+<p>На следующем рисунке показана преобразованная для просмотра фигура.</p>
+<p><img src="media/shape-ovw-path2.gif" alt="Рисунок пути" title="shape_ovw_path2"></p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> , а другой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> классов, см. в разделе <a href="geometry-overview.html">Общие сведения о геометрии</a>.</p>
+<p><a name="pathdatastring"></a></p>
+<h3 id="xaml-abbreviated-syntax">Сокращенный синтаксис XAML</h3>
+<p>В Язык XAML, также могут использовать специальный сокращенный синтаксис для описания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>. В следующем примере сокращенный синтаксис используется для рисования сложной фигуры.</p>
+<pre><code class="lang-xaml">      &lt;Path Stroke=&quot;DarkGoldenRod&quot; StrokeThickness=&quot;3&quot;   
+Data=&quot;M 100,200 C 100,25 400,350 400,175 H 280&quot; /&gt;  
+</code></pre>
+<p>На следующем рисунке показана росчерка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>.</p>
+<p><img src="media/shape-ovw-path.PNG" alt="Рисунок пути" title="shape_ovw_path"></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path.data">Data</a> Строки атрибута начинается с помощью команды «moveto», обозначена буквой M, которая устанавливает начальную точку для пути в системе координат <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a> данные параметры зависят от регистра. Заглавная буква M указывает абсолютное положение новой текущей точки. Строчная буква m указывала бы относительные координаты. Первый сегмент представляет собой кубическую кривую Безье, которая начинается в точке (100, 200) и заканчивается в точке (400, 175). Эта кривая нарисована с помощью двух контрольных точек (100, 25) и (400, 350). Этот сегмент указывает команда C в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path.data">Data</a> строке атрибута. Опять же, заглавная буква C указывает абсолютный путь; строчная буква c указывает относительный путь.</p>
+<p>Второй сегмент начинается с команды lineto H, которая рисует горизонтальную линию от предыдущей точки пути (400, 175) до новой точки (280, 175). Поскольку это команда по горизонтали «lineto», указанное значение является <em>x</em>-координации.</p>
+<p>Полный синтаксис пути, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path.data">Data</a> ссылку и <a href="how-to-create-a-shape-by-using-a-pathgeometry.html">Создание фигуры с помощью PathGeometry</a>.</p>
+<p><a name="fillpaint"></a></p>
+<h2 id="painting-shapes">Заполнение фигур</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> объекты используются для закрашивания фигуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.stroke">Stroke</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a>. В следующем примере, обводки и заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> указаны. Обратите внимание, что значения свойств кисти могут задаваться только в формате ключевого слова или шестнадцатеричного значения цвета. Дополнительные сведения о доступных ключевых словах цветов см. в разделе свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.colors">Colors</a> в класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media">System.Windows.Media</a> пространства имен.</p>
+<pre><code class="lang-xaml">&lt;Canvas Background=&quot;LightGray&quot;&gt;   
+   &lt;Ellipse  
+      Canvas.Top=&quot;50&quot;  
+      Canvas.Left=&quot;50&quot;  
+      Fill=&quot;#FFFFFF00&quot;  
+      Height=&quot;75&quot;  
+      Width=&quot;75&quot;  
+      StrokeThickness=&quot;5&quot;  
+      Stroke=&quot;#FF0000FF&quot;/&gt;  
+&lt;/Canvas&gt;  
+</code></pre>
+<p>На следующем рисунке показано создаваемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>.</p>
+<p><img src="media/shape-ovw-ellipsefill.PNG" alt="Эллипс" title="shape_ovw_ellipsefill"></p>
+<p>Кроме того, можно использовать синтаксис элемента свойства для явного создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объекта и заполнить фигуру сплошным цветом.</p>
+<pre><code class="lang-xaml">&lt;!-- This polygon shape uses pre-defined color values for its Stroke and  
+     Fill properties.   
+     The SolidColorBrush's Opacity property affects the fill color in   
+     this case by making it slightly transparent (opacity of 0.4) so   
+     that it blends with any underlying color. --&gt;  
+  
+&lt;Polygon  
+    Points=&quot;300,200 400,125 400,275 300,200&quot;  
+    Stroke=&quot;Purple&quot;   
+    StrokeThickness=&quot;2&quot;&gt;  
+    &lt;Polygon.Fill&gt;  
+       &lt;SolidColorBrush Color=&quot;Blue&quot; Opacity=&quot;0.4&quot;/&gt;  
+    &lt;/Polygon.Fill&gt;  
+&lt;/Polygon&gt;  
+</code></pre>
+<p>На рисунке ниже показана фигура, преобразованная для просмотра.</p>
+<p><img src="media/shape-ovw-solidcolorbrush.PNG" alt="Иллюстрация SolidColorBrush" title="shape_ovw_solidcolorbrush"></p>
+<p>Для заполнения фигуры также можно использовать штриховку, градиенты, изображения, шаблоны и многое другое. Дополнительные сведения см. в разделе <a href="painting-with-solid-colors-and-gradients-overview.html">закраске сплошным цветом и градиентом Обзор</a>.</p>
+<p><a name="stretchableshapessection"></a></p>
+<h2 id="stretchable-shapes">Растягиваемые фигуры</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a>, И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> классы имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.stretch">Stretch</a> свойство. Данное свойство определяет, каким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> содержимое объекта (рисуемой фигуры) растягивается для заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> пространство макета. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> пространство макета — это объем пространства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> выделяется системой макета, из-за явного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> параметр или из-за его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> параметры. Дополнительные сведения о макете в Windows Presentation Foundation, см. в разделе <a href="../advanced/layout.html">макета</a> Обзор.</p>
+<p>Свойство Stretch принимает одно из следующих значений.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_None">None</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> Содержимое объекта не растягивается.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_Fill">Fill</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> Содержимое объекта растягивается для заполнения пространства макета.  Пропорции не сохраняются.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_Uniform">Uniform</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> Содержимое объекта растягивается максимально для заполнения пространства макета с сохранением исходных пропорций.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_UniformToFill">UniformToFill</a>: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> Содержимое объекта растягивается для полного заполнения пространства макета с сохранением исходных пропорций.</p>
+</li>
+</ul>
+<p>Обратите внимание, что, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> растяжении содержимого объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> рисования контура объекта после растяжения.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a> используется для рисования создается очень маленький треугольник от (0,0), (0,1) и (1,1). <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a> Объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> устанавливаются в значение 100, и ее переноса задано значение Fill. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a> содержимое объекта (треугольник) растягивается для заполнения большее пространство.</p>
+<pre><code class="lang-xaml">&lt;Polygon  
+  Points=&quot;0,0 0,1 1,1&quot;  
+  Fill=&quot;Blue&quot;  
+  Width=&quot;100&quot;  
+  Height=&quot;100&quot;  
+  Stretch=&quot;Fill&quot;  
+  Stroke=&quot;Black&quot;  
+  StrokeThickness=&quot;2&quot; /&gt;  
+</code></pre>
+<pre><code class="lang-csharp">PointCollection myPointCollection = new PointCollection();  
+myPointCollection.Add(new Point(0,0));  
+myPointCollection.Add(new Point(0,1));  
+myPointCollection.Add(new Point(1,1));  
+  
+Polygon myPolygon = new Polygon();  
+myPolygon.Points = myPointCollection;  
+myPolygon.Fill = Brushes.Blue;  
+myPolygon.Width = 100;  
+myPolygon.Height = 100;  
+myPolygon.Stretch = Stretch.Fill;  
+myPolygon.Stroke = Brushes.Black;  
+myPolygon.StrokeThickness = 2;  
+</code></pre>
+<p><a name="transforms"></a></p>
+<h2 id="transforming-shapes">Преобразование фигур</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a> Класс предоставляет средства для преобразования фигур на двумерной плоскости.  Различные виды преобразования включают поворот (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a>), масштабирование (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.scaletransform">ScaleTransform</a>), наклон (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.skewtransform">SkewTransform</a>) и преобразование (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.translatetransform">TranslateTransform</a>).</p>
+<p>Распространенным преобразованием фигуры является поворот.  Для поворота фигуры создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> и укажите его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.angle">Angle</a> 45, элемент поворачивается на 45 градусов по часовой стрелке; углом 90, поворачивает элемент на 90 градусов по часовой стрелке, и т. д. Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centerx">CenterX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centery">CenterY</a> свойства, если вы хотите контролировать точку, вокруг которой вращается элемент. Эти значения свойств выражаются в системе координат преобразуемого элемента. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centerx">CenterX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform.centery">CenterY</a> имеют нулевые значения по умолчанию. Наконец, примените <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> к элементу. Если вы не хотите, чтобы преобразование влияло на макет, задайте фигуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.rendertransform">RenderTransform</a> свойство.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.rotatetransform">RotateTransform</a> используется для поворота фигуры 45 градусов относительно верхнего левого угла фигуры (0,0).</p>
+<pre><code class="lang-xaml" name="transformssample#14">&lt;!-- Rotates the Polyline 45 degrees about the point (0,0). --&gt;
+&lt;Polyline Points=&quot;25,25 0,50 25,75 50,50 25,25 25,0&quot; 
+  Stroke=&quot;Blue&quot; StrokeThickness=&quot;10&quot;
+  Canvas.Left=&quot;75&quot; Canvas.Top=&quot;50&quot;&gt;
+  &lt;Polyline.RenderTransform&gt;
+    &lt;RotateTransform CenterX=&quot;0&quot; CenterY=&quot;0&quot; Angle=&quot;45&quot; /&gt;
+  &lt;/Polyline.RenderTransform&gt;
+&lt;/Polyline&gt;
+</code></pre>
+<p>В следующем примере другая фигура поворачивается на 45 градусов, но на этот раз — вокруг точки (25, 50).</p>
+<pre><code class="lang-xaml" name="transformssample#15">&lt;!-- Rotates the Polyline 45 degrees about its center. --&gt;
+&lt;Polyline 
+  Points=&quot;25,25 0,50 25,75 50,50 25,25 25,0&quot; 
+  Stroke=&quot;Blue&quot; StrokeThickness=&quot;10&quot;
+  Canvas.Left=&quot;75&quot; Canvas.Top=&quot;50&quot;
+  RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;
+  &lt;Polyline.RenderTransform&gt;
+    &lt;RotateTransform Angle=&quot;45&quot; /&gt;
+  &lt;/Polyline.RenderTransform&gt;
+&lt;/Polyline&gt;
+</code></pre>
+<p>На следующем рисунке показаны результаты двух преобразований.</p>
+<p><img src="media/wcpsdk-graphicsmm-rotatetransform45degrees.gif" alt="Поворот на 45 градусов вокруг различных точек" title="wcpsdk_graphicsmm_rotatetransform45degrees"></p>
+<p>В предыдущих примерах к каждому объекту фигуры применяется одно преобразование. Чтобы применить несколько преобразований к фигуре (или любой другой элемент пользовательского интерфейса), используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../advanced/optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="painting-with-solid-colors-and-gradients-overview.html">Общие сведения о закраске сплошным цветом и градиентом</a></li>
+<li><a href="geometry-overview.html">Общие сведения о классе Geometry</a></li>
+<li><a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство. Создание классического приложения WPF</a></li>
+<li><a href="animation-overview.html">Общие сведения об эффектах анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

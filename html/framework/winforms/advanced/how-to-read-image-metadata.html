@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1063;&#1090;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1072;&#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1063;&#1090;&#1077;&#1085;&#1080;&#1077; &#1084;&#1077;&#1090;&#1072;&#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-read-image-metadata">Практическое руководство. Чтение метаданных изображения</h1>
+
+<p>Некоторые файлы изображений содержат метаданные, которые можно прочитать, чтобы определить возможности изображения. Например цифровой фотографии может содержать метаданные, которые можно прочитать, чтобы определить марки и модели фотоаппарата, использованного для создания образа. С помощью GDI+, можно считывать существующие метаданные, и можно также добавлять новые метаданные в файлы изображений.</p>
+<p>GDI+ хранит каждый отдельный блок метаданных в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem">PropertyItem</a> объекта. Можно прочитать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image.propertyitems">PropertyItems</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image">Image</a> объекта для извлечения метаданных из файла. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image.propertyitems">PropertyItems</a> Свойство возвращает массив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem">PropertyItem</a> объектов.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem">PropertyItem</a> имеет следующие четыре свойства: <code>Id</code>, <code>Value</code>, <code>Len</code>, и <code>Type</code>.</p>
+<h2 id="id">Идентификатор</h2>
+<p>Тег, определяющий элемент метаданных. Некоторые значения, которые могут быть назначены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem.id">Id</a> показаны в следующей таблице.</p>
+<table>
+<thead>
+<tr>
+<th>Шестнадцатеричное значение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0320<br><br> 0x010F<br><br> 0x0110<br><br> 0x9003<br><br> 0x829A<br><br> 0x5090<br><br> 0x5091</td>
+<td>Изображение заголовка<br><br> Поставщик вычислительной техники<br><br> Модель оборудования<br><br> ExifDTOriginal<br><br> Время выдержки EXIF<br><br> Таблицы освещенности<br><br> Таблицы цветности</td>
+</tr>
+</tbody>
+</table>
+<h2 id="value">Значение</h2>
+<p>Массив значений. Формат значений определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem.type">Type</a> свойство.</p>
+<h2 id="len">Len</h2>
+<p>Размер (в байтах) массив значений, на который указывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem.value">Value</a> свойство.</p>
+<h2 id="type">Тип</h2>
+<p>Тип значений в массиве, на который указывает <code>Value</code> свойство. Типы, определяемые по <code>Type</code> в следующей таблице показаны значения свойств</p>
+<table>
+<thead>
+<tr>
+<th>Числовое значение</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>А <code>Byte</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Массив <code>Byte</code> объекты в кодировке ASCII</td>
+</tr>
+<tr>
+<td>3</td>
+<td>16-разрядное целое число</td>
+</tr>
+<tr>
+<td>4</td>
+<td>32-разрядное целое число</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Массив из двух <code>Byte</code> объекты, представляющие рациональное число</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Не используется</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Не определено</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Не используется</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>SLong</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>SRational</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Пример</h2>
+<h3 id="description">Описание</h3>
+<p>В следующем примере кода считывает и отображает семи блоков метаданных в файле <code>FakePhoto.jpg</code>. Второй элемент свойства (индекс 1) в списке <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem.id">Id</a> 0x010F (производитель) и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.propertyitem.type">Type</a> 2 (массив байтов в кодировке ASCII). В примере кода отображает значение данного свойства.</p>
+<p>В коде создается результат, аналогичный приведенному ниже:</p>
+<p><code>Property Item 0</code></p>
+<p><code>id: 0x320</code></p>
+<p><code>type: 2</code></p>
+<p><code>length: 16 bytes</code></p>
+<p><code>Property Item 1</code></p>
+<p><code>id: 0x10f</code></p>
+<p><code>type: 2</code></p>
+<p><code>length: 17 bytes</code></p>
+<p><code>Property Item 2</code></p>
+<p><code>id: 0x110</code></p>
+<p><code>type: 2</code></p>
+<p><code>length: 7 bytes</code></p>
+<p><code>Property Item 3</code></p>
+<p><code>id: 0x9003</code></p>
+<p><code>type: 2</code></p>
+<p><code>length: 20 bytes</code></p>
+<p><code>Property Item 4</code></p>
+<p><code>id: 0x829a</code></p>
+<p><code>type: 5</code></p>
+<p><code>length: 8 bytes</code></p>
+<p><code>Property Item 5</code></p>
+<p><code>id: 0x5090</code></p>
+<p><code>type: 3</code></p>
+<p><code>length: 128 bytes</code></p>
+<p><code>Property Item 6</code></p>
+<p><code>id: 0x5091</code></p>
+<p><code>type: 3</code></p>
+<p><code>length: 128 bytes</code></p>
+<p><code>The equipment make is Northwind Camera.</code></p>
+<h3 id="code">Код</h3>
+<pre><code class="lang-csharp" name="System.Drawing.WorkingWithImages#51">// Create an Image object. 
+Image image = new Bitmap(@&quot;c:\FakePhoto.jpg&quot;);
+
+// Get the PropertyItems property from image.
+PropertyItem[] propItems = image.PropertyItems;
+
+// Set up the display.
+Font font = new Font(&quot;Arial&quot;, 12);
+SolidBrush blackBrush = new SolidBrush(Color.Black);
+int X = 0;
+int Y = 0;
+
+// For each PropertyItem in the array, display the ID, type, and 
+// length.
+int count = 0;
+foreach (PropertyItem propItem in propItems)
+{
+    e.Graphics.DrawString(
+    &quot;Property Item &quot; + count.ToString(),
+    font,
+    blackBrush,
+    X, Y);
+
+    Y += font.Height;
+
+    e.Graphics.DrawString(
+       &quot;   iD: 0x&quot; + propItem.Id.ToString(&quot;x&quot;),
+       font,
+       blackBrush,
+       X, Y);
+
+    Y += font.Height;
+
+    e.Graphics.DrawString(
+       &quot;   type: &quot; + propItem.Type.ToString(),
+       font,
+       blackBrush,
+       X, Y);
+
+    Y += font.Height;
+
+    e.Graphics.DrawString(
+       &quot;   length: &quot; + propItem.Len.ToString() + &quot; bytes&quot;,
+       font,
+       blackBrush,
+       X, Y);
+
+    Y += font.Height;
+
+    count++;
+}
+// Convert the value of the second property to a string, and display 
+// it.
+System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+string manufacturer = encoding.GetString(propItems[1].Value);
+
+e.Graphics.DrawString(
+   &quot;The equipment make is &quot; + manufacturer + &quot;.&quot;,
+   font,
+   blackBrush,
+   X, Y);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Предыдущий пример предназначен для работы с Windows Forms и требует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> <code>e</code>, который является параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> обработчик событий. Обработка формы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> событий и вставьте этот код в обработчик событий paint. Необходимо заменить <code>FakePhoto.jpg</code> допустимы для системы и импорта путь и имя образа <code>System.Drawing.Imaging</code> пространства имен.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="images-bitmaps-and-metafiles.html">Работа с растровыми и векторными изображениями с использованием классов Image, Bitmap и Metafile</a></li>
+<li><a href="working-with-images-bitmaps-icons-and-metafiles.html">Работа с растровыми и векторными изображениями</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1086;&#1076;&#1077;&#1083;&#1100; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1086;&#1076;&#1077;&#1083;&#1100; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-content-model">Модель содержимого WPF</h1>
+
+<p>Windows Presentation Foundation (WPF) — это презентационная платформа, которая предоставляет множество элементов и типов, схожих с элементами управления основной целью которого является отображение различных типов содержимого. Чтобы определить, какой элемент управления использовать или от какого элемента управления выполнять наследование, вы должны понимать, какие виды объектов лучше всего может отображать конкретный элемент управления.</p>
+<p>В этом разделе приводятся обобщенные сведения о модели содержимого для элементов управления WPF и типов, схожих с элементами управления. Модель содержимого описывает, какое содержимое может использоваться в элементе управления. Также в этом разделе перечисляются свойства содержимого для каждой модели содержимого. Свойство содержимого — это свойство, которое используется для хранения содержимого объекта.</p>
+<p><a name="classes_that_contain_arbitrary_content"></a></p>
+<h2 id="classes-that-contain-arbitrary-content">Классы с произвольным содержимым</h2>
+<p>Некоторые элементы управления могут содержать объекты любого типа, например строку, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объекта, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> являющийся контейнером для дополнительных элементов. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> может содержать изображение и некоторый текст; или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a> может содержать значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime.now">DateTime.Now</a>.</p>
+<p>WPF имеется четыре класса, которые могут содержать произвольное содержимое. В следующей таблице перечислены классы, которые наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Класс с произвольным содержимым</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a></td>
+<td>Один произвольный объект.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol">HeaderedContentControl</a></td>
+<td>Заголовок и один элемент, которые являются произвольными объектами.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a></td>
+<td>Коллекция произвольных объектов.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol">HeaderedItemsControl</a></td>
+<td>Заголовок и коллекция элементов, являющиеся произвольными объектами.</td>
+</tr>
+</tbody>
+</table>
+<p>Элементы управления, производные от этих классов, могут содержать тот же тип содержимого и обрабатывать содержимое аналогичным образом. На следующем рисунке показан один элемент управления из каждой модели содержимого, который содержит изображение и некоторый текст:</p>
+<p><img src="media/wpf-content-model/control-content-model-image-text.png" alt="Снимок экрана, показывающий четыре различных элементов управления, один из каждой модели содержимого."></p>
+<h3 id="controls-that-contain-a-single-arbitrary-object">Элементы управления, содержащие один произвольный объект</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> Класса содержит один элемент произвольного содержимого. Его свойство содержимого — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a>. Следующие элементы управления наследуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase">ButtonBase</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.checkbox">CheckBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.comboboxitem">ComboBoxItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.gridviewcolumnheader">GridViewColumnHeader</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.groupitem">GroupItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listviewitem">ListViewItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.radiobutton">RadioButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.repeatbutton">RepeatButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer">ScrollViewer</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.statusbaritem">StatusBarItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.togglebutton">ToggleButton</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a></p>
+</li>
+</ul>
+<p>На следующем рисунке показано четыре кнопки, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> присваивается строка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объекта, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>:</p>
+<p><img src="media/wpf-content-model/control-content-model-buttons.png" alt="Снимок экрана, показаны четыре кнопки с различными типами содержимого."></p>
+<p>Например, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> свойство, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>.</p>
+<h3 id="controls-that-contain-a-header-and-a-single-arbitrary-object">Элементы управления, содержащие заголовок и один произвольный объект</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol">HeaderedContentControl</a> Класс наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> и отображает содержимое с заголовком. Он наследует свойство content <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a>, из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a> и определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol.header">Header</a> свойство, имеющее тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>; таким образом, оба могут быть произвольными объектами.</p>
+<p>Следующие элементы управления наследуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol">HeaderedContentControl</a> и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.expander">Expander</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.groupbox">GroupBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a></p>
+</li>
+</ul>
+<p>На следующем рисунке показаны два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a> объектов. Первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a> имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> объектов как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol.header">Header</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol.header">Header</a> Присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> Присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>. Второй <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a> имеет строку в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol.header">Header</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a>.</p>
+<p><img src="media/wpf-content-model/control-content-model-tab.png" alt="TabControl, который использует различные типы в свойстве Header."></p>
+<p>Пример создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabitem">TabItem</a> объектов, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headeredcontentcontrol">HeaderedContentControl</a>.</p>
+<h3 id="controls-that-contain-a-collection-of-arbitrary-objects">Элементы управления, содержащие коллекцию произвольных объектов</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> Класс наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> и может содержать несколько элементов, таких как строки, объекты или другие элементы. Его свойства содержимого — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> обычно используется для заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> со сбором данных. Если вы не хотите использовать коллекцию для заполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>, можно добавить элементы с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a> свойство.</p>
+<p>Следующие элементы управления наследуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.menubase">MenuBase</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabcontrol">TabControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector">Selector</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.statusbar">StatusBar</a></p>
+</li>
+</ul>
+<p>На следующем рисунке показано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> , содержащий следующие типы элементов:</p>
+<ul>
+<li><p>Строка.</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a>.</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>.</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>.</p>
+</li>
+</ul>
+<p><img src="media/wpf-content-model/control-content-model-listbox.png" alt="Снимок экрана с ListBox с четырьмя типами содержимого."></p>
+<h3 id="controls-that-contain-a-header-and-a-collection-of-arbitrary-objects">Элементы управления, содержащие заголовок и коллекцию произвольных объектов</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol">HeaderedItemsControl</a> Класс наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> и может содержать несколько элементов, таких как строки, объекты, или другие элементы и заголовок. Он наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> свойства, содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a>, и он определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol.header">Header</a> свойство, которое может быть произвольный объект.</p>
+<p>Следующие элементы управления наследуют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.headereditemscontrol">HeaderedItemsControl</a> и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeviewitem">TreeViewItem</a></p>
+</li>
+</ul>
+<p><a name="classes_that_contain_a_collection_of_uielement_objects"></a></p>
+<h2 id="classes-that-contain-a-collection-of-uielement-objects">Классы, содержащие коллекцию объектов UIElement</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> Класс размещение и упорядочивание дочерних <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> объектов. Его свойство содержимого — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a>.</p>
+<p>Следующие классы наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> класса и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.tabpanel">TabPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.toolbaroverflowpanel">ToolBarOverflowPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.toolbarpanel">ToolBarPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.uniformgrid">UniformGrid</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingpanel">VirtualizingPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingstackpanel">VirtualizingStackPanel</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.wrappanel">WrapPanel</a></p>
+</li>
+</ul>
+<p>Дополнительные сведения см. в разделе <a href="panels-overview.html">Общие сведения о панелях</a>.</p>
+<p><a name="classes_that_affects_the_appearance_of_a_uielement"></a></p>
+<h2 id="classes-that-affect-the-appearance-of-a-uielement">Классы, влияющие на внешний вид объекта UIElement</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.decorator">Decorator</a> Класс применяет визуальные эффекты или вокруг один дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>. Его свойство содержимого — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.decorator.child">Child</a>. Следующие классы наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.decorator">Decorator</a> и используют его модель содержимого:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.adornerdecorator">AdornerDecorator</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.bulletdecorator">BulletDecorator</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.buttonchrome">ButtonChrome</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.classicborderdecorator">ClassicBorderDecorator</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.listboxchrome">ListBoxChrome</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/microsoft.windows.themes.systemdropshadowchrome">SystemDropShadowChrome</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewbox">Viewbox</a></p>
+</li>
+</ul>
+<p>На следующем рисунке показано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> с (снабжен) <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> вокруг него.</p>
+<p><img src="media/layout-border-around-textbox.png" alt="TextBox с черной границей" title="Layout_Border_around_TextBox"><br>
+Элемент управления TextBlock с границей вокруг него</p>
+<p><a name="classes_that_provides_visual_feedback_about_a_uielement"></a></p>
+<h2 id="classes-that-provide-visual-feedback-about-a-uielement">Классы, предоставляющие визуальную обратную связь об объекте UIElement</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.adorner">Adorner</a> Предоставляет пользователю визуальные подсказки. Например, использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.adorner">Adorner</a> для добавления функциональных обработчиков к элементам или предоставления сведения о состоянии об элементе управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.adorner">Adorner</a> Класс предоставляет платформу, которые можно создавать собственные декоративные элементы. WPF не предоставляет никаких реализованных декоративных элементов. Дополнительные сведения см. в разделе <a href="adorners-overview.html">Общие сведения о декоративных элементах</a>.</p>
+<p><a name="classes_that_enable_users_to_enter_text"></a></p>
+<h2 id="classes-that-enable-users-to-enter-text">Классы, позволяющие пользователям вводить текст</h2>
+<p>WPF предоставляет три основных элемента управления, которые позволяют пользователям вводить текст. Каждый из этих элементов управления отображает текст по-разному. В следующей таблице приведены эти три элемента управления с поддержкой ввода текста, их возможности по отображению текста и свойства, которые содержат текст этого элемента управления.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления</th>
+<th>В каком виде отображается текст</th>
+<th>Свойство содержимого</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a></td>
+<td>Обычный текст</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox.text">Text</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.richtextbox">RichTextBox</a></td>
+<td>Форматированный текст</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.richtextbox.document">Document</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.passwordbox">PasswordBox</a></td>
+<td>Скрытый текст (символы скрыты)</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.passwordbox.password">Password</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="classes_that_display_text"></a></p>
+<h2 id="classes-that-display-your-text">Классы, отображающие пользовательский текст</h2>
+<p>Некоторые классы могут использоваться для отображения простого или форматированного текста. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для отображения текста небольшого объема. Если вы хотите отображать большие объемы текста, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentreader">FlowDocumentReader</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentpageviewer">FlowDocumentPageViewer</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentscrollviewer">FlowDocumentScrollViewer</a> элементов управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> Имеет два свойства содержимого: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.inlines">Inlines</a>. Если вы хотите отображать текст с единообразным форматированием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> свойство является оптимальным решением. Если вы планируете использовать разное форматирование текста, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.inlines">Inlines</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.inlines">Inlines</a> Свойство — это коллекция <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.inline">Inline</a> объекты, которые определяют способ форматирования текста.</p>
+<p>В следующей таблице перечислены свойства содержимого для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentreader">FlowDocumentReader</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentpageviewer">FlowDocumentPageViewer</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentscrollviewer">FlowDocumentScrollViewer</a> классы.</p>
+<table>
+<thead>
+<tr>
+<th>Элемент управления</th>
+<th>Свойство содержимого</th>
+<th>Тип свойства содержимого</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentpageviewer">FlowDocumentPageViewer</a></td>
+<td>Document</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.idocumentpaginatorsource">IDocumentPaginatorSource</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentreader">FlowDocumentReader</a></td>
+<td>Document</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.flowdocumentscrollviewer">FlowDocumentScrollViewer</a></td>
+<td>Document</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a></td>
+</tr>
+</tbody>
+</table>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> Реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.idocumentpaginatorsource">IDocumentPaginatorSource</a> интерфейс; таким образом, все три класса могут принимать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> как содержимое.</p>
+<p><a name="classes_that_format_text"></a></p>
+<h2 id="classes-that-format-your-text">Классы, выполняющие форматирование пользовательского текста</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.textelement">TextElement</a> и связанные с ним классы позволяют вам форматировать текст. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.textelement">TextElement</a> объекты содержат и форматируют текст в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> объектов. Два основных типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.textelement">TextElement</a> объекты являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a> элементов и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.inline">Inline</a> элементов. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a> представляет блок текста, например, абзац или список. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.inline">Inline</a> Элемент представляет собой часть текста в блоке. Многие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.inline">Inline</a> классы задают форматирование текста, к которому они применяются. Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.textelement">TextElement</a> имеет собственную модель содержимого. Подробнее см. в разделе <a href="../advanced/textelement-content-model-overview.html">Общие сведения о модели содержимого TextElement</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="../advanced/index.html">Дополнительно</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

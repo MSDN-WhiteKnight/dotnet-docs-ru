@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Win32 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-and-win32-interoperation">Взаимодействие WPF и Win32</h1>
+
+<p>В этом разделе приводится общее описание метода обеспечения взаимодействия WPF и кода Win32. Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Однако если имеется сложный код Win32, возможно, более эффективным будет повторное использование части этого кода.</p>
+<p><a name="basics"></a></p>
+<h2 id="wpf-and-win32-interoperation-basics">Основы взаимодействия WPF и Win32</h2>
+<p>Существуют два основных метода взаимодействия между WPF и кодом Win32.</p>
+<ul>
+<li><p>Размещение содержимого WPF в окне Win32. С помощью этого способа можно использовать дополнительные графические возможности WPF в структуре стандартных окон и приложений Win32.</p>
+</li>
+<li><p>Размещение окна Win32 в содержимом WPF. С помощью этого способа можно использовать существующий пользовательский элемент управления Win32 в контексте другого содержимого WPF и передавать данные через границы.</p>
+</li>
+</ul>
+<p>Каждый из этих способов детально представлен в этом разделе. Для иллюстрации, Дополнительные примеры кода, на котором размещается WPF в Win32, см. в разделе <a href="walkthrough-hosting-wpf-content-in-win32.html">Пошаговое руководство: Размещение содержимого WPF в Win32</a>. Для иллюстрации, Дополнительные примеры кода, на котором размещается Win32 в WPF, см. в разделе <a href="walkthrough-hosting-a-win32-control-in-wpf.html">Пошаговое руководство: Размещение элемента управления Win32 в WPF</a>.</p>
+<p><a name="projects"></a></p>
+<h2 id="wpf-interoperation-projects">Проекты взаимодействия WPF</h2>
+<p>WPF API - интерфейсы are managed code, but most existing [!include[TLA2#tla_win32](../../../../includes/tla2sявляются)] программы создаются в виде неуправляемого C++.enНевозможно вызвать WPF API - интерфейсы из подлинной неуправляемой программы.nОднако используя параметр <code>/clr</code> с компилятором Microsoft Visual C++, можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы API.</p>
+<p>Существует одна сложность на уровне проекта, которая заключается в том, что нельзя скомпилировать файлы Язык XAML в проект C++.  Имеется несколько методов разделения проектов для решения данной проблемы.</p>
+<ul>
+<li><p>Создать библиотеку DLL C#, содержащий все вашей XAML страницы в форме скомпилированной сборки, а затем вашей C++ включите в исполняемый файл DLL как ссылку.</p>
+</li>
+<li><p>Создайте на C# исполняемый файл для WPF содержимого и его ссылаться C++ DLL , содержащий Win32 содержимого.</p>
+</li>
+<li><p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.markup.xamlreader.load">Load</a> загружать все XAML во время выполнения вместо компиляции вашей XAML.</p>
+</li>
+<li><p>Не используйте XAML вообще и записать все ваши WPF в коде, создавая дерево элементов из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>.</p>
+</li>
+</ul>
+<p>Используйте любой наиболее подходящий способ.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы еще не пользовались C++/CLI, то можете заметить некоторые &quot;новые&quot; ключевые слова, например <code>gcnew</code> и <code>nullptr</code>, в примерах кода взаимодействия. Эти ключевые слова заменяют более старый синтаксис с двойным подчеркиванием (<code>__gc</code>) и обеспечивают более естественный синтаксис для управляемого кода в C++.  Дополнительные сведения о возможностях управляемого кода C++/CLI см. в статьях <a href="/cpp/windows/component-extensions-for-runtime-platforms">Расширения компонентов для платформ среды выполнения</a> и <a href="https://go.microsoft.com/fwlink/?LinkId=98739">Знакомство с C ++/ CLI</a>.</p>
+</div>
+<p><a name="hwnds"></a></p>
+<h2 id="how-wpf-uses-hwnds">Как в WPF используются дескрипторы HWND</h2>
+<p>Для эффективного использования взаимодействия HWND в WPF необходимо понимать, как в WPF используются дескрипторы HWND. Для любого HWND нельзя смешивать отрисовку WPF с отрисовкой DirectX или отрисовкой GDI / GDI+. Это имеет ряд последствий. В первую очередь для смешивания этих моделей отрисовки необходимо создать решение взаимодействия и использовать специальные сегменты взаимодействия для каждой модели отрисовки, которая выбрана для использования. Кроме того, получаемое при отрисовке изображение создает ограничение airspace для решения взаимодействия, которое можно применить. Концепция airspace более подробно рассматривается в разделе <a href="technology-regions-overview.html">Общие сведения об областях применения технологий</a>.</p>
+<p>Все элементы WPF на экране в конечном счете поддерживаются дескриптором окна HWND. При создании WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, WPF создает HWND верхнего уровня и использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> поместить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и его WPF содержимое внутри HWND.  Остальная часть содержимого WPF в приложении также использует этот единственный дескриптор HWND. Исключением являются меню, поля с раскрывающимся списком и другие всплывающие окна. Эти элементы создают свое собственное окно верхнего уровня, поэтому меню WPF может выйти за край HWND окна, которое его содержит. При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> для размещения HWND внутри WPF, WPF информирует Win32 как разместить новый дочерний дескриптор HWND относительно WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> HWND.</p>
+<p>С HWND связано понятие прозрачности внутри и между каждым дескриптором HWND. Оно также рассматривается в разделе <a href="technology-regions-overview.html">Общие сведения об областях применения технологий</a>.</p>
+<p><a name="hosting_a_wpf_page"></a></p>
+<h2 id="hosting-wpf-content-in-a-microsoft-win32-window">Размещение содержимого WPF в окне Microsoft Win32</h2>
+<p>Ключом к размещению WPF на Win32 окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> класса. Этот класс заключает содержимое WPF в окно Win32 таким образом, что содержимое WPF может быть включено в пользовательский интерфейс в качестве дочернего окна. Следующий подход объединяет Win32 и WPF в одном приложении.</p>
+<ol>
+<li><p>Реализуйте содержимое WPF (содержимое корневого элемента) в виде управляемого класса. Как правило, класс наследуется от одного из классов, которые может содержать несколько дочерних элементов или использоваться в качестве корневого элемента, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. В последующих шагах этот класс называется классом содержимого WPF, а его экземпляры называются объектами содержимого WPF.</p>
+</li>
+<li><p>Реализуйте приложение Win32 с помощью C++/CLI. При запуске существующего неуправляемого приложения C++, как правило, можно разрешить ему вызывать управляемый код путем изменения параметров проекта с целью включения флага компилятора <code>/clr</code> (полное описание объектов, необходимых для поддержки компиляции <code>/clr</code>, в этом разделе не приводится).</p>
+</li>
+<li><p>Установите в качестве потоковой модели однопотоковое подразделение (STA). WPF Эта потоковая модель используется.</p>
+</li>
+<li><p>Обработайте уведомления WM_CREATE в процедуре окна.</p>
+</li>
+<li><p>В обработчике (или функции, которую вызывает обработчик) выполните указанные ниже действия.</p>
+<ol>
+<li><p>Создайте новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объект с HWND родительского окна как его <code>parent</code> параметра.</p>
+</li>
+<li><p>Создайте экземпляр вашего класса содержимого WPF.</p>
+</li>
+<li><p>Назначьте ссылку WPF объект содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> свойство.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.handle">Handle</a> свойство содержит дескриптор окна (HWND). Чтобы получить HWND, который можно использовать в неуправляемой части приложения, приведите <code>Handle.ToPointer()</code> к HWND.</p>
+</li>
+</ol>
+</li>
+<li><p>Реализуйте управляемый класс, содержащий статическое поле, которое хранит ссылку на объект содержимого WPF. Этот класс позволяет получить ссылку на WPF объекта содержимого из вашей Win32 код, но более важно, защищает ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> от случайного удаления сборщиком мусора.</p>
+</li>
+<li><p>Получите уведомления от объекта содержимого WPF, присоединив обработчик к одному или нескольким событиям объекта содержимого WPF.</p>
+</li>
+<li><p>Для взаимодействия с объектом содержимого WPF используйте ссылку, которую сохранили в статическом поле, чтобы задать свойства, методы вызова и т. д.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Определить класс содержимого WPF для шага 1 можно частично или полностью в XAML с помощью разделяемого класса по умолчанию класса содержимого. Для этого нужно создать отдельную сборку и сослаться на нее. Несмотря на то, что обычно содержат <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> объекта в процессе компиляции XAML в сборку, вы не доходят до использования его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> как часть взаимодействие, просто используйте один или несколько корневых классов для XAML файлов называется Чтобы для приложения и ссылаться на их разделяемые классы. Оставшаяся часть процедуры практически аналогична описанной выше.</p>
+<p>Каждое из этих действий будет показано в коде в разделе <a href="walkthrough-hosting-wpf-content-in-win32.html">Пошаговое руководство: Размещение содержимого WPF в Win32</a>.</p>
+</div>
+<p><a name="hosting_an_hwnd"></a></p>
+<h2 id="hosting-a-microsoft-win32-window-in-wpf">Размещение окна Microsoft Win32 в WPF</h2>
+<p>Ключом к размещению Win32 окно в другие WPF содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класса. Он заключает окно в элемент WPF, который можно добавить в дерево элементов WPF. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> также поддерживает API - интерфейсы , которые позволяют выполнять такие задачи, как обработка сообщений для размещенного окна. Ниже описываются основные действия.</p>
+<ol>
+<li><p>Создайте дерево элементов для приложения WPF (посредством кода или разметки). Найдите соответствующую и допустимую точку в дереве элементов, где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> реализация может быть добавлен как дочерний элемент. В оставшихся действиях процедуры этот элемент называется элементом резервирования.</p>
+</li>
+<li><p>Являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> для создания объекта, который содержит ваши Win32 содержимого.</p>
+</li>
+<li><p>В размещаемом классе переопределите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.buildwindowcore">BuildWindowCore</a>. Возвратите HWND размещенного окна. Вероятно, вам может потребоваться заключить существующие элементы управления в дочернее окно возвращаемого окна. Заключение элементов управления в основное окно представляет собой простой способ получения уведомлений от элементов управления для содержимого WPF. Этот способ позволяет избежать некоторых проблем Win32, касающихся обработки сообщений на границе размещаемых элементов управления.</p>
+</li>
+<li><p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>. Цель этого — выполнить очистку и удалить ссылки на размещаемое содержимое, особенно если созданы ссылки на неуправляемые объекты.</p>
+</li>
+<li><p>В файле кода программной части создайте экземпляр класса, размещающего элемент управления, и сделайте его дочерним классом элемента резервирования. Обычно используется обработчик событий например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a>, или использовать конструктор разделяемого класса. Но можно также добавить содержимое взаимодействия с помощью поведения среды выполнения.</p>
+</li>
+<li><p>Обработайте сообщения выбранного окна, такие как уведомления элементов управления. Существуют два подхода. Оба предоставляют идентичный доступ к потоку сообщений, поэтому выбор во многом определяется удобством программирования.</p>
+<ul>
+<li><p>Реализуйте обработку сообщений для всех сообщений (не только сообщений о завершении работы) в переопределении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>.</p>
+</li>
+<li><p>Разместите WPF обработку сообщения путем обработки элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> событий. Это событие вызывается для каждого сообщения, которое отправляется в главную процедуру размещенного окна.</p>
+</li>
+<li><p>Не удается обработать сообщения от windows, которые не соответствуют процесс, используя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>.</p>
+</li>
+</ul>
+</li>
+<li><p>Для взаимодействия с размещенным окном используйте вызов неуправляемого кода с целью вызова неуправляемой функции <code>SendMessage</code>.</p>
+</li>
+</ol>
+<p>Следующие действия создают приложение, которое работает с вводом мыши. Вы можете добавить поддержку табуляции для размещенного окна, реализовав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a> интерфейс.</p>
+<p>Каждое из этих действий будет показано в коде в разделе <a href="walkthrough-hosting-a-win32-control-in-wpf.html">Пошаговое руководство: Размещение элемента управления Win32 в WPF</a>.</p>
+<h3 id="hwnds-inside-wpf">Дескрипторы HWND внутри WPF</h3>
+<p>Можно представить себе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> как специальный элемент управления. (С технической точки зрения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> производного класса не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> производного класса, но его можно считать элементом управления применительно к соответствующему взаимодействию.) <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> абстрагирует базовые Win32 характер размещенного содержимого таким образом, что в оставшейся части WPF считает размещенное содержимое другим объектом, схожих с элементами управления, который должен отрисовывать и обработки входных данных. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> обычно ведет себя подобно любому другому WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, несмотря на то, что существуют некоторые важные различия, связанные с выводом (рисование и графика) и вводом (мышь и клавиатура), зависимости от ограничений какие базовыми дескрипторами HWND на может поддерживать.</p>
+<h4 id="notable-differences-in-output-behavior">Важные различия в режиме вывода</h4>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> базового класса, имеет несколько свойств, которые подразумевают изменение пользовательского интерфейса. К ним относятся свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FrameworkElement.FlowDirection</a>, которые меняют расположение элементов внутри этого элемента в качестве родительского. Однако большая часть этих свойств не сопоставляется с возможными эквивалентами Win32, даже если такие эквиваленты могут существовать. Многие из этих свойств и их значений слишком специфичны для технологии отрисовки, чтобы сопоставление было целесообразным. Таким образом, такие как установка свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> не оказывает влияния.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> не может быть повернута, масштабируемой, неравномерные или иным преобразовывать.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> не поддерживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойств (альфа-смешение). Если содержимое внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> выполняет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing">System.Drawing</a> операций, которые включают данные альфа-канала, который сам не является нарушением, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> как единое целое поддерживает только значение Opacity = 1,0 (100%).</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> будет появляться поверх других WPF элементов в том же окне верхнего уровня. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tooltip">ToolTip</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a> сгенерированное меню является отдельным окном верхнего уровня и поэтому будет работать правильно с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> не учитывает отсеченную область родительского <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>. Это является потенциальной проблемой при попытке поместить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класс внутри области прокрутки или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>.</p>
+</li>
+</ul>
+<h4 id="notable-differences-in-input-behavior">Важные различия в режиме ввода</h4>
+<ul>
+<li><p>В общем случае, когда устройства ввода находятся в пределах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> размещенных Win32 регион, события ввода поступают непосредственно к Win32.</p>
+</li>
+<li><p>Когда указатель мыши находится над <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>, приложение не получает WPF события мыши, а для параметра WPF свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismouseover">IsMouseOver</a> будет <code>false</code>.</p>
+</li>
+<li><p>Хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> имеет фокус клавиатуры, приложение не получит WPF события и значение WPF свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocuswithin">IsKeyboardFocusWithin</a> будет <code>false</code>.</p>
+</li>
+<li><p>Когда фокус находится внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> и изменения в другой элемент управления внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>, приложение не получит WPF события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotfocus">GotFocus</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.lostfocus">LostFocus</a>.</p>
+</li>
+<li><p>Связанные свойства пера и события являются аналогами и не предоставляют сведений, когда перо находится над <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>.</p>
+</li>
+</ul>
+<p><a name="tabbing_mnemonics_accelerators"></a></p>
+<h2 id="tabbing-mnemonics-and-accelerators">Переходы, назначенные клавиши и сочетания клавиш</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsite">IKeyboardInputSite</a> интерфейсы позволяют создавать взаимодействие с помощью клавиатуры для смешанных WPF и Win32 приложений:</p>
+<ul>
+<li><p>Переход между компонентами Win32 и WPF</p>
+</li>
+<li><p>Назначенные клавиши и сочетания клавиш, которые работают, когда фокус находится внутри компонента Win32 или WPF.</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> оба класса позволяют реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.ikeyboardinputsink">IKeyboardInputSink</a>, но они могут обрабатывать входящие сообщения, необходимые для более сложных сценариев. Переопределите соответствующие методы, чтобы получить нужное поведение клавиатуры.</p>
+<p>Интерфейсы обеспечивают поддержку только для событий перехода между областями WPF и Win32. Внутри области Win32 поведение перехода полностью контролируется логикой перехода, реализованной в Win32, если таковая имеется.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop">System.Windows.Interop</a></li>
+<li><a href="walkthrough-hosting-a-win32-control-in-wpf.html">Пошаговое руководство. Размещение элемента управления Win32 в WPF</a></li>
+<li><a href="walkthrough-hosting-wpf-content-in-win32.html">Пошаговое руководство. Размещение содержимого WPF в Win32</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

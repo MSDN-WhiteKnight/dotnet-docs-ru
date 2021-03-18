@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1044;&#1086;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1044;&#1086;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="advanced-text-formatting">Дополнительное форматирование текста</h1>
+
+<p>Windows Presentation Foundation (WPF) предоставляет набор надежных API - интерфейсы для включения текста в приложении. Макет и пользовательский интерфейсAPI - интерфейсы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>, обеспечивают наиболее распространенные и общие использовать элементы для представления текста. Рисование API - интерфейсы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrundrawing">GlyphRunDrawing</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a>, предоставляют средства для включения форматированного текста в рисунки. На наиболее продвинутом уровне WPF предоставляет расширяемый механизм форматирования текста для управления каждым аспектом представления текста: управление хранением текста, исполнением форматирования текста и внедренными объектами.</p>
+<p>В этом разделе содержатся вводные WPF форматирование текста. Этот раздел посвящен реализации клиента и использовании WPF механизм форматирования текста.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Все примеры кода в этом документе можно найти в <a href="https://go.microsoft.com/fwlink/?LinkID=159965">пример расширенного форматирования текста</a>.</p>
+</div>
+<p><a name="prereq"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы знакомы с высоким уровнем API - интерфейсы используемыми для представления текста. Большинство сценариев не требует расширенного форматирования текста API - интерфейсы описанных в этом разделе. Введение в другой текстовой API - интерфейсы, см. в разделе <a href="documents-in-wpf.html">документы в WPF</a>.</p>
+<p><a name="section1"></a></p>
+<h2 id="advanced-text-formatting">Дополнительное форматирование текста</h2>
+<p>Макет текста и ИП элементов управления в WPF предоставляют свойства форматирования, которые дают возможность легко включать в приложение форматированный текст. Эти элементы управления предоставляют ряд свойств для обработки представления текста, включая гарнитуру, размер и цвет. В обычных условиях эти элементы управления могут обрабатывать большинство вариантов представления текста в приложении. Тем не менее некоторые расширенные сценарии требуют управления хранением текста, а также его представлением. WPF предоставляет расширяемый механизм форматирования текста для этой цели.</p>
+<p>Найти дополнительные функции форматирования текста в WPF состоят из механизма форматирования, хранилища текста фрагментов текста и свойств форматирования текста. Механизм форматирования текста, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a>, создает строки текста, используемые для представления. Это достигается путем запуска процесса форматирования строки и вызова модуля форматирования текста <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter.formatline">FormatLine</a>. Модуль форматирования текста получает фрагментов текста из хранилища текста, вызывая магазина <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> Объекты затем формируются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textline">TextLine</a> объектов модулем форматирования текста и передаются в приложение для проверки или отображения.</p>
+<p><a name="section2"></a></p>
+<h2 id="using-the-text-formatter">Использование модуля форматирования текста</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a> является WPF механизма форматирования текста и предоставляет службы для форматирования и переноса строк текста. Модуль форматирования текста может обрабатывать различные форматы текстовых символов и стили абзацев и включает поддержку международного макета текста.</p>
+<p>В отличие от традиционного текстового API, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a> взаимодействует с клиентом макета текста через набор методов обратного вызова. Требуется клиент для предоставления этих методов в реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource">TextSource</a> класса. Следующая диаграмма иллюстрирует взаимодействие макета текста между клиентским приложением и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a>.</p>
+<p><img src="media/advanced-text-formatting/text-layout-textformatter-interaction.png" alt="Схема клиента структуры текста и TextFormatter"></p>
+<p>Модуль форматирования текста используется для извлечения форматированных строк текста из хранилища текста, который представляет собой реализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource">TextSource</a>. Для этого сначала создается экземпляр модуля форматирования текста с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter.create">Create</a> метод. Этот метод создает экземпляр модуля форматирования текста и задает максимальные значения высоты и ширины строки. Как только создается экземпляр модуля форматирования текста, процесс создания строки, начатую посредством вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter.formatline">FormatLine</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a> обратный вызов к источнику текста для получения текста и параметров форматирования для фрагментов текста эту форму строки.</p>
+<p>В следующем примере показан процесс форматирования хранилища текста. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a> Объект используется для извлечения строк текста из хранилища текста и последующего форматирования строк текста для рисования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingcontext">DrawingContext</a>.</p>
+<pre><code class="lang-csharp" name="TextFormatterExample#100">// Create a DrawingGroup object for storing formatted text.
+textDest = new DrawingGroup();
+DrawingContext dc = textDest.Open();
+
+// Update the text store.
+_textStore.Text = textToFormat.Text;
+_textStore.FontRendering = _currentRendering;
+
+// Create a TextFormatter object.
+TextFormatter formatter = TextFormatter.Create();
+
+// Format each line of text from the text store and draw it.
+while (textStorePosition &lt; _textStore.Text.Length)
+{
+   // Create a textline from the text store using the TextFormatter object.
+   using (TextLine myTextLine = formatter.FormatLine(
+       _textStore,
+       textStorePosition,
+       96*6,
+       new GenericTextParagraphProperties(_currentRendering),
+       null))
+   {
+       // Draw the formatted text into the drawing context.
+       myTextLine.Draw(dc, linePosition, InvertAxes.None);
+
+       // Update the index position in the text store.
+       textStorePosition += myTextLine.Length;
+
+       // Update the line position coordinate for the displayed line.
+       linePosition.Y += myTextLine.Height;
+   }
+}
+
+// Persist the drawn text content.
+dc.Close();
+
+// Display the formatted text in the DrawingGroup object.
+myDrawingBrush.Drawing = textDest;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="section3"></a></p>
+<h2 id="implementing-the-client-text-store">Реализация клиентского хранилища текста</h2>
+<p>При расширении механизма форматирования текста необходимо реализовать все аспекты хранилища текста и управлять ими. Это довольно сложная задача. Хранилище текста отвечает за отслеживание свойств фрагментов текста, свойств абзаца, встроенных объектов и других подобных элементов. Он также предоставляет модуль форматирования текста с отдельными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов, которые использует модуль форматирования текста для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textline">TextLine</a> объектов.</p>
+<p>Для обработки виртуализации хранилища текста, хранилища текста должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource">TextSource</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource">TextSource</a> Определяет метод, используемый модулем форматирования текста для извлечения фрагментов текста из хранилища текста. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> — Это метод, используемый модулем форматирования текста для извлечения текста цепочек, используемых в форматировании строки. Вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> неоднократно осуществляется модулем форматирования текста, пока не произойдет одно из следующих условий:</p>
+<ul>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofline">TextEndOfLine</a> или подкласс возвращается.</p>
+</li>
+<li><p>Суммарная ширина фрагментов текста превышает ширину строк, указанную в вызове для создания модуля форматирования текста или вызов модуля форматирования текста <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter.formatline">FormatLine</a> метод.</p>
+</li>
+<li><p>Объект Юникод возвращается последовательность новой строки, например «CF», «LF» или «CRLF,».</p>
+</li>
+</ul>
+<p><a name="section4"></a></p>
+<h2 id="providing-text-runs">Предоставление фрагментов текста</h2>
+<p>Ядром процесса форматирования текста является взаимодействие между модулем форматирования текста и хранилищем текста. Реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource">TextSource</a> предоставляет модуль форматирования текста с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов и свойств, с помощью которых форматируются исполнения текста. Это взаимодействие обрабатывается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> метод, который вызывается модулем форматирования текста.</p>
+<p>В следующей таблице показаны некоторые из предварительно определенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов.</p>
+<table>
+<thead>
+<tr>
+<th>Тип TextRun</th>
+<th>Использование</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textcharacters">TextCharacters</a></td>
+<td>Специализированный фрагмент текста, который используется для передачи представления глифов символов обратно в модуль форматирования текста.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textembeddedobject">TextEmbeddedObject</a></td>
+<td>Специализированный фрагмент текста, который используется для предоставления содержимого, в котором измерение, проверка нажатия и рисование выполняются в целом (например, кнопка или изображение в тексте).</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofline">TextEndOfLine</a></td>
+<td>Специализированный фрагмент текста, который используется для обозначения конца строки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofparagraph">TextEndOfParagraph</a></td>
+<td>Специализированный фрагмент текста, который используется для обозначения конца абзаца.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofsegment">TextEndOfSegment</a></td>
+<td>Специализированный фрагмент текста, используемый для обозначения конца сегмента, например конца области, затронутых предыдущим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textmodifier">TextModifier</a> запуска.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.texthidden">TextHidden</a></td>
+<td>Специализированный фрагмент текста, который используется для отметки диапазона скрытых символов.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textmodifier">TextModifier</a></td>
+<td>Специализированный фрагмент текста, который используется для изменения свойств фрагментов текста в своей области. Область расширяется до следующего соответствия <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofsegment">TextEndOfSegment</a> текстовой цепочки или следующего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textendofparagraph">TextEndOfParagraph</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Любые из стандартных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов может быть подклассом. Это позволяет источнику текста предоставлять модуль форматирования текста с фрагментами текста, включающими пользовательские данные.</p>
+<p>В следующем примере демонстрируется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> метод. Это хранилище текста возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов для форматирования текста для обработки.</p>
+<pre><code class="lang-csharp" name="TextFormatterExample#101">// Used by the TextFormatter object to retrieve a run of text from the text source.
+public override TextRun GetTextRun(int textSourceCharacterIndex)
+{
+   // Make sure text source index is in bounds.
+   if (textSourceCharacterIndex &lt; 0)
+      throw new ArgumentOutOfRangeException(&quot;textSourceCharacterIndex&quot;, &quot;Value must be greater than 0.&quot;);
+   if (textSourceCharacterIndex &gt;= _text.Length)
+   {
+      return new TextEndOfParagraph(1);
+   }
+
+   // Create TextCharacters using the current font rendering properties.
+   if (textSourceCharacterIndex &lt; _text.Length)
+   {
+      return new TextCharacters(
+         _text,
+         textSourceCharacterIndex,
+         _text.Length - textSourceCharacterIndex,
+         new GenericTextRunProperties(_currentRendering));
+   }
+
+   // Return an end-of-paragraph if no more text source.
+   return new TextEndOfParagraph(1);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>В этом примере хранилище текста предоставляет одни и те же свойства текста всему тексту. Расширенные хранилища текста могут потребоваться для реализации собственного управления диапазонами, чтобы позволить отдельным символам иметь разные свойства.</p>
+</div>
+<p><a name="section5"></a></p>
+<h2 id="specifying-formatting-properties">Задание свойств форматирования</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объекты форматируются с помощью свойств, предоставляемых хранилищем текста. Эти свойства бывают двух типов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textparagraphproperties">TextParagraphProperties</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrunproperties">TextRunProperties</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textparagraphproperties">TextParagraphProperties</a> обрабатывать все свойства абзаца, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textalignment">TextAlignment</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection">FlowDirection</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrunproperties">TextRunProperties</a> — Это свойства, которые могут быть разными для каждого текста в абзаце, например кисть переднего плана, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.typeface">Typeface</a>и размер шрифта. Для реализации пользовательских абзацев и текст, типов свойств, приложение должно создавать классы, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textparagraphproperties">TextParagraphProperties</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrunproperties">TextRunProperties</a> соответственно.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="typography-in-wpf.html">Оформление в WPF</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

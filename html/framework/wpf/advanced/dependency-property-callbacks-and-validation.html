@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1080; &#1086;&#1073;&#1088;&#1072;&#1090;&#1085;&#1099;&#1077; &#1074;&#1099;&#1079;&#1086;&#1074;&#1099; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1080; &#1086;&#1073;&#1088;&#1072;&#1090;&#1085;&#1099;&#1077; &#1074;&#1099;&#1079;&#1086;&#1074;&#1099; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#1079;&#1072;&#1074;&#1080;&#1089;&#1080;&#1084;&#1086;&#1089;&#1090;&#1077;&#1081; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dependency-property-callbacks-and-validation">Проверка и обратные вызовы свойства зависимостей</h1>
+
+<p>В этом разделе описывается создание свойства зависимостей с помощью альтернативных пользовательских реализаций функций, связанных со свойствами, таких как определение проверки, обратные вызовы, которые совершаются при каждом изменении эффективного значения свойства, и переопределение возможных внешних влияний на определение значения. В этом разделе также рассматриваются сценарии, в которых подходит расширение стандартных правил для системы свойств с помощью этих методов.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>В этом разделе предполагается, что вы понимаете основные сценарии реализации свойства зависимостей и способы применения метаданных к настраиваемому свойству зависимостей. Дополнительные сведения см. в разделах <a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a> и <a href="dependency-property-metadata.html">Метаданные свойства зависимостей</a>.</p>
+<p><a name="Validation_Callbacks"></a></p>
+<h2 id="validation-callbacks">Обратные вызовы проверки</h2>
+<p>Обратные вызовы проверки можно назначить свойству зависимостей при первой регистрации. Обратный вызов проверки не является частью метаданных свойства; Это прямой ввод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> метод. Поэтому после того, как будет создан обратный вызов проверки для свойства зависимостей, он уже не может быть переопределен новой реализацией.</p>
+<pre><code class="lang-csharp" name="DPCallbackOverride#CurrentDefinitionWithWrapper">public static readonly DependencyProperty CurrentReadingProperty = DependencyProperty.Register(
+    &quot;CurrentReading&quot;,
+    typeof(double),
+    typeof(Gauge),
+    new FrameworkPropertyMetadata(
+        Double.NaN,
+        FrameworkPropertyMetadataOptions.AffectsMeasure,
+        new PropertyChangedCallback(OnCurrentReadingChanged),
+        new CoerceValueCallback(CoerceCurrentReading)
+    ),
+    new ValidateValueCallback(IsValidReading)
+);
+public double CurrentReading
+{
+  get { return (double)GetValue(CurrentReadingProperty); }
+  set { SetValue(CurrentReadingProperty, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обратные вызовы реализуются так, что они получают значение объекта. Они возвращают <code>true</code>, если полученное значение является допустимым для свойства. В противном случае — возвращают <code>false</code>. Предполагается, что свойство принадлежит допустимому типу (зарегистрированному в системе свойств), поэтому проверка типов в обратных вызовах обычно не выполняется. Обратные вызовы используются системой свойств в различных операциях. Сюда входят инициализация типов по значению по умолчанию, программное изменение путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>, или попытка переопределить метаданные с помощью нового значения по умолчанию. Если обратный вызов проверки совершается любой из этих операций и возвращает <code>false</code>, вызывается исключение. Программисты должны быть готовы обрабатывать эти исключения. Обычно обратные вызовы проверки используются для проверки значений перечислений или для ограничения значений целых чисел, когда это свойство задает измерения, которые должны быть больше или равны нулю.</p>
+<p>Обратные вызовы проверки специально предназначены для проверки классов, а не экземпляров классов. Параметры обратного вызова не взаимодействуют между собой определенным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> на какой набор свойств, которые необходимо проверить. Поэтому обратные вызовы проверки не используются для принудительного применения возможных &quot;зависимостей&quot;, способных повлиять на значение свойства, где значение свойства для этого экземпляра зависит от таких факторов, как значения других свойств этого экземпляра или состояния во время выполнения.</p>
+<p>Ниже приведен пример кода для обратного вызова сценария очень простой проверки: проверка того, свойства, который типизируется как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> -примитив не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.positiveinfinity">PositiveInfinity</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.negativeinfinity">NegativeInfinity</a>.</p>
+<pre><code class="lang-csharp" name="DPCallbackOverride#ValidateValueCallback">public static bool IsValidReading(object value)
+{
+    Double v = (Double)value;
+    return (!v.Equals(Double.NegativeInfinity) &amp;&amp; !v.Equals(Double.PositiveInfinity));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="Coerce_Value_Callbacks_and_Property_Changed_Events"></a></p>
+<h2 id="coerce-value-callbacks-and-property-changed-events">Обратные вызовы с привязкой к значению и события изменения свойств</h2>
+<p>Приведение значения обратных вызовов передают определенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> экземпляр для свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a> реализации, которые вызываются системой свойств при каждом изменении значения свойства зависимостей. Используя сочетание этих обратных вызовов, можно создать ряд свойств элементов, где изменения значения одного свойства будут вызывать принудительное изменение или пересчет значения другого свойства.</p>
+<p>Вот типичный сценарий использования связки свойств зависимостей. Имеется свойство, управляемое пользовательским интерфейсом. Элемент содержит по одному свойству для минимального и максимального значений и третье свойство для фактического или текущего значения. Если максимальное значение будет изменено так, что текущее значение станет превышать это новое максимальное значение, следует изменить текущее значение, сделав его не более максимального. Аналогичная связь нужна и для минимального значения.</p>
+<p>Ниже приведен пример очень краткого кода для одного из трех свойств зависимостей, иллюстрирующий эту связь. В примере показано, как регистрируется свойство <code>CurrentReading</code> для набора связанных свойств (максимальное, минимальное, текущее) объекта *Reading. Он использует проверку, как это показано в предыдущем разделе.</p>
+<pre><code class="lang-csharp" name="DPCallbackOverride#CurrentDefinitionWithWrapper">public static readonly DependencyProperty CurrentReadingProperty = DependencyProperty.Register(
+    &quot;CurrentReading&quot;,
+    typeof(double),
+    typeof(Gauge),
+    new FrameworkPropertyMetadata(
+        Double.NaN,
+        FrameworkPropertyMetadataOptions.AffectsMeasure,
+        new PropertyChangedCallback(OnCurrentReadingChanged),
+        new CoerceValueCallback(CoerceCurrentReading)
+    ),
+    new ValidateValueCallback(IsValidReading)
+);
+public double CurrentReading
+{
+  get { return (double)GetValue(CurrentReadingProperty); }
+  set { SetValue(CurrentReadingProperty, value); }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обратный вызов при изменении свойства текущего объекта используется для пересылки изменений в другие зависимые свойства путем явного выполнения обратных вызовов с привязкой к значению, зарегистрированных для этих свойств.</p>
+<pre><code class="lang-csharp" name="DPCallbackOverride#OnPCCurrent">private static void OnCurrentReadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+{
+  d.CoerceValue(MinReadingProperty);
+  d.CoerceValue(MaxReadingProperty);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>При выполнении обратных вызовов с привязкой к значению проверяются значения свойств, от которых потенциально зависит текущее свойство, и принудительно изменяется его значение при необходимости.</p>
+<pre><code class="lang-csharp" name="DPCallbackOverride#CoerceCurrent">private static object CoerceCurrentReading(DependencyObject d, object value)
+{
+  Gauge g = (Gauge)d;
+  double current = (double)value;
+  if (current &lt; g.MinReading) current = g.MinReading;
+  if (current &gt; g.MaxReading) current = g.MaxReading;
+  return current;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Значения свойств по умолчанию не изменяются. Значение свойства равно значению по умолчанию может произойти, если значение свойства по-прежнему имеет его первоначальное значение по умолчанию, или через Очистка других значений с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a>.</p>
+</div>
+<p>Обратные вызовы с привязкой к значению и обратные вызовы при изменении свойств являются частью метаданных свойства. Вы можете изменить обратные вызовы для конкретного свойства зависимостей, так как оно задается типом, производным от типа, которому принадлежит свойство зависимостей, путем переопределения метаданных для этого свойства в типе.</p>
+<p><a name="Advanced"></a></p>
+<h2 id="advanced-coercion-and-callback-scenarios">Сценарии расширенного приведения и обратного вызова</h2>
+<h3 id="constraints-and-desired-values">Ограничения и требуемые значения</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertymetadata.coercevaluecallback">CoerceValueCallback</a> Обратных вызовов, которая будет использоваться системой свойств для присвоения значения в соответствии с логикой, но приведенное значение локально заданного свойства будет по-прежнему внутренне сохранять «требуемое значение». Если ограничения зависят от других значений свойств, которые могут изменяться динамически во время работы приложения, приведенные ограничения будут также изменяться динамически, а ограниченное свойство может изменить свое значение, чтобы максимально приблизиться к требуемому значению с учетом новых ограничений. Значение станет равно требуемому значению, если все ограничения будут сняты. При необходимости можно создать достаточно сложные сценарии зависимостей, если имеется, например, несколько свойств, которые циклически зависят друг от друга. В сценарии, где имеется минимальное, максимальное и текущее значения, можно, например, сделать минимальное и максимальное значения определяемыми пользователем. В этом случае может потребоваться правило приведения, определяющее, что максимальное значение должно быть всегда больше минимального или наоборот. Но если приведение включено и максимальное значение приводится к минимальному, текущее значение остается в неопределенном состоянии, так как оно зависит от них обоих и ограничено диапазоном между ними, который равен нулю. С другой стороны, если максимальное или минимальное значение настраивается, текущее значение будет стремиться &quot;отслеживать&quot; одно из них. Это происходит из-за того, что для текущего значения сохраняется его требуемая величина и оно пытается достичь этой величины при ослаблении ограничений.</p>
+<p>С технической реализацией сложных зависимостей нет проблем, но они могут ухудшить производительность, если для их осуществления потребуется выполнять большой объем вычислений. Кроме того, они могут вызвать недоумение у пользователей, если будут непосредственно влиять на пользовательский интерфейс. Будьте внимательны при использовании обратных вызовов с привязкой к значению и обратных вызовов при изменении свойств и следите за тем, чтобы попытки приведения могли выполняться максимально однозначно, не вызывая &quot;сверхограничений&quot;.</p>
+<h3 id="using-coercevalue-to-cancel-value-changes">Использование CoerceValue для отмены изменений значения</h3>
+<p>Система свойств будет рассматривать любой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> , возвращающий значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.unsetvalue">UnsetValue</a> как особый случай. Это особый случай означает, что изменение свойства, которое привело к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.coercevaluecallback">CoerceValueCallback</a> должно быть отклонено системой свойств, и система свойств вместо этого может сообщить предыдущее значение свойства. Этот механизм можно использовать для того, чтобы убедиться, что изменения свойства, инициированные асинхронно, все еще действительны для текущего состояния объекта, и, если это не так, запретить эти изменения. Другой возможный сценарий. Вы можете выборочно запретить значения в зависимости от того, какой компонент определения значения свойства отвечает за переданное значение. Чтобы сделать это, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> переданной функции обратного вызова и идентификатор свойства как входные данные для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertyhelper.getvaluesource">GetValueSource</a>, а затем обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.valuesource">ValueSource</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="dependency-properties-overview.html">Общие сведения о свойствах зависимости</a></li>
+<li><a href="dependency-property-metadata.html">Метаданные свойства зависимости</a></li>
+<li><a href="custom-dependency-properties.html">Пользовательские свойства зависимостей</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

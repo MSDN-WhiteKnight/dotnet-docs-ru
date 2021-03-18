@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1057;&#1090;&#1080;&#1083;&#1080; &#1103;&#1095;&#1077;&#1077;&#1082; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1057;&#1090;&#1080;&#1083;&#1080; &#1103;&#1095;&#1077;&#1077;&#1082; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cell-styles-in-the-windows-forms-datagridview-control">Стили ячеек элемента управления DataGridView в Windows Forms</h1>
+
+<p>Каждая ячейка в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления может иметь свой собственный стиль, включая формат текста, цвет фона, цвет переднего плана и шрифта. Как правило Однако несколько ячеек будет обладают одинаковым стилем.</p>
+<p>Группы ячеек, которые совместно используют стили могут включать все ячейки в пределах конкретных строк или столбцов, все ячейки, содержащие конкретные значения или все ячейки в элементе управления. Так как эти группы перекрываются, каждая ячейка может получать данные своего стиля из более чем в одном месте. Например, может потребоваться каждая ячейка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления же шрифт, но только ячейки в столбцах для использования формат денежной единицы и только ячейки валюты с отрицательными числами для использования красный цвет.</p>
+<h2 id="the-datagridviewcellstyle-class">Класс DataGridViewCellStyle</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> Класс содержит следующие свойства, относящиеся к стилю:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.backcolor">BackColor</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.forecolor">ForeColor</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.selectionbackcolor">SelectionBackColor</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.selectionforecolor">SelectionForeColor</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.font">Font</a></p>
+</li>
+</ul>
+<p>Этот класс также содержит следующие свойства, связанные с форматированием:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.format">Format</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.formatprovider">FormatProvider</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.nullvalue">NullValue</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.datasourcenullvalue">DataSourceNullValue</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.wrapmode">WrapMode</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.alignment">Alignment</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.padding">Padding</a></p>
+</li>
+</ul>
+<p>Дополнительные сведения об этих свойствах и другие свойства стиля ячейки, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> справочную документацию и разделы, перечисленные в разделе также см. в разделе ниже.</p>
+<h2 id="using-datagridviewcellstyle-objects">Использование объектов DataGridViewCellStyle</h2>
+<p>Вы можете получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объектов из различных свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> классы и их производных классов. Если одно из этих свойств еще не было задано, его значение было получено создаст новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объекта. Можно также создать свои собственные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объектов и назначить их этих свойств.</p>
+<p>Можно избежать дублирования информации о стилях, предоставив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объектов между несколькими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементов. Так как стили заданы элемента управления, столбца и фильтра строк уровней вниз через каждый уровень на уровне ячейки, можно избежать дублирования стилей, задав только те свойства стиля на каждом уровне, отличные от более высоких уровнях. Это описывается более подробно в следующем разделе наследования стиля.</p>
+<p>В следующей таблице перечислены основные свойства, устанавливающие или получающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объектов.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Классы</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DefaultCellStyle</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>и производные классы</td>
+<td>Возвращает или задает стили по умолчанию, используемые все ячейки в весь элемент управления, включая ячейки заголовков, в столбце или в строке.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsdefaultcellstyle">RowsDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></td>
+<td>Возвращает или задает стили ячеек по умолчанию, используемые во всех строк в элементе управления. Сюда не входят ячейки заголовков.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.alternatingrowsdefaultcellstyle">AlternatingRowsDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></td>
+<td>Возвращает или задает стили ячеек по умолчанию, используемые чередующихся строк в элементе управления. Используется для создания эффекта бухгалтерской книги.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheadersdefaultcellstyle">RowHeadersDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></td>
+<td>Возвращает или задает стили ячеек по умолчанию, используемые заголовки строк элемента управления. Переопределить текущей темы, если стили оформления включены.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columnheadersdefaultcellstyle">ColumnHeadersDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></td>
+<td>Возвращает или задает стили ячеек по умолчанию, используемые заголовков столбцов элемента управления. Переопределить текущей темы, если стили оформления включены.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">Style</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> и производные классы</td>
+<td>Возвращает или задает стили, заданные на уровне ячейки. Эти стили переопределить унаследованные от более высоких уровней.</td>
+</tr>
+<tr>
+<td><code>InheritedStyle</code></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>и производные классы</td>
+<td>Получает все стили, примененных в настоящий момент для ячейки, строки или столбца, включая стили, унаследованные от более высоких уровнях.</td>
+</tr>
+</tbody>
+</table>
+<p>Как упоминалось выше, получение значения свойства стиля автоматически создает новый экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объекта, если свойство не было задано ранее. Чтобы избежать без необходимости создания этих объектов, строк и столбцов классы имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.hasdefaultcellstyle">HasDefaultCellStyle</a> свойство, которое можно проверить, чтобы определить ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.defaultcellstyle">DefaultCellStyle</a> свойства. Аналогично, классы ячейки имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.hasstyle">HasStyle</a> свойство, указывающее ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">Style</a> свойства.</p>
+<p>Каждое из свойств стиля имеет соответствующий <em>PropertyName</em> <code>Changed</code> событий на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления. Для строк, столбцов и свойств ячеек, имя события начинается с &quot;<code>Row</code>«,»<code>Column</code>«, или&quot;<code>Cell</code>&quot;(например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowdefaultcellstylechanged">RowDefaultCellStyleChanged</a>). Каждое из этих событий происходит, когда соответствующее свойство стиля присваивается другой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объекта. Эти события не происходят при извлечении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объекта из свойства стиля и изменении значений его свойств. Реагировать на изменения к самим объектам стиль ячейки, обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellstylecontentchanged">CellStyleContentChanged</a> событий.</p>
+<h2 id="style-inheritance">Наследование стилей</h2>
+<p>Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> получает его внешний вид, от его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a> свойство. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> Объект, возвращаемый этим свойством наследует значения из иерархии свойств типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a>. Эти свойства перечислены ниже в порядке, в котором <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a> для верхнего колонтитула ячеек получает свои значения.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.defaultcellstyle">DataGridViewRow.DefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.alternatingrowsdefaultcellstyle">DataGridView.AlternatingRowsDefaultCellStyle</a> (только для ячеек в строках нечетных)</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsdefaultcellstyle">DataGridView.RowsDefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.defaultcellstyle">DataGridViewColumn.DefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></p>
+</li>
+</ol>
+<p>Для ячеек заголовков строк и столбцов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a> свойство заполняется значениями из следующего списка исходных свойств в заданном порядке.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columnheadersdefaultcellstyle">DataGridView.ColumnHeadersDefaultCellStyle</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheadersdefaultcellstyle">DataGridView.RowHeadersDefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></p>
+</li>
+</ol>
+<p>Следующая диаграмма иллюстрирует этот процесс.</p>
+<p><img src="media/cell-styles-in-the-windows-forms-datagridview-control/datagridviewcells-inheritance-diagram.gif" alt="Свойства типа DataGridViewCellStyle" title="DataGridViewCells диаграмма наследования"></p>
+<p>Также можно получить доступ к стилям, унаследованным от определенных строк и столбцов. Столбец <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.inheritedstyle">InheritedStyle</a> свойство наследует значения от следующие свойства.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.defaultcellstyle">DataGridViewColumn.DefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></p>
+</li>
+</ol>
+<p>Строки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.inheritedstyle">InheritedStyle</a> свойство наследует значения от следующие свойства.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.defaultcellstyle">DataGridViewRow.DefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.alternatingrowsdefaultcellstyle">DataGridView.AlternatingRowsDefaultCellStyle</a> (только для ячеек в строках нечетных)</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsdefaultcellstyle">DataGridView.RowsDefaultCellStyle</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></p>
+</li>
+</ol>
+<p>Для каждого свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объект, возвращаемый <code>InheritedStyle</code> свойство, значение свойства получено из первого стиля ячейки в соответствующем списке, имеющий соответствующее свойство присвоено значение, отличное от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> класса значения по умолчанию.</p>
+<p>В следующей таблице показано как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.forecolor">ForeColor</a> унаследован от столбца, в котором значение свойства ячейка.</p>
+<table>
+<thead>
+<tr>
+<th>свойство типа <code>DataGridViewCellStyle</code></th>
+<th>Пример <code>ForeColor</code> значение для полученного объекта</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.empty">Color.Empty</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.defaultcellstyle">DataGridViewRow.DefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.red">Color.Red</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.alternatingrowsdefaultcellstyle">DataGridView.AlternatingRowsDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.empty">Color.Empty</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsdefaultcellstyle">DataGridView.RowsDefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.empty">Color.Empty</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.defaultcellstyle">DataGridViewColumn.DefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.darkblue">Color.DarkBlue</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.black">Color.Black</a></td>
+</tr>
+</tbody>
+</table>
+<p>В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.color.red">Color.Red</a> значение из строки ячейки является первым действительным значением в списке. Это становится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.forecolor">ForeColor</a> значение свойства ячейки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a>.</p>
+<p>На следующей схеме показано как разные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> свойства могут наследовать значения из различных мест.</p>
+<p><img src="media/cell-styles-in-the-windows-forms-datagridview-control/datagridviewcells-value-inheritance-diagram.gif" alt="Свойство DataGridView-наследование значения" title="схема наследования DataGridViewCells значение"></p>
+<p>Используя преимущества наследования стиля, можно предоставить соответствующие стили для всего элемента управления без необходимости указывать те же данные в нескольких местах.</p>
+<p>Несмотря на то, что ячейки заголовка участвуют в наследовании style, как описано, объекты, возвращаемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columnheadersdefaultcellstyle">ColumnHeadersDefaultCellStyle</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheadersdefaultcellstyle">RowHeadersDefaultCellStyle</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления имеет исходные значения свойств, которые переопределяют значения свойств объекта, возвращаемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DefaultCellStyle</a> свойство. Если необходимо, чтобы свойства, заданные для объекта, возвращаемого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DefaultCellStyle</a> свойство для применения к заголовки строк и столбцов, необходимо задать соответствующие свойства объектов, возвращенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columnheadersdefaultcellstyle">ColumnHeadersDefaultCellStyle</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheadersdefaultcellstyle">RowHeadersDefaultCellStyle</a> указанного свойства по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> класса.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если стили оформления включены, заголовки строк и столбцов (за исключением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.topleftheadercell">TopLeftHeaderCell</a>) автоматически определяются текущей темы, заменяя все стили, указанные для этих свойств.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncolumn">DataGridViewButtonColumn</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewimagecolumn">DataGridViewImageColumn</a>, И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcolumn">DataGridViewCheckBoxColumn</a> типы также инициализируют некоторые значения объекта, возвращаемого в столбце <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.defaultcellstyle">DefaultCellStyle</a> свойство. Дополнительные сведения см. в справочной документации для этих типов.</p>
+<h2 id="setting-styles-dynamically">Динамическая установка стилей</h2>
+<p>Чтобы настроить стили ячеек с определенными значениями, Реализуйте обработчик <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellformatting">DataGridView.CellFormatting</a> событий. Обработчики для этого события получают аргумент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellformattingeventargs">DataGridViewCellFormattingEventArgs</a> типа. Этот объект содержит свойства, позволяющие определить значение ячейки, подлежащего форматированию вместе с ним месте в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления. Этот объект также содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellformattingeventargs.cellstyle">CellStyle</a> свойство, которое инициализируется значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a> свойство форматируемой ячейки. Можно изменить свойства стиля ячейки, чтобы указать сведения о стиле, подходящие для значения ячейки и расположение.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowprepaint">RowPrePaint</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowpostpaint">RowPostPaint</a> события также получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> данных объектов событий, но в их случае это копия строки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.inheritedstyle">InheritedStyle</a> свойство только для чтения и изменения не влияют на элемент управления.</p>
+</div>
+<p>Можно также динамически изменять стили вид отдельных ячеек в ответ на события например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseenter">DataGridView.CellMouseEnter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseleave">CellMouseLeave</a> события. Например, в обработчике <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseenter">CellMouseEnter</a> событий, можно сохранить текущее значение цвет фона ячейки (извлечь с помощью ячейки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">Style</a> свойства), установите его в новый цвет, который будут выделите ячейку, при наведении указателя мыши. В обработчике <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseleave">CellMouseLeave</a> событий, вы сможете восстановить цвет фона в исходное значение.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Кэширование значений, хранящихся в ячейки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">Style</a> свойство важно независимо от установленного значения определенного стиля. Если временно заменить параметр стиля, его восстановление в исходное состояние «не установлено» гарантирует, что ячейки вернется к наследовать этот параметр стиля с более высокого уровня. Если вам нужно определить текущий стиль, установленный для ячейки независимо от того, наследуется ли стиль, используем свойство ячейки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">InheritedStyle</a> свойство.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.alternatingrowsdefaultcellstyle">DataGridView.AlternatingRowsDefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columnheadersdefaultcellstyle">DataGridView.ColumnHeadersDefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowheadersdefaultcellstyle">DataGridView.RowHeadersDefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowsdefaultcellstyle">DataGridView.RowsDefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.inheritedstyle">DataGridViewBand.InheritedStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.inheritedstyle">DataGridViewRow.InheritedStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.inheritedstyle">DataGridViewColumn.InheritedStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.defaultcellstyle">DataGridViewBand.DefaultCellStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">DataGridViewCell.InheritedStyle</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellformatting">DataGridView.CellFormatting</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellstylecontentchanged">DataGridView.CellStyleContentChanged</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowprepaint">DataGridView.RowPrePaint</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowpostpaint">DataGridView.RowPostPaint</a></li>
+<li><a href="basic-formatting-and-styling-in-the-windows-forms-datagridview-control.html">Базовое форматирование и оформление элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="how-to-set-default-cell-styles-for-the-windows-forms-datagridview-control.html">Практическое руководство. Установка стилей ячейки по умолчанию для элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="data-formatting-in-the-windows-forms-datagridview-control.html">Форматирование данных в элементе управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

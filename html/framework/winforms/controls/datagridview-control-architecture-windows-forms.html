@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView (Windows Forms) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1040;&#1088;&#1093;&#1080;&#1090;&#1077;&#1082;&#1090;&#1091;&#1088;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView (Windows Forms) | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="datagridview-control-architecture-windows-forms">Архитектура элементов управления DataGridView (Windows Forms)</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Управления и связанные с ним классы предназначены для гибкую, расширяемую систему для отображения и редактирования табличных данных. Все эти классы содержатся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms">System.Windows.Forms</a> пространства имен и они именуются с префиксом «DataGridView».</p>
+<h2 id="architecture-elements">Элементы архитектуры</h2>
+<p>Основной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> сопутствующих классов являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement">DataGridViewElement</a>. Приведенные ниже объектные модели иллюстрирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement">DataGridViewElement</a> иерархии наследования.</p>
+<p><img src="media/datagridview-control-architecture-windows-forms/datagridviewelement-object-model.gif" alt="Схема, показывающая объектная модель DataGridViewElement иерархии."></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement">DataGridViewElement</a> Класс предоставляет ссылку на родительский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> а <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement.state">State</a> свойство, которое содержит значение, которое представляет собой сочетание значений из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates">DataGridViewElementStates</a> перечисления.</p>
+<p>В следующих разделах описываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> сопутствующих классов более подробно.</p>
+<h3 id="datagridviewelementstates">DataGridViewElementStates</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates">DataGridViewElementStates</a> Перечисление содержит следующие значения:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_None">None</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Frozen">Frozen</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_ReadOnly">ReadOnly</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Resizable">Resizable</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_ResizableSet">ResizableSet</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Selected">Selected</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Visible">Visible</a></p>
+</li>
+</ul>
+<p>Значения этого перечисления могут сочетаться с побитовые логические операторы, поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement.state">State</a> свойство можно выразить несколько состояний одновременно. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelement">DataGridViewElement</a> может быть одновременно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Frozen">Frozen</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Selected">Selected</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Visible">Visible</a>.</p>
+<h3 id="cells-and-bands">Ячейки и зоны</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Элемент управления состоит из двух основных типов объектов: ячейки и зоны. Все ячейки, являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> базового класса. Два вида делений, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>, оба являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband">DataGridViewBand</a> базового класса.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Управления взаимодействует с несколькими классами, но чаще всего встречаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>.</p>
+<h3 id="datagridviewcell">DataGridViewCell</h3>
+<p>Ячейка является основной единицей взаимодействия для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a>. Отображение выравнивается по центру ячейки и ввода данных часто выполняется по ячейкам. Доступ к ячейкам с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.cells">Cells</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> , поэтому для доступа к выбранным ячейкам используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcells">SelectedCells</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления. Приведенные ниже объектные модели показан пример использования и показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> иерархии наследования.</p>
+<p><img src="media/datagridview-control-architecture-windows-forms/datagridviewcell-object-model.gif" alt="Схема, показывающая иерархии объектная модель DataGridViewCell."></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> Тип является абстрактным базовым классом, от которого наследуют все типы ячеек. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> и его производные типы не являются элементы управления Windows Forms, но некоторые элементы управления ведущего приложения Windows Forms. Любые изменения функциональных возможностей, поддерживаемых ячейки обычно обрабатывается размещаемого элемента управления.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> объекты контролирует собственные внешним видом и оформлением так же как элементы управления Windows Forms. Вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> несет ответственность за внешний вид его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> объектов. Вы может существенно повлиять на внешний вид и поведение ячеек, взаимодействуя с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> свойства и события элемента управления. При наличии особых требований к настройкам, выходящих за рамки возможностей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления, можно реализовать собственный класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> или одного из его дочерних классов.</p>
+<p>В следующем списке приведены классы, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcell">DataGridViewTextBoxCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncell">DataGridViewButtonCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewlinkcell">DataGridViewLinkCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcell">DataGridViewCheckBoxCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell">DataGridViewComboBoxCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewimagecell">DataGridViewImageCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewheadercell">DataGridViewHeaderCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowheadercell">DataGridViewRowHeaderCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumnheadercell">DataGridViewColumnHeaderCell</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtopleftheadercell">DataGridViewTopLeftHeaderCell</a></p>
+</li>
+<li><p>Пользовательские типы ячеек</p>
+</li>
+</ul>
+<h3 id="datagridviewcolumn">DataGridViewColumn</h3>
+<p>Схема <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления хранилища данных выражается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> столбцов элемента управления. Вы можете получить доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> столбцов элемента управления с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.columns">Columns</a> коллекции. Доступ к выбранным столбцам с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcolumns">SelectedColumns</a> коллекции. Приведенные ниже объектные модели показан пример использования и показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> иерархии наследования.</p>
+<p><img src="media/datagridview-control-architecture-windows-forms/datagridviewcolumn-object-model.gif" alt="Схема, показывающая объектная модель DataGridViewColumn иерархии."></p>
+<p>Некоторые типы ключей ячейки имеют соответствующие типы столбцов. Они являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a> базового класса.</p>
+<p>В следующем списке приведены классы, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn">DataGridViewColumn</a>:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncolumn">DataGridViewButtonColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcolumn">DataGridViewCheckBoxColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcolumn">DataGridViewComboBoxColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewimagecolumn">DataGridViewImageColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcolumn">DataGridViewTextBoxColumn</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewlinkcolumn">DataGridViewLinkColumn</a></p>
+</li>
+<li><p>Пользовательские типы столбцов</p>
+</li>
+</ul>
+<h3 id="datagridview-editing-controls">Элементы управления редактирования DataGridView</h3>
+<p>Ячейки, которые обычно поддерживают расширенные функции редактирования используйте размещаемого элемента управления, который является производным от элемента управления Windows Forms. Эти элементы управления также реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.idatagridvieweditingcontrol">IDataGridViewEditingControl</a> интерфейс. Приведенные ниже объектные модели иллюстрирует использование этих элементов управления.</p>
+<p><img src="media/datagridview-control-architecture-windows-forms/datagridviewediting-object-model.gif" alt="Схема, показывающая иерархии DataGridView редактирования объектная модель элемента управления."></p>
+<p>Следующие элементы управления редактирования входящие в состав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxeditingcontrol">DataGridViewComboBoxEditingControl</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxeditingcontrol">DataGridViewTextBoxEditingControl</a></p>
+</li>
+</ul>
+<p>Сведения о создании собственных редактирования элементов управления, см. в разделе <a href="how-to-host-controls-in-windows-forms-datagridview-cells.html">как: Ведущие элементы управления в формах Windows Forms ячеек элемента управления DataGridView</a>.</p>
+<p>В следующей таблице показано отношение между типов ячеек, типы столбцов и элементами управления.</p>
+<table>
+<thead>
+<tr>
+<th>Тип ячейки</th>
+<th>Размещаемый элемент управления</th>
+<th>Тип столбца</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncell">DataGridViewButtonCell</a></td>
+<td>Н/Д</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncolumn">DataGridViewButtonColumn</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcell">DataGridViewCheckBoxCell</a></td>
+<td>Н/Д</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcolumn">DataGridViewCheckBoxColumn</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell">DataGridViewComboBoxCell</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxeditingcontrol">DataGridViewComboBoxEditingControl</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcolumn">DataGridViewComboBoxColumn</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewimagecell">DataGridViewImageCell</a></td>
+<td>Н/Д</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewimagecolumn">DataGridViewImageColumn</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewlinkcell">DataGridViewLinkCell</a></td>
+<td>Н/Д</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewlinkcolumn">DataGridViewLinkColumn</a></td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcell">DataGridViewTextBoxCell</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxeditingcontrol">DataGridViewTextBoxEditingControl</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewtextboxcolumn">DataGridViewTextBoxColumn</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="datagridviewrow">DataGridViewRow</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> Хранения класс отображает поля данных записи из данных, к которому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> присоединяется элемент управления. Вы можете получить доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> строк элемента управления с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">Rows</a> коллекции. Выбранные строки доступны посредством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedrows">SelectedRows</a> коллекции. Приведенные ниже объектные модели показан пример использования и показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> иерархии наследования.</p>
+<p><img src="media/datagridview-control-architecture-windows-forms/datagridviewrow-object-model.gif" alt="Схема, показывающая объектная модель DataGridViewRow иерархии."></p>
+<p>Можно создавать производные пользовательские типы из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> класса, несмотря на то, что это обычно не нужно выполнять. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Элемент управления имеет несколько событий, связанных со строками и свойств для настройки поведения его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> объектов.</p>
+<p>Если вы включаете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.allowusertoaddrows">AllowUserToAddRows</a> , отдельную строку для добавления новых строк отображается как последняя строка. Эта строка является частью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">Rows</a> коллекции, но он имеет специальные функции, которые могут потребовать вашего внимания. Дополнительные сведения см. в разделе <a href="using-the-row-for-new-records-in-the-windows-forms-datagridview-control.html">с помощью строки для новых записей в элементе управления DataGridView Windows Forms</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="datagridview-control-overview-windows-forms.html">Общие сведения об элементе управления DataGridView</a></li>
+<li><a href="customizing-the-windows-forms-datagridview-control.html">Настройка элементов управления DataGridView в Windows Forms</a></li>
+<li><a href="using-the-row-for-new-records-in-the-windows-forms-datagridview-control.html">Использование строки элемента управления DataGridView, предназначенной для ввода новых данных, в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1052;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1052;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGridView &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="best-practices-for-scaling-the-windows-forms-datagridview-control">Масштабирование элемента управления DataGridView в Windows Forms</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Управления предназначен для обеспечения максимальной масштабируемости. Если требуется для отображения больших объемов данных, необходимо следовать рекомендациям, приведенным в этом разделе, чтобы избежать использования большого объема памяти или замедления работы пользовательский интерфейс (UI). В этом разделе обсуждаются следующие вопросы:</p>
+<ul>
+<li><p>Эффективное использование стилей для ячейки</p>
+</li>
+<li><p>Эффективное использование контекстных меню</p>
+</li>
+<li><p>Использование автоматического изменения размеров эффективно</p>
+</li>
+<li><p>Эффективное использование выбранные коллекции ячеек, строк и столбцов</p>
+</li>
+<li><p>Использование общих строк</p>
+</li>
+<li><p>Предотвращение строкам</p>
+</li>
+</ul>
+<p>Если у вас есть особые требования к производительности, можно реализовать виртуальный режим и предоставить собственные операции управления данными. Дополнительные сведения см. в разделе <a href="data-display-modes-in-the-windows-forms-datagridview-control.html">режимы отображения данных в элементе управления DataGridView Windows Forms</a>.</p>
+<h2 id="using-cell-styles-efficiently">Эффективное использование стилей для ячейки</h2>
+<p>Каждой ячейки, строки и столбца может иметь свои собственные сведения о стиле. Сведения о стиле хранится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> объектов. Создание объектов стиля ячеек для множества отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементы могут быть неэффективным, особенно при работе с большими объемами данных. Чтобы избежать снижения производительности, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Не рекомендуется устанавливать свойства стиля ячейки для отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell">DataGridViewCell</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> объектов. Сюда входят строки объекта, заданного параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowtemplate">RowTemplate</a> свойство. Каждой новой строки, которая клонируется из шаблона строки получит свою собственную копию объекта стиля шаблона ячейки. Для максимальной масштабируемости, задайте свойства стиля ячейки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> уровень. Например, задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.defaultcellstyle">DataGridView.DefaultCellStyle</a> свойства, а не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a> свойство.</p>
+</li>
+<li><p>Если некоторые ячейки требуется форматирования, отличные от форматирования по умолчанию, используйте тот же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> экземпляра на группы ячеек, строк или столбцов. Избегайте прямого задания свойств типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> на отдельных ячеек, строк и столбцов. Пример совместного использования стиля ячеек, см. в разделе <a href="how-to-set-default-cell-styles-for-the-windows-forms-datagridview-control.html">как: Установка стилей ячейки по умолчанию для управления DataGridView в Windows Forms</a>. Можно также избежать снижения производительности при задании стили ячеек по отдельности, обрабатывая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellformatting">CellFormatting</a> обработчик событий. Пример см. в статье <a href="how-to-customize-data-formatting-in-the-windows-forms-datagridview-control.html">Практическое руководство. Настройка форматирования данных в элементе управления DataGridView Windows Forms</a>.</p>
+</li>
+<li><p>При определении стиля ячейки, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.inheritedstyle">DataGridViewCell.InheritedStyle</a> свойства, а не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">DataGridViewCell.Style</a> свойство. Доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.style">Style</a> свойство создает новый экземпляр класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> , если свойство не уже используется. Кроме того этот объект может не содержать полные сведения о стиле для ячейки, если некоторые стили наследуются от строк, столбцов или элемента управления. Дополнительные сведения о наследовании стилей ячеек, см. в разделе <a href="cell-styles-in-the-windows-forms-datagridview-control.html">стили ячеек элемента управления DataGridView Windows Forms в</a>.</p>
+</li>
+</ul>
+<h2 id="using-shortcut-menus-efficiently">Эффективное использование контекстных меню</h2>
+<p>Каждой ячейки, строки и столбца может иметь собственное контекстное меню. Контекстные меню в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления представлены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.contextmenustrip">ContextMenuStrip</a> элементов управления. Как и в объекты стиля ячейки, Создание контекстного меню для множества отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементов может отрицательно сказаться на производительности. Чтобы избежать потерь производительности, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Избегайте создания контекстных меню для отдельных ячеек и строк. Это включает в себя шаблон строки, который копируется вместе с его контекстное меню, когда новые строки добавляются к элементу управления. Для максимальной масштабируемости, используйте только элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.contextmenustrip">ContextMenuStrip</a> свойство, чтобы указать одно контекстное меню для всего элемента управления.</p>
+</li>
+<li><p>Если требуется несколько контекстных меню для нескольких строк или ячеек, обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellcontextmenustripneeded">CellContextMenuStripNeeded</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowcontextmenustripneeded">RowContextMenuStripNeeded</a> события. Эти события позволяют управлять объектами контекстного меню самостоятельно, что позволяет настроить производительность.</p>
+</li>
+</ul>
+<h2 id="using-automatic-resizing-efficiently">Использование автоматического изменения размеров эффективно</h2>
+<p>Строк, столбцов и заголовков может автоматически изменяться при изменении содержимого ячеек, все содержимое ячейки отображаются без обрезки. Изменение режима изменения размеров можно также изменить размер строк, столбцов и заголовков. Чтобы определить правильный размер <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления должен проверить значение каждой ячейки, в нем. При работе с большими наборами данных этого анализа может отрицательно повлиять на производительность элемента управления при выполнении автоматического изменения размеров. Чтобы избежать снижения производительности, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Избегайте использования автоматического изменения размеров на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления с большим набором строк. При использовании автоматического изменения размеров, только изменения размера на основе отображаемых строк. Используйте только те строки, отображаемые в виртуальном режиме, а также.</p>
+<ul>
+<li><p>Для строк и столбцов, используйте <code>DisplayedCells</code> или <code>DisplayedCellsExceptHeaders</code> поле <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewautosizerowsmode">DataGridViewAutoSizeRowsMode</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewautosizecolumnsmode">DataGridViewAutoSizeColumnsMode</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewautosizecolumnmode">DataGridViewAutoSizeColumnMode</a> перечисления.</p>
+</li>
+<li><p>Заголовки строк, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowheaderswidthsizemode#System_Windows_Forms_DataGridViewRowHeadersWidthSizeMode_AutoSizeToDisplayedHeaders">AutoSizeToDisplayedHeaders</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowheaderswidthsizemode#System_Windows_Forms_DataGridViewRowHeadersWidthSizeMode_AutoSizeToFirstHeader">AutoSizeToFirstHeader</a> поле <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowheaderswidthsizemode">DataGridViewRowHeadersWidthSizeMode</a> перечисления.</p>
+</li>
+</ul>
+</li>
+<li><p>Для максимальной масштабируемости выключите автоматического изменения размеров и используйте программного изменения размеров.</p>
+</li>
+</ul>
+<p>Дополнительные сведения см. в разделе <a href="sizing-options-in-the-windows-forms-datagridview-control.html">параметров изменения размеров элемента управления DataGridView Windows Forms в</a>.</p>
+<h2 id="using-the-selected-cells-rows-and-columns-collections-efficiently">Эффективное использование выделенных ячеек, строк и столбцов коллекций</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcells">SelectedCells</a> Коллекции, неэффективно с большой выбор. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedrows">SelectedRows</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcolumns">SelectedColumns</a> коллекции также могут быть неэффективным, хотя и в меньшей степени, так как существует много меньше строк, чем ячеек в стандартном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления и гораздо меньше столбцов, чем строк. Чтобы избежать снижения производительности при работе с этими коллекциями, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Чтобы определить ли все ячейки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> были выбраны перед обращением к содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcells">SelectedCells</a> коллекции, проверьте возвращаемое значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.areallcellsselected">AreAllCellsSelected</a> метод. Обратите внимание, что этого метода может привести к строкам. Дополнительные сведения см. в следующем разделе.</p>
+</li>
+<li><p>Избегайте использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.icollection.count">Count</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectedcellcollection">System.Windows.Forms.DataGridViewSelectedCellCollection</a> для определения числа выделенных ячеек. Вместо этого используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.getcellcount">DataGridView.GetCellCount</a> метод и передать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewelementstates#System_Windows_Forms_DataGridViewElementStates_Selected">DataGridViewElementStates.Selected</a> значение. Аналогичным образом использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.getrowcount">DataGridViewRowCollection.GetRowCount</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumncollection.getcolumncount">DataGridViewColumnCollection.GetColumnCount</a> методы, чтобы определить количество выбранных элементов, а не доступ к коллекции выбранных строк и столбцов.</p>
+</li>
+<li><p>Избегайте режимы выбора на основе ячеек. Вместо этого задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">DataGridView.SelectionMode</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">DataGridViewSelectionMode.FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">DataGridViewSelectionMode.FullColumnSelect</a>.</p>
+</li>
+</ul>
+<h2 id="using-shared-rows">Использование общих строк</h2>
+<p>Эффективного использования памяти производится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления с помощью общих строк. Строки будут совместно использовать как можно больше сведений о об их внешний вид и поведение, предоставив экземпляров <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a> класса.</p>
+<p>Хотя общий доступ к экземпляру строки сохраняет в памяти, строк можно легко строкам. Например каждый раз, когда пользователь взаимодействует непосредственно с ячейкой, соответствующей строке блокируется. Так как это является обязательной, указаниям, изложенным в этом разделе полезны только в том случае, при работе с очень большими объемами данных, и только в том случае, если пользователи будут взаимодействовать с относительно небольшая часть данных при каждом запуске программы.</p>
+<p>Строки не могут совместно использоваться несвязанного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления, если какие-либо ячейки содержат значения. Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления привязан к внешнему источнику данных или при реализации виртуального режима и предоставить свой собственный источник данных, значения ячеек, хранятся за пределами элемента управления, а не в объектах ячеек, что строк для совместного использования.</p>
+<p>Объект строки могут совместно только в том случае, если можно определить состояние всех его ячеек из состояния строки и состояний столбцов, содержащих ячейки. При изменении состояния ячейки, чтобы он больше не могут быть выведены от состояния ее строки и столбца, строки не может использоваться.</p>
+<p>Например строки не может использоваться в любом из следующих ситуаций:</p>
+<ul>
+<li><p>Строка содержит один выбранной ячейки, который не находится в выбранном столбце.</p>
+</li>
+<li><p>Строка содержит ячейку с его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.tooltiptext">ToolTipText</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.contextmenustrip">ContextMenuStrip</a> заданными свойствами.</p>
+</li>
+<li><p>Строка содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell">DataGridViewComboBoxCell</a> с его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell.items">Items</a> набор свойств.</p>
+</li>
+</ul>
+<p>В связанном или виртуальном режиме, вы можете предоставить всплывающие подсказки и контекстные меню для отдельных ячеек, обрабатывая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.celltooltiptextneeded">CellToolTipTextNeeded</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellcontextmenustripneeded">CellContextMenuStripNeeded</a> события.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> Управления автоматически будет пытаться использовать общие строки каждый раз, когда строки добавляются к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection">DataGridViewRowCollection</a>. Чтобы убедиться, что строки являются общими, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Избегайте вызова <code>Add(Object[])</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.add">Add</a> метод и <code>Insert(Object[])</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insert">Insert</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">DataGridView.Rows</a> коллекции. Эти перегрузки автоматически создавать строки с монопольным доступом.</p>
+</li>
+<li><p>Убедитесь, что строки, заданной в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowtemplate">DataGridView.RowTemplate</a> свойство может использоваться в следующих случаях:</p>
+<ul>
+<li><p>При вызове <code>Add()</code> или <code>Add(Int32)</code> перегруженные версии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.add">Add</a> метод или <code>Insert(Int32,Int32)</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insert">Insert</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">DataGridView.Rows</a> коллекции.</p>
+</li>
+<li><p>При увеличении значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowcount">DataGridView.RowCount</a> свойство.</p>
+</li>
+<li><p>При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.datasource">DataGridView.DataSource</a> свойство.</p>
+</li>
+</ul>
+</li>
+<li><p>Убедитесь, что к строке, указанной <code>indexSource</code> параметр может использоваться при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.addcopy">AddCopy</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.addcopies">AddCopies</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insertcopy">InsertCopy</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insertcopies">InsertCopies</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">DataGridView.Rows</a> коллекции.</p>
+</li>
+<li><p>Убедитесь, что указанной строки или строк могут использоваться при вызове <code>Add(DataGridViewRow)</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.add">Add</a> метод, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.addrange">AddRange</a> метод, <code>Insert(Int32,DataGridViewRow)</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insert">Insert</a> метод и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.insertrange">InsertRange</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">DataGridView.Rows</a>коллекции.</p>
+</li>
+</ul>
+<p>Чтобы определить, является ли общим строки, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.sharedrow">DataGridViewRowCollection.SharedRow</a> метод для извлечения объекта строки, а затем проверить объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.index">Index</a> свойство. Общие строки всегда имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewband.index">Index</a> значение свойства равно – 1.</p>
+<h2 id="preventing-rows-from-becoming-unshared">Предотвращение строкам</h2>
+<p>Общие строки может привести к блокированию код или действия пользователя. Чтобы избежать снижения производительности, следует избегать, вызывая к строкам. При разработке приложений, можно обрабатывать одновременно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowunshared">RowUnshared</a> событие, чтобы определить, когда строкам строк. Это полезно при отладке проблем с общий доступ к строкам.</p>
+<p>Для предотвращения строк строкам, следуйте приведенным ниже рекомендациям:</p>
+<ul>
+<li><p>Следует избегать индексирования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">Rows</a> коллекции или перебирать его с <code>foreach</code> цикла. Не потребуется обычно прямой доступ к строкам. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> методы, которые работают в строках принимать аргументы индекс строки, а не экземпляров строк. Кроме того обработчики для событий, связанных со строками, получают объектов аргументов событий с помощью свойств строки, которые можно использовать для операций со строками, не вызывая их к строкам.</p>
+</li>
+<li><p>Если вам требуется доступ к объекту строки, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.sharedrow">DataGridViewRowCollection.SharedRow</a> метод и передайте фактический индекс строки. Обратите внимание, что изменения объекта совместно используемой строкой, извлекаемых с помощью этого метода будет изменять все строки, которые совместно используют этот объект. Строки для новых записей не используется совместно с других строк, тем не менее, поэтому он не будут затронуты при изменении любых других строк. Обратите внимание, что различные строки, представленной в общей строке могут иметь различные контекстные меню. Чтобы получить правильный контекстное меню из экземпляра общей строки, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.getcontextmenustrip">GetContextMenuStrip</a> метод и передайте фактический индекс строки. Если доступ к совместно используемой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.contextmenustrip">ContextMenuStrip</a> свойство вместо этого он будет использовать индекс совместно используемой строкой-1 и не получает соответствующее контекстное меню.</p>
+</li>
+<li><p>Следует избегать индексирования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow.cells">DataGridViewRow.Cells</a> коллекции. Прямой доступ к ячейке приведет к ее родительской строки к строкам, создания нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrow">DataGridViewRow</a>. Обработчики для событий, связанных с ячейки получают объектов аргументов событий со своими свойствами ячейки, которые можно использовать для операций с ячейками, не вызывая к строкам. Можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.currentcelladdress">CurrentCellAddress</a> свойство для извлечения индексы строки и столбца текущей ячейки без прямого доступа к ячейке.</p>
+</li>
+<li><p>Избегайте режимы выбора на основе ячеек. Эти режимы привести к строкам. Вместо этого задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">DataGridView.SelectionMode</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">DataGridViewSelectionMode.FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">DataGridViewSelectionMode.FullColumnSelect</a>.</p>
+</li>
+<li><p>Не обрабатывают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.collectionchanged">DataGridViewRowCollection.CollectionChanged</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rowstatechanged">DataGridView.RowStateChanged</a> события. Эти события привести к строкам. Кроме того, не следует вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.oncollectionchanged">DataGridViewRowCollection.OnCollectionChanged</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.onrowstatechanged">DataGridView.OnRowStateChanged</a> методы, которые инициируют эти события.</p>
+</li>
+<li><p>Не обращаются к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectedcells">DataGridView.SelectedCells</a> коллекции при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">DataGridView.SelectionMode</a> свойство имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">FullColumnSelect</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_ColumnHeaderSelect">ColumnHeaderSelect</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">FullRowSelect</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_RowHeaderSelect">RowHeaderSelect</a>. В результате все выбранные строки к строкам.</p>
+</li>
+<li><p>Не вызывайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.areallcellsselected">DataGridView.AreAllCellsSelected</a> метод. Этого метода может привести к строкам.</p>
+</li>
+<li><p>Не вызывайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectall">DataGridView.SelectAll</a> метод при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">DataGridView.SelectionMode</a> свойство имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_CellSelect">CellSelect</a>. В результате все строки к строкам.</p>
+</li>
+<li><p>Не устанавливайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.readonly">ReadOnly</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcell.selected">Selected</a> свойство ячейки для <code>false</code> Если присвоить соответствующее свойство в столбце <code>true</code>. В результате все строки к строкам.</p>
+</li>
+<li><p>Не открывайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewrowcollection.list">DataGridViewRowCollection.List</a> свойство. В результате все строки к строкам.</p>
+</li>
+<li><p>Не вызывайте <code>Sort(IComparer)</code> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.sort">Sort</a> метод. Сортировка с использованием пользовательского модуля сравнения вызывает всех строк.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a href="performance-tuning-in-the-windows-forms-datagridview-control.html">Оптимизация производительности элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="virtual-mode-in-the-windows-forms-datagridview-control.html">Виртуальный режим элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="data-display-modes-in-the-windows-forms-datagridview-control.html">Режимы отображения данных в элементе управления DataGridView в Windows Forms</a></li>
+<li><a href="cell-styles-in-the-windows-forms-datagridview-control.html">Стили ячеек элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="how-to-set-default-cell-styles-for-the-windows-forms-datagridview-control.html">Практическое руководство. Установка стилей ячейки по умолчанию для элемента управления DataGridView в Windows Forms</a></li>
+<li><a href="sizing-options-in-the-windows-forms-datagridview-control.html">Изменение размеров управления DataGridView в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

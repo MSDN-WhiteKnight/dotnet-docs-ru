@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099;, &#1089;&#1074;&#1103;&#1079;&#1072;&#1085;&#1085;&#1099;&#1077; &#1089; &#1084;&#1072;&#1082;&#1077;&#1090;&#1086;&#1084; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; WindowsFormsHost | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099;, &#1089;&#1074;&#1103;&#1079;&#1072;&#1085;&#1085;&#1099;&#1077; &#1089; &#1084;&#1072;&#1082;&#1077;&#1090;&#1086;&#1084; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; WindowsFormsHost | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="layout-considerations-for-the-windowsformshost-element">Вопросы, связанные с макетом элемента WindowsFormsHost</h1>
+
+<p>Здесь описывается, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент взаимодействует с WPF система макета.</p>
+<p>WPF и Windows Forms поддержки различных, но очень похожие логики для изменения размеров и положения элементов на форму или страницу. При создании гибридного пользовательский интерфейс (UI), на котором размещена Windows Forms элементов управления в WPF, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент интегрирует две схемы макета.</p>
+<h2 id="differences-in-layout-between-wpf-and-windows-forms">Различия в макет WPF и Windows Forms</h2>
+<p>WPF использует независимой от разрешения макета. Все WPF измерения макета указываются с помощью <em>аппаратно независимых пикселях</em>. Аппаратно независимый пиксель — один девяносто шестую дюйма размера и разрешения, чтобы получить аналогичные результаты независимо от того, выполняется отрисовка монитор 72 dpi или на принтер 19200 dpi.</p>
+<p>WPF также основана на <em>динамический макет</em>. Это означает, что элемент пользовательского интерфейса располагается на формы или страницы в соответствии с его содержимое, макет его родительского контейнера и размер экрана. Динамический макет упрощает локализацию, используя автоматическую корректировку размера и положения элементов пользовательского интерфейса, изменении длины строки, которые они содержат.</p>
+<p>Макет в Windows Forms зависящие от устройства и скорее всего, будут статическими. Как правило Windows Forms абсолютного позиционирования элементов управления формы с помощью измерений, указанных в аппаратно зависимые пиксели. Тем не менее Windows Forms поддерживают некоторые функции динамического макета, как описано в следующей таблице.</p>
+<table>
+<thead>
+<tr>
+<th>Функция макета</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Автоматическое изменение размера</td>
+<td>Некоторые Windows Forms изменение размера элементов управления, с целью отображения их содержимое должным образом. Дополнительные сведения см. в разделе <a href="../../winforms/controls/autosize-property-overview.html">Общие</a>.</td>
+</tr>
+<tr>
+<td>Привязка и закрепление</td>
+<td>Windows Forms элементы управления поддерживают размещение и изменение размера, основанное на родительском контейнере. Дополнительные сведения см. в разделах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.anchor">Control.Anchor</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dock">Control.Dock</a>.</td>
+</tr>
+<tr>
+<td>Автоматическое масштабирование</td>
+<td>Контейнерные элементы управления, измените размер себя и своих потомков в зависимости от разрешения на устройство вывода или размер в пикселях шрифта контейнера по умолчанию. Дополнительные сведения см. в разделе <a href="../../winforms/automatic-scaling-in-windows-forms.html">автоматическое масштабирование в Windows Forms</a>.</td>
+</tr>
+<tr>
+<td>Контейнеры макета</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.flowlayoutpanel">FlowLayoutPanel</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.tablelayoutpanel">TableLayoutPanel</a> элементы управления, упорядочить их дочерние элементы управления и размер самостоятельно, в соответствии с их содержимое.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="layout-limitations">Ограничения макета</h2>
+<p>В общем случае Windows Forms элементы управления нельзя масштабировать и преобразуются в той степени, возможных в WPF. Ниже перечислены известные ограничения при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> пытается интегрировать вложенный элемент Windows Forms управления в WPF системы макета.</p>
+<ul>
+<li><p>В некоторых случаях размеры элемента управления Windows Forms изменять нельзя, или же их можно изменять, но только в фиксированных пределах. Например Windows Forms <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> элемент управления поддерживает только одну высоту, которая определяется размером шрифта элемента управления. В WPF динамический макет, где элементы можно растянуть по вертикали, вложенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> управления не растягивается, как ожидалось.</p>
+</li>
+<li><p>Windows Forms элементы управления нельзя поворачивать или неравномерным. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> — Вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.layouterror">LayoutError</a> событий при применении преобразования Искажение или поворот. Если не обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.layouterror">LayoutError</a> событий, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a> возникает.</p>
+</li>
+<li><p>В большинстве случаев элементы управления Windows Forms не поддерживают пропорциональное масштабирование. Несмотря на то, что общий размер элемента управления масштабируется, дочерние элементы управления и компоненты элемента управления могут изменять размеры не так, как ожидается. Это ограничение зависит от поддержки масштабирования каждым элементом управления Windows Forms. Кроме того, нельзя масштабировать Windows Forms элементов управления до размера, равные 0 пикселей.</p>
+</li>
+<li><p>Windows Forms элементы управления поддерживают автоматическое масштабирование, в котором формы автоматически будут изменены и его элементы управления, в зависимости от размера шрифта. В пользовательском интерфейсе WPF изменение размера шрифта не влечет за собой изменение размера всего макета, хотя отдельные элементы могут динамически изменять размер.</p>
+</li>
+</ul>
+<h3 id="z-order">Z-порядка</h3>
+<p>В пользовательском интерфейсе WPF можно изменить z-порядок элементов для контроля поведения перекрывания. Вложенный элемент управления Windows Forms рисуется в отдельном HWND, причем он всегда рисуется поверх элементов WPF.</p>
+<p>Вложенный Windows Forms также прорисовывается поверх любого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.adorner">Adorner</a> элементов.</p>
+<h2 id="layout-behavior">Поведение макета</h2>
+<p>В следующих разделах описываются отдельные аспекты поведения макета при размещении Windows Forms элементов управления в WPF.</p>
+<h3 id="scaling-unit-conversion-and-device-independence">Масштабирование, преобразование единиц измерения и независимость от оборудования</h3>
+<p>Каждый раз, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент выполняет операции, связанные с WPF и Windows Forms связанных измерений, две системы координат: аппаратно независимых пикселях для WPF и аппаратно зависимые пиксели для Windows Forms. Таким образом необходимо применить соответствующие модульные и преобразования масштабирования, чтобы добиться согласованного макета.</p>
+<p>Преобразование между системами координат зависит от текущего разрешения устройства и любого макета или преобразований отрисовки, примененных к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента или к его предкам.</p>
+<p>Если устройство вывода имеет 96 точек на дюйм и без масштабирования применен к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент, один аппаратно независимый пиксель равен одному пикселю оборудования.</p>
+<p>Во всех остальных случаях требуется масштабирование системы координат. Размещаемый элемент управления не изменяется. Вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент пытается масштабирования размещаемого элемента управления и все его дочерние элементы управления. Так как Windows Forms не полностью поддерживает масштабирование, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент масштабируется в степени, поддерживаемой конкретных элементов управления.</p>
+<p>Переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.scalechild">ScaleChild</a> метод для предоставления пользовательского поведения масштабирования для размещаемого элемента управления Windows Forms.</p>
+<p>Кроме масштабирования, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент обрабатывает случаи округления и переполнения, как описано в следующей таблице.</p>
+<table>
+<thead>
+<tr>
+<th>Проблема преобразования</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Округление</td>
+<td>WPF аппаратно независимых пикселах задаются в виде <code>double</code>, и Windows Forms оборудования размеры указываются в виде <code>int</code>. В случаях, где <code>double</code>-измерения, основанные на преобразуются в <code>int</code>-на основе измерения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент использует стандартное округление, таким образом, чтобы меньше 0,5 дробные значения округляются до 0.</td>
+</tr>
+<tr>
+<td>Переполнение</td>
+<td>При <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> преобразует элемент из <code>double</code> значения <code>int</code> значения, возможна переполнения. Значения, размер которых превышает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-related-properties">Свойства, связанные с макетом</h3>
+<p>Свойства, управляющие поведением макета в Windows Forms элементов управления и WPF элементов сопоставляются соответствующим образом с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент. Дополнительные сведения см. в разделе <a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a>.</p>
+<h3 id="layout-changes-in-the-hosted-control">Изменения макета в размещенный элемент управления</h3>
+<p>Изменения макета в размещаемом Windows Forms управления распространяются на WPF для запуска обновлений макета. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.invalidatemeasure">InvalidateMeasure</a> Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> гарантирует, что изменения макета в размещенный элемент управления вызывает WPF обработчик макетов для запуска.</p>
+<h3 id="continuously-sized-windows-forms-controls">Постоянно размера элементов управления Windows Forms</h3>
+<p>Windows Forms элементы управления, которые поддерживают непрерывное масштабирование, полностью взаимодействовать с WPF система макета. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> методы обычным образом для определения размеров и расположения размещенного Windows Forms элемента управления.</p>
+<h3 id="sizing-algorithm">Алгоритм определения</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент использует следующую процедуру для изменения размера размещенного элемента управления:</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Переопределяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> методы.</p>
+</li>
+<li><p>Чтобы определить размер размещаемого элемента управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> размещенного элемента управления вызывает метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.getpreferredsize">GetPreferredSize</a> метод с ограничением, полученным от ограничения, передаваемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.measureoverride">MeasureOverride</a> метод.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.arrangeoverride">ArrangeOverride</a> Метод пытается присвоить ограничения заданного размера размещенного элемента управления.</p>
+</li>
+<li><p>Если размещенного элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.size">Size</a> соответствует указанным ограничениям, размещаемого элемента управления изменяется в соответствии с ограничением.</p>
+</li>
+</ol>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.size">Size</a> свойство не соответствует указанным ограничениям, размещаемый элемент управления не поддерживает постоянное изменение размера. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.monthcalendar">MonthCalendar</a> элемент управления допускает только дискретные размеры. Допустимые размеры для данного элемента управления состоят из целых чисел (который представляет количество месяцев) для высоты и ширины. В подобных случаях <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент ведет себя следующим образом:</p>
+<ul>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.size">Size</a> свойство возвращает большего размера, чем указанное ограничение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент обрезает размещенный элемент управления. Высота и ширина обрабатываются отдельно, поэтому размещаемый элемент управления может быть ограничен в любом направлении.</p>
+</li>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.size">Size</a> свойство возвращает меньший размер, чем указанное ограничение, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> принимает это значение размера и возвращает значение для WPF системы макета.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="walkthrough-arranging-windows-forms-controls-in-wpf.html">Пошаговое руководство. Упорядочение элементов управления Windows Forms в WPF</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=159971">Элементы управления упорядочение Windows Forms в WPF</a></li>
+<li><a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a></li>
+<li><a href="migration-and-interoperability.html">Миграция и взаимодействие систем</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

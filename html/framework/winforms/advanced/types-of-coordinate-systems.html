@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1058;&#1080;&#1087;&#1099; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084; &#1082;&#1086;&#1086;&#1088;&#1076;&#1080;&#1085;&#1072;&#1090; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1058;&#1080;&#1087;&#1099; &#1089;&#1080;&#1089;&#1090;&#1077;&#1084; &#1082;&#1086;&#1086;&#1088;&#1076;&#1080;&#1085;&#1072;&#1090; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="types-of-coordinate-systems">Типы систем координат</h1>
+
+<p>GDI+ использует три координатных пространства: world, страницы и устройства. Мировые координаты — это координаты, используемые для моделирования определенного графического мира и которые можно передать методу в .NET Framework. Страничные координаты система координат, используемая области рисования, например формы или элемента управления. Координаты устройства — это координаты, используемые физического устройства, на котором производится рисование, будь то экран или лист бумаги. При выполнении вызова <code>myGraphics.DrawLine(myPen, 0, 0, 160, 80)</code>, точки, которые передаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> метод —<code>(0, 0)</code> и <code>(160, 80)</code>— находятся в мировом пространстве координат. Прежде чем GDI+ можно нарисовать линию на экране, координаты пройти через последовательность преобразований. Одно из преобразований, вызывается мировое преобразование, конвертирующее мировые координаты в координаты страницы и еще одно преобразование, страничное преобразование преобразует координаты в координаты устройства.</p>
+<h2 id="transforms-and-coordinate-systems">Системы координат и преобразования</h2>
+<p>Предположим, что вы хотите работать с системой координат его началом координат в тексте клиентской области, а не в левом верхнем углу. Предположим, например, возникает необходимость начало координат будет находиться 100 пикселей от левого края клиентской области и 50 пикселей от верхнего края клиентской области. На следующем рисунке такая система координат.</p>
+<p><img src="media/aboutgdip05-art01.gif" alt="Система координат" title="AboutGdip05_art01"></p>
+<p>При выполнении вызова <code>myGraphics.DrawLine(myPen, 0, 0, 160, 80)</code>, линия, показано на следующем рисунке.</p>
+<p><img src="media/aboutgdip05-art02.gif" alt="Система координат" title="AboutGdip05_art02"></p>
+<p>Ниже приведены координаты конечных точек линии в трех пространствах координат.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>мир</td>
+<td>(0, 0) к (160, 80)</td>
+</tr>
+<tr>
+<td>Страница</td>
+<td>(100, 50) к (260, 130)</td>
+</tr>
+<tr>
+<td>Устройство</td>
+<td>(100, 50) к (260, 130)</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание, что пространство координат страницы начала координат в левом верхнем углу области клиента. Это всегда будет так. Также Обратите внимание, что так как единицы измерения пиксель, координаты устройства так же, как координаты страницы. Значение единицы измерения отличные от точек (например, дюймов), координаты устройства будет отличаться от страничных координат.</p>
+<p>Мировое преобразование, которая сопоставляет мировых координатах в координаты страницы, хранится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.transform">Transform</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> класса. В приведенном выше примере мировое преобразование является сдвиг на 100 единиц по оси x и 50 единиц по оси y. В следующем примере задается мировое преобразование объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта, а затем использует, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта, чтобы нарисовать линию, показанный на предыдущем рисунке:</p>
+<pre><code class="lang-csharp" name="System.Drawing.CoordinateSystems#31">myGraphics.TranslateTransform(100, 50);
+myGraphics.DrawLine(myPen, 0, 0, 160, 80);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Преобразование страницы сопоставляет координаты в координаты устройства. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Класс предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.pageunit">PageUnit</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.pagescale">PageScale</a> свойства для управления преобразование страницы. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Класс также предоставляет два свойства только для чтения, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.dpix">DpiX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.dpiy">DpiY</a>, для проверки горизонтальных и вертикальных точек на дюйм дисплея.</p>
+<p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.pageunit">PageUnit</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> класса для указания единицы измерения, отличного от точки.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Невозможно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.pageunit">PageUnit</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphicsunit#System_Drawing_GraphicsUnit_World">World</a>, как это не физическую единицу и вызовет исключение.</p>
+</div>
+<p>В следующем примере рисуется строки из (0, 0) на (2, 1), где точка (2, 1) — 2 дюйма вправо и 1 дюйм вниз от точки (0, 0):</p>
+<pre><code class="lang-csharp" name="System.Drawing.CoordinateSystems#32">myGraphics.PageUnit = GraphicsUnit.Inch;
+myGraphics.DrawLine(myPen, 0, 0, 2, 1);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если не указать ширину пера, когда пера, приведенном выше примере будет нарисовать линию, один дюйм. Можно указать ширину пера в качестве второго аргумента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> конструктор:</p>
+</div>
+<pre><code class="lang-csharp" name="System.Drawing.CoordinateSystems#33">Pen myPen = new Pen(Color.Black, 1 / myGraphics.DpiX);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Если предположить, что устройство отображения содержит 96 точек на дюйм по горизонтали и 96 точек на дюйм по вертикали, конечные точки линии в предыдущем примере имеют следующие координаты в три координатных пространства:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>мир</td>
+<td>(0, 0) на (2, 1)</td>
+</tr>
+<tr>
+<td>Страница</td>
+<td>(0, 0) на (2, 1)</td>
+</tr>
+<tr>
+<td>Устройство</td>
+<td>(0, 0, чтобы (192, 96)</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание, что поскольку происхождение мировых координат в левом верхнем углу клиентской области, координаты страницы так же, как мировых координатах.</p>
+<p>Можно объединить мировое и страничное преобразования для получения различных эффектов. Например предположим, вы хотите использовать в качестве единицы измерения дюймов и начало координат должно быть 2 дюйма от левого края клиентской области и 1/2 дюйма от верхнего края клиентской области. В следующем примере задается мировое и страничное преобразования из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> и затем рисует линию от (0, 0) на (2, 1):</p>
+<pre><code class="lang-csharp" name="System.Drawing.CoordinateSystems#34">myGraphics.TranslateTransform(2, 0.5f);
+myGraphics.PageUnit = GraphicsUnit.Inch;
+myGraphics.DrawLine(myPen, 0, 0, 2, 1);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже показан строки и системы координат.</p>
+<p><img src="media/aboutgdip05-art03.gif" alt="Система координат" title="AboutGdip05_art03"></p>
+<p>Если предположить, что устройство отображения содержит 96 точек на дюйм по горизонтали и 96 точек на дюйм по вертикали, конечные точки линии в предыдущем примере имеют следующие координаты в три координатных пространства:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>мир</td>
+<td>(0, 0) на (2, 1)</td>
+</tr>
+<tr>
+<td>Страница</td>
+<td>(2, 0,5) к (4, 1.5)</td>
+</tr>
+<tr>
+<td>Устройство</td>
+<td>(192, 48) к (384, 144)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="coordinate-systems-and-transformations.html">Системы координат и преобразования</a></li>
+<li><a href="matrix-representation-of-transformations.html">Матричное представление преобразований</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Direct3D9 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1072;&#1079;&#1084;&#1077;&#1097;&#1077;&#1085;&#1080;&#1077; &#1089;&#1086;&#1076;&#1077;&#1088;&#1078;&#1080;&#1084;&#1086;&#1075;&#1086; Direct3D9 &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-hosting-direct3d9-content-in-wpf">Пошаговое руководство. Размещение содержимого Direct3D9 в WPF</h1>
+
+<p>В этом пошаговом руководстве показано, как размещение содержимого Direct3D9 в приложении Windows Presentation Foundation (WPF).</p>
+<p>В руководстве выполняются следующие задачи:</p>
+<ul>
+<li><p>Создание проекта WPF для размещения содержимого Direct3D9.</p>
+</li>
+<li><p>Импорт содержимого Direct3D9.</p>
+</li>
+<li><p>Отображение содержимого Direct3D9 с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> класса.</p>
+</li>
+</ul>
+<p>Когда вы закончите, будет известно о размещении содержимого Direct3D9 в WPF-приложение.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.</p>
+<ul>
+<li><p>Visual Studio.</p>
+</li>
+<li><p>DirectX SDK, 9 или более поздней версии.</p>
+</li>
+<li><p>Библиотеку DLL, содержащую содержимого Direct3D9 в WPF-совместимом формате. Дополнительные сведения см. в разделе <a href="wpf-and-direct3d9-interoperation.html">взаимодействие WPF и Direct3D9</a> и <a href="walkthrough-creating-direct3d9-content-for-hosting-in-wpf.html">Пошаговое руководство: Создание содержимого Direct3D9 для размещения в WPF</a>.</p>
+</li>
+</ul>
+<h2 id="creating-the-wpf-project">Создание проекта WPF</h2>
+<p>Первым шагом является создание проекта приложения WPF.</p>
+<h4 id="to-create-the-wpf-project">Создание проекта WPF</h4>
+<ul>
+<li><p>Создание нового проекта приложения WPF в Visual C# с именем <code>D3DHost</code>. Дополнительные сведения см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a>.</p>
+<p>Файл MainWindow.xaml откроется в Конструктор WPF.</p>
+</li>
+</ul>
+<h2 id="importing-the-direct3d9-content">Импорт содержимого Direct3D9</h2>
+<p>Импорт содержимого Direct3D9 из неуправляемой библиотеки DLL с помощью <code>DllImport</code> атрибута.</p>
+<h4 id="to-import-direct3d9-content">Для импорта содержимого Direct3D9</h4>
+<ol>
+<li><p>Откройте файл MainWindow.xaml.cs в редакторе кода.</p>
+</li>
+<li><p>Замените автоматически созданный код следующим кодом.</p>
+<pre><code class="lang-csharp" name="System.Windows.Interop.D3DImage#1">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
+
+namespace D3DHost
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            // Set up the initial state for the D3DImage.
+            HRESULT.Check(SetSize(512, 512));
+            HRESULT.Check(SetAlpha(false));
+            HRESULT.Check(SetNumDesiredSamples(4));
+
+            //
+            // Optional: Subscribing to the IsFrontBufferAvailableChanged event.
+            //
+            // If you don't render every frame (e.g. you only render in
+            // reaction to a button click), you should subscribe to the
+            // IsFrontBufferAvailableChanged event to be notified when rendered content
+            // is no longer being displayed. This event also notifies you when
+            // the D3DImage is capable of being displayed again.
+
+            // For example, in the button click case, if you don't render again when
+            // the IsFrontBufferAvailable property is set to true, your
+            // D3DImage won't display anything until the next button click.
+            //
+            // Because this application renders every frame, there is no need to
+            // handle the IsFrontBufferAvailableChanged event.
+            //
+            CompositionTarget.Rendering += new EventHandler(CompositionTarget_Rendering);
+
+            //
+            // Optional: Multi-adapter optimization
+            //
+            // The surface is created initially on a particular adapter.
+            // If the WPF window is dragged to another adapter, WPF
+            // ensures that the D3DImage still shows up on the new
+            // adapter.
+            //
+            // This process is slow on Windows XP.
+            //
+            // Performance is better on Vista with a 9Ex device. It's only
+            // slow when the D3DImage crosses a video-card boundary.
+            //
+            // To work around this issue, you can move your surface when
+            // the D3DImage is displayed on another adapter. To
+            // determine when that is the case, transform a point on the
+            // D3DImage into screen space and find out which adapter
+            // contains that screen space point.
+            //
+            // When your D3DImage straddles two adapters, nothing
+            // can be done, because one will be updating slowly.
+            //
+            _adapterTimer = new DispatcherTimer();
+            _adapterTimer.Tick += new EventHandler(AdapterTimer_Tick);
+            _adapterTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            _adapterTimer.Start();
+
+            //
+            // Optional: Surface resizing
+            //
+            // The D3DImage is scaled when WPF renders it at a size
+            // different from the natural size of the surface. If the
+            // D3DImage is scaled up significantly, image quality
+            // degrades.
+            //
+            // To avoid this, you can either create a very large
+            // texture initially, or you can create new surfaces as
+            // the size changes. Below is a very simple example of
+            // how to do the latter.
+            //
+            // By creating a timer at Render priority, you are guaranteed
+            // that new surfaces are created while the element
+            // is still being arranged. A 200 ms interval gives
+            // a good balance between image quality and performance.
+            // You must be careful not to create new surfaces too
+            // frequently. Frequently allocating a new surface may
+            // fragment or exhaust video memory. This issue is more
+            // significant on XDDM than it is on WDDM, because WDDM
+            // can page out video memory.
+            //
+            // Another approach is deriving from the Image class,
+            // participating in layout by overriding the ArrangeOverride method, and
+            // updating size in the overriden method. Performance will degrade
+            // if you resize too frequently.
+            //
+            // Blurry D3DImages can still occur due to subpixel
+            // alignments.
+            //
+            _sizeTimer = new DispatcherTimer(DispatcherPriority.Render);
+            _sizeTimer.Tick += new EventHandler(SizeTimer_Tick);
+            _sizeTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
+            _sizeTimer.Start();
+        }
+
+        ~MainWindow()
+        {
+            Destroy();
+        }
+
+        void AdapterTimer_Tick(object sender, EventArgs e)
+        {
+            POINT p = new POINT(imgelt.PointToScreen(new Point(0, 0)));
+
+            HRESULT.Check(SetAdapter(p));
+        }
+
+        void SizeTimer_Tick(object sender, EventArgs e)
+        {
+            // The following code does not account for RenderTransforms.
+            // To handle that case, you must transform up to the root and
+            // check the size there.
+
+            // Given that the D3DImage is at 96.0 DPI, its Width and Height
+            // properties will always be integers. ActualWidth/Height
+            // may not be integers, so they are cast to integers.
+            uint actualWidth = (uint)imgelt.ActualWidth;
+            uint actualHeight = (uint)imgelt.ActualHeight;
+            if ((actualWidth &gt; 0 &amp;&amp; actualHeight &gt; 0) &amp;&amp;
+                (actualWidth != (uint)d3dimg.Width || actualHeight != (uint)d3dimg.Height))
+            {
+                HRESULT.Check(SetSize(actualWidth, actualHeight));
+            }
+        }
+
+        void CompositionTarget_Rendering(object sender, EventArgs e)
+        {
+            RenderingEventArgs args = (RenderingEventArgs)e;
+
+            // It's possible for Rendering to call back twice in the same frame
+            // so only render when we haven't already rendered in this frame.
+            if (d3dimg.IsFrontBufferAvailable &amp;&amp; _lastRender != args.RenderingTime)
+            {
+                IntPtr pSurface = IntPtr.Zero;
+                HRESULT.Check(GetBackBufferNoRef(out pSurface));
+                if (pSurface != IntPtr.Zero)
+                {
+                    d3dimg.Lock();
+                    // Repeatedly calling SetBackBuffer with the same IntPtr is
+                    // a no-op. There is no performance penalty.
+                    d3dimg.SetBackBuffer(D3DResourceType.IDirect3DSurface9, pSurface);
+                    HRESULT.Check(Render());
+                    d3dimg.AddDirtyRect(new Int32Rect(0, 0, d3dimg.PixelWidth, d3dimg.PixelHeight));
+                    d3dimg.Unlock();
+
+                    _lastRender = args.RenderingTime;
+                }
+            }
+        }
+
+        DispatcherTimer _sizeTimer;
+        DispatcherTimer _adapterTimer;
+        TimeSpan _lastRender;
+
+        // Import the methods exported by the unmanaged Direct3D content.
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int GetBackBufferNoRef(out IntPtr pSurface);
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int SetSize(uint width, uint height);
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int SetAlpha(bool useAlpha);
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int SetNumDesiredSamples(uint numSamples);
+
+        [StructLayout(LayoutKind.Sequential)]
+        struct POINT
+        {
+            public POINT(Point p)
+            {
+                x = (int)p.X;
+                y = (int)p.Y;
+            }
+
+            public int x;
+            public int y;
+        }
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int SetAdapter(POINT screenSpacePoint);
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern int Render();
+
+        [DllImport(&quot;D3DCode.dll&quot;)]
+        static extern void Destroy();
+    }
+
+    public static class HRESULT
+    {
+        [SecurityPermissionAttribute(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+        public static void Check(int hr)
+        {
+            Marshal.ThrowExceptionForHR(hr);
+        }
+    }
+}
+</code></pre></li>
+</ol>
+<h2 id="hosting-the-direct3d9-content">Размещение содержимого Direct3D9</h2>
+<p>Наконец, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> класса для размещения содержимого Direct3D9.</p>
+<h4 id="to-host-the-direct3d9-content">Для размещения содержимого Direct3D9</h4>
+<ol>
+<li><p>В файле MainWindow.xaml замените автоматически созданный XAML следующий XAML.</p>
+<pre><code class="lang-xaml" name="System.Windows.Interop.D3DImage#10">    &lt;Window x:Class=&quot;D3DHost.MainWindow&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:i=&quot;clr-namespace:System.Windows.Interop;assembly=PresentationCore&quot;
+    Title=&quot;MainWindow&quot; Height=&quot;300&quot; Width=&quot;300&quot; Background=&quot;PaleGoldenrod&quot;&gt;
+    &lt;Grid&gt;
+        &lt;Image x:Name=&quot;imgelt&quot;&gt;
+            &lt;Image.Source&gt;
+                &lt;i:D3DImage x:Name=&quot;d3dimg&quot; /&gt;
+            &lt;/Image.Source&gt;
+        &lt;/Image&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre></li>
+<li><p>Выполните построение проекта.</p>
+</li>
+<li><p>Скопируйте библиотеку DLL, содержащую содержимого Direct3D9 в папку bin/Debug.</p>
+</li>
+<li><p>Нажмите клавишу F5, чтобы запустить проект.</p>
+<p>Содержимое Direct3D9 в WPF-приложении.</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a></li>
+<li><a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">Вопросы производительности, связанные с взаимодействием Direct3D9 и WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

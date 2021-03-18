@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1074;&#1074;&#1086;&#1076;&#1072; &#1084;&#1099;&#1096;&#1100;&#1102; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1074;&#1074;&#1086;&#1076;&#1072; &#1084;&#1099;&#1096;&#1100;&#1102; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-mouse-input-works-in-windows-forms">Осуществление ввода мышью в Windows Forms</h1>
+
+<p>Получение и обработка ввода с мыши является важной частью каждое приложение Windows. Можно обработать события мыши для выполнения действий в приложении, или использовать сведения о расположении мыши для проверки нажатия или других действий. Кроме того можно изменить способ, элементы управления в приложении обрабатывать ввод от мыши. В этом разделе описываются события мыши в подробности, а также как получать и изменять параметры системы для мыши. Дополнительные сведения о данных, передаваемых с помощью мыши вызываются события и порядок, в котором события щелчка мыши, см. в разделе <a href="mouse-events-in-windows-forms.html">события мыши в Windows Forms</a>.</p>
+<h2 id="mouse-location-and-hit-testing">Положение указателя мыши и попадания</h2>
+<p>Когда пользователь перемещает мышь, операционная система перемещает указатель мыши. Указатель содержит один пиксель, называется активной точкой, которой операционная система отслеживает и распознает как положения указателя. Когда пользователь перемещает мышь или нажимает кнопку мыши, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control">Control</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor.hotspot">HotSpot</a> вызывает соответствующее событие мыши. Вы можете получить текущее положение мыши с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs.location">Location</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a> при обработке события мыши или с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor.position">Position</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.cursor">Cursor</a> класса. Можно впоследствии использовать сведения о расположении мыши для проверки нажатия и затем выполнить действие на основе расположения указателя мыши. Проверка нажатия возможности встроены некоторые элементы управления Windows Forms такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview">ListView</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.monthcalendar">MonthCalendar</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элементов управления. Используется с соответствующее событие мыши, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousehover">MouseHover</a> к примеру, попадания очень полезен для определения, когда приложение должно выполнить определенное действие.</p>
+<h2 id="mouse-events">События мыши</h2>
+<p>Для обработки событий мыши является основным способом реагировать на ввод с помощью мыши. В следующей таблице перечислены события мыши и описывает, когда они вызываются.</p>
+<table>
+<thead>
+<tr>
+<th>Событие мыши</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a></td>
+<td>Это событие происходит при отпускании кнопки мыши, обычно перед <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseup">MouseUp</a> событий. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>. Обработайте это событие, когда нужно только определить, когда происходит щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseclick">MouseClick</a></td>
+<td>Это событие происходит, когда пользователь щелкает мышью элемент управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>. Обработайте это событие, когда требуется получить сведения о мыши, когда происходит щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.doubleclick">DoubleClick</a></td>
+<td>Это событие возникает при двойном щелчке элемента управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>. Обработайте это событие, когда нужно только определить, когда происходит двойной щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedoubleclick">MouseDoubleClick</a></td>
+<td>Это событие происходит, когда пользователь дважды щелкает мышью элемент управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>. Обработайте это событие, когда требуется получить сведения о мыши, когда происходит двойной щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a></td>
+<td>Это событие происходит, когда указатель мыши находится над элементом управления, и пользователь нажимает кнопку мыши. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseenter">MouseEnter</a></td>
+<td>Это событие происходит, когда указатель мыши пересекает границы или клиентскую область элемента управления, в зависимости от типа элемента управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousehover">MouseHover</a></td>
+<td>Это событие происходит, когда указатель мыши останавливается и над элементом управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseleave">MouseLeave</a></td>
+<td>Это событие происходит, когда указатель мыши покидает границы или клиентскую область элемента управления, в зависимости от типа элемента управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventargs">EventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousemove">MouseMove</a></td>
+<td>Это событие возникает при перемещении указателя мыши, когда оно находится над элементом управления. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mouseup">MouseUp</a></td>
+<td>Это событие происходит, когда указатель мыши находится над элементом управления и пользователь отпускается кнопку мыши. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousewheel">MouseWheel</a></td>
+<td>Это событие происходит при вращении колесика мыши, когда элемент управления имеет фокус. Обработчик этого события принимает аргумент типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a>. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs.delta">Delta</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.mouseeventargs">MouseEventArgs</a> для определения того, насколько прокручена мышь.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="changing-mouse-input-and-detecting-system-settings">Изменение ввода мыши и определение системных параметров</h2>
+<p>Можно определить и изменить способ, элемент управления обрабатывает ввод от мыши путем создания производного элемента управления и использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.getstyle">GetStyle</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.setstyle">SetStyle</a> методы. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.setstyle">SetStyle</a> Метод принимает побитовое сочетание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.controlstyles">ControlStyles</a> значения, чтобы определить, будет ли элемент управления иметь стандартный щелкните или дважды щелкните поведение, или если элемент управления будет обрабатывать обработку. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation">SystemInformation</a> класс включает свойства, которые описывают возможности мыши и укажите, как мышь взаимодействует с операционной системой. В следующей таблице перечислены эти свойства.</p>
+<table>
+<thead>
+<tr>
+<th>Свойство</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicksize">DoubleClickSize</a></td>
+<td>Получает размеры в пикселях, области, в котором пользователь должен щелкнуть дважды, чтобы операционная система обработала два щелчка как двойной щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.doubleclicktime">DoubleClickTime</a></td>
+<td>Получает максимальное число миллисекунд, которое может пройти между первым и вторым щелчком, чтобы операционная система обработала действия мыши как двойной щелчок.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousebuttons">MouseButtons</a></td>
+<td>Возвращает число кнопок мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousebuttonsswapped">MouseButtonsSwapped</a></td>
+<td>Возвращает значение, указывающее, могут ли меняться местами функции левой и правой кнопок мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousehoversize">MouseHoverSize</a></td>
+<td>Возвращает размеры прямоугольника (в пикселях), в котором должен находиться указатель мыши в течение времени наведения мыши перед тем, как создается сообщение о наведении мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousehovertime">MouseHoverTime</a></td>
+<td>Возвращает интервал времени (в миллисекундах), в течение которого указатель мыши должен оставаться в прямоугольнике наведения перед тем, как вызывается сообщение о наведении мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousepresent">MousePresent</a></td>
+<td>Получает значение, указывающее, установлена ли мышь.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousespeed">MouseSpeed</a></td>
+<td>Получает значение, указывающее текущую скорость мыши от 1 до 20.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousewheelpresent">MouseWheelPresent</a></td>
+<td>Возвращает значение, указывающее, установлена ли мышь с колесом прокрутки.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousewheelscrolldelta">MouseWheelScrollDelta</a></td>
+<td>Получает значение приращения одном повороте колесика мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.systeminformation.mousewheelscrolllines">MouseWheelScrollLines</a></td>
+<td>Возвращает число строк, прокручиваемых при вращении колесика мыши.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="mouse-input-in-a-windows-forms-application.html">Ввод данных мышью в приложении Windows Forms</a></li>
+<li><a href="mouse-capture-in-windows-forms.html">Захват мыши в Windows Forms</a></li>
+<li><a href="mouse-pointers-in-windows-forms.html">Указатели мыши в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

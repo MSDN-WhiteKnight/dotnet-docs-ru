@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1090;&#1072;&#1089;&#1082;&#1080;&#1074;&#1072;&#1085;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1087;&#1077;&#1088;&#1077;&#1090;&#1072;&#1089;&#1082;&#1080;&#1074;&#1072;&#1085;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="drag-and-drop-overview">Общие сведения о перетаскивании</h1>
+
+<p>В этой статье приведены общие сведения о поддержке перетаскивания в приложениях Windows Presentation Foundation (WPF). Перетаскиванием обычно называют метод передачи данных, который реализуется с помощью мыши (или другого указывающего устройства) для выбора одного или нескольких объектов и перетаскивания их в цель перетаскивания в пользовательский интерфейс.</p>
+<p><a name="Drag_and_Drop_Support"></a></p>
+<h2 id="drag-and-drop-support-in-wpf">Поддержка перетаскивания в WPF</h2>
+<p>В операциях перетаскивания обычно участвуют две стороны: источник перетаскивания, из которого происходит перетаскиваемый объект, и цель перетаскивания, которая получает перетаскиваемый объект.  Источник перетаскивания и цель перетаскивания могут быть элементами пользовательского интерфейса в одном приложении или в разных приложениях.</p>
+<p>Можно перетаскивать совершенно произвольные типы и количества объектов. Например, в качестве наиболее распространенных объектов перетаскивания можно назвать файлы, папки, выбранное содержимое.</p>
+<p>Конкретные действия, выполняемые во время операции перетаскивания, зависят от приложения и часто определяются контекстом.  Например, при перетаскивании выбранных файлов из одной папки в другую на одном запоминающем устройстве эти файлы по умолчанию перемещаются, тогда как при перетаскивании файлов из общего ресурса Формат UNC (Universal Naming Convention) в локальную папку эти файлы по умолчанию копируются.</p>
+<p>В средствах перетаскивания, предоставляемых WPF, предусмотрена высокая гибкость и возможность настройки с целью поддержки различных сценариев перетаскивания.  Перетаскивание поддерживает управление объектами в рамках одного приложения или в разных приложениях. Перетаскивание мышью между WPF приложений и других приложений Windows также полностью поддерживается.</p>
+<p>В WPF любые элементы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> могут участвовать в операциях перетаскивания. События и методы, необходимые для операций перетаскивания, определяются в классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop">DragDrop</a>. Классы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> содержат псевдонимы для вложенных событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop">DragDrop</a>, чтобы эти события отображались в списке членов класса, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> наследуется как базовый элемент. Обработчики событий, связанные с этими событиями, присоединяются к основному вложенному событию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop">DragDrop</a> и получают один и тот же экземпляр данных события. Дополнительные сведения см. в описании события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.drop">UIElement.Drop</a>.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Перетаскивание OLE не работает в зоне Интернета.</p>
+</div>
+<p><a name="Data_Transfer"></a></p>
+<h2 id="data-transfer">Передача данных</h2>
+<p>Перетаскивание является частью более общей сферы передачи данных. Передача данных включает операции перетаскивания и операции копирования и вставки. Операция перетаскивания аналогична операции копирования и вставки или вырезания и вставки, которая используется для передачи данных из одного объекта или приложения в другое с использованием буфера обмена. В обоих типах операций требуется:</p>
+<ul>
+<li><p>исходный объект, предоставляющий данные;</p>
+</li>
+<li><p>способ временного хранения передаваемых данных;</p>
+</li>
+<li><p>целевой объект, который получает данные.</p>
+</li>
+</ul>
+<p>В операции копирования и вставки для временного хранения передаваемых данных используется системный буфер обмена; в операции перетаскивания для хранения данных используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>. Концептуально объект данных состоит из одной или нескольких пар <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>, содержащих фактические данные и соответствующий идентификатор формата данных.</p>
+<p>Источник перетаскивания инициирует операцию перетаскивания путем вызова статического метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DragDrop.DoDragDrop</a> и передачи в него передаваемых данных. Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a> будет автоматически включать данные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> при необходимости. Для большего контроля над форматом данных можно включать данные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> перед их передачей в метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>. Цель перетаскивания отвечает за извлечение данных из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>. Дополнительные сведения о работе с объектами данных см. в разделе <a href="data-and-data-objects.html">Данные и объекты данных</a>.</p>
+<p>Исходный и целевой объекты операции перетаскивания являются элементами пользовательского интерфейса; однако данные, которые в действительности передаются, обычно не имеют визуального представления. Вы можете написать код для визуального представления перетаскиваемых данных, например такого, которое происходит при перетаскивании файлов в проводнике. По умолчанию взаимодействие предоставляется пользователю путем изменения курсора для представления воздействия, которое операция перетаскивания оказывает на данные: например, перемещаются данные или копируются.</p>
+<h3 id="drag-and-drop-effects">Эффекты перетаскивания</h3>
+<p>Операции перетаскивания могут по-разному воздействовать на передаваемые данные. Например, данные могут копироваться или перемещаться. WPF Определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects">DragDropEffects</a> перечисления, которое можно использовать для указания эффекта операции перетаскивания и вставки. В источнике перетаскивания можно указать эффекты, которые он разрешает, в методе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>. В цели перетаскивания можно определить ожидаемый эффект в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.effects">Effects</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs">DragEventArgs</a>. Если в цели перетаскивания ожидаемый эффект задан в событии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a>, то информация передается обратно в источник перетаскивания в событии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a>. Источник перетаскивания использует эти сведения для информирования пользователей, какое воздействие на данные ожидает цель перетаскивания. Когда данные вставляются, цель перетаскивания указывает фактический эффект в событии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a>. Эти сведения передаются обратно в источник перетаскивания в качестве возвращаемого значения метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>. Если цель перетаскивания возвращает эффект, которого нет в списке <code>allowedEffects</code> источников перетаскивания, операция перетаскивания отменяется без фактической передачи данных.</p>
+<p>Важно помнить, что в WPF значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects">DragDropEffects</a> используются только для обеспечения взаимодействия между источником перетаскивания и целью перетаскивания относительно эффектов операции перетаскивания. Фактический эффект операции перетаскивания зависит от соответствующего кода, написанного вами в приложении.</p>
+<p>Например, цель перетаскивания может указывать, что в результате перетаскивания в него данных должно происходить перемещение данных. Однако для перемещения данных они должны добавляться в целевой элемент и удаляться из исходного элемента. Исходный элемент может указывать, что он разрешает перемещение данных, но если вы не предоставите код для удаления данных из исходного элемента, данные в итоге будут копироваться, а не перемещаться.</p>
+<p><a name="Drag_and_Drop_Events"></a></p>
+<h2 id="drag-and-drop-events">События перетаскивания</h2>
+<p>Операции перетаскивания поддерживают модель управления событиями.  Источник и цель перетаскивания используют стандартный набор событий для обработки операций перетаскивания.  В следующих таблицах приведены стандартные события перетаскивания. Это вложенные события в классе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop">DragDrop</a>. Дополнительные сведения о вложенных событиях см. в разделе <a href="attached-events-overview.html">Общие сведения о вложенных событиях</a>.</p>
+<h3 id="drag-source-events">События источника перетаскивания</h3>
+<table>
+<thead>
+<tr>
+<th>событие</th>
+<th>Сводка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a></td>
+<td>Это событие возникает постоянно во время операции перетаскивания и позволяет источнику перетаскивания предоставлять пользователю сведения о взаимодействии. Взаимодействие обычно демонстрируется путем изменения вида курсора мыши, чтобы указать разрешенные целью перетаскивания эффекты операции перетаскивания.  Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.querycontinuedrag">QueryContinueDrag</a></td>
+<td>Это событие возникает при изменении состояния клавиши клавиатуры или кнопки мыши во время операции перетаскивания и позволяет источнику перетаскивания отменить операцию перетаскивания в зависимости от состояния клавиши или кнопки. Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewgivefeedback">PreviewGiveFeedback</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewquerycontinuedrag">PreviewQueryContinueDrag</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.querycontinuedrag">QueryContinueDrag</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="drop-target-events">События цели перетаскивания</h3>
+<table>
+<thead>
+<tr>
+<th>событие</th>
+<th>Сводка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a></td>
+<td>Это событие происходит, когда объект перетаскивается в границы цели перетаскивания. Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a></td>
+<td>Это событие происходит, когда объект перетаскивается за пределы цели перетаскивания.  Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a></td>
+<td>Это событие происходит постоянно, когда объект перетаскивается (перемещается) в границы цели перетаскивания. Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a></td>
+<td>Это событие происходит, когда объект вставляется в цель перетаскивания.  Это событие восходящей маршрутизации.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewdragenter">PreviewDragEnter</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewdragleave">PreviewDragLeave</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewdragover">PreviewDragOver</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.previewdrop">PreviewDrop</a></td>
+<td>Это версия нисходящей маршрутизации события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Для обработки событий перетаскивания для экземпляров объекта добавьте обработчики событий, перечисленных в таблицах выше. Для обработки событий перетаскивания на уровне класса переопределите соответствующие виртуальные методы On*Event и On*PreviewEvent. Дополнительные сведения см. в разделе <a href="marking-routed-events-as-handled-and-class-handling.html#Class_Handling_of_Routed_Events">Маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p><a name="Implementing_Drag_And_Drop"></a></p>
+<h2 id="implementing-drag-and-drop">Реализация перетаскивания</h2>
+<p>Элемент пользовательского интерфейса может быть источником перетаскивания, целью перетаскивания или и тем, и другим. Чтобы реализовать базовое перетаскивание, необходимо написать код для инициирования операции перетаскивания и обработки перетаскиваемых данных. Вы можете улучшить взаимодействие перетаскивания путем обработки дополнительных событий перетаскивания.</p>
+<p>Для реализации базового перетаскивания вы будете выполнять следующие задачи.</p>
+<ul>
+<li><p>Определение элемента, который будет источником перетаскивания. Источник перетаскивания может быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>.</p>
+</li>
+<li><p>Создание обработчика событий в источнике перетаскивания, который будет инициировать операцию перетаскивания. Это событие обычно является событием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousemove">MouseMove</a>.</p>
+</li>
+<li><p>Вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a> в обработчике событий источника перетаскивания для инициации операции перетаскивания. Указание источника перетаскивания, передаваемых данных и разрешенные эффекты в вызове метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>.</p>
+</li>
+<li><p>Определение элемента, который будет целью перетаскивания. Целью перетаскивания может быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>.</p>
+</li>
+<li><p>В цели перетаскивания установите свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.allowdrop">AllowDrop</a> в значение <code>true</code>.</p>
+</li>
+<li><p>В цели перетаскивания создайте обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> для обработки перетаскиваемых данных.</p>
+</li>
+<li><p>В обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> извлеките данные из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs">DragEventArgs</a> с помощью методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdatapresent">GetDataPresent</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdata">GetData</a>.</p>
+</li>
+<li><p>В обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> используйте эти данные для выполнения требуемой операции перетаскивания.</p>
+</li>
+</ul>
+<p>Вы можете улучшить реализацию перетаскивания путем создания пользовательского объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> и обработки дополнительных событий источника и цели перетаскивания, как показано в следующих задачах.</p>
+<ul>
+<li><p>Чтобы передать пользовательские данные или несколько элементов данных, создайте объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> для передачи в метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>.</p>
+</li>
+<li><p>Для выполнения дополнительных действий в процессе перетаскивания обработайте события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a> в цели перетаскивания.</p>
+</li>
+<li><p>Чтобы изменить вид курсора мыши, обработайте событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a> в источнике перетаскивания.</p>
+</li>
+<li><p>Для изменения способа отмены операции перетаскивания обработайте событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.querycontinuedrag">QueryContinueDrag</a> в источнике перетаскивания.</p>
+</li>
+</ul>
+<p><a name="Drag_And_Drop_Example"></a></p>
+<h2 id="drag-and-drop-example">Пример перетаскивания</h2>
+<p>В этом разделе описывается реализация перетаскивания для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. Элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> является как источником, так и целью перетаскивания. Передаваемые данные — это строковое представление свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> эллипса. В следующем XAML показан элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> и связанные с перетаскиванием события, которые он обрабатывает. Полное описание действий по реализации перетаскивания и вставки, см. в разделе <a href="walkthrough-enabling-drag-and-drop-on-a-user-control.html">Пошаговое руководство: Включение перетаскивания для пользовательского элемента управления</a>.</p>
+<pre><code class="lang-xaml" name="DragDropSnippets#EllipseXaml">&lt;Ellipse Height=&quot;50&quot; Width=&quot;50&quot; Fill=&quot;Green&quot;
+     MouseMove=&quot;ellipse_MouseMove&quot;
+     GiveFeedback=&quot;ellipse_GiveFeedback&quot;
+     AllowDrop=&quot;True&quot;
+     DragEnter=&quot;ellipse_DragEnter&quot; DragLeave=&quot;ellipse_DragLeave&quot;
+     DragOver=&quot;ellipse_DragOver&quot; Drop=&quot;ellipse_Drop&quot; /&gt;
+</code></pre><h3 id="enabling-an-element-to-be-a-drag-source">Включение элемента в качестве источника перетаскивания</h3>
+<p>Объект, являющийся источником перетаскивания, отвечает за:</p>
+<ul>
+<li><p>определение момента начала перетаскивания;</p>
+</li>
+<li><p>инициализацию операции перетаскивания;</p>
+</li>
+<li><p>определение передаваемых данных;</p>
+</li>
+<li><p>указание разрешенного воздействия операции перетаскивания на передаваемые данные.</p>
+</li>
+</ul>
+<p>Источник перетаскивания может также предоставить пользователю сведения о разрешенных действиях (перемещение, копирование или отсутствие действий) и может отменять операцию перетаскивания на основании дополнительного пользовательского ввода, например нажатия клавиши ESC во время перетаскивания.</p>
+<p>Ваше приложение должно определить, когда происходит перетаскивание, а затем инициировать операцию перетаскивания путем вызова метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>. Обычно это происходит, когда возникает событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousemove">MouseMove</a> в перетаскиваемом элементе при нажатой клавише мыши. В следующем примере показано, как инициировать операцию перетаскивания в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousemove">MouseMove</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>, чтобы сделать его источником перетаскивания. Передаваемые данные — это строковое представление свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> эллипса.</p>
+<pre><code class="lang-csharp" name="DragDropSnippets#DoDragDrop">private void ellipse_MouseMove(object sender, MouseEventArgs e)
+{
+    Ellipse ellipse = sender as Ellipse;
+    if (ellipse != null &amp;&amp; e.LeftButton == MouseButtonState.Pressed)
+    {
+        DragDrop.DoDragDrop( ellipse,
+                             ellipse.Fill.ToString(),
+                             DragDropEffects.Copy);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousemove">MouseMove</a> вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a> для инициации операции перетаскивания. Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a> принимает три следующих параметра.</p>
+<ul>
+<li><p><code>dragSource</code> — Ссылка на объект зависимости, который является источником передаваемых данных; Обычно это источник <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousemove">MouseMove</a> событий.</p>
+</li>
+<li><p><code>data</code> -Объект, содержащий передаваемые данные, заключенные в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>.</p>
+</li>
+<li><p><code>allowedEffects</code> — Одно из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects">DragDropEffects</a> значений перечисления, которое определяет разрешенные эффекты операции перетаскивания и вставки.</p>
+</li>
+</ul>
+<p>В параметр <code>data</code> может быть передан любой сериализуемый объект. Если данные еще не заключены в объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>, они автоматически заключаются в новый объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>. Для передачи нескольких элементов данных вы должны создать объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> самостоятельно и передать его в метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dodragdrop">DoDragDrop</a>. Дополнительные сведения см. в разделе <a href="data-and-data-objects.html">Данные и объекты данных</a>.</p>
+<p>Параметр <code>allowedEffects</code> используется для указания, какие действия с передаваемыми данными источник перетаскивания будет разрешать цели перетаскивания. Обычные значения для источника перетаскивания — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_Copy">Copy</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_Move">Move</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_All">All</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Цель перетаскивания также может указывать ожидаемые эффекты перетаскивания данных. Например, если цель перетаскивания не распознает тип вставляемых данных, то она может отклонить эти данные, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_None">None</a> в качестве разрешенных эффектов. Обычно она делает это в своем обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a>.</p>
+</div>
+<p>Источник перетаскивания может также обрабатывать события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.querycontinuedrag">QueryContinueDrag</a>. Эти события имеют обработчики по умолчанию, которые используются, если события не помечены как обработанные. Обычно эти события игнорируются, если нет особой необходимости изменения их поведения по умолчанию.</p>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a> возникает постоянно, пока выполняется перетаскивание источника перетаскивания. Обработчик по умолчанию для этого события проверяет, находится ли источник перетаскивания над допустимым конечным расположением сброса. Если это так, то он проверяет разрешенные эффекты цели перетаскивания. Затем он предоставляет конечному пользователю отзыв относительно разрешенных эффектов перетаскивания. Обычно это выполняется путем изменения курсора мыши, чтобы указать запрет перетаскивания, копирование или перемещение. Это событие следует обрабатывать, только если необходимо использовать пользовательские курсоры для предоставления отзыва пользователю. Если вы обрабатываете это событие, не забудьте помечать его как обработанное, чтобы обработчик по умолчанию не переопределил ваш обработчик.</p>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.querycontinuedrag">QueryContinueDrag</a> возникает постоянно, пока выполняется перетаскивание источника перетаскивания. Можно обработать это событие, чтобы определить, какое действие завершает операцию перетаскивания, на основе состояния клавиш ESC, SHIFT, CTRL и ALT, а также состояния кнопок мыши. Обработчик по умолчанию для этого события отменяет операцию перетаскивания при нажатии клавиши ESC и сбрасывает данные при отпускании кнопки мыши.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Эти события возникают постоянно во время операции перетаскивания. Поэтому следует избегать ресурсоемких задач в обработчиках событий.  Например, используйте кэшированный курсор вместо создания нового курсора при каждом возникновении события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a>.</p>
+</div>
+<h3 id="enabling-an-element-to-be-a-drop-target">Включение элемента в качестве цели перетаскивания</h3>
+<p>Объект, являющийся целью перетаскивания, отвечает за:</p>
+<ul>
+<li><p>указание, что он является допустимой целью перетаскивания;</p>
+</li>
+<li><p>реакцию на источник перетаскивания, когда он перетаскивается над целевым объектом;</p>
+</li>
+<li><p>проверку, что передаваемые данные находятся в формате, который он может получить;</p>
+</li>
+<li><p>обработку вставляемых данных.</p>
+</li>
+</ul>
+<p>Чтобы указать, что элемент является целью перетаскивания, его свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.allowdrop">AllowDrop</a> устанавливается в значение <code>true</code>. Затем в этом элементе будут возникать события цели перетаскивания, чтобы их можно было обработать. Во время операции перетаскивания в цели перетаскивания возникает следующая последовательность событий:</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a></p>
+</li>
+</ol>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a> возникает, когда данные перетаскиваются в границы цели перетаскивания. Обычно вы обрабатываете это событие, чтобы обеспечить предварительный просмотр эффектов операции перетаскивания, если это требуется для вашего приложения. Не устанавливайте свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.effects">DragEventArgs.Effects</a> в событии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>, так как оно будет переопределено в событии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a>.</p>
+<p>В следующем примере показан обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a> для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. Этот код выполняет предварительный просмотр эффектов операции перетаскивания путем сохранения текущей кисти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a>. Затем он использует метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdatapresent">GetDataPresent</a> для проверки, содержит ли объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>, перетаскиваемый над эллипсом, строковые данные, которые можно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>. Если да, то данные извлекаются с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdata">GetData</a> Затем они преобразуются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> и применяются к эллипсу. Это изменение отменяется в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a>. Если данные невозможно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>, никакие действия не выполняются.</p>
+<pre><code class="lang-csharp" name="DragDropSnippets#DragEnter">private Brush _previousFill = null;
+private void ellipse_DragEnter(object sender, DragEventArgs e)
+{
+    Ellipse ellipse = sender as Ellipse;
+    if (ellipse != null)
+    {
+        // Save the current Fill brush so that you can revert back to this value in DragLeave.
+        _previousFill = ellipse.Fill;
+
+        // If the DataObject contains string data, extract it.
+        if (e.Data.GetDataPresent(DataFormats.StringFormat))
+        {
+            string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+
+            // If the string can be converted into a Brush, convert it.
+            BrushConverter converter = new BrushConverter();
+            if (converter.IsValid(dataString))
+            {
+                Brush newFill = (Brush)converter.ConvertFromString(dataString);
+                ellipse.Fill = newFill;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a> постоянно возникает при перетаскивании данных на цель перетаскивания. Это событие является спаренным с событием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a> в источнике перетаскивания. В обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a>, как правило, используются методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdatapresent">GetDataPresent</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdata">GetData</a> для проверки, имеют ли передаваемые данные формат, который может обработать цель перетаскивания. Можно также проверить, нажаты ли клавиши-модификаторы, которые обычно указывают, какую операцию предполагает выполнять пользователь — перемещения или копирования. После выполнения этих проверок вы устанавливаете свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.effects">DragEventArgs.Effects</a>, чтобы уведомить источник перетаскивания о том, какой эффект окажет сброс данных. Источник перетаскивания получает эти сведения в аргументах события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.givefeedback">GiveFeedback</a> и может задать соответствующий курсор, чтобы обеспечить отзыв для пользователя.</p>
+<p>В следующем примере показан обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragover">DragOver</a> для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. В этом коде проверяется, содержит ли объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>, перетаскиваемый над эллипсом, строковые данные, которые можно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>. Если содержит, то код устанавливает для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.effects">DragEventArgs.Effects</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_Copy">Copy</a>. Это указывает источнику перетаскивания, что данные можно скопировать в эллипс. Если данные невозможно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>, для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.effects">DragEventArgs.Effects</a> устанавливается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdropeffects#System_Windows_DragDropEffects_None">None</a>. Это указывает источнику перетаскивания, что эллипс не является допустимым конечным расположением сброса для данных.</p>
+<pre><code class="lang-csharp" name="DragDropSnippets#DragOver">private void ellipse_DragOver(object sender, DragEventArgs e)
+{
+    e.Effects = DragDropEffects.None;
+
+    // If the DataObject contains string data, extract it.
+    if (e.Data.GetDataPresent(DataFormats.StringFormat))
+    {
+        string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+
+        // If the string can be converted into a Brush, allow copying.
+        BrushConverter converter = new BrushConverter();
+        if (converter.IsValid(dataString))
+        {
+            e.Effects = DragDropEffects.Copy | DragDropEffects.Move;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a> возникает, когда данные перетаскиваются за границу целевого объекта без сбрасывания. Обработка этого события позволяет отменить любые действия, которые были выполнены в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>.</p>
+<p>В следующем примере показан обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragleave">DragLeave</a> для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. Этот код отменяет предварительный просмотр, выполненный в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>, путем применения сохраненного объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> к эллипсу.</p>
+<pre><code class="lang-csharp" name="DragDropSnippets#DragLeave">private void ellipse_DragLeave(object sender, DragEventArgs e)
+{
+    Ellipse ellipse = sender as Ellipse;
+    if (ellipse != null)
+    {
+        ellipse.Fill = _previousFill;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> возникает при сбросе данных в цель перетаскивания; по умолчанию это происходит при отпускании кнопки мыши. В обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> вы используете метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject.getdata">GetData</a> для извлечения передаваемых данных из объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a> и выполнения обработки данных, необходимой для вашего приложения. Событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> завершает операцию перетаскивания.</p>
+<p>В следующем примере показан обработчик событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.drop">Drop</a> для элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. Этот код применяет эффекты операции перетаскивания. Он аналогичен коду в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dragdrop.dragenter">DragEnter</a>. Он проверяет, содержит ли объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dataobject">DataObject</a>, перетаскиваемый над эллипсом, строковые данные, которые можно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>. Если это так, то к эллипсу применяется объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>. Если данные невозможно преобразовать в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>, никакие действия не выполняются.</p>
+<pre><code class="lang-csharp" name="DragDropSnippets#Drop">private void ellipse_Drop(object sender, DragEventArgs e)
+{
+    Ellipse ellipse = sender as Ellipse;
+    if (ellipse != null)
+    {
+        // If the DataObject contains string data, extract it.
+        if (e.Data.GetDataPresent(DataFormats.StringFormat))
+        {
+            string dataString = (string)e.Data.GetData(DataFormats.StringFormat);
+
+            // If the string can be converted into a Brush,
+            // convert it and apply it to the ellipse.
+            BrushConverter converter = new BrushConverter();
+            if (converter.IsValid(dataString))
+            {
+                Brush newFill = (Brush)converter.ConvertFromString(dataString);
+                ellipse.Fill = newFill;
+            }
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.clipboard">Clipboard</a></li>
+<li><a href="walkthrough-enabling-drag-and-drop-on-a-user-control.html">Пошаговое руководство. Включение перетаскивания для пользовательского элемента управления</a></li>
+<li><a href="drag-and-drop-how-to-topics.html">Практические руководства</a></li>
+<li><a href="drag-and-drop.html">Перетаскивание</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

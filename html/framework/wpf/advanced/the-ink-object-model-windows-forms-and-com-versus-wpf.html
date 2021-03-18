@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1085;&#1072;&#1103; &#1084;&#1086;&#1076;&#1077;&#1083;&#1100; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072;: Windows Forms &#1080; COM &#1087;&#1086; &#1089;&#1088;&#1072;&#1074;&#1085;&#1077;&#1085;&#1080;&#1102; &#1089; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1085;&#1072;&#1103; &#1084;&#1086;&#1076;&#1077;&#1083;&#1100; &#1088;&#1091;&#1082;&#1086;&#1087;&#1080;&#1089;&#1085;&#1086;&#1075;&#1086; &#1074;&#1074;&#1086;&#1076;&#1072;: Windows Forms &#1080; COM &#1087;&#1086; &#1089;&#1088;&#1072;&#1074;&#1085;&#1077;&#1085;&#1080;&#1102; &#1089; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-ink-object-model-windows-forms-and-com-versus-wpf">Объектная модель рукописного ввода: Windows Forms и COM по сравнению с WPF</h1>
+
+<p>Существует три платформы, поддерживающие рукописный ввод: Платформа Tablet PC Windows Forms, платформа COM для планшетных ПК и платформы Windows Presentation Foundation (WPF).  Ресурс платформы Windows Forms и COM, аналогичной модели объекта, если объект модели для WPF платформы существенно отличается.  В этом разделе обсуждаются различия на высоком уровне, что разработчики, которые работали с одной модели объекта можно лучше понять другой.</p>
+<h2 id="enabling-ink-in-an-application">Включение рукописного ввода в приложении</h2>
+<p>Все три платформы поставляют объекты и элементы управления, которые позволяют приложению получать входные данные от планшетного пера.  В Windows Forms и COM платформ поставляются с <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583740(v=vs.90)">Microsoft.Ink.InkPicture</a>, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552265(v=vs.90)">Microsoft.Ink.InkEdit</a>, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552322(v=vs.90)">Microsoft.Ink.InkOverlay</a> и <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583683(v=vs.90)"> Microsoft.Ink.InkCollector</a> классы.  <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583740(v=vs.90)">Microsoft.Ink.InkPicture</a> и <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552265(v=vs.90)">Microsoft.Ink.InkEdit</a> являются элементами управления, которые можно добавить к приложению для сбора рукописных фрагментов.  <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552322(v=vs.90)">Microsoft.Ink.InkOverlay</a> и <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583683(v=vs.90)">Microsoft.Ink.InkCollector</a> могут присоединяться к существующему окну с поддержкой рукописного ввода windows и пользовательских элементов управления.</p>
+<p>Платформа WPF включает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> элемента управления.  Вы можете добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> в приложение и начать сбор рукописных данных немедленно. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>, пользователь может скопировать, выберите и измените размер рукописного ввода.  Можно добавить другие элементы управления для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a>, и пользователь может вводить рукописные данные в эти элементы управления тоже.  Можно создать пользовательский элемент управления, поддержкой рукописного ввода, добавив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> и сбора его точек пера.</p>
+<p>В следующей таблице перечислены дополнительные сведения о включении рукописного ввода в приложении:</p>
+<table>
+<thead>
+<tr>
+<th>Для этого...</th>
+<th>На платформе WPF...</th>
+<th>На платформах Windows Forms и COM...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Добавление элемента управления с поддержкой рукописного ввода в приложение</td>
+<td>См. в разделе <a href="getting-started-with-ink.html">начало работы с рукописными данными</a>.</td>
+<td>См. в разделе <a href="/windows/desktop/tablet/auto-claims-form-sample">утверждений автоматического формирования образца</a></td>
+</tr>
+<tr>
+<td>Включить рукописный ввод в пользовательский элемент управления</td>
+<td>См. в разделе <a href="creating-an-ink-input-control.html">создания заметки рукописного ввода входного элемента управления</a>.</td>
+<td>См. в разделе <a href="/windows/desktop/tablet/ink-clipboard-sample">рукописного ввода в буфер обмена образец</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ink-data">Данные рукописного ввода</h2>
+<p>На платформах COM и Windows Forms <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583683(v=vs.90)">Microsoft.Ink.InkCollector</a>, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552322(v=vs.90)">Microsoft.Ink.InkOverlay</a>, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552265(v=vs.90)">Microsoft.Ink.InkEdit</a>, и <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583740(v=vs.90)"> Microsoft.Ink.InkPicture</a> каждого предоставляют <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объекта. <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объект содержит данные для одного или нескольких <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552692(v=vs.90)">Microsoft.Ink.Stroke</a> объектов и предоставляет общие методы и свойства для управления эти штрихи.  <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объекта управляет временем существования штрихов, она содержит; <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объект создает и удаляет росчерки, которые ему принадлежат.  Каждый <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552692(v=vs.90)">Microsoft.Ink.Stroke</a> имеет идентификатор, который является уникальным в пределах родительского <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объекта.</p>
+<p>На платформе WPF <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">System.Windows.Ink.Stroke</a> класс владеет и управляет своим временем существования. Группы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> объектов можно собирать вместе в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a>, который предоставляет методы для общих рукописного ввода операций по управлению данными такие как попаданий тестирования, стирание, преобразование и сериализация рукописных данных. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> может принадлежать ноль, один или более <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a> объектов на любом предоставить времени.  Вместо того, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объекта, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas">InkCanvas</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a> содержат <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">System.Windows.Ink.StrokeCollection</a>.</p>
+<p>В следующей паре иллюстраций сравниваются объектные модели данных рукописного ввода.  На платформах COM и Windows Forms <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583670(v=vs.90)">Microsoft.Ink.Ink</a> объект ограничивает время существования <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552692(v=vs.90)">Microsoft.Ink.Stroke</a> объекты и пакеты пера принадлежат отдельным штрихов.  Два или несколько штрихов можно ссылаются на тот же <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583636(v=vs.90)">Microsoft.Ink.DrawingAttributes</a> объекта, как показано на следующем рисунке.</p>
+<p><img src="media/ink-inkownsstrokes.png" alt="Схема модели объекта Ink для COM/Winforms. " title="Ink_InkOwnsStrokes"></p>
+<p>На WPF, каждая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">System.Windows.Ink.Stroke</a> — это объект среды выполнения, которая существует до тех пор, пока что-нибудь имеет ссылку на него.  Каждый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.stroke">Stroke</a> ссылки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.styluspointcollection">StylusPointCollection</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">System.Windows.Ink.DrawingAttributes</a> объект, который также являются объектами среды CLR.</p>
+<p><img src="media/ink-wpfinkobjectmodel.png" alt="Схема модели объекта Ink для WPF. " title="Ink_WPFInkObjectModel"></p>
+<p>В следующей таблице сравниваются способы выполнения некоторых общих задач на WPF платформы и платформы Windows Forms и COM.</p>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Windows Presentation Foundation</th>
+<th>Windows Forms и COM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Сохранить рукописный ввод</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.save">Save</a></td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms571335(v=vs.90)">Microsoft.Ink.Ink.Save</a></td>
+</tr>
+<tr>
+<td>Загрузка рукописного ввода</td>
+<td>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.-ctor">StrokeCollection</a> конструктор.</td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms569609(v=vs.90)">Microsoft.Ink.Ink.Load</a></td>
+</tr>
+<tr>
+<td>Проверка нажатия</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.hittest">HitTest</a></td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms571330(v=vs.90)">Microsoft.Ink.Ink.HitTest</a></td>
+</tr>
+<tr>
+<td>Скопируйте рукописного ввода</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.copyselection">CopySelection</a></td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms571316(v=vs.90)">Microsoft.Ink.Ink.ClipboardCopy</a></td>
+</tr>
+<tr>
+<td>Вставьте рукописного ввода</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkcanvas.paste">Paste</a></td>
+<td><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms571318(v=vs.90)">Microsoft.Ink.Ink.ClipboardPaste</a></td>
+</tr>
+<tr>
+<td>Доступ к настраиваемым свойствам в коллекцию штрихов</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.addpropertydata">AddPropertyData</a> (внутренне хранятся и доступны через свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.addpropertydata">AddPropertyData</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.removepropertydata">RemovePropertyData</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.containspropertydata">ContainsPropertyData</a>)</td>
+<td>Используйте <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms582214(v=vs.90)">Microsoft.Ink.Ink.ExtendedProperties</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sharing-ink-between-platforms">Совместное использование рукописного ввода между платформами</h3>
+<p>Несмотря на то, что платформы имеют разные объектные модели для рукописных данных, совместное использование данных между платформами является очень простым. В следующих примерах сохранить рукописный ввод из приложения Windows Forms и загрузка рукописный ввод в приложение Windows Presentation Foundation.</p>
+<pre><code class="lang-csharp" name="WinFormWPFInk#UsingWinforms">using Microsoft.Ink;
+using System.Drawing;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#SaveWinforms">/// &lt;summary&gt;
+/// Saves the digital ink from a Windows Forms application.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;inkToSave&quot;&gt;An Ink object that contains the
+/// digital ink.&lt;/param&gt;
+/// &lt;returns&gt;A MemoryStream containing the digital ink.&lt;/returns&gt;
+MemoryStream SaveInkInWinforms(Ink inkToSave)
+{
+    byte[] savedInk = inkToSave.Save();
+
+    return (new MemoryStream(savedInk));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#UsingWPF">using System.Windows.Ink;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#LoadWPF">/// &lt;summary&gt;
+/// Loads digital ink into a StrokeCollection, which can be
+/// used by a WPF application.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;savedInk&quot;&gt;A MemoryStream containing the digital ink.&lt;/param&gt;
+public void LoadInkInWPF(MemoryStream inkStream)
+{
+    strokes = new StrokeCollection(inkStream);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующих примерах сохранить рукописный ввод из приложения Windows Presentation Foundation и загрузка рукописный ввод в приложении Windows Forms.</p>
+<pre><code class="lang-csharp" name="WinFormWPFInk#UsingWPF">using System.Windows.Ink;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#SaveWPF">/// &lt;summary&gt;
+/// Saves the digital ink from a WPF application.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;inkToSave&quot;&gt;A StrokeCollection that contains the
+/// digital ink.&lt;/param&gt;
+/// &lt;returns&gt;A MemoryStream containing the digital ink.&lt;/returns&gt;
+MemoryStream SaveInkInWPF(StrokeCollection strokesToSave)
+{
+    MemoryStream savedInk = new MemoryStream();
+
+    strokesToSave.Save(savedInk);
+
+    return savedInk;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#UsingWinforms">using Microsoft.Ink;
+using System.Drawing;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="WinFormWPFInk#LoadWinforms">/// &lt;summary&gt;
+/// Loads digital ink into a Windows Forms application.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;savedInk&quot;&gt;A MemoryStream containing the digital ink.&lt;/param&gt;
+public void LoadInkInWinforms(MemoryStream savedInk)
+{
+    theInk = new Ink();
+    theInk.Load(savedInk.ToArray());
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="events-from-the-tablet-pen">События из планшетное перо</h2>
+<p><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552322(v=vs.90)">Microsoft.Ink.InkOverlay</a>, <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583683(v=vs.90)">Microsoft.Ink.InkCollector</a>, и <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583740(v=vs.90)">Microsoft.Ink.InkPicture</a> в Windows Forms и COM платформ получают события при пользователя входных данных пера данных. <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms552322(v=vs.90)">Microsoft.Ink.InkOverlay</a> или <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms583683(v=vs.90)">Microsoft.Ink.InkCollector</a> присоединяется к окна или элемента управления и может подписываться на события, вызываемые входными данными планшета. Поток, на котором выполняются эти события зависит от того, вызываются ли события с помощью пера, мыши, или программно. Дополнительные сведения о потоке в связи с этими событиями, см. в разделе <a href="/windows/desktop/tablet/general-threading-considerations">Общие соображения Threading</a> и <a href="/windows/desktop/tablet/threads-on-which-an-event-can-fire">потоков, на котором срабатывают события</a>.</p>
+<p>На платформе Windows Presentation Foundation <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> класс имеет события с помощью пера. Это означает, что каждый элемент управления предоставляет полный набор событий пера.  События пера имеют нисходящей и восходящей маршрутизации событий пар и всегда выполняется в потоке приложения.  Дополнительные сведения см. в разделе <a href="routed-events-overview.html">Routed Events Overview</a>.</p>
+<p>На следующей схеме показано сравнение объектные модели для классов, которые инициируют события пера. Объектную модель Windows Presentation Foundation показывает только события восходящей маршрутизации, не им события нисходящей маршрутизации.</p>
+<p><img src="media/ink-stylusevents.png" alt="Схема событий пера в WPF и Winforms. " title="Ink_StylusEvents"></p>
+<h2 id="pen-data">Данные пера</h2>
+<p>Все три платформы предоставляют способы перехвата и обработки данных, поступающих от планшетного пера.  На платформах COM и Windows Forms, это достигается путем создания <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms585724(v=vs.90)">Microsoft.StylusInput.RealTimeStylus</a>, присоединения к нему окна или элемента управления и создания класса, реализующего <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms575201(v=vs.90)"> Microsoft.StylusInput.IStylusSyncPlugin</a> или <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms575194(v=vs.90)">Microsoft.StylusInput.IStylusAsyncPlugin</a> интерфейс. Затем пользовательский подключаемый модуль добавляется к коллекции <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms585724(v=vs.90)">Microsoft.StylusInput.RealTimeStylus</a>. Дополнительные сведения об этой объектной модели см. в разделе <a href="/windows/desktop/tablet/architecture-of-the-stylusinput-apis">архитектура потоке на платформах</a>.</p>
+<p>На WPF платформы, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> класс предоставляет доступ к коллекции подключаемых модулей, разработке похожую <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms585724(v=vs.90)">Microsoft.StylusInput.RealTimeStylus</a>.  Для перехвата данных пера, создайте класс, наследуемый от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.stylusplugin">StylusPlugIn</a> и добавить объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.stylusplugins">StylusPlugIns</a> коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>. Дополнительные сведения об этом взаимодействии см. в разделе <a href="intercepting-input-from-the-stylus.html">перехват ввода, осуществляемого пером</a>.</p>
+<p>На всех платформах пул потоков получает данные рукописного ввода с помощью событий пера и отправляет его в потоке приложения.  Дополнительные сведения о работе с потоками на платформах Windows и COM, см. в разделе <a href="/windows/desktop/tablet/threading-considerations-for-the-stylusinput-apis">Threading вопросы потоке на платформах</a>.  Дополнительные сведения о потоке на программное обеспечение для презентаций Windows, см. в разделе <a href="the-ink-threading-model.html">потоковая модель рукописного ввода</a>.</p>
+<p>На следующем рисунке сравниваются объектные модели для классов, которые получают данные пера в пуле потоков пера.</p>
+<p><img src="media/ink-stylusplugins.png" alt="Схема StylusPlugin модели WPF и Winforms. " title="Ink_StylusPlugins"></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

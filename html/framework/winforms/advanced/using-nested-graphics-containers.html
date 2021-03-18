@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1075;&#1088;&#1072;&#1092;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1093; &#1082;&#1086;&#1085;&#1090;&#1077;&#1081;&#1085;&#1077;&#1088;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1075;&#1088;&#1072;&#1092;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1093; &#1082;&#1086;&#1085;&#1090;&#1077;&#1081;&#1085;&#1077;&#1088;&#1086;&#1074; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="using-nested-graphics-containers">Использование вложенных графических контейнеров</h1>
+
+<p>GDI+ предоставляет контейнеры, которые можно использовать для временно заменить или дополнить некоторую часть состояния в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Вы создадите контейнер путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.begincontainer">BeginContainer</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Вы можете вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.begincontainer">BeginContainer</a> несколько раз для создания вложенных контейнеров. Каждый вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.begincontainer">BeginContainer</a> должны быть связаны с вызовом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.endcontainer">EndContainer</a>.</p>
+<h2 id="transformations-in-nested-containers">Преобразования во вложенных контейнерах</h2>
+<p>В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект и контейнер внутри этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Мировое преобразование объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект является сдвиг 100 единиц по оси x и на 80 единиц по оси y. Мировое преобразование контейнера является поворот на 30 градусов. Код выполняет вызов <code>DrawRectangle(pen, -60, -30, 120, 60)</code> дважды. Первый вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> находится внутри контейнера; то есть происходит между вызовы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.begincontainer">BeginContainer</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.endcontainer">EndContainer</a>. Второй вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> — после вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.endcontainer">EndContainer</a>.</p>
+<pre><code class="lang-csharp" name="System.Drawing.MiscLegacyTopics#61">Graphics graphics = e.Graphics;
+Pen pen = new Pen(Color.Red);
+GraphicsContainer graphicsContainer;
+graphics.FillRectangle(Brushes.Black, 100, 80, 3, 3);
+
+graphics.TranslateTransform(100, 80);
+
+graphicsContainer = graphics.BeginContainer();
+graphics.RotateTransform(30);
+graphics.DrawRectangle(pen, -60, -30, 120, 60);
+graphics.EndContainer(graphicsContainer);
+
+graphics.DrawRectangle(pen, -60, -30, 120, 60);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В приведенном выше коде прямоугольника, отображаемые из контейнера, применяется сначала объемное преобразование контейнера (поворот), а затем по мировое преобразование объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> (сдвиг). Прямоугольник, извлеченных из вне контейнера, применяется только мировое преобразование объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> (сдвиг). На следующем рисунке показано два прямоугольника:</p>
+<p><img src="media/using-nested-graphics-containers/nested-containers-illustration.png" alt="Рисунок, показывающий вложенные контейнеры."></p>
+<h2 id="clipping-in-nested-containers">Обрезка во вложенных контейнерах</h2>
+<p>В следующем примере показано, как вложенные контейнеры обрабатывать отсеченных областей. Код создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект и контейнер внутри этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Отсеченная область объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект представляет собой прямоугольник, а отсеченная область объекта контейнера — эллипс. Код делает два вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> метод. Первый вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> находится внутри контейнера, а второй вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> выходит за пределы контейнера (после вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.endcontainer">EndContainer</a>). Первая строка обрезается пересечение двух отсеченных областей. Вторая строка обрезается по прямоугольный вырезанной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта.</p>
+<pre><code class="lang-csharp" name="System.Drawing.MiscLegacyTopics#62">Graphics graphics = e.Graphics;
+GraphicsContainer graphicsContainer;
+Pen redPen = new Pen(Color.Red, 2);
+Pen bluePen = new Pen(Color.Blue, 2);
+SolidBrush aquaBrush = new SolidBrush(Color.FromArgb(255, 180, 255, 255));
+SolidBrush greenBrush = new SolidBrush(Color.FromArgb(255, 150, 250, 130));
+
+graphics.SetClip(new Rectangle(50, 65, 150, 120));
+graphics.FillRectangle(aquaBrush, 50, 65, 150, 120);
+
+graphicsContainer = graphics.BeginContainer();
+// Create a path that consists of a single ellipse.
+GraphicsPath path = new GraphicsPath();
+path.AddEllipse(75, 50, 100, 150);
+
+// Construct a region based on the path.
+Region region = new Region(path);
+graphics.FillRegion(greenBrush, region);
+
+graphics.SetClip(region, CombineMode.Replace);
+graphics.DrawLine(redPen, 50, 0, 350, 300);
+graphics.EndContainer(graphicsContainer);
+
+graphics.DrawLine(bluePen, 70, 0, 370, 300);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке показано два усеченные строки:</p>
+<p><img src="media/using-nested-graphics-containers/nested-container-clipped-lines.png" alt="Рисунок, показывающий вложенного контейнера с усеченные строки."></p>
+<p>Как показано в двух приведенных выше примерах, преобразования и отсеченные области накапливаются в вложенные контейнеры. Если задать объемные преобразования контейнера и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта, оба вида преобразований применяются к отображаемым внутри контейнера. Преобразование контейнера будут сначала применяется и преобразование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта, которые будут применяться во-вторых. Если задать отсеченные области контейнера и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объектов, отображаемых внутри контейнера будет обрезаться пересечение двух отсеченных областей.</p>
+<h2 id="quality-settings-in-nested-containers">Параметры качества во вложенные контейнеры</h2>
+<p>Параметры качества (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.smoothingmode">SmoothingMode</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.textrenderinghint">TextRenderingHint</a>и ей подобные) в вложенные контейнеры не являются накопительными; вместо этого параметры качества контейнера временно Замените параметры качества <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. При создании нового контейнера, параметры качества для этого контейнера присваиваются значения по умолчанию. Например, предположим, что у вас есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект с режим сглаживания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.smoothingmode#System_Drawing_Drawing2D_SmoothingMode_AntiAlias">AntiAlias</a>. При создании контейнера, режим сглаживания в контейнер по умолчанию режим сглаживания. Вы можете задать режим сглаживания контейнера и все элементы, отображаемые из контейнера привязки будет рисоваться в соответствии с режимом, которые можно задать. Объекты, отображаемые после вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.endcontainer">EndContainer</a> будут отображаться в соответствии с режимом сглаживания (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.smoothingmode#System_Drawing_Drawing2D_SmoothingMode_AntiAlias">AntiAlias</a>), которая была до вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.begincontainer">BeginContainer</a>.</p>
+<h2 id="several-layers-of-nested-containers">Несколько уровней вложенных контейнеров</h2>
+<p>Вы не ограничены один контейнер в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. Можно создать последовательность контейнеров, вложенных друг в друга, и можно указать мировое преобразование, отсеченной области и параметры качества для каждого из этих вложенных контейнеров. Если вызвать метод рисования из внутреннего контейнера, преобразования применяются в порядке, начиная с контейнером внутреннего и внешнего контейнера. Объекты, отображаемые из внутреннего контейнера обрезаются пересечением отсеченных областей.</p>
+<p>В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> и устанавливает его подсказка отрисовки текста <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.smoothingmode#System_Drawing_Drawing2D_SmoothingMode_AntiAlias">AntiAlias</a>. Код создает два контейнеров — по одному вложен в другой. Подсказка по визуализации текста внешнего контейнера имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.text.textrenderinghint#System_Drawing_Text_TextRenderingHint_SingleBitPerPixel">SingleBitPerPixel</a>, и подсказка по визуализации текста внутреннего контейнера имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.smoothingmode#System_Drawing_Drawing2D_SmoothingMode_AntiAlias">AntiAlias</a>. Код рисует три строки: одну из внутреннего контейнера, одну из внешнего контейнера и один из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> сам объект.</p>
+<pre><code class="lang-csharp" name="System.Drawing.MiscLegacyTopics#63">Graphics graphics = e.Graphics;
+GraphicsContainer innerContainer;
+GraphicsContainer outerContainer;
+SolidBrush brush = new SolidBrush(Color.Blue);
+FontFamily fontFamily = new FontFamily(&quot;Times New Roman&quot;);
+Font font = new Font(fontFamily, 36, FontStyle.Regular, GraphicsUnit.Pixel);
+
+graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+outerContainer = graphics.BeginContainer();
+
+graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
+
+innerContainer = graphics.BeginContainer();
+graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+graphics.DrawString(
+   &quot;Inner Container&quot;,
+   font,
+   brush,
+   new PointF(20, 10));
+graphics.EndContainer(innerContainer);
+
+graphics.DrawString(
+   &quot;Outer Container&quot;,
+   font,
+   brush,
+   new PointF(20, 50));
+
+graphics.EndContainer(outerContainer);
+
+graphics.DrawString(
+   &quot;Graphics Object&quot;,
+   font,
+   brush,
+   new PointF(20, 90));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>На следующем рисунке эти три строки. Строки, выводимые из внутреннего контейнера и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объект Сглаживается, с помощью сглаживания. Строка, выводимая из внешнего контейнера не подвергается сглаживанию, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.textrenderinghint">TextRenderingHint</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.text.textrenderinghint#System_Drawing_Text_TextRenderingHint_SingleBitPerPixel">SingleBitPerPixel</a>.</p>
+<p><img src="media/using-nested-graphics-containers/nested-containers-three-strings.png" alt="Рисунок, показывающий строк, извлеченных из вложенных контейнеров."></p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a></li>
+<li><a href="managing-the-state-of-a-graphics-object.html">Управление состоянием объекта Graphics</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

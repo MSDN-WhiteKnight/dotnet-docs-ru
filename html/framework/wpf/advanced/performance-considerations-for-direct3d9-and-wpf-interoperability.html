@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;, &#1089;&#1074;&#1103;&#1079;&#1072;&#1085;&#1085;&#1099;&#1077; &#1089; &#1074;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077;&#1084; Direct3D9 &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;, &#1089;&#1074;&#1103;&#1079;&#1072;&#1085;&#1085;&#1099;&#1077; &#1089; &#1074;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077;&#1084; Direct3D9 &#1080; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="performance-considerations-for-direct3d9-and-wpf-interoperability">Вопросы производительности, связанные с взаимодействием Direct3D9 и WPF</h1>
+
+<p>С помощью можно разместить содержимого Direct3D9 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> класса. Размещение содержимого Direct3D9 может повлиять на производительность приложения. В этом разделе описываются рекомендации по оптимизации производительности при размещении содержимого Direct3D9 в приложении Windows Presentation Foundation (WPF). Эти рекомендации о том, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> и рекомендации, когда вы используете Windows Vista, Windows XP, и нескольких мониторов.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Примеры кода, иллюстрирующие эти рекомендации, см. в разделе <a href="wpf-and-direct3d9-interoperation.html">взаимодействие WPF и Direct3D9</a>.</p>
+</div>
+<h2 id="use-d3dimage-sparingly">Как можно реже используйте D3DImage</h2>
+<p>Размещенного содержимого Direct3D9 в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> отображается не так быстро, как чистые приложения Direct3D. Копирование поверхности и очистка буфера команд может быть дорогостоящей операции. Как количество <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> экземпляров увеличивается, очистки буфера, а производительность снижается. Таким образом, следует использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> только в случае необходимости.</p>
+<h2 id="best-practices-on-windows-vista">Рекомендации по Windows Vista</h2>
+<p>Для обеспечения максимальной производительности в Windows Vista с отображением, который настроен для использования Windows отображения Driver Model (WDDM), создайте поверхность Direct3D9 на <code>IDirect3DDevice9Ex</code> устройства. Это позволит совместно использовать поверхность. Видеоадаптер должен поддерживать <code>D3DDEVCAPS2_CAN_STRETCHRECT_FROM_TEXTURES</code> и <code>D3DCAPS2_CANSHARERESOURCE</code> возможности драйверов Windows Vista. Все остальные параметры привести к рабочей области для копирования посредством программного обеспечения, что значительно снижает производительность.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если Windows Vista используется дисплей, настроен на использование Windows XP отображения драйвер модели (XDDM), в рабочей области всегда копируется программно, независимо от параметров. С помощью правильных настроек и видеоадаптер вы увидите более высокую производительность в Windows Vista при использовании модели WDDM, поскольку выполняется копирование поверхностей оборудования.</p>
+</div>
+<h2 id="best-practices-on-windows-xp">Рекомендации по Windows XP</h2>
+<p>Для обеспечения максимальной производительности в Windows XP, которая использует Windows XP отображения драйвер модели (XDDM), создайте блокируемый поверхность, которая работает правильно при <code>IDirect3DSurface9::GetDC</code> вызывается метод. На внутреннем уровне <code>BitBlt</code> метод переносит поверхность между устройствами. <code>GetDC</code> Метод всегда работает на поверхностях XRGB. Тем не менее, если клиентский компьютер работает под управлением Windows XP с SP3 или с пакетом обновления 2 и в клиенте также имеется исправление для функции многоуровневых окон, этот метод работает только на поверхностях ARGB. Видеоадаптер должен поддерживать <code>D3DDEVCAPS2_CAN_STRETCHRECT_FROM_TEXTURES</code> возможности драйвера.</p>
+<p>Глубина 16-разрядное отображения рабочего стола может значительно снизить производительность. Рекомендуется использовать 32-разрядную глубину.</p>
+<p>Если при разработке для Windows Vista и Windows XP, тестирование производительности в Windows XP. Нехватку памяти в Windows XP является проблемой. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> в Windows XP использует больше памяти и пропускной способности, чем Windows Vista WDDM, из-за необходимости копирования дополнительной видеопамяти. Таким образом можно ожидать производительность будет хуже, в Windows XP, чем в Windows Vista для этого же видео оборудования.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>XDDM можно найти в ОС Windows XP и Windows Vista; Тем не менее WDDM доступна только в Windows Vista.</p>
+</div>
+<h2 id="general-best-practices">Общие рекомендации</h2>
+<p>При создании устройства, используйте <code>D3DCREATE_MULTITHREADED</code> флаг создания. Это снижает производительность, однако система отрисовки WPF вызывает методы на этом устройстве из другого потока. Не забудьте правильно, выполните протокол блокировки, таким образом, чтобы доступ к устройству двух потоков одновременно.</p>
+<p>Если визуализация выполняется в управляемом потоке WPF, настоятельно рекомендуется создать устройство с помощью <code>D3DCREATE_FPU_PRESERVE</code> флаг создания. Без этого параметра визуализации D3D может снизить точность операций WPF двойной точности и вызвать проблемы отрисовки.</p>
+<p>Мозаичное заполнение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> выполняется быстро, за исключением заполнения не pow2 поверхность без поддержки оборудования, либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a>.</p>
+<h2 id="best-practices-for-multi-monitor-displays">Рекомендации при использовании нескольких мониторов</h2>
+<p>Если вы используете компьютер с несколькими мониторами, соблюдайте выше рекомендациям. Кроме того, существуют также некоторые дополнительные рекомендации по производительности для нескольких мониторов.</p>
+<p>При создании задний буфер, он создается для конкретного устройства и адаптера, но WPF может отобразить кадровый буфер на одном адаптере. Копирование через адаптеры для обновления передний буфер может быть очень дорогим. В Windows Vista, настроенный на использование модели WDDM с несколькими видеоадаптерами и <code>IDirect3DDevice9Ex</code> устройства, если передний буфер в другой адаптер, но по-прежнему же видеоадаптера, производительность снижается, нет. Однако в Windows XP и XDDM с несколькими видеоадаптерами, есть к значительному снижению производительности при отображении передний буфер в другой адаптер задний буфер. Дополнительные сведения см. в разделе <a href="wpf-and-direct3d9-interoperation.html">взаимодействие WPF и Direct3D9</a>.</p>
+<h2 id="performance-summary">Отчет о производительности</h2>
+<p>Следующая таблица показывает производительность обновления передний буфер как функция операционной системы, формат пикселей и поверхности. Передний буфер и задний буфер считаются в одном адаптере. В зависимости от конфигурации адаптера обновления оборудования обычно гораздо быстрее, чем обновлений программного обеспечения.</p>
+<table>
+<thead>
+<tr>
+<th>Формат пикселей поверхности</th>
+<th>Windows Vista, WDDM и 9Ex</th>
+<th>Другие конфигурации Windows Vista</th>
+<th>Windows XP SP3 и SP2 установленным исправлением</th>
+<th>Windows XP с пакетом обновления 2 (SP2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D3DFMT_X8R8G8B8 (не блокируемый)</td>
+<td><strong>Обновление оборудования</strong></td>
+<td>Обновление программного обеспечения</td>
+<td>Обновление программного обеспечения</td>
+<td>Обновление программного обеспечения</td>
+</tr>
+<tr>
+<td>D3DFMT_X8R8G8B8 (блокируемый)</td>
+<td><strong>Обновление оборудования</strong></td>
+<td>Обновление программного обеспечения</td>
+<td><strong>Обновление оборудования</strong></td>
+<td><strong>Обновление оборудования</strong></td>
+</tr>
+<tr>
+<td>D3DFMT_A8R8G8B8 (не блокируемый)</td>
+<td><strong>Обновление оборудования</strong></td>
+<td>Обновление программного обеспечения</td>
+<td>Обновление программного обеспечения</td>
+<td>Обновление программного обеспечения</td>
+</tr>
+<tr>
+<td>D3DFMT_A8R8G8B8 (блокируемый)</td>
+<td><strong>Обновление оборудования</strong></td>
+<td>Обновление программного обеспечения</td>
+<td><strong>Обновление оборудования</strong></td>
+<td>Обновление программного обеспечения</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a></li>
+<li><a href="wpf-and-direct3d9-interoperation.html">Взаимодействие WPF и Direct3D9</a></li>
+<li><a href="walkthrough-creating-direct3d9-content-for-hosting-in-wpf.html">Пошаговое руководство. Создание содержимого Direct3D9 для размещения в WPF</a></li>
+<li><a href="walkthrough-hosting-direct3d9-content-in-wpf.html">Пошаговое руководство. Размещение содержимого Direct3D9 в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

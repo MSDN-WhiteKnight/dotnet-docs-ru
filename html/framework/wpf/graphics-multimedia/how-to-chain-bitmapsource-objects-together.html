@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; &#1088;&#1072;&#1089;&#1090;&#1088;&#1086;&#1074;&#1086;&#1075;&#1086; &#1080;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; &#1088;&#1072;&#1089;&#1090;&#1088;&#1086;&#1074;&#1086;&#1075;&#1086; &#1080;&#1089;&#1090;&#1086;&#1095;&#1085;&#1080;&#1082;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-chain-bitmapsource-objects-together">Практическое руководство. Связывание объектов растрового источника</h1>
+
+<p>В этом примере показано, как можно применить различные эффекты к источнику изображения с помощью цепочки из нескольких <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.bitmapsource">BitmapSource</a> производных объектов.</p>
+<p>Следующий пример использует цепочку, чтобы отразить и изменить формат пикселей источника изображения.</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-xaml" name="ImagingSnippetGallery_snip#ChainedBitmapSourcesXamlExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+
+  &lt;Page.Resources&gt;
+
+    &lt;!-- This resource defines a BitmapImage with a source and a
+         DecodePixelWidth of 200. This property is set to the same value 
+         as the desired width of the image to save on memory use. This 
+         BitmapImage is used as the base for the other BitmapSource resources. --&gt;
+    &lt;BitmapImage x:Key=&quot;masterImage&quot; DecodePixelWidth=&quot;200&quot; 
+     UriSource=&quot;C:\Documents and Settings\All Users\Documents\My Pictures\Sample Pictures\Forest.jpg&quot;/&gt;
+
+    &lt;!-- This TransformedBitmap uses the BitmapImage defined above and flips
+         it 90 degrees. --&gt;
+    &lt;TransformedBitmap x:Key=&quot;rotatedImage&quot; Source=&quot;{StaticResource masterImage}&quot;&gt;
+      &lt;TransformedBitmap.Transform&gt;
+        &lt;RotateTransform Angle=&quot;90&quot; /&gt;
+      &lt;/TransformedBitmap.Transform&gt;
+    &lt;/TransformedBitmap&gt;
+
+    &lt;!-- This FormatConvertedBitmap uses the TransformedBitmap defined above and
+         changes the format to Gray32Float (grayscale). --&gt;
+    &lt;FormatConvertedBitmap x:Key=&quot;convertFormatImage&quot; 
+                           Source=&quot;{StaticResource rotatedImage}&quot;
+                           DestinationFormat=&quot;Gray32Float&quot; /&gt;
+      
+  &lt;/Page.Resources&gt;
+  
+  &lt;StackPanel&gt;
+    
+    &lt;!-- Apply the &quot;convertFormatImage&quot; resource defined above to this image. 
+         The resource is  a combination of all three BitmapSource objects which
+         renders this image with DecodePixelWidth set to 200, fliped 90 degrees 
+         and converted to grayscale. --&gt;
+    &lt;Image Width=&quot;200&quot; Source=&quot;{StaticResource convertFormatImage}&quot; /&gt;
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre><pre><code class="lang-csharp" name="ImagingSnippetGallery_procedural_snip#ChainedBitmapSourcesCodeExampleWholePage">//This is a list of commonly used namespaces for a pane.
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+namespace SDKSample
+{
+    public partial class ChainedBitmapSourcesExample : Page
+    {
+        public ChainedBitmapSourcesExample()
+        {
+            ///// Create a BitmapImage and set it's DecodePixelWidth to 200. Use  /////
+            ///// this BitmapImage as a source for other BitmapSource objects.    /////
+
+            BitmapImage myBitmapImage = new BitmapImage();
+
+            // BitmapSource objects like BitmapImage can only have their properties
+            // changed within a BeginInit/EndInit block.
+            myBitmapImage.BeginInit();
+            myBitmapImage.UriSource = new Uri(&quot;sampleImages/WaterLilies.jpg&quot;,UriKind.Relative);
+
+            // To save significant application memory, set the DecodePixelWidth or
+            // DecodePixelHeight of the BitmapImage value of the image source to the desired
+            // height or width of the rendered image. If you don't do this, the application will
+            // cache the image as though it were rendered as its normal size rather then just
+            // the size that is displayed.
+            // Note: In order to preserve aspect ratio, set DecodePixelWidth
+            // or DecodePixelHeight but not both.
+            myBitmapImage.DecodePixelWidth = 200;
+            myBitmapImage.EndInit();
+
+            /////////////////// Create a BitmapSource that Rotates the image //////////////////////
+            // Use the BitmapImage created above as the source for a new BitmapSource object
+            // that will be scaled to a different size. Create a new BitmapSource by
+            // scaling the original one.
+            // Note: New BitmapSource does not cache. It is always pulled when required.
+
+            // Create the new BitmapSource that will be used to scale the size of the source.
+            TransformedBitmap myRotatedBitmapSource = new TransformedBitmap();
+
+            // BitmapSource objects like TransformedBitmap can only have their properties
+            // changed within a BeginInit/EndInit block.
+            myRotatedBitmapSource.BeginInit();
+
+            // Use the BitmapSource object defined above as the source for this BitmapSource.
+            // This creates a &quot;chain&quot; of BitmapSource objects which essentially inherit from each other.
+            myRotatedBitmapSource.Source = myBitmapImage;
+            // Multiply the size of the X and Y axis of the source by 3.
+            myRotatedBitmapSource.Transform = new RotateTransform(90);
+            myRotatedBitmapSource.EndInit();
+
+            // Create a new BitmapSource using a different format than the original one.
+            FormatConvertedBitmap newFormatedBitmapSource = new FormatConvertedBitmap();
+
+            // BitmapSource objects like FormatConvertedBitmap can only have their properties
+            // changed within a BeginInit/EndInit block.
+            newFormatedBitmapSource.BeginInit();
+            newFormatedBitmapSource.Source = myRotatedBitmapSource;
+            newFormatedBitmapSource.DestinationFormat = PixelFormats.Gray32Float;
+            newFormatedBitmapSource.EndInit();
+
+            // Create Image Element
+            Image myImage = new Image();
+            myImage.Width = 200;
+            //set image source
+            myImage.Source = newFormatedBitmapSource;
+
+            // Add Image to the UI
+            StackPanel myStackPanel = new StackPanel();
+            myStackPanel.Children.Add(myImage);
+            this.Content = myStackPanel;
+        }
+
+        public void PageLoaded(object sender, RoutedEventArgs args)
+        {
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

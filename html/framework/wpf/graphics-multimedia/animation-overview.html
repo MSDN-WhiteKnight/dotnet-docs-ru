@@ -1,0 +1,685 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1101;&#1092;&#1092;&#1077;&#1082;&#1090;&#1072;&#1093; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073; &#1101;&#1092;&#1092;&#1077;&#1082;&#1090;&#1072;&#1093; &#1072;&#1085;&#1080;&#1084;&#1072;&#1094;&#1080;&#1080; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="animation-overview">Общие сведения об эффектах анимации</h1>
+
+<p><a name="introduction"></a>
+Windows Presentation Foundation (WPF) предоставляет мощный набор функций графикой и макетом, которые позволяют создавать привлекательные пользовательские интерфейсы и документы. Применение анимации позволяет сделать пользовательский интерфейс еще более наглядным и удобным в использовании. Используйте анимацию цвета фона или объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transform">Transform</a>, можно создать экранных эффектов перехода или отображения визуальных подсказок.</p>
+<p>Данный обзор представляет введение в WPF анимации и системы. Этот раздел посвящен анимации из WPF объектов с помощью раскадровок.</p>
+<p><a name="introducinganimations"></a></p>
+<h2 id="introducing-animations">Введение в анимацию</h2>
+<p>Анимация — это имитация изменений, которая обеспечивается быстрым показом серии слегка отличающихся друг от друга изображений. Мозг человека воспринимает набор изображений как одну непрерывно изменяющуюся картинку. В фильме эта имитация создается за счет применения камер, записывающих множество фотографий (кадров) в секунду. При воспроизведении кадров проектором зрители видят движущееся изображение.</p>
+<p>Анимация на компьютере выполняется по аналогичному принципу. Например, программа, в которой реализуется исчезновение прямоугольника, может работать следующим образом.</p>
+<ul>
+<li><p>В программе создается таймер.</p>
+</li>
+<li><p>Через заданные временные интервалы проверяется значение таймера для определения истекшего времени.</p>
+</li>
+<li><p>При каждой проверке значения таймера вычисляется текущее значение непрозрачности для прямоугольника в зависимости от прошедшего времени.</p>
+</li>
+<li><p>Затем программа обновляет прямоугольник с использованием нового значения и перерисовывает его.</p>
+</li>
+</ul>
+<p>До версии WPF, Microsoft Windows разработчикам приходится создавать и управлять собственные системы управления временем либо использовать специальные пользовательские библиотеки. WPF включает в себя эффективная система контроля времени, предоставляется с помощью управляемого кода и Язык XAML и которые тесно интегрированы в WPF framework. WPF анимация упрощает анимацию элементов управления и других графических объектов.</p>
+<p>WPF обрабатывает все внутренние процессы управления системой времени и перерисовки экрана эффективно. Предоставляются классы контроля времени, позволяющие сосредоточиться на создаваемых эффектах, а не на механике их реализации. WPF также упрощает создание собственной анимации, предоставляя доступ к базовым классам анимации, из которых пользовательские классы могут наследовать, для создания пользовательской анимации. По сравнению со стандартными пользовательские классы анимации обеспечивают большое преимущество в производительности.</p>
+<p><a name="thewpftimingsystem"></a></p>
+<h2 id="wpf-property-animation-system">Система анимации свойств WPF</h2>
+<p>Если вы понимаете основные понятия системы управления временем WPF анимация может быть проще в использовании. Наиболее важно то, что в WPF, анимация объектов осуществляется путем применения анимации к свойствам этих объектов. Например, чтобы увеличить размер элемента среды, следует анимировать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> свойства. Чтобы скрыть объект из представления, следует анимировать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство.</p>
+<p>Свойство, поддерживающее анимацию, должно удовлетворять следующим трем требованиям.</p>
+<ul>
+<li><p>Свойство является свойством зависимостей.</p>
+</li>
+<li><p>Он должен входить в класс, наследуемый от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> и реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ianimatable">IAnimatable</a> интерфейс.</p>
+</li>
+<li><p>Доступен совместимый тип анимации. (Если WPF не предоставляет его, вы можете создать свой собственный. См. в разделе <a href="custom-animations-overview.html">Общие сведения о пользовательской анимации</a>.)</p>
+</li>
+</ul>
+<p>WPF содержит множество объектов, имеющих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.ianimatable">IAnimatable</a> свойства. Элементы управления, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.tabcontrol">TabControl</a>, а также <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>. Большинство их свойств являются свойствами зависимостей.</p>
+<p>Анимацию можно использовать практически везде, где используются стили и шаблоны элементов управления. Анимация не обязательно должна быть визуальной; можно анимировать и объекты, не являющиеся частью пользовательского интерфейса, если они соответствуют описанным в этом разделе условиям.</p>
+<p><a name="storyboardwalkthrough"></a></p>
+<h2 id="example-make-an-element-fade-in-and-out-of-view">Пример Сделать элемент исчезания и</h2>
+<p>В этом примере показано, как использовать WPF анимации для анимации значения свойства зависимостей. Она использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>, который является типом анимации, создающий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения для анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>. В результате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> исчезает и появляется.</p>
+<p>В первой части примера создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент. Описанные ниже шаги показывают, как создание анимации и применить его в прямоугольник <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство.</p>
+<p>Далее показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_1">&lt;StackPanel Margin=&quot;10&quot;&gt;
+    &lt;Rectangle
+        Name=&quot;MyRectangle&quot;
+        Width=&quot;100&quot; 
+        Height=&quot;100&quot;
+        Fill=&quot;Blue&quot;&gt;
+    &lt;/Rectangle&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Далее показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_1">var myPanel = new StackPanel();
+myPanel.Margin = new Thickness(10);
+
+var myRectangle = new Rectangle();
+myRectangle.Name = &quot;myRectangle&quot;;
+this.RegisterName(myRectangle.Name, myRectangle);
+myRectangle.Width = 100;
+myRectangle.Height = 100;
+myRectangle.Fill = Brushes.Blue;
+myPanel.Children.Add(myRectangle);
+this.Content = myPanel;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="opacity_animation_step1"></a></p>
+<h3 id="part-1-create-a-doubleanimation">Часть 1. Создание объекта DoubleAnimation</h3>
+<p>Одним из способов создания исчезновения и появления элемента является анимация его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство имеет тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a>, вам потребуется анимацию, создающую значения типа double. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> является одна анимация. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> создает переход между двумя значениями типа double. Чтобы указать начальное значение, необходимо задать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойство. Чтобы задать конечное значение, задайте его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойство.</p>
+<ol>
+<li><p>Значение непрозрачности <code>1.0</code> делает объект полностью непрозрачным, а значение непрозрачности <code>0.0</code> полностью невидимым. Чтобы реализовать анимацию перехода от <code>1.0</code> для <code>0.0</code> задаются его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.from">From</a> свойства <code>1.0</code> и его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> свойства <code>0.0</code>. Далее показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_2">&lt;DoubleAnimation From=&quot;1.0&quot; To=&quot;0.0&quot; /&gt;
+</code></pre>
+<p>Далее показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_2">var myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 1.0;
+myDoubleAnimation.To = 0.0;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Далее необходимо указать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> Анимации определяет время, необходимое для перехода от начального к конечному значению. Далее показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> значение пяти секунд в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_3">&lt;DoubleAnimation From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; /&gt;
+</code></pre>
+<p>Далее показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> значение пяти секунд в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_3">myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>В предыдущем примере была анимации, которая переходит из <code>1.0</code> для <code>0.0</code>, чего исчезают из полностью непрозрачными реализуется целевого элемента. Чтобы отобразить элемент обратно в представление после его исчезновения, установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a> свойство для анимации, которую <code>true</code>. Чтобы циклически повторять анимацию бесконечно, задайте его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.repeatbehavior.forever">Forever</a>. Далее показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> свойства в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_4">&lt;DoubleAnimation From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot;/&gt;
+</code></pre>
+<p>Далее показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> свойства в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_4">myDoubleAnimation.AutoReverse = true;
+myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<p><a name="opacity_animation_step2"></a></p>
+<h3 id="part-2-create-a-storyboard">Часть 2. Создать раскадровку</h3>
+<p>Чтобы применить анимацию к объекту, создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> присоединенного свойства для указания объекта и анимируемое свойство.</p>
+<ol>
+<li><p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и добавьте ее в качестве дочернего. Далее показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_5">&lt;Storyboard&gt;
+    &lt;DoubleAnimation
+        From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:1&quot; 
+        AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+&lt;/Storyboard&gt;
+</code></pre>
+<p>Чтобы создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в коде объявите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> переменных на уровне класса.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_100">public partial class MainWindow : Window
+{
+    private Storyboard myStoryboard;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Затем инициализируйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и добавьте ее в качестве дочернего.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_101">myStoryboard = new Storyboard();
+myStoryboard.Children.Add(myDoubleAnimation);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> Должен знать, где применяется анимация. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">Storyboard.TargetName</a> присоединенного свойства для указания объекта для анимации. Далее показано, как задать целевое имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> для <code>MyRectangle</code> в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_6">&lt;Storyboard&gt;
+    &lt;DoubleAnimation
+        Storyboard.TargetName=&quot;MyRectangle&quot; 
+        From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:1&quot; 
+        AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+&lt;/Storyboard&gt;
+</code></pre>
+<p>Далее показано, как задать целевое имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> для <code>MyRectangle</code> в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_102">Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> вложенное свойство, чтобы указать анимируемое свойство. Далее показано, как настроить анимацию к целевому объекту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> в XAML.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml_7">&lt;Storyboard&gt;
+    &lt;DoubleAnimation
+        Storyboard.TargetName=&quot;MyRectangle&quot; 
+        Storyboard.TargetProperty=&quot;Opacity&quot;
+        From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; 
+        AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+&lt;/Storyboard&gt;
+</code></pre>
+<p>Далее показано, как настроить анимацию к целевому объекту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_103">Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> синтаксис и Дополнительные примеры см. в разделе <a href="storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
+<p><a name="opacity_animation_step3"></a></p>
+<h3 id="part-3-xaml-associate-the-storyboard-with-a-trigger">Часть 3 (XAML). Связать раскадровки с триггером</h3>
+<p>Самый простой способ применить и запустить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в XAML является использование триггера событий. В этом разделе показано, как связать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> с триггером в XAML.</p>
+<ol>
+<li><p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> и свяжите с ним раскадровки. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> — это разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.triggeraction">TriggerAction</a> , применения и запуска <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>.</p>
+<pre><code class="lang-xaml" name="animation_ovws_snippet#RectangleOpacityFadeExampleInline_3">&lt;BeginStoryboard&gt;
+  &lt;Storyboard&gt;
+    &lt;DoubleAnimation
+      Storyboard.TargetName=&quot;MyRectangle&quot; 
+      Storyboard.TargetProperty=&quot;Opacity&quot;
+      From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; 
+      AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+  &lt;/Storyboard&gt;
+&lt;/BeginStoryboard&gt;
+</code></pre></li>
+<li><p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> для его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger.actions">Actions</a> коллекции. Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger.routedevent">RoutedEvent</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> на перенаправленное событие, которое вы хотите начать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. (Дополнительные сведения о перенаправленных событиях см. в разделе <a href="../advanced/routed-events-overview.html">Routed Events Overview</a>.)</p>
+<pre><code class="lang-xaml" name="animation_ovws_snippet#RectangleOpacityFadeExampleInline_2">&lt;!-- Animates the rectangle's opacity. --&gt;
+&lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+  &lt;BeginStoryboard&gt;
+    &lt;Storyboard&gt;
+      &lt;DoubleAnimation
+        Storyboard.TargetName=&quot;MyRectangle&quot; 
+        Storyboard.TargetProperty=&quot;Opacity&quot;
+        From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; 
+        AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+    &lt;/Storyboard&gt;
+  &lt;/BeginStoryboard&gt;
+&lt;/EventTrigger&gt;
+</code></pre></li>
+<li><p>Добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.triggers">Triggers</a> коллекции прямоугольника.</p>
+<pre><code class="lang-xaml" name="animation_ovws_snippet#RectangleOpacityFadeExampleInline_1">&lt;Rectangle
+  Name=&quot;MyRectangle&quot;
+  Width=&quot;100&quot; 
+  Height=&quot;100&quot;
+  Fill=&quot;Blue&quot;&gt;
+  &lt;Rectangle.Triggers&gt;
+    &lt;!-- Animates the rectangle's opacity. --&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimation
+            Storyboard.TargetName=&quot;MyRectangle&quot; 
+            Storyboard.TargetProperty=&quot;Opacity&quot;
+            From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; 
+            AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre></li>
+</ol>
+<p><a name="opacity_animation_step3code"></a></p>
+<h3 id="part-3-code-associate-the-storyboard-with-an-event-handler">Часть 3 (код). Связывание раскадровки с обработчиком событий</h3>
+<p>Самый простой способ применить и запустить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в коде является использование обработчика событий. В этом разделе показано, как связать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> с обработчиком событий в коде.</p>
+<ol>
+<li><p>Зарегистрируйтесь для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий прямоугольника.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_104">myRectangle.Loaded += new RoutedEventHandler(myRectangleLoaded);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Объявите обработчик событий. В обработчике событий используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод для применения раскадровки.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode_105">private void myRectangleLoaded(object sender, RoutedEventArgs e)
+{
+    myStoryboard.Begin(this);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h3 id="complete-example">Полный пример</h3>
+<p>Ниже показано, как создать прямоугольник, который исчезает и в XAML появляется.</p>
+<pre><code class="lang-xaml" name="animation_ovws2#RectangleOpacityFadeExampleXaml">&lt;Window x:Class=&quot;WpfApplication1.MainWindow&quot;
+        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;
+    &lt;Grid&gt;
+        &lt;StackPanel Margin=&quot;10&quot;&gt;
+            &lt;Rectangle
+                Name=&quot;MyRectangle&quot;
+                Width=&quot;100&quot; 
+                Height=&quot;100&quot;
+                Fill=&quot;Blue&quot;&gt;
+                &lt;Rectangle.Triggers&gt;
+                    &lt;!-- Animates the rectangle's opacity. --&gt;
+                    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+                        &lt;BeginStoryboard&gt;
+                            &lt;Storyboard&gt;
+                                &lt;DoubleAnimation
+                                    Storyboard.TargetName=&quot;MyRectangle&quot; 
+                                    Storyboard.TargetProperty=&quot;Opacity&quot;
+                                    From=&quot;1.0&quot; To=&quot;0.0&quot; Duration=&quot;0:0:5&quot; 
+                                    AutoReverse=&quot;True&quot; RepeatBehavior=&quot;Forever&quot; /&gt;
+                            &lt;/Storyboard&gt;
+                        &lt;/BeginStoryboard&gt;
+                    &lt;/EventTrigger&gt;
+                &lt;/Rectangle.Triggers&gt;
+            &lt;/Rectangle&gt;
+        &lt;/StackPanel&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre>
+<p>Далее показано, как создать прямоугольник, который исчезает и появляется, в коде.</p>
+<pre><code class="lang-csharp" name="animation_ovws2#RectangleOpacityFadeExampleCode">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+
+namespace WpfApplication1
+{
+    public partial class MainWindow : Window
+    {
+        private Storyboard myStoryboard;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            StackPanel myPanel = new StackPanel();
+            myPanel.Margin = new Thickness(10);
+
+            Rectangle myRectangle = new Rectangle();
+            myRectangle.Name = &quot;myRectangle&quot;;
+            this.RegisterName(myRectangle.Name, myRectangle);
+            myRectangle.Width = 100;
+            myRectangle.Height = 100;
+            myRectangle.Fill = Brushes.Blue;
+
+            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            myDoubleAnimation.From = 1.0;
+            myDoubleAnimation.To = 0.0;
+            myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+            myDoubleAnimation.AutoReverse = true;
+            myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
+
+            myStoryboard = new Storyboard();
+            myStoryboard.Children.Add(myDoubleAnimation);
+            Storyboard.SetTargetName(myDoubleAnimation, myRectangle.Name);
+            Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
+
+            // Use the Loaded event to start the Storyboard.
+            myRectangle.Loaded += new RoutedEventHandler(myRectangleLoaded);
+            myPanel.Children.Add(myRectangle);
+            this.Content = myPanel;
+        }
+
+        private void myRectangleLoaded(object sender, RoutedEventArgs e)
+        {
+            myStoryboard.Begin(this);
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="animationtypes"></a></p>
+<h2 id="animation-types">Типы анимации</h2>
+<p>Поскольку анимация создает значения свойств, для различных типов свойств существуют различные типы анимации. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a>, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойства элемента, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> значения. Для анимации свойства, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a>, используйте анимацию, создающую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a> значений и т. д. Из-за количества различных типов свойств, имеется несколько классов анимации в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation">System.Windows.Media.Animation</a> пространства имен. Имена классов следуют строгому соглашению, благодаря чему их легко различать.</p>
+<ul>
+<li><p>&lt;<em>Тип</em>&gt; анимации</p>
+<p>Такая анимация называется &quot;базовой&quot; (или From/To/By) и производится либо от начального до конечного значения, либо посредством добавления значения смещения к начальному значению.</p>
+<ul>
+<li><p>Чтобы установить начальное значение, присвойте значение свойству From анимации.</p>
+</li>
+<li><p>Чтобы установить конечное значение, присвойте значение свойству To анимации.</p>
+</li>
+<li><p>Чтобы установить значение смещения, присвойте значение свойству By анимации.</p>
+</li>
+</ul>
+<p>В примерах этого раздела используются анимации этого класса, поскольку они являются наиболее простыми в использовании. Анимации From/To/By подробно описываются в обзоре класса анимации.</p>
+</li>
+<li><p>&lt;<em>Тип</em>&gt; AnimationUsingKeyFrames</p>
+<p>Анимация с использованием ключевых кадров является более эффективным средством, чем анимация класса From/To/By, поскольку при ее использовании можно задать любое число конечных значений, а также управлять методами их интерполяции. Некоторые типы могут быть анимированы только с помощью анимации с ключевыми кадрами. По ключевым кадрам описываются подробно в <a href="key-frame-animations-overview.html">сведения об анимации по ключевым кадрам</a>.</p>
+</li>
+<li><p>&lt;<em>Тип</em>&gt; AnimationUsingPath</p>
+<p>Анимация с использованием пути позволяет использовать геометрический путь для создания анимации значений.</p>
+</li>
+<li><p>&lt;<em>Тип</em>&gt; AnimationBase</p>
+<p>Абстрактный класс, при реализации которого анимируется &lt; <em>тип</em>&gt; значение. Этот класс служит базовым классом для &lt; <em>тип</em>&gt; анимации и &lt; <em>тип</em>&gt; AnimationUsingKeyFrames классы. Эти классы используются непосредственно только для создания пользовательской анимации. В противном случае используйте &lt; <em>тип</em>&gt; Animation или KeyFrame&lt;<em>тип</em>&gt; анимации.</p>
+</li>
+</ul>
+<p>В большинстве случаев требуется использовать &lt; <em>тип</em>&gt; классы анимации, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a>.</p>
+<p>В следующей таблице приведены несколько общих типов анимации, а также некоторые свойства, с которыми они используются.</p>
+<table>
+<thead>
+<tr>
+<th>Тип свойства</th>
+<th>Соответствующая базовая (From/To/By) анимация</th>
+<th>Соответствующая анимация с ключевыми кадрами</th>
+<th>Соответствующая анимация с использованием пути</th>
+<th>Пример использования</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimationusingkeyframes">ColorAnimationUsingKeyFrames</a></td>
+<td>Нет</td>
+<td>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush.color">Color</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.gradientstop">GradientStop</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingkeyframes">DoubleAnimationUsingKeyFrames</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimationusingpath">DoubleAnimationUsingPath</a></td>
+<td>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.point">Point</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimation">PointAnimation</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingkeyframes">PointAnimationUsingKeyFrames</a></td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.pointanimationusingpath">PointAnimationUsingPath</a></td>
+<td>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry.center">Center</a> положение элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry">EllipseGeometry</a>.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+<td>Нет</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.stringanimationusingkeyframes">StringAnimationUsingKeyFrames</a></td>
+<td>Нет</td>
+<td>Анимация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="animationsaretimelines"></a></p>
+<h3 id="animations-are-timelines">Анимации представляет собой шкалу времени</h3>
+<p>Все типы анимации наследуют от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> класса; таким образом, все анимации будут специализированными типами шкалы времени. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> определяет сегмент времени. Можно указать <em>характер поведения</em> временной шкалы: ее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>, сколько раз это и даже скорость течения времени для него.</p>
+<p>Поскольку анимация принадлежит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a>, он также представляет сегмент времени. Анимации также вычисляются выходные значения по мере прохождения заданных сегментов времени (или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>). По мере выполнения (воспроизведения) анимации обновляется свойство, с которым она связана.</p>
+<p>Три часто используются свойства времени <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a>.</p>
+<h4 id="the-duration-property">Свойство Duration</h4>
+<p>Как упоминалось ранее, временная шкала представляет собой сегмент времени. Длина этого сегмента определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> временной шкалы, которое обычно задается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration.timespan">TimeSpan</a> значение. По достижении конца временной шкалы времени ее выполнение завершается.</p>
+<p>Анимация использует его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> свойство для определения текущего значения. Если вы не укажете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> значение для анимации, он использует 1 секунды, по умолчанию.</p>
+<p>Следующий синтаксис показывает упрощенную версию Язык XAML синтаксис для атрибута <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> свойство.</p>
+<p><em>часы</em> <code>:</code> <em>минуты</em> <code>:</code> <em>секунды</em></p>
+<p>В следующей таблице показаны несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> параметры и возвращаемые ими значения.</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Возвращаемое значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0:0:5.5</td>
+<td>5,5 секунды.</td>
+</tr>
+<tr>
+<td>0:30:5.5</td>
+<td>30 минут и 5,5 секунды.</td>
+</tr>
+<tr>
+<td>1:30:5.5</td>
+<td>1 час, 30 минут и 5,5 секунды.</td>
+</tr>
+</tbody>
+</table>
+<p>Один из способов для указания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> в коде является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan.fromseconds">FromSeconds</a> метод для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>, чего объявляется новая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> структуры с помощью, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>.</p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> значения и полный Язык XAML синтаксис, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.duration">Duration</a> структуры.</p>
+<h4 id="autoreverse">Свойство AutoReverse</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a> Свойство указывает, является ли воспроизведение временной шкалы по достижении конца ее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>. Если значение этого свойства анимации значение <code>true</code>, обращает анимации при достижении конца ее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a>воспроизведение от конечного значения к начальному значению. По умолчанию это свойство имеет <code>false</code>.</p>
+<h4 id="repeatbehavior">RepeatBehavior</h4>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> Свойство определяет количество воспроизведений временной шкалы. По умолчанию временные шкалы имеют число итераций <code>1.0</code>, означающее, воспроизведение происходит один раз и не повторяется.</p>
+<p>Дополнительные сведения об этих и других свойствах см. в разделе <a href="timing-behaviors-overview.html">Общие сведения о характере поведения</a>.</p>
+<p><a name="applyanimationstoproperty"></a></p>
+<h2 id="applying-an-animation-to-a-property">Применение анимации к свойству</h2>
+<p>В предыдущих разделах описаны различные типы анимации и их свойства времени. В этом подразделе показано, как применить анимацию к свойству. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> объекты предоставляют один из способов применения анимации к свойствам. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> — <em>временной шкалы контейнера</em> , предоставляющей сведения об анимации, которую она содержит.</p>
+<h3 id="targeting-objects-and-properties">Целевые объекты и свойства</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> Класс предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> присоединенных свойств. Эти свойства определяют анимируемые объекты. Чтобы использовать объект в качестве целевого объекта анимации, обычно следует присвоить ему имя.</p>
+<p>Назначение имени для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> отличается от присваивания имени <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта. Большинство элементов управления и панелей являются элементами среды. Однако большинство чисто графических объектов, в том числе кисти, преобразования и геометрические объекты, являются фиксируемыми объектами. Если вы не уверены, является ли тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>, см. <strong>иерархии наследования</strong> разделе данной справочной документации.</p>
+<ul>
+<li><p>Чтобы сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> целевого объекта анимации, присвойте его имя, задав его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.name">Name</a> свойство. В коде, необходимо также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> метод для регистрации имени элемента на странице, к которой он принадлежит.</p>
+</li>
+<li><p>Чтобы сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объект целевого объекта анимации в XAML, использовании <a href="../../xaml-services/x-name-directive.md">директива x: Name</a> присвоить имя. В коде, можно просто использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.registername">RegisterName</a> метод для регистрации объекта на странице, к которой он принадлежит.</p>
+</li>
+</ul>
+<p>В последующих разделах приводится пример присваивания имени элементу в XAML и кода. Более подробные сведения об именовании и определение целевых объектов см. в разделе <a href="storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
+<h3 id="applying-and-starting-storyboards">Применение и запуск раскадровки</h3>
+<p>Чтобы запустить раскадровку XAML, необходимо связать его с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> Является объектом, описывающим, какие действия следует предпринять при возникновении указанного события. Одно из этих действий может быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> действие, которое используется для запуска раскадровки. Триггеры событий по концепции аналогичны обработчикам событий, так как они позволяют задать реакцию приложения на конкретное событие. В отличие от обработчиков событий триггеры событий могут быть полностью описаны в XAML; никакой другой код является обязательным.</p>
+<p>Чтобы запустить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> в коде, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> или использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> класса.</p>
+<p><a name="controllingstoryboards"></a></p>
+<h2 id="interactively-control-a-storyboard">Интерактивное управление раскадровкой</h2>
+<p>В предыдущем примере показан запуск <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> при наступлении определенного события. Вы можете управлять в интерактивном режиме <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> после ее запуска: можно приостановить, возобновить, остановить, перейти к периоду заполнения, поиска и удалить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. Дополнительные сведения и пример, в котором показано, как управлять в интерактивном режиме <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, см. в разделе <a href="storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
+<p><a name="fillbehaviorsection"></a></p>
+<h2 id="what-happens-after-an-animation-ends">Что происходит по завершении анимации?</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior">FillBehavior</a> Свойство определяет поведение временной шкалы по ее завершении. По умолчанию запускается временная шкала <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Filling">Filling</a> при ее окончании. Анимации, которая является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Filling">Filling</a> содержит конечное значение.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> В предыдущем примере не заканчивается, поскольку его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.repeatbehavior.forever">Forever</a>. В следующем примере прямоугольник анимируется с помощью аналогичной анимации. В отличие от предыдущего примера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.repeatbehavior">RepeatBehavior</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.autoreverse">AutoReverse</a> свойств этой анимации остаются значения по умолчанию. Таким образом, анимация выполняется от 1 до 0 в течение пяти секунд, а затем останавливается.</p>
+<pre><code class="lang-xaml" name="animation_ovws_snippet#FillBehaviorExampleRectangleInline">&lt;Rectangle
+  Name=&quot;MyRectangle&quot;
+  Width=&quot;100&quot; 
+  Height=&quot;100&quot;
+  Fill=&quot;Blue&quot;&gt;
+  &lt;Rectangle.Triggers&gt;
+
+    &lt;!-- Animates the rectangle's opacity. --&gt;
+    &lt;EventTrigger RoutedEvent=&quot;Rectangle.Loaded&quot;&gt;
+      &lt;BeginStoryboard&gt;
+        &lt;Storyboard&gt;
+          &lt;DoubleAnimation
+            Storyboard.TargetName=&quot;MyRectangle&quot; 
+            Storyboard.TargetProperty=&quot;Opacity&quot;
+            From=&quot;1.0&quot; To=&quot;0&quot; Duration=&quot;0:0:5&quot; /&gt;
+        &lt;/Storyboard&gt;
+      &lt;/BeginStoryboard&gt;
+    &lt;/EventTrigger&gt;
+  &lt;/Rectangle.Triggers&gt;
+&lt;/Rectangle&gt;
+</code></pre><pre><code class="lang-csharp" name="animation_ovws_procedural_snip#FillBehaviorExampleRectangleInline">DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+myDoubleAnimation.From = 1.0;
+myDoubleAnimation.To = 0.0;
+myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Так как его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> не был изменен со значения по умолчанию, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_HoldEnd">HoldEnd</a>, анимации сохраняется ее конечное значение 0, по ее завершении. Таким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> прямоугольника в 0 после анимация завершается. Если задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> прямоугольника с другим значением, видимых не произойдет, поскольку по-прежнему управляется анимацией <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство.</p>
+<p>Один из способов, чтобы возвратить управление анимированным свойством в коде является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation">BeginAnimation</a> метод и указать значение null для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animationtimeline">AnimationTimeline</a> параметра. Дополнительные сведения и пример см. в разделе <a href="how-to-set-a-property-after-animating-it-with-a-storyboard.html">Установка свойства после его анимации с помощью раскадровки</a>.</p>
+<p>Обратите внимание, что, несмотря на то, что установка значения свойства, имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Active">Active</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clockstate#System_Windows_Media_Animation_ClockState_Filling">Filling</a> анимации, по-видимому, не влияют, измените значение свойства. Дополнительные сведения см. в разделе <a href="animation-and-timing-system-overview.html">анимации и общие сведения о характере системы</a>.</p>
+<p><a name="databindingAndAnimatingAnimationsSection"></a></p>
+<h2 id="data-binding-and-animating-animations">Привязка данных и анимирование анимации</h2>
+<p>Большинство свойств анимации могут быть связаны с данными либо анимированы. Например, можно анимировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.duration">Duration</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>. Однако в связи с особенностями работы системы времени поведение привязки данных или анимированных анимаций отличается от других случаев привязки данных и анимирования объектов. Чтобы понять их поведение, следует понять значение применения анимации к свойству.</p>
+<p>В примере в предыдущем разделе, демонстрируется порядок анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> прямоугольника. При загрузке прямоугольника в предыдущем примере его обработчик событий применяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. Система времени создает копию объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> и его анимации. Эти копии фиксируются (доступным только для чтения) и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> на их основе создаются объекты. Эти объекты используются для выполнения фактических действий по анимации целевых свойств.</p>
+<p>В системе времени создаются часы для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a> и применяет его к объекту и свойству, которое определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetname">TargetName</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.targetproperty">TargetProperty</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>. В этом случае система времени применяет часы к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> свойство объекта, который называется «MyRectangle.»</p>
+<p>Несмотря на то, что часы также создаются для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, часы не применяются к его свойствам. Он предназначен для управления его дочерних часами, которая создается для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation">DoubleAnimation</a>.</p>
+<p>Для отражения анимацией привязки данных или изменений анимации следует обновить ее часы. Автоматическое повторное создание часов не выполняется. Чтобы отразить изменения в анимации, повторно примените соответствующую раскадровку с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.begin">Begin</a> метод. При использовании любого из этих методов анимация запускается повторно. В коде, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.seek">Seek</a> метод для раскадровки обратно в предыдущее положение.</p>
+<p>Для примера данных, привязанного к анимации, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160011">Key Spline Animation Sample</a>. Дополнительные сведения о работе анимации и системы времени см. в разделе <a href="animation-and-timing-system-overview.html">анимации и общие сведения о характере системы</a>.</p>
+<p><a name="otherWaysToAnimateSection"></a></p>
+<h2 id="other-ways-to-animate">Другие способы анимации</h2>
+<p>В примерах этого раздела демонстрируется анимация с помощью раскадровок. При использовании кода можно выполнять анимацию различными способами. Дополнительные сведения см. в разделе <a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a>.</p>
+<p><a name="animation_samples"></a></p>
+<h2 id="animation-samples">Примеры анимации</h2>
+<p>В следующих примерах описывается порядок добавления анимации в приложения.</p>
+<ul>
+<li><p><a href="https://go.microsoft.com/fwlink/?LinkID=159988">FROM, To и пример целевых значений анимации</a></p>
+<p>Описание различных параметров анимации From/To/By.</p>
+</li>
+<li><p><a href="https://go.microsoft.com/fwlink/?LinkID=159970">Пример поведения анимации времени</a></p>
+<p>Описание способов управления поведением анимации во времени. В этом примере также описывается порядок привязки данных для конечного значения анимации.</p>
+</li>
+</ul>
+<p><a name="related_topics"></a></p>
+<h2 id="related-topics">См. также</h2>
+<table>
+<thead>
+<tr>
+<th>Заголовок</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="animation-and-timing-system-overview.html">Общие сведения об анимации и системе управления временем</a></td>
+<td>Описывает, как система управления временем использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> классы, которые позволяют создавать анимации.</td>
+</tr>
+<tr>
+<td><a href="animation-tips-and-tricks.html">Советы и рекомендации по анимации</a></td>
+<td>Список полезных советов по устранению проблем с анимацией, например проблем производительности.</td>
+</tr>
+<tr>
+<td><a href="custom-animations-overview.html">Общие сведения о пользовательской анимации</a></td>
+<td>Описание способов расширения системы анимации полными кадрами, классами анимации и покадровым обратным вызовом.</td>
+</tr>
+<tr>
+<td>Общие сведения об анимациях From/To/By</td>
+<td>Описание способов создания анимации, которая переходит между двумя значениями.</td>
+</tr>
+<tr>
+<td><a href="key-frame-animations-overview.html">Общие сведения об анимации по ключевым кадрам</a></td>
+<td>Описание способов создания анимации с несколькими целевыми значениями, включая возможность управления методом интерполяции.</td>
+</tr>
+<tr>
+<td><a href="easing-functions.html">Функции плавности</a></td>
+<td>Описание способов применения математических формул к анимациям для получения реалистичного поведения, такого как подскок.</td>
+</tr>
+<tr>
+<td><a href="path-animations-overview.html">Общие сведения об анимация с использованием пути</a></td>
+<td>Описание способов перемещения или поворота объекта по сложному пути.</td>
+</tr>
+<tr>
+<td><a href="property-animation-techniques-overview.html">Общие сведения о методах анимации свойств</a></td>
+<td>Описание анимации свойств с помощью раскадровок, локальных анимаций, часов и покадровой анимации.</td>
+</tr>
+<tr>
+<td><a href="storyboards-overview.html">Общие сведения о Storyboard</a></td>
+<td>Описание способов использования раскадровок с несколькими временными шкалами для создания сложных анимаций.</td>
+</tr>
+<tr>
+<td><a href="timing-behaviors-overview.html">Общие сведения о характере поведения во времени</a></td>
+<td>Описывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> типов и свойств, используемых в анимации.</td>
+</tr>
+<tr>
+<td><a href="timing-events-overview.html">Общие сведения о временных событиях</a></td>
+<td>Описывает события, доступные на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объектов для выполнения кода в точках временной шкалы, такие как начать, приостановить, возобновить, пропустить или остановить.</td>
+</tr>
+<tr>
+<td><a href="animation-and-timing-how-to-topics.html">Практические руководства</a></td>
+<td>Примеры кода для использования анимаций и временных шкал в приложении.</td>
+</tr>
+<tr>
+<td><a href="clocks-how-to-topics.html">Разделы руководства, посвященные часам</a></td>
+<td>Примеры кода для использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a> объекта в приложении.</td>
+</tr>
+<tr>
+<td><a href="key-frame-animation-how-to-topics.html">Практические руководства, посвященные анимации по ключевым кадрам</a></td>
+<td>Примеры кода для использования покадровой анимации в приложении.</td>
+</tr>
+<tr>
+<td><a href="path-animation-how-to-topics.html">Практические руководства, посвященные анимации пути</a></td>
+<td>Примеры кода для применения анимации с использованием пути в приложении.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="reference"></a></p>
+<h2 id="reference">Ссылка</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline">Timeline</a></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.beginstoryboard">BeginStoryboard</a></p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.clock">Clock</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

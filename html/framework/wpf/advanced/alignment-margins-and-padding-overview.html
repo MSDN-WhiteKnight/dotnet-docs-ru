@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; Alignment, Margin, Padding | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#1093; Alignment, Margin, Padding | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="alignment-margins-and-padding-overview">Общие сведения о свойствах Alignment, Margin, Padding</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> Класс предоставляет несколько свойств, которые используются для точного размещения дочерних элементов. В этом разделе рассмотрены четыре наиболее важных свойства: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a>. Очень важно иметь представление о результатах применения этих свойств, поскольку они обеспечивают основу для управления положением элементов в приложениях Windows Presentation Foundation (WPF).</p>
+<p><a name="wcpsdk_layout_amp_introduction"></a></p>
+<h2 id="introduction-to-element-positioning">Введение в позиционирование элементов</h2>
+<p>Существуют разные способы позиционирования элементов с помощью WPF. Однако идеальный макет достигается не просто выбором справа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элемент. Точное управление размещением требует понимания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> свойства.</p>
+<p>На следующем рисунке показан сценарий макета, использующий несколько свойств размещения.</p>
+<p><img src="media/layout-margins-padding-alignment-graphic1.PNG" alt="Пример свойств размещения WPF" title="layout_margins_padding_alignment_graphic1"></p>
+<p>На первый взгляд <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> может появиться элементы на этой иллюстрации размещены случайным образом. На самом деле их положение точно контролируется с помощью сочетания полей, выравнивания и заполнения.</p>
+<p>В следующем примере демонстрируется создание макета, показанного на предыдущем рисунке. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> инкапсулирует родительский <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a> значение 15 аппаратно-независимых пикселях. Это учитывается для узкой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brushes.lightblue">LightBlue</a> аппаратного контроллера управления, которая окружает дочерний элемент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a>. Дочерние элементы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> используются для иллюстрации каждого из различных свойств размещения, которые подробно описаны в этом разделе. Три <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементы используются для демонстрации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> свойства.</p>
+<pre><code class="lang-csharp" name="MPALayoutSampleIntro#1">
+// Create the application's main Window.
+mainWindow = new Window ();
+mainWindow.Title = &quot;Margins, Padding and Alignment Sample&quot;;
+
+// Add a Border
+myBorder = new Border();
+myBorder.Background = Brushes.LightBlue;
+myBorder.BorderBrush = Brushes.Black;
+myBorder.Padding = new Thickness(15);
+myBorder.BorderThickness = new Thickness(2);
+
+myStackPanel = new StackPanel();
+myStackPanel.Background = Brushes.White;
+myStackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+myStackPanel.VerticalAlignment = VerticalAlignment.Top;
+
+TextBlock myTextBlock = new TextBlock();
+myTextBlock.Margin = new Thickness(5, 0, 5, 0);
+myTextBlock.FontSize = 18;
+myTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock.Text = &quot;Alignment, Margin and Padding Sample&quot;;
+Button myButton1 = new Button();
+myButton1.HorizontalAlignment = HorizontalAlignment.Left;
+myButton1.Margin = new Thickness(20);
+myButton1.Content = &quot;Button 1&quot;;
+Button myButton2 = new Button();
+myButton2.HorizontalAlignment = HorizontalAlignment.Right;
+myButton2.Margin = new Thickness(10);
+myButton2.Content = &quot;Button 2&quot;;
+Button myButton3 = new Button();
+myButton3.HorizontalAlignment = HorizontalAlignment.Stretch;
+myButton3.Margin = new Thickness(0);
+myButton3.Content = &quot;Button 3&quot;;
+
+// Add child elements to the parent StackPanel.
+myStackPanel.Children.Add(myTextBlock);
+myStackPanel.Children.Add(myButton1);
+myStackPanel.Children.Add(myButton2);
+myStackPanel.Children.Add(myButton3);
+
+// Add the StackPanel as the lone Child of the Border.
+myBorder.Child = myStackPanel;
+
+// Add the Border as the Content of the Parent Window Object.
+mainWindow.Content = myBorder;
+mainWindow.Show ();
+
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Следующая схема обеспечивает подробное представление различных свойств размещения, примененных в предыдущем примере. В последующих разделах этой статьи более подробно описывается использование каждого свойства размещения.</p>
+<p><img src="media/layout-margins-padding-alignment-graphic2.PNG" alt="Свойства размещения с выносками" title="layout_margins_padding_alignment_graphic2"></p>
+<p><a name="wcpsdk_layout_amp_alignment_properties"></a></p>
+<h2 id="understanding-alignment-properties">Общие сведения о свойствах Alignment</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> свойства описывают, как дочерний элемент должен быть размещен в родительском элементе выделенного пространства макета. При совместном использовании этих свойств можно точно расположить дочерние элементы. Например, дочерние элементы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> можно указать четыре разных горизонтального выравнивания: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Left">Left</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Right">Right</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Center">Center</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Stretch">Stretch</a> для заполнения доступного пространства. Аналогичные значения доступны для вертикального размещения.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Явно заданные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойств в элементе имеют приоритет над <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Stretch">Stretch</a> значение свойства. Попытка задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a>и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> значение <code>Stretch</code> приводит <code>Stretch</code> запроса игнорируются.</p>
+</div>
+<p><a name="wcpsdk_layout_amp_horizontalalignment_properties"></a></p>
+<h3 id="horizontalalignment-property">Свойство HorizontalAlignment</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> Свойство объявляет характеристики горизонтального выравнивания для применения к дочерним элементам. Ниже показаны все возможные значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> свойство.</p>
+<table>
+<thead>
+<tr>
+<th>Член</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Left">Left</a></td>
+<td>Дочерние элементы выравниваются по левому краю выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Center">Center</a></td>
+<td>Дочерние элементы выравниваются по центру выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Right">Right</a></td>
+<td>Дочерние элементы выравниваются по правому краю выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Stretch">Stretch</a> (Значение по умолчанию)</td>
+<td>Дочерние элементы растягиваются для заполнения выделенного пространства макета родительского элемента. Явные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> значения имеют приоритет.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере показано, как применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов. Показаны все значения атрибутов, чтобы проиллюстрировать различные режимы отрисовки.</p>
+<pre><code class="lang-csharp" name="MPALayoutHorizontalAlignment#2">Button myButton1 = new Button();
+myButton1.HorizontalAlignment = HorizontalAlignment.Left;
+myButton1.Content = &quot;Button 1 (Left)&quot;;
+Button myButton2 = new Button();
+myButton2.HorizontalAlignment = HorizontalAlignment.Right;
+myButton2.Content = &quot;Button 2 (Right)&quot;;
+Button myButton3 = new Button();
+myButton3.HorizontalAlignment = HorizontalAlignment.Center;
+myButton3.Content = &quot;Button 3 (Center)&quot;;
+Button myButton4 = new Button();
+myButton4.HorizontalAlignment = HorizontalAlignment.Stretch;
+myButton4.Content = &quot;Button 4 (Stretch)&quot;;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Приведенный выше код создает макет, похожий на следующий рисунок. Эффекты размещения для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> значение видны на рисунке.</p>
+<p><img src="media/layout-horizontal-alignment-graphic.PNG" alt="Пример HorizontalAlignment" title="layout_horizontal_alignment_graphic"></p>
+<p><a name="wcpsdk_layout_amp_verticalalignment_properties"></a></p>
+<h3 id="verticalalignment-property">Свойство VerticalAlignment</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> Свойство описывает характеристики вертикального выравнивания, чтобы применить к дочерним элементам. В следующей таблице показаны все возможные значения для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> свойство.</p>
+<table>
+<thead>
+<tr>
+<th>Член</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.verticalalignment#System_Windows_VerticalAlignment_Top">Top</a></td>
+<td>Дочерние элементы выравниваются по верхнему краю выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.verticalalignment#System_Windows_VerticalAlignment_Center">Center</a></td>
+<td>Дочерние элементы выравниваются по центру выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.verticalalignment#System_Windows_VerticalAlignment_Bottom">Bottom</a></td>
+<td>Дочерние элементы выравниваются по нижнему краю выделенного пространства макета родительского элемента.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.verticalalignment#System_Windows_VerticalAlignment_Stretch">Stretch</a> (Значение по умолчанию)</td>
+<td>Дочерние элементы растягиваются для заполнения выделенного пространства макета родительского элемента. Явные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.height">Height</a> значения имеют приоритет.</td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере показано, как применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов. Показаны все значения атрибутов, чтобы проиллюстрировать различные режимы отрисовки. Для данного примера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> с видимым линиями сетки используется в качестве родительского для лучшей иллюстрации поведения каждого значения свойства.</p>
+<pre><code class="lang-csharp" name="MPALayoutVerticalAlignment#2">TextBlock myTextBlock = new TextBlock();
+myTextBlock.FontSize = 18;
+myTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock.Text = &quot;VerticalAlignment Sample&quot;;
+Grid.SetRow(myTextBlock, 0);
+Button myButton1 = new Button();
+myButton1.VerticalAlignment = VerticalAlignment.Top;
+myButton1.Content = &quot;Button 1 (Top)&quot;;
+Grid.SetRow(myButton1, 1);
+Button myButton2 = new Button();
+myButton2.VerticalAlignment = VerticalAlignment.Bottom;
+myButton2.Content = &quot;Button 2 (Bottom)&quot;;
+Grid.SetRow(myButton2, 2);
+Button myButton3 = new Button();
+myButton3.VerticalAlignment = VerticalAlignment.Center;
+myButton3.Content = &quot;Button 3 (Center)&quot;;
+Grid.SetRow(myButton3, 3);
+Button myButton4 = new Button();
+myButton4.VerticalAlignment = VerticalAlignment.Stretch;
+myButton4.Content = &quot;Button 4 (Stretch)&quot;;
+Grid.SetRow(myButton4, 4);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="MPALayoutVerticalAlignment#2">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; 
+      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+      WindowTitle=&quot;VerticalAlignment Sample&quot;&gt;
+  &lt;Border Background=&quot;LightBlue&quot; BorderBrush=&quot;Black&quot; BorderThickness=&quot;2&quot; Padding=&quot;15&quot;&gt;
+    &lt;Grid Background=&quot;White&quot; ShowGridLines=&quot;True&quot;&gt;
+      &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height=&quot;25&quot;/&gt;
+        &lt;RowDefinition Height=&quot;50&quot;/&gt;
+        &lt;RowDefinition Height=&quot;50&quot;/&gt;
+        &lt;RowDefinition Height=&quot;50&quot;/&gt;
+        &lt;RowDefinition Height=&quot;50&quot;/&gt;
+      &lt;/Grid.RowDefinitions&gt;
+            &lt;TextBlock Grid.Row=&quot;0&quot; Grid.Column=&quot;0&quot; FontSize=&quot;18&quot; HorizontalAlignment=&quot;Center&quot;&gt;VerticalAlignment Sample&lt;/TextBlock&gt;
+            &lt;Button Grid.Row=&quot;1&quot; Grid.Column=&quot;0&quot; VerticalAlignment=&quot;Top&quot;&gt;Button 1 (Top)&lt;/Button&gt;
+            &lt;Button Grid.Row=&quot;2&quot; Grid.Column=&quot;0&quot; VerticalAlignment=&quot;Bottom&quot;&gt;Button 2 (Bottom)&lt;/Button&gt;    
+            &lt;Button Grid.Row=&quot;3&quot; Grid.Column=&quot;0&quot; VerticalAlignment=&quot;Center&quot;&gt;Button 3 (Center)&lt;/Button&gt;
+            &lt;Button Grid.Row=&quot;4&quot; Grid.Column=&quot;0&quot; VerticalAlignment=&quot;Stretch&quot;&gt;Button 4 (Stretch)&lt;/Button&gt;          
+    &lt;/Grid&gt;
+  &lt;/Border&gt;    
+&lt;/Page&gt;
+</code></pre>
+<p>Приведенный выше код создает макет, похожий на следующий рисунок. Эффекты размещения для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> значение видны на рисунке.</p>
+<p><img src="media/layout-vertical-alignment-graphic.PNG" alt="Пример свойства VerticalAlignment" title="layout_vertical_alignment_graphic"></p>
+<p><a name="wcpsdk_layout_amp_margin_properties"></a></p>
+<h2 id="understanding-margin-properties">Основные сведения о свойствах Margin</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> Свойство описывает расстояние между элементом и его дочерних или одноранговых узлов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> значения могут быть однородными, используя следующий синтаксис <code>Margin=&quot;20&quot;</code>. С помощью этого синтаксиса равномерное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> 20 устройства независимых пикселях будут применяться к элементу. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> значения может также принимать форму четыре различных значений, описывающих различные поля слева, сверху, справа и снизу (в таком порядке), как <code>Margin=&quot;0,10,5,25&quot;</code>. Правильное использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> свойство позволяет очень точно управлять положением отрисовки элемента и положения его соседних и дочерних элементов.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Ненулевое значение поля применяет пространство за пределами этого элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualwidth">ActualWidth</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.actualheight">ActualHeight</a>.</p>
+</div>
+<p>В следующем примере показано, как применить однородные поля группы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> Элементы расположены равномерно с буфером 10 точек в каждом направлении.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="MarginPaddingAlignmentSample#1">Button myButton7 = new Button();
+myButton7.Margin = new Thickness(10);
+myButton7.Content = &quot;Button 7&quot;;
+Button myButton8 = new Button();
+myButton8.Margin = new Thickness(10);
+myButton8.Content = &quot;Button 8&quot;;
+Button myButton9 = new Button();
+myButton9.Margin = new Thickness(10);
+myButton9.Content = &quot;Button 9&quot;;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="MarginPaddingAlignmentSample#1">&lt;Button Margin=&quot;10&quot;&gt;Button 7&lt;/Button&gt;
+&lt;Button Margin=&quot;10&quot;&gt;Button 8&lt;/Button&gt;
+&lt;Button Margin=&quot;10&quot;&gt;Button 9&lt;/Button&gt;
+</code></pre>
+<p>Во многих случаях универсальные поля не подходят. В этих случаях можно применять неоднородные интервалы. В следующем примере показано применение неоднородных полей к дочерним элементам. Поля описываются в следующем порядке: слева, сверху, справа, снизу.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="MarginPaddingAlignmentSample#2">Button myButton1 = new Button();
+myButton1.Margin = new Thickness(0, 10, 0, 10);
+myButton1.Content = &quot;Button 1&quot;;
+Button myButton2 = new Button();
+myButton2.Margin = new Thickness(0, 10, 0, 10);
+myButton2.Content = &quot;Button 2&quot;;
+Button myButton3 = new Button();
+myButton3.Margin = new Thickness(0, 10, 0, 10);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="MarginPaddingAlignmentSample#2">&lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 1&lt;/Button&gt;
+&lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 2&lt;/Button&gt;
+&lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 3&lt;/Button&gt;
+</code></pre>
+<p><a name="wcpsdk_layout_amp_padding_properties"></a></p>
+<h2 id="understanding-the-padding-property">Основные сведения о свойстве Padding</h2>
+<p>Аналогично свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> во многом. Свойство Padding предоставляется в только в нескольких классах, главным образом для удобства: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.block">Block</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> являются примерами классов, которые предоставляют свойство Padding. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a> Свойство увеличивает эффективный размер дочернего элемента по заданному <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.thickness">Thickness</a> значение.</p>
+<p>В следующем примере показано, как применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a> к родительскому элементу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="MarginPaddingAlignmentSample#3">myBorder = new Border();
+myBorder.Background = Brushes.LightBlue;
+myBorder.BorderBrush = Brushes.Black;
+myBorder.BorderThickness = new Thickness(2);
+myBorder.CornerRadius = new CornerRadius(45);
+myBorder.Padding = new Thickness(25);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="MarginPaddingAlignmentSample#3">&lt;Border Background=&quot;LightBlue&quot; 
+        BorderBrush=&quot;Black&quot; 
+        BorderThickness=&quot;2&quot; 
+        CornerRadius=&quot;45&quot; 
+        Padding=&quot;25&quot;&gt;
+</code></pre>
+<p><a name="wcpsdk_layout_amp_summary"></a></p>
+<h2 id="using-alignment-margins-and-padding-in-an-application">Использование свойств Alignment, Margin и Padding в приложении</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a> предоставляют управления размещением, необходимые для создания сложного пользовательский интерфейс. Эффекты каждого свойства позволяют изменить размещение дочерних элементов, обеспечивая гибкость создания динамических приложений и интерфейсов пользователя.</p>
+<p>В следующем примере демонстрируются понятия, описанные в этом разделе. Основываясь на инфраструктуре, приведенной в первом примере этого раздела, в этом примере добавляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> как дочерний элемент элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> в первом примере. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.padding">Padding</a> применяется к родительскому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> Используется для разделения пространства между тремя дочерними <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элементов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементы повторно используются для отображения различных эффектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы добавляются к каждому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.columndefinition">ColumnDefinition</a> для лучшего определения различных свойств, применяемых к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> элементов в каждом столбце.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="MarginPaddingAlignmentSample#4">mainWindow = new Window();
+
+myBorder = new Border();
+myBorder.Background = Brushes.LightBlue;
+myBorder.BorderBrush = Brushes.Black;
+myBorder.BorderThickness = new Thickness(2);
+myBorder.CornerRadius = new CornerRadius(45);
+myBorder.Padding = new Thickness(25);
+
+// Define the Grid.
+myGrid = new Grid();
+myGrid.Background = Brushes.White;
+myGrid.ShowGridLines = true;
+
+// Define the Columns.
+ColumnDefinition myColDef1 = new ColumnDefinition();
+myColDef1.Width = new GridLength(1, GridUnitType.Auto);
+ColumnDefinition myColDef2 = new ColumnDefinition();
+myColDef2.Width = new GridLength(1, GridUnitType.Star);
+ColumnDefinition myColDef3 = new ColumnDefinition();
+myColDef3.Width = new GridLength(1, GridUnitType.Auto);
+
+// Add the ColumnDefinitions to the Grid.
+myGrid.ColumnDefinitions.Add(myColDef1);
+myGrid.ColumnDefinitions.Add(myColDef2);
+myGrid.ColumnDefinitions.Add(myColDef3);
+
+// Add the first child StackPanel.
+StackPanel myStackPanel = new StackPanel();
+myStackPanel.HorizontalAlignment = HorizontalAlignment.Left;
+myStackPanel.VerticalAlignment = VerticalAlignment.Top;
+Grid.SetColumn(myStackPanel, 0);
+Grid.SetRow(myStackPanel, 0);
+TextBlock myTextBlock1 = new TextBlock();
+myTextBlock1.FontSize = 18;
+myTextBlock1.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock1.Margin = new Thickness(0, 0, 0, 15);
+myTextBlock1.Text = &quot;StackPanel 1&quot;;
+Button myButton1 = new Button();
+myButton1.Margin = new Thickness(0, 10, 0, 10);
+myButton1.Content = &quot;Button 1&quot;;
+Button myButton2 = new Button();
+myButton2.Margin = new Thickness(0, 10, 0, 10);
+myButton2.Content = &quot;Button 2&quot;;
+Button myButton3 = new Button();
+myButton3.Margin = new Thickness(0, 10, 0, 10);
+TextBlock myTextBlock2 = new TextBlock();
+myTextBlock2.Text = @&quot;ColumnDefinition.Width = &quot;&quot;Auto&quot;&quot;&quot;;
+TextBlock myTextBlock3 = new TextBlock();
+myTextBlock3.Text = @&quot;StackPanel.HorizontalAlignment = &quot;&quot;Left&quot;&quot;&quot;;
+TextBlock myTextBlock4 = new TextBlock();
+myTextBlock4.Text = @&quot;StackPanel.VerticalAlignment = &quot;&quot;Top&quot;&quot;&quot;;
+TextBlock myTextBlock5 = new TextBlock();
+myTextBlock5.Text = @&quot;StackPanel.Orientation = &quot;&quot;Vertical&quot;&quot;&quot;;
+TextBlock myTextBlock6 = new TextBlock();
+myTextBlock6.Text = @&quot;Button.Margin = &quot;&quot;1,10,0,10&quot;&quot;&quot;;
+myStackPanel.Children.Add(myTextBlock1);
+myStackPanel.Children.Add(myButton1);
+myStackPanel.Children.Add(myButton2);
+myStackPanel.Children.Add(myButton3);
+myStackPanel.Children.Add(myTextBlock2);
+myStackPanel.Children.Add(myTextBlock3);
+myStackPanel.Children.Add(myTextBlock4);
+myStackPanel.Children.Add(myTextBlock5);
+myStackPanel.Children.Add(myTextBlock6);
+
+// Add the second child StackPanel.
+StackPanel myStackPanel2 = new StackPanel();
+myStackPanel2.HorizontalAlignment = HorizontalAlignment.Stretch;
+myStackPanel2.VerticalAlignment = VerticalAlignment.Top;
+myStackPanel2.Orientation = Orientation.Vertical;
+Grid.SetColumn(myStackPanel2, 1);
+Grid.SetRow(myStackPanel2, 0);
+TextBlock myTextBlock7 = new TextBlock();
+myTextBlock7.FontSize = 18;
+myTextBlock7.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock7.Margin = new Thickness(0, 0, 0, 15);
+myTextBlock7.Text = &quot;StackPanel 2&quot;;
+Button myButton4 = new Button();
+myButton4.Margin = new Thickness(10, 0, 10, 0);
+myButton4.Content = &quot;Button 4&quot;;
+Button myButton5 = new Button();
+myButton5.Margin = new Thickness(10, 0, 10, 0);
+myButton5.Content = &quot;Button 5&quot;;
+Button myButton6 = new Button();
+myButton6.Margin = new Thickness(10, 0, 10, 0);
+myButton6.Content = &quot;Button 6&quot;;
+TextBlock myTextBlock8 = new TextBlock();
+myTextBlock8.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock8.Text = @&quot;ColumnDefinition.Width = &quot;&quot;*&quot;&quot;&quot;;
+TextBlock myTextBlock9 = new TextBlock();
+myTextBlock9.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock9.Text = @&quot;StackPanel.HorizontalAlignment = &quot;&quot;Stretch&quot;&quot;&quot;;
+TextBlock myTextBlock10 = new TextBlock();
+myTextBlock10.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock10.Text = @&quot;StackPanel.VerticalAlignment = &quot;&quot;Top&quot;&quot;&quot;;
+TextBlock myTextBlock11 = new TextBlock();
+myTextBlock11.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock11.Text = @&quot;StackPanel.Orientation = &quot;&quot;Horizontal&quot;&quot;&quot;;
+TextBlock myTextBlock12 = new TextBlock();
+myTextBlock12.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock12.Text = @&quot;Button.Margin = &quot;&quot;10,0,10,0&quot;&quot;&quot;;
+myStackPanel2.Children.Add(myTextBlock7);
+myStackPanel2.Children.Add(myButton4);
+myStackPanel2.Children.Add(myButton5);
+myStackPanel2.Children.Add(myButton6);
+myStackPanel2.Children.Add(myTextBlock8);
+myStackPanel2.Children.Add(myTextBlock9);
+myStackPanel2.Children.Add(myTextBlock10);
+myStackPanel2.Children.Add(myTextBlock11);
+myStackPanel2.Children.Add(myTextBlock12);
+
+// Add the final child StackPanel.
+StackPanel myStackPanel3 = new StackPanel();
+myStackPanel3.HorizontalAlignment = HorizontalAlignment.Left;
+myStackPanel3.VerticalAlignment = VerticalAlignment.Top;
+Grid.SetColumn(myStackPanel3, 2);
+Grid.SetRow(myStackPanel3, 0);
+TextBlock myTextBlock13 = new TextBlock();
+myTextBlock13.FontSize = 18;
+myTextBlock13.HorizontalAlignment = HorizontalAlignment.Center;
+myTextBlock13.Margin = new Thickness(0, 0, 0, 15);
+myTextBlock13.Text = &quot;StackPanel 3&quot;;
+Button myButton7 = new Button();
+myButton7.Margin = new Thickness(10);
+myButton7.Content = &quot;Button 7&quot;;
+Button myButton8 = new Button();
+myButton8.Margin = new Thickness(10);
+myButton8.Content = &quot;Button 8&quot;;
+Button myButton9 = new Button();
+myButton9.Margin = new Thickness(10);
+myButton9.Content = &quot;Button 9&quot;;
+TextBlock myTextBlock14 = new TextBlock();
+myTextBlock14.Text = @&quot;ColumnDefinition.Width = &quot;&quot;Auto&quot;&quot;&quot;;
+TextBlock myTextBlock15 = new TextBlock();
+myTextBlock15.Text = @&quot;StackPanel.HorizontalAlignment = &quot;&quot;Left&quot;&quot;&quot;;
+TextBlock myTextBlock16 = new TextBlock();
+myTextBlock16.Text = @&quot;StackPanel.VerticalAlignment = &quot;&quot;Top&quot;&quot;&quot;;
+TextBlock myTextBlock17 = new TextBlock();
+myTextBlock17.Text = @&quot;StackPanel.Orientation = &quot;&quot;Vertical&quot;&quot;&quot;;
+TextBlock myTextBlock18 = new TextBlock();
+myTextBlock18.Text = @&quot;Button.Margin = &quot;&quot;10&quot;&quot;&quot;;
+myStackPanel3.Children.Add(myTextBlock13);
+myStackPanel3.Children.Add(myButton7);
+myStackPanel3.Children.Add(myButton8);
+myStackPanel3.Children.Add(myButton9);
+myStackPanel3.Children.Add(myTextBlock14);
+myStackPanel3.Children.Add(myTextBlock15);
+myStackPanel3.Children.Add(myTextBlock16);
+myStackPanel3.Children.Add(myTextBlock17);
+myStackPanel3.Children.Add(myTextBlock18);
+
+// Add child content to the parent Grid.
+myGrid.Children.Add(myStackPanel);
+myGrid.Children.Add(myStackPanel2);
+myGrid.Children.Add(myStackPanel3);
+
+// Add the Grid as the lone child of the Border.
+myBorder.Child = myGrid;
+
+// Add the Border to the Window as Content and show the Window.
+mainWindow.Content = myBorder;
+mainWindow.Title = &quot;Margin, Padding, and Alignment Sample&quot;;
+mainWindow.Show();
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-xaml" name="MarginPaddingAlignmentSample#4">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; WindowTitle=&quot;Margins, Padding and Alignment Sample&quot;&gt;
+  &lt;Border Background=&quot;LightBlue&quot; 
+          BorderBrush=&quot;Black&quot; 
+          BorderThickness=&quot;2&quot; 
+          CornerRadius=&quot;45&quot; 
+          Padding=&quot;25&quot;&gt;
+    &lt;Grid Background=&quot;White&quot; ShowGridLines=&quot;True&quot;&gt;
+      &lt;Grid.ColumnDefinitions&gt;
+        &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
+        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
+        &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;
+      &lt;/Grid.ColumnDefinitions&gt;
+        
+    &lt;StackPanel Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; Name=&quot;StackPanel1&quot; VerticalAlignment=&quot;Top&quot;&gt;
+        &lt;TextBlock FontSize=&quot;18&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;0,0,0,15&quot;&gt;StackPanel1&lt;/TextBlock&gt;
+        &lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 1&lt;/Button&gt;
+        &lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 2&lt;/Button&gt;
+        &lt;Button Margin=&quot;0,10,0,10&quot;&gt;Button 3&lt;/Button&gt;
+        &lt;TextBlock&gt;ColumnDefinition.Width=&quot;Auto&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.HorizontalAlignment=&quot;Left&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.VerticalAlignment=&quot;Top&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.Orientation=&quot;Vertical&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;Button.Margin=&quot;0,10,0,10&quot;&lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;
+    
+    &lt;StackPanel Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot; HorizontalAlignment=&quot;Stretch&quot; Name=&quot;StackPanel2&quot; VerticalAlignment=&quot;Top&quot; Orientation=&quot;Vertical&quot;&gt;
+        &lt;TextBlock FontSize=&quot;18&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;0,0,0,15&quot;&gt;StackPanel2&lt;/TextBlock&gt;
+        &lt;Button Margin=&quot;10,0,10,0&quot;&gt;Button 4&lt;/Button&gt;
+        &lt;Button Margin=&quot;10,0,10,0&quot;&gt;Button 5&lt;/Button&gt;
+        &lt;Button Margin=&quot;10,0,10,0&quot;&gt;Button 6&lt;/Button&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;&gt;ColumnDefinition.Width=&quot;*&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;&gt;StackPanel.HorizontalAlignment=&quot;Stretch&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;&gt;StackPanel.VerticalAlignment=&quot;Top&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;&gt;StackPanel.Orientation=&quot;Horizontal&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;&gt;Button.Margin=&quot;10,0,10,0&quot;&lt;/TextBlock&gt;
+    &lt;/StackPanel&gt;        
+        
+    &lt;StackPanel Grid.Column=&quot;2&quot; Grid.Row=&quot;0&quot; HorizontalAlignment=&quot;Left&quot; Name=&quot;StackPanel3&quot; VerticalAlignment=&quot;Top&quot;&gt;
+        &lt;TextBlock FontSize=&quot;18&quot; HorizontalAlignment=&quot;Center&quot; Margin=&quot;0,0,0,15&quot;&gt;StackPanel3&lt;/TextBlock&gt;
+        &lt;Button Margin=&quot;10&quot;&gt;Button 7&lt;/Button&gt;
+        &lt;Button Margin=&quot;10&quot;&gt;Button 8&lt;/Button&gt;
+        &lt;Button Margin=&quot;10&quot;&gt;Button 9&lt;/Button&gt;
+        &lt;TextBlock&gt;ColumnDefinition.Width=&quot;Auto&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.HorizontalAlignment=&quot;Left&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.VerticalAlignment=&quot;Top&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;StackPanel.Orientation=&quot;Vertical&quot;&lt;/TextBlock&gt;
+        &lt;TextBlock&gt;Button.Margin=&quot;10&quot;&lt;/TextBlock&gt;      
+    &lt;/StackPanel&gt;
+  &lt;/Grid&gt;
+  &lt;/Border&gt;    
+&lt;/Page&gt;
+</code></pre>
+<p>При компиляции приведенное выше приложение создает ИП, который показан на рисунке ниже. Влияние различных значений свойств выражается интервалами между элементами, а существенные изменения значений свойств для элементов в каждом столбце отображаются внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов.</p>
+<p><img src="media/layout-margins-padding-aligment-graphic3.PNG" alt="Несколько свойств размещения в одном приложении" title="layout_margins_padding_aligment_graphic3"></p>
+<p><a name="wcpsdk_layout_amp_alignment_whatsnext"></a></p>
+<h2 id="whats-next">Что дальше?</h2>
+<p>Свойства позиционирования, определенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класс обеспечивают точное управление размещением элементов в WPF приложений. Вы получаете в свое распоряжение несколько способов, позволяющих более эффективно размещать элементы с помощью WPF.</p>
+<p>Доступны дополнительные ресурсы, в которых макет WPF рассматривается более подробно. <a href="../controls/panels-overview.html">Общие сведения о панелях</a> разделе содержатся более подробные сведения о различных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> элементов. Раздел <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a> рассмотрены дополнительные методики, использующие элементы макета для размещения компонентов и привязки их действий к источникам данных.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.verticalalignment">VerticalAlignment</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.margin">Margin</a></li>
+<li><a href="../controls/panels-overview.html">Общие сведения о панелях</a></li>
+<li><a href="layout.html">Макет</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160054">Пример коллекции макетов WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

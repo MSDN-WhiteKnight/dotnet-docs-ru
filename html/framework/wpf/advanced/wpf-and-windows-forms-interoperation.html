@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-and-windows-forms-interoperation">Взаимодействие WPF и Windows Forms</h1>
+
+<p>WPF и Windows Forms представляют две различные архитектуры для создания интерфейсов приложений. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration">System.Windows.Forms.Integration</a> Пространство имен предоставляет классы, обеспечивающие общие сценарии взаимодействия. Ключевыми классами, реализующими возможности взаимодействия, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a>. В этом разделе описано, какие сценарии взаимодействия поддерживаются, а какие нет.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Особое внимание уделено сценарию <em>гибридного элемента управления</em>. Гибридный элемент управления — это элемент управления на основе одной технологии, в который вложен элемент управления на основе другой технологии. Это также называется <em>вложенным взаимодействием</em>. В <em>многоуровневом гибридном элементе управления</em> более одного уровня вложения. Примером многоуровневого вложенного взаимодействия является элемент управления Windows Forms, который содержит элемент управления WPF, содержащий другой элемент управления Windows Forms. Многоуровневые гибридные элементы управления не поддерживаются.</p>
+</div>
+<p><a name="Windows_Presentation_Foundation_Application_Hosting"></a></p>
+<h2 id="hosting-windows-forms-controls-in-wpf">Размещение элементов управления Windows Forms в WPF</h2>
+<p>Поддерживаются следующие сценарии взаимодействия при WPF элемент управления размещает элемент управления Windows Forms:</p>
+<ul>
+<li><p>В элемент управления WPF с помощью XAML могут быть вложены один или несколько элементов управления Windows Forms.</p>
+</li>
+<li><p>С помощью кода в него могут быть вложены один или несколько элементов управления Windows Forms.</p>
+</li>
+<li><p>В него могут быть вложены контейнерные элементы управления Windows Forms, содержащие элементы управления Windows Forms.</p>
+</li>
+<li><p>В него может быть вложена форма с отношением &quot;главный-подчиненный&quot; с главным элементом WPF и подчиненными элементами Windows Forms.</p>
+</li>
+<li><p>В него может быть вложена форма с отношением &quot;главный-подчиненный&quot; с главным элементом Windows Forms и подчиненными элементами WPF.</p>
+</li>
+<li><p>В него могут быть вложены один или несколько элементов ActiveX.</p>
+</li>
+<li><p>В него могут быть вложены один или несколько составных элементов управления.</p>
+</li>
+<li><p>С помощью Язык XAML в него могут быть вложены гибридные элементы управления.</p>
+</li>
+<li><p>С помощью кода в него могут быть вложены гибридные элементы управления.</p>
+</li>
+</ul>
+<h3 id="layout-support">Поддержка макета</h3>
+<p>Ниже перечислены известные ограничения при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> пытается интегрировать вложенный элемент Windows Forms управления в WPF системы макета.</p>
+<ul>
+<li><p>В некоторых случаях размеры элемента управления Windows Forms изменять нельзя, или же их можно изменять, но только в фиксированных пределах. Например Windows Forms <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> элемент управления поддерживает только одну высоту, которая определяется размером шрифта элемента управления. В WPF динамический макет, где предполагается, что элементы можно растянуть по вертикали, вложенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> управления не растягивается, как ожидалось.</p>
+</li>
+<li><p>Windows Forms элементы управления нельзя поворачивать или неравномерным. Например, при повороте пользовательского интерфейса на 90 градусов вложенные элементы управления Windows Forms сохранят свое вертикальное положение.</p>
+</li>
+<li><p>В большинстве случаев элементы управления Windows Forms не поддерживают пропорциональное масштабирование. Несмотря на то, что общий размер элемента управления масштабируется, дочерние элементы управления и компоненты элемента управления могут изменять размеры не так, как ожидается. Это ограничение зависит от поддержки масштабирования каждым элементом управления Windows Forms.</p>
+</li>
+<li><p>В пользовательском интерфейсе WPF можно изменить z-порядок элементов для контроля поведения перекрывания. Вложенный элемент управления Windows Forms рисуется в отдельном HWND, причем он всегда рисуется поверх элементов WPF.</p>
+</li>
+<li><p>Windows Forms элементы управления поддерживают автоматическое масштабирование в зависимости от размера шрифта. В пользовательском интерфейсе WPF изменение размера шрифта не влечет за собой изменение размера всего макета, хотя отдельные элементы могут динамически изменять размер.</p>
+</li>
+</ul>
+<h3 id="ambient-properties">Внешние свойства</h3>
+<p>Некоторые внешние свойства элементов управления WPF имеют эквиваленты Windows Forms. Эти внешние свойства распространяются на вложенные Windows Forms управляет и предоставляются как общие свойства на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Управления преобразует каждое WPF внешнее свойство в его Windows Forms эквивалент.</p>
+<p>Дополнительные сведения см. в разделе <a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a>.</p>
+<h3 id="behavior">Поведение</h3>
+<p>В приведенной ниже таблице описаны возможности взаимодействия.</p>
+<table>
+<thead>
+<tr>
+<th>Поведение</th>
+<th>Поддерживается</th>
+<th>Не поддерживается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Прозрачность</td>
+<td>Windows Forms отрисовка элемента управления поддерживает прозрачность. Фон родительского элемента управления WPF может стать фоном вложенного элемента управления Windows Forms.</td>
+<td>Некоторые элементы управления Windows Forms не поддерживают прозрачность. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.combobox">ComboBox</a> элементы управления не будут прозрачными при вложении в WPF.</td>
+</tr>
+<tr>
+<td>Переход по клавише TAB</td>
+<td>Последовательность табуляции для вложенных элементов управления Windows Forms та же, что и при вложении этих элементов управления в приложение, основанное на Windows Forms.<br><br> Переход от элемента управления WPF к элементу управления Windows Forms по клавишам TAB и SHIFT+TAB работает как обычно.<br><br> Windows Forms элементы управления, имеющие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.tabstop">TabStop</a> значение свойства <code>false</code> не получают фокус, когда пользователь переключается между элементами управления.<br><br> -Каждое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.tabindex">TabIndex</a> значение, которое определяет, когда, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент управления получает фокус.<br>-   Windows Forms элементы управления, содержащиеся внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> контейнера выполните порядке, указанном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.tabindex">TabIndex</a> свойство. При переходе от последнего индекса табуляции фокус получает следующий элемент управления WPF, если таковой существует. Если нет других элементов управления WPF, принимающих фокус, то переход по табуляции переводит фокус на первый элемент управления Windows Forms в последовательности табуляции.<br>-   <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.tabindex">TabIndex</a> значения для элементов управления внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> устанавливаются относительно родственных Windows Forms элементов управления, содержащихся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.<br>— При переходе по табуляции учитывается модель поведения элемента управления. Например, нажатие клавиши TAB в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> элемента управления, имеющего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textboxbase.acceptstab">AcceptsTab</a> значение свойства <code>true</code> вводит табуляции в текстовом поле вместо перемещения фокуса.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>Переход с помощью клавиш со стрелками</td>
+<td>— Ключи переход с помощью стрелки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления такое же, как обычный Windows Forms контейнерного элемента управления: Стрелка вверх или Стрелка влево выберите предыдущий элемент управления, и клавиши Стрелка вниз и вправо, а также выбрать следующий элемент управления.<br>-Стрелками ключи из первого элемента управления, содержащийся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент управления выполняет те же действия, сочетание клавиш SHIFT + TAB. Если имеется принимающий фокус WPF управления фокус перемещается за пределы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления. Это поведение отличается от стандартного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a> тем, что без перехода к последнему управления происходит. Если нет других элементов управления WPF, принимающих фокус, фокус возвращается к последнему элементу управления Windows Forms в последовательности табуляции.<br>-НАЖАТЫМИ клавиши со стрелками и Стрелка вправо от последнего элемента управления, содержащийся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемент управления выполняет те же действия, клавиши TAB. Если имеется принимающий фокус WPF управления фокус перемещается за пределы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления. Это поведение отличается от стандартного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.containercontrol">ContainerControl</a> тем, что переноса на первый элемент управления не происходит. Если нет других элементов управления WPF, принимающих фокус, то фокус возвращается к первому элементу управления Windows Forms в последовательности перехода.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>Клавиши быстрого доступа</td>
+<td>Клавиши быстрого доступа работают как обычно, за исключением пунктов, оговоренных в столбце &quot;Не поддерживается&quot;.</td>
+<td>Повторяющиеся в различных технологиях клавиши быстрого доступа не работают как обычные повторяющиеся клавиши быстрого доступа. При дублировании клавиш быстрого доступа в различных технологиях по крайней мере для одного элемента управления Windows Forms и одного элемента управления WPF клавиша быстрого доступа всегда присваивается элементу управления Windows Forms. Фокус не переключается между элементами управления с одинаковыми клавишами быстрого доступа.</td>
+</tr>
+<tr>
+<td>Сочетание клавиш</td>
+<td>Сочетания клавиш работают как обычно, за исключением пунктов, оговоренных в столбце &quot;Не поддерживается&quot;.</td>
+<td>Сочетания клавиш -   Windows Forms, заданные на этапе предварительной обработки, всегда имеют приоритет перед сочетаниями клавиш WPF. Например, если у вас есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> было управлять с помощью клавиш CTRL + S определены и WPF привязан к CTRL + S, команда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstrip">ToolStrip</a> управления всегда вызывается обработчик во-первых, независимо от фокуса.<br>-   Windows Forms сочетания клавиш, которые обрабатываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событий, обрабатываются последними в WPF. Можно предотвратить такое поведение путем переопределения Windows Forms элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a> метода или обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.previewkeydown">PreviewKeyDown</a> событий. Вернуть <code>true</code> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a> метод, или установите для параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.previewkeydowneventargs.isinputkey">PreviewKeyDownEventArgs.IsInputKey</a> свойства <code>true</code> в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.previewkeydown">PreviewKeyDown</a> обработчик событий.</td>
+</tr>
+<tr>
+<td>AcceptsReturn, AcceptsTab и другие специфические свойства элементов управления</td>
+<td>Свойства, изменяющие стандартное поведение клавиатуры обычным образом, при условии, что Windows Forms управления переопределений <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.isinputkey">IsInputKey</a> метод для возврата <code>true</code>.</td>
+<td>Windows Forms элементы управления, изменяющие стандартное поведение клавиатуры при обработке <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a> событий, обрабатываются последними в узле WPF элемента управления. Так как эти элементы управления обрабатываются последними, они могут привести к непредвиденному поведению.</td>
+</tr>
+<tr>
+<td>События Enter и Leave</td>
+<td>Когда фокус не переводится на содержащую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> управления, Enter и Leave событий как обычно при изменении фокуса в одном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.</td>
+<td>События Enter и Leave не вызываются при следующих переводах фокуса:<br><br> -Из за <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.<br>-Из внутрь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.<br>-Снаружи <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента управления.<br>-Из Windows Forms размещение элементов управления в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> в тот же элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a>.</td>
+</tr>
+<tr>
+<td>Многопоточность</td>
+<td>Поддерживаются все возможности многопоточности.</td>
+<td>И технология Windows Forms, и технология WPF предполагают однопоточную модель параллелизма. Во время отладки вызовы объектов платформы из других потоков будут вызывать исключение для принудительного выполнения этого требования.</td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>Все сценарии взаимодействия требуют полного доверия.</td>
+<td>Не допускаются сценарии взаимодействия с частичным доверием.</td>
+</tr>
+<tr>
+<td>Специальные возможности</td>
+<td>Поддерживаются все сценарии специальных возможностей. Продукты вспомогательной технологии работают корректно, когда они используются для гибридных приложений, содержащих как элементы управления Windows Forms, так и элементы управления WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>буфер обмена</td>
+<td>Все операции с буфером обмена работают обычным образом. Сюда относятся операции вырезания и вставки между элементами управления Windows Forms и WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>Функция перетаскивания</td>
+<td>Все операции перетаскивания работают обычным образом. Сюда относятся операции перетаскивания между элементами управления Windows Forms и WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Windows_Forms_Application_Hosting_Windows"></a></p>
+<h2 id="hosting-wpf-controls-in-windows-forms">Размещение элементов управления WPF в Windows Forms</h2>
+<p>Следующие сценарии взаимодействия поддерживаются в том случае, если узлы управления Windows Forms WPF управления:</p>
+<ul>
+<li><p>Вложение одного или нескольких элементов управления WPF с помощью кода.</p>
+</li>
+<li><p>Связывание страницы свойств с одним или несколькими вложенными элементами управления WPF.</p>
+</li>
+<li><p>Вложение одной или нескольких страниц WPF в форму.</p>
+</li>
+<li><p>Запуск окна WPF.</p>
+</li>
+<li><p>Вложение формы с отношением &quot;главный-подчиненный&quot; с главным элементом Windows Forms и подчиненными элементами WPF.</p>
+</li>
+<li><p>Вложение формы с отношением &quot;главный-подчиненный&quot; с главным элементом WPF и подчиненными элементами Windows Forms.</p>
+</li>
+<li><p>Вложение пользовательских элементов управления WPF.</p>
+</li>
+<li><p>Вложение гибридных элементов управления.</p>
+</li>
+</ul>
+<h3 id="ambient-properties">Внешние свойства</h3>
+<p>Некоторые внешние свойства элементов управления Windows Forms имеют эквиваленты WPF. Эти внешние свойства распространяются на вложенные WPF управляет и предоставляются как общие свойства на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> элемента управления. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a> Управления преобразует каждое Windows Forms внешнее свойство, чтобы его WPF эквивалент.</p>
+<p>Дополнительные сведения см. в разделе <a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a>.</p>
+<h3 id="behavior">Поведение</h3>
+<p>В приведенной ниже таблице описаны возможности взаимодействия.</p>
+<table>
+<thead>
+<tr>
+<th>Поведение</th>
+<th>Поддерживается</th>
+<th>Не поддерживается</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Прозрачность</td>
+<td>WPF отрисовка элемента управления поддерживает прозрачность. Фон родительского элемента управления Windows Forms может стать фоном вложенного элемента управления WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>Многопоточность</td>
+<td>Поддерживаются все возможности многопоточности.</td>
+<td>И технология Windows Forms, и технология WPF предполагают однопоточную модель параллелизма. Во время отладки вызовы объектов платформы из других потоков будут вызывать исключение для принудительного выполнения этого требования.</td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>Все сценарии взаимодействия требуют полного доверия.</td>
+<td>Не допускаются сценарии взаимодействия с частичным доверием.</td>
+</tr>
+<tr>
+<td>Специальные возможности</td>
+<td>Поддерживаются все сценарии специальных возможностей. Продукты вспомогательной технологии работают корректно, когда они используются для гибридных приложений, содержащих как элементы управления Windows Forms, так и элементы управления WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>буфер обмена</td>
+<td>Все операции с буфером обмена работают обычным образом. Сюда относятся операции вырезания и вставки между элементами управления Windows Forms и WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+<tr>
+<td>Функция перетаскивания</td>
+<td>Все операции перетаскивания работают обычным образом. Сюда относятся операции перетаскивания между элементами управления Windows Forms и WPF.</td>
+<td>Неприменимо.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost">ElementHost</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="walkthrough-hosting-a-windows-forms-control-in-wpf.html">Пошаговое руководство. Размещение элементов управления Windows Forms в WPF</a></li>
+<li><a href="walkthrough-hosting-a-windows-forms-composite-control-in-wpf.html">Пошаговое руководство. Размещение составного элемента управления Windows Forms в приложении WPF</a></li>
+<li><a href="walkthrough-hosting-a-wpf-composite-control-in-windows-forms.html">Пошаговое руководство. Размещение составного элемента управления WPF в форме Windows Forms</a></li>
+<li><a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

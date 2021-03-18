@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1044;&#1077;&#1088;&#1077;&#1074;&#1100;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1044;&#1077;&#1088;&#1077;&#1074;&#1100;&#1103; &#1074; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="trees-in-wpf">Деревья в WPF</h1>
+
+<p>Во многих технологиях элементы и компоненты организованы в форме древовидной структуры, и разработчики могут напрямую управлять узлами объекта в дереве, чтобы повлиять на визуализацию или поведение приложения. Windows Presentation Foundation (WPF) также использует несколько метафор древовидных структур, чтобы определить отношения между программными элементами. Для большей части WPF разработчики могут создать приложение в коде или определить части приложения в XAML и при этом концептуально думать о метафоре дерева объектов, но для этого им потребуется вызвать определенный интерфейс API или использовать конкретную разметку, а не интерфейс API управления деревом некоторых общих объектов, какой можно использовать в XML DOM. WPF предоставляет два вспомогательных класса, которые обеспечивают представление метафоры дерева <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper">LogicalTreeHelper</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a>. Термины &quot;логическое дерево&quot; и &quot;визуальное дерево&quot; также используются в документации WPF, поскольку эти же деревья помогают понять поведение определенных ключевых функций WPF. В этом разделе определены понятия визуального дерева и логического дерева, обсуждается, как эти деревья связаны с общим понятием дерева объектов, и представлены классы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper">LogicalTreeHelper</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a>s.</p>
+<p><a name="element_tree"></a></p>
+<h2 id="trees-in-wpf">Деревья в WPF</h2>
+<p>Самой полной древовидной структурой в WPF является дерево объектов. При определении страницы приложения в XAML и последующей загрузке XAML древовидная структура создается на основе отношений вложенности элементов в разметке. При определении приложения или части приложения в коде древовидная структура создается в зависимости от того, как присваиваются значения свойствам, которые реализуют модель содержимого для данного объекта. В Windows Presentation Foundation (WPF) существует два способа концептуализации и передачи в открытый интерфейс API полного дерева объектов: в виде логического дерева и в виде визуального дерева. Различия между логическими деревьями и визуальными деревьями не всегда важны, но иногда они могут вызвать проблемы с некоторыми подсистемами WPF и повлиять на изменения, внесенные в разметку или код.</p>
+<p>Несмотря на то, что управление логическим деревом или визуальным деревом не всегда происходит напрямую, понимание концепций взаимодействия деревьев позволяет понять WPF как технологию. Рассмотрение WPF как некоторой метафоры дерева также важно для понимания того, как в WPF осуществляется наследование свойств и маршрутизация событий.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Поскольку дерево объектов — это более широкое понятие, чем фактический интерфейс API, еще одним способом представить себе концепцию является граф объекта. На практике отношения между объектами можно наблюдать во время выполнения, когда метафора дерева разделяется. Тем не менее, особенно в пользовательском интерфейсе, определенном XAML, метафора дерева достаточно релевантна, и в большей части документации WPF используется термин &quot;дерево объекта&quot; при ссылке на это общее понятие.</p>
+</div>
+<p><a name="logical_tree"></a></p>
+<h2 id="the-logical-tree">Логическое дерево</h2>
+<p>В WPF содержимое добавляется в элементы пользовательского интерфейса путем задания свойств объектов, которые поддерживают эти элементы. Например, добавить элементы к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> управления, управляя ее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a> свойство. Таким образом, вы размещаете элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemcollection">ItemCollection</a> то есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a> значение свойства. Аналогичным образом, для добавления объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, работать с его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> значение свойства. Здесь происходит добавление объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.uielementcollection">UIElementCollection</a>. Пример кода см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms752374(v=vs.100)">как: Динамическое добавление элемента</a>.</p>
+<p>В Язык XAMLпри помещении элементов списка в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> или элементы управления, или других элементов пользовательского интерфейса в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.children">Children</a> свойства, явно или неявно, как показано в следующем примере.</p>
+<pre><code class="lang-xaml" name="TreeOvwsSupport#AllCode">&lt;DockPanel
+  Name=&quot;ParentElement&quot;
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  &gt;
+  &lt;!--implicit: &lt;DockPanel.Children&gt;--&gt;
+  &lt;ListBox DockPanel.Dock=&quot;Top&quot;&gt;
+    &lt;!--implicit: &lt;ListBox.Items&gt;--&gt;
+    &lt;ListBoxItem&gt;
+      &lt;TextBlock&gt;Dog&lt;/TextBlock&gt;
+    &lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;
+      &lt;TextBlock&gt;Cat&lt;/TextBlock&gt;
+    &lt;/ListBoxItem&gt;
+    &lt;ListBoxItem&gt;
+      &lt;TextBlock&gt;Fish&lt;/TextBlock&gt;
+    &lt;/ListBoxItem&gt;
+  &lt;!--implicit: &lt;/ListBox.Items&gt;--&gt;
+  &lt;/ListBox&gt;
+  &lt;Button Height=&quot;20&quot; Width=&quot;100&quot; DockPanel.Dock=&quot;Top&quot;&gt;Buy a Pet&lt;/Button&gt;
+  &lt;!--implicit: &lt;/DockPanel.Children&gt;--&gt;
+&lt;/DockPanel&gt;
+</code></pre>
+<p>Если бы этот XAML обрабатывался как XML в объектной модели документов, и если бы были включены теги, закомментированные как неявные (были бы допустимы), полученное дерево XML DOM включало бы элементы для <code>&lt;ListBox.Items&gt;</code> и другие неявные элементы. Но XAML не выполняет такую обработку при чтении разметки и записи в объекты, полученный граф объекта не включает <code>ListBox.Items</code> в буквальном смысле. Однако он имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> свойство с именем <code>Items</code> , содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemcollection">ItemCollection</a>и что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemcollection">ItemCollection</a> инициализируется, но если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> обработки XAML. Затем каждый дочерний элемент объекта, существующий как содержимое для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> добавляется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemcollection">ItemCollection</a> вызовами средство синтаксического анализа <code>ItemCollection.Add</code>. Этот пример обработки XAML в дереве объектов на первый взгляд похож на пример, в котором созданное дерево объектов, по сути, является логическим деревом.</p>
+<p>Однако логическое дерево не является полным графом объекта, существующим в пользовательском интерфейсе приложения во время выполнения, даже когда неявные элементы синтаксиса XAML факторизованы. Основная причина этого — визуальные элементы и шаблоны. Например, рассмотрим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. Логическое дерево сообщает об <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> объекта и его строке <code>Content</code>. Но в дереве объектов времени выполнения имеется больше сведений об этой кнопке. В частности, кнопка отображается только на экране способом, связано с определенным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> был применен шаблон элемента управления. Визуальных элементах, полученных из примененного шаблона (таких как определенный шаблоном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a> темно-серого участка вокруг визуальной кнопки), не указываются в логическом дереве даже при просмотре логического дерева во время выполнения (например, обработки события ввода из видимого пользовательского интерфейса и последующего чтения логического дерева). Чтобы найти визуальные элементы шаблона, необходимо проверить визуальное дерево.</p>
+<p>Дополнительные сведения о сопоставлении синтаксиса XAML с созданным графом объекта и неявным синтаксисом в XAML см. в разделе <a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a> или <a href="xaml-overview-wpf.html">Общие сведения о языке XAML (WPF)</a>.</p>
+<p><a name="tree_property_inheritance_event_routing"></a></p>
+<h3 id="the-purpose-of-the-logical-tree">Назначение логического дерева</h3>
+<p>Логическое дерево существует для того, чтобы модели содержимого имели возможность пройти по своим доступным дочерним объектам, а также для их расширяемости. Кроме того, логическое дерево предоставляет оболочку для некоторых уведомлений, например при загрузке всех объектов логического дерева. По существу, логическое дерево является подобием графа объекта времени выполнения на уровне оболочки, исключающего визуальные элементы, но подходит для большинства операций запросов для собственной композиции приложения времени выполнения.</p>
+<p>Кроме того, обе ссылки на статические и динамические ресурсы разрешаются путем поиска перемещается вверх по логическому дереву для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> коллекций на исходном запрашивающем объекте, а затем продолжить логическому дереву и проверки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> (или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>) для другого <code>Resources</code> значение, содержащее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>, возможно, содержит такой ключ. Логическое дерево используется для просмотра ресурсов при наличии логического дерева и визуального дерева. Дополнительные сведения о словарях ресурсов и поиске см. в разделе <a href="xaml-resources.html">Общие сведения о ресурсах</a>.</p>
+<p><a name="composition"></a></p>
+<h3 id="composition-of-the-logical-tree">Композиция логического дерева</h3>
+<p>Логическое дерево определяется на уровне среды WPF, это означает, что базовый элемент WPF, который наиболее подходит для операций логического дерева находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>. Тем не менее, как вы видите Если фактически используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper">LogicalTreeHelper</a> API, логическое дерево иногда содержит узлы, которые не являются ни <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>. Например, логическое дерево сообщает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>, которое представляет собой строку.</p>
+<p><a name="override_logical_tree"></a></p>
+<h3 id="overriding-the-logical-tree">Переопределение логического дерева</h3>
+<p>Авторы дополнительных элементов управления могут переопределить логическое дерево, переопределив несколько API - интерфейсы, которые определяют то, как основная модель объекта или содержимого добавляет или удаляет объекты логического дерева. Пример переопределения логического дерева содержится в разделе <a href="how-to-override-the-logical-tree.html">Переопределение логического дерева</a>.</p>
+<p><a name="pvi"></a></p>
+<h3 id="property-value-inheritance">Наследование значения свойства</h3>
+<p>Наследование значения свойств действует через гибридное дерево. Фактические метаданные, содержащий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata.inherits">Inherits</a> уровня среды WPF имеет свойство, позволяющее наследование свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a> класса. Таким образом, как родительский объект, содержащий исходное значение, так и дочерний объект, наследующий это значение должны быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>, и оба должны быть частью некоторого логического дерева. Однако для существующих свойств WPF, поддерживающих наследование свойств, наследование значений свойств способно принять промежуточный объект, которого нет в логическом дереве. Как правило, это распространяется на элементы шаблона, использующие все унаследованные значения свойств, заданные как в экземпляре, который является шаблоном, так и на более высоких уровнях композиции уровня страницы и, следовательно, выше в логическом дереве. Чтобы наследование значений свойств осуществлялось согласованно в таких пределах, наследуемое свойство должно быть зарегистрировано как вложенное свойство, кроме того, необходимо следовать этому шаблону, если требуется определить пользовательское свойство зависимостей с поведением наследования свойств. Точное дерево, используемое для наследования свойств, не может быть полностью предсказано вспомогательным служебным методом класса даже во время выполнения. Дополнительные сведения см. в разделе <a href="property-value-inheritance.html">Наследование значения свойства</a>.</p>
+<p><a name="two_trees"></a></p>
+<h2 id="the-visual-tree">Визуальное дерево</h2>
+<p>В дополнение к концепции логического дерева в WPF также существует концепция визуального дерева. Визуальное дерево описывает структуру визуальных объектов, представленные как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> базового класса. При написании шаблона для элемента управления следует определить или переопределить визуальное дерево, применяемое для данного элемента управления. Визуальное дерево также представляет интерес для разработчиков, заинтересованных в контроле рисования на нижнем уровне по соображениям производительности и оптимизации. Слабым местом визуального дерева как части программирования стандартных приложений WPF является то, что маршруты событий для перенаправленного события в большинстве случаев проходят по визуальному дереву, а не по логическому. Эта тонкость поведения перенаправленного события может быть не очевидна, если вы не являетесь автором элемента управления. Маршрутизация событий по визуальному дереву позволяет элементам управления, которые реализуют композицию на визуальном уровне, обрабатывать события или создавать установщики событий.</p>
+<p><a name="trees_content"></a></p>
+<h2 id="trees-content-elements-and-content-hosts">Деревья, элементы содержимого и узлы содержимого</h2>
+<p>Элементы содержимого (классы, производные от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>) не являются частью визуального дерева; они не наследуются от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> и не имеют визуального представления. Чтобы полностью отобразиться в пользовательском Интерфейсе, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> должен быть размещен в хранилище содержимого, которое является одновременно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a> и участником логического дерева. Обычно таким объектом является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>. Можно представить сайт содержимого в качестве &quot;обозревателя&quot; содержимого, который выбирает способ отображения содержимого в пределах области экрана, управляемой сайтом. При размещении содержимого оно может стать участником некоторых процессов дерева, которые обычно связаны с визуальным деревом. Как правило <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класс узла содержит код реализации, который добавляет все размещенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> к маршруту события через подузлы логического дерева содержимого, даже если размещенное содержимое не является частью действительного визуального дерева. Это необходимо, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> можно источника перенаправленное событие, которое маршрутизирует к любому элементу, кроме самого себя.</p>
+<p><a name="tree_traversal"></a></p>
+<h2 id="tree-traversal">Прохождение по дереву</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper">LogicalTreeHelper</a> Класс предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper.getchildren">GetChildren</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper.getparent">GetParent</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.logicaltreehelper.findlogicalnode">FindLogicalNode</a> методы для логическому дереву. В большинстве случаев не следует проходить по логическому дереву существующих элементов управления, так как эти элементы управления почти всегда предоставляют свои логические дочерние элементы в качестве выделенного свойства коллекции, которое поддерживает доступ к коллекции, например <code>Add</code>, индексатор и т. д. Обход дерева является главным образом сценарий, который используется авторами элемента управления, которые решили не наследовать от предполагаемых шаблонов элемента управления, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> где свойства коллекции уже определены, и которые планируют предоставляют свои собственные коллекции Поддержка свойств.</p>
+<p>Визуальное дерево также поддерживает вспомогательный класс для прохождения визуального дерева — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a>. Визуальное дерево не так удобно предоставляется через свойства элемента управления, поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper">VisualTreeHelper</a> класс является рекомендуемым способом прохода визуального дерева, если это необходимо для программного скрипта. Дополнительные сведения см. в разделе <a href="../graphics-multimedia/wpf-graphics-rendering-overview.html">Общие сведения об отрисовке графики в WPF</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Иногда необходимо проверять визуальное дерево применяемого шаблона. Необходимо соблюдать осторожность при использовании этого метода. Даже при проходе по визуальному дереву для элемента управления, в котором необходимо задать шаблон, потребитель элемента управления всегда можно изменить шаблон, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.template">Template</a> свойства в экземплярах и даже конечный пользователь может повлиять на применяемый шаблон путем изменения системной темы.</p>
+</div>
+<p><a name="routes"></a></p>
+<h2 id="routes-for-routed-events-as-a-tree">Маршруты для маршрутизируемых событий как &quot;дерево&quot;</h2>
+<p>Как уже отмечалось ранее, маршрут любого заданного перенаправленного события проходит по одному предопределенному пути дерева, представляющего собой гибрид представлений визуального и логического деревьев. Маршрут события может проходить как по восходящей, так и по нисходящий в пределах дерева в зависимости от того, имеет ли перенаправленное событие нисходящую или восходящую маршрутизацию. Концепция маршрута события не имеет непосредственного вспомогательного класса, который может быть использован для &quot;прохода&quot; маршрута события независимо от вызова фактически перенаправленного события. Класс, представляющий маршрут, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventroute">EventRoute</a>, но методы этого класса обычно являются только для внутреннего использования.</p>
+<p><a name="resourcesandtrees"></a></p>
+<h2 id="resource-dictionaries-and-trees">Словари и деревья ресурсов</h2>
+<p>Поиск по словарю ресурсов для всех <code>Resources</code>, определенных на странице, обычно проходит по логическому дереву. Объекты, которые не входят в логическое дерево, могут ссылаться на ресурсы с ключом, но последовательность поиска ресурса начинается с той точки, где объект подключен к логическому дереву. В WPF только узлы логического дерева могут иметь <code>Resources</code> свойство, содержащее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>, поэтому не имеет смысла при обходе визуального дерева, который ищет ресурсы с ключом из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>.</p>
+<p>В то же время поиск ресурсов также можно расширить за пределы логического дерева. Для разметки приложения поиск ресурсов можно затем продолжить в словарях ресурсов на уровне приложений, поддержке тем и значениях системы, на которые ссылаются как на статические свойства или ключи. Сами темы также могут ссылаться на системные значения вне логического дерева тем, если ссылки на ресурсы являются динамическими. Дополнительные сведения о словарях ресурсов и логике поиска см. в разделе <a href="xaml-resources.html">Ресурсы XAML</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="input-overview.html">Общие сведения о входных данных</a></li>
+<li><a href="../graphics-multimedia/wpf-graphics-rendering-overview.html">Общие сведения об отрисовке графики в WPF</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="initialization-for-object-elements-not-in-an-object-tree.html">Инициализация для элементов типа Object вне дерева объектов</a></li>
+<li><a href="wpf-architecture.html">Архитектура WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

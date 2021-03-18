@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1091;&#1088;&#1086;&#1074;&#1085;&#1103; &#1089;&#1078;&#1072;&#1090;&#1080;&#1103; JPEG | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072; &#1091;&#1088;&#1086;&#1074;&#1085;&#1103; &#1089;&#1078;&#1072;&#1090;&#1080;&#1103; JPEG | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-set-jpeg-compression-level">Практическое руководство. Установка уровня сжатия JPEG</h1>
+
+<p>Вам может потребоваться изменить параметры изображения при сохранении на диск, чтобы уменьшить размер файла или повысить качество изображения. Качество изображения в формате JPEG можно настроить, изменив уровень сжатия. Чтобы указать уровень сжатия при сохранении изображения в формате JPEG, необходимо создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameters">EncoderParameters</a> объект и передать его в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image.save">Save</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image">Image</a> класса. Инициализировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameters">EncoderParameters</a> объекта, чтобы он включал массив, который состоит из одной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameter">EncoderParameter</a>. При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameter">EncoderParameter</a>, укажите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoder.quality">Quality</a> кодировщик и нужный уровень сжатия.</p>
+<h2 id="example">Пример</h2>
+<p>В следующем примере кода создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameter">EncoderParameter</a> и сохраняет три изображения JPEG. Каждое изображение JPEG сохраняется с разным уровнем качества, изменив <code>long</code> значение, передаваемое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.imaging.encoderparameter">EncoderParameter</a> конструктор. Уровень качества 0 соответствует максимальному сжатию, а уровень качества 100 — минимальному сжатию.</p>
+<pre><code class="lang-csharp">private void VaryQualityLevel()  
+    {  
+        // Get a bitmap. The using statement ensures objects  
+        // are automatically disposed from memory after use.  
+        using (Bitmap bmp1 = new Bitmap(@&quot;C:\TestPhoto.jpg&quot;))  
+        {  
+            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);  
+  
+            // Create an Encoder object based on the GUID  
+            // for the Quality parameter category.  
+            System.Drawing.Imaging.Encoder myEncoder =  
+                System.Drawing.Imaging.Encoder.Quality;  
+  
+            // Create an EncoderParameters object.  
+            // An EncoderParameters object has an array of EncoderParameter  
+            // objects. In this case, there is only one  
+            // EncoderParameter object in the array.  
+            EncoderParameters myEncoderParameters = new EncoderParameters(1);  
+  
+            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 50L);  
+            myEncoderParameters.Param[0] = myEncoderParameter;  
+            bmp1.Save(@&quot;c:\TestPhotoQualityFifty.jpg&quot;, jpgEncoder, myEncoderParameters);  
+  
+            myEncoderParameter = new EncoderParameter(myEncoder, 100L);  
+            myEncoderParameters.Param[0] = myEncoderParameter;  
+            bmp1.Save(@&quot;C:\TestPhotoQualityHundred.jpg&quot;, jpgEncoder, myEncoderParameters);  
+  
+            // Save the bitmap as a JPG file with zero quality level compression.  
+            myEncoderParameter = new EncoderParameter(myEncoder, 0L);  
+            myEncoderParameters.Param[0] = myEncoderParameter;  
+            bmp1.Save(@&quot;C:\TestPhotoQualityZero.jpg&quot;, jpgEncoder, myEncoderParameters);  
+        }  
+    }  
+</code></pre>
+<pre><code class="lang-vb">Private Sub VaryQualityLevel()  
+    ' Get a bitmap. The Using statement ensures objects  
+    ' are automatically disposed from memory after use.  
+    Using bmp1 As New Bitmap(&quot;C:\test\TestPhoto.jpg&quot;)  
+        Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)  
+  
+        ' Create an Encoder object based on the GUID  
+        ' for the Quality parameter category.  
+        Dim myEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality  
+  
+        ' Create an EncoderParameters object.  
+        ' An EncoderParameters object has an array of EncoderParameter  
+        ' objects. In this case, there is only one  
+        ' EncoderParameter object in the array.  
+        Dim myEncoderParameters As New EncoderParameters(1)  
+  
+        Dim myEncoderParameter As New EncoderParameter(myEncoder, 50L)  
+        myEncoderParameters.Param(0) = myEncoderParameter  
+        bmp1.Save(&quot;c:\test\TestPhotoQualityFifty.jpg&quot;, jpgEncoder, myEncoderParameters)  
+  
+        myEncoderParameter = New EncoderParameter(myEncoder, 100L)  
+        myEncoderParameters.Param(0) = myEncoderParameter  
+        bmp1.Save(&quot;C:\test\TestPhotoQualityHundred.jpg&quot;, jpgEncoder, myEncoderParameters)  
+  
+        ' Save the bitmap as a JPG file with zero quality level compression.  
+        myEncoderParameter = New EncoderParameter(myEncoder, 0L)  
+        myEncoderParameters.Param(0) = myEncoderParameter  
+        bmp1.Save(&quot;C:\test\TestPhotoQualityZero.jpg&quot;, jpgEncoder, myEncoderParameters)  
+    End Using  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private ImageCodecInfo GetEncoder(ImageFormat format)  
+{  
+    ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();  
+    foreach (ImageCodecInfo codec in codecs)  
+    {  
+        if (codec.FormatID == format.Guid)  
+        {  
+            return codec;  
+        }  
+    }  
+    return null;  
+}  
+</code></pre>
+<pre><code class="lang-vb">Private Function GetEncoder(ByVal format As ImageFormat) As ImageCodecInfo  
+  
+    Dim codecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()  
+    Dim codec As ImageCodecInfo  
+    For Each codec In codecs  
+        If codec.FormatID = format.Guid Then  
+            Return codec  
+        End If  
+    Next codec  
+    Return Nothing  
+  
+End Function  
+</code></pre>
+<h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li><p>приложение Windows Forms;</p>
+</li>
+<li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a>, который является параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventhandler">PaintEventHandler</a>.</p>
+</li>
+<li><p>файл изображения с именем <code>TestPhoto.jpg</code>, расположенный в папке <strong>C:\</strong>.</p>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-determine-the-parameters-supported-by-an-encoder.html">Практическое руководство. Определение параметров, поддерживаемых кодировщиком</a></li>
+<li><a href="types-of-bitmaps.html">Типы точечных рисунков</a></li>
+<li><a href="using-image-encoders-and-decoders-in-managed-gdi.html">Применение кодировщиков и декодеров изображений в управляемом GDI+</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

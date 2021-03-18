@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1093;&#1086;&#1076;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1093;&#1086;&#1076;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="input-overview">Общие сведения о входных данных</h1>
+
+<p><a name="introduction"></a> Windows Presentation Foundation (WPF) Подсистема предоставляет мощный API для получения входных данных из широкого спектра устройств, включая мышь, клавиатура, сенсорного ввода и пера. В этом разделе описываются службы, предоставляемые WPF, и объясняется архитектура систем ввода.</p>
+<p><a name="input_api"></a></p>
+<h2 id="input-api">API ввода</h2>
+<p>Основные входные данные API находится в классах базовых элементов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkcontentelement">FrameworkContentElement</a>.  Дополнительные сведения о базовых элементах см. в разделе <a href="base-elements-overview.html">Обзор базовых элементов</a>.  Эти классы предоставляют функциональность для входных событий, связанных, например, с нажатием клавиш, кнопками мыши, колесиком мыши, движением мыши, управлением фокусом и захватом мыши. Благодаря помещению API ввода в базовые элементы, вместо того чтобы рассматривать все события ввода как службу, архитектура ввода позволяет событиям ввода поступать от конкретного объекта в пользовательском интерфейсе и поддерживать схему маршрутизации событий, при которой более чем один элемент имеет возможность обрабатывать событие ввода. Многие события ввода имеют пару связанных с ними событий.  Например, событие нажатия клавиши связан с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.keydown">KeyDown</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.previewkeydown">PreviewKeyDown</a> события.  Различие этих событий заключается в способе их маршрутизации в целевой элемент.  События предварительного просмотра проходят вниз по дереву элементов от корневого элемента в целевой элемент.  События восходящей маршрутизации поднимаются от целевого элемента в корневой элемент.  Маршрутизация событий в WPF рассматривается более подробно далее в этом обзоре и в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<h3 id="keyboard-and-mouse-classes">Классы Keyboard и Mouse</h3>
+<p>В дополнение к входные данные API в классах базовых элементов, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класс и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a> классы предоставляют дополнительные API для работы с клавиатуру и мышь.</p>
+<p>Примеры входных данных API на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.modifiers">Modifiers</a> свойство, которое возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.modifierkeys">ModifierKeys</a> в данный момент нажата и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.iskeydown">IsKeyDown</a> метод, который определяет, нажата ли указанный ключ.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.getkeystates">GetKeyStates</a> метод на предмет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key">Key</a> находится в нерабочем состоянии.</p>
+<pre><code class="lang-csharp" name="keyargssnippetsample#KeyEventArgsKeyBoardGetKeyStates">// Uses the Keyboard.GetKeyStates to determine if a key is down.
+// A bitwise AND operation is used in the comparison.
+// e is an instance of KeyEventArgs.
+if ((Keyboard.GetKeyStates(Key.Return) &amp; KeyStates.Down) &gt; 0)
+{
+    btnNone.Background = Brushes.Red;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Примеры входных данных API на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.middlebutton">MiddleButton</a>, который получает состояние средней кнопки мыши, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.directlyover">DirectlyOver</a>, получающий указатель мыши на элемент наведен.</p>
+<p>В следующем примере определяется ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.leftbutton">LeftButton</a> мыши находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mousebuttonstate#System_Windows_Input_MouseButtonState_Pressed">Pressed</a> состояние.</p>
+<pre><code class="lang-csharp" name="mouserelatedsnippets#MouseRelatedSnippetsGetLeftButtonMouse">if (Mouse.LeftButton == MouseButtonState.Pressed)
+{
+    UpdateSampleResults(&quot;Left Button Pressed&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> классы рассматриваются более подробно в этом обзоре.</p>
+<h3 id="stylus-input">Ввод с помощью пера</h3>
+<p>WPF предусмотрена встроенная поддержка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> — Рукописный ввод, ставший популярным благодаря Планшетный ПК.  WPF приложения могут обрабатывать перо как мышь с помощью мыши API, но WPF также предоставляет перо как абстрактное устройство, используйте модель, аналогичную клавиатуру и мышь.  Все связанные с пером API - интерфейсы содержат слово Stylus.</p>
+<p>Поскольку перо может действовать как мышь, приложения, поддерживающие только ввод с помощью мыши, по-прежнему могут автоматически получать определенный уровень поддержки пера. При использовании пера таким образом приложение получает возможность обработать соответствующее событие пера, а затем обрабатывает соответствующее событие мыши. Кроме того, через абстрактное устройство «перо» доступны также службы более высокого уровня, например рукописный ввод.  Дополнительные сведения о рукописном вводе см. в разделе <a href="getting-started-with-ink.html">Начало работы с рукописным вводом</a>.</p>
+<p><a name="event_routing"></a></p>
+<h2 id="event-routing">Маршрутизация событий</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> может содержать другие элементы, как дочерние элементы в своей модели содержимого, формируя тем самым дерево элементов.  В WPF родительский элемент может участвовать во вводе, направленном в его дочерние элементы или другие потомки, путем обработки событий. Это особенно полезно для построения элементов управления из меньших элементов управления; этот процесс называется «составление элемента управления» или «компоновка». Дополнительные сведения о деревьях элементов и их связи с маршрутами событий см. в разделе <a href="trees-in-wpf.html">Деревья в WPF</a>.</p>
+<p>Маршрутизация событий — это процесс направления событий в несколько элементов, так что конкретный объект или элемент в маршруте может выбрать предоставление значительного отклика (посредством обработки) на событие, которое могло быть получено от другого элемента.  Перенаправленные события используют один из трех механизмов маршрутизации: прямую маршрутизацию, восходящую маршрутизацию и туннелирование.  При прямой маршрутизации уведомляется только исходный элемент и событие не перенаправляется ни в какие другие элементы. Тем не менее событие с прямой маршрутизацией предоставляет некоторые дополнительные возможности, доступные только для перенаправленных событий, в отличие от стандартных событий CLR. Восходящая маршрутизация работает вверх по дереву элементов, уведомляя элемент, который является источником события, затем его родительский элемент и т. д.  Туннелирование начинается в корне дерева элементов и работает вниз, заканчивая элементом, который является источником.  Дополнительные сведения о перенаправленных событиях см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p>WPF события ввода обычно представлены парами, состоящими из событий нисходящей и восходящей маршрутизации событий.  События нисходящей маршрутизации отличаются от событий восходящей маршрутизации префиксом Preview.  Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.previewmousemove">PreviewMouseMove</a> является нисходящей версией события перемещения мыши и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.mousemove">MouseMove</a> — восходящей версией этого события. Такое связывание событий представляет собой соглашение, которое реализуется на уровне элемента и не является неотъемлемой характеристикой системы событий WPF. Дополнительные сведения см. в разделе «События ввода WPF» статьи <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p><a name="handling_input_events"></a></p>
+<h2 id="handling-input-events">Обработка событий ввода</h2>
+<p>Для получения входных данных в элементе обработчик событий должен быть связан с данным конкретным событием.  В XAML это осуществляется напрямую: вы указываете имя события в качестве атрибута элемента, который будет перехватывать это событие.  Затем в качестве значения этого атрибута вы задаете имя обработчика событий, который можно определить на основе делегата.  Обработчик событий должен быть написан код, например C# и может быть включено в файл с выделенным кодом.</p>
+<p>События клавиатуры возникают, когда операционная система сообщает о действиях клавиш, которые происходят, когда фокус клавиатуры находится в элементе. События мыши и пера делятся на две категории: события, сообщающие об изменениях положения указателя относительно элемента, и события, сообщающие об изменениях состояния кнопок устройства.</p>
+<h3 id="keyboard-input-event-example">Пример события ввода с клавиатуры</h3>
+<p>В следующем примере перехватывается событие нажатия клавиши со стрелкой влево.  Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> создается, имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.  Обработчик событий для ожидания нажатия клавиши со стрелкой влево присоединяется к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> экземпляра.</p>
+<p>Первый раздел примера создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и присоединяет обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.keydown">KeyDown</a>.</p>
+<pre><code class="lang-xaml" name="InputOvw#Input_OvwKeyboardExampleXAML">&lt;StackPanel&gt;
+  &lt;Button Background=&quot;AliceBlue&quot;
+          KeyDown=&quot;OnButtonKeyDown&quot;
+          Content=&quot;Button1&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="InputOvw#Input_OvwKeyboardExampleUICodeBehind">// Create the UI elements.
+StackPanel keyboardStackPanel = new StackPanel();
+Button keyboardButton1 = new Button();
+
+// Set properties on Buttons.
+keyboardButton1.Background = Brushes.AliceBlue;
+keyboardButton1.Content = &quot;Button 1&quot;;
+
+// Attach Buttons to StackPanel.
+keyboardStackPanel.Children.Add(keyboardButton1);
+
+// Attach event handler.
+keyboardButton1.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Второй раздел прописывается в коде, и в нем определяется обработчик событий.  При нажатии клавиши со стрелкой влево и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> имеет фокус клавиатуры, запускается обработчик и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> изменяется.  При нажатии клавиши, но это не клавиша со стрелкой влево, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> изменяется обратно на первоначальный.</p>
+<pre><code class="lang-csharp" name="InputOvw#Input_OvwKeyboardExampleHandlerCodeBehind">private void OnButtonKeyDown(object sender, KeyEventArgs e)
+{
+    Button source = e.Source as Button;
+    if (source != null)
+    {
+        if (e.Key == Key.Left)
+        {
+            source.Background = Brushes.LemonChiffon;
+        }
+        else
+        {
+            source.Background = Brushes.AliceBlue;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="mouse-input-event-example">Пример события ввода с помощью мыши</h3>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> меняется, когда указатель мыши попадает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> Цвет восстанавливается в том случае, когда указатель мыши покидает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<p>Первый раздел примера создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> управления и присоединяет обработчики событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mouseenter">MouseEnter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mouseleave">MouseLeave</a> событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
+<pre><code class="lang-xaml" name="InputOvw#Input_OvwMouseExampleXAML">&lt;StackPanel&gt;
+  &lt;Button Background=&quot;AliceBlue&quot;
+          MouseEnter=&quot;OnMouseExampleMouseEnter&quot;
+          MouseLeave=&quot;OnMosueExampleMouseLeave&quot;&gt;Button
+          
+  &lt;/Button&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="InputOvw#Input_OvwMouseExampleUICodeBehind">// Create the UI elements.
+StackPanel mouseMoveStackPanel = new StackPanel();
+Button mouseMoveButton = new Button();
+
+// Set properties on Button.
+mouseMoveButton.Background = Brushes.AliceBlue;
+mouseMoveButton.Content = &quot;Button&quot;;
+
+// Attach Buttons to StackPanel.
+mouseMoveStackPanel.Children.Add(mouseMoveButton);
+
+// Attach event handler.
+mouseMoveButton.MouseEnter += new MouseEventHandler(OnMouseExampleMouseEnter);
+mouseMoveButton.MouseLeave += new MouseEventHandler(OnMosueExampleMouseLeave);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Второй раздел примера прописывается в коде, и в нем определяются обработчики событий.  Когда указатель мыши перемещается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> изменяется на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brushes.slategray">SlateGray</a>.  Когда указатель мыши покидает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> цвет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> изменяется обратно на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brushes.aliceblue">AliceBlue</a>.</p>
+<pre><code class="lang-csharp" name="InputOvw#Input_OvwMouseExampleEneterHandler">private void OnMouseExampleMouseEnter(object sender, MouseEventArgs e)
+{
+    // Cast the source of the event to a Button.
+    Button source = e.Source as Button;
+
+    // If source is a Button.
+    if (source != null)
+    {
+        source.Background = Brushes.SlateGray;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="InputOvw#Input_OvwMouseExampleLeaveHandler">private void OnMosueExampleMouseLeave(object sender, MouseEventArgs e)
+{
+    // Cast the source of the event to a Button.
+    Button source = e.Source as Button;
+
+    // If source is a Button.
+    if (source != null)
+    {
+        source.Background = Brushes.AliceBlue;
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="text_input"></a></p>
+<h2 id="text-input">Текстовый ввод</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.textinput">TextInput</a> Событие позволяет ожидать ввода текста в аппаратно независимым способом. Клавиатура является основным средством ввода текста, но текст также можно вводить и с помощью речи, рукописного ввода и других устройств.</p>
+<p>Для ввода с клавиатуры WPF сначала отправляет соответствующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keydown">KeyDown</a> / <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keyup">KeyUp</a> события. Если эти события не обрабатываются и клавиша является текстовой, а не (управляющей, например клавишей со стрелкой) или функциональные клавиши, а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.textinput">TextInput</a> события.  Не всегда существует простое однозначное сопоставление между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keydown">KeyDown</a> / <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keyup">KeyUp</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.textinput">TextInput</a> события, так как несколькими нажатиями клавиш можно создать один символ для ввода текста и единственным нажатием клавиши можно создавать Многосимвольные строки.  В первую очередь это относится к таким языкам, как китайский, японский и корейский, которые используют Редакторы метода ввода (IME) для формирования тысяч возможных символов в соответствующем алфавите.</p>
+<p>Когда WPF отправляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keyup">KeyUp</a> / <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keydown">KeyDown</a> событий, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyeventargs.key">Key</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key#System_Windows_Input_Key_System">Key.System</a> если нажатие клавиш может стать частью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.textinput">TextInput</a> событий (если ALT + S нажата, например). Это позволяет коду в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.keydown">KeyDown</a> обработчик событий на наличие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key#System_Windows_Input_Key_System">Key.System</a> и, если он найден, оставить обработку обработчику сгенерированного впоследствии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.textinput">TextInput</a> событий. В этом случае различные свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.textcompositioneventargs">TextCompositionEventArgs</a> аргумента может быть использована для определения исходных нажатий клавиш. Аналогично Если IME активен, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key">Key</a> имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.key#System_Windows_Input_Key_ImeProcessed">Key.ImeProcessed</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyeventargs.imeprocessedkey">ImeProcessedKey</a> дает исходное нажатие клавиши или клавиш.</p>
+<p>В следующем примере определяется обработчик для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событием и обработчиком для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.keydown">KeyDown</a> событий.</p>
+<p>Первый сегмент кода или разметки создает пользовательский интерфейс.</p>
+<pre><code class="lang-xaml" name="InputOvw#Input_OvwTextInputXAML">&lt;StackPanel KeyDown=&quot;OnTextInputKeyDown&quot;&gt;
+  &lt;Button Click=&quot;OnTextInputButtonClick&quot;
+          Content=&quot;Open&quot; /&gt;
+  &lt;TextBox&gt; . . . &lt;/TextBox&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="InputOvw#Input_OvwTextInputUICodeBehind">// Create the UI elements.
+StackPanel textInputStackPanel = new StackPanel();
+Button textInputeButton = new Button();
+TextBox textInputTextBox = new TextBox();
+textInputeButton.Content = &quot;Open&quot;;
+
+// Attach elements to StackPanel.
+textInputStackPanel.Children.Add(textInputeButton);
+textInputStackPanel.Children.Add(textInputTextBox);
+
+// Attach event handlers.
+textInputStackPanel.KeyDown += new KeyEventHandler(OnTextInputKeyDown);
+textInputeButton.Click += new RoutedEventHandler(OnTextInputButtonClick);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Второй сегмент кода содержит обработчики событий.</p>
+<pre><code class="lang-csharp" name="InputOvw#Input_OvwTextInputHandlersCodeBehind">private void OnTextInputKeyDown(object sender, KeyEventArgs e)
+{
+    if (e.Key == Key.O &amp;&amp; Keyboard.Modifiers == ModifierKeys.Control)
+    {
+        handle();
+        e.Handled = true;
+    }
+}
+
+private void OnTextInputButtonClick(object sender, RoutedEventArgs e)
+{
+    handle();
+    e.Handled = true;
+}
+
+public void handle()
+{
+    MessageBox.Show(&quot;Pretend this opens a file&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Поскольку входные события поднимаются по восходящему маршруту события, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> получает входные данные, независимо от того, какой элемент имеет фокус клавиатуры. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> Сначала уведомляется элемент управления и <code>OnTextInputKeyDown</code> обработчик вызывается, только в том случае, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> не обработала входные данные. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.previewkeydown">PreviewKeyDown</a> событий используется вместо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.keydown">KeyDown</a> событий, <code>OnTextInputKeyDown</code> сначала вызывается обработчик.</p>
+<p>В этом примере логика обработки пишется два раза — один раз для CTRL+O и еще один раз для события нажатия кнопки. Это можно упростить, если вместо прямой обработки событий ввода использовать команды.  Команды описываются в этом обзоре и в разделе <a href="commanding-overview.html">Общие сведения о системе команд</a>.</p>
+<p><a name="touch_and_manipulation"></a></p>
+<h2 id="touch-and-manipulation">Касание и манипуляция</h2>
+<p>Новое оборудование и API в операционной системе Windows 7 дают приложениям возможность получать входные данные от нескольких касаний одновременно. WPF позволяет приложениям обнаруживать сенсорный ввод и реагировать так же, как отвечать на другие входные данные, например мыши или клавиатуры, путем создания событий при возникновении сенсорного ввода.</p>
+<p>WPF предоставляет два типа событий при возникновении сенсорного ввода: события касания и события манипуляции. События касания предоставляют необработанные данные о каждом пальце на сенсорном экране и его перемещениях. События манипуляции интерпретируют ввод как определенные действия. В этом разделе рассматриваются оба типа событий.</p>
+<h3 id="prerequisites">Предварительные требования</h3>
+<p>Для разработки приложений, реагирующих на сенсорный ввод, необходимы следующие компоненты.</p>
+<ul>
+<li><p>Visual Studio 2010.</p>
+</li>
+<li><p>Windows 7.</p>
+</li>
+<li><p>Устройство, которое поддерживает Windows Touch, например сенсорный экран.</p>
+</li>
+</ul>
+<h3 id="terminology">Терминология</h3>
+<p>При обсуждении сенсорного ввода используются следующие термины.</p>
+<ul>
+<li><p><strong>Касание</strong> — это тип ввода пользователя, распознаваемый Windows 7. Обычно касание инициируется, когда пользователь прикасается пальцами к сенсорному экрану. Обратите внимание, что такие устройства, как сенсорная панель, обычно используемая в ноутбуках, не поддерживают касание, если подобное устройство просто преобразует положение и движение пальца как ввод с помощью мыши.</p>
+</li>
+<li><p><strong>Мультикасание</strong> — это касание, которое происходит одновременно в нескольких точках. Windows 7 и WPF поддерживают мультикасание. Всякий раз, когда в документации для WPF идет речь о касании, это относится и мультикасанию.</p>
+</li>
+<li><p><strong>Манипуляция</strong> происходит, когда касание интерпретируется как физическое действие, которое применяется к объекту. В WPF, события манипуляции интерпретируют ввод как сдвиг, расширение или поворот.</p>
+</li>
+<li><p><code>touch device</code> — это устройство для сенсорного ввода, например одним пальцем на сенсорном экране.</p>
+</li>
+</ul>
+<h3 id="controls-that-respond-to-touch">Элементы управления, реагирующие на касания</h3>
+<p>Следующие элементы управления можно прокручивать, проводя пальцем по элементу управления, если имеется содержимое, которое находится вне области просмотра.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.treeview">TreeView</a></p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer">ScrollViewer</a> Определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer.panningmode">ScrollViewer.PanningMode</a> присоединенного свойства, можно указать сдвига включении по горизонтали, вертикали, оба или ни одного. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer.panningdeceleration">ScrollViewer.PanningDeceleration</a> Свойство определяет, насколько быстро замедляется прокрутка, когда пользователь поднимает палец с сенсорного экрана. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.scrollviewer.panningratio">ScrollViewer.PanningRatio</a> Присоединенное свойство задает отношение смещения прокрутки к смещению обработки преобразования.</p>
+<h3 id="touch-events">События касания</h3>
+<p>Базовые классы, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement3d">UIElement3D</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>, определяют события, вы можете подписаться на, чтобы приложение реагировало на касания. События касания полезны в тех случаях, когда приложение интерпретирует касание не как действие с объектом. Например, приложение, в котором пользователь может рисовать одним или несколькими пальцами, будет подписываться на события касания.</p>
+<p>Все эти три класса определяют следующие события, которые ведут себя одинаково независимо от определяющего класса.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchdown">TouchDown</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchmove">TouchMove</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchup">TouchUp</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchenter">TouchEnter</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchleave">TouchLeave</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.previewtouchdown">PreviewTouchDown</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.previewtouchmove">PreviewTouchMove</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.previewtouchup">PreviewTouchUp</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gottouchcapture">GotTouchCapture</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.losttouchcapture">LostTouchCapture</a></p>
+</li>
+</ul>
+<p>Как и события клавиатуры и мыши, события сенсорного ввода являются перенаправленными событиями. События нисходящей маршрутизации начинаются с <code>Preview</code>, а события восходящей маршрутизации — с <code>Touch</code>. Дополнительные сведения о перенаправленных событиях см. в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>. При обработке этих событий можно получить положение ввода относительно любого элемента, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.toucheventargs.gettouchpoint">GetTouchPoint</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.toucheventargs.getintermediatetouchpoints">GetIntermediateTouchPoints</a> метод.</p>
+<p>Чтобы лучше объяснить взаимодействие между событиями касания, рассмотрим ситуацию, когда пользователь помещает один палец в элемент, а затем убирает палец из этого элемента. На следующем рисунке показано выполнение событий восходящей маршрутизации (для простоты события нисходящей маршрутизации не указаны).</p>
+<p><img src="media/ndp-touchevents.png" alt="Последовательность событий сенсорного экрана. " title="NDP_TouchEvents"> события касания</p>
+<p>Последовательность событий на предыдущем рисунке приведена в следующем списке.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchenter">TouchEnter</a> Событие происходит один раз, когда пользователь помещает палец в элемент.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchdown">TouchDown</a> Событие происходит один раз.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchmove">TouchMove</a> Событие возникает несколько раз, когда пользователь перемещает палец в пределах элемента.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchup">TouchUp</a> Событие происходит один раз, когда пользователь убирает палец из этого элемента.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchleave">TouchLeave</a> Событие происходит один раз.</p>
+</li>
+</ol>
+<p>При использовании более двух пальцев, события возникают для каждого пальца.</p>
+<h3 id="manipulation-events">События манипуляции</h3>
+<p>Для случаев, когда приложение позволяет манипулировать объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> класс определяет события манипуляции. В отличие от событий касания, которые сообщают только положение точки касания, события манипуляции сообщают, как можно интерпретировать ввод. Существует три типа манипуляции: сдвиг, расширение и поворот. В следующем списке показывается, как вызываются эти три типа манипуляции.</p>
+<ul>
+<li><p>Поместите палец на объект и переместите палец по сенсорному экрану, чтобы выполнить сдвиг. Обычно такое действие перемещает объект.</p>
+</li>
+<li><p>Поместите два пальца на объект и сведите или разведите их, чтобы выполнить расширение. Обычно такое действие изменяет размеры объекта.</p>
+</li>
+<li><p>Поместите два пальца на объект и поворачивайте их вокруг друг друга, чтобы выполнить действие поворота. Обычно такое действие выполняет циклический сдвиг объекта.</p>
+</li>
+</ul>
+<p>Можно одновременно выполнять несколько типов манипуляций.</p>
+<p>Реализуя реагирование объектов на манипуляции, можно создать видимость инерции объекта. Тогда объекты смогут имитировать физический мир. Например, если вы достаточно сильно толкнете книгу по столу, то после того как вы ее отпустите, она продолжит движение. WPF позволяет имитировать это поведение путем вызова событий манипуляции после пальцы пользователя отпускают объект.</p>
+<p>Сведения о том, как создать приложение, которое позволяет пользователю перемещать, масштабировать и поворачивать объект, см. в разделе <a href="walkthrough-creating-your-first-touch-application.html">Пошаговое руководство: Создание первого приложения Touch</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> Определяет следующие события манипуляции.</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarted">ManipulationStarted</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationcompleted">ManipulationCompleted</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationboundaryfeedback">ManipulationBoundaryFeedback</a></p>
+</li>
+</ul>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> не получает эти события манипуляции. Для получения событий манипуляции на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismanipulationenabled">UIElement.IsManipulationEnabled</a> для <code>true</code>.</p>
+<h4 id="the-execution-path-of-manipulation-events">Путь выполнения событий манипуляции</h4>
+<p>Рассмотрим сценарий, когда пользователь «бросает» объект. Пользователь ставит палец на объект, перемещает палец по сенсорному экрану на короткое расстояние, а затем поднимает палец, когда тот еще движется. В результате объект будет перемещаться под пальцем пользователя и продолжит движение после того, как пользователь поднимет палец.</p>
+<p>На следующем рисунке показан путь выполнения событий манипуляции и важные сведения о каждом событии.</p>
+<p><img src="media/ndp-manipulationevents.png" alt="Последовательность событий манипуляции. " title="NDP_ManipulationEvents"> события манипуляции</p>
+<p>Последовательность событий на предыдущем рисунке приведена в следующем списке.</p>
+<ol>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a> Событие происходит, когда пользователь ставит палец на объект. Помимо прочего, это событие позволяет задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationstartingeventargs.manipulationcontainer">ManipulationContainer</a> свойства. В последующих событиях позиция манипуляции будет относительно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationstartingeventargs.manipulationcontainer">ManipulationContainer</a>. В событиях, отличных от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a>, это свойство доступно только для чтения, поэтому <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a> событий — это единственный случай, когда это свойство можно задать.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarted">ManipulationStarted</a> Далее возникает событие. Это событие сообщает исходную точку манипуляции.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> Событие возникает несколько раз, как пальцы пользователя двигаются по сенсорному экрану. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationdeltaeventargs.deltamanipulation">DeltaManipulation</a> Свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationdeltaeventargs">ManipulationDeltaEventArgs</a> класса сообщает ли интерпретируется манипуляция — как движение, расширение или преобразование. Здесь вы выполняете большую часть манипуляций с объектом.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a> Событие происходит, когда палец пользователя теряет контакт с объектом. Это событие позволяет указать замедление манипуляции во время инерции. Так объект может имитировать разные физические расстояния или атрибуты при вашем желании. Например, предположим, что в приложении имеются два объекта, представляющие элементы в физическом мире, один из которых тяжелее другого. Можно сделать так, чтобы более тяжелый объект замедлялся быстрее, чем более легкий.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> Событие возникает несколько раз, как происходит инерции. Обратите внимание, что это событие возникает, и когда пальцы пользователя двигаются по сенсорному экрану, и когда WPF имитирует инерцию. Другими словами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> возникает до и после <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a> событий. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationdeltaeventargs.isinertial">ManipulationDeltaEventArgs.IsInertial</a> Отчеты свойство ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> событие возникает во время инерции, чтобы можно было проверять это свойство и выполнять разные действия в зависимости от его значения.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationcompleted">ManipulationCompleted</a> Событие возникает при завершении манипуляции и инерция. То есть после всех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> событиями, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationcompleted">ManipulationCompleted</a> возникает событие завершении манипуляции.</p>
+</li>
+</ol>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> Также определяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationboundaryfeedback">ManipulationBoundaryFeedback</a> событий. Это событие возникает, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationdeltaeventargs.reportboundaryfeedback">ReportBoundaryFeedback</a> метод вызывается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> событий. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationboundaryfeedback">ManipulationBoundaryFeedback</a> Событий позволяет приложениям или компонентам обеспечивать визуальную обратную связь, когда объект достигает границы. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> класса дескрипторов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationboundaryfeedback">ManipulationBoundaryFeedback</a> событие, чтобы окно слегка перемещения при достижении его границы.</p>
+<p>Манипуляцию можно отменить, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationstartingeventargs.cancel">Cancel</a> метод в аргументах события в любого события манипуляции, за исключением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationboundaryfeedback">ManipulationBoundaryFeedback</a> событий. При вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationstartingeventargs.cancel">Cancel</a>, события манипуляции больше не вызываются и для касания возникают события мыши. В следующей таблице описывается связь между моментом отмены манипуляции и событиями мыши, которые происходят.</p>
+<table>
+<thead>
+<tr>
+<th>Событие, вызываемое отменой</th>
+<th>События мыши, возникающие для ввода, который уже произошел</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarted">ManipulationStarted</a></td>
+<td>События нажатия кнопки мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a></td>
+<td>События нажатия кнопки мыши и перемещения мыши.</td>
+</tr>
+<tr>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationcompleted">ManipulationCompleted</a></td>
+<td>События нажатия кнопки мыши, перемещения мыши и отпускания кнопки мыши.</td>
+</tr>
+</tbody>
+</table>
+<p>Обратите внимание, что при вызове метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulationstartingeventargs.cancel">Cancel</a> во время манипуляции по инерции, метод возвращает <code>false</code> и входных данных не вызывает события мыши.</p>
+<h3 id="the-relationship-between-touch-and-manipulation-events">Связь между событиями касания и событиями манипуляции</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> всегда может получать события касания. Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.ismanipulationenabled">IsManipulationEnabled</a> свойству <code>true</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> может получать события касания и манипуляции.  Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchdown">TouchDown</a> событие не обрабатывается (то есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> свойство <code>false</code>), логика манипуляции захватывает касание элемента и создает события манипуляции. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventargs.handled">Handled</a> свойству <code>true</code> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchdown">TouchDown</a> событие, логика манипуляции не создает события манипуляции. На следующем рисунке показана связь между событиями касания и событиями манипуляции.</p>
+<p><img src="media/ndp-touchmanipulateevents.png" alt="Связь между событиями касания и манипуляции" title="NDP_TouchManipulateEvents"> события касания и манипуляции</p>
+<p>Следующий список описывает связь между событиями касания и манипуляции, показанными на предыдущем рисунке.</p>
+<ul>
+<li><p>Когда первое сенсорное устройство создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchdown">TouchDown</a> событий на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a>, логика манипуляции вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.capturetouch">CaptureTouch</a> метод, который создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gottouchcapture">GotTouchCapture</a> событий.</p>
+</li>
+<li><p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gottouchcapture">GotTouchCapture</a> происходит, логика манипуляции вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.manipulation.addmanipulator">Manipulation.AddManipulator</a> метод, который создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationstarting">ManipulationStarting</a> событий.</p>
+</li>
+<li><p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchmove">TouchMove</a> событиями, логика манипуляции создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationdelta">ManipulationDelta</a> события, происходящие до <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a> событий.</p>
+</li>
+<li><p>Когда последнее сенсорное устройство элемент вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.touchup">TouchUp</a> событий, логика манипуляции создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.manipulationinertiastarting">ManipulationInertiaStarting</a> событий.</p>
+</li>
+</ul>
+<p><a name="focus"></a></p>
+<h2 id="focus">Фокус</h2>
+<p>Существует два основных понятия, относящихся к фокусу в WPF: фокус клавиатуры и логический фокус.</p>
+<h3 id="keyboard-focus">Фокус клавиатуры</h3>
+<p>Фокус клавиатуры относится к элементу, получающему ввод с клавиатуры.  На всем рабочем столе может быть только один элемент, в котором находится фокус клавиатуры.  В WPF, будет иметь элемент, имеющий фокус клавиатуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.iinputelement.iskeyboardfocused">IsKeyboardFocused</a> присвоено <code>true</code>.  Статический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focusedelement">FocusedElement</a> возвращает элемент, который в данный момент имеет фокус клавиатуры.</p>
+<p>Фокус клавиатуры можно получить путем перехода к элементу или щелкая мышью определенные элементы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>.  Фокус клавиатуры также могут быть получены программно с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> пытается передать фокус клавиатуры указанному элементу.  Элемент, возвращаемый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> является элементом, который в данный момент имеет фокус клавиатуры.</p>
+<p>Чтобы элемент мог получить фокус клавиатуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> свойство и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isvisible">IsVisible</a> свойства должно быть присвоено <strong>true</strong>.  Некоторые классы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>, имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> присвоено <code>false</code> по умолчанию; таким образом, может потребоваться присвоить этому свойству <code>true</code> Если вы хотите, чтобы элемент мог получить фокус.</p>
+<p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> устанавливается фокус клавиатуры на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.  Рекомендуется устанавливать исходный фокус в приложении начинается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> обработчик событий.</p>
+<pre><code class="lang-csharp" name="focussample#FocusSampleSetFocus">private void OnLoaded(object sender, RoutedEventArgs e)
+{
+    // Sets keyboard focus on the first Button in the sample.
+    Keyboard.Focus(firstButton);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о фокусе клавиатуры см. в разделе <a href="focus-overview.html">Общие сведения о фокусе</a>.</p>
+<h3 id="logical-focus">Логический фокус</h3>
+<p>Логический фокус относится к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.focusedelement">FocusManager.FocusedElement</a> в области фокуса.  В приложении может быть несколько элементов, имеющих логический фокус, но в отдельной области фокуса может быть только один элемент, имеющий логический фокус.</p>
+<p>Область фокуса — это элемент контейнера, который отслеживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.focusedelement">FocusedElement</a> внутри своей области.  Когда фокус покидает область фокуса, элемент с фокусом теряет фокус клавиатуры, но сохраняет логический фокус.  При возвращении фокуса в область фокуса элемент с логическим фокусом получит фокус клавиатуры.  Это позволяет переносить фокус клавиатуры между несколькими областями фокуса, но гарантирует, что элемент с фокусом в области фокуса останется элементом с фокусом, когда фокус вернется в эту область.</p>
+<p>Элемент может быть включен в область фокуса в Язык XAML , задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager">FocusManager</a> присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.isfocusscope">IsFocusScope</a> для <code>true</code>, или в коде, установив присоединенное свойство с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setisfocusscope">SetIsFocusScope</a> метод.</p>
+<p>В нижеследующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> в область фокуса, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.isfocusscope">IsFocusScope</a> вложенного свойства зависимостей.</p>
+<pre><code class="lang-xaml" name="MarkupSnippets#MarkupIsFocusScopeXAML">&lt;StackPanel Name=&quot;focusScope1&quot; 
+            FocusManager.IsFocusScope=&quot;True&quot;
+            Height=&quot;200&quot; Width=&quot;200&quot;&gt;
+  &lt;Button Name=&quot;button1&quot; Height=&quot;50&quot; Width=&quot;50&quot;/&gt;
+  &lt;Button Name=&quot;button2&quot; Height=&quot;50&quot; Width=&quot;50&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="FocusSnippets#FocusSetIsFocusScope">StackPanel focuseScope2 = new StackPanel();
+FocusManager.SetIsFocusScope(focuseScope2, true);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Классы в WPF являются областями фокуса по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a>.</p>
+<p>Элемент, имеющий фокус клавиатуры также будет иметь логический фокус для области фокуса, которой он принадлежит. Таким образом, при установке фокуса на элемент с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класса или классов базовых элементов будет предпринята попытка передачи фокуса клавиатуры и логический фокус.</p>
+<p>Чтобы определить элемент с фокусом в области фокуса, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.getfocusedelement">GetFocusedElement</a>. Чтобы изменить элемент с фокусом для области фокуса, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setfocusedelement">SetFocusedElement</a>.</p>
+<p>Дополнительные сведения о логическом фокусе см. в разделе <a href="focus-overview.html">Общие сведения о фокусе</a>.</p>
+<p><a name="mouse_position"></a></p>
+<h2 id="mouse-position">Положение мыши</h2>
+<p>API ввода в WPF предоставляет полезные сведения о координатных пространствах.  Например, координата <code>(0,0)</code> является верхней левой координатой, но какого элемента в дереве? Элемента, который является целевым объектом ввода? Элемента, к которому присоединен обработчик событий? Или какого-нибудь другого элемента? Чтобы избежать путаницы, API ввода в WPF требует указания системы координат при работе с координатами, полученными посредством мыши. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.getposition">GetPosition</a> Метод возвращает координаты указателя мыши относительно заданного элемента.</p>
+<p><a name="mouse_capture"></a></p>
+<h2 id="mouse-capture">Захват мыши</h2>
+<p>Устройства мыши специально поддерживают модальную характеристику, которая называется захватом мыши. Захват мыши используется для поддержания промежуточного состояния ввода при запуске операции перетаскивания, так что другие операции, связанные с номинальным положением указателя мыши на экране указателя мыши, не всегда происходят. Во время перетаскивания пользователь не может щелкнуть мышью без прерывания операции перетаскивания, что делает большинство указаний мыши нецелесообразными, пока захват мыши удерживается источником перетаскивания. Система ввода предоставляет API - интерфейсы, которые могут определить состояние захвата мыши, а также API - интерфейсы, которые могут обеспечить захват мыши в определенном элементе или очистить состояние захвата мыши. Дополнительные сведения об операциях перетаскивания см. в разделе <a href="drag-and-drop-overview.html">Общие сведения о перетаскивании</a>.</p>
+<p><a name="commands"></a></p>
+<h2 id="commands">Команды</h2>
+<p>Команды позволяют обрабатывать входные данные на более семантическом уровне по сравнению с устройствами ввода.  Команды — это простые директивы, такие как <code>Cut</code>, <code>Copy</code>, <code>Paste</code> или <code>Open</code>.  Команды удобно использовать для централизации командной логики.  Та же команда может осуществляться из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a>на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>, или с помощью сочетания клавиш. Команды также предоставляют механизм для отключения элементов управления, когда команда становится недоступной.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> — WPF реализацию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a>.  Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> выполняется, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.previewexecuted">PreviewExecuted</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a> события для целевого объекта команды, которые спускаются и поднимаются по дереву элементов подобно другому вводу.  Если целевой объект команды не задан, в качестве целевого объекта будет использоваться элемент с фокусом клавиатуры.  Логика, выполняющая команду, присоединяется к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a>.  Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandmanager.executed">Executed</a> событие достигает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> для указанной команды, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.executedroutedeventhandler">ExecutedRoutedEventHandler</a> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.commandbinding">CommandBinding</a> вызывается.  Этот обработчик выполняет действие команды.</p>
+<p>Дополнительные сведения о системе команд см. в разделе <a href="commanding-overview.html">Общие сведения о системе команд</a>.</p>
+<p>WPF предоставляет библиотеку общих команд, которые состоит из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands">ApplicationCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mediacommands">MediaCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.componentcommands">ComponentCommands</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.navigationcommands">NavigationCommands</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.editingcommands">EditingCommands</a>, или можно определить собственные.</p>
+<p>В следующем примере показано, как настроить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a> так, что при его выборе вызывается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.applicationcommands.paste">Paste</a> команды <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, если предполагается, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> имеет фокус клавиатуры.</p>
+<pre><code class="lang-xaml" name="CommandingOverviewSnippets#CommandingOverviewSimpleCommand">&lt;StackPanel&gt;
+  &lt;Menu&gt;
+    &lt;MenuItem Command=&quot;ApplicationCommands.Paste&quot; /&gt;
+  &lt;/Menu&gt;
+  &lt;TextBox /&gt;
+&lt;/StackPanel&gt;
+</code></pre><pre><code class="lang-csharp" name="CommandingOverviewSnippets#CommandingOverviewCommandTargetCodeBehind">// Creating the UI objects
+StackPanel mainStackPanel = new StackPanel();
+TextBox pasteTextBox = new TextBox();
+Menu stackPanelMenu = new Menu();
+MenuItem pasteMenuItem = new MenuItem();
+
+// Adding objects to the panel and the menu
+stackPanelMenu.Items.Add(pasteMenuItem);
+mainStackPanel.Children.Add(stackPanelMenu);
+mainStackPanel.Children.Add(pasteTextBox);
+
+// Setting the command to the Paste command
+pasteMenuItem.Command = ApplicationCommands.Paste;
+
+// Setting the command target to the TextBox
+pasteMenuItem.CommandTarget = pasteTextBox;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Дополнительные сведения о командах в WPF см. в разделе <a href="commanding-overview.html">Общие сведения о системе команд</a>.</p>
+<p><a name="the_input_system_and_base_elements"></a></p>
+<h2 id="the-input-system-and-base-elements">Система ввода и базовые элементы</h2>
+<p>События ввода, например вложенные события, определенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> классы вызывается системой ввода и вставленных в определенном положении в объектной модели, в зависимости от нажатия визуального дерева во время выполнения.</p>
+<p>Каждое из событий, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylus">Stylus</a> определить как вложенное событие, также повторно представляется классами базовых элементов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> как новое перенаправленное событие. Перенаправленные события базовых элементов создаются классами, обрабатывающими исходное присоединенное событие и повторно использующими данные события.</p>
+<p>Когда событие ввода становится связанным с определенным исходным элементом через реализацию события ввода его базового элемента, оно может перенаправляться через оставшуюся часть маршрута события, основанного на комбинации объектов логического и визуального дерева, и обрабатываться кодом приложения.  Как правило, удобнее обрабатывать эти связанные с устройством события ввода с помощью перенаправленных событий на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>, так как можно использовать более интуитивно понятный синтаксис обработчика событий и в XAML и в коде. Вместо этого можно обрабатывать присоединенное событие, инициированное процессом, но это сопряжено с некоторыми проблемами: присоединенное событие может быть отмечено как обработанное обработчиком класса базовых элементов класса и придется использовать методы доступа вместо действительного синтаксиса событий, чтобы подключить обработчики для присоединенных событий.</p>
+<p><a name="whats_next"></a></p>
+<h2 id="whats-next">Что дальше?</h2>
+<p>Теперь вам известно несколько методов обработки ввода в WPF.  Вы также должны лучше понимать разные типы событий ввода и механизмы перенаправленных событий, используемые в WPF.</p>
+<p>Доступны дополнительные ресурсы, в которых более подробно разъясняются элементы инфраструктуры WPF и маршрутизация событий. Дополнительные сведения см. в следующих обзорах: <a href="commanding-overview.html">Общие сведения о командах</a>, <a href="focus-overview.html">Общие сведения о фокусе</a>, <a href="base-elements-overview.html">Общие сведения о базовых элементах</a>, <a href="trees-in-wpf.html">Деревья в WPF</a> и <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="focus-overview.html">Общие сведения о фокусе</a></li>
+<li><a href="commanding-overview.html">Общие сведения о системе команд</a></li>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="base-elements-overview.html">Общие сведения о базовых элементах</a></li>
+<li><a href="properties-wpf.html">Свойства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

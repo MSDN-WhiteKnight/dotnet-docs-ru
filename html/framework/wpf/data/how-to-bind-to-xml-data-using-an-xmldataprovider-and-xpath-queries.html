@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1082; XML-&#1076;&#1072;&#1085;&#1085;&#1099;&#1084; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; XMLDataProvider &#1080; &#1079;&#1072;&#1087;&#1088;&#1086;&#1089;&#1086;&#1074; XPath | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1082; XML-&#1076;&#1072;&#1085;&#1085;&#1099;&#1084; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; XMLDataProvider &#1080; &#1079;&#1072;&#1087;&#1088;&#1086;&#1089;&#1086;&#1074; XPath | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries">Практическое руководство. Привязка к XML-данным с помощью XMLDataProvider и запросов XPath</h1>
+
+<p>В этом примере показано, как выполнить привязку к XML данных с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a>.</p>
+<p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a>, базовые данные, может осуществляться через привязку данных в приложении может быть любым деревом XML узлов. Другими словами <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a> предоставляет удобный способ использования любого дерева из XML узлов, в качестве источника привязки.</p>
+<h2 id="example">Пример</h2>
+<p>В следующем примере данные внедряются непосредственно как XML <em>острова данных</em> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> разделе. Остров данных XML должен быть заключен в теги <code>&lt;x:XData&gt;</code> и всегда иметь один корневой узел, который в этом примере является <em>Инвентаризацией</em>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Корневой узел данных XML имеет атрибут <strong>xmlns</strong>, который задает для пространства имен XML пустую строку. Это обязательное требование для выполнения запросов XPath к островам данных, встроенным в страницу XAML. В данном случае XAML, и таким образом, остров данных наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows">System.Windows</a> пространства имен. По этой причине необходимо задать пространство имен пустым, чтобы запретить определять запросы XPath с пространством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows">System.Windows</a> пространства имен, которое неправильно направляло бы запросы.</p>
+</div>
+<pre><code class="lang-xaml" name="XMLDataSource#1">&lt;StackPanel
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  Background=&quot;Cornsilk&quot;&gt;
+
+  &lt;StackPanel.Resources&gt;
+    &lt;XmlDataProvider x:Key=&quot;InventoryData&quot; XPath=&quot;Inventory/Books&quot;&gt;
+      &lt;x:XData&gt;
+        &lt;Inventory xmlns=&quot;&quot;&gt;
+          &lt;Books&gt;
+            &lt;Book ISBN=&quot;0-7356-0562-9&quot; Stock=&quot;in&quot; Number=&quot;9&quot;&gt;
+              &lt;Title&gt;XML in Action&lt;/Title&gt;
+              &lt;Summary&gt;XML Web Technology&lt;/Summary&gt;
+            &lt;/Book&gt;
+            &lt;Book ISBN=&quot;0-7356-1370-2&quot; Stock=&quot;in&quot; Number=&quot;8&quot;&gt;
+              &lt;Title&gt;Programming Microsoft Windows With C#&lt;/Title&gt;
+              &lt;Summary&gt;C# Programming using the .NET Framework&lt;/Summary&gt;
+            &lt;/Book&gt;
+            &lt;Book ISBN=&quot;0-7356-1288-9&quot; Stock=&quot;out&quot; Number=&quot;7&quot;&gt;
+              &lt;Title&gt;Inside C#&lt;/Title&gt;
+              &lt;Summary&gt;C# Language Programming&lt;/Summary&gt;
+            &lt;/Book&gt;
+            &lt;Book ISBN=&quot;0-7356-1377-X&quot; Stock=&quot;in&quot; Number=&quot;5&quot;&gt;
+              &lt;Title&gt;Introducing Microsoft .NET&lt;/Title&gt;
+              &lt;Summary&gt;Overview of .NET Technology&lt;/Summary&gt;
+            &lt;/Book&gt;
+            &lt;Book ISBN=&quot;0-7356-1448-2&quot; Stock=&quot;out&quot; Number=&quot;4&quot;&gt;
+              &lt;Title&gt;Microsoft C# Language Specifications&lt;/Title&gt;
+              &lt;Summary&gt;The C# language definition&lt;/Summary&gt;
+            &lt;/Book&gt;
+          &lt;/Books&gt;
+          &lt;CDs&gt;
+            &lt;CD Stock=&quot;in&quot; Number=&quot;3&quot;&gt;
+              &lt;Title&gt;Classical Collection&lt;/Title&gt;
+              &lt;Summary&gt;Classical Music&lt;/Summary&gt;
+            &lt;/CD&gt;
+            &lt;CD Stock=&quot;out&quot; Number=&quot;9&quot;&gt;
+              &lt;Title&gt;Jazz Collection&lt;/Title&gt;
+              &lt;Summary&gt;Jazz Music&lt;/Summary&gt;
+            &lt;/CD&gt;
+          &lt;/CDs&gt;
+        &lt;/Inventory&gt;
+      &lt;/x:XData&gt;
+    &lt;/XmlDataProvider&gt;
+  &lt;/StackPanel.Resources&gt;
+
+  &lt;TextBlock FontSize=&quot;18&quot; FontWeight=&quot;Bold&quot; Margin=&quot;10&quot;
+    HorizontalAlignment=&quot;Center&quot;&gt;XML Data Source Sample&lt;/TextBlock&gt;
+  &lt;ListBox
+    Width=&quot;400&quot; Height=&quot;300&quot; Background=&quot;Honeydew&quot;&gt;
+    &lt;ListBox.ItemsSource&gt;
+      &lt;Binding Source=&quot;{StaticResource InventoryData}&quot;
+               XPath=&quot;*[@Stock='out'] | *[@Number&gt;=8 or @Number=3]&quot;/&gt;
+    &lt;/ListBox.ItemsSource&gt;
+
+    &lt;!--Alternatively, you can do the following. --&gt;
+    &lt;!--&lt;ListBox Width=&quot;400&quot; Height=&quot;300&quot; Background=&quot;Honeydew&quot;
+      ItemsSource=&quot;{Binding Source={StaticResource InventoryData},
+      XPath=*[@Stock\=\'out\'] | *[@Number&gt;\=8 or @Number\=3]}&quot;&gt;--&gt;
+
+    &lt;ListBox.ItemTemplate&gt;
+      &lt;DataTemplate&gt;
+        &lt;TextBlock FontSize=&quot;12&quot; Foreground=&quot;Red&quot;&gt;
+          &lt;TextBlock.Text&gt;
+            &lt;Binding XPath=&quot;Title&quot;/&gt;
+          &lt;/TextBlock.Text&gt;
+        &lt;/TextBlock&gt;
+      &lt;/DataTemplate&gt;
+    &lt;/ListBox.ItemTemplate&gt;
+  &lt;/ListBox&gt;
+&lt;/StackPanel&gt;
+</code></pre>
+<p>Как показано в следующем примере, для создания такого же объявления привязки в синтаксисе атрибутов необходимо экранировать специальные символы правильно. Дополнительные сведения см. в разделе <a href="../../xaml-services/xml-character-entities-and-xaml.md">Сущности знаков XML и XAML</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> Будут показаны следующие элементы, при запуске этого примера. Это <em>заголовки</em> всех элементов в группе <em>Книги</em> со значением <em>Stock</em>, равным <em>out</em>, или значением <em>Number</em>, равным 3 или больше или равным 8. Обратите внимание, что не <em>компакт-диска</em> элементы возвращаются, потому что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider.xpath">XPath</a> заданное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider">XmlDataProvider</a> указывает, что только <em>книг</em> элементы должны предоставляться ему (по существу установки фильтра).</p>
+<p><img src="./media/xpathexample.PNG" alt="XPath Example" title="XPathExample"></p>
+<p>В этом примере отображаются названия книг, так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> привязки в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> имеет значение &quot;<em>Title</em>«. Если вы хотите отображать значение атрибута, например <em>ISBN</em>, следует установить для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> значение &quot;<code>@ISBN</code>«.</p>
+<p>Свойства <strong>XPath</strong> в WPF обрабатываются методом XmlNode.SelectNodes. Можно изменить запросы <strong>XPath</strong> для получения других результатов. Ниже приведено несколько примеров для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.xpath">XPath</a> запрос к привязанному элементу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> из предыдущего примера:</p>
+<ul>
+<li><p><code>XPath=&quot;Book[1]&quot;</code> Возвращает первый элемент книги («XML в действии»). Обратите внимание, что индексы <strong>XPath</strong> основаны на 1, а не на 0.</p>
+</li>
+<li><p><code>XPath=&quot;Book[@*]&quot;</code> Возвращает все элементы книги с любыми атрибутами.</p>
+</li>
+<li><p><code>XPath=&quot;Book[last()-1]&quot;</code> Возвращает второй элемент последней книги («Знакомство с Microsoft .NET»).</p>
+</li>
+<li><p><code>XPath=&quot;*[position()&gt;3]&quot;</code> Возвращает все элементы книги, за исключением первых трех.</p>
+</li>
+</ul>
+<p>При запуске <strong>XPath</strong> запрос, он возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.xmlnode">XmlNode</a> или список XmlNodes. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.xmlnode">XmlNode</a> — среда CLR объектом, то есть можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.path">Path</a> свойство для привязки к среда CLR свойства. Вернемся к нашему предыдущему примеру еще раз. Если остальная часть примера остается неизменной и вы изменяете <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> привязке следующего, будут отображаться имена возвращенных XMLNodes в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. В этом случае все возвращаемые узлы называются &quot;<em>книги</em>&quot;.</p>
+<pre><code class="lang-xaml" name="XmlDataSourceVariation#XmlNodePath">&lt;TextBlock FontSize=&quot;12&quot; Foreground=&quot;Red&quot;&gt;
+  &lt;TextBlock.Text&gt;
+    &lt;Binding Path=&quot;Name&quot;/&gt;
+  &lt;/TextBlock.Text&gt;
+&lt;/TextBlock&gt;
+</code></pre>
+<p>В некоторых приложениях внедрение XML в качестве острова данных в источник XAML страницы может быть нецелесообразным, поскольку точное содержимое данных должно быть известно во время компиляции. Поэтому также поддерживается получение данных из внешнего XML файла, как показано в следующем примере:</p>
+<pre><code class="lang-xaml" name="XMLDataSource2#XmlFileExample">&lt;XmlDataProvider x:Key=&quot;BookData&quot; Source=&quot;data\bookdata.xml&quot; XPath=&quot;Books&quot;/&gt;
+</code></pre>
+<p>Если XML данные находятся в удаленном XML файл, можно будет определить доступ к данным путем назначения соответствующих URL-адрес для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.xmldataprovider.source">Source</a> следующим образом:</p>
+<pre><code class="lang-xml">&lt;XmlDataProvider x:Key=&quot;BookData&quot; Source=&quot;http://MyUrl&quot; XPath=&quot;Books&quot;/&gt;  
+</code></pre>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a></li>
+<li><a href="how-to-bind-to-xdocument-xelement-or-linq-for-xml-query-results.html">Привязка к XDocument, XElement или LINQ для результатов запросов XML</a></li>
+<li><a href="how-to-use-the-master-detail-pattern-with-hierarchical-xml-data.html">Использование шаблона &quot;Основной/подробности&quot; с иерархическими XML-данными</a></li>
+<li><a href="binding-sources-overview.html">Общие сведения об источниках привязки</a></li>
+<li><a href="data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="data-binding-how-to-topics.html">Практические руководства</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

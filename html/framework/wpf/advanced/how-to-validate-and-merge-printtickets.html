@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1080; &#1089;&#1083;&#1080;&#1103;&#1085;&#1080;&#1077; PrintTickets | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1080; &#1089;&#1083;&#1080;&#1103;&#1085;&#1080;&#1077; PrintTickets | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-validate-and-merge-printtickets">Практическое руководство. Проверка и слияние PrintTickets</h1>
+
+<p>Microsoft Windows <a href="https://go.microsoft.com/fwlink/?LinkId=186397">Print Schema</a> включает гибкой и расширяемой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities">PrintCapabilities</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> элементы. Первый элемент перечисляет возможности устройства печати, а второй указывает, как устройство должно использовать эти возможности по отношению к определенной последовательности документов, отдельному документу или отдельной страницы.</p>
+<p>Типичная последовательность задач для приложения, которое поддерживает печать будет выглядеть следующим образом.</p>
+<ol>
+<li><p>Определите возможности принтера.</p>
+</li>
+<li><p>Настройка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> для использования этих возможностей.</p>
+</li>
+<li><p>Проверка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a>.</p>
+</li>
+</ol>
+<p>В этой статье показано, как это сделать.</p>
+<h2 id="example">Пример</h2>
+<p>В простом примере нас интересуют только может ли принтер поддерживает двухстороннюю печать — двухсторонней печати. Ниже приведены основные шаги.</p>
+<ol>
+<li><p>Получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities">PrintCapabilities</a> со <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.getprintcapabilities">GetPrintCapabilities</a> метод.</p>
+</li>
+<li><p>Для проверки наличия нужные возможности. В приведенном ниже примере мы проверить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities.duplexingcapability">DuplexingCapability</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities">PrintCapabilities</a> объекта на наличие возможности печати на обеих сторонах листа бумаги с «Включение страницы» вдоль длинной стороны листа. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities.duplexingcapability">DuplexingCapability</a> является коллекцией, мы используем <code>Contains</code> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection&lt;T&gt;</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Этот шаг не является обязательным. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.mergeandvalidateprintticket">MergeAndValidatePrintTicket</a> Ниже использован метод будет проверять каждый запрос <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> от возможностей используемого принтера. Если запрошенная возможность не поддерживается принтером, драйвер принтера заменит альтернативный запрос в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> возвращаемых методом.</p>
+</div>
+</li>
+<li><p>Если принтер поддерживает двусторонней печати, в примере кода создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> , запрашивающий двусторонней печати. Но приложение не указывает каждый возможный параметр в принтера <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> элемент. Это было бы расточительно для программиста и программа время. Вместо этого код задает только запрос двусторонней печати, а затем выполняет слияние этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> с существующим, полностью настроенную и проверки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a>, в этом случае пользователя по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a>.</p>
+</li>
+<li><p>Соответственно, в образце вызывается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.mergeandvalidateprintticket">MergeAndValidatePrintTicket</a> метод для слияния нового, минимальным, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> пользователя имеет значения по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a>. Эта команда возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.validationresult">ValidationResult</a> , содержащий новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> как один из его свойств.</p>
+</li>
+<li><p>Затем образец тестирует, новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a> запрашивает двусторонней печати. Если это так, то в этом образце он новый билет печати по умолчанию для пользователя. Если шаг 2 был пропущен и принтера не поддерживали дуплексная вдоль длинной стороны, то тест привела бы к <code>false</code>. (См. Примечание выше).</p>
+</li>
+<li><p>Последний значительный шаг заключается в фиксации, чтобы изменения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.userprintticket">UserPrintTicket</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.commit">Commit</a> метод.</p>
+</li>
+</ol>
+<pre><code class="lang-csharp" name="PrintTicketManagment#UsingMergeAndValidate">/// &lt;summary&gt;
+/// Changes the user-default PrintTicket setting of the specified print queue.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;queue&quot;&gt;the printer whose user-default PrintTicket setting needs to be changed&lt;/param&gt;
+static private void ChangePrintTicketSetting(PrintQueue queue)
+{
+    //
+    // Obtain the printer's PrintCapabilities so we can determine whether or not
+    // duplexing printing is supported by the printer.
+    //
+    PrintCapabilities printcap = queue.GetPrintCapabilities();
+
+    //
+    // The printer's duplexing capability is returned as a read-only collection of duplexing options
+    // that can be supported by the printer. If the collection returned contains the duplexing
+    // option we want to set, it means the duplexing option we want to set is supported by the printer,
+    // so we can make the user-default PrintTicket setting change.
+    //
+    if (printcap.DuplexingCapability.Contains(Duplexing.TwoSidedLongEdge))
+    {
+        //
+        // To change the user-default PrintTicket, we can first create a delta PrintTicket with
+        // the new duplexing setting.
+        //
+        PrintTicket deltaTicket = new PrintTicket();
+        deltaTicket.Duplexing = Duplexing.TwoSidedLongEdge;
+
+        //
+        // Then merge the delta PrintTicket onto the printer's current user-default PrintTicket,
+        // and validate the merged PrintTicket to get the new PrintTicket we want to set as the
+        // printer's new user-default PrintTicket.
+        //
+        ValidationResult result = queue.MergeAndValidatePrintTicket(queue.UserPrintTicket, deltaTicket);
+
+        //
+        // The duplexing option we want to set could be constrained by other PrintTicket settings
+        // or device settings. We can check the validated merged PrintTicket to see whether the
+        // the validation process has kept the duplexing option we want to set unchanged.
+        //
+        if (result.ValidatedPrintTicket.Duplexing == Duplexing.TwoSidedLongEdge)
+        {
+            //
+            // Set the printer's user-default PrintTicket and commit the set operation.
+            //
+            queue.UserPrintTicket = result.ValidatedPrintTicket;
+            queue.Commit();
+            Console.WriteLine(&quot;PrintTicket new duplexing setting is set on '{0}'.&quot;, queue.FullName);
+        }
+        else
+        {
+            //
+            // The duplexing option we want to set has been changed by the validation process
+            // when it was resolving setting constraints.
+            //
+            Console.WriteLine(&quot;PrintTicket new duplexing setting is constrained on '{0}'.&quot;, queue.FullName);
+        }
+    }
+    else
+    {
+        //
+        // If the printer doesn't support the duplexing option we want to set, skip it.
+        //
+        Console.WriteLine(&quot;PrintTicket new duplexing setting is not supported on '{0}'.&quot;, queue.FullName);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Таким образом, вы можете быстро проверить в этом примере, его оставшаяся часть представлена ниже. Создание проекта и пространство имен, а затем вставьте фрагменты кода в этой статье, в блок пространства имен.</p>
+<pre><code class="lang-csharp" name="PrintTicketManagment#UIForMergeAndValidatePTUtility">/// &lt;summary&gt;
+/// Displays the correct command line syntax to run this sample program.
+/// &lt;/summary&gt;
+static private void DisplayUsage()
+{
+    Console.WriteLine();
+    Console.WriteLine(&quot;Usage #1: printticket.exe -l \&quot;&lt;printer_name&gt;\&quot;&quot;);
+    Console.WriteLine(&quot;      Run program on the specified local printer&quot;);
+    Console.WriteLine();
+    Console.WriteLine(&quot;      Quotation marks may be omitted if there are no spaces in printer_name.&quot;);
+    Console.WriteLine();
+    Console.WriteLine(&quot;Usage #2: printticket.exe -r \&quot;\\\\&lt;server_name&gt;\\&lt;printer_name&gt;\&quot;&quot;);
+    Console.WriteLine(&quot;      Run program on the specified network printer&quot;);
+    Console.WriteLine();
+    Console.WriteLine(&quot;      Quotation marks may be omitted if there are no spaces in server_name or printer_name.&quot;);
+    Console.WriteLine();
+    Console.WriteLine(&quot;Usage #3: printticket.exe -a&quot;);
+    Console.WriteLine(&quot;      Run program on all installed printers&quot;);
+    Console.WriteLine();
+}
+
+[STAThread]
+static public void Main(string[] args)
+{
+    try
+    {
+        if ((args.Length == 1) &amp;&amp; (args[0] == &quot;-a&quot;))
+        {
+            //
+            // Change PrintTicket setting for all local and network printer connections.
+            //
+            LocalPrintServer server = new LocalPrintServer();
+
+            EnumeratedPrintQueueTypes[] queue_types = {EnumeratedPrintQueueTypes.Local,
+                                                       EnumeratedPrintQueueTypes.Connections};
+
+            //
+            // Enumerate through all the printers.
+            //
+            foreach (PrintQueue queue in server.GetPrintQueues(queue_types))
+            {
+                //
+                // Change the PrintTicket setting queue by queue.
+                //
+                ChangePrintTicketSetting(queue);
+            }
+        }//end if -a
+
+        else if ((args.Length == 2) &amp;&amp; (args[0] == &quot;-l&quot;))
+        {
+            //
+            // Change PrintTicket setting only for the specified local printer.
+            //
+            LocalPrintServer server = new LocalPrintServer();
+            PrintQueue queue = new PrintQueue(server, args[1]);
+            ChangePrintTicketSetting(queue);
+        }//end if -l
+
+        else if ((args.Length == 2) &amp;&amp; (args[0] == &quot;-r&quot;))
+        {
+            //
+            // Change PrintTicket setting only for the specified remote printer.
+            //
+            String serverName = args[1].Remove(args[1].LastIndexOf(@&quot;\&quot;));
+            String printerName = args[1].Remove(0, args[1].LastIndexOf(@&quot;\&quot;)+1);
+            PrintServer ps = new PrintServer(serverName);
+            PrintQueue queue = new PrintQueue(ps, printerName);
+            ChangePrintTicketSetting(queue);
+         }//end if -r
+
+        else
+        {
+            //
+            // Unrecognized command line.
+            // Show user the correct command line syntax to run this sample program.
+            //
+            DisplayUsage();
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+        Console.WriteLine(e.StackTrace);
+
+        //
+        // Show inner exception information if it's provided.
+        //
+        if (e.InnerException != null)
+        {
+            Console.WriteLine(&quot;--- Inner Exception ---&quot;);
+            Console.WriteLine(e.InnerException.Message);
+            Console.WriteLine(e.InnerException.StackTrace);
+        }
+    }
+    finally
+    {
+        Console.WriteLine(&quot;Press Return to continue...&quot;);
+        Console.ReadLine();
+    }
+}//end Main
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printcapabilities">PrintCapabilities</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printticket">PrintTicket</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver.getprintqueues">GetPrintQueues</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printserver">PrintServer</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.enumeratedprintqueuetypes">EnumeratedPrintQueueTypes</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.getprintcapabilities">GetPrintCapabilities</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="printing-overview.html">Общие сведения о печати</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=186397">Схема печати</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

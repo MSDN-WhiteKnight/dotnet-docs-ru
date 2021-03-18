@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1088;&#1077;&#1079;&#1082;&#1072; &#1080; &#1084;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1081; &#1074; GDI+ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1088;&#1077;&#1079;&#1082;&#1072; &#1080; &#1084;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1081; &#1074; GDI+ | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cropping-and-scaling-images-in-gdi">Обрезка и масштабирование изображений в GDI+</h1>
+
+<p>Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> позволяет рисовать и размещать векторные и растровые изображения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> — Это перегруженный метод, поэтому существует несколько способов передачи аргументов.</p>
+<h2 id="drawimage-variations">DrawImage вариантов</h2>
+<p>Один из вариантов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод получает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.bitmap">Bitmap</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a>. Прямоугольник определяет место назначения для операции рисования; то есть он задает прямоугольник, в котором должно быть нарисовано изображение. Если размер целевого прямоугольника отличаются от размера исходного изображения, изображение масштабируется по размерам прямоугольника назначения. В следующем примере кода показано, как должно быть нарисовано изображение же три раза: один раз без масштабирования, один раз с помощью расширения и один раз с сжатия:</p>
+<pre><code class="lang-csharp" name="System.Drawing.ImagesBitmapsMetafiles#31">Bitmap myBitmap = new Bitmap(&quot;Spiral.png&quot;);
+
+Rectangle expansionRectangle = new Rectangle(135, 10,
+   myBitmap.Width, myBitmap.Height);
+
+Rectangle compressionRectangle = new Rectangle(300, 10,
+   myBitmap.Width / 2, myBitmap.Height / 2);
+
+myGraphics.DrawImage(myBitmap, 10, 10);
+myGraphics.DrawImage(myBitmap, expansionRectangle);
+myGraphics.DrawImage(myBitmap, compressionRectangle);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже показаны три изображения.</p>
+<p><img src="media/aboutgdip03-art06.gif" alt="Масштабирование" title="AboutGdip03_Art06"></p>
+<p>Некоторые варианты <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод иметь исходный прямоугольник, а также параметр целевого прямоугольника. Исходный прямоугольник задает часть исходного изображения для рисования. Прямоугольник назначения задает прямоугольник, в котором для рисования эту часть изображения. Если размер целевого прямоугольника отличаются от размера исходного прямоугольника, изображение масштабируется по размерам прямоугольника назначения.</p>
+<p>В следующем примере кода показано создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.bitmap">Bitmap</a> из файла Runner.jpg. Все изображение рисуется без масштабирования на (0, 0). Затем небольшую часть изображения отображается дважды: один раз со сжатием и один раз с помощью расширения.</p>
+<pre><code class="lang-csharp" name="System.Drawing.ImagesBitmapsMetafiles#32">Bitmap myBitmap = new Bitmap(&quot;Runner.jpg&quot;);
+
+// One hand of the runner
+Rectangle sourceRectangle = new Rectangle(80, 70, 80, 45);
+
+// Compressed hand
+Rectangle destRectangle1 = new Rectangle(200, 10, 20, 16);
+
+// Expanded hand
+Rectangle destRectangle2 = new Rectangle(200, 40, 200, 160);
+
+// Draw the original image at (0, 0).
+myGraphics.DrawImage(myBitmap, 0, 0);
+
+// Draw the compressed hand.
+myGraphics.DrawImage(
+   myBitmap, destRectangle1, sourceRectangle, GraphicsUnit.Pixel);
+
+// Draw the expanded hand. 
+myGraphics.DrawImage(
+   myBitmap, destRectangle2, sourceRectangle, GraphicsUnit.Pixel);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Ниже показан немасштабированного рисунка и части, сжатые и Развернутое изображение.</p>
+<p><img src="media/aboutgdip03-art07.gif" alt="Обрезка и масштабирование" title="AboutGdip03_Art07"></p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="images-bitmaps-and-metafiles.html">Работа с растровыми и векторными изображениями с использованием классов Image, Bitmap и Metafile</a></li>
+<li><a href="working-with-images-bitmaps-icons-and-metafiles.html">Работа с растровыми и векторными изображениями</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

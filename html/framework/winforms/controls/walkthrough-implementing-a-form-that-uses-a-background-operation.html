@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1092;&#1086;&#1088;&#1084;&#1099;, &#1074; &#1082;&#1086;&#1090;&#1086;&#1088;&#1086;&#1081; &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1103;&#1077;&#1090;&#1089;&#1103; &#1092;&#1086;&#1085;&#1086;&#1074;&#1072;&#1103; &#1086;&#1087;&#1077;&#1088;&#1072;&#1094;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1056;&#1077;&#1072;&#1083;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1092;&#1086;&#1088;&#1084;&#1099;, &#1074; &#1082;&#1086;&#1090;&#1086;&#1088;&#1086;&#1081; &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1103;&#1077;&#1090;&#1089;&#1103; &#1092;&#1086;&#1085;&#1086;&#1074;&#1072;&#1103; &#1086;&#1087;&#1077;&#1088;&#1072;&#1094;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-implementing-a-form-that-uses-a-background-operation">Пошаговое руководство. Реализация формы, в которой выполняется фоновая операция</h1>
+
+<p>Если у вас есть операция будет выполняться долго для завершения, и не требуется пользовательский интерфейс (UI) перестает отвечать на запросы или «зависания», можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> класс для выполнения операции в другом потоке.</p>
+<p>В этом пошаговом руководстве показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> класса для выполнения длительных вычислений «в фоновом режиме», а пользовательский интерфейс продолжает отвечать.  По завершении работы будет создано приложение, вычисляющее числа Фибоначчи в асинхронном режиме. Несмотря на то что вычисление крупных чисел Фибоначчи может занимать много времени, основной поток пользовательского интерфейса в результате этой задержки прерываться не будет, а форма в ходе вычисления останется рабочей.</p>
+<p>В данном пошаговом руководстве представлены следующие задачи.</p>
+<ul>
+<li><p>Создание приложения на базе Windows</p>
+</li>
+<li><p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> в форме</p>
+</li>
+<li><p>Добавление обработчиков асинхронных событий</p>
+</li>
+<li><p>Добавление отчетов о ходе выполнения и поддержка отмены</p>
+</li>
+</ul>
+<p>Полный код, используемый в этом примере, см. в разделе <a href="how-to-implement-a-form-that-uses-a-background-operation.html">как: Реализация формы, в который выполняется фоновая операция</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Отображаемые диалоговые окна и команды меню могут отличаться от описанных в справке в зависимости от текущих параметров или выпуска. Чтобы изменить параметры, выберите в меню <strong>Сервис</strong> пункт <strong>Импорт и экспорт параметров</strong> . Дополнительные сведения см. в разделе <a href="/visualstudio/ide/personalizing-the-visual-studio-ide">Персонализация интегрированной среды разработки Visual Studio</a>.</p>
+</div>
+<h2 id="creating-the-project">Создание проекта</h2>
+<p>Первым шагом являются создание проекта и настройка формы.</p>
+<h4 id="to-create-a-form-that-uses-a-background-operation">Создание формы, в которой выполняется фоновая операция</h4>
+<ol>
+<li><p>Создайте проект приложения на основе Windows с именем <code>BackgroundWorkerExample</code> (<strong>файл</strong> &gt; <strong>New</strong> &gt; <strong>проекта</strong>  &gt;  <strong>Visual C#</strong> или <strong>Visual Basic</strong> &gt; <strong>классический рабочий стол</strong> &gt; <strong>Windows Forms Application</strong>).</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong> щелкните правой кнопкой мыши <strong>Form1</strong> и выберите в контекстном меню команду <strong>Переименовать</strong>. Измените имя файла на <code>FibonacciCalculator</code>. Чтобы переименовать все ссылки на элемент кода '<code>Form1</code>', в соответствующем запросе нажмите кнопку <strong>Да</strong>.</p>
+</li>
+<li><p>Перетащите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.numericupdown">NumericUpDown</a> управления из <strong>элементов</strong> на форму. Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.numericupdown.minimum">Minimum</a> свойства <code>1</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.numericupdown.maximum">Maximum</a> свойства <code>91</code>.</p>
+</li>
+<li><p>Добавьте два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> элементов управления в форму.</p>
+</li>
+<li><p>Переименуйте первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> управления <code>startAsyncButton</code> и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойства <code>Start Async</code>. Переименуйте второй <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> управления <code>cancelAsyncButton</code>и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойства <code>Cancel Async</code>. Задайте его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.enabled">Enabled</a> свойства <code>false</code>.</p>
+</li>
+<li><p>Создайте обработчик событий для обоих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> элементов управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> события. Подробную информацию см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/zwwsdtbk(v=vs.100)">Практическое руководство. Создание обработчиков событий с помощью конструктора</a>.</p>
+</li>
+<li><p>Перетащите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.label">Label</a> управления из <strong>элементов</strong> на форму и переименуйте его <code>resultLabel</code>.</p>
+</li>
+<li><p>Перетащите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> управления из <strong>элементов</strong> на форму.</p>
+</li>
+</ol>
+<h2 id="creating-a-backgroundworker-in-your-form">Создание BackgroundWorker в форме</h2>
+<p>Можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> для асинхронной операции с помощью <strong>Windows</strong> <strong>конструктора</strong>.</p>
+<h4 id="to-create-a-backgroundworker-with-the-designer">Создание BackgroundWorker с помощью конструктора</h4>
+<ul>
+<li>Из <strong>компоненты</strong> вкладке <strong>элементов</strong>, перетащите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> на форму.</li>
+</ul>
+<h2 id="adding-asynchronous-event-handlers">Добавление обработчиков асинхронных событий</h2>
+<p>Теперь вы готовы добавить обработчики событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> асинхронных событий компонента. Один из этих обработчиков вызывает длительную операцию, вычисляющую числа Фибоначчи в фоновом режиме.</p>
+<h4 id="to-implement-asynchronous-event-handlers">Реализация обработчиков асинхронных событий</h4>
+<ol>
+<li><p>В <strong>свойства</strong> окне с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> компонент все еще выбран, щелкните <strong>события</strong> кнопки. Дважды щелкните <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> событий, чтобы создать обработчики событий. Дополнительные сведения об использовании обработчиков событий см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/zwwsdtbk(v=vs.100)">как: Создание обработчиков событий с помощью конструктора</a>.</p>
+</li>
+<li><p>Создайте в форме новый метод с именем <code>ComputeFibonacci</code>. Этот метод выполняет фактическую работу и делает это в фоновом режиме. Данный код демонстрирует рекурсивную реализацию алгоритма Фибоначчи — она довольно неэффективна и занимает в разы больше времени при работе с большими числами. Он приводится в иллюстративных целях, чтобы показать, что операция может значительно замедлить работу вашего приложения.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#10">// This is the method that does the actual work. For this
+// example, it computes a Fibonacci number and
+// reports progress as it does its work.
+long ComputeFibonacci(int n, BackgroundWorker worker, DoWorkEventArgs e)
+{
+    // The parameter n must be &gt;= 0 and &lt;= 91.
+    // Fib(n), with n &gt; 91, overflows a long.
+    if ((n &lt; 0) || (n &gt; 91))
+    {
+        throw new ArgumentException(
+            &quot;value must be &gt;= 0 and &lt;= 91&quot;, &quot;n&quot;);
+    }
+
+    long result = 0;
+
+    // Abort the operation if the user has canceled.
+    // Note that a call to CancelAsync may have set 
+    // CancellationPending to true just after the
+    // last invocation of this method exits, so this 
+    // code will not have the opportunity to set the 
+    // DoWorkEventArgs.Cancel flag to true. This means
+    // that RunWorkerCompletedEventArgs.Cancelled will
+    // not be set to true in your RunWorkerCompleted
+    // event handler. This is a race condition.
+
+    if (worker.CancellationPending)
+    {   
+        e.Cancel = true;
+    }
+    else
+    {   
+        if (n &lt; 2)
+        {   
+            result = 1;
+        }
+        else
+        {   
+            result = ComputeFibonacci(n - 1, worker, e) + 
+                     ComputeFibonacci(n - 2, worker, e);
+        }
+
+        // Report progress as a percentage of the total task.
+        int percentComplete = 
+            (int)((float)n / (float)numberToCompute * 100);
+        if (percentComplete &gt; highestPercentageReached)
+        {
+            highestPercentageReached = percentComplete;
+            worker.ReportProgress(percentComplete);
+        }
+    }
+
+    return result;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> обработчик событий, добавьте вызов <code>ComputeFibonacci</code> метод. Возьмите первый параметр <code>ComputeFibonacci</code> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs.argument">Argument</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a> параметры будут использоваться позже для отчетов о ходе выполнения и отмены поддержки. Присвойте возвращаемое значение из <code>ComputeFibonacci</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs.result">Result</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a>. Этот результат будет доступен для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> обработчик событий.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> Не ссылается на обработчик событий <code>backgroundWorker1</code> переменную экземпляра напрямую, так как это может привязать этот обработчик событий для определенного экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a>. Вместо этого ссылка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> , создавший событие, берется из <code>sender</code> параметра. Это важно, если в форме размещено несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a>. Это также не следует выполнять операции все объекты пользовательского интерфейса в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> обработчик событий. Вместо этого для взаимодействия в пользовательский интерфейс, через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> события.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#5">// This event handler is where the actual,
+// potentially time-consuming work is done.
+private void backgroundWorker1_DoWork(object sender, 
+    DoWorkEventArgs e)
+{   
+    // Get the BackgroundWorker that raised this event.
+    BackgroundWorker worker = sender as BackgroundWorker;
+
+    // Assign the result of the computation
+    // to the Result property of the DoWorkEventArgs
+    // object. This is will be available to the 
+    // RunWorkerCompleted eventhandler.
+    e.Result = ComputeFibonacci((int)e.Argument, worker, e);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>В <code>startAsyncButton</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий, добавьте код, который запускает асинхронную операцию.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#13">private void startAsyncButton_Click(System.Object sender, 
+    System.EventArgs e)
+{
+    // Reset the text in the result label.
+    resultLabel.Text = String.Empty;
+
+    // Disable the UpDown control until 
+    // the asynchronous operation is done.
+    this.numericUpDown1.Enabled = false;
+
+    // Disable the Start button until 
+    // the asynchronous operation is done.
+    this.startAsyncButton.Enabled = false;
+
+    // Enable the Cancel button while 
+    // the asynchronous operation runs.
+    this.cancelAsyncButton.Enabled = true;
+
+    // Get the value from the UpDown control.
+    numberToCompute = (int)numericUpDown1.Value;
+
+    // Reset the variable for percentage tracking.
+    highestPercentageReached = 0;
+
+    // Start the asynchronous operation.
+    backgroundWorker1.RunWorkerAsync(numberToCompute);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> обработчик событий, результат вычисления, которое необходимо присвоить <code>resultLabel</code> элемента управления.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#6">// This event handler deals with the results of the
+// background operation.
+private void backgroundWorker1_RunWorkerCompleted(
+    object sender, RunWorkerCompletedEventArgs e)
+{
+    // First, handle the case where an exception was thrown.
+    if (e.Error != null)
+    {
+        MessageBox.Show(e.Error.Message);
+    }
+    else if (e.Cancelled)
+    {
+        // Next, handle the case where the user canceled 
+        // the operation.
+        // Note that due to a race condition in 
+        // the DoWork event handler, the Cancelled
+        // flag may not have been set, even though
+        // CancelAsync was called.
+        resultLabel.Text = &quot;Canceled&quot;;
+    }
+    else
+    {
+        // Finally, handle the case where the operation 
+        // succeeded.
+        resultLabel.Text = e.Result.ToString();
+    }
+
+    // Enable the UpDown control.
+    this.numericUpDown1.Enabled = true;
+
+    // Enable the Start button.
+    startAsyncButton.Enabled = true;
+
+    // Disable the Cancel button.
+    cancelAsyncButton.Enabled = false;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h2 id="adding-progress-reporting-and-support-for-cancellation">Добавление отчетов о ходе выполнения и поддержка отмены</h2>
+<p>В случае асинхронных операций, занимающих долгое время, желательно сообщать пользователю о ходе выполнения, чтобы пользователь мог отменить операцию. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> Класс предоставляет событие, которое позволяет публиковать ход выполнения фоновой операции. Он также предоставляет флаг, позволяющий рабочему коду обнаружить вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.cancelasync">CancelAsync</a> и прервать свое выполнение.</p>
+<h4 id="to-implement-progress-reporting">Реализация отчета о ходе выполнения</h4>
+<ol>
+<li><p>В окне <strong>Свойства</strong> выберите <code>backgroundWorker1</code>. Задайте для свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.workerreportsprogress">WorkerReportsProgress</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.workersupportscancellation">WorkerSupportsCancellation</a> значение <code>true</code>.</p>
+</li>
+<li><p>Объявите две переменные в форме <code>FibonacciCalculator</code>. Они будут использоваться для отслеживания хода выполнения.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#14">private int numberToCompute = 0;
+private int highestPercentageReached = 0;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Добавьте обработчик для события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.progresschanged">ProgressChanged</a>. В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.progresschanged">ProgressChanged</a> обработчик событий, обновите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.progresschangedeventargs.progresspercentage">ProgressPercentage</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.progresschangedeventargs">ProgressChangedEventArgs</a> параметр.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#7">// This event handler updates the progress bar.
+private void backgroundWorker1_ProgressChanged(object sender,
+    ProgressChangedEventArgs e)
+{
+    this.progressBar1.Value = e.ProgressPercentage;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h4 id="to-implement-support-for-cancellation">Реализация поддержки отмены</h4>
+<ol>
+<li><p>В <code>cancelAsyncButton</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий, добавьте код, отменяющий асинхронную операцию.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#4">private void cancelAsyncButton_Click(System.Object sender, 
+    System.EventArgs e)
+{   
+    // Cancel the asynchronous operation.
+    this.backgroundWorker1.CancelAsync();
+
+    // Disable the Cancel button.
+    cancelAsyncButton.Enabled = false;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Следующие фрагменты кода в методе <code>ComputeFibonacci</code> сообщают о ходе выполнения и поддерживают отмену.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#11">if (worker.CancellationPending)
+{   
+    e.Cancel = true;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#12">// Report progress as a percentage of the total task.
+int percentComplete = 
+    (int)((float)n / (float)numberToCompute * 100);
+if (percentComplete &gt; highestPercentageReached)
+{
+    highestPercentageReached = percentComplete;
+    worker.ReportProgress(percentComplete);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h2 id="checkpoint">Контрольная точка</h2>
+<p>На этом этапе можно скомпилировать и запустить приложение калькулятора Фибоначчи.</p>
+<h4 id="to-test-your-project">Тестирование проекта</h4>
+<ul>
+<li><p>Чтобы скомпилировать и запустить приложение, нажмите клавишу F5.</p>
+<p>Пока вычисление выполняется в фоновом режиме, вы увидите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> отображением хода выполнения вычислений. Операцию, ожидающую выполнения, можно отменить.</p>
+<p>Если числа небольшие, вычисления выполняются быстро, а с крупными числами занимают заметно больше времени. Если ввести значение 30 или больше, задержка составит несколько секунд, в зависимости от скорости работы вашего компьютера. Для значений больше 40 вычисление может затянуться на несколько часов. Пока калькулятор вычисляет большое число Фибоначчи, форму можно свободно переместить, свернуть, развернуть и даже закрыть. Это связано с тем, что основной поток пользовательского интерфейса не дожидается, пока вычисление будет завершено.</p>
+</li>
+</ul>
+<h2 id="next-steps">Следующие шаги</h2>
+<p>Теперь, когда вы реализовали форму, которая использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> компонент для вычислений в фоновом режиме, вы можете изучить другие возможности для асинхронных операций:</p>
+<ul>
+<li><p>Используйте несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> объектов для нескольких одновременных операций.</p>
+</li>
+<li><p>Отладка многопоточных приложений, см. в разделе <a href="/visualstudio/debugger/how-to-use-the-threads-window">как: Использование окна потоков</a>.</p>
+</li>
+<li><p>Реализация собственного компонента, поддерживающего модель асинхронного программирования. Дополнительные сведения см. в разделе <a href="../../../standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview.md">Обзор асинхронной модели на основе событий</a>.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>При использовании любой многопоточности существует потенциальная возможность возникновения серьезных ошибок. Перед реализацией любого решения, в котором используется многопоточность, ознакомьтесь с разделом <a href="../../../standard/threading/managed-threading-best-practices.md">Рекомендации по работе с потоками</a>.</p>
+</div>
+</li>
+</ul>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">System.ComponentModel.BackgroundWorker</a></li>
+<li><a href="../../../standard/threading/index.md">Управляемая поточность</a></li>
+<li><a href="../../../standard/threading/managed-threading-best-practices.md">Рекомендации по работе с потоками</a></li>
+<li><a href="../../../standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview.md">Обзор асинхронной модели, основанной на событиях</a></li>
+<li><a href="how-to-implement-a-form-that-uses-a-background-operation.html">Практическое руководство. Реализация формы, в которой выполняется фоновая операция</a></li>
+<li><a href="walkthrough-running-an-operation-in-the-background.html">Пошаговое руководство. Фоновое выполнение операции</a></li>
+<li><a href="backgroundworker-component.html">Компонент BackgroundWorker</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

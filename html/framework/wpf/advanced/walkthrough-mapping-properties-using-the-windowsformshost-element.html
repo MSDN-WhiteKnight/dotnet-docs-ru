@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; WindowsFormsHost | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1087;&#1086;&#1089;&#1090;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1072; WindowsFormsHost | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-mapping-properties-using-the-windowsformshost-element">Пошаговое руководство. Сопоставление свойств с помощью элемента WindowsFormsHost</h1>
+
+<p>В этом пошаговом руководстве показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">PropertyMap</a> свойства для сопоставления WPF свойств с соответствующими свойствами вложенного Windows Forms элемента управления.</p>
+<p>В данном пошаговом руководстве представлены следующие задачи.</p>
+<ul>
+<li><p>Создание проекта.</p>
+</li>
+<li><p>Определение макета приложения.</p>
+</li>
+<li><p>Определение нового сопоставления свойства.</p>
+</li>
+<li><p>Удаление сопоставления свойства по умолчанию.</p>
+</li>
+<li><p>Замена сопоставления свойства по умолчанию.</p>
+</li>
+<li><p>Расширение сопоставления свойства по умолчанию.</p>
+</li>
+</ul>
+<p>Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=160019">сопоставления свойств с помощью образец элемента WindowsFormsHost</a>.</p>
+<p>Когда вы закончите, можно сопоставить WPF свойств с соответствующими свойствами вложенного Windows Forms элемента управления.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.</p>
+<ul>
+<li>Visual Studio 2017</li>
+</ul>
+<h2 id="create-and-set-up-the-project">Создание и настройка проекта</h2>
+<ol>
+<li><p>Создание <strong>приложение WPF</strong> проект с именем <code>PropertyMappingWithWfhSample</code>.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong>, добавьте ссылку на сборку WindowsFormsIntegration с именем WindowsFormsIntegration.dll.</p>
+</li>
+<li><p>В <strong>обозревателе решений</strong>, добавьте ссылки на сборки System.Drawing и System.Windows.Forms.</p>
+</li>
+</ol>
+<h2 id="defining-the-application-layout">Определение макета приложения</h2>
+<p>WPF-Основе приложением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> для размещения элемента Windows Forms элемента управления.</p>
+<h3 id="to-define-the-application-layout">Определение макета приложения</h3>
+<ol>
+<li><p>Откройте файл Window1.xaml в Конструктор WPF.</p>
+</li>
+<li><p>Замените существующий код следующим кодом:</p>
+<pre><code class="lang-xaml" name="PropertyMappingWithWfhSample#1">&lt;Window x:Class=&quot;PropertyMappingWithWfh.Window1&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;PropertyMappingWithWfh&quot; Height=&quot;300&quot; Width=&quot;300&quot;
+    Loaded=&quot;WindowLoaded&quot;&gt;
+  &lt;DockPanel Name=&quot;panel1&quot; LastChildFill=&quot;True&quot;&gt;
+    &lt;WindowsFormsHost Name=&quot;wfHost&quot; DockPanel.Dock=&quot;Left&quot; SizeChanged=&quot;Window1_SizeChanged&quot; FontSize=&quot;20&quot; /&gt;
+  &lt;/DockPanel&gt;
+&lt;/Window&gt;
+</code></pre></li>
+<li><p>Откройте файл Window1.xaml.cs в редакторе кода.</p>
+</li>
+<li><p>В верхней части файла импортируйте указанные ниже пространства имен.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#20">using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h2 id="defining-a-new-property-mapping">Определение нового сопоставления свойства</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент предоставляет несколько стандартных сопоставления свойств. Добавить новое сопоставление свойства путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.propertymap.add">Add</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">PropertyMap</a>.</p>
+<h3 id="to-define-a-new-property-mapping">Определение нового сопоставления свойства</h3>
+<ul>
+<li><p>Скопируйте следующий код в определение <code>Window1</code> класса.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#14">// The AddClipMapping method adds a custom
+// mapping for the Clip property.
+private void AddClipMapping()
+{
+    wfHost.PropertyMap.Add(
+        &quot;Clip&quot;,
+        new PropertyTranslator(OnClipChange));
+}
+
+// The OnClipChange method assigns an elliptical clipping
+// region to the hosted control's Region property.
+private void OnClipChange(object h, String propertyName, object value)
+{
+    WindowsFormsHost host = h as WindowsFormsHost;
+    System.Windows.Forms.CheckBox cb = host.Child as System.Windows.Forms.CheckBox;
+
+    if (cb != null)
+    {
+        cb.Region = this.CreateClipRegion();
+    }
+}
+
+// The Window1_SizeChanged method handles the window's
+// SizeChanged event. It calls the OnClipChange method explicitly
+// to assign a new clipping region to the hosted control.
+private void Window1_SizeChanged(object sender, SizeChangedEventArgs e)
+{
+    this.OnClipChange(wfHost, &quot;Clip&quot;, null);
+}
+
+// The CreateClipRegion method creates a Region from an
+// elliptical GraphicsPath.
+private Region CreateClipRegion()
+{
+    GraphicsPath path = new GraphicsPath();
+
+    path.StartFigure();
+
+    path.AddEllipse(new System.Drawing.Rectangle(
+        0,
+        0,
+        (int)wfHost.ActualWidth,
+        (int)wfHost.ActualHeight ) );
+
+    path.CloseFigure();
+
+    return( new Region(path) );
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>AddClipMapping</code> Метод добавляет новое сопоставление для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.clip">Clip</a> свойство.</p>
+<p><code>OnClipChange</code> Метод преобразует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.clip">Clip</a> свойства Windows Forms<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.region">Region</a> свойство.</p>
+<p><code>Window1_SizeChanged</code> Метод обрабатывает окна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.sizechanged">SizeChanged</a> событий и изменяет размер отсеченной области по размеру окна приложения.</p>
+</li>
+</ul>
+<h2 id="removing-a-default-property-mapping">Удаление сопоставления свойства по умолчанию</h2>
+<p>Удаление сопоставления свойства по умолчанию путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.propertymap.remove">Remove</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">PropertyMap</a>.</p>
+<h3 id="to-remove-a-default-property-mapping">Удаление сопоставления свойства по умолчанию</h3>
+<ul>
+<li><p>Скопируйте следующий код в определение <code>Window1</code> класса.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#13">// The RemoveCursorMapping method deletes the default
+// mapping for the Cursor property.
+private void RemoveCursorMapping()
+{
+    wfHost.PropertyMap.Remove(&quot;Cursor&quot;);
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>RemoveCursorMapping</code> Метод удаляет сопоставление по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.cursor">Cursor</a> свойство.</p>
+</li>
+</ul>
+<h2 id="replacing-a-default-property-mapping">Замена сопоставления свойства по умолчанию</h2>
+<p>Замена сопоставления свойства по умолчанию, удалив сопоставление по умолчанию и вызывая метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.propertymap.add">Add</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">PropertyMap</a>.</p>
+<h3 id="to-replace-a-default-property-mapping">Замена сопоставления свойства по умолчанию</h3>
+<ul>
+<li><p>Скопируйте следующий код в определение <code>Window1</code> класса.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#12">// The ReplaceFlowDirectionMapping method replaces the
+// default mapping for the FlowDirection property.
+private void ReplaceFlowDirectionMapping()
+{
+    wfHost.PropertyMap.Remove(&quot;FlowDirection&quot;);
+
+    wfHost.PropertyMap.Add(
+        &quot;FlowDirection&quot;,
+        new PropertyTranslator(OnFlowDirectionChange));
+}
+
+// The OnFlowDirectionChange method translates a
+// Windows Presentation Foundation FlowDirection value
+// to a Windows Forms RightToLeft value and assigns
+// the result to the hosted control's RightToLeft property.
+private void OnFlowDirectionChange(object h, String propertyName, object value)
+{
+    WindowsFormsHost host = h as WindowsFormsHost;
+    System.Windows.FlowDirection fd = (System.Windows.FlowDirection)value;
+    System.Windows.Forms.CheckBox cb = host.Child as System.Windows.Forms.CheckBox;
+
+    cb.RightToLeft = (fd == System.Windows.FlowDirection.RightToLeft ) ?
+        RightToLeft.Yes : RightToLeft.No;
+}
+
+// The cb_CheckedChanged method handles the hosted control's
+// CheckedChanged event. If the Checked property is true,
+// the flow direction is set to RightToLeft, otherwise it is
+// set to LeftToRight.
+private void cb_CheckedChanged(object sender, EventArgs e)
+{
+    System.Windows.Forms.CheckBox cb = sender as System.Windows.Forms.CheckBox;
+
+    wfHost.FlowDirection = ( cb.CheckState == CheckState.Checked ) ?
+            System.Windows.FlowDirection.RightToLeft :
+            System.Windows.FlowDirection.LeftToRight;
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>ReplaceFlowDirectionMapping</code> Метод заменяет сопоставление по умолчанию для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> свойство.</p>
+<p><code>OnFlowDirectionChange</code> Метод преобразует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> свойства Windows Forms<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.righttoleft">RightToLeft</a> свойство.</p>
+<p><code>cb_CheckedChanged</code> Метод обрабатывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox.checkedchanged">CheckedChanged</a> событий на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox">CheckBox</a> элемента управления. Он назначает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> значение в зависимости от значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox.checkstate">CheckState</a> свойство</p>
+</li>
+</ul>
+<h2 id="extending-a-default-property-mapping">Расширение сопоставления свойства по умолчанию</h2>
+<p>Вы можете использовать сопоставление свойства по умолчанию, а также расширить его с помощью собственного сопоставления.</p>
+<h3 id="to-extend-a-default-property-mapping">Расширение сопоставления свойства по умолчанию</h3>
+<ul>
+<li><p>Скопируйте следующий код в определение <code>Window1</code> класса.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#15">// The ExtendBackgroundMapping method adds a property
+// translator if a mapping already exists.
+private void ExtendBackgroundMapping()
+{
+    if (wfHost.PropertyMap[&quot;Background&quot;] != null)
+    {
+        wfHost.PropertyMap[&quot;Background&quot;] += new PropertyTranslator(OnBackgroundChange);
+    }
+}
+
+// The OnBackgroundChange method assigns a specific image
+// to the hosted control's BackgroundImage property.
+private void OnBackgroundChange(object h, String propertyName, object value)
+{
+    WindowsFormsHost host = h as WindowsFormsHost;
+    System.Windows.Forms.CheckBox cb = host.Child as System.Windows.Forms.CheckBox;
+    ImageBrush b = value as ImageBrush;
+
+    if (b != null)
+    {
+        cb.BackgroundImage = new System.Drawing.Bitmap(@&quot;C:\WINDOWS\Santa Fe Stucco.bmp&quot;);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>ExtendBackgroundMapping</code> Метод добавляет пользовательский преобразователь свойств для существующего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> сопоставление свойств.</p>
+<p><code>OnBackgroundChange</code> Метод присваивает определенное изображение для размещенного элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.backgroundimage">BackgroundImage</a> свойство. <code>OnBackgroundChange</code> Метод вызывается после применения сопоставления свойства по умолчанию.</p>
+</li>
+</ul>
+<h2 id="initializing-your-property-mappings">Инициализация сопоставлений свойств</h2>
+<p>Настройка сопоставлений свойств путем вызова ранее описанных методов в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> обработчик событий.</p>
+<h3 id="to-initialize-your-property-mappings">Инициализация сопоставлений свойств</h3>
+<ol>
+<li><p>Скопируйте следующий код в определение <code>Window1</code> класса.</p>
+<pre><code class="lang-csharp" name="PropertyMappingWithWfhSample#11">// The WindowLoaded method handles the Loaded event.
+// It enables Windows Forms visual styles, creates
+// a Windows Forms checkbox control, and assigns the
+// control as the child of the WindowsFormsHost element.
+// This method also modifies property mappings on the
+// WindowsFormsHost element.
+private void WindowLoaded(object sender, RoutedEventArgs e)
+{
+    System.Windows.Forms.Application.EnableVisualStyles();
+
+    // Create a Windows Forms checkbox control and assign
+    // it as the WindowsFormsHost element's child.
+    System.Windows.Forms.CheckBox cb = new System.Windows.Forms.CheckBox();
+    cb.Text = &quot;Windows Forms checkbox&quot;;
+    cb.Dock = DockStyle.Fill;
+    cb.TextAlign = ContentAlignment.MiddleCenter;
+    cb.CheckedChanged += new EventHandler(cb_CheckedChanged);
+    wfHost.Child = cb;
+
+    // Replace the default mapping for the FlowDirection property.
+    this.ReplaceFlowDirectionMapping();
+
+    // Remove the mapping for the Cursor property.
+    this.RemoveCursorMapping();
+
+    // Add the mapping for the Clip property.
+    this.AddClipMapping();
+
+    // Add another mapping for the Background property.
+    this.ExtendBackgroundMapping();
+
+    // Cause the OnFlowDirectionChange delegate to be called.
+    wfHost.FlowDirection = System.Windows.FlowDirection.LeftToRight;
+
+    // Cause the OnClipChange delegate to be called.
+    wfHost.Clip = new RectangleGeometry();
+
+    // Cause the OnBackgroundChange delegate to be called.
+    wfHost.Background = new ImageBrush();
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><code>WindowLoaded</code> Метод обрабатывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий и выполнения следующей инициализации.</p>
+<ul>
+<li><p>Создает Windows Forms<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.checkbox">CheckBox</a> элемента управления.</p>
+</li>
+<li><p>Вызывает методы, ранее определенные в руководстве, для настройки сопоставлений свойств.</p>
+</li>
+<li><p>Присваивает начальные значения сопоставленным свойствам.</p>
+</li>
+</ul>
+</li>
+<li><p>Нажмите клавишу <strong>F5</strong>, чтобы выполнить сборку приложения и запустить его. Щелкните флажок, чтобы увидеть эффект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.flowdirection">FlowDirection</a> сопоставления. При установке флажка меняется ориентация макета по горизонтали.</p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.propertymap">WindowsFormsHost.PropertyMap</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.elementhost.propertymap">ElementHost.PropertyMap</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a></li>
+<li><a href="windows-forms-and-wpf-property-mapping.html">Сопоставление свойств Windows Forms и WPF</a></li>
+<li><a href="/visualstudio/designers/designing-xaml-in-visual-studio">Проектирование XAML в Visual Studio</a></li>
+<li><a href="walkthrough-hosting-a-windows-forms-control-in-wpf.html">Пошаговое руководство. Размещение элементов управления Windows Forms в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

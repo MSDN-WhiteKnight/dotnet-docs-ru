@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1077; &#1086;&#1087;&#1077;&#1088;&#1072;&#1094;&#1080;&#1080; &#1087;&#1077;&#1088;&#1077;&#1090;&#1072;&#1089;&#1082;&#1080;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1042;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1077; &#1086;&#1087;&#1077;&#1088;&#1072;&#1094;&#1080;&#1080; &#1087;&#1077;&#1088;&#1077;&#1090;&#1072;&#1089;&#1082;&#1080;&#1074;&#1072;&#1085;&#1080;&#1103; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-performing-a-drag-and-drop-operation-in-windows-forms">Пошаговое руководство. Выполнение операции перетаскивания в Windows Forms</h1>
+
+<p>Для выполнения операций перетаскивания и вставки в приложениях Windows необходимо обрабатывать последовательность событий, особенно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragenter">DragEnter</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragleave">DragLeave</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragdrop">DragDrop</a> события. Работая со сведениями, доступными через аргументы этих событий, можно значительно упростить операции перетаскивания.</p>
+<h2 id="dragging-data">Перетаскивание данных</h2>
+<p>Все операции перетаскивания начинаются с переноса данных. Функции для включения данных, собираемых при начале перетаскивания реализуются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dodragdrop">DoDragDrop</a> метод.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> событие используется для начала операции перетаскивания, так как он является самым удобным (большинство операций перетаскивания и вставки начинаются с кнопкой мыши). Однако не забывайте, что любое событие может использоваться для инициализации процедуры перетаскивания.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Некоторые элементы управления имеют собственные события перетаскивания. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.listview">ListView</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a> элементов управления, например, быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview.itemdrag">ItemDrag</a> событий.</p>
+</div>
+<h4 id="to-start-a-drag-operation">Начало операции перетаскивания</h4>
+<ol>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.mousedown">MouseDown</a> событий для элемента управления, в котором начнется перетаскивание, используйте <code>DoDragDrop</code> будут иметь метод, чтобы задать данные для переноса и разрешенный результат перетаскивания. Дополнительные сведения см. в разделах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drageventargs.data">Data</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drageventargs.allowedeffect">AllowedEffect</a>.</p>
+<p>В следующем примере показан запуск операции перетаскивания. Элемент управления, где начинается перетаскивание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> элемента управления, перетаскиваемых данных является строка, представляющая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> управления и разрешенные эффекты копирование или перемещение.</p>
+<pre><code class="lang-vb">Private Sub Button1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Button1.MouseDown  
+   Button1.DoDragDrop(Button1.Text, DragDropEffects.Copy Or DragDropEffects.Move)  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void button1_MouseDown(object sender,   
+System.Windows.Forms.MouseEventArgs e)  
+{  
+   button1.DoDragDrop(button1.Text, DragDropEffects.Copy |   
+      DragDropEffects.Move);  
+}  
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Любые данные, которые могут использоваться в качестве параметра <code>DoDragDrop</code> метод; в примере выше, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> управления был использован (а не жестко запрограммированного значения или получение данных из набора данных), так как свойство было связано с расположение которого выполнялось перетаскивание ( <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.button">Button</a> управления). Учитывайте это при реализации операций перетаскивания в приложениях Windows.</p>
+</div>
+</li>
+</ol>
+<p>Во время операции перетаскивания по сути, можно обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.querycontinuedrag">QueryContinueDrag</a> событие, которое «запрашивает разрешение» системы на продолжение операции перетаскивания. При обработке этого метода, он также является подходящей точкой для вызова методов, которые будет влиять на операцию перетаскивания, например расширение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treenode">TreeNode</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.treeview">TreeView</a> управления, когда курсор находится над ней.</p>
+<h2 id="dropping-data">Завершение перетаскивания данных</h2>
+<p>После начала перетаскивания данных из расположения в форме Windows Forms или элементе управления их требуется куда-то поместить. При попадании курсора в область формы или элемента управления, которые правильно настроены для размещения данных, вид курсора изменится. Любую область формы Windows или элемента управления можно сделать для принятия перетаскиваемых данных, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.allowdrop">AllowDrop</a> свойство и обработка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragenter">DragEnter</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragdrop">DragDrop</a> события.</p>
+<h4 id="to-perform-a-drop">Завершение операции перетаскивания</h4>
+<ol>
+<li><p>Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.allowdrop">AllowDrop</a> присваивается значение true.</p>
+</li>
+<li><p>В <code>DragEnter</code> событие элемента управления, в котором будет выполнено освобождение убедитесь, что перетаскиваемые данные к допустимому типу (в данном случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a>). Затем код задает эффект, который будет происходить при завершении перетаскивания в значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.dragdropeffects">DragDropEffects</a> перечисления. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drageventargs.effect">Effect</a>.</p>
+<pre><code class="lang-vb">Private Sub TextBox1_DragEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles TextBox1.DragEnter  
+   If (e.Data.GetDataPresent(DataFormats.Text)) Then  
+     e.Effect = DragDropEffects.Copy  
+   Else  
+     e.Effect = DragDropEffects.None  
+   End If  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void textBox1_DragEnter(object sender,   
+System.Windows.Forms.DragEventArgs e)  
+{  
+   if (e.Data.GetDataPresent(DataFormats.Text))   
+      e.Effect = DragDropEffects.Copy;  
+   else  
+      e.Effect = DragDropEffects.None;  
+}  
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Можно определить собственные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.dataformats">DataFormats</a> , указав собственный объект как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a> параметр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.dataobject.setdata">SetData</a> метод. При этом необходимо убедиться, что указанный объект является сериализуемым. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.serialization.iserializable">ISerializable</a>.</p>
+</div>
+</li>
+<li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.dragdrop">DragDrop</a> событий для элемента управления, в которых будет выполняться перетаскивания, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.dataobject.getdata">GetData</a> метод для получения перетаскиваемых данных. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.xml.dataobject.data">Data</a>.</p>
+<p>В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> управления является элементом управления, на который переносятся данные (в котором будет выполнено освобождение данных). В коде устанавливается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.text">Text</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.textbox">TextBox</a> управления равным перетаскиваемым данным.</p>
+<pre><code class="lang-vb">Private Sub TextBox1_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles TextBox1.DragDrop  
+   TextBox1.Text = e.Data.GetData(DataFormats.Text).ToString  
+End Sub  
+</code></pre>
+<pre><code class="lang-csharp">private void textBox1_DragDrop(object sender,   
+System.Windows.Forms.DragEventArgs e)  
+{  
+   textBox1.Text = e.Data.GetData(DataFormats.Text).ToString();  
+}  
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Кроме того, вы можете работать с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.drageventargs.keystate">KeyState</a> свойство, поэтому, в зависимости от клавиш, нажатых во время операции перетаскивания и вставки, происходили определенные действия (например, происходит копирование переносимых данных при нажатии клавиши CTRL).</p>
+</div>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="how-to-add-data-to-the-clipboard.html">Практическое руководство. Добавление данных в буфер обмена</a></li>
+<li><a href="how-to-retrieve-data-from-the-clipboard.html">Практическое руководство. Извлечение данных из буфера обмена</a></li>
+<li><a href="drag-and-drop-operations-and-clipboard-support.html">Операции перетаскивания и поддержка буфера обмена</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

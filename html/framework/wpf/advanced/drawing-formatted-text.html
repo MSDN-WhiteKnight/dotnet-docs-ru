@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1075;&#1086; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1080;&#1089;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1086;&#1075;&#1086; &#1090;&#1077;&#1082;&#1089;&#1090;&#1072; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="drawing-formatted-text">Рисование форматированного текста</h1>
+
+<p>В этом разделе представлен обзор функций <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта. Этот объект предоставляет низкоуровневый элемент управления для рисования текста в приложениях Windows Presentation Foundation (WPF).</p>
+<h2 id="technology-overview">Общие сведения о технологии</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> Объект позволяет рисовать многострочный текст, в котором каждый символ в текст можно форматировать по отдельности. В следующем примере показан текст, к которому применено несколько форматов.</p>
+<p><img src="media/typography-in-wpf/text-formatted-linear-gradient.jpg" alt="Отображенный текст с использованием объекта FormattedText"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Для разработчиков, осуществляющих переход с API Win32, в таблице из раздела <a href="#win32_migration">Миграция Win32</a> перечислены флаги DrawText Win32 и примерный эквивалент в Windows Presentation Foundation (WPF).</p>
+</div>
+<h3 id="reasons-for-using-formatted-text">Причины использования форматированного текста</h3>
+<p>WPF содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений. В общем случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элемент должен использоваться при необходимости, например короткого предложения в ограниченная поддержка текста пользовательский интерфейс. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> может использоваться, если требуется Минимальная текстовая поддержка. Дополнительные сведения см. в разделе <a href="documents-in-wpf.html">Документы в WPF</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> Объект предоставляет больше функций, чем форматирования текста Windows Presentation Foundation (WPF) текстовых элементов управления и могут быть полезны в тех случаях, когда использовать текст как декоративный элемент. Дополнительные сведения см. в следующем разделе: <a href="#converting_formatted_text">Преобразование форматированного текста в геометрический объект</a>.</p>
+<p>Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объект удобна для создания ориентированных на текст <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a>-объекты, производные от. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> — Это упрощенный класс, используемый для отрисовки фигур, изображений и текста. Дополнительные сведения см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkID=159994">Пример проверки нажатия с использованием DrawingVisuals</a>.</p>
+<h2 id="using-the-formattedtext-object">Использование объекта FormattedText</h2>
+<p>Чтобы создать форматированный текст, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.-ctor">FormattedText</a> конструктор для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта. После создания исходной строки форматированного текста можно применить ряд стилей форматирования.</p>
+<p>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.maxtextwidth">MaxTextWidth</a> свойство для ограничения текста по ширине. Текст будет автоматически перенесен, чтобы заданная ширина не была нарушена. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.maxtextheight">MaxTextHeight</a> свойство для ограничения текста по высоте. Если текст выходит за указанные пределы по высоте, отображается многоточие (…).</p>
+<p><img src="media/drawing-formatted-text/formatted-text-wordwrap-ellipsis.png" alt="Текст, отображаемый с переноса слов и многоточием."></p>
+<p>К одному или более символам можно применить несколько стилей форматирования. Например, можно вызвать оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.setfontsize">SetFontSize</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.setforegroundbrush">SetForegroundBrush</a> методы для изменения форматирования первые пять символов в тексте.</p>
+<p>В следующем примере кода создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта и затем применяется несколько стилей форматирования к тексту.</p>
+<pre><code class="lang-csharp" name="FormattedTextSnippets#FormattedTextSnippets1">protected override void OnRender(DrawingContext drawingContext)
+{
+    string testString = &quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor&quot;;
+
+    // Create the initial formatted text string.
+    FormattedText formattedText = new FormattedText(
+        testString,
+        CultureInfo.GetCultureInfo(&quot;en-us&quot;),
+        FlowDirection.LeftToRight,
+        new Typeface(&quot;Verdana&quot;),
+        32,
+        Brushes.Black);
+
+    // Set a maximum width and height. If the text overflows these values, an ellipsis &quot;...&quot; appears.
+    formattedText.MaxTextWidth = 300;
+    formattedText.MaxTextHeight = 240;
+
+    // Use a larger font size beginning at the first (zero-based) character and continuing for 5 characters.
+    // The font size is calculated in terms of points -- not as device-independent pixels.
+    formattedText.SetFontSize(36 * (96.0 / 72.0), 0, 5);
+
+    // Use a Bold font weight beginning at the 6th character and continuing for 11 characters.
+    formattedText.SetFontWeight(FontWeights.Bold, 6, 11);
+
+    // Use a linear gradient brush beginning at the 6th character and continuing for 11 characters.
+    formattedText.SetForegroundBrush(
+                            new LinearGradientBrush(
+                            Colors.Orange,
+                            Colors.Teal,
+                            90.0),
+                            6, 11);
+
+    // Use an Italic font style beginning at the 28th character and continuing for 28 characters.
+    formattedText.SetFontStyle(FontStyles.Italic, 28, 28);
+
+    // Draw the formatted text string to the DrawingContext of the control.
+    drawingContext.DrawText(formattedText, new Point(10, 0));
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="font-size-unit-of-measure">Единица измерения &quot;Размер шрифта&quot;</h3>
+<p>Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений Win32 используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать аппаратно-независимые единицы (1/96 дюйма на единицу) в точки. В следующем примере кода показано выполнение этого преобразования.</p>
+<pre><code class="lang-csharp" name="FormattedTextSnippets#FormattedTextSnippets2">// The font size is calculated in terms of points -- not as device-independent pixels.
+formattedText.SetFontSize(36 * (96.0 / 72.0), 0, 5);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="converting_formatted_text"></a></p>
+<h3 id="converting-formatted-text-to-a-geometry">Преобразование форматированного текста в геометрический объект</h3>
+<p>Можно преобразовать форматированный текст в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объектов, что позволяет создавать другие типы наглядного текста. Например, можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объект, основанный на контуре строки текста.</p>
+<p><img src="media/typography-in-wpf/text-outline-linear-gradient.jpg" alt="Оконтуривание текста с использованием кисти линейного градиента"></p>
+<p>В следующих примерах показаны несколько способов создания визуальных эффектов посредством изменения штриха, заливки и выделения преобразованного текста.</p>
+<p><img src="media/typography-in-wpf/fill-stroke-text-effect.jpg" alt="Текст с различными цветами для заполнения штриха"></p>
+<p><img src="media/typography-in-wpf/image-brush-application.jpg" alt="Текст с кистью изображения, примененной к штриху"></p>
+<p><img src="media/typography-in-wpf/image-brush-text-application.jpg" alt="Текст с кистью изображения, примененной для вычерчивания и выделения"></p>
+<p>Если текст преобразуется в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> объекта, он больше не является набором символов — изменение символов в текстовой строке невозможно. Тем не менее можно повлиять на внешний вид преобразованного текст, изменив его свойства штриха и заливки. Штрих — это контур преобразованного текста; заливка — это область внутри контура преобразованного текста. Дополнительные сведения см. в разделе <a href="how-to-create-outlined-text.html">Создание контурного текста</a>.</p>
+<p>Можно также преобразовать форматированный текст в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> и использовать объект для выделения текста. Например, можно применить анимацию к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> таким образом, чтобы анимация повторяла контур форматированного текста.</p>
+<p>В следующем примере показано форматированный текст, который был преобразован в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объекта. Анимированное многоточие повторяет путь штрихов отрисованного текста.</p>
+<p><img src="media/drawing-formatted-text/sphere-following-geometry-path.gif" alt="Сфера, следующая по геометрическому пути текста"><br>
+Сфера, следующая по геометрическому пути текста</p>
+<p>Дополнительные сведения см. в разделе <a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms743610(v=vs.100)">Как Создание анимации PathGeometry для текста</a>.</p>
+<p>Можно создать другие интересные сферы применения форматированного текста после преобразования в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объекта. Например, можно обрезать видео для отображения внутри текста.</p>
+<p><img src="media/drawing-formatted-text/video-displaying-text-path-geometry.png" alt="Отображение видео по геометрическому пути текста"></p>
+<p><a name="win32_migration"></a></p>
+<h2 id="win32-migration">Миграция Win32</h2>
+<p>Возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> для рисования текста похожи на возможности Win32 функции DrawText. Для разработчиков, осуществляющих переход с API Win32, в таблице перечислены флаги DrawText Win32 и примерный эквивалент в Windows Presentation Foundation (WPF).</p>
+<table>
+<thead>
+<tr>
+<th>Флаг DrawText</th>
+<th>Эквивалент WPF</th>
+<th>Примечания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DT_BOTTOM</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a> свойство для вычисления соответствующей Win32 позиции DrawText «y».</td>
+</tr>
+<tr>
+<td>DT_CALCRECT</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.width">Width</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.width">Width</a> для вычисления выходного прямоугольника.</td>
+</tr>
+<tr>
+<td>DT_CENTER</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a> свойство со значением, равным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textalignment#System_Windows_TextAlignment_Center">Center</a>.</td>
+</tr>
+<tr>
+<td>DT_EDITCONTROL</td>
+<td>Нет</td>
+<td>Не требуется. Ширина пробелов и отрисовка последней строки соответствуют этим параметрам в элементе управления редактированием среды.</td>
+</tr>
+<tr>
+<td>DT_END_ELLIPSIS</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.trimming">Trimming</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.trimming">Trimming</a> свойством со значением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.texttrimming#System_Windows_TextTrimming_CharacterEllipsis">CharacterEllipsis</a>.<br><br> Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.texttrimming#System_Windows_TextTrimming_WordEllipsis">WordEllipsis</a> для получения Win32 DT_END_ELLIPSIS с конечным многоточием — в этом случае символ многоточия происходит только по словам, которые не помещаются на одной строке.</td>
+</tr>
+<tr>
+<td>DT_EXPAND_TABS</td>
+<td>Нет</td>
+<td>Не требуется. Символы табуляции автоматически расширяются до точек каждые 4 размера максимального пробела (это примерно соответствует ширине 8 независимых от языка символов).</td>
+</tr>
+<tr>
+<td>DT_EXTERNALLEADING</td>
+<td>Нет</td>
+<td>Не требуется. Внешнее ведение всегда включается в междустрочный интервал. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.lineheight">LineHeight</a> свойство для создания определяемого пользователем междустрочного интервала.</td>
+</tr>
+<tr>
+<td>DT_HIDEPREFIX</td>
+<td>Нет</td>
+<td>Не поддерживается. Удалите знак «&amp;» из строки перед созданием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекта.</td>
+</tr>
+<tr>
+<td>DT_LEFT</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a></td>
+<td>Это выравнивание текста по умолчанию. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a> свойство со значением, равным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textalignment#System_Windows_TextAlignment_Left">Left</a>. (только WPF)</td>
+</tr>
+<tr>
+<td>DT_MODIFYSTRING</td>
+<td>Нет</td>
+<td>Не поддерживается.</td>
+</tr>
+<tr>
+<td>DT_NOCLIP</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual.visualclip">VisualClip</a></td>
+<td>Отсечение не происходит автоматически. Если требуется, чтобы обрезать текст, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual.visualclip">VisualClip</a> свойство.</td>
+</tr>
+<tr>
+<td>DT_NOFULLWIDTHCHARBREAK</td>
+<td>Нет</td>
+<td>Не поддерживается.</td>
+</tr>
+<tr>
+<td>DT_NOPREFIX</td>
+<td>Нет</td>
+<td>Не требуется. Символ &amp; в строке всегда рассматривается как обычный символ.</td>
+</tr>
+<tr>
+<td>DT_PATHELLIPSIS</td>
+<td>Нет</td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.trimming">Trimming</a> свойством со значением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.texttrimming#System_Windows_TextTrimming_WordEllipsis">WordEllipsis</a>.</td>
+</tr>
+<tr>
+<td>DT_PREFIX</td>
+<td>Нет</td>
+<td>Не поддерживается. Если вы хотите использовать для текста, таких как сочетания клавиш или ссылки, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.settextdecorations">SetTextDecorations</a> метод.</td>
+</tr>
+<tr>
+<td>DT_PREFIXONLY</td>
+<td>Нет</td>
+<td>Не поддерживается.</td>
+</tr>
+<tr>
+<td>DT_RIGHT</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.textalignment">TextAlignment</a> свойство со значением, равным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.textalignment#System_Windows_TextAlignment_Right">Right</a>. (только WPF)</td>
+</tr>
+<tr>
+<td>DT_RTLREADING</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.flowdirection">FlowDirection</a></td>
+<td>Задайте для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.flowdirection">FlowDirection</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.flowdirection#System_Windows_FlowDirection_RightToLeft">RightToLeft</a>.</td>
+</tr>
+<tr>
+<td>DT_SINGLELINE</td>
+<td>Нет</td>
+<td>Не требуется. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объекты ведут себя как Однострочные элементы управления, если не либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.maxtextwidth">MaxTextWidth</a> свойству или текст не содержит возврата каретки и перевода строки (CR/LF).</td>
+</tr>
+<tr>
+<td>DT_TABSTOP</td>
+<td>Нет</td>
+<td>Отсутствует поддержка пользовательских позиций табуляции.</td>
+</tr>
+<tr>
+<td>DT_TOP</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a></td>
+<td>Не требуется. По умолчанию используется выравнивание по верхнему краю. Другие значения вертикального позиционирования можно определить с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a> свойство для вычисления соответствующей Win32 позиции DrawText «y».</td>
+</tr>
+<tr>
+<td>DT_VCENTER</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.height">Height</a> свойство для вычисления соответствующей Win32 позиции DrawText «y».</td>
+</tr>
+<tr>
+<td>DT_WORDBREAK</td>
+<td>Нет</td>
+<td>Не требуется. Перенос слов выполняется автоматически с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a> объектов. Его нельзя отключить.</td>
+</tr>
+<tr>
+<td>DT_WORD_ELLIPSIS</td>
+<td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.trimming">Trimming</a></td>
+<td>Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext.trimming">Trimming</a> свойством со значением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.texttrimming#System_Windows_TextTrimming_WordEllipsis">WordEllipsis</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.formattedtext">FormattedText</a></li>
+<li><a href="documents-in-wpf.html">Документы в WPF</a></li>
+<li><a href="typography-in-wpf.html">Оформление в WPF</a></li>
+<li><a href="how-to-create-outlined-text.html">Создание контурного текста</a></li>
+<li><a href="https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms743610(v=vs.100)">Практическое руководство. Создание анимации PathGeometry для текста</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1055;&#1088;&#1080;&#1074;&#1103;&#1079;&#1082;&#1072; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimizing-performance-data-binding">Оптимизация производительности: Привязка данных</h1>
+
+<p>Windows Presentation Foundation (WPF) Привязка данных обеспечивает простой и последовательный способ представления и взаимодействия с данными приложениях. Можно связывать элементы с данными из различных источников данных в виде объектов CLR и XML.</p>
+<p>В этом разделе даются рекомендации по повышению производительности привязки данных.</p>
+<p><a name="HowDataBindingReferencesAreResolved"></a></p>
+<h2 id="how-data-binding-references-are-resolved">Как разрешаются ссылки для привязки данных</h2>
+<p>Прежде чем обсуждать вопросы производительности привязки данных, стоит изучить, как механизм привязки данных Windows Presentation Foundation (WPF) разрешает ссылки на объекты для привязки.</p>
+<p>Источником привязки данных Windows Presentation Foundation (WPF) может быть любой объект CLR. Можно выполнять привязку к свойствам, вложенным свойствам или индексаторам объекта CLR. Ссылки привязки разрешаются с помощью либо отражения Microsoft .NET Framework или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.icustomtypedescriptor">ICustomTypeDescriptor</a>. Ниже приведены три метода для разрешения ссылок на объекты для привязки.</p>
+<p>Первый метод включает использование отражения. В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.propertyinfo">PropertyInfo</a> объект используется для обнаружения атрибутов свойства и предоставляет доступ к метаданным свойства. При использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.icustomtypedescriptor">ICustomTypeDescriptor</a> интерфейс, механизм привязки данных использует этот интерфейс для доступа к значениям свойств. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.icustomtypedescriptor">ICustomTypeDescriptor</a> Интерфейс особенно полезна в случаях, когда объект имеет статический набор свойств.</p>
+<p>Уведомления об изменении свойств могут предоставляться путем реализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> интерфейс или с помощью уведомлений об изменениях, связанных с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typedescriptor">TypeDescriptor</a>. Однако рекомендуемой стратегией для реализации уведомления об изменении свойств является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a>.</p>
+<p>Если исходный объект является CLR объект и свойство источника является CLR свойство, Windows Presentation Foundation (WPF) механизм привязки данных должен сначала использовать отражение для исходного объекта, чтобы получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.typedescriptor">TypeDescriptor</a>и затем запросить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.propertydescriptor">PropertyDescriptor</a>. Эта последовательность операций отражения может занимать очень много времени с точки зрения производительности.</p>
+<p>Второй метод разрешения ссылок на объекты включает CLR исходный объект, реализующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a> интерфейса и источник свойства, которое является CLR свойство. В этом случае механизм привязки данных использует отражение непосредственно в исходном типе и возвращает необходимое свойство. Это по-прежнему не самый оптимальный метод, но он предъявляет меньше требований к рабочему набору, чем первый метод.</p>
+<p>Третий метод для разрешения ссылок на объекты включает исходный объект, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> и исходное свойство, которое является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a>. В этом случае механизму привязки данных не нужно использовать отражение. Вместо этого механизм свойства и механизм привязки данных оба разрешают ссылку на свойство независимо. Это оптимальный метод для разрешения ссылок на объекты, используемые для привязки данных.</p>
+<p>В следующей таблице сравнивается скорость привязки данных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.text">Text</a> свойство тысяч <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов с помощью этих трех методов.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Привязка свойства Text объекта TextBlock</strong></th>
+<th><strong>Время привязки (мс)</strong></th>
+<th><strong>Время отрисовки — включает привязку (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>К свойству объекта CLR</td>
+<td>115</td>
+<td>314</td>
+</tr>
+<tr>
+<td>К свойству CLR объекта, который реализует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></td>
+<td>115</td>
+<td>305</td>
+</tr>
+<tr>
+<td>Чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a>.</td>
+<td>90</td>
+<td>263</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Binding_to_Large_CLR_Objects"></a></p>
+<h2 id="binding-to-large-clr-objects">Привязка к большим объектам среды CLR</h2>
+<p>Привязка данных к одному объекту CLR с тысячами свойств значительно влияет на производительность. Это влияние можно минимизировать путем разделения одного объекта на несколько объектов CLR с меньшим количеством свойств. В таблице показаны время привязки и время отрисовки для привязки данных к одному большому объекту CLR и к нескольким небольшим объектам.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Привязка данных 1000 объектов TextBlock</strong></th>
+<th><strong>Время привязки (мс)</strong></th>
+<th><strong>Время отрисовки — включает привязку (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>К объекту CLR с 1000 свойств</td>
+<td>950</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>К 1000 объектов CLR с одним свойством</td>
+<td>115</td>
+<td>314</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Binding_to_an_ItemsSource"></a></p>
+<h2 id="binding-to-an-itemssource">Привязка к ItemsSource</h2>
+<p>Рассмотрим сценарий, в котором у вас есть CLR <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> объект, содержащий список сотрудников, которые вы хотите отобразить в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Чтобы установить соответствие между этими двумя объектами, нужно привязать список сотрудников к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Предположим, что к группе присоединяется новый сотрудник. Может показаться, что для вставки этого человека в список связанных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> значения, вы бы просто добавить этого пользователя в список сотрудников и ожидать, что это изменение автоматически распознается модулем привязки данных. Это предположение оказалось бы false; на самом деле, изменения не будут отражены в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> автоматически. Это обусловлено CLR <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> объекта не вызывает событие изменения коллекции автоматически. Чтобы получить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> для учета изменений, вам придется повторно создать список сотрудников и присоединить его к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Хотя это решение работает, оно серьезно влияет на производительность. Каждый раз при присваивании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> с новым объектом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> сначала отбрасывает предыдущие элементы и повторно создает весь список. Влияние на производительность увеличивается в том случае, если ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> сопоставляется со сложным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>.</p>
+<p>Эффективным решением этой проблемы является преобразование списка сотрудников <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a> Объект инициирует уведомление об изменениях, которые механизм привязки данных может получать. Событие добавляет или удаляет элемент из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> без необходимости восстановления всего списка.</p>
+<p>В таблице ниже показано время, уходящее на обновление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> (с отключенной виртуализацией пользовательского интерфейса) при добавлении одного элемента. Число в первой строке представляет время, затраченное при CLR <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> объект привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a>. Число во второй строке представляет время, затраченное при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a> привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a>. Примечание сэкономить значительное время с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a> стратегии привязки данных.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Привязка данных ItemsSource</strong></th>
+<th><strong>Время обновления для 1 элемента (мс)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чтобы CLR <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.list-1">List&lt;T&gt;</a> объекта</td>
+<td>1656</td>
+</tr>
+<tr>
+<td>Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection&lt;T&gt;</a></td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Binding_IList_to_ItemsControl_not_IEnumerable"></a></p>
+<h2 id="bind-ilist-to-itemscontrol-not-ienumerable">Привязка IList к ItemsControl не IEnumerable</h2>
+<p>Если у вас есть выбор между привязкой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> , следует выбрать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> объекта. Привязка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> заставляет WPF создание оболочки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> объектом, то есть производительность зависит также от лишняя нагрузка от второго объекта.</p>
+<p><a name="Do_not_Convert_CLR_objects_to_Xml_Just_For_Data_Binding"></a></p>
+<h2 id="do-not-convert-clr-objects-to-xml-just-for-data-binding">Не преобразовывайте объекты среды CLR в XML только для привязки данных.</h2>
+<p>WPF позволяет привязать данные к XML содержимого; Однако привязка данных к XML содержимого выполняется медленнее, чем привязка данных к CLR объектов. Не преобразуйте данные объекта CLR в XML, если единственной целью этого является привязка данных.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+<li><a href="planning-for-application-performance.html">Планирование производительности приложения</a></li>
+<li><a href="optimizing-performance-taking-advantage-of-hardware.html">Использование преимуществ оборудования</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+<li><a href="optimizing-performance-2d-graphics-and-imaging.html">Двумерная графика и изображения</a></li>
+<li><a href="optimizing-performance-object-behavior.html">Поведение объекта</a></li>
+<li><a href="optimizing-performance-application-resources.html">Ресурсы приложений</a></li>
+<li><a href="optimizing-performance-text.html">Текста</a></li>
+<li><a href="optimizing-performance-other-recommendations.html">Дополнительные рекомендации по повышению производительности</a></li>
+<li><a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a></li>
+<li><a href="walkthrough-caching-application-data-in-a-wpf-application.html">Пошаговое руководство. Кэширование данных приложения WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms DataGridView &#1084;&#1099;&#1096;&#1080; &#1080; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; &#1087;&#1086; &#1091;&#1084;&#1086;&#1083;&#1095;&#1072;&#1085;&#1080;&#1102; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1072; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081; &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; Windows Forms DataGridView &#1084;&#1099;&#1096;&#1080; &#1080; &#1082;&#1083;&#1072;&#1074;&#1080;&#1072;&#1090;&#1091;&#1088;&#1099; &#1087;&#1086; &#1091;&#1084;&#1086;&#1083;&#1095;&#1072;&#1085;&#1080;&#1102; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="default-keyboard-and-mouse-handling-in-the-windows-forms-datagridview-control">Обработка событий в элементе управления Windows Forms DataGridView мыши и клавиатуры по умолчанию</h1>
+
+<p>В следующих таблицах описываются, как пользователи могут взаимодействовать с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> управления посредством клавиатуры и мыши.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Чтобы настроить поведение клавиатуры, можно обрабатывать события стандартной клавиатуре например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.keydown">KeyDown</a>. В режиме редактирования, однако размещенного элемента управления редактирования получающий ввод с клавиатуры и события клавиатуры не выполняется для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления. Для обработки событий редактирования элемента управления, присоединения обработчиков к элементу управления изменениями в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.editingcontrolshowing">EditingControlShowing</a> обработчик событий. Кроме того, можно настроить поведение клавиатуры в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> подкласс путем переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.processdialogkey">ProcessDialogKey</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.processdatagridviewkey">ProcessDataGridViewKey</a> методы.</p>
+</div>
+<h2 id="default-keyboard-handling">Обработка событий клавиатуры по умолчанию</h2>
+<h3 id="basic-navigation-and-entry-keys">Основные клавиши навигации и запись</h3>
+<table>
+<thead>
+<tr>
+<th>Клавиши или сочетания клавиш</th>
+<th>Описание:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>СТРЕЛКА ВНИЗ</td>
+<td>Перемещает фокус в ячейку непосредственно под текущей ячейки. Если фокус находится в последней строке, ничего не делает.</td>
+</tr>
+<tr>
+<td>СТРЕЛКА ВЛЕВО</td>
+<td>Перемещает фокус на предыдущую ячейку в строке. Если фокус находится в первой ячейке в строке, ничего не делает.</td>
+</tr>
+<tr>
+<td>СТРЕЛКА ВПРАВО</td>
+<td>Перемещение фокуса к следующей ячейке в строке. Если фокус находится в последней ячейке в строке, ничего не делает.</td>
+</tr>
+<tr>
+<td>СТРЕЛКА ВВЕРХ</td>
+<td>Перемещает фокус в ячейку непосредственно над текущей ячейки. Если фокус находится в первой строке, ничего не делает.</td>
+</tr>
+<tr>
+<td>ГЛАВНАЯ</td>
+<td>Переход к первой ячейке в текущей строке.</td>
+</tr>
+<tr>
+<td>END</td>
+<td>Переход к последней ячейке в текущей строке.</td>
+</tr>
+<tr>
+<td>PAGE DOWN</td>
+<td>Прокручивает элемент управления вниз на число строк, которые отображаются полностью. Перемещает фокус на последнюю строку полностью отображается без изменения столбцов.</td>
+</tr>
+<tr>
+<td>PAGE UP</td>
+<td>Прокручивает элемент управления вверх на число строк, которые отображаются полностью. Перемещает фокус на первую строку отображается без изменения столбцов.</td>
+</tr>
+<tr>
+<td>TAB</td>
+<td>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>false</code>, фокус перемещается к следующей ячейке в текущей строке. Если фокус уже находится в последней ячейке строки, переход к первой ячейке в следующей строке. Если фокус находится в последней ячейке в элементе управления, перемещение фокуса к следующему элементу управления в последовательности табуляции родительского контейнера.<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>true</code>, фокус перемещается к следующему элементу управления в последовательности табуляции родительского контейнера.</td>
+</tr>
+<tr>
+<td>SHIFT+TAB</td>
+<td>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>false</code>, фокус перемещается к предыдущей ячейке в текущей строке. Если фокус находится в первой ячейке строки, передает фокус в последнюю ячейку в предыдущей строке. Если фокус находится в первой ячейке в элементе управления, перемещает фокус на предыдущий элемент управления в последовательности табуляции родительского контейнера.<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>true</code>, фокус перемещается к предыдущему элементу управления в последовательности табуляции родительского контейнера.</td>
+</tr>
+<tr>
+<td>CTRL + TAB</td>
+<td>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>false</code>, фокус перемещается к следующему элементу управления в последовательности табуляции родительского контейнера.<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>true</code>, фокус перемещается к следующей ячейке в текущей строке. Если фокус уже находится в последней ячейке строки, переход к первой ячейке в следующей строке. Если фокус находится в последней ячейке в элементе управления, перемещение фокуса к следующему элементу управления в последовательности табуляции родительского контейнера.</td>
+</tr>
+<tr>
+<td>CTRL+SHIFT+TAB</td>
+<td>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>false</code>, фокус перемещается к предыдущему элементу управления в последовательности табуляции родительского контейнера.<br><br> Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.standardtab">StandardTab</a> свойство имеет значение <code>true</code>, фокус перемещается к предыдущей ячейке в текущей строке. Если фокус находится в первой ячейке строки, передает фокус в последнюю ячейку в предыдущей строке. Если фокус находится в первой ячейке в элементе управления, перемещает фокус на предыдущий элемент управления в последовательности табуляции родительского контейнера.</td>
+</tr>
+<tr>
+<td>CTRL + СТРЕЛКА</td>
+<td>Перемещает фокус самой крайней ячейке в направлении стрелки.</td>
+</tr>
+<tr>
+<td>CTRL + HOME</td>
+<td>Переход к первой ячейке в элементе управления.</td>
+</tr>
+<tr>
+<td>CTRL + END</td>
+<td>Перемещает фокус в последнюю ячейку в элементе управления.</td>
+</tr>
+<tr>
+<td>CTRL + PAGE ВНИЗ И ВВЕРХ</td>
+<td>Совпадает со значением PAGE DOWN или PAGE UP.</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Переводит текущую ячейку в режим редактирования ячейки, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.editmode">EditMode</a> свойство имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridvieweditmode#System_Windows_Forms_DataGridViewEditMode_EditOnF2">EditOnF2</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridvieweditmode#System_Windows_Forms_DataGridViewEditMode_EditOnKeystrokeOrF2">EditOnKeystrokeOrF2</a>.</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Сортирует текущий столбец, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumn.sortmode">DataGridViewColumn.SortMode</a> свойство имеет значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcolumnsortmode#System_Windows_Forms_DataGridViewColumnSortMode_Automatic">Automatic</a>. Это аналогично щелчку текущего заголовка столбца. Доступно с версии .NET Framework 4.7.2. Чтобы включить эту функцию, приложения должны предназначенных для .NET Framework 4.7.2 или более поздней версии или явно выбран улучшения специальных возможностей, с помощью параметров AppContext.</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Если текущая ячейка находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell">DataGridViewComboBoxCell</a>, она переходит в режим редактирования и отображает стрелку раскрывающегося списка.</td>
+</tr>
+<tr>
+<td>ALT + СТРЕЛКА ВВЕРХ/ВНИЗ СТРЕЛКА</td>
+<td>Если текущая ячейка находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcomboboxcell">DataGridViewComboBoxCell</a>, она переходит в режим редактирования и отображает стрелку раскрывающегося списка.</td>
+</tr>
+<tr>
+<td>ПРОБЕЛ</td>
+<td>Если текущая ячейка находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncell">DataGridViewButtonCell</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewlinkcell">DataGridViewLinkCell</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcell">DataGridViewCheckBoxCell</a>, вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellclick">CellClick</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellcontentclick">CellContentClick</a> события. Если текущая ячейка находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewbuttoncell">DataGridViewButtonCell</a>, также нажимает кнопку. Если текущая ячейка находится <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcheckboxcell">DataGridViewCheckBoxCell</a>, также изменяет состояние флажка.</td>
+</tr>
+<tr>
+<td>ВВОД</td>
+<td>Фиксирует все изменения для текущей ячейки и строки и переносит фокус в ячейку непосредственно под текущей ячейки. Если фокус находится в последней строке, изменения сохраняются без перемещения фокуса.</td>
+</tr>
+<tr>
+<td>ESC</td>
+<td>Если элемент управления находится в режиме редактирования, отменяет изменение. Если элемент управления не находится в режиме редактирования, отменяет изменения, внесенные в текущую строку, если элемент управления привязан к источнику данных, который поддерживает редактирование или реализации виртуального режима с областью фиксации на уровне строк.</td>
+</tr>
+<tr>
+<td>BACKSPACE</td>
+<td>Удаление знака перед точкой вставки при редактировании ячейки.</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Удаление знака после курсора, при редактировании ячейки.</td>
+</tr>
+<tr>
+<td>CTRL+ВВОД</td>
+<td>Фиксирует все изменения в текущей ячейке без перемещения фокуса. Также фиксирует все изменения для текущей строки, если элемент управления привязан к источнику данных, который поддерживает режим редактирования или виртуальных была реализована с помощью на уровне строк области фиксации.</td>
+</tr>
+<tr>
+<td>CTRL+0</td>
+<td>Вводит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.dbnull.value">DBNull.Value</a> значение в текущей ячейке, если ячейки можно изменять. По умолчанию, отображаемое значение для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.dbnull">DBNull</a> значение ячейки является значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle.nullvalue">NullValue</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewcellstyle">DataGridViewCellStyle</a> действует для текущей ячейки.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="selection-keys">Выбор ключей</h3>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> свойству <code>false</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_CellSelect">CellSelect</a>, изменение текущей ячейки с помощью клавиши навигации изменения выделения новой ячейки. SHIFT, CTRL и ALT ключи не влияют на это поведение.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_RowHeaderSelect">RowHeaderSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_ColumnHeaderSelect">ColumnHeaderSelect</a>, происходит то же поведение, но со следующими дополнениями.</p>
+<table>
+<thead>
+<tr>
+<th>Клавиши или сочетания клавиш</th>
+<th>Описание:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHIFT + ПРОБЕЛ</td>
+<td>Выбор всей строки или столбца (совпадает при щелчке заголовка строки или столбца).</td>
+</tr>
+<tr>
+<td>клавиши навигации (клавиша со стрелкой, PAGE UP/DOWN, HOME, END)</td>
+<td>Если выбран полной строки или столбца, изменение текущей ячейки в новой строке или столбце выделяет всей новой строки или столбца (в зависимости от режима выделения).</td>
+</tr>
+</tbody>
+</table>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>false</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">FullColumnSelect</a>, изменение текущей ячейки в новой строке или столбце с помощью клавиатуры, чтобы перейти к полностью строки или столбца. SHIFT, CTRL и ALT ключи не влияют на это поведение.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>true</code>, поведение остается неизменным, но перемещение с помощью клавиатуры, удерживая нажатой клавишу SHIFT, (включая клавиши CTRL + SHIFT) измените выбора нескольких ячеек. Перед выполнением перехода, управления помечает текущую ячейку как базовую. При переходе, удерживая нажатой клавишу SHIFT, выделение включает все ячейки между базовой и текущей ячейки. Остальные ячейки в элементе управления останется выбранным, если они уже были выбраны, но они могут снимается навигации с помощью клавиатуры временно в ходе которой их между базовой и текущей ячейки.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>true</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">FullColumnSelect</a>, ячейкой привязки и текущая ячейка происходит так же, но только полной строки или столбцы становится выбранным или невыбранным.</p>
+<h2 id="default-mouse-handling">По умолчанию обработка событий мыши</h2>
+<h3 id="basic-mouse-handling">Обработка основных событий мыши</h3>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При щелчке ячейки с левой кнопки мыши всегда изменяет текущую ячейку. Щелчок по ячейке правой кнопкой мыши открывается контекстное меню, если она доступна.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Действие мыши</th>
+<th>Описание:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Левой кнопки мыши</td>
+<td>Делает выбранная ячейка текущей ячейки и инициирует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmousedown">DataGridView.CellMouseDown</a> событий.</td>
+</tr>
+<tr>
+<td>Левая кнопка мыши вверх</td>
+<td>Вызывает событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseup">DataGridView.CellMouseUp</a>.</td>
+</tr>
+<tr>
+<td>Щелчок левой кнопкой мыши</td>
+<td>Вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellclick">DataGridView.CellClick</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellmouseclick">DataGridView.CellMouseClick</a> события</td>
+</tr>
+<tr>
+<td>Левой кнопки мыши и перетащите на ячейки заголовка столбца</td>
+<td>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.allowusertoordercolumns">DataGridView.AllowUserToOrderColumns</a> свойство <code>true</code>, перемещает столбец таким образом, чтобы его можно перетаскивать в новую позицию.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mouse-selection">Выделения мышью</h3>
+<p>Поведение выделения не связан с средняя кнопка мыши или колесиком мыши.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> свойству <code>false</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_CellSelect">CellSelect</a>, происходит следующее.</p>
+<table>
+<thead>
+<tr>
+<th>Действие мыши</th>
+<th>Описание:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Щелкните левой кнопкой мыши</td>
+<td>Выделение только текущей ячейки, если пользователь щелкает ячейку. Поведение выделения, не появляется, если пользователь щелкает мышью заголовок строки или столбца.</td>
+</tr>
+<tr>
+<td>Щелкните правой кнопкой мыши</td>
+<td>Отображает контекстное меню, если таковой доступен.</td>
+</tr>
+</tbody>
+</table>
+<p>Такое же поведение наблюдается при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_RowHeaderSelect">RowHeaderSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_ColumnHeaderSelect">ColumnHeaderSelect</a>, за исключением того, что, в зависимости от режима выделения при щелчке заголовка строки или столбца будет Выбор всей строки или столбца и установка значения текущей ячейки в первую ячейку в строке или столбце.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">FullColumnSelect</a>, если щелкнуть любую ячейку в строке или столбце выберет полной строки или столбца.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>true</code>, удерживая нажатой клавишу CTRL или SHIFT при щелчке ячейки изменит выбора нескольких ячеек.</p>
+<p>Если щелкнуть ячейку удерживая нажатой клавишу CTRL, ячейки изменит свое состояние выбора, все остальные ячейки, сохраняя их текущее состояние выделения.</p>
+<p>Если щелкнуть ячейку или ряда ячеек нажатой клавишей SHIFT, выделение включает все ячейки между текущей ячейки и ячейки в привязки, расположен в позиции текущей ячейки до первого щелчка. Когда вы щелкните и перетащите указатель протащил резинку, ячейкой привязки является ячеек в начале операции перетаскивания. Последующие нажатия нажатой клавишей SHIFT изменение текущей ячейки, но не базовой ячейки. Остальные ячейки в элементе управления останется выбранным, если они уже были выбраны, но они могут снимается, если навигации мыши временно помещаются между базовой и текущей ячейки.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>true</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_RowHeaderSelect">RowHeaderSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_ColumnHeaderSelect">ColumnHeaderSelect</a>, удерживая нажатой клавишу SHIFT при щелчке заголовка строки или столбца (в зависимости от режима выделения) изменит выделенной полных строк или столбцов, если такой Выбранный объект существует. В противном случае он будет снимите флажок и начать новый выбор полных строк или столбцов. Удерживая нажатой клавишу CTRL при щелчке заголовка строки или столбца, однако будет добавлять или удалять выбранной строки или столбца из выделенной без иного изменения текущего выделения.</p>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.multiselect">MultiSelect</a> присваивается <code>true</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.selectionmode">SelectionMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullRowSelect">FullRowSelect</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridviewselectionmode#System_Windows_Forms_DataGridViewSelectionMode_FullColumnSelect">FullColumnSelect</a>, удерживая нажатой клавишу SHIFT или CTRL при щелчке ячейки работает так же, за исключением этого только полных строк и столбцов будут затронуты.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a></li>
+<li><a href="datagridview-control-windows-forms.html">Элемент управления DataGridView</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

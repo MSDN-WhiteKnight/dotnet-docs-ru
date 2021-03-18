@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1056;&#1072;&#1079;&#1074;&#1077;&#1088;&#1090;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1056;&#1072;&#1079;&#1074;&#1077;&#1088;&#1090;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1087;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1081; WPF | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="deploying-a-wpf-application-wpf">Развертывание приложений WPF</h1>
+
+<p>После построения приложения Windows Presentation Foundation (WPF), они должны быть развернуты. Windows и .NET Framework поддерживают несколько технологий развертывания. Технология развертывания, используемая для развертывания приложения WPF, зависит от типа приложения. Этот раздел содержит краткое описание каждой из технологий развертывания и их использования в сочетании с требованиями к развертыванию для каждого типа приложения WPF.</p>
+<p><a name="Deployment_Technologies"></a></p>
+<h2 id="deployment-technologies">Технологии развертывания</h2>
+<p>Windows и .NET Framework включают несколько технологий развертывания, включая:</p>
+<ul>
+<li><p>развертывание с помощью XCopy;</p>
+</li>
+<li><p>установщик Windows развертывание.</p>
+</li>
+<li><p>ClickOnce развертывание.</p>
+</li>
+</ul>
+<p><a name="XCopy_Deployment"></a></p>
+<h3 id="xcopy-deployment">Развертывание с помощью XCopy</h3>
+<p>Развертывание с помощью XCopy означает использование программы командной строки XCopy для копирования файлов из одного расположения в другое. Развертывание с помощью XСopy подходит для указанных ниже случаев.</p>
+<ul>
+<li><p>Приложение является самодостаточным. Для его запуска не требуется обновлять клиент.</p>
+</li>
+<li><p>Файлы приложения должны быть перемещены из одного расположения в другое, например из места сборки (локальный диск, общая папка UNC и т. д.) в место публикации (веб-сайт, общая папка UNC и т. д.).</p>
+</li>
+<li><p>Для приложения не требуется интеграция в оболочку (добавление значка в меню &quot;Пуск&quot;, на рабочий стол и т. д.).</p>
+</li>
+</ul>
+<p>Хотя технология XCopy подходит для простых сценариев развертывания, ее недостаточно, когда требуется выполнить более сложное развертывание. В частности, при использовании XCopy могут возникать дополнительные затраты на создание, выполнение и поддержку скриптов для надежного управления развертыванием. Кроме того, XCopy не поддерживает управление версиями, удаление или откат.</p>
+<p><a name="Windows_Installer"></a></p>
+<h3 id="windows-installer">Установщик Windows</h3>
+<p>установщик Windows позволяет упаковывать как самодостаточные исполняемые файлы, которые легко распространять на клиентах и запускать приложения. Кроме того, установщик Windows устанавливается вместе с Windows и поддерживает интеграцию с рабочим столом, меню &quot;Пуск&quot; и компонентом панели управления &quot;Программы&quot;.</p>
+<p>установщик Windows упрощает установку и удаление приложений, но он не предоставляет средства, обеспечивающие обновление приложений до последней версии.</p>
+<p>Дополнительные сведения об установщике Windows см. в разделе <a href="/visualstudio/deployment/deploying-applications-services-and-components#create-an-installer-package-windows-desktop">развертывание с помощью установщика Windows</a>.</p>
+<p><a name="ClickOnce_Deployment"></a></p>
+<h3 id="clickonce-deployment">развертывание ClickOnce</h3>
+<p>ClickOnce позволяет веб-развертывание приложений, веб-приложений. Приложения публикуются на веб-серверах или файловых серверах и развертываются с них. Развертывание ClickOnce поддерживает не весь набор клиентских возможностей приложений, установленных с помощью установщик Windows. Поддерживаются следующие возможности:</p>
+<ul>
+<li><p>интеграция в меню &quot;Пуск&quot; и элемент панели управления &quot;Программы&quot;;</p>
+</li>
+<li><p>управление версиями, откат и удаление;</p>
+</li>
+<li><p>режим интернет-установки, в котором приложение всегда запускается из места развертывания;</p>
+</li>
+<li><p>автоматическое обновление при выходе новых версий;</p>
+</li>
+<li><p>регистрация расширений файлов.</p>
+</li>
+</ul>
+<p>Дополнительные сведения о ClickOnce см. в разделе <a href="/visualstudio/deployment/clickonce-security-and-deployment">Развертывание и безопасность технологии ClickOnce</a>.</p>
+<p><a name="Deploying_WPF_Applications"></a></p>
+<h2 id="deploying-wpf-applications">Развертывание приложений WPF</h2>
+<p>Параметры развертывания для приложения WPF зависят от типа приложения. В плане развертывания технология WPF поддерживает три основных типа приложений:</p>
+<ul>
+<li><p>автономные приложения;</p>
+</li>
+<li><p>приложения, полностью состоящие из кода XAML разметки;</p>
+</li>
+<li><p>XAML-приложения браузера (XBAP).</p>
+</li>
+</ul>
+<p><a name="Deploying_Standalone_Applications"></a></p>
+<h3 id="deploying-standalone-applications">Развертывание автономных приложений</h3>
+<p>Автономные приложения развертываются с помощью ClickOnce или установщик Windows. В любом случае для запуска автономных приложений требуется полное доверие. Полное доверие автоматически предоставляется автономным приложениям, которые развертываются с помощью установщик Windows. Автономные приложения, которые развертываются с помощью ClickOnce, не получают полного доверия автоматически. Вместо этого ClickOnce выводит диалоговое окно с предупреждением системы безопасности, которое пользователь должен подтвердить перед установкой автономного приложения. Если предупреждение принято, автономное приложение устанавливается и ему предоставляется полное доверие. В противном случае автономное приложение не устанавливается.</p>
+<p><a name="Deploying_Markup_Only_XAML_Applications"></a></p>
+<h3 id="deploying-markup-only-xaml-applications">Развертывание приложений XAML, содержащих только разметку</h3>
+<p>Страницы XAML, содержащие только разметку, обычно публикуются на веб-серверах, как и страницы HTML, и их можно просматривать с помощью Internet Explorer. Страницы XAML, содержащие только разметку, запускаются в изолированной среде (в режиме безопасности с частичным доверием) с ограничениями, которые определяются набором разрешений зоны Интернета. Это обеспечивает эквивалентный уровень безопасности для веб-приложений HTML.</p>
+<p>Дополнительные сведения о безопасности приложений WPF см. в разделе <a href="../security-wpf.html">Безопасность</a>.</p>
+<p>Страницы XAML, содержащие только разметку, можно устанавливать в локальной файловой системе с помощью XCopy или установщик Windows. Эти страницы можно просматривать при помощи Internet Explorer или проводника Windows.</p>
+<p>Дополнительные сведения о XAML см. в разделе <a href="../advanced/xaml-overview-wpf.html">Общие сведения о языке XAML</a>.</p>
+<p><a name="Deploying_XAML_Browser_Applications"></a></p>
+<h3 id="deploying-xaml-browser-applications">Развертывание приложений браузера XAML</h3>
+<p>XBAP — Это скомпилированные приложения, требующие следующие три файла должны быть развернуты:</p>
+<ul>
+<li><p><em>ApplicationName</em>.exe: Исполняемый файл приложения сборки.</p>
+</li>
+<li><p><em>ApplicationName</em>.xbap: Манифест развертывания.</p>
+</li>
+<li><p><em>ApplicationName</em>. exe.manifest: Манифест приложения.</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Дополнительные сведения о манифестах развертывания и приложений см. в разделе <a href="building-a-wpf-application-wpf.html">Построение приложения WPF</a>.</p>
+</div>
+<p>Эти файлы создаются при сборке XBAP. Дополнительные сведения см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628663(v=vs.100)">Как Создание нового проекта приложения браузера WPF</a>. Подобно страницам XAML, содержащим только разметку, XBAP обычно публикуются на веб-сервере и просматриваются с помощью браузера Internet Explorer.</p>
+<p>XBAP можно развернуть для клиентов с помощью любого из методов развертывания. Однако рекомендуется использовать технологию ClickOnce, так как она имеет следующие возможности:</p>
+<ol>
+<li><p>автоматическое обновление при публикации новой версии;</p>
+</li>
+<li><p>повышенные привилегии при выполнении XBAP в режиме полного доверия.</p>
+</li>
+</ol>
+<p>По умолчанию средство ClickOnce публикует файлы приложений с расширением DEPLOY. Это поведение может привести к затруднениям, но его можно отключить. Дополнительные сведения см. в разделе <a href="/visualstudio/deployment/server-and-client-configuration-issues-in-clickonce-deployments">Вопросы настройки сервера и клиента в развертываниях ClickOnce</a>.</p>
+<p>Дополнительные сведения о развертывании XAML-приложения браузера (XBAP) см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Общие сведения о приложениях браузера WPF XAML</a>.</p>
+<p><a name="Installing__NET_Framework_3_0"></a></p>
+<h2 id="installing-the-net-framework">Установка .NET Framework</h2>
+<p>Для запуска WPF приложения на клиентском компьютере необходимо установить Microsoft .NET Framework. Internet Explorer автоматически определяет, установлены ли клиенты с .NET Framework при WPF просматриваемых Браузерные приложения. Если не установлена платформа .NET Framework, Internet Explorer предлагает пользователю установить его.</p>
+<p>Чтобы проверка наличия установленной платформы .NET Framework, Internet Explorer включает в себя приложение начальной загрузки, который зарегистрирован в качестве резервного Стандарт MIME (Multipurpose Internet Mail Extensions) обработчик содержимого файлов со следующими расширениями: .xaml, XPS, .xbap и .application. При переходе на эти типы файлов и .NET Framework не установлена на клиенте, приложение начальной загрузки запрашивает разрешение на его установку. Если разрешение не предоставляется, ни .NET Framework, ни приложение будет установлено.</p>
+<p>Если разрешение предоставлено, Internet Explorer загрузит и установит .NET Framework с помощью Фоновая интеллектуальная служба передачи (BITS) (Майкрософт). После успешной установки платформы .NET Framework изначально запрошенный файл открывается в новом окне браузера.</p>
+<p>Автоматическое обнаружение .NET framework можно найти в Windows Vista, Microsoft Windows XP с пакетом обновления 2 (SP2), и Microsoft Windows Server 2003 с пакетом обновления 1 (SP1) клиентов, имеющих Internet Explorer 7 или более поздней версии.</p>
+<p>Дополнительные сведения см. в разделе <a href="../../deployment/index.md">Развертывание .NET Framework и приложений</a>.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="building-a-wpf-application-wpf.html">Построение приложения WPF</a></li>
+<li><a href="../security-wpf.html">Безопасность</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

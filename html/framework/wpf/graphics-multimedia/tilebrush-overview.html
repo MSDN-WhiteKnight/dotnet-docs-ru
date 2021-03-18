@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; TileBrush | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; TileBrush | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tilebrush-overview">Общие сведения о TileBrush</h1>
+
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> объекты обеспечивают высокую степень контроля над закрашивание области с изображением, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual">Visual</a>. В этом разделе описывается использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> функции позволяют получить больший контроль над тем, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> закрашивает область.</p>
+<p><a name="prerequisite"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Для понимания этого раздела, полезно понять, как использовать основные функции этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> класса. Введение в этих типов, см. в разделе <a href="painting-with-images-drawings-and-visuals.html">Рисование с помощью изображений, рисунков и визуальных элементов</a>.</p>
+<p><a name="tilebrush"></a></p>
+<h2 id="painting-an-area-with-tiles">Заполнение области с помощью мозаики</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>, являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> типов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> объектов. Мозаичная кисть позволяет тщательно контролировать заполнение области для изображений, рисунков и визуальных элементов. Например, можно заполнить область не одним растянутым изображением, а элементами мозаики, которые образуют узор.</p>
+<p>Заполнение области с помощью мозаичной кисти включает три компонента: содержимое, базовый элемент мозаики и область вывода.</p>
+<p><img src="media/wcpsdk-mmgraphics-defaultcontentprojection2.png" alt="Компоненты TileBrush" title="wcpsdk_mmgraphics_defaultcontentprojection2"><br>
+Компоненты TileBrush с одним элементом мозаики</p>
+<p><img src="media/graphicsmm-tiledprojection.png" alt="Компоненты мозаичного TileBrush" title="graphicsmm_tiledprojection"><br>
+Компоненты TileBrush с TileMode, имеющим значение Tile</p>
+<p>Область вывода представляет области, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>. В следующих разделах описываются два остальных компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a>.</p>
+<p><a name="brushcontent"></a></p>
+<h2 id="brush-content">Содержимое кисти</h2>
+<p>Существует три разных типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> и каждый закрашивает различным типом содержимого.</p>
+<ul>
+<li><p>Если используется кисть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>, это содержимое является изображением <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush.imagesource">ImageSource</a> свойство определяет содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a>.</p>
+</li>
+<li><p>Если используется кисть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>, это содержимое является рисунка. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush.drawing">Drawing</a> Свойство определяет содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>.</p>
+</li>
+<li><p>Если используется кисть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a>, это содержимое является визуальный элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush.visual">Visual</a> Свойство определяет содержание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a>.</p>
+</li>
+</ul>
+<p>Можно указать положение и размеры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> содержимого с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewbox">Viewbox</a> свойство, несмотря на то, что довольно часто, чтобы оставить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewbox">Viewbox</a> присвоено значение по умолчанию. По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewbox">Viewbox</a> полностью содержит содержимое кисти. Дополнительные сведения о настройке <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewbox">Viewbox</a>, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.viewbox">Viewbox</a> страницу свойств.</p>
+<p><a name="thebasetile"></a></p>
+<h2 id="the-base-tile">Базовый элемент мозаики</h2>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> проецирует свое содержимое на базовый элемент мозаики. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.stretch">Stretch</a> Свойства элементов управления как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> содержимое растягивается для заполнения базового элемента мозаики. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.stretch">Stretch</a> Свойство принимает следующие значения, определенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch">Stretch</a> перечисления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_None">None</a>: Содержимое кисти не растягивается для заполнения плитки.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_Fill">Fill</a>: Содержимое кисти масштабируется по размерам плитки. Поскольку высота и ширина содержимого масштабируются независимо друг от друга, исходные пропорции содержимого могут не сохраняться. То есть содержимое кисти может быть деформировано для полного заполнения выводимого элемента.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_Uniform">Uniform</a>: Содержимое кисти масштабируется таким образом, чтобы полностью уместиться внутри фрагмента. Пропорции содержимого сохраняются.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.stretch#System_Windows_Media_Stretch_UniformToFill">UniformToFill</a>: Содержимое кисти масштабируется таким образом, чтобы полностью заполнить область вывода при этом сохранить исходные пропорции содержимого.</p>
+</li>
+</ul>
+<p>На следующем рисунке показан другой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.stretch">Stretch</a> параметры.</p>
+<p><img src="media/img-mmgraphics-stretchenum.jpg" alt="Различные параметры растяжения TileBrush" title="img_mmgraphics_stretchenum"></p>
+<p>В следующем примере содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> таким образом, она не растягивается для заполнения области вывода.</p>
+<pre><code class="lang-xaml" name="BrushOverviewExamples_snip#GraphicsMMNoStretchExample">&lt;Rectangle
+  Width=&quot;125&quot; Height=&quot;175&quot;
+  Stroke=&quot;Black&quot;
+  StrokeThickness=&quot;1&quot;
+  Margin=&quot;0,0,5,0&quot;&gt;
+  &lt;Rectangle.Fill&gt;
+    &lt;ImageBrush 
+      Stretch=&quot;None&quot;
+      ImageSource=&quot;sampleImages\testImage.gif&quot;/&gt;
+  &lt;/Rectangle.Fill&gt;
+&lt;/Rectangle&gt;
+</code></pre><pre><code class="lang-csharp" name="BrushOverviewExamples_procedural_snip#GraphicsMMNoStretchExample">// Create a rectangle.
+Rectangle myRectangle = new Rectangle();
+myRectangle.Width = 125;
+myRectangle.Height = 175;
+myRectangle.Stroke = Brushes.Black;
+myRectangle.StrokeThickness = 1;
+myRectangle.Margin = new Thickness(0,5,0,0);
+
+// Load the image.
+BitmapImage theImage =
+    new BitmapImage(
+        new Uri(&quot;sampleImages\\testImage.gif&quot;, UriKind.Relative));
+ImageBrush myImageBrush = new ImageBrush(theImage);
+
+// Configure the brush so that it
+// doesn't stretch its image to fill
+// the rectangle.
+myImageBrush.Stretch = Stretch.None;
+
+// Use the ImageBrush to paint the rectangle's background.
+myRectangle.Fill = myImageBrush;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> создает один элемент (базовый элемент мозаики) и растягивает этот элемент, чтобы полностью заполнить область вывода. Размер и положение базового элемента мозаики можно изменить, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewport">Viewport</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewportunits">ViewportUnits</a> свойства.</p>
+<p><a name="basetilesize"></a></p>
+<h3 id="base-tile-size">Размер базового элемента мозаики</h3>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewport">Viewport</a> Свойство определяет размер и положение базовый элемент мозаики и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewportunits">ViewportUnits</a> определяет свойство ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewport">Viewport</a> задается с помощью абсолютных или относительных координат. Относительные координаты задаются относительно размера области вывода. Точка (0, 0) представляет левый верхний угол области вывода, а точка (1, 1) — правый нижний угол области вывода. Чтобы указать, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewport">Viewport</a> свойство использует абсолютные координаты, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewportunits">ViewportUnits</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brushmappingmode#System_Windows_Media_BrushMappingMode_Absolute">Absolute</a>.</p>
+<p>На следующем рисунке показано различие в выходных данных между <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> с абсолютных и относительных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewportunits">ViewportUnits</a>. Обратите внимание, что на каждом рисунке показан шаблон мозаики. В следующем разделе описано, как задать шаблон заполнения.</p>
+<p><img src="media/absolute-and-relative-viewports.png" alt="Абсолютные и относительные единицы окна просмотра" title="absolute_and_relative_viewports"></p>
+<p>В следующем примере с помощью изображения создается элемент с шириной и высотой 50 %. Базовый элемент мозаики расположен в точке (0, 0) области вывода.</p>
+<pre><code class="lang-xaml" name="BrushOverviewExamples_snip#GraphicsMMRelativeViewportUnitsExample1">&lt;Rectangle
+ Width=&quot;50&quot; Height=&quot;100&quot;&gt;
+  &lt;Rectangle.Fill&gt;
+
+    &lt;!-- Paints an area with 4 tiles. --&gt;
+    &lt;ImageBrush ImageSource=&quot;sampleImages\cherries_larger.jpg&quot;
+      Viewport=&quot;0,0,0.5,0.5&quot;
+      ViewportUnits=&quot;RelativeToBoundingBox&quot; 
+      TileMode=&quot;Tile&quot; /&gt;
+  &lt;/Rectangle.Fill&gt;
+&lt;/Rectangle&gt;
+</code></pre><pre><code class="lang-csharp" name="BrushOverviewExamples_procedural_snip#GraphicsMMRelativeViewportUnitsExample1">// Create a rectangle.
+Rectangle myRectangle = new Rectangle();
+myRectangle.Width = 50;
+myRectangle.Height = 100;
+
+// Load the image.
+BitmapImage theImage =
+    new BitmapImage(
+        new Uri(&quot;sampleImages\\cherries_larger.jpg&quot;, UriKind.Relative));
+ImageBrush myImageBrush = new ImageBrush(theImage);
+
+// Create tiles that are 1/4 the size of
+// the output area.
+myImageBrush.Viewport = new Rect(0,0,0.25,0.25);
+myImageBrush.ViewportUnits = BrushMappingMode.RelativeToBoundingBox;
+
+// Set the tile mode to Tile.
+myImageBrush.TileMode = TileMode.Tile;
+
+// Use the ImageBrush to paint the rectangle's background.
+myRectangle.Fill = myImageBrush;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>В следующем примере задаются плитках <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> на 25 на 25 аппаратно-независимых пикселях. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewportunits">ViewportUnits</a> абсолютны, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a> всегда будут иметь 25 на 25 пикселей, независимо от размера закрашиваемой области.</p>
+<pre><code class="lang-xaml" name="BrushOverviewExamples_snip#GraphicsMMAbsoluteViewportUnitsExample1">&lt;Rectangle
+ Width=&quot;50&quot; Height=&quot;100&quot;&gt;
+  &lt;Rectangle.Fill&gt;
+
+    &lt;!-- Paints an area with 25 x 25 tiles. --&gt;
+    &lt;ImageBrush ImageSource=&quot;sampleImages\cherries_larger.jpg&quot;
+      Viewport=&quot;0,0,25,25&quot;
+      ViewportUnits=&quot;Absolute&quot; 
+      TileMode=&quot;Tile&quot; /&gt;
+  &lt;/Rectangle.Fill&gt;
+&lt;/Rectangle&gt;
+</code></pre><pre><code class="lang-csharp" name="BrushOverviewExamples_procedural_snip#GraphicsMMAbsoluteViewportUnitsExample1">// Create a rectangle.
+Rectangle myRectangle = new Rectangle();
+myRectangle.Width = 50;
+myRectangle.Height = 100;
+
+// Load the image.
+BitmapImage theImage =
+    new BitmapImage(
+        new Uri(&quot;sampleImages\\cherries_larger.jpg&quot;, UriKind.Relative));
+ImageBrush myImageBrush = new ImageBrush(theImage);
+
+// Create tiles that are 25 x 25, regardless of the size
+// of the output area.
+myImageBrush.Viewport = new Rect(0, 0, 25, 25);
+myImageBrush.ViewportUnits = BrushMappingMode.Absolute;
+
+// Set the tile mode to Tile.
+myImageBrush.TileMode = TileMode.Tile;
+
+// Use the ImageBrush to paint the rectangle's background.
+myRectangle.Fill = myImageBrush;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p><a name="tilingbehavior"></a></p>
+<h3 id="tiling-behavior">Поведение элементов при заполнении</h3>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> создает шаблон заполнения, когда его базового фрагмента мозаики не полностью заполняет область вывода и режим заполнения затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_None">None</a> указан. Когда мозаичной кисти не полностью заполняет область вывода, его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.tilemode">TileMode</a> свойство указывает, должен ли базовый мозаичный элемент дублироваться для заполнения области вывода, и если да, то как. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.tilemode">TileMode</a> Свойство принимает следующие значения, определенные <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode">TileMode</a> перечисления:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_None">None</a>: Только базовый мозаичный элемент рисуется.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_Tile">Tile</a>: Базовый мозаичный элемент рисуется, и оставшаяся область заполняется повторами базового элемента мозаики таким образом, правого края одну плитку Примыкает к левой границей следующей и аналогично для верхней и нижней границ.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipX">FlipX</a>: Так же, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_Tile">Tile</a>, но Чередующиеся столбцы элементов отражаются по горизонтали.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipY">FlipY</a>: Так же, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_Tile">Tile</a>, но чередующиеся строки элементов отражаются по вертикали.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipXY">FlipXY</a>: Комбинация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipX">FlipX</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipY">FlipY</a>.</p>
+</li>
+</ul>
+<p>На следующем рисунке показаны различные режимы заполнения.</p>
+<p><img src="media/img-mmgraphics-tilemodes.gif" alt="Различные параметры TileMode для TileBrush" title="img_mmgraphics_tilemodes"></p>
+<p>В следующем примере изображение используется для заполнения прямоугольника размерами 100 на 100 пикселей. Установив кисти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.viewport">Viewport</a> было задано 0,0,0.25,0.25, базовый элемент кисти будет выполнен 1/4 от области вывода. Кисть, которая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush.tilemode">TileMode</a> присваивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilemode#System_Windows_Media_TileMode_FlipXY">FlipXY</a>. Таким образом прямоугольник заполняется строками из элементов мозаики.</p>
+<pre><code class="lang-xaml" name="BrushOverviewExamples_snip#GraphicsMMFlipXYExample">&lt;Rectangle
+ Width=&quot;100&quot; Height=&quot;100&quot; &gt;
+  &lt;Rectangle.Fill&gt;
+    &lt;ImageBrush ImageSource=&quot;sampleImages\triangle.jpg&quot;
+      Viewport=&quot;0,0,0.25,0.25&quot; 
+      TileMode=&quot;FlipXY&quot;
+      /&gt;
+  &lt;/Rectangle.Fill&gt;    
+&lt;/Rectangle&gt;
+</code></pre><pre><code class="lang-csharp" name="BrushOverviewExamples_procedural_snip#GraphicsMMFlipXYExample">// Create a rectangle.
+Rectangle myRectangle = new Rectangle();
+myRectangle.Width = 100;
+myRectangle.Height = 100;
+
+// Load the image.
+BitmapImage theImage =
+    new BitmapImage(
+        new Uri(&quot;sampleImages\\triangle.jpg&quot;, UriKind.Relative));
+ImageBrush myImageBrush = new ImageBrush(theImage);
+
+// Create tiles that are 1/4 the size of
+// the output area.
+myImageBrush.Viewport = new Rect(0,0,0.25,0.25);
+
+// Set the tile mode to FlipXY.
+myImageBrush.TileMode = TileMode.FlipXY;
+
+// Use the ImageBrush to paint the rectangle's background.
+myRectangle.Fill = myImageBrush;
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagebrush">ImageBrush</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a></li>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a></li>
+<li><a href="painting-with-images-drawings-and-visuals.html">Рисование с помощью объектов Image, Drawing и Visual</a></li>
+<li><a href="brushes-how-to-topics.html">Практические руководства</a></li>
+<li><a href="../advanced/freezable-objects-overview.html">Общие сведения об объектах класса Freezable</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160005">Пример использования кистей</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkID=160049">Пример использования VisualBrush</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

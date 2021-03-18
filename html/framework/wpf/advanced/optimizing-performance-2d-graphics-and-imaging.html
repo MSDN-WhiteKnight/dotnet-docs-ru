@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1044;&#1074;&#1091;&#1084;&#1077;&#1088;&#1085;&#1072;&#1103; &#1075;&#1088;&#1072;&#1092;&#1080;&#1082;&#1072; &#1080; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1087;&#1090;&#1080;&#1084;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;: &#1044;&#1074;&#1091;&#1084;&#1077;&#1088;&#1085;&#1072;&#1103; &#1075;&#1088;&#1072;&#1092;&#1080;&#1082;&#1072; &#1080; &#1080;&#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1103; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="optimizing-performance-2d-graphics-and-imaging">Оптимизация производительности: Двумерная графика и изображения</h1>
+
+<p>WPF предоставляет широкий спектр двумерная графика и возможность обработки изображений, которые можно оптимизировать для требований приложения. Этот раздел содержит сведения об оптимизации производительности в этих областях.</p>
+<p><a name="Drawing_and_Shapes"></a></p>
+<h2 id="drawing-and-shapes">Рисование и фигуры</h2>
+<p>WPF предоставляет оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объектов для представления графического контента. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> объекты являются более простыми конструкциями, чем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объектов и обеспечивают лучшие показатели производительности.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> позволяет нарисовать графическую фигуру на экране. Так как они являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класс, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты могут использоваться внутри панелей и большинства элементов управления.</p>
+<p>WPF предоставляет несколько уровней доступа к графикой и службам рендеринга. На верхнем уровне <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты просты в использовании и предоставляют множество полезных функций, таких как макет и обработка событий. WPF предоставляет ряд готовых к использованию фигуры. Все объекты фигур наследуются от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> класса. Доступные объекты фигур включают <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.line">Line</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.path">Path</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polygon">Polygon</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.polyline">Polyline</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> объекты, с другой стороны, не являющихся производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класса и предоставляют упрощенную реализацию отрисовки фигур, изображений и текста.</p>
+<p>Существует четыре типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> объектов:</p>
+<ul>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometrydrawing">GeometryDrawing</a> Рисует фигуру.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imagedrawing">ImageDrawing</a> Рисует изображение.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.glyphrundrawing">GlyphRunDrawing</a> Рисует текст.</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawinggroup">DrawingGroup</a> Рисует другие рисунки. Для объединения рисунков в один составной используйте группирование рисунков.</p>
+</li>
+</ul>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometrydrawing">GeometryDrawing</a> Объект используется для отрисовки геометрического содержимого. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> Класс и конкретные классы, производные от него, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.combinedgeometry">CombinedGeometry</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry">EllipseGeometry</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>, предоставляют средства для отрисовки двумерной графики, а также предоставляет возможности попадания и поддержки обрезки. Геометрические объекты можно использовать, например, для определения области элемента управления или для определения области усечения, применяемой к изображению. Геометрические объекты могут быть простыми, такими как прямоугольники и круги, или сложными, созданными из двух или более геометрических объектов. Более сложные геометрические области можно создать путем объединения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathsegment">PathSegment</a>-производных объектов, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.arcsegment">ArcSegment</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.beziersegment">BezierSegment</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.quadraticbeziersegment">QuadraticBezierSegment</a>.</p>
+<p>В рабочей области <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> класс и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> класс весьма похожи. Оба используются в рендеринге двумерной графики и оба имеют аналогичные конкретные классы, которые являются производными от них, например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.ellipsegeometry">EllipseGeometry</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.ellipse">Ellipse</a>. Однако существуют важные различия между этими двумя наборами классов. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.geometry">Geometry</a> класса отсутствуют некоторые функциональные возможности <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> класса, такие как возможность рисования самого себя. Чтобы нарисовать геометрический объект, для выполнения операции рисования должен использоваться другой класс, например DrawingContext, Drawing или Path (стоит отметить, что Path является Shape). Свойства рендеринга, такие как заливка (fill), штрих (stroke) и толщина штриха (stroke thickness), находятся в классе, который рисует этот геометрический объект, в то время как объект Shape содержит эти свойства. Чтобы понять это различие, представьте, что геометрический объект определяет область, например круг, а объект Shape определяет область, определяет, как эта область заполняется и обводится, а также участвует в системе макета.</p>
+<p>Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape">Shape</a> объекты являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> класса, с их помощью можно добавить значительно увеличить потребление памяти в приложении. Если вам действительно не нужен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> функции для вашего графического контента, рассмотрите возможность использования упрощенных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> объектов.</p>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawing">Drawing</a> объектов, см. в разделе <a href="../graphics-multimedia/drawing-objects-overview.html">Обзор объектов Drawing</a>.</p>
+<p><a name="StreamGeometry_Objects"></a></p>
+<h2 id="streamgeometry-objects">Объекты StreamGeometry</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> Объект — это Упрощенная альтернатива <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> для создания геометрических фигур. Используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> для описания сложной геометрии. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> оптимизирован для обработки большого количества <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объектов и выполняется быстрее по сравнению с использованием нескольких отдельных <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a> объектов.</p>
+<p>В следующем примере синтаксис атрибутов для создания треугольного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> в XAML.</p>
+<pre><code class="lang-xaml" name="GeometriesMiscSnippets_snip#StreamGeometryTriangleExampleWholePage">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;
+  &lt;StackPanel&gt;
+  
+    &lt;Path Data=&quot;F0 M10,100 L100,100 100,50Z&quot; 
+      StrokeThickness=&quot;1&quot; Stroke=&quot;Black&quot;/&gt;
+
+  &lt;/StackPanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<p>Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.streamgeometry">StreamGeometry</a> объектов, см. в разделе <a href="../graphics-multimedia/how-to-create-a-shape-using-a-streamgeometry.html">Создание фигуры с помощью StreamGeometry</a>.</p>
+<p><a name="DrawingVisual_Objects"></a></p>
+<h2 id="drawingvisual-objects">объекты DrawingVisual</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingvisual">DrawingVisual</a> Объект — это упрощенный класс, который используется для отрисовки фигур, изображений и текста. Этот класс считается упрощенным, так как не предоставляет средств для работы с разметкой и обработку событий, что повышает его производительность. Поэтому этот класс идеально подходит для фоновых рисунков или клипов. Дополнительные сведения см. в разделе <a href="../graphics-multimedia/using-drawingvisual-objects.html">Использование объектов DrawingVisual</a>.</p>
+<p><a name="Images"></a></p>
+<h2 id="images">Изображений</h2>
+<p>WPF Создание образов значительно улучшилась по сравнению с возможностями обработки изображений в предыдущих версиях Windows. Возможности обработки изображений, например вывод растрового изображения или использование изображения в общем элементе управления, в основном управлялись интерфейсом графических устройств (GDI) Microsoft Windows или Microsoft Windows GDI и программным интерфейсом (API). Эти API обеспечивали базовые функции обработки изображений, но в них отсутствовали такие возможности, как поддержка расширяемости кодеков и изображений высокого качества. API обработки изображений WPF был переработан для преодоления недостатков GDI и GDI+ и теперь предоставляет новый набор API для отображения и использования изображений в приложениях.</p>
+<p>При использовании изображений учитывайте следующие рекомендации, позволяющие повысить производительность.</p>
+<ul>
+<li><p>Если в приложении требуется отображение эскизов, рассмотрите возможность создания версий изображений уменьшенного размера. По умолчанию WPF загружает изображение и преобразует его до полного размера. Если требуется только эскиз изображения, WPF напрасно преобразует изображение до полного размера, а затем масштабирует его до размера эскиза. Чтобы избежать этой лишней нагрузки, можно либо запросить в WPF преобразование изображения в размер эскиза, либо настроить WPF для загрузки изображения размера эскиза.</p>
+</li>
+<li><p>Всегда преобразуйте изображение в нужный размер, а не размер по умолчанию. Как упоминалось выше, запросите в WPF преобразование изображения в нужный размер, а не в полный размер по умолчанию. Вы уменьшите не только рабочий набор приложения, но также и время ожидания выполнения.</p>
+</li>
+<li><p>Если это возможно, объединяйте изображения в одно изображение, например диафильм, состоящий из нескольких изображений.</p>
+</li>
+<li><p>Более подробную информацию см. в разделе <a href="../graphics-multimedia/imaging-overview.html">Общие сведения об обработке изображений</a>.</p>
+</li>
+</ul>
+<h3 id="bitmapscalingmode">BitmapScalingMode</h3>
+<p>При анимации масштабирования любого растрового изображения алгоритм повторной дискретизации изображения высокого качества по умолчанию иногда может использовать столько системных ресурсов, чтобы привести к снижению частоты кадров анимации и задержкам. Установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.bitmapscalingmode">BitmapScalingMode</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions">RenderOptions</a> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.bitmapscalingmode#System_Windows_Media_BitmapScalingMode_LowQuality">LowQuality</a> можно создавать более плавную анимацию при масштабировании растрового изображения. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.bitmapscalingmode#System_Windows_Media_BitmapScalingMode_LowQuality">LowQuality</a> Указывает режим WPF механизм визуализации для переключения с помощью алгоритма, оптимизированного по качеству алгоритм, оптимизированный по скорости, при обработке изображений.</p>
+<p>В следующем примере показано, как задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.bitmapscalingmode">BitmapScalingMode</a> для объекта изображения.</p>
+<pre><code class="lang-csharp" name="RenderOptions#RenderOptionsSnippet2">// Set the bitmap scaling mode for the image to render faster.
+RenderOptions.SetBitmapScalingMode(MyImage, BitmapScalingMode.LowQuality);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="cachinghint">CachingHint</h3>
+<p>По умолчанию WPF не кэширует готовое для просмотра содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> объекты, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a>. В статических сценариях, где ни содержимое, ни использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> в сцене изменяется, это имеет смысл, так как экономит видеопамять. Не выполняет как смысла, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> со статическим содержимым используется в нестатическим способом — например, когда статический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> сопоставляется с поверхности поворота трехмерного объекта. По умолчанию WPF повторно отрисовывает все содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualbrush">VisualBrush</a> для каждого кадра, даже если содержимое не изменяется.</p>
+<p>Установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cachinghint">CachingHint</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions">RenderOptions</a> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.cachinghint#System_Windows_Media_CachingHint_Cache">Cache</a> может повысить производительность благодаря использованию кэшированных версий объектов мозаичной кисти.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cacheinvalidationthresholdminimum">CacheInvalidationThresholdMinimum</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cacheinvalidationthresholdmaximum">CacheInvalidationThresholdMaximum</a> значения свойств являются относительными значениями размера, определяющими <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> объект должен быть создан повторно из-за изменения масштаба. Например, установив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.cacheinvalidationthresholdmaximum">CacheInvalidationThresholdMaximum</a> свойства в кэше для 2.0 <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.tilebrush">TileBrush</a> только необходимо повторно создать при его размер вдвое превысит размер текущего кэша.</p>
+<p>В следующем примере показано, как использование параметра указания кэширования для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.drawingbrush">DrawingBrush</a>.</p>
+<pre><code class="lang-csharp" name="RenderOptions#RenderOptionsSnippet3">DrawingBrush drawingBrush = new DrawingBrush();
+
+// Set the caching hint option for the brush.
+RenderOptions.SetCachingHint(drawingBrush, CachingHint.Cache);
+
+// Set the minimum and maximum relative sizes for regenerating the tiled brush.
+// The tiled brush will be regenerated and re-cached when its size is
+// 0.5x or 2x of the current cached size.
+RenderOptions.SetCacheInvalidationThresholdMinimum(drawingBrush, 0.5);
+RenderOptions.SetCacheInvalidationThresholdMaximum(drawingBrush, 2.0);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="optimizing-wpf-application-performance.html">Улучшение производительности приложений WPF</a></li>
+<li><a href="planning-for-application-performance.html">Планирование производительности приложения</a></li>
+<li><a href="optimizing-performance-taking-advantage-of-hardware.html">Использование преимуществ оборудования</a></li>
+<li><a href="optimizing-performance-layout-and-design.html">Разметка и разработка</a></li>
+<li><a href="optimizing-performance-object-behavior.html">Поведение объекта</a></li>
+<li><a href="optimizing-performance-application-resources.html">Ресурсы приложений</a></li>
+<li><a href="optimizing-performance-text.html">Текста</a></li>
+<li><a href="optimizing-performance-data-binding.html">Привязка данных</a></li>
+<li><a href="optimizing-performance-other-recommendations.html">Дополнительные рекомендации по повышению производительности</a></li>
+<li><a href="../graphics-multimedia/animation-tips-and-tricks.html">Советы и рекомендации по анимации</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

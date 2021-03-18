@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1085;&#1077;&#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1088;&#1091;&#1078;&#1077;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1077; &#1085;&#1077;&#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1072;&#1085;&#1085;&#1099;&#1093; &#1076;&#1088;&#1091;&#1078;&#1077;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1073;&#1086;&#1088;&#1086;&#1082; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-create-unsigned-friend-assemblies">Практическое руководство. Создание неподписанных дружественных сборок</h1>
+
+<p>В этом примере показано использование дружественных сборок с неподписанными сборками.</p>
+<h2 id="create-an-assembly-and-a-friend-assembly">Создание сборки и дружественной сборки</h2>
+<ol>
+<li><p>Откройте окно командной строки.</p>
+</li>
+<li><p>Создайте файл C# или Visual Basic с именем <em>friend_unsigned_A</em>, содержащий приведенный ниже код. Атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleToAttribute</a> используется в коде для объявления <em>friend_unsigned_B</em> в качестве дружественной сборки.</p>
+<pre><code class="lang-csharp">// friend_unsigned_A.cs
+// Compile with:
+// csc /target:library friend_unsigned_A.cs
+using System.Runtime.CompilerServices;
+using System;
+
+[assembly: InternalsVisibleTo(&quot;friend_unsigned_B&quot;)]
+
+// Type is internal by default.
+class Class1
+{
+    public void Test()
+    {
+        Console.WriteLine(&quot;Class1.Test&quot;);
+    }
+}
+
+// Public type with internal member.
+public class Class2
+{
+    internal void Test()
+    {
+        Console.WriteLine(&quot;Class2.Test&quot;);
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">' friend_unsigned_A.vb
+' Compile with:
+' vbc -target:library friend_unsigned_A.vb
+Imports System.Runtime.CompilerServices
+
+&lt;Assembly: InternalsVisibleTo(&quot;friend_unsigned_B&quot;)&gt;
+
+' Friend type.
+Friend Class Class1
+    Public Sub Test()
+        Console.WriteLine(&quot;Class1.Test&quot;)
+    End Sub
+End Class
+
+' Public type with Friend member.
+Public Class Class2
+    Friend Sub Test()
+        Console.WriteLine(&quot;Class2.Test&quot;)
+    End Sub
+End Class
+</code></pre>
+</li>
+<li><p>Скомпилируйте и подпишите сборку <em>friend_unsigned_A</em> с помощью следующей команды:</p>
+<pre><code class="lang-csharp">csc /target:library friend_unsigned_A.cs
+</code></pre>
+<pre><code class="lang-vb">vbc -target:library friend_unsigned_A.vb
+</code></pre>
+</li>
+<li><p>Создайте файл C# или Visual Basic с именем <em>friend_unsigned_B</em>, содержащий приведенный ниже код. Так как сборка <em>friend_unsigned_A</em> указывает сборку <em>friend_unsigned_B</em> в качестве дружественной, код в сборке <em>friend_unsigned_B</em> может обращаться к типам и членам <code>internal</code> (C#) или <code>Friend</code> (Visual Basic) в сборке <em>friend_unsigned_A</em>.</p>
+<pre><code class="lang-csharp">// friend_unsigned_B.cs
+// Compile with:
+// csc /r:friend_unsigned_A.dll /out:friend_unsigned_B.exe friend_unsigned_B.cs
+public class Program
+{
+    static void Main()
+    {
+        // Access an internal type.
+        Class1 inst1 = new Class1();
+        inst1.Test();
+
+        Class2 inst2 = new Class2();
+        // Access an internal member of a public type.
+        inst2.Test();
+
+        System.Console.ReadLine();
+    }
+}
+</code></pre>
+<pre><code class="lang-vb">' friend_unsigned_B.vb
+' Compile with:
+' vbc -r:friend_unsigned_A.dll friend_unsigned_B.vb
+Module Module1
+    Sub Main()
+        ' Access a Friend type.
+        Dim inst1 As New Class1()
+        inst1.Test()
+
+        Dim inst2 As New Class2()
+        ' Access a Friend member of a public type.
+        inst2.Test()
+
+        System.Console.ReadLine()
+    End Sub
+End Module
+</code></pre>
+</li>
+<li><p>Скомпилируйте сборку <em>friend_unsigned_B</em> с помощью приведенной ниже команды.</p>
+<pre><code class="lang-csharp">csc /r:friend_unsigned_A.dll /out:friend_unsigned_B.exe friend_unsigned_B.cs
+</code></pre>
+<pre><code class="lang-vb">vbc -r:friend_unsigned_A.dll friend_unsigned_B.vb
+</code></pre>
+<p>Имя сборки, созданной компилятором, должно соответствовать имени дружественной сборки, передаваемой атрибуту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleToAttribute</a>. Необходимо явно указать имя выходной сборки (<em>EXE</em> или <em>DLL</em>) с помощью параметра компилятора <code>-out</code>. Дополнительные сведения см. в разделе <a href="../../csharp/language-reference/compiler-options/out-compiler-option.md">-out (параметры компилятора C#)</a> или <a href="../../visual-basic/reference/command-line-compiler/out.md">-out (Visual Basic)</a>.</p>
+</li>
+<li><p>Запустите файл <em>friend_unsigned_B.exe</em>.</p>
+<p>Программа выводит две строки: <strong>Class1.Test</strong> и <strong>Class2.Test</strong>.</p>
+</li>
+</ol>
+<h2 id="net-security">Безопасность в .NET</h2>
+<p>Между атрибутом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleToAttribute</a> и классом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.strongnameidentitypermission">StrongNameIdentityPermission</a> существует определенное сходство. Основное отличие заключается в том, что для выполнения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.permissions.strongnameidentitypermission">StrongNameIdentityPermission</a> в определенном разделе кода могут потребоваться разрешения системы безопасности, тогда как атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleToAttribute</a> определяет видимость членов и типов <code>internal</code> или <code>Friend</code> (Visual Basic).</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.compilerservices.internalsvisibletoattribute">InternalsVisibleToAttribute</a></li>
+<li><a href="index.html">Сборки в .NET</a></li>
+<li><a href="friend.html">Дружественные сборки</a></li>
+<li><a href="create-signed-friend.html">Практическое руководство. Создание подписанных дружественных сборок</a></li>
+<li><a href="../../csharp/programming-guide/index.md">Руководство по программированию на C#</a></li>
+<li><a href="../../visual-basic/programming-guide/concepts/index.md">Основные понятия программирования (Visual Basic)</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

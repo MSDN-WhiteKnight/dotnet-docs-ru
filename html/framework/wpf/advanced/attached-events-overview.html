@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1054;&#1073;&#1097;&#1080;&#1077; &#1089;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1103; &#1086; &#1074;&#1083;&#1086;&#1078;&#1077;&#1085;&#1085;&#1099;&#1093; &#1089;&#1086;&#1073;&#1099;&#1090;&#1080;&#1103;&#1093; | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="attached-events-overview">Общие сведения о вложенных событиях</h1>
+
+<p>Язык XAML определяет компонент языка и тип события, называемый <em>присоединенным событием</em>. Концепция присоединенного события позволяет добавить обработчик для конкретного события в произвольный элемент, а не в элемент, который фактически определяет или наследует событие. В этом случае ни объект, потенциально вызывающий событие, ни конечный обрабатывающий экземпляр не определяет или иным образом не &quot;владеет&quot; событием.</p>
+<p><a name="prerequisites"></a></p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Предполагается, что вы ознакомились с разделами <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a> и <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>.</p>
+<p><a name="Syntax"></a></p>
+<h2 id="attached-event-syntax">Синтаксис присоединенных событий</h2>
+<p>Присоединенные события имеют синтаксис XAML и шаблон кодирования, который должен использоваться резервным кодом для поддержки использования присоединенных событий.</p>
+<p>В синтаксисе XAML присоединенное событие указывается не только по имени события, но и по типу владельца и имени события, разделенным символом точки (.). Так как имя события квалифицируется с помощью имени типа, которому оно принадлежит, синтаксис присоединенных событий позволяет подключить любое присоединенное событие к любому элементу, для которого может быть создан экземпляр.</p>
+<p>Например, ниже приведен синтаксис XAML для подключения обработчика для пользовательского присоединенного события <code>NeedsCleaning</code>.</p>
+<pre><code class="lang-xaml" name="WPFAquariumSln#AE">&lt;aqua:Aquarium Name=&quot;theAquarium&quot; Height=&quot;600&quot; Width=&quot;800&quot; aqua:AquariumFilter.NeedsCleaning=&quot;WashMe&quot;/&gt;
+</code></pre>
+<p>Обратите внимание на префикс <code>aqua:</code>. Префикс необходим в этом случае, поскольку присоединенное событие является пользовательским событием, которое поступает из пользовательского сопоставленного xmlns.</p>
+<p><a name="WPFImplements"></a></p>
+<h2 id="how-wpf-implements-attached-events">Реализация присоединенных событий в WPF</h2>
+<p>В WPFприсоединенные события, обеспечиваются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> поле и перенаправляются через дерево, после их возникновения. Как правило, источником присоединенного события (объектом, вызывающим событие) является система или служба, и таким образом, объект, который выполняет код, порождающий это событие, не является непосредственной частью дерева элементов.</p>
+<p><a name="Scenarios"></a></p>
+<h2 id="scenarios-for-attached-events">Сценарии для присоединенных событий</h2>
+<p>В WPFприсоединенные события присутствуют в определенных функциональных областях там, где имеется абстракция уровня службы, такие как для событий, включаемых статическим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a> класса или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation">Validation</a> класса. Классы, которые взаимодействуют со службой или используют ее, могут использовать событие в синтаксисе присоединенных событий или предоставить присоединенное событие как перенаправленное событие, которое является частью процесса интеграции возможностей службы классом.</p>
+<p>Хотя WPF определяет количество присоединенных событий, ситуации, в которых вы будете использовать или обрабатывать присоединенное событие напрямую, очень ограничены. Как правило, присоединенное событие служит в качестве архитектурного элемента, однако затем оно передается в неприсоединенное (поддерживаемое &quot;оболочкой&quot; события CLR) перенаправленное событие.</p>
+<p>К примеру, присоединенное событие основной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.mousedown">Mouse.MouseDown</a> может намного легче обрабатываться на любой заданной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.mousedown">MouseDown</a> об этом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> вместо работы с синтаксисом присоединенных событий, либо в XAML или кода. Присоединенное событие выполняет определенную роль в архитектуре, поскольку оно обеспечивает будущее расширение типов устройств ввода. Гипотетическому устройству нужно будет только вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse.mousedown">Mouse.MouseDown</a> в чтобы имитировать ввод от мыши и не может быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.mouse">Mouse</a> для этого. Однако этот сценарий включает обработку кода события, а обработка XAML присоединенного события не относится к этому сценарию.</p>
+<p><a name="Handling"></a></p>
+<h2 id="handling-an-attached-event-in-wpf">Обработка присоединенного события в WPF</h2>
+<p>Процесс для обработки присоединенного события и код обработчика, который вы будете писать, по сути аналогичны перенаправленному событию.</p>
+<p>Как правило, присоединенное событие WPF не сильно отличается от перенаправленного события WPF. Различие заключается в выборе источника события и его представления классом в качестве члена (что также влияет на синтаксис обработчика XAML).</p>
+<p>Тем не менее, как было отмечено ранее, существующие присоединенные события WPF не предназначены для обработки в WPF. Гораздо чаще целью событий является включение составного элемента для передачи состояния в родительский элемент при компоновке. В этом случае событие обычно вызывается в коде и зависит от обработки класса в соответствующем родительском классе. Например, элементы в пределах <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector">Selector</a> ожидаются для вызова присоединенного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.selected">Selected</a> обрабатываются события, который затем класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector">Selector</a> класса и дальнейшим потенциальным преобразованием классом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector">Selector</a> класс в другое перенаправленное событие, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.selector.selectionchanged">SelectionChanged</a> . Дополнительные сведения о перенаправленных событиях и обработке классов см. в разделе <a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a>.</p>
+<p><a name="Custom"></a></p>
+<h2 id="defining-your-own-attached-events-as-routed-events">Определение собственных присоединенных событий как перенаправленных событий</h2>
+<p>При наследовании от общих базовых классов WPF можно реализовать собственные присоединенные события, включив определенные методы шаблонов в собственный класс и используя вспомогательные методы, которые уже присутствуют в базовых классах.</p>
+<p>Шаблон выглядит следующим образом.</p>
+<ul>
+<li><p>Метод <strong>добавить<em>EventName</em>обработчик</strong> с двумя параметрами. Первый параметр является экземпляром, к которому добавляется обработчик событий. Вторым параметром является добавляемый обработчик событий. Этот метод должен быть <code>public</code> и <code>static</code>, не возвращая значения.</p>
+</li>
+<li><p>Метод <strong>удалить<em>EventName</em>обработчик</strong> с двумя параметрами. Первый параметр является экземпляр, из которого удаляется обработчик событий. Второй параметр — удаляемый обработчик событий. Этот метод должен быть <code>public</code> и <code>static</code>, не возвращая значения.</p>
+</li>
+</ul>
+<p><strong>Добавить<em>EventName</em>обработчик</strong> метод доступа упрощает XAML обработку в таких случаях обработчика присоединенного события атрибуты объявляются в элементе. <strong>Добавить<em>EventName</em>обработчик</strong> и <strong>удалить<em>EventName</em>обработчик</strong> методы также обеспечивают доступ кода к хранилищу обработчика событий для вложенное событие.</p>
+<p>Этот общий шаблон еще недостаточно точен для практической реализации в структуре, поскольку реализация любого заданного модуля чтения XAML может иметь разные схемы для идентификации базовых событий в поддерживающем языке и архитектуре. Это одна из причин, WPF реализует присоединенные события как перенаправленные события; идентификатор, используемый для события (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a>) уже определен WPF системой событий. Кроме того, перенаправление события является естественным расширением реализации для концепции уровня языка XAML присоединенного события.</p>
+<p><strong>Добавить<em>EventName</em>обработчик</strong> внедрению WPF присоединенное событие состоит из вызова метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> с перенаправленным событием и обработчиком в качестве аргументов.</p>
+<p>Эта стратегия реализации и система перенаправленных событий в общем ограничивают обработку присоединенных событий либо <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> производные классы или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> производные классы, поскольку только эти классы имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> реализаций.</p>
+<p>Например, следующий код определяет присоединенное событие <code>NeedsCleaning</code> в классе владельца<code>Aquarium</code>, используя стратегию присоединенных событий WPF для объявления присоединенного события как перенаправленного события.</p>
+<pre><code class="lang-csharp" name="WPFAquariumSln#AECode">public static readonly RoutedEvent NeedsCleaningEvent = EventManager.RegisterRoutedEvent(&quot;NeedsCleaning&quot;, RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(AquariumFilter));
+public static void AddNeedsCleaningHandler(DependencyObject d, RoutedEventHandler handler)
+{
+    UIElement uie = d as UIElement;
+    if (uie != null)
+    {
+        uie.AddHandler(AquariumFilter.NeedsCleaningEvent, handler);
+    }
+}
+public static void RemoveNeedsCleaningHandler(DependencyObject d, RoutedEventHandler handler)
+{
+    UIElement uie = d as UIElement;
+    if (uie != null)
+    {
+        uie.RemoveHandler(AquariumFilter.NeedsCleaningEvent, handler);
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обратите внимание, что метод, используемый для установления поля идентификатора присоединенного события, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager.registerroutedevent">RegisterRoutedEvent</a>, является фактически тот же метод, который используется для регистрации неприсоединенных перенаправленных событий. Все присоединенные события и перенаправленные события регистрируются в централизованном внутреннем хранилище. Эта реализация хранилища событий обеспечивает поддержку режима &quot;события в качестве интерфейса&quot;, который рассматривается в разделе <a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a>.</p>
+<p><a name="Raising"></a></p>
+<h2 id="raising-a-wpf-attached-event">Вызов присоединенного события WPF</h2>
+<p>Как правило, вам не требуется вызывать существующие определенные присоединенные события WPF в коде. Эти события выполните общей концептуальной модели «служба» и классы служб, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.inputmanager">InputManager</a> несут ответственность за вызов событий.</p>
+<p>Тем не менее при определении пользовательского присоединенного события на основе WPF модель создания вложенных событий на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a>, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.raiseevent">RaiseEvent</a> для вызова присоединенного события из любого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a>. Вызов перенаправленного события (присоединенного или нет) требует объявления конкретного элемента в дереве элементов в качестве источника события; Этот источник указывается как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.raiseevent">RaiseEvent</a> вызывающего объекта. За определение того, какой элемент передается как источник в дереве, отвечает служба.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="routed-events-overview.html">Общие сведения о перенаправленных событиях</a></li>
+<li><a href="xaml-syntax-in-detail.html">Подробное описание синтаксиса XAML</a></li>
+<li><a href="xaml-and-custom-classes-for-wpf.html">Код XAML и пользовательские классы для WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

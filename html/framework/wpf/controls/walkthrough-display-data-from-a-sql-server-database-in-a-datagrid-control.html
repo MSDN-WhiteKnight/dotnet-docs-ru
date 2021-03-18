@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1090;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080;&#1079; &#1073;&#1072;&#1079;&#1099; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; SQL Server &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1086;&#1096;&#1072;&#1075;&#1086;&#1074;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1054;&#1090;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1077; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080;&#1079; &#1073;&#1072;&#1079;&#1099; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; SQL Server &#1074; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1077; &#1091;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103; DataGrid | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="walkthrough-display-data-from-a-sql-server-database-in-a-datagrid-control">Пошаговое руководство. Отображение данных из базы данных SQL Server в элементе управления DataGrid</h1>
+
+<p>В этом пошаговом руководстве, получения данных из базы данных SQL Server и отображение их в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> элемента управления. Использовать ADO.NET Entity Framework для создания классов сущностей, которые представляют данные и использовать LINQ для записи запроса, который получает указанные данные из класса сущностей.</p>
+<h2 id="prerequisites">Предварительные требования</h2>
+<p>Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.</p>
+<ul>
+<li><p>Visual Studio.</p>
+</li>
+<li><p>Доступ к запущенному экземпляру SQL Server или SQL Server Express с образца базы данных AdventureWorks, подключенные к ней. Можно загрузить из базы данных AdventureWorks <a href="https://github.com/Microsoft/sql-server-samples/releases">GitHub</a>.</p>
+</li>
+</ul>
+<h2 id="create-entity-classes">Создайте классы сущностей</h2>
+<ol>
+<li><p>Создайте новый проект приложения WPF в Visual Basic или C# и назовите его <code>DataGridSQLExample</code>.</p>
+</li>
+<li><p>В обозревателе решений щелкните правой кнопкой мыши проект, выберите пункт <strong>добавить</strong>, а затем выберите <strong>новый элемент</strong>.</p>
+<p>Будет открыто диалоговое окно Добавление нового элемента.</p>
+</li>
+<li><p>На панели &quot;Установленные шаблоны&quot;, выберите <strong>данных</strong> и в списке шаблонов выберите <strong>ADO.NET Entity Data Model</strong>.</p>
+<p><img src="../../wcf/feature-details/./media/ado-net-entity-data-model-item-template.png" alt="Шаблон элемента модели EDM ADO.NET"></p>
+</li>
+<li><p>Назовите файл <code>AdventureWorksModel.edmx</code> и нажмите кнопку <strong>добавить</strong>.</p>
+<p>Появится мастер модели EDM.</p>
+</li>
+<li><p>На экране «Выбор содержимого модели» выберите <strong>конструктор EF из базы данных</strong> и нажмите кнопку <strong>Далее</strong>.</p>
+</li>
+<li><p>На экране «Выбор подключения к данным» обеспечивают подключение к базе данных AdventureWorksLT2008. Дополнительные сведения см. в разделе <a href="https://go.microsoft.com/fwlink/?LinkId=160190">выберите Your данных диалогового окна соединения</a>.</p>
+<p>Убедитесь, что имя указано <code>AdventureWorksLT2008Entities</code> и что <strong>сохранить настройки подключения сущности в App.Config как</strong> флажок выбран и нажмите кнопку <strong>Далее</strong>.</p>
+</li>
+<li><p>На экране «Выбор объектов базы данных» разверните узел таблицы и выберите <strong>продукта</strong> и <strong>ProductCategory</strong> таблиц.</p>
+<p>Можно создавать классы сущностей для всех таблиц; Тем не менее в этом примере извлекаются данные только из этих двух таблиц.</p>
+<p><img src="media/datagrid-sql-ef-step4.png" alt="Выбор пунктов Product и ProductCategory из таблиц" title="DataGrid_SQL_EF_Step4"></p>
+</li>
+<li><p>Нажмите кнопку <strong>Готово</strong>.</p>
+<p>Сущности Product и ProductCategory, отображаются в конструкторе сущностей.</p>
+<p><img src="media/datagrid-sql-ef-step5.png" alt="Модели сущностей Product и ProductCategory" title="DataGrid_SQL_EF_Step5"></p>
+</li>
+</ol>
+<h2 id="retrieve-and-present-the-data">Извлечение и представление данных</h2>
+<ol>
+<li><p>Откройте файл MainWindow.xaml.</p>
+</li>
+<li><p>Задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.width">Width</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> для 450.</p>
+</li>
+<li><p>В редакторе XAML добавьте следующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> тег между <code>&lt;Grid&gt;</code> и <code>&lt;/Grid&gt;</code> теги для добавления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> с именем <code>dataGrid1</code>.</p>
+<pre><code class="lang-xaml" name="DataGrid_SQL_EF_Walkthrough#3">&lt;DataGrid Name=&quot;dataGrid1&quot; /&gt;
+</code></pre>
+<p><img src="media/datagrid-sql-ef-step6.png" alt="Окно с DataGrid" title="DataGrid_SQL_EF_Step6"></p>
+</li>
+<li><p>Выберите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>.</p>
+</li>
+<li><p>С помощью окна свойств или редактор XAML, создайте обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> с именем <code>Window_Loaded</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> событий. Дополнительные сведения см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb675300(v=vs.100)">Как Создание простого обработчика событий</a>.</p>
+<p>Ниже показан XAML для MainWindow.xaml.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если вы используете Visual Basic, в первой строке файла MainWindow.XAML, замените <code>x:Class=&quot;DataGridSQLExample.MainWindow&quot;</code> с <code>x:Class=&quot;MainWindow&quot;</code>.</p>
+</div>
+<pre><code class="lang-xaml" name="DataGrid_SQL_EF_Walkthrough#1">&lt;Window x:Class=&quot;DataGridSQLExample.MainWindow&quot;
+        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;450&quot; 
+        Loaded=&quot;Window_Loaded&quot;&gt;
+    &lt;Grid&gt;
+        &lt;DataGrid Name=&quot;dataGrid1&quot; /&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</code></pre></li>
+<li><p>Откройте файл с выделенным кодом (MainWindow.xaml.vb или MainWindow.xaml.cs) для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>.</p>
+</li>
+<li><p>Добавьте следующий код, чтобы получить только определенные значения из соединяемых таблиц и задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemssource">ItemsSource</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> к результатам запроса.</p>
+<pre><code class="lang-csharp" name="DataGrid_SQL_EF_Walkthrough#2">using System.Data.Entity.Core.Objects;
+using System.Linq;
+using System.Windows;
+
+namespace DataGridSQLExample
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow : Window
+    {
+        AdventureWorksLT2008Entities dataEntities = new AdventureWorksLT2008Entities();
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var query =
+            from product in dataEntities.Products
+            where product.Color == &quot;Red&quot;
+            orderby product.ListPrice
+            select new { product.Name, product.Color, CategoryName = product.ProductCategory.Name, product.ListPrice };
+
+            dataGrid1.ItemsSource = query.ToList();
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Запустите пример.</p>
+<p>Вы должны увидеть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a> , отображающий данные.</p>
+<p><img src="media/datagrid-sql-ef-step7.png" alt="DataGrid с данными из базы данных SQL" title="DataGrid_SQL_EF_Step7"></p>
+</li>
+</ol>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.datagrid">DataGrid</a></li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=159868">Инструкции: Начало работы с Entity Framework в приложениях WPF?</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

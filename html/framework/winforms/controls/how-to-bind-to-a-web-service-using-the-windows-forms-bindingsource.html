@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1089; &#1074;&#1077;&#1073;-&#1089;&#1083;&#1091;&#1078;&#1073;&#1086;&#1081; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1082;&#1086;&#1084;&#1087;&#1086;&#1085;&#1077;&#1085;&#1090;&#1072; BindingSource &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1057;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1077; &#1089; &#1074;&#1077;&#1073;-&#1089;&#1083;&#1091;&#1078;&#1073;&#1086;&#1081; &#1089; &#1087;&#1086;&#1084;&#1086;&#1097;&#1100;&#1102; &#1082;&#1086;&#1084;&#1087;&#1086;&#1085;&#1077;&#1085;&#1090;&#1072; BindingSource &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-bind-to-a-web-service-using-the-windows-forms-bindingsource">Практическое руководство. Связывание с веб-службой с помощью компонента BindingSource в Windows Forms</h1>
+
+<p>Компонент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> можно использовать, если необходимо привязать элемент управления Windows Form к результатам вызова веб-служб XML.  Эта процедура аналогична привязке компонента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> к типу. Необходимо создать клиентский прокси, который содержит методы и типы, предоставляемые веб-службой. Клиентский прокси веб-службы можно создать либо непосредственно в самой веб-службе (ASMX-файл) или с помощью файла языка описания веб-служб (WSDL-файл). Кроме того, клиентский прокси должен предоставлять доступ к полям сложных типов, используемых веб-службой, в виде общих свойств. Затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> привязывается к одному из типов, доступных в прокси веб-службы.</p>
+<h3 id="to-create-and-bind-to-a-client-side-proxy">Создание и привязка к прокси на стороне клиента</h3>
+<ol>
+<li><p>Создайте форму Windows Forms в каталоге по своему усмотрению с подходящим пространством имен.</p>
+</li>
+<li><p>Добавьте в форму компонент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>.</p>
+</li>
+<li><p>Откройте командную строку Windows SDK и перейдите к каталогу, в котором расположена форма.</p>
+</li>
+<li><p>С помощью средства WSDL введите <code>wsdl</code> и URL-адрес для ASMX- или WSDL-файла веб-службы, пространство имен приложения и при необходимости язык, с которым вы работаете.</p>
+<p>В следующем примере кода используется веб-службы, расположенный <code>http://webservices.eraserver.net/zipcoderesolver/zipcoderesolver.asmx</code>. Например, для C# типа <code>wsdl http://webservices.eraserver.net.zipcoderesolver/zipcoderesolver.asmx /n:BindToWebService</code> или для Visual Basic введите <code>wsdl http://webservices.eraserver.net.zipcoderesolver/zipcoderesolver.asmx /n:BindToWebService /language:VB</code>. Передача пути в качестве аргумента для средства WSDL создаст клиентский прокси в том же каталоге и с тем пространством имен, что и у приложения, и на указанном языке. Если вы используете Visual Studio, добавьте файл в проект.</p>
+</li>
+<li><p>Выберите тип для привязки в клиентском прокси.</p>
+<p>Обычно это тип, возвращаемый методом, предлагаемым веб-службой. Поля выбранного типа должны предоставляться как общие свойства для привязки.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.DataConnectorWebService#4">[System.SerializableAttribute, System.Xml.Serialization.XmlTypeAttribute(
+    Namespace=&quot;http://webservices.eraserver.net/&quot;)]
+public class USPSAddress
+{
+
+    private string streetField;
+
+    private string cityField;
+
+    private string stateField;
+
+    private string shortZIPField;
+
+    private string fullZIPField;
+
+
+    public string Street    
+    {
+        get
+        {
+            return this.streetField;
+        }
+        set
+        {
+            this.streetField = value;
+        }
+    }
+
+
+    public string City    
+    {
+        get
+        {
+            return this.cityField;
+        }
+        set
+        {
+            this.cityField = value;
+        }
+    }
+
+    public string State    
+    {
+        get
+        {
+            return this.stateField;
+        }
+        set
+        {
+            this.stateField = value;
+        }
+    }
+
+
+    public string ShortZIP    
+    {
+        get
+        {
+            return this.shortZIPField;
+        }
+        set
+        {
+            this.shortZIPField = value;
+        }
+    }
+
+
+    public string FullZIP    
+    {
+        get
+        {
+            return this.fullZIPField;
+        }
+        set
+        {
+            this.fullZIPField = value;
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+<li><p>Задайте для свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource.datasource">DataSource</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> нужный тип, содержащийся в клиентском прокси веб-службы.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.DataConnectorWebService#2">BindingSource1.DataSource = typeof(USPSAddress);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ol>
+<h3 id="to-bind-controls-to-the-bindingsource-that-is-bound-to-a-web-service">Привязка элементов управления к компоненту BindingSource, который привязан к веб-службе</h3>
+<ul>
+<li><p>Привяжите элементы управления к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>, передав в качестве параметра общее свойство типа веб-службы.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.DataConnectorWebService#3">textBox1.DataBindings.Add(&quot;Text&quot;, this.BindingSource1, &quot;FullZIP&quot;, true);
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></li>
+</ul>
+<h2 id="example">Пример</h2>
+<p>В следующем примере кода показано, как привязать компонент <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a> к веб-службе, а затем привязать текстовое поле к компоненту <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.bindingsource">BindingSource</a>. При нажатии кнопки вызывается метод веб-службы, результаты будут отображаться в <code>textbox1</code>.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><pre><code class="lang-csharp" name="System.Windows.Forms.DataConnectorWebService#1">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+ 
+namespace BindToWebService {
+    class Form1: Form
+
+    {
+        [STAThread]
+        public static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+
+        private BindingSource BindingSource1 = new BindingSource();
+        private TextBox textBox1 = new TextBox();
+        private TextBox textBox2 = new TextBox();
+        private Button button1 = new Button();
+
+        public Form1()
+        {
+            this.Load += new EventHandler(Form1_Load);
+            textBox1.Location = new System.Drawing.Point(118, 131);
+            textBox1.ReadOnly = true;
+            button1.Location = new System.Drawing.Point(133, 60);
+            button1.Click += new EventHandler(button1_Click);
+            button1.Text = &quot;Get zipcode&quot;;
+            ClientSize = new System.Drawing.Size(292, 266);
+            Controls.Add(this.button1);
+            Controls.Add(this.textBox1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            textBox1.Text = &quot;Calling Web service..&quot;;
+            ZipCodeResolver resolver = new ZipCodeResolver();
+            BindingSource1.Add(resolver.CorrectedAddressXml(&quot;0&quot;,
+                    &quot;One Microsoft Way&quot;, &quot;Redmond&quot;, &quot;WA&quot;));
+                        
+        }
+
+        public void Form1_Load(object sender, EventArgs e)
+        {
+            BindingSource1.DataSource = typeof(USPSAddress);
+            textBox1.DataBindings.Add(&quot;Text&quot;, this.BindingSource1, &quot;FullZIP&quot;, true);
+        }
+    }
+
+    [System.Web.Services.WebServiceBindingAttribute(Name=&quot;ZipCodeResolverSoap&quot;,
+        Namespace=&quot;http://webservices.eraserver.net/&quot;)]
+    public class ZipCodeResolver:
+        System.Web.Services.Protocols.SoapHttpClientProtocol
+
+    {
+        
+        public ZipCodeResolver() : base()
+        {        
+            this.Url = 
+                &quot;http://webservices.eraserver.net/zipcoderesolver/zipcoderesolver.asmx&quot;;
+        }
+
+    
+        //''&lt;remarks/&gt;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute
+            (&quot;http://webservices.eraserver.net/CorrectedAddressXml&quot;, 
+            RequestNamespace=&quot;http://webservices.eraserver.net/&quot;, 
+            ResponseNamespace=&quot;http://webservices.eraserver.net/&quot;, 
+            Use=System.Web.Services.Description.SoapBindingUse.Literal, 
+            ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public USPSAddress CorrectedAddressXml(string accessCode, 
+            string address, string city, string state)
+        {
+            object[] results = this.Invoke(&quot;CorrectedAddressXml&quot;, 
+                new object[]{accessCode, address, city, state});
+            return ((USPSAddress) results[0]);
+        }
+
+        //''&lt;remarks/&gt;
+        public System.IAsyncResult BeginCorrectedAddressXml(string accessCode,
+            string address, string city, string state, 
+            System.AsyncCallback callback, object asyncState)
+        {
+
+            return this.BeginInvoke(&quot;CorrectedAddressXml&quot;, 
+                new object[]{accessCode, address, city, state}, callback, asyncState);
+        }
+
+
+        public USPSAddress EndCorrectedAddressXml(System.IAsyncResult asyncResult)
+        {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((USPSAddress) results[0]);
+        }
+
+    }
+
+
+    [System.SerializableAttribute, System.Xml.Serialization.XmlTypeAttribute(
+        Namespace=&quot;http://webservices.eraserver.net/&quot;)]
+    public class USPSAddress
+    {
+
+        private string streetField;
+
+        private string cityField;
+
+        private string stateField;
+
+        private string shortZIPField;
+
+        private string fullZIPField;
+
+
+        public string Street    
+        {
+            get
+            {
+                return this.streetField;
+            }
+            set
+            {
+                this.streetField = value;
+            }
+        }
+
+
+        public string City    
+        {
+            get
+            {
+                return this.cityField;
+            }
+            set
+            {
+                this.cityField = value;
+            }
+        }
+
+        public string State    
+        {
+            get
+            {
+                return this.stateField;
+            }
+            set
+            {
+                this.stateField = value;
+            }
+        }
+
+
+        public string ShortZIP    
+        {
+            get
+            {
+                return this.shortZIPField;
+            }
+            set
+            {
+                this.shortZIPField = value;
+            }
+        }
+
+
+        public string FullZIP    
+        {
+            get
+            {
+                return this.fullZIPField;
+            }
+            set
+            {
+                this.fullZIPField = value;
+            }
+        }
+    }
+
+    public delegate void CorrectedAddressXmlCompletedEventHandler(object sender,
+        CorrectedAddressXmlCompletedEventArgs args);
+
+
+    public class CorrectedAddressXmlCompletedEventArgs:
+    System.ComponentModel.AsyncCompletedEventArgs
+
+    {
+        private object[] results;
+
+        internal CorrectedAddressXmlCompletedEventArgs(object[] results,
+            System.Exception exception, bool cancelled, object userState) :
+            base(exception, cancelled, userState)
+        {        
+            this.results = results;
+        }
+
+
+        public USPSAddress Result    
+        {
+            get
+            {
+                this.RaiseExceptionIfNecessary();
+                return ((USPSAddress) this.results[0]);
+            }
+        }
+    }
+ }
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Это завершенный пример, включающий метод <code>Main</code> и сокращенную версию кода клиентского прокси.</p>
+<p>Для этого примера требуются:</p>
+<ul>
+<li>ссылки на сборки System, System.Drawing, System.Web.Services, System.Windows.Forms и System.XML.</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a href="bindingsource-component.html">Компонент BindingSource</a></li>
+<li><a href="how-to-bind-a-windows-forms-control-to-a-type.html">Практическое руководство. Связывание элемента управления с типом в Windows Forms</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

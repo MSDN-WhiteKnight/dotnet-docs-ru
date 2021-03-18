@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Direct3D9 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1077; WPF &#1080; Direct3D9 | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="wpf-and-direct3d9-interoperation">Взаимодействие WPF и Direct3D9</h1>
+
+<p>Можно включить содержимого Direct3D9 в приложении Windows Presentation Foundation (WPF). В этом разделе описывается создание содержимого Direct3D9 таким образом, чтобы эффективно взаимодействовать с WPF.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>При использовании содержимого Direct3D9 в WPF, необходимо также подумать о производительности. Дополнительные сведения о том, как оптимизировать производительность, см. в разделе <a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">рекомендации по ускорению взаимодействием Direct3D9 и WPF</a>.</p>
+</div>
+<h2 id="display-buffers">Буферы отображения</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> Класс управляет двумя буферами отображения, которые называются <em>задний буфер</em> и <em>передний буфер</em>. Задний буфер — это область Direct3D9. Изменения на задний буфер копируются передний буфер при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.unlock">Unlock</a> метод.</p>
+<p>Ниже показана связь между задний буфер и передний буфер.</p>
+<p><img src="media/d3dimage-buffers.png" alt="Буферы отображения D3DImage" title="D3DImage_buffers"></p>
+<h2 id="direct3d9-device-creation">Создание устройства Direct3D9</h2>
+<p>Для отображения содержимого Direct3D9, необходимо создать устройство Direct3D9. Имеется два объекта Direct3D9, которые можно использовать для создания устройства, <code>IDirect3D9</code> и <code>IDirect3D9Ex</code>. Эти объекты можно использовать для создания <code>IDirect3DDevice9</code> и <code>IDirect3DDevice9Ex</code> устройств, соответственно.</p>
+<p>Создание устройства путем вызова одного из следующих методов.</p>
+<ul>
+<li><p><code>IDirect3D9 * Direct3DCreate9(UINT SDKVersion);</code></p>
+</li>
+<li><p><code>HRESULT Direct3DCreate9Ex(UINT SDKVersion, IDirect3D9Ex **ppD3D);</code></p>
+</li>
+</ul>
+<p>В Windows Vista или более поздней версии операционной системы, используйте <code>Direct3DCreate9Ex</code> метод с отображением, который настроен для использования Windows отображения Driver Model (WDDM). Используйте <code>Direct3DCreate9</code> метод на любой другой платформы.</p>
+<h3 id="availability-of-the-direct3dcreate9ex-method">Доступность метода Direct3DCreate9Ex</h3>
+<p>Имеет d3d9.dll <code>Direct3DCreate9Ex</code> метод только в Windows Vista или более поздней версии операционной системы. При прямой ссылке на эту функцию в Windows XP, приложение не удается загрузить. Чтобы определить, является ли <code>Direct3DCreate9Ex</code> метод поддерживается, загрузить библиотеку DLL и найдите адрес процедуры. Ниже показано, как проверить <code>Direct3DCreate9Ex</code> метод. Полный пример кода, см. в разделе <a href="walkthrough-creating-direct3d9-content-for-hosting-in-wpf.html">Пошаговое руководство: Создание содержимого Direct3D9 для размещения в WPF</a>.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="hwnd-creation">Создание HWND</h3>
+<p>Для создания устройства требуется HWND. Как правило вы создадите фиктивный HWND для использования Direct3D9. В следующем примере кода показано, как создать вспомогательный HWND.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="present-parameters">Представление параметров</h3>
+<p>Для создания устройства также требуется <code>D3DPRESENT_PARAMETERS</code> структуры, но только некоторые параметры являются важными. Эти параметры выбраны, чтобы свести к минимуму объем памяти.</p>
+<p>Задайте <code>BackBufferHeight</code> и <code>BackBufferWidth</code> поля 1. Задавая для них значение 0 приводит к их будет присвоено размеры HWND.</p>
+<p>Всегда значение <code>D3DCREATE_MULTITHREADED</code> и <code>D3DCREATE_FPU_PRESERVE</code> флаги, чтобы предотвратить повреждение памяти, используемой Direct3D9 и чтобы предотвратить изменение параметров FPU Direct3D9.</p>
+<p>Ниже показано, как инициализировать <code>D3DPRESENT_PARAMETERS</code> структуры.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="creating-the-back-buffer-render-target">Создание целевого объекта отрисовки заднего буфера</h2>
+<p>Для отображения содержимого Direct3D9 в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a>, можно создать поверхность Direct3D9 и назначить его путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> метод.</p>
+<h3 id="verifying-adapter-support">Проверка поддержки адаптера</h3>
+<p>Прежде чем создавать рабочую область, убедитесь, что все адаптеры поддерживает свойства поверхности. Даже если при подготовке к просмотру только один адаптер, окно WPF могут отображаться на одном адаптере в системе. Следует всегда писать код Direct3D9, который обрабатывает конфигурацию с несколькими адаптерами и следует проверить все адаптеры для поддержки, так как WPF может перемещать поверхность среди доступных адаптеров.</p>
+<p>В следующем примере кода показано, как проверить, поддерживают все адаптеры для Direct3D9 в системе.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="creating-the-surface">Создание рабочей области</h3>
+<p>Прежде чем создавать рабочую область, убедитесь, что возможности устройства поддерживает высокую производительность в целевой операционной системе. Дополнительные сведения см. в разделе <a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">рекомендации по ускорению взаимодействием Direct3D9 и WPF</a>.</p>
+<p>После проверки возможности устройства, можно создать области. В следующем примере кода показано, как создать мишень рендеринга.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="wddm">WDDM</h3>
+<p>В Windows Vista и более поздних операционных системах, которые настроены на использование модели WDDM, можно создать текстуру целевой объект отрисовки и передать в область уровня 0, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> метод. Этот подход не рекомендуется в операционной системе Windows XP, поскольку не удается создать текстуру целевого блокируемый отрисовки и производительность будет снижена.</p>
+<h2 id="handling-device-state">Обработка состояния устройства</h2>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> Класс управляет двумя буферами отображения, которые называются <em>задний буфер</em> и <em>передний буфер</em>. Задний буфер — это область Direct3D.  Изменения на задний буфер копируются передний буфер при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.unlock">Unlock</a> метода, в котором они отображаются на оборудовании. В некоторых случаях передний буфер становится недоступной. Отсутствие доступности может быть вызвано блокировки экрана, весь экран эксклюзивные приложения Direct3D, переключения пользователей или другие системные события. В этом случае приложение WPF уведомляется путем обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.isfrontbufferavailablechanged">IsFrontBufferAvailableChanged</a> событий.  Как приложение реагирует на передний буфер, недоступности зависит от того, включен ли WPF на переключение на программную отрисовку. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> Метод имеет перегрузку, которая принимает параметр, который указывает, возвращается ли WPF к программной отрисовке.</p>
+<p>При вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer#System_Windows_Interop_D3DImage_SetBackBuffer_System_Windows_Interop_D3DResourceType_System_IntPtr_">SetBackBuffer(D3DResourceType, IntPtr)</a> перегружать или вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer#System_Windows_Interop_D3DImage_SetBackBuffer_System_Windows_Interop_D3DResourceType_System_IntPtr_System_Boolean_">SetBackBuffer(D3DResourceType, IntPtr, Boolean)</a> перегрузка с <code>enableSoftwareFallback</code> параметру присвоить <code>false</code>, система отрисовки освобождает ссылку на задний буфер, если передний буфер становится недоступной, и ничего не отображается. Когда передний буфер снова станет доступным, система отрисовки вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.isfrontbufferavailablechanged">IsFrontBufferAvailableChanged</a> событие для уведомления приложения WPF.  Можно создать обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.isfrontbufferavailablechanged">IsFrontBufferAvailableChanged</a> событие, чтобы перезапустить отрисовки с допустимым поверхность Direct3D. Чтобы перезапустить подготовки отчетов, необходимо вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a>.</p>
+<p>При вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer#System_Windows_Interop_D3DImage_SetBackBuffer_System_Windows_Interop_D3DResourceType_System_IntPtr_System_Boolean_">SetBackBuffer(D3DResourceType, IntPtr, Boolean)</a> перегрузка с <code>enableSoftwareFallback</code> параметру присвоить <code>true</code>, система отрисовки сохраняет ссылку на задний буфер, если передний буфер становится недоступным, поэтому нет необходимости вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> при переднего плана буфер снова станет доступным.</p>
+<p>При включенной программного обеспечения отрисовки, могут возникнуть ситуации, на устройстве пользователя становится недоступной, когда система отрисовки сохраняет ссылку на поверхность Direct3D. Чтобы проверить, является ли устройство Direct3D9 недоступен, вызовите <code>TestCooperativeLevel</code> метод. Чтобы проверить вызов Direct3D9Ex устройств <code>CheckDeviceState</code> метод, так как <code>TestCooperativeLevel</code> метод является устаревшим и всегда завершается успешно. Если устройство пользователя стала недоступной, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> для освобождения WPF ссылку на задний буфер.  Если вам потребуется выполнить сброс устройства, вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> с <code>backBuffer</code> параметру присвоить <code>null</code>и затем вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> с <code>backBuffer</code> присвоено допустимое поверхность Direct3D.</p>
+<p>Вызовите <code>Reset</code> способ устранения неработающего устройства только в том случае, если реализована поддержка нескольких адаптеров. В противном случае — освобождает все интерфейсы Direct3D9 и заново создайте их полностью. Если разметка адаптера был изменен, Direct3D9 объекты, созданные до изменения не обновляются.</p>
+<h2 id="handling-resizing">Обработка изменения размера</h2>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> отображается с разрешением, отличный от исходного размера, оно масштабируется в соответствии с текущим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.renderoptions.bitmapscalingmode">BitmapScalingMode</a>, за исключением того, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.effects.samplingmode#System_Windows_Media_Effects_SamplingMode_Bilinear">Bilinear</a> заменяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.bitmapscalingmode#System_Windows_Media_BitmapScalingMode_Fant">Fant</a>.</p>
+<p>Если требуется более высокая точность, необходимо создать новую поверхность, когда контейнер <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> изменяется размер.</p>
+<p>Существует три способа обработки изменения размера.</p>
+<ul>
+<li><p>Участвовать в системе макета и создайте новую поверхность, при изменении размера. Не создавайте слишком много рабочих областей, так как можно израсходовать или фрагментировать память.</p>
+</li>
+<li><p>Подождите, пока событие изменения размера не произошло за фиксированный период времени для создания новой рабочей области.</p>
+</li>
+<li><p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatchertimer">DispatcherTimer</a> , проверять размеры контейнера несколько раз в секунду.</p>
+</li>
+</ul>
+<h2 id="multi-monitor-optimization">Оптимизация конфигураций с несколькими мониторами</h2>
+<p>Значительное снижение производительности может произойти при перемещении система отрисовки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> на другой монитор.</p>
+<p>В WDDM пока мониторы находятся на том же видео карте и используется <code>Direct3DCreate9Ex</code>, имеется без снижения производительности. Если мониторы используют разные видео карты, производительность снижается. В Windows XP производительность снижается всегда.</p>
+<p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> перемещается на другой монитор, можно создать новую поверхность на соответствующий адаптер, чтобы восстановить хорошую производительность.</p>
+<p>Чтобы избежать снижения производительности, напишите код, специально для случая нескольких мониторов. Ниже показан один способ написания кода для нескольких мониторов.</p>
+<ol>
+<li><p>Найти точку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> в пространстве экрана с <code>Visual.ProjectToScreen</code> метод.</p>
+</li>
+<li><p>Используйте <code>MonitorFromPoint</code> GDI-способ найти монитор, отображающий эту точку.</p>
+</li>
+<li><p>Используйте <code>IDirect3D9::GetAdapterMonitor</code> метод, чтобы найти адаптер Direct3D9 монитор включен.</p>
+</li>
+<li><p>Если адаптер не так же, как адаптер с задним буфером, создайте новый задний буфер для нового монитора и назначьте его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> задний буфер.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> распределяется между несколькими мониторами, производительность будет снижена, за исключением использования WDDM и <code>IDirect3D9Ex</code> в одном адаптере. Нет способа для повышения производительности в этой ситуации.</p>
+</div>
+<p>В следующем примере кода показано, как найти текущего монитора.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div>
+<p>Обновление монитора при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> изменения размера или положения контейнера или обновите монитор с помощью <code>DispatcherTimer</code> , обновляет несколько раз в секунду.</p>
+<h2 id="wpf-software-rendering">WPF программной отрисовки</h2>
+<p>WPF выполняет визуализацию синхронно в потоке пользовательского интерфейса в программном обеспечении в следующих ситуациях.</p>
+<ul>
+<li><p>Печать</p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.effects.bitmapeffect">BitmapEffect</a></p>
+</li>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.rendertargetbitmap">RenderTargetBitmap</a></p>
+</li>
+</ul>
+<p>При возникновении такой ситуации система отрисовки вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.copybackbuffer">CopyBackBuffer</a> метод копирования в буфер оборудования к программному обеспечению. По умолчанию реализация вызывает <code>GetRenderTargetData</code> метод с вашей рабочей областью. Так как этот вызов происходит вне шаблона блокирования и разблокирования, он может завершиться ошибкой. В этом случае <code>CopyBackBuffer</code> возвращает метод <code>null</code> и изображение не отображается.</p>
+<p>Можно переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.copybackbuffer">CopyBackBuffer</a> метода, вызвать базовую реализацию, и если он возвращает <code>null</code>, можно вернуть заполнитель <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.imaging.bitmapsource">BitmapSource</a>.</p>
+<p>Вы также можете реализовать собственные программную отрисовку вместо того чтобы вызывать базовую реализацию.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Если WPF выполняет отрисовку полностью в программном обеспечении, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> не указывается, так как WPF нет передний буфер.</p>
+</div>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a></li>
+<li><a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">Вопросы производительности, связанные с взаимодействием Direct3D9 и WPF</a></li>
+<li><a href="walkthrough-creating-direct3d9-content-for-hosting-in-wpf.html">Пошаговое руководство. Создание содержимого Direct3D9 для размещения в WPF</a></li>
+<li><a href="walkthrough-hosting-direct3d9-content-in-wpf.html">Пошаговое руководство. Размещение содержимого Direct3D9 в WPF</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

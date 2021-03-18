@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1062;&#1080;&#1082;&#1083;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1074;&#1086;&#1089;&#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077; &#1079;&#1074;&#1091;&#1082;&#1072; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1055;&#1088;&#1072;&#1082;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1088;&#1091;&#1082;&#1086;&#1074;&#1086;&#1076;&#1089;&#1090;&#1074;&#1086;. &#1062;&#1080;&#1082;&#1083;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1074;&#1086;&#1089;&#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077; &#1079;&#1074;&#1091;&#1082;&#1072; &#1074; Windows Forms | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <meta property="docfx:navrel" content="../../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="how-to-loop-a-sound-playing-on-a-windows-form">Практическое руководство. Циклическое воспроизведение звука в Windows Forms</h1>
+
+<p>В следующем примере кода выполняется повторяющееся воспроизведение звука. Когда этот код запускается в обработчике события <code>stopPlayingButton_Click</code>, воспроизведение звука останавливается. Если звук не воспроизводится, то ничего не происходит.</p>
+<h2 id="example">Пример</h2>
+<pre><code class="lang-csharp" name="System.Media.SoundPlayer.PlayLooping#1">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Media;
+using System.Windows.Forms;
+
+namespace SoundPlayerPlayLoopingExample
+{
+    public class Form1 : Form
+    {
+        private SoundPlayer Player = new SoundPlayer();
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void playLoopingButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Note: You may need to change the location specified based on
+                // the sounds loaded on your computer.
+                this.Player.SoundLocation = @&quot;C:\Windows\Media\chimes.wav&quot;;
+                this.Player.PlayLooping();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, &quot;Error playing sound&quot;);
+            }
+        }
+
+        private void stopPlayingButton_Click(object sender, EventArgs e)
+        {
+            this.Player.Stop();
+        }
+
+        /// &lt;summary&gt;
+        /// Required designer variable.
+        /// &lt;/summary&gt;
+        private System.ComponentModel.IContainer components = null;
+
+        /// &lt;summary&gt;
+        /// Clean up any resources being used.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;disposing&quot;&gt;true if managed resources should be disposed; otherwise, false.&lt;/param&gt;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing &amp;&amp; (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// &lt;summary&gt;
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// &lt;/summary&gt;
+        private void InitializeComponent()
+        {
+            this.playLoopingButton = new System.Windows.Forms.Button();
+            this.stopPlayingButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // playLoopingButton
+            // 
+            this.playLoopingButton.Location = new System.Drawing.Point(12, 12);
+            this.playLoopingButton.Name = &quot;playLoopingButton&quot;;
+            this.playLoopingButton.Size = new System.Drawing.Size(87, 23);
+            this.playLoopingButton.TabIndex = 0;
+            this.playLoopingButton.Text = &quot;Play Looping&quot;;
+            this.playLoopingButton.UseVisualStyleBackColor = true;
+            this.playLoopingButton.Click += new System.EventHandler(this.playLoopingButton_Click);
+            // 
+            // stopPlayingButton
+            // 
+            this.stopPlayingButton.Location = new System.Drawing.Point(105, 12);
+            this.stopPlayingButton.Name = &quot;stopPlayingButton&quot;;
+            this.stopPlayingButton.Size = new System.Drawing.Size(75, 23);
+            this.stopPlayingButton.TabIndex = 1;
+            this.stopPlayingButton.Text = &quot;Stop&quot;;
+            this.stopPlayingButton.UseVisualStyleBackColor = true;
+            this.stopPlayingButton.Click += new System.EventHandler(this.stopPlayingButton_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(195, 51);
+            this.Controls.Add(this.stopPlayingButton);
+            this.Controls.Add(this.playLoopingButton);
+            this.Name = &quot;Form1&quot;;
+            this.Text = &quot;Form1&quot;;
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button playLoopingButton;
+        private System.Windows.Forms.Button stopPlayingButton;
+    }
+
+    static class Program
+    {
+        /// &lt;summary&gt;
+        /// The main entry point for the application.
+        /// &lt;/summary&gt;
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.Run(new Form1());
+        }
+    }
+}
+</code></pre><div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h2 id="compiling-the-code">Компиляция кода</h2>
+<p>Для этого примера требуются:</p>
+<ul>
+<li><p>ссылки на сборки System и System.Windows.Forms;</p>
+</li>
+<li><p>замена имени файла <code>&quot;c:\Windows\Media\chimes.wav&quot;</code> на допустимое имя файла.</p>
+</li>
+</ul>
+<p>Сведения о выполнении сборки этого примера из командной строки для Visual Basic или Visual C#, см. в разделе <a href="../../../visual-basic/reference/command-line-compiler/building-from-the-command-line.md">построение из командной строки</a> или <a href="../../../csharp/language-reference/compiler-options/command-line-building-with-csc-exe.md">командной строки создания с помощью csc.exe</a>. Можно также сборке этого примера в Visual Studio путем вставки кода в новый проект.</p>
+<h2 id="robust-programming">Отказоустойчивость</h2>
+<p>Операции с файлами должны быть включены в соответствующие блоки обработки исключений.</p>
+<p>При следующих условиях возможно возникновение исключения:</p>
+<ul>
+<li><p>Недопустимое имя пути (например, путь содержит недопустимые символы или состоит только из символ-разделитель (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>)).</p>
+</li>
+<li><p>Путь доступен только для чтения (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.ioexception">IOException</a>).</p>
+</li>
+<li><p>Имя пути — <code>Nothing</code> (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a>).</p>
+</li>
+<li><p>Указано слишком длинное имя пути (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.pathtoolongexception">PathTooLongException</a>).</p>
+</li>
+<li><p>Недопустимый путь (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.directorynotfoundexception">DirectoryNotFoundException</a>).</p>
+</li>
+<li><p>Путь содержит только двоеточие (&quot;:&quot;) (класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a>).</p>
+</li>
+</ul>
+<h2 id="net-framework-security">Безопасность платформы .NET Framework</h2>
+<p>По имени файла не всегда можно с уверенностью судить о его содержимом. Например, файл с именем Form1.vb может вовсе не быть исходным файлом Visual Basic. Следует проверять все входные данные перед использованием их в приложении.</p>
+<h2 id="see-also">См. также</h2>
+<ul>
+<li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.media.soundplayer.playlooping">PlayLooping</a></li>
+<li><a href="how-to-play-a-sound-from-a-windows-form.html">Практическое руководство. Воспроизведение звука в Windows Forms</a></li>
+<li><a href="soundplayer-class-overview.html">Общие сведения о классе SoundPlayer</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
