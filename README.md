@@ -1,6 +1,15 @@
 
 # Документация по .NET (MSDN-WhiteKnight's fork)
 
-![Markdownlint](https://github.com/dotnet/docs/workflows/Markdownlint/badge.svg)
+Этот репозиторий содержит неофициальную ветку русскоязычной документации по .NET. С 2020 года Microsoft не принимает предложения по улучшению локализованной документации, которая переведена автоматически (сюда входит большая часть документации по .NET Framework); кроме того, документация по WinForms и WPF была перенесена в отдельный раздел документации по настольным приложениям, и при этом большая часть локализованной документации потерялась. Тогда появилась идея создать собственную ветку русскоязычной документации и улучшать перевод отдельных ключевых разделов независимо.
 
-Forked from https://github.com/dotnet/docs.ru-ru
+- [Сборки в .NET](docs/standard/assembly/)
+- [Windows Forms](docs/framework/winforms/)
+- [WPF](docs/framework/wpf/)
+
+---
+
+Основано на материалах из репозитория https://github.com/dotnet/docs.ru-ru (сайт: [Документация по .NET](https://docs.microsoft.com/ru-ru/dotnet/)), лицензия **Creative Commons Attribution 4.0 International** для текста, **MIT** для кода. Изменения в исходных материалах включают улучшение качества перевода, правки грамматики и пунктуации, а также изменения URL ссылок и удаление некоторых фрагментов кода.
+
+Copyright (c) Microsoft Corporation (оригинал документации)  
+Copyright (c) MSDN.WhiteKnight (изменения и дополнения)  
