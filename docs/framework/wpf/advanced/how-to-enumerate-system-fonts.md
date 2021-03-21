@@ -22,6 +22,6 @@ ms.locfileid: "57352442"
  В следующем примере показано, как перечисление шрифтов в коллекции системных шрифтов. Имя семейства шрифтов каждого <xref:System.Windows.Media.FontFamily> в <xref:System.Windows.Media.Fonts.SystemFontFamilies%2A> добавляется как элемент в поле со списком.  
   
  [!code-csharp[TextOverview#100](~/samples/snippets/csharp/VS_Snippets_Wpf/TextOverview/CSharp/Window1.xaml.cs#100)]
- [!code-vb[TextOverview#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextOverview/visualbasic/window1.xaml.vb#100)]  
+   
   
  Если несколько версий одного семейства шрифтов, находятся в том же каталоге, [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] перечисление шрифтов возвращает самую последнюю версию шрифта. Если сведения о версии не предоставляют разрешения, возвращается шрифта с последней отметкой. Если метки времени эквивалентно, возвращается файл шрифта, который является первым в алфавитном порядке.

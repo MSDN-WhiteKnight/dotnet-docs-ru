@@ -65,7 +65,7 @@ ms.locfileid: "57370128"
 В следующем примере кода показано задание присоединенного свойства в коде. В этом примере `myCheckBox` является экземпляром класса <xref:System.Windows.Controls.CheckBox> класса.
 
 [!code-csharp[PropertiesOvwSupport#APCode](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/page4.xaml.cs#apcode)]
-[!code-vb[PropertiesOvwSupport#APCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page4.xaml.vb#apcode)]
+
 
 Аналогично XAML регистр, если `myCheckBox` бы еще не добавлен как дочерний элемент элемента `myDockPanel` третьей строкой кода, то Четвертая строка кода не приведет к исключению, но значение свойства не будет взаимодействовать с <xref:System.Windows.Controls.DockPanel> родительского и, следовательно, не имела бы смысла. Только <xref:System.Windows.Controls.DockPanel.Dock%2A?displayProperty=nameWithType> заданное для дочернего элемента с наличием <xref:System.Windows.Controls.DockPanel> родительский элемент будет влиять на поведение в отображаемом приложении. (В этом случае вы может задать присоединенное свойство, а затем подключиться к дереву. Аналогично, можно подключиться к дереву, а затем задать присоединенное свойство. Любая последовательность действий дает тот же результат.)
 
@@ -119,7 +119,7 @@ ms.locfileid: "57370128"
 В следующем примере показано регистрации свойства зависимостей (с помощью <xref:System.Windows.DependencyProperty.RegisterAttached%2A> метод), а также **Get_PropertyName_** и **Set_PropertyName_** методы доступа. В этом примере именем присоединенного свойства является `IsBubbleSource`. Таким образом, методы доступа должны называться `GetIsBubbleSource` и `SetIsBubbleSource`.
 
 [!code-csharp[WPFAquariumSln#RegisterAttachedBubbler](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAquariumSln/CSharp/WPFAquariumObjects/Class1.cs#registerattachedbubbler)]
-[!code-vb[WPFAquariumSln#RegisterAttachedBubbler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFAquariumSln/visualbasic/wpfaquariumobjects/class1.vb#registerattachedbubbler)]
+
 
 #### <a name="attached-property-attributes"></a>Атрибуты присоединенного свойства
 

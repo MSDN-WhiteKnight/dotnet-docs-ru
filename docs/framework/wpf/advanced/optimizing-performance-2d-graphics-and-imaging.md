@@ -84,7 +84,7 @@ ms.locfileid: "59074993"
  В следующем примере показано, как задать <xref:System.Windows.Media.BitmapScalingMode> для объекта изображения.  
   
  [!code-csharp[RenderOptions#RenderOptionsSnippet2](~/samples/snippets/csharp/VS_Snippets_Wpf/RenderOptions/CSharp/Window1.xaml.cs#renderoptionssnippet2)]
- [!code-vb[RenderOptions#RenderOptionsSnippet2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RenderOptions/visualbasic/window1.xaml.vb#renderoptionssnippet2)]  
+   
   
 ### <a name="cachinghint"></a>CachingHint  
  По умолчанию [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] не кэширует готовое для просмотра содержимое <xref:System.Windows.Media.TileBrush> объекты, такие как <xref:System.Windows.Media.DrawingBrush> и <xref:System.Windows.Media.VisualBrush>. В статических сценариях, где ни содержимое, ни использование <xref:System.Windows.Media.TileBrush> в сцене изменяется, это имеет смысл, так как экономит видеопамять. Не выполняет как смысла, если <xref:System.Windows.Media.TileBrush> со статическим содержимым используется в нестатическим способом — например, когда статический <xref:System.Windows.Media.DrawingBrush> или <xref:System.Windows.Media.VisualBrush> сопоставляется с поверхности поворота трехмерного объекта. По умолчанию [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] повторно отрисовывает все содержимое <xref:System.Windows.Media.DrawingBrush> или <xref:System.Windows.Media.VisualBrush> для каждого кадра, даже если содержимое не изменяется.  
@@ -96,7 +96,7 @@ ms.locfileid: "59074993"
  В следующем примере показано, как использование параметра указания кэширования для <xref:System.Windows.Media.DrawingBrush>.  
   
  [!code-csharp[RenderOptions#RenderOptionsSnippet3](~/samples/snippets/csharp/VS_Snippets_Wpf/RenderOptions/CSharp/Window1.xaml.cs#renderoptionssnippet3)]
- [!code-vb[RenderOptions#RenderOptionsSnippet3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RenderOptions/visualbasic/window1.xaml.vb#renderoptionssnippet3)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -46,14 +46,14 @@ ms.locfileid: "59320019"
  В следующем примере используется <xref:System.Windows.Input.Keyboard.GetKeyStates%2A> метод на предмет <xref:System.Windows.Input.Key> находится в нерабочем состоянии.
 
  [!code-csharp[keyargssnippetsample#KeyEventArgsKeyBoardGetKeyStates](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyArgsSnippetSample/CSharp/Window1.xaml.cs#keyeventargskeyboardgetkeystates)]
- [!code-vb[keyargssnippetsample#KeyEventArgsKeyBoardGetKeyStates](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyArgsSnippetSample/visualbasic/window1.xaml.vb#keyeventargskeyboardgetkeystates)]
+ 
 
  Примеры входных данных [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] на <xref:System.Windows.Input.Mouse> класса <xref:System.Windows.Input.Mouse.MiddleButton%2A>, который получает состояние средней кнопки мыши, и <xref:System.Windows.Input.Mouse.DirectlyOver%2A>, получающий указатель мыши на элемент наведен.
 
  В следующем примере определяется ли <xref:System.Windows.Input.Mouse.LeftButton%2A> мыши находится в <xref:System.Windows.Input.MouseButtonState.Pressed> состояние.
 
  [!code-csharp[mouserelatedsnippets#MouseRelatedSnippetsGetLeftButtonMouse](~/samples/snippets/csharp/VS_Snippets_Wpf/MouseRelatedSnippets/CSharp/Window1.xaml.cs#mouserelatedsnippetsgetleftbuttonmouse)]
- [!code-vb[mouserelatedsnippets#MouseRelatedSnippetsGetLeftButtonMouse](~/samples/snippets/visualbasic/VS_Snippets_Wpf/MouseRelatedSnippets/visualbasic/window1.xaml.vb#mouserelatedsnippetsgetleftbuttonmouse)]
+ 
 
  <xref:System.Windows.Input.Mouse> И <xref:System.Windows.Input.Keyboard> классы рассматриваются более подробно в этом обзоре.
 
@@ -84,12 +84,12 @@ ms.locfileid: "59320019"
  [!code-xaml[InputOvw#Input_OvwKeyboardExampleXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml#input_ovwkeyboardexamplexaml)]
 
  [!code-csharp[InputOvw#Input_OvwKeyboardExampleUICodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwkeyboardexampleuicodebehind)]
- [!code-vb[InputOvw#Input_OvwKeyboardExampleUICodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwkeyboardexampleuicodebehind)]
+ 
 
  Второй раздел прописывается в коде, и в нем определяется обработчик событий.  При нажатии клавиши со стрелкой влево и <xref:System.Windows.Controls.Button> имеет фокус клавиатуры, запускается обработчик и <xref:System.Windows.Controls.Control.Background%2A> цвет <xref:System.Windows.Controls.Button> изменяется.  При нажатии клавиши, но это не клавиша со стрелкой влево, <xref:System.Windows.Controls.Control.Background%2A> цвет <xref:System.Windows.Controls.Button> изменяется обратно на первоначальный.
 
  [!code-csharp[InputOvw#Input_OvwKeyboardExampleHandlerCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwkeyboardexamplehandlercodebehind)]
- [!code-vb[InputOvw#Input_OvwKeyboardExampleHandlerCodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwkeyboardexamplehandlercodebehind)]
+ 
 
 ### <a name="mouse-input-event-example"></a>Пример события ввода с помощью мыши
  В следующем примере <xref:System.Windows.Controls.Control.Background%2A> цвет <xref:System.Windows.Controls.Button> меняется, когда указатель мыши попадает <xref:System.Windows.Controls.Button>.  <xref:System.Windows.Controls.Control.Background%2A> Цвет восстанавливается в том случае, когда указатель мыши покидает <xref:System.Windows.Controls.Button>.
@@ -99,15 +99,15 @@ ms.locfileid: "59320019"
  [!code-xaml[InputOvw#Input_OvwMouseExampleXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml#input_ovwmouseexamplexaml)]
 
  [!code-csharp[InputOvw#Input_OvwMouseExampleUICodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwmouseexampleuicodebehind)]
- [!code-vb[InputOvw#Input_OvwMouseExampleUICodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwmouseexampleuicodebehind)]
+ 
 
  Второй раздел примера прописывается в коде, и в нем определяются обработчики событий.  Когда указатель мыши перемещается <xref:System.Windows.Controls.Button>, <xref:System.Windows.Controls.Control.Background%2A> цвет <xref:System.Windows.Controls.Button> изменяется на <xref:System.Windows.Media.Brushes.SlateGray%2A>.  Когда указатель мыши покидает <xref:System.Windows.Controls.Button>, <xref:System.Windows.Controls.Control.Background%2A> цвет <xref:System.Windows.Controls.Button> изменяется обратно на <xref:System.Windows.Media.Brushes.AliceBlue%2A>.
 
  [!code-csharp[InputOvw#Input_OvwMouseExampleEneterHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwmouseexampleeneterhandler)]
- [!code-vb[InputOvw#Input_OvwMouseExampleEneterHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwmouseexampleeneterhandler)]
+ 
 
  [!code-csharp[InputOvw#Input_OvwMouseExampleLeaveHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwmouseexampleleavehandler)]
- [!code-vb[InputOvw#Input_OvwMouseExampleLeaveHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwmouseexampleleavehandler)]
+ 
 
 <a name="text_input"></a>
 ## <a name="text-input"></a>Текстовый ввод
@@ -124,12 +124,12 @@ ms.locfileid: "59320019"
  [!code-xaml[InputOvw#Input_OvwTextInputXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml#input_ovwtextinputxaml)]
 
  [!code-csharp[InputOvw#Input_OvwTextInputUICodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwtextinputuicodebehind)]
- [!code-vb[InputOvw#Input_OvwTextInputUICodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwtextinputuicodebehind)]
+ 
 
  Второй сегмент кода содержит обработчики событий.
 
  [!code-csharp[InputOvw#Input_OvwTextInputHandlersCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/InputOvw/CSharp/Page1.xaml.cs#input_ovwtextinputhandlerscodebehind)]
- [!code-vb[InputOvw#Input_OvwTextInputHandlersCodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InputOvw/VisualBasic/Page1.xaml.vb#input_ovwtextinputhandlerscodebehind)]
+ 
 
  Поскольку входные события поднимаются по восходящему маршруту события, <xref:System.Windows.Controls.StackPanel> получает входные данные, независимо от того, какой элемент имеет фокус клавиатуры. <xref:System.Windows.Controls.TextBox> Сначала уведомляется элемент управления и `OnTextInputKeyDown` обработчик вызывается, только в том случае, если <xref:System.Windows.Controls.TextBox> не обработала входные данные. Если <xref:System.Windows.UIElement.PreviewKeyDown> событий используется вместо <xref:System.Windows.UIElement.KeyDown> событий, `OnTextInputKeyDown` сначала вызывается обработчик.
 
@@ -322,7 +322,7 @@ ms.locfileid: "59320019"
  В следующем примере используется <xref:System.Windows.Input.Keyboard.Focus%2A> устанавливается фокус клавиатуры на <xref:System.Windows.Controls.Button>.  Рекомендуется устанавливать исходный фокус в приложении начинается в <xref:System.Windows.FrameworkElement.Loaded> обработчик событий.
 
  [!code-csharp[focussample#FocusSampleSetFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSample/CSharp/Window1.xaml.cs#focussamplesetfocus)]
- [!code-vb[focussample#FocusSampleSetFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSample/visualbasic/window1.xaml.vb#focussamplesetfocus)]
+ 
 
  Дополнительные сведения о фокусе клавиатуры см. в разделе [Общие сведения о фокусе](focus-overview.md).
 
@@ -338,7 +338,7 @@ ms.locfileid: "59320019"
  [!code-xaml[MarkupSnippets#MarkupIsFocusScopeXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/MarkupSnippets/CSharp/Window1.xaml#markupisfocusscopexaml)]
 
  [!code-csharp[FocusSnippets#FocusSetIsFocusScope](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSnippets/CSharp/Window1.xaml.cs#focussetisfocusscope)]
- [!code-vb[FocusSnippets#FocusSetIsFocusScope](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSnippets/visualbasic/window1.xaml.vb#focussetisfocusscope)]
+ 
 
  Классы в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] являются областями фокуса по умолчанию <xref:System.Windows.Window>, <xref:System.Windows.Controls.Menu>, <xref:System.Windows.Controls.ToolBar>, и <xref:System.Windows.Controls.ContextMenu>.
 
@@ -371,7 +371,7 @@ ms.locfileid: "59320019"
  [!code-xaml[CommandingOverviewSnippets#CommandingOverviewSimpleCommand](~/samples/snippets/csharp/VS_Snippets_Wpf/CommandingOverviewSnippets/CSharp/Window1.xaml#commandingoverviewsimplecommand)]
 
  [!code-csharp[CommandingOverviewSnippets#CommandingOverviewCommandTargetCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/CommandingOverviewSnippets/CSharp/Window1.xaml.cs#commandingoverviewcommandtargetcodebehind)]
- [!code-vb[CommandingOverviewSnippets#CommandingOverviewCommandTargetCodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CommandingOverviewSnippets/visualbasic/window1.xaml.vb#commandingoverviewcommandtargetcodebehind)]
+ 
 
  Дополнительные сведения о командах в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] см. в разделе [Общие сведения о системе команд](commanding-overview.md).
 

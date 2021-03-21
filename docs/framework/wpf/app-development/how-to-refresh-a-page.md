@@ -22,4 +22,4 @@ ms.locfileid: "57368289"
  <xref:System.Windows.Navigation.NavigationWindow.Refresh%2A> обновляет текущее содержимое в <xref:System.Windows.Navigation.NavigationWindow> для перезагрузки из источника.  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateRefreshCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigaterefreshcode)]
- [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigaterefreshcode)]
+ 

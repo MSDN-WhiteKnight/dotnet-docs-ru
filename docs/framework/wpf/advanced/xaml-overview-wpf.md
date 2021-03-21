@@ -254,7 +254,7 @@ ms.locfileid: "59102834"
  [!code-xaml[XAMLOvwSupport#ButtonWithCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/XAMLOvwSupport/CSharp/page3.xaml#buttonwithcodebehind)]  
   
  [!code-csharp[XAMLOvwSupport#ButtonWithCodeBehindHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/XAMLOvwSupport/CSharp/page3.xaml.cs#buttonwithcodebehindhandler)]
- [!code-vb[XAMLOvwSupport#ButtonWithCodeBehindHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/XAMLOvwSupport/VisualBasic/Page1.xaml.vb#buttonwithcodebehindhandler)]  
+   
   
  Обратите внимание, что файл кода программной части использует пространство имен CLR `ExampleNamespace` и объявляет `ExamplePage` как разделяемый класс в этом пространстве имен. Это аналогично `x:Class` значение атрибута `ExampleNamespace`.`ExamplePage` предоставленному в корне разметки. Компилятор разметки WPF создает разделяемый класс для любого скомпилированного файла XAML путем создания класса, производного от типа корневого элемента. При предоставлении кода программной части, который также определяет тот же разделяемый класс, результирующий код объединяется внутри того же пространства имен и класса скомпилированного приложения.  
   
@@ -277,7 +277,7 @@ ms.locfileid: "59102834"
 [!code-xaml[XAMLOvwSupport#NamedE2](~/samples/snippets/csharp/VS_Snippets_Wpf/XAMLOvwSupport/CSharp/page7.xaml#namede2)]  
   
  [!code-csharp[XAMLOvwSupport#NameCode](~/samples/snippets/csharp/VS_Snippets_Wpf/XAMLOvwSupport/CSharp/page7.xaml.cs#namecode)]
- [!code-vb[XAMLOvwSupport#NameCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/XAMLOvwSupport/VisualBasic/Page1.xaml.vb#namecode)]  
+   
   
  Как и в случае с переменными, имена экземпляров классов XAML регулируются понятием области, так что обеспечивается уникальность имен в пределах определенной области с известными границами. Основная разметка, определяющая страницу, обозначает одну уникальную область видимости имен XAML с корневым элементом страницы в качестве границы. Однако другие источники разметки могут взаимодействовать со страницей во время выполнения, например стили или шаблоны в стилях, и такие источники разметки часто имеют свои собственные области видимости имен XAML, не обязательно связанные с областью видимости имен XAML страницы. Дополнительные сведения о `x:Name` и области видимости имен XAML, см. в разделе <xref:System.Windows.FrameworkElement.Name%2A>, [директива x: Name](../../xaml-services/x-name-directive.md), или [области видимости имен XAML WPF](wpf-xaml-namescopes.md).  
   

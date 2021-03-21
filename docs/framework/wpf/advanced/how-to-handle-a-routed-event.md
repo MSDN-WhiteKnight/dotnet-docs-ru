@@ -32,7 +32,7 @@ ms.locfileid: "59211599"
  В следующем примере показана обработка <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий.  В этом примере сообщается, какой элемент обрабатывает событие, а какой — вызывает. Обработчик событий выполняется, когда пользователь нажимает одну из кнопок.  
   
  [!code-csharp[RoutedEventHandle#Handler](~/samples/snippets/csharp/VS_Snippets_Wpf/RoutedEventHandle/CSharp/default.xaml.cs#handler)]
- [!code-vb[RoutedEventHandle#Handler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RoutedEventHandle/VisualBasic/MainWindow.xaml.vb#handler)]  
+   
   
 ## <a name="see-also"></a>См. также
 

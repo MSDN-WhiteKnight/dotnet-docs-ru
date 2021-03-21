@@ -47,7 +47,7 @@ Windows Presentation Foundation (WPF) предоставляет набор на
  В следующем примере показан процесс форматирования хранилища текста. <xref:System.Windows.Media.TextFormatting.TextFormatter> Объект используется для извлечения строк текста из хранилища текста и последующего форматирования строк текста для рисования в <xref:System.Windows.Media.DrawingContext>.  
   
  [!code-csharp[TextFormatterExample#100](~/samples/snippets/csharp/VS_Snippets_Wpf/TextFormatterExample/CSharp/Window1.xaml.cs#100)]
- [!code-vb[TextFormatterExample#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextFormatterExample/VisualBasic/Window1.xaml.vb#100)]  
+   
   
 <a name="section3"></a>   
 ## <a name="implementing-the-client-text-store"></a>Реализация клиентского хранилища текста  
@@ -82,7 +82,7 @@ Windows Presentation Foundation (WPF) предоставляет набор на
  В следующем примере демонстрируется <xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A> метод. Это хранилище текста возвращает <xref:System.Windows.Media.TextFormatting.TextRun> объектов для форматирования текста для обработки.  
   
  [!code-csharp[TextFormatterExample#101](~/samples/snippets/csharp/VS_Snippets_Wpf/TextFormatterExample/CSharp/CustomTextSource.cs#101)]
- [!code-vb[TextFormatterExample#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextFormatterExample/VisualBasic/CustomTextSource.vb#101)]  
+   
   
 > [!NOTE]
 >  В этом примере хранилище текста предоставляет одни и те же свойства текста всему тексту. Расширенные хранилища текста могут потребоваться для реализации собственного управления диапазонами, чтобы позволить отдельным символам иметь разные свойства.  

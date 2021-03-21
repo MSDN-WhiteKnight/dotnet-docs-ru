@@ -95,7 +95,7 @@ ms.locfileid: "59320136"
  Если приложение находится во фрейме HTML, вы можете взаимодействовать с веб-страницей, которая содержит XBAP. Это делается путем извлечения <xref:System.Windows.Interop.BrowserInteropHelper.HostScript%2A> свойство <xref:System.Windows.Interop.BrowserInteropHelper>. Оно возвращает объект скрипта, представляющий окно HTML. Доступ к свойствам, методам и событиям можно получить в [объекте окна](https://go.microsoft.com/fwlink/?LinkId=160274), используя обычный синтаксис с точками. Также можно получить доступ к методам скрипта и глобальным переменным. В следующем примере показано, как извлечь объект скрипта и закрыть браузер.  
   
  [!code-csharp[XbapBrowserInterop#10](~/samples/snippets/csharp/VS_Snippets_Wpf/xbapbrowserinterop/cs/page1.xaml.cs#10)]
- [!code-vb[XbapBrowserInterop#10](~/samples/snippets/visualbasic/VS_Snippets_Wpf/xbapbrowserinterop/vb/page1.xaml.vb#10)]  
+   
   
 ### <a name="debugging-xbaps-that-use-hostscript"></a>Отладка XBAP, в котором используется HostScript  
  Если XBAP использует <xref:System.Windows.Interop.BrowserInteropHelper.HostScript%2A> объект для связи с окном HTML, существует два параметра, которые необходимо задать для запуска и отладки приложения в Visual Studio. Приложение должно иметь доступ к своему исходному сайту, а запустить его необходимо с HTML-страницы, которая содержит XBAP. Ниже описаны процедуры проверки двух этих параметров:  

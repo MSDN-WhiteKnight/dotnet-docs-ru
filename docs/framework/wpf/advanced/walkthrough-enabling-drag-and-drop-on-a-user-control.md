@@ -72,7 +72,7 @@ ms.locfileid: "59321683"
      Чтобы разрешить копирование пользовательского элемента управления, нужно добавить метод конструктора копии в файле кода программной части. В упрощенном пользовательском элементе управления Circle копируются только свойства Fill и размер пользовательского элемента управления.
 
      [!code-csharp[DragDropWalkthrough#CopyCtor](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#copyctor)]
-     [!code-vb[DragDropWalkthrough#CopyCtor](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#copyctor)]
+     
 
 ## <a name="add-the-user-control-to-the-main-window"></a>Добавление пользовательского элемента управления в главное окно
 
@@ -104,7 +104,7 @@ ms.locfileid: "59321683"
 2. Добавьте следующий <xref:System.Windows.UIElement.OnMouseMove%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.MouseMove> событий.
 
      [!code-csharp[DragDropWalkthrough#OnMouseMove](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#onmousemove)]
-     [!code-vb[DragDropWalkthrough#OnMouseMove](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#onmousemove)]
+     
 
      Это <xref:System.Windows.UIElement.OnMouseMove%2A> переопределение выполняет следующие задачи:
 
@@ -139,7 +139,7 @@ ms.locfileid: "59321683"
 2. Добавьте следующий <xref:System.Windows.UIElement.OnGiveFeedback%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.GiveFeedback> событий.
 
      [!code-csharp[DragDropWalkthrough#OnGiveFeedback](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#ongivefeedback)]
-     [!code-vb[DragDropWalkthrough#OnGiveFeedback](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#ongivefeedback)]
+     
 
      Это <xref:System.Windows.UIElement.OnGiveFeedback%2A> переопределение выполняет следующие задачи:
 
@@ -177,7 +177,7 @@ ms.locfileid: "59321683"
 2. Добавьте следующий <xref:System.Windows.UIElement.OnDrop%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.Drop> событий.
 
      [!code-csharp[DragDropWalkthrough#OnDrop](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#ondrop)]
-     [!code-vb[DragDropWalkthrough#OnDrop](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#ondrop)]
+     
 
      Это <xref:System.Windows.UIElement.OnDrop%2A> переопределение выполняет следующие задачи:
 
@@ -218,7 +218,7 @@ ms.locfileid: "59321683"
 2. Добавьте следующий <xref:System.Windows.UIElement.OnDragOver%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.DragOver> событий.
 
      [!code-csharp[DragDropWalkthrough#OnDragOver](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#ondragover)]
-     [!code-vb[DragDropWalkthrough#OnDragOver](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#ondragover)]
+     
 
      Это <xref:System.Windows.UIElement.OnDragOver%2A> переопределение выполняет следующие задачи:
 
@@ -243,12 +243,12 @@ ms.locfileid: "59321683"
 2. В классе Circle объявите закрытую <xref:System.Windows.Media.Brush> переменную с именем `_previousFill` и инициализируйте его, чтобы `null`.
 
      [!code-csharp[DragDropWalkthrough#Brush](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#brush)]
-     [!code-vb[DragDropWalkthrough#Brush](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#brush)]
+     
 
 3. Добавьте следующий <xref:System.Windows.UIElement.OnDragEnter%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.DragEnter> событий.
 
      [!code-csharp[DragDropWalkthrough#OnDragEnter](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#ondragenter)]
-     [!code-vb[DragDropWalkthrough#OnDragEnter](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#ondragenter)]
+     
 
      Это <xref:System.Windows.UIElement.OnDragEnter%2A> переопределение выполняет следующие задачи:
 
@@ -261,7 +261,7 @@ ms.locfileid: "59321683"
 4. Добавьте следующий <xref:System.Windows.UIElement.OnDragLeave%2A> переопределение, чтобы обеспечить обработку класса для <xref:System.Windows.UIElement.DragLeave> событий.
 
      [!code-csharp[DragDropWalkthrough#OnDragLeave](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/Circle.xaml.cs#ondragleave)]
-     [!code-vb[DragDropWalkthrough#OnDragLeave](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/Circle.xaml.vb#ondragleave)]
+     
 
      Это <xref:System.Windows.UIElement.OnDragLeave%2A> переопределение выполняет следующие задачи:
 
@@ -292,7 +292,7 @@ ms.locfileid: "59321683"
 4. Добавьте следующий код для <xref:System.Windows.UIElement.DragOver> обработчик событий.
 
      [!code-csharp[DragDropWalkthrough#PanelDragOver](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/MainWindow.xaml.cs#paneldragover)]
-     [!code-vb[DragDropWalkthrough#PanelDragOver](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/MainWindow.xaml.vb#paneldragover)]
+     
 
      Это <xref:System.Windows.UIElement.DragOver> обработчик событий выполняет следующие задачи:
 
@@ -305,7 +305,7 @@ ms.locfileid: "59321683"
 5. Добавьте следующий код для <xref:System.Windows.UIElement.Drop> обработчик событий.
 
      [!code-csharp[DragDropWalkthrough#PanelDrop](~/samples/snippets/csharp/VS_Snippets_Wpf/DragDropWalkthrough/CS/MainWindow.xaml.cs#paneldrop)]
-     [!code-vb[DragDropWalkthrough#PanelDrop](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DragDropWalkthrough/VB/MainWindow.xaml.vb#paneldrop)]
+     
 
      Это <xref:System.Windows.UIElement.Drop> обработчик событий выполняет следующие задачи:
 

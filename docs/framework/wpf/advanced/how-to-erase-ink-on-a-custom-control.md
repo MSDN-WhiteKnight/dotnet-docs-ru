@@ -22,4 +22,4 @@ ms.locfileid: "57365897"
  В следующем примере создается пользовательский элемент управления, позволяющий пользователю стирать части штрихов.  В этом примере создается элемент управления, содержащий рукописного ввода при инициализации.  Чтобы создать элемент управления, который собирает данные рукописного ввода, см. в разделе [Создание элемента управления рукописным ввода](creating-an-ink-input-control.md).  
   
  [!code-csharp[HowToEraseInk#1](~/samples/snippets/csharp/VS_Snippets_Wpf/HowToEraseInk/CSharp/InkEraser.cs#1)]
- [!code-vb[HowToEraseInk#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HowToEraseInk/VisualBasic/InkEraser.vb#1)]
+ 

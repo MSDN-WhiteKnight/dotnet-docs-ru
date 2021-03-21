@@ -47,13 +47,13 @@ ms.locfileid: "59129094"
  В следующем примере кода создается <xref:System.Windows.Media.FormattedText> объекта и затем применяется несколько стилей форматирования к тексту.  
   
  [!code-csharp[FormattedTextSnippets#FormattedTextSnippets1](~/samples/snippets/csharp/VS_Snippets_Wpf/FormattedTextSnippets/CSharp/Window1.xaml.cs#formattedtextsnippets1)]
- [!code-vb[FormattedTextSnippets#FormattedTextSnippets1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FormattedTextSnippets/visualbasic/window1.xaml.vb#formattedtextsnippets1)]  
+   
   
 ### <a name="font-size-unit-of-measure"></a>Единица измерения "Размер шрифта"  
  Как и в случае с другими текстовыми объектами в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
   
  [!code-csharp[FormattedTextSnippets#FormattedTextSnippets2](~/samples/snippets/csharp/VS_Snippets_Wpf/FormattedTextSnippets/CSharp/Window1.xaml.cs#formattedtextsnippets2)]
- [!code-vb[FormattedTextSnippets#FormattedTextSnippets2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FormattedTextSnippets/visualbasic/window1.xaml.vb#formattedtextsnippets2)]  
+   
   
 <a name="converting_formatted_text"></a>   
 ### <a name="converting-formatted-text-to-a-geometry"></a>Преобразование форматированного текста в геометрический объект  

@@ -25,12 +25,12 @@ ms.locfileid: "59224277"
  <xref:System.Windows.UIElement> Класс предоставляет виртуальный метод, позволяющий обработки класса в <xref:System.Windows.UIElement.PreviewMouseLeftButtonDown> событие, просто переопределив метод события. Это самый простой способ реализовать обработку класса, если виртуальный метод доступен где-то в иерархии класса. В следующем коде показан <xref:System.Windows.UIElement.OnPreviewMouseLeftButtonDown%2A> реализацию в «MyEditContainer», который является производным от <xref:System.Windows.Controls.Canvas>. Реализация помечает событие как обработанное в аргументах, а затем добавляет часть кода для предоставления основное видимое изменение исходного элемента.  
   
  [!code-csharp[ClassHandling#OnStarClassHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/ClassHandling/CSharp/SDKSampleLibrary/class1.cs#onstarclasshandler)]
- [!code-vb[ClassHandling#OnStarClassHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ClassHandling/visualbasic/sdksamplelibrary/class1.vb#onstarclasshandler)]  
+   
   
  Если нет виртуальных базовых классов или для этого конкретного метода, обработка класса можно добавить непосредственно с помощью служебной программы метод <xref:System.Windows.EventManager> класса <xref:System.Windows.EventManager.RegisterClassHandler%2A>. Этот метод должен вызываться только внутри статической инициализации классов, которые используют обработку классов. В этом примере добавляется еще один обработчик для <xref:System.Windows.UIElement.PreviewMouseLeftButtonDown> , и в этом случае зарегистрированный класс является пользовательским классом. Напротив, при использовании виртуальных методов, зарегистрированный класс является <xref:System.Windows.UIElement> базового класса. В случаях, где базовых классов и подклассов зарегистрировать обработку класса обработчики подклассов вызываются первыми. Поведение в приложении бы, что сначала этот обработчик отобразит окно сообщения, а затем будет показано визуальное изменение в обработчике виртуального метода.  
   
  [!code-csharp[ClassHandling#StaticAndRegisterClassHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/ClassHandling/CSharp/SDKSampleLibrary/class1.cs#staticandregisterclasshandler)]
- [!code-vb[ClassHandling#StaticAndRegisterClassHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ClassHandling/visualbasic/sdksamplelibrary/class1.vb#staticandregisterclasshandler)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -44,7 +44,7 @@ ms.locfileid: "59224290"
  <xref:System.Windows.Navigation.NavigationWindow> Объект является производным от <xref:System.Windows.Window> и расширяет его поддержкой навигации по содержимому, главным образом путем объединения <xref:System.Windows.Navigation.NavigationService> и журнала. Вы можете обновить клиентскую область <xref:System.Windows.Navigation.NavigationWindow> , если указать [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] или объект. В следующем примере демонстрируются оба способа.  
   
  [!code-csharp[Performance#PerformanceSnippet14](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/TestNavigation.xaml.cs#performancesnippet14)]
- [!code-vb[Performance#PerformanceSnippet14](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/testnavigation.xaml.vb#performancesnippet14)]  
+   
   
  Каждый <xref:System.Windows.Navigation.NavigationWindow> объект имеет журнал, в котором записывается история переходов данного пользователя в этом окне. Одной из целей создания журнала является возможность разрешить пользователям повторять действия.  
   

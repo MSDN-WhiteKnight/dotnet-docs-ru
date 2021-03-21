@@ -53,7 +53,7 @@ ms.locfileid: "59310464"
  Пример приведен ниже.  
   
  [!code-csharp[ClonePrinter#ClonePrinter](~/samples/snippets/csharp/VS_Snippets_Wpf/ClonePrinter/CSharp/Program.cs#cloneprinter)]
- [!code-vb[ClonePrinter#ClonePrinter](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ClonePrinter/visualbasic/program.vb#cloneprinter)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -59,7 +59,7 @@ ms.locfileid: "59137440"
  Рассмотрим следующий пример, в котором каждый <xref:System.Windows.Shapes.Rectangle> использует тот же <xref:System.Windows.Media.Brush> объекта:  
   
  [!code-csharp[Performance#PerformanceSnippet2](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet2)]
- [!code-vb[Performance#PerformanceSnippet2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet2)]  
+   
   
  По умолчанию [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет обработчик событий для <xref:System.Windows.Media.SolidColorBrush> объекта <xref:System.Windows.Freezable.Changed> событий, чтобы сделать недействительным <xref:System.Windows.Shapes.Rectangle> объекта <xref:System.Windows.Shapes.Shape.Fill%2A> свойство. В этом случае каждый раз, когда <xref:System.Windows.Media.SolidColorBrush> приходится запускать его <xref:System.Windows.Freezable.Changed> событий, необходимо вызывать функцию обратного вызова для каждого <xref:System.Windows.Shapes.Rectangle>— совокупность этих вызовов функции обратного вызова накладывают к значительному снижению производительности. Кроме того, довольно затратно с точки зрения производительности добавлять и удалять обработчики на этом этапе, так как приложению потребуется пройти по всему списку, чтобы сделать это. Если сценарий приложения никогда не меняется <xref:System.Windows.Media.SolidColorBrush>, вы будете нести затраты на поддержку <xref:System.Windows.Freezable.Changed> обработчики событий без необходимости.  
   
@@ -73,7 +73,7 @@ ms.locfileid: "59137440"
  Следующий пример кода демонстрирует эту концепцию.  
   
  [!code-csharp[Performance#PerformanceSnippet3](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet3)]
- [!code-vb[Performance#PerformanceSnippet3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet3)]  
+   
   
 ### <a name="changed-handlers-on-unfrozen-freezables-may-keep-objects-alive"></a>Обработчики событий изменений Changed в нефиксированных объектах Freezable могут поддерживать объекты в активном состоянии  
  Делегат, который объект передает в <xref:System.Windows.Freezable> объекта <xref:System.Windows.Freezable.Changed> событий является ссылкой на этот объект. Таким образом <xref:System.Windows.Freezable.Changed> обработчики событий могут поддерживать объекты в активном состоянии больше, чем ожидалось. При выполнении очистки объекта, зарегистрированного для прослушивания <xref:System.Windows.Freezable> объекта <xref:System.Windows.Freezable.Changed> событий, очень важно удалить этот делегат перед освобождением объекта.  
@@ -81,19 +81,19 @@ ms.locfileid: "59137440"
  [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] также подключает <xref:System.Windows.Freezable.Changed> события внутренним образом. Например, все свойства зависимостей принимающие <xref:System.Windows.Freezable> как значение будет прослушивать <xref:System.Windows.Freezable.Changed> события автоматически. <xref:System.Windows.Shapes.Shape.Fill%2A> Свойство, которое принимает <xref:System.Windows.Media.Brush>, иллюстрирует эту концепцию.  
   
  [!code-csharp[Performance#PerformanceSnippet4](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet4)]
- [!code-vb[Performance#PerformanceSnippet4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet4)]  
+   
   
  При назначении `myBrush` для `myRectangle.Fill`делегат, указывающий обратно <xref:System.Windows.Shapes.Rectangle> добавляется объект <xref:System.Windows.Media.SolidColorBrush> объекта <xref:System.Windows.Freezable.Changed> событий. Это означает, что следующий код в действительности не разрешает `myRect` сборку мусора.  
   
  [!code-csharp[Performance#PerformanceSnippet5](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet5)]
- [!code-vb[Performance#PerformanceSnippet5](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet5)]  
+   
   
  В этом случае `myBrush` по-прежнему сохраняет `myRectangle` активном состоянии и снова вызовет его при его срабатывании его <xref:System.Windows.Freezable.Changed> событий. Обратите внимание, что при назначении `myBrush` для <xref:System.Windows.Shapes.Shape.Fill%2A> свойства нового <xref:System.Windows.Shapes.Rectangle> будет просто добавляться другой обработчик событий в `myBrush`.  
   
  Рекомендуемый способ очистки этих типов объектов должно быть удаление <xref:System.Windows.Media.Brush> из <xref:System.Windows.Shapes.Shape.Fill%2A> свойство, которое в свою очередь приведет к удалению <xref:System.Windows.Freezable.Changed> обработчик событий.  
   
  [!code-csharp[Performance#PerformanceSnippet6](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet6)]
- [!code-vb[Performance#PerformanceSnippet6](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet6)]  
+   
   
 <a name="User_Interface_Virtualization"></a>   
 ## <a name="user-interface-virtualization"></a>Виртуализация пользовательского интерфейса  

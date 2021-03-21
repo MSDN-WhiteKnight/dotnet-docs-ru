@@ -27,9 +27,9 @@ ms.locfileid: "59209441"
  В приведенном ниже примере пользовательский класс `MyAdvancedStateControl` переопределяет метаданные, предоставленные свойству `StateProperty` классом `MyAdvancedStateControl`, новыми метаданными свойства. Например, значение `StateProperty` по умолчанию теперь является `true`, если это свойство запрашивается для нового экземпляра `MyAdvancedStateControl`.  
   
  [!code-csharp[PropertySystemEsoterics#MyStateControl](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertySystemEsoterics/CSharp/SDKSampleLibrary/class1.cs#mystatecontrol)]
- [!code-vb[PropertySystemEsoterics#MyStateControl](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertySystemEsoterics/visualbasic/sdksamplelibrary/class1.vb#mystatecontrol)]  
+   
 [!code-csharp[PropertySystemEsoterics#MyAdvancedStateControl](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertySystemEsoterics/CSharp/SDKSampleLibrary/class1.cs#myadvancedstatecontrol)]
-[!code-vb[PropertySystemEsoterics#MyAdvancedStateControl](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertySystemEsoterics/visualbasic/sdksamplelibrary/class1.vb#myadvancedstatecontrol)]  
+  
   
 ## <a name="see-also"></a>См. также
 

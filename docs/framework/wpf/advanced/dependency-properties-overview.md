@@ -49,7 +49,7 @@ Windows Presentation Foundation (WPF) предоставляет набор сл
 В следующем примере определяется свойство зависимостей `IsSpinning` и демонстрируется связь между идентификатором <xref:System.Windows.DependencyProperty> и свойством, которое он поддерживает.
 
 [!code-csharp[PropertiesOvwSupport#DPFormBasic](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/page4.xaml.cs#dpformbasic)]
-[!code-vb[PropertiesOvwSupport#DPFormBasic](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page4.xaml.vb#dpformbasic)]  
+  
   
 Соглашение об именовании свойства и его поддерживающего поля <xref:System.Windows.DependencyProperty> имеет важное значение. Имя поля всегда определяется как имя свойства с добавленным суффиксом `Property`. Дополнительные сведения об этом соглашении и разъяснения по нему см. в разделе [Пользовательские свойства зависимостей](custom-dependency-properties.md).  
 
@@ -71,12 +71,12 @@ Windows Presentation Foundation (WPF) предоставляет набор сл
  Задание значений свойств зависимостей с помощью кода обычно представляет собой обращение к реализации метода установки, предоставленного "оболочкой" [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)].
 
 [!code-csharp[PropertiesOvwSupport#ProceduralPropertySet](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/Page1.xaml.cs#proceduralpropertyset)]
-[!code-vb[PropertiesOvwSupport#ProceduralPropertySet](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page1.xaml.vb#proceduralpropertyset)]
+
 
 Получение значения свойства также является фактически вызовом реализации метода получения, имеющегося в "оболочке":
 
 [!code-csharp[PropertiesOvwSupport#ProceduralPropertyGet](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/Page1.xaml.cs#proceduralpropertyget)]
- [!code-vb[PropertiesOvwSupport#ProceduralPropertyGet](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page1.xaml.vb#proceduralpropertyget)]
+ 
 
 Систему свойств [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] <xref:System.Windows.DependencyObject.GetValue%2A> и <xref:System.Windows.DependencyObject.SetValue%2A> также можно вызывать напрямую. Обычно в этом нет необходимости при использовании существующих свойств (оболочки более удобны и дают лучшее предоставление свойства для средств разработчика), но в некоторых сценариях удобнее использовать непосредственный вызов [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)].
 
@@ -151,7 +151,7 @@ Windows Presentation Foundation (WPF) предоставляет набор сл
 В следующем примере метаданные переопределяются для свойства зависимостей <xref:System.Windows.FrameworkElement.DefaultStyleKey%2A>. Переопределение метаданных этого конкретного свойства зависимостей включено в состав шаблона реализации, с помощью которого создаются элементы управления, которые могут использовать стили, заданные по умолчанию в темах.
 
 [!code-csharp[PropertiesOvwSupport#OverrideMetadata](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/page3.xaml.cs#overridemetadata)]
-[!code-vb[PropertiesOvwSupport#OverrideMetadata](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page3.xaml.vb#overridemetadata)]
+
 
 Дополнительные сведения о переопределении и получении метаданных свойства см. в разделе [Метаданные свойств зависимостей](dependency-property-metadata.md).
 

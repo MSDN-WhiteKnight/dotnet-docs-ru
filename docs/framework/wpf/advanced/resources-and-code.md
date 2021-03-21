@@ -28,7 +28,7 @@ ms.locfileid: "59137713"
  Ниже приведен пример кода, который находит ресурс по ключу и использует возвращаемое значение, чтобы задать свойство, реализованы в виде <xref:System.Windows.Controls.Primitives.ButtonBase.Click> обработчик событий.  
   
  [!code-csharp[PropertiesOvwSupport#ResourceProceduralGet](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/page3.xaml.cs#resourceproceduralget)]
- [!code-vb[PropertiesOvwSupport#ResourceProceduralGet](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PropertiesOvwSupport/visualbasic/page3.xaml.vb#resourceproceduralget)]  
+   
   
  Альтернативный метод для назначения является ссылкой на ресурс является <xref:System.Windows.FrameworkElement.SetResourceReference%2A>. Этот метод принимает два параметра — ключ ресурса и идентификатор конкретного свойства зависимостей из экземпляра элемента, которому должно быть присвоено значение ресурса. Функционально этот метод аналогичен, но имеет преимущество в том плане, что не требует приведения возвращаемых значений.  
   

@@ -26,4 +26,4 @@ ms.locfileid: "57361971"
  [!code-xaml[InkDragDrop#1](~/samples/snippets/csharp/VS_Snippets_Wpf/InkDragDrop/CSharp/Window1.xaml#1)]  
   
  [!code-csharp[InkDragDrop#2](~/samples/snippets/csharp/VS_Snippets_Wpf/InkDragDrop/CSharp/Window1.xaml.cs#2)]
- [!code-vb[InkDragDrop#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/InkDragDrop/VisualBasic/Window1.xaml.vb#2)]
+ 

@@ -30,7 +30,7 @@ ms.locfileid: "59141210"
  Если задано значение «Всего приложения,» изменение курсора <xref:System.Windows.Input.Mouse.OverrideCursor%2A> свойству <xref:System.Windows.FrameworkElement.Cursor%2A> свойство <xref:System.Windows.Controls.Border> элемента управления.  Это заставляет курсор для изменения для всего приложения.  
   
  [!code-csharp[cursors#ChangeCursorsSample](~/samples/snippets/csharp/VS_Snippets_Wpf/cursors/CSharp/Window1.xaml.cs#changecursorssample)]
- [!code-vb[cursors#ChangeCursorsSample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/cursors/VisualBasic/Window1.xaml.vb#changecursorssample)]  
+   
   
 ## <a name="see-also"></a>См. также
 

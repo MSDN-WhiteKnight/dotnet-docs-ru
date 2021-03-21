@@ -24,7 +24,7 @@ ms.locfileid: "57357772"
 >  <xref:System.Windows.Window.DialogResult%2A> можно устанавливать, только если окно было открыто, вызвав <xref:System.Windows.Window.ShowDialog%2A>.  
   
  [!code-csharp[HOWTOWindowManagementSnippets#GetDialogResultCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/CSharp/MainWindow.xaml.cs#getdialogresultcode)]
- [!code-vb[HOWTOWindowManagementSnippets#GetDialogResultCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/visualbasic/mainwindow.xaml.vb#getdialogresultcode)]  
+   
   
 ## <a name="net-framework-security"></a>Безопасность платформы .NET Framework  
  Вызов <xref:System.Windows.Window.ShowDialog%2A> требуется разрешение на использование все окна и события пользовательского ввода без ограничений.

@@ -24,7 +24,7 @@ ms.locfileid: "59078425"
  В следующем примере создается новая таблица и затем использует <xref:System.Windows.Documents.TableColumnCollection.Add%2A> метод для добавления столбцов в таблицу <xref:System.Windows.Documents.Table.Columns%2A> коллекции.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_Add](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_add)]
- [!code-vb[TableSnippets2#_Table_Columns_Add](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_add)]  
+   
   
 ## <a name="example"></a>Пример  
  В следующем примере вставляется новый <xref:System.Windows.Documents.TableColumn>.  Новый столбец вставляется в позиции индекса 0, делая его первым столбцом в таблице.  
@@ -33,37 +33,37 @@ ms.locfileid: "59078425"
 >  <xref:System.Windows.Documents.TableColumnCollection> Коллекция использует стандартную индексацию с нуля.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_Insert](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_insert)]
- [!code-vb[TableSnippets2#_Table_Columns_Insert](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_insert)]  
+   
   
 ## <a name="example"></a>Пример  
  Следующий пример обращается к некоторые произвольные свойства для столбцов в <xref:System.Windows.Documents.TableColumnCollection> коллекции, ссылающийся на определенных столбцов по индексу.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_Manip](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_manip)]
- [!code-vb[TableSnippets2#_Table_Columns_Manip](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_manip)]  
+   
   
 ## <a name="example"></a>Пример  
  Следующий пример возвращает количество столбцов, в настоящий момент размещенные в таблице.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_Count](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_count)]
- [!code-vb[TableSnippets2#_Table_Columns_Count](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_count)]  
+   
   
 ## <a name="example"></a>Пример  
  Следующий пример удаляет определенный столбец по ссылке.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_DelRef](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_delref)]
- [!code-vb[TableSnippets2#_Table_Columns_DelRef](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_delref)]  
+   
   
 ## <a name="example"></a>Пример  
  Следующий пример удаляет определенный столбец по индексу.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_DelIndex](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_delindex)]
- [!code-vb[TableSnippets2#_Table_Columns_DelIndex](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_delindex)]  
+   
   
 ## <a name="example"></a>Пример  
  Следующий пример удаляет все столбцы из коллекции столбцов таблицы.  
   
  [!code-csharp[TableSnippets2#_Table_Columns_Clear](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml.cs#_table_columns_clear)]
- [!code-vb[TableSnippets2#_Table_Columns_Clear](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TableSnippets2/visualbasic/window1.xaml.vb#_table_columns_clear)]  
+   
   
 ## <a name="see-also"></a>См. также
 

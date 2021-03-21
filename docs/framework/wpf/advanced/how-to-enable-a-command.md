@@ -30,14 +30,14 @@ ms.locfileid: "59181705"
  [!code-xaml[EnableCloseCommand#CloseCommandBinding](~/samples/snippets/csharp/VS_Snippets_Wpf/EnableCloseCommand/CSharp/Window1.xaml#closecommandbinding)]  
   
  [!code-csharp[EnableCloseCommand#CloseCommandBindingCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/EnableCloseCommand/CSharp/Window1.xaml.cs#closecommandbindingcodebehind)]
- [!code-vb[EnableCloseCommand#CloseCommandBindingCodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EnableCloseCommand/VisualBasic/Window1.xaml.vb#closecommandbindingcodebehind)]  
+   
   
  В следующем разделе кода реализует <xref:System.Windows.Input.CommandManager.Executed> и <xref:System.Windows.Input.CommandBinding.CanExecute> обработчики событий.  
   
  <xref:System.Windows.Input.CommandManager.Executed> Обработчик вызывает метод, чтобы закрыть открытый файл.  <xref:System.Windows.Input.CommandBinding.CanExecute> Обработчик вызывает метод, чтобы определить, открыт ли файл.  Если файл был открыт, <xref:System.Windows.Input.CanExecuteRoutedEventArgs.CanExecute%2A> присваивается `true`; в противном случае он становится равным `false`.  
   
  [!code-csharp[EnableCloseCommand#CloseCommandHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/EnableCloseCommand/CSharp/Window1.xaml.cs#closecommandhandler)]
- [!code-vb[EnableCloseCommand#CloseCommandHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EnableCloseCommand/VisualBasic/Window1.xaml.vb#closecommandhandler)]  
+   
   
 ## <a name="see-also"></a>См. также
 

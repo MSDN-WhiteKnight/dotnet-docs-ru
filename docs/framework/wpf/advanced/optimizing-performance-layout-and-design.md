@@ -65,7 +65,7 @@ ms.locfileid: "59107072"
  В следующем примере кода демонстрируется создание дерева сверху вниз.  
   
  [!code-csharp[Performance#PerformanceSnippet1](~/samples/snippets/csharp/VS_Snippets_Wpf/Performance/CSharp/Window1.xaml.cs#performancesnippet1)]
- [!code-vb[Performance#PerformanceSnippet1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Performance/visualbasic/window1.xaml.vb#performancesnippet1)]  
+   
   
  Дополнительные сведения о логическом дереве см. в разделе [Деревья в WPF](trees-in-wpf.md).  
   
