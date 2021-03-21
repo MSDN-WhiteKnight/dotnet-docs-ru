@@ -38,12 +38,18 @@ namespace DocsScripts
 
         public static void ReplaceTextDir(string dir, string match_begin, string match_end, string replace_to) 
         {
-            string[] files=Directory.GetFiles(dir);
+            Console.WriteLine("dir: "+dir);
+            Console.WriteLine();
+
+            string[] files=Directory.GetFiles(dir,"*.md");
 
             for (int i = 0; i < files.Length; i++) 
             {
+                Console.WriteLine("file: " + files[i]);
                 ReplaceText(files[i], match_begin, match_end, replace_to);
             }
+
+            Console.WriteLine();
 
             string[] dirs = Directory.GetDirectories(dir);
 
@@ -54,12 +60,12 @@ namespace DocsScripts
         }
 
         //[!code-vb[...](~/samples/snippets/visualbasic/...)]
-        //docs\framework\wpf\app-development\how-to-call-a-page-function.md
+        //..\..\..\..\docs\framework\wpf\app-development\how-to-call-a-page-function.md
 
         static void Main(string[] args)
         {
-            ReplaceText(
-                @"..\..\..\..\docs\framework\wpf\app-development\how-to-call-a-page-function.md",
+            ReplaceTextDir(
+                @"..\..\..\..\docs\framework\wpf\app-development\",
                 @"[!code-vb[",
                 ")]",
                 String.Empty);
