@@ -27,7 +27,7 @@ ms.locfileid: "59154874"
 >  В этом примере обрабатывается событие <xref:System.Windows.Forms.BindingSource.BindingComplete> для компонента <xref:System.Windows.Forms.BindingSource>, обеспечивая синхронизацию двух форм. Дополнительные сведения о том, почему это делать, см. в разделе [как: Элементов управления с привязкой к тому же источнику данных будут синхронизированы](../multiple-controls-bound-to-data-source-synchronized.md).  
   
  [!code-csharp[System.Windows.Forms.BindingSourceMultipleForms#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.BindingSourceMultipleForms/CS/Form1.cs#1)]
- [!code-vb[System.Windows.Forms.BindingSourceMultipleForms#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.BindingSourceMultipleForms/VB/Form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

@@ -31,14 +31,14 @@ ms.locfileid: "59159111"
 В следующем примере используется Windows Forms <xref:System.Windows.Forms.Button> элемента управления <xref:System.Windows.Forms.Control.Click> обработчик событий, чтобы открыть <xref:System.Windows.Forms.OpenFileDialog> с <xref:System.Windows.Forms.CommonDialog.ShowDialog%2A> метод. Когда пользователь выберет файл, а также выбирает **ОК**, экземпляр <xref:System.IO.StreamReader> класс читает файл и выведет его содержимое в текстовое поле формы. Дополнительные сведения о чтении из файловых потоков, см. в разделе <xref:System.IO.FileStream.BeginRead%2A?displayProperty=nameWithType> и <xref:System.IO.FileStream.Read%2A?displayProperty=nameWithType>.  
 
  [!code-csharp[OpenFileDialog#1](~/samples/snippets/winforms/open-files/example1/cs/Form1.cs)]
- [!code-vb[OpenFileDialog#1](~/samples/snippets/winforms/open-files/example1/vb/Form1.vb)]  
+   
 
 ## <a name="example-open-a-file-from-a-filtered-selection-with-openfile"></a>Пример Откройте файл из отфильтрованные объекты с помощью OpenFile 
 
 В следующем примере используется <xref:System.Windows.Forms.Button> элемента управления <xref:System.Windows.Forms.Control.Click> обработчик событий, чтобы открыть <xref:System.Windows.Forms.OpenFileDialog> с фильтром, который показывает только текстовые файлы. Когда пользователь выберет в текстовый файл, а также выбирает **ОК**, <xref:System.Windows.Forms.OpenFileDialog.OpenFile%2A> метод используется, чтобы открыть файл в блокноте.
 
  [!code-csharp[OpenFileDialog#2](~/samples/snippets/winforms/open-files/example2/cs/Form1.cs)]
- [!code-vb[OpenFileDialog#2](~/samples/snippets/winforms/open-files/example2/vb/Form1.vb)]  
+   
 
 ## <a name="see-also"></a>См. также
 

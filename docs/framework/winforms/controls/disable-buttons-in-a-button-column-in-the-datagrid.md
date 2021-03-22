@@ -26,7 +26,7 @@ ms.locfileid: "59105590"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[System.Windows.Forms.DataGridView.DisabledButtons#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.DisabledButtons/CS/form1.cs#0)]
- [!code-vb[System.Windows.Forms.DataGridView.DisabledButtons#0](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.DisabledButtons/VB/form1.vb#0)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

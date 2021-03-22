@@ -66,7 +66,7 @@ ms.locfileid: "59333669"
     >  Убедитесь, что `webBrowser1_DocumentCompleted` обработчик событий работает в режиме прослушивателя для <xref:System.Windows.Forms.WebBrowser.DocumentCompleted> событий. В Visual Studio, дважды щелкните <xref:System.Windows.Forms.WebBrowser> управления; в текстовом редакторе, настройте прослушиватель программными средствами.  
   
      [!code-csharp[ManagedDOMStyles#2](~/samples/snippets/csharp/VS_Snippets_Winforms/ManagedDOMStyles/CS/Form1.cs#2)]
-     [!code-vb[ManagedDOMStyles#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ManagedDOMStyles/VB/Form1.vb#2)]  
+       
   
 7. Запустите проект. Наведите курсор на первый `DIV` Обратите внимание на действия кода.  
   
@@ -74,7 +74,7 @@ ms.locfileid: "59333669"
  В следующем примере кода показан полный код для `StyleGenerator` класс, который выполняет синтаксический анализ значение существующего стиля, поддерживает добавление, изменение и удаление стилей и возвращает новое значение стиля с требуемыми изменениями.  
   
  [!code-csharp[ManagedDOMStyles#1](~/samples/snippets/csharp/VS_Snippets_Winforms/ManagedDOMStyles/CS/StyleGenerator.cs#1)]
- [!code-vb[ManagedDOMStyles#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ManagedDOMStyles/VB/StyleGenerator.vb#1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

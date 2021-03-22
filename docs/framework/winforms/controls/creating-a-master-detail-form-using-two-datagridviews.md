@@ -36,9 +36,9 @@ ms.locfileid: "59295800"
 1. Создайте класс, производный от <xref:System.Windows.Forms.Form> и содержит два <xref:System.Windows.Forms.DataGridView> элементов управления и два <xref:System.Windows.Forms.BindingSource> компонентов. Ниже представлена базовая реализация формы и включает в себя `Main` метод. При использовании в конструкторе Visual Studio для создания формы, то можно использовать созданный код конструктора вместо этого кода, обязательно используйте имена, показанные в объявлениях переменных.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewMasterDetails#01](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/CS/masterdetails.cs#01)]
-     [!code-vb[System.Windows.Forms.DataGridViewMasterDetails#01](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/VB/masterdetails.vb#01)]  
+       
     [!code-csharp[System.Windows.Forms.DataGridViewMasterDetails#02](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/CS/masterdetails.cs#02)]
-    [!code-vb[System.Windows.Forms.DataGridViewMasterDetails#02](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/VB/masterdetails.vb#02)]  
+      
   
 2. Реализуйте метод в определении класса формы для обработки подробные сведения о подключении к базе данных. В этом примере используется `GetData` метод, который заполняет <xref:System.Data.DataSet> , добавляет <xref:System.Data.DataRelation> объект набора данных и привязывает <xref:System.Windows.Forms.BindingSource> компонентов. Убедитесь, что переменной `connectionString` присвоено значение, соответствующее базе данных.  
   
@@ -46,12 +46,12 @@ ms.locfileid: "59295800"
     >  Хранение конфиденциальных сведений (например, пароля) в строке подключения может повлиять на безопасность приложения. Использование проверки подлинности Windows (также называемой встроенными средствами безопасности) — более безопасный способ управления доступом к базе данных. Дополнительные сведения см. в разделе [Защита сведений о подключении](../../data/adonet/protecting-connection-information.md).  
   
      [!code-csharp[System.Windows.Forms.DataGridViewMasterDetails#20](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/CS/masterdetails.cs#20)]
-     [!code-vb[System.Windows.Forms.DataGridViewMasterDetails#20](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/VB/masterdetails.vb#20)]  
+       
   
 3. Реализовать обработчик для формы <xref:System.Windows.Forms.Form.Load> событие, которое привязывает <xref:System.Windows.Forms.DataGridView> элементы управления <xref:System.Windows.Forms.BindingSource> компоненты и вызывает метод `GetData` метод. Следующий пример содержит код, который изменяет размер <xref:System.Windows.Forms.DataGridView> столбцы в соответствии с отображаемых данных.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewMasterDetails#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/CS/masterdetails.cs#10)]
-     [!code-vb[System.Windows.Forms.DataGridViewMasterDetails#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMasterDetails/VB/masterdetails.vb#10)]  
+       
   
 ## <a name="testing-the-application"></a>Тестирование приложения  
  Теперь можно проверить форму, чтобы убедиться, что она правильно работает.  

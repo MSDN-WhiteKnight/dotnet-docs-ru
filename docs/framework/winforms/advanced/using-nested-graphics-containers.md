@@ -23,7 +23,7 @@ ms.locfileid: "59104303"
  В следующем примере создается <xref:System.Drawing.Graphics> объект и контейнер внутри этого <xref:System.Drawing.Graphics> объекта. Мировое преобразование объекта <xref:System.Drawing.Graphics> объект является сдвиг 100 единиц по оси x и на 80 единиц по оси y. Мировое преобразование контейнера является поворот на 30 градусов. Код выполняет вызов `DrawRectangle(pen, -60, -30, 120, 60)` дважды. Первый вызов <xref:System.Drawing.Graphics.DrawRectangle%2A> находится внутри контейнера; то есть происходит между вызовы <xref:System.Drawing.Graphics.BeginContainer%2A> и <xref:System.Drawing.Graphics.EndContainer%2A>. Второй вызов <xref:System.Drawing.Graphics.DrawRectangle%2A> — после вызова <xref:System.Drawing.Graphics.EndContainer%2A>.  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#61](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#61)]
- [!code-vb[System.Drawing.MiscLegacyTopics#61](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#61)]  
+   
   
  В приведенном выше коде прямоугольника, отображаемые из контейнера, применяется сначала объемное преобразование контейнера (поворот), а затем по мировое преобразование объекта <xref:System.Drawing.Graphics> (сдвиг). Прямоугольник, извлеченных из вне контейнера, применяется только мировое преобразование объекта <xref:System.Drawing.Graphics> (сдвиг). На следующем рисунке показано два прямоугольника: 
   
@@ -33,7 +33,7 @@ ms.locfileid: "59104303"
  В следующем примере показано, как вложенные контейнеры обрабатывать отсеченных областей. Код создает <xref:System.Drawing.Graphics> объект и контейнер внутри этого <xref:System.Drawing.Graphics> объекта. Отсеченная область объекта <xref:System.Drawing.Graphics> объект представляет собой прямоугольник, а отсеченная область объекта контейнера — эллипс. Код делает два вызова <xref:System.Drawing.Graphics.DrawLine%2A> метод. Первый вызов <xref:System.Drawing.Graphics.DrawLine%2A> находится внутри контейнера, а второй вызов <xref:System.Drawing.Graphics.DrawLine%2A> выходит за пределы контейнера (после вызова <xref:System.Drawing.Graphics.EndContainer%2A>). Первая строка обрезается пересечение двух отсеченных областей. Вторая строка обрезается по прямоугольный вырезанной <xref:System.Drawing.Graphics> объекта.  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#62](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#62)]
- [!code-vb[System.Drawing.MiscLegacyTopics#62](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#62)]  
+   
   
  На следующем рисунке показано два усеченные строки:
   
@@ -50,7 +50,7 @@ ms.locfileid: "59104303"
  В следующем примере создается <xref:System.Drawing.Graphics> и устанавливает его подсказка отрисовки текста <xref:System.Drawing.Drawing2D.SmoothingMode.AntiAlias>. Код создает два контейнеров — по одному вложен в другой. Подсказка по визуализации текста внешнего контейнера имеет значение <xref:System.Drawing.Text.TextRenderingHint.SingleBitPerPixel>, и подсказка по визуализации текста внутреннего контейнера имеет значение <xref:System.Drawing.Drawing2D.SmoothingMode.AntiAlias>. Код рисует три строки: одну из внутреннего контейнера, одну из внешнего контейнера и один из <xref:System.Drawing.Graphics> сам объект.  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#63](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#63)]
- [!code-vb[System.Drawing.MiscLegacyTopics#63](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#63)]  
+   
   
  На следующем рисунке эти три строки. Строки, выводимые из внутреннего контейнера и <xref:System.Drawing.Graphics> объект Сглаживается, с помощью сглаживания. Строка, выводимая из внешнего контейнера не подвергается сглаживанию, так как <xref:System.Drawing.Graphics.TextRenderingHint%2A> свойству <xref:System.Drawing.Text.TextRenderingHint.SingleBitPerPixel>.  
   

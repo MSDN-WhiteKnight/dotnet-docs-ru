@@ -22,7 +22,7 @@ ms.locfileid: "59188517"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[System.Media.SoundPlayer.PlayLooping#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Media.SoundPlayer.PlayLooping/CS/Form1.cs#1)]
- [!code-vb[System.Media.SoundPlayer.PlayLooping#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Media.SoundPlayer.PlayLooping/VB/Form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

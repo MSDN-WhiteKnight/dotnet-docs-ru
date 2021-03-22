@@ -24,7 +24,7 @@ ms.locfileid: "59211677"
  Четыре цифры (0, 0, 100, 60), передаваемый <xref:System.Drawing.Graphics.FillEllipse%2A> метод укажите расположение и размер прямоугольника, ограничивающего эллипса. Прямоугольник имеет в левом верхнем углу (0, 0), шириной 100, а высота — 60.  
   
  [!code-csharp[System.Drawing.UsingABrush#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#11)]
- [!code-vb[System.Drawing.UsingABrush#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#11)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs> `e`, который является параметром <xref:System.Windows.Forms.Control.Paint> обработчик событий.  

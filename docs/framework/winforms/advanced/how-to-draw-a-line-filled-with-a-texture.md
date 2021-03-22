@@ -27,7 +27,7 @@ ms.locfileid: "59186911"
  ![Снимок экрана, показывающий растрового изображения и текстуры эллипса.](./media/how-to-draw-a-line-filled-with-a-texture/bitmap-textured-ellipse.png)  
   
  [!code-csharp[System.Drawing.UsingAPen#61](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#61)]
- [!code-vb[System.Drawing.UsingAPen#61](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#61)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Создайте форму Windows и обработки формы <xref:System.Windows.Forms.Control.Paint> событий. Вставьте приведенный выше код в <xref:System.Windows.Forms.Control.Paint> обработчик событий. Замените `Texture.jpg` с изображением в вашей системе.  

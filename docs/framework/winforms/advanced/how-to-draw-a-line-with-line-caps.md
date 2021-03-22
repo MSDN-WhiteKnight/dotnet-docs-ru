@@ -28,7 +28,7 @@ ms.locfileid: "59146215"
  ![Рисунок, показывающий линий с кружком.](./media/how-to-draw-a-line-with-line-caps/line-cap-arrowhead-example.gif)  
   
  [!code-csharp[System.Drawing.UsingAPen#71](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#71)]
- [!code-vb[System.Drawing.UsingAPen#71](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#71)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
   

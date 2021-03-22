@@ -29,7 +29,7 @@ ms.locfileid: "59345005"
     >  Установка <xref:System.Windows.Forms.BindingSource.Position%2A> значение за пределами первой или последней записи не приведет к ошибке, как [!INCLUDE[dnprdnshort](../../../includes/dnprdnshort-md.md)] не позволит вам задать положение значения, выходящего за границы списка. Если важно знать, достигнута ли первой или последней записи приложения, добавьте логику для проверки превышения количества элементов данных.  
   
      [!code-csharp[System.Windows.Forms.NavigatingData#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/CS/Form1.cs#4)]
-     [!code-vb[System.Windows.Forms.NavigatingData#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/VB/Form1.vb#4)]  
+       
   
 ### <a name="to-check-whether-you-have-passed-the-end-or-beginning"></a>Чтобы проверить, является ли начало или конец  
   
@@ -41,14 +41,14 @@ ms.locfileid: "59345005"
     >  Имейте в виду, что при изменении списка, при перемещении в коде, необходимо включить **Далее** кнопку, чтобы пользователи могли просматривать всю длину нового списка. Кроме того, следует помнить, указанных выше <xref:System.Windows.Forms.BindingSource.PositionChanged> событий для конкретного <xref:System.Windows.Forms.BindingSource> вы работаете с должно быть связано со своим методом обработки событий. Ниже приведен пример метода обработки <xref:System.Windows.Forms.BindingSource.PositionChanged> событий:  
   
      [!code-csharp[System.Windows.Forms.NavigatingData#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/CS/Form1.cs#3)]
-     [!code-vb[System.Windows.Forms.NavigatingData#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/VB/Form1.vb#3)]  
+       
   
 ### <a name="to-find-an-item-and-set-it-as-the-current-item"></a>Чтобы найти элемент и задать его в качестве текущего элемента  
   
 1. Найдите запись, которую вы хотите задать в качестве текущего элемента. Это можно сделать с помощью <xref:System.Windows.Forms.BindingSource.Find%2A> метод <xref:System.Windows.Forms.BindingSource>, если источник данных реализует <xref:System.ComponentModel.IBindingList>. Вот некоторые примеры данных источников, реализующие <xref:System.ComponentModel.IBindingList> являются <xref:System.ComponentModel.BindingList%601> и <xref:System.Data.DataView>.  
   
      [!code-csharp[System.Windows.Forms.NavigatingData#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/CS/Form1.cs#2)]
-     [!code-vb[System.Windows.Forms.NavigatingData#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/VB/Form1.vb#2)]  
+       
   
 ## <a name="see-also"></a>См. также
 

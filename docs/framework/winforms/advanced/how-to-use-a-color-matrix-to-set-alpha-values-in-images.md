@@ -30,7 +30,7 @@ ms.locfileid: "59199548"
  Когда изображение на белой части в фоновом режиме, оно смешивается с белым цветом. Пересечения черная линия, изображение изображения смешивается с черным цветом.  
   
  [!code-csharp[System.Drawing.AlphaBlending#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.AlphaBlending/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.AlphaBlending#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.AlphaBlending/VB/Class1.vb#21)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs>`e`, который является параметром <xref:System.Windows.Forms.PaintEventHandler>.  

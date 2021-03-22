@@ -46,7 +46,7 @@ ms.locfileid: "59140508"
  Чтобы нарисовать контур, вам потребуется <xref:System.Drawing.Graphics> объекта, <xref:System.Drawing.Pen> объекта и <xref:System.Drawing.Drawing2D.GraphicsPath> объекта. <xref:System.Drawing.Graphics> Предоставляет <xref:System.Drawing.Graphics.DrawPath%2A> метод и <xref:System.Drawing.Pen> объект сохраняет атрибуты, например, ширина и цвет линии, используемый для визуализации путь. <xref:System.Drawing.Drawing2D.GraphicsPath> Объект сохраняет последовательность линий и кривых линий, составляющих путь. <xref:System.Drawing.Pen> Объекта и <xref:System.Drawing.Drawing2D.GraphicsPath> объекта передаются как аргументы для <xref:System.Drawing.Graphics.DrawPath%2A> метод. В следующем примере рисуется путь, который состоит из строки, эллипс и сплайн Безье:  
   
  [!code-csharp[LinesCurvesAndShapes#101](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#101)]
- [!code-vb[LinesCurvesAndShapes#101](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#101)]  
+   
   
  На следующем рисунке путь.  
   
@@ -55,12 +55,12 @@ ms.locfileid: "59140508"
  Помимо добавления линии, прямоугольники и кривые к пути, можно добавить пути к пути. Это позволяет объединять существующие пути для формирования больших и сложных путей.  
   
  [!code-csharp[LinesCurvesAndShapes#102](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#102)]
- [!code-vb[LinesCurvesAndShapes#102](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#102)]  
+   
   
  Два других элемента, можно добавить в путь: строку и сектор. Сектор — часть внутреннюю часть эллипса. В следующем примере создается путь из дуги, фундаментальный сплайн, строка и сектора:  
   
  [!code-csharp[LinesCurvesAndShapes#103](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#103)]
- [!code-vb[LinesCurvesAndShapes#103](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#103)]  
+   
   
  На следующем рисунке путь. Обратите внимание, что путь не обязательно должен быть подключен; arc, фундаментальный сплайн, строка и круговой разделены.  
   

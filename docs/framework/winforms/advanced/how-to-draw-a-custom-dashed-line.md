@@ -27,7 +27,7 @@ ms.locfileid: "59109191"
  ![Рисунок, показывающий пунктирной линией. ](./media/how-to-draw-a-custom-dashed-line/dashed-line-illustration.gif "pens6")  
   
  [!code-csharp[System.Drawing.UsingAPen#51](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#51)]
- [!code-vb[System.Drawing.UsingAPen#51](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#51)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Создайте форму Windows и обработки формы <xref:System.Windows.Forms.Control.Paint> событий. Вставьте приведенный выше код в <xref:System.Windows.Forms.Control.Paint> обработчик событий.  

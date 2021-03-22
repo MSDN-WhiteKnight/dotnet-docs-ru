@@ -38,30 +38,30 @@ ms.locfileid: "59325011"
 1. Создайте класс ячейки с именем `DataGridViewRolloverCell`, производный от типа <xref:System.Windows.Forms.DataGridViewTextBoxCell>.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#201](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#201)]
-     [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#201](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#201)]  
+       
     [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#202](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#202)]
-    [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#202](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#202)]  
+      
   
 2. Переопределите метод <xref:System.Windows.Forms.DataGridViewTextBoxCell.Paint%2A> в классе `DataGridViewRolloverCell` . При переопределении сначала вызовите реализацию базового класса, которая отвечает за функциональные возможности размещенного текстового поля. Затем с помощью метода <xref:System.Windows.Forms.Control.PointToClient%2A> элемента управления преобразуйте положение курсора (в экранных координатах) в координаты клиентской области <xref:System.Windows.Forms.DataGridView>. Если координаты курсора попадают в границы ячейки, то рисуется внутренняя рамка.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#210](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#210)]
-     [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#210](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#210)]  
+       
   
 3. Переопределите методы <xref:System.Windows.Forms.DataGridViewCell.OnMouseEnter%2A> и <xref:System.Windows.Forms.DataGridViewCell.OnMouseLeave%2A> класса `DataGridViewRolloverCell`, чтобы ячейки отрисовывались повторно, когда указатель мыши пересекает их границы.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#220](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#220)]
-     [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#220](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#220)]  
+       
   
 4. Создайте класс с именем `DataGridViewRolloverCellColumn`, производный от типа <xref:System.Windows.Forms.DataGridViewColumn>. В конструкторе назначьте новый объект `DataGridViewRolloverCell` его свойству <xref:System.Windows.Forms.DataGridViewColumn.CellTemplate%2A>.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#300](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#300)]
-     [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#300](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#300)]  
+       
   
 ## <a name="example"></a>Пример  
  Полный пример кода включает небольшую тестовую форму, демонстрирующую поведение ячейки пользовательского типа.  
   
  [!code-csharp[System.Windows.Forms.DataGridViewRolloverCell#000](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/CS/rollovercell.cs#000)]
- [!code-vb[System.Windows.Forms.DataGridViewRolloverCell#000](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewRolloverCell/VB/rollovercell.vb#000)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

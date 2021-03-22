@@ -30,7 +30,7 @@ ms.locfileid: "59189910"
  ![Снимок экрана исходный образ и то же изображение обрезается.](./media/how-to-crop-and-scale-images/original-image-cropped-image.png)  
   
  [!code-csharp[System.Drawing.WorkingWithImages#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.WorkingWithImages/CS/Class1.cs#11)]
- [!code-vb[System.Drawing.WorkingWithImages#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.WorkingWithImages/VB/Class1.vb#11)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs> `e`, который является параметром <xref:System.Windows.Forms.Control.Paint> обработчик событий. Не забудьте заменить `Apple.gif` путь, допустимые в вашей системе и имя файла изображения.  

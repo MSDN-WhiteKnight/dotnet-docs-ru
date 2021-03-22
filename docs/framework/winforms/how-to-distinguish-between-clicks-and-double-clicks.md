@@ -25,7 +25,7 @@ ms.locfileid: "59139403"
 -   Убедитесь, что элемент управления, с которым вы работаете, имеет стандартное поведение при двойном щелчке мышью. В противном случае задействуйте элемент управления с помощью метода <xref:System.Windows.Forms.Control.SetStyle%2A>. Обработайте событие двойного щелчка и откат к одиночному щелчку кнопкой мыши, а также действие двойного щелчка. В следующем примере кода показано, как создать пользовательскую кнопку с включенным двойным щелчком мыши, а также как откатить к одиночному щелчку в коде обработки событий двойного щелчка.  
   
      [!code-csharp[System.Windows.Forms.ButtonDoubleClick#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ButtonDoubleClick/CS/Form1.cs#1)]
-     [!code-vb[System.Windows.Forms.ButtonDoubleClick#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ButtonDoubleClick/VB/Form1.vb#1)]  
+       
   
 ### <a name="to-distinguish-between-clicks-in-the-mousedown-event"></a>Различение щелчков в событии MouseDown  
   
@@ -33,7 +33,7 @@ ms.locfileid: "59139403"
   
      [!code-cpp[System.Windows.Forms.SingleVersusDoubleClick#0](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.SingleVersusDoubleClick/cpp/form1.cpp#0)]
      [!code-csharp[System.Windows.Forms.SingleVersusDoubleClick#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.SingleVersusDoubleClick/CS/form1.cs#0)]
-     [!code-vb[System.Windows.Forms.SingleVersusDoubleClick#0](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.SingleVersusDoubleClick/VB/form1.vb#0)]  
+       
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этих примеров требуются:  

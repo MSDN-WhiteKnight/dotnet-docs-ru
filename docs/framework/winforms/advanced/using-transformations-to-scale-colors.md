@@ -29,7 +29,7 @@ ms.locfileid: "59107990"
  В следующем примере создается <xref:System.Drawing.Image> объекта из файла ColorBars2.bmp. Затем код масштабирует синего компонента каждого пикселя изображения с коэффициентом 2. Исходное изображение отображается вместе с преобразованные изображения.  
   
  [!code-csharp[System.Drawing.RecoloringImages#41](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.RecoloringImages/CS/Class1.cs#41)]
- [!code-vb[System.Drawing.RecoloringImages#41](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.RecoloringImages/VB/Class1.vb#41)]  
+   
   
  Ниже показан исходное изображение в левой части и масштабированное изображение справа:  
   
@@ -48,7 +48,7 @@ ms.locfileid: "59107990"
  В следующем примере создается <xref:System.Drawing.Image> объекта из файла ColorBars2.bmp. Затем код масштабирует красного, зеленого и синего компонентов каждого пикселя в изображении. Красные компоненты уменьшаются на 25 процентов, зеленые компоненты уменьшаются на 35 процентов и синий компоненты уменьшаются на 50 процентов.  
   
  [!code-csharp[System.Drawing.RecoloringImages#42](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.RecoloringImages/CS/Class1.cs#42)]
- [!code-vb[System.Drawing.RecoloringImages#42](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.RecoloringImages/VB/Class1.vb#42)]  
+   
   
  Ниже показан исходное изображение в левой части и масштабированное изображение справа:  
   

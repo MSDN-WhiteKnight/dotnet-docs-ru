@@ -35,7 +35,7 @@ ms.locfileid: "59125025"
 -   Передайте непрозрачный синий, красный и непрозрачный как третий и четвертый аргумент, соответственно.  
   
      [!code-csharp[System.Drawing.UsingaGradientBrush#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/CS/Class1.cs#21)]
-     [!code-vb[System.Drawing.UsingaGradientBrush#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/VB/Class1.vb#21)]  
+       
   
  В предыдущем примере цветовые компоненты линейно меняются при переходе из горизонтальную координату 0 горизонтальную координату 200. Например точки, в которых первая координата на равном расстоянии от 0 до 200 будет иметь синего компонента, который находится на равном расстоянии от 0 до 255.  
   
@@ -60,7 +60,7 @@ ms.locfileid: "59125025"
 -   Передайте непрозрачный черный и непрозрачный красный как третий и четвертый аргумент, соответственно.  
   
      [!code-csharp[System.Drawing.UsingaGradientBrush#22](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/CS/Class1.cs#22)]
-     [!code-vb[System.Drawing.UsingaGradientBrush#22](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/VB/Class1.vb#22)]  
+       
   
  Градиенты в предыдущих примерах были по горизонтали; то есть цвет постепенно изменяется при переходе по любой горизонтальной линии. Можно также определить вертикальные и диагональные градиенты.  
   
@@ -75,7 +75,7 @@ ms.locfileid: "59125025"
 -   Передайте непрозрачный синий и непрозрачный зеленый как третий и четвертый аргумент, соответственно.  
   
      [!code-csharp[System.Drawing.UsingaGradientBrush#23](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/CS/Class1.cs#23)]
-     [!code-vb[System.Drawing.UsingaGradientBrush#23](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingaGradientBrush/VB/Class1.vb#23)]  
+       
   
 ## <a name="see-also"></a>См. также
 

@@ -76,7 +76,7 @@ End Sub
 `SafeCallDelegate` Позволяет задавать <xref:System.Windows.Forms.TextBox> элемента управления <xref:System.Windows.Forms.TextBox.Text%2A> свойство. `WriteTextSafe` Запросы метод <xref:System.Windows.Forms.Control.InvokeRequired%2A>. Если <xref:System.Windows.Forms.Control.InvokeRequired%2A> возвращает `true`, `WriteTextSafe` передает `SafeCallDelegate` для <xref:System.Windows.Forms.Control.Invoke%2A> метод фактически вызывающим элемент управления. Если <xref:System.Windows.Forms.Control.InvokeRequired%2A> возвращает `false`, `WriteTextSafe` задает <xref:System.Windows.Forms.TextBox.Text%2A?displayProperty=nameWithType> напрямую. `Button1_Click` Обработчик событий создает новый поток и запускает `WriteTextSafe` метод. 
 
  [!code-csharp[ThreadSafeCalls#1](~/samples/snippets/winforms/thread-safe/example1/cs/Form1.cs)]
- [!code-vb[ThreadSafeCalls#1](~/samples/snippets/winforms/thread-safe/example1/vb/Form1.vb)]  
+   
 
 ## <a name="example-use-a-backgroundworker-event-handler"></a>Пример Используйте обработчик событий компонента BackgroundWorker
 
@@ -87,7 +87,7 @@ End Sub
 В примере используется <xref:System.ComponentModel.BackgroundWorker.RunWorkerCompleted> обработчик событий, чтобы задать <xref:System.Windows.Forms.TextBox> элемента управления <xref:System.Windows.Forms.TextBox.Text%2A> свойство. В качестве примера использования <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> событий, см. в разделе <xref:System.ComponentModel.BackgroundWorker>. 
 
  [!code-csharp[ThreadSafeCalls#2](~/samples/snippets/winforms/thread-safe/example2/cs/Form1.cs)]
- [!code-vb[ThreadSafeCalls#2](~/samples/snippets/winforms/thread-safe/example2/vb/Form1.vb)]  
+   
 
 ## <a name="see-also"></a>См. также
 

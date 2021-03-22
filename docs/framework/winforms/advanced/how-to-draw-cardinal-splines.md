@@ -26,7 +26,7 @@ ms.locfileid: "59204956"
      ![Схема, показывающая колоколообразной фундаментальный сплайн.](./media/how-to-draw-cardinal-splines/bell-shaped-cardinal-spline.png)  
   
  [!code-csharp[System.Drawing.ConstructingDrawingCurves#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.ConstructingDrawingCurves#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/VB/Class1.vb#21)]  
+   
   
 ### <a name="drawing-a-closed-cardinal-spline"></a>Рисование замкнутую кривую Кардинала  
   
@@ -35,7 +35,7 @@ ms.locfileid: "59204956"
  ![Схема, показывающая замкнутый фундаментальный сплайн.](./media/how-to-draw-cardinal-splines/closed-cardinal-spine.png)  
   
  [!code-csharp[System.Drawing.ConstructingDrawingCurves#22](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/CS/Class1.cs#22)]
- [!code-vb[System.Drawing.ConstructingDrawingCurves#22](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/VB/Class1.vb#22)]  
+   
   
 ### <a name="changing-the-bend-of-a-cardinal-spline"></a>Изменение изгиба фундаментального сплайна  
   
@@ -44,7 +44,7 @@ ms.locfileid: "59204956"
  ![Схема, показывающая три фундаментальные сплайны.](./media/how-to-draw-cardinal-splines/three-cardinal-splines.png)  
   
  [!code-csharp[System.Drawing.ConstructingDrawingCurves#23](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/CS/Class1.cs#23)]
- [!code-vb[System.Drawing.ConstructingDrawingCurves#23](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ConstructingDrawingCurves/VB/Class1.vb#23)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms, и они требуют <xref:System.Windows.Forms.PaintEventArgs> `e`, который является параметром <xref:System.Windows.Forms.Control.Paint> обработчик событий.  

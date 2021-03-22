@@ -26,7 +26,7 @@ ms.locfileid: "59345746"
 2. Используйте <xref:System.Windows.Forms.ListView.ColumnHeaderCollection.Add%2A> метод в представлении списка <xref:System.Windows.Forms.ListView.Columns%2A> свойство.  
   
      [!code-csharp[System.Windows.Forms.ListViewLegacyTopics#31](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ListViewLegacyTopics/CS/Class1.cs#31)]
-     [!code-vb[System.Windows.Forms.ListViewLegacyTopics#31](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ListViewLegacyTopics/VB/Class1.vb#31)]  
+       
   
 ## <a name="see-also"></a>См. также
 

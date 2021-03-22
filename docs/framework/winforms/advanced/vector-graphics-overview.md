@@ -54,7 +54,7 @@ ms.locfileid: "59087967"
  Все методы рисования <xref:System.Drawing.Graphics> используют с <xref:System.Drawing.Pen> объекта. Чтобы нарисовать что-либо, необходимо создать по крайней мере два объекта: <xref:System.Drawing.Graphics> объекта и <xref:System.Drawing.Pen> объекта. <xref:System.Drawing.Pen> Объект сохраняет атрибуты, такие как толщины и цвета, рисуемого элемента. <xref:System.Drawing.Pen> Объект передается в качестве одного из аргументов метод рисования. Например, один из вариантов <xref:System.Drawing.Graphics.DrawLine%2A> метод получает <xref:System.Drawing.Pen> объекта и четырех целых чисел, как показано в следующем примере, который рисует прямоугольник с шириной 100, высотой 50 и координатами верхнего левого угла (20, 10):  
   
  [!code-csharp[LinesCurvesAndShapes#11](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#11)]
- [!code-vb[LinesCurvesAndShapes#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#11)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -30,18 +30,18 @@ ms.locfileid: "59117460"
  В следующем примере рисуется эллипс; ограничивающий прямоугольник имеет ширину 80, в левом верхнем углу и высоты 40 (100, 50):  
   
  [!code-csharp[LinesCurvesAndShapes#51](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#51)]
- [!code-vb[LinesCurvesAndShapes#51](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#51)]  
+   
   
  <xref:System.Drawing.Graphics.DrawEllipse%2A> — перегруженный метод <xref:System.Drawing.Graphics> класса, поэтому существует несколько способов передачи аргументов. Например, можно создать <xref:System.Drawing.Rectangle> и передать <xref:System.Drawing.Rectangle> для <xref:System.Drawing.Graphics.DrawEllipse%2A> метод в качестве аргумента:  
   
  [!code-csharp[LinesCurvesAndShapes#52](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#52)]
- [!code-vb[LinesCurvesAndShapes#52](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#52)]  
+   
   
 ## <a name="drawing-an-arc"></a>Рисование дуги  
  Дуга является частью эллипса. Чтобы нарисовать дугу, вызовите <xref:System.Drawing.Graphics.DrawArc%2A> метод <xref:System.Drawing.Graphics> класса. Параметры <xref:System.Drawing.Graphics.DrawArc%2A> метод такие же, как параметры <xref:System.Drawing.Graphics.DrawEllipse%2A> метода, за исключением случаев, <xref:System.Drawing.Graphics.DrawArc%2A> требует начального угла и угла поворота. В следующем примере рисуется дуга с начальным углом 30 градусов и угол поворота, равный 180 градусов:  
   
  [!code-csharp[LinesCurvesAndShapes#53](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#53)]
- [!code-vb[LinesCurvesAndShapes#53](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#53)]  
+   
   
  На следующем рисунке дуги, эллипс и ограничивающий прямоугольник.  
   

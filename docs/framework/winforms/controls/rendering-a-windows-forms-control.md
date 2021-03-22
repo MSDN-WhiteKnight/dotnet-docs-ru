@@ -101,7 +101,7 @@ protected virtual void OnPaintBackground(PaintEventArgs pevent);
  В следующем фрагменте кода показано как `FlashTrackBar` прямоугольную область для рисования вычисляет пользовательского элемента управления. `client` Обозначает переменную <xref:System.Windows.Forms.PaintEventArgs.ClipRectangle%2A> свойство. Полный пример см. в разделе [как: Создание элемента управления Windows Forms, показывающего прогресс](how-to-create-a-windows-forms-control-that-shows-progress.md).  
   
  [!code-csharp[System.Windows.Forms.FlashTrackBar#6](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/CS/FlashTrackBar.cs#6)]
- [!code-vb[System.Windows.Forms.FlashTrackBar#6](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/VB/FlashTrackBar.vb#6)]  
+   
   
 ## <a name="freeing-graphics-resources"></a>Освобождение ресурсов графики  
  Графические объекты ресурсоемки, потому что они используют системные ресурсы. Такие объекты содержат экземпляры <xref:System.Drawing.Graphics?displayProperty=nameWithType> класса, а также экземпляры <xref:System.Drawing.Brush?displayProperty=nameWithType>, <xref:System.Drawing.Pen?displayProperty=nameWithType>и другие графические классы. Очень важно, создания ресурса графики, только в том случае, когда она необходима и отпустите его сразу после его использования. Если вы создаете тип, реализующий <xref:System.IDisposable> интерфейс, вызовите его <xref:System.IDisposable.Dispose%2A> метод, когда вы закончите с ним для освобождения ресурсов.  
@@ -109,13 +109,13 @@ protected virtual void OnPaintBackground(PaintEventArgs pevent);
  В следующем фрагменте кода показано как `FlashTrackBar` пользовательский элемент управления создает и освобождает <xref:System.Drawing.Brush> ресурсов. Полный исходный код, см. в разделе [как: Создание элемента управления Windows Forms, показывающего прогресс](how-to-create-a-windows-forms-control-that-shows-progress.md).  
   
  [!code-csharp[System.Windows.Forms.FlashTrackBar#5](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/CS/FlashTrackBar.cs#5)]
- [!code-vb[System.Windows.Forms.FlashTrackBar#5](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/VB/FlashTrackBar.vb#5)]  
+   
   
  [!code-csharp[System.Windows.Forms.FlashTrackBar#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/CS/FlashTrackBar.cs#4)]
- [!code-vb[System.Windows.Forms.FlashTrackBar#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/VB/FlashTrackBar.vb#4)]  
+   
   
  [!code-csharp[System.Windows.Forms.FlashTrackBar#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/CS/FlashTrackBar.cs#3)]
- [!code-vb[System.Windows.Forms.FlashTrackBar#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FlashTrackBar/VB/FlashTrackBar.vb#3)]  
+   
   
 ## <a name="see-also"></a>См. также
 

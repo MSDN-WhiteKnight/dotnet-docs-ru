@@ -31,17 +31,17 @@ ms.locfileid: "59295618"
 1. Присвойте свойству <xref:System.Windows.Forms.WebBrowser.AllowWebBrowserDrop%2A> элемента управления <xref:System.Windows.Forms.WebBrowser> значение `false`, чтобы элемент управления <xref:System.Windows.Forms.WebBrowser> не открывал файлы, которые перетаскиваются в него мышью.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#1)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#1)]  
+       
   
 2. Присвойте свойству <xref:System.Windows.Forms.WebBrowser.IsWebBrowserContextMenuEnabled%2A> значение `false`, чтобы элемент управления <xref:System.Windows.Forms.WebBrowser> не выводил контекстное меню при щелчке правой кнопкой мыши.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#2)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#2)]  
+       
   
 3. Присвойте свойству <xref:System.Windows.Forms.WebBrowser.WebBrowserShortcutsEnabled%2A> значение `false`, чтобы элемент управления <xref:System.Windows.Forms.WebBrowser> не отвечал на нажатие сочетаний клавиш.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#3)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#3)]  
+       
   
 4. Задайте свойство <xref:System.Windows.Forms.WebBrowser.ObjectForScripting%2A> в конструкторе формы или в обработчике событий <xref:System.Windows.Forms.Form.Load>.  
   
@@ -51,14 +51,14 @@ ms.locfileid: "59295618"
     >  Модель COM должна иметь доступ к объекту скрипта. Чтобы сделать форму доступной для COM, добавьте в класс формы атрибут <xref:System.Runtime.InteropServices.ComVisibleAttribute>.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#4)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#4)]  
+       
   
 5. Реализуйте в коде приложения открытые свойства или методы, которые будет использовать код скрипта.  
   
      Например, если для объекта скрипта используется класс формы, добавьте в этот класс приведенный ниже код.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#5](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#5)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#5](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#5)]  
+       
   
 6. Используйте объект `window.external` в коде скрипта для доступа к открытым свойствам и методам указанного объекта.  
   
@@ -87,18 +87,18 @@ ms.locfileid: "59295618"
      Например, добавьте приведенный ниже код в обработчик событий кнопки <xref:System.Windows.Forms.Control.Click>.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#8](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#8)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#8](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#8)]  
+       
   
 9. По окончании отладки кода DHTML присвойте свойству <xref:System.Windows.Forms.WebBrowser.ScriptErrorsSuppressed%2A> значение `true`, чтобы элемент управления <xref:System.Windows.Forms.WebBrowser> не выводил сообщения об ошибках в коде скрипта.  
   
      [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#9](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#9)]
-     [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#9](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#9)]  
+       
   
 ## <a name="example"></a>Пример  
  В примере ниже приводится полный код демонстрационного приложения, которое поможет лучше разобраться в описываемой возможности. Код HTML загружается в элемент управления <xref:System.Windows.Forms.WebBrowser> посредством свойства <xref:System.Windows.Forms.WebBrowser.DocumentText%2A> вместо загрузки из отдельного HTML-файла.  
   
  [!code-csharp[System.Windows.Forms.WebBrowser.ObjectForScripting#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/CS/form1.cs#0)]
- [!code-vb[System.Windows.Forms.WebBrowser.ObjectForScripting#0](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.WebBrowser.ObjectForScripting/vb/form1.vb#0)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера кода требуются:  

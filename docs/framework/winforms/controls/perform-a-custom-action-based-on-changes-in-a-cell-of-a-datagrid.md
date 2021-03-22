@@ -24,14 +24,14 @@ ms.locfileid: "59229164"
 -   Создайте обработчик для <xref:System.Windows.Forms.DataGridView.CellValueChanged> событий.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewMisc#130](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMisc/CS/datagridviewmisc.cs#130)]
-     [!code-vb[System.Windows.Forms.DataGridViewMisc#130](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMisc/VB/datagridviewmisc.vb#130)]  
+       
   
 ### <a name="to-detect-changes-in-the-states-of-datagridview-cells"></a>Для обнаружения изменений в состояния ячеек элемента управления DataGridView  
   
 -   Создайте обработчик для <xref:System.Windows.Forms.DataGridView.CellStateChanged> событий.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewMisc#135](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMisc/CS/datagridviewmisc.cs#135)]
-     [!code-vb[System.Windows.Forms.DataGridViewMisc#135](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewMisc/VB/datagridviewmisc.vb#135)]  
+       
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

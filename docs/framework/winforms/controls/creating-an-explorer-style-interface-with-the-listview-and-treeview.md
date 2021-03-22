@@ -61,22 +61,22 @@ ms.locfileid: "59332122"
 8. Реализуйте код для заполнения <xref:System.Windows.Forms.TreeView> с узлов и подузлов. Добавьте следующий код в `Form1` класса.  
   
      [!code-csharp[System.Windows.Forms.ExplorerStyleInterface#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/CS/Form1.cs#1)]
-     [!code-vb[System.Windows.Forms.ExplorerStyleInterface#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/VB/Form1.vb#1)]  
+       
   
 9. Так как предыдущий код использует пространство имен System.IO, добавьте соответствующий или импортировать инструкцию в верхней части формы.  
   
      [!code-csharp[System.Windows.Forms.ExplorerStyleInterface#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/CS/Form1.cs#4)]
-     [!code-vb[System.Windows.Forms.ExplorerStyleInterface#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/VB/Form1.vb#4)]  
+       
   
 10. Вызовите метод настройки из предыдущего шага в конструкторе формы или <xref:System.Windows.Forms.Form.Load> метод обработки событий. Добавьте следующий код в конструктор формы.  
   
      [!code-csharp[System.Windows.Forms.ExplorerStyleInterface#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/CS/Form1.cs#2)]
-     [!code-vb[System.Windows.Forms.ExplorerStyleInterface#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/VB/Form1.vb#2)]  
+       
   
 11. Обрабатывать <xref:System.Windows.Forms.TreeView.NodeMouseClick> событие для `treeview1` **,** и реализации кода для заполнения `listview1` содержимое узла, при щелчке узла. Добавьте следующий код в `Form1` класса.  
   
      [!code-csharp[System.Windows.Forms.ExplorerStyleInterface#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/CS/Form1.cs#3)]
-     [!code-vb[System.Windows.Forms.ExplorerStyleInterface#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ExplorerStyleInterface/VB/Form1.vb#3)]  
+       
   
      Если вы используете C#, убедитесь, что у вас есть <xref:System.Windows.Forms.TreeView.NodeMouseClick> событие, связанное со своим методом обработки событий. Добавьте следующий код в конструктор формы.  
   

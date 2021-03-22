@@ -21,7 +21,7 @@ ms.locfileid: "59213029"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[System.Windows.Forms.ChangeNotification#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.ChangeNotification/CS/Form1.cs#3)]
- [!code-vb[System.Windows.Forms.ChangeNotification#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.ChangeNotification/VB/Form1.vb#3)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для компиляции в предыдущем примере кода:  

@@ -31,7 +31,7 @@ ms.locfileid: "59197494"
  Следующий код передаются два аргумента <xref:System.Drawing.StringFormat.SetTabStops%2A> метод. Вторым аргументом является массив, содержащий смещения позиций табуляции. Первый аргумент, переданный <xref:System.Drawing.StringFormat.SetTabStops%2A> равно 0, это означает, что первое смещение в массиве измеряется начиная с позиции 0, левого края ограничивающего прямоугольника.  
   
  [!code-csharp[System.Drawing.FontsAndText#41](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.FontsAndText/CS/Class1.cs#41)]
- [!code-vb[System.Drawing.FontsAndText#41](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.FontsAndText/VB/Class1.vb#41)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
   

@@ -20,7 +20,7 @@ ms.locfileid: "59213673"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[System.Drawing.CreateBitmapAtRuntime#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CreateBitmapAtRuntime/CS/Form1.cs#1)]
- [!code-vb[System.Drawing.CreateBitmapAtRuntime#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CreateBitmapAtRuntime/VB/Form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

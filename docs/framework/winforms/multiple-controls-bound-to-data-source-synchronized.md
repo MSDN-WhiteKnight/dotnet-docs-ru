@@ -30,7 +30,7 @@ ms.locfileid: "59170343"
  В примере используется <xref:System.Windows.Forms.BindingSource> для привязки источника данных и элементов управления. Кроме того, можно привязать элементы управления непосредственно к источнику данных и извлечь <xref:System.Windows.Forms.BindingManagerBase> для привязки из формы <xref:System.Windows.Forms.Control.BindingContext%2A> и затем обработать <xref:System.Windows.Forms.BindingManagerBase.BindingComplete> событие для <xref:System.Windows.Forms.BindingManagerBase>. Например, как это сделать, см. на странице справки <xref:System.Windows.Forms.BindingManagerBase.BindingComplete> событие <xref:System.Windows.Forms.BindingManagerBase>.  
   
  [!code-csharp[System.Windows.Forms.BindingSourceMultipleControls#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.BindingSourceMultipleControls/CS/Form1.cs#1)]
- [!code-vb[System.Windows.Forms.BindingSourceMultipleControls#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.BindingSourceMultipleControls/VB/Form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
   

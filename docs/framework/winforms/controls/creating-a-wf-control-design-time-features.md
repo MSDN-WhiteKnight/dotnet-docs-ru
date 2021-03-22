@@ -121,29 +121,29 @@ ms.locfileid: "57724636"
 1. Откройте `MarqueeControl` исходный файл в **редактор кода**. В верхней части файла импортируйте следующие пространства имен:
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#220](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrol.cs#220)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#220](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrol.vb#220)]
+     
 
 2. Добавить <xref:System.ComponentModel.DesignerAttribute> для `MarqueeControl` объявление класса. Это связывает пользовательский элемент управления с помощью его конструктора.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#240](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrol.cs#240)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#240](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrol.vb#240)]
+     
 
 3. Откройте `MarqueeControlRootDesigner` исходный файл в **редактор кода**. В верхней части файла импортируйте следующие пространства имен:
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#520](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#520)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#520](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#520)]
+     
 
 4. Измените объявление `MarqueeControlRootDesigner` наследование <xref:System.Windows.Forms.Design.DocumentDesigner> класса. Применить <xref:System.ComponentModel.ToolboxItemFilterAttribute> для указания взаимодействия конструктора с **элементов**.
 
      **Примечание** определение `MarqueeControlRootDesigner` класса заключается в пространство имен с именем «MarqueeControlLibrary.Design.» Это объявление помещает конструктор в специальном пространстве имен зарезервированы для типов, связанных с проектированием.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#530](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#530)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#530](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#530)]
+     
 
 5. Определение конструктора для `MarqueeControlRootDesigner` класса. Вставить <xref:System.Diagnostics.Trace.WriteLine%2A> инструкции в теле конструктора. Это будет полезно для отладки.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#540](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#540)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#540](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#540)]
+     
 
 ## <a name="creating-an-instance-of-your-custom-control"></a>Создание экземпляра пользовательского элемента управления
  Чтобы посмотреть, пользовательское поведение времени разработки элемента управления, поместите экземпляр элемента управления в форме в `MarqueeControlTest` проекта.
@@ -217,12 +217,12 @@ using MarqueeControlLibrary;
 1. Откройте `MarqueeControl` исходный файл в **редактор кода**. Реализуйте `Start` и `Stop` методы.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#260](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrol.cs#260)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#260](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrol.vb#260)]
+    
 
 2. Переопределите метод <xref:System.Windows.Forms.Control.OnLayout%2A> .
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#270](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrol.cs#270)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#270](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrol.vb#270)]
+    
 
 ## <a name="creating-a-child-control-for-your-custom-control"></a>Создание дочернего элемента управления для элемента управления
 
@@ -245,12 +245,12 @@ using MarqueeControlLibrary;
 2. Откройте `IMarqueeWidget` исходный файл в **редактор кода** и замените объявление с `class` для `interface`:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/imarqueewidget.cs#2)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/imarqueewidget.vb#2)]
+    
 
 3. Добавьте следующий код, чтобы `IMarqueeWidget` интерфейс для предоставления двух методов и свойства, анимацией бегущей строки:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/imarqueewidget.cs#3)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/imarqueewidget.vb#3)]
+    
 
 4. Добавьте новый **пользовательский элемент управления** элемент `MarqueeControlLibrary` проекта. Предоставить новый исходный файл базовым именем «MarqueeText.»
 
@@ -261,17 +261,17 @@ using MarqueeControlLibrary;
 7. Откройте `MarqueeText` исходный файл в **редактор кода**. В верхней части файла импортируйте следующие пространства имен:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#120](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#120)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#120](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#120)]
+    
 
 8. Измените объявление `MarqueeText` наследование <xref:System.Windows.Forms.Label> и реализовать `IMarqueeWidget` интерфейса:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#130](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#130)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#130](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#130)]
+    
 
 9. Объявите переменные экземпляра, соответствующие этим свойствам и инициализируйте их в конструкторе. `isLit` Поля определяет, является ли текст для рисования с помощью цвета `LightColor` свойство.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#140](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#140)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#140](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#140)]
+    
 
 10. Реализовать интерфейс `IMarqueeWidget`.
 
@@ -280,12 +280,12 @@ using MarqueeControlLibrary;
     <xref:System.ComponentModel.CategoryAttribute.Category%2A> И <xref:System.ComponentModel.BrowsableAttribute.Browsable%2A> атрибуты применяются к `UpdatePeriod` свойство, поэтому она отображается в пользовательском разделе окна свойств, под названием «Область».
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#150](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#150)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#150](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#150)]
+    
 
 11. Реализация методов доступа свойства. Будет предоставлять два свойства для клиентов: `LightColor` и `DarkColor`. <xref:System.ComponentModel.CategoryAttribute.Category%2A> И <xref:System.ComponentModel.BrowsableAttribute.Browsable%2A> атрибуты применяются к этим свойствам, поэтому они отображаются в пользовательском разделе окна свойств, под названием «Область».
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#160](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#160)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#160](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#160)]
+    
 
 12. Реализуйте обработчики для <xref:System.ComponentModel.BackgroundWorker> компонента <xref:System.ComponentModel.BackgroundWorker.DoWork> и <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> события.
 
@@ -294,12 +294,12 @@ using MarqueeControlLibrary;
     <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> Обработчик событий Выбор текста состоянии светлые и темные, чтобы дать внешний вид мигать.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#180](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#180)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#180](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#180)]
+    
 
 13. Переопределить <xref:System.Windows.Forms.Control.OnPaint%2A> методу для включения анимации.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#170](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueetext.cs#170)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#170](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueetext.vb#170)]
+    
 
 14. Нажмите клавишу F6 для построения решения.
 
@@ -322,22 +322,22 @@ using MarqueeControlLibrary;
 5. Откройте `MarqueeBorder` исходный файл в **редактор кода**. В верхней части файла импортируйте следующие пространства имен:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#20](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#20)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#20](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#20)]
+    
 
 6. Измените объявление `MarqueeBorder` наследование <xref:System.Windows.Forms.Panel> и реализовать `IMarqueeWidget` интерфейс.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#30](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#30)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#30](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#30)]
+    
 
 7. Объявите два перечисления для управления `MarqueeBorder` состояние элемента управления: `MarqueeSpinDirection`, который определяет направление, в которой свет «вращение» границы, и `MarqueeLightShape`, который определяет форму индикаторы (квадратные или циклических). Поместите эти объявления до `MarqueeBorder` объявление класса.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#97](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#97)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#97](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#97)]
+    
 
 8. Объявите переменные экземпляра, соответствующие этим свойствам и инициализируйте их в конструкторе.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#40](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#40)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#40](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#40)]
+    
 
 9. Реализовать интерфейс `IMarqueeWidget`.
 
@@ -346,12 +346,12 @@ using MarqueeControlLibrary;
     Так как `MarqueeBorder` элемент управления может содержать дочерние элементы управления, `StartMarquee` метод перечисляет все дочерние элементы управления и вызовы `StartMarquee` на те, которые реализуют `IMarqueeWidget`. `StopMarquee` Метод имеется похожая реализация.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#50](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#50)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#50](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#50)]
+    
 
 10. Реализация методов доступа свойства. `MarqueeBorder` Элемент управления имеет несколько свойств, внешний вид.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#60](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#60)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#60](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#60)]
+    
 
 11. Реализуйте обработчики для <xref:System.ComponentModel.BackgroundWorker> компонента <xref:System.ComponentModel.BackgroundWorker.DoWork> и <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> события.
 
@@ -360,7 +360,7 @@ using MarqueeControlLibrary;
     <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> Обработчик событий увеличивает позицию свет «базовый», из которого определяется состояние света и тени другие источники света, и вызовы <xref:System.Windows.Forms.Control.Refresh%2A> метод для перевода элемента управления окрашивание.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#90](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#90)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#90](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#90)]
+    
 
 12. Реализовать вспомогательные методы, `IsLit` и `DrawLight`.
 
@@ -369,7 +369,7 @@ using MarqueeControlLibrary;
     `DrawLight` Метод рисует свет, используя соответствующий цвет, форму и положение.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#80](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#80)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#80](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#80)]
+    
 
 13. Переопределить <xref:System.Windows.Forms.Control.OnLayout%2A> и <xref:System.Windows.Forms.Control.OnPaint%2A> методы.
 
@@ -378,7 +378,7 @@ using MarqueeControlLibrary;
     Так как <xref:System.Windows.Forms.Control.OnPaint%2A> метод зависит от размеров `MarqueeBorder` элемента управления, необходимо вызвать его при каждом изменении макета. Для этого в Переопределите <xref:System.Windows.Forms.Control.OnLayout%2A> и вызвать <xref:System.Windows.Forms.Control.Refresh%2A>.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#70](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#70)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#70](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#70)]
+    
 
 ## <a name="creating-a-custom-designer-to-shadow-and-filter-properties"></a>Создание пользовательского конструктора тени и свойства фильтра
 
@@ -427,24 +427,24 @@ using MarqueeControlLibrary;
 2. Откройте `MarqueeBorderDesigner` исходный файл в **редактор кода**. В верхней части файла импортируйте следующие пространства имен:
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#420](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborderdesigner.cs#420)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#420](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborderdesigner.vb#420)]
+    
 
 3. Измените объявление `MarqueeBorderDesigner` наследование <xref:System.Windows.Forms.Design.ParentControlDesigner>.
 
     Так как `MarqueeBorder` элемент управления может содержать дочерние элементы управления, `MarqueeBorderDesigner` наследует от <xref:System.Windows.Forms.Design.ParentControlDesigner>, который обрабатывает взаимодействие родители потомки.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#430](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborderdesigner.cs#430)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#430](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborderdesigner.vb#430)]
+    
 
 4. Переопределить базовую реализацию <xref:System.ComponentModel.Design.ComponentDesigner.PreFilterProperties%2A>.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#450](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborderdesigner.cs#450)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#450](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborderdesigner.vb#450)]
+    
 
 5. Реализуйте свойства <xref:System.Windows.Forms.Control.Enabled%2A> и <xref:System.Windows.Forms.Control.Visible%2A>. Эти реализации теневые свойства элемента управления.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#440](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborderdesigner.cs#440)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#440](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborderdesigner.vb#440)]
+    
 
 ## <a name="handling-component-changes"></a>Обработка изменений компонентов
  `MarqueeControlRootDesigner` Класс предоставляет пользовательский интерфейс во время разработки для вашей `MarqueeControl` экземпляров. Большая часть функций разработки наследуется от <xref:System.Windows.Forms.Design.DocumentDesigner> класса; ваш код будет реализовать два изменения: обработки компонентов и добавление команд конструктора.
@@ -460,12 +460,12 @@ using MarqueeControlLibrary;
 1. Откройте `MarqueeControlRootDesigner` исходный файл в **редактор кода** и переопределить <xref:System.Windows.Forms.Design.DocumentDesigner.Initialize%2A> метод. Вызвать базовую реализацию <xref:System.Windows.Forms.Design.DocumentDesigner.Initialize%2A> и запрашивать <xref:System.ComponentModel.Design.IComponentChangeService>.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#580](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#580)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#580](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#580)]
+    
 
 2. Реализуйте <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A> обработчик событий. Проверьте тип компонента отправки, и если это `IMarqueeWidget`, вызовите его <xref:System.Windows.Forms.Control.Refresh%2A> метод.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#560](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#560)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#560](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#560)]
+    
 
 ## <a name="adding-designer-verbs-to-your-custom-designer"></a>Добавление команд конструктора в пользовательский конструктор
 
@@ -480,12 +480,12 @@ using MarqueeControlLibrary;
 1. В `MarqueeControlRootDesigner` добавьте обработчики событий с именем `OnVerbRunTest` и `OnVerbStopTest`.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#570](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#570)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#570](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#570)]
+    
 
 2. Подключите эти обработчики событий с соответствующими командами конструктора. `MarqueeControlRootDesigner` наследует <xref:System.ComponentModel.Design.DesignerVerbCollection> от своего базового класса. Вы создадите два новых <xref:System.ComponentModel.Design.DesignerVerb> объектов и добавления их в эту коллекцию в <xref:System.Windows.Forms.Design.DocumentDesigner.Initialize%2A> метод.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#590](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueecontrolrootdesigner.cs#590)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#590](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueecontrolrootdesigner.vb#590)]
+    
 
 ## <a name="creating-a-custom-uitypeeditor"></a>Создание пользовательского редактора UITypeEditor
 
@@ -500,22 +500,22 @@ using MarqueeControlLibrary;
 2. В определении `MarqueeBorder` класса, объявите класс с именем `LightShapeEditor` , наследуемый от класса <xref:System.Drawing.Design.UITypeEditor>.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#96](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#96)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#96](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#96)]
+    
 
 3. Объявите <xref:System.Windows.Forms.Design.IWindowsFormsEditorService> переменная экземпляра с именем `editorService`.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#92](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#92)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#92](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#92)]
+    
 
 4. Переопределите метод <xref:System.Drawing.Design.UITypeEditor.GetEditStyle%2A> . Эта реализация возвращает <xref:System.Drawing.Design.UITypeEditorEditStyle.DropDown>, который среда разработки способ отображения `LightShapeEditor`.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#93](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#93)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#93](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#93)]
+    
 
 5. Переопределите метод <xref:System.Drawing.Design.UITypeEditor.EditValue%2A> . Эта реализация запрашивает среду проектирования для <xref:System.Windows.Forms.Design.IWindowsFormsEditorService> объекта. Если успешно, он создает `LightShapeSelectionControl`. <xref:System.Windows.Forms.Design.IWindowsFormsEditorService.DropDownControl%2A> Метод вызывается для запуска `LightShapeEditor`. Возвращаемое значение из этого вызова возвращается в среду разработки.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#94](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/marqueeborder.cs#94)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#94](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/marqueeborder.vb#94)]
+    
 
 ## <a name="creating-a-view-control-for-your-custom-uitypeeditor"></a>Создание элемента управления представления для пользовательского редактора UITypeEditor
 
@@ -540,7 +540,7 @@ using System.Windows.Forms.Design;
 1. Реализуйте <xref:System.Windows.Forms.Control.Click> обработчики событий для `squarePanel` и `circlePanel` элементов управления. Эти методы вызывают <xref:System.Windows.Forms.Design.IWindowsFormsEditorService.CloseDropDown%2A> для окончания <xref:System.Drawing.Design.UITypeEditor> сеанса редактирования.
 
     [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#390](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#390)]
-    [!code-vb[System.Windows.Forms.Design.DocumentDesigner#390](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#390)]
+    
 
 2. Объявите <xref:System.Windows.Forms.Design.IWindowsFormsEditorService> переменная экземпляра с именем `editorService`.
 
@@ -555,29 +555,29 @@ private IWindowsFormsEditorService editorService;
 1. Объявите `MarqueeLightShape` переменная экземпляра с именем `lightShapeValue`.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#330](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#330)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#330](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#330)]
+     
 
 2. В `LightShapeSelectionControl` конструктор, присоединение <xref:System.Windows.Forms.Control.Click> обработчики событий для `squarePanel` и `circlePanel` элементов управления <xref:System.Windows.Forms.Control.Click> события. Кроме того, задайте перегрузки конструктора, которая назначает `MarqueeLightShape` значение из среды разработки для `lightShapeValue` поля.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#340](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#340)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#340](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#340)]
+     
 
 3. В <xref:System.ComponentModel.Component.Dispose%2A> метода отсоединения <xref:System.Windows.Forms.Control.Click> обработчики событий.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#350](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#350)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#350](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#350)]
+     
 
 4. В **обозревателе решений** нажмите кнопку **Показать все файлы**. Откройте файл LightShapeSelectionControl.Designer.cs или LightShapeSelectionControl.Designer.vb и удалить определение по умолчанию <xref:System.ComponentModel.Component.Dispose%2A> метод.
 
 5. Реализуйте свойство `LightShape`.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#360](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#360)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#360](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#360)]
+     
 
 6. Переопределите метод <xref:System.Windows.Forms.Control.OnPaint%2A> . Эта реализация будет рисовать квадрат с заливкой и круг. Он также выделяет выбранное значение путем рисования границы вокруг одной формы или другого.
 
      [!code-csharp[System.Windows.Forms.Design.DocumentDesigner#380](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/CS/lightshapeselectioncontrol.cs#380)]
-     [!code-vb[System.Windows.Forms.Design.DocumentDesigner#380](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Design.DocumentDesigner/VB/lightshapeselectioncontrol.vb#380)]
+     
 
 ## <a name="testing-your-custom-control-in-the-designer"></a>Тестирование элемента управления в конструкторе
 

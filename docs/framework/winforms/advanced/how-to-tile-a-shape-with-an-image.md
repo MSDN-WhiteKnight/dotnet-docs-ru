@@ -33,7 +33,7 @@ ms.locfileid: "59221542"
  ![Плитки 2](./media/tile2.gif "tile2")  
   
  [!code-csharp[System.Drawing.UsingABrush#31](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#31)]
- [!code-vb[System.Drawing.UsingABrush#31](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#31)]  
+   
   
 ### <a name="to-flip-an-image-horizontally-while-tiling"></a>Изображения по горизонтали мозаичное  
   
@@ -42,14 +42,14 @@ ms.locfileid: "59221542"
  ![Плитку 3](./media/tile3.gif "tile3")  
   
  [!code-csharp[System.Drawing.UsingABrush#32](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#32)]
- [!code-vb[System.Drawing.UsingABrush#32](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#32)]  
+   
   
 ### <a name="to-flip-an-image-vertically-while-tiling"></a>Изображения по вертикали мозаичное  
   
 -   В этом примере используется одно изображение размером 75 × 75 для заполнения прямоугольника размером 200 × 200. Режим переноса присваивается переворачивание изображения по вертикали.  
   
      [!code-csharp[System.Drawing.UsingABrush#33](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#33)]
-     [!code-vb[System.Drawing.UsingABrush#33](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#33)]  
+       
   
 ### <a name="to-flip-an-image-horizontally-and-vertically-while-tiling"></a>Отражение изображения по горизонтали и вертикали мозаичное  
   
@@ -58,7 +58,7 @@ ms.locfileid: "59221542"
  ![Плитку 5](./media/tile5.gif "tile5")  
   
  [!code-csharp[System.Drawing.UsingABrush#34](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#34)]
- [!code-vb[System.Drawing.UsingABrush#34](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#34)]  
+   
   
 ## <a name="see-also"></a>См. также
 

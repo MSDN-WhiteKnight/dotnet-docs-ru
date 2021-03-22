@@ -34,7 +34,7 @@ ms.locfileid: "59295514"
 1. Используйте <xref:System.Windows.Forms.Clipboard.GetAudioStream%2A>, <xref:System.Windows.Forms.Clipboard.GetFileDropList%2A>, <xref:System.Windows.Forms.Clipboard.GetImage%2A>, или <xref:System.Windows.Forms.Clipboard.GetText%2A> метод. При необходимости используйте соответствующий `Contains` *формат* методы, чтобы определить, доступен ли данные в определенном формате. Эти методы доступны только в [!INCLUDE[dnprdnext](../../../../includes/dnprdnext-md.md)].  
   
      [!code-csharp[System.Windows.Forms.Clipboard#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#2)]
-     [!code-vb[System.Windows.Forms.Clipboard#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/vb/form1.vb#2)]  
+       
   
 ### <a name="to-retrieve-data-from-the-clipboard-in-a-custom-format"></a>Для получения данных из буфера обмена в пользовательском формате  
   
@@ -43,18 +43,18 @@ ms.locfileid: "59295514"
      Можно также использовать имена стандартных форматов с <xref:System.Windows.Forms.Clipboard.SetData%2A> метод. Дополнительные сведения см. в разделе <xref:System.Windows.Forms.DataFormats>.  
   
      [!code-csharp[System.Windows.Forms.Clipboard#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#3)]
-     [!code-vb[System.Windows.Forms.Clipboard#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/vb/form1.vb#3)]  
+       
     [!code-csharp[System.Windows.Forms.Clipboard#100](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#100)]
-    [!code-vb[System.Windows.Forms.Clipboard#100](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/vb/form1.vb#100)]  
+      
   
 ### <a name="to-retrieve-data-from-the-clipboard-in-multiple-formats"></a>Для получения данных из буфера обмена в нескольких форматах  
   
 1. Воспользуйтесь методом <xref:System.Windows.Forms.Clipboard.GetDataObject%2A>. Этот метод следует использовать для получения данных из буфера обмена на версии более ранней, чем [!INCLUDE[dnprdnlong](../../../../includes/dnprdnlong-md.md)].  
   
      [!code-csharp[System.Windows.Forms.Clipboard#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#4)]
-     [!code-vb[System.Windows.Forms.Clipboard#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/vb/form1.vb#4)]  
+       
     [!code-csharp[System.Windows.Forms.Clipboard#100](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#100)]
-    [!code-vb[System.Windows.Forms.Clipboard#100](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/vb/form1.vb#100)]  
+      
   
 ## <a name="see-also"></a>См. также
 

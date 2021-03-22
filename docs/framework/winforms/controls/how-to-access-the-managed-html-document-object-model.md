@@ -35,7 +35,7 @@ ms.locfileid: "59315196"
 2. Поместите в обработчик события загрузки для <xref:System.Windows.Forms.UserControl> следующий код:  
   
  [!code-csharp[AccessHTMLDOMControl#1](~/samples/snippets/csharp/VS_Snippets_Winforms/AccessHTMLDOMControl/cs/UserControl1.cs#1)]
- [!code-vb[AccessHTMLDOMControl#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/AccessHTMLDOMControl/vb/UserControl1.vb#1)]  
+   
   
 ## <a name="robust-programming"></a>Отказоустойчивость  
   

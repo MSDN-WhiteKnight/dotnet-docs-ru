@@ -33,7 +33,7 @@ ms.locfileid: "59200419"
  Чтобы нарисовать фундаментальный сплайн, вам потребуется экземпляр <xref:System.Drawing.Graphics> класс, <xref:System.Drawing.Pen>и массив <xref:System.Drawing.Point> объекты <xref:System.Drawing.Graphics> класс предоставляет <xref:System.Drawing.Graphics.DrawCurve%2A> метод, который строит сплайн, и <xref:System.Drawing.Pen> сохраняет атрибуты сплайна, например толщины и цвета. Массив <xref:System.Drawing.Point> объектов хранит точки, которые будут переданы кривой. В следующем примере кода показано, как нарисовать фундаментальный сплайн, проходящий через точек в `myPointArray`. Третий параметр — натяжение.  
   
  [!code-csharp[LinesCurvesAndShapes#31](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#31)]
- [!code-vb[LinesCurvesAndShapes#31](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#31)]  
+   
   
 ## <a name="see-also"></a>См. также
 

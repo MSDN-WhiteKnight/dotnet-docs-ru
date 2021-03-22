@@ -39,7 +39,7 @@ ms.locfileid: "59312570"
  В следующем примере кода определяется пользовательский класс параметров с одним параметром `BackgroundColor`.  
   
  [!code-csharp[ApplicationSettings.Create#1](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Create/CS/MyAppSettings.cs#1)]
- [!code-vb[ApplicationSettings.Create#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Create/VB/MyAppSettings.vb#1)]  
+   
   
 ## <a name="settings-persistence"></a>Сохраняемость параметров  
  <xref:System.Configuration.ApplicationSettingsBase> Класс не сохраняемость или загрузку параметров; это выполняет поставщик параметров, а класс, производный от <xref:System.Configuration.SettingsProvider>. Если класс, производный от <xref:System.Configuration.ApplicationSettingsBase> не указывает поставщика параметров посредством <xref:System.Configuration.SettingsProviderAttribute>, а затем поставщика по умолчанию, <xref:System.Configuration.LocalFileSettingsProvider>, используется.  
@@ -128,7 +128,7 @@ ms.locfileid: "59312570"
  Вашему поставщику будет необходимо реализовать одно свойство и один метод, реализация которых может оказаться сложной. <xref:System.Configuration.SettingsProvider.ApplicationName%2A> Свойство является абстрактным свойством класса <xref:System.Configuration.SettingsProvider>; оно для возврата следующее:  
   
  [!code-csharp[ApplicationSettings.Architecture#2](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Architecture/CS/DummyClass.cs#2)]
- [!code-vb[ApplicationSettings.Architecture#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Architecture/VB/DummyProviderClass.vb#2)]  
+   
   
  Ваш производный класс также должен реализовать метод `Initialize`, который не принимает аргументы и не возвращает значения. Этот метод не определяется <xref:System.Configuration.SettingsProvider>.  
   
@@ -137,7 +137,7 @@ ms.locfileid: "59312570"
  После реализации и компиляции поставщика необходимо указать, что класс параметров должен использовать этого поставщика вместо значения по умолчанию. Для этого через <xref:System.Configuration.SettingsProviderAttribute>. Если применяется ко всему классу параметров поставщик используется для каждого параметра, который определяется в классе; Если применяется к отдельным параметрам архитектура параметров приложения использует этого поставщика только для этих параметров и использует <xref:System.Configuration.LocalFileSettingsProvider> для остальных. В следующем примере кода показано, как указать классу параметров, что необходимо использовать пользовательского поставщика.  
   
  [!code-csharp[ApplicationSettings.Architecture#1](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Architecture/CS/DummyClass.cs#1)]
- [!code-vb[ApplicationSettings.Architecture#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Architecture/VB/DummyProviderClass.vb#1)]  
+   
   
  Поставщик можно вызывать одновременно из нескольких потоков, но он всегда будет выполнять запись данных в одно место хранения. Таким образом, архитектура параметров приложения будет всегда создавать только один экземпляр класса поставщика.  
   

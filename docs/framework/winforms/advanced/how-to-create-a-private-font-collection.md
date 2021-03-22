@@ -46,7 +46,7 @@ ms.locfileid: "59210695"
  Аналогичным образом [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] можно имитировать полужирным курсивом стиль из полужирный стиль или курсивное начертание. Выходные данные программы показано, что полужирным курсивом стиля для семейства раз несмотря на то, что TimesBd.tff (Times New Roman, полужирный) является единственным файлом раз в коллекции.  
   
  [!code-csharp[System.Drawing.FontsAndText#51](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.FontsAndText/CS/Class1.cs#51)]
- [!code-vb[System.Drawing.FontsAndText#51](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.FontsAndText/VB/Class1.vb#51)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs> `e`, который является параметром <xref:System.Windows.Forms.PaintEventHandler>.  

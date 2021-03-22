@@ -33,7 +33,7 @@ ms.locfileid: "59074980"
      В следующем примере рисуется прямоугольник дважды: один раз черным пером толщиной в 1 и один раз с помощью зеленого пера шириной 10.  
   
      [!code-csharp[System.Drawing.UsingAPen#41](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#41)]
-     [!code-vb[System.Drawing.UsingAPen#41](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#41)]  
+       
   
 ### <a name="to-change-the-alignment-of-a-pen"></a>Изменение выравнивания пера  
   
@@ -44,14 +44,14 @@ ms.locfileid: "59074980"
      ![Прямоугольник, нарисованных при помощи черный тонких линий, выделенная зеленым цветом.](./media/how-to-set-pen-width-and-alignment/green-pixels-centered-rectangle.gif)  
   
      [!code-csharp[System.Drawing.UsingAPen#42](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#42)]
-     [!code-vb[System.Drawing.UsingAPen#42](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#42)]  
+       
   
 ### <a name="to-create-an-inset-pen"></a>Для создания вложенного пера  
   
 -   Измените выравнивание зеленого пера, изменив третья инструкция в предыдущем примере кода следующим образом:  
   
      [!code-csharp[System.Drawing.UsingAPen#43](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingAPen/CS/Class1.cs#43)]
-     [!code-vb[System.Drawing.UsingAPen#43](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingAPen/VB/Class1.vb#43)]  
+       
   
      Теперь пикселов в ширину зеленая линия отображаются внутри прямоугольника, как показано на следующем рисунке:
   

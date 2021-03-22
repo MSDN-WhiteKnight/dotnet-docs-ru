@@ -28,52 +28,52 @@ ms.locfileid: "59306239"
 1. Инициализировать <xref:System.Windows.Forms.ToolStripMenuItem.CheckOnClick%2A> свойства `true` Включение выбора элемента.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#110](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#110)]
-     [!code-vb[ToolStripRadioButtonMenuItem#110](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#110)]  
+       
   
 2. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.OnCheckedChanged%2A> метод, чтобы снять выделение ранее выбранного элемента, если элемент выбран.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#120](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#120)]
-     [!code-vb[ToolStripRadioButtonMenuItem#120](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#120)]  
+       
   
 3. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.OnClick%2A> метод, чтобы гарантировать, что нажатие кнопки элемента, который уже был выбран не очищает выделение.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#130](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#130)]
-     [!code-vb[ToolStripRadioButtonMenuItem#130](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#130)]  
+       
   
 ### <a name="to-modify-the-appearance-of-the-option-button-items"></a>Чтобы изменить внешний вид элементов переключателей  
   
 1. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.OnPaint%2A> метод для замены по умолчанию — флажок кнопки выбора параметра с помощью <xref:System.Windows.Forms.RadioButtonRenderer> класса.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#140](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#140)]
-     [!code-vb[ToolStripRadioButtonMenuItem#140](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#140)]  
+       
   
 2. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.OnMouseEnter%2A>, <xref:System.Windows.Forms.ToolStripMenuItem.OnMouseLeave%2A>, <xref:System.Windows.Forms.ToolStripMenuItem.OnMouseDown%2A>, и <xref:System.Windows.Forms.ToolStripMenuItem.OnMouseUp%2A> методы для отслеживания состояния мыши и убедитесь, что <xref:System.Windows.Forms.ToolStripMenuItem.OnPaint%2A> метод рисует состояния правильный переключателя.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#150](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#150)]
-     [!code-vb[ToolStripRadioButtonMenuItem#150](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#150)]  
+       
   
 ### <a name="to-disable-options-on-a-submenu-when-the-parent-item-is-not-selected"></a>Отключение пунктов подменю, если родительский элемент не выбран  
   
 1. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.Enabled%2A> свойства таким образом, элемент остается недоступной, если он имеет родительский элемент с обоими <xref:System.Windows.Forms.ToolStripMenuItem.CheckOnClick%2A> значение `true` и <xref:System.Windows.Forms.ToolStripMenuItem.Checked%2A> значение `false`.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#160](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#160)]
-     [!code-vb[ToolStripRadioButtonMenuItem#160](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#160)]  
+       
   
 2. Переопределить <xref:System.Windows.Forms.ToolStripMenuItem.OnOwnerChanged%2A> метод подписаться на <xref:System.Windows.Forms.ToolStripMenuItem.CheckedChanged> событий родительского элемента.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#170](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#170)]
-     [!code-vb[ToolStripRadioButtonMenuItem#170](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#170)]  
+       
   
 3. В обработчике родительского элемента <xref:System.Windows.Forms.ToolStripMenuItem.CheckedChanged> событий, сделайте элемент для обновления экрана с новым состоянием включено.  
   
      [!code-csharp[ToolStripRadioButtonMenuItem#180](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#180)]
-     [!code-vb[ToolStripRadioButtonMenuItem#180](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#180)]  
+       
   
 ## <a name="example"></a>Пример  
  В следующем примере кода приводится полное описание `ToolStripRadioButtonMenuItem` класса и <xref:System.Windows.Forms.Form> класса и `Program` для демонстрации поведения переключателей.  
   
  [!code-csharp[ToolStripRadioButtonMenuItem#000](~/samples/snippets/csharp/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/cs/ToolStripRadioButtonMenuItem.cs#000)]
- [!code-vb[ToolStripRadioButtonMenuItem#000](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ToolStripRadioButtonMenuItem/vb/ToolStripRadioButtonMenuItem.vb#000)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

@@ -30,14 +30,14 @@ ms.locfileid: "59343473"
 1. Создайте класс, производный от <xref:System.Windows.Forms.Form> и содержит следующие объявления переменных и `Main` метод.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#01](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#01)]
-     [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#01](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#01)]  
+       
     [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#02](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#02)]
-    [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#02](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#02)]  
+      
   
 2. Реализуйте `SetupLayout` метод в определении класса формы для настройки макета.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#20](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#20)]
-     [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#20](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#20)]  
+       
   
 3. Создание `SetupDataGridView` метод настройки <xref:System.Windows.Forms.DataGridView> столбцами и свойствами.  
   
@@ -46,14 +46,14 @@ ms.locfileid: "59343473"
      Макет и внешний вид свойств, а затем присваиваются имена столбцов. При выходе из этого метода, <xref:System.Windows.Forms.DataGridView> элемент управления готов к заполнению.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#30](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#30)]
-     [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#30](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#30)]  
+       
   
 4. Создание `PopulateDataGridView` метод для добавления строк в <xref:System.Windows.Forms.DataGridView> элемента управления.  
   
      Каждая строка представляет песни и соответствующие сведения.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#40](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#40)]
-     [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#40](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#40)]  
+       
   
 5. С помощью вспомогательных методов можно присоединять обработчики событий.  
   
@@ -68,7 +68,7 @@ ms.locfileid: "59343473"
      Когда <xref:System.Windows.Forms.DataGridView.CellFormatting> события каждой ячейки в `Date` столбец представляется в формате даты, если значение ячейки не может быть проанализирована.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewSimpleUnbound#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/CS/simpleunbound.cs#10)]
-     [!code-vb[System.Windows.Forms.DataGridViewSimpleUnbound#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewSimpleUnbound/VB/simpleunbound.vb#10)]  
+       
   
 ## <a name="testing-the-application"></a>Тестирование приложения  
  Теперь можно проверить форму, чтобы убедиться, что она правильно работает.  

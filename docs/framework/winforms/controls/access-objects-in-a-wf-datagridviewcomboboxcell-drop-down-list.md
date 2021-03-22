@@ -30,24 +30,24 @@ ms.locfileid: "59334280"
 1. Создайте новый <xref:System.Windows.Forms.DataGridViewComboBoxColumn> и заполнить его <xref:System.Windows.Forms.DataGridViewComboBoxColumn.Items%2A> коллекции. Кроме того, можно задать столбец <xref:System.Windows.Forms.DataGridViewComboBoxColumn.DataSource%2A> свойство в коллекцию бизнес-объектов. В этом случае Однако нельзя добавляемый «неназначенные» стрелку раскрывающегося списка без создания соответствующего бизнес-объект в коллекции.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewComboBoxObjectBinding#110](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/CS/form1.cs#110)]
-     [!code-vb[System.Windows.Forms.DataGridViewComboBoxObjectBinding#110](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/vb/form1.vb#110)]  
+       
   
 2. Задайте свойства <xref:System.Windows.Forms.DataGridViewComboBoxColumn.DisplayMember%2A> и <xref:System.Windows.Forms.DataGridViewComboBoxColumn.ValueMember%2A>. <xref:System.Windows.Forms.DataGridViewComboBoxColumn.DisplayMember%2A> Указывает свойство бизнес-объекта для отображения в раскрывающемся списке. <xref:System.Windows.Forms.DataGridViewComboBoxColumn.ValueMember%2A> Указывает свойство, которое возвращает ссылку на бизнес-объект.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewComboBoxObjectBinding#115](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/CS/form1.cs#115)]
-     [!code-vb[System.Windows.Forms.DataGridViewComboBoxObjectBinding#115](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/vb/form1.vb#115)]  
+       
   
 3. Убедитесь, что ваши бизнес-тип объекта содержит свойство, возвращающее ссылку на текущий экземпляр. Это свойство должно присваиваться с помощью значение, присваиваемое <xref:System.Windows.Forms.DataGridViewComboBoxColumn.ValueMember%2A> на предыдущем шаге.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewComboBoxObjectBinding#310](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/CS/form1.cs#310)]
-     [!code-vb[System.Windows.Forms.DataGridViewComboBoxObjectBinding#310](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/vb/form1.vb#310)]  
+       
   
 ### <a name="to-retrieve-the-currently-selected-business-object"></a>Для извлечения выбранной бизнес-объекта  
   
 -   Получить ячейку <xref:System.Windows.Forms.DataGridViewCell.Value%2A> свойство и приведите его к типу объекта бизнеса.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewComboBoxObjectBinding#120](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/CS/form1.cs#120)]
-     [!code-vb[System.Windows.Forms.DataGridViewComboBoxObjectBinding#120](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/vb/form1.vb#120)]  
+       
   
 ## <a name="example"></a>Пример  
  Полный пример демонстрирует использование бизнес-объектов в раскрывающемся списке. В примере <xref:System.Windows.Forms.DataGridView> управления привязан к коллекции `Task` объектов. Каждый `Task` объект имеет `AssignedTo` свойство, указывающее `Employee` объект, назначенных этой задачи. `Assigned To` Столбце отображаются `Name` назначить значение свойства для каждого сотрудника или «неназначенные», если `Task.AssignedTo` свойство имеет значение `null`.  
@@ -61,7 +61,7 @@ ms.locfileid: "59334280"
 3. Нажмите кнопку `Request Status` кнопку, чтобы вызвать `RequestStatus` метод текущего класса `Employee` объекта для этой строки. Это показывает, что выбранный объект был успешно получен.  
   
  [!code-csharp[System.Windows.Forms.DataGridViewComboBoxObjectBinding#000](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/CS/form1.cs#000)]
- [!code-vb[System.Windows.Forms.DataGridViewComboBoxObjectBinding#000](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewComboBoxObjectBinding/vb/form1.vb#000)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

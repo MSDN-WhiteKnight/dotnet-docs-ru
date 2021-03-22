@@ -24,12 +24,12 @@ ms.locfileid: "59340754"
 1. Задайте <xref:System.Windows.Forms.WebBrowser.AllowWebBrowserDrop%2A> свойства `false` во избежание <xref:System.Windows.Forms.WebBrowser> управления открывать файлы, которые перетаскиваются на него.  
   
      [!code-csharp[WebBrowserMisc#20](~/samples/snippets/csharp/VS_Snippets_Winforms/WebBrowserMisc/CS/WebBrowserMisc.cs#20)]
-     [!code-vb[WebBrowserMisc#20](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WebBrowserMisc/vb/WebBrowserMisc.vb#20)]  
+       
   
 2. Задайте <xref:System.Windows.Forms.WebBrowser.Url%2A> свойство в расположение исходного файла для отображения.  
   
      [!code-csharp[WebBrowserMisc#21](~/samples/snippets/csharp/VS_Snippets_Winforms/WebBrowserMisc/CS/WebBrowserMisc.cs#21)]
-     [!code-vb[WebBrowserMisc#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WebBrowserMisc/vb/WebBrowserMisc.vb#21)]  
+       
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

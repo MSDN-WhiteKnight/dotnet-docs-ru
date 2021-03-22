@@ -33,7 +33,7 @@ ms.locfileid: "59306512"
      В следующем примере выражение является именем столбца, за которым следует значение для столбца.  
   
  [!code-csharp[System.Windows.Forms.DataConnectorFilterAndSort#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/CS/form1.cs#11)]
- [!code-vb[System.Windows.Forms.DataConnectorFilterAndSort#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/VB/form1.vb#11)]  
+   
   
 ### <a name="to-sort-data-with-the-bindingsource"></a>Для сортировки данных с использованием компонента BindingSource  
   
@@ -42,13 +42,13 @@ ms.locfileid: "59306512"
 2. Несколько столбцов разделяются запятыми.  
   
  [!code-csharp[System.Windows.Forms.DataConnectorFilterAndSort#12](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/CS/form1.cs#12)]
- [!code-vb[System.Windows.Forms.DataConnectorFilterAndSort#12](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/VB/form1.vb#12)]  
+   
   
 ## <a name="example"></a>Пример  
  В следующем примере кода загружает данные из образца базы данных "Борей" в таблице Customers <xref:System.Windows.Forms.DataGridView> и фильтрует и сортирует отображаемых данных.  
   
  [!code-csharp[System.Windows.Forms.DataConnectorFilterAndSort#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/CS/form1.cs#1)]
- [!code-vb[System.Windows.Forms.DataConnectorFilterAndSort#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataConnectorFilterAndSort/VB/form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Чтобы выполнить этот пример, вставьте код в форму, содержащую <xref:System.Windows.Forms.BindingSource> с именем `BindingSource1` и <xref:System.Windows.Forms.DataGridView> с именем `dataGridView1`. Обрабатывать <xref:System.Windows.Forms.Form.Load> событие для форму и вызовите `InitializeSortedFilteredBindingSource` в методе обработчика событий загрузки.  

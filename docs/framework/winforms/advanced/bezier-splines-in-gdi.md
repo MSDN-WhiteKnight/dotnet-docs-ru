@@ -27,7 +27,7 @@ ms.locfileid: "59107332"
  Чтобы нарисовать сплайн Безье, вам потребуется экземпляр <xref:System.Drawing.Graphics> класс и <xref:System.Drawing.Pen>. Экземпляр <xref:System.Drawing.Graphics> класс предоставляет <xref:System.Drawing.Graphics.DrawBezier%2A> метод и <xref:System.Drawing.Pen> сохраняет атрибуты, например, ширина и цвет линии, используемый для отображения кривой. <xref:System.Drawing.Pen> Передается в качестве одного из аргументов для <xref:System.Drawing.Graphics.DrawBezier%2A> метод. Остальные аргументы, передаваемые <xref:System.Drawing.Graphics.DrawBezier%2A> метод: конечные точки и точки управления. В следующем примере рисуется сплайн Безье с начальной точки (0, 0), управлять точками (40, 20) и (80, 150) и конечную точку (100, 10):  
   
  [!code-csharp[LinesCurvesAndShapes#71](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#71)]
- [!code-vb[LinesCurvesAndShapes#71](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#71)]  
+   
   
  Кривой, контрольные точки и две касательные на следующем рисунке.  
   

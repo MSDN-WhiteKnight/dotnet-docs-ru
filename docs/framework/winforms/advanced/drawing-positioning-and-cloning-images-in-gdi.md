@@ -29,7 +29,7 @@ ms.locfileid: "59188452"
  В следующем примере кода показано создание <xref:System.Drawing.Bitmap> из файла Climber.jpg и отображает точечный рисунок. Конечная точка верхнего левого угла изображения, (10, 10), указанный в второй и третий параметры.  
   
  [!code-csharp[System.Drawing.ImagesBitmapsMetafiles#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/CS/Class1.cs#11)]
- [!code-vb[System.Drawing.ImagesBitmapsMetafiles#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/VB/Class1.vb#11)]  
+   
   
  Ниже показано изображение.  
   
@@ -40,12 +40,12 @@ ms.locfileid: "59188452"
  В следующем примере кода показано создание <xref:System.Drawing.Bitmap> объекты из различных типов файлов, а затем отображает точечные рисунки.  
   
  [!code-csharp[System.Drawing.ImagesBitmapsMetafiles#12](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/CS/Class1.cs#12)]
- [!code-vb[System.Drawing.ImagesBitmapsMetafiles#12](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/VB/Class1.vb#12)]  
+   
   
  <xref:System.Drawing.Bitmap> Класс предоставляет <xref:System.Drawing.Bitmap.Clone%2A> метод, который можно использовать для создания копии существующего <xref:System.Drawing.Bitmap>. <xref:System.Drawing.Bitmap.Clone%2A> Метод имеет параметр источника прямоугольник, который можно использовать для указания часть исходного точечного рисунка, который требуется скопировать. В следующем примере кода показано, как создать <xref:System.Drawing.Bitmap> путем клонирования в верхней части существующего <xref:System.Drawing.Bitmap>. Затем оба изображения отображаются.  
   
  [!code-csharp[System.Drawing.ImagesBitmapsMetafiles#13](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/CS/Class1.cs#13)]
- [!code-vb[System.Drawing.ImagesBitmapsMetafiles#13](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/VB/Class1.vb#13)]  
+   
   
  На следующем рисунке два изображения.  
   

@@ -35,7 +35,7 @@ ms.locfileid: "59119864"
  В следующем примере отображается метафайл, который был ранее сохранен как файл. Метафайл отображается с его верхнего левого угла в (100, 100).  
   
  [!code-csharp[System.Drawing.ImagesBitmapsMetafiles#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.ImagesBitmapsMetafiles#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.ImagesBitmapsMetafiles/VB/Class1.vb#21)]  
+   
   
 ## <a name="see-also"></a>См. также
 

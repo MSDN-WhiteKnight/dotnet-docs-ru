@@ -23,7 +23,7 @@ ms.locfileid: "59193295"
 ## <a name="example"></a>Пример  
  [!code-cpp[System.Windows.Forms.DataGridView.ButtonDemos#200](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ButtonDemos/CPP/DataGridViewRowDemo.cpp#200)]
  [!code-csharp[System.Windows.Forms.DataGridView.ButtonDemos#200](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ButtonDemos/CS/DataGridViewRowDemo.cs#200)]
- [!code-vb[System.Windows.Forms.DataGridView.ButtonDemos#200](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ButtonDemos/VB/datagridviewrowdemo.vb#200)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

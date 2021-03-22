@@ -50,7 +50,7 @@ ms.locfileid: "59129510"
  После загрузки этой страницы в <xref:System.Windows.Forms.WebBrowser> элемента управления, можно использовать <xref:System.Windows.Forms.HtmlDocument.GetElementById%2A> метод для извлечения `FORM` во время выполнения с помощью `form1` в качестве аргумента.  
   
  [!code-csharp[System.Windows.Forms.HtmlElement#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.HtmlElement/CS/Form1.cs#10)]
- [!code-vb[System.Windows.Forms.HtmlElement#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.HtmlElement/VB/Form1.vb#10)]  
+   
   
 ## <a name="accessing-unmanaged-interfaces"></a>Доступ к неуправляемым интерфейсам  
  Можно также получить доступ к членов, не предоставленные явно в управляемая модель HTML DOM, используя неуправляемые интерфейсы компонента объекта модели (COM), предоставляемых каждый класс DOM. Это рекомендуется, если у вас есть несколько вызовов к которым не предоставляется явно членов или не предоставленным явно члены возвращают неуправляемые интерфейсы, не заключаются в оболочку управляемому HTML DOM  

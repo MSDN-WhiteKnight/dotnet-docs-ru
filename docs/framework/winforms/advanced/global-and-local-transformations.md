@@ -23,7 +23,7 @@ ms.locfileid: "59213757"
  Чтобы создать глобальное преобразование, сконструировать <xref:System.Drawing.Graphics> объекта и обработки его <xref:System.Drawing.Graphics.Transform%2A> свойство. <xref:System.Drawing.Graphics.Transform%2A> Свойство <xref:System.Drawing.Drawing2D.Matrix> объекта, поэтому он может содержать любую последовательность аффинных преобразований. Преобразование, заданное <xref:System.Drawing.Graphics.Transform%2A> свойство называется мировое преобразование. <xref:System.Drawing.Graphics> Класс предоставляет несколько методов для построения составного мировое преобразование: <xref:System.Drawing.Graphics.MultiplyTransform%2A>, <xref:System.Drawing.Graphics.RotateTransform%2A>, <xref:System.Drawing.Graphics.ScaleTransform%2A>, и <xref:System.Drawing.Graphics.TranslateTransform%2A>. В следующем примере рисуется эллипс дважды: один раз, перед созданием мировое преобразование и один раз после. Преобразование сначала масштабируется с коэффициентом 0,5 по оси y, а затем преобразует 50 единиц по оси x и затем поворачивается на 30 градусов.  
   
  [!code-csharp[System.Drawing.CoordinateSystems#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.CoordinateSystems#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/VB/Class1.vb#21)]  
+   
   
  На следующем рисунке изображены матрицы преобразования.  
   
@@ -36,7 +36,7 @@ ms.locfileid: "59213757"
  Локальное преобразование применяется к конкретному элементу для отрисовки. Например <xref:System.Drawing.Drawing2D.GraphicsPath> объект имеет <xref:System.Drawing.Drawing2D.GraphicsPath.Transform%2A> метод, который позволяет превращать точки данных этого пути. В следующем примере рисуется прямоугольник без преобразований и путь, содержащий преобразование поворота. (Предполагается, что имеется не мировое преобразование).  
   
  [!code-csharp[System.Drawing.CoordinateSystems#22](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/CS/Class1.cs#22)]
- [!code-vb[System.Drawing.CoordinateSystems#22](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/VB/Class1.vb#22)]  
+   
   
  Вы можете объединить мировое преобразование локального преобразования позволяет получать различные результаты. Например можно использовать мировое преобразование координат и использовать локальные преобразования для поворота и масштабирования объектов, нарисованных на новую систему координат.  
   
@@ -49,12 +49,12 @@ ms.locfileid: "59213757"
  Следующий пример устанавливает систему координат, описанное заданием мировое преобразование объекта <xref:System.Drawing.Graphics> объекта.  
   
  [!code-csharp[System.Drawing.CoordinateSystems#23](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/CS/Class1.cs#23)]
- [!code-vb[System.Drawing.CoordinateSystems#23](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/VB/Class1.vb#23)]  
+   
   
  Следующий код (он размещен в конце предыдущего примера) создает путь, состоящий из одного прямоугольника, его нижнего левого угла, в начале координат новой системы координат. То прямоугольник заливается один раз без локального преобразований и один раз с применением локального преобразования. Локальное преобразование заключается горизонтального масштабирования с коэффициентом 2, а затем поворот на 30 градусов.  
   
  [!code-csharp[System.Drawing.CoordinateSystems#24](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/CS/Class1.cs#24)]
- [!code-vb[System.Drawing.CoordinateSystems#24](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/VB/Class1.vb#24)]  
+   
   
  Ниже показан новый системы координат и двух прямоугольников.  
   

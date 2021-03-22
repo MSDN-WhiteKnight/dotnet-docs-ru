@@ -28,14 +28,14 @@ ms.locfileid: "59128782"
  В примере кода ниже демонстрируется использование компонента <xref:System.ComponentModel.BackgroundWorker> для загрузки XML-файла с URL-адреса. Когда пользователь щелкает **загрузить** кнопки <xref:System.Windows.Forms.Control.Click> вызовов обработчика событий <xref:System.ComponentModel.BackgroundWorker.RunWorkerAsync%2A> метод <xref:System.ComponentModel.BackgroundWorker> компонента для запуска операции загрузки. Кнопка отключается во время загрузки, а по его окончании снова становится активной. В поле <xref:System.Windows.Forms.MessageBox> выводится содержимое файла.  
   
  [!code-csharp[System.ComponentModel.BackgroundWorker.IsBusy#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/CS/Form1.cs#1)]
- [!code-vb[System.ComponentModel.BackgroundWorker.IsBusy#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/VB/Form1.vb#1)]  
+   
   
  **Загрузка файла**  
   
  Файл скачивается в рабочем потоке компонента <xref:System.ComponentModel.BackgroundWorker>, который запускает обработчик событий <xref:System.ComponentModel.BackgroundWorker.DoWork>. Этот поток запускается, когда код вызывает метод <xref:System.ComponentModel.BackgroundWorker.RunWorkerAsync%2A>.  
   
  [!code-csharp[System.ComponentModel.BackgroundWorker.IsBusy#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/CS/Form1.cs#3)]
- [!code-vb[System.ComponentModel.BackgroundWorker.IsBusy#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/VB/Form1.vb#3)]  
+   
   
  **Ожидание завершения работы BackgroundWorker**  
   
@@ -46,14 +46,14 @@ ms.locfileid: "59128782"
  Если нужно продолжить выполнение работы в основном потоке, воспользуйтесь свойством <xref:System.ComponentModel.BackgroundWorker.IsBusy%2A>, чтобы определить, по-прежнему ли выполняется поток <xref:System.ComponentModel.BackgroundWorker>. В примере индикатор выполнения обновляется в процессе загрузки. Для сохранения отклика пользовательского интерфейса обязательно вызовите метод <xref:System.Windows.Forms.Application.DoEvents%2A?displayProperty=nameWithType>.  
   
  [!code-csharp[System.ComponentModel.BackgroundWorker.IsBusy#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/CS/Form1.cs#2)]
- [!code-vb[System.ComponentModel.BackgroundWorker.IsBusy#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/VB/Form1.vb#2)]  
+   
   
  **Вывод результата**  
   
  Метод `backgroundWorker1_RunWorkerCompleted` обрабатывает событие <xref:System.ComponentModel.BackgroundWorker.RunWorkerCompleted> и вызывается по завершении фоновой операции. Сначала этот метод проверяет свойство <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A?displayProperty=nameWithType>. Если свойство <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A?displayProperty=nameWithType> имеет значение `null`, то метод выводит содержимое файла. Затем он активирует кнопку загрузки, которая была отключена, когда началась загрузка, и сбрасывает индикатор выполнения.  
   
  [!code-csharp[System.ComponentModel.BackgroundWorker.IsBusy#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/CS/Form1.cs#4)]
- [!code-vb[System.ComponentModel.BackgroundWorker.IsBusy#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker.IsBusy/VB/Form1.vb#4)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

@@ -22,24 +22,24 @@ ms.locfileid: "59139962"
  В следующем примере код сначала создает прямоугольник 50 × 50 и помещает его в точку начала координат (0, 0). Начало координат находится в левом верхнем углу клиентской области.  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#11)]
- [!code-vb[System.Drawing.MiscLegacyTopics#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#11)]  
+   
   
  Следующий код применяет преобразование масштабирования, который расширяет прямоугольник, соотношение 1,75 по оси x и к прямоугольнику с коэффициентом 0,5 по оси y:  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#12](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#12)]
- [!code-vb[System.Drawing.MiscLegacyTopics#12](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#12)]  
+   
   
  Результатом является прямоугольник, который больше времени по оси x и короче по оси y исходного.  
   
  Чтобы повернуть прямоугольник вместо его масштабирования, используйте следующий код:  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#13](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#13)]
- [!code-vb[System.Drawing.MiscLegacyTopics#13](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#13)]  
+   
   
  Чтобы преобразовать прямоугольник, используйте следующий код:  
   
  [!code-csharp[System.Drawing.MiscLegacyTopics#14](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/CS/Class1.cs#14)]
- [!code-vb[System.Drawing.MiscLegacyTopics#14](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.MiscLegacyTopics/VB/Class1.vb#14)]  
+   
   
 ## <a name="see-also"></a>См. также
 

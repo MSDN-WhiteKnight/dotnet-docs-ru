@@ -25,7 +25,7 @@ ms.locfileid: "59227617"
  В следующем примере кода выводит текст с двумя различными уровнями качества.  
   
  [!code-csharp[System.Drawing.FontsAndText#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.FontsAndText/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.FontsAndText#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.FontsAndText/VB/Class1.vb#21)]  
+   
  
  На следующем рисунке показан результат выполнения примера кода:  
   

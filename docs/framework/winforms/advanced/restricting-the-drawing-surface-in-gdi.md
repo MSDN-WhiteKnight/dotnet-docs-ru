@@ -29,7 +29,7 @@ ms.locfileid: "59074967"
  Для рисования с использованием обрезки, создание <xref:System.Drawing.Graphics> , задать его <xref:System.Drawing.Graphics.Clip%2A> свойство и затем вызвать методы рисования этого же <xref:System.Drawing.Graphics> объекта:  
   
  [!code-csharp[LinesCurvesAndShapes#91](~/samples/snippets/csharp/VS_Snippets_Winforms/LinesCurvesAndShapes/CS/Class1.cs#91)]
- [!code-vb[LinesCurvesAndShapes#91](~/samples/snippets/visualbasic/VS_Snippets_Winforms/LinesCurvesAndShapes/VB/Class1.vb#91)]  
+   
   
 ## <a name="see-also"></a>См. также
 

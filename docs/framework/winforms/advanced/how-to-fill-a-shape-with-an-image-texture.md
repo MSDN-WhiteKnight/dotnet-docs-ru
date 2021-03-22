@@ -28,7 +28,7 @@ ms.locfileid: "59177324"
 >  В следующем примере размер изображения равно 75 × 75 и размер эллипса — 150 × 250. Так как изображение меньше заполняемой эллипса, эллипса выполняется мозаичное заполнение с использованием образа. Достигнут мозаичное заполнение означает, что изображение повторяется горизонтально и вертикально до границы фигуры. Дополнительные сведения о мозаичного заполнения, см. в разделе [как: Мозаичное заполнение фигуры заданным изображением](how-to-tile-a-shape-with-an-image.md).  
   
  [!code-csharp[System.Drawing.UsingABrush#21](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.UsingABrush/CS/Class1.cs#21)]
- [!code-vb[System.Drawing.UsingABrush#21](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.UsingABrush/VB/Class1.vb#21)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs> `e`, который является параметром <xref:System.Windows.Forms.Control.Paint> обработчик событий.  

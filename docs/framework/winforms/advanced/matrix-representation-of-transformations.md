@@ -97,7 +97,7 @@ ms.locfileid: "59172787"
  <xref:System.Drawing.Drawing2D.Matrix> Класс предоставляет несколько методов для составных преобразований: <xref:System.Drawing.Drawing2D.Matrix.Multiply%2A>, <xref:System.Drawing.Drawing2D.Matrix.Rotate%2A>, <xref:System.Drawing.Drawing2D.Matrix.RotateAt%2A>, <xref:System.Drawing.Drawing2D.Matrix.Scale%2A>, <xref:System.Drawing.Drawing2D.Matrix.Shear%2A>, и <xref:System.Drawing.Drawing2D.Matrix.Translate%2A>. В следующем примере создается матрица составного преобразования, сначала поворачивается на 30 градусов, а затем масштабируется с коэффициентом 2 по оси y и транслирует 5 единиц по оси x:  
   
  [!code-csharp[System.Drawing.CoordinateSystems#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/CS/Class1.cs#11)]
- [!code-vb[System.Drawing.CoordinateSystems#11](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.CoordinateSystems/VB/Class1.vb#11)]  
+   
   
  На следующем рисунке матрицы.  
   

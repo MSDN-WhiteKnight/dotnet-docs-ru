@@ -29,17 +29,17 @@ ms.locfileid: "59305979"
 2. Определите в этом классе-оболочке свойство для каждого требуемого параметра приложения и примените его с атрибутом <xref:System.Configuration.ApplicationScopedSettingAttribute> или <xref:System.Configuration.UserScopedSettingAttribute> в зависимости от области действия параметра. Дополнительные сведения об области действия параметров см. в разделе [Общие сведения о параметрах приложения](application-settings-overview.md). На этом этапе код должен выглядеть так:  
   
      [!code-csharp[ApplicationSettings.Create#1](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Create/CS/MyAppSettings.cs#1)]
-     [!code-vb[ApplicationSettings.Create#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Create/VB/MyAppSettings.vb#1)]  
+       
   
 3. Создайте экземпляр этого класса-оболочки в приложении. Как правило, он является закрытым членом главной формы. Определив класс, нужно привязать его к свойству, в данном случае к свойству <xref:System.Windows.Forms.Form.BackColor%2A> формы. Это можно сделать в вашей форме `Load` обработчик событий.  
   
      [!code-csharp[ApplicationSettings.Create#2](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Create/CS/Form1.cs#2)]
-     [!code-vb[ApplicationSettings.Create#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Create/VB/Form1.vb#2)]  
+       
   
 4. Если вы предоставляете возможность изменения параметров во время выполнения, необходимо сохранять текущие параметры пользователя на диск при закрытии формы, иначе изменения будут потеряны.  
   
      [!code-csharp[ApplicationSettings.Create#3](~/samples/snippets/csharp/VS_Snippets_Winforms/ApplicationSettings.Create/CS/Form1.cs#3)]
-     [!code-vb[ApplicationSettings.Create#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/ApplicationSettings.Create/VB/Form1.vb#3)]  
+       
   
      Теперь новый параметр приложения успешно создан и связан с указанным свойством.  
   

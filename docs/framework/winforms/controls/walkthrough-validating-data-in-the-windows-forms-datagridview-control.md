@@ -40,9 +40,9 @@ ms.locfileid: "59346058"
      В следующем примере представлена базовая реализация и включает в себя `Main` метод.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewDataValidation#01](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/CS/datavalidation.cs#01)]
-     [!code-vb[System.Windows.Forms.DataGridViewDataValidation#01](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/VB/datavalidation.vb#01)]  
+       
     [!code-csharp[System.Windows.Forms.DataGridViewDataValidation#02](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/CS/datavalidation.cs#02)]
-    [!code-vb[System.Windows.Forms.DataGridViewDataValidation#02](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/VB/datavalidation.vb#02)]  
+      
   
 2. Реализуйте метод в определении класса формы для обработки сведения о подключении к базе данных.  
   
@@ -52,19 +52,19 @@ ms.locfileid: "59346058"
     >  Хранение конфиденциальных сведений (например, пароля) в строке подключения может повлиять на безопасность приложения. Использование проверки подлинности Windows, также известный как встроенная безопасность является более безопасный способ управления доступом к базе данных. Дополнительные сведения см. в разделе [Защита сведений о подключении](../../data/adonet/protecting-connection-information.md).  
   
      [!code-csharp[System.Windows.Forms.DataGridViewDataValidation#30](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/CS/datavalidation.cs#30)]
-     [!code-vb[System.Windows.Forms.DataGridViewDataValidation#30](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/VB/datavalidation.vb#30)]  
+       
   
 3. Реализовать обработчик для формы <xref:System.Windows.Forms.Form.Load> событие, которое инициализирует <xref:System.Windows.Forms.DataGridView> и <xref:System.Windows.Forms.BindingSource> и устанавливает привязку данных.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewDataValidation#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/CS/datavalidation.cs#10)]
-     [!code-vb[System.Windows.Forms.DataGridViewDataValidation#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/VB/datavalidation.vb#10)]  
+       
   
 4. Реализовать обработчики для <xref:System.Windows.Forms.DataGridView> элемента управления <xref:System.Windows.Forms.DataGridView.CellValidating> и <xref:System.Windows.Forms.DataGridView.CellEndEdit> события.  
   
      <xref:System.Windows.Forms.DataGridView.CellValidating> Обработчик событий определяется ли значение ячейки в `CompanyName` столбец пуст. Если значение ячейки не проходит проверку, задайте <xref:System.ComponentModel.CancelEventArgs.Cancel%2A> свойство <xref:System.Windows.Forms.DataGridViewCellValidatingEventArgs?displayProperty=nameWithType> класс `true`. В результате <xref:System.Windows.Forms.DataGridView> управления для предотвращения курсора из ячейки. Задайте <xref:System.Windows.Forms.DataGridViewRow.ErrorText%2A> в строке пояснительный строку. Отобразится значок ошибки появляется всплывающая подсказка, содержащая текст ошибки. В <xref:System.Windows.Forms.DataGridView.CellEndEdit> задать обработчик событий, <xref:System.Windows.Forms.DataGridViewRow.ErrorText%2A> в строке, пустой строкой. <xref:System.Windows.Forms.DataGridView.CellEndEdit> Событие возникает только в том случае, когда ячейка завершается режим редактирования, если он не проходит проверку.  
   
      [!code-csharp[System.Windows.Forms.DataGridViewDataValidation#20](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/CS/datavalidation.cs#20)]
-     [!code-vb[System.Windows.Forms.DataGridViewDataValidation#20](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewDataValidation/VB/datavalidation.vb#20)]  
+       
   
 ## <a name="testing-the-application"></a>Тестирование приложения  
  Теперь можно проверить форму, чтобы убедиться, что она правильно работает.  

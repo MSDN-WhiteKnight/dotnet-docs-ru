@@ -26,17 +26,17 @@ ms.locfileid: "59339051"
 2. Добавьте ссылку на <xref:Microsoft.Win32> пространства имен в код.  
   
      [!code-csharp[WinFormsAutoScaling#2](~/samples/snippets/csharp/VS_Snippets_Winforms/WinFormsAutoScaling/CS/Form1.cs#2)]
-     [!code-vb[WinFormsAutoScaling#2](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WinFormsAutoScaling/VB/Form1.vb#2)]  
+       
   
 3. Добавьте следующий код в конструктор формы для привязки обработчиков событий, а также изменять шрифт по умолчанию используется для формы.  
   
      [!code-csharp[WinFormsAutoScaling#3](~/samples/snippets/csharp/VS_Snippets_Winforms/WinFormsAutoScaling/CS/Form1.cs#3)]
-     [!code-vb[WinFormsAutoScaling#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WinFormsAutoScaling/VB/Form1.vb#3)]  
+       
   
 4. Реализовать обработчик для <xref:Microsoft.Win32.SystemEvents.UserPreferenceChanged> событие, которое приводит к автоматическому масштабированию формы при <xref:Microsoft.Win32.UserPreferenceCategory.Window> категории изменения.  
   
      [!code-csharp[WinFormsAutoScaling#4](~/samples/snippets/csharp/VS_Snippets_Winforms/WinFormsAutoScaling/CS/Form1.cs#4)]
-     [!code-vb[WinFormsAutoScaling#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WinFormsAutoScaling/VB/Form1.vb#4)]  
+       
   
 5. Наконец, Реализуйте обработчик для <xref:System.Windows.Forms.Form.FormClosing> событие, которое отсоединяет <xref:Microsoft.Win32.SystemEvents.UserPreferenceChanged> обработчик событий.  
   
@@ -44,7 +44,7 @@ ms.locfileid: "59339051"
      > Если не добавить этот код вызовет утечка памяти.  
   
      [!code-csharp[WinFormsAutoScaling#5](~/samples/snippets/csharp/VS_Snippets_Winforms/WinFormsAutoScaling/CS/Form1.cs#5)]
-     [!code-vb[WinFormsAutoScaling#5](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WinFormsAutoScaling/VB/Form1.vb#5)]  
+       
   
 6. Скомпилируйте и запустите код.  
   
@@ -60,7 +60,7 @@ ms.locfileid: "59339051"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[WinFormsAutoScaling#1](~/samples/snippets/csharp/VS_Snippets_Winforms/WinFormsAutoScaling/CS/Form1.cs#1)]
- [!code-vb[WinFormsAutoScaling#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WinFormsAutoScaling/VB/Form1.vb#1)]  
+   
   
  Конструктор в этом примере код содержит вызов `InitializeComponent`, который определяется при создании нового проекта Windows Forms в Visual Studio. Удалите эту строку кода, при создании приложения в командной строке.  
   

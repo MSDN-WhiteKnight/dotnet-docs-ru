@@ -25,7 +25,7 @@ ms.locfileid: "59094948"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[WebBrowserMisc#10](~/samples/snippets/csharp/VS_Snippets_Winforms/WebBrowserMisc/CS/WebBrowserMisc.cs#10)]
- [!code-vb[WebBrowserMisc#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/WebBrowserMisc/vb/WebBrowserMisc.vb#10)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Для этого примера требуются:  

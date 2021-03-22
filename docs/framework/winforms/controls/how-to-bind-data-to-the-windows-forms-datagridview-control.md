@@ -45,7 +45,7 @@ Visual Studio имеет расширенную поддержку привяз�
 Заполнение `connectionString` переменных в примере со значениями пример подключения к базе данных "Борей" SQL Server. Проверка подлинности Windows, также называемый встроенная безопасность является более безопасный способ подключения к базе данных, чем хранение пароля в строке подключения. Дополнительные сведения о безопасности подключения, см. в разделе [Защита сведений о подключении](../../data/adonet/protecting-connection-information.md).  
 
 [!code-csharp[System.Windows.Forms.DataGridViewBoundEditable](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewBoundEditable/CS/datagridviewboundeditable.cs)]
-[!code-vb[System.Windows.Forms.DataGridViewBoundEditable](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewBoundEditable/VB/datagridviewboundeditable.vb)]  
+  
   
 ## <a name="see-also"></a>См. также
 

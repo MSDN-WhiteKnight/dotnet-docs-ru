@@ -42,7 +42,7 @@ ms.locfileid: "59175543"
  ![Рисунок, показывающий визуализации поворот цветов.](./media/how-to-rotate-colors/visualization-color-rotation.gif)  
   
  [!code-csharp[System.Drawing.RotateColors#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.RotateColors/CS/Form1.cs#1)]
- [!code-vb[System.Drawing.RotateColors#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Drawing.RotateColors/VB/Form1.vb#1)]  
+   
   
 ## <a name="compiling-the-code"></a>Компиляция кода  
  Предыдущий пример предназначен для работы с Windows Forms и требует <xref:System.Windows.Forms.PaintEventArgs>`e`, который является параметром <xref:System.Windows.Forms.Control.Paint> обработчик событий. Замените `RotationInput.bmp` в вашей системе путь и имя файла изображения.  

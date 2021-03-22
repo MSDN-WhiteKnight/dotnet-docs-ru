@@ -37,19 +37,19 @@ ms.locfileid: "59328144"
 2. Определите свойства. (Не является обязательным для определения свойств, так как элемент управления наследует многие свойства из <xref:System.Windows.Forms.Control> класс, но большинство пользовательских элементов управления обычно определяются дополнительные свойства.) В следующем фрагменте кода определяется свойство с именем `TextAlignment` , `FirstControl` используется для форматирования отображения <xref:System.Windows.Forms.Control.Text%2A> свойство унаследовано от <xref:System.Windows.Forms.Control>. Дополнительные сведения об определении свойств см. в разделе [Общие сведения о свойствах](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/65zdfbdt(v%3dvs.120)).  
   
      [!code-csharp[System.Windows.Forms.FirstControl#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/CS/FirstControl.cs#3)]
-     [!code-vb[System.Windows.Forms.FirstControl#3](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/VB/FirstControl.vb#3)]  
+       
   
      Устанавливая свойство, изменяющее визуальное отображение элемента управления, необходимо вызвать <xref:System.Windows.Forms.Control.Invalidate%2A> метод для перерисовки элемента управления. <xref:System.Windows.Forms.Control.Invalidate%2A> определен в базовом классе <xref:System.Windows.Forms.Control>.  
   
 3. Переопределите защищенный <xref:System.Windows.Forms.Control.OnPaint%2A> наследует метод <xref:System.Windows.Forms.Control> для предоставления логику отрисовки элемента управления. Если не переопределить <xref:System.Windows.Forms.Control.OnPaint%2A>, элемент управления не будет возможность рисования самого себя. В следующем фрагменте кода <xref:System.Windows.Forms.Control.OnPaint%2A> метод выводит <xref:System.Windows.Forms.Control.Text%2A> свойство унаследовано от <xref:System.Windows.Forms.Control> , а его выравнивание по `alignmentValue` поля.  
   
      [!code-csharp[System.Windows.Forms.FirstControl#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/CS/FirstControl.cs#4)]
-     [!code-vb[System.Windows.Forms.FirstControl#4](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/VB/FirstControl.vb#4)]  
+       
   
 4. Укажите атрибуты для своего элемента управления. Атрибуты позволяют визуальному конструктору адекватно отображать ваш элемент управления, а также его свойства и события во время разработки. Код в следующем фрагменте применяет атрибуты к свойству `TextAlignment`. В конструкторе, например Visual Studio <xref:System.ComponentModel.CategoryAttribute.Category%2A> атрибут (показанный в фрагменте кода) вызывает отображение свойства для отображения логической категории. <xref:System.ComponentModel.DescriptionAttribute.Description%2A> Атрибут приводит к строку описания, которое должно отображаться в нижней части **свойства** окно при `TextAlignment` было выбрано свойство. Дополнительные сведения об атрибутах см. в разделе [Атрибуты времени разработки для компонентов](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2013/tk67c2t8(v=vs.120)).  
   
      [!code-csharp[System.Windows.Forms.FirstControl#5](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/CS/FirstControl.cs#5)]
-     [!code-vb[System.Windows.Forms.FirstControl#5](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/VB/FirstControl.vb#5)]  
+       
   
 5. (Необязательно.) Предоставьте элементу управления ресурсы. Чтобы предоставить элементу управления ресурс, такой как растровое изображение, можно использовать параметр компилятора (`/res` для C#), позволяющий упаковать ресурсы с элементом управления. Во время выполнения ресурс можно получить с помощью методов класса <xref:System.Resources.ResourceManager> класса. Более подробную информацию о создании и использовании ресурсов см. в разделе [Ресурсы в приложениях для настольных систем](../../resources/index.md).  
   
@@ -72,7 +72,7 @@ ms.locfileid: "59328144"
  В следующем примере показан код для `FirstControl`. Элемент управления помещается в пространство имен `CustomWinControls`. Это пространство имен обеспечивает логическое группирование связанных типов. Элемент управления можно создавать в новом или в уже существующем пространстве имен. В C# объявление `using` (в Visual Basic `Imports`) обеспечивает доступ к типам из пространства имен без использования полного имени типа. В следующем примере `using` объявление позволяет коду получать доступ к классу <xref:System.Windows.Forms.Control> из <xref:System.Windows.Forms?displayProperty=nameWithType> просто <xref:System.Windows.Forms.Control> вместо того чтобы использовать полное доменное имя <xref:System.Windows.Forms.Control?displayProperty=nameWithType>.  
   
  [!code-csharp[System.Windows.Forms.FirstControl#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/CS/FirstControl.cs#1)]
- [!code-vb[System.Windows.Forms.FirstControl#1](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/VB/FirstControl.vb#1)]  
+   
   
 ## <a name="using-the-custom-control-on-a-form"></a>Использование пользовательского элемента управления в форме  
  В следующем примере показана простая форма с использованием `FirstControl`. Она создает три экземпляра `FirstControl` с разными значениями свойства `TextAlignment`.  
@@ -100,7 +100,7 @@ ms.locfileid: "59328144"
     ```  
   
  [!code-csharp[System.Windows.Forms.FirstControl#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/CS/SimpleForm.cs#10)]
- [!code-vb[System.Windows.Forms.FirstControl#10](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.FirstControl/VB/SimpleForm.vb#10)]  
+   
   
 ## <a name="see-also"></a>См. также
 

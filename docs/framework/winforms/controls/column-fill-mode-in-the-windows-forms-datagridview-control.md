@@ -40,7 +40,7 @@ ms.locfileid: "59214732"
   
 ### <a name="code"></a>Код  
  [!code-csharp[System.Windows.Forms.DataGridViewFillColumnsDemo#00](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewFillColumnsDemo/CS/fillcolumns.cs#00)]
- [!code-vb[System.Windows.Forms.DataGridViewFillColumnsDemo#00](~/samples/snippets/visualbasic/VS_Snippets_Winforms/System.Windows.Forms.DataGridViewFillColumnsDemo/vb/fillcolumns.vb#00)]  
+   
   
 ### <a name="comments"></a>Комментарии  
  Использование этого демонстрационного приложения.  
