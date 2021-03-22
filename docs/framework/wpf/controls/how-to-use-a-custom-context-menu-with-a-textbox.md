@@ -33,7 +33,7 @@ ms.locfileid: "59129420"
  Чтобы восстановить контекстное меню по умолчанию, используйте <xref:System.Windows.DependencyObject.ClearValue%2A> метод, чтобы удалить значение <xref:System.Windows.FrameworkElement.ContextMenu%2A> свойства.  Чтобы полностью отключить контекстное меню, задайте <xref:System.Windows.FrameworkElement.ContextMenu%2A> свойство пустую ссылку (`Nothing` в Visual Basic).  
   
  [!code-csharp[TextBox_ContextMenu#_TextBox_ContextMenu](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_ContextMenu/CSharp/Window1.xaml.cs#_textbox_contextmenu)]
- [!code-vb[TextBox_ContextMenu#_TextBox_ContextMenu](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBox_ContextMenu/VisualBasic/Window1.xaml.vb#_textbox_contextmenu)]  
+   
   
 ## <a name="see-also"></a>См. также
 

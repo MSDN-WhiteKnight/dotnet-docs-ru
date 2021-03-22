@@ -30,7 +30,7 @@ ms.locfileid: "59222306"
  В следующем примере показано определение класса `NetIncome`.  
   
  [!code-csharp[DirectionalBinding#DataObject](~/samples/snippets/csharp/VS_Snippets_Wpf/DirectionalBinding/CSharp/billsdata.cs#dataobject)]
- [!code-vb[DirectionalBinding#DataObject](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DirectionalBinding/VisualBasic/NetIncome.vb#dataobject)]  
+   
   
 > [!NOTE]
 >  Приведенный выше пример создает экземпляр объекта в разметке и использует его в качестве ресурса. Если вы хотите выполнить привязку к объекту, экземпляр которого уже создан в коде, необходимо задать свойство `DataContext` программным способом. Пример см. в разделе [Обеспечение доступности данных для привязки в XAML](how-to-make-data-available-for-binding-in-xaml.md).  

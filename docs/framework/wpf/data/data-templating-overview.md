@@ -48,7 +48,7 @@ ms.locfileid: "59097555"
  Например, если класс `Task` переопределяет метод `ToString` таким образом, что `name` — поле для `TaskName` свойства:  
   
  [!code-csharp[DataTemplatingIntro_snip#ToString](~/samples/snippets/csharp/VS_Snippets_Wpf/DataTemplatingIntro_snip/CSharp/Data.cs#tostring)]
- [!code-vb[DataTemplatingIntro_snip#ToString](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataTemplatingIntro_snip/visualbasic/data.vb#tostring)]  
+   
   
  Затем <xref:System.Windows.Controls.ListBox> выглядит следующим образом:  
   
@@ -151,7 +151,7 @@ ms.locfileid: "59097555"
  Чтобы задать логику выбирать, какие <xref:System.Windows.DataTemplate> для использования на основе `Priority` значение объекта данных, создать подкласс <xref:System.Windows.Controls.DataTemplateSelector> и переопределить <xref:System.Windows.Controls.DataTemplateSelector.SelectTemplate%2A> метод. В следующем примере <xref:System.Windows.Controls.DataTemplateSelector.SelectTemplate%2A> метод предоставляет логику для возвращения соответствующего шаблона на основе значения из `Priority` свойство. Возвращаемый шаблон находится в ресурсах <xref:System.Windows.Window> элемент.  
   
  [!code-csharp[DataTemplatingIntro_snip#DTSClass](~/samples/snippets/csharp/VS_Snippets_Wpf/DataTemplatingIntro_snip/CSharp/TaskListDataTemplateSelector.cs#dtsclass)]
- [!code-vb[DataTemplatingIntro_snip#DTSClass](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataTemplatingIntro_snip/visualbasic/tasklistdatatemplateselector.vb#dtsclass)]  
+   
   
  Затем можно объявить `TaskListDataTemplateSelector` как ресурс:  
   

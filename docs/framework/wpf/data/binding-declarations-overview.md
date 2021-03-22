@@ -63,7 +63,7 @@ ms.locfileid: "59165273"
  Еще один способ указать привязку — задать свойства непосредственно на <xref:System.Windows.Data.Binding> объект в коде. В следующем примере показано, как создать <xref:System.Windows.Data.Binding> и укажите свойства в коде.  В этом примере `TheConverter` — это объект, реализующий <xref:System.Windows.Data.IValueConverter> интерфейс.  
   
  [!code-csharp[BindConversion#1](~/samples/snippets/csharp/VS_Snippets_Wpf/BindConversion/CSharp/Window1.xaml.cs#1)]
- [!code-vb[BindConversion#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BindConversion/visualbasic/window1.xaml.vb#1)]  
+   
   
  Если вы выполняете привязку объекта <xref:System.Windows.FrameworkElement> или <xref:System.Windows.FrameworkContentElement> можно вызвать `SetBinding` метод объекта напрямую вместо использования <xref:System.Windows.Data.BindingOperations.SetBinding%2A?displayProperty=nameWithType>. Пример см. в разделе [Создание привязки в коде](how-to-create-a-binding-in-code.md).  
   

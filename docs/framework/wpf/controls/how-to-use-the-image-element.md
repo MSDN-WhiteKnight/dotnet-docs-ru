@@ -39,7 +39,7 @@ ms.locfileid: "59205307"
 >  Установка <xref:System.Windows.Media.Imaging.BitmapImage> свойства должна быть выполнена внутри <xref:System.Windows.Media.Imaging.BitmapImage.BeginInit%2A> и <xref:System.Windows.Media.Imaging.BitmapImage.EndInit%2A> блока.  
   
  [!code-csharp[ImageElementExample_snip#ImageSimpleExampleInlineCode1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/ImageSimpleExample.xaml.cs#imagesimpleexampleinlinecode1)]
- [!code-vb[ImageElementExample_snip#ImageSimpleExampleInlineCode1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImageElementExample_snip/VB/ImageSimpleExample.xaml.vb#imagesimpleexampleinlinecode1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

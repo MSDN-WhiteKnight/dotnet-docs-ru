@@ -168,7 +168,7 @@ ms.locfileid: "59315326"
  Например, рассмотрим следующую команду, где *myDataObject* является экземпляром класса *MyData* класс, *myBinding* является источником <xref:System.Windows.Data.Binding> объекта и *MyData* класс представляет собой определенный класс, который содержит строковое свойство с именем *MyDataProperty*. В этом примере привязывается текстовое содержимое *mytext*, экземпляр <xref:System.Windows.Controls.TextBlock>, *MyDataProperty*.  
   
  [!code-csharp[CodeOnlyBinding#1](~/samples/snippets/csharp/VS_Snippets_Wpf/CodeOnlyBinding/CSharp/binding.cs#1)]
- [!code-vb[CodeOnlyBinding#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CodeOnlyBinding/VisualBasic/App.vb#1)]  
+   
   
  Один и тот же объект *myBinding* можно использовать для создания других привязок. Например, можно использовать объект *myBinding* для привязки текстового содержимого флажка к *MyDataProperty*. В этом сценарии будут два экземпляра <xref:System.Windows.Data.BindingExpression> совместное использование *myBinding* объекта.  
   
@@ -189,7 +189,7 @@ ms.locfileid: "59315326"
  Однако, что делать, если вместо свойства строкового типа объект источника привязки имеет *цвет* свойство типа <xref:System.Windows.Media.Color>? В этом случае в порядке для создания привязки необходимо включить первый *цвет* значение свойства в нечто, <xref:System.Windows.Controls.Control.Background%2A> значение свойства. Необходимо создать пользовательский преобразователь, реализовав <xref:System.Windows.Data.IValueConverter> интерфейс, как показано в следующем примере:  
   
  [!code-csharp[ColorPicker_snip#16](~/samples/snippets/csharp/VS_Snippets_Wpf/ColorPicker_snip/CSharp/ColorPickerLib/ColorPicker.cs#16)]
- [!code-vb[ColorPicker_snip#16](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ColorPicker_snip/visualbasic/colorpickerlib/colorpicker.vb#16)]  
+   
   
  <xref:System.Windows.Data.IValueConverter> Справочной странице предоставляет дополнительные сведения.  
   
@@ -274,18 +274,18 @@ ms.locfileid: "59315326"
  В следующем примере показано логика сортировки «Сортировать по категориям и дате» <xref:System.Windows.Controls.CheckBox> приложения [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] в [новые возможности привязки данных?](#what_is_data_binding) раздел:  
   
  [!code-csharp[DataBindingLab#8](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/MainWindow.xaml.cs#8)]
- [!code-vb[DataBindingLab#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataBindingLab/VisualBasic/MainWindow.xaml.vb#8)]  
+   
   
 #### <a name="filtering"></a>Фильтрация  
  Представления могут применять к коллекции фильтр. Это означает, что несмотря на то что элемент может существовать в коллекции, его конкретное представление предназначено для отображения только некоторого подмножества полной коллекции. Возможна фильтрация по условию в данных. Например, как показано в приложение в [новые возможности привязки данных?](#what_is_data_binding) разделе «Показывать только товары по сниженным ценам» <xref:System.Windows.Controls.CheckBox> содержит логику фильтрации товаров с ценой 25 долл. Следующий код выполняется для установки *ShowOnlyBargainsFilter* как <xref:System.Windows.Data.CollectionViewSource.Filter> обработчик событий при, <xref:System.Windows.Controls.CheckBox> выбран:  
   
  [!code-csharp[DataBindingLab#10](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/MainWindow.xaml.cs#10)]
- [!code-vb[DataBindingLab#10](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataBindingLab/VisualBasic/MainWindow.xaml.vb#10)]  
+   
   
  Обработчик события *ShowOnlyBargainsFilter* реализуется следующим образом.  
   
  [!code-csharp[DataBindingLab#5](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/MainWindow.xaml.cs#5)]
- [!code-vb[DataBindingLab#5](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataBindingLab/VisualBasic/MainWindow.xaml.vb#5)]  
+   
   
  Если вы используете один из <xref:System.Windows.Data.CollectionView> классы напрямую вместо того <xref:System.Windows.Data.CollectionViewSource>, использовалась бы <xref:System.Windows.Data.CollectionView.Filter%2A> свойство, чтобы указать обратный вызов. Пример см. в разделе [Практическое руководство. Фильтрация данных в представлении](how-to-filter-data-in-a-view.md).  
   
@@ -295,7 +295,7 @@ ms.locfileid: "59315326"
  В следующем примере показано логику «Группировать по категории» <xref:System.Windows.Controls.CheckBox>:  
   
  [!code-csharp[DataBindingLab#6](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/MainWindow.xaml.cs#6)]
- [!code-vb[DataBindingLab#6](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataBindingLab/VisualBasic/MainWindow.xaml.vb#6)]  
+   
   
  Другой пример группировки см. в разделе [Практическое руководство. Группировка элементов в объекте ListView, реализующем GridView](../controls/how-to-group-items-in-a-listview-that-implements-a-gridview.md).  
   
@@ -369,7 +369,7 @@ ms.locfileid: "59315326"
  Можно также создать свои собственные правила проверки путем наследования от <xref:System.Windows.Controls.ValidationRule> класса и реализации <xref:System.Windows.Controls.ValidationRule.Validate%2A> метод. В следующем примере показано правило, используемое элементом *Добавление списка продуктов* «Дата начала» <xref:System.Windows.Controls.TextBox> из [новые возможности привязки данных?](#what_is_data_binding) раздел:  
   
  [!code-csharp[DataBindingLab#2](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/FutureDateRule.cs#2)]
- [!code-vb[DataBindingLab#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataBindingLab/VisualBasic/FutureDateRule.vb#2)]  
+   
   
  *StartDateEntryForm* <xref:System.Windows.Controls.TextBox> использует этот *FutureDateRule*, как показано в следующем примере:  
   

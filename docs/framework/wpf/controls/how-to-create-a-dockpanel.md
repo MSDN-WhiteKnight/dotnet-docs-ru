@@ -20,7 +20,7 @@ ms.locfileid: "59200601"
  В следующем примере создается и используется экземпляр <xref:System.Windows.Controls.DockPanel> с помощью кода. Примере демонстрируется разделение пространства путем создания пяти <xref:System.Windows.Shapes.Rectangle> элементов и позиционирования (закрепления) их внутри родительского <xref:System.Windows.Controls.DockPanel>. Если вы сохраните параметр по умолчанию, конечный прямоугольник заполнит все оставшееся незанятое пространство.  
   
  [!code-csharp[DockPanelCode#1](~/samples/snippets/csharp/VS_Snippets_Wpf/DockPanelCode/CSharp/DockPanel_Code.cs#1)]
- [!code-vb[DockPanelCode#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DockPanelCode/VisualBasic/dockpanel_vb.vb#1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

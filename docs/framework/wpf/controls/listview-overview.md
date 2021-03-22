@@ -45,7 +45,7 @@ ms.locfileid: "59186502"
  В <xref:System.Windows.Controls.GridView>, <xref:System.Windows.Controls.GridViewColumn> привязать объекты к указанным полям данных. Следующий пример связывает <xref:System.Windows.Controls.GridViewColumn> объекта к полю данных путем указания <xref:System.Windows.Data.Binding> для <xref:System.Windows.Controls.GridViewColumn.DisplayMemberBinding%2A> свойство.  
   
  [!code-csharp[ListViewCode#GridViewColumnProperties](~/samples/snippets/csharp/VS_Snippets_Wpf/ListViewCode/CSharp/Window1.xaml.cs#gridviewcolumnproperties)]
- [!code-vb[ListViewCode#GridViewColumnProperties](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ListViewCode/visualbasic/window1.xaml.vb#gridviewcolumnproperties)]
+ 
  [!code-xaml[ListViewCode#GridViewColumnProperties](~/samples/snippets/csharp/VS_Snippets_Wpf/ListViewCode/CSharp/Window1.xaml#gridviewcolumnproperties)]  
   
  Можно также указать <xref:System.Windows.Data.Binding> как часть <xref:System.Windows.DataTemplate> определение, которое используется для применения стиля к ячейкам столбца. В следующем примере <xref:System.Windows.DataTemplate> , определяемому с <xref:System.Windows.ResourceKey> задает <xref:System.Windows.Data.Binding> для <xref:System.Windows.Controls.GridViewColumn>. Обратите внимание, что в этом примере не определяет <xref:System.Windows.Controls.GridViewColumn.DisplayMemberBinding%2A> так, как это переопределяет привязку, которая определяется <xref:System.Windows.DataTemplate>.  

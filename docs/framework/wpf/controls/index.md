@@ -27,7 +27,7 @@ ms.locfileid: "59154418"
  В следующем примере создается такое же приложение в коде. Для краткости создание <xref:System.Windows.Controls.Grid>, `grid1`, было исключено из примера. `grid1` имеет те же определения столбцов и строк, как показано в предыдущем примере [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
   
  [!code-csharp[ControlsOverview#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml.cs#2)]
- [!code-vb[ControlsOverview#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ControlsOverview/VisualBasic/AppInCode.xaml.vb#2)]  
+   
   
 <a name="changing_the_appearance_of_a_control"></a>   
 ## <a name="changing-the-appearance-of-a-control"></a>Изменение внешнего вида элемента управления  
@@ -47,7 +47,7 @@ ms.locfileid: "59154418"
  Следующий пример устанавливает те же самые свойства в коде.  
   
  [!code-csharp[ControlsOverview#4](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml.cs#4)]
- [!code-vb[ControlsOverview#4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ControlsOverview/VisualBasic/AppInCode.xaml.vb#4)]  
+   
   
 ### <a name="creating-a-style-for-a-control"></a>Создание стиля для элемента управления  
  [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] дает возможность группового определения внешнего вида элементов управления путем создания <xref:System.Windows.Style> вместо установки свойств для каждого экземпляра в приложении. В следующем примере создается <xref:System.Windows.Style>, который применяется к каждому элементу <xref:System.Windows.Controls.Button> в приложении. Определения <xref:System.Windows.Style> обычно размещаются в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] в <xref:System.Windows.ResourceDictionary>, например в свойстве <xref:System.Windows.FrameworkElement.Resources%2A> объекта <xref:System.Windows.FrameworkElement>. 
@@ -76,12 +76,12 @@ ms.locfileid: "59154418"
  [!code-xaml[ControlsOverview#10](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/Window1.xaml#10)]  
   
  [!code-csharp[ControlsOverview#8](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml.cs#8)]
- [!code-vb[ControlsOverview#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ControlsOverview/VisualBasic/AppInCode.xaml.vb#8)]  
+   
   
  В следующем примере показана обработка события `Click` элемента управления <xref:System.Windows.Controls.Button>.  
   
  [!code-csharp[ControlsOverview#9](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml.cs#9)]
- [!code-vb[ControlsOverview#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ControlsOverview/VisualBasic/AppInCode.xaml.vb#9)]  
+   
   
 <a name="rich_content_in_controls"></a>   
 ## <a name="rich-content-in-controls"></a>Форматированное содержимое в элементах управления  

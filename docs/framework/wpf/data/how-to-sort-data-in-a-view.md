@@ -30,7 +30,7 @@ ms.locfileid: "59211261"
  <xref:System.Windows.Controls.Primitives.ButtonBase.Click> Обработчик событий кнопки содержит логику для сортировки элементов в <xref:System.Windows.Controls.ListBox> в порядке убывания. Это можно сделать, так как добавление элементов в <xref:System.Windows.Controls.ListBox> таким образом они добавляются в <xref:System.Windows.Controls.ItemCollection> из <xref:System.Windows.Controls.ListBox>, и <xref:System.Windows.Controls.ItemCollection> является производным от <xref:System.Windows.Data.CollectionView> класса. При связывании вашей <xref:System.Windows.Controls.ListBox> в коллекции с помощью <xref:System.Windows.Controls.ItemsControl.ItemsSource%2A> свойство, можно использовать ту же методику для сортировки.  
   
  [!code-csharp[ListBoxSort_snip#HowToCode](~/samples/snippets/csharp/VS_Snippets_Wpf/ListBoxSort_snip/CSharp/Window1.xaml.cs#howtocode)]
- [!code-vb[ListBoxSort_snip#HowToCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ListBoxSort_snip/visualbasic/window1.xaml.vb#howtocode)]  
+   
   
  До тех пор, пока у вас есть ссылку на объект представления, можно использовать ту же методику для сортировки содержимого других представлений коллекции. Пример получения представления, см. в разделе [получение представления по умолчанию для коллекции данных](how-to-get-the-default-view-of-a-data-collection.md). Еще один пример см. в разделе [сортировки GridView столбца при нажатии на заголовок](../controls/how-to-sort-a-gridview-column-when-a-header-is-clicked.md). Дополнительные сведения о представлениях см [Общие сведения о привязке данных](data-binding-overview.md).  
   

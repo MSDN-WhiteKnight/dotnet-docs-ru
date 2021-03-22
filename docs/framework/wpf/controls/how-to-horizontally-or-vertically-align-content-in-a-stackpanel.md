@@ -27,7 +27,7 @@ ms.locfileid: "59186047"
  Следующий файл кода определяет изменения на события, которые связаны с <xref:System.Windows.Controls.ListBox> изменения выделения. <xref:System.Windows.Controls.StackPanel> определяется <xref:System.Windows.FrameworkElement.Name%2A> `sp1`.  
   
  [!code-csharp[StackPanelIntroSamp#2](~/samples/snippets/csharp/VS_Snippets_Wpf/StackPanelIntroSamp/CSharp/Window1.xaml.cs#2)]
- [!code-vb[StackPanelIntroSamp#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StackPanelIntroSamp/VisualBasic/Window1.xaml.vb#2)]  
+   
   
 ## <a name="see-also"></a>См. также
 

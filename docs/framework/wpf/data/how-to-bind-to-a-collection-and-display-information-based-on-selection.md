@@ -43,7 +43,7 @@ ms.locfileid: "59314399"
  Обратите внимание, что `Person` класса переопределения `ToString` метод следующим образом. По умолчанию <xref:System.Windows.Controls.ListBox> вызовы `ToString` и отображает строковое представление каждого объекта в привязанной коллекции. Вот почему каждый `Person` отображается как имя в <xref:System.Windows.Controls.ListBox>.  
   
  [!code-csharp[CollectionBinding#ToString](~/samples/snippets/csharp/VS_Snippets_Wpf/CollectionBinding/CSharp/Data.cs#tostring)]
- [!code-vb[CollectionBinding#ToString](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CollectionBinding/VisualBasic/Person.vb#tostring)]  
+   
   
 ## <a name="see-also"></a>См. также
 

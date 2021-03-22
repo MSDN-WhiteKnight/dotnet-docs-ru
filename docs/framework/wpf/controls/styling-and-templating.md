@@ -94,7 +94,7 @@ ms.locfileid: "59132303"
  Чтобы программным способом назначить именованный стиль элементу, Возьмите этот стиль из коллекции ресурсов и его назначение этого элемента <xref:System.Windows.FrameworkElement.Style%2A> свойство. Обратите внимание, что элементы в коллекции ресурсов имеют тип <xref:System.Object>. Таким образом, необходимо привести полученный стиль для <xref:System.Windows.Style> перед назначением его <xref:System.Windows.FrameworkElement.Style%2A> свойство. Например, чтобы задать определенный `TitleText` стиль над <xref:System.Windows.Controls.TextBlock> с именем `textblock1`, выполните следующие действия:  
   
  [!code-csharp[StylingIntroSample_snippet#Code](~/samples/snippets/csharp/VS_Snippets_Wpf/StylingIntroSample_snippet/CSharp/Window1.xaml.cs#code)]
- [!code-vb[StylingIntroSample_snippet#Code](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StylingIntroSample_snippet/visualbasic/window1.xaml.vb#code)]  
+   
   
  Обратите внимание, что после применения стиля он фиксируется и не может быть изменен. Если необходимо динамически изменить стиль, который уже был применен, нужно создать новый стиль для замены существующего. Дополнительные сведения см. в описании свойства <xref:System.Windows.Style.IsSealed%2A>.  
   

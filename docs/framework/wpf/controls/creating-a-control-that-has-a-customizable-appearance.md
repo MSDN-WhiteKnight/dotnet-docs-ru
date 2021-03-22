@@ -109,12 +109,12 @@ ms.locfileid: "59298348"
  В примере, который определяет визуальную структуру элемента `NumericUpDown` контролировать <xref:System.Windows.Controls.ControlTemplate>, <xref:System.Windows.Controls.Primitives.RepeatButton> , увеличивающий `Value` имеет его `x:Name` атрибут `UpButton`.  В следующем примере объявляется свойство с именем `UpButtonElement` , представляющий <xref:System.Windows.Controls.Primitives.RepeatButton> , объявленным в <xref:System.Windows.Controls.ControlTemplate>. `set` Доступа сначала отменяет подписку на кнопку <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий Если `UpDownElement` не `null`, задает свойство, и затем подписывается на <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий. Также имеется свойство определен, но не отображается, для других <xref:System.Windows.Controls.Primitives.RepeatButton>, который называется `DownButtonElement`.  
   
  [!code-csharp[VSMCustomControl#UpButtonProperty](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#upbuttonproperty)]
- [!code-vb[VSMCustomControl#UpButtonProperty](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#upbuttonproperty)]  
+   
   
  В следующем примере показан <xref:System.Windows.FrameworkElement.OnApplyTemplate%2A> для `NumericUpDown` элемента управления.  В примере используется <xref:System.Windows.FrameworkElement.GetTemplateChild%2A> метод для получения <xref:System.Windows.FrameworkElement> объектов из <xref:System.Windows.Controls.ControlTemplate>.  Обратите внимание, что в примере предотвращаются ситуации, когда <xref:System.Windows.FrameworkElement.GetTemplateChild%2A> находит <xref:System.Windows.FrameworkElement> с указанным именем, которое не относится к ожидаемому типу. Это также рекомендуемый способ игнорирования элементов, имеющих указанный `x:Name` , но имеет неправильный тип.  
   
  [!code-csharp[VSMCustomControl#ApplyTemplate](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#applytemplate)]
- [!code-vb[VSMCustomControl#ApplyTemplate](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#applytemplate)]  
+   
   
  Следуя рекомендациям, показанные в предыдущих примерах, убедитесь, что элемент управления будет продолжать выполняться, когда <xref:System.Windows.Controls.ControlTemplate> отсутствует <xref:System.Windows.FrameworkElement>.  
   
@@ -130,7 +130,7 @@ ms.locfileid: "59298348"
  Логика элемента управления отвечает за изменение состояния элемента управления. В следующем примере показано, что `NumericUpDown` контролирующие вызовы, <xref:System.Windows.VisualStateManager.GoToState%2A> метод в `Positive` состояние при `Value` 0 или больше и `Negative` состояние при `Value` меньше 0.  
   
  [!code-csharp[VSMCustomControl#ValueStateChange](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#valuestatechange)]
- [!code-vb[VSMCustomControl#ValueStateChange](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#valuestatechange)]  
+   
   
  <xref:System.Windows.VisualStateManager.GoToState%2A> Метод выполняет логику, необходимую для запуска и остановки раскадровки соответствующим образом. Когда элемент управления вызывает <xref:System.Windows.VisualStateManager.GoToState%2A> для изменения его состояния <xref:System.Windows.VisualStateManager> делает следующее:  
   
@@ -152,7 +152,7 @@ ms.locfileid: "59298348"
  Один метод, который обновляет все состояния, централизованно выполняет вызовы <xref:System.Windows.VisualStateManager> и сохраняет код управляемым. В следующем примере показан `NumericUpDown` вспомогательный метод элемента управления, `UpdateStates`. Когда `Value` больше или равно 0, <xref:System.Windows.Controls.Control> в `Positive` состояние.  Когда `Value` — меньше 0, элемент управления находится в `Negative` состояние.  Когда <xref:System.Windows.UIElement.IsFocused%2A> — `true`, элемент управления находится в `Focused` состояния; в противном случае он находится в `Unfocused` состояние.  Элемент управления может вызывать `UpdateStates` каждый раз, когда необходимо изменить свое состояние, независимо от состояния.  
   
  [!code-csharp[VSMCustomControl#UpdateStates](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#updatestates)]
- [!code-vb[VSMCustomControl#UpdateStates](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#updatestates)]  
+   
   
  Если передать имя состояния для <xref:System.Windows.VisualStateManager.GoToState%2A> когда элемент управления уже находится в этом состоянии <xref:System.Windows.VisualStateManager.GoToState%2A> ничего не делает, поэтому не нужно проверить текущее состояние элемента управления.  Например если `Value` изменяется от одного отрицательного числа на другое отрицательное число, раскадровка для `Negative` состояние не прерывается, и пользователь не увидит изменений в элементе управления.  
   
@@ -171,17 +171,17 @@ ms.locfileid: "59298348"
  Необходимо обновить состояние элемента управления в <xref:System.Windows.FrameworkElement.OnApplyTemplate%2A> метод отображения элемента управления в правильное состояние при <xref:System.Windows.Controls.ControlTemplate> применяется. В следующем примере вызывается `UpdateStates` в <xref:System.Windows.FrameworkElement.OnApplyTemplate%2A> чтобы убедиться в правильности состояния элемента управления.  Например, предположим, создаваемые `NumericUpDown` и затем задать его <xref:System.Windows.Controls.Control.Foreground%2A> зеленый цвет и `Value` значению -5.  Если вы не вызываете `UpdateStates` при <xref:System.Windows.Controls.ControlTemplate> применяется к `NumericUpDown` элемент управления, элемент управления отсутствует в `Negative` состояние и значение отображается зеленым цветом, вместо red.  Необходимо вызвать `UpdateStates` для размещения этого элемента управления `Negative` состояние.  
   
  [!code-csharp[VSMCustomControl#ApplyTemplate](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#applytemplate)]
- [!code-vb[VSMCustomControl#ApplyTemplate](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#applytemplate)]  
+   
   
  Часто требуется для обновления состояния элемента управления при изменении свойства. В следующем примере показан весь `ValueChangedCallback` метод. Так как `ValueChangedCallback` вызывается, когда `Value` изменяется, вызывается метод `UpdateStates` в случае, если `Value` изменилось с положительным, отрицательным или наоборот. Это допустимо для вызова `UpdateStates` при `Value` изменяется, но остается положительным или отрицательным, поскольку в этом случае элемент управления не изменяет состояние.  
   
  [!code-csharp[VSMCustomControl#EntireValueChangedCallback](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#entirevaluechangedcallback)]
- [!code-vb[VSMCustomControl#EntireValueChangedCallback](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#entirevaluechangedcallback)]  
+   
   
  Может также потребоваться обновить состояния при возникновении события. В следующем примере показано, что `NumericUpDown` вызовы `UpdateStates` на <xref:System.Windows.Controls.Control> для обработки <xref:System.Windows.UIElement.GotFocus> событий.  
   
  [!code-csharp[VSMCustomControl#OnGotFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#ongotfocus)]
- [!code-vb[VSMCustomControl#OnGotFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#ongotfocus)]  
+   
   
  <xref:System.Windows.VisualStateManager> Помогает управлять состояний элемента управления. С помощью <xref:System.Windows.VisualStateManager>, убедитесь, что элемент управления правильные переходы между состояниями.  Если вы выполните рекомендации, описанные в этом разделе, для работы с <xref:System.Windows.VisualStateManager>, код элемента управления будет оставаться читаемым и простым в обслуживании.  
   
@@ -224,7 +224,7 @@ ms.locfileid: "59298348"
  В следующем примере задается <xref:System.Windows.FrameworkElement> объекта и состояний для `NumericUpDown` элемента управления.  
   
  [!code-csharp[VSMCustomControl#ControlContract](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#controlcontract)]
- [!code-vb[VSMCustomControl#ControlContract](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#controlcontract)]  
+   
   
 <a name="complete_example"></a>   
 ## <a name="complete-example"></a>Полный пример  
@@ -235,7 +235,7 @@ ms.locfileid: "59298348"
  В следующем примере показано логику для `NumericUpDown`.  
   
  [!code-csharp[VSMCustomControl#ControlLogic](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmcustomcontrol/csharp/numericupdown.cs#controllogic)]
- [!code-vb[VSMCustomControl#ControlLogic](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmcustomcontrol/visualbasic/numericupdown.vb#controllogic)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -51,7 +51,7 @@ ms.locfileid: "59130407"
  В следующем примере показано, как создать <xref:System.Windows.Controls.Expander> элемента управления, который имеет сложное содержимое и содержит <xref:System.Windows.Controls.ScrollViewer> элемента управления. В этом примере создается <xref:System.Windows.Controls.Expander> это похоже на рисунке в начале этого раздела.  
   
  [!code-csharp[ExpanderRichContent#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ExpanderRichContent/CSharp/Window1.xaml.cs#1)]
- [!code-vb[ExpanderRichContent#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ExpanderRichContent/VisualBasic/Window1.xaml.vb#1)]
+ 
  [!code-xaml[ExpanderRichContent#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ExpanderRichContent/CSharp/Window1.xaml#1)]  
   
 <a name="UsingtheAlignmentProperties"></a>   

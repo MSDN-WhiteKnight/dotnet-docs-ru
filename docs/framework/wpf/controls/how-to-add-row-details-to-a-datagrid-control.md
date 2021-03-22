@@ -38,7 +38,7 @@ ms.locfileid: "59317899"
      В следующем коде показано запрос, который используется для выбора данных, который отображается в <xref:System.Windows.Controls.DataGrid>. В этом примере запрос выбирает данные из сущности, содержащей сведения о клиенте.  
   
      [!code-csharp[DataGrid_RowDetails#2](~/samples/snippets/csharp/VS_Snippets_Wpf/datagrid_rowdetails/cs/mainwindow.xaml.cs#2)]
-     [!code-vb[DataGrid_RowDetails#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/datagrid_rowdetails/vb/mainwindow.xaml.vb#2)]  
+       
   
 ### <a name="to-display-row-details-by-using-a-resource"></a>Отображение сведений о строке с помощью ресурса  
   

@@ -40,7 +40,7 @@ ms.locfileid: "57365052"
     > Объекты в коллекции должны реализовывать <xref:System.ComponentModel.INotifyPropertyChanged> измененный интерфейс и <xref:System.ComponentModel.IEditableObject> интерфейс выполнился <xref:System.Windows.Controls.DataGrid> правильно реагировать на изменения свойства. Дополнительные сведения см. в разделе [Реализация уведомления об изменении свойств](../data/how-to-implement-property-change-notification.md).
 
     [!code-csharp[DataGrid_GroupSortFilter#101](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#101)]
-    [!code-vb[DataGrid_GroupSortFilter#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#101)]
+    
 
 2. В XAML, создайте экземпляр класса коллекции и задайте [директивы x: Key](../../xaml-services/x-key-directive.md).
 
@@ -55,7 +55,7 @@ ms.locfileid: "57365052"
 5. Чтобы получить доступ к <xref:System.Windows.Data.CollectionViewSource> из кода, используйте <xref:System.Windows.Data.CollectionViewSource.GetDefaultView%2A> метод, чтобы получить ссылку на <xref:System.Windows.Data.CollectionViewSource>.
 
     [!code-csharp[DataGrid_GroupSortFilter#102](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#102)]
-    [!code-vb[DataGrid_GroupSortFilter#102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#102)]
+    
 
 ## <a name="grouping-items-in-a-datagrid"></a>Группировка элементов в элемент управления DataGrid
 
@@ -75,14 +75,14 @@ ms.locfileid: "57365052"
 
     [!code-xaml[DataGrid_GroupSortFilter#012](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml#012)]
     [!code-csharp[DataGrid_GroupSortFilter#112](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#112)]
-    [!code-vb[DataGrid_GroupSortFilter#112](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#112)]
+    
 
 4. Чтобы удалить группу, удалите <xref:System.Windows.Data.PropertyGroupDescription> из <xref:System.Windows.Data.CollectionViewSource.GroupDescriptions%2A> коллекции.
 
 5. Чтобы удалить все группы, вызовите <xref:System.Collections.ObjectModel.Collection%601.Clear%2A> метод <xref:System.Windows.Data.CollectionViewSource.GroupDescriptions%2A> коллекции.
 
     [!code-csharp[DataGrid_GroupSortFilter#114](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#114)]
-    [!code-vb[DataGrid_GroupSortFilter#114](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#114)]
+    
 
 Если элементы группируются в <xref:System.Windows.Controls.DataGrid>, можно определить <xref:System.Windows.Controls.GroupStyle> , указывающий внешний вид каждой группы. Можно применить <xref:System.Windows.Controls.GroupStyle> путем добавления его в <xref:System.Windows.Controls.ItemsControl.GroupStyle%2A> коллекцию DataGrid. При наличии нескольких уровней группировки, можно применить различные стили для каждого уровня. Стили применяются в порядке, в котором они определены. Например если определить два стиля, первый будет применять к группам строк верхнего уровня. Второй стиль будет применен ко всем группам строк на втором уровне и ниже. <xref:System.Windows.FrameworkElement.DataContext%2A> Из <xref:System.Windows.Controls.GroupStyle> является <xref:System.Windows.Data.CollectionViewGroup> , представляющий группу.
 
@@ -112,7 +112,7 @@ ms.locfileid: "57365052"
 
     [!code-xaml[DataGrid_GroupSortFilter#011](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml#011)]
     [!code-csharp[DataGrid_GroupSortFilter#211](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/WindowSnips1.xaml.cs#211)]
-    [!code-vb[DataGrid_GroupSortFilter#211](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#211)]
+    
 
 ## <a name="filtering-items-in-a-datagrid"></a>Фильтрация элементов в элементе управления DataGrid
 
@@ -128,7 +128,7 @@ ms.locfileid: "57365052"
 
     [!code-xaml[DataGrid_GroupSortFilter#013](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml#013)]
     [!code-csharp[DataGrid_GroupSortFilter#113](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#113)]
-    [!code-vb[DataGrid_GroupSortFilter#113](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#113)]
+    
 
 Кроме того, можно отфильтровать элементы в <xref:System.Windows.Controls.DataGrid> , создав метод, который предоставляет логику фильтрации и параметр <xref:System.Windows.Data.CollectionView.Filter%2A?displayProperty=nameWithType> свойство, чтобы применить фильтр. Пример этого метода см. в разделе [данные фильтра в представлении](../data/how-to-filter-data-in-a-view.md).
 
@@ -142,7 +142,7 @@ ms.locfileid: "57365052"
 
 [!code-xaml[DataGrid_GroupSortFilter#000](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml#000)]
 [!code-csharp[DataGrid_GroupSortFilter#100](~/samples/snippets/csharp/VS_Snippets_Wpf/DataGrid_GroupSortFilter/CS/MainWindow.xaml.cs#100)]
-[!code-vb[DataGrid_GroupSortFilter#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DataGrid_GroupSortFilter/VB/MainWindow.xaml.vb#100)]
+
 
 ## <a name="see-also"></a>См. также
 

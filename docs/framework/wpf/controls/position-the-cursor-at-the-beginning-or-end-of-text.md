@@ -28,13 +28,13 @@ ms.locfileid: "59186229"
  Для позиционирования курсора в начало содержимого <xref:System.Windows.Controls.TextBox> управления, вызовите <xref:System.Windows.Controls.TextBox.Select%2A> метод и укажите начальную позицию 0 и длину выделения, равную 0.  
   
  [!code-csharp[TextBox_MiscCode#_CursorToStart](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml.cs#_cursortostart)]
- [!code-vb[TextBox_MiscCode#_CursorToStart](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBox_MiscCode/VisualBasic/Window1.xaml.vb#_cursortostart)]  
+   
   
 ## <a name="example"></a>Пример  
  Для позиционирования курсора в конце содержимого <xref:System.Windows.Controls.TextBox> управления, вызовите <xref:System.Windows.Controls.TextBox.Select%2A> метод и укажите начальную позицию выделения равно длину текстового содержимого и длину выделения, равную 0.  
   
  [!code-csharp[TextBox_MiscCode#_CursorToEnd](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml.cs#_cursortoend)]
- [!code-vb[TextBox_MiscCode#_CursorToEnd](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBox_MiscCode/VisualBasic/Window1.xaml.vb#_cursortoend)]  
+   
   
 ## <a name="see-also"></a>См. также
 

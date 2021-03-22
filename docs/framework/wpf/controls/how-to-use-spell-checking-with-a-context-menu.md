@@ -28,7 +28,7 @@ ms.locfileid: "59192983"
  Следующий пример показывает код, который реализует в контекстном меню.  
   
  [!code-csharp[TextBoxMiscSnippets_snip#SpellerCustomContextMenuCodeExampleWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBoxMiscSnippets_snip/csharp/speller_custom_context_menu.xaml.cs#spellercustomcontextmenucodeexamplewholepage)]
- [!code-vb[TextBoxMiscSnippets_snip#SpellerCustomContextMenuCodeExampleWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBoxMiscSnippets_snip/visualbasic/speller_custom_context_menu.xaml.vb#spellercustomcontextmenucodeexamplewholepage)]  
+   
   
  Код, используемый для этого с помощью <xref:System.Windows.Controls.RichTextBox> похож. Основное различие состоит в параметр, передаваемый `GetSpellingError` метод. Для <xref:System.Windows.Controls.TextBox>, передайте целочисленный индекс положения курсора:  
   

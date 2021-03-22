@@ -34,7 +34,7 @@ ms.locfileid: "59091152"
  В классе фонового кода для [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] , содержащий <xref:System.Windows.Controls.TextBox> элемент управления, который вы хотите отслеживать изменения, вставить метод, вызываемый каждый раз, когда <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> вызывает событие.  Этот метод должен иметь сигнатуру, которая соответствует ожидаемых <xref:System.Windows.Controls.TextChangedEventHandler> делегировать.  
   
  [!code-csharp[TextBox_MiscCode#_TextChangedEventHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml.cs#_textchangedeventhandler)]
- [!code-vb[TextBox_MiscCode#_TextChangedEventHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBox_MiscCode/VisualBasic/Window1.xaml.vb#_textchangedeventhandler)]  
+   
   
  Обработчик событий вызывается всякий раз, когда содержимое <xref:System.Windows.Controls.TextBox> управления изменяются, либо пользователем, либо программным способом.  
   

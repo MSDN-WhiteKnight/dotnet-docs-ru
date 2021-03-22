@@ -37,12 +37,12 @@ ms.locfileid: "59146358"
  В следующем примере показан <xref:System.Windows.Controls.Primitives.Thumb.DragStarted> обработчик событий.  
   
  [!code-csharp[Thumb#DragStartedHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/Thumb/CSharp/Pane1.xaml.cs#dragstartedhandler)]
- [!code-vb[Thumb#DragStartedHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Thumb/VisualBasic/Pane1.xaml.vb#dragstartedhandler)]  
+   
   
  В следующем примере показан <xref:System.Windows.Controls.Primitives.Thumb.DragCompleted> обработчик событий.  
   
  [!code-csharp[Thumb#DragCompletedHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/Thumb/CSharp/Pane1.xaml.cs#dragcompletedhandler)]
- [!code-vb[Thumb#DragCompletedHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/Thumb/VisualBasic/Pane1.xaml.vb#dragcompletedhandler)]  
+   
   
  Полный пример см. в разделе [Пример перетаскивания бегунка](https://go.microsoft.com/fwlink/?LinkID=160042).  
   

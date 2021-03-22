@@ -30,12 +30,12 @@ ms.locfileid: "59089190"
  Если вы хотите получить <xref:System.Windows.Controls.TextBlock> элемент, созданный <xref:System.Windows.DataTemplate> определенного <xref:System.Windows.Controls.ListBoxItem>, необходимо получить <xref:System.Windows.Controls.ListBoxItem>, найти <xref:System.Windows.Controls.ContentPresenter> внутри этого <xref:System.Windows.Controls.ListBoxItem>, а затем вызвать <xref:System.Windows.FrameworkTemplate.FindName%2A> на <xref:System.Windows.DataTemplate> установленное, <xref:System.Windows.Controls.ContentPresenter>. В следующем примере показано, как для выполнения этих шагов. В демонстрационных целях в этом примере создается окно сообщения, которое будет отображен текст содержимого из <xref:System.Windows.DataTemplate>-созданный блок текста.  
   
  [!code-csharp[FindGeneratedItems#DTFindElement](~/samples/snippets/csharp/VS_Snippets_Wpf/FindGeneratedItems/CSharp/Window1.xaml.cs#dtfindelement)]
- [!code-vb[FindGeneratedItems#DTFindElement](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FindGeneratedItems/VisualBasic/Window1.xaml.vb#dtfindelement)]  
+   
   
  Ниже приведен реализация `FindVisualChild`, которая использует <xref:System.Windows.Media.VisualTreeHelper> методы:  
   
  [!code-csharp[FindGeneratedItems#FVC](~/samples/snippets/csharp/VS_Snippets_Wpf/FindGeneratedItems/CSharp/Window1.xaml.cs#fvc)]
- [!code-vb[FindGeneratedItems#FVC](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FindGeneratedItems/VisualBasic/Window1.xaml.vb#fvc)]  
+   
   
 ## <a name="see-also"></a>См. также
 

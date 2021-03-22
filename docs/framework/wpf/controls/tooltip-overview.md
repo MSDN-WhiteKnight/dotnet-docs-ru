@@ -43,7 +43,7 @@ ms.locfileid: "59170109"
  В следующем примере кода используется для создания <xref:System.Windows.Controls.ToolTip> объекта. В примере создается <xref:System.Windows.Controls.ToolTip> (`tt`) и связывает его с <xref:System.Windows.Controls.Button>.  
   
  [!code-csharp[ToolTipSimple#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ToolTipSimple/CSharp/Pane1.xaml.cs#2)]
- [!code-vb[ToolTipSimple#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ToolTipSimple/VisualBasic/Window1.xaml.vb#2)]  
+   
   
  Можно также создать содержимое подсказки, который не определен как <xref:System.Windows.Controls.ToolTip> объекта путем заключения содержимое подсказки в макет элемента, например <xref:System.Windows.Controls.DockPanel>. В следующем примере показано, как задать <xref:System.Windows.FrameworkElement.ToolTip%2A> свойство <xref:System.Windows.Controls.TextBox> к содержимому, которое заключено в <xref:System.Windows.Controls.DockPanel> элемента управления.  
   

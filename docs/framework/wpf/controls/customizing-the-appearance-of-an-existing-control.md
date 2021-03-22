@@ -229,7 +229,7 @@ ms.locfileid: "59098966"
  В следующем примере показан <xref:System.Windows.TemplatePartAttribute> объекты, которые определены на <xref:System.Windows.Controls.ComboBox> класса. Логика <xref:System.Windows.Controls.ComboBox> ожидает найти <xref:System.Windows.Controls.TextBox> с именем `PART_EditableTextBox` и <xref:System.Windows.Controls.Primitives.Popup> с именем `PART_Popup` в его <xref:System.Windows.Controls.ControlTemplate>.  
   
  [!code-csharp[VSMButtonTemplate#ComboBoxContract](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmbuttontemplate/csharp/controlcontracts.cs#comboboxcontract)]
- [!code-vb[VSMButtonTemplate#ComboBoxContract](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmbuttontemplate/visualbasic/window1.xaml.vb#comboboxcontract)]  
+   
   
  В следующем примере показано упрощенное <xref:System.Windows.Controls.ControlTemplate> для <xref:System.Windows.Controls.ComboBox> , включающий элементы, которые определяются <xref:System.Windows.TemplatePartAttribute> объектов на <xref:System.Windows.Controls.ComboBox> класса.  
   
@@ -246,7 +246,7 @@ ms.locfileid: "59098966"
  В следующем примере показан контракт элемента управления "Кнопка".  
   
  [!code-csharp[VSMButtonTemplate#ButtonContract](~/samples/snippets/csharp/VS_Snippets_Wpf/vsmbuttontemplate/csharp/controlcontracts.cs#buttoncontract)]
- [!code-vb[VSMButtonTemplate#ButtonContract](~/samples/snippets/visualbasic/VS_Snippets_Wpf/vsmbuttontemplate/visualbasic/window1.xaml.vb#buttoncontract)]  
+   
   
  При создании <xref:System.Windows.Controls.ControlTemplate>, часто бывает проще начать с существующего <xref:System.Windows.Controls.ControlTemplate> и внести в него изменения. Можно выполнить одно из следующих действий, чтобы изменить существующий <xref:System.Windows.Controls.ControlTemplate>:  
   

@@ -22,7 +22,7 @@ ms.locfileid: "59222111"
  Чтобы создать представление, требуется ссылка на объект в коллекцию. Этот объект данных можно получить, ссылаясь на собственный объект кода, получив контекст данных свойства источника данных или путем получения свойства привязки. В этом примере показано, как получить <xref:System.Windows.FrameworkElement.DataContext%2A> объект данных и используйте его для непосредственного получения коллекции по умолчанию просмотра для данной коллекции.  
   
  [!code-csharp[CollectionView#2](~/samples/snippets/csharp/VS_Snippets_Wpf/CollectionView/CSharp/Page1.xaml.cs#2)]
- [!code-vb[CollectionView#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CollectionView/VisualBasic/Page1.xaml.vb#2)]  
+   
   
  В этом примере корневым элементом является <xref:System.Windows.Controls.StackPanel>. <xref:System.Windows.FrameworkElement.DataContext%2A> Присваивается *myDataSource*, который ссылается на поставщик данных, который является <xref:System.Collections.ObjectModel.ObservableCollection%601> из *порядок* объектов.  
   

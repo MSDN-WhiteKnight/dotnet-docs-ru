@@ -25,7 +25,7 @@ ms.locfileid: "59203474"
  Аналогично, использование <xref:System.Windows.Controls.TextBlock> элемента в коде приложения относительно прост.  
   
  [!code-csharp[TextBlockSnip#1](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBlockSnip/CSharp/TextBlockSnips.cs#1)]
- [!code-vb[TextBlockSnip#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextBlockSnip/VisualBasic/TextBlockSnips.vb#1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

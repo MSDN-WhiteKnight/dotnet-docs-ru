@@ -28,7 +28,7 @@ ms.locfileid: "59153443"
  В следующем примере показано данные в предыдущем примере.  
   
  [!code-csharp[RecycleItemContainerShippets#TreeViewData](~/samples/snippets/csharp/VS_Snippets_Wpf/RecycleItemContainerShippets/CSharp/Window1.xaml.cs#treeviewdata)]
- [!code-vb[RecycleItemContainerShippets#TreeViewData](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RecycleItemContainerShippets/visualbasic/window1.xaml.vb#treeviewdata)]  
+   
   
 ## <a name="see-also"></a>См. также
 
