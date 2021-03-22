@@ -16,6 +16,7 @@ namespace DocsScripts
             int index=0;
             int next_index=0;
             int end_index;
+            bool write = false;
 
             while (true) 
             {
@@ -28,12 +29,15 @@ namespace DocsScripts
 
                 string s = txt.Substring(next_index, (end_index + match_end.Length) - next_index);
                 Console.WriteLine(s);
+
                 txt = txt.Replace(s,replace_to);
+                write = true;
 
                 index = next_index + 1 + replace_to.Length;
             }
 
-            File.WriteAllText(file, txt);
+            //if done at least one replace, write text back to file
+            if(write) File.WriteAllText(file, txt);
         }
 
         public static void ReplaceTextDir(string dir, string match_begin, string match_end, string replace_to) 
@@ -59,16 +63,28 @@ namespace DocsScripts
             }
         }
 
-        //[!code-vb[...](~/samples/snippets/visualbasic/...)]
+        static void RemoveVbSamples()
+        {
+            //[!code-vb[...](~/samples/snippets/visualbasic/...)]
+            
+            ReplaceTextDir(
+                @"..\..\..\..\docs\framework\wpf\",
+                @"[!code-vb[",
+                ")]",
+                String.Empty);
+
+            ReplaceTextDir(
+                @"..\..\..\..\docs\framework\winforms\",
+                @"[!code-vb[",
+                ")]",
+                String.Empty);
+        }
+        
         //..\..\..\..\docs\framework\wpf\app-development\how-to-call-a-page-function.md
 
         static void Main(string[] args)
         {
-            ReplaceTextDir(
-                @"..\..\..\..\docs\framework\wpf\app-development\",
-                @"[!code-vb[",
-                ")]",
-                String.Empty);
+            //RemoveVbSamples();
 
             Console.WriteLine("End");
             Console.ReadKey();
