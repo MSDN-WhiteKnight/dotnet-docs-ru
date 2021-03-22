@@ -20,7 +20,7 @@ ms.locfileid: "59191514"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[HowToRecognizeGestures#1](~/samples/snippets/csharp/VS_Snippets_Wpf/HowToRecognizeGestures/CSharp/Window1.xaml.cs#1)]
- [!code-vb[HowToRecognizeGestures#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HowToRecognizeGestures/VisualBasic/Window1.xaml.vb#1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -79,7 +79,7 @@ ms.locfileid: "59613594"
  Например, следующий код определяет присоединенное событие `NeedsCleaning` в классе владельца`Aquarium`, используя стратегию присоединенных событий [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] для объявления присоединенного события как перенаправленного события.  
   
  [!code-csharp[WPFAquariumSln#AECode](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAquariumSln/CSharp/WPFAquariumObjects/Class1.cs#aecode)]
- [!code-vb[WPFAquariumSln#AECode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFAquariumSln/visualbasic/wpfaquariumobjects/class1.vb#aecode)]  
+   
   
  Обратите внимание, что метод, используемый для установления поля идентификатора присоединенного события, <xref:System.Windows.EventManager.RegisterRoutedEvent%2A>, является фактически тот же метод, который используется для регистрации неприсоединенных перенаправленных событий. Все присоединенные события и перенаправленные события регистрируются в централизованном внутреннем хранилище. Эта реализация хранилища событий обеспечивает поддержку режима "события в качестве интерфейса", который рассматривается в разделе [Общие сведения о перенаправленных событиях](routed-events-overview.md).  
   

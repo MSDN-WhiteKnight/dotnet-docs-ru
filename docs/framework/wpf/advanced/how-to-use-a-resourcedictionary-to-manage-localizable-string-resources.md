@@ -39,6 +39,6 @@ ms.locfileid: "59311322"
 4. Используйте строковый ресурс из файла кода программной части с помощью следующего кода:  
   
      [!code-csharp[StringLocalizationSample#GetLocalizedResourceFromCode](~/samples/snippets/csharp/VS_Snippets_Wpf/StringLocalizationSample/CSharp/MainWindow.xaml.cs#getlocalizedresourcefromcode)]
-     [!code-vb[StringLocalizationSample#GetLocalizedResourceFromCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/StringLocalizationSample/VisualBasic/MainWindow.xaml.vb#getlocalizedresourcefromcode)]  
+       
   
 5. Локализуйте приложение. Дополнительные сведения см. в разделе [локализация приложения](how-to-localize-an-application.md).

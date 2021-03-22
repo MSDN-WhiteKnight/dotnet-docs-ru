@@ -34,7 +34,7 @@ ms.locfileid: "59216786"
  Чтобы использовать значения из <xref:System.Windows.SystemFonts> в коде, не нужно использовать статическое значение или ссылку на динамический ресурс. Вместо этого использовать неключевые свойства <xref:System.Windows.SystemFonts> класса. Хотя неключевые свойства очевидно определены как статические, поведение времени выполнения [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] , размещенного по системе будут пересчитываться свойства в режиме реального времени и правильно учитываться вносимые пользователем изменения значений системы. В приведенном ниже примере показано, как задать параметры шрифта кнопки.  
   
  [!code-csharp[SystemRes_snip#FontResourcesCode](~/samples/snippets/csharp/VS_Snippets_Wpf/SystemRes_snip/CSharp/Pane1.xaml.cs#fontresourcescode)]
- [!code-vb[SystemRes_snip#FontResourcesCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/SystemRes_snip/VisualBasic/Pane1.xaml.vb#fontresourcescode)]  
+   
   
 ## <a name="see-also"></a>См. также
 

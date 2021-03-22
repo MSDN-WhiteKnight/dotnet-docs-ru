@@ -23,4 +23,4 @@ ms.locfileid: "57378843"
  Вы можете перечислить <xref:System.Windows.Application.Windows%2A> получить все экземпляры windows, используя следующий код:  
   
  [!code-csharp[HOWTOWindowManagementSnippets#GetAllWindows](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/CSharp/CustomWindow.xaml.cs#getallwindows)]
- [!code-vb[HOWTOWindowManagementSnippets#GetAllWindows](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/visualbasic/customwindow.xaml.vb#getallwindows)]
+ 

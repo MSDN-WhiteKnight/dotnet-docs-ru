@@ -43,14 +43,14 @@ ms.locfileid: "59162232"
  Ключ, чтобы преобразовать текст в <xref:System.Windows.Media.Geometry> объекта заключается в использовании <xref:System.Windows.Media.FormattedText> объекта. После создания этот объект можно использовать <xref:System.Windows.Media.FormattedText.BuildGeometry%2A> и <xref:System.Windows.Media.FormattedText.BuildHighlightGeometry%2A> методы, чтобы преобразовать текст в <xref:System.Windows.Media.Geometry> объектов. Первый метод возвращает геометрию форматированного текста. Второй метод возвращает ограничивающий прямоугольник геометрии форматированного текста. В следующем примере кода показано, как создать <xref:System.Windows.Media.FormattedText> объекта и извлечение геометрических форм форматированного текста и его ограничивающего прямоугольника.  
   
  [!code-csharp[OutlineTextControlViewer#CreateText](~/samples/snippets/csharp/VS_Snippets_Wpf/OutlineTextControlViewer/CSharp/OutlineTextControl.cs#createtext)]
- [!code-vb[OutlineTextControlViewer#CreateText](~/samples/snippets/visualbasic/VS_Snippets_Wpf/OutlineTextControlViewer/visualbasic/outlinetextcontrol.vb#createtext)]  
+   
   
  Чтобы отобразить извлеченные <xref:System.Windows.Media.Geometry> объектов, необходимо получить доступ к <xref:System.Windows.Media.DrawingContext> объекта, который отображает преобразованный текст. В этих примерах кода это делается путем создания объекта пользовательского элемента управления, производный от класса, поддерживающего пользовательской отрисовки.  
   
  Для отображения <xref:System.Windows.Media.Geometry> объектов в пользовательском элементе управления, переопределите для <xref:System.Windows.UIElement.OnRender%2A> метод. Переопределенный метод должен использовать <xref:System.Windows.Media.DrawingContext.DrawGeometry%2A> метод для отображения <xref:System.Windows.Media.Geometry> объектов.  
   
  [!code-csharp[OutlineTextControlViewer#OnRender](~/samples/snippets/csharp/VS_Snippets_Wpf/OutlineTextControlViewer/CSharp/OutlineTextControl.cs#onrender)]
- [!code-vb[OutlineTextControlViewer#OnRender](~/samples/snippets/visualbasic/VS_Snippets_Wpf/OutlineTextControlViewer/visualbasic/outlinetextcontrol.vb#onrender)]  
+   
   
   Источник объекта пример настраиваемого пользовательского элемента управления, см. в разделе [OutlineTextControl.cs для C# ](https://github.com/dotnet/samples/blob/master/snippets/csharp/VS_Snippets_Wpf/OutlineTextControlViewer/CSharp/OutlineTextControl.cs) и [OutlineTextControl.vb для Visual Basic](https://github.com/dotnet/samples/blob/master/snippets/visualbasic/VS_Snippets_Wpf/OutlineTextControlViewer/visualbasic/outlinetextcontrol.vb). 
   

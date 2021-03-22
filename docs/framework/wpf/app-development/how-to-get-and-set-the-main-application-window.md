@@ -26,7 +26,7 @@ ms.locfileid: "57373560"
  Первый <xref:System.Windows.Window> также могут создаваться с помощью кода. Одним из примеров является открытие окна во время запуска приложения, следующим образом:  
   
  [!code-csharp[HOWTOWindowManagementSnippets#FirstWindowUsingCodeCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/CSharp/App.xaml.cs#firstwindowusingcodecodebehind)]
- [!code-vb[HOWTOWindowManagementSnippets#FirstWindowUsingCodeCODEBEHIND](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/visualbasic/application.xaml.vb#firstwindowusingcodecodebehind)]  
+   
   
  В некоторых случаях первый экземпляр <xref:System.Windows.Window> является фактически не главного окна приложения, например экрана-заставки. В этом случае можно указать в главное окно приложения с помощью разметки, следующим образом:  
   
@@ -35,4 +35,4 @@ ms.locfileid: "57373560"
  Ли главное окно указан, автоматически или вручную, можно получить из главного окна <xref:System.Windows.Application.MainWindow%2A> используя следующий код, как показано ниже:  
   
  [!code-csharp[ApplicationMainWindowSnippets#GetApplicationMainWindowCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/ApplicationMainWindowSnippets/CSharp/App.xaml.cs#getapplicationmainwindowcode)]
- [!code-vb[ApplicationMainWindowSnippets#GetApplicationMainWindowCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ApplicationMainWindowSnippets/visualbasic/application.xaml.vb#getapplicationmainwindowcode)]
+ 

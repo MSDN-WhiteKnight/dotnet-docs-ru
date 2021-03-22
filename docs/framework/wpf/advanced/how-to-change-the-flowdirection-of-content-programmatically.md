@@ -27,4 +27,4 @@ ms.locfileid: "57359332"
  События, связанные с нажатием кнопки, определенные выше, обрабатываются в C# файл с выделенным кодом.  
   
  [!code-csharp[FlowDirectionSnippets#_FlowDirection](~/samples/snippets/csharp/VS_Snippets_Wpf/FlowDirectionSnippets/CSharp/Window1.xaml.cs#_flowdirection)]
- [!code-vb[FlowDirectionSnippets#_FlowDirection](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FlowDirectionSnippets/VisualBasic/Window1.xaml.vb#_flowdirection)]
+ 

@@ -84,7 +84,7 @@ ms.locfileid: "57372221"
 Чтобы назначить свойство свойством зависимостей, необходимо зарегистрировать это свойство в таблице, обслуживаемой системой свойств, и предоставить ему уникальный идентификатор, используемый в качестве квалификатора для последующих операций системы свойств. Эти операции могут быть внутренними операциями или вашим собственным кодом, вызывающим систему свойств [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)]. Чтобы зарегистрировать свойство, вызовите <xref:System.Windows.DependencyProperty.Register%2A> метод в теле класса (внутри класса, но вне определения любого из членов). Поле идентификатора также предоставляется <xref:System.Windows.DependencyProperty.Register%2A> вызова метода, в качестве возвращаемого значения. Причина, <xref:System.Windows.DependencyProperty.Register%2A> вызов выполняется за пределами другого элемента определения обусловлено это возвращаемое значение используется для назначения и создания `public` `static` `readonly` поле типа <xref:System.Windows.DependencyProperty> как часть класса. Это поле становится идентификатором для вашего свойства зависимостей.
 
 [!code-csharp[WPFAquariumSln#RegisterAG](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAquariumSln/CSharp/WPFAquariumObjects/Class1.cs#registerag)]
-[!code-vb[WPFAquariumSln#RegisterAG](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFAquariumSln/visualbasic/wpfaquariumobjects/class1.vb#registerag)]
+
 
 <a name="nameconventions"></a>
 ### <a name="dependency-property-name-conventions"></a>Соглашения об именовании свойств зависимостей
@@ -108,7 +108,7 @@ ms.locfileid: "57372221"
 Все существующие открытые свойства зависимостей, предоставляемые для классов [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], используют эту простую модель реализации оболочки. Основные сложности обработки свойств зависимостей определяются наследуемым поведением системы свойств или реализацией через другие понятия, такие как приведение или обратные вызовы изменения свойства через метаданные свойства.
 
 [!code-csharp[WPFAquariumSln#AGWithWrapper](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAquariumSln/CSharp/WPFAquariumObjects/Class1.cs#agwithwrapper)]
-[!code-vb[WPFAquariumSln#AGWithWrapper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFAquariumSln/visualbasic/wpfaquariumobjects/class1.vb#agwithwrapper)]
+
 
 Опять же, по соглашению, имя свойства-оболочки должно быть совпадает с именем, выбранным и заданным в качестве первого параметра <xref:System.Windows.DependencyProperty.Register%2A> вызов, который зарегистрировал свойство. Если свойство не следует соглашению, это не обязательно ведет к его неработоспособности, однако будет наблюдаться несколько серьезных проблем.
 

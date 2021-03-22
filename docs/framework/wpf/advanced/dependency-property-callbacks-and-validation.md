@@ -30,7 +30,7 @@ ms.locfileid: "59219815"
  Обратные вызовы проверки можно назначить свойству зависимостей при первой регистрации. Обратный вызов проверки не является частью метаданных свойства; Это прямой ввод <xref:System.Windows.DependencyProperty.Register%2A> метод. Поэтому после того, как будет создан обратный вызов проверки для свойства зависимостей, он уже не может быть переопределен новой реализацией.  
   
  [!code-csharp[DPCallbackOverride#CurrentDefinitionWithWrapper](~/samples/snippets/csharp/VS_Snippets_Wpf/DPCallbackOverride/CSharp/SDKSampleLibrary/class1.cs#currentdefinitionwithwrapper)]
- [!code-vb[DPCallbackOverride#CurrentDefinitionWithWrapper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DPCallbackOverride/visualbasic/sdksamplelibrary/class1.vb#currentdefinitionwithwrapper)]  
+   
   
  Обратные вызовы реализуются так, что они получают значение объекта. Они возвращают `true`, если полученное значение является допустимым для свойства. В противном случае — возвращают `false`. Предполагается, что свойство принадлежит допустимому типу (зарегистрированному в системе свойств), поэтому проверка типов в обратных вызовах обычно не выполняется. Обратные вызовы используются системой свойств в различных операциях. Сюда входят инициализация типов по значению по умолчанию, программное изменение путем вызова <xref:System.Windows.DependencyObject.SetValue%2A>, или попытка переопределить метаданные с помощью нового значения по умолчанию. Если обратный вызов проверки совершается любой из этих операций и возвращает `false`, вызывается исключение. Программисты должны быть готовы обрабатывать эти исключения. Обычно обратные вызовы проверки используются для проверки значений перечислений или для ограничения значений целых чисел, когда это свойство задает измерения, которые должны быть больше или равны нулю.  
   
@@ -39,7 +39,7 @@ ms.locfileid: "59219815"
  Ниже приведен пример кода для обратного вызова сценария очень простой проверки: проверка того, свойства, который типизируется как <xref:System.Double> -примитив не <xref:System.Double.PositiveInfinity> или <xref:System.Double.NegativeInfinity>.  
   
  [!code-csharp[DPCallbackOverride#ValidateValueCallback](~/samples/snippets/csharp/VS_Snippets_Wpf/DPCallbackOverride/CSharp/SDKSampleLibrary/class1.cs#validatevaluecallback)]
- [!code-vb[DPCallbackOverride#ValidateValueCallback](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DPCallbackOverride/visualbasic/sdksamplelibrary/class1.vb#validatevaluecallback)]  
+   
   
 <a name="Coerce_Value_Callbacks_and_Property_Changed_Events"></a>   
 ## <a name="coerce-value-callbacks-and-property-changed-events"></a>Обратные вызовы с привязкой к значению и события изменения свойств  
@@ -50,17 +50,17 @@ ms.locfileid: "59219815"
  Ниже приведен пример очень краткого кода для одного из трех свойств зависимостей, иллюстрирующий эту связь. В примере показано, как регистрируется свойство `CurrentReading` для набора связанных свойств (максимальное, минимальное, текущее) объекта *Reading. Он использует проверку, как это показано в предыдущем разделе.  
   
  [!code-csharp[DPCallbackOverride#CurrentDefinitionWithWrapper](~/samples/snippets/csharp/VS_Snippets_Wpf/DPCallbackOverride/CSharp/SDKSampleLibrary/class1.cs#currentdefinitionwithwrapper)]
- [!code-vb[DPCallbackOverride#CurrentDefinitionWithWrapper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DPCallbackOverride/visualbasic/sdksamplelibrary/class1.vb#currentdefinitionwithwrapper)]  
+   
   
  Обратный вызов при изменении свойства текущего объекта используется для пересылки изменений в другие зависимые свойства путем явного выполнения обратных вызовов с привязкой к значению, зарегистрированных для этих свойств.  
   
  [!code-csharp[DPCallbackOverride#OnPCCurrent](~/samples/snippets/csharp/VS_Snippets_Wpf/DPCallbackOverride/CSharp/SDKSampleLibrary/class1.cs#onpccurrent)]
- [!code-vb[DPCallbackOverride#OnPCCurrent](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DPCallbackOverride/visualbasic/sdksamplelibrary/class1.vb#onpccurrent)]  
+   
   
  При выполнении обратных вызовов с привязкой к значению проверяются значения свойств, от которых потенциально зависит текущее свойство, и принудительно изменяется его значение при необходимости.  
   
  [!code-csharp[DPCallbackOverride#CoerceCurrent](~/samples/snippets/csharp/VS_Snippets_Wpf/DPCallbackOverride/CSharp/SDKSampleLibrary/class1.cs#coercecurrent)]
- [!code-vb[DPCallbackOverride#CoerceCurrent](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DPCallbackOverride/visualbasic/sdksamplelibrary/class1.vb#coercecurrent)]  
+   
   
 > [!NOTE]
 >  Значения свойств по умолчанию не изменяются. Значение свойства равно значению по умолчанию может произойти, если значение свойства по-прежнему имеет его первоначальное значение по умолчанию, или через Очистка других значений с <xref:System.Windows.DependencyObject.ClearValue%2A>.  

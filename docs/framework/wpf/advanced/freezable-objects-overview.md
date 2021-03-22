@@ -32,7 +32,7 @@ ms.locfileid: "59224269"
  Предположим, например, можно создать <xref:System.Windows.Media.SolidColorBrush> кисти и использовать его для рисования фона кнопки.  
   
  [!code-csharp[freezablesample_procedural#FrozenExamplePart1](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#frozenexamplepart1)]
- [!code-vb[freezablesample_procedural#FrozenExamplePart1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#frozenexamplepart1)]  
+   
   
  При отображении кнопки [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] графическая подсистема использует сведения, предоставленные для закраски группы пикселей, которое необходимо создать внешний вид кнопки. Несмотря на то, что вы использовали Одноцветная кисть для описания того, как должен быть окрашен кнопки, сплошной цвет кисти фактически не выполняет заливку. Графическая система создает быстрые низкоуровневые объекты для кнопки и кисти, а это те объекты, которые отображаются на экране.  
   
@@ -44,7 +44,7 @@ ms.locfileid: "59224269"
 >  Не каждый объект Freezable может быть зафиксирован. Чтобы избежать возникновения <xref:System.InvalidOperationException>, проверьте значение свойства объекта Freezable <xref:System.Windows.Freezable.CanFreeze%2A> свойства, чтобы определить, является ли он быть зафиксирован перед фиксированием.  
   
  [!code-csharp[freezablesample_procedural#FrozenExamplePart2](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#frozenexamplepart2)]
- [!code-vb[freezablesample_procedural#FrozenExamplePart2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#frozenexamplepart2)]  
+   
   
  Если вам больше не нужно изменять freezable, зафиксировать этот дает выигрыш в производительности. Если закрепить кисть, которая в этом примере, графическая система больше не потребуется отслеживать его изменения. Графическая система также может отправлять другие виды оптимизации, поскольку известно, что кисть, которая не изменится.  
   
@@ -56,7 +56,7 @@ ms.locfileid: "59224269"
  Использование незафиксированного freezable аналогично использованию любого другого типа объекта. В следующем примере цвет <xref:System.Windows.Media.SolidColorBrush> изменяется с желтого на красный после он используется для рисования фона кнопки. Графическая система работает незаметно для автоматического изменения кнопки с желтого на красный при очередном обновлении экрана.  
   
  [!code-csharp[freezablesample_procedural#UnFrozenExampleShort](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#unfrozenexampleshort)]
- [!code-vb[freezablesample_procedural#UnFrozenExampleShort](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#unfrozenexampleshort)]  
+   
   
 ### <a name="freezing-a-freezable"></a>Замораживание Freezable  
  Чтобы сделать <xref:System.Windows.Freezable> неизменяемым, необходимо вызвать его <xref:System.Windows.Freezable.Freeze%2A> метод. Когда вы закрепить объект, содержащий объекты freezable, эти объекты также закрепляются. Например, если зафиксировать <xref:System.Windows.Media.PathGeometry>, рисунки и сегменты будут зафиксированы.  
@@ -74,12 +74,12 @@ ms.locfileid: "59224269"
  При вызове метода freezable <xref:System.Windows.Freezable.Freeze%2A> метод, он не может быть изменен. Попытка изменить зафиксированного объекта возникает <xref:System.InvalidOperationException> исключение. Следующий код создает исключение, так как выполняется попытка изменить кисть после она была зафиксирована.  
   
  [!code-csharp[freezablesample_procedural#ExceptionExample](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#exceptionexample)]
- [!code-vb[freezablesample_procedural#ExceptionExample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#exceptionexample)]  
+   
   
  Чтобы избежать возникновения этого исключения, можно использовать <xref:System.Windows.Freezable.IsFrozen%2A> метод, чтобы определить, является ли <xref:System.Windows.Freezable> заморожен.  
   
  [!code-csharp[freezablesample_procedural#CheckIsFrozenExample](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#checkisfrozenexample)]
- [!code-vb[freezablesample_procedural#CheckIsFrozenExample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#checkisfrozenexample)]  
+   
   
  В предыдущем примере кода, изменяемая копия была сделана зафиксированного объекта с помощью <xref:System.Windows.Freezable.Clone%2A> метод. В следующем разделе рассматривается более подробно клонирования.  
   
@@ -111,7 +111,7 @@ mc:Ignorable="PresentationOptions"
  В следующем примере фона кнопки задается с помощью кисти и кисти, затем заморожен. Незафиксированная копия состоит из кисти с использованием <xref:System.Windows.Freezable.Clone%2A> метод. Клон изменяется и используется для изменения фона кнопки с желтого на красный.  
   
  [!code-csharp[freezablesample_procedural#CloneExample](~/samples/snippets/csharp/VS_Snippets_Wpf/freezablesample_procedural/CSharp/freezablesample.cs#cloneexample)]
- [!code-vb[freezablesample_procedural#CloneExample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/freezablesample_procedural/visualbasic/freezablesample.vb#cloneexample)]  
+   
   
 > [!NOTE]
 >  Независимо от используемого метода клонирования, анимация никогда не копируется в новый <xref:System.Windows.Freezable>.  

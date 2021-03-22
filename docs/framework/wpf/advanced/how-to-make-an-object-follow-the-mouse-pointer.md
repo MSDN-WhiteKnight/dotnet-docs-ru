@@ -29,7 +29,7 @@ ms.locfileid: "59107319"
  Следующий код создает <xref:System.Windows.UIElement.MouseMove> обработчик событий.  При перемещении указателя мыши, высоту и ширину <xref:System.Windows.Shapes.Ellipse> увеличиваются и уменьшаются.  
   
  [!code-csharp[mouseMoveWithPointer#MouseMovePointerGetPosition](~/samples/snippets/csharp/VS_Snippets_Wpf/mouseMoveWithPointer/CSharp/Window1.xaml.cs#mousemovepointergetposition)]
- [!code-vb[mouseMoveWithPointer#MouseMovePointerGetPosition](~/samples/snippets/visualbasic/VS_Snippets_Wpf/mouseMoveWithPointer/VisualBasic/Window1.xaml.vb#mousemovepointergetposition)]  
+   
   
 ## <a name="see-also"></a>См. также
 

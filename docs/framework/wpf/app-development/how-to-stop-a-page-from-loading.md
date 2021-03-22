@@ -26,4 +26,4 @@ ms.locfileid: "57357850"
  <xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A> останавливает загрузку запрошенного содержимого и вызывает <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> возникает событие.  
   
  [!code-csharp[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationSnippets/CSharp/MainWindow.xaml.cs#navigatestoploadingcode)]
- [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTONavigationSnippets/visualbasic/mainwindow.xaml.vb#navigatestoploadingcode)]
+ 

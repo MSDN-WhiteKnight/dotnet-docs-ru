@@ -22,7 +22,7 @@ ms.locfileid: "59206048"
  Элемент управления <xref:System.Windows.Controls.PrintDialog> предоставляет единую точку входа для [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], конфигурации и отправки задания [!INCLUDE[TLA2#tla_metro](../../../../includes/tla2sharptla-metro-md.md)]. Элемент управления является простой в использовании и может быть создан с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] разметки или кода. Ниже приведен пример, как создать и открыть элемент управления в коде и способ печати из него. Также показано, как убедиться, что диалоговое окно предоставит пользователям возможность установки конкретного диапазона страниц. В примере кода предполагается, что имеется файл FixedDocumentSequence.xps в корне диска C:.  
   
  [!code-csharp[printdialog#1](~/samples/snippets/csharp/VS_Snippets_Wpf/PrintDialog/CSharp/Window1.xaml.cs#1)]
- [!code-vb[printdialog#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PrintDialog/visualbasic/window1.xaml.vb#1)]  
+   
   
  Когда откроется диалоговое окно, пользователи будут доступны для выбора принтеров, установленных на компьютере. Они также получат возможность выбрать [средство записи документов XPS Microsoft](https://go.microsoft.com/fwlink/?LinkId=147319) для создания [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файла вместо печати.  
   

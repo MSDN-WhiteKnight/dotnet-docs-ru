@@ -61,7 +61,7 @@ ms.locfileid: "59330458"
  **Точки присоединения обработчика:** В [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)], придется присоединить один обработчик несколько раз для обработки событий, которые могут возникнуть из нескольких элементов. Перенаправленные события позволяют присоединить обработчик только один раз, как было показано в предыдущем примере, и при необходимости использовать логику обработки для определения места возникновения события. Например, это может быть обработчиком для ранее показанного [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
   
  [!code-csharp[EventOvwSupport#GroupButtonCodeBehind](~/samples/snippets/csharp/VS_Snippets_Wpf/EventOvwSupport/CSharp/default.xaml.cs#groupbuttoncodebehind)]
- [!code-vb[EventOvwSupport#GroupButtonCodeBehind](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EventOvwSupport/visualbasic/default.xaml.vb#groupbuttoncodebehind)]  
+   
   
  **Обработка классов:** Перенаправленные события разрешают использовать статический обработчик, который определен в классе. Этот обработчик классов может обрабатывать событие раньше любого вложенного обработчика экземпляров.  
   
@@ -73,7 +73,7 @@ ms.locfileid: "59330458"
  В следующем примере показано объявление пользовательского `Tap` перенаправленного события, включая регистрацию и использование <xref:System.Windows.RoutedEvent> поле идентификатора и `add` и `remove` реализации для `Tap` [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)] событий.  
   
  [!code-csharp[RoutedEventCustom#AddRemoveHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/RoutedEventCustom/CSharp/SDKSampleLibrary/class1.cs#addremovehandler)]
- [!code-vb[RoutedEventCustom#AddRemoveHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/RoutedEventCustom/VB/SDKSampleLibrary/Class1.vb#addremovehandler)]  
+   
   
 ### <a name="routed-event-handlers-and-xaml"></a>Обработчики перенаправленных событий и XAML  
  Чтобы добавить обработчик для события с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], следует объявить имя события как атрибут для элемента, который является прослушивателем событий. Значением атрибута является имя метода реализуемого обработчика, который должен существовать в разделяемом классе файла кода программной части.  
@@ -119,7 +119,7 @@ ms.locfileid: "59330458"
  `b1SetColor` — имя реализуемого обработчика, который содержит код, который обрабатывает <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий. `b1SetColor` должен иметь ту же сигнатуру, что <xref:System.Windows.RoutedEventHandler> делегат, который является делегатом обработчика событий для <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий. Первый параметр всех делегатов обработчиков перенаправленных событий указывает элемент, к которому добавляется обработчик событий, а второй параметр указывает данные для события.  
   
 [!code-csharp[EventOvwSupport#SimpleHandlerA](~/samples/snippets/csharp/VS_Snippets_Wpf/EventOvwSupport/CSharp/default.xaml.cs#simplehandlera)]
-[!code-vb[EventOvwSupport#SimpleHandlerA](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EventOvwSupport/visualbasic/default.xaml.vb#simplehandlera)]  
+  
   
  <xref:System.Windows.RoutedEventHandler> является делегатом обработчика перенаправленных событий basic. Для перенаправленных событий, которые являются специализированными для определенных элементов управления или скриптов, делегаты, которые используются для обработчиков перенаправленных событий, также могут быть более специализированными, чтобы они могли передавать определенные данные события. Например, в общем сценарии ввода можно обработать <xref:System.Windows.UIElement.DragEnter> перенаправленного события. Обработчик должен реализовывать <xref:System.Windows.DragEventHandler> делегировать. С помощью наиболее конкретного делегата, можно обработать <xref:System.Windows.DragEventArgs> в обработчике событий и прочитать <xref:System.Windows.DragEventArgs.Data%2A> свойство, которое содержит полезные данные буфера обмена операции перетаскивания.  
   
@@ -128,12 +128,12 @@ ms.locfileid: "59330458"
  Добавить обработчик для перенаправленного события в приложении, созданном в коде, достаточно просто. Обработчики перенаправленных событий всегда можно добавлять с помощью вспомогательного метода <xref:System.Windows.UIElement.AddHandler%2A> (который является тот же метод, который вызывает резервной копией для `add`.) Однако существующие перенаправленные события  [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] обычно имеют резервную реализацию `add` и логику `remove`, позволяющую добавлять обработчики перенаправленных событий с помощью синтаксиса событий для определенного языка, являющегося более понятным, чем вспомогательный метод. Ниже приведен пример использования вспомогательного метода.  
   
  [!code-csharp[EventOvwSupport#AddHandlerCode](~/samples/snippets/csharp/VS_Snippets_Wpf/EventOvwSupport/CSharp/default.xaml.cs#addhandlercode)]
- [!code-vb[EventOvwSupport#AddHandlerCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EventOvwSupport/visualbasic/default.xaml.vb#addhandlercode)]  
+   
   
  В следующем примере показан C# синтаксис оператора (Visual Basic имеет немного другой синтаксис оператора из-за обработки разыменовывания):  
   
  [!code-csharp[EventOvwSupport#AddHandlerPlusEquals](~/samples/snippets/csharp/VS_Snippets_Wpf/EventOvwSupport/CSharp/default.xaml.cs#addhandlerplusequals)]
- [!code-vb[EventOvwSupport#AddHandlerPlusEquals](~/samples/snippets/visualbasic/VS_Snippets_Wpf/EventOvwSupport/visualbasic/default.xaml.vb#addhandlerplusequals)]  
+   
   
  Пример добавления обработчика событий в коде см. в разделе [Добавление обработчика событий с помощью кода](how-to-add-an-event-handler-using-code.md).  
   

@@ -49,7 +49,7 @@ ms.locfileid: "59326870"
   
  [!code-cpp[DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#reportqueueandjobavailability)]
  [!code-csharp[DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#reportqueueandjobavailability)]
- [!code-vb[DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/visualbasic/program.vb#reportqueueandjobavailability)]  
+   
   
  Две перегруженные версии **ReportAvailabilityAtThisTime** метод идентичны, за исключением типа, переданные им, поэтому только <xref:System.Printing.PrintQueue> версии представлена ниже.  
   
@@ -66,13 +66,13 @@ ms.locfileid: "59326870"
   
  [!code-cpp[DiagnoseProblematicPrintJob#PrintQueueStartUntil](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#printqueuestartuntil)]
  [!code-csharp[DiagnoseProblematicPrintJob#PrintQueueStartUntil](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#printqueuestartuntil)]
- [!code-vb[DiagnoseProblematicPrintJob#PrintQueueStartUntil](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/visualbasic/program.vb#printqueuestartuntil)]  
+   
   
  **TimeConverter.ConvertToLocalHumanReadableTime** (представленный в следующем примере кода) метод не использует все методы, появившиеся в Microsoft .NET Framework, поэтому краткое обсуждение. Этот метод имеет задачу двойного преобразования: оно должно принимать целое число минут после полуночи в формате выражения и преобразовать его в удобное для восприятия времени, и его необходимо преобразовать в местное время. Он делает это, сначала создавая <xref:System.DateTime> объект, который устанавливается значение полуночи в формате UTC, а затем использует <xref:System.DateTime.AddMinutes%2A> метод, чтобы добавить минуты, которые были переданы в метод. Эта команда возвращает новый <xref:System.DateTime> содержащий исходное время, который был передан в метод. <xref:System.DateTime.ToLocalTime%2A> Метод затем преобразует это в местное время.  
   
  [!code-cpp[DiagnoseProblematicPrintJob#TimeConverter](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#timeconverter)]
  [!code-csharp[DiagnoseProblematicPrintJob#TimeConverter](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#timeconverter)]
- [!code-vb[DiagnoseProblematicPrintJob#TimeConverter](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/visualbasic/program.vb#timeconverter)]  
+   
   
 ## <a name="see-also"></a>См. также
 

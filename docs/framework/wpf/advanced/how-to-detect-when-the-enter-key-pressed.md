@@ -30,7 +30,7 @@ ms.locfileid: "59204618"
  Следующий код создает <xref:System.Windows.UIElement.KeyDown> обработчик событий.  Если нажата клавиша является <xref:System.Windows.Input.Key.Enter> ключа, выводится сообщение в <xref:System.Windows.Controls.TextBlock>.  
   
  [!code-csharp[keydown#KeyDownSample](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyDown/CSharp/Window1.xaml.cs#keydownsample)]
- [!code-vb[keydown#KeyDownSample](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyDown/VisualBasic/Window1.xaml.vb#keydownsample)]  
+   
   
 ## <a name="see-also"></a>См. также
 

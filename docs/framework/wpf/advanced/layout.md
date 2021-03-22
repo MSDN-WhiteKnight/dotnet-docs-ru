@@ -56,7 +56,7 @@ ms.locfileid: "59330497"
  Ячейка макета элемента <xref:System.Windows.Controls.TextBlock> преобразуется в <xref:System.Windows.Shapes.Path> с помощью <xref:System.Windows.Controls.Primitives.LayoutInformation.GetLayoutSlot%2A> метод. Этот способ может быть полезен для отображения ограничивающего прямоугольника элемента.  
   
  [!code-csharp[LayoutInformation#2](~/samples/snippets/csharp/VS_Snippets_Wpf/LayoutInformation/CSharp/Window1.xaml.cs#2)]
- [!code-vb[LayoutInformation#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/LayoutInformation/VisualBasic/Window1.xaml.vb#2)]  
+   
   
 <a name="LayoutSystem_Overview"></a>   
 ## <a name="the-layout-system"></a>Система макета  

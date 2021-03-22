@@ -24,7 +24,7 @@ ms.locfileid: "59075955"
  Этот пример не запускается.  
   
  [!code-csharp[ThicknessConverter#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ThicknessConverter/CSharp/Window1.xaml.cs#1)]
- [!code-vb[ThicknessConverter#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ThicknessConverter/VisualBasic/Window1.xaml.vb#1)]  
+   
   
 ## <a name="see-also"></a>См. также
 

@@ -93,21 +93,21 @@ ms.locfileid: "59337855"
  Добавьте следующий код в класс `MyControl1` .  
   
  [!code-csharp[WpfHostingWindowsFormsControl#2](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/MyControls/MyControl1.cs#2)]
- [!code-vb[WpfHostingWindowsFormsControl#2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/MyControls/MyControl1.vb#2)]
+ 
 
  `MyControlEventArgs` Класс содержит информацию, возвращаемую к узлу.
 
  Добавьте в форму следующий класс.
 
  [!code-csharp[WpfHostingWindowsFormsControl#3](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/MyControls/MyControl1.cs#3)]
- [!code-vb[WpfHostingWindowsFormsControl#3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/MyControls/MyControl1.vb#3)]
+ 
 
  Когда пользователь щелкает **ОК** или **отменить** кнопки, <xref:System.Windows.Forms.Control.Click> создать обработчики событий `MyControlEventArgs` объект, содержащий данные и вызывает `OnButtonClick` событий. Аргумент события, — это единственное различие между двумя обработчиками `IsOK` свойство. Это свойство позволяет основному приложению определить, какая кнопка была нажата. Ему будет присвоено `true` для **ОК** кнопку, и `false` для **отменить** кнопки. В следующем примере кода показаны два обработчика кнопок.
 
  Добавьте следующий код в класс `MyControl1` .
 
  [!code-csharp[WpfHostingWindowsFormsControl#4](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/MyControls/MyControl1.cs#4)]
- [!code-vb[WpfHostingWindowsFormsControl#4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/MyControls/MyControl1.vb#4)]
+ 
 
 ### <a name="giving-the-assembly-a-strong-name-and-building-the-assembly"></a>Присвоение сборке строгого имени и построение сборки
  Для этой сборки, на которые ссылается [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения, он должен иметь строгое имя. Для создания строгого имени, создать файл ключа с Sn.exe и добавьте его в проект.
@@ -202,7 +202,7 @@ ms.locfileid: "59337855"
  В файле MainWindow.xaml.vb или MainWindow.xaml.cs, добавьте следующий код, чтобы `MainWindow` класса.
 
  [!code-csharp[WpfHostingWindowsFormsControl#11](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml.cs#11)]
- [!code-vb[WpfHostingWindowsFormsControl#11](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/WpfHost/Page1.xaml.vb#11)]
+ 
 
  Так как [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] описанные ранее добавленный `MyControl1` для <xref:System.Windows.Forms.Integration.WindowsFormsHost> коллекцию дочерних элементов элемента, можно привести <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента <xref:System.Windows.Forms.Integration.WindowsFormsHost.Child%2A> для получения ссылки на `MyControl1`. Затем можно использовать эту ссылку для присоединения обработчика событий к `OnButtonClick`.
 
@@ -224,7 +224,7 @@ using MyControls;
  Добавьте следующий код в класс `MainWindow` .
 
  [!code-csharp[WpfHostingWindowsFormsControl#12](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml.cs#12)]
- [!code-vb[WpfHostingWindowsFormsControl#12](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/WpfHost/Page1.xaml.vb#12)]
+ 
 
  Данные в текстовых полях упакованы в `MyControlEventArgs` объекта. Если пользователь нажимает кнопку **ОК** кнопку, обработчик событий извлекает данные и отображает его на панели ниже `MyControl1`.
 
@@ -234,7 +234,7 @@ using MyControls;
  Добавьте следующий код в класс `MainWindow` .
 
  [!code-csharp[WpfHostingWindowsFormsControl#13](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml.cs#13)]
- [!code-vb[WpfHostingWindowsFormsControl#13](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/VisualBasic/WpfHost/Page1.xaml.vb#13)]  
+   
   
  Выполните сборку и запуск приложения. Добавьте какой-нибудь текст в составной элемент управления Windows Forms и нажмите кнопку **ОК**. Текст отображается в метках. Щелкайте различные переключатели, чтобы увидеть соответствующий эффект в элементе управления.  
   

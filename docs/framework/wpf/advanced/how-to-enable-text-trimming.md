@@ -29,7 +29,7 @@ ms.locfileid: "57474151"
 Установка соответствующего <xref:System.Windows.TextTrimming> ниже показано свойство в коде.
 
 [!code-csharp[TextTrimmingSnippets#_TextTrimmingSetTextTrimming](~/samples/snippets/csharp/VS_Snippets_Wpf/TextTrimmingSnippets/CSharp/Window1.xaml.cs#_texttrimmingsettexttrimming)]
-[!code-vb[TextTrimmingSnippets#_TextTrimmingSetTextTrimming](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextTrimmingSnippets/VisualBasic/Window1.xaml.vb#_texttrimmingsettexttrimming)]
+
 
 Существует в настоящее время три параметра обрезки текста: **CharacterEllipsis**, **WordEllipsis**, и **None**.
 

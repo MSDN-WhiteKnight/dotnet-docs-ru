@@ -70,12 +70,12 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
  Ядром этого образца является класс, который фактически размещает в себе элемент управления, ControlHost.cs. Он наследует от <xref:System.Windows.Interop.HwndHost>. Конструктор принимает два параметра, высоту и ширину, которые соответствуют высоте и ширине <xref:System.Windows.Controls.Border> элемент, на котором размещается элемент управления ListBox. Эти значения используются Далее, чтобы убедиться, что размер элемента управления соответствует <xref:System.Windows.Controls.Border> элемент.  
   
  [!code-csharp[WPFHostingWin32Control#ControlHostClass](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#controlhostclass)]
- [!code-vb[WPFHostingWin32Control#ControlHostClass](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#controlhostclass)]  
+   
   
  Кроме того, имеется набор констант. Эти константы в основном берутся из файла Winuser.h и позволяют использовать обычные имена при вызове функции Win32.  
   
  [!code-csharp[WPFHostingWin32Control#ControlHostConstants](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#controlhostconstants)]
- [!code-vb[WPFHostingWin32Control#ControlHostConstants](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#controlhostconstants)]  
+   
   
 <a name="buildwindowcore"></a>   
 ### <a name="override-buildwindowcore-to-create-the-microsoft-win32-window"></a>Переопределение класса BuildWindowCore для создания окна Microsoft Win32  
@@ -90,25 +90,25 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
  HWND элемента управления предоставляется через доступное только для чтения свойство, чтобы главная страница могла использовать его для отправки сообщения элементу управления.  
   
  [!code-csharp[WPFHostingWin32Control#IntPtrProperty](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#intptrproperty)]
- [!code-vb[WPFHostingWin32Control#IntPtrProperty](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#intptrproperty)]  
+   
   
  Элемент управления ListBox создается в качестве дочернего элемента главного окна. Высота и ширина обоих окон задается с помощью значений, передаваемых конструктору (см. выше). Это гарантирует, что размер главного окна и элемента управления идентичен размеру отведенной для них области на странице.  После создания окон образец возвращает <xref:System.Runtime.InteropServices.HandleRef> , содержащий HWND главного окна.  
   
  [!code-csharp[WPFHostingWin32Control#BuildWindowCore](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#buildwindowcore)]
- [!code-vb[WPFHostingWin32Control#BuildWindowCore](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#buildwindowcore)]  
+   
   
  [!code-csharp[WPFHostingWin32Control#BuildWindowCoreHelper](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#buildwindowcorehelper)]
- [!code-vb[WPFHostingWin32Control#BuildWindowCoreHelper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#buildwindowcorehelper)]  
+   
   
 <a name="destroywindow_wndproc"></a>   
 ### <a name="implement-destroywindow-and-wndproc"></a>Реализация классов DestroyWindow и WndProc  
  В дополнение к <xref:System.Windows.Interop.HwndHost.BuildWindowCore%2A>, необходимо также переопределить <xref:System.Windows.Interop.HwndHost.WndProc%2A> и <xref:System.Windows.Interop.HwndHost.DestroyWindowCore%2A> методы <xref:System.Windows.Interop.HwndHost>. В этом примере сообщения для элемента управления обрабатываются <xref:System.Windows.Interop.HwndHost.MessageHook> обработчик, поэтому реализация <xref:System.Windows.Interop.HwndHost.WndProc%2A> и <xref:System.Windows.Interop.HwndHost.DestroyWindowCore%2A> сводится к минимуму. В случае использования <xref:System.Windows.Interop.HwndHost.WndProc%2A>, задайте `handled` для `false` указывают, что сообщение не было обработано и возвращают значение 0. Для <xref:System.Windows.Interop.HwndHost.DestroyWindowCore%2A>, достаточно уничтожить окно.  
   
  [!code-csharp[WPFHostingWin32Control#WndProcDestroy](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#wndprocdestroy)]
- [!code-vb[WPFHostingWin32Control#WndProcDestroy](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#wndprocdestroy)]  
+   
   
  [!code-csharp[WPFHostingWin32Control#WndProcDestroyHelper](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/ControlHost.cs#wndprocdestroyhelper)]
- [!code-vb[WPFHostingWin32Control#WndProcDestroyHelper](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/ControlHost.vb#wndprocdestroyhelper)]  
+   
   
 <a name="host_the_control"></a>   
 ## <a name="host-the-control-on-the-page"></a>Размещение элемента управления на странице  
@@ -120,10 +120,10 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
 >  Обратите внимание на то, что существует два объявления PInvoke для класса SendMessage. Это необходимо, поскольку один использует `wParam` параметр для передачи строки, а другой используется для передачи целое число. Необходимо отдельно объявить каждую сигнатуру, чтобы обеспечить правильный маршалинг данных.  
   
  [!code-csharp[WPFHostingWin32Control#HostWindowClass](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/Page1.xaml.cs#hostwindowclass)]
- [!code-vb[WPFHostingWin32Control#HostWindowClass](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/Page1.xaml.vb#hostwindowclass)]  
+   
   
  [!code-csharp[WPFHostingWin32Control#ControlMsgFilterSendMessage](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/Page1.xaml.cs#controlmsgfiltersendmessage)]
- [!code-vb[WPFHostingWin32Control#ControlMsgFilterSendMessage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/Page1.xaml.vb#controlmsgfiltersendmessage)]  
+   
   
 <a name="communication"></a>   
 ## <a name="implement-communication-between-the-control-and-the-page"></a>Обмен данными между элементом управления и страницей  
@@ -142,7 +142,7 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
  Чтобы добавить элементы, отправьте списку [ `LB_ADDSTRING` сообщение](/windows/desktop/Controls/lb-addstring). Чтобы удалить элементы, отправьте [ `LB_GETCURSEL` ](/windows/desktop/Controls/lb-getcursel) необходимо получить индекс текущего выделенного фрагмента и затем [ `LB_DELETESTRING` ](/windows/desktop/Controls/lb-deletestring) для удаления элемента. Образец также отправляет [ `LB_GETCOUNT` ](/windows/desktop/Controls/lb-getcount)и использует возвращаемое значение для обновления экрана, показывающий количество элементов. Оба экземпляра [ `SendMessage` ](/windows/desktop/api/winuser/nf-winuser-sendmessage) использовать одно из объявлений PInvoke, рассмотренных в предыдущем подразделе.  
   
  [!code-csharp[WPFHostingWin32Control#AppendDeleteText](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFHostingWin32Control/CSharp/Page1.xaml.cs#appenddeletetext)]
- [!code-vb[WPFHostingWin32Control#AppendDeleteText](~/samples/snippets/visualbasic/VS_Snippets_Wpf/WPFHostingWin32Control/VisualBasic/Page1.xaml.vb#appenddeletetext)]  
+   
   
  Когда пользователь выбирает элемент, или изменяет их выделение, элемент управления уведомляет главное окно, отправляя ему [ `WM_COMMAND` сообщение](/windows/desktop/menurc/wm-command), который вызывает <xref:System.Windows.Interop.HwndHost.MessageHook> событий для страницы. Обработчик получает те же сведения, что и процедура главного окна в главном окне. Он также передает ссылку на логическое значение, равное `handled`. Можно задать `handled` для `true` для указания, что сообщение было обработано и дальнейшая обработка не требуется.  
   

@@ -59,7 +59,7 @@ ms.locfileid: "57374678"
 Следующий код устанавливает режим редактирования на основе значения из <xref:System.Windows.Forms.CheckBox>:
 
 [!code-csharp[DigitalInkTopics#8](~/samples/snippets/csharp/VS_Snippets_Wpf/DigitalInkTopics/CSharp/Window1.xaml.cs#8)]
-[!code-vb[DigitalInkTopics#8](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DigitalInkTopics/VisualBasic/Window1.xaml.vb#8)]
+
 
 #### <a name="drawingattributes"></a>DrawingAttributes
 
@@ -68,7 +68,7 @@ ms.locfileid: "57374678"
 В следующем примере изменяется цвет выбранных штрихов на красный:
 
 [!code-csharp[DigitalInkTopics#9](~/samples/snippets/csharp/VS_Snippets_Wpf/DigitalInkTopics/CSharp/Window1.xaml.cs#9)]
-[!code-vb[DigitalInkTopics#9](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DigitalInkTopics/VisualBasic/Window1.xaml.vb#9)]
+
 
 ### <a name="defaultdrawingattributes"></a>DefaultDrawingAttributes
 

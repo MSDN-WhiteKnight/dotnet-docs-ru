@@ -27,36 +27,36 @@ ms.locfileid: "59107371"
  Ниже приведено определение класса.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandSourceClassDefinition](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandsourceclassdefinition)]
- [!code-vb[ImplementICommandSource#ImplementICommandSourceClassDefinition](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandsourceclassdefinition)]  
+   
   
  Следующим шагом является реализация <xref:System.Windows.Input.ICommandSource> членов.  В этом примере свойства реализуются как <xref:System.Windows.DependencyProperty> объектов.  Это включает свойства для использования привязки данных.  Дополнительные сведения о <xref:System.Windows.DependencyProperty> , представлена в разделе [Общие сведения о свойствах зависимостей](dependency-properties-overview.md).  Дополнительные сведения о привязке данных см. в разделе [Общие сведения о привязке данных](../data/data-binding-overview.md).  
   
  Только <xref:System.Windows.Input.ICommandSource.Command%2A> свойство показан здесь.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandSourceCommandPropertyDefinition](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandsourcecommandpropertydefinition)]
- [!code-vb[ImplementICommandSource#ImplementICommandSourceCommandPropertyDefinition](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandsourcecommandpropertydefinition)]  
+   
   
  Ниже приведен <xref:System.Windows.DependencyProperty> изменить обратного вызова.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandSourceCommandChanged](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandsourcecommandchanged)]
- [!code-vb[ImplementICommandSource#ImplementICommandSourceCommandChanged](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandsourcecommandchanged)]  
+   
   
  Следующим шагом является добавление и удаление команды, связанный с источника команды.  <xref:System.Windows.Input.ICommandSource.Command%2A> Свойство не может просто быть перезаписан при добавлении новой команды, так как обработчики событий, связанные с предыдущей командой, если таковая имела место, сначала необходимо удалить.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandSourceHookUnHookCommands](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandsourcehookunhookcommands)]
- [!code-vb[ImplementICommandSource#ImplementICommandSourceHookUnHookCommands](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandsourcehookunhookcommands)]  
+   
   
  Последним шагом является создание логики для <xref:System.Windows.Input.ICommand.CanExecuteChanged> обработчика и <xref:System.Windows.Input.ICommand.Execute%2A> метод.  
   
  <xref:System.Windows.Input.ICommand.CanExecuteChanged> Событие сообщает источнику команды, может измениться, возможность команды для выполнения на текущей цели команды.  При получении этого события источник команды обычно вызывает <xref:System.Windows.Input.ICommand.CanExecute%2A> метод о команде.  Если команда не может выполнить на текущей цели команды, источник команды обычно отключается.  Если команда может выполняться для текущего целевого объекта команды, источник команды обычно включает себя.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandcanexecutechanged)]
- [!code-vb[ImplementICommandSource#ImplementICommandCanExecuteChanged](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandcanexecutechanged)]  
+   
   
  Последний шаг — <xref:System.Windows.Input.ICommand.Execute%2A> метод.  Если команда является <xref:System.Windows.Input.RoutedCommand>, <xref:System.Windows.Input.RoutedCommand> <xref:System.Windows.Input.RoutedCommand.Execute%2A> метод вызван; в противном случае — значение <xref:System.Windows.Input.ICommand> <xref:System.Windows.Input.ICommand.Execute%2A> вызывается метод.  
   
  [!code-csharp[ImplementICommandSource#ImplementICommandExecute](~/samples/snippets/csharp/VS_Snippets_Wpf/ImplementICommandSource/CSharp/CommandSlider.cs#implementicommandexecute)]
- [!code-vb[ImplementICommandSource#ImplementICommandExecute](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImplementICommandSource/visualbasic/commandslider.vb#implementicommandexecute)]  
+   
   
 ## <a name="see-also"></a>См. также
 

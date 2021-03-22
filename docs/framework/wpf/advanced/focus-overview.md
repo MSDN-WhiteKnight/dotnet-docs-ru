@@ -33,7 +33,7 @@ ms.locfileid: "59073888"
  В следующем примере используется <xref:System.Windows.Input.Keyboard.Focus%2A> метод, чтобы установить фокус на <xref:System.Windows.Controls.Button>.  
   
  [!code-csharp[focussample#FocusSampleSetFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSample/CSharp/Window1.xaml.cs#focussamplesetfocus)]
- [!code-vb[focussample#FocusSampleSetFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSample/visualbasic/window1.xaml.vb#focussamplesetfocus)]  
+   
   
  <xref:System.Windows.UIElement.IsKeyboardFocused%2A> Свойство в классах базовых элементов получает значение, указывающее, имеет ли элемент фокус клавиатуры.  <xref:System.Windows.UIElement.IsKeyboardFocusWithin%2A> Свойство в классах базовых элементов получает значение, указывающее, имеет ли элемент или один из его визуальных дочерних элементов фокус клавиатуры.  
   
@@ -54,7 +54,7 @@ ms.locfileid: "59073888"
  [!code-xaml[MarkupSnippets#MarkupIsFocusScopeXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/MarkupSnippets/CSharp/Window1.xaml#markupisfocusscopexaml)]  
   
  [!code-csharp[FocusSnippets#FocusSetIsFocusScope](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSnippets/CSharp/Window1.xaml.cs#focussetisfocusscope)]
- [!code-vb[FocusSnippets#FocusSetIsFocusScope](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSnippets/visualbasic/window1.xaml.vb#focussetisfocusscope)]  
+   
   
  <xref:System.Windows.Input.FocusManager.GetFocusScope%2A> Возвращает область фокуса для заданного элемента.  
   
@@ -65,7 +65,7 @@ ms.locfileid: "59073888"
  В следующем примере элемент с фокусом задается в области фокуса и возвращает элемент с фокусом для области фокуса.  
   
  [!code-csharp[FocusSnippets#FocusGetSetFocusedElement](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSnippets/CSharp/Window1.xaml.cs#focusgetsetfocusedelement)]
- [!code-vb[FocusSnippets#FocusGetSetFocusedElement](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSnippets/visualbasic/window1.xaml.vb#focusgetsetfocusedelement)]  
+   
   
 <a name="Keyboard_Navigation"></a>   
 ## <a name="keyboard-navigation"></a>Навигация с помощью клавиатуры  
@@ -78,7 +78,7 @@ ms.locfileid: "59073888"
  [!code-xaml[MarkupSnippets#MarkupKeyboardNavigationTabNavigationXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/MarkupSnippets/CSharp/Window1.xaml#markupkeyboardnavigationtabnavigationxaml)]  
   
  [!code-csharp[MarkupSnippets#MarkupKeyboardNavigationTabNavigationCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/MarkupSnippets/CSharp/Window1.xaml.cs#markupkeyboardnavigationtabnavigationcode)]
- [!code-vb[MarkupSnippets#MarkupKeyboardNavigationTabNavigationCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/MarkupSnippets/visualbasic/window1.xaml.vb#markupkeyboardnavigationtabnavigationcode)]  
+   
   
 <a name="Manipulating_Focus_Programmatically"></a>   
 ## <a name="navigating-focus-programmatically"></a>Перемещение фокуса программными средствами  
@@ -89,7 +89,7 @@ ms.locfileid: "59073888"
  В следующем примере используется <xref:System.Windows.FrameworkElement.MoveFocus%2A> Чтобы изменить элемент с фокусом.  
   
  [!code-csharp[focussample#FocusSampleMoveFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/FocusSample/CSharp/Window1.xaml.cs#focussamplemovefocus)]
- [!code-vb[focussample#FocusSampleMoveFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/FocusSample/visualbasic/window1.xaml.vb#focussamplemovefocus)]  
+   
   
  <xref:System.Windows.FrameworkElement.PredictFocus%2A> Возвращает объект, который должен получить фокус, если фокус должен быть изменен.  В настоящее время только <xref:System.Windows.Input.FocusNavigationDirection.Up>, <xref:System.Windows.Input.FocusNavigationDirection.Down>, <xref:System.Windows.Input.FocusNavigationDirection.Left>, и <xref:System.Windows.Input.FocusNavigationDirection.Right> поддерживаются <xref:System.Windows.FrameworkElement.PredictFocus%2A>.  
   
@@ -106,12 +106,12 @@ ms.locfileid: "59073888"
  Когда <xref:System.Windows.Controls.TextBox> получает фокус клавиатуры, <xref:System.Windows.Controls.Control.Background%2A> свойство <xref:System.Windows.Controls.TextBox> изменяется на <xref:System.Windows.Media.Brushes.LightBlue%2A>.  
   
  [!code-csharp[keyboardsample#KeyboardSampleGotFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyboardSample/CSharp/Window1.xaml.cs#keyboardsamplegotfocus)]
- [!code-vb[keyboardsample#KeyboardSampleGotFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyboardSample/visualbasic/window1.xaml.vb#keyboardsamplegotfocus)]  
+   
   
  Когда <xref:System.Windows.Controls.TextBox> теряет фокус клавиатуры, <xref:System.Windows.Controls.Control.Background%2A> свойство <xref:System.Windows.Controls.TextBox> изменяется обратно на белое.  
   
  [!code-csharp[keyboardsample#KeyboardSampleLostFocus](~/samples/snippets/csharp/VS_Snippets_Wpf/KeyboardSample/CSharp/Window1.xaml.cs#keyboardsamplelostfocus)]
- [!code-vb[keyboardsample#KeyboardSampleLostFocus](~/samples/snippets/visualbasic/VS_Snippets_Wpf/KeyboardSample/visualbasic/window1.xaml.vb#keyboardsamplelostfocus)]  
+   
   
  События, связанные с логическим фокусом: <xref:System.Windows.UIElement.GotFocus> и <xref:System.Windows.UIElement.LostFocus>.  Эти события определяются в <xref:System.Windows.Input.FocusManager> как Прикрепленные события, но <xref:System.Windows.Input.FocusManager> не предоставляет оболочки событий среды CLR.  <xref:System.Windows.UIElement> и <xref:System.Windows.ContentElement> предоставляют эти события более удобным.  
   

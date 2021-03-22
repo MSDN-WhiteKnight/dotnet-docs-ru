@@ -22,7 +22,7 @@ ms.locfileid: "57373573"
  Открывается окно путем создания экземпляра <xref:System.Windows.Window> и вызов <xref:System.Windows.Window.Show%2A> метод. <xref:System.Windows.Window.Show%2A> Открывает окно и возвращается немедленно без ожидания закрытия нового окна. Этот тип окна называется также *немодальное* окно и не ограничивает ввод данных пользователем.  
   
  [!code-csharp[HOWTOWindowManagementSnippets#OpenNewWindowCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/CSharp/MainWindow.xaml.cs#opennewwindowcode)]
- [!code-vb[HOWTOWindowManagementSnippets#OpenNewWindowCODE](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HOWTOWindowManagementSnippets/visualbasic/mainwindow.xaml.vb#opennewwindowcode)]  
+   
   
 ## <a name="net-framework-security"></a>Безопасность платформы .NET Framework  
  Создание экземпляра <xref:System.Windows.Window> требуется разрешение на вызов небезопасных собственных методов (см. в разделе <xref:System.Windows.Window.%23ctor%2A>).
