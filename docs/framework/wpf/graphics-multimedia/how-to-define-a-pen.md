@@ -22,7 +22,7 @@ ms.locfileid: "57365792"
  В следующем примере используется <xref:System.Windows.Media.Pen> показано формы, определенной <xref:System.Windows.Media.GeometryDrawing>.  
   
  [!code-csharp[PenExamples_snip#PenExampleWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/PenExamples_snip/CSharp/PenExample.cs#penexamplewholepage)]
- [!code-vb[PenExamples_snip#PenExampleWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/PenExamples_snip/VisualBasic/PenExample.vb#penexamplewholepage)]  
+   
   
  ![Вывод пера](./media/graphicsmm-simple-pen.jpg "graphicsmm_simple_pen")  
 Объект GeometryDrawing

@@ -29,7 +29,7 @@ ms.locfileid: "59121723"
  При создании объекта контейнера размещения для визуальных объектов, вам необходимо сохранить ссылки визуального объекта в <xref:System.Windows.Media.VisualCollection>. Используйте <xref:System.Windows.Media.VisualCollection.Add%2A> метод для добавления визуального объекта в контейнер размещения. В следующем примере создается объект контейнера размещения, а также добавляются три визуальных объектов его <xref:System.Windows.Media.VisualCollection>.  
   
  [!code-csharp[DrawingVisualSample#100](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingVisualSample/CSharp/Window1.xaml.cs#100)]
- [!code-vb[DrawingVisualSample#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DrawingVisualSample/visualbasic/window1.xaml.vb#100)]  
+   
   
 > [!NOTE]
 >  Полный код примера, из которого был взят предыдущий пример кода, см. в разделе [Проверка нажатия с помощью примера DrawingVisuals](https://go.microsoft.com/fwlink/?LinkID=159994).  
@@ -43,7 +43,7 @@ ms.locfileid: "59121723"
  В следующем примере <xref:System.Windows.Media.DrawingVisual> создания объекта и прямоугольник в его <xref:System.Windows.Media.DrawingContext>.  
   
  [!code-csharp[DrawingVisualSample#101](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingVisualSample/CSharp/Window1.xaml.cs#101)]
- [!code-vb[DrawingVisualSample#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DrawingVisualSample/visualbasic/window1.xaml.vb#101)]  
+   
   
 <a name="creating_overrides"></a>   
 ## <a name="creating-overrides-for-frameworkelement-members"></a>Создание переопределений для членов класса FrameworkElement  
@@ -58,7 +58,7 @@ ms.locfileid: "59121723"
  В следующем примере, переопределения для двух <xref:System.Windows.FrameworkElement> члены реализуются.  
   
  [!code-csharp[DrawingVisualSample#102](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingVisualSample/CSharp/Window1.xaml.cs#102)]
- [!code-vb[DrawingVisualSample#102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DrawingVisualSample/visualbasic/window1.xaml.vb#102)]  
+   
   
 <a name="providing_hit_testing_support"></a>   
 ## <a name="providing-hit-testing-support"></a>Поддержка проверки нажатия  
@@ -67,7 +67,7 @@ ms.locfileid: "59121723"
  В следующем примере реализована поддержка проверки нажатия для объекта узла контейнера и его дочерних объектов.  
   
  [!code-csharp[DrawingVisualSample#103](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingVisualSample/CSharp/Window1.xaml.cs#103)]
- [!code-vb[DrawingVisualSample#103](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DrawingVisualSample/visualbasic/window1.xaml.vb#103)]  
+   
   
 ## <a name="see-also"></a>См. также
 

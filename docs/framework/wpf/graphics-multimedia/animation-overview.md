@@ -68,7 +68,7 @@ ms.locfileid: "59337738"
  Далее показано, как создать <xref:System.Windows.Shapes.Rectangle> элемент <xref:System.Windows.Controls.StackPanel> в коде.  
   
  [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_1](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/Class1.cs#rectangleopacityfadeexamplecode_1)]
- [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/Class1.vb#rectangleopacityfadeexamplecode_1)]  
+   
   
 <a name="opacity_animation_step1"></a>   
 ### <a name="part-1-create-a-doubleanimation"></a>Часть 1. Создание объекта DoubleAnimation  
@@ -81,7 +81,7 @@ ms.locfileid: "59337738"
      Далее показано, как создать <xref:System.Windows.Media.Animation.DoubleAnimation> в коде.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_2](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/Class1.cs#rectangleopacityfadeexamplecode_2)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/Class1.vb#rectangleopacityfadeexamplecode_2)]  
+       
   
 2. Далее необходимо указать <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. <xref:System.Windows.Media.Animation.Timeline.Duration%2A> Анимации определяет время, необходимое для перехода от начального к конечному значению. Далее показано, как задать <xref:System.Windows.Media.Animation.Timeline.Duration%2A> значение пяти секунд в XAML.  
   
@@ -90,7 +90,7 @@ ms.locfileid: "59337738"
      Далее показано, как задать <xref:System.Windows.Media.Animation.Timeline.Duration%2A> значение пяти секунд в коде.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_3](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/Class1.cs#rectangleopacityfadeexamplecode_3)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/Class1.vb#rectangleopacityfadeexamplecode_3)]  
+       
   
 3. В предыдущем примере была анимации, которая переходит из `1.0` для `0.0`, чего исчезают из полностью непрозрачными реализуется целевого элемента. Чтобы отобразить элемент обратно в представление после его исчезновения, установите <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> свойство для анимации, которую `true`. Чтобы циклически повторять анимацию бесконечно, задайте его <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> свойства <xref:System.Windows.Media.Animation.RepeatBehavior.Forever%2A>. Далее показано, как задать <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> и <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> свойства в XAML.  
   
@@ -99,7 +99,7 @@ ms.locfileid: "59337738"
      Далее показано, как задать <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> и <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> свойства в коде.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_4](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/Class1.cs#rectangleopacityfadeexamplecode_4)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/Class1.vb#rectangleopacityfadeexamplecode_4)]  
+       
   
 <a name="opacity_animation_step2"></a>   
 ### <a name="part-2-create-a-storyboard"></a>Часть 2. Создать раскадровку  
@@ -112,12 +112,12 @@ ms.locfileid: "59337738"
      Чтобы создать <xref:System.Windows.Media.Animation.Storyboard> в коде объявите <xref:System.Windows.Media.Animation.Storyboard> переменных на уровне класса.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_100](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_100)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_100)]  
+       
   
      Затем инициализируйте <xref:System.Windows.Media.Animation.Storyboard> и добавьте ее в качестве дочернего.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_101](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_101)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_101)]  
+       
   
 2. <xref:System.Windows.Media.Animation.Storyboard> Должен знать, где применяется анимация. Используйте <xref:System.Windows.Media.Animation.Storyboard.TargetName%2A?displayProperty=nameWithType> присоединенного свойства для указания объекта для анимации. Далее показано, как задать целевое имя <xref:System.Windows.Media.Animation.DoubleAnimation> для `MyRectangle` в XAML.  
   
@@ -126,7 +126,7 @@ ms.locfileid: "59337738"
      Далее показано, как задать целевое имя <xref:System.Windows.Media.Animation.DoubleAnimation> для `MyRectangle` в коде.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_102](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_102)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_102)]  
+       
   
 3. Используйте <xref:System.Windows.Media.Animation.Storyboard.TargetProperty> вложенное свойство, чтобы указать анимируемое свойство. Далее показано, как настроить анимацию к целевому объекту <xref:System.Windows.UIElement.Opacity%2A> свойство <xref:System.Windows.Shapes.Rectangle> в XAML.
   
@@ -135,7 +135,7 @@ ms.locfileid: "59337738"
      Далее показано, как настроить анимацию к целевому объекту <xref:System.Windows.UIElement.Opacity%2A> свойство <xref:System.Windows.Shapes.Rectangle> в коде.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_103](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_103)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_103](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_103)]  
+       
   
  Дополнительные сведения о <xref:System.Windows.Media.Animation.Storyboard.TargetProperty> синтаксис и Дополнительные примеры см. в разделе [Общие сведения о раскадровках](storyboards-overview.md).  
   
@@ -162,12 +162,12 @@ ms.locfileid: "59337738"
 1. Зарегистрируйтесь для <xref:System.Windows.FrameworkElement.Loaded> событий прямоугольника.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_104](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_104)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_104](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_104)]  
+       
   
 2. Объявите обработчик событий. В обработчике событий используйте <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> метод для применения раскадровки.  
   
      [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode_105](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode_105)]
-     [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode_105](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode_105)]  
+       
   
 ### <a name="complete-example"></a>Полный пример  
  Ниже показано, как создать прямоугольник, который исчезает и в XAML появляется.  
@@ -177,7 +177,7 @@ ms.locfileid: "59337738"
  Далее показано, как создать прямоугольник, который исчезает и появляется, в коде.  
   
  [!code-csharp[animation_ovws2#RectangleOpacityFadeExampleCode](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws2/CSharp/MainWindow.xaml.cs#rectangleopacityfadeexamplecode)]
- [!code-vb[animation_ovws2#RectangleOpacityFadeExampleCode](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws2/VisualBasic/MainWindow.xaml.vb#rectangleopacityfadeexamplecode)]  
+   
   
 <a name="animationtypes"></a>   
 ## <a name="animation-types"></a>Типы анимации  
@@ -288,7 +288,7 @@ ms.locfileid: "59337738"
  [!code-xaml[animation_ovws_snippet#FillBehaviorExampleRectangleInline](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws_snippet/CS/FillBehaviorExample.xaml#fillbehaviorexamplerectangleinline)]  
   
  [!code-csharp[animation_ovws_procedural_snip#FillBehaviorExampleRectangleInline](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws_procedural_snip/CSharp/FillBehaviorExample.cs#fillbehaviorexamplerectangleinline)]
- [!code-vb[animation_ovws_procedural_snip#FillBehaviorExampleRectangleInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws_procedural_snip/visualbasic/fillbehaviorexample.vb#fillbehaviorexamplerectangleinline)]  
+   
   
  Так как его <xref:System.Windows.Media.Animation.Timeline.FillBehavior%2A> не был изменен со значения по умолчанию, который является <xref:System.Windows.Media.Animation.FillBehavior.HoldEnd>, анимации сохраняется ее конечное значение 0, по ее завершении. Таким образом <xref:System.Windows.UIElement.Opacity%2A> прямоугольника в 0 после анимация завершается. Если задать <xref:System.Windows.UIElement.Opacity%2A> прямоугольника с другим значением, видимых не произойдет, поскольку по-прежнему управляется анимацией <xref:System.Windows.UIElement.Opacity%2A> свойство.  
   

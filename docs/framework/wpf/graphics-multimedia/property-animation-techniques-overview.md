@@ -78,7 +78,7 @@ ms.locfileid: "59317913"
   
  [!code-cpp[animateproperty#11](~/samples/snippets/cpp/VS_Snippets_Wpf/animateproperty/CPP/LocalAnimationExample.cpp#11)]
  [!code-csharp[animateproperty#11](~/samples/snippets/csharp/VS_Snippets_Wpf/animateproperty/CSharp/LocalAnimationExample.cs#11)]
- [!code-vb[animateproperty#11](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animateproperty/VisualBasic/LocalAnimationExample.vb#11)]  
+   
   
 ## <a name="clock-animations"></a>Часы  
  Используйте <xref:System.Windows.Media.MediaPlayer.Clock%2A> объектов при необходимости выполнить анимацию без использования <xref:System.Windows.Media.Animation.Storyboard> и вы хотите создать сложные деревья временных или интерактивно управлять анимацией после запуска. Можно использовать объекты Clock для анимации свойства зависимостей любого <xref:System.Windows.Media.Animation.Animatable> объекта.  
@@ -96,7 +96,7 @@ ms.locfileid: "59317913"
  В следующем примере показано, как создать <xref:System.Windows.Media.Animation.AnimationClock> и применить его к двум похожим свойствам.  
   
  [!code-csharp[timingbehaviors_procedural_snip#GraphicsMMCreateAnimationClockWholeClass](~/samples/snippets/csharp/VS_Snippets_Wpf/timingbehaviors_procedural_snip/CSharp/AnimationClockExample.cs#graphicsmmcreateanimationclockwholeclass)]
- [!code-vb[timingbehaviors_procedural_snip#GraphicsMMCreateAnimationClockWholeClass](~/samples/snippets/visualbasic/VS_Snippets_Wpf/timingbehaviors_procedural_snip/visualbasic/animationclockexample.vb#graphicsmmcreateanimationclockwholeclass)]  
+   
   
  Чтобы создать дерево временной шкалы и использовать его анимации свойств, выполните следующие действия.  
   

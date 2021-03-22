@@ -86,7 +86,7 @@ ms.locfileid: "59101371"
  Вы никогда непосредственно не создаете экземпляр <xref:System.Windows.Media.DrawingContext>, однако можете получить контекст рисования с помощью определенных методов, например <xref:System.Windows.Media.DrawingGroup.Open%2A?displayProperty=nameWithType> и <xref:System.Windows.Media.DrawingVisual.RenderOpen%2A?displayProperty=nameWithType>. В следующем примере <xref:System.Windows.Media.DrawingContext> извлекается из <xref:System.Windows.Media.DrawingVisual> и используется для рисования прямоугольника.  
   
  [!code-csharp[drawingvisualsample#101](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingVisualSample/CSharp/Window1.xaml.cs#101)]
- [!code-vb[drawingvisualsample#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/DrawingVisualSample/visualbasic/window1.xaml.vb#101)]  
+   
   
 #### <a name="enumerating-drawing-content-at-the-visual-layer"></a>Перечисление содержимого рисования на визуальном уровне  
  Наряду с другими своими возможностями, объекты <xref:System.Windows.Media.Drawing> также предоставляют объектную модель для перечисления содержимого <xref:System.Windows.Media.Visual>.  
@@ -238,14 +238,14 @@ ms.locfileid: "59101371"
  В следующем примере показано, как перечислить всех потомков визуального объекта. Этот метод можно использовать для сериализации всех данных отрисовки в иерархии визуального объекта.  
   
  [!code-csharp[VisualsOverview#101](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsOverview/CSharp/Window1.xaml.cs#101)]
- [!code-vb[VisualsOverview#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsOverview/visualbasic/window1.xaml.vb#101)]  
+   
   
  В большинстве случаев логическое дерево более удобно для представления элементов приложения [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]. Хотя логическое дерево нельзя изменить напрямую, с помощью этой схемы удобно представить наследование свойств и маршрутизацию событий. В отличие от визуального дерева, логическое дерево может представлять и невизуальные объекты, например <xref:System.Windows.Documents.ListItem>. Дополнительные сведения о логическом дереве см. в разделе [Деревья в WPF](../advanced/trees-in-wpf.md).  
   
  Класс <xref:System.Windows.Media.VisualTreeHelper> предоставляет методы для получения ограничивающего прямоугольника визуальных объектов. Ограничивающий прямоугольник визуального объекта возвращается методом <xref:System.Windows.Media.VisualTreeHelper.GetContentBounds%2A>. Ограничивающий прямоугольник всех потомков визуального объекта, включая сам визуальный объект, возвращается методом <xref:System.Windows.Media.VisualTreeHelper.GetDescendantBounds%2A>. В следующем коде показано, как вычислить ограничивающий прямоугольник для визуального объекта и всех его потомков.  
   
  [!code-csharp[VisualsOverview#102](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsOverview/CSharp/Window1.xaml.cs#102)]
- [!code-vb[VisualsOverview#102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsOverview/visualbasic/window1.xaml.vb#102)]  
+   
   
 ## <a name="see-also"></a>См. также
 

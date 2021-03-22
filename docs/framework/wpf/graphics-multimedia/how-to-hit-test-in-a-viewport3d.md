@@ -22,12 +22,12 @@ ms.locfileid: "59098069"
  Так как <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> возвращает сведения о двух- и трехмерные, возможно, для прохода по результатам теста для чтения только 3D результатов.  
   
  [!code-csharp[HitTest3D#HitTest3D3DN4](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTest3D/CSharp/Window1.xaml.cs#hittest3d3dn4)]
- [!code-vb[HitTest3D#HitTest3D3DN4](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTest3D/visualbasic/window1.xaml.vb#hittest3d3dn4)]  
+   
   
  <xref:System.Windows.Media.HitTestResultBehavior> В следующий код определяет способ обработки результатов проверки попадания.  `UpdateResultInfo` и `UpdateMaterial` локально определенные методы.  
   
  [!code-csharp[HitTest3D#HitTest3D3DN5](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTest3D/CSharp/Window1.xaml.cs#hittest3d3dn5)]
- [!code-vb[HitTest3D#HitTest3D3DN5](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTest3D/visualbasic/window1.xaml.vb#hittest3d3dn5)]  
+   
   
 ## <a name="see-also"></a>См. также
 

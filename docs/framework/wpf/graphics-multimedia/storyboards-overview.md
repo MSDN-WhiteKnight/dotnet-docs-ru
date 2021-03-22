@@ -266,7 +266,7 @@ ms.locfileid: "59124843"
  Приведенный ниже показано, как применять анимации с помощью интерактивных методов класса и управлять <xref:System.Windows.Media.Animation.Storyboard> класса.  
   
  [!code-csharp[animation_ovws_procedural_snip#ControllableStoryboardExampleWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/animation_ovws_procedural_snip/CSharp/ControllableStoryboardExample.cs#controllablestoryboardexamplewholepage)]
- [!code-vb[animation_ovws_procedural_snip#ControllableStoryboardExampleWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/animation_ovws_procedural_snip/visualbasic/controllablestoryboardexample.vb#controllablestoryboardexamplewholepage)]  
+   
   
 <a name="usingstoryboardsinstyles"></a>   
 ## <a name="animate-in-a-style"></a>Анимация с использованием стилей  

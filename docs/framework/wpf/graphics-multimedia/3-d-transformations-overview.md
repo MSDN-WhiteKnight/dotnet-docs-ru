@@ -92,10 +92,10 @@ ms.locfileid: "59190636"
  Предположим, требуется повернуть объект на месте, а также применить качательное движение, чтобы лучше показать объект. Можно применить к модели класс RotateTransform3D и анимировать ее ось вращения от одного вектора к другому. В следующем примере кода демонстрируется применение <xref:System.Windows.Media.Animation.Vector3DAnimation> к свойству Axis преобразования элемента Rotation3D, при условии, что RotateTransform3D будет одним из нескольких преобразований, применяемых к модели с <xref:System.Windows.Media.TransformGroup>.  
   
  [!code-csharp[3doverview#3DOverview3DN1](~/samples/snippets/csharp/VS_Snippets_Wpf/3DOverview/CSharp/Window1.xaml.cs#3doverview3dn1)]
- [!code-vb[3doverview#3DOverview3DN1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/3DOverview/visualbasic/window1.xaml.vb#3doverview3dn1)]  
+   
   
  [!code-csharp[3doverview#3DOverview3DN3](~/samples/snippets/csharp/VS_Snippets_Wpf/3DOverview/CSharp/Window1.xaml.cs#3doverview3dn3)]
- [!code-vb[3doverview#3DOverview3DN3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/3DOverview/visualbasic/window1.xaml.vb#3doverview3dn3)]  
+   
   
  Используйте аналогичный синтаксис для других свойств преобразования, чтобы переместить или отмасштабировать объект.  Например, можно применить <xref:System.Windows.Media.Animation.Point3DAnimation> к свойству ScaleCenter при преобразовании масштаба модели к плавной деформации ее формы.  
   

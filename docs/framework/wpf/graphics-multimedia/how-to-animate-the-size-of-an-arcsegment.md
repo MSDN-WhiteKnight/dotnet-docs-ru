@@ -23,7 +23,7 @@ ms.locfileid: "59227773"
  В следующем примере создается <xref:System.Windows.Media.ArcSegment> анимирования его <xref:System.Windows.Media.ArcSegment.Size%2A> при загрузке на экране.  
   
  [!code-csharp[BasicAnimations_snip#SizeAnimationWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/BasicAnimations_snip/CSharp/SizeAnimationExample.cs#sizeanimationwholepage)]
- [!code-vb[BasicAnimations_snip#SizeAnimationWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BasicAnimations_snip/VisualBasic/SizeAnimationExample.vb#sizeanimationwholepage)]  
+   
   
  Дополнительные примеры геометрии и анимации, см. в разделе [примеры геометрических объектов](https://go.microsoft.com/fwlink/?LinkID=159989).  
   

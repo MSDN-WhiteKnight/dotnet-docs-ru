@@ -22,7 +22,7 @@ ms.locfileid: "59151012"
  В следующем примере используется экземпляр <xref:System.Windows.Media.Animation.RectAnimation> класс для анимации <xref:System.Windows.Media.RectangleGeometry.Rect%2A> свойство <xref:System.Windows.Media.RectangleGeometry>, который анимирует изменения размера и положения прямоугольника.  
   
  [!code-csharp[BasicAnimations_snip#RectAnimationWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/BasicAnimations_snip/CSharp/RectAnimationExample.cs#rectanimationwholepage)]
- [!code-vb[BasicAnimations_snip#RectAnimationWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BasicAnimations_snip/VisualBasic/RectAnimationExample.vb#rectanimationwholepage)]  
+   
   
 ## <a name="see-also"></a>См. также
 

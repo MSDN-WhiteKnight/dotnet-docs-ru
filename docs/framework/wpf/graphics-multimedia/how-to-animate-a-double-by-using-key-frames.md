@@ -29,7 +29,7 @@ ms.locfileid: "59305589"
 3. В последних двух секунд используется экземпляр <xref:System.Windows.Media.Animation.SplineDoubleKeyFrame> класс для перемещения прямоугольника обратно в исходное положение. Ключевые кадры сплайна, например <xref:System.Windows.Media.Animation.SplineDoubleKeyFrame> , создают переменный переход между значениями согласно значению <xref:System.Windows.Media.Animation.SplineDoubleKeyFrame.KeySpline%2A> свойство. В этом примере прямоугольник начинает двигаться медленно и ускоряется экспоненциально к концу временного отрезка.  
   
  [!code-csharp[keyframes_snip#AltDoubleAnimationUsingKeyFramesWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/keyframes_snip/CSharp/AltDoubleAnimationUsingKeyFramesExample.cs#altdoubleanimationusingkeyframeswholepage)]
- [!code-vb[keyframes_snip#AltDoubleAnimationUsingKeyFramesWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/keyframes_snip/visualbasic/altdoubleanimationusingkeyframesexample.vb#altdoubleanimationusingkeyframeswholepage)]
+ 
  [!code-xaml[keyframes_snip#AltDoubleAnimationUsingKeyFramesWholePage](~/samples/snippets/xaml/VS_Snippets_Wpf/keyframes_snip/XAML/AltDoubleAnimationUsingKeyFramesExample.xaml#altdoubleanimationusingkeyframeswholepage)]  
   
  Описание полного примера см. в разделе [Пример анимации по ключевым кадрам](https://go.microsoft.com/fwlink/?LinkID=160012).  

@@ -33,7 +33,7 @@ ms.locfileid: "59149192"
 Объект TileBrush с содержимым, выровненным по левому верхнему углу  
   
  [!code-csharp[brushoverviewexamples_snip#TileBrushTopLeftAlignmentInline](~/samples/snippets/csharp/VS_Snippets_Wpf/BrushOverviewExamples_snip/CSharp/TileBrushAlignmentExample.cs#tilebrushtopleftalignmentinline)]
- [!code-vb[brushoverviewexamples_snip#TileBrushTopLeftAlignmentInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BrushOverviewExamples_snip/visualbasic/tilebrushalignmentexample.vb#tilebrushtopleftalignmentinline)]
+ 
  [!code-xaml[brushoverviewexamples_snip#TileBrushTopLeftAlignmentInline](~/samples/snippets/xaml/VS_Snippets_Wpf/BrushOverviewExamples_snip/XAML/TileBrushAlignmentExample.xaml#tilebrushtopleftalignmentinline)]  
   
 ## <a name="example"></a>Пример  
@@ -43,7 +43,7 @@ ms.locfileid: "59149192"
 Объект TileBrush с содержимым, выровненным по правому нижнему углу  
   
  [!code-csharp[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/csharp/VS_Snippets_Wpf/BrushOverviewExamples_snip/CSharp/TileBrushAlignmentExample.cs#tilebrushbottomrightalignmentinline)]
- [!code-vb[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BrushOverviewExamples_snip/visualbasic/tilebrushalignmentexample.vb#tilebrushbottomrightalignmentinline)]
+ 
  [!code-xaml[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/xaml/VS_Snippets_Wpf/BrushOverviewExamples_snip/XAML/TileBrushAlignmentExample.xaml#tilebrushbottomrightalignmentinline)]  
   
 ## <a name="example"></a>Пример  
@@ -55,7 +55,7 @@ ms.locfileid: "59149192"
  На рисунке базовый фрагмент мозаики выделен цветом, чтобы можно было увидеть, как выравнивается содержимое. Обратите внимание, что <xref:System.Windows.Media.TileBrush.AlignmentX%2A> параметр не действует так как содержимое <xref:System.Windows.Media.DrawingBrush> полностью заполняет базовый элемент мозаики по горизонтали.  
   
  [!code-csharp[brushoverviewexamples_snip#TileBrushTopLeftAlignmentTiledInline](~/samples/snippets/csharp/VS_Snippets_Wpf/BrushOverviewExamples_snip/CSharp/TileBrushAlignmentExample.cs#tilebrushtopleftalignmenttiledinline)]
- [!code-vb[brushoverviewexamples_snip#TileBrushTopLeftAlignmentTiledInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BrushOverviewExamples_snip/visualbasic/tilebrushalignmentexample.vb#tilebrushtopleftalignmenttiledinline)]
+ 
  [!code-xaml[brushoverviewexamples_snip#TileBrushTopLeftAlignmentTiledInline](~/samples/snippets/xaml/VS_Snippets_Wpf/BrushOverviewExamples_snip/XAML/TileBrushAlignmentExample.xaml#tilebrushtopleftalignmenttiledinline)]  
   
 ## <a name="example"></a>Пример  
@@ -67,7 +67,7 @@ ms.locfileid: "59149192"
  Опять же <xref:System.Windows.Media.TileBrush.AlignmentX%2A> параметр не действует так как содержимое <xref:System.Windows.Media.DrawingBrush> полностью заполняет базовый элемент мозаики по горизонтали.  
   
  [!code-csharp[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/csharp/VS_Snippets_Wpf/BrushOverviewExamples_snip/CSharp/TileBrushAlignmentExample.cs#tilebrushbottomrightalignmentinline)]
- [!code-vb[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BrushOverviewExamples_snip/visualbasic/tilebrushalignmentexample.vb#tilebrushbottomrightalignmentinline)]
+ 
  [!code-xaml[brushoverviewexamples_snip#TileBrushBottomRightAlignmentInline](~/samples/snippets/xaml/VS_Snippets_Wpf/BrushOverviewExamples_snip/XAML/TileBrushAlignmentExample.xaml#tilebrushbottomrightalignmentinline)]  
   
  В примерах используется <xref:System.Windows.Media.DrawingBrush> объектов, чтобы продемонстрировать, каким образом <xref:System.Windows.Media.TileBrush.AlignmentX%2A> и <xref:System.Windows.Media.TileBrush.AlignmentY%2A> используются свойства. Эти свойства работают одинаково со всеми мозаичными кистями: <xref:System.Windows.Media.DrawingBrush>, <xref:System.Windows.Media.ImageBrush>, и <xref:System.Windows.Media.VisualBrush>. Дополнительные сведения о мозаичных кистях для рисования см. в разделе [Рисование с помощью объектов Image, Drawing и Visual](painting-with-images-drawings-and-visuals.md).  

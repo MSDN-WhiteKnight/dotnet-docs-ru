@@ -27,14 +27,14 @@ ms.locfileid: "59089423"
  <xref:System.Windows.Media.CompositionTarget.Rendering> Событие запускается во время [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] процесс подготовки отчета. В следующем примере показано, как зарегистрировать <xref:System.EventHandler> делегировать статического <xref:System.Windows.Media.CompositionTarget.Rendering> метод <xref:System.Windows.Media.CompositionTarget>.  
   
  [!code-csharp[CompositionTargetSample#CompositionTarget1](~/samples/snippets/csharp/VS_Snippets_Wpf/CompositionTargetSample/CSharp/Window1.xaml.cs#compositiontarget1)]
- [!code-vb[CompositionTargetSample#CompositionTarget1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CompositionTargetSample/visualbasic/window1.xaml.vb#compositiontarget1)]  
+   
   
  Можно использовать собственный метод обработчика событий отрисовки для создания пользовательского графического содержимого. Метод обработчика событий вызывается один раз для каждого кадра. Каждый раз, когда [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] выполняет маршалинг сохраненных данных отрисовки в визуальном дереве через граф сцены композиции, вызывается метод обработчика событий. Кроме того, если изменения в визуальном дереве принудительно обновляют граф сцены композиции, метод обработчика событий также вызывается. Обратите внимание, что метод обработчика событий вызывается после вычисления макета. Однако можно изменить макет в методе обработчика событий, что означает повторное вычисление макета перед отрисовкой.  
   
  В следующем примере показано как можно реализовать пользовательское рисование <xref:System.Windows.Media.CompositionTarget> метод обработчика событий. В данном случае цвет фона <xref:System.Windows.Controls.Canvas> рисуется пером значение цвета на основе координат положения указателя мыши. При перемещении указателя мыши внутри <xref:System.Windows.Controls.Canvas>, ее изменения цвета фона. Кроме того вычисляется средняя частота кадров, на основе текущего значения прошедшего времени и общего числа отрисованных кадров.  
   
  [!code-csharp[CompositionTargetSample#CompositionTarget2](~/samples/snippets/csharp/VS_Snippets_Wpf/CompositionTargetSample/CSharp/Window1.xaml.cs#compositiontarget2)]
- [!code-vb[CompositionTargetSample#CompositionTarget2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/CompositionTargetSample/visualbasic/window1.xaml.vb#compositiontarget2)]  
+   
   
  Может оказаться, что пользовательское рисование выполняется на разных компьютерах с разной скоростью. Это потому, что пользовательское рисование не является независимым от частоты кадров. В зависимости от используемой системы и рабочей нагрузки этой системы <xref:System.Windows.Media.CompositionTarget.Rendering> событие может вызываться Разное количество раз в секунду. Дополнительные сведения об определении возможностей графического оборудования и производительности для устройства, которое запускает приложение [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] см. в разделе [Уровни отрисовки графики](../advanced/graphics-rendering-tiers.md).  
   

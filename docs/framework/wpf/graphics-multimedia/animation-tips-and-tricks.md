@@ -85,7 +85,7 @@ ms.locfileid: "59295956"
  <xref:System.Windows.Media.Animation.Timeline.Completed> Обработчик запускает другой <xref:System.Windows.Media.Animation.Storyboard> которая анимирует то же свойство от его текущего значения до 500.  
   
  [!code-csharp[AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardC1CompletedHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/AnimationTipsAndTricksSample_snip/CSharp/FillBehaviorTip.xaml.cs#fillbehaviortipstoryboardc1completedhandler)]
- [!code-vb[AnimationTipsAndTricksSample_snip#FillBehaviorTipStoryboardC1CompletedHandler](~/samples/snippets/visualbasic/VS_Snippets_Wpf/AnimationTipsAndTricksSample_snip/VisualBasic/FillBehaviorTip.xaml.vb#fillbehaviortipstoryboardc1completedhandler)]  
+   
   
  Ниже приведена разметка, определяющая вторую <xref:System.Windows.Media.Animation.Storyboard> как ресурс.  
   

@@ -68,7 +68,7 @@ Z-порядок для визуального дерева
  Ниже показано, как настроить обработчики событий мыши для <xref:System.Windows.UIElement> объект, который используется для сбора данных событий, которые используются для попадания.  
   
  [!code-csharp[HitTestingOverview#100](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#100)]
- [!code-vb[HitTestingOverview#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#100)]  
+   
   
 ### <a name="how-the-visual-tree-affects-hit-testing"></a>Влияние визуального дерева на проверку попадания  
  Начальная точка в визуальном дереве определяет, какие объекты возвращаются во время перечисления объектов проверки попадания. Если есть несколько объектов, для которых нужно выполнить проверку попадания, визуальные объект, используемый в качестве начальной точки в визуальном дереве, должен быть общим предком всех интересующих объектов. Например если нужно выполнить проверку попадания и для элемента-кнопки и для визуального объекта на следующем рисунке, необходимо установить начальную точку в визуальном дереве на их общего предка. В этом случае элемент общим предком элемента-кнопки и визуального объекта является элемент canvas.  
@@ -86,12 +86,12 @@ Z-порядок для визуального дерева
  Во время перечисления результатов проверки попадания не следует выполнять никакие операции по изменению визуального дерева. Добавление или удаление объектов визуального дерева во время его проверки может привести к непредсказуемому поведению. Можно безопасно изменить визуальное дерево после <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> возвращает метод. Вы можете предоставить структуру данных, таких как <xref:System.Collections.ArrayList>, для хранения значений во время перечисления результатов проверки попадания.  
   
  [!code-csharp[HitTestingOverview#101](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#101)]
- [!code-vb[HitTestingOverview#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#101)]  
+   
   
  Метод обратного вызова проверки попадания определяет действия, которые выполняются при определении проверки попадания для конкретного визуального объекта в визуальном дереве. После выполнения этих действий возвращается <xref:System.Windows.Media.HitTestResultBehavior> значение, определяющее, следует ли продолжать перечисление других визуальных объектов, или нет.  
   
  [!code-csharp[HitTestingOverview#102](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#102)]
- [!code-vb[HitTestingOverview#102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#102)]  
+   
   
 > [!NOTE]
 >  Порядок перечисления визуальных объектов попадания соответствует их координатам по оси Z. Первым перечисляется визуальный объект с самой большой координатой по оси Z. Остальные визуальные объекты перечисляются по убыванию значения координаты по оси Z. Этот порядок перечисления соответствует порядку отрисовки визуальных объектов.  
@@ -99,19 +99,19 @@ Z-порядок для визуального дерева
  Перечисление визуальных объектов в любое время в функции обратного вызова проверки попадания можно остановить, возвращая <xref:System.Windows.Media.HitTestResultBehavior.Stop>.  
   
  [!code-csharp[HitTestingOverview#103](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#103)]
- [!code-vb[HitTestingOverview#103](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#103)]  
+   
   
 <a name="using_a_hit_test_filter_callback"></a>   
 ## <a name="using-a-hit-test-filter-callback"></a>Использование обратного вызова фильтра проверки попадания  
  Можно использовать необязательный фильтр проверки попадания для ограничения объектов, которые передаются в качестве результатов проверки попадания. Это позволяет пропустить части визуального дерева, которые не нужны для обработки в результатах проверки нажатия. Чтобы реализовать фильтр проверки нажатия, определить функцию обратного вызова фильтра проверки нажатия и передайте его в качестве значения параметра, при вызове <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> метод.  
   
  [!code-csharp[HitTestingOverview#104](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#104)]
- [!code-vb[HitTestingOverview#104](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#104)]  
+   
   
  Если вы не хотите предоставлять функция обратного вызова фильтра проверки попадания, передайте `null` значение в качестве параметра для <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> метод.  
   
  [!code-csharp[HitTestingOverview#105](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#105)]
- [!code-vb[HitTestingOverview#105](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#105)]  
+   
   
  ![Обрезка визуального дерева с помощью фильтра проверки попадания](./media/filteredvisualtree-01.png "FilteredVisualTree_01")  
 Обрезка визуального дерева  
@@ -119,7 +119,7 @@ Z-порядок для визуального дерева
  Функция обратного вызова фильтра проверки попадания позволяет перечислить все визуальные объекты, отображаемое содержимое которых содержит указанные координаты. Однако, может понадобиться пропустить отдельные части визуального дерева в функции обратного вызова результатов проверки нажатия. Возвращаемое значение функции обратного вызова фильтра проверки нажатия определяет, какой тип действия должен выполняться при перечислении визуальных объектов. Например, если возвращается значение <xref:System.Windows.Media.HitTestFilterBehavior.ContinueSkipSelfAndChildren>, можно удалить текущий визуальный объект и его дочерние элементы из перечисления результатов проверки попадания. Это означает, что функция обратного вызова результатов проверки попадания не увидит эти объекты в перечислении. Обрезка визуального дерева объектов позволяет уменьшить объем обработки во время перечисления результатов проверки попадания. В следующем примере кода фильтр пропускает метки и их потомков и проверяет все остальные объекты.  
   
  [!code-csharp[HitTestingOverview#106](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#106)]
- [!code-vb[HitTestingOverview#106](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#106)]  
+   
   
 > [!NOTE]
 >  Функция обратного вызова фильтра проверки попадания иногда вызывается в случаях, когда функция обратного вызова результатов проверки попадания не вызывается.  
@@ -129,12 +129,12 @@ Z-порядок для визуального дерева
  Вы можете переопределить визуального объекта по умолчанию поддержки проверки попадания путем переопределения <xref:System.Windows.Media.Visual.HitTestCore%2A> метод. Это означает, что при вызове <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> метод, переопределенная реализация <xref:System.Windows.Media.Visual.HitTestCore%2A> вызывается. Переопределенный метод вызывается при попадании в ограничивающий прямоугольник визуального объекта, даже если координата не попадает в отображаемое содержимое визуального объекта.  
   
  [!code-csharp[HitTestingOverview#107](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#107)]
- [!code-vb[HitTestingOverview#107](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#107)]  
+   
   
  Иногда может понадобиться проверка попадания как для ограничивающего прямоугольника, так и для отображаемого содержимого визуального объекта. С помощью `PointHitTestParameters` значение параметра в переопределенный <xref:System.Windows.Media.Visual.HitTestCore%2A> метод в качестве параметра для базового метода <xref:System.Windows.Media.Visual.HitTestCore%2A>, можно выполнять действия при попадании ограничивающего прямоугольника визуального объекта, а затем выполните повторную проверку попадания для к просмотру содержимого визуального объекта.  
   
  [!code-csharp[HitTestingOverview#108](~/samples/snippets/csharp/VS_Snippets_Wpf/HitTestingOverview/CSharp/Window1.xaml.cs#108)]
- [!code-vb[HitTestingOverview#108](~/samples/snippets/visualbasic/VS_Snippets_Wpf/HitTestingOverview/visualbasic/window1.xaml.vb#108)]  
+   
   
 ## <a name="see-also"></a>См. также
 

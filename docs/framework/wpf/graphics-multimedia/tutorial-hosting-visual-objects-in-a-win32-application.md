@@ -35,7 +35,7 @@ ms.locfileid: "59111466"
  В примере показан код для создания <xref:System.Windows.Interop.HwndSource> объекта в виде [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна контейнера для визуальных объектов. Чтобы задать стиль окна, положение и другие параметры для [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно, используйте <xref:System.Windows.Interop.HwndSourceParameters> объекта.  
   
  [!code-csharp[VisualsHitTesting#101](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyWindow.cs#101)]
- [!code-vb[VisualsHitTesting#101](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsHitTesting/VisualBasic/MyWindow.vb#101)]  
+   
   
 > [!NOTE]
 >  Значение <xref:System.Windows.Interop.HwndSourceParameters.ExtendedWindowStyle%2A> свойство нельзя установить значение WS_EX_TRANSPARENT. Это означает, что узел [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно не может быть прозрачным. По этой причине цвет фона узла [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно присваивается один и тот же цвет фона родительского окна.  
@@ -50,7 +50,7 @@ ms.locfileid: "59111466"
 >  <xref:System.Windows.Interop.HwndSource.RootVisual%2A> Свойство <xref:System.Windows.Interop.HwndSource> присваивается первый визуальный объект, добавленный к узлу [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна. Корневой визуальный объект определяет верхний узел дерева визуальных объектов. Все последующие визуальные объекты, добавленные в главное [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна добавляются как дочерние объекты.  
   
  [!code-csharp[VisualsHitTesting#100](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyWindow.cs#100)]
- [!code-vb[VisualsHitTesting#100](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsHitTesting/VisualBasic/MyWindow.vb#100)]  
+   
   
 <a name="implementing_the_win32_message_filter"></a>   
 ## <a name="implementing-the-win32-message-filter"></a>Реализация фильтра сообщений Win32  
@@ -59,19 +59,19 @@ ms.locfileid: "59111466"
  <xref:System.Windows.Interop.HwndSource> Объект, который вы определили в качестве родительского для визуальных объектов необходимо обращаться вами процедуру фильтра сообщений окна. При создании <xref:System.Windows.Interop.HwndSource> установите <xref:System.Windows.Interop.HwndSourceParameters.HwndSourceHook%2A> свойство для ссылки на процедуру окна.  
   
  [!code-csharp[VisualsHitTesting#102](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyWindow.cs#102)]
- [!code-vb[VisualsHitTesting#102](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsHitTesting/VisualBasic/MyWindow.vb#102)]  
+   
   
  В следующем примере показан код для обработки сообщений при отпускании левой и правой кнопок мыши. Значение координаты мыши была нажата содержится в значении параметра `lParam` параметр.  
   
  [!code-csharp[VisualsHitTesting#103](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyWindow.cs#103)]
- [!code-vb[VisualsHitTesting#103](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsHitTesting/VisualBasic/MyWindow.vb#103)]  
+   
   
 <a name="processing_the_win32_messages"></a>   
 ## <a name="processing-the-win32-messages"></a>Обработка сообщений Win32  
  Код в следующем примере показано, как выполняется нажатия иерархии визуальных объектов, содержащихся в окне размещения [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна. Можно определить, находится ли точка в пределах визуального объекта, с помощью <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> метод, чтобы задать корневой визуальный объект и значение координаты для проверки нажатия. В этом случае корневой визуальный объект является значение <xref:System.Windows.Interop.HwndSource.RootVisual%2A> свойство <xref:System.Windows.Interop.HwndSource> объекта.  
   
  [!code-csharp[VisualsHitTesting#104](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyCircle.cs#104)]
- [!code-vb[VisualsHitTesting#104](~/samples/snippets/visualbasic/VS_Snippets_Wpf/VisualsHitTesting/VisualBasic/MyCircle.vb#104)]  
+   
   
  Дополнительные сведения о проверке нажатия для визуальных объектов, см. в разделе [проверка нажатия на визуальном уровне](hit-testing-in-the-visual-layer.md).  
   

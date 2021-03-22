@@ -28,4 +28,4 @@ ms.locfileid: "57360723"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[ImagingSnippetGallery_procedural_snip#FormatConvertedBitmapCodeExample2WholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/CSharp/FormatConvertedBitmapExample2.cs#formatconvertedbitmapcodeexample2wholepage)]
- [!code-vb[ImagingSnippetGallery_procedural_snip#FormatConvertedBitmapCodeExample2WholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/VB/FormatConvertedBitmapExample2.vb#formatconvertedbitmapcodeexample2wholepage)]
+ 

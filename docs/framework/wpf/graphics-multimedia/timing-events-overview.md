@@ -38,16 +38,16 @@ ms.locfileid: "59167171"
  Все интерактивные временные операции являются асинхронными. Исключение составляет лишь поиск, который выравнивается по последнему такту. Точно определить, когда будут выполнены операции, невозможно. При наличии другого кода, который зависит от вашей операции, это может вызвать проблемы. Предположим, что вы хотите остановить временную шкалу, которая анимировала прямоугольник. После остановки временной шкалы вы изменяете цвет прямоугольника.  
   
  [!code-csharp[events_procedural#NeedForEventsFragment](~/samples/snippets/csharp/VS_Snippets_Wpf/events_procedural/CSharp/EventExample.cs#needforeventsfragment)]
- [!code-vb[events_procedural#NeedForEventsFragment](~/samples/snippets/visualbasic/VS_Snippets_Wpf/events_procedural/VisualBasic/EventExample.vb#needforeventsfragment)]  
+   
   
  В предыдущем примере вторая строка кода может быть выполнена до того, как раскадровка будет остановлена. Это вызвано тем, что остановка является асинхронной операцией. При отправке команды на остановку временной шкалы или часов создается своего рода "запрос на остановку". Этот запрос обрабатывается только на следующем такте системы управления временем.  
   
  Для выполнения команд после завершения временной шкалы используйте временные события. В следующем примере для изменения цвета прямоугольника после окончания воспроизведения раскадровки используется обработчик событий.  
   
  [!code-csharp[events_procedural#RegisterForStoryboardCurrentStateInvalidatedEvent](~/samples/snippets/csharp/VS_Snippets_Wpf/events_procedural/CSharp/EventExample.cs#registerforstoryboardcurrentstateinvalidatedevent)]
- [!code-vb[events_procedural#RegisterForStoryboardCurrentStateInvalidatedEvent](~/samples/snippets/visualbasic/VS_Snippets_Wpf/events_procedural/VisualBasic/EventExample.vb#registerforstoryboardcurrentstateinvalidatedevent)]  
+   
 [!code-csharp[events_procedural#StoryboardCurrentStateInvalidatedEvent2](~/samples/snippets/csharp/VS_Snippets_Wpf/events_procedural/CSharp/EventExample.cs#storyboardcurrentstateinvalidatedevent2)]
-[!code-vb[events_procedural#StoryboardCurrentStateInvalidatedEvent2](~/samples/snippets/visualbasic/VS_Snippets_Wpf/events_procedural/VisualBasic/EventExample.vb#storyboardcurrentstateinvalidatedevent2)]  
+  
   
  Более полный пример, см. в разделе [получения уведомлений при изменениях состояния часов](how-to-receive-notification-when-clock-state-changes.md).  
   

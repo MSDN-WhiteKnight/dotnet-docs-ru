@@ -20,7 +20,7 @@ ms.locfileid: "59187282"
   
 ## <a name="example"></a>Пример  
  [!code-csharp[ImagingSnippetGallery_procedural_snip#BitmapSourceCreate](~/samples/snippets/csharp/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/CSharp/BitmapSourceExample.cs#bitmapsourcecreate)]
- [!code-vb[ImagingSnippetGallery_procedural_snip#BitmapSourceCreate](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImagingSnippetGallery_procedural_snip/VB/BitmapSourceExample.vb#bitmapsourcecreate)]  
+   
   
 ## <a name="see-also"></a>См. также
 

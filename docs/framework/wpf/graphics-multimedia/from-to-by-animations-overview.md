@@ -91,7 +91,7 @@ ms.locfileid: "59209155"
  В следующем примере задается <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> свойство <xref:System.Windows.Media.Animation.DoubleAnimation> 50 и его <xref:System.Windows.Media.Animation.DoubleAnimation.To%2A> в значение 300. В результате <xref:System.Windows.FrameworkElement.Width%2A> из <xref:System.Windows.Shapes.Rectangle> анимируется от 50 до 300.  
   
  [!code-csharp[basicvalues_snip#FromToAnimationInline](~/samples/snippets/csharp/VS_Snippets_Wpf/basicvalues_snip/CSharp/AnimationTargetValuesExample.cs#fromtoanimationinline)]
- [!code-vb[basicvalues_snip#FromToAnimationInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/basicvalues_snip/VisualBasic/AnimationTargetValuesExample.vb#fromtoanimationinline)]  
+   
   
 ### <a name="to"></a>Кому  
  Если задано только <xref:System.Windows.Media.Animation.DoubleAnimation.To%2A> свойство, анимация выполняется от базового значения анимируемого свойства или из выходных данных составляющей анимации, которая ранее была применена к тому же свойству, которое задается параметром <xref:System.Windows.Media.Animation.DoubleAnimation.To%2A> свойство.  
@@ -101,7 +101,7 @@ ms.locfileid: "59209155"
  В следующем примере задается только <xref:System.Windows.Media.Animation.DoubleAnimation.To%2A> свойство <xref:System.Windows.Media.Animation.DoubleAnimation> до 300. Так как начальное значение не указано, <xref:System.Windows.Media.Animation.DoubleAnimation> использует базовое значение (100) <xref:System.Windows.FrameworkElement.Width%2A> свойство в качестве своего начального значения. <xref:System.Windows.FrameworkElement.Width%2A> Из <xref:System.Windows.Shapes.Rectangle> анимируется от 100 до конечного значения анимации 300.  
   
  [!code-csharp[basicvalues_snip#ToAnimationInline](~/samples/snippets/csharp/VS_Snippets_Wpf/basicvalues_snip/CSharp/AnimationTargetValuesExample.cs#toanimationinline)]
- [!code-vb[basicvalues_snip#ToAnimationInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/basicvalues_snip/VisualBasic/AnimationTargetValuesExample.vb#toanimationinline)]  
+   
   
 ### <a name="by"></a>На  
  Если задано только <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойство анимации, анимация выполняется от базового значения анимируемого свойства или из выходных данных составляющей анимации к сумме этого значения и значения, который задается параметром <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойство.  
@@ -109,7 +109,7 @@ ms.locfileid: "59209155"
  В следующем примере задается только <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойство <xref:System.Windows.Media.Animation.DoubleAnimation> до 300. Так как в примере указывается начальное значение, <xref:System.Windows.Media.Animation.DoubleAnimation> использует базовое значение <xref:System.Windows.FrameworkElement.Width%2A> свойства, 100, как начальное значение. Конечное значение определяется добавлением <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> значение анимации, 300, к начальному значению, 100: 400. В результате <xref:System.Windows.FrameworkElement.Width%2A> из <xref:System.Windows.Shapes.Rectangle> анимируется от 100 до 400.  
   
  [!code-csharp[basicvalues_snip#ByAnimationInline](~/samples/snippets/csharp/VS_Snippets_Wpf/basicvalues_snip/CSharp/AnimationTargetValuesExample.cs#byanimationinline)]
- [!code-vb[basicvalues_snip#ByAnimationInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/basicvalues_snip/VisualBasic/AnimationTargetValuesExample.vb#byanimationinline)]  
+   
   
 ### <a name="fromby"></a>From/By  
  При задании <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> и <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойства анимации, анимация выполняется от значения, который задается параметром <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> свойства, чтобы значение, которое указано на сумму <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> и <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойства.  
@@ -117,7 +117,7 @@ ms.locfileid: "59209155"
  В следующем примере задается <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> свойство <xref:System.Windows.Media.Animation.DoubleAnimation> 50 и его <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> в значение 300. Конечное значение определяется добавлением <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> значение анимации, 300, к начальному значению, 50: 350. В результате <xref:System.Windows.FrameworkElement.Width%2A> из <xref:System.Windows.Shapes.Rectangle> анимируется от 50 до 350.  
   
  [!code-csharp[basicvalues_snip#FromByAnimationInline](~/samples/snippets/csharp/VS_Snippets_Wpf/basicvalues_snip/CSharp/AnimationTargetValuesExample.cs#frombyanimationinline)]
- [!code-vb[basicvalues_snip#FromByAnimationInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/basicvalues_snip/VisualBasic/AnimationTargetValuesExample.vb#frombyanimationinline)]  
+   
   
 ### <a name="from"></a>Исходный тип  
  Если указано только <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> значение анимации, анимация выполняется от значения, который задается параметром <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> свойство, к базовому значению анимируемого свойства или выходных данных составляющей анимации.  
@@ -125,7 +125,7 @@ ms.locfileid: "59209155"
  В следующем примере задается только <xref:System.Windows.Media.Animation.DoubleAnimation.From%2A> свойство <xref:System.Windows.Media.Animation.DoubleAnimation> до 50. Так как конечное значение не указано, <xref:System.Windows.Media.Animation.DoubleAnimation> использует базовое значение <xref:System.Windows.FrameworkElement.Width%2A> 100 свойства, в качестве конечного значения. <xref:System.Windows.FrameworkElement.Width%2A> Из <xref:System.Windows.Shapes.Rectangle> анимируется от 50 до базового значения <xref:System.Windows.FrameworkElement.Width%2A> 100 свойства.  
   
  [!code-csharp[basicvalues_snip#FromAnimationInline](~/samples/snippets/csharp/VS_Snippets_Wpf/basicvalues_snip/CSharp/AnimationTargetValuesExample.cs#fromanimationinline)]
- [!code-vb[basicvalues_snip#FromAnimationInline](~/samples/snippets/visualbasic/VS_Snippets_Wpf/basicvalues_snip/VisualBasic/AnimationTargetValuesExample.vb#fromanimationinline)]  
+   
   
 ### <a name="toby"></a>To/By  
  Если заданы оба <xref:System.Windows.Media.Animation.DoubleAnimation.To%2A> и <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойства анимации, <xref:System.Windows.Media.Animation.DoubleAnimation.By%2A> свойство учитывается.  

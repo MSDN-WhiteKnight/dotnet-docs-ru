@@ -66,7 +66,7 @@ ms.locfileid: "59209714"
  В следующем примере показано, как <xref:System.Windows.Media.Imaging.BitmapFrame> создается на основе <xref:System.Windows.Media.Imaging.BitmapSource> и затем добавляются [!INCLUDE[TLA2#tla_tiff](../../../../includes/tla2sharptla-tiff-md.md)] изображения.  
   
  [!code-csharp[BitmapFrameExample#10](~/samples/snippets/csharp/VS_Snippets_Wpf/BitmapFrameExample/CSharp/BitmapFrame.cs#10)]
- [!code-vb[BitmapFrameExample#10](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitmapFrameExample/VB/BitmapFrame.vb#10)]  
+   
   
 ### <a name="image-format-decoding"></a>Декодирование изображений разных форматов  
  Декодирование изображения — это преобразование изображения в некотором формате в данные изображения, которые могут быть использованы системой. Данные изображения затем могут использоваться для отображения, обработки или кодирования в другой формат. Выбор декодера зависит от формата изображения. Выбор кодека производится автоматически, если не указан определенный декодер. Примеры в разделе [Отображение изображений в WPF](#_displayingimages) демонстрируют автоматическое декодирование. Декодеры пользовательских форматов, разработанные с помощью неуправляемых интерфейсов [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] и зарегистрированные в системе, автоматически участвуют в выборе декодера. Благодаря этому пользовательские форматы могут автоматически отображаться в приложениях [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)].  
@@ -75,7 +75,7 @@ ms.locfileid: "59209714"
   
  [!code-cpp[BmpBitmapDecoderEncoder#5](~/samples/snippets/cpp/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/CPP/anotherfile.cpp#5)]
  [!code-csharp[BmpBitmapDecoderEncoder#5](~/samples/snippets/csharp/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/CSharp/BitmapFrame.cs#5)]
- [!code-vb[BmpBitmapDecoderEncoder#5](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/VB/BitmapFrame.vb#5)]  
+   
   
 ### <a name="image-format-encoding"></a>Кодирование изображений разных форматов  
  Кодирование изображения — это преобразование данных изображения в определенный формат. Кодированные данные изображения могут затем быть использованы для создания новых файлов изображений. [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] предоставляет кодировщики для каждого из описанных выше форматов изображения.  
@@ -84,7 +84,7 @@ ms.locfileid: "59209714"
   
  [!code-cpp[BmpBitmapDecoderEncoder#3](~/samples/snippets/cpp/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/CPP/anotherfile.cpp#3)]
  [!code-csharp[BmpBitmapDecoderEncoder#3](~/samples/snippets/csharp/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/CSharp/BitmapFrame.cs#3)]
- [!code-vb[BmpBitmapDecoderEncoder#3](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BmpBitmapDecoderEncoder/VB/BitmapFrame.vb#3)]  
+   
   
 <a name="_displayingimages"></a>   
 ## <a name="displaying-images-in-wpf"></a>Отображение изображений в WPF  
@@ -103,7 +103,7 @@ ms.locfileid: "59209714"
 >  <xref:System.Windows.Media.Imaging.BitmapImage> реализует <xref:System.ComponentModel.ISupportInitialize> интерфейс для оптимизации инициализации на нескольких свойствах. Изменения свойств происходят только во время инициализации объекта. Вызовите <xref:System.Windows.Media.Imaging.BitmapImage.BeginInit%2A> для обозначения начала инициализации и <xref:System.Windows.Media.Imaging.BitmapImage.EndInit%2A> для обозначения завершения инициализации. После инициализации изменения свойств игнорируются.  
   
  [!code-csharp[ImageElementExample_snip#ImageSimpleExampleInlineCode1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/ImageSimpleExample.xaml.cs#imagesimpleexampleinlinecode1)]
- [!code-vb[ImageElementExample_snip#ImageSimpleExampleInlineCode1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImageElementExample_snip/VB/ImageSimpleExample.xaml.vb#imagesimpleexampleinlinecode1)]  
+   
   
 #### <a name="rotating-converting-and-cropping-images"></a>Вращение, преобразование и обрезка изображений  
  [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] позволяет пользователям осуществлять преобразования изображений с помощью свойств объекта <xref:System.Windows.Media.Imaging.BitmapImage> или с помощью дополнительных <xref:System.Windows.Media.Imaging.BitmapSource> объекты, такие как <xref:System.Windows.Media.Imaging.CroppedBitmap> или <xref:System.Windows.Media.Imaging.FormatConvertedBitmap>. С помощью этих преобразований можно масштабировать или поворачивать изображения, изменять формат пикселей изображения и обрезать изображения.  
@@ -113,21 +113,21 @@ ms.locfileid: "59209714"
  [!code-xaml[ImageElementExample#TransformedXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample/CSharp/TransformedImageExample.xaml#transformedxaml2)]  
   
  [!code-csharp[ImageElementExample#TransformedCSharp1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample/CSharp/TransformedImageExample.xaml.cs#transformedcsharp1)]
- [!code-vb[ImageElementExample#TransformedCSharp1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImageElementExample/VB/TransformedImageExample.xaml.vb#transformedcsharp1)]  
+   
   
  Преобразование изображения к другому формату, такие как серого выполняется с помощью <xref:System.Windows.Media.Imaging.FormatConvertedBitmap>. В следующих примерах изображения преобразуются в <xref:System.Windows.Media.PixelFormats.Gray4%2A>.  
   
  [!code-xaml[ImageElementExample_snip#ConvertedXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/FormatConvertedExample.xaml#convertedxaml2)]  
   
  [!code-csharp[ImageElementExample_snip#ConvertedCSharp1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/FormatConvertedExample.xaml.cs#convertedcsharp1)]
- [!code-vb[ImageElementExample_snip#ConvertedCSharp1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImageElementExample_snip/VB/FormatConvertedExample.xaml.vb#convertedcsharp1)]  
+   
   
  Чтобы обрезать изображение, либо <xref:System.Windows.UIElement.Clip%2A> свойство <xref:System.Windows.Controls.Image> или <xref:System.Windows.Media.Imaging.CroppedBitmap> может использоваться. Как правило, если вы просто хотите отобразить часть изображения, <xref:System.Windows.UIElement.Clip%2A> следует использовать. Если вам нужно закодировать и сохранить обрезанное изображения, <xref:System.Windows.Media.Imaging.CroppedBitmap> следует использовать. В следующем примере изображение обрезается с помощью свойства Clip с помощью <xref:System.Windows.Media.EllipseGeometry>.  
   
  [!code-xaml[ImageElementExample_snip#CroppedXAMLUsingClip1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/CroppedImageExample.xaml#croppedxamlusingclip1)]  
   
  [!code-csharp[ImageElementExample_snip#CroppedCSharpUsingClip1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/CroppedImageExample.xaml.cs#croppedcsharpusingclip1)]
- [!code-vb[ImageElementExample_snip#CroppedCSharpUsingClip1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/ImageElementExample_snip/VB/CroppedImageExample.xaml.vb#croppedcsharpusingclip1)]  
+   
   
 #### <a name="stretching-images"></a>Растягивание изображений  
  <xref:System.Windows.Controls.Image.Stretch%2A> Свойство определяет, как изображение растягивается для заполнения его контейнера. <xref:System.Windows.Controls.Image.Stretch%2A> Свойство принимает следующие значения, определенные <xref:System.Windows.Media.Stretch> перечисления:  
@@ -171,13 +171,13 @@ ms.locfileid: "59209714"
   
  [!code-cpp[BitmapMetadata#GetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#getquery)]
  [!code-csharp[BitmapMetadata#GetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#getquery)]
- [!code-vb[BitmapMetadata#GetQuery](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitMapMetadata/VB/BitmapMetadata.vb#getquery)]  
+   
   
  Для написания метаданных используется мастер написания запросов метаданных. <xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A> Получает запрос и задает требуемое значение. В следующем примере <xref:System.Windows.Media.Imaging.BitmapMetadata.SetQuery%2A> используется для записи текста, хранящегося в *«/ Text/Description»* расположение.  
   
  [!code-cpp[BitmapMetadata#SetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#setquery)]
  [!code-csharp[BitmapMetadata#SetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#setquery)]
- [!code-vb[BitmapMetadata#SetQuery](~/samples/snippets/visualbasic/VS_Snippets_Wpf/BitMapMetadata/VB/BitmapMetadata.vb#setquery)]  
+   
   
 <a name="_extensibility"></a>   
 ## <a name="codec-extensibility"></a>Расширяемость кодеков  
