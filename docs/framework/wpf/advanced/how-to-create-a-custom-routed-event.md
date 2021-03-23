@@ -30,7 +30,7 @@ ms.locfileid: "59091477"
   
  [!code-xaml[RoutedEventCustom#Page](~/samples/snippets/csharp/VS_Snippets_Wpf/RoutedEventCustom/CSharp/RoutedEventCustomApp/default.xaml#page)]  
   
- События нисходящей маршрутизации создаются таким же способом, но с <xref:System.Windows.RoutedEvent.RoutingStrategy%2A> присвоено <xref:System.Windows.RoutingStrategy.Tunnel> в вызове регистрации. По соглашению события нисходящей маршрутизации в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] имеют префикс Preview.  
+ События нисходящей маршрутизации создаются таким же способом, но с <xref:System.Windows.RoutedEvent.RoutingStrategy%2A> присвоено <xref:System.Windows.RoutingStrategy.Tunnel> в вызове регистрации. По соглашению события нисходящей маршрутизации в WPF имеют префикс Preview.  
   
  Пример функционирования восходящей маршрутизации событий см. в разделе [Обработка перенаправленных событий](how-to-handle-a-routed-event.md).  
   

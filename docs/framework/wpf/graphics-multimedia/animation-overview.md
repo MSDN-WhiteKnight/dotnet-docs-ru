@@ -19,7 +19,7 @@ ms.locfileid: "59337738"
 <a name="introduction"></a>
 [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет мощный набор функций графикой и макетом, которые позволяют создавать привлекательные пользовательские интерфейсы и документы. Применение анимации позволяет сделать пользовательский интерфейс еще более наглядным и удобным в использовании. Используйте анимацию цвета фона или объекта <xref:System.Windows.Media.Transform>, можно создать экранных эффектов перехода или отображения визуальных подсказок.  
   
- Данный обзор представляет введение в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] анимации и системы. Этот раздел посвящен анимации из [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] объектов с помощью раскадровок.  
+ Данный обзор представляет введение в WPF анимации и системы. Этот раздел посвящен анимации из WPF объектов с помощью раскадровок.  
 
 <a name="introducinganimations"></a>   
 ## <a name="introducing-animations"></a>Введение в анимацию  
@@ -35,13 +35,13 @@ ms.locfileid: "59337738"
   
 -   Затем программа обновляет прямоугольник с использованием нового значения и перерисовывает его.  
   
- До версии [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] разработчикам приходится создавать и управлять собственные системы управления временем либо использовать специальные пользовательские библиотеки. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] включает в себя эффективная система контроля времени, предоставляется с помощью управляемого кода и [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и которые тесно интегрированы в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] framework. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] анимация упрощает анимацию элементов управления и других графических объектов.  
+ До версии WPF, [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] разработчикам приходится создавать и управлять собственные системы управления временем либо использовать специальные пользовательские библиотеки. WPF включает в себя эффективная система контроля времени, предоставляется с помощью управляемого кода и [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и которые тесно интегрированы в WPF framework. WPF анимация упрощает анимацию элементов управления и других графических объектов.  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] обрабатывает все внутренние процессы управления системой времени и перерисовки экрана эффективно. Предоставляются классы контроля времени, позволяющие сосредоточиться на создаваемых эффектах, а не на механике их реализации. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] также упрощает создание собственной анимации, предоставляя доступ к базовым классам анимации, из которых пользовательские классы могут наследовать, для создания пользовательской анимации. По сравнению со стандартными пользовательские классы анимации обеспечивают большое преимущество в производительности.  
+ WPF обрабатывает все внутренние процессы управления системой времени и перерисовки экрана эффективно. Предоставляются классы контроля времени, позволяющие сосредоточиться на создаваемых эффектах, а не на механике их реализации. WPF также упрощает создание собственной анимации, предоставляя доступ к базовым классам анимации, из которых пользовательские классы могут наследовать, для создания пользовательской анимации. По сравнению со стандартными пользовательские классы анимации обеспечивают большое преимущество в производительности.  
   
 <a name="thewpftimingsystem"></a>   
 ## <a name="wpf-property-animation-system"></a>Система анимации свойств WPF  
- Если вы понимаете основные понятия системы управления временем [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] анимация может быть проще в использовании. Наиболее важно то, что в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], анимация объектов осуществляется путем применения анимации к свойствам этих объектов. Например, чтобы увеличить размер элемента среды, следует анимировать его <xref:System.Windows.FrameworkElement.Width%2A> и <xref:System.Windows.FrameworkElement.Height%2A> свойства. Чтобы скрыть объект из представления, следует анимировать его <xref:System.Windows.UIElement.Opacity%2A> свойство.  
+ Если вы понимаете основные понятия системы управления временем WPF анимация может быть проще в использовании. Наиболее важно то, что в WPF, анимация объектов осуществляется путем применения анимации к свойствам этих объектов. Например, чтобы увеличить размер элемента среды, следует анимировать его <xref:System.Windows.FrameworkElement.Width%2A> и <xref:System.Windows.FrameworkElement.Height%2A> свойства. Чтобы скрыть объект из представления, следует анимировать его <xref:System.Windows.UIElement.Opacity%2A> свойство.  
   
  Свойство, поддерживающее анимацию, должно удовлетворять следующим трем требованиям.  
   
@@ -49,15 +49,15 @@ ms.locfileid: "59337738"
   
 -   Он должен входить в класс, наследуемый от <xref:System.Windows.DependencyObject> и реализует <xref:System.Windows.Media.Animation.IAnimatable> интерфейс.  
   
--   Доступен совместимый тип анимации. (Если [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] не предоставляет его, вы можете создать свой собственный. См. в разделе [Общие сведения о пользовательской анимации](custom-animations-overview.md).)  
+-   Доступен совместимый тип анимации. (Если WPF не предоставляет его, вы можете создать свой собственный. См. в разделе [Общие сведения о пользовательской анимации](custom-animations-overview.md).)  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержит множество объектов, имеющих <xref:System.Windows.Media.Animation.IAnimatable> свойства. Элементы управления, например <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.TabControl>, а также <xref:System.Windows.Controls.Panel> и <xref:System.Windows.Shapes.Shape> объекты наследуют от <xref:System.Windows.DependencyObject>. Большинство их свойств являются свойствами зависимостей.  
+ WPF содержит множество объектов, имеющих <xref:System.Windows.Media.Animation.IAnimatable> свойства. Элементы управления, например <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.TabControl>, а также <xref:System.Windows.Controls.Panel> и <xref:System.Windows.Shapes.Shape> объекты наследуют от <xref:System.Windows.DependencyObject>. Большинство их свойств являются свойствами зависимостей.  
   
  Анимацию можно использовать практически везде, где используются стили и шаблоны элементов управления. Анимация не обязательно должна быть визуальной; можно анимировать и объекты, не являющиеся частью пользовательского интерфейса, если они соответствуют описанным в этом разделе условиям.  
   
 <a name="storyboardwalkthrough"></a>   
 ## <a name="example-make-an-element-fade-in-and-out-of-view"></a>Пример Сделать элемент исчезания и  
- В этом примере показано, как использовать [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] анимации для анимации значения свойства зависимостей. Она использует <xref:System.Windows.Media.Animation.DoubleAnimation>, который является типом анимации, создающий <xref:System.Double> значения для анимации <xref:System.Windows.UIElement.Opacity%2A> свойство <xref:System.Windows.Shapes.Rectangle>. В результате <xref:System.Windows.Shapes.Rectangle> исчезает и появляется.  
+ В этом примере показано, как использовать WPF анимации для анимации значения свойства зависимостей. Она использует <xref:System.Windows.Media.Animation.DoubleAnimation>, который является типом анимации, создающий <xref:System.Double> значения для анимации <xref:System.Windows.UIElement.Opacity%2A> свойство <xref:System.Windows.Shapes.Rectangle>. В результате <xref:System.Windows.Shapes.Rectangle> исчезает и появляется.  
   
  В первой части примера создается <xref:System.Windows.Shapes.Rectangle> элемент. Описанные ниже шаги показывают, как создание анимации и применить его в прямоугольник <xref:System.Windows.UIElement.Opacity%2A> свойство.
   

@@ -20,7 +20,7 @@ ms.locfileid: "59107371"
  В этом примере класс создается который подклассы <xref:System.Windows.Controls.Slider> управления и реализует <xref:System.Windows.Input.ICommandSource>.  
   
 ## <a name="example"></a>Пример  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет ряд классов, которые реализуют <xref:System.Windows.Input.ICommandSource>, такие как <xref:System.Windows.Controls.Button>, <xref:System.Windows.Controls.MenuItem>, и <xref:System.Windows.Controls.ListBoxItem>.  Источник команды определяет, как он вызывает команду.   <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.MenuItem> вызывают команду при щелчке.  Объект <xref:System.Windows.Controls.ListBoxItem> вызывает команду при его выборе. Эти классы становится только команды источнику их <xref:System.Windows.Input.ICommandSource.Command%2A> свойству.  
+ WPF предоставляет ряд классов, которые реализуют <xref:System.Windows.Input.ICommandSource>, такие как <xref:System.Windows.Controls.Button>, <xref:System.Windows.Controls.MenuItem>, и <xref:System.Windows.Controls.ListBoxItem>.  Источник команды определяет, как он вызывает команду.   <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.MenuItem> вызывают команду при щелчке.  Объект <xref:System.Windows.Controls.ListBoxItem> вызывает команду при его выборе. Эти классы становится только команды источнику их <xref:System.Windows.Input.ICommandSource.Command%2A> свойству.  
   
  В этом примере команда будет вызываться при перемещении ползунка или, точнее говоря, при <xref:System.Windows.Controls.Primitives.RangeBase.Value%2A> изменении свойства.  
   

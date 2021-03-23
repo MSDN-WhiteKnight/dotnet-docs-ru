@@ -23,7 +23,7 @@ ms.locfileid: "59082494"
   
 <a name="abouthisdocument"></a>   
 ## <a name="streamgeometry-and-pathfigurecollection-mini-languages"></a>Мини-языки StreamGeometry и PathFigureCollection  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет два класса, обеспечивающих мини языки для описания геометрических путей: <xref:System.Windows.Media.StreamGeometry> и <xref:System.Windows.Media.PathFigureCollection>.  
+ WPF предоставляет два класса, обеспечивающих мини языки для описания геометрических путей: <xref:System.Windows.Media.StreamGeometry> и <xref:System.Windows.Media.PathFigureCollection>.  
   
 -   Использовании <xref:System.Windows.Media.StreamGeometry> мини-язык, при задании свойства типа <xref:System.Windows.Media.Geometry>, такие как <xref:System.Windows.UIElement.Clip%2A> свойство <xref:System.Windows.UIElement> или <xref:System.Windows.Shapes.Path.Data%2A> свойство <xref:System.Windows.Shapes.Path> элемент. В следующем примере синтаксис атрибутов для создания <xref:System.Windows.Media.StreamGeometry>.  
   

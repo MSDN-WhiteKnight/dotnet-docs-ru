@@ -17,7 +17,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59172072"
 ---
 # <a name="visual-layer-programming"></a>Программирование визуального слоя
-Объект <xref:System.Windows.Media.Visual> — это основной объект [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], главная роль которого заключается в поддержке отрисовки. Элементы управления пользовательского интерфейса, такие как <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.TextBox>, являются производными от класса <xref:System.Windows.Media.Visual> и используют его для сохранения данных отрисовки.  
+Объект <xref:System.Windows.Media.Visual> — это основной объект WPF, главная роль которого заключается в поддержке отрисовки. Элементы управления пользовательского интерфейса, такие как <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.TextBox>, являются производными от класса <xref:System.Windows.Media.Visual> и используют его для сохранения данных отрисовки.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Проверка попадания на визуальном уровне](hit-testing-in-the-visual-layer.md)  

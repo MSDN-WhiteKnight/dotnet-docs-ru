@@ -37,7 +37,7 @@ ms.locfileid: "59224290"
   
 <a name="Opacity"></a>   
 ## <a name="opacity-on-brushes-versus-opacity-on-elements"></a>Сравнение прозрачности кисти с прозрачностью элементов  
- При использовании <xref:System.Windows.Media.Brush> присвоить <xref:System.Windows.Shapes.Shape.Fill%2A> или <xref:System.Windows.Shapes.Shape.Stroke%2A> элемента, лучше задать <xref:System.Windows.Media.Brush.Opacity%2A?displayProperty=nameWithType> преимущества, а не параметр элемента <xref:System.Windows.UIElement.Opacity%2A> свойство. Изменение элемента <xref:System.Windows.UIElement.Opacity%2A> свойство может привести к [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] создание временной поверхности.  
+ При использовании <xref:System.Windows.Media.Brush> присвоить <xref:System.Windows.Shapes.Shape.Fill%2A> или <xref:System.Windows.Shapes.Shape.Stroke%2A> элемента, лучше задать <xref:System.Windows.Media.Brush.Opacity%2A?displayProperty=nameWithType> преимущества, а не параметр элемента <xref:System.Windows.UIElement.Opacity%2A> свойство. Изменение элемента <xref:System.Windows.UIElement.Opacity%2A> свойство может привести к WPF создание временной поверхности.  
   
 <a name="Navigation_Objects"></a>   
 ## <a name="navigation-to-object"></a>Переход к объекту  
@@ -60,7 +60,7 @@ ms.locfileid: "59224290"
   
 <a name="CompositionTarget_Rendering_Event"></a>   
 ## <a name="compositiontargetrendering-event"></a>Событие CompositionTarget.Rendering  
- <xref:System.Windows.Media.CompositionTarget.Rendering?displayProperty=nameWithType> Событие вызывает [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] для поддержки постоянной анимации. Если это событие используется, отключайте его при каждой возможности.  
+ <xref:System.Windows.Media.CompositionTarget.Rendering?displayProperty=nameWithType> Событие вызывает WPF для поддержки постоянной анимации. Если это событие используется, отключайте его при каждой возможности.  
   
 <a name="Avoid_Using_ScrollBarVisibility"></a>   
 ## <a name="avoid-using-scrollbarvisibilityauto"></a>Избегайте использования ScrollBarVisibility=Auto  

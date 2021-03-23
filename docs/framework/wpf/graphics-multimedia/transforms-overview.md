@@ -29,7 +29,7 @@ ms.locfileid: "59162208"
 > [!NOTE]
 >  Windows Presentation Foundation (WPF) использует строки матрицы. Векторы представляют собой массивы на основе строк, а не на основе столбцов.  
   
- В следующей таблице показана структура матрицы [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].  
+ В следующей таблице показана структура матрицы WPF.  
   
 ### <a name="a-2-d-transformation-matrix"></a>Матрица двумерного преобразования  
   

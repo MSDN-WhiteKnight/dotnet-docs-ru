@@ -45,7 +45,7 @@ ms.locfileid: "59323724"
   
 <a name="ImplementingADynamicRenderer"></a>   
 ## <a name="implementing-a-dynamic-renderer"></a>Реализация динамического отрисовщика  
- Несмотря на то что <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer> класс является стандартной частью [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], для осуществления более специализированной отрисовки, необходимо создать настроенный динамический отрисовщик, производный от <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer> и переопределить <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer.OnDraw%2A> метод.  
+ Несмотря на то что <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer> класс является стандартной частью WPF, для осуществления более специализированной отрисовки, необходимо создать настроенный динамический отрисовщик, производный от <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer> и переопределить <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer.OnDraw%2A> метод.  
   
  В следующем примере настраиваемый <xref:System.Windows.Input.StylusPlugIns.DynamicRenderer> , который выполняет отрисовку рукописного ввода с эффектом кисти линейного градиента.  
   

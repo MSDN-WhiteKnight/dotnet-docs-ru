@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59073888"
 ---
 # <a name="focus-overview"></a>Общие сведения о фокусе
-Существует два основных понятия, относящихся к фокусу в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]: фокус клавиатуры и логический фокус.  Фокус клавиатуры ссылается на элемент, получающий ввод с клавиатуры, а логический фокус ссылается на элемент в области фокуса, имеющий фокус.  Эти понятия подробно освещаются в этом обзоре.  Важно понимать разницу между этими понятиями, чтобы создавать сложные приложения с несколькими областями, в которых можно получить фокус.  
+Существует два основных понятия, относящихся к фокусу в WPF: фокус клавиатуры и логический фокус.  Фокус клавиатуры ссылается на элемент, получающий ввод с клавиатуры, а логический фокус ссылается на элемент в области фокуса, имеющий фокус.  Эти понятия подробно освещаются в этом обзоре.  Важно понимать разницу между этими понятиями, чтобы создавать сложные приложения с несколькими областями, в которых можно получить фокус.  
   
  Основные классы, участвующие в управлении фокусом являются <xref:System.Windows.Input.Keyboard> класс, <xref:System.Windows.Input.FocusManager> класс и базовых элементов классы, такие как <xref:System.Windows.UIElement> и <xref:System.Windows.ContentElement>.  Дополнительные сведения о базовых элементах см. в разделе [Общие сведения о базовых элементах](base-elements-overview.md).  
   
@@ -24,7 +24,7 @@ ms.locfileid: "59073888"
 
 <a name="Keyboard_Focus"></a>   
 ## <a name="keyboard-focus"></a>Фокус клавиатуры  
- Фокус клавиатуры относится к элементу, получающему ввод с клавиатуры.  На всем рабочем столе может быть только один элемент, в котором находится фокус клавиатуры.  В [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], будет иметь элемент, имеющий фокус клавиатуры <xref:System.Windows.IInputElement.IsKeyboardFocused%2A> присвоено `true`.  Статическое свойство <xref:System.Windows.Input.Keyboard.FocusedElement%2A> на <xref:System.Windows.Input.Keyboard> класс получает элемент, который в данный момент имеет фокус клавиатуры.  
+ Фокус клавиатуры относится к элементу, получающему ввод с клавиатуры.  На всем рабочем столе может быть только один элемент, в котором находится фокус клавиатуры.  В WPF, будет иметь элемент, имеющий фокус клавиатуры <xref:System.Windows.IInputElement.IsKeyboardFocused%2A> присвоено `true`.  Статическое свойство <xref:System.Windows.Input.Keyboard.FocusedElement%2A> на <xref:System.Windows.Input.Keyboard> класс получает элемент, который в данный момент имеет фокус клавиатуры.  
   
  Чтобы элемент мог получить фокус клавиатуры <xref:System.Windows.UIElement.Focusable%2A> и <xref:System.Windows.UIElement.IsVisible%2A> свойства базовых элементов должно быть присвоено `true`.  Некоторые классы, такие как <xref:System.Windows.Controls.Panel> базового класса, имеют <xref:System.Windows.UIElement.Focusable%2A> присвоено `false` по умолчанию; таким образом, необходимо задать <xref:System.Windows.UIElement.Focusable%2A> для `true` Если требуется, чтобы элемент мог получить фокус клавиатуры.  
   
@@ -58,7 +58,7 @@ ms.locfileid: "59073888"
   
  <xref:System.Windows.Input.FocusManager.GetFocusScope%2A> Возвращает область фокуса для заданного элемента.  
   
- Классы в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] являются областями фокуса по умолчанию <xref:System.Windows.Window>, <xref:System.Windows.Controls.MenuItem>, <xref:System.Windows.Controls.ToolBar>, и <xref:System.Windows.Controls.ContextMenu>.  
+ Классы в WPF являются областями фокуса по умолчанию <xref:System.Windows.Window>, <xref:System.Windows.Controls.MenuItem>, <xref:System.Windows.Controls.ToolBar>, и <xref:System.Windows.Controls.ContextMenu>.  
   
  <xref:System.Windows.Input.FocusManager.GetFocusedElement%2A> Получает элемент с фокусом для заданной области фокуса.  <xref:System.Windows.Input.FocusManager.SetFocusedElement%2A> Задает элемент с фокусом в заданной области фокуса.  <xref:System.Windows.Input.FocusManager.SetFocusedElement%2A> обычно используется для задания исходного элемента с фокусом.  
   

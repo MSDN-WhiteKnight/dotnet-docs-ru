@@ -40,7 +40,7 @@ ms.locfileid: "59098966"
 ## <a name="when-you-should-create-a-controltemplate"></a>Когда следует создавать объект ControlTemplate  
  Элементы управления обладают множеством свойств, таких как <xref:System.Windows.Controls.Border.Background%2A>, <xref:System.Windows.Controls.Control.Foreground%2A>, и <xref:System.Windows.Controls.Control.FontFamily%2A>, который можно задать для указания различных аспектов внешнего вида элемента управления, но изменения, внесенные с такими значениями этих свойств ограничены. Например, можно задать <xref:System.Windows.Controls.Control.Foreground%2A> свойство на синий и <xref:System.Windows.Controls.Control.FontStyle%2A> до курсивом на <xref:System.Windows.Controls.CheckBox>.  
   
- Без возможности для создания нового <xref:System.Windows.Controls.ControlTemplate> для элементов управления, все элементы управления в каждом [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-приложения на основе бы же общий внешний вид, что ограничивает возможность создания приложения с помощью пользовательского интерфейса. По умолчанию каждый <xref:System.Windows.Controls.CheckBox> имеет одинаковые характеристики. Например, содержимое <xref:System.Windows.Controls.CheckBox> всегда находится справа от индикатора выделения, и для указания того, что всегда используется флажок <xref:System.Windows.Controls.CheckBox> выбран.  
+ Без возможности для создания нового <xref:System.Windows.Controls.ControlTemplate> для элементов управления, все элементы управления в каждом WPF-приложения на основе бы же общий внешний вид, что ограничивает возможность создания приложения с помощью пользовательского интерфейса. По умолчанию каждый <xref:System.Windows.Controls.CheckBox> имеет одинаковые характеристики. Например, содержимое <xref:System.Windows.Controls.CheckBox> всегда находится справа от индикатора выделения, и для указания того, что всегда используется флажок <xref:System.Windows.Controls.CheckBox> выбран.  
   
  Создании <xref:System.Windows.Controls.ControlTemplate> при необходимости настраивать внешний вид элемента управления за пределы выполнит какие задания других свойств элемента управления. В примере <xref:System.Windows.Controls.CheckBox>, предположим, что вы хотите содержимое над индикатором выделения поля с флажком, и знак x, чтобы указать, что <xref:System.Windows.Controls.CheckBox> выбран. Эти изменения в задаются <xref:System.Windows.Controls.ControlTemplate> из <xref:System.Windows.Controls.CheckBox>.  
   
@@ -58,7 +58,7 @@ ms.locfileid: "59098966"
   
 <a name="changing_the_visual_structure_of_a_control"></a>   
 ## <a name="changing-the-visual-structure-of-a-control"></a>Изменение визуальной структуры элемента управления  
- В [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], элемент управления часто является составным <xref:System.Windows.FrameworkElement> объектов. При создании <xref:System.Windows.Controls.ControlTemplate>, объединении <xref:System.Windows.FrameworkElement> объектов для построения одного элемента управления. Объект <xref:System.Windows.Controls.ControlTemplate> должен иметь только один <xref:System.Windows.FrameworkElement> качестве корневого элемента. Корневой элемент обычно содержит другие <xref:System.Windows.FrameworkElement> объектов. Комбинация объектов составляет визуальную структуру элемента управления.  
+ В WPF, элемент управления часто является составным <xref:System.Windows.FrameworkElement> объектов. При создании <xref:System.Windows.Controls.ControlTemplate>, объединении <xref:System.Windows.FrameworkElement> объектов для построения одного элемента управления. Объект <xref:System.Windows.Controls.ControlTemplate> должен иметь только один <xref:System.Windows.FrameworkElement> качестве корневого элемента. Корневой элемент обычно содержит другие <xref:System.Windows.FrameworkElement> объектов. Комбинация объектов составляет визуальную структуру элемента управления.  
   
  В следующем примере создается пользовательский <xref:System.Windows.Controls.ControlTemplate> для <xref:System.Windows.Controls.Button>. <xref:System.Windows.Controls.ControlTemplate> Создает визуальную структуру элемента <xref:System.Windows.Controls.Button>. В этом примере не меняется внешний вид кнопки при перемещении на нее указателя мыши или при ее нажатии. Изменение внешнего вида кнопки при ее переходе в другое состояние рассматривается далее в этом разделе.  
   
@@ -159,7 +159,7 @@ ms.locfileid: "59098966"
  ![Граница прозрачна на нажатой кнопке. ](./media/ndp-buttonpressed.png "NDP_ButtonPressed")  
 Кнопка, использующая пользовательский шаблон элемента управления в состоянии, когда она нажата  
   
- Визуальные состояния элементов управления, включенных в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], см. в разделе [Стили и шаблоны элемента Control](control-styles-and-templates.md).  
+ Визуальные состояния элементов управления, включенных в WPF, см. в разделе [Стили и шаблоны элемента Control](control-styles-and-templates.md).  
   
 <a name="specifying_the_behavior_of_a_control_when_it_transitions_between_states"></a>   
 ## <a name="specifying-the-behavior-of-a-control-when-it-transitions-between-states"></a>Задание поведения элемента управления, когда он переходит между состояниями  
@@ -213,7 +213,7 @@ ms.locfileid: "59098966"
   
 <a name="customizing_other_controls_by_understanding_the_control_contract"></a>   
 ## <a name="customizing-other-controls-by-understanding-the-control-contract"></a>Настройка других элементов управления через понимание контракта элемента управления  
- Элемент управления, который использует <xref:System.Windows.Controls.ControlTemplate> для задания визуальной структуры (с помощью <xref:System.Windows.FrameworkElement> объекты) и визуального поведения (с помощью <xref:System.Windows.VisualState> объекты) использует модель частей элемента управления. Множество элементов управления, имеющихся в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] 4, используют эту модель. Части, <xref:System.Windows.Controls.ControlTemplate> автор необходимо учитывать, взаимодействуют с помощью контракта элемента управления. Поняв части контракта элемента управления, можно настроить внешний вид любого элемента управления, использующего модель частей элемента управления.  
+ Элемент управления, который использует <xref:System.Windows.Controls.ControlTemplate> для задания визуальной структуры (с помощью <xref:System.Windows.FrameworkElement> объекты) и визуального поведения (с помощью <xref:System.Windows.VisualState> объекты) использует модель частей элемента управления. Множество элементов управления, имеющихся в WPF 4, используют эту модель. Части, <xref:System.Windows.Controls.ControlTemplate> автор необходимо учитывать, взаимодействуют с помощью контракта элемента управления. Поняв части контракта элемента управления, можно настроить внешний вид любого элемента управления, использующего модель частей элемента управления.  
   
  Контракт элемента управления имеет три элемента:  
   
@@ -238,7 +238,7 @@ ms.locfileid: "59098966"
 ### <a name="states-in-the-control-contract"></a>Состояния в контракте элемента управления  
  Состояния элемента управления также являются частью контракта элемента управления. Пример создания <xref:System.Windows.Controls.ControlTemplate> для <xref:System.Windows.Controls.Button> показано, как задавать внешний вид <xref:System.Windows.Controls.Button> зависимости от его состояния. Создании <xref:System.Windows.VisualState> для каждого указанного состояния и помещения всех <xref:System.Windows.VisualState> объектов данной общей папки <xref:System.Windows.TemplateVisualStateAttribute.GroupName%2A> в <xref:System.Windows.VisualStateGroup>, как описано в разделе [изменение внешнего вида элемента управления в зависимости от его состояния](#changing_the_appearance_of_a_control_depending_on_its_state) ранее в этом раздел. Сторонние элементы управления должны указывать состояния с помощью <xref:System.Windows.TemplateVisualStateAttribute>, который позволяет средствам разработки, таким как Expression Blend, чтобы предоставить состояния элемента управления для создания шаблонов элементов управления.  
   
- Контракты элементов управления, включенных в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], в разделе [Стили и шаблоны элемента Control](control-styles-and-templates.md).  
+ Контракты элементов управления, включенных в WPF, в разделе [Стили и шаблоны элемента Control](control-styles-and-templates.md).  
   
 ### <a name="properties-in-the-control-contract"></a>Свойства в контракте элемента управления  
  Общие свойства, визуально влияющие на элемент управления, также включаются в контракт элемента управления. Можно задать эти свойства, чтобы изменить внешний вид элемента управления без создания нового <xref:System.Windows.Controls.ControlTemplate>. Можно также использовать [TemplateBinding](../advanced/templatebinding-markup-extension.md) расширение разметки для привязки свойств элементов, которые находятся в <xref:System.Windows.Controls.ControlTemplate> к общим свойствам, которые определяются <xref:System.Windows.Controls.Button>.  
@@ -252,7 +252,7 @@ ms.locfileid: "59098966"
   
 -   Воспользоваться конструктором, таким как Expression Blend, который предоставляет графический пользовательский интерфейс для создания шаблонов элементов управления. Дополнительные сведения см. в статье [Настройка стиля элемента управления, поддерживающего шаблон](https://go.microsoft.com/fwlink/?LinkId=161153).  
   
--   Установленный по умолчанию <xref:System.Windows.Controls.ControlTemplate> и изменить его. Шаблоны элементов управления по умолчанию, включенных в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], см. в документе [Default WPF Themes](https://go.microsoft.com/fwlink/?LinkID=158252).  
+-   Установленный по умолчанию <xref:System.Windows.Controls.ControlTemplate> и изменить его. Шаблоны элементов управления по умолчанию, включенных в WPF, см. в документе [Default WPF Themes](https://go.microsoft.com/fwlink/?LinkID=158252).  
   
 <a name="complete_example"></a>   
 ## <a name="complete-example"></a>Полный пример  

@@ -39,7 +39,7 @@ ms.locfileid: "59157876"
 ## <a name="the-panel-class"></a>Класс Panel  
  <xref:System.Windows.Controls.Panel> является базовым классом для всех элементов, которые предоставляют макет поддерживает в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)]. Производные <xref:System.Windows.Controls.Panel> элементы используются для размещения и упорядочения элементов в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и кода.  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] включает полный набор реализаций производных панели, позволяющих использовать множество сложных макетов. Эти производные классы предоставляют свойства и методы, с помощью которых реализуется большинство стандартных сценариев [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. Разработчики, которые не смогли найти поведение упорядочение дочерних, удовлетворяющих их потребности могут создать новые макеты путем переопределения <xref:System.Windows.FrameworkElement.ArrangeOverride%2A> и <xref:System.Windows.FrameworkElement.MeasureOverride%2A> методы. Дополнительные сведения о поведении пользовательских макетов см. в разделе [Пользовательские элементы Panel](#Panels_custom_panel_elements).  
+ WPF включает полный набор реализаций производных панели, позволяющих использовать множество сложных макетов. Эти производные классы предоставляют свойства и методы, с помощью которых реализуется большинство стандартных сценариев [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. Разработчики, которые не смогли найти поведение упорядочение дочерних, удовлетворяющих их потребности могут создать новые макеты путем переопределения <xref:System.Windows.FrameworkElement.ArrangeOverride%2A> и <xref:System.Windows.FrameworkElement.MeasureOverride%2A> методы. Дополнительные сведения о поведении пользовательских макетов см. в разделе [Пользовательские элементы Panel](#Panels_custom_panel_elements).  
   
 <a name="Panels_declared_members"></a>   
 ## <a name="panel-common-members"></a>Общие члены элементов Panel  
@@ -77,7 +77,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_main_UI_elements"></a>   
 ## <a name="user-interface-panels"></a>Панели пользовательского интерфейса  
- Существует шесть классов панелей, доступных в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] , оптимизированы для поддержки [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] сценариев: <xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>. Эти элементы панели являются простыми в использовании, гибкими и достаточно широкими для большинства приложений.  
+ Существует шесть классов панелей, доступных в WPF , оптимизированы для поддержки [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] сценариев: <xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>. Эти элементы панели являются простыми в использовании, гибкими и достаточно широкими для большинства приложений.  
   
  Каждый производный <xref:System.Windows.Controls.Panel> элемент рассматривает ограничения размеров по-разному. Основные сведения о том, как <xref:System.Windows.Controls.Panel> обрабатывает ограничения в горизонтальном или вертикальном направлении, может сделать макет более предсказуемой.  
   
@@ -188,7 +188,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_overview_VirtualizingStackPanel_subsection"></a>   
 #### <a name="virtualizingstackpanel"></a>VirtualizingStackPanel  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] также предоставляет разновидность <xref:System.Windows.Controls.StackPanel> элемент, который автоматически «виртуализирует» привязкой к данным дочернего содержимого. В данном контексте слово "виртуализация" означает способ, с помощью которого подмножество элементов создается из большего количества элементов данных в зависимости от того, какие из элементов отображаются на экране. Как для памяти, так и для процессора затратно создавать большое число элементов пользовательского интерфейса, при том что только несколько из них могут отображаться на экране одновременно. <xref:System.Windows.Controls.VirtualizingStackPanel> (с помощью функций, предоставляемых <xref:System.Windows.Controls.VirtualizingPanel>) подсчитывает видимые элементы и работает с <xref:System.Windows.Controls.ItemContainerGenerator> из <xref:System.Windows.Controls.ItemsControl> (такие как <xref:System.Windows.Controls.ListBox> или <xref:System.Windows.Controls.ListView>) создавать только элементы для видимых элементов.  
+ WPF также предоставляет разновидность <xref:System.Windows.Controls.StackPanel> элемент, который автоматически «виртуализирует» привязкой к данным дочернего содержимого. В данном контексте слово "виртуализация" означает способ, с помощью которого подмножество элементов создается из большего количества элементов данных в зависимости от того, какие из элементов отображаются на экране. Как для памяти, так и для процессора затратно создавать большое число элементов пользовательского интерфейса, при том что только несколько из них могут отображаться на экране одновременно. <xref:System.Windows.Controls.VirtualizingStackPanel> (с помощью функций, предоставляемых <xref:System.Windows.Controls.VirtualizingPanel>) подсчитывает видимые элементы и работает с <xref:System.Windows.Controls.ItemContainerGenerator> из <xref:System.Windows.Controls.ItemsControl> (такие как <xref:System.Windows.Controls.ListBox> или <xref:System.Windows.Controls.ListView>) создавать только элементы для видимых элементов.  
   
  <xref:System.Windows.Controls.VirtualizingStackPanel> Элемент автоматически устанавливается как узел элементов для элементов управления, такие как <xref:System.Windows.Controls.ListBox>. При размещении данных присоединенной коллекции, содержимое будет автоматически виртуализировано, до тех пор, пока оно находится в границах <xref:System.Windows.Controls.ScrollViewer>. Это значительно повышает производительность при размещении большого числа дочерних элементов.  
   
@@ -228,7 +228,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_custom_panel_elements"></a>   
 ## <a name="custom-panel-elements"></a>Пользовательские элементы Panel  
- Хотя [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет целый ряд гибких элементов управления макетом, настраиваемый макет, также поведения можно достигнуть путем переопределения <xref:System.Windows.FrameworkElement.ArrangeOverride%2A> и <xref:System.Windows.FrameworkElement.MeasureOverride%2A> методы. Пользовательские изменения размеров и положения могут быть выполнены путем определения нового поведения размещения с помощью этих методов переопределения.  
+ Хотя WPF предоставляет целый ряд гибких элементов управления макетом, настраиваемый макет, также поведения можно достигнуть путем переопределения <xref:System.Windows.FrameworkElement.ArrangeOverride%2A> и <xref:System.Windows.FrameworkElement.MeasureOverride%2A> методы. Пользовательские изменения размеров и положения могут быть выполнены путем определения нового поведения размещения с помощью этих методов переопределения.  
   
  Аналогичным образом, пользовательские расширения функциональности макета на основе производных классов (таких как <xref:System.Windows.Controls.Canvas> или <xref:System.Windows.Controls.Grid>) можно задать путем переопределения их <xref:System.Windows.FrameworkElement.ArrangeOverride%2A> и <xref:System.Windows.FrameworkElement.MeasureOverride%2A> методы.  
   
@@ -242,7 +242,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_global_localization"></a>   
 ## <a name="localizationglobalization-support"></a>Поддержка локализации и глобализации  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] поддерживает ряд функций, которые помогают в создании локализуемого [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)].  
+ WPF поддерживает ряд функций, которые помогают в создании локализуемого [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)].  
   
  Все элементы панели изначально поддерживают <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство, которое может использоваться для динамического содержимого на основе параметров языкового стандарта или языка пользователя. Дополнительные сведения см. в разделе <xref:System.Windows.FrameworkElement.FlowDirection%2A>.  
   
@@ -250,7 +250,7 @@ ms.locfileid: "59157876"
   
  <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, и <xref:System.Windows.Controls.StackPanel> — это хороший выбор для локализуемых [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. <xref:System.Windows.Controls.Canvas> Тем не менее, является не лучшим выбором, так как он размещает содержимое абсолютно, что затрудняет локализацию.  
   
- Дополнительные сведения о создании приложений [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] с локализуемыми [!INCLUDE[TLA#tla_ui#plural](../../../../includes/tlasharptla-uisharpplural-md.md)] см. в разделе [Обзор использования автоматической разметки](../advanced/use-automatic-layout-overview.md).  
+ Дополнительные сведения о создании приложений WPF с локализуемыми [!INCLUDE[TLA#tla_ui#plural](../../../../includes/tlasharptla-uisharpplural-md.md)] см. в разделе [Обзор использования автоматической разметки](../advanced/use-automatic-layout-overview.md).  
   
 ## <a name="see-also"></a>См. также
 

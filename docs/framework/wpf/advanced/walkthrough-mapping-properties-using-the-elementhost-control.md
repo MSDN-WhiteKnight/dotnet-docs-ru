@@ -17,7 +17,7 @@ ms.locfileid: "59300922"
 ---
 # <a name="walkthrough-mapping-properties-using-the-elementhost-control"></a>Пошаговое руководство. Сопоставление свойств с помощью элемента управления ElementHost
 
-В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.ElementHost.PropertyMap%2A> свойства для сопоставления [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими свойствами вложенного [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] элемент.
+В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.ElementHost.PropertyMap%2A> свойства для сопоставления [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими свойствами вложенного WPF элемент.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -31,7 +31,7 @@ ms.locfileid: "59300922"
 
 Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [сопоставления свойств с помощью пример элемента управления ElementHost](https://go.microsoft.com/fwlink/?LinkID=160018).
 
-Когда вы закончите, можно сопоставить [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] свойства элемента.
+Когда вы закончите, можно сопоставить [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими WPF свойства элемента.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -45,7 +45,7 @@ ms.locfileid: "59300922"
 
 1. Создание **приложения Windows Forms** проект с именем `PropertyMappingWithElementHost`.
 
-2. В **обозревателе решений**, добавьте ссылки на следующие [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] сборок.
+2. В **обозревателе решений**, добавьте ссылки на следующие WPF сборок.
 
     -   PresentationCore
 
@@ -82,7 +82,7 @@ ms.locfileid: "59300922"
 
      `AddMarginMapping` Метод добавляет новое сопоставление для <xref:System.Windows.Forms.Control.Margin%2A> свойство.
 
-     `OnMarginChange` Метод преобразует <xref:System.Windows.Forms.Control.Margin%2A> свойства [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.FrameworkElement.Margin%2A> свойство.
+     `OnMarginChange` Метод преобразует <xref:System.Windows.Forms.Control.Margin%2A> свойства WPF <xref:System.Windows.FrameworkElement.Margin%2A> свойство.
 
 2. Скопируйте следующий код в определение `Form1` класса.
 
@@ -91,7 +91,7 @@ ms.locfileid: "59300922"
 
      `AddRegionMapping` Метод добавляет новое сопоставление для <xref:System.Windows.Forms.Control.Region%2A> свойство.
 
-     `OnRegionChange` Метод преобразует <xref:System.Windows.Forms.Control.Region%2A> свойства [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.UIElement.Clip%2A> свойство.
+     `OnRegionChange` Метод преобразует <xref:System.Windows.Forms.Control.Region%2A> свойства WPF <xref:System.Windows.UIElement.Clip%2A> свойство.
 
      `Form1_Resize` Метод обрабатывает формы <xref:System.Windows.Forms.Control.Resize> событий и размеров области отсечения в соответствии с размещаемый элемент.
 
@@ -132,7 +132,7 @@ ms.locfileid: "59300922"
 
      `Form1_Load` Метод обрабатывает <xref:System.Windows.Forms.Form.Load> событий и выполнения следующей инициализации.
 
-    -   Создает [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Button> элемент.
+    -   Создает WPF <xref:System.Windows.Controls.Button> элемент.
 
     -   Вызывает методы, ранее определенные в руководстве, для настройки сопоставлений свойств.
 

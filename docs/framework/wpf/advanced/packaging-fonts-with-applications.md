@@ -25,7 +25,7 @@ ms.locfileid: "59123802"
 
 <a name="introduction_to_packaging_fonts"></a>   
 ## <a name="introduction-to-packaging-fonts"></a>Общие сведения об упаковке шрифтов  
- Можно легко упаковать шрифты в качестве ресурсов в вашей [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения для отображения текста пользовательского интерфейса и других типов текста на основе содержимого. Шрифты могут быть отдельными от файлов сборки приложения или включенными в них. Можно также создать библиотеку шрифтов только для ресурсов, на которую может ссылаться приложение.  
+ Можно легко упаковать шрифты в качестве ресурсов в вашей WPF приложения для отображения текста пользовательского интерфейса и других типов текста на основе содержимого. Шрифты могут быть отдельными от файлов сборки приложения или включенными в них. Можно также создать библиотеку шрифтов только для ресурсов, на которую может ссылаться приложение.  
   
  [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] и [!INCLUDE[TLA#tla_truetype](../../../../includes/tlasharptla-truetype-md.md)] шрифты содержат флаг типа fsType, указывающее, права лицензирования на встраивание шрифта для шрифта. Однако этот флаг типа относится только к внедренным шрифтам, хранящимся в документе; он не относится к шрифтам, внедренным в приложении. Вы можете получить права для шрифта на внедрение путем создания <xref:System.Windows.Media.GlyphTypeface> и ссылки на его <xref:System.Windows.Media.GlyphTypeface.EmbeddingRights%2A> свойство. См. в разделе «OS/2 и Windows метрики» [спецификация OpenType](https://www.microsoft.com/typography/otspec/os2.htm) Дополнительные сведения о флаге fstype см.  
   
@@ -152,21 +152,21 @@ ms.locfileid: "59123802"
  [!code-xaml[OpenTypeFontsSample#OpenTypeFontsSample1](~/samples/snippets/csharp/VS_Snippets_Wpf/OpenTypeFontsSample/CS/Kootenay.xaml#opentypefontssample1)]  
   
 > [!NOTE]
->  Этот пакет SDK содержит набор образцов [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] шрифты, которые можно использовать с [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложений. Эти шрифты определяются в библиотеке ресурсов. Дополнительные сведения см. в разделе [Пакет образцов шрифтов OpenType](sample-opentype-font-pack.md).  
+>  Этот пакет SDK содержит набор образцов [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] шрифты, которые можно использовать с WPF приложений. Эти шрифты определяются в библиотеке ресурсов. Дополнительные сведения см. в разделе [Пакет образцов шрифтов OpenType](sample-opentype-font-pack.md).  
   
 <a name="limitations_on_font_usage"></a>   
 ## <a name="limitations-on-font-usage"></a>Ограничения в использовании шрифтов  
- Ниже приведены некоторые ограничения по упаковке и использованию шрифтов в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложений:  
+ Ниже приведены некоторые ограничения по упаковке и использованию шрифтов в WPF приложений:  
   
--   **Биты разрешений на внедрение шрифтов:** [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения не проверяют и не применяют принудительно никакие биты разрешений на внедрение шрифтов. См. в разделе [ntroduction_to_packing Fonts](#introduction_to_packaging_fonts) Дополнительные сведения.  
+-   **Биты разрешений на внедрение шрифтов:** WPF приложения не проверяют и не применяют принудительно никакие биты разрешений на внедрение шрифтов. См. в разделе [ntroduction_to_packing Fonts](#introduction_to_packaging_fonts) Дополнительные сведения.  
   
--   **Сайт исходных шрифтов:** [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения не разрешают ссылка на шрифт для http или ftp [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)].  
+-   **Сайт исходных шрифтов:** WPF приложения не разрешают ссылка на шрифт для http или ftp [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)].  
   
--   **Абсолютный URI, с помощью пакета: нотации:** [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения не разрешают создавать <xref:System.Windows.Media.FontFamily> программным способом с помощью «pack:» как часть абсолютное [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] ссылки на шрифт. Например `"pack://application:,,,/resources/#Pericles Light"` является недопустимой ссылкой на шрифт.  
+-   **Абсолютный URI, с помощью пакета: нотации:** WPF приложения не разрешают создавать <xref:System.Windows.Media.FontFamily> программным способом с помощью «pack:» как часть абсолютное [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] ссылки на шрифт. Например `"pack://application:,,,/resources/#Pericles Light"` является недопустимой ссылкой на шрифт.  
   
 -   **Автоматическое внедрение шрифтов.** Во время разработки не поддерживается поиск шрифтов, используемых приложением, и автоматическое внедрение шрифтов в ресурсы приложения.  
   
--   **Подмножества шрифтов:** [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения не поддерживают создание подмножеств шрифтов для нефиксированных документов.  
+-   **Подмножества шрифтов:** WPF приложения не поддерживают создание подмножеств шрифтов для нефиксированных документов.  
   
 -   Если обнаруживается неправильная ссылка, приложение прибегает к использованию доступного шрифта.  
   

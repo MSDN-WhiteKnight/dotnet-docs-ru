@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59311505"
 ---
 # <a name="walkthrough-hosting-an-activex-control-in-wpf"></a>Пошаговое руководство. Размещение элемента управления ActiveX в приложении WPF
-Для улучшенного взаимодействия с браузерами, можно использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-приложения на основе. В этом пошаговом руководстве показано, как разместить [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] как элемент управления на [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] страницы.
+Для улучшенного взаимодействия с браузерами, можно использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей WPF-приложения на основе. В этом пошаговом руководстве показано, как разместить [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] как элемент управления на WPF страницы.
 
  В данном пошаговом руководстве представлены следующие задачи.
 
@@ -26,7 +26,7 @@ ms.locfileid: "59311505"
 
 -   Размещение элемента управления ActiveX на странице WPF.
 
- После завершения этого пошагового руководства вы узнаете, как использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-приложения на основе.
+ После завершения этого пошагового руководства вы узнаете, как использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей WPF-приложения на основе.
 
 ## <a name="prerequisites"></a>Предварительные требования
  Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.

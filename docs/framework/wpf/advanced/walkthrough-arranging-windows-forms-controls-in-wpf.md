@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59338778"
 ---
 # <a name="walkthrough-arranging-windows-forms-controls-in-wpf"></a>Пошаговое руководство. Упорядочение элементов управления Windows Forms в WPF
-В этом пошаговом руководстве показано, как использовать [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] функции макета для размещения [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления в гибридном приложении.  
+В этом пошаговом руководстве показано, как использовать WPF функции макета для размещения [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления в гибридном приложении.  
   
  В данном пошаговом руководстве представлены следующие задачи.  
   
@@ -50,7 +50,7 @@ ms.locfileid: "59338778"
   
  Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [упорядочение Windows Forms в WPF образец](https://go.microsoft.com/fwlink/?LinkID=159971).  
   
- Когда вы закончите, вы получите представление о [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] возможности разметки в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-приложений на основе.  
+ Когда вы закончите, вы получите представление о [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] возможности разметки в WPF-приложений на основе.  
   
 ## <a name="prerequisites"></a>Предварительные требования  
 
@@ -158,7 +158,7 @@ ms.locfileid: "59338778"
 2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Окрашивания элемента через элемент метки.
 
 ## <a name="docking"></a>Закрепление
- <xref:System.Windows.Forms.Integration.WindowsFormsHost> поддерживает элемент [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] закрепления. Задайте <xref:System.Windows.Controls.DockPanel.Dock%2A> присоединенного свойства, чтобы закрепить размещаемый элемент управления в <xref:System.Windows.Controls.DockPanel> элемент.
+ <xref:System.Windows.Forms.Integration.WindowsFormsHost> поддерживает элемент WPF закрепления. Задайте <xref:System.Windows.Controls.DockPanel.Dock%2A> присоединенного свойства, чтобы закрепить размещаемый элемент управления в <xref:System.Windows.Controls.DockPanel> элемент.
 
 #### <a name="to-dock-a-hosted-control"></a>Закрепление размещаемого элемента управления
 
@@ -197,7 +197,7 @@ ms.locfileid: "59338778"
 
      [!code-xaml[WpfLayoutHostingWfWithXaml#11](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#11)]
 
-2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент выравнивается по центру в строке сетки, но он не растягивается для заполнения доступного пространства. Если окно является достаточно большим, можно увидеть два или более месяцев, отображаемых размещаемым <xref:System.Windows.Forms.MonthCalendar> элемента управления, но они выравниваются по центру в строке. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Обработчик макетов выравнивает по центру элементы, которые не меняются для заполнения доступного пространства.
+2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент выравнивается по центру в строке сетки, но он не растягивается для заполнения доступного пространства. Если окно является достаточно большим, можно увидеть два или более месяцев, отображаемых размещаемым <xref:System.Windows.Forms.MonthCalendar> элемента управления, но они выравниваются по центру в строке. WPF Обработчик макетов выравнивает по центру элементы, которые не меняются для заполнения доступного пространства.
 
 ## <a name="scaling"></a>Масштабирование
  В отличие от элементов WPF большинство элементов управления Windows Forms не являются непрерывно масштабируемыми. Для предоставления пользовательского масштабирования, переопределить <xref:System.Windows.Forms.Integration.WindowsFormsHost.ScaleChild%2A?displayProperty=nameWithType> метод.
@@ -224,7 +224,7 @@ ms.locfileid: "59338778"
 2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Размещаемый элемент управления не повернут, но его соседние элементы повернуты на угол в 180 градусов. Для отображения элементов может потребоваться изменить размер окна.
 
 ## <a name="setting-padding-and-margins"></a>Задание отбивки и внутренних полей
- Отступы и рамки в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] макета похожи на свои аналоги в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]. Просто задайте <xref:System.Windows.Controls.Control.Padding%2A> и <xref:System.Windows.FrameworkElement.Margin%2A> свойства <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент.
+ Отступы и рамки в WPF макета похожи на свои аналоги в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]. Просто задайте <xref:System.Windows.Controls.Control.Padding%2A> и <xref:System.Windows.FrameworkElement.Margin%2A> свойства <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент.
 
 #### <a name="to-set-padding-and-margins-for-a-hosted-control"></a>Задание отбивки и внутренних полей размещаемого элемента управления
 
@@ -236,7 +236,7 @@ ms.locfileid: "59338778"
 2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Параметры Отбивки и внутренних полей будут применены к размещаемым [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления таким же образом, они будут применяться в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)].
 
 ## <a name="using-dynamic-layout-containers"></a>Использование динамических контейнеров макета
- [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] предоставляет два динамических контейнера макета, <xref:System.Windows.Forms.FlowLayoutPanel> и <xref:System.Windows.Forms.TableLayoutPanel>. Можно также использовать эти контейнеры в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] макетов.
+ [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] предоставляет два динамических контейнера макета, <xref:System.Windows.Forms.FlowLayoutPanel> и <xref:System.Windows.Forms.TableLayoutPanel>. Можно также использовать эти контейнеры в WPF макетов.
 
 #### <a name="to-use-a-dynamic-layout-container"></a>Использование динамических контейнеров макета
 

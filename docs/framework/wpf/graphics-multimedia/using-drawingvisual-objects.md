@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59121723"
 ---
 # <a name="using-drawingvisual-objects"></a>Использование объектов DrawingVisual
-В этом разделе представлен обзор использования <xref:System.Windows.Media.DrawingVisual> объекты в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] визуальном уровне.  
+В этом разделе представлен обзор использования <xref:System.Windows.Media.DrawingVisual> объекты в WPF визуальном уровне.  
   
 <a name="drawingvisual_object"></a>   
 ## <a name="drawingvisual-object"></a>Объект DrawingVisual  

@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59300870"
 ---
 # <a name="walkthrough-binding-to-data-in-hybrid-applications"></a>Пошаговое руководство. Привязка к данным в гибридных приложениях
-Привязка источника данных к элементу управления необходима для предоставления пользователям доступа к базовым данным независимо от используемой [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] или [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]. В этом пошаговом руководстве показано, как можно использовать привязку данных в гибридных приложениях, которые включают [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] и [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] элементов управления.  
+Привязка источника данных к элементу управления необходима для предоставления пользователям доступа к базовым данным независимо от используемой [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] или WPF. В этом пошаговом руководстве показано, как можно использовать привязку данных в гибридных приложениях, которые включают [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] и WPF элементов управления.  
   
  В данном пошаговом руководстве представлены следующие задачи.  
   

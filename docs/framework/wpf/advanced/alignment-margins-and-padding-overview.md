@@ -22,7 +22,7 @@ ms.locfileid: "59209168"
 
 <a name="wcpsdk_layout_amp_introduction"></a>   
 ## <a name="introduction-to-element-positioning"></a>Введение в позиционирование элементов  
- Существуют разные способы позиционирования элементов с помощью [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]. Однако идеальный макет достигается не просто выбором справа <xref:System.Windows.Controls.Panel> элемент. Точное управление размещением требует понимания <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A>, <xref:System.Windows.FrameworkElement.Margin%2A>, <xref:System.Windows.Controls.Border.Padding%2A>, и <xref:System.Windows.FrameworkElement.VerticalAlignment%2A> свойства.  
+ Существуют разные способы позиционирования элементов с помощью WPF. Однако идеальный макет достигается не просто выбором справа <xref:System.Windows.Controls.Panel> элемент. Точное управление размещением требует понимания <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A>, <xref:System.Windows.FrameworkElement.Margin%2A>, <xref:System.Windows.Controls.Border.Padding%2A>, и <xref:System.Windows.FrameworkElement.VerticalAlignment%2A> свойства.  
   
  На следующем рисунке показан сценарий макета, использующий несколько свойств размещения.  
   
@@ -136,9 +136,9 @@ ms.locfileid: "59209168"
   
 <a name="wcpsdk_layout_amp_alignment_whatsnext"></a>   
 ## <a name="whats-next"></a>Что дальше?  
- Свойства позиционирования, определенные <xref:System.Windows.FrameworkElement> класс обеспечивают точное управление размещением элементов в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложений. Вы получаете в свое распоряжение несколько способов, позволяющих более эффективно размещать элементы с помощью [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].  
+ Свойства позиционирования, определенные <xref:System.Windows.FrameworkElement> класс обеспечивают точное управление размещением элементов в WPF приложений. Вы получаете в свое распоряжение несколько способов, позволяющих более эффективно размещать элементы с помощью WPF.  
   
- Доступны дополнительные ресурсы, в которых макет [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] рассматривается более подробно. [Общие сведения о панелях](../controls/panels-overview.md) разделе содержатся более подробные сведения о различных <xref:System.Windows.Controls.Panel> элементов. Раздел [Пошаговое руководство: Создание первого классического приложения WPF](../getting-started/walkthrough-my-first-wpf-desktop-application.md) рассмотрены дополнительные методики, использующие элементы макета для размещения компонентов и привязки их действий к источникам данных.  
+ Доступны дополнительные ресурсы, в которых макет WPF рассматривается более подробно. [Общие сведения о панелях](../controls/panels-overview.md) разделе содержатся более подробные сведения о различных <xref:System.Windows.Controls.Panel> элементов. Раздел [Пошаговое руководство: Создание первого классического приложения WPF](../getting-started/walkthrough-my-first-wpf-desktop-application.md) рассмотрены дополнительные методики, использующие элементы макета для размещения компонентов и привязки их действий к источникам данных.  
   
 ## <a name="see-also"></a>См. также
 

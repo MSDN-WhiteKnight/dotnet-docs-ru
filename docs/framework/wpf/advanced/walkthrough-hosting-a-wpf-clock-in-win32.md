@@ -15,7 +15,7 @@ ms.locfileid: "57494952"
 ---
 # <a name="walkthrough-hosting-a-wpf-clock-in-win32"></a>Пошаговое руководство. Размещение часов WPF в Win32
 
-Чтобы поместить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] внутри [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложения, используют <xref:System.Windows.Interop.HwndSource>, который предоставляет HWND, который содержит ваши [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержимое. Сначала вы создаете <xref:System.Windows.Interop.HwndSource>, предоставив ему параметры, аналогичные CreateWindow. Указать <xref:System.Windows.Interop.HwndSource> о [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержимого, которое требуется поместить. Наконец, вы получаете HWND из <xref:System.Windows.Interop.HwndSource>. В этом пошаговом руководстве описывается создание смешанного [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] внутри [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложение, которое повторно реализует операционной системы **свойства даты и времени** диалоговое окно.
+Чтобы поместить WPF внутри [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложения, используют <xref:System.Windows.Interop.HwndSource>, который предоставляет HWND, который содержит ваши WPF содержимое. Сначала вы создаете <xref:System.Windows.Interop.HwndSource>, предоставив ему параметры, аналогичные CreateWindow. Указать <xref:System.Windows.Interop.HwndSource> о WPF содержимого, которое требуется поместить. Наконец, вы получаете HWND из <xref:System.Windows.Interop.HwndSource>. В этом пошаговом руководстве описывается создание смешанного WPF внутри [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложение, которое повторно реализует операционной системы **свойства даты и времени** диалоговое окно.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -23,7 +23,7 @@ ms.locfileid: "57494952"
 
 ## <a name="how-to-use-this-tutorial"></a>Как использовать этот учебник
 
-Основное внимание в этом учебнике уделяется важным шагам в процессе создания приложения взаимодействия. Пример, поддерживаемый руководства [пример взаимодействия часов Win32](https://go.microsoft.com/fwlink/?LinkID=160051), но этот пример характеризует работу конечного продукта. Этом учебнике приведены шаги, как если бы вы начали с существующим [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] собственного проекта, возможно с уже существующим проектом и добавили размещенных [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] в приложение. Вы можете сравнить ваш конечный продукт с [пример взаимодействия часов Win32](https://go.microsoft.com/fwlink/?LinkID=160051).
+Основное внимание в этом учебнике уделяется важным шагам в процессе создания приложения взаимодействия. Пример, поддерживаемый руководства [пример взаимодействия часов Win32](https://go.microsoft.com/fwlink/?LinkID=160051), но этот пример характеризует работу конечного продукта. Этом учебнике приведены шаги, как если бы вы начали с существующим [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] собственного проекта, возможно с уже существующим проектом и добавили размещенных WPF в приложение. Вы можете сравнить ваш конечный продукт с [пример взаимодействия часов Win32](https://go.microsoft.com/fwlink/?LinkID=160051).
 
 ## <a name="a-walkthrough-of-windows-presentation-framework-inside-win32-hwndsource"></a>Пошаговое руководство по WPF внутри Win32 (HwndSource)
 
@@ -37,13 +37,13 @@ ms.locfileid: "57494952"
 
 (Необходимо использовать [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] использовать <xref:System.Windows.Interop.HwndSource>, и вам не нужно использовать C++ для написания [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы, но это является весьма распространенный способ сделать это и хорошо подходит для пошагового объяснения в учебнике).
 
-Вам необходимо выполнить пять вложенных шагов, чтобы поставить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] часов в диалоговое окно:
+Вам необходимо выполнить пять вложенных шагов, чтобы поставить WPF часов в диалоговое окно:
 
 1. Включение вашего [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проект, чтобы вызывать управляемый код (**/CLR**), изменив параметры проекта в [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)].
 
-2. Создание [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Page> в отдельной библиотеке DLL.
+2. Создание WPF <xref:System.Windows.Controls.Page> в отдельной библиотеке DLL.
 
-3. Поместите этот [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Page> внутри <xref:System.Windows.Interop.HwndSource>.
+3. Поместите этот WPF <xref:System.Windows.Controls.Page> внутри <xref:System.Windows.Interop.HwndSource>.
 
 4. Получите HWND для, <xref:System.Windows.Controls.Page> с помощью <xref:System.Windows.Interop.HwndSource.Handle%2A> свойство.
 
@@ -51,11 +51,11 @@ ms.locfileid: "57494952"
 
 ## <a name="clr"></a>/clr
 
-Первым делом необходимо преобразовать этот неуправляемый [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проект, в который можно вызывать управляемый код. Используйте параметр компилятора/CLR, который будет связан с необходимыми библиотеками DLL, вы хотите использовать и скорректирует основной метод для использования с [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].
+Первым делом необходимо преобразовать этот неуправляемый [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проект, в который можно вызывать управляемый код. Используйте параметр компилятора/CLR, который будет связан с необходимыми библиотеками DLL, вы хотите использовать и скорректирует основной метод для использования с WPF.
 
 Чтобы включить использование управляемого кода в проекте C++: Правой кнопкой мыши проект win32clock и выберите **свойства**. На **Общие** страницы свойств (по умолчанию), измените поддержку общеязыковой на `/clr`.
 
-Добавьте ссылки на библиотеки DLL, необходимые для [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]: PresentationCore.dll, PresentationFramework.dll, System.dll, WindowsBase.dll, UIAutomationProvider.dll и UIAutomationTypes.dll. (Следующие инструкции предполагают, что операционная система установлена на диске C:.)
+Добавьте ссылки на библиотеки DLL, необходимые для WPF: PresentationCore.dll, PresentationFramework.dll, System.dll, WindowsBase.dll, UIAutomationProvider.dll и UIAutomationTypes.dll. (Следующие инструкции предполагают, что операционная система установлена на диске C:.)
 
 1. Щелкните правой кнопкой мыши проект win32clock и выберите **ссылки...** , а внутри этого диалогового окна:
 
@@ -75,7 +75,7 @@ ms.locfileid: "57494952"
 
 9. Нажмите кнопку **ОК** чтобы выйти из страниц свойств win32clock для добавления ссылок.
 
- Наконец, добавьте `STAThreadAttribute` для `_tWinMain` метод для использования с [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]:
+ Наконец, добавьте `STAThreadAttribute` для `_tWinMain` метод для использования с WPF:
 
 ```cpp
 [System::STAThreadAttribute]
@@ -85,15 +85,15 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                      int       nCmdShow)
 ```
 
-Этот атрибут сообщает [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] , когда он инициализирует [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], его следует использовать модель однопотокового подразделения (STA), который необходим для [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] (и [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]).
+Этот атрибут сообщает [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] , когда он инициализирует [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], его следует использовать модель однопотокового подразделения (STA), который необходим для WPF (и [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]).
 
 ## <a name="create-a-windows-presentation-framework-page"></a>Создание страницы WPF
 
-Создайте библиотеку DLL, которая определяет [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Page>. Часто бывает проще всего создать [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Page> как автономное приложение и записать и отладить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] таким способом часть. После этого проект можно преобразовать в библиотеку DLL, щелкните правой кнопкой мыши проект, щелкнув **свойства**, перейдя в приложение и изменив тип выходных данных на библиотеку классов Windows.
+Создайте библиотеку DLL, которая определяет WPF <xref:System.Windows.Controls.Page>. Часто бывает проще всего создать WPF <xref:System.Windows.Controls.Page> как автономное приложение и записать и отладить WPF таким способом часть. После этого проект можно преобразовать в библиотеку DLL, щелкните правой кнопкой мыши проект, щелкнув **свойства**, перейдя в приложение и изменив тип выходных данных на библиотеку классов Windows.
 
-[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Проект библиотеки dll можно объединить с [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] (одно решение, которое содержит два проекта) — проект, щелкните правой кнопкой мыши решение, выберите **добавить/существующий проект**.
+WPF Проект библиотеки dll можно объединить с [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] (одно решение, которое содержит два проекта) — проект, щелкните правой кнопкой мыши решение, выберите **добавить/существующий проект**.
 
-Чтобы использовать эту [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] dll из [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проекта, необходимо добавить ссылку:
+Чтобы использовать эту WPF dll из [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проекта, необходимо добавить ссылку:
 
 1. Щелкните правой кнопкой мыши проект win32clock и выберите **ссылки...** .
 
@@ -105,7 +105,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 ## <a name="hwndsource"></a>HwndSource
 
-Далее используется <xref:System.Windows.Interop.HwndSource> вносить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] <xref:System.Windows.Controls.Page> вид HWND. Добавьте этот блок кода в файл C++:
+Далее используется <xref:System.Windows.Interop.HwndSource> вносить WPF <xref:System.Windows.Controls.Page> вид HWND. Добавьте этот блок кода в файл C++:
 
 ```cpp
 namespace ManagedCode
@@ -144,7 +144,7 @@ namespace ManagedCode
     using namespace System::Windows::Media;
 ```
 
- Затем вы определяете функцию, которая создает [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержимого, помещает <xref:System.Windows.Interop.HwndSource> , и возвращает HWND:
+ Затем вы определяете функцию, которая создает WPF содержимого, помещает <xref:System.Windows.Interop.HwndSource> , и возвращает HWND:
 
 ```cpp
 HWND GetHwnd(HWND parent, int x, int y, int width, int height) {
@@ -163,7 +163,7 @@ HwndSource^ source = gcnew HwndSource(
 );
 ```
 
-Затем вы создаете [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] класса содержимого, вызывая его конструктор:
+Затем вы создаете WPF класса содержимого, вызывая его конструктор:
 
 ```cpp
 UIElement^ page = gcnew WPFClock::Clock();
@@ -183,7 +183,7 @@ return (HWND) source->Handle.ToPointer();
 
 ## <a name="positioning-the-hwnd"></a>Размещение класса HWND
 
-Теперь, когда создан HWND, содержащий [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] часы, необходимо поместить этот HWND в [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] диалоговое окно. Если известно, где разместить HWND, было бы просто передать размер и расположение для `GetHwnd` функцию, определенную ранее. Однако для определения диалогового окна вы использовали файл ресурсов, поэтому вы не совсем уверены, где размещаются HWND. Можно использовать [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] редактор диалоговых окон, чтобы поместить [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] СТАТИЧЕСКОГО элемента управления, где требуется часов («вставить часы здесь») и использовать его для размещения [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] часов.
+Теперь, когда создан HWND, содержащий WPF часы, необходимо поместить этот HWND в [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] диалоговое окно. Если известно, где разместить HWND, было бы просто передать размер и расположение для `GetHwnd` функцию, определенную ранее. Однако для определения диалогового окна вы использовали файл ресурсов, поэтому вы не совсем уверены, где размещаются HWND. Можно использовать [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] редактор диалоговых окон, чтобы поместить [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] СТАТИЧЕСКОГО элемента управления, где требуется часов («вставить часы здесь») и использовать его для размещения WPF часов.
 
 Месте обработки WM_INITDIALOG можно использовать `GetDlgItem` Чтобы получить HWND для местозаполнителя STATIC:
 
@@ -191,7 +191,7 @@ return (HWND) source->Handle.ToPointer();
 HWND placeholder = GetDlgItem(hDlg, IDC_CLOCK);
 ```
 
-Затем вычисляется размер и положение местозаполнителя STATIC, чтобы можно было поместить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] clock в этом месте:
+Затем вычисляется размер и положение местозаполнителя STATIC, чтобы можно было поместить WPF clock в этом месте:
 
 Прямоугольник RECT;
 
@@ -211,13 +211,13 @@ result = MapWindowPoints(NULL, hDlg, &point, 1);
 ShowWindow(placeholder, SW_HIDE);
 ```
 
-И создайте [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] HWND в этом расположении часов:
+И создайте WPF HWND в этом расположении часов:
 
 ```cpp
 HWND clock = ManagedCode::GetHwnd(hDlg, point.x, point.y, width, height);
 ```
 
-Чтобы сделать это руководство интересным и создать настоящие [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] часов, вам нужно будет создать [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] управления часов на этом этапе. Это делается, в основном, с помощью разметки, с использованием нескольких обработчиков событий в коде программной части. Поскольку это руководство о взаимодействии, а не о разработке элементов управления, полный код для [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] часов предоставляется здесь как блок кода без отдельных указаний по его построению и что означает каждая часть. Вы можете экспериментировать с этим кодом, чтобы изменить внешний вид и функциональность элемента управления.
+Чтобы сделать это руководство интересным и создать настоящие WPF часов, вам нужно будет создать WPF управления часов на этом этапе. Это делается, в основном, с помощью разметки, с использованием нескольких обработчиков событий в коде программной части. Поскольку это руководство о взаимодействии, а не о разработке элементов управления, полный код для WPF часов предоставляется здесь как блок кода без отдельных указаний по его построению и что означает каждая часть. Вы можете экспериментировать с этим кодом, чтобы изменить внешний вид и функциональность элемента управления.
 
 Ниже приводится пример разметки:
 

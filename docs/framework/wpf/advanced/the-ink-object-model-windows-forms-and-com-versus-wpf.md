@@ -44,7 +44,7 @@ ms.locfileid: "57356836"
   
  ![Схема модели объекта Ink для COM&#47;Winforms. ](./media/ink-inkownsstrokes.png "Ink_InkOwnsStrokes")  
   
- На [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], каждая <xref:System.Windows.Ink.Stroke?displayProperty=nameWithType> — это объект среды выполнения, которая существует до тех пор, пока что-нибудь имеет ссылку на него.  Каждый <xref:System.Windows.Ink.Stroke> ссылки <xref:System.Windows.Input.StylusPointCollection> и <xref:System.Windows.Ink.DrawingAttributes?displayProperty=nameWithType> объект, который также являются объектами среды CLR.  
+ На WPF, каждая <xref:System.Windows.Ink.Stroke?displayProperty=nameWithType> — это объект среды выполнения, которая существует до тех пор, пока что-нибудь имеет ссылку на него.  Каждый <xref:System.Windows.Ink.Stroke> ссылки <xref:System.Windows.Input.StylusPointCollection> и <xref:System.Windows.Ink.DrawingAttributes?displayProperty=nameWithType> объект, который также являются объектами среды CLR.  
   
  ![Схема модели объекта Ink для WPF. ](./media/ink-wpfinkobjectmodel.png "Ink_WPFInkObjectModel")  
   

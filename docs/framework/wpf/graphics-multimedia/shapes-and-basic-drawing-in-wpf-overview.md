@@ -26,7 +26,7 @@ ms.locfileid: "59189138"
 
 <a name="shapes"></a>   
 ## <a name="shape-objects"></a>Объекты фигур  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет ряд готовых к использованию <xref:System.Windows.Shapes.Shape> объектов.  Все объекты фигур наследуются от <xref:System.Windows.Shapes.Shape> класса. Доступные объекты фигур включают <xref:System.Windows.Shapes.Ellipse>, <xref:System.Windows.Shapes.Line>, <xref:System.Windows.Shapes.Path>, <xref:System.Windows.Shapes.Polygon>, <xref:System.Windows.Shapes.Polyline>, и <xref:System.Windows.Shapes.Rectangle>. <xref:System.Windows.Shapes.Shape> объекты используют перечисленные ниже общие свойства.  
+ WPF предоставляет ряд готовых к использованию <xref:System.Windows.Shapes.Shape> объектов.  Все объекты фигур наследуются от <xref:System.Windows.Shapes.Shape> класса. Доступные объекты фигур включают <xref:System.Windows.Shapes.Ellipse>, <xref:System.Windows.Shapes.Line>, <xref:System.Windows.Shapes.Path>, <xref:System.Windows.Shapes.Polygon>, <xref:System.Windows.Shapes.Polyline>, и <xref:System.Windows.Shapes.Rectangle>. <xref:System.Windows.Shapes.Shape> объекты используют перечисленные ниже общие свойства.  
   
 -   <xref:System.Windows.Shapes.Shape.Stroke%2A>: Описывает способ рисования контура фигуры.  
   

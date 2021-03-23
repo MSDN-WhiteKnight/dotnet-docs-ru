@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59323607"
 ---
 # <a name="how-to-enable-visual-styles-in-a-hybrid-application"></a>Практическое руководство. Включение визуальных стилей в гибридном приложении
-В этом разделе показано, как включить [!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)] визуальные стили на [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] размещение элементов управления в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-приложения на основе.  
+В этом разделе показано, как включить [!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)] визуальные стили на [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] размещение элементов управления в WPF-приложения на основе.  
   
  Если приложение вызывает <xref:System.Windows.Forms.Application.EnableVisualStyles%2A> метод, большая часть вашей [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементы управления будут автоматически использовать визуальные стили, если приложение запускается на компьютере [!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)]. Дополнительные сведения см. в разделе [отображение элементов управления с использованием стилей оформления](../../winforms/controls/rendering-controls-with-visual-styles.md).  
   
@@ -26,7 +26,7 @@ ms.locfileid: "59323607"
   
 #### <a name="to-enable-windows-forms-visual-styles"></a>Чтобы включить визуальные стили Windows Forms, выполните следующие действия.  
   
-1. Создание [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] проект приложения с именем `HostingWfWithVisualStyles`.  
+1. Создание WPF проект приложения с именем `HostingWfWithVisualStyles`.  
   
 2. В обозревателе решений добавьте ссылки на следующие сборки.  
   

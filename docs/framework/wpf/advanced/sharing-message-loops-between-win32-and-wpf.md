@@ -38,7 +38,7 @@ ms.locfileid: "59115080"
 -   <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A>: ваш цикл обработки сообщений должен вызывать его, чтобы указать, что доступно новое сообщение. Возвращаемое значение отражает ли прослушиватель для <xref:System.Windows.Interop.ComponentDispatcher> сообщение обработано событие. Если <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A> возвращает `true` (обработано), диспетчер в дальнейшем ничего с сообщением. Если возвращается значение `false`, диспетчер ожидает вызов [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] функция `TranslateMessage`, затем вызвать `DispatchMessage`.  
   
 ## <a name="using-componentdispatcher-and-existing-message-handling"></a>Использование диспетчера компонента и обработки существующих сообщений  
- Ниже приведен контрольный список <xref:System.Windows.Interop.ComponentDispatcher> членов, которые будет использовать при работе с внутренними запросами [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] цикл обработки сообщений.  
+ Ниже приведен контрольный список <xref:System.Windows.Interop.ComponentDispatcher> членов, которые будет использовать при работе с внутренними запросами WPF цикл обработки сообщений.  
   
 -   <xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A>: возвращает ли приложение становится модальным (например, цикл обработки сообщений модальное был отправлен). <xref:System.Windows.Interop.ComponentDispatcher> может отслеживать это состояние, так как класс хранит количество <xref:System.Windows.Interop.ComponentDispatcher.PushModal%2A> и <xref:System.Windows.Interop.ComponentDispatcher.PopModal%2A> вызовы из цикла обработки сообщений.  
   

@@ -65,11 +65,11 @@ ms.locfileid: "59087837"
   
 <a name="Binding_IList_to_ItemsControl_not_IEnumerable"></a>   
 ## <a name="bind-ilist-to-itemscontrol-not-ienumerable"></a>Привязка IList к ItemsControl не IEnumerable  
- Если у вас есть выбор между привязкой <xref:System.Collections.Generic.IList%601> или <xref:System.Collections.IEnumerable> для <xref:System.Windows.Controls.ItemsControl> , следует выбрать <xref:System.Collections.Generic.IList%601> объекта. Привязка <xref:System.Collections.IEnumerable> для <xref:System.Windows.Controls.ItemsControl> заставляет [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] создание оболочки <xref:System.Collections.Generic.IList%601> объектом, то есть производительность зависит также от лишняя нагрузка от второго объекта.  
+ Если у вас есть выбор между привязкой <xref:System.Collections.Generic.IList%601> или <xref:System.Collections.IEnumerable> для <xref:System.Windows.Controls.ItemsControl> , следует выбрать <xref:System.Collections.Generic.IList%601> объекта. Привязка <xref:System.Collections.IEnumerable> для <xref:System.Windows.Controls.ItemsControl> заставляет WPF создание оболочки <xref:System.Collections.Generic.IList%601> объектом, то есть производительность зависит также от лишняя нагрузка от второго объекта.  
   
 <a name="Do_not_Convert_CLR_objects_to_Xml_Just_For_Data_Binding"></a>   
 ## <a name="do-not-convert-clr-objects-to-xml-just-for-data-binding"></a>Не преобразовывайте объекты среды CLR в XML только для привязки данных.  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] позволяет привязать данные к [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] содержимого; Однако привязка данных к [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] содержимого выполняется медленнее, чем привязка данных к [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)] объектов. Не преобразуйте данные объекта [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)] в XML, если единственной целью этого является привязка данных.  
+ WPF позволяет привязать данные к [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] содержимого; Однако привязка данных к [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] содержимого выполняется медленнее, чем привязка данных к [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)] объектов. Не преобразуйте данные объекта [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)] в XML, если единственной целью этого является привязка данных.  
   
 ## <a name="see-also"></a>См. также
 

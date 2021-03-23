@@ -19,7 +19,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59317211"
 ---
 # <a name="optimizing-performance-text"></a>Оптимизация производительности: Текста
-[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] включает поддержку представления текстового контента с помощью многофункциональных [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] элементов управления. В целом можно разделить отрисовку текста на три уровня.  
+WPF включает поддержку представления текстового контента с помощью многофункциональных [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] элементов управления. В целом можно разделить отрисовку текста на три уровня.  
   
 1. С помощью <xref:System.Windows.Documents.Glyphs> и <xref:System.Windows.Media.GlyphRun> объекты непосредственно.  
   
@@ -57,7 +57,7 @@ ms.locfileid: "59317211"
 ### <a name="using-drawglyphrun"></a>Использование DrawGlyphRun  
  Если у вас есть пользовательский элемент управления, и вы хотите отобразить глифы, используйте <xref:System.Windows.Media.DrawingContext.DrawGlyphRun%2A> метод.  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] также предоставляет службы более низкого уровня для пользовательского форматирования с помощью объекта текста <xref:System.Windows.Media.FormattedText> объекта. Наиболее эффективным способом отрисовки текста в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] является создание текстового контента на уровне глифа с помощью <xref:System.Windows.Documents.Glyphs> и <xref:System.Windows.Media.GlyphRun>. Однако ценой этой эффективности будет потеря прост в использовании форматирования RTF, которые являются встроенными функциями из [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] элементы управления, такие как <xref:System.Windows.Controls.TextBlock> и <xref:System.Windows.Documents.FlowDocument>.  
+ WPF также предоставляет службы более низкого уровня для пользовательского форматирования с помощью объекта текста <xref:System.Windows.Media.FormattedText> объекта. Наиболее эффективным способом отрисовки текста в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] является создание текстового контента на уровне глифа с помощью <xref:System.Windows.Documents.Glyphs> и <xref:System.Windows.Media.GlyphRun>. Однако ценой этой эффективности будет потеря прост в использовании форматирования RTF, которые являются встроенными функциями из [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] элементы управления, такие как <xref:System.Windows.Controls.TextBlock> и <xref:System.Windows.Documents.FlowDocument>.  
   
 <a name="FormattedText_Object"></a>   
 ## <a name="formattedtext-object"></a>Объект FormattedText  
@@ -74,7 +74,7 @@ ms.locfileid: "59317211"
   
 <a name="FlowDocument_TextBlock_Label"></a>   
 ## <a name="flowdocument-textblock-and-label-controls"></a>Элементы управления FlowDocument, TextBlock и Label  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений.  
+ WPF содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений.  
   
 ### <a name="flowdocument-impacts-performance-more-than-textblock-or-label"></a>FlowDocument влияет на производительность больше, чем TextBlock и Label  
  В общем случае <xref:System.Windows.Controls.TextBlock> элемент должен использоваться при необходимости, например короткого предложения в ограниченная поддержка текста [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. <xref:System.Windows.Controls.Label> может использоваться, если требуется Минимальная текстовая поддержка. <xref:System.Windows.Documents.FlowDocument> Элемент — это контейнер для документов плавающей верстки, поддерживающих представление форматированного контента и таким образом, имеет большее влияние на производительность, чем при использовании <xref:System.Windows.Controls.TextBlock> или <xref:System.Windows.Controls.Label> элементов управления.  
@@ -149,10 +149,10 @@ ms.locfileid: "59317211"
   
 <a name="Text_Formatting_Features"></a>   
 ## <a name="text-formatting-features"></a>Возможности форматирования текста  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] предоставляет службы, такие как автоматическая расстановка переносов форматирования RTF. Эти службы могут влиять на производительность приложения и должны использоваться только при необходимости.  
+ WPF предоставляет службы, такие как автоматическая расстановка переносов форматирования RTF. Эти службы могут влиять на производительность приложения и должны использоваться только при необходимости.  
   
 ### <a name="avoid-unnecessary-use-of-hyphenation"></a>Избегайте излишнего использования расстановки переносов  
- Автоматическая расстановка переносов находит точки останова дефиса для строк текста и разрешает дополнительные позиции разрыва для строк в <xref:System.Windows.Controls.TextBlock> и <xref:System.Windows.Documents.FlowDocument> объектов. По умолчанию возможность автоматического переноса в этих объектах отключена. Эту функцию можно включить, установив свойство IsHyphenationEnabled объекта в значение `true`. Однако включение этой функции заставляет [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] инициировать взаимодействие [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], которое может повлиять на производительность приложения. Рекомендуется не использовать автоматическую расстановку переносов, если это не является обязательным.  
+ Автоматическая расстановка переносов находит точки останова дефиса для строк текста и разрешает дополнительные позиции разрыва для строк в <xref:System.Windows.Controls.TextBlock> и <xref:System.Windows.Documents.FlowDocument> объектов. По умолчанию возможность автоматического переноса в этих объектах отключена. Эту функцию можно включить, установив свойство IsHyphenationEnabled объекта в значение `true`. Однако включение этой функции заставляет WPF инициировать взаимодействие [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], которое может повлиять на производительность приложения. Рекомендуется не использовать автоматическую расстановку переносов, если это не является обязательным.  
   
 ### <a name="use-figures-carefully"></a>Внимательно используйте рисунки  
  Объект <xref:System.Windows.Documents.Figure> элемент представляет часть неформатированного содержимого, которое может быть абсолютно позиционировано внутри страницы содержимого. В некоторых случаях <xref:System.Windows.Documents.Figure> может привести к целой страницы автоматическое переформатирование, если ее положение конфликтует с уже размещенным содержимым. Можно свести к минимуму вероятность ненужного переформатирования либо путем группировки <xref:System.Windows.Documents.Figure> элементов друг с другом, либо объявить их в верхней части содержимого в сценарии фиксированного размера страницы.  

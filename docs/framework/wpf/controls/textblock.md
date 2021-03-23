@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57358916"
 ---
 # <a name="textblock"></a>TextBlock
-<xref:System.Windows.Controls.TextBlock> Управления обеспечивает гибкую поддержку текста для [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложений. Элемент в основном предназначен для базовых сценариев [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], которые не требуют более одного абзаца текста.  
+<xref:System.Windows.Controls.TextBlock> Управления обеспечивает гибкую поддержку текста для WPF приложений. Элемент в основном предназначен для базовых сценариев [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], которые не требуют более одного абзаца текста.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о TextBlock](textblock-overview.md)  

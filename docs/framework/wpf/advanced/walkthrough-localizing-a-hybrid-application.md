@@ -14,7 +14,7 @@ ms.locfileid: "59329301"
 ---
 # <a name="walkthrough-localizing-a-hybrid-application"></a>Пошаговое руководство. Локализация гибридного приложения
 
-В этом пошаговом руководстве показано, как локализовать [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] элементов в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]-гибридные приложения на основе.
+В этом пошаговом руководстве показано, как локализовать WPF элементов в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]-гибридные приложения на основе.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -40,19 +40,19 @@ ms.locfileid: "59329301"
 
 ## <a name="creating-the-windows-forms-host-project"></a>Создание ведущего проекта Windows Forms
 
-Первым шагом является создание [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] приложения проекта и добавьте [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] элемент содержимого, которое будет локализовано.
+Первым шагом является создание [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] приложения проекта и добавьте WPF элемент содержимого, которое будет локализовано.
 
 ### <a name="to-create-the-host-project"></a>Создание ведущего проекта
 
 1. Создание **приложение WPF** проект с именем `LocalizingWpfInWf`.  (**Файл** > **новый** > **проекта** > **Visual C#** или **Visual Basic**   >  **Классический рабочий стол** > **приложение WPF**).
 
-2. Добавить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]<xref:System.Windows.Controls.UserControl> элемент с именем `SimpleControl` в проект.
+2. Добавить WPF<xref:System.Windows.Controls.UserControl> элемент с именем `SimpleControl` в проект.
 
 3. Используйте <xref:System.Windows.Forms.Integration.ElementHost> элементу управления размещение `SimpleControl` элемент на форме. Дополнительные сведения см. в разделе [Пошаговое руководство: Размещение составного элемента управления WPF, трехмерного в Windows Forms](walkthrough-hosting-a-3-d-wpf-composite-control-in-windows-forms.md).
 
 ## <a name="adding-localizable-content"></a>Добавление локализуемого содержимого
 
-Далее вы добавите [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] метки элемента управления и задайте [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержимое элемента Локализованная строка.
+Далее вы добавите [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] метки элемента управления и задайте WPF содержимое элемента Локализованная строка.
 
 ### <a name="to-add-localizable-content"></a>Добавление локализуемого содержимого
 
@@ -134,7 +134,7 @@ ms.locfileid: "59329301"
 
 ## <a name="using-locbaml-to-produce-a-satellite-assembly"></a>Использование LocBaml для создания вспомогательной сборки
 
-Локализованное содержимое хранится в содержащей только ресурсы *вспомогательную сборку*. Используйте средство командной строки LocBaml.exe, чтобы создать локализованную сборку для вашей [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] содержимого.
+Локализованное содержимое хранится в содержащей только ресурсы *вспомогательную сборку*. Используйте средство командной строки LocBaml.exe, чтобы создать локализованную сборку для вашей WPF содержимого.
 
 ### <a name="to-produce-a-satellite-assembly"></a>Создание вспомогательной сборки
 

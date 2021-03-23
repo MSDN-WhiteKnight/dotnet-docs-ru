@@ -36,9 +36,9 @@ ms.locfileid: "59312063"
 |<xref:System.Windows.IDataObject.GetFormats%2A>|Возвращает список форматов, которые хранятся в данные в этом объекте данных, или может быть преобразован в.|  
 |<xref:System.Windows.IDataObject.SetData%2A>|Сохраняет указанные данные в этом объекте данных.|  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Предоставляет базовую реализацию <xref:System.Windows.IDataObject> в <xref:System.Windows.DataObject> класса. Акции <xref:System.Windows.DataObject> класс является достаточным для многих распространенных сценариев передачи данных.  
+ WPF Предоставляет базовую реализацию <xref:System.Windows.IDataObject> в <xref:System.Windows.DataObject> класса. Акции <xref:System.Windows.DataObject> класс является достаточным для многих распространенных сценариев передачи данных.  
   
- Существует несколько предварительно определенных форматов, таких как растровое изображение, CSV, файл, HTML, RTF, строки, текст и аудио. Сведения о преопределенных форматах данных в состав [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], см. в разделе <xref:System.Windows.DataFormats> класс справочном разделе.  
+ Существует несколько предварительно определенных форматов, таких как растровое изображение, CSV, файл, HTML, RTF, строки, текст и аудио. Сведения о преопределенных форматах данных в состав WPF, см. в разделе <xref:System.Windows.DataFormats> класс справочном разделе.  
   
  Объекты данных обычно включают средства для автоматического преобразования данных, хранящихся в одного формата в другой формат при извлечении данных; Это средство называется автоматический переход. При запросе форматов данных, доступных в объекте данных, автоматически преобразуемые форматы могут фильтроваться из собственных форматов данных, вызвав <xref:System.Windows.DataObject.GetFormats%28System.Boolean%29> или <xref:System.Windows.DataObject.GetDataPresent%28System.String%2CSystem.Boolean%29> и задав `autoConvert` параметра в виде `false`.  При добавлении данных в объект данных с <xref:System.Windows.DataObject.SetData%28System.String%2CSystem.Object%2CSystem.Boolean%29> метод, автоматическое преобразование данных может быть запрещено, задав `autoConvert` параметр `false`.  
   

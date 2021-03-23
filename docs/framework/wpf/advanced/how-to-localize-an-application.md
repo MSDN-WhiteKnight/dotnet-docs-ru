@@ -81,7 +81,7 @@ ms.locfileid: "59298322"
 <a name="build_locbaml"></a>   
 ## <a name="build-the-locbaml-tool"></a>Построение средства LocBaml  
   
-1. Все файлы, необходимые для построения LocBaml, находятся в примерах [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]. Загрузить файлы C# с [средства LocBaml](https://go.microsoft.com/fwlink/?LinkID=160016).  
+1. Все файлы, необходимые для построения LocBaml, находятся в примерах WPF. Загрузить файлы C# с [средства LocBaml](https://go.microsoft.com/fwlink/?LinkID=160016).  
   
 2. Из командной строки запустите файл проекта (locbaml.csproj), чтобы построить это средство:  
   

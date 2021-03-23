@@ -34,7 +34,7 @@ ms.locfileid: "59097230"
   
  В этом примере отображаются названия книг, так как <xref:System.Windows.Data.Binding.XPath%2A> из <xref:System.Windows.Controls.TextBlock> привязки в <xref:System.Windows.DataTemplate> имеет значение "*Title*«. Если вы хотите отображать значение атрибута, например *ISBN*, следует установить для <xref:System.Windows.Data.Binding.XPath%2A> значение "`@ISBN`«.  
   
- Свойства **XPath** в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] обрабатываются методом XmlNode.SelectNodes. Можно изменить запросы **XPath** для получения других результатов. Ниже приведено несколько примеров для <xref:System.Windows.Data.Binding.XPath%2A> запрос к привязанному элементу <xref:System.Windows.Controls.ListBox> из предыдущего примера:  
+ Свойства **XPath** в WPF обрабатываются методом XmlNode.SelectNodes. Можно изменить запросы **XPath** для получения других результатов. Ниже приведено несколько примеров для <xref:System.Windows.Data.Binding.XPath%2A> запрос к привязанному элементу <xref:System.Windows.Controls.ListBox> из предыдущего примера:  
   
 -   `XPath="Book[1]"` Возвращает первый элемент книги («XML в действии»). Обратите внимание, что индексы **XPath** основаны на 1, а не на 0.  
   

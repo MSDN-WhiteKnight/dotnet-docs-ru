@@ -24,4 +24,4 @@ ms.locfileid: "59305680"
   
  `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.0\Setup\Windows Presentation Foundation`  
   
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Номер версии хранится в **версии** значение.
+ WPF Номер версии хранится в **версии** значение.

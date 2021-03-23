@@ -13,7 +13,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59340494"
 ---
 # <a name="multimedia-overview"></a>Общие сведения о мультимедиа
-Мультимедийные возможности [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] позволяют интегрировать аудио и видео в приложения для расширения возможностей пользователя. В этом разделе представлены мультимедийные возможности [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].  
+Мультимедийные возможности [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] позволяют интегрировать аудио и видео в приложения для расширения возможностей пользователя. В этом разделе представлены мультимедийные возможности WPF.  
 
 <a name="mediaapi"></a>   
 ## <a name="media-api"></a>API мультимедиа  

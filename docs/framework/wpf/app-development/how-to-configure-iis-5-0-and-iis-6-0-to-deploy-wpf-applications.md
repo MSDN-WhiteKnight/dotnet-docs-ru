@@ -24,7 +24,7 @@ ms.locfileid: "59096294"
 
 Приложение [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] можно разворачивать с большинства веб-серверов при условии, что они настроены с соответствующими типами [!INCLUDE[TLA#tla_mime](../../../../includes/tlasharptla-mime-md.md)]. По умолчанию [!INCLUDE[TLA#tla_iis70](../../../../includes/tlasharptla-iis70-md.md)] настроена с типами [!INCLUDE[TLA2#tla_mime](../../../../includes/tla2sharptla-mime-md.md)], в отличие от [!INCLUDE[TLA#tla_iis50](../../../../includes/tlasharptla-iis50-md.md)] и [!INCLUDE[TLA#tla_iis60](../../../../includes/tlasharptla-iis60-md.md)].
 
-В этом разделе описывается настройка [!INCLUDE[TLA#tla_iis50](../../../../includes/tlasharptla-iis50-md.md)] и [!INCLUDE[TLA#tla_iis60](../../../../includes/tlasharptla-iis60-md.md)] для развертывания приложений [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)].
+В этом разделе описывается настройка [!INCLUDE[TLA#tla_iis50](../../../../includes/tlasharptla-iis50-md.md)] и [!INCLUDE[TLA#tla_iis60](../../../../includes/tlasharptla-iis60-md.md)] для развертывания приложений WPF.
 
 > [!NOTE]
 > Вы можете проверить *UserAgent* строку в реестре, чтобы определить, имеет ли система установлена платформа .NET Framework. Дополнительные сведения и скрипт, проверяющий *UserAgent* строку, чтобы определить, установлена ли платформа .NET Framework в системе, см. в разделе [обнаруживать ли .NET Framework 3.0 устанавливается](how-to-detect-whether-the-net-framework-3-0-is-installed.md).

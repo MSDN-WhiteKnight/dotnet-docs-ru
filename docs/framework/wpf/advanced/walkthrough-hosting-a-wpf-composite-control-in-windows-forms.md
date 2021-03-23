@@ -12,11 +12,11 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59322840"
 ---
 # <a name="walkthrough-hosting-a-wpf-composite-control-in-windows-forms"></a>Пошаговое руководство. Размещение составного элемента управления WPF в форме Windows Forms
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет среду с широкими возможностями для создания приложений. Тем не менее, если имеются существенные преимущества в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] код, он может быть более эффективным, расширение существующего [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] приложения с [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] , а не переписывание кода с нуля. Распространенный сценарий — при необходимости внедрения одного или нескольких элементов управления, реализованных с [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] в приложении Windows Forms. Дополнительные сведения о настройке элементов управления WPF, см. в разделе [Настройка элементов управления](../controls/control-customization.md).  
+[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет среду с широкими возможностями для создания приложений. Тем не менее, если имеются существенные преимущества в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] код, он может быть более эффективным, расширение существующего [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] приложения с WPF , а не переписывание кода с нуля. Распространенный сценарий — при необходимости внедрения одного или нескольких элементов управления, реализованных с WPF в приложении Windows Forms. Дополнительные сведения о настройке элементов управления WPF, см. в разделе [Настройка элементов управления](../controls/control-customization.md).  
   
- В этом пошаговом руководстве пошагово продемонстрирует приложение, на котором размещена [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления для ввода данных в приложении Windows Forms. Составной элемент управления упакован в библиотеку DLL. Эта общая процедура может быть расширена для более сложных приложений и элементов управления. В этом пошаговом руководстве должна быть почти идентично повторяет свойства и функциональные возможности для [Пошаговое руководство: Размещение Windows Forms составного элемента управления в WPF](walkthrough-hosting-a-windows-forms-composite-control-in-wpf.md). Основным отличием является то, что сценарий размещения выполняется в обратном порядке.  
+ В этом пошаговом руководстве пошагово продемонстрирует приложение, на котором размещена WPF составного элемента управления для ввода данных в приложении Windows Forms. Составной элемент управления упакован в библиотеку DLL. Эта общая процедура может быть расширена для более сложных приложений и элементов управления. В этом пошаговом руководстве должна быть почти идентично повторяет свойства и функциональные возможности для [Пошаговое руководство: Размещение Windows Forms составного элемента управления в WPF](walkthrough-hosting-a-windows-forms-composite-control-in-wpf.md). Основным отличием является то, что сценарий размещения выполняется в обратном порядке.  
   
- Пошаговое руководство состоит из двух разделов. В первом разделе кратко описывается реализация [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления. Во втором разделе подробно рассматриваются размещение составного элемента управления в приложении Windows Forms, получение событий от него и доступ к некоторым свойствам элемента управления.  
+ Пошаговое руководство состоит из двух разделов. В первом разделе кратко описывается реализация WPF составного элемента управления. Во втором разделе подробно рассматриваются размещение составного элемента управления в приложении Windows Forms, получение событий от него и доступ к некоторым свойствам элемента управления.  
   
  В данном пошаговом руководстве представлены следующие задачи.  
   
@@ -31,7 +31,7 @@ ms.locfileid: "59322840"
 Для выполнения шагов, описанных в этом руководстве, вам понадобится Visual Studio.  
   
 ## <a name="implementing-the-wpf-composite-control"></a>Реализация составного элемента управления WPF  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Составного элемента управления, используемый в этом примере представляет собой форму простого ввода данных, который принимает имя и адрес пользователя. Когда пользователь нажимает одну из двух кнопок, чтобы указать, что задача завершена, элемент управления создает пользовательское событие для возвращения сведений в ведущее приложение. На приведенном ниже рисунке показан отображаемый элемент управления. 
+ WPF Составного элемента управления, используемый в этом примере представляет собой форму простого ввода данных, который принимает имя и адрес пользователя. Когда пользователь нажимает одну из двух кнопок, чтобы указать, что задача завершена, элемент управления создает пользовательское событие для возвращения сведений в ведущее приложение. На приведенном ниже рисунке показан отображаемый элемент управления. 
 
  На следующем рисунке показана составного элемента управления WPF: 
 
@@ -66,7 +66,7 @@ ms.locfileid: "59322840"
  [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] Для составного элемента управления реализуется с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)]. Составной элемент управления [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] состоит из пяти <xref:System.Windows.Controls.TextBox> элементов. Каждый <xref:System.Windows.Controls.TextBox> имеет связанный элемент <xref:System.Windows.Controls.TextBlock> элемент, который служит в качестве метки. Существует два <xref:System.Windows.Controls.Button> элементов внизу **ОК** и **отменить**. При нажатии любой кнопки элемент управления создает пользовательское событие для возвращения сведений в ведущее приложение.  
   
 #### <a name="basic-layout"></a>Базовый макет  
- Различные [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементы содержатся в <xref:System.Windows.Controls.Grid> элемент. Можно использовать <xref:System.Windows.Controls.Grid> для размещения содержимого составного элемента управления практически таким же способом можно использовать `Table` элемент в формате HTML. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] также имеет <xref:System.Windows.Documents.Table> элемент, но <xref:System.Windows.Controls.Grid> проще и лучше выполняются простые задачи компоновки.  
+ Различные [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементы содержатся в <xref:System.Windows.Controls.Grid> элемент. Можно использовать <xref:System.Windows.Controls.Grid> для размещения содержимого составного элемента управления практически таким же способом можно использовать `Table` элемент в формате HTML. WPF также имеет <xref:System.Windows.Documents.Table> элемент, но <xref:System.Windows.Controls.Grid> проще и лучше выполняются простые задачи компоновки.  
   
  В приведенном ниже коде XAML показан базовый макет. Этот XAML определяет общую структуру элемента управления, указав число столбцов и строк в <xref:System.Windows.Controls.Grid> элемент.  
   
@@ -87,7 +87,7 @@ ms.locfileid: "59322840"
 #### <a name="styling-the-ui-elements"></a>Создание стилей элементов пользовательского интерфейса  
  Многие элементы в форме для ввода данных имеют одинаковый внешний вид. Это означает, что они имеют одинаковые значения нескольких свойств. Вместо того чтобы задавать атрибуты каждого элемента в отдельности, использует предыдущего XAML <xref:System.Windows.Style> элементы для определения стандартных значений свойств для классов элементов. Такой подход упрощает элемент управления и позволяет изменять внешний вид нескольких элементов посредством одного атрибута стиля.  
   
- <xref:System.Windows.Style> Элементы содержатся в <xref:System.Windows.Controls.Grid> элемента <xref:System.Windows.FrameworkElement.Resources%2A> свойство, поэтому они могут использоваться всеми элементами в элементе управления. Если стиль имеет имя, его применить к элементу, добавив <xref:System.Windows.Style> элементу присвоено имя стиля. Неименованные стили становятся стилями по умолчанию для элемента. Дополнительные сведения о [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] стили, см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
+ <xref:System.Windows.Style> Элементы содержатся в <xref:System.Windows.Controls.Grid> элемента <xref:System.Windows.FrameworkElement.Resources%2A> свойство, поэтому они могут использоваться всеми элементами в элементе управления. Если стиль имеет имя, его применить к элементу, добавив <xref:System.Windows.Style> элементу присвоено имя стиля. Неименованные стили становятся стилями по умолчанию для элемента. Дополнительные сведения о WPF стили, см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
   
  В следующем XAML показан <xref:System.Windows.Style> элементы для составного элемента управления. Чтобы увидеть, как стили применяются к элементам, см. предыдущий код XAML. Например, последний <xref:System.Windows.Controls.TextBlock> элемент имеет `inlineText` стиля, а последний <xref:System.Windows.Controls.TextBox> элемент использует стиль по умолчанию.  
   
@@ -180,7 +180,7 @@ namespace MyControls
   
 <a name="winforms_host_section"></a>   
 ## <a name="implementing-the-windows-forms-host-application"></a>Реализация ведущего приложения Windows Forms  
- Windows Forms разместить приложение использует <xref:System.Windows.Forms.Integration.ElementHost> объект узла [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления. Приложение обрабатывает `OnButtonClick` событий для получения данных из составного элемента управления. Приложение также содержит набор переключателей, которые можно использовать для изменения внешнего вида элемента управления. На рисунке ниже показано приложение.  
+ Windows Forms разместить приложение использует <xref:System.Windows.Forms.Integration.ElementHost> объект узла WPF составного элемента управления. Приложение обрабатывает `OnButtonClick` событий для получения данных из составного элемента управления. Приложение также содержит набор переключателей, которые можно использовать для изменения внешнего вида элемента управления. На рисунке ниже показано приложение.  
 
 На следующем рисунке показана составной элемент управления WPF в приложении Windows Forms»  
 
@@ -226,7 +226,7 @@ namespace MyControls
   
 2. Увеличьте форму, чтобы разместить элементы управления.  
   
-3. В правом верхнем углу формы добавьте <xref:System.Windows.Forms.Panel?displayProperty=nameWithType> управления для хранения [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления.  
+3. В правом верхнем углу формы добавьте <xref:System.Windows.Forms.Panel?displayProperty=nameWithType> управления для хранения WPF составного элемента управления.  
   
 4. Добавьте следующий <xref:System.Windows.Forms.GroupBox?displayProperty=nameWithType> элементов управления в форму.  
   
@@ -261,7 +261,7 @@ namespace MyControls
     |groupBox6|radioWeightOriginal|До преобразования|  
     |groupBox6|radioWeightBold|Полужирный|  
   
-6. Добавьте следующий <xref:System.Windows.Forms.Label?displayProperty=nameWithType> управляет к последнему <xref:System.Windows.Forms.GroupBox?displayProperty=nameWithType>. Эти элементы управления отображают данные, возвращенные [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления.  
+6. Добавьте следующий <xref:System.Windows.Forms.Label?displayProperty=nameWithType> управляет к последнему <xref:System.Windows.Forms.GroupBox?displayProperty=nameWithType>. Эти элементы управления отображают данные, возвращенные WPF составного элемента управления.  
   
     |GroupBox|name|Текста|  
     |--------------|----------|----------|  
@@ -272,7 +272,7 @@ namespace MyControls
     |groupBox7|lblZip|Почтовый индекс:|  
   
 ### <a name="initializing-the-form"></a>Инициализация формы  
- Код размещения обычно реализуется в виде <xref:System.Windows.Forms.Form.Load> обработчик событий. В следующем коде показан <xref:System.Windows.Forms.Form.Load> обработчик событий, обработчик для [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] составного элемента управления <xref:System.Windows.FrameworkElement.Loaded> событий и объявления нескольких глобальных переменных, которые будут использоваться позже.  
+ Код размещения обычно реализуется в виде <xref:System.Windows.Forms.Form.Load> обработчик событий. В следующем коде показан <xref:System.Windows.Forms.Form.Load> обработчик событий, обработчик для WPF составного элемента управления <xref:System.Windows.FrameworkElement.Loaded> событий и объявления нескольких глобальных переменных, которые будут использоваться позже.  
   
  В конструкторе Windows Forms дважды щелкните форму, чтобы создать <xref:System.Windows.Forms.Form.Load> обработчик событий. В начале файла Form1.cs добавьте следующий код `using` инструкций.  
   
@@ -282,7 +282,7 @@ namespace MyControls
   
  [!code-csharp[WindowsFormsHostingWpfControl#2](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsFormsHostingWpfControl/CSharp/WFHost/Form1.cs#2)]  
   
- `Form1_Load` Метод в приведенном выше коде показывает общую процедуру размещения [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] управления:  
+ `Form1_Load` Метод в приведенном выше коде показывает общую процедуру размещения WPF управления:  
   
 1. Создайте новый <xref:System.Windows.Forms.Integration.ElementHost> объекта.  
   
@@ -290,7 +290,7 @@ namespace MyControls
   
 3. Добавить <xref:System.Windows.Forms.Integration.ElementHost> управления <xref:System.Windows.Forms.Panel> элемента управления <xref:System.Windows.Forms.Control.Controls%2A> коллекции.  
   
-4. Создайте экземпляр [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] элемента управления.  
+4. Создайте экземпляр WPF элемента управления.  
   
 5. Размещение составного элемента управления в форме путем назначения элемента управления в <xref:System.Windows.Forms.Integration.ElementHost> элемента управления <xref:System.Windows.Forms.Integration.ElementHost.Child%2A> свойство.  
   
@@ -298,7 +298,7 @@ namespace MyControls
   
 -   `OnButtonClick` — пользовательское событие, инициируемое составным элементом управления, когда пользователь щелкает **ОК** или **отменить** кнопки. Обработайте событие для получения ответа пользователя и сбора всех введенных им данных.  
   
--   <xref:System.Windows.FrameworkElement.Loaded> — стандартное событие, вызванное объектом [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] когда он находится полностью загружен. Это событие используется здесь потому, что для примера необходима инициализация нескольких глобальных переменных свойствами элемента управления. Во время в формате <xref:System.Windows.Forms.Form.Load> событий, элемент управления не полностью загружен, и по-прежнему установлены эти значения `null`. Необходимо подождать до элемента управления <xref:System.Windows.FrameworkElement.Loaded> событие возникает для доступа к этим свойствам.  
+-   <xref:System.Windows.FrameworkElement.Loaded> — стандартное событие, вызванное объектом WPF когда он находится полностью загружен. Это событие используется здесь потому, что для примера необходима инициализация нескольких глобальных переменных свойствами элемента управления. Во время в формате <xref:System.Windows.Forms.Form.Load> событий, элемент управления не полностью загружен, и по-прежнему установлены эти значения `null`. Необходимо подождать до элемента управления <xref:System.Windows.FrameworkElement.Loaded> событие возникает для доступа к этим свойствам.  
   
  <xref:System.Windows.FrameworkElement.Loaded> В приведенном выше коде показан обработчик событий. `OnButtonClick` Обработчик рассматривается в следующем разделе.  
   
@@ -314,7 +314,7 @@ namespace MyControls
  Выполните сборку и запуск приложения. Добавьте какой-нибудь текст в составной элемент управления WPF и нажмите кнопку **ОК**. Текст отображается в метках. На данном этапе код для обработки переключателей еще не добавлен.  
   
 ### <a name="modifying-the-appearance-of-the-control"></a>Изменение внешнего вида элемента управления  
- <xref:System.Windows.Forms.RadioButton> Элементов управления в форме позволит пользователю изменять [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] переднего плана и фона составного элемента управления цветов, а также ряд свойств шрифта. Цвет фона предоставляется командлетом <xref:System.Windows.Forms.Integration.ElementHost> объекта. Остальные свойства предоставляются как настраиваемые свойства элемента управления.  
+ <xref:System.Windows.Forms.RadioButton> Элементов управления в форме позволит пользователю изменять WPF переднего плана и фона составного элемента управления цветов, а также ряд свойств шрифта. Цвет фона предоставляется командлетом <xref:System.Windows.Forms.Integration.ElementHost> объекта. Остальные свойства предоставляются как настраиваемые свойства элемента управления.  
   
  Дважды щелкните каждую <xref:System.Windows.Forms.RadioButton> управления на форму, чтобы создать <xref:System.Windows.Forms.RadioButton.CheckedChanged> обработчики событий. Замените <xref:System.Windows.Forms.RadioButton.CheckedChanged> обработчики событий следующим кодом.  
   

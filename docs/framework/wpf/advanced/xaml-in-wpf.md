@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57362907"
 ---
 # <a name="xaml-in-wpf"></a>XAML в WPF
-[!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] — это язык разметки для декларативной приложения программирования. [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] реализован обработчик и обеспечивает поддержку языка XAML. [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Типы реализованы таким образом, что они предоставляют требуемый тип, резервирующий представление XAML. Как правило, можно создать большую часть вашей [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] пользовательский Интерфейс приложения в разметке XAML.  
+[!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] — это язык разметки для декларативной приложения программирования. [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] реализован обработчик и обеспечивает поддержку языка XAML. WPF Типы реализованы таким образом, что они предоставляют требуемый тип, резервирующий представление XAML. Как правило, можно создать большую часть вашей WPF пользовательский Интерфейс приложения в разметке XAML.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о языке XAML (WPF)](xaml-overview-wpf.md)  

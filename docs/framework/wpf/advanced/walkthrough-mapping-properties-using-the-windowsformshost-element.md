@@ -17,7 +17,7 @@ ms.locfileid: "59296528"
 ---
 # <a name="walkthrough-mapping-properties-using-the-windowsformshost-element"></a>Пошаговое руководство. Сопоставление свойств с помощью элемента WindowsFormsHost
 
-В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.WindowsFormsHost.PropertyMap%2A> свойства для сопоставления [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.WindowsFormsHost.PropertyMap%2A> свойства для сопоставления WPF свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -35,7 +35,7 @@ ms.locfileid: "59296528"
 
 Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [сопоставления свойств с помощью образец элемента WindowsFormsHost](https://go.microsoft.com/fwlink/?LinkID=160019).
 
-Когда вы закончите, можно сопоставить [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+Когда вы закончите, можно сопоставить WPF свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -53,7 +53,7 @@ ms.locfileid: "59296528"
 
 ## <a name="defining-the-application-layout"></a>Определение макета приложения
 
-[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)]-Основе приложением <xref:System.Windows.Forms.Integration.WindowsFormsHost> для размещения элемента [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+WPF-Основе приложением <xref:System.Windows.Forms.Integration.WindowsFormsHost> для размещения элемента [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
 
 ### <a name="to-define-the-application-layout"></a>Определение макета приложения
 

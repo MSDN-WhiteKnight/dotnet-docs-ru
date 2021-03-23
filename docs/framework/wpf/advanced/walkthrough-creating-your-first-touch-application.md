@@ -18,7 +18,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59326987"
 ---
 # <a name="walkthrough-creating-your-first-touch-application"></a>Пошаговое руководство. Создание первого приложения для обработки касаний
-[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] позволяет приложениям реагировать на касание. Например может взаимодействовать с приложением с помощью одного или более пальцами сенсорные устройства, например сенсорный экран, в этом пошаговом руководстве создается приложение, которое позволяет пользователю перемещать, изменять размер или поворот объекта с использованием сенсорного ввода.  
+WPF позволяет приложениям реагировать на касание. Например может взаимодействовать с приложением с помощью одного или более пальцами сенсорные устройства, например сенсорный экран, в этом пошаговом руководстве создается приложение, которое позволяет пользователю перемещать, изменять размер или поворот объекта с использованием сенсорного ввода.  
   
 ## <a name="prerequisites"></a>Предварительные требования  
  Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.  
@@ -27,7 +27,7 @@ ms.locfileid: "59326987"
   
 -   Устройство, которое принимает сенсорного ввода, например сенсорный экран, который поддерживает Windows Touch.  
   
- Кроме того, должен иметь базовое представление о том, как создать приложение в [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)], особенно как подписаться на и как обрабатывать событие. Дополнительные сведения см. в разделе [Пошаговое руководство: Создание первого классического приложения WPF](../getting-started/walkthrough-my-first-wpf-desktop-application.md).  
+ Кроме того, должен иметь базовое представление о том, как создать приложение в WPF, особенно как подписаться на и как обрабатывать событие. Дополнительные сведения см. в разделе [Пошаговое руководство: Создание первого классического приложения WPF](../getting-started/walkthrough-my-first-wpf-desktop-application.md).  
   
 ## <a name="creating-the-application"></a>Создание приложения  
   
@@ -45,7 +45,7 @@ ms.locfileid: "59326987"
   
 4. В `MainWindow` класса, добавьте следующий <xref:System.Windows.UIElement.ManipulationStarting> обработчик событий.  
   
-     <xref:System.Windows.UIElement.ManipulationStarting> Событие возникает при [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] обнаруживает, что сенсорный ввод начал доступ к объекту. Код указывает, что позиция манипуляции относительно <xref:System.Windows.Window> , задав <xref:System.Windows.Input.ManipulationStartingEventArgs.ManipulationContainer%2A> свойство.  
+     <xref:System.Windows.UIElement.ManipulationStarting> Событие возникает при WPF обнаруживает, что сенсорный ввод начал доступ к объекту. Код указывает, что позиция манипуляции относительно <xref:System.Windows.Window> , задав <xref:System.Windows.Input.ManipulationStartingEventArgs.ManipulationContainer%2A> свойство.  
   
      [!code-csharp[BasicManipulation#ManipulationStarting](~/samples/snippets/csharp/VS_Snippets_Wpf/basicmanipulation/csharp/mainwindow.xaml.cs#manipulationstarting)]
      

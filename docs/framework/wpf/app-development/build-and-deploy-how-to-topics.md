@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57374795"
 ---
 # <a name="build-and-deploy-how-to-topics"></a>Разделы практического руководства, посвященные построению и развертыванию
-Следующие разделы показывают, как создать файлы проекта для различных [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] типов приложений.  
+Следующие разделы показывают, как создать файлы проекта для различных WPF типов приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Настройка служб IIS 5.0 и IIS 6.0 для развертывания приложений WPF](how-to-configure-iis-5-0-and-iis-6-0-to-deploy-wpf-applications.md)  

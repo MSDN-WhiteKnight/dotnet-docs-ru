@@ -13,11 +13,11 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59079998"
 ---
 # <a name="cleartype-registry-settings"></a>Параметры реестра ClearType
-В этом разделе содержится обзор [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)][!INCLUDE[TLA#tla_ct](../../../../includes/tlasharptla-ct-md.md)] параметры реестра, используемые [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложений.  
+В этом разделе содержится обзор WPF[!INCLUDE[TLA#tla_ct](../../../../includes/tlasharptla-ct-md.md)] параметры реестра, используемые WPF приложений.  
 
 <a name="overview"></a>   
 ## <a name="technology-overview"></a>Общие сведения о технологии  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения, которые отображают текст на устройство отображения, используют [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] признаки должны предоставлять чтение. [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] — это программная технология, разработанная компанией [!INCLUDE[TLA#tla_ms](../../../../includes/tlasharptla-ms-md.md)] для улучшения удобочитаемости текста на современных ЖК-мониторах (жидкокристаллических дисплеях), например экранах ноутбуков, карманных ПК и плоскопанельных мониторах. [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] работает путем обращения к отдельным вертикальным элементам цветных полос в каждом пикселе ЖК-экрана. Дополнительные сведения о [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)], см. в разделе [Общие сведения о технологии ClearType](cleartype-overview.md).  
+ WPF приложения, которые отображают текст на устройство отображения, используют [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] признаки должны предоставлять чтение. [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] — это программная технология, разработанная компанией [!INCLUDE[TLA#tla_ms](../../../../includes/tlasharptla-ms-md.md)] для улучшения удобочитаемости текста на современных ЖК-мониторах (жидкокристаллических дисплеях), например экранах ноутбуков, карманных ПК и плоскопанельных мониторах. [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] работает путем обращения к отдельным вертикальным элементам цветных полос в каждом пикселе ЖК-экрана. Дополнительные сведения о [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)], см. в разделе [Общие сведения о технологии ClearType](cleartype-overview.md).  
   
  Текст, отображаемый с [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] может существенно отличаться при просмотре на различных устройствах отображения. Например, небольшое число мониторов реализуют элементы полос цвета расположены в порядке синий, зеленый, красный, а не чаще, красный, зеленый, синий ( [!INCLUDE[TLA#tla_rgb](../../../../includes/tlasharptla-rgb-md.md)]) порядке.  
   
@@ -27,7 +27,7 @@ ms.locfileid: "59079998"
   
 <a name="registry_settings"></a>   
 ## <a name="registry-settings"></a>Параметры реестра  
- [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] Задает четыре параметра реестра для управления [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] функции:  
+ WPF Задает четыре параметра реестра для управления [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] функции:  
   
 |Параметр|Описание|  
 |-------------|-----------------|  
@@ -36,9 +36,9 @@ ms.locfileid: "59079998"
 |Структура пикселей|Описывает расположение пикселей для устройства отображения.|  
 |Уровень контрастности текста|Описывает уровень контрастности отображаемого текста.|  
   
- Эти параметры доступны внешней конфигурации программы, которая знает, как ссылаться на [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)][!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] параметры реестра. Эти параметры также можно создать или изменить через прямой доступ к значениям с использованием редактора реестра [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
+ Эти параметры доступны внешней конфигурации программы, которая знает, как ссылаться на WPF[!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] параметры реестра. Эти параметры также можно создать или изменить через прямой доступ к значениям с использованием редактора реестра [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
   
- Если [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)][!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] (это состояние по умолчанию), не заданы параметры реестра [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] запросов приложения [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] сведения о системных параметрах для настроек сглаживания шрифтов.  
+ Если WPF[!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)] (это состояние по умолчанию), не заданы параметры реестра WPF запросов приложения [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] сведения о системных параметрах для настроек сглаживания шрифтов.  
   
 > [!NOTE]
 >  Сведения о перечислении имен устройств отображения см. в разделе `SystemParametersInfo`[!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] функции.  
@@ -59,7 +59,7 @@ ms.locfileid: "59079998"
  ![Параметры ClearType в редакторе реестра.](./media/cleartype-registry-settings/cleartype-settings-registry-editor.png)  
   
 > [!NOTE]
->  [!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] приложения для вывода текста в одном из двух режимов, с и без [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)]. Если текст отрисовывается без [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)], он называется отрисовке в оттенках серого.  
+>  WPF приложения для вывода текста в одном из двух режимов, с и без [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)]. Если текст отрисовывается без [!INCLUDE[TLA2#tla_ct](../../../../includes/tla2sharptla-ct-md.md)], он называется отрисовке в оттенках серого.  
   
 <a name="gamma_level"></a>   
 ## <a name="gamma-level"></a>Гамма-уровень  
