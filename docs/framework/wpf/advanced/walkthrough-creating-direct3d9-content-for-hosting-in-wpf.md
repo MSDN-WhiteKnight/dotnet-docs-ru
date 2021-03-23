@@ -84,35 +84,35 @@ ms.locfileid: "59300272"
 
 2. Откройте Renderer.h в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#RendererH](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/renderer.h#rendererh)]
+     
 
 3. Откройте Renderer.cpp в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#RendererCPP](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/renderer.cpp#renderercpp)]
+     
 
 4. Откройте RendererManager.h в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#RendererManagerH](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/renderermanager.h#renderermanagerh)]
+     
 
 5. Откройте RendererManager.cpp в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#RendererManagerCPP](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/renderermanager.cpp#renderermanagercpp)]
+     
 
 6. Откройте TriangleRenderer.h в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#TriangleRendererH](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/trianglerenderer.h#trianglerendererh)]
+     
 
 7. Откройте TriangleRenderer.cpp в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#TriangleRendererCPP](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/trianglerenderer.cpp#trianglerenderercpp)]
+     
 
 8. Откройте файл stdafx.h в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#StdafxH](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/stdafx.h#stdafxh)]
+     
 
 9. Откройте dllmain.cpp в редакторе кода и замените автоматически созданный код следующим кодом.
 
-     [!code-cpp[System.Windows.Interop.D3DImage#DllMain](~/samples/snippets/cpp/VS_Snippets_Wpf/System.Windows.Interop.D3DImage/cpp/dllmain.cpp#dllmain)]
+     
 
 10. Откройте D3DContent.def в редакторе кода.
 

@@ -76,7 +76,7 @@ ms.locfileid: "59317913"
   
  В следующем примере показано, как анимировать ширину и цвет фона для <xref:System.Windows.Controls.Button>.  
   
- [!code-cpp[animateproperty#11](~/samples/snippets/cpp/VS_Snippets_Wpf/animateproperty/CPP/LocalAnimationExample.cpp#11)]
+ 
  [!code-csharp[animateproperty#11](~/samples/snippets/csharp/VS_Snippets_Wpf/animateproperty/CSharp/LocalAnimationExample.cs#11)]
    
   

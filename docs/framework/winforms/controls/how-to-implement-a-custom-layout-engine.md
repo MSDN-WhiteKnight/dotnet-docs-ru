@@ -22,7 +22,7 @@ ms.locfileid: "59083378"
 В следующем примере кода демонстрируется создание пользовательского механизма размещения, выполняющий простые потоковый макет. Он реализует элемент управления панели, с именем `DemoFlowPanel`, переопределяющий <xref:System.Windows.Forms.Control.LayoutEngine%2A> свойство, чтобы предоставить экземпляр `DemoFlowLayout` класса.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Windows.Forms.Layout.LayoutEngine#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.Layout.LayoutEngine/cpp/DemoFlowLayout.cpp#1)]
+ 
  [!code-csharp[System.Windows.Forms.Layout.LayoutEngine#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Layout.LayoutEngine/CS/DemoFlowLayout.cs#1)]
    
   

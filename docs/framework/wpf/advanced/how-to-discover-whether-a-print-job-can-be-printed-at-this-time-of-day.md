@@ -47,7 +47,7 @@ ms.locfileid: "59326870"
   
  При создании отчетов время суток, <xref:System.DateTime.ToShortTimeString%2A> метод называется также в том случае, так как этот метод подавляет лет, месяцев и дней из выходных данных. Его нельзя ограничить доступность очереди печати или печати для определенного года, месяцев или дней.  
   
- [!code-cpp[DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#reportqueueandjobavailability)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#reportqueueandjobavailability)]
    
   
@@ -64,13 +64,13 @@ ms.locfileid: "59326870"
   
  Тем не менее, эти два свойства ничем не <xref:System.DateTime> объектов. Они являются <xref:System.Int32>задающими время как количество минут после полуночи в формате UTC. Поэтому нам придется преобразовать наш <xref:System.DateTime> объект минут после полуночи. Когда это будет сделано, метод просто проверяет ли «сейчас» между начала очереди, а также время, устанавливает флаг в значение false, если «сейчас» не между двумя значениями времени и возвращает этот флаг «до».  
   
- [!code-cpp[DiagnoseProblematicPrintJob#PrintQueueStartUntil](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#printqueuestartuntil)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#PrintQueueStartUntil](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#printqueuestartuntil)]
    
   
  **TimeConverter.ConvertToLocalHumanReadableTime** (представленный в следующем примере кода) метод не использует все методы, появившиеся в Microsoft .NET Framework, поэтому краткое обсуждение. Этот метод имеет задачу двойного преобразования: оно должно принимать целое число минут после полуночи в формате выражения и преобразовать его в удобное для восприятия времени, и его необходимо преобразовать в местное время. Он делает это, сначала создавая <xref:System.DateTime> объект, который устанавливается значение полуночи в формате UTC, а затем использует <xref:System.DateTime.AddMinutes%2A> метод, чтобы добавить минуты, которые были переданы в метод. Эта команда возвращает новый <xref:System.DateTime> содержащий исходное время, который был передан в метод. <xref:System.DateTime.ToLocalTime%2A> Метод затем преобразует это в местное время.  
   
- [!code-cpp[DiagnoseProblematicPrintJob#TimeConverter](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#timeconverter)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#TimeConverter](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#timeconverter)]
    
   

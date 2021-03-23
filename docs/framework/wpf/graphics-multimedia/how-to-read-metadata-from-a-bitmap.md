@@ -22,6 +22,6 @@ ms.locfileid: "57354626"
 В этом примере показано, как на чтение метаданных растрового изображения, с помощью языка запросов метаданных.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[BitmapMetadata#GetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#getquery)]
+ 
  [!code-csharp[BitmapMetadata#GetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#getquery)]
  

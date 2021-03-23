@@ -24,13 +24,13 @@ ms.locfileid: "59312401"
   
 1. Создание <xref:System.Windows.Forms.VisualStyles.VisualStyleRenderer> и присвойте ему значение для рисования элемента. Обратите внимание на использование <xref:System.Windows.Forms.Application.RenderWithVisualStyles%2A?displayProperty=nameWithType> свойство и <xref:System.Windows.Forms.VisualStyles.VisualStyleRenderer.IsElementDefined%2A?displayProperty=nameWithType> метод; <xref:System.Windows.Forms.VisualStyles.VisualStyleRenderer.%23ctor%2A> конструктор выдаст исключение, если стили оформления отключены или элемент не определен.  
   
-     [!code-cpp[System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple#4](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple/cpp/form1.cpp#4)]
+     
      [!code-csharp[System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple/CS/form1.cs#4)]
        
   
 2. Вызовите <xref:System.Windows.Forms.VisualStyles.VisualStyleRenderer.DrawBackground%2A> способ визуализации элемента, который <xref:System.Windows.Forms.VisualStyles.VisualStyleRenderer> в данный момент представляет.  
   
-     [!code-cpp[System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple#6](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple/cpp/form1.cpp#6)]
+     
      [!code-csharp[System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple#6](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.VisualStyles.VisualStyleRenderer_Simple/CS/form1.cs#6)]
        
   

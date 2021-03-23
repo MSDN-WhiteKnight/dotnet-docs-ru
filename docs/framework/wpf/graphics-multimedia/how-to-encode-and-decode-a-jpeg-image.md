@@ -28,7 +28,7 @@ ms.locfileid: "57373794"
 
 В этом примере показано, как декодировать изображение JPEG с помощью <xref:System.Windows.Media.Imaging.JpegBitmapDecoder> из <xref:System.IO.FileStream>.  
   
-[!code-cpp[JpegBitmapDecoderEncoder#1](~/samples/snippets/cpp/VS_Snippets_Wpf/JpegBitmapDecoderEncoder/CPP/jpegencoderdecoder.cpp#1)]
+
 [!code-csharp[JpegBitmapDecoderEncoder#1](~/samples/snippets/csharp/VS_Snippets_Wpf/JpegBitmapDecoderEncoder/CSharp/JpegEncoderDecoder.cs#1)]
   
   
@@ -36,7 +36,7 @@ ms.locfileid: "57373794"
 
 В этом примере показаны способы кодирования <xref:System.Windows.Media.Imaging.BitmapSource> в формат JPEG изображений с помощью <xref:System.Windows.Media.Imaging.JpegBitmapEncoder>.  
   
-[!code-cpp[JpegBitmapDecoderEncoder#4](~/samples/snippets/cpp/VS_Snippets_Wpf/JpegBitmapDecoderEncoder/CPP/jpegencoderdecoder.cpp#4)]
+
 [!code-csharp[JpegBitmapDecoderEncoder#4](~/samples/snippets/csharp/VS_Snippets_Wpf/JpegBitmapDecoderEncoder/CSharp/JpegEncoderDecoder.cs#4)]
   
   

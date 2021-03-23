@@ -29,7 +29,7 @@ ms.locfileid: "59087259"
 Этот пример создает форму эллипс, размеры.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Drawing.ConceptualHowTos#10](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/cpp/form1.cpp#10)]
+ 
  [!code-csharp[System.Drawing.ConceptualHowTos#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/CS/form1.cs#10)]
    
   

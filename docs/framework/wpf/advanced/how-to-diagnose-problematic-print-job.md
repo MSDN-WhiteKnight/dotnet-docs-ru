@@ -41,7 +41,7 @@ ms.locfileid: "59338479"
   
  Затем приложение выполняет цикл по <xref:System.Printing.PrintSystemJobInfo> коллекции и сравнивает <xref:System.Printing.PrintSystemJobInfo.Submitter%2A> свойство с псевдонимом подавшего жалобу пользователя. Если они совпадают, приложение добавляет идентификационные сведения о задании в предоставляемую строку. (Переменные `userName` и `jobList` инициализируются в приложении на более раннем этапе.)  
   
- [!code-cpp[DiagnoseProblematicPrintJob#EnumerateJobsInQueues](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#enumeratejobsinqueues)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#EnumerateJobsInQueues](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#enumeratejobsinqueues)]
    
   
@@ -55,7 +55,7 @@ ms.locfileid: "59338479"
   
  В этом примере демонстрируются оба метода, поскольку пользователь получил какой метод использовать и ответил «Y», если хотите использовать флаги <xref:System.Printing.PrintSystemJobInfo.JobStatus%2A> свойство. Ниже представлены подробные сведения об этих двух методах. Наконец, для создания отчетов о возможности печати соответствующего задания в это время суток в приложении используется метод под названием **ReportQueueAndJobAvailability**. Этот метод обсуждается в разделе [Практическое руководство. Определение возможности печати в заданное время суток](how-to-discover-whether-a-print-job-can-be-printed-at-this-time-of-day.md).  
   
- [!code-cpp[DiagnoseProblematicPrintJob#IdentifyAndDiagnoseProblematicJob](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#identifyanddiagnoseproblematicjob)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#IdentifyAndDiagnoseProblematicJob](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#identifyanddiagnoseproblematicjob)]
    
   
@@ -63,13 +63,13 @@ ms.locfileid: "59338479"
   
  Для каждого атрибута с заданным битом код передает соответствующие данные на экран консоли и иногда предлагает способы реагирования. (Метод **HandlePausedJob**, который вызывается в случае приостановки задания или очереди, описывается ниже.)  
   
- [!code-cpp[DiagnoseProblematicPrintJob#SpotTroubleUsingJobAttributes](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#spottroubleusingjobattributes)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#SpotTroubleUsingJobAttributes](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#spottroubleusingjobattributes)]
    
   
  Чтобы проверить состояние задания печати с помощью отдельных свойств, просто прочтите каждое свойство и, если свойство имеет значение `true`, передайте данные на экран консоли и по возможности предложите способ реагирования. (Метод **HandlePausedJob**, который вызывается в случае приостановки задания или очереди, описывается ниже.)  
   
- [!code-cpp[DiagnoseProblematicPrintJob#SpotTroubleUsingJobProperties](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#spottroubleusingjobproperties)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#SpotTroubleUsingJobProperties](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#spottroubleusingjobproperties)]
    
   
@@ -77,7 +77,7 @@ ms.locfileid: "59338479"
   
  Затем пользователю предлагается решить, следует ли возобновить само задание печати (на случай, если оно было приостановлено независимо от очереди печати). (Сравните <xref:System.Printing.PrintQueue.IsPaused%2A?displayProperty=nameWithType> и <xref:System.Printing.PrintSystemJobInfo.IsPaused%2A?displayProperty=nameWithType>.) Если вы ответили «Y», затем <xref:System.Printing.PrintSystemJobInfo.Resume%2A?displayProperty=nameWithType> вызываемой; в противном случае <xref:System.Printing.PrintSystemJobInfo.Cancel%2A> вызывается.  
   
- [!code-cpp[DiagnoseProblematicPrintJob#HandlePausedJob](~/samples/snippets/cpp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CPP/Program.cpp#handlepausedjob)]
+ 
  [!code-csharp[DiagnoseProblematicPrintJob#HandlePausedJob](~/samples/snippets/csharp/VS_Snippets_Wpf/DiagnoseProblematicPrintJob/CSharp/Program.cs#handlepausedjob)]
    
   

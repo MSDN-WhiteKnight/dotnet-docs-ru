@@ -22,6 +22,6 @@ ms.locfileid: "57373937"
 В этом примере показано, как запись метаданных в растровое изображение, с помощью языка запросов метаданных.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[BitmapMetadata#SetQuery](~/samples/snippets/cpp/VS_Snippets_Wpf/BitMapMetadata/CPP/BitmapMetadata.cpp#setquery)]
+ 
  [!code-csharp[BitmapMetadata#SetQuery](~/samples/snippets/csharp/VS_Snippets_Wpf/BitMapMetadata/CSharp/BitmapMetadata.cs#setquery)]
  

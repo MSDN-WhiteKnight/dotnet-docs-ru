@@ -23,7 +23,7 @@ ms.locfileid: "59072031"
 В этом примере рисование заполненного прямоугольника в форме.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Drawing.ConceptualHowTos#2](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/cpp/form1.cpp#2)]
+ 
  [!code-csharp[System.Drawing.ConceptualHowTos#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/CS/form1.cs#2)]
    
   

@@ -21,7 +21,7 @@ ms.locfileid: "59101833"
 В примере кода ниже показано, как использовать столбцы изображений <xref:System.Windows.Forms.DataGridView> в интерактивном пользовательском интерфейсе. В примере также демонстрируются возможности изменения размера и расположения изображения с помощью <xref:System.Windows.Forms.DataGridViewImageColumn>.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Windows.Forms.DataGridView.ImageColumn_TicTacToe#0](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ImageColumn_TicTacToe/CPP/tictactoe.cpp#0)]
+ 
  [!code-csharp[System.Windows.Forms.DataGridView.ImageColumn_TicTacToe#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ImageColumn_TicTacToe/CS/tictactoe.cs#0)]
    
   

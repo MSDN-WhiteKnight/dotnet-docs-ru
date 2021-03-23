@@ -26,7 +26,7 @@ ms.locfileid: "59171013"
 В этом примере рисование заполненного эллипса в форме.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Drawing.ConceptualHowTos#1](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/cpp/form1.cpp#1)]
+ 
  [!code-csharp[System.Drawing.ConceptualHowTos#1](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/CS/form1.cs#1)]
    
   

@@ -233,7 +233,7 @@ ms.locfileid: "59342236"
 ## <a name="example"></a>Пример  
  В следующем примере кода приведен полный код, которые являются результатом выполнения описанной процедуры.  
   
- [!code-cpp[MaskedTextBoxData#1](~/samples/snippets/cpp/VS_Snippets_Winforms/MaskedTextBoxData/cpp/form1.cpp#1)]
+ 
  [!code-csharp[MaskedTextBoxData#1](~/samples/snippets/csharp/VS_Snippets_Winforms/MaskedTextBoxData/CS/form1.cs#1)]
    
   

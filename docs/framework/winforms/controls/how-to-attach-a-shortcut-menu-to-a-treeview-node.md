@@ -32,7 +32,7 @@ Windows Forms <xref:System.Windows.Forms.TreeView> элемент управле
   
  В следующем примере кода создает базовое <xref:System.Windows.Forms.TreeView> и <xref:System.Windows.Forms.ContextMenuStrip> связанный с этим корнем <xref:System.Windows.Forms.TreeNode> из <xref:System.Windows.Forms.TreeView>. Вам потребуется подставить пункты меню, которые соответствуют <xref:System.Windows.Forms.TreeView> при разработке. Кроме того, необходимо написать код для обработки <xref:System.Windows.Forms.ToolStripItem.Click> события для этих пунктов меню.  
   
- [!code-cpp[System.Windows.Forms.TreeNodeContextMenuStrip#1](~/samples/snippets/cpp/VS_Snippets_Winforms/system.windows.forms.TreeNodeContextMenuStrip/cpp/Form1.cpp#1)]
+ 
  [!code-csharp[System.Windows.Forms.TreeNodeContextMenuStrip#1](~/samples/snippets/csharp/VS_Snippets_Winforms/system.windows.forms.TreeNodeContextMenuStrip/CS/Form1.cs#1)]
    
   

@@ -20,7 +20,7 @@ ms.locfileid: "59172982"
 В следующем примере кода показано, как использовать <xref:System.Drawing.Graphics.DrawString%2A> метод <xref:System.Drawing.Graphics> для рисования текста в форме. Кроме того, можно использовать <xref:System.Windows.Forms.TextRenderer> для рисования текста в форме. Дополнительные сведения см. в разделе [Как Рисование текста с использованием GDI](how-to-draw-text-with-gdi.md).  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Drawing.ConceptualHowTos#7](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/cpp/form1.cpp#7)]
+ 
  [!code-csharp[System.Drawing.ConceptualHowTos#7](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Drawing.ConceptualHowTos/CS/form1.cs#7)]
    
   

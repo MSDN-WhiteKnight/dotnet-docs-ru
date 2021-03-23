@@ -79,7 +79,7 @@ ms.locfileid: "59343406"
   
 2. Создайте в форме новый метод с именем `ComputeFibonacci`. Этот метод выполняет фактическую работу и делает это в фоновом режиме. Данный код демонстрирует рекурсивную реализацию алгоритма Фибоначчи — она довольно неэффективна и занимает в разы больше времени при работе с большими числами. Он приводится в иллюстративных целях, чтобы показать, что операция может значительно замедлить работу вашего приложения.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#10](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#10)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#10)]
        
   
@@ -88,19 +88,19 @@ ms.locfileid: "59343406"
     > [!NOTE]
     >  <xref:System.ComponentModel.BackgroundWorker.DoWork> Не ссылается на обработчик событий `backgroundWorker1` переменную экземпляра напрямую, так как это может привязать этот обработчик событий для определенного экземпляра <xref:System.ComponentModel.BackgroundWorker>. Вместо этого ссылка <xref:System.ComponentModel.BackgroundWorker> , создавший событие, берется из `sender` параметра. Это важно, если в форме размещено несколько <xref:System.ComponentModel.BackgroundWorker>. Это также не следует выполнять операции все объекты пользовательского интерфейса в вашей <xref:System.ComponentModel.BackgroundWorker.DoWork> обработчик событий. Вместо этого для взаимодействия в пользовательский интерфейс, через <xref:System.ComponentModel.BackgroundWorker> события.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#5](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#5)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#5](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#5)]
        
   
 4. В `startAsyncButton` элемента управления <xref:System.Windows.Forms.Control.Click> обработчик событий, добавьте код, который запускает асинхронную операцию.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#13](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#13)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#13](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#13)]
        
   
 5. В <xref:System.ComponentModel.BackgroundWorker.RunWorkerCompleted> обработчик событий, результат вычисления, которое необходимо присвоить `resultLabel` элемента управления.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#6](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#6)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#6](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#6)]
        
   
@@ -113,13 +113,13 @@ ms.locfileid: "59343406"
   
 2. Объявите две переменные в форме `FibonacciCalculator`. Они будут использоваться для отслеживания хода выполнения.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#14](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#14)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#14](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#14)]
        
   
 3. Добавьте обработчик для события <xref:System.ComponentModel.BackgroundWorker.ProgressChanged>. В <xref:System.ComponentModel.BackgroundWorker.ProgressChanged> обработчик событий, обновите <xref:System.Windows.Forms.ProgressBar> с <xref:System.ComponentModel.ProgressChangedEventArgs.ProgressPercentage%2A> свойство <xref:System.ComponentModel.ProgressChangedEventArgs> параметр.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#7](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#7)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#7](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#7)]
        
   
@@ -127,16 +127,16 @@ ms.locfileid: "59343406"
   
 1. В `cancelAsyncButton` элемента управления <xref:System.Windows.Forms.Control.Click> обработчик событий, добавьте код, отменяющий асинхронную операцию.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#4](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#4)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#4)]
        
   
 2. Следующие фрагменты кода в методе `ComputeFibonacci` сообщают о ходе выполнения и поддерживают отмену.  
   
-     [!code-cpp[System.ComponentModel.BackgroundWorker#11](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#11)]
+     
      [!code-csharp[System.ComponentModel.BackgroundWorker#11](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#11)]
        
-    [!code-cpp[System.ComponentModel.BackgroundWorker#12](~/samples/snippets/cpp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CPP/fibonacciform.cpp#12)]
+    
     [!code-csharp[System.ComponentModel.BackgroundWorker#12](~/samples/snippets/csharp/VS_Snippets_Winforms/System.ComponentModel.BackgroundWorker/CS/fibonacciform.cs#12)]
       
   

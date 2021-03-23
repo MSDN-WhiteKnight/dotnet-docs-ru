@@ -45,7 +45,7 @@ ms.locfileid: "59212431"
 ## <a name="defining-and-using-a-scrollviewer-element"></a>Определение и использование элемента ScrollViewer  
  В следующем примере создается <xref:System.Windows.Controls.ScrollViewer> в окно, содержащее текст и прямоугольник. <xref:System.Windows.Controls.Primitives.ScrollBar> элементы отображаются, только когда они необходимы. При изменении размера окна, <xref:System.Windows.Controls.Primitives.ScrollBar> элементы появляются и исчезают в результате изменения значений из <xref:System.Windows.Controls.ScrollViewer.ComputedHorizontalScrollBarVisibility%2A> и <xref:System.Windows.Controls.ScrollViewer.ComputedVerticalScrollBarVisibility%2A> свойства.  
   
- [!code-cpp[ScrollViewer#1](~/samples/snippets/cpp/VS_Snippets_Wpf/ScrollViewer/CPP/ScrollViewer_wcp.cpp#1)]
+ 
  [!code-csharp[ScrollViewer#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ScrollViewer/CSharp/ScrollViewer_wcp.cs#1)]
  
  [!code-xaml[ScrollViewer#1](~/samples/snippets/xaml/VS_Snippets_Wpf/ScrollViewer/XAML/Pane1.xaml#1)]  

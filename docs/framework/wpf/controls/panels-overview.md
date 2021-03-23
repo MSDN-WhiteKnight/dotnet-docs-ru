@@ -129,7 +129,7 @@ ms.locfileid: "59157876"
 #### <a name="defining-and-using-a-dockpanel"></a>Определение и использование DockPanel  
  В следующем примере демонстрируется разделение пространства с помощью <xref:System.Windows.Controls.DockPanel>. Пять <xref:System.Windows.Controls.Border> элементы добавляются как дочерние элементы родительского узла <xref:System.Windows.Controls.DockPanel>. Каждый из них использует свое свойство размещения <xref:System.Windows.Controls.DockPanel> для разделения пространства. Последний элемент "заполняет" оставшееся незанятое пространство.  
   
- [!code-cpp[DockPanelOvwSample#1](~/samples/snippets/cpp/VS_Snippets_Wpf/DockPanelOvwSample/CPP/DockPanel_Ovw_Sample.cpp#1)]
+ 
  [!code-csharp[DockPanelOvwSample#1](~/samples/snippets/csharp/VS_Snippets_Wpf/DockPanelOvwSample/CSharp/DockPanel_Ovw_Sample.cs#1)]
  
  [!code-xaml[DockPanelOvwSample#1](~/samples/snippets/xaml/VS_Snippets_Wpf/DockPanelOvwSample/XAML/default.xaml#1)]  
@@ -167,7 +167,7 @@ ms.locfileid: "59157876"
   
  Следующий пример демонстрирует это ключевое различие.  
   
- [!code-cpp[StackPanelOvw4#1](~/samples/snippets/cpp/VS_Snippets_Wpf/StackPanelOvw4/CPP/StackPanel_Ovw_Sample4.cpp#1)]
+ 
  [!code-csharp[StackPanelOvw4#1](~/samples/snippets/csharp/VS_Snippets_Wpf/StackPanelOvw4/CSharp/StackPanel_Ovw_Sample4.cs#1)]
  
  [!code-xaml[StackPanelOvw4#1](~/samples/snippets/xaml/VS_Snippets_Wpf/StackPanelOvw4/XAML/default.xaml#1)]  
@@ -202,7 +202,7 @@ ms.locfileid: "59157876"
   
  Следующий пример демонстрирует создание <xref:System.Windows.Controls.WrapPanel> для отображения <xref:System.Windows.Controls.Button> элементов управления, которые переносятся при достижении границы контейнера.  
   
- [!code-cpp[WrapPanel_Intro#1](~/samples/snippets/cpp/VS_Snippets_Wpf/WrapPanel_Intro/CPP/WrapPanel_Code.cpp#1)]
+ 
  [!code-csharp[WrapPanel_Intro#1](~/samples/snippets/csharp/VS_Snippets_Wpf/WrapPanel_Intro/CSharp/WrapPanel_Code.cs#1)]
  
  [!code-xaml[WrapPanel_Intro#1](~/samples/snippets/xaml/VS_Snippets_Wpf/WrapPanel_Intro/XAML/default.xaml#1)]  
@@ -234,7 +234,7 @@ ms.locfileid: "59157876"
   
  Следующая разметка демонстрирует создание пользовательского <xref:System.Windows.Controls.Panel> элемент. Этот новый <xref:System.Windows.Controls.Panel>, определенная как `PlotPanel`, поддерживает размещение дочерних элементов с использованием жестко *x -* и *y -* координаты. В этом примере <xref:System.Windows.Shapes.Rectangle> элемент (не показан) находится в точке с координатами 50 (*x*) до 50 (*y*).  
   
- [!code-cpp[PlotPanel#1](~/samples/snippets/cpp/VS_Snippets_Wpf/PlotPanel/CPP/PlotPanel.cpp#1)]
+ 
  [!code-csharp[PlotPanel#1](~/samples/snippets/csharp/VS_Snippets_Wpf/PlotPanel/CSharp/PlotPanel.cs#1)]
    
   

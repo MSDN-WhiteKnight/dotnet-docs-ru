@@ -21,7 +21,7 @@ ms.locfileid: "59193295"
 В примере кода ниже показаны различные способы управления строками <xref:System.Windows.Forms.DataGridView> с помощью свойств класса <xref:System.Windows.Forms.DataGridViewRow>.  
   
 ## <a name="example"></a>Пример  
- [!code-cpp[System.Windows.Forms.DataGridView.ButtonDemos#200](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ButtonDemos/CPP/DataGridViewRowDemo.cpp#200)]
+ 
  [!code-csharp[System.Windows.Forms.DataGridView.ButtonDemos#200](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.DataGridView.ButtonDemos/CS/DataGridViewRowDemo.cs#200)]
    
   

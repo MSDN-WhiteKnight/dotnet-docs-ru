@@ -60,7 +60,7 @@ ms.locfileid: "59313090"
   
 1. Вызовите метод <xref:System.Windows.Forms.SendKeys.Send%2A> или <xref:System.Windows.Forms.SendKeys.SendWait%2A> класса <xref:System.Windows.Forms.SendKeys> . Указанные нажатия клавиш будут получены активным элементом управления приложения. В примере кода ниже метод <xref:System.Windows.Forms.SendKeys.Send%2A> используется для имитации нажатия клавиши ВВОД, когда пользователь дважды щелкает по поверхности формы. В этом примере используется форма <xref:System.Windows.Forms.Form> с одним элементом управления <xref:System.Windows.Forms.Button> , имеющим индекс перехода по клавише TAB, равный 0.  
   
-     [!code-cpp[System.Windows.Forms.SimulateKeyPress#10](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/cpp/form1.cpp#10)]
+     
      [!code-csharp[System.Windows.Forms.SimulateKeyPress#10](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/CS/form1.cs#10)]
        
   
@@ -71,14 +71,14 @@ ms.locfileid: "59313090"
     > [!NOTE]
     >  Параметры вызова `FindWindow` для определения положения Калькулятора зависят от версии Windows.  Приведенный ниже код находит Калькулятор в [!INCLUDE[win7](../../../includes/win7-md.md)]. В [!INCLUDE[windowsver](../../../includes/windowsver-md.md)]измените первый параметр на SciCalc. Для определения нужных параметров можно использовать средство Spy++, входящее в состав Visual Studio.  
   
-     [!code-cpp[System.Windows.Forms.SimulateKeyPress#5](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/cpp/form1.cpp#5)]
+     
      [!code-csharp[System.Windows.Forms.SimulateKeyPress#5](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/CS/form1.cs#5)]
        
   
 ## <a name="example"></a>Пример  
  В примере ниже полностью представлено приложение для предыдущих примеров кода.  
   
- [!code-cpp[System.Windows.Forms.SimulateKeyPress#0](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/cpp/form1.cpp#0)]
+ 
  [!code-csharp[System.Windows.Forms.SimulateKeyPress#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.SimulateKeyPress/CS/form1.cs#0)]
    
   

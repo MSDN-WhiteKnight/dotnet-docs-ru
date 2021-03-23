@@ -31,7 +31,7 @@ ms.locfileid: "59139403"
   
 -   Обработайте событие <xref:System.Windows.Forms.Control.MouseDown> и определите расположение и временной интервал между щелчками с помощью соответствующего свойства <xref:System.Windows.Forms.SystemInformation> и компонента <xref:System.Windows.Forms.Timer>. Выполните необходимые действия в зависимости от того, имеет ли место щелчок или двойной щелчок кнопкой мыши. В следующем примере кода показано, как это сделать.  
   
-     [!code-cpp[System.Windows.Forms.SingleVersusDoubleClick#0](~/samples/snippets/cpp/VS_Snippets_Winforms/System.Windows.Forms.SingleVersusDoubleClick/cpp/form1.cpp#0)]
+     
      [!code-csharp[System.Windows.Forms.SingleVersusDoubleClick#0](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.SingleVersusDoubleClick/CS/form1.cs#0)]
        
   

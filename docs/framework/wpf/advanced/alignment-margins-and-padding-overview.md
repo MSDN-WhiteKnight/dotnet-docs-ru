@@ -96,14 +96,14 @@ ms.locfileid: "59209168"
   
  В следующем примере показано, как применить однородные поля группы <xref:System.Windows.Controls.Button> элементов. <xref:System.Windows.Controls.Button> Элементы расположены равномерно с буфером 10 точек в каждом направлении.  
   
- [!code-cpp[MarginPaddingAlignmentSample#1](~/samples/snippets/cpp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CPP/Margin_Padding_Alignment_Sample.cpp#1)]
+ 
  [!code-csharp[MarginPaddingAlignmentSample#1](~/samples/snippets/csharp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CSharp/Margin_Padding_Alignment_Sample.cs#1)]
  
  [!code-xaml[MarginPaddingAlignmentSample#1](~/samples/snippets/xaml/VS_Snippets_Wpf/MarginPaddingAlignmentSample/XAML/default.xaml#1)]  
   
  Во многих случаях универсальные поля не подходят. В этих случаях можно применять неоднородные интервалы. В следующем примере показано применение неоднородных полей к дочерним элементам. Поля описываются в следующем порядке: слева, сверху, справа, снизу.  
   
- [!code-cpp[MarginPaddingAlignmentSample#2](~/samples/snippets/cpp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CPP/Margin_Padding_Alignment_Sample.cpp#2)]
+ 
  [!code-csharp[MarginPaddingAlignmentSample#2](~/samples/snippets/csharp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CSharp/Margin_Padding_Alignment_Sample.cs#2)]
  
  [!code-xaml[MarginPaddingAlignmentSample#2](~/samples/snippets/xaml/VS_Snippets_Wpf/MarginPaddingAlignmentSample/XAML/default.xaml#2)]  
@@ -114,7 +114,7 @@ ms.locfileid: "59209168"
   
  В следующем примере показано, как применить <xref:System.Windows.Controls.Border.Padding%2A> к родительскому элементу <xref:System.Windows.Controls.Border> элемент.  
   
- [!code-cpp[MarginPaddingAlignmentSample#3](~/samples/snippets/cpp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CPP/Margin_Padding_Alignment_Sample.cpp#3)]
+ 
  [!code-csharp[MarginPaddingAlignmentSample#3](~/samples/snippets/csharp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CSharp/Margin_Padding_Alignment_Sample.cs#3)]
  
  [!code-xaml[MarginPaddingAlignmentSample#3](~/samples/snippets/xaml/VS_Snippets_Wpf/MarginPaddingAlignmentSample/XAML/default.xaml#3)]  
@@ -125,7 +125,7 @@ ms.locfileid: "59209168"
   
  В следующем примере демонстрируются понятия, описанные в этом разделе. Основываясь на инфраструктуре, приведенной в первом примере этого раздела, в этом примере добавляется <xref:System.Windows.Controls.Grid> как дочерний элемент элемента <xref:System.Windows.Controls.Border> в первом примере. <xref:System.Windows.Controls.Border.Padding%2A> применяется к родительскому <xref:System.Windows.Controls.Border> элемент. <xref:System.Windows.Controls.Grid> Используется для разделения пространства между тремя дочерними <xref:System.Windows.Controls.StackPanel> элементов. <xref:System.Windows.Controls.Button> элементы повторно используются для отображения различных эффектов <xref:System.Windows.FrameworkElement.Margin%2A> и <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A>. <xref:System.Windows.Controls.TextBlock> элементы добавляются к каждому <xref:System.Windows.Controls.ColumnDefinition> для лучшего определения различных свойств, применяемых к <xref:System.Windows.Controls.Button> элементов в каждом столбце.  
   
- [!code-cpp[MarginPaddingAlignmentSample#4](~/samples/snippets/cpp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CPP/Margin_Padding_Alignment_Sample.cpp#4)]
+ 
  [!code-csharp[MarginPaddingAlignmentSample#4](~/samples/snippets/csharp/VS_Snippets_Wpf/MarginPaddingAlignmentSample/CSharp/Margin_Padding_Alignment_Sample.cs#4)]
  
  [!code-xaml[MarginPaddingAlignmentSample#4](~/samples/snippets/xaml/VS_Snippets_Wpf/MarginPaddingAlignmentSample/XAML/default.xaml#4)]  
