@@ -12,7 +12,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59305680"
 ---
 # <a name="how-to-determine-the-installed-version-of-wpf"></a>Практическое руководство. Определение установленной версии WPF
-Номер версии для текущей установленной версии [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] находится в **реестра**.  
+Номер версии для текущей установленной версии Windows Presentation Foundation (WPF) находится в **реестра**.  
   
  Чтобы найти номер версии:  
   

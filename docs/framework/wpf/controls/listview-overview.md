@@ -24,7 +24,7 @@ ms.locfileid: "59186502"
   
 <a name="DefiningaListViewView"></a>   
 ## <a name="defining-a-view-mode-for-a-listview"></a>Определение режима представления для элемента управления ListView  
- Чтобы указать режим просмотра содержимого <xref:System.Windows.Controls.ListView> элемента управления, задайте <xref:System.Windows.Controls.ListView.View%2A> свойство. Одним из режимов, [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет является <xref:System.Windows.Controls.GridView>, отображающий коллекцию элементов данных в таблице с настраиваемыми столбцами.  
+ Чтобы указать режим просмотра содержимого <xref:System.Windows.Controls.ListView> элемента управления, задайте <xref:System.Windows.Controls.ListView.View%2A> свойство. Одним из режимов, Windows Presentation Foundation (WPF) предоставляет является <xref:System.Windows.Controls.GridView>, отображающий коллекцию элементов данных в таблице с настраиваемыми столбцами.  
   
  В следующем примере показано определение <xref:System.Windows.Controls.GridView> для <xref:System.Windows.Controls.ListView> элемент управления, который отображает данные о сотрудниках.  
   

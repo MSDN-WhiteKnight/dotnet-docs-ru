@@ -14,7 +14,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57378921"
 ---
 # <a name="adorners"></a>Декоративные элементы
-Этот раздел содержит сведения о декоративных элементах и [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] framework декоративного элемента.  
+Этот раздел содержит сведения о декоративных элементах и Windows Presentation Foundation (WPF) framework декоративного элемента.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о декоративных элементах](adorners-overview.md)  

@@ -17,7 +17,7 @@ ms.locfileid: "59096879"
 ---
 # <a name="how-to-set-the-width-properties-of-an-element"></a>Практическое руководство. Определение свойств ширины элемента
 ## <a name="example"></a>Пример  
- В этом примере визуально показаны различия в поведении между четырьмя свойствами, связанными с шириной в отрисовки [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+ В этом примере визуально показаны различия в поведении между четырьмя свойствами, связанными с шириной в отрисовки Windows Presentation Foundation (WPF).  
   
  <xref:System.Windows.FrameworkElement> Класс предоставляет четыре свойства, описывающие характеристики ширины элемента. Эти четыре свойства могут конфликтовать и когда это значение, которое имеет более высокий приоритет определяется следующим образом: <xref:System.Windows.FrameworkElement.MinWidth%2A> значение имеет приоритет над <xref:System.Windows.FrameworkElement.MaxWidth%2A> значение, которое в свою очередь имеет приоритет над <xref:System.Windows.FrameworkElement.Width%2A> значение. Четвертое свойство <xref:System.Windows.FrameworkElement.ActualWidth%2A>доступно только для чтения и сообщает фактическую ширину, определенной при взаимодействии с процессом макета.  
   

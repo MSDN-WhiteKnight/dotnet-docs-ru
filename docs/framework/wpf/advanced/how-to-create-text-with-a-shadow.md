@@ -17,7 +17,7 @@ ms.locfileid: "58125789"
 Примеры в этом разделе демонстрируют создание эффекта тени для отображаемого текста.  
   
 ## <a name="example"></a>Пример  
- <xref:System.Windows.Media.Effects.DropShadowEffect> Объекта позволяет создавать разнообразные эффекты тени для [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] объектов. В следующем примере показано применение эффекта тени к тексту. В этом случае используется мягкая тень, то есть цвет тени размывается.  
+ <xref:System.Windows.Media.Effects.DropShadowEffect> Объекта позволяет создавать разнообразные эффекты тени для Windows Presentation Foundation (WPF) объектов. В следующем примере показано применение эффекта тени к тексту. В этом случае используется мягкая тень, то есть цвет тени размывается.  
   
  ![Тень текста с мягкостью &#61; 0,25](./media/how-to-create-text-with-a-shadow/drop-shadow-text-effect.jpg) 
   
@@ -26,7 +26,7 @@ ms.locfileid: "58125789"
  [!code-xaml[TextShadowSnippets#TextShadowSnippet1](~/samples/snippets/csharp/VS_Snippets_Wpf/TextShadowSnippets/CS/SingleShadows.xaml#textshadowsnippet1)]  
   
 > [!NOTE]
->  Эти эффекты тени не проходят через [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] конвейера отрисовки текста. Следовательно, тип ClearType при использовании этих эффектов отключен.  
+>  Эти эффекты тени не проходят через Windows Presentation Foundation (WPF) конвейера отрисовки текста. Следовательно, тип ClearType при использовании этих эффектов отключен.  
   
  В следующем примере показано применение эффекта жесткой тени к тексту. В этом случае тень не размыта.  
   

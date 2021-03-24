@@ -36,7 +36,7 @@ ms.locfileid: "59175797"
 
 <a name="prerequisites"></a>   
 ## <a name="prerequisites"></a>Предварительные требования  
- Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] и ознакомились с разделом [Общие сведения о свойствах зависимостей](dependency-properties-overview.md). Чтобы выполнить примеры в этом разделе, следует также иметь представление о [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] (см. раздел [Обзор XAML (WPF)](xaml-overview-wpf.md)) и знать, как создаются приложения WPF.  
+ Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах Windows Presentation Foundation (WPF) и ознакомились с разделом [Общие сведения о свойствах зависимостей](dependency-properties-overview.md). Чтобы выполнить примеры в этом разделе, следует также иметь представление о [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] (см. раздел [Обзор XAML (WPF)](xaml-overview-wpf.md)) и знать, как создаются приложения WPF.  
   
 <a name="intro"></a>   
 ## <a name="object-lifetime-events"></a>События времени жизни объекта  

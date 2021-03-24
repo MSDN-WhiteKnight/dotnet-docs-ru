@@ -13,7 +13,7 @@ ms.lasthandoff: 05/04/2018
 ms.locfileid: "33550970"
 ---
 # <a name="class-library-wpf"></a>Библиотека классов (WPF)
-Следующие ссылки указывают на пространства имен, содержащие [!INCLUDE[TLA#tla_winclient](../../../includes/tlasharptla-winclient-md.md)] [!INCLUDE[TLA#tla_api#plural](../../../includes/tlasharptla-apisharpplural-md.md)].  
+Следующие ссылки указывают на пространства имен, содержащие Windows Presentation Foundation (WPF) [!INCLUDE[TLA#tla_api#plural](../../../includes/tlasharptla-apisharpplural-md.md)].  
   
 ## <a name="in-this-section"></a>В этом разделе  
   

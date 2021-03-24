@@ -17,7 +17,7 @@ ms.locfileid: "59122919"
 
 <a name="where"></a>   
 ## <a name="where-propertypath-is-used"></a>Где используется PropertyPath  
- <xref:System.Windows.PropertyPath> представляет собой общий объект, который используется в нескольких [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] функции. Несмотря на использование общего <xref:System.Windows.PropertyPath> для передачи информации о пути к свойству, варианты использования для каждой области возможностей где <xref:System.Windows.PropertyPath> используется как тип варьироваться. Таким образом, более практично документировать синтаксис для каждой функции.  
+ <xref:System.Windows.PropertyPath> представляет собой общий объект, который используется в нескольких Windows Presentation Foundation (WPF) функции. Несмотря на использование общего <xref:System.Windows.PropertyPath> для передачи информации о пути к свойству, варианты использования для каждой области возможностей где <xref:System.Windows.PropertyPath> используется как тип варьироваться. Таким образом, более практично документировать синтаксис для каждой функции.  
   
  В основном WPF использует <xref:System.Windows.PropertyPath> для описания путей объектной модели для нахождения свойств источника данных и для описания конечного пути для целевой анимации.  
   

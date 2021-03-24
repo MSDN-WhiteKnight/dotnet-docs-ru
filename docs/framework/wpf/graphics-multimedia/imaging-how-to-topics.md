@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59183044"
 ---
 # <a name="imaging-how-to-topics"></a>Разделы практического руководства, посвященные обработке изображений
-В подразделах этого раздела демонстрируется использование [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] для отображения или изменения точечных рисунков.  
+В подразделах этого раздела демонстрируется использование Windows Presentation Foundation (WPF) для отображения или изменения точечных рисунков.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Использование объекта BitmapImage в XAML](how-to-use-a-bitmapimage.md)  

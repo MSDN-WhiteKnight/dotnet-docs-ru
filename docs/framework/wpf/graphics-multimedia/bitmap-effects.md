@@ -17,7 +17,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57373469"
 ---
 # <a name="bitmap-effects"></a>Эффекты для точечных рисунков
-В этом разделе описываются способы применения эффектов к растровым изображениям с помощью [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+В этом разделе описываются способы применения эффектов к растровым изображениям с помощью Windows Presentation Foundation (WPF).  
   
 > [!IMPORTANT]
 >  В [!INCLUDE[net_v40_short](../../../../includes/net-v40-short-md.md)] или более поздней версии, <xref:System.Windows.Media.Effects.BitmapEffect> класс является устаревшим. Если вы попытаетесь использовать <xref:System.Windows.Media.Effects.BitmapEffect> класса, будет вызвано исключение устаревшего. Неустаревшая альтернатива для <xref:System.Windows.Media.Effects.BitmapEffect> класс является <xref:System.Windows.Media.Effects.Effect> класса. В большинстве случаев <xref:System.Windows.Media.Effects.Effect> класс значительно быстрее.  

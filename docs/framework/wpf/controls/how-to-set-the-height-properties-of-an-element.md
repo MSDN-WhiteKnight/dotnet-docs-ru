@@ -17,7 +17,7 @@ ms.locfileid: "59221591"
 ---
 # <a name="how-to-set-the-height-properties-of-an-element"></a>Практическое руководство. Определение свойств высоты элемента
 ## <a name="example"></a>Пример  
- В этом примере визуально показаны различия в поведении между четырьмя свойствами, связанных с высотой в отрисовки [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+ В этом примере визуально показаны различия в поведении между четырьмя свойствами, связанных с высотой в отрисовки Windows Presentation Foundation (WPF).  
   
  <xref:System.Windows.FrameworkElement> Класс предоставляет четыре свойства, описывающие характеристики высоты элемента. Эти четыре свойства могут конфликтовать и когда это значение, которое имеет более высокий приоритет определяется следующим образом: <xref:System.Windows.FrameworkElement.MinHeight%2A> значение имеет приоритет над <xref:System.Windows.FrameworkElement.MaxHeight%2A> значение, которое в свою очередь имеет приоритет над <xref:System.Windows.FrameworkElement.Height%2A> значение. Четвертое свойство <xref:System.Windows.FrameworkElement.ActualHeight%2A>, доступен только для чтения и сообщает о фактической высоте, определенной при взаимодействии с процессом макета.  
   

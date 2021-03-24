@@ -14,7 +14,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59113286"
 ---
 # <a name="serialization-limitations-of-xamlwritersave"></a>Сериализация ограничений XamlWriter.Save
-[!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] <xref:System.Windows.Markup.XamlWriter.Save%2A> Может использоваться для сериализации содержимого [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] под [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл. Однако существуют некоторые заметные ограничения в том, что именно подлежит сериализации. В данном разделе описаны эти ограничения и некоторые общие рекомендации.  
+[!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] <xref:System.Windows.Markup.XamlWriter.Save%2A> Может использоваться для сериализации содержимого Windows Presentation Foundation (WPF) под [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл. Однако существуют некоторые заметные ограничения в том, что именно подлежит сериализации. В данном разделе описаны эти ограничения и некоторые общие рекомендации.  
 
 <a name="Run_Time__Not_Design_Time_Representation"></a>   
 ## <a name="run-time-not-design-time-representation"></a>Представление во время выполнения, а не во время разработки  

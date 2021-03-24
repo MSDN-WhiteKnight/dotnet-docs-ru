@@ -16,7 +16,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57367600"
 ---
 # <a name="panel"></a>Panel
-<xref:System.Windows.Controls.Panel> является базовым классом для всех элементов, поддерживающих макет приложения в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+<xref:System.Windows.Controls.Panel> является базовым классом для всех элементов, поддерживающих макет приложения в Windows Presentation Foundation (WPF).  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о панелях](panels-overview.md)  

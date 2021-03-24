@@ -15,7 +15,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59314416"
 ---
 # <a name="wpf-and-win32-interoperation"></a>Взаимодействие WPF и Win32
-В этом разделе приводится общее описание метода обеспечения взаимодействия WPF и кода [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)]. [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет среду с широкими возможностями для создания приложений. Однако если имеется сложный код [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], возможно, более эффективным будет повторное использование части этого кода.  
+В этом разделе приводится общее описание метода обеспечения взаимодействия WPF и кода [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)]. Windows Presentation Foundation (WPF) предоставляет среду с широкими возможностями для создания приложений. Однако если имеется сложный код [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], возможно, более эффективным будет повторное использование части этого кода.  
 
 <a name="basics"></a>   
 ## <a name="wpf-and-win32-interoperation-basics"></a>Основы взаимодействия WPF и Win32  

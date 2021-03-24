@@ -13,7 +13,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59170187"
 ---
 # <a name="printing-how-to-topics"></a>Разделы руководства по печати
-В подразделах этого раздела демонстрируется использование печати и функции управления печатью состав [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] а также новый [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] способ печати.  
+В подразделах этого раздела демонстрируется использование печати и функции управления печатью состав Windows Presentation Foundation (WPF) а также новый [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] способ печати.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Вызов диалогового окна печати](how-to-invoke-a-print-dialog.md)  

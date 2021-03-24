@@ -19,7 +19,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57375185"
 ---
 # <a name="globalization-and-localization"></a>Глобализация и локализация
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет расширенную поддержку разработки международных приложений.  
+Windows Presentation Foundation (WPF) предоставляет расширенную поддержку разработки международных приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о глобализации и локализации WPF](wpf-globalization-and-localization-overview.md)  

@@ -18,7 +18,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59129094"
 ---
 # <a name="drawing-formatted-text"></a>Рисование форматированного текста
-В этом разделе представлен обзор функций <xref:System.Windows.Media.FormattedText> объекта. Этот объект предоставляет низкоуровневый элемент управления для рисования текста в приложениях [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+В этом разделе представлен обзор функций <xref:System.Windows.Media.FormattedText> объекта. Этот объект предоставляет низкоуровневый элемент управления для рисования текста в приложениях Windows Presentation Foundation (WPF).  
 
 ## <a name="technology-overview"></a>Общие сведения о технологии  
  <xref:System.Windows.Media.FormattedText> Объект позволяет рисовать многострочный текст, в котором каждый символ в текст можно форматировать по отдельности. В следующем примере показан текст, к которому применено несколько форматов.  
@@ -26,12 +26,12 @@ ms.locfileid: "59129094"
  ![Отображенный текст с использованием объекта FormattedText](./media/typography-in-wpf/text-formatted-linear-gradient.jpg)  
   
 > [!NOTE]
->  Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице из раздела [Миграция Win32](#win32_migration) перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+>  Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице из раздела [Миграция Win32](#win32_migration) перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в Windows Presentation Foundation (WPF).  
   
 ### <a name="reasons-for-using-formatted-text"></a>Причины использования форматированного текста  
  WPF содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений. В общем случае <xref:System.Windows.Controls.TextBlock> элемент должен использоваться при необходимости, например короткого предложения в ограниченная поддержка текста [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. <xref:System.Windows.Controls.Label> может использоваться, если требуется Минимальная текстовая поддержка. Дополнительные сведения см. в разделе [Документы в WPF](documents-in-wpf.md).  
   
- <xref:System.Windows.Media.FormattedText> Объект предоставляет больше функций, чем форматирования текста [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] текстовых элементов управления и могут быть полезны в тех случаях, когда использовать текст как декоративный элемент. Дополнительные сведения см. в следующем разделе: [Преобразование форматированного текста в геометрический объект](#converting_formatted_text).  
+ <xref:System.Windows.Media.FormattedText> Объект предоставляет больше функций, чем форматирования текста Windows Presentation Foundation (WPF) текстовых элементов управления и могут быть полезны в тех случаях, когда использовать текст как декоративный элемент. Дополнительные сведения см. в следующем разделе: [Преобразование форматированного текста в геометрический объект](#converting_formatted_text).  
   
  Кроме того <xref:System.Windows.Media.FormattedText> объект удобна для создания ориентированных на текст <xref:System.Windows.Media.DrawingVisual>-объекты, производные от. <xref:System.Windows.Media.DrawingVisual> — Это упрощенный класс, используемый для отрисовки фигур, изображений и текста. Дополнительные сведения см. в разделе [Пример проверки нажатия с использованием DrawingVisuals](https://go.microsoft.com/fwlink/?LinkID=159994).  
   
@@ -50,7 +50,7 @@ ms.locfileid: "59129094"
    
   
 ### <a name="font-size-unit-of-measure"></a>Единица измерения "Размер шрифта"  
- Как и в случае с другими текстовыми объектами в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
+ Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
   
  [!code-csharp[FormattedTextSnippets#FormattedTextSnippets2](~/samples/snippets/csharp/VS_Snippets_Wpf/FormattedTextSnippets/CSharp/Window1.xaml.cs#formattedtextsnippets2)]
    
@@ -86,7 +86,7 @@ ms.locfileid: "59129094"
   
 <a name="win32_migration"></a>   
 ## <a name="win32-migration"></a>Миграция Win32  
- Возможности <xref:System.Windows.Media.FormattedText> для рисования текста похожи на возможности [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] функции DrawText. Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+ Возможности <xref:System.Windows.Media.FormattedText> для рисования текста похожи на возможности [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] функции DrawText. Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в Windows Presentation Foundation (WPF).  
   
 |Флаг DrawText|Эквивалент WPF|Примечания|  
 |-------------------|--------------------|-----------|  

@@ -14,7 +14,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57379748"
 ---
 # <a name="navigation-how-to-topics"></a>Разделы руководства, посвященные переходу
-Ниже показано, как использовать [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] навигации.  
+Ниже показано, как использовать Windows Presentation Foundation (WPF) навигации.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Вызов страничной функции](how-to-call-a-page-function.md)  

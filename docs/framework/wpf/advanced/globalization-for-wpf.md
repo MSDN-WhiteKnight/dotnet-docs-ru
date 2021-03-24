@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59084171"
 ---
 # <a name="globalization-for-wpf"></a>Глобализация для WPF
-В этом разделе рассматриваются проблемы, которые следует иметь в виду при написании [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений для мирового рынка. Элементы программирования глобализации определяются в [!INCLUDE[TLA#tla_net](../../../../includes/tlasharptla-net-md.md)] в `System.Globalization`.
+В этом разделе рассматриваются проблемы, которые следует иметь в виду при написании Windows Presentation Foundation (WPF) приложений для мирового рынка. Элементы программирования глобализации определяются в [!INCLUDE[TLA#tla_net](../../../../includes/tlasharptla-net-md.md)] в `System.Globalization`.
 
 <a name="xaml_globalization"></a>
 ## <a name="xaml-globalization"></a>Глобализация XAML

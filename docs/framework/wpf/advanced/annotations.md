@@ -14,7 +14,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57373599"
 ---
 # <a name="annotations"></a>Заметки
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет элементы управления, поддерживающие создания примечаний содержимого документа для просмотра документа.  
+Windows Presentation Foundation (WPF) предоставляет элементы управления, поддерживающие создания примечаний содержимого документа для просмотра документа.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о заметках](annotations-overview.md)  

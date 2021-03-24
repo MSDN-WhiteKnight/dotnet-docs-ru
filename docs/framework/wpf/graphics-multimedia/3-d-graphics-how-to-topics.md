@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57353560"
 ---
 # <a name="3-d-graphics-how-to-topics"></a>Практические руководства, посвященные 3-D графике
-В подразделах этого раздела демонстрируется использование [!INCLUDE[TLA#tla_3d](../../../../includes/tlasharptla-3d-md.md)] графики в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений.  
+В подразделах этого раздела демонстрируется использование [!INCLUDE[TLA#tla_3d](../../../../includes/tlasharptla-3d-md.md)] графики в Windows Presentation Foundation (WPF) приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Создание трехмерной сцены](how-to-create-a-3-d-scene.md)  

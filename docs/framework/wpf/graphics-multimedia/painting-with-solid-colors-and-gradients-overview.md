@@ -21,7 +21,7 @@ ms.locfileid: "59148308"
 
 <a name="solidcolor"></a>   
 ## <a name="painting-an-area-with-a-solid-color"></a>Закрашивание области сплошным цветом  
- Одна из самых распространенных операций на любой платформе — закрасить область сплошным <xref:System.Windows.Media.Color>. Для выполнения этой задачи [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет <xref:System.Windows.Media.SolidColorBrush> класса. В следующих разделах описаны различные способы закрашивания с <xref:System.Windows.Media.SolidColorBrush>.  
+ Одна из самых распространенных операций на любой платформе — закрасить область сплошным <xref:System.Windows.Media.Color>. Для выполнения этой задачи Windows Presentation Foundation (WPF) предоставляет <xref:System.Windows.Media.SolidColorBrush> класса. В следующих разделах описаны различные способы закрашивания с <xref:System.Windows.Media.SolidColorBrush>.  
   
 <a name="solidcolorinxaml"></a>   
 ### <a name="using-a-solidcolorbrush-in-xaml"></a>Использование SolidColorBrush в XAML  

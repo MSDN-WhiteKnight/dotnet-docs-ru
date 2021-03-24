@@ -22,7 +22,7 @@ ms.locfileid: "59298348"
 ---
 # <a name="creating-a-control-that-has-a-customizable-appearance"></a>Создание элемента управления с настраиваемым внешним видом
 <a name="introduction"></a>
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] дает возможность создать внешний вид которых можно настроить элемент управления. Например, можно изменить внешний вид <xref:System.Windows.Controls.CheckBox> Кроме какие настройки свойств будет сделать путем создания нового <xref:System.Windows.Controls.ControlTemplate>. На следующем рисунке показано <xref:System.Windows.Controls.CheckBox> , по умолчанию использует <xref:System.Windows.Controls.ControlTemplate> и <xref:System.Windows.Controls.CheckBox> , использующий пользовательский <xref:System.Windows.Controls.ControlTemplate>.  
+Windows Presentation Foundation (WPF) дает возможность создать внешний вид которых можно настроить элемент управления. Например, можно изменить внешний вид <xref:System.Windows.Controls.CheckBox> Кроме какие настройки свойств будет сделать путем создания нового <xref:System.Windows.Controls.ControlTemplate>. На следующем рисунке показано <xref:System.Windows.Controls.CheckBox> , по умолчанию использует <xref:System.Windows.Controls.ControlTemplate> и <xref:System.Windows.Controls.CheckBox> , использующий пользовательский <xref:System.Windows.Controls.ControlTemplate>.  
   
  ![Флажок с шаблоном элемента управления по умолчанию. ](./media/ndp-checkboxdefault.png "NDP_CheckBoxDefault")  
 Элемент управления CheckBox, использующий шаблон элемента управления по умолчанию  

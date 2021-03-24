@@ -90,7 +90,7 @@ ms.locfileid: "59079829"
   
  Пользователи данного приложения будут разочарованы выходные данные, даже если <xref:System.Windows.FlowDirection> правильно чисел не так, как должны быть отформатированы числа на арабском языке.  
   
- Элементы XAML могут включать [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] атрибут (`xml:lang`), определяющий язык каждого элемента. XAML также поддерживает [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] языковой принцип при котором `xml:lang` значения, применяющиеся к родительским элементам в дереве, используются дочерние элементы. В предыдущем примере так как язык не был определен для <xref:System.Windows.Documents.Run> элемента или любой из его свойство top на уровне элементов, по умолчанию `xml:lang` использовался, который является `en-US` для XAML. Внутренняя алгоритму формирования чисел [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] числа выбираются в соответствии с языком – в данном случае английский. Чтобы арабские числа отображались правильно `xml:lang` необходимо задать.  
+ Элементы XAML могут включать [!INCLUDE[TLA#tla_xml](../../../../includes/tlasharptla-xml-md.md)] атрибут (`xml:lang`), определяющий язык каждого элемента. XAML также поддерживает [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] языковой принцип при котором `xml:lang` значения, применяющиеся к родительским элементам в дереве, используются дочерние элементы. В предыдущем примере так как язык не был определен для <xref:System.Windows.Documents.Run> элемента или любой из его свойство top на уровне элементов, по умолчанию `xml:lang` использовался, который является `en-US` для XAML. Внутренняя алгоритму формирования чисел Windows Presentation Foundation (WPF) числа выбираются в соответствии с языком – в данном случае английский. Чтобы арабские числа отображались правильно `xml:lang` необходимо задать.  
   
  На следующем рисунке показан пример с `xml:lang` добавлен.  
     
@@ -150,7 +150,7 @@ ms.locfileid: "59079829"
 
  ![Рисунок, иллюстрирующий стрелки, нарисованные с помощью элемента Path.](./media/bidirectional-features-in-wpf-overview/arrows-drawn-path-element.png)  
   
- <xref:System.Windows.Controls.Image> И <xref:System.Windows.Shapes.Path> приведены два примера того, как [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] использует <xref:System.Windows.FlowDirection>. Рядом с макетом [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементы в определенном направлении в контейнере, <xref:System.Windows.FlowDirection> можно использовать с элементами, такие как <xref:System.Windows.Controls.InkPresenter> отображаемое на поверхности, <xref:System.Windows.Media.LinearGradientBrush>, <xref:System.Windows.Media.RadialGradientBrush>. Каждый раз, когда требуется расположить справа налево содержимое, которое имитирует расположение слева направо, или наоборот, [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставит вам такую возможность.  
+ <xref:System.Windows.Controls.Image> И <xref:System.Windows.Shapes.Path> приведены два примера того, как Windows Presentation Foundation (WPF) использует <xref:System.Windows.FlowDirection>. Рядом с макетом [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементы в определенном направлении в контейнере, <xref:System.Windows.FlowDirection> можно использовать с элементами, такие как <xref:System.Windows.Controls.InkPresenter> отображаемое на поверхности, <xref:System.Windows.Media.LinearGradientBrush>, <xref:System.Windows.Media.RadialGradientBrush>. Каждый раз, когда требуется расположить справа налево содержимое, которое имитирует расположение слева направо, или наоборот, Windows Presentation Foundation (WPF) предоставит вам такую возможность.  
   
 <a name="NumberSubstitution"></a>   
 ## <a name="number-substitution"></a>Подстановки чисел  
@@ -158,9 +158,9 @@ ms.locfileid: "59079829"
   
  Это позволяет приложениям обрабатывать числовые данные без необходимости преобразовать их с одного языка на другой, например, пользователь может открыть [!INCLUDE[TLA#tla_xl](../../../../includes/tlasharptla-xl-md.md)] электронную таблицу в локализованных арабский [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] числа на арабском языке и открыть его в европейскую версию [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] он увидит европейское представление тех же чисел. Это также необходимо для других символов, например запятая или символ процента, так как они обычно сопровождают числа в одном документе.  
   
- [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] продолжает традицию и добавляет новые для этого средства, позволяющие пользователю более точно контролировать время и способ подстановки используется. Эта функция может использоваться со всеми языками, но особенно полезна она в обработке двунаправленного содержимого, когда представление чисел для разных региональных стандартов становится проблемой для разработчиков приложений, предназначенных для использования в разных странах.  
+ Windows Presentation Foundation (WPF) продолжает традицию и добавляет новые для этого средства, позволяющие пользователю более точно контролировать время и способ подстановки используется. Эта функция может использоваться со всеми языками, но особенно полезна она в обработке двунаправленного содержимого, когда представление чисел для разных региональных стандартов становится проблемой для разработчиков приложений, предназначенных для использования в разных странах.  
   
- Основным свойством, управляющим способом подстановки чисел работает [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] является <xref:System.Windows.Media.NumberSubstitution.Substitution%2A> свойства зависимостей. <xref:System.Windows.Media.NumberSubstitution> Класс указывает, как должны отображаться числа в тексте. Он имеет три открытых свойства, определяющих его поведение. Ниже приведен краткий обзор каждого из свойств.  
+ Основным свойством, управляющим способом подстановки чисел работает Windows Presentation Foundation (WPF) является <xref:System.Windows.Media.NumberSubstitution.Substitution%2A> свойства зависимостей. <xref:System.Windows.Media.NumberSubstitution> Класс указывает, как должны отображаться числа в тексте. Он имеет три открытых свойства, определяющих его поведение. Ниже приведен краткий обзор каждого из свойств.  
   
  **CultureSource:**  
   
@@ -190,7 +190,7 @@ ms.locfileid: "59079829"
   
 -   <xref:System.Windows.Media.NumberSubstitutionMethod.Traditional>: Числа отображаются с использованием традиционных цифр для языка и региональных чисел. Для большинства языков и региональных параметров, это так же, как <xref:System.Windows.Media.NumberSubstitutionMethod.NativeNational>. Тем не менее <xref:System.Windows.Media.NumberSubstitutionMethod.NativeNational> результатов цифр на римские для некоторых арабских языков, тогда как это значение в арабских цифрах для всех арабских языков.  
   
- О чем говорят эти значения разработчикам двунаправленного содержимого? В большинстве случаев разработчику достаточно только для определения <xref:System.Windows.FlowDirection> и язык каждого текстового [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элемент, например `Language="ar-SA"` и <xref:System.Windows.Media.NumberSubstitution> логики отвечает за отображение чисел в соответствии с правильным [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. В следующем примере показано использование английских и арабских чисел в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложения, работающего в арабской версии [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
+ О чем говорят эти значения разработчикам двунаправленного содержимого? В большинстве случаев разработчику достаточно только для определения <xref:System.Windows.FlowDirection> и язык каждого текстового [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элемент, например `Language="ar-SA"` и <xref:System.Windows.Media.NumberSubstitution> логики отвечает за отображение чисел в соответствии с правильным [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. В следующем примере показано использование английских и арабских чисел в Windows Presentation Foundation (WPF) приложения, работающего в арабской версии [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
   
  [!code-xaml[Numbers#Numbers](~/samples/snippets/csharp/VS_Snippets_Wpf/Numbers/CS/Window1.xaml#numbers)]  
   
@@ -204,7 +204,7 @@ ms.locfileid: "59079829"
   
  В реальном приложении может возникнуть необходимость установить язык программным путем. Например, вы хотите задать `xml:lang` атрибут, который будет таким же, как используется в системе [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], или требуется изменять язык в зависимости от состояния приложения.  
   
- Если вы хотите внести изменения на основании состояния приложения, использование других возможностей, предоставляемых [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+ Если вы хотите внести изменения на основании состояния приложения, использование других возможностей, предоставляемых Windows Presentation Foundation (WPF).  
   
  Во-первых, установите компонент приложения `NumberSubstitution.CultureSource="Text"`. С помощью этого параметра гарантирует, что параметры не будут извлекаться из [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] для текстовых элементов, содержащих «User» по умолчанию, таких как <xref:System.Windows.Controls.TextBlock>.  
   
@@ -245,7 +245,7 @@ text1.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalizat
   
  **Использование свойства подстановки**  
   
- Способ подстановки числа работает [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] зависит от языка текстового элемента и его <xref:System.Windows.FlowDirection>. Если <xref:System.Windows.FlowDirection> слева направо, а затем будут отображаться европейские цифры. Тем не менее если ему предшествует текст на арабском языке или задан язык «ar» и <xref:System.Windows.FlowDirection> является <xref:System.Windows.FlowDirection.RightToLeft>, вместо этого будут отображаться арабские цифры.  
+ Способ подстановки числа работает Windows Presentation Foundation (WPF) зависит от языка текстового элемента и его <xref:System.Windows.FlowDirection>. Если <xref:System.Windows.FlowDirection> слева направо, а затем будут отображаться европейские цифры. Тем не менее если ему предшествует текст на арабском языке или задан язык «ar» и <xref:System.Windows.FlowDirection> является <xref:System.Windows.FlowDirection.RightToLeft>, вместо этого будут отображаться арабские цифры.  
   
  В некоторых случаях может потребоваться создание универсального приложения, например с европейскими цифрами для всех пользователей. Или арабские цифры в <xref:System.Windows.Documents.Table> ячейки с определенным <xref:System.Windows.Style>. Один простой способ выполнения задачи, использующего <xref:System.Windows.Media.NumberSubstitution.Substitution%2A> свойство.  
   

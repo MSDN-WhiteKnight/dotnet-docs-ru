@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59181705"
 ---
 # <a name="how-to-enable-a-command"></a>Практическое руководство. Включение команды
-Следующий пример демонстрирует использование команд в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  В примере показано связывание <xref:System.Windows.Input.RoutedCommand> для <xref:System.Windows.Controls.Button>, создание <xref:System.Windows.Input.CommandBinding>и создавать обработчики событий, которые реализуют <xref:System.Windows.Input.RoutedCommand>.  Дополнительные сведения о системе команд см. в разделе [сведения о системе команд](commanding-overview.md).  
+Следующий пример демонстрирует использование команд в Windows Presentation Foundation (WPF).  В примере показано связывание <xref:System.Windows.Input.RoutedCommand> для <xref:System.Windows.Controls.Button>, создание <xref:System.Windows.Input.CommandBinding>и создавать обработчики событий, которые реализуют <xref:System.Windows.Input.RoutedCommand>.  Дополнительные сведения о системе команд см. в разделе [сведения о системе команд](commanding-overview.md).  
   
 ## <a name="example"></a>Пример  
  В первой части кода создает [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)], который состоит из <xref:System.Windows.Controls.Button> и <xref:System.Windows.Controls.StackPanel>и создает <xref:System.Windows.Input.CommandBinding> , связывает обработчики команд с <xref:System.Windows.Input.RoutedCommand>.  

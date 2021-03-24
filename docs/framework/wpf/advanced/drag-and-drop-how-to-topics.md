@@ -14,7 +14,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59100175"
 ---
 # <a name="drag-and-drop-how-to-topics"></a>Разделы Руководства по операциям перетаскивания
-Следующие примеры демонстрируют способы выполнения типичных задач с помощью [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] framework перетаскивания и вставки.  
+Следующие примеры демонстрируют способы выполнения типичных задач с помощью Windows Presentation Foundation (WPF) framework перетаскивания и вставки.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Открытие файла, перемещенного перетаскиванием в элемент управления RichTextBox](how-to-open-a-file-that-is-dropped-on-a-richtextbox-control.md)  

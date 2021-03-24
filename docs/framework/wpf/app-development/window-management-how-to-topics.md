@@ -14,7 +14,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57351662"
 ---
 # <a name="window-management-how-to-topics"></a>Инструкции по управлению окна
-В следующих темах управление [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] windows.  
+В следующих темах управление Windows Presentation Foundation (WPF) windows.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Автоматическое изменение размера окна в соответствии с размером содержимого](how-to-automatically-size-a-window-to-fit-its-content.md)  

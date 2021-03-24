@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59230659"
 ---
 # <a name="graphics-how-to-topics"></a>Разделы практического руководства, посвященные графике
-В следующих разделах показано, как использовать графических возможностей [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+В следующих разделах показано, как использовать графических возможностей Windows Presentation Foundation (WPF).  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Анимация прямоугольника](how-to-animate-a-rectangle.md)  

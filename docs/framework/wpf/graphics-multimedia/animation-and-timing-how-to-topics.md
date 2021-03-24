@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57358500"
 ---
 # <a name="animation-and-timing-how-to-topics"></a>Разделы руководства по анимации и таймерам
-В следующих разделах показано, как использовать [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] анимации и системы в приложениях.  
+В следующих разделах показано, как использовать Windows Presentation Foundation (WPF) анимации и системы в приложениях.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Ускорение или замедление анимации](how-to-accelerate-or-decelerate-an-animation.md)  

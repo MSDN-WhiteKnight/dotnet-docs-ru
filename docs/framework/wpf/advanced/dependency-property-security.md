@@ -18,7 +18,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59077476"
 ---
 # <a name="dependency-property-security"></a>Безопасность свойства зависимости
-Свойства зависимости, как правило, считаются открытыми. Суть системы свойств [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] такова, что дать гарантии безопасности о значении свойства зависимости невозможно.  
+Свойства зависимости, как правило, считаются открытыми. Суть системы свойств Windows Presentation Foundation (WPF) такова, что дать гарантии безопасности о значении свойства зависимости невозможно.  
 
 <a name="AccessSecurity"></a>   
 ## <a name="access-and-security-of-wrappers-and-dependency-properties"></a>Доступ к программам-оболочкам и свойствам зависимости и их безопасность  

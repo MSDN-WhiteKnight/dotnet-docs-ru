@@ -14,7 +14,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57359254"
 ---
 # <a name="adorners-how-to-topics"></a>Разделы пошагового руководства, посвященные декорированию
-Следующие примеры демонстрируют способы выполнения типичных задач с помощью [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] framework декоративного элемента.  
+Следующие примеры демонстрируют способы выполнения типичных задач с помощью Windows Presentation Foundation (WPF) framework декоративного элемента.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Реализация декоративного элемента](how-to-implement-an-adorner.md)  

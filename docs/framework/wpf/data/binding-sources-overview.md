@@ -18,7 +18,7 @@ ms.locfileid: "59145929"
 
 <a name="binding_sources"></a>   
 ## <a name="binding-source-types"></a>Типы источников привязки  
- [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] Привязка данных поддерживает следующие типы источников привязки:  
+ Windows Presentation Foundation (WPF) Привязка данных поддерживает следующие типы источников привязки:  
   
 |Источник привязки|Описание|  
 |--------------------|-----------------|  

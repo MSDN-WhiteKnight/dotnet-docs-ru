@@ -32,7 +32,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59320019"
 ---
 # <a name="input-overview"></a>Общие сведения о входных данных
-<a name="introduction"></a> [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] Подсистема предоставляет мощный [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] для получения входных данных из широкого спектра устройств, включая мышь, клавиатура, сенсорного ввода и пера. В этом разделе описываются службы, предоставляемые WPF, и объясняется архитектура систем ввода.
+<a name="introduction"></a> Windows Presentation Foundation (WPF) Подсистема предоставляет мощный [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] для получения входных данных из широкого спектра устройств, включая мышь, клавиатура, сенсорного ввода и пера. В этом разделе описываются службы, предоставляемые WPF, и объясняется архитектура систем ввода.
 
 <a name="input_api"></a>
 ## <a name="input-api"></a>API ввода

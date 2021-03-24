@@ -36,7 +36,7 @@ ms.locfileid: "59298322"
   
 <a name="create_sample_app"></a>   
 ## <a name="create-a-sample-application"></a>Создание примера приложения  
- На этом шаге вы будете выполнять подготовку приложения к локализации. В примерах [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляется приложение HelloApp, которое будет использоваться для примеров кода в этом разделе. Если вы хотите использовать этот пример, скачайте [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файлов из [средства LocBaml](https://go.microsoft.com/fwlink/?LinkID=160016).  
+ На этом шаге вы будете выполнять подготовку приложения к локализации. В примерах Windows Presentation Foundation (WPF) предоставляется приложение HelloApp, которое будет использоваться для примеров кода в этом разделе. Если вы хотите использовать этот пример, скачайте [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файлов из [средства LocBaml](https://go.microsoft.com/fwlink/?LinkID=160016).  
   
 1. Разработайте свое приложение до точки, в которой хотите начать локализацию.  
   

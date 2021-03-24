@@ -13,7 +13,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59325830"
 ---
 # <a name="whats-new-in-wpf-version-45"></a>Новые возможности WPF версии 4.5
-<a name="introduction"></a> Этот раздел содержит сведения о новых и усовершенствованных возможностях [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] версии 4.5.  
+<a name="introduction"></a> Этот раздел содержит сведения о новых и усовершенствованных возможностях Windows Presentation Foundation (WPF) версии 4.5.  
   
  В этом разделе содержатся следующие подразделы.  
   

@@ -14,7 +14,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59078515"
 ---
 # <a name="fonts-how-to-topics"></a>Разделы руководства, посвященные шрифтам
-В подразделах этого раздела демонстрируется использование функции шрифта, в состав [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)].  
+В подразделах этого раздела демонстрируется использование функции шрифта, в состав Windows Presentation Foundation (WPF).  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Перечисление системных шрифтов](how-to-enumerate-system-fonts.md)  

@@ -22,7 +22,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59217774"
 ---
 # <a name="shapes"></a>Фигур
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет поддержку для рисования основных фигур с помощью <xref:System.Windows.Shapes.Shape> класса. Объекты фигур являются производными от <xref:System.Windows.FrameworkElement> и таким образом, участвовать в системе макета и можно ли рисовать просто с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
+Windows Presentation Foundation (WPF) предоставляет поддержку для рисования основных фигур с помощью <xref:System.Windows.Shapes.Shape> класса. Объекты фигур являются производными от <xref:System.Windows.FrameworkElement> и таким образом, участвовать в системе макета и можно ли рисовать просто с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Обзор фигур и базовых средств рисования в приложении WPF](shapes-and-basic-drawing-in-wpf-overview.md)  

@@ -25,7 +25,7 @@ ms.locfileid: "59224269"
   
  Объект <xref:System.Windows.Freezable> предоставляет <xref:System.Windows.Freezable.Changed> событие, чтобы уведомлять наблюдателей об каких-либо изменений объекта. Замораживание <xref:System.Windows.Freezable> позволяет повысить его производительность, поскольку он больше не требуется тратить ресурсы на уведомления об изменениях. Зафиксированный <xref:System.Windows.Freezable> также может использоваться несколькими потоками, в отличие от незафиксированных <xref:System.Windows.Freezable> невозможно.  
   
- Несмотря на то что <xref:System.Windows.Freezable> класс имеет много приложений, наиболее <xref:System.Windows.Freezable> объекты в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] связаны с графическая подсистема.  
+ Несмотря на то что <xref:System.Windows.Freezable> класс имеет много приложений, наиболее <xref:System.Windows.Freezable> объекты в Windows Presentation Foundation (WPF) связаны с графическая подсистема.  
   
  <xref:System.Windows.Freezable> Класс упрощает использование определенных объектов графических систем и может повысить производительность приложения. Примеры типов, которые наследуют от <xref:System.Windows.Freezable> включают <xref:System.Windows.Media.Brush>, <xref:System.Windows.Media.Transform>, и <xref:System.Windows.Media.Geometry> классы. Так как они содержат неуправляемые ресурсы, система должна отслеживать изменения этих объектов и затем обновить соответствующие им неуправляемые ресурсы, при наличии изменений в исходный объект. Даже если вы не меняете фактически объект графической системы, системы необходимо по-прежнему тратить часть его ресурсов, наблюдение за объектом, в случае, если изменить его.  
   

@@ -16,7 +16,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57367470"
 ---
 # <a name="drag-and-drop"></a>Перетаскивание
-[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] предоставляет очень гибкую и drop инфраструктуру, поддерживающую перетаскивания данных в оба WPF приложений, а также другими [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] приложений.  
+Windows Presentation Foundation (WPF) предоставляет очень гибкую и drop инфраструктуру, поддерживающую перетаскивания данных в оба WPF приложений, а также другими [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о перетаскивании](drag-and-drop-overview.md)  

@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57373261"
 ---
 # <a name="brushes-how-to-topics"></a>Разделы практического руководства, посвященные кистям
-В следующих разделах показано, как использовать [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] кисти для рисования содержимого экрана.  
+В следующих разделах показано, как использовать Windows Presentation Foundation (WPF) кисти для рисования содержимого экрана.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Анимация цвета или прозрачности объекта SolidColorBrush](how-to-animate-the-color-or-opacity-of-a-solidcolorbrush.md)  

@@ -24,7 +24,7 @@ ms.locfileid: "59314402"
 > [!NOTE]
 >  <xref:System.Runtime.Caching> Пространство имен впервые появилось в [!INCLUDE[net_v40_short](../../../../includes/net-v40-short-md.md)]. Это пространство имен обеспечивает кэширование доступен для всех [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] приложений. В предыдущих версиях [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] кэширование было доступно только в пространстве имен <xref:System.Web> и поэтому требовало зависимости от классов ASP.NET.
 
- В этом пошаговом руководстве показано, как использовать функции кэширования, которая доступна в [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] как часть [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложения. В этом пошаговом руководстве кэшировать содержимое текстового файла.
+ В этом пошаговом руководстве показано, как использовать функции кэширования, которая доступна в [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] как часть Windows Presentation Foundation (WPF) приложения. В этом пошаговом руководстве кэшировать содержимое текстового файла.
 
  В данном пошаговом руководстве представлены следующие задачи:
 

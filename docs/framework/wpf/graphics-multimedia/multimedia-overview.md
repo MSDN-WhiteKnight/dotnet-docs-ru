@@ -13,7 +13,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59340494"
 ---
 # <a name="multimedia-overview"></a>Общие сведения о мультимедиа
-Мультимедийные возможности [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] позволяют интегрировать аудио и видео в приложения для расширения возможностей пользователя. В этом разделе представлены мультимедийные возможности WPF.  
+Мультимедийные возможности Windows Presentation Foundation (WPF) позволяют интегрировать аудио и видео в приложения для расширения возможностей пользователя. В этом разделе представлены мультимедийные возможности WPF.  
 
 <a name="mediaapi"></a>   
 ## <a name="media-api"></a>API мультимедиа  
@@ -32,7 +32,7 @@ ms.locfileid: "59340494"
 > [!NOTE]
 >  Оба <xref:System.Windows.Controls.MediaElement> и <xref:System.Windows.Media.MediaPlayer> содержат похожие члены. Ссылки в этом разделе, относятся к <xref:System.Windows.Controls.MediaElement> членов класса. Если не указано иное, члены, связанные в <xref:System.Windows.Controls.MediaElement> класс можно найти также в <xref:System.Windows.Media.MediaPlayer> класса.  
   
- Чтобы понимать принципы воспроизведения мультимедиа в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)], необходимо знание о различных режимах, в которых может воспроизводиться содержимое мультимедиа. Оба <xref:System.Windows.Controls.MediaElement> и <xref:System.Windows.Media.MediaPlayer> можно использовать в двух различных режимах, независимом режиме и режиме часов. Режим мультимедиа определяется <xref:System.Windows.Controls.MediaElement.Clock%2A> свойство. Когда <xref:System.Windows.Controls.MediaElement.Clock%2A> является `null`, объект мультимедиа находится в независимом режиме. Когда <xref:System.Windows.Controls.MediaElement.Clock%2A> — не null, объект мультимедиа находится в режиме часов. По умолчанию объекты мультимедиа находятся в независимом режиме.  
+ Чтобы понимать принципы воспроизведения мультимедиа в Windows Presentation Foundation (WPF), необходимо знание о различных режимах, в которых может воспроизводиться содержимое мультимедиа. Оба <xref:System.Windows.Controls.MediaElement> и <xref:System.Windows.Media.MediaPlayer> можно использовать в двух различных режимах, независимом режиме и режиме часов. Режим мультимедиа определяется <xref:System.Windows.Controls.MediaElement.Clock%2A> свойство. Когда <xref:System.Windows.Controls.MediaElement.Clock%2A> является `null`, объект мультимедиа находится в независимом режиме. Когда <xref:System.Windows.Controls.MediaElement.Clock%2A> — не null, объект мультимедиа находится в режиме часов. По умолчанию объекты мультимедиа находятся в независимом режиме.  
   
 ### <a name="independent-mode"></a>Независимый режим  
  В независимом режиме содержимое мультимедиа управляет своим воспроизведением. Независимый режим имеет следующие параметры.  
@@ -66,7 +66,7 @@ ms.locfileid: "59340494"
   
 <a name="mediaelement"></a>   
 ## <a name="mediaelement-class"></a>Класс MediaElement  
- Добавление мультимедиа в приложение является простым добавлением <xref:System.Windows.Controls.MediaElement> управления [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] приложения и предоставляя <xref:System.Uri> на носитель, которые требуется включить. Все типы мультимедиа, поддерживаемые [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] 10, также поддерживаются в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)]. В следующем примере показано простое использование класса <xref:System.Windows.Controls.MediaElement> в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
+ Добавление мультимедиа в приложение является простым добавлением <xref:System.Windows.Controls.MediaElement> управления [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] приложения и предоставляя <xref:System.Uri> на носитель, которые требуется включить. Все типы мультимедиа, поддерживаемые [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] 10, также поддерживаются в Windows Presentation Foundation (WPF). В следующем примере показано простое использование класса <xref:System.Windows.Controls.MediaElement> в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
   
  [!code-xaml[MediaElement_snip#SimpleMediaElementUsageWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/MediaElement_snip/CSharp/SimpleUsage.xaml#simplemediaelementusagewholepage)]  
   
@@ -90,7 +90,7 @@ ms.locfileid: "59340494"
   
  Установка <xref:System.Windows.FrameworkElement.Width%2A> и <xref:System.Windows.FrameworkElement.Height%2A> свойства приведут к с носителя растягиваются для заполнения области, предоставленной для <xref:System.Windows.Controls.MediaElement>. Для сохранения файла мультимедиа исходные пропорции, либо <xref:System.Windows.FrameworkElement.Width%2A> или <xref:System.Windows.FrameworkElement.Height%2A> свойство должно иметь значение, но не оба. Установка <xref:System.Windows.FrameworkElement.Width%2A> и <xref:System.Windows.FrameworkElement.Height%2A> свойства приведут к отображению в элементе фиксированного размера, который может быть нежелательно содержимого мультимедиа.  
   
- Чтобы избежать отображения элемента фиксированного размера, [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] может сделать предварительную пробу содержимого мультимедиа. Это сделать, задав <xref:System.Windows.Controls.MediaElement.LoadedBehavior%2A> либо <xref:System.Windows.Controls.MediaState.Play> или <xref:System.Windows.Controls.MediaState.Pause>. В <xref:System.Windows.Controls.MediaState.Pause> state, мультимедиа будет сделана предварительная проба и будет показан первый кадр. В <xref:System.Windows.Controls.MediaState.Play> state, будет сделана предварительная проба и начнет воспроизведение мультимедиа.  
+ Чтобы избежать отображения элемента фиксированного размера, Windows Presentation Foundation (WPF) может сделать предварительную пробу содержимого мультимедиа. Это сделать, задав <xref:System.Windows.Controls.MediaElement.LoadedBehavior%2A> либо <xref:System.Windows.Controls.MediaState.Play> или <xref:System.Windows.Controls.MediaState.Pause>. В <xref:System.Windows.Controls.MediaState.Pause> state, мультимедиа будет сделана предварительная проба и будет показан первый кадр. В <xref:System.Windows.Controls.MediaState.Play> state, будет сделана предварительная проба и начнет воспроизведение мультимедиа.  
   
 <a name="mediaplayer"></a>   
 ## <a name="mediaplayer-class"></a>Класс MediaPlayer  

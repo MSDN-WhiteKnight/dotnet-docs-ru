@@ -27,7 +27,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59102834"
 ---
 # <a name="xaml-overview-wpf"></a>Обзор XAML (WPF)
-В этом разделе описаны возможности языка XAML и показано, как использовать язык XAML для написания приложений [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)]. В частности, в этом разделе описывается реализация XAML в WPF. Сам язык XAML — это более широкое понятие языка, чем WPF.  
+В этом разделе описаны возможности языка XAML и показано, как использовать язык XAML для написания приложений Windows Presentation Foundation (WPF). В частности, в этом разделе описывается реализация XAML в WPF. Сам язык XAML — это более широкое понятие языка, чем WPF.  
 
 <a name="what_is_xaml"></a>   
 ## <a name="what-is-xaml"></a>Что это такое язык XAML?  

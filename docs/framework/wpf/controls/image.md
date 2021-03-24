@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59184864"
 ---
 # <a name="image"></a>Изображение
-<xref:System.Windows.Controls.Image> Элемент используется для отображения растровых изображений в [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений.  
+<xref:System.Windows.Controls.Image> Элемент используется для отображения растровых изображений в Windows Presentation Foundation (WPF) приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Практические руководства](image-how-to-topics.md)  

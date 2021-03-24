@@ -16,7 +16,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57366729"
 ---
 # <a name="brushes"></a>Кисти
-Ниже описаны способы использования [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] кистей к «рисовать» содержимое на экране  
+Ниже описаны способы использования Windows Presentation Foundation (WPF) кистей к «рисовать» содержимое на экране  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о кистях WPF](wpf-brushes-overview.md)  

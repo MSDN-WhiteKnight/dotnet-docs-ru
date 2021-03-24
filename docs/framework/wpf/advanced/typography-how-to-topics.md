@@ -14,7 +14,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59209746"
 ---
 # <a name="typography-how-to-topics"></a>Разделы руководства, посвященные разметке текста
-В этом разделе описываются способы использования [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] поддержка представление форматированного текста в приложениях.  
+В этом разделе описываются способы использования Windows Presentation Foundation (WPF) поддержка представление форматированного текста в приложениях.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Создание оформления текста](how-to-create-a-text-decoration.md)  

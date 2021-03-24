@@ -21,7 +21,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57366625"
 ---
 # <a name="migration-and-interoperability"></a>Миграция и взаимодействие систем
-Эта страница содержит ссылки на документы, посвященные реализации взаимодействия между [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] приложений и другие виды [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] приложений.  
+Эта страница содержит ссылки на документы, посвященные реализации взаимодействия между Windows Presentation Foundation (WPF) приложений и другие виды [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Взаимодействие WPF и Windows Forms](wpf-and-windows-forms-interoperation.md)  
@@ -33,7 +33,7 @@ ms.locfileid: "57366625"
 |Термин|Определение|  
 |----------|----------------|  
 |<xref:System.Windows.Forms.Integration.WindowsFormsHost>|Элемент, который можно использовать для размещения [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] управления как элемент WPF страницы.|  
-|<xref:System.Windows.Forms.Integration.ElementHost>|Объект [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления, который можно использовать для размещения [!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] элемента управления.|  
+|<xref:System.Windows.Forms.Integration.ElementHost>|Объект [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления, который можно использовать для размещения Windows Presentation Foundation (WPF) элемента управления.|  
 |<xref:System.Windows.Interop.HwndSource>|Узлы WPF регионом в пределах [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложения.|  
 |<xref:System.Windows.Interop.HwndHost>|Базовый класс для <xref:System.Windows.Forms.Integration.WindowsFormsHost>, определяет базовые возможности, все технологии на основе HWND использовать, если они размещаются в WPF приложения. Подкласс это для размещения [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна WPF приложения.|  
 |<xref:System.Windows.Interop.BrowserInteropHelper>|Вспомогательный класс для условий отчетности среды браузера для WPF приложения, размещенного в браузере.|  
