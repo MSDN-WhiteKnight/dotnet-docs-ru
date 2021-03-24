@@ -130,7 +130,7 @@ ms.locfileid: "59209168"
  
  [!code-xaml[MarginPaddingAlignmentSample#4](~/samples/snippets/xaml/VS_Snippets_Wpf/MarginPaddingAlignmentSample/XAML/default.xaml#4)]  
   
- При компиляции приведенное выше приложение создает [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который показан на рисунке ниже. Влияние различных значений свойств выражается интервалами между элементами, а существенные изменения значений свойств для элементов в каждом столбце отображаются внутри <xref:System.Windows.Controls.TextBlock> элементов.  
+ При компиляции приведенное выше приложение создает UI, который показан на рисунке ниже. Влияние различных значений свойств выражается интервалами между элементами, а существенные изменения значений свойств для элементов в каждом столбце отображаются внутри <xref:System.Windows.Controls.TextBlock> элементов.  
   
  ![Несколько свойств размещения в одном приложении](./media/layout-margins-padding-aligment-graphic3.PNG "layout_margins_padding_aligment_graphic3")  
   

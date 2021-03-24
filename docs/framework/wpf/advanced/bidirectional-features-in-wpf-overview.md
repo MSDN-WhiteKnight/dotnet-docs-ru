@@ -51,7 +51,7 @@ ms.locfileid: "59079829"
 ## <a name="flowdocument"></a>FlowDocument  
  Многие платформы разработки, такие как [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)], [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и Java, обеспечивают специальную поддержку разработки двунаправленного содержимого. Языки разметки, такие как [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)] предоставляют авторам содержимого необходимые средства разметки для отображения текста в любом требуемом направлении, например [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)] 4.0 тег, «dir», который принимает в качестве значения «rtl» или «ltr». Этот тег аналогичен <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство, но <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство работает в более сложных способов для разметки текста и может использоваться для нетекстового содержимого.  
   
- В WPF, <xref:System.Windows.Documents.FlowDocument> является универсальным [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элемент, который может содержать сочетание текста, таблиц, изображений и других элементов. Этот элемент используется в примерах, описанных ниже.  
+ В WPF, <xref:System.Windows.Documents.FlowDocument> является универсальным UI элемент, который может содержать сочетание текста, таблиц, изображений и других элементов. Этот элемент используется в примерах, описанных ниже.  
   
  Добавление текста к <xref:System.Windows.Documents.FlowDocument> можно сделать более таким образом один. Простой способ сделать это – <xref:System.Windows.Documents.Paragraph> которого является элемент уровня блока, используемый для группировки содержимого, такие как текст. Добавление текста в элементы встроенного уровня, в примерах используются <xref:System.Windows.Documents.Span> и <xref:System.Windows.Documents.Run>. <xref:System.Windows.Documents.Span> — Это элемент содержимого потока встроенного уровня, используемый для группировки других встроенных элементов, хотя <xref:System.Windows.Documents.Run> является элемент предназначен для содержания цепочки неформатированного текста содержимого потока встроенного уровня. Объект <xref:System.Windows.Documents.Span> может содержать несколько <xref:System.Windows.Documents.Run> элементов.  
   
@@ -104,7 +104,7 @@ ms.locfileid: "59079829"
   
 <a name="FlowDirectionNontext"></a>   
 ## <a name="flowdirection-with-non-text-elements"></a>Направление потока применительно к нетекстовым элементам  
- <xref:System.Windows.FlowDirection> Определяет не только направление текста в текстовом элементе, но также направление потока в практически любом другом [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элемент. Показано на следующем рисунке <xref:System.Windows.Controls.ToolBar> , использующая горизонтальную <xref:System.Windows.Media.LinearGradientBrush> для рисования фона с левой к правой градиента.  
+ <xref:System.Windows.FlowDirection> Определяет не только направление текста в текстовом элементе, но также направление потока в практически любом другом UI элемент. Показано на следующем рисунке <xref:System.Windows.Controls.ToolBar> , использующая горизонтальную <xref:System.Windows.Media.LinearGradientBrush> для рисования фона с левой к правой градиента.  
 
  ![Рисунок, показывающий элемент toolbar с слева правой градиента.](./media/bidirectional-features-in-wpf-overview/toolbar-left-right-gradient.png)  
   
@@ -126,7 +126,7 @@ ms.locfileid: "59079829"
   
  <xref:System.Windows.Controls.Image> Представляет элемент управления, отображающий изображение. В [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)] он может использоваться с <xref:System.Windows.Controls.Image.Source%2A> свойство, определяющее [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] из <xref:System.Windows.Controls.Image> для отображения.  
   
- В отличие от других [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементов, <xref:System.Windows.Controls.Image> не наследует <xref:System.Windows.FlowDirection> из контейнера. Тем не менее если <xref:System.Windows.FlowDirection> явно присвоено <xref:System.Windows.FlowDirection.RightToLeft>, <xref:System.Windows.Controls.Image> отображается перевернутым по горизонтали. Это сделано для удобства разработчиков двунаправленного содержимого. В некоторых случаях горизонтальным отражением достигается требуемый эффект.  
+ В отличие от других UI элементов, <xref:System.Windows.Controls.Image> не наследует <xref:System.Windows.FlowDirection> из контейнера. Тем не менее если <xref:System.Windows.FlowDirection> явно присвоено <xref:System.Windows.FlowDirection.RightToLeft>, <xref:System.Windows.Controls.Image> отображается перевернутым по горизонтали. Это сделано для удобства разработчиков двунаправленного содержимого. В некоторых случаях горизонтальным отражением достигается требуемый эффект.  
   
  На следующем рисунке показано перевернутое <xref:System.Windows.Controls.Image>.  
     
@@ -150,13 +150,13 @@ ms.locfileid: "59079829"
 
  ![Рисунок, иллюстрирующий стрелки, нарисованные с помощью элемента Path.](./media/bidirectional-features-in-wpf-overview/arrows-drawn-path-element.png)  
   
- <xref:System.Windows.Controls.Image> И <xref:System.Windows.Shapes.Path> приведены два примера того, как Windows Presentation Foundation (WPF) использует <xref:System.Windows.FlowDirection>. Рядом с макетом [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элементы в определенном направлении в контейнере, <xref:System.Windows.FlowDirection> можно использовать с элементами, такие как <xref:System.Windows.Controls.InkPresenter> отображаемое на поверхности, <xref:System.Windows.Media.LinearGradientBrush>, <xref:System.Windows.Media.RadialGradientBrush>. Каждый раз, когда требуется расположить справа налево содержимое, которое имитирует расположение слева направо, или наоборот, Windows Presentation Foundation (WPF) предоставит вам такую возможность.  
+ <xref:System.Windows.Controls.Image> И <xref:System.Windows.Shapes.Path> приведены два примера того, как Windows Presentation Foundation (WPF) использует <xref:System.Windows.FlowDirection>. Рядом с макетом UI элементы в определенном направлении в контейнере, <xref:System.Windows.FlowDirection> можно использовать с элементами, такие как <xref:System.Windows.Controls.InkPresenter> отображаемое на поверхности, <xref:System.Windows.Media.LinearGradientBrush>, <xref:System.Windows.Media.RadialGradientBrush>. Каждый раз, когда требуется расположить справа налево содержимое, которое имитирует расположение слева направо, или наоборот, Windows Presentation Foundation (WPF) предоставит вам такую возможность.  
   
 <a name="NumberSubstitution"></a>   
 ## <a name="number-substitution"></a>Подстановки чисел  
- Исторически сложилось так, что [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] поддерживала подстановку чисел, позволяя представления различных культурных фигур для одних цифр во время сохранения внутреннего хранения этих цифр, объединенных в разных языковых стандартах, например, числа хранятся в их известное шестнадцатеричных значений, 0x40, 41, а отображаются в соответствии с выбранного языка.  
+ Исторически сложилось так, что Windows поддерживала подстановку чисел, позволяя представления различных культурных фигур для одних цифр во время сохранения внутреннего хранения этих цифр, объединенных в разных языковых стандартах, например, числа хранятся в их известное шестнадцатеричных значений, 0x40, 41, а отображаются в соответствии с выбранного языка.  
   
- Это позволяет приложениям обрабатывать числовые данные без необходимости преобразовать их с одного языка на другой, например, пользователь может открыть [!INCLUDE[TLA#tla_xl](../../../../includes/tlasharptla-xl-md.md)] электронную таблицу в локализованных арабский [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] числа на арабском языке и открыть его в европейскую версию [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] он увидит европейское представление тех же чисел. Это также необходимо для других символов, например запятая или символ процента, так как они обычно сопровождают числа в одном документе.  
+ Это позволяет приложениям обрабатывать числовые данные без необходимости преобразовать их с одного языка на другой, например, пользователь может открыть [!INCLUDE[TLA#tla_xl](../../../../includes/tlasharptla-xl-md.md)] электронную таблицу в локализованных арабский Windows числа на арабском языке и открыть его в европейскую версию Windows он увидит европейское представление тех же чисел. Это также необходимо для других символов, например запятая или символ процента, так как они обычно сопровождают числа в одном документе.  
   
  Windows Presentation Foundation (WPF) продолжает традицию и добавляет новые для этого средства, позволяющие пользователю более точно контролировать время и способ подстановки используется. Эта функция может использоваться со всеми языками, но особенно полезна она в обработке двунаправленного содержимого, когда представление чисел для разных региональных стандартов становится проблемой для разработчиков приложений, предназначенных для использования в разных странах.  
   
@@ -190,7 +190,7 @@ ms.locfileid: "59079829"
   
 -   <xref:System.Windows.Media.NumberSubstitutionMethod.Traditional>: Числа отображаются с использованием традиционных цифр для языка и региональных чисел. Для большинства языков и региональных параметров, это так же, как <xref:System.Windows.Media.NumberSubstitutionMethod.NativeNational>. Тем не менее <xref:System.Windows.Media.NumberSubstitutionMethod.NativeNational> результатов цифр на римские для некоторых арабских языков, тогда как это значение в арабских цифрах для всех арабских языков.  
   
- О чем говорят эти значения разработчикам двунаправленного содержимого? В большинстве случаев разработчику достаточно только для определения <xref:System.Windows.FlowDirection> и язык каждого текстового [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] элемент, например `Language="ar-SA"` и <xref:System.Windows.Media.NumberSubstitution> логики отвечает за отображение чисел в соответствии с правильным [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. В следующем примере показано использование английских и арабских чисел в Windows Presentation Foundation (WPF) приложения, работающего в арабской версии [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
+ О чем говорят эти значения разработчикам двунаправленного содержимого? В большинстве случаев разработчику достаточно только для определения <xref:System.Windows.FlowDirection> и язык каждого текстового UI элемент, например `Language="ar-SA"` и <xref:System.Windows.Media.NumberSubstitution> логики отвечает за отображение чисел в соответствии с правильным UI. В следующем примере показано использование английских и арабских чисел в Windows Presentation Foundation (WPF) приложения, работающего в арабской версии Windows.  
   
  [!code-xaml[Numbers#Numbers](~/samples/snippets/csharp/VS_Snippets_Wpf/Numbers/CS/Window1.xaml#numbers)]  
   
@@ -202,11 +202,11 @@ ms.locfileid: "59079829"
   
  **Определение правил подстановки**  
   
- В реальном приложении может возникнуть необходимость установить язык программным путем. Например, вы хотите задать `xml:lang` атрибут, который будет таким же, как используется в системе [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], или требуется изменять язык в зависимости от состояния приложения.  
+ В реальном приложении может возникнуть необходимость установить язык программным путем. Например, вы хотите задать `xml:lang` атрибут, который будет таким же, как используется в системе UI, или требуется изменять язык в зависимости от состояния приложения.  
   
  Если вы хотите внести изменения на основании состояния приложения, использование других возможностей, предоставляемых Windows Presentation Foundation (WPF).  
   
- Во-первых, установите компонент приложения `NumberSubstitution.CultureSource="Text"`. С помощью этого параметра гарантирует, что параметры не будут извлекаться из [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] для текстовых элементов, содержащих «User» по умолчанию, таких как <xref:System.Windows.Controls.TextBlock>.  
+ Во-первых, установите компонент приложения `NumberSubstitution.CultureSource="Text"`. С помощью этого параметра гарантирует, что параметры не будут извлекаться из UI для текстовых элементов, содержащих «User» по умолчанию, таких как <xref:System.Windows.Controls.TextBlock>.  
   
 Пример:  
 

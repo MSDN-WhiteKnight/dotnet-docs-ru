@@ -13,11 +13,11 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59320656"
 ---
 # <a name="deploying-a-wpf-application-wpf"></a>Развертывание приложений WPF
-После построения приложения Windows Presentation Foundation (WPF), они должны быть развернуты. [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] и .NET Framework поддерживают несколько технологий развертывания. Технология развертывания, используемая для развертывания приложения [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], зависит от типа приложения. Этот раздел содержит краткое описание каждой из технологий развертывания и их использования в сочетании с требованиями к развертыванию для каждого типа приложения [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)].  
+После построения приложения Windows Presentation Foundation (WPF), они должны быть развернуты. Windows и .NET Framework поддерживают несколько технологий развертывания. Технология развертывания, используемая для развертывания приложения WPF, зависит от типа приложения. Этот раздел содержит краткое описание каждой из технологий развертывания и их использования в сочетании с требованиями к развертыванию для каждого типа приложения WPF.  
 
 <a name="Deployment_Technologies"></a>   
 ## <a name="deployment-technologies"></a>Технологии развертывания  
- [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] и .NET Framework включают несколько технологий развертывания, включая:  
+ Windows и .NET Framework включают несколько технологий развертывания, включая:  
   
 -   развертывание с помощью XCopy;  
   
@@ -39,7 +39,7 @@ ms.locfileid: "59320656"
   
 <a name="Windows_Installer"></a>   
 ### <a name="windows-installer"></a>Установщик Windows  
- [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] позволяет упаковывать как самодостаточные исполняемые файлы, которые легко распространять на клиентах и запускать приложения. Кроме того, [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] устанавливается вместе с [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] и поддерживает интеграцию с рабочим столом, меню "Пуск" и компонентом панели управления "Программы".  
+ [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] позволяет упаковывать как самодостаточные исполняемые файлы, которые легко распространять на клиентах и запускать приложения. Кроме того, [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] устанавливается вместе с Windows и поддерживает интеграцию с рабочим столом, меню "Пуск" и компонентом панели управления "Программы".  
   
  [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] упрощает установку и удаление приложений, но он не предоставляет средства, обеспечивающие обновление приложений до последней версии.  
   
@@ -63,13 +63,13 @@ ms.locfileid: "59320656"
   
 <a name="Deploying_WPF_Applications"></a>   
 ## <a name="deploying-wpf-applications"></a>Развертывание приложений WPF  
- Параметры развертывания для приложения [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] зависят от типа приложения. В плане развертывания технология [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] поддерживает три основных типа приложений:  
+ Параметры развертывания для приложения WPF зависят от типа приложения. В плане развертывания технология WPF поддерживает три основных типа приложений:  
   
 -   автономные приложения;  
   
 -   приложения, полностью состоящие из кода [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки;  
   
--   [!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)].  
+-   XAML-приложения браузера (XBAP).  
   
 <a name="Deploying_Standalone_Applications"></a>   
 ### <a name="deploying-standalone-applications"></a>Развертывание автономных приложений  
@@ -79,7 +79,7 @@ ms.locfileid: "59320656"
 ### <a name="deploying-markup-only-xaml-applications"></a>Развертывание приложений XAML, содержащих только разметку  
  Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, обычно публикуются на веб-серверах, как и страницы [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)], и их можно просматривать с помощью [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)]. Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, запускаются в изолированной среде (в режиме безопасности с частичным доверием) с ограничениями, которые определяются набором разрешений зоны Интернета. Это обеспечивает эквивалентный уровень безопасности для веб-приложений [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)].  
   
- Дополнительные сведения о безопасности приложений [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] см. в разделе [Безопасность](../security-wpf.md).  
+ Дополнительные сведения о безопасности приложений WPF см. в разделе [Безопасность](../security-wpf.md).  
   
  Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, можно устанавливать в локальной файловой системе с помощью XCopy или [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Эти страницы можно просматривать при помощи [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)] или проводника Windows.  
   
@@ -108,11 +108,11 @@ ms.locfileid: "59320656"
   
  По умолчанию средство ClickOnce публикует файлы приложений с расширением DEPLOY. Это поведение может привести к затруднениям, но его можно отключить. Дополнительные сведения см. в разделе [Вопросы настройки сервера и клиента в развертываниях ClickOnce](/visualstudio/deployment/server-and-client-configuration-issues-in-clickonce-deployments).  
   
- Дополнительные сведения о развертывании [!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] см. в разделе [Общие сведения о приложениях браузера WPF XAML](wpf-xaml-browser-applications-overview.md).  
+ Дополнительные сведения о развертывании XAML-приложения браузера (XBAP) см. в разделе [Общие сведения о приложениях браузера WPF XAML](wpf-xaml-browser-applications-overview.md).  
   
 <a name="Installing__NET_Framework_3_0"></a>   
 ## <a name="installing-the-net-framework"></a>Установка .NET Framework  
- Для запуска [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] приложения на клиентском компьютере необходимо установить Microsoft .NET Framework. [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] автоматически определяет, установлены ли клиенты с .NET Framework при [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] просматриваемых Браузерные приложения. Если не установлена платформа .NET Framework, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] предлагает пользователю установить его.  
+ Для запуска WPF приложения на клиентском компьютере необходимо установить Microsoft .NET Framework. [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] автоматически определяет, установлены ли клиенты с .NET Framework при WPF просматриваемых Браузерные приложения. Если не установлена платформа .NET Framework, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] предлагает пользователю установить его.  
   
  Чтобы проверка наличия установленной платформы .NET Framework, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] включает в себя приложение начальной загрузки, который зарегистрирован в качестве резервного [!INCLUDE[TLA#tla_mime](../../../../includes/tlasharptla-mime-md.md)] обработчик содержимого файлов со следующими расширениями: .xaml, XPS, .xbap и .application. При переходе на эти типы файлов и .NET Framework не установлена на клиенте, приложение начальной загрузки запрашивает разрешение на его установку. Если разрешение не предоставляется, ни .NET Framework, ни приложение будет установлено.  
   

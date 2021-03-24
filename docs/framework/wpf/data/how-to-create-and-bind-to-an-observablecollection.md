@@ -136,7 +136,7 @@ End Class
  Определение `NameItemTemplate` здесь не показано.  
   
 > [!NOTE]
->  Объекты в коллекции должны удовлетворять требованиям, описанным в разделе [Общие сведения об источниках привязки](binding-sources-overview.md). В частности, если вы используете <xref:System.Windows.Data.BindingMode.OneWay> или <xref:System.Windows.Data.BindingMode.TwoWay> (например, требуется вашей [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] обновление при динамическом изменении свойств источника), необходимо реализовать механизм уведомлений об подходящий изменения свойств, таких как <xref:System.ComponentModel.INotifyPropertyChanged>интерфейс.  
+>  Объекты в коллекции должны удовлетворять требованиям, описанным в разделе [Общие сведения об источниках привязки](binding-sources-overview.md). В частности, если вы используете <xref:System.Windows.Data.BindingMode.OneWay> или <xref:System.Windows.Data.BindingMode.TwoWay> (например, требуется вашей UI обновление при динамическом изменении свойств источника), необходимо реализовать механизм уведомлений об подходящий изменения свойств, таких как <xref:System.ComponentModel.INotifyPropertyChanged>интерфейс.  
   
  Дополнительные сведения см. в разделе "Привязка к коллекциям" в разделе [Общие сведения о привязке данных](data-binding-overview.md).  
   

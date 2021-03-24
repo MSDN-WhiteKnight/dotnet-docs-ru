@@ -18,7 +18,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59313961"
 ---
 # <a name="documents-in-wpf"></a>Документы в WPF
-Windows Presentation Foundation (WPF) предлагает широкий диапазон свойств документа, которые позволяют создавать содержимое высокого качества, который позволяет проще доступа и чтения, чем в предыдущих поколениях [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)]. В дополнение к расширенным возможностям и повышенному качеству WPF предоставляет интегрированные службы для отображения, упаковки и обеспечения безопасности документов. В этом разделе содержатся вводные сведения о типах и упаковке документов WPF.  
+Windows Presentation Foundation (WPF) предлагает широкий диапазон свойств документа, которые позволяют создавать содержимое высокого качества, который позволяет проще доступа и чтения, чем в предыдущих поколениях Windows. В дополнение к расширенным возможностям и повышенному качеству WPF предоставляет интегрированные службы для отображения, упаковки и обеспечения безопасности документов. В этом разделе содержатся вводные сведения о типах и упаковке документов WPF.  
 
 <a name="types_of_documents"></a>   
 ## <a name="types-of-documents"></a>Типы документов  
@@ -49,7 +49,7 @@ Windows Presentation Foundation (WPF) предлагает широкий диа
 #### <a name="flowdocumentpageviewer-and-flowdocumentscrollviewer"></a>FlowDocumentPageViewer и FlowDocumentScrollViewer  
  <xref:System.Windows.Controls.FlowDocumentPageViewer> Отображает содержимое в страницы во время режима просмотра, а <xref:System.Windows.Controls.FlowDocumentScrollViewer> отображает содержимое в режиме непрерывной прокрутки.  Оба <xref:System.Windows.Controls.FlowDocumentPageViewer> и <xref:System.Windows.Controls.FlowDocumentScrollViewer> зафиксированы в определенном режиме просмотра. Сравнить с <xref:System.Windows.Controls.FlowDocumentReader>, которое включает функции, которые позволяют пользователю динамически переключаться между разными режимами просмотра (предоставленный <xref:System.Windows.Controls.FlowDocumentReaderViewingMode> перечисления), однако является более ресурсоемким, чем <xref:System.Windows.Controls.FlowDocumentPageViewer> или <xref:System.Windows.Controls.FlowDocumentScrollViewer>.  
   
- По умолчанию вертикальная полоса прокрутки отображается всегда, а горизонтальная полоса прокрутки становится видимой при необходимости. Значение по умолчанию [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] для <xref:System.Windows.Controls.FlowDocumentScrollViewer> не включает панель инструментов; Однако <xref:System.Windows.Controls.FlowDocumentScrollViewer.IsToolBarVisible%2A> свойство может использоваться для включения встроенной панели инструментов.  
+ По умолчанию вертикальная полоса прокрутки отображается всегда, а горизонтальная полоса прокрутки становится видимой при необходимости. Значение по умолчанию UI для <xref:System.Windows.Controls.FlowDocumentScrollViewer> не включает панель инструментов; Однако <xref:System.Windows.Controls.FlowDocumentScrollViewer.IsToolBarVisible%2A> свойство может использоваться для включения встроенной панели инструментов.  
   
 <a name="text_in_the_user_interface"></a>   
 ### <a name="text-in-the-user-interface"></a>Текст в пользовательском интерфейсе  

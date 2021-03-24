@@ -58,7 +58,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_derived_elements"></a>   
 ## <a name="derived-panel-elements"></a>Производные элементы Panel  
- Многие объекты являются производными от <xref:System.Windows.Controls.Panel>, но не все из них предназначены для использования в качестве поставщиков корневого макета. Существует шесть определенных классов панелей (<xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>), предназначенных специально для создания приложений [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)].  
+ Многие объекты являются производными от <xref:System.Windows.Controls.Panel>, но не все из них предназначены для использования в качестве поставщиков корневого макета. Существует шесть определенных классов панелей (<xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>), предназначенных специально для создания приложений UI.  
   
  Каждый элемент панели имеет собственные специальные возможности, представленные в следующей таблице.  
   
@@ -77,7 +77,7 @@ ms.locfileid: "59157876"
   
 <a name="Panels_main_UI_elements"></a>   
 ## <a name="user-interface-panels"></a>Панели пользовательского интерфейса  
- Существует шесть классов панелей, доступных в WPF , оптимизированы для поддержки [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] сценариев: <xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>. Эти элементы панели являются простыми в использовании, гибкими и достаточно широкими для большинства приложений.  
+ Существует шесть классов панелей, доступных в WPF , оптимизированы для поддержки UI сценариев: <xref:System.Windows.Controls.Canvas>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, <xref:System.Windows.Controls.StackPanel>, <xref:System.Windows.Controls.VirtualizingStackPanel>, и <xref:System.Windows.Controls.WrapPanel>. Эти элементы панели являются простыми в использовании, гибкими и достаточно широкими для большинства приложений.  
   
  Каждый производный <xref:System.Windows.Controls.Panel> элемент рассматривает ограничения размеров по-разному. Основные сведения о том, как <xref:System.Windows.Controls.Panel> обрабатывает ограничения в горизонтальном или вертикальном направлении, может сделать макет более предсказуемой.  
   
@@ -110,7 +110,7 @@ ms.locfileid: "59157876"
  
  [!code-xaml[CanvasOvwSample#1](~/samples/snippets/xaml/VS_Snippets_Wpf/CanvasOvwSample/XAML/default.xaml#1)]  
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Обычный элемент Canvas.](./media/panel-intro-canvas.PNG "panel_intro_canvas")  
   
@@ -118,7 +118,7 @@ ms.locfileid: "59157876"
 ### <a name="dockpanel"></a>DockPanel  
  <xref:System.Windows.Controls.DockPanel> Элемент использует <xref:System.Windows.Controls.DockPanel.Dock%2A?displayProperty=nameWithType> присоединенного свойства, заданные в дочерних элементах содержимого для размещения содержимого у границ контейнера. Когда <xref:System.Windows.Controls.DockPanel.Dock%2A?displayProperty=nameWithType> присваивается <xref:System.Windows.Controls.Dock.Top> или <xref:System.Windows.Controls.Dock.Bottom>, оно располагает дочерние элементы выше или ниже друг с другом. Когда <xref:System.Windows.Controls.DockPanel.Dock%2A?displayProperty=nameWithType> присваивается <xref:System.Windows.Controls.Dock.Left> или <xref:System.Windows.Controls.Dock.Right>, оно располагает дочерние элементы слева или справа от друг с другом. <xref:System.Windows.Controls.DockPanel.LastChildFill%2A> Свойство определяет положение последнего элемента, добавленного в качестве дочернего элемента <xref:System.Windows.Controls.DockPanel>.  
   
- Можно использовать <xref:System.Windows.Controls.DockPanel> для размещения группы связанных элементов управления, таких как набор кнопок. Кроме того, можно использовать его для создания разделенного на панели [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], похожего на интерфейс [!INCLUDE[TLA#tla_outlook](../../../../includes/tlasharptla-outlook-md.md)].  
+ Можно использовать <xref:System.Windows.Controls.DockPanel> для размещения группы связанных элементов управления, таких как набор кнопок. Кроме того, можно использовать его для создания разделенного на панели UI, похожего на интерфейс [!INCLUDE[TLA#tla_outlook](../../../../includes/tlasharptla-outlook-md.md)].  
   
 #### <a name="sizing-to-content"></a>Изменение размеров в зависимости от содержимого  
  Если его <xref:System.Windows.FrameworkElement.Height%2A> и <xref:System.Windows.FrameworkElement.Width%2A> свойства не указаны, <xref:System.Windows.Controls.DockPanel> размеры его содержимого. Размер может увеличиваться или уменьшаться, чтобы вместить его дочерние элементы. Тем не менее, если заданы эти свойства и больше нет свободного места для следующего указанного дочернего элемента <xref:System.Windows.Controls.DockPanel> не отображает этот дочерний элемент и последующие дочерние элементы и не измеряет последующие дочерние элементы.  
@@ -134,7 +134,7 @@ ms.locfileid: "59157876"
  
  [!code-xaml[DockPanelOvwSample#1](~/samples/snippets/xaml/VS_Snippets_Wpf/DockPanelOvwSample/XAML/default.xaml#1)]  
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Обычный сценарий DockPanel.](./media/panel-intro-dockpanel.PNG "panel_intro_dockpanel")  
   
@@ -149,12 +149,12 @@ ms.locfileid: "59157876"
  Столбцы и строки, определенные в <xref:System.Windows.Controls.Grid> можно воспользоваться преимуществами <xref:System.Windows.GridUnitType.Star> изменения размера, чтобы пропорционально распределить оставшееся пространство. Когда <xref:System.Windows.GridUnitType.Star> выбран в качестве высоты или ширины строки или столбца, что столбец или строка получает пропорциональную часть оставшегося доступного пространства. Это отличается от <xref:System.Windows.GridUnitType.Auto>, который распределяет пространство равномерно с учетом размера содержимого столбца или строки. Это значение выражается как `*` или `2*` при использовании языка [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)]. В первом случае строка или столбец будет получать определенное доступное пространство, а во втором случае — в два раза больше. При объединении этой методики для пропорционального распределения пространства с <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A> и <xref:System.Windows.FrameworkElement.VerticalAlignment%2A> значение `Stretch` имеется возможность разделения пространства макета в процентах от пространства экрана. <xref:System.Windows.Controls.Grid> является единственной панелью макета, может распределять пространство таким образом.  
   
 #### <a name="defining-and-using-a-grid"></a>Определение и использование Grid  
- В следующем примере демонстрируется построение [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] аналогичного используемому в диалоговом окне Run, доступном в меню "Пуск" [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)].  
+ В следующем примере демонстрируется построение UI аналогичного используемому в диалоговом окне Run, доступном в меню "Пуск" Windows.  
   
  [!code-csharp[GridRunDialog#1](~/samples/snippets/csharp/VS_Snippets_Wpf/GridRunDialog/CSharp/window1.xaml.cs#1)]
    
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Обычный элемент сетки.](./media/avalon-run-dialog.PNG "avalon_run_dialog")  
   
@@ -182,7 +182,7 @@ ms.locfileid: "59157876"
  [!code-csharp[StackPanel_ovw2#1](~/samples/snippets/csharp/VS_Snippets_Wpf/StackPanel_ovw2/CSharp/StackPanel_Ovw_Sample2.cs#1)]
    
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Обычный элемент StackPanel.](./media/panel-intro-stackpanel.PNG "panel_intro_stackpanel")  
   
@@ -207,22 +207,22 @@ ms.locfileid: "59157876"
  
  [!code-xaml[WrapPanel_Intro#1](~/samples/snippets/xaml/VS_Snippets_Wpf/WrapPanel_Intro/XAML/default.xaml#1)]  
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Обычный элемент WrapPanel.](./media/wrappanel-element.PNG "WrapPanel_Element")  
   
 <a name="Panels_nested_panel_elements"></a>   
 ## <a name="nested-panel-elements"></a>Вложенные элементы Panel  
- <xref:System.Windows.Controls.Panel> элементы могут быть вложены друг к другу для создания сложных макетов. Это может оказаться очень полезным в ситуациях, где одно <xref:System.Windows.Controls.Panel> идеально подходит для части [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], но не может удовлетворить потребности другой части [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)].  
+ <xref:System.Windows.Controls.Panel> элементы могут быть вложены друг к другу для создания сложных макетов. Это может оказаться очень полезным в ситуациях, где одно <xref:System.Windows.Controls.Panel> идеально подходит для части UI, но не может удовлетворить потребности другой части UI.  
   
  Практически не существует ограничения объема вложения, которое может поддерживать приложение, но лучше ограничить приложение использованием только тех панелей, которые действительно необходимы для макета. Во многих случаях <xref:System.Windows.Controls.Grid> элемент может использоваться вместо вложенных панелей благодаря его гибкости в качестве контейнера макета. Это может повысить производительность приложения, убирая ненужные элементы из дерева.  
   
- Следующий пример демонстрирует создание [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] , использующего преимущества вложенных <xref:System.Windows.Controls.Panel> элементы, чтобы получить определенный макет. В данном конкретном случае <xref:System.Windows.Controls.DockPanel> элемент используется для предоставления [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] структурировать и вложенными <xref:System.Windows.Controls.StackPanel> элементов, <xref:System.Windows.Controls.Grid>и <xref:System.Windows.Controls.Canvas> используются для размещения дочерних элементов внутри родительского <xref:System.Windows.Controls.DockPanel>.  
+ Следующий пример демонстрирует создание UI , использующего преимущества вложенных <xref:System.Windows.Controls.Panel> элементы, чтобы получить определенный макет. В данном конкретном случае <xref:System.Windows.Controls.DockPanel> элемент используется для предоставления UI структурировать и вложенными <xref:System.Windows.Controls.StackPanel> элементов, <xref:System.Windows.Controls.Grid>и <xref:System.Windows.Controls.Canvas> используются для размещения дочерних элементов внутри родительского <xref:System.Windows.Controls.DockPanel>.  
   
  [!code-csharp[Nested_Panels#1](~/samples/snippets/csharp/VS_Snippets_Wpf/Nested_Panels/CSharp/nestedpanels.cs#1)]
    
   
- Скомпилированное приложение возвращает новый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)], который выглядит следующим образом.  
+ Скомпилированное приложение возвращает новый UI, который выглядит следующим образом.  
   
  ![Пользовательский интерфейс, использующий вложенные панели.](./media/nested-panels.PNG "nested_panels")  
   
@@ -242,13 +242,13 @@ ms.locfileid: "59157876"
   
 <a name="Panels_global_localization"></a>   
 ## <a name="localizationglobalization-support"></a>Поддержка локализации и глобализации  
- WPF поддерживает ряд функций, которые помогают в создании локализуемого [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)].  
+ WPF поддерживает ряд функций, которые помогают в создании локализуемого UI.  
   
  Все элементы панели изначально поддерживают <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство, которое может использоваться для динамического содержимого на основе параметров языкового стандарта или языка пользователя. Дополнительные сведения см. в разделе <xref:System.Windows.FrameworkElement.FlowDirection%2A>.  
   
- <xref:System.Windows.Window.SizeToContent%2A> Свойство предоставляет механизм, который позволяет разработчикам приложений предвидеть потребности локализованного [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. С помощью <xref:System.Windows.SizeToContent.WidthAndHeight> значение этого свойства родительского <xref:System.Windows.Window> всегда динамически изменяет размер в соответствии с размером и не ограничивается искусственных ограничений высоты или ширины.  
+ <xref:System.Windows.Window.SizeToContent%2A> Свойство предоставляет механизм, который позволяет разработчикам приложений предвидеть потребности локализованного UI. С помощью <xref:System.Windows.SizeToContent.WidthAndHeight> значение этого свойства родительского <xref:System.Windows.Window> всегда динамически изменяет размер в соответствии с размером и не ограничивается искусственных ограничений высоты или ширины.  
   
- <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, и <xref:System.Windows.Controls.StackPanel> — это хороший выбор для локализуемых [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)]. <xref:System.Windows.Controls.Canvas> Тем не менее, является не лучшим выбором, так как он размещает содержимое абсолютно, что затрудняет локализацию.  
+ <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, и <xref:System.Windows.Controls.StackPanel> — это хороший выбор для локализуемых UI. <xref:System.Windows.Controls.Canvas> Тем не менее, является не лучшим выбором, так как он размещает содержимое абсолютно, что затрудняет локализацию.  
   
  Дополнительные сведения о создании приложений WPF с локализуемыми [!INCLUDE[TLA#tla_ui#plural](../../../../includes/tlasharptla-uisharpplural-md.md)] см. в разделе [Обзор использования автоматической разметки](../advanced/use-automatic-layout-overview.md).  
   

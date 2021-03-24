@@ -21,11 +21,11 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59313571"
 ---
 # <a name="security-wpf"></a>Безопасность (WPF)
-<a name="introduction"></a> При разработке Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере, необходимо учитывать модель безопасности. [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] Автономные приложения выполняются с неограниченными разрешениями ( [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **FullTrust** набор разрешений), если развертываются с помощью установщика Windows (MSI), XCopy или [!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]. Развертывание автономных приложений WPF с частичным доверием с помощью ClickOnce не поддерживается. Тем не менее, полным доверием ведущего приложения можно создать с частичным доверием <xref:System.AppDomain> с помощью модели надстроек платформы .NET Framework. Дополнительные сведения см. в разделе [Общие сведения о надстройках WPF](./app-development/wpf-add-ins-overview.md).  
+<a name="introduction"></a> При разработке Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере, необходимо учитывать модель безопасности. WPF Автономные приложения выполняются с неограниченными разрешениями ( [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **FullTrust** набор разрешений), если развертываются с помощью установщика Windows (MSI), XCopy или [!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]. Развертывание автономных приложений WPF с частичным доверием с помощью ClickOnce не поддерживается. Тем не менее, полным доверием ведущего приложения можно создать с частичным доверием <xref:System.AppDomain> с помощью модели надстроек платформы .NET Framework. Дополнительные сведения см. в разделе [Общие сведения о надстройках WPF](./app-development/wpf-add-ins-overview.md).  
   
- [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] Браузерные приложения [!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)] или Firefox, и может быть либо [!INCLUDE[TLA#tla_xbap#plural](../../../includes/tlasharptla-xbapsharpplural-md.md)] или свободными [!INCLUDE[TLA#tla_xaml](../../../includes/tlasharptla-xaml-md.md)] документов, Дополнительные сведения см. в разделе [Обзор приложений браузера XAML WPF](./app-development/wpf-xaml-browser-applications-overview.md).  
+ WPF Браузерные приложения [!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)] или Firefox, и может быть либо XAML-приложения браузера (XBAP) или свободными [!INCLUDE[TLA#tla_xaml](../../../includes/tlasharptla-xaml-md.md)] документов, Дополнительные сведения см. в разделе [Обзор приложений браузера XAML WPF](./app-development/wpf-xaml-browser-applications-overview.md).  
   
- [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] Браузерные приложения выполняются в песочнице с частичным доверием, по умолчанию, который ограничен по умолчанию [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **Internet** набора разрешений зоны. Это позволяет эффективно изолировать [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] Браузерные приложения от клиентского компьютера так же, что можно ожидать изолируются обычные веб-приложения. Приложение XBAP может повысить привилегии вплоть до полного доверия в зависимости от зоны безопасности URL-адреса развертывания и конфигурации безопасности клиента. Дополнительные сведения см. в разделе [Безопасность частичного доверия в WPF](wpf-partial-trust-security.md).  
+ WPF Браузерные приложения выполняются в песочнице с частичным доверием, по умолчанию, который ограничен по умолчанию [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **Internet** набора разрешений зоны. Это позволяет эффективно изолировать WPF Браузерные приложения от клиентского компьютера так же, что можно ожидать изолируются обычные веб-приложения. Приложение XBAP может повысить привилегии вплоть до полного доверия в зависимости от зоны безопасности URL-адреса развертывания и конфигурации безопасности клиента. Дополнительные сведения см. в разделе [Безопасность частичного доверия в WPF](wpf-partial-trust-security.md).  
   
  В этом разделе рассматривается модель безопасности для Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере.  
   
@@ -45,7 +45,7 @@ ms.locfileid: "59313571"
   
 <a name="SafeTopLevelNavigation"></a>   
 ## <a name="safe-navigation"></a>Безопасная навигация  
- Для [!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)], [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] различает два типа навигации: приложения и браузера.  
+ Для [!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)], WPF различает два типа навигации: приложения и браузера.  
   
  *Навигация в приложении* — это навигация между элементами содержимого в пределах приложения, размещенного в браузере. *Навигация в браузере* — это навигация, изменяющая содержимое и URL-адрес расположения самого браузера. Связь между Навигация в приложении (как правило, XAML) и навигацией в браузере (как правило, HTML) показана на следующем рисунке:
   
@@ -220,7 +220,7 @@ ms.locfileid: "59313571"
   
  Тем не менее, существует возможность сборка APTCA может представлять угрозу безопасности после установки в [!INCLUDE[TLA2#tla_gac](../../../includes/tla2sharptla-gac-md.md)]. После обнаружения уязвимости безопасности издатели сборок могут создавать обновления безопасности для решения проблем существующих установок и защиты установок, которые могут выполняться после выявления проблемы. Одним из вариантов обновления является удаление сборки, хотя это может нарушить работу других полностью доверенных клиентских приложений, использующих сборку.  
   
- [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] предоставляет механизм, по которому можно отключить сборку APTCA, для частично доверенных [!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)] без удаления ЭТОЙ сборки.  
+ WPF предоставляет механизм, по которому можно отключить сборку APTCA, для частично доверенных [!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)] без удаления ЭТОЙ сборки.  
   
  Чтобы отключить сборку APTCA, необходимо создать специальный раздел реестра.  
   
@@ -262,14 +262,14 @@ ms.locfileid: "59313571"
   
 <a name="BestPractices"></a>   
 ## <a name="resources-for-developing-wpf-applications-that-promote-security"></a>Ресурсы для разработки приложений WPF, обеспечивающих безопасность  
- Ниже приведены некоторые дополнительные ресурсы, помогающие при разработке [!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)] приложений, обеспечивающих безопасность:  
+ Ниже приведены некоторые дополнительные ресурсы, помогающие при разработке WPF приложений, обеспечивающих безопасность:  
   
 |Область|Ресурс|  
 |----------|--------------|  
 |Управляемый код|[Шаблоны и рекомендации по обеспечению безопасности приложений](https://go.microsoft.com/fwlink/?LinkId=117426)|  
 |[!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)]|[Управление доступом для кода](../misc/code-access-security.md)|  
 |[!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]|[Развертывание и безопасность технологии ClickOnce](/visualstudio/deployment/clickonce-security-and-deployment)|  
-|[!INCLUDE[TLA2#tla_wpf](../../../includes/tla2sharptla-wpf-md.md)]|[Безопасность частичного доверия в WPF](wpf-partial-trust-security.md)|  
+|WPF|[Безопасность частичного доверия в WPF](wpf-partial-trust-security.md)|  
   
 ## <a name="see-also"></a>См. также
 

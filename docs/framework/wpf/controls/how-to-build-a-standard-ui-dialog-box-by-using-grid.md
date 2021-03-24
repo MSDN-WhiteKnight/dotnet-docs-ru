@@ -19,7 +19,7 @@ ms.locfileid: "59149530"
 В этом примере показано, как создать стандартную [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] диалоговое окно с помощью <xref:System.Windows.Controls.Grid> элемент.  
   
 ## <a name="example"></a>Пример  
- В следующем примере создается диалоговое окно, похожее **запуска** диалогового окна в [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] операционной системы.  
+ В следующем примере создается диалоговое окно, похожее **запуска** диалогового окна в Windows операционной системы.  
   
  В примере создается <xref:System.Windows.Controls.Grid> и использует <xref:System.Windows.Controls.ColumnDefinition> и <xref:System.Windows.Controls.RowDefinition> классам определять пятью столбцами и четырьмя строками.  
   

@@ -37,7 +37,7 @@ ms.locfileid: "59344355"
   
 -   Исходный узел приложения.  
   
- Для обеспечения согласованного механизма идентификации и загрузки этих типов файлов из этих расположений, [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] использует расширяемость *схема URI упаковки*. В этом разделе представлен обзор схемы, описывается формирование пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для разнообразных сценариев, рассматриваются абсолютное и относительное [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] и [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] разрешение как использовать пакет [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] из обоих разметки и код.  
+ Для обеспечения согласованного механизма идентификации и загрузки этих типов файлов из этих расположений, WPF использует расширяемость *схема URI упаковки*. В этом разделе представлен обзор схемы, описывается формирование пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для разнообразных сценариев, рассматриваются абсолютное и относительное [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] и [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] разрешение как использовать пакет [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] из обоих разметки и код.  
 
 <a name="The_Pack_URI_Scheme"></a>   
 ## <a name="the-pack-uri-scheme"></a>Схема URI типа "pack"  
@@ -69,7 +69,7 @@ ms.locfileid: "59344355"
   
 -   Файлы исходного узла.  
   
- Для доступа к этим типам файлов, [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] поддерживает два центра: application: / / / и siteoforigin: / / /. Центр application:/// определяет файлы данных приложения, известные во время компиляции, включая файлы ресурсов и файлы содержимого. Центр siteoforigin:/// определяет файлы исходного узла. На следующем рисунке показана область каждого центра.  
+ Для доступа к этим типам файлов, WPF поддерживает два центра: application: / / / и siteoforigin: / / /. Центр application:/// определяет файлы данных приложения, известные во время компиляции, включая файлы ресурсов и файлы содержимого. Центр siteoforigin:/// определяет файлы исходного узла. На следующем рисунке показана область каждого центра.  
   
  ![Схема URI типа “pack”](./media/pack-uris-in-wpf/wpf-pack-uri-scheme.png)  
   
@@ -80,7 +80,7 @@ ms.locfileid: "59344355"
   
 <a name="Resource_File_Pack_URIs___Local_Assembly"></a>   
 ## <a name="resource-file-pack-uris"></a>URI типа "pack" для файла ресурсов  
- Файлы ресурсов настраиваются как [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Resource` элементы и компилируются в сборки. [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] поддерживает формирование пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] может использоваться для идентификации файлов ресурсов, которые компилируются в локальную сборку или компилируется в сборку, на который ссылается локальная сборка.  
+ Файлы ресурсов настраиваются как [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Resource` элементы и компилируются в сборки. WPF поддерживает формирование пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] может использоваться для идентификации файлов ресурсов, которые компилируются в локальную сборку или компилируется в сборку, на который ссылается локальная сборка.  
   
 <a name="Local_Assembly_Resource_File"></a>   
 ### <a name="local-assembly-resource-file"></a>Файл ресурсов локальной сборки  
@@ -130,7 +130,7 @@ ms.locfileid: "59344355"
   
  `pack://application:,,,/ReferencedAssembly;v1.0.0.1;component/ResourceFile.xaml`  
   
- Обратите внимание, что пакет [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] синтаксис для файлов ресурсов указанной ссылками сборки может использоваться только вместе с приложением: / / / центра. Например, следующее не поддерживается в [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)].  
+ Обратите внимание, что пакет [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] синтаксис для файлов ресурсов указанной ссылками сборки может использоваться только вместе с приложением: / / / центра. Например, следующее не поддерживается в WPF.  
   
  `pack://siteoforigin:,,,/SomeAssembly;component/ResourceFile.xaml`  
   
@@ -232,7 +232,7 @@ ms.locfileid: "59344355"
   
  `/ResourceOrContentFile.xaml`  
   
- Чтобы определить тип файла, типа pack [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] ссылается на, [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] разрешает [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для файлов ресурсов в локальных сборках и файлы содержимого с помощью следующих эвристических методов:  
+ Чтобы определить тип файла, типа pack [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] ссылается на, WPF разрешает [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для файлов ресурсов в локальных сборках и файлы содержимого с помощью следующих эвристических методов:  
   
 1. Проверка метаданных сборки для <xref:System.Windows.Resources.AssemblyAssociatedContentFileAttribute> атрибут, соответствующий пакет [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)].  
   
@@ -246,7 +246,7 @@ ms.locfileid: "59344355"
   
  [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] разрешения не применяется для [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] , со следующими разделами:  
   
--   Файлы содержимого в связанные сборки: не поддерживаются следующие типы файлов [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)].  
+-   Файлы содержимого в связанные сборки: не поддерживаются следующие типы файлов WPF.  
   
 -   Внедренные файлы в указанных ссылками сборках: [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] , которые идентифицируют их являются уникальными, поскольку они включают в себя имя сборки, на которые имеются ссылки и `;component` суффикс.  
   
@@ -256,7 +256,7 @@ ms.locfileid: "59344355"
   
 <a name="Programming_with_Pack_URIs"></a>   
 ## <a name="programming-with-pack-uris"></a>Программирование с использованием URI типа "pack"  
- Многие [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] классы реализуют свойства, которые могут быть заданы с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], в том числе:  
+ Многие WPF классы реализуют свойства, которые могут быть заданы с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], в том числе:  
   
 -   <xref:System.Windows.Application.StartupUri%2A?displayProperty=nameWithType>  
   
@@ -370,19 +370,19 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   
 <a name="Common_Pack_URI_Scenarios"></a>   
 ### <a name="common-pack-uri-scenarios"></a>Типичные сценарии URI типа "pack"  
- Предыдущих разделах обсуждались способы создания пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для идентификации ресурсов, содержимого и файлы исходного узла. В [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.  
+ Предыдущих разделах обсуждались способы создания пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)] для идентификации ресурсов, содержимого и файлы исходного узла. В WPF, эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.  
   
 <a name="Specifying_the_UI_to_Show_when_an_Application_Starts"></a>   
 #### <a name="specifying-the-ui-to-show-when-an-application-starts"></a>Указание пользовательского интерфейса для отображения при запуске приложения  
- <xref:System.Windows.Application.StartupUri%2A> Указывает первый [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] должна отображаться при [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] приложение запускается. Для автономных приложений [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] может быть окном, как показано в следующем примере.  
+ <xref:System.Windows.Application.StartupUri%2A> Указывает первый UI должна отображаться при WPF приложение запускается. Для автономных приложений UI может быть окном, как показано в следующем примере.  
   
  [!code-xaml[PackURIOverviewSnippets#StartupUriWindow](~/samples/snippets/csharp/VS_Snippets_Wpf/PackURIOverviewSnippets/CS/Copy of App.xaml#startupuriwindow)]  
   
- Автономные приложения и [!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] можно также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.  
+ Автономные приложения и XAML-приложения браузера (XBAP) можно также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.  
   
  [!code-xaml[PackURIOverviewSnippets#StartupUriPage](~/samples/snippets/csharp/VS_Snippets_Wpf/PackURIOverviewSnippets/CS/App.xaml#startupuripage)]  
   
- Если приложение — это автономное приложение, и страница указана с <xref:System.Windows.Application.StartupUri%2A>, [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения страницы. Для [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)], страница будет отображена в браузере основного приложения.  
+ Если приложение — это автономное приложение, и страница указана с <xref:System.Windows.Application.StartupUri%2A>, WPF открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения страницы. Для [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)], страница будет отображена в браузере основного приложения.  
   
 <a name="Navigating_to_a_Page"></a>   
 #### <a name="navigating-to-a-page"></a>Переход на страницу  
@@ -392,7 +392,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml2)]  
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML3](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml3)]  
   
- Дополнительные сведения о различных способах перехода в [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], см. в разделе [Общие сведения о переходах](navigation-overview.md).  
+ Дополнительные сведения о различных способах перехода в WPF, см. в разделе [Общие сведения о переходах](navigation-overview.md).  
   
 <a name="Specifying_a_Window_Icon"></a>   
 #### <a name="specifying-a-window-icon"></a>Указание значка окна  
@@ -404,7 +404,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   
 <a name="Loading_Image__Audio__and_Video_Files"></a>   
 #### <a name="loading-image-audio-and-video-files"></a>Загрузка файлов изображения, аудио и видео файлов  
- [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], как показано в следующих примерах.  
+ WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], как показано в следующих примерах.  
   
  [!code-xaml[MediaPlayerVideoSample#VideoPackURIAtSOO](~/samples/snippets/csharp/VS_Snippets_Wpf/MediaPlayerVideoSample/CS/HomePage.xaml#videopackuriatsoo)]  
   
@@ -420,7 +420,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   
  [!code-xaml[ResourceDictionarySnippets#ResourceDictionaryPackURI](~/samples/snippets/csharp/VS_Snippets_Wpf/ResourceDictionarySnippets/CS/App.xaml#resourcedictionarypackuri)]  
   
- Обзор тем в [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
+ Обзор тем в WPF, см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
   
 ## <a name="see-also"></a>См. также
 

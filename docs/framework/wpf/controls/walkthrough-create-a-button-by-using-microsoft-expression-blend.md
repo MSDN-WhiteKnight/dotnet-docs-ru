@@ -14,7 +14,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59300465"
 ---
 # <a name="walkthrough-create-a-button-by-using-microsoft-expression-blend"></a>Пошаговое руководство. Создание кнопки с помощью Microsoft Expression Blend
-В этом пошаговом руководстве пошагово продемонстрирует процесс создания [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] настраиваемая кнопка, с помощью Microsoft Expression Blend.  
+В этом пошаговом руководстве пошагово продемонстрирует процесс создания WPF настраиваемая кнопка, с помощью Microsoft Expression Blend.  
   
 > [!IMPORTANT]
 >  Microsoft Expression Blend работает путем создания [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , который затем компилируется для получения исполняемой программы. Если работать с [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] напрямую, есть другой Пошаговое руководство, которое создает то же приложение, как это, используя [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] с Visual Studio, а не в Blend. См. в разделе [Создание кнопки с помощью XAML](walkthrough-create-a-button-by-using-xaml.md) Дополнительные сведения.  
@@ -38,7 +38,7 @@ ms.locfileid: "59300465"
   
 5. Назовите проект `CustomButton` и нажмите клавишу **ОК**.  
   
- На этом этапе имеется пустой [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] проекта. Можно нажать F5, чтобы запустить приложение. Как можно догадаться, приложение состоит из пустое окно. Затем создайте прямоугольник с закругленными углами и преобразовать его в кнопку.  
+ На этом этапе имеется пустой WPF проекта. Можно нажать F5, чтобы запустить приложение. Как можно догадаться, приложение состоит из пустое окно. Затем создайте прямоугольник с закругленными углами и преобразовать его в кнопку.  
   
 #### <a name="to-convert-a-rectangle-to-a-button"></a>Преобразуемый прямоугольник к кнопке  
   

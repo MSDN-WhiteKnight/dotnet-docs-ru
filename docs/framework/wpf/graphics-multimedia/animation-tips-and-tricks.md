@@ -22,7 +22,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59295956"
 ---
 # <a name="animation-tips-and-tricks"></a>Советы и рекомендации по анимации
-При работе с анимацией в [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], существует ряд советов и приемов, которые анимациям работают лучше и сэкономить разочарований.  
+При работе с анимацией в WPF, существует ряд советов и приемов, которые анимациям работают лучше и сэкономить разочарований.  
   
 <a name="generalissuessection"></a>   
 ## <a name="general-issues"></a>Общие проблемы  
@@ -93,7 +93,7 @@ ms.locfileid: "59295956"
   
  При запуске <xref:System.Windows.Media.Animation.Storyboard>, можно ожидать <xref:System.Windows.Media.TranslateTransform.X%2A> свойство <xref:System.Windows.Media.TranslateTransform> анимируется от 0 до 350, затем вернется к 0 после ее завершения (поскольку в нем <xref:System.Windows.Media.Animation.FillBehavior> параметр <xref:System.Windows.Media.Animation.FillBehavior.Stop>) и затем будет анимироваться от 0 до 500. Вместо этого <xref:System.Windows.Media.TranslateTransform> выполняет анимацию от 0 до 350, а затем до 500.  
   
- Это порядок, в котором [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] вызывает события и потому, что значения свойств кэшируются и не пересчитываются, если свойство является действительным. <xref:System.Windows.Media.Animation.Timeline.Completed> Событие обрабатывается первым, так как оно было вызвано корневой временной шкалой (первой <xref:System.Windows.Media.Animation.Storyboard>). В настоящее время <xref:System.Windows.Media.TranslateTransform.X%2A> свойство по-прежнему возвращает свое анимированное значение, так как он еще не стало недействительным. Второй <xref:System.Windows.Media.Animation.Storyboard> использует кэшированное значение в качестве своего начального значения и начинает анимацию.  
+ Это порядок, в котором WPF вызывает события и потому, что значения свойств кэшируются и не пересчитываются, если свойство является действительным. <xref:System.Windows.Media.Animation.Timeline.Completed> Событие обрабатывается первым, так как оно было вызвано корневой временной шкалой (первой <xref:System.Windows.Media.Animation.Storyboard>). В настоящее время <xref:System.Windows.Media.TranslateTransform.X%2A> свойство по-прежнему возвращает свое анимированное значение, так как он еще не стало недействительным. Второй <xref:System.Windows.Media.Animation.Storyboard> использует кэшированное значение в качестве своего начального значения и начинает анимацию.  
   
 <a name="performancesection"></a>   
 ## <a name="performance"></a>Производительность  

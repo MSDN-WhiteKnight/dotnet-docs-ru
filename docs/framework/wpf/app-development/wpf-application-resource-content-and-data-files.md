@@ -27,11 +27,11 @@ ms.locfileid: "59211931"
 # <a name="wpf-application-resource-content-and-data-files"></a>Ресурсы, Содержимое и Файлы данных WPF-приложения
 [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] приложения часто зависят от файлов, которые содержат неисполняемые данные, такие как [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], изображения, видео и аудио. Windows Presentation Foundation (WPF) предоставляет специальную поддержку при настройке, распознавании и использовании этих типов файлов данных, которые называются файлы данных приложения. Эта поддержка относится к определенному набору типов файлов данных приложения, включая следующие:  
   
--   **Файлы ресурсов**: Файлы данных, которые компилируются в исполняемый файл или библиотека [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] сборки.  
+-   **Файлы ресурсов**: Файлы данных, которые компилируются в исполняемый файл или библиотека WPF сборки.  
   
--   **Файлы содержимого**: Автономные файлы данных, имеющие явную связь с исполняемой [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] сборки.  
+-   **Файлы содержимого**: Автономные файлы данных, имеющие явную связь с исполняемой WPF сборки.  
   
--   **Файлы исходного узла**: Автономные файлы данных, которые не имеют никакой связи с исполняемой [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] сборки.  
+-   **Файлы исходного узла**: Автономные файлы данных, которые не имеют никакой связи с исполняемой WPF сборки.  
   
  Важным отличием между этими тремя типами файлов является то, что файлы ресурсов и файлы содержимого известны во время построения. Сборка содержит информацию о них. Для файлов исходного узла, тем не менее, сборка может вообще не знает о них, или содержать неявные сведения через пакетную [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] ссылки; в последнем случае регистр нет никакой гарантии, что указанный файл исходного узла действительно существует.  
   
@@ -55,7 +55,7 @@ ms.locfileid: "59211931"
 >  Файлы ресурсов, описанные в этом разделе, отличаются от файлов ресурсов, описанных в [ресурсы XAML](../advanced/xaml-resources.md) и отличаются от внедренных или связанных ресурсов, описанных в [управление ресурсами приложения (.NET) ](/visualstudio/ide/managing-application-resources-dotnet).  
   
 ### <a name="configuring-resource-files"></a>Настройка файлов ресурсов  
- В [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], файл ресурсов — это файл, который включен в [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] проект в качестве `Resource` элемента.  
+ В WPF, файл ресурсов — это файл, который включен в [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] проект в качестве `Resource` элемента.  
   
 ```xml  
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -80,7 +80,7 @@ ms.locfileid: "59211931"
  [!code-csharp[WPFAssemblyResourcesSnippets#LoadAPageResourceFileManuallyCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/ApplicationGetResourceStreamSnippetWindow.xaml.cs#loadapageresourcefilemanuallycode)]
    
   
- Во время вызова методов <xref:System.Windows.Application.GetResourceStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
+ Во время вызова методов <xref:System.Windows.Application.GetResourceStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
   
  В следующем примере показано, как загрузить <xref:System.Windows.Controls.Page> непосредственно в <xref:System.Windows.Controls.Frame> (`pageFrame`) с помощью кода.  
   
@@ -92,7 +92,7 @@ ms.locfileid: "59211931"
  [!code-xaml[WPFAssemblyResourcesSnippets#LoadPageResourceFileFromXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/ApplicationGetResourceStreamSnippetWindow.xaml#loadpageresourcefilefromxaml)]  
   
 ### <a name="application-code-files-as-resource-files"></a>Файлы кода приложения как файлы ресурсов  
- На специальный набор [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] файлы кода приложения можно ссылаться с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], включая windows, страницы, документы нефиксированного формата и словари ресурсов. Например, можно задать <xref:System.Windows.Application.StartupUri%2A?displayProperty=nameWithType> свойства с помощью пакета [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] , ссылающийся на окно или страницу, который вы хотите загрузить при запуске приложения.  
+ На специальный набор WPF файлы кода приложения можно ссылаться с помощью пакета [!INCLUDE[TLA2#tla_uri#plural](../../../../includes/tla2sharptla-urisharpplural-md.md)], включая windows, страницы, документы нефиксированного формата и словари ресурсов. Например, можно задать <xref:System.Windows.Application.StartupUri%2A?displayProperty=nameWithType> свойства с помощью пакета [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)] , ссылающийся на окно или страницу, который вы хотите загрузить при запуске приложения.  
   
  [!code-xaml[WPFAssemblyResourcesSnippets#SetApplicationStartupURI](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/App.xaml#setapplicationstartupuri)]  
   
@@ -160,7 +160,7 @@ ms.locfileid: "59211931"
  [!code-csharp[WPFAssemblyResourcesSnippets#LoadAPageContentFileManuallyCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/ApplicationGetContentStreamSnippetWindow.xaml.cs#loadapagecontentfilemanuallycode)]
    
   
- Во время вызова методов <xref:System.Windows.Application.GetContentStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
+ Во время вызова методов <xref:System.Windows.Application.GetContentStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
   
  В следующем примере показано, как загрузить <xref:System.Windows.Controls.Page> непосредственно в <xref:System.Windows.Controls.Frame> (`pageFrame`) с помощью кода.  
   
@@ -222,7 +222,7 @@ ms.locfileid: "59211931"
  [!code-csharp[WPFAssemblyResourcesSnippets#LoadAPageSOOFileManuallyCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/SOOPage.xaml.cs#loadapagesoofilemanuallycode)]
    
   
- Во время вызова методов <xref:System.Windows.Application.GetRemoteStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
+ Во время вызова методов <xref:System.Windows.Application.GetRemoteStream%2A> вы получаете доступ к <xref:System.IO.Stream>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <xref:System.IO.Stream> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.  
   
  В следующем примере показано, как загрузить <xref:System.Windows.Controls.Page> непосредственно в <xref:System.Windows.Controls.Frame> (`pageFrame`) с помощью кода.  
   

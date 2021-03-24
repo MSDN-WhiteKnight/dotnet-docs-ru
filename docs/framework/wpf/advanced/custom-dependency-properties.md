@@ -131,9 +131,9 @@ ms.locfileid: "57372221"
 
 -   Если свойство (или изменения в его значении) влияет на [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)], и в частности затрагивает как система макета размер или отрисовку элемента на странице, задайте одно или несколько из следующих флагов: <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure>, <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange>, <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender>.
 
-    -   <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure> Указывает, что изменение этого свойства требует изменения для [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] подготовки отчетов, где содержащего его объекта может потребовать больше или меньше места в родительском элементе. Например, этот флаг следует задать для свойства "Ширина".
+    -   <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsMeasure> Указывает, что изменение этого свойства требует изменения для UI подготовки отчетов, где содержащего его объекта может потребовать больше или меньше места в родительском элементе. Например, этот флаг следует задать для свойства "Ширина".
 
-    -   <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange> Указывает, что изменение этого свойства требует изменения для [!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] отрисовки, обычно не требует изменения в выделенном пространстве, однако означает, что изменилось размещение в пространстве. Например, этот флаг следует задать для свойства "Выравнивание".
+    -   <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsArrange> Указывает, что изменение этого свойства требует изменения для UI отрисовки, обычно не требует изменения в выделенном пространстве, однако означает, что изменилось размещение в пространстве. Например, этот флаг следует задать для свойства "Выравнивание".
 
     -   <xref:System.Windows.FrameworkPropertyMetadataOptions.AffectsRender> Указывает, что произошло некоторое другое изменение, не повлияет на макет и измерение, но требуют повторной визуализации. Примером будет свойство, изменяющее цвет существующего элемента, например "Фон".
 

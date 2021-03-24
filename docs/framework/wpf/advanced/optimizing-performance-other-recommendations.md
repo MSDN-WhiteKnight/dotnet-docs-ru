@@ -70,7 +70,7 @@ ms.locfileid: "59224290"
   
 <a name="FontCache"></a>   
 ## <a name="configure-font-cache-service-to-reduce-start-up-time"></a>Настройка службы кэширования шрифтов для сокращения времени загрузки  
- Служба кэширования шрифтов [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] используется для совместной обработки данных шрифтов приложениями [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)]. Первое запускаемое приложение [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] запускает эту службу, если она еще не запущена. Если вы используете [!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)], можно задать службы «Windows Presentation Foundation (WPF) Font Cache 3.0.0.0» из «Вручную» (по умолчанию) «Автоматически (отложенный запуск)», чтобы уменьшить длительность начального запуска [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] приложений.  
+ Служба кэширования шрифтов WPF используется для совместной обработки данных шрифтов приложениями WPF. Первое запускаемое приложение WPF запускает эту службу, если она еще не запущена. Если вы используете [!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)], можно задать службы «Windows Presentation Foundation (WPF) Font Cache 3.0.0.0» из «Вручную» (по умолчанию) «Автоматически (отложенный запуск)», чтобы уменьшить длительность начального запуска WPF приложений.  
   
 ## <a name="see-also"></a>См. также
 

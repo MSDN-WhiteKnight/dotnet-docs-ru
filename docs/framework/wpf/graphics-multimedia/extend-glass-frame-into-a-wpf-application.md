@@ -30,7 +30,7 @@ ms.locfileid: "58412218"
 
 ![Снимок экрана, показывающий стекла фреймом, расширенный за адресной строки обозревателя IE7.](./media/extend-glass-frame-into-a-wpf-application/internet-explorer-glass-frame-extended-address-bar.png)
 
-Чтобы расширить стеклянную рамку в приложении [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], требуется доступ к неуправляемому [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)]. В следующем примере кода выполняется платформенный вызов (pinvoke) для двух [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)], необходимых для расширения рамки на клиентскую область. Каждый из этих [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] объявляется в классе с именем **NonClientRegionAPI**.
+Чтобы расширить стеклянную рамку в приложении WPF, требуется доступ к неуправляемому [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)]. В следующем примере кода выполняется платформенный вызов (pinvoke) для двух [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)], необходимых для расширения рамки на клиентскую область. Каждый из этих [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] объявляется в классе с именем **NonClientRegionAPI**.
 
 ```csharp
 [StructLayout(LayoutKind.Sequential)]
@@ -66,7 +66,7 @@ End Function
 
 ## <a name="example"></a>Пример
 
-Для использования функции [DwmExtendFrameIntoClientArea](/windows/desktop/api/dwmapi/nf-dwmapi-dwmextendframeintoclientarea) необходимо получить дескриптор окна. В [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)], дескриптор окна может быть получен из <xref:System.Windows.Interop.HwndSource.Handle%2A> свойство <xref:System.Windows.Interop.HwndSource>. В следующем примере рамка расширяется на клиентскую область на <xref:System.Windows.FrameworkElement.Loaded> событий окна.
+Для использования функции [DwmExtendFrameIntoClientArea](/windows/desktop/api/dwmapi/nf-dwmapi-dwmextendframeintoclientarea) необходимо получить дескриптор окна. В WPF, дескриптор окна может быть получен из <xref:System.Windows.Interop.HwndSource.Handle%2A> свойство <xref:System.Windows.Interop.HwndSource>. В следующем примере рамка расширяется на клиентскую область на <xref:System.Windows.FrameworkElement.Loaded> событий окна.
 
 ```csharp
 void OnLoaded(object sender, RoutedEventArgs e)
@@ -145,7 +145,7 @@ void OnLoaded(object sender, RoutedEventArgs e)
 </Window>
 ```
 
-На следующем рисунке показан Стеклянная рамка, расширенная в [!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] приложения:
+На следующем рисунке показан Стеклянная рамка, расширенная в WPF приложения:
 
 ![Снимок экрана, показывающий Стеклянная рамка, расширенная в приложение WPF.](./media/extend-glass-frame-into-a-wpf-application/glass-frame-extended-wpf-application.png)
 

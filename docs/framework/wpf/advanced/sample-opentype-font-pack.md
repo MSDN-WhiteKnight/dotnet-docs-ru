@@ -42,7 +42,7 @@ ms.locfileid: "59199041"
   
 <a name="installing_the_fonts"></a>   
 ## <a name="installing-the-fonts"></a>Установка шрифтов  
- Можно установить образцы шрифтов [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] в каталог шрифтов по умолчанию [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)], **\WINDOWS\Fonts**. Для установки шрифтов используйте панель управления Fonts. После установки шрифтов на вашем компьютере они будут доступны для всех приложений, которые ссылаются на шрифты [!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] по умолчанию. Можно отобразить характерный набор символов в нескольких размерах шрифта, дважды нажав файл шрифта. На следующем снимке экрана показан файл шрифта Lindsey, Linds.ttf.  
+ Можно установить образцы шрифтов [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] в каталог шрифтов по умолчанию Windows, **\WINDOWS\Fonts**. Для установки шрифтов используйте панель управления Fonts. После установки шрифтов на вашем компьютере они будут доступны для всех приложений, которые ссылаются на шрифты Windows по умолчанию. Можно отобразить характерный набор символов в нескольких размерах шрифта, дважды нажав файл шрифта. На следующем снимке экрана показан файл шрифта Lindsey, Linds.ttf.  
   
  ![Шрифта Lindsey &#40;OpenType&#41;](./media/typographyinwpf-04.png "TypographyInWPF_04")  
 Отображение шрифта Lindsey  
