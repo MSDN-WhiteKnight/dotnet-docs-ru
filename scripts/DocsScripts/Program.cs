@@ -79,12 +79,110 @@ namespace DocsScripts
                 ")]",
                 String.Empty);
         }
-        
-        //..\..\..\..\docs\framework\wpf\app-development\how-to-call-a-page-function.md
+
+        static void RemoveCppSamples()
+        {
+            //[!code-cpp[...](~/samples/snippets/cpp/...)]
+
+            ReplaceTextDir(
+                @"..\..\..\..\docs\framework\wpf\",
+                @"[!code-cpp[",
+                ")]",
+                String.Empty);
+
+            ReplaceTextDir(
+                @"..\..\..\..\docs\framework\winforms\",
+                @"[!code-cpp[",
+                ")]",
+                String.Empty);
+        }
+
+        static void ReplaceIncludes()
+        {
+            //[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] -> WPF
+            //[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] -> Windows Presentation Foundation (WPF)
+            //[!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] -> Windows
+            //[!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] -> XAML-приложения браузера (XBAP)
+            //[!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] -> WPF
+            //[!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] -> UI
+            //[!INCLUDE[TLA#tla_xaml](../../../includes/tlasharptla-xaml-md.md)] -> XAML
+            //[!INCLUDE[TLA2#tla_xbap](../../../includes/tla2sharptla-xbap-md.md)] -> XBAP
+            //[!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)] -> XBAP
+
+            const string wpfpath = @"..\..\..\..\docs\framework\wpf\";
+            const string winformspath = @"..\..\..\..\docs\framework\winforms\";
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA2#tla_winclient](",
+                "includes/tla2sharptla-winclient-md.md)]",
+                "WPF");
+
+            ReplaceTextDir(
+                winformspath,
+                @"[!INCLUDE[TLA2#tla_winclient](",
+                "includes/tla2sharptla-winclient-md.md)]",
+                "WPF");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_winclient](",
+                "includes/tlasharptla-winclient-md.md)]",
+                "Windows Presentation Foundation (WPF)");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_mswin](",
+                "includes/tlasharptla-mswin-md.md)]",
+                "Windows");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_xbap#plural](",
+                "includes/tlasharptla-xbapsharpplural-md.md)]",
+                "XAML-приложения браузера (XBAP)");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA2#tla_wpf](",
+                "includes/tla2sharptla-wpf-md.md)]",
+                "WPF");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA2#tla_ui](",
+                "includes/tla2sharptla-ui-md.md)]",
+                "UI");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_xaml](",
+                "includes/tlasharptla-xaml-md.md)]",
+                "XAML");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA2#tla_xbap](",
+                "includes/tla2sharptla-xbap-md.md)]",
+                "XBAP");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA2#tla_xbap#plural](",
+                "includes/tla2sharptla-xbapsharpplural-md.md)]",
+                "XBAP");
+                        
+            //[!INCLUDE[TLA#tla_api#plural](../../../includes/tlasharptla-apisharpplural-md.md)]
+            //[!INCLUDE[net_v40_long](../../../includes/net-v40-long-md.md)]
+            //[!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)]
+            //[!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]
+            //[!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)]
+            //[!INCLUDE[TLA2#tla_uri](../../../includes/tla2sharptla-uri-md.md)]                        
+        }
 
         static void Main(string[] args)
         {
-            //RemoveVbSamples();
+            ReplaceIncludes();
 
             Console.WriteLine("End");
             Console.ReadKey();
