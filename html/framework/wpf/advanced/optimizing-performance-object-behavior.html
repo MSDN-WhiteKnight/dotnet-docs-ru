@@ -99,10 +99,7 @@ rectangle_2.Fill = myBrush;
 rectangle_3.Fill = myBrush;
 // ...
 rectangle_10.Fill = myBrush;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>По умолчанию WPF предоставляет обработчик событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий, чтобы сделать недействительным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> свойство. В этом случае каждый раз, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> приходится запускать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий, необходимо вызывать функцию обратного вызова для каждого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a>— совокупность этих вызовов функции обратного вызова накладывают к значительному снижению производительности. Кроме того, довольно затратно с точки зрения производительности добавлять и удалять обработчики на этом этапе, так как приложению потребуется пройти по всему списку, чтобы сделать это. Если сценарий приложения никогда не меняется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a>, вы будете нести затраты на поддержку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> обработчики событий без необходимости.</p>
 <p>Замораживание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> позволяет повысить его производительность, поскольку он больше не требуется тратить ресурсы на уведомления об изменениях. В следующей таблице показан размер простого объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> при его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.isfrozen">IsFrozen</a> свойству <code>true</code>, если он недопустим по сравнению с. Это предполагает применение одной кисти к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> свойство десяти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> объектов.</p>
 <table>
@@ -138,33 +135,21 @@ for (int i = 0; i &lt; 10; i++)
     Rectangle rectangleFrozen = new Rectangle();
     rectangleFrozen.Fill = frozenBrush;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="changed-handlers-on-unfrozen-freezables-may-keep-objects-alive">Обработчики событий изменений Changed в нефиксированных объектах Freezable могут поддерживать объекты в активном состоянии</h3>
+</code></pre><h3 id="changed-handlers-on-unfrozen-freezables-may-keep-objects-alive">Обработчики событий изменений Changed в нефиксированных объектах Freezable могут поддерживать объекты в активном состоянии</h3>
 <p>Делегат, который объект передает в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий является ссылкой на этот объект. Таким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> обработчики событий могут поддерживать объекты в активном состоянии больше, чем ожидалось. При выполнении очистки объекта, зарегистрированного для прослушивания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий, очень важно удалить этот делегат перед освобождением объекта.</p>
 <p>WPF также подключает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> события внутренним образом. Например, все свойства зависимостей принимающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> как значение будет прослушивать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> события автоматически. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> Свойство, которое принимает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a>, иллюстрирует эту концепцию.</p>
 <pre><code class="lang-csharp" name="Performance#PerformanceSnippet4">Brush myBrush = new SolidColorBrush(Colors.Red);
 Rectangle myRectangle = new Rectangle();
 myRectangle.Fill = myBrush;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>При назначении <code>myBrush</code> для <code>myRectangle.Fill</code>делегат, указывающий обратно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> добавляется объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий. Это означает, что следующий код в действительности не разрешает <code>myRect</code> сборку мусора.</p>
 <pre><code class="lang-csharp" name="Performance#PerformanceSnippet5">myRectangle = null;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В этом случае <code>myBrush</code> по-прежнему сохраняет <code>myRectangle</code> активном состоянии и снова вызовет его при его срабатывании его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> событий. Обратите внимание, что при назначении <code>myBrush</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> свойства нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.rectangle">Rectangle</a> будет просто добавляться другой обработчик событий в <code>myBrush</code>.</p>
 <p>Рекомендуемый способ очистки этих типов объектов должно быть удаление <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.brush">Brush</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.shapes.shape.fill">Fill</a> свойство, которое в свою очередь приведет к удалению <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.changed">Changed</a> обработчик событий.</p>
 <pre><code class="lang-csharp" name="Performance#PerformanceSnippet6">myRectangle.Fill = null;
 myRectangle = null;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="User_Interface_Virtualization"></a></p>
 <h2 id="user-interface-virtualization">Виртуализация пользовательского интерфейса</h2>
 <p>WPF также предоставляет разновидность <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> элемент, который автоматически «виртуализирует» привязкой к данным дочернего содержимого. В данном контексте слово «виртуализация» означает способ, с помощью которого подмножество объектов создается из большего количества элементов данных в зависимости от того, какие из элементов отображаются на экране. Как для памяти, так и для процессора затратно создавать большое число элементов пользовательского интерфейса, при том что только несколько из них могут отображаться на экране одновременно. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingstackpanel">VirtualizingStackPanel</a> (с помощью функций, предоставляемых <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.virtualizingpanel">VirtualizingPanel</a>) подсчитывает видимые элементы и работает с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemcontainergenerator">ItemContainerGenerator</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> (такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a>) создавать только элементы для видимых элементов.</p>

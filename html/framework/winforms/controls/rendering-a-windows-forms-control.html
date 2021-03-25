@@ -136,17 +136,11 @@ public System.Drawing.Graphics Graphics {get;}
     client.Height);
 
 Invalidate(invalid);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="freeing-graphics-resources">Освобождение ресурсов графики</h2>
+</code></pre><h2 id="freeing-graphics-resources">Освобождение ресурсов графики</h2>
 <p>Графические объекты ресурсоемки, потому что они используют системные ресурсы. Такие объекты содержат экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">System.Drawing.Graphics</a> класса, а также экземпляры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.brush">System.Drawing.Brush</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">System.Drawing.Pen</a>и другие графические классы. Очень важно, создания ресурса графики, только в том случае, когда она необходима и отпустите его сразу после его использования. Если вы создаете тип, реализующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a> интерфейс, вызовите его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable.dispose">Dispose</a> метод, когда вы закончите с ним для освобождения ресурсов.</p>
 <p>В следующем фрагменте кода показано как <code>FlashTrackBar</code> пользовательский элемент управления создает и освобождает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.brush">Brush</a> ресурсов. Полный исходный код, см. в разделе <a href="how-to-create-a-windows-forms-control-that-shows-progress.html">как: Создание элемента управления Windows Forms, показывающего прогресс</a>.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#5">private Brush baseBackground = null;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#4">base.OnPaint(e);
+</code></pre><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#4">base.OnPaint(e);
 if (baseBackground == null) {
     if (showGradient) {
         baseBackground = new LinearGradientBrush(new Point(0, 0),
@@ -161,20 +155,14 @@ if (baseBackground == null) {
         baseBackground = new SolidBrush(BackColor);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#3">protected override void OnResize(EventArgs e) {
+</code></pre><pre><code class="lang-csharp" name="System.Windows.Forms.FlashTrackBar#3">protected override void OnResize(EventArgs e) {
     base.OnResize(e);
     if (baseBackground != null) {
         baseBackground.Dispose();
         baseBackground = null;
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="how-to-create-a-windows-forms-control-that-shows-progress.html">Практическое руководство. Создание элемента управления, показывающего прогресс в форме Windows Forms</a></li>
 </ul>

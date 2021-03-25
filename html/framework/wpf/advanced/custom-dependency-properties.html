@@ -72,7 +72,7 @@
 <p>В этом разделе описываются основания для создания настраиваемых свойств зависимостей для приложений Windows Presentation Foundation (WPF), а также этапы и некоторые варианты реализации, которые могут повысить производительность, удобство использования и универсальность свойств.</p>
 <p><a name="prerequisites"></a></p>
 <h2 id="prerequisites">Предварительные требования</h2>
-<p>Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах WPF и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>. Чтобы выполнить примеры в этом разделе, следует также иметь представление о Язык XAML и написании простых приложений WPF.</p>
+<p>Предполагается, что вы имеете представление о свойствах зависимостей с точки зрения потребителя существующих свойств зависимостей в классах WPF и ознакомились с разделом <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>. Чтобы выполнить примеры в этом разделе, следует также иметь представление о XAML и написании простых приложений WPF.</p>
 <p><a name="whatis"></a></p>
 <h2 id="what-is-a-dependency-property">Что такое свойство зависимостей?</h2>
 <p>Реализовать поведение, аналогичное свойству среда CLR, для поддержки стилизации, привязки данных, наследования, анимации и значений по умолчанию можно путем реализации его как свойства зависимостей. Свойства зависимостей являются свойствами, которые зарегистрированы в WPF системы свойств путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> метод (или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.registerreadonly">RegisterReadOnly</a>), и снабжаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> поле идентификатора. Свойства зависимостей могут использоваться только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> типов, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> находится достаточно высоко в WPF иерархии классов, поэтому большинство классов, доступных в WPF могут поддерживать свойства зависимостей. Дополнительные сведения о свойствах зависимостей и некоторых терминах и соглашениях, используемых для их описания в этом SDK, см. в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.</p>
@@ -127,10 +127,7 @@
       new PropertyChangedCallback(OnUriChanged)
   )
 );
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="nameconventions"></a></p>
 <h3 id="dependency-property-name-conventions">Соглашения об именовании свойств зависимостей</h3>
 <p>Существуют установленные соглашения об именовании, касающиеся свойств зависимостей, которым необходимо следовать, если ситуация не является исключительной.</p>
@@ -160,10 +157,7 @@ public Uri AquariumGraphic
   get { return (Uri)GetValue(AquariumGraphicProperty); }
   set { SetValue(AquariumGraphicProperty, value); }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Опять же, по соглашению, имя свойства-оболочки должно быть совпадает с именем, выбранным и заданным в качестве первого параметра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty.register">Register</a> вызов, который зарегистрировал свойство. Если свойство не следует соглашению, это не обязательно ведет к его неработоспособности, однако будет наблюдаться несколько серьезных проблем.</p>
 <ul>
 <li><p>Не будут работать определенные аспекты стилей и шаблонов.</p>
@@ -182,9 +176,9 @@ public Uri AquariumGraphic
 <ul>
 <li><p>Если свойство (или изменения в его значении) влияет на пользовательский интерфейс, и в частности затрагивает как система макета размер или отрисовку элемента на странице, задайте одно или несколько из следующих флагов: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsMeasure">AffectsMeasure</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsArrange">AffectsArrange</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsRender">AffectsRender</a>.</p>
 <ul>
-<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsMeasure">AffectsMeasure</a> Указывает, что изменение этого свойства требует изменения для ИП подготовки отчетов, где содержащего его объекта может потребовать больше или меньше места в родительском элементе. Например, этот флаг следует задать для свойства &quot;Ширина&quot;.</p>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsMeasure">AffectsMeasure</a> Указывает, что изменение этого свойства требует изменения для UI подготовки отчетов, где содержащего его объекта может потребовать больше или меньше места в родительском элементе. Например, этот флаг следует задать для свойства &quot;Ширина&quot;.</p>
 </li>
-<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsArrange">AffectsArrange</a> Указывает, что изменение этого свойства требует изменения для ИП отрисовки, обычно не требует изменения в выделенном пространстве, однако означает, что изменилось размещение в пространстве. Например, этот флаг следует задать для свойства &quot;Выравнивание&quot;.</p>
+<li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsArrange">AffectsArrange</a> Указывает, что изменение этого свойства требует изменения для UI отрисовки, обычно не требует изменения в выделенном пространстве, однако означает, что изменилось размещение в пространстве. Например, этот флаг следует задать для свойства &quot;Выравнивание&quot;.</p>
 </li>
 <li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadataoptions#System_Windows_FrameworkPropertyMetadataOptions_AffectsRender">AffectsRender</a> Указывает, что произошло некоторое другое изменение, не повлияет на макет и измерение, но требуют повторной визуализации. Примером будет свойство, изменяющее цвет существующего элемента, например &quot;Фон&quot;.</p>
 </li>

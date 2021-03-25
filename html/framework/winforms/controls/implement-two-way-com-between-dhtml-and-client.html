@@ -75,22 +75,13 @@
 <ol>
 <li><p>Присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.allowwebbrowserdrop">AllowWebBrowserDrop</a> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> значение <code>false</code>, чтобы элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> не открывал файлы, которые перетаскиваются в него мышью.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#1">webBrowser1.AllowWebBrowserDrop = false;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.iswebbrowsercontextmenuenabled">IsWebBrowserContextMenuEnabled</a> значение <code>false</code>, чтобы элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> не выводил контекстное меню при щелчке правой кнопкой мыши.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#2">webBrowser1.IsWebBrowserContextMenuEnabled = false;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.webbrowsershortcutsenabled">WebBrowserShortcutsEnabled</a> значение <code>false</code>, чтобы элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> не отвечал на нажатие сочетаний клавиш.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#3">webBrowser1.WebBrowserShortcutsEnabled = false;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Задайте свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.objectforscripting">ObjectForScripting</a> в конструкторе формы или в обработчике событий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.form.load">Load</a>.</p>
 <p>В приведенном ниже коде для объекта скрипта используется класс формы.</p>
 <div class="NOTE">
@@ -98,20 +89,14 @@
 <p>Модель COM должна иметь доступ к объекту скрипта. Чтобы сделать форму доступной для COM, добавьте в класс формы атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.comvisibleattribute">ComVisibleAttribute</a>.</p>
 </div>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#4">webBrowser1.ObjectForScripting = this;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Реализуйте в коде приложения открытые свойства или методы, которые будет использовать код скрипта.</p>
 <p>Например, если для объекта скрипта используется класс формы, добавьте в этот класс приведенный ниже код.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#5">public void Test(String message)
 {
     MessageBox.Show(message, &quot;client code&quot;);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Используйте объект <code>window.external</code> в коде скрипта для доступа к открытым свойствам и методам указанного объекта.</p>
 <p>Во фрагменте кода HTML ниже показано, как вызвать метод объекта скрипта после нажатия на кнопку. Скопируйте этот код в элемент BODY документа HTML, загруженного с помощью метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.navigate">Navigate</a> элемента управления или назначенного свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.documenttext">DocumentText</a>.</p>
 <pre><code>&lt;button onclick=&quot;window.external.Test('called from script code')&quot;&gt;  
@@ -132,17 +117,11 @@ function test(message) {
 <p>Например, добавьте приведенный ниже код в обработчик событий кнопки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a>.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#8">webBrowser1.Document.InvokeScript(&quot;test&quot;,
     new String[] { &quot;called from client code&quot; });
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>По окончании отладки кода DHTML присвойте свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.scripterrorssuppressed">ScriptErrorsSuppressed</a> значение <code>true</code>, чтобы элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> не выводил сообщения об ошибках в коде скрипта.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.WebBrowser.ObjectForScripting#9">// Uncomment the following line when you are finished debugging.
 //webBrowser1.ScriptErrorsSuppressed = true;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 </ol>
 <h2 id="example">Пример</h2>
 <p>В примере ниже приводится полный код демонстрационного приложения, которое поможет лучше разобраться в описываемой возможности. Код HTML загружается в элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser">WebBrowser</a> посредством свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.webbrowser.documenttext">DocumentText</a> вместо загрузки из отдельного HTML-файла.</p>
@@ -205,10 +184,7 @@ public class Form1 : Form
     }
 
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="compiling-the-code">Компиляция кода</h2>
+</code></pre><h2 id="compiling-the-code">Компиляция кода</h2>
 <p>Для этого примера кода требуются:</p>
 <ul>
 <li>ссылки на сборки System и System.Windows.Forms;</li>

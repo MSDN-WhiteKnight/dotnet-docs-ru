@@ -90,37 +90,22 @@
 <p>В Windows Vista или более поздней версии операционной системы, используйте <code>Direct3DCreate9Ex</code> метод с отображением, который настроен для использования Windows отображения Driver Model (WDDM). Используйте <code>Direct3DCreate9</code> метод на любой другой платформы.</p>
 <h3 id="availability-of-the-direct3dcreate9ex-method">Доступность метода Direct3DCreate9Ex</h3>
 <p>Имеет d3d9.dll <code>Direct3DCreate9Ex</code> метод только в Windows Vista или более поздней версии операционной системы. При прямой ссылке на эту функцию в Windows XP, приложение не удается загрузить. Чтобы определить, является ли <code>Direct3DCreate9Ex</code> метод поддерживается, загрузить библиотеку DLL и найдите адрес процедуры. Ниже показано, как проверить <code>Direct3DCreate9Ex</code> метод. Полный пример кода, см. в разделе <a href="walkthrough-creating-direct3d9-content-for-hosting-in-wpf.html">Пошаговое руководство: Создание содержимого Direct3D9 для размещения в WPF</a>.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="hwnd-creation">Создание HWND</h3>
+<h3 id="hwnd-creation">Создание HWND</h3>
 <p>Для создания устройства требуется HWND. Как правило вы создадите фиктивный HWND для использования Direct3D9. В следующем примере кода показано, как создать вспомогательный HWND.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="present-parameters">Представление параметров</h3>
+<h3 id="present-parameters">Представление параметров</h3>
 <p>Для создания устройства также требуется <code>D3DPRESENT_PARAMETERS</code> структуры, но только некоторые параметры являются важными. Эти параметры выбраны, чтобы свести к минимуму объем памяти.</p>
 <p>Задайте <code>BackBufferHeight</code> и <code>BackBufferWidth</code> поля 1. Задавая для них значение 0 приводит к их будет присвоено размеры HWND.</p>
 <p>Всегда значение <code>D3DCREATE_MULTITHREADED</code> и <code>D3DCREATE_FPU_PRESERVE</code> флаги, чтобы предотвратить повреждение памяти, используемой Direct3D9 и чтобы предотвратить изменение параметров FPU Direct3D9.</p>
 <p>Ниже показано, как инициализировать <code>D3DPRESENT_PARAMETERS</code> структуры.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="creating-the-back-buffer-render-target">Создание целевого объекта отрисовки заднего буфера</h2>
+<h2 id="creating-the-back-buffer-render-target">Создание целевого объекта отрисовки заднего буфера</h2>
 <p>Для отображения содержимого Direct3D9 в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a>, можно создать поверхность Direct3D9 и назначить его путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> метод.</p>
 <h3 id="verifying-adapter-support">Проверка поддержки адаптера</h3>
 <p>Прежде чем создавать рабочую область, убедитесь, что все адаптеры поддерживает свойства поверхности. Даже если при подготовке к просмотру только один адаптер, окно WPF могут отображаться на одном адаптере в системе. Следует всегда писать код Direct3D9, который обрабатывает конфигурацию с несколькими адаптерами и следует проверить все адаптеры для поддержки, так как WPF может перемещать поверхность среди доступных адаптеров.</p>
 <p>В следующем примере кода показано, как проверить, поддерживают все адаптеры для Direct3D9 в системе.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="creating-the-surface">Создание рабочей области</h3>
+<h3 id="creating-the-surface">Создание рабочей области</h3>
 <p>Прежде чем создавать рабочую область, убедитесь, что возможности устройства поддерживает высокую производительность в целевой операционной системе. Дополнительные сведения см. в разделе <a href="performance-considerations-for-direct3d9-and-wpf-interoperability.html">рекомендации по ускорению взаимодействием Direct3D9 и WPF</a>.</p>
 <p>После проверки возможности устройства, можно создать области. В следующем примере кода показано, как создать мишень рендеринга.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="wddm">WDDM</h3>
+<h3 id="wddm">WDDM</h3>
 <p>В Windows Vista и более поздних операционных системах, которые настроены на использование модели WDDM, можно создать текстуру целевой объект отрисовки и передать в область уровня 0, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> метод. Этот подход не рекомендуется в операционной системе Windows XP, поскольку не удается создать текстуру целевого блокируемый отрисовки и производительность будет снижена.</p>
 <h2 id="handling-device-state">Обработка состояния устройства</h2>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> Класс управляет двумя буферами отображения, которые называются <em>задний буфер</em> и <em>передний буфер</em>. Задний буфер — это область Direct3D.  Изменения на задний буфер копируются передний буфер при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.unlock">Unlock</a> метода, в котором они отображаются на оборудовании. В некоторых случаях передний буфер становится недоступной. Отсутствие доступности может быть вызвано блокировки экрана, весь экран эксклюзивные приложения Direct3D, переключения пользователей или другие системные события. В этом случае приложение WPF уведомляется путем обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.isfrontbufferavailablechanged">IsFrontBufferAvailableChanged</a> событий.  Как приложение реагирует на передний буфер, недоступности зависит от того, включен ли WPF на переключение на программную отрисовку. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage.setbackbuffer">SetBackBuffer</a> Метод имеет перегрузку, которая принимает параметр, который указывает, возвращается ли WPF к программной отрисовке.</p>
@@ -160,10 +145,6 @@
 <p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> распределяется между несколькими мониторами, производительность будет снижена, за исключением использования WDDM и <code>IDirect3D9Ex</code> в одном адаптере. Нет способа для повышения производительности в этой ситуации.</p>
 </div>
 <p>В следующем примере кода показано, как найти текущего монитора.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
 <p>Обновление монитора при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.d3dimage">D3DImage</a> изменения размера или положения контейнера или обновите монитор с помощью <code>DispatcherTimer</code> , обновляет несколько раз в секунду.</p>
 <h2 id="wpf-software-rendering">WPF программной отрисовки</h2>
 <p>WPF выполняет визуализацию синхронно в потоке пользовательского интерфейса в программном обеспечении в следующих ситуациях.</p>

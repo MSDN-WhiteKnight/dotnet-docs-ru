@@ -72,7 +72,7 @@
 <p>В этом разделе описывается понятие перенаправленных событий в Windows Presentation Foundation (WPF). Здесь определяется терминология перенаправленных событий, описывается, как перенаправленные события маршрутизируются через дерево элементов, кратко описываются способы обработки перенаправленных событий, а также способы создания пользовательских перенаправленных событий.</p>
 <p><a name="prerequisites"></a></p>
 <h2 id="prerequisites">Предварительные требования</h2>
-<p>Этот раздел предполагает наличие базовых знаний о среда CLR и объектно-ориентированном программировании,а также представление о связях между элементами WPF в виде дерева. Чтобы выполнить примеры в этом разделе, следует также понимать Язык XAML и знать, как писать простые приложения или страницы WPF. Дополнительные сведения см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a> и <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>.</p>
+<p>Этот раздел предполагает наличие базовых знаний о среда CLR и объектно-ориентированном программировании,а также представление о связях между элементами WPF в виде дерева. Чтобы выполнить примеры в этом разделе, следует также понимать XAML и знать, как писать простые приложения или страницы WPF. Дополнительные сведения см. в разделе <a href="../getting-started/walkthrough-my-first-wpf-desktop-application.html">Пошаговое руководство: Создание первого классического приложения WPF</a> и <a href="xaml-overview-wpf.html">Обзор XAML (WPF)</a>.</p>
 <p><a name="routing"></a></p>
 <h2 id="what-is-a-routed-event">Что такое перенаправленное событие?</h2>
 <p>Перенаправленные события можно рассматривать с точки зрения функциональности или реализации. Здесь приводятся оба определения, чтобы пользователи могли выбрать наиболее подходящее для себя.</p>
@@ -114,10 +114,7 @@
   }
   e.Handled=true;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><strong>Обработка классов:</strong> Перенаправленные события разрешают использовать статический обработчик, который определен в классе. Этот обработчик классов может обрабатывать событие раньше любого вложенного обработчика экземпляров.</p>
 <p><strong>Ссылка на событие без отражения:</strong> Определенных методов кода и исправлений требуется Идентификация определенного события. Перенаправленное событие создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedevent">RoutedEvent</a> поле идентификатора, который обеспечивает надежный метод идентификации события, не требует статического отражения или выполнения отражения.</p>
 <h3 id="how-routed-events-are-implemented">Реализация перенаправленных событий</h3>
@@ -132,10 +129,7 @@ public event RoutedEventHandler Tap
         add { AddHandler(TapEvent, value); }
         remove { RemoveHandler(TapEvent, value); }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="routed-event-handlers-and-xaml">Обработчики перенаправленных событий и XAML</h3>
+</code></pre><h3 id="routed-event-handlers-and-xaml">Обработчики перенаправленных событий и XAML</h3>
 <p>Чтобы добавить обработчик для события с помощью XAML, следует объявить имя события как атрибут для элемента, который является прослушивателем событий. Значением атрибута является имя метода реализуемого обработчика, который должен существовать в разделяемом классе файла кода программной части.</p>
 <pre><code class="lang-xaml" name="EventOvwSupport#SimplestSyntax">&lt;Button Click=&quot;b1SetColor&quot;&gt;button&lt;/Button&gt;
 </code></pre>
@@ -175,10 +169,7 @@ public event RoutedEventHandler Tap
 {
   //logic to handle the Click event
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.routedeventhandler">RoutedEventHandler</a> является делегатом обработчика перенаправленных событий basic. Для перенаправленных событий, которые являются специализированными для определенных элементов управления или скриптов, делегаты, которые используются для обработчиков перенаправленных событий, также могут быть более специализированными, чтобы они могли передавать определенные данные события. Например, в общем сценарии ввода можно обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.dragenter">DragEnter</a> перенаправленного события. Обработчик должен реализовывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventhandler">DragEventHandler</a> делегировать. С помощью наиболее конкретного делегата, можно обработать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs">DragEventArgs</a> в обработчике событий и прочитать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.drageventargs.data">Data</a> свойство, которое содержит полезные данные буфера обмена операции перетаскивания.</p>
 <p>Полный пример добавления обработчика событий к элементу с помощью XAML см. в разделе <a href="how-to-handle-a-routed-event.html">Обработка перенаправленных событий</a>.</p>
 <p>Добавить обработчик для перенаправленного события в приложении, созданном в коде, достаточно просто. Обработчики перенаправленных событий всегда можно добавлять с помощью вспомогательного метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.addhandler">AddHandler</a> (который является тот же метод, который вызывает резервной копией для <code>add</code>.) Однако существующие перенаправленные события  WPF обычно имеют резервную реализацию <code>add</code> и логику <code>remove</code>, позволяющую добавлять обработчики перенаправленных событий с помощью синтаксиса событий для определенного языка, являющегося более понятным, чем вспомогательный метод. Ниже приведен пример использования вспомогательного метода.</p>
@@ -191,10 +182,7 @@ public event RoutedEventHandler Tap
  {
      //logic to handle the Click event
  }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В следующем примере показан C# синтаксис оператора (Visual Basic имеет немного другой синтаксис оператора из-за обработки разыменовывания):</p>
 <pre><code class="lang-csharp" name="EventOvwSupport#AddHandlerPlusEquals">void MakeButton2()
 {
@@ -205,10 +193,7 @@ void Onb2Click2(object sender, RoutedEventArgs e)
 {
   //logic to handle the Click event
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Пример добавления обработчика событий в коде см. в разделе <a href="how-to-add-an-event-handler-using-code.html">Добавление обработчика событий с помощью кода</a>.</p>
 <p>Если вы используете Visual Basic, можно также использовать <code>Handles</code> ключевое слово, чтобы добавить обработчик как часть объявлений обработчика. Дополнительные сведения см. в разделе <a href="visual-basic-and-wpf-event-handling.html">Обработка событий в Visual Basic и WPF</a>.</p>
 <p><a name="concept_handled"></a></p>

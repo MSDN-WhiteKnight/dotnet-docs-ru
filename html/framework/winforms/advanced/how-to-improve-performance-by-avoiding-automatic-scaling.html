@@ -72,10 +72,7 @@
 <p>GDI+ Автоматическое масштабирование образа при рисовании, снижает производительность. Кроме того, можно управлять масштабирования изображения, передав размеры прямоугольника назначения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод.</p>
 <p>Например, следующий вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод задает верхний левый угол (50, 30), но не указывает прямоугольник назначения.</p>
 <pre><code class="lang-csharp" name="System.Drawing.WorkingWithImages#31">e.Graphics.DrawImage(image, 50, 30);  // upper-left corner at (50, 30)
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Несмотря на то, что это простейший вариант <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод с точки зрения количества обязательных аргументов, не обязательно наиболее эффективен. Если используется разрешение GDI+ (обычно 96 точек на дюйм) отличается от разрешения, указанного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image">Image</a> объекта, а затем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод производит масштабирование рисунка. Например, предположим, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.image">Image</a> объект имеет 216 пикселей в ширину и значение хранимых разрешение по горизонтали 72 точек на дюйм. Поскольку 216/72 равно 3, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> производит масштабирование рисунка, чтобы он включал линию толщиной 3 дюйма с разрешением 96 точек на дюйм. То есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> выводит изображение шириной 96 x 3 = 288 пикселей.</p>
 <p>Даже если разрешение экрана 96 точек на дюйм, GDI+ , вероятно масштабирования изображения так, будто разрешение экрана 96 точек на дюйм. Это потому, что GDI+ <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> связывается с контекста устройства и когда GDI+ контекст устройства для разрешения экрана и результат обычно является 96, независимо от фактического экранного разрешения запросов. Можно избежать автоматического масштабирования, указав в прямоугольник назначения в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawimage">DrawImage</a> метод.</p>
 <h2 id="example">Пример</h2>
@@ -85,10 +82,7 @@
 
 e.Graphics.DrawImage(image, 10, 10);
 e.Graphics.DrawImage(image, 120, 10, image.Width, image.Height);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="compiling-the-code">Компиляция кода</h2>
+</code></pre><h2 id="compiling-the-code">Компиляция кода</h2>
 <p>Предыдущий пример предназначен для работы с Windows Forms и требует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.painteventargs">PaintEventArgs</a> <code>e</code>, который является параметром <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.paint">Paint</a> обработчик событий. Замените Texture.jpg в вашей системе путь и имя образа.</p>
 <h2 id="see-also">См. также</h2>
 <ul>

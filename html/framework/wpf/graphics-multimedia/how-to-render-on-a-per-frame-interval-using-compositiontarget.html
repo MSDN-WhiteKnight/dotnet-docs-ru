@@ -79,10 +79,7 @@
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> Событие запускается во время WPF процесс подготовки отчета. В следующем примере показано, как зарегистрировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегировать статического <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a>.</p>
 <pre><code class="lang-csharp" name="CompositionTargetSample#CompositionTarget1">// Add an event handler to update canvas background color just before it is rendered.
 CompositionTarget.Rendering += UpdateColor;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Можно использовать собственный метод обработчика событий отрисовки для создания пользовательского графического содержимого. Метод обработчика событий вызывается один раз для каждого кадра. Каждый раз, когда WPF выполняет маршалинг сохраненных данных отрисовки в визуальном дереве через граф сцены композиции, вызывается метод обработчика событий. Кроме того, если изменения в визуальном дереве принудительно обновляют граф сцены композиции, метод обработчика событий также вызывается. Обратите внимание, что метод обработчика событий вызывается после вычисления макета. Однако можно изменить макет в методе обработчика событий, что означает повторное вычисление макета перед отрисовкой.</p>
 <p>В следующем примере показано как можно реализовать пользовательское рисование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget">CompositionTarget</a> метод обработчика событий. В данном случае цвет фона <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a> рисуется пером значение цвета на основе координат положения указателя мыши. При перемещении указателя мыши внутри <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.canvas">Canvas</a>, ее изменения цвета фона. Кроме того вычисляется средняя частота кадров, на основе текущего значения прошедшего времени и общего числа отрисованных кадров.</p>
 <pre><code class="lang-csharp" name="CompositionTargetSample#CompositionTarget2">// Called just before frame is rendered to allow custom drawing.
@@ -109,10 +106,7 @@ protected void UpdateColor(object sender, EventArgs e)
     byte blueColor = (byte)(_pt.Y / 2.0);
     myCanvas.Background = new SolidColorBrush(Color.FromRgb(redColor, 0x0, blueColor));
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Может оказаться, что пользовательское рисование выполняется на разных компьютерах с разной скоростью. Это потому, что пользовательское рисование не является независимым от частоты кадров. В зависимости от используемой системы и рабочей нагрузки этой системы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> событие может вызываться Разное количество раз в секунду. Дополнительные сведения об определении возможностей графического оборудования и производительности для устройства, которое запускает приложение WPF см. в разделе <a href="../advanced/graphics-rendering-tiers.html">Уровни отрисовки графики</a>.</p>
 <p>Добавление или удаление визуализации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегата во время срабатывания события будет отложено до момента завершения события обработки. Это согласуется с тем, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.multicastdelegate">MulticastDelegate</a>-на основе события обрабатываются в Common Language Runtime (CLR). Также обратите внимание, что порядок вызова событий отрисовки не гарантируется. Если имеется несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.eventhandler">EventHandler</a> делегаты, которые зависят от определенного порядка, необходимо зарегистрировать один <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.compositiontarget.rendering">Rendering</a> событий и мультиплексировать делегаты в правильном порядке.</p>
 <h2 id="see-also">См. также</h2>

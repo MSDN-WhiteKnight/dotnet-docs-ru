@@ -73,7 +73,7 @@
 Windows Presentation Foundation (WPF) содержит большинство распространенных компонентов пользовательского интерфейса, которые используются практически во всех приложениях Windows, таких как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menu">Menu</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a>. Исторически эти объекты называются элементами управления. Хотя пакет SDK для WPF продолжает использовать термин &quot;элемент управления&quot; для общего обозначения любого класса, который представляет видимый объект в приложении, важно отметить, что класс не обязательно должен наследовать от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, чтобы иметь визуальное представление. Классы, наследующие от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, содержат шаблон <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, позволяющий пользователю элемента управления существенно изменить внешний вид элемента управления, не создавая новый подкласс. В этом разделе описано, как элементы управления (и наследующие от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, и не наследующие от него) обычно используются в WPF.</p>
 <p><a name="creating_an_instance_of_a_control"></a></p>
 <h2 id="creating-an-instance-of-a-control">Создание экземпляра элемента управления</h2>
-<p>Элемент управления можно добавить в приложение с помощью Язык XAML или кода. В следующем примере показано, как создать простое приложение, которое запрашивает у пользователя имя и фамилию. В этом примере создается шесть элементов управления: две метки, два текстовых поля и две кнопки в XAML. Все элементы управления могут быть созданы аналогичным образом.</p>
+<p>Элемент управления можно добавить в приложение с помощью XAML или кода. В следующем примере показано, как создать простое приложение, которое запрашивает у пользователя имя и фамилию. В этом примере создается шесть элементов управления: две метки, два текстовых поля и две кнопки в XAML. Все элементы управления могут быть созданы аналогичным образом.</p>
 <pre><code class="lang-xaml" name="ControlsOverview#1">&lt;Grid&gt;
   &lt;Grid.RowDefinitions&gt;
     &lt;RowDefinition Height=&quot;30&quot;/&gt;
@@ -150,10 +150,7 @@ void CreateControls()
     Grid.SetColumn(clear, 1);
     grid1.Children.Add(clear);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="changing_the_appearance_of_a_control"></a></p>
 <h2 id="changing-the-appearance-of-a-control">Изменение внешнего вида элемента управления</h2>
 <p>Обычно внешний вид элемента управления изменяется в соответствии с внешним видом приложения. Можно изменить внешний вид элемента управления, выполнив одно из следующих действий (в зависимости от того, чего нужно достичь):</p>
@@ -191,10 +188,7 @@ buttonBrush.GradientStops.Add(new GradientStop(Colors.White, 0.9));
 submit.Background = buttonBrush;
 submit.FontSize = 14;
 submit.FontWeight = FontWeights.Bold;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="creating-a-style-for-a-control">Создание стиля для элемента управления</h3>
+</code></pre><h3 id="creating-a-style-for-a-control">Создание стиля для элемента управления</h3>
 <p>WPF дает возможность группового определения внешнего вида элементов управления путем создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> вместо установки свойств для каждого экземпляра в приложении. В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>, который применяется к каждому элементу <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> в приложении. Определения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> обычно размещаются в XAML в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>, например в свойстве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.resources">Resources</a> объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
 <pre><code class="lang-xaml" name="ControlsOverview#5">&lt;Style TargetType=&quot;Button&quot;&gt;
   &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;
@@ -276,19 +270,13 @@ submit.FontWeight = FontWeights.Bold;
 <pre><code class="lang-xaml" name="ControlsOverview#10">&lt;Button Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;2&quot; Name=&quot;submitName&quot; Click=&quot;submit_Click&quot;
   Background=&quot;Green&quot;&gt;View message&lt;/Button&gt;
 </code></pre><pre><code class="lang-csharp" name="ControlsOverview#8">submit.Click += new RoutedEventHandler(submit_Click);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В следующем примере показана обработка события <code>Click</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
 <pre><code class="lang-csharp" name="ControlsOverview#9">void submit_Click(object sender, RoutedEventArgs e)
 {
     MessageBox.Show(&quot;Hello, &quot; + firstName.Text + &quot; &quot; + lastName.Text);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="rich_content_in_controls"></a></p>
 <h2 id="rich-content-in-controls">Форматированное содержимое в элементах управления</h2>
 <p>Большинство классов, наследующих от класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, могут включать форматированное содержимое. Например, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.label">Label</a> может содержать любой объект, будь то строка, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a>. Следующие классы обеспечивают поддержку форматированного содержимого и служат базовыми классами для большинства элементов управления в WPF.</p>

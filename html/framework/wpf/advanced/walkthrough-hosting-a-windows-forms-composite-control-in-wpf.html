@@ -139,10 +139,7 @@
 <p>Добавьте следующий код в класс <code>MyControl1</code> .</p>
 <pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#2">public delegate void MyControlEventHandler(object sender, MyControlEventArgs args);
 public event MyControlEventHandler OnButtonClick;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><code>MyControlEventArgs</code> Класс содержит информацию, возвращаемую к узлу.</p>
 <p>Добавьте в форму следующий класс.</p>
 <pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#3">public class MyControlEventArgs : EventArgs
@@ -200,10 +197,7 @@ public event MyControlEventHandler OnButtonClick;
         set { _IsOK = value; }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда пользователь щелкает <strong>ОК</strong> или <strong>отменить</strong> кнопки, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> создать обработчики событий <code>MyControlEventArgs</code> объект, содержащий данные и вызывает <code>OnButtonClick</code> событий. Аргумент события, — это единственное различие между двумя обработчиками <code>IsOK</code> свойство. Это свойство позволяет основному приложению определить, какая кнопка была нажата. Ему будет присвоено <code>true</code> для <strong>ОК</strong> кнопку, и <code>false</code> для <strong>отменить</strong> кнопки. В следующем примере кода показаны два обработчика кнопок.</p>
 <p>Добавьте следующий код в класс <code>MyControl1</code> .</p>
 <pre><code class="lang-csharp" name="WpfHostingWindowsFormsControl#4">private void btnOK_Click(object sender, System.EventArgs e)
@@ -228,10 +222,7 @@ private void btnCancel_Click(object sender, System.EventArgs e)
                                                          txtZip.Text);
     OnButtonClick(this, retvals);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="giving-the-assembly-a-strong-name-and-building-the-assembly">Присвоение сборке строгого имени и построение сборки</h3>
+</code></pre><h3 id="giving-the-assembly-a-strong-name-and-building-the-assembly">Присвоение сборке строгого имени и построение сборки</h3>
 <p>Для этой сборки, на которые ссылается WPF приложения, он должен иметь строгое имя. Для создания строгого имени, создать файл ключа с Sn.exe и добавьте его в проект.</p>
 <ol>
 <li><p>Откройте командную строку Visual Studio. Чтобы сделать это, нажмите кнопку <strong>запустить</strong> меню, а затем выберите <strong>все программы/Microsoft Visual Studio 2010 Tools и Visual Studio Командная строка Visual Studio</strong>. Откроется окно консоли с настраиваемыми переменными среды.</p>
@@ -277,7 +268,7 @@ private void btnCancel_Click(object sender, System.EventArgs e)
 </li>
 </ol>
 <h3 id="implementing-the-basic-layout">Реализация базового макета</h3>
-<p>пользовательский интерфейс Узла приложение реализовано в файле MainWindow.xaml. Этот файл содержит Язык XAML разметку, которая определяет макет и размещает элемент управления Windows Forms. Приложение состоит из трех областей:</p>
+<p>пользовательский интерфейс Узла приложение реализовано в файле MainWindow.xaml. Этот файл содержит XAML разметку, которая определяет макет и размещает элемент управления Windows Forms. Приложение состоит из трех областей:</p>
 <ul>
 <li><p><strong>Свойства элемента управления</strong> панель, которая содержит коллекцию переключателей, можно использовать для изменения различных свойств размещаемого элемента управления.</p>
 </li>
@@ -432,7 +423,7 @@ private void btnCancel_Click(object sender, System.EventArgs e)
 </li>
 </ul>
 <h3 id="implementing-the-code-behind-file">Реализация файла кода программной части</h3>
-<p>Файл кода, MainWindow.xaml.vb или MainWindow.xaml.cs содержит процедурный код, который реализует функциональность ИП описано в предыдущем разделе. Основные задачи</p>
+<p>Файл кода, MainWindow.xaml.vb или MainWindow.xaml.cs содержит процедурный код, который реализует функциональность UI описано в предыдущем разделе. Основные задачи</p>
 <ul>
 <li><p>Присоединение обработчика событий к <code>MyControl1</code>в <code>OnButtonClick</code> событий.</p>
 </li>
@@ -469,10 +460,7 @@ private void Init(object sender, EventArgs e)
     (wfh.Child as MyControl1).OnButtonClick += new MyControl1.MyControlEventHandler(Pane1_OnButtonClick);
     UIIsReady = true;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Так как XAML описанные ранее добавленный <code>MyControl1</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> коллекцию дочерних элементов элемента, можно привести <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost.child">Child</a> для получения ссылки на <code>MyControl1</code>. Затем можно использовать эту ссылку для присоединения обработчика событий к <code>OnButtonClick</code>.</p>
 <p>Помимо предоставления ссылки на элемент управления, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> предоставляет ряд свойств элемента управления, которыми можно управлять из приложения. Код инициализации назначает эти значения закрытым глобальным переменным для последующего использования в приложении.</p>
 <p>Таким образом, можно легко получить типы в <code>MyControls</code> библиотеки DLL, добавьте следующий <code>Imports</code> или <code>using</code> в начало файла.</p>
@@ -501,10 +489,7 @@ private void Pane1_OnButtonClick(object sender, MyControlEventArgs args)
         txtZip.Inlines.Add( &quot; &quot; + args.MyZip );
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Данные в текстовых полях упакованы в <code>MyControlEventArgs</code> объекта. Если пользователь нажимает кнопку <strong>ОК</strong> кнопку, обработчик событий извлекает данные и отображает его на панели ниже <code>MyControl1</code>.</p>
 <h4 id="modifying-the-controls-properties">Изменение свойств элемента управления</h4>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.integration.windowsformshost">WindowsFormsHost</a> Элемент предоставляет несколько свойств размещаемого элемента управления по умолчанию. В результате можно изменить внешний вид элемента управления, чтобы он более полно соответствовал стилю приложения. Наборы переключателей на левой панели позволяют пользователю изменять некоторые свойства цвета и шрифта. Каждый набор кнопок имеет обработчик для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событие, которое определяет пользователя переключателей и меняет соответствующее свойство элемента управления.</p>
@@ -561,10 +546,7 @@ private void WeightChanged(object sender, RoutedEventArgs e)
     else if (UIIsReady == true)
         wfh.FontWeight = initFontWeight;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Выполните сборку и запуск приложения. Добавьте какой-нибудь текст в составной элемент управления Windows Forms и нажмите кнопку <strong>ОК</strong>. Текст отображается в метках. Щелкайте различные переключатели, чтобы увидеть соответствующий эффект в элементе управления.</p>
 <h2 id="see-also">См. также</h2>
 <ul>

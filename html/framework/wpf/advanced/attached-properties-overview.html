@@ -106,10 +106,7 @@ CheckBox myCheckBox = new CheckBox();
 myCheckBox.Content = &quot;Hello&quot;;
 myDockPanel.Children.Add(myCheckBox);
 DockPanel.SetDock(myCheckBox, Dock.Top);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Аналогично XAML регистр, если <code>myCheckBox</code> бы еще не добавлен как дочерний элемент элемента <code>myDockPanel</code> третьей строкой кода, то Четвертая строка кода не приведет к исключению, но значение свойства не будет взаимодействовать с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> родительского и, следовательно, не имела бы смысла. Только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel.dock">DockPanel.Dock</a> заданное для дочернего элемента с наличием <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> родительский элемент будет влиять на поведение в отображаемом приложении. (В этом случае вы может задать присоединенное свойство, а затем подключиться к дереву. Аналогично, можно подключиться к дереву, а затем задать присоединенное свойство. Любая последовательность действий дает тот же результат.)</p>
 <h2 id="метаданные-присоединенного-свойства-">Метаданные присоединенного свойства <a name="attached_properties_metadata"></a></h2>
 <p>При регистрации свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkpropertymetadata">FrameworkPropertyMetadata</a> определяет характеристики свойства, такие как ли свойство влиять на отрисовку, измерение и т. д. Метаданные для присоединенного свойства, как правило, не отличаются от задаваемых для свойства зависимостей. Если задать значение по умолчанию в переопределении для метаданных присоединенного свойства, это значение становится значением по умолчанию неявного присоединенного свойства для экземпляров переопределяющего класса. В частности, значение по умолчанию передается, если некоторый процесс запрашивает значение присоединенного свойства с помощью метода доступа <code>Get</code> для этого свойства, указывая экземпляр класса, в котором заданы метаданные, и значение для этого присоединенного свойства не задано иным образом.</p>
@@ -160,10 +157,7 @@ public static Boolean GetIsBubbleSource(UIElement element)
 {
   return (Boolean)element.GetValue(IsBubbleSourceProperty);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h4 id="attached-property-attributes">Атрибуты присоединенного свойства</h4>
+</code></pre><h4 id="attached-property-attributes">Атрибуты присоединенного свойства</h4>
 <p>WPF определяет несколько Атрибуты .NET Framework , предназначенные для предоставления сведений о присоединенных свойствах процессам отражения и типичным пользователям отражения и сведений о свойстве таких как конструкторы. Поскольку присоединенные свойства имеют тип неограниченной области, разработчикам необходим способ, который позволит избежать представления пользователям глобального списка всех присоединенных свойств, которые определены в конкретной реализации технологии, использующей XAML. Атрибуты .NET Framework , WPF определяет для присоединенных свойств, которые могут использоваться для ситуаций, когда данное присоединенное свойство должно отображаться в окне &quot;Свойства&quot;. Эти атрибуты можно также применить для собственных присоединенных свойств. Назначение и синтаксис Атрибуты .NET Framework описаны в соответствующих разделах справочника.</p>
 <ul>
 <li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.attachedpropertybrowsableattribute">AttachedPropertyBrowsableAttribute</a></p>

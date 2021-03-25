@@ -73,35 +73,20 @@
 <h3 id="to-host-a-control-in-a-toolstripcontrolhost-by-derivation">Размещение элемента управления в ToolStripControlHost путем наследования</h3>
 <ol>
 <li><p>Расширьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost">ToolStripControlHost</a>. Реализуйте конструктор по умолчанию, который вызывает конструктор базового класса для передачи в нужный элемент управления.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#10">// Call the base constructor passing in a MonthCalendar instance.
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#10">// Call the base constructor passing in a MonthCalendar instance.
 public ToolStripMonthCalendar() : base (new MonthCalendar()) { }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Объявите свойство с типом, совпадающим с типом оболочки элемента управления и возвращающее <code>Control</code> в качестве корректного типа элемента управления в методе доступа для свойства.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#11">public MonthCalendar MonthCalendarControl
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#11">public MonthCalendar MonthCalendarControl
 {
     get
     {
         return Control as MonthCalendar;
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Обеспечьте доступ к часто используемым свойствам и методам оболочки элемента управления, реализовав свойства и метода в расширенном классе.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#12">// Expose the MonthCalendar.FirstDayOfWeek as a property.
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#12">// Expose the MonthCalendar.FirstDayOfWeek as a property.
 public Day FirstDayOfWeek
 {
     get
@@ -116,15 +101,9 @@ public void AddBoldedDate(DateTime dateToBold)
 {
     MonthCalendarControl.AddBoldedDate(dateToBold);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>При необходимости переопределите методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost.onsubscribecontrolevents">OnSubscribeControlEvents</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.toolstripcontrolhost.onunsubscribecontrolevents">OnUnsubscribeControlEvents</a> и добавьте события элемента управления, к которому требуется предоставить доступ.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#16">protected override void OnSubscribeControlEvents(Control c)
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#16">protected override void OnSubscribeControlEvents(Control c)
 {
     // Call the base so the base events are connected.
     base.OnSubscribeControlEvents(c);
@@ -149,15 +128,9 @@ protected override void OnUnsubscribeControlEvents(Control c)
     monthCalendarControl.DateChanged -=
         new DateRangeEventHandler(OnDateChanged);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Создайте необходимую оболочку для событий, доступ к которым требуется предоставить.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#17">// Declare the DateChanged event.
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#17">// Declare the DateChanged event.
 public event DateRangeEventHandler DateChanged;
 
 // Raise the DateChanged event.
@@ -168,16 +141,10 @@ private void OnDateChanged(object sender, DateRangeEventArgs e)
         DateChanged(this, e);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 </ol>
 <h2 id="example">Пример</h2>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#13">//Declare a class that inherits from ToolStripControlHost.
+<pre><code class="lang-csharp" name="System.Windows.Forms.ToolStripControlHost#13">//Declare a class that inherits from ToolStripControlHost.
 public class ToolStripMonthCalendar : ToolStripControlHost
 {
     // Call the base constructor passing in a MonthCalendar instance.
@@ -246,10 +213,7 @@ public class ToolStripMonthCalendar : ToolStripControlHost
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="compiling-the-code">Компиляция кода</h2>
+</code></pre><h2 id="compiling-the-code">Компиляция кода</h2>
 <ul>
 <li><p>Для этого примера требуются:</p>
 </li>

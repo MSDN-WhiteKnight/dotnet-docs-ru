@@ -86,49 +86,89 @@
 <h3 id="create-a-collectible-assemblyloadcontext">Создание собираемого AssemblyLoadContext</h3>
 <p>Необходимо получить класс от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext">AssemblyLoadContext</a> и переопределить его метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.loader.assemblyloadcontext.load">AssemblyLoadContext.Load</a>. Этот метод разрешает ссылки на все сборки, которые являются зависимостями загруженных в <code>AssemblyLoadContext</code> сборок.</p>
 <p>Следующий код является примером простейшего пользовательского <code>AssemblyLoadContext</code>:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Simple custom AssemblyLoadContext">class TestAssemblyLoadContext : AssemblyLoadContext
+{
+    public TestAssemblyLoadContext() : base(isCollectible: true)
+    {
+    }
+
+    protected override Assembly Load(AssemblyName name)
+    {
+        return null;
+    }
+}
+</code></pre>
 <p>Как видите, метод <code>Load</code> возвращает <code>null</code>. Это означает, что все сборки зависимостей загружаются в контекст по умолчанию, а новый контекст содержит только те сборки, которые были явно загружены в него.</p>
 <p>Если требуется загрузить некоторые или все зависимости в <code>AssemblyLoadContext</code> тоже, можно использовать <code>AssemblyDependencyResolver</code> в методе <code>Load</code>. <code>AssemblyDependencyResolver</code> разрешает имена сборок в абсолютные пути к файлам сборки. Сопоставитель использует файл <em>.deps.json</em> и файлы сборки в каталоге основной сборки, загруженной в контекст.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="use-a-custom-collectible-assemblyloadcontext">Использование пользовательского собираемого AssemblyLoadContext</h3>
+<pre><code class="lang-csharp" name="Advanced custom AssemblyLoadContext">using System.Reflection;
+using System.Runtime.Loader;
+
+namespace complex
+{
+    class TestAssemblyLoadContext : AssemblyLoadContext
+    {
+        private AssemblyDependencyResolver _resolver;
+
+        public TestAssemblyLoadContext(string mainAssemblyToLoadPath) : base(isCollectible: true)
+        {
+            _resolver = new AssemblyDependencyResolver(mainAssemblyToLoadPath);
+        }
+
+        protected override Assembly Load(AssemblyName name)
+        {
+            string assemblyPath = _resolver.ResolveAssemblyToPath(name);
+            if (assemblyPath != null)
+            {
+                return LoadFromAssemblyPath(assemblyPath);
+            }
+
+            return null;
+        }
+    }
+}
+</code></pre><h3 id="use-a-custom-collectible-assemblyloadcontext">Использование пользовательского собираемого AssemblyLoadContext</h3>
 <p>В этом разделе предполагается, что используется более простая версия <code>TestAssemblyLoadContext</code>.</p>
 <p>Вы можете создать экземпляр пользовательского <code>AssemblyLoadContext</code> и загрузить в него сборку следующим образом:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Part 1">var alc = new TestAssemblyLoadContext();
+Assembly a = alc.LoadFromAssemblyPath(assemblyPath);
+</code></pre>
 <p>Для каждой сборки, на которую ссылается загруженная сборка, вызывается метод <code>TestAssemblyLoadContext.Load</code>, чтобы <code>TestAssemblyLoadContext</code> мог решить, откуда получить сборку. В нашем случае он возвращает <code>null</code>, чтобы указать, что он должен быть загружен в контекст по умолчанию из расположений, используемых средой выполнения для загрузки сборок по умолчанию.</p>
 <p>Теперь, когда сборка загружена, можно выполнить из нее метод. Выполните метод <code>Main</code>:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Part 2">var args = new object[1] {new string[] {&quot;Hello&quot;}};
+int result = (int) a.EntryPoint.Invoke(null, args);
+</code></pre>
 <p>После возврата метода <code>Main</code> можно инициировать выгрузку путем вызова метода <code>Unload</code> для пользовательского <code>AssemblyLoadContext</code> или удаления имеющейся ссылки на <code>AssemblyLoadContext</code>:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Part 3">alc.Unload();
+</code></pre>
 <p>Этого достаточно для выгрузки тестовой сборки. Давайте разместим все это в отдельном невстраиваемом методе, чтобы гарантировать, что, <code>TestAssemblyLoadContext</code>, <code>Assembly</code> и <code>MethodInfo</code> (<code>Assembly.EntryPoint</code>) не могут поддерживаться в активном состоянии ссылками слота стека (в реальных или введенных JIT локальных переменных). Это поможет поддерживать <code>TestAssemblyLoadContext</code> и предотвратить выгрузку.</p>
 <p>Кроме того, верните слабую ссылку на <code>AssemblyLoadContext</code>, чтобы можно было использовать его позже для обнаружения завершения выгрузки.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Part 4">[MethodImpl(MethodImplOptions.NoInlining)]
+static int ExecuteAndUnload(string assemblyPath, out WeakReference alcWeakRef)
+{
+    var alc = new TestAssemblyLoadContext();
+    Assembly a = alc.LoadFromAssemblyPath(assemblyPath);
+
+    alcWeakRef = new WeakReference(alc, trackResurrection: true);
+
+    var args = new object[1] {new string[] {&quot;Hello&quot;}};
+    int result = (int) a.EntryPoint.Invoke(null, args);
+
+    alc.Unload();
+
+    return result;
+}
+</code></pre>
 <p>Теперь эту функцию можно использовать для загрузки, выполнения и выгрузки сборки.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="Part 5">WeakReference testAlcWeakRef;
+int result = ExecuteAndUnload(&quot;absolute/path/to/your/assembly&quot;, out testAlcWeakRef);
+</code></pre>
 <p>Однако выгрузка не завершается немедленно. Как упоминалось ранее, она полагается на сборщика мусора для сбора всех объектов из тестовой сборки. Во многих случаях нет необходимости ждать завершения выгрузки. Однако в некоторых случаях полезно знать, что выгрузка завершена. Например, вы хотите удалить файл сборки, который был загружен в пользовательский <code>AssemblyLoadContext</code> с диска. В этом случае можно использовать следующий фрагмент кода. Он запускает сборку мусора и ожидает методы завершения ожидания в цикле, пока слабая ссылка на пользовательский <code>AssemblyLoadContext</code> не будет установлена на <code>null</code>, указывая, что целевой объект был собран. В большинстве случаев требуется только один проход по циклу. Однако в более сложных случаях, когда объекты, создаваемые кодом, выполняющимися в <code>AssemblyLoadContext</code>, имеют методы завершения, может потребоваться больше проходов.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="the-unloading-event">Событие выгрузки</h3>
+<pre><code class="lang-csharp" name="Part 6">for (int i = 0; testAlcWeakRef.IsAlive &amp;&amp; (i &lt; 10); i++)
+{
+    GC.Collect();
+    GC.WaitForPendingFinalizers();
+}
+</code></pre><h3 id="the-unloading-event">Событие выгрузки</h3>
 <p>В некоторых случаях может потребоваться, чтобы код был загружен в пользовательский <code>AssemblyLoadContext</code> для выполнения очистки при инициации выгрузки. Например, может потребоваться отключить потоки или очистить некоторые строгие дескрипторы сборки мусора. В таких случаях можно использовать событие <code>Unloading</code>. Обработчик, выполняющий необходимую очистку, может быть подключен к этому событию.</p>
 <h3 id="troubleshoot-unloadability-issues">Устранение проблем с выгрузкой</h3>
 <p>Из-за сотрудничающей природы выгрузки можно легко забыть о ссылках, которые поддерживают активность элементов в собираемом <code>AssemblyLoadContext</code> и предотвращают выгрузку. Ниже описываются сущности (некоторые из них не очевидны), которые могут содержать ссылки:</p>
@@ -265,15 +305,118 @@ OS Thread Id: 0x60bc (7)
 <h2 id="example-source-with-unloadability-issues">Пример источника с проблемами выгрузки</h2>
 <p>В предыдущем примере отладки используется следующий код.</p>
 <h3 id="main-testing-program">Основная программа тестирования</h3>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="program-loaded-into-the-testassemblyloadcontext">Программа, загруженная в TestAssemblyLoadContext</h2>
+<pre><code class="lang-csharp" name="Main testing program">using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.Loader;
+
+namespace example
+{
+    class TestAssemblyLoadContext : AssemblyLoadContext
+    {
+        public TestAssemblyLoadContext() : base(true)
+        {
+        }
+        protected override Assembly Load(AssemblyName name)
+        {
+            return null;
+        }
+    }
+
+    class TestInfo
+    {
+        public TestInfo(MethodInfo mi)
+        {
+            entryPoint = mi;
+        }
+        MethodInfo entryPoint;
+    }
+
+    class Program
+    {
+        static TestInfo entryPoint;
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        static int ExecuteAndUnload(string assemblyPath, out WeakReference testAlcWeakRef, out MethodInfo testEntryPoint)
+        {
+            var alc = new TestAssemblyLoadContext();
+            testAlcWeakRef = new WeakReference(alc);
+
+            Assembly a = alc.LoadFromAssemblyPath(assemblyPath);
+            if (a == null)
+            {
+                testEntryPoint = null;
+                Console.WriteLine(&quot;Loading the test assembly failed&quot;);
+                return -1;
+            }
+
+            var args = new object[1] {new string[] {&quot;Hello&quot;}};
+
+            // Issue preventing unloading #1 - we keep MethodInfo of a method for an assembly loaded into the TestAssemblyLoadContext in a static variable
+            entryPoint = new TestInfo(a.EntryPoint);
+            testEntryPoint = a.EntryPoint;
+
+            int result = (int)a.EntryPoint.Invoke(null, args);
+            alc.Unload();
+
+            return result;
+        }
+
+        static void Main(string[] args)
+        {
+            WeakReference testAlcWeakRef;
+            // Issue preventing unloading #2 - we keep MethodInfo of a method for an assembly loaded into the TestAssemblyLoadContext in a local variable
+            MethodInfo testEntryPoint;
+            int result = ExecuteAndUnload(@&quot;absolute/path/to/test.dll&quot;, out testAlcWeakRef, out testEntryPoint);
+
+            for (int i = 0; testAlcWeakRef.IsAlive &amp;&amp; (i &lt; 10); i++)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+
+            System.Diagnostics.Debugger.Break();
+
+            Console.WriteLine($&quot;Test completed, result={result}, entryPoint: {testEntryPoint} unload success: {!testAlcWeakRef.IsAlive}&quot;);
+        }
+    }
+}
+</code></pre><h2 id="program-loaded-into-the-testassemblyloadcontext">Программа, загруженная в TestAssemblyLoadContext</h2>
 <p>Следующий код представляет <em>test.dll</em>, переданный в метод <code>ExecuteAndUnload</code> в основной программе тестирования.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></article>
+<pre><code class="lang-csharp" name="Program loaded into the TestAssemblyLoadContext">using System;
+using System.Runtime.InteropServices;
+using System.Threading;
+
+namespace test
+{
+    class Test
+    {
+        string message = &quot;Hello&quot;;
+    }
+
+    class Program
+    {
+        public static void ThreadProc()
+        {
+            // Issue preventing unloading #4 - a thread running method inside of the TestAssemblyLoadContext at the unload time
+            Thread.Sleep(Timeout.Infinite);
+        }
+
+        static GCHandle handle;
+        static int Main(string[] args)
+        {
+            // Issue preventing unloading #3 - normal GC handle
+            handle = GCHandle.Alloc(new Test());
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.IsBackground = true;
+            t.Start();
+            Console.WriteLine($&quot;Hello from the test: args[0] = {args[0]}&quot;);
+
+            return 1;
+        }
+    }
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

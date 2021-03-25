@@ -80,7 +80,7 @@
 <p>В этом разделе предполагается, что вы знакомы с высоким уровнем API - интерфейсы используемыми для представления текста. Большинство сценариев не требует расширенного форматирования текста API - интерфейсы описанных в этом разделе. Введение в другой текстовой API - интерфейсы, см. в разделе <a href="documents-in-wpf.html">документы в WPF</a>.</p>
 <p><a name="section1"></a></p>
 <h2 id="advanced-text-formatting">Дополнительное форматирование текста</h2>
-<p>Макет текста и ИП элементов управления в WPF предоставляют свойства форматирования, которые дают возможность легко включать в приложение форматированный текст. Эти элементы управления предоставляют ряд свойств для обработки представления текста, включая гарнитуру, размер и цвет. В обычных условиях эти элементы управления могут обрабатывать большинство вариантов представления текста в приложении. Тем не менее некоторые расширенные сценарии требуют управления хранением текста, а также его представлением. WPF предоставляет расширяемый механизм форматирования текста для этой цели.</p>
+<p>Макет текста и UI элементов управления в WPF предоставляют свойства форматирования, которые дают возможность легко включать в приложение форматированный текст. Эти элементы управления предоставляют ряд свойств для обработки представления текста, включая гарнитуру, размер и цвет. В обычных условиях эти элементы управления могут обрабатывать большинство вариантов представления текста в приложении. Тем не менее некоторые расширенные сценарии требуют управления хранением текста, а также его представлением. WPF предоставляет расширяемый механизм форматирования текста для этой цели.</p>
 <p>Найти дополнительные функции форматирования текста в WPF состоят из механизма форматирования, хранилища текста фрагментов текста и свойств форматирования текста. Механизм форматирования текста, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter">TextFormatter</a>, создает строки текста, используемые для представления. Это достигается путем запуска процесса форматирования строки и вызова модуля форматирования текста <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textformatter.formatline">FormatLine</a>. Модуль форматирования текста получает фрагментов текста из хранилища текста, вызывая магазина <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textsource.gettextrun">GetTextRun</a> метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> Объекты затем формируются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textline">TextLine</a> объектов модулем форматирования текста и передаются в приложение для проверки или отображения.</p>
 <p><a name="section2"></a></p>
 <h2 id="using-the-text-formatter">Использование модуля форматирования текста</h2>
@@ -127,10 +127,7 @@ dc.Close();
 
 // Display the formatted text in the DrawingGroup object.
 myDrawingBrush.Drawing = textDest;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="section3"></a></p>
 <h2 id="implementing-the-client-text-store">Реализация клиентского хранилища текста</h2>
 <p>При расширении механизма форматирования текста необходимо реализовать все аспекты хранилища текста и управлять ими. Это довольно сложная задача. Хранилище текста отвечает за отслеживание свойств фрагментов текста, свойств абзаца, встроенных объектов и других подобных элементов. Он также предоставляет модуль форматирования текста с отдельными <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textrun">TextRun</a> объектов, которые использует модуль форматирования текста для создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.textformatting.textline">TextLine</a> объектов.</p>
@@ -211,10 +208,7 @@ public override TextRun GetTextRun(int textSourceCharacterIndex)
    // Return an end-of-paragraph if no more text source.
    return new TextEndOfParagraph(1);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>В этом примере хранилище текста предоставляет одни и те же свойства текста всему тексту. Расширенные хранилища текста могут потребоваться для реализации собственного управления диапазонами, чтобы позволить отдельным символам иметь разные свойства.</p>

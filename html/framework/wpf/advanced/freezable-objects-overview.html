@@ -80,10 +80,7 @@
 <pre><code class="lang-csharp" name="freezablesample_procedural#FrozenExamplePart1">Button myButton = new Button();
 SolidColorBrush myBrush = new SolidColorBrush(Colors.Yellow);
 myButton.Background = myBrush;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>При отображении кнопки WPF графическая подсистема использует сведения, предоставленные для закраски группы пикселей, которое необходимо создать внешний вид кнопки. Несмотря на то, что вы использовали Одноцветная кисть для описания того, как должен быть окрашен кнопки, сплошной цвет кисти фактически не выполняет заливку. Графическая система создает быстрые низкоуровневые объекты для кнопки и кисти, а это те объекты, которые отображаются на экране.</p>
 <p>При изменении кисти, эти низкоуровневые объекты бы быть создан повторно. Класс freezable представляет, что дает возможность найти соответствующие объекты низкоуровневые и обновлять их при его изменении кисти. Если эта возможность включена, кисть, которая называется «незафиксированной».</p>
 <p>Freezable <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод позволяет отключить данную возможность самостоятельного обновления. Этот метод можно использовать, чтобы сделать кисть «зафиксированной» или неизменяемым.</p>
@@ -96,10 +93,7 @@ myButton.Background = myBrush;
     // Makes the brush unmodifiable.
     myBrush.Freeze();
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Если вам больше не нужно изменять freezable, зафиксировать этот дает выигрыш в производительности. Если закрепить кисть, которая в этом примере, графическая система больше не потребуется отслеживать его изменения. Графическая система также может отправлять другие виды оптимизации, поскольку известно, что кисть, которая не изменится.</p>
 <div class="NOTE">
 <h5>Note</h5>
@@ -114,10 +108,7 @@ myButton.Background = myBrush;
 
 // Changes the button's background to red.
 myBrush.Color = Colors.Red;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="freezing-a-freezable">Замораживание Freezable</h3>
+</code></pre><h3 id="freezing-a-freezable">Замораживание Freezable</h3>
 <p>Чтобы сделать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> неизменяемым, необходимо вызвать его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.freeze">Freeze</a> метод. Когда вы закрепить объект, содержащий объекты freezable, эти объекты также закрепляются. Например, если зафиксировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.pathgeometry">PathGeometry</a>, рисунки и сегменты будут зафиксированы.</p>
 <p>Freezable <strong>нельзя</strong> зафиксировать, если одно из следующих условий:</p>
 <ul>
@@ -151,10 +142,7 @@ try {
     MessageBox.Show(&quot;Invalid operation: &quot; + ex.ToString());
 }
 
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Чтобы избежать возникновения этого исключения, можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.isfrozen">IsFrozen</a> метод, чтобы определить, является ли <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> заморожен.</p>
 <pre><code class="lang-csharp" name="freezablesample_procedural#CheckIsFrozenExample">
 Button myButton = new Button();
@@ -183,10 +171,7 @@ else
     myBrush.Color = Colors.Red;
 }
 
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В предыдущем примере кода, изменяемая копия была сделана зафиксированного объекта с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable.clone">Clone</a> метод. В следующем разделе рассматривается более подробно клонирования.</p>
 <p><strong>Примечание</strong> поскольку зафиксированного freezable невозожно анимировать, системы анимации автоматически создаст изменяемые клоны замороженный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a> объектов при попытке их с помощью анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>. Чтобы снизить издержки из-за клонирования, оставьте объект незафиксированным, если вы собираетесь анимировать его. Дополнительные сведения об анимации с помощью раскадровки см. в разделе <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
 <h3 id="freezing-from-markup">Замораживание из разметки</h3>
@@ -255,10 +240,7 @@ myBrushClone.Color = Colors.Red;
 // Replacing myBrush with myBrushClone
 // makes the button change to red.
 myButton.Background = myBrushClone;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Независимо от используемого метода клонирования, анимация никогда не копируется в новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.freezable">Freezable</a>.</p>

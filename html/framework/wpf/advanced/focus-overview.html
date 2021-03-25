@@ -76,17 +76,14 @@
 <h2 id="keyboard-focus">Фокус клавиатуры</h2>
 <p>Фокус клавиатуры относится к элементу, получающему ввод с клавиатуры.  На всем рабочем столе может быть только один элемент, в котором находится фокус клавиатуры.  В WPF, будет иметь элемент, имеющий фокус клавиатуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.iinputelement.iskeyboardfocused">IsKeyboardFocused</a> присвоено <code>true</code>.  Статическое свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focusedelement">FocusedElement</a> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класс получает элемент, который в данный момент имеет фокус клавиатуры.</p>
 <p>Чтобы элемент мог получить фокус клавиатуры <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isvisible">IsVisible</a> свойства базовых элементов должно быть присвоено <code>true</code>.  Некоторые классы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel">Panel</a> базового класса, имеют <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> присвоено <code>false</code> по умолчанию; таким образом, необходимо задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> для <code>true</code> Если требуется, чтобы элемент мог получить фокус клавиатуры.</p>
-<p>Фокус клавиатуры можно получить с помощью взаимодействия пользователя с ИП, например перехода к элементу или щелчка мышью определенных элементов.  Фокус клавиатуры также могут быть получены программно с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> Метод пытается передать фокус клавиатуры для указанного элемента.  Возвращаемый элемент — это элемент, имеющий фокус клавиатуры, который может отличаться от запрошенного, если старый или новый объект фокуса блокирует запрос.</p>
+<p>Фокус клавиатуры можно получить с помощью взаимодействия пользователя с UI, например перехода к элементу или щелчка мышью определенных элементов.  Фокус клавиатуры также могут быть получены программно с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard">Keyboard</a> класса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> Метод пытается передать фокус клавиатуры для указанного элемента.  Возвращаемый элемент — это элемент, имеющий фокус клавиатуры, который может отличаться от запрошенного, если старый или новый объект фокуса блокирует запрос.</p>
 <p>В следующем примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboard.focus">Focus</a> метод, чтобы установить фокус на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
 <pre><code class="lang-csharp" name="focussample#FocusSampleSetFocus">private void OnLoaded(object sender, RoutedEventArgs e)
 {
     // Sets keyboard focus on the first Button in the sample.
     Keyboard.Focus(firstButton);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocused">IsKeyboardFocused</a> Свойство в классах базовых элементов получает значение, указывающее, имеет ли элемент фокус клавиатуры.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.iskeyboardfocuswithin">IsKeyboardFocusWithin</a> Свойство в классах базовых элементов получает значение, указывающее, имеет ли элемент или один из его визуальных дочерних элементов фокус клавиатуры.</p>
 <p>При настройке начального фокуса при запуске приложения, элемент должен получить фокус должен быть в визуальном дереве первоначального окна, загружаемого этим приложением, и элемент должен иметь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.focusable">Focusable</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.isvisible">IsVisible</a> присвоено <code>true</code>.  Рекомендуется устанавливать исходный фокус начинается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.loaded">Loaded</a> обработчик событий.  Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher">Dispatcher</a> обратного вызова также можно путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.invoke">Invoke</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.threading.dispatcher.begininvoke">BeginInvoke</a>.</p>
 <p><a name="Logical_Focus"></a></p>
@@ -94,7 +91,7 @@
 <p>Логический фокус относится к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.focusedelement">FocusManager.FocusedElement</a> в области фокуса.  Область фокуса — элемент, который отслеживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.focusedelement">FocusedElement</a> внутри своей области.  Когда фокус клавиатуры покидает область фокуса, элемент с фокусом теряет фокус клавиатуры, но сохраняет логический фокус.  При возвращении фокуса клавиатуры в область фокуса элемент с логическим фокусом получит фокус клавиатуры.  Это позволяет переносить фокус клавиатуры между несколькими областями фокуса, но гарантирует, что элемент с фокусом в области фокуса останется элементом с фокусом клавиатуры, когда фокус вернется в эту область.</p>
 <p>В приложении может быть несколько элементов, имеющих логический фокус, но в отдельной области фокуса может быть только один элемент, имеющий логический фокус.</p>
 <p>Элемент, имеющий фокус клавиатуры, имеет логический фокус для области фокуса, которой он принадлежит.</p>
-<p>Элемент может быть включен в область фокуса в Язык XAML , задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager">FocusManager</a> присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.isfocusscope">IsFocusScope</a> для <code>true</code>.  В коде, элемент может быть включен в область фокуса путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setisfocusscope">SetIsFocusScope</a>.</p>
+<p>Элемент может быть включен в область фокуса в XAML , задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager">FocusManager</a> присоединенное свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.isfocusscope">IsFocusScope</a> для <code>true</code>.  В коде, элемент может быть включен в область фокуса путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setisfocusscope">SetIsFocusScope</a>.</p>
 <p>В нижеследующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.stackpanel">StackPanel</a> в область фокуса, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.isfocusscope">IsFocusScope</a> вложенного свойства зависимостей.</p>
 <pre><code class="lang-xaml" name="MarkupSnippets#MarkupIsFocusScopeXAML">&lt;StackPanel Name=&quot;focusScope1&quot; 
             FocusManager.IsFocusScope=&quot;True&quot;
@@ -104,10 +101,7 @@
 &lt;/StackPanel&gt;
 </code></pre><pre><code class="lang-csharp" name="FocusSnippets#FocusSetIsFocusScope">StackPanel focuseScope2 = new StackPanel();
 FocusManager.SetIsFocusScope(focuseScope2, true);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.getfocusscope">GetFocusScope</a> Возвращает область фокуса для заданного элемента.</p>
 <p>Классы в WPF являются областями фокуса по умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.menuitem">MenuItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.toolbar">ToolBar</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contextmenu">ContextMenu</a>.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.getfocusedelement">GetFocusedElement</a> Получает элемент с фокусом для заданной области фокуса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setfocusedelement">SetFocusedElement</a> Задает элемент с фокусом в заданной области фокуса.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager.setfocusedelement">SetFocusedElement</a> обычно используется для задания исходного элемента с фокусом.</p>
@@ -118,10 +112,7 @@ FocusManager.SetFocusedElement(focusScope1, button2);
 
 // Gets the focused element for focusScope 1
 IInputElement focusedElement = FocusManager.GetFocusedElement(focusScope1);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="Keyboard_Navigation"></a></p>
 <h2 id="keyboard-navigation">Навигация с помощью клавиатуры</h2>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.keyboardnavigation">KeyboardNavigation</a> Класс отвечает за реализацию навигации с фокусом клавиатуры по умолчанию, когда нажата одна из клавиш навигации.  Клавиши навигации: Клавиши TAB, SHIFT + TAB, CTRL + TAB, CTRL + SHIFT + TAB, Стрелка вверх, Стрелка вниз, Стрелка влево и Стрелка вправо.</p>
@@ -146,10 +137,7 @@ navigationMenu.Items.Add(item4);
 
 KeyboardNavigation.SetTabNavigation(navigationMenu,
     KeyboardNavigationMode.Cycle);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="Manipulating_Focus_Programmatically"></a></p>
 <h2 id="navigating-focus-programmatically">Перемещение фокуса программными средствами</h2>
 <p>Дополнительные API для работы с фокусом являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.movefocus">MoveFocus</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.predictfocus">PredictFocus</a>.</p>
@@ -170,10 +158,7 @@ if (elementWithFocus != null)
 {
     elementWithFocus.MoveFocus(request);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.predictfocus">PredictFocus</a> Возвращает объект, который должен получить фокус, если фокус должен быть изменен.  В настоящее время только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusnavigationdirection#System_Windows_Input_FocusNavigationDirection_Up">Up</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusnavigationdirection#System_Windows_Input_FocusNavigationDirection_Down">Down</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusnavigationdirection#System_Windows_Input_FocusNavigationDirection_Left">Left</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusnavigationdirection#System_Windows_Input_FocusNavigationDirection_Right">Right</a> поддерживаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.predictfocus">PredictFocus</a>.</p>
 <p><a name="Focus_Events"></a></p>
 <h2 id="focus-events">События фокуса</h2>
@@ -210,10 +195,7 @@ if (elementWithFocus != null)
         source.Clear();
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> теряет фокус клавиатуры, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> изменяется обратно на белое.</p>
 <pre><code class="lang-csharp" name="keyboardsample#KeyboardSampleLostFocus">private void TextBoxLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
 {
@@ -228,10 +210,7 @@ if (elementWithFocus != null)
         this.ResetCounter();
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>События, связанные с логическим фокусом: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotfocus">GotFocus</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.lostfocus">LostFocus</a>.  Эти события определяются в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager">FocusManager</a> как Прикрепленные события, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.focusmanager">FocusManager</a> не предоставляет оболочки событий среды CLR.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement">ContentElement</a> предоставляют эти события более удобным.</p>
 <h2 id="see-also">См. также</h2>
 <ul>

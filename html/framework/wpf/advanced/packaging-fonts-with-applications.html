@@ -133,17 +133,11 @@
 <pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet2">// The font resource reference includes the base URI reference (application directory level),
 // and a relative URI reference.
 myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/#Pericles Light&quot;);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Базовый универсальный идентификатор ресурса (URI) может включать подкаталог приложения, где находится ресурс шрифта. В этом случае ссылка на расположение шрифта не нужно указать каталог, но пришлось бы включить в начале префикс &quot;<code>./</code>«, указывает, что ресурс шрифта находится в том же каталоге, который указан с помощью базового универсальный идентификатор ресурса (URI). В следующем примере кода показан другой способ ссылки на элемент ресурса шрифта — он эквивалентен предыдущему примеру кода.</p>
 <pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet5">// The base URI reference can include an application subdirectory.
 myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/resources/&quot;), &quot;./#Pericles Light&quot;);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="referencing-fonts-from-the-same-application-subdirectory">Ссылка на шрифты из одного подкаталога приложения</h3>
+</code></pre><h3 id="referencing-fonts-from-the-same-application-subdirectory">Ссылка на шрифты из одного подкаталога приложения</h3>
 <p>Вы можете разместить файл содержимого и файл ресурсов приложения в одном пользовательском подкаталоге проекта приложения. В следующем примере файла проекта показаны страница содержимого и ресурсы шрифтов, определенные в одном подкаталоге.</p>
 <pre><code class="lang-xml">&lt;ItemGroup&gt;  
   &lt;Page Include=&quot;pages\HomePage.xaml&quot; /&gt;  
@@ -160,28 +154,19 @@ myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/res
 </code></pre><pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet4">// The font resource reference includes the base Uri (application directory level),
 // and the file resource location, which is relative to the base Uri.
 myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&quot;), &quot;/pages/#Pericles Light&quot;);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="enumerating-fonts-in-an-application">Перечисление шрифтов в приложении</h3>
+</code></pre><h3 id="enumerating-fonts-in-an-application">Перечисление шрифтов в приложении</h3>
 <p>Для перечисления шрифтов как элементов ресурса в приложении, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.getfontfamilies">GetFontFamilies</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.gettypefaces">GetTypefaces</a> метод. В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.getfontfamilies">GetFontFamilies</a> метод, чтобы вернуть коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a> объектов из расположения шрифтов приложения. В данном случае приложение содержит подкаталог с именем resources.</p>
 <pre><code class="lang-csharp" name="FontSnippets#FontsSnippet3">foreach (FontFamily fontFamily in Fonts.GetFontFamilies(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/&quot;))
 {
     // Perform action.
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В следующем примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fonts.gettypefaces">GetTypefaces</a> метод, чтобы вернуть коллекцию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.typeface">Typeface</a> объектов из расположения шрифтов приложения. В данном случае приложение содержит подкаталог с именем resources.</p>
 <pre><code class="lang-csharp" name="FontSnippets#FontsSnippet7">foreach (Typeface typeface in Fonts.GetTypefaces(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/&quot;))
 {
     // Perform action.
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="creating_a_font_resource_library"></a></p>
 <h2 id="creating-a-font-resource-library">Создание библиотеки ресурсов шрифтов</h2>
 <p>Вы можете создать библиотеку только для ресурсов, которая содержит только шрифты; в проекте библиотеки этого типа никакой код не включается. Создание библиотеки ресурсов является общим приемом для разделения ресурсов и использующего их кода приложения. Это также позволяет включать сборку библиотеки в несколько проектов приложений. В следующем примере файла проекта показаны основные части проекта библиотеки ресурсов.</p>

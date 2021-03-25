@@ -80,10 +80,7 @@
     public CommandSlider() : base()
     {
     }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Следующим шагом является реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a> членов.  В этом примере свойства реализуются как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> объектов.  Это включает свойства для использования привязки данных.  Дополнительные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> , представлена в разделе <a href="dependency-properties-overview.html">Общие сведения о свойствах зависимостей</a>.  Дополнительные сведения о привязке данных см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>.</p>
 <p>Только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> свойство показан здесь.</p>
 <pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceCommandPropertyDefinition">// Make Command a dependency property so it can use databinding.
@@ -106,10 +103,7 @@ public ICommand Command
         SetValue(CommandProperty, value);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Ниже приведен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> изменить обратного вызова.</p>
 <pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceCommandChanged">// Command dependency property change callback.
 private static void CommandChanged(DependencyObject d,
@@ -118,10 +112,7 @@ private static void CommandChanged(DependencyObject d,
     CommandSlider cs = (CommandSlider)d;
     cs.HookUpCommand((ICommand)e.OldValue,(ICommand)e.NewValue);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Следующим шагом является добавление и удаление команды, связанный с источника команды.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource.command">Command</a> Свойство не может просто быть перезаписан при добавлении новой команды, так как обработчики событий, связанные с предыдущей командой, если таковая имела место, сначала необходимо удалить.</p>
 <pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandSourceHookUnHookCommands">// Add a new command to the Command Property.
 private void HookUpCommand(ICommand oldCommand, ICommand newCommand)
@@ -151,10 +142,7 @@ private void AddCommand(ICommand oldCommand, ICommand newCommand)
         newCommand.CanExecuteChanged += canExecuteChangedHandler;
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Последним шагом является создание логики для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> обработчика и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> метод.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecutechanged">CanExecuteChanged</a> Событие сообщает источнику команды, может измениться, возможность команды для выполнения на текущей цели команды.  При получении этого события источник команды обычно вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.canexecute">CanExecute</a> метод о команде.  Если команда не может выполнить на текущей цели команды, источник команды обычно отключается.  Если команда может выполняться для текущего целевого объекта команды, источник команды обычно включает себя.</p>
 <pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandCanExecuteChanged">private void CanExecuteChanged(object sender, EventArgs e)
@@ -190,10 +178,7 @@ private void AddCommand(ICommand oldCommand, ICommand newCommand)
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Последний шаг — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> метод.  Если команда является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand">RoutedCommand</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.routedcommand.execute">Execute</a> метод вызван; в противном случае — значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a> <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand.execute">Execute</a> вызывается метод.</p>
 <pre><code class="lang-csharp" name="ImplementICommandSource#ImplementICommandExecute">// If Command is defined, moving the slider will invoke the command;
 // Otherwise, the slider will behave normally.
@@ -215,10 +200,7 @@ protected override void OnValueChanged(double oldValue, double newValue)
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommandsource">ICommandSource</a></li>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></li>

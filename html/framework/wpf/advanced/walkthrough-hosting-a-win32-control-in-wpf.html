@@ -190,10 +190,7 @@
     hostHeight = (int)height;
     hostWidth = (int)width;
   }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Кроме того, имеется набор констант. Эти константы в основном берутся из файла Winuser.h и позволяют использовать обычные имена при вызове функции Win32.</p>
 <pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlHostConstants">internal const int
   WS_CHILD = 0x40000000,
@@ -203,10 +200,7 @@
   LISTBOX_ID = 0x00000001,
   WS_VSCROLL = 0x00200000,
   WS_BORDER = 0x00800000;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="buildwindowcore"></a></p>
 <h3 id="override-buildwindowcore-to-create-the-microsoft-win32-window">Переопределение класса BuildWindowCore для создания окна Microsoft Win32</h3>
 <p>Можно переопределить этот метод для создания окна Win32, которое будет размещено на странице и создайте подключение между окном и страницей. Поскольку в этом примере также показано размещение элемента управления ListBox, создаются два окна. Первый — это окно, которое фактически размещено на странице WPF. Элемент управления ListBox создается в качестве дочернего элемента этого окна.</p>
@@ -219,10 +213,7 @@
 {
   get { return hwndControl; }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Элемент управления ListBox создается в качестве дочернего элемента главного окна. Высота и ширина обоих окон задается с помощью значений, передаваемых конструктору (см. выше). Это гарантирует, что размер главного окна и элемента управления идентичен размеру отведенной для них области на странице.  После создания окон образец возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.handleref">HandleRef</a> , содержащий HWND главного окна.</p>
 <pre><code class="lang-csharp" name="WPFHostingWin32Control#BuildWindowCore">protected override HandleRef BuildWindowCore(HandleRef hwndParent)
 {
@@ -250,10 +241,7 @@
 
   return new HandleRef(this, hwndHost);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#BuildWindowCoreHelper">//PInvoke declarations
+</code></pre><pre><code class="lang-csharp" name="WPFHostingWin32Control#BuildWindowCoreHelper">//PInvoke declarations
 [DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;CreateWindowEx&quot;, CharSet = CharSet.Unicode)]
 internal static extern IntPtr CreateWindowEx(int dwExStyle,
                                               string lpszClassName,
@@ -265,10 +253,7 @@ internal static extern IntPtr CreateWindowEx(int dwExStyle,
                                               IntPtr hMenu,
                                               IntPtr hInst,
                                               [MarshalAs(UnmanagedType.AsAny)] object pvParam);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="destroywindow_wndproc"></a></p>
 <h3 id="implement-destroywindow-and-wndproc">Реализация классов DestroyWindow и WndProc</h3>
 <p>В дополнение к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.buildwindowcore">BuildWindowCore</a>, необходимо также переопределить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> методы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a>. В этом примере сообщения для элемента управления обрабатываются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> обработчик, поэтому реализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a> сводится к минимуму. В случае использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.wndproc">WndProc</a>, задайте <code>handled</code> для <code>false</code> указывают, что сообщение не было обработано и возвращают значение 0. Для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.destroywindowcore">DestroyWindowCore</a>, достаточно уничтожить окно.</p>
@@ -282,15 +267,9 @@ protected override void DestroyWindowCore(HandleRef hwnd)
 {
   DestroyWindow(hwnd.Handle);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#WndProcDestroyHelper">[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;DestroyWindow&quot;, CharSet = CharSet.Unicode)]
+</code></pre><pre><code class="lang-csharp" name="WPFHostingWin32Control#WndProcDestroyHelper">[DllImport(&quot;user32.dll&quot;, EntryPoint = &quot;DestroyWindow&quot;, CharSet = CharSet.Unicode)]
 internal static extern bool DestroyWindow(IntPtr hwnd);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="host_the_control"></a></p>
 <h2 id="host-the-control-on-the-page">Размещение элемента управления на странице</h2>
 <p>Чтобы разместить элемент управления на странице, сначала создайте новый экземпляр класса <code>ControlHost</code> класса. Передайте значения высоты и ширины пограничного элемента, который содержит элемент управления (<code>ControlHostElement</code>) для <code>ControlHost</code> конструктор. Это позволит гарантировать, что ListBox имеет правильный размер. Затем необходимо разместить элемент управления на странице, назначив <code>ControlHost</code> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.decorator.child">Child</a> свойство узла <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>.</p>
@@ -325,10 +304,7 @@ private void On_UIReady(object sender, EventArgs e)
   itemCount = SendMessage(hwndListBox, LB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
   numItems.Text = &quot;&quot; +  itemCount.ToString();
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlMsgFilterSendMessage">
+</code></pre><pre><code class="lang-csharp" name="WPFHostingWin32Control#ControlMsgFilterSendMessage">
 private IntPtr ControlMsgFilter(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
 {
   int textLength;
@@ -377,10 +353,7 @@ internal static extern IntPtr SendMessage(IntPtr hwnd,
                                           int msg,
                                           IntPtr wParam,
                                           String lParam);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="communication"></a></p>
 <h2 id="implement-communication-between-the-control-and-the-page">Обмен данными между элементом управления и страницей</h2>
 <p>Управление элементом управления, отправляя ему сообщения Windows. Элемент управления уведомляет вас, когда пользователь взаимодействует с ним, отправляя уведомления в главное окно. <a href="https://github.com/Microsoft/WPF-Samples/tree/master/Migration%20and%20Interoperability/WPFHostingWin32Control">Размещения элемента управления ListBox Win32 в WPF</a> пример включает в себя пользовательский Интерфейс, который содержит несколько примеров того, как это работает:</p>
@@ -415,10 +388,7 @@ private void DeleteText(object sender, EventArgs args)
   itemCount = SendMessage(hwndListBox, LB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
   numItems.Text = &quot;&quot; + itemCount.ToString();
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда пользователь выбирает элемент, или изменяет их выделение, элемент управления уведомляет главное окно, отправляя ему <a href="/windows/desktop/menurc/wm-command"> <code>WM_COMMAND</code> сообщение</a>, который вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost.messagehook">MessageHook</a> событий для страницы. Обработчик получает те же сведения, что и процедура главного окна в главном окне. Он также передает ссылку на логическое значение, равное <code>handled</code>. Можно задать <code>handled</code> для <code>true</code> для указания, что сообщение было обработано и дальнейшая обработка не требуется.</p>
 <p><a href="/windows/desktop/menurc/wm-command"><code>WM_COMMAND</code></a> отправляется по различным причинам, поэтому следует проанализировать идентификатор уведомления, чтобы определить, является ли это событие, которое вы хотите обрабатывать. Этот идентификатор содержится в старшем слове <code>wParam</code> параметра. Пример использует побитовые операторы для получения идентификатора. Если пользователь сделать выбор или изменил его, идентификатор будет <a href="/windows/desktop/Controls/lbn-selchange"> <code>LBN_SELCHANGE</code> </a>.</p>
 <p>Когда <a href="/windows/desktop/Controls/lbn-selchange"> <code>LBN_SELCHANGE</code> </a> — получено, пример кода также получает индекс выбранного элемента путем отправки элемента управления <a href="/windows/desktop/Controls/lb-getcursel"> <code>LB_GETCURSEL</code> сообщение</a>. Чтобы получить текст, сначала нужно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a>. Затем следует отправить элемент управления <a href="/windows/desktop/Controls/lb-gettext"> <code>LB_GETTEXT</code> сообщение</a>. Передайте пустой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a> объекта в виде <code>wParam</code> параметра. Когда <a href="/windows/desktop/api/winuser/nf-winuser-sendmessage"> <code>SendMessage</code> </a> возвращении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a> будет содержать текст выбранного элемента. Такое использование <a href="/windows/desktop/api/winuser/nf-winuser-sendmessage"> <code>SendMessage</code> </a> требует объявления еще один PInvoke.</p>

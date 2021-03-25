@@ -159,20 +159,14 @@ public class VirtualJustInTimeDemo : System.Windows.Forms.Form
     }
 
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="the-idatapageretriever-interface">Интерфейс IDataPageRetriever</h2>
+</code></pre><h2 id="the-idatapageretriever-interface">Интерфейс IDataPageRetriever</h2>
 <p>В следующем примере кода определяется <code>IDataPageRetriever</code> интерфейс, который реализуется <code>DataRetriever</code> класса. — Единственный метод, объявленный в этом интерфейсе <code>SupplyPageOfData</code> метод, который требуется индекс начальной строки и число строк на одной странице данных. Эти значения используются средством реализации для извлечения подмножества данных из источника данных.</p>
 <p>Объект <code>Cache</code> использует реализацию этого интерфейса во время построения для загрузки двух начальных страниц данных. Каждый раз, когда требуется значение без кэширования, отменяет одну из этих страниц и запрашивает новую страницу с значением из кэша <code>IDataPageRetriever</code>.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#201">public interface IDataPageRetriever
 {
     DataTable SupplyPageOfData(int lowerPageBoundary, int rowsPerPage);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="the-dataretriever-class">Класс DataRetriever</h2>
+</code></pre><h2 id="the-dataretriever-class">Класс DataRetriever</h2>
 <p>В следующем примере кода определяется <code>DataRetriever</code> класса, который реализует <code>IDataPageRetriever</code> интерфейс для извлечения страниц данных с сервера. <code>DataRetriever</code> Класс также предоставляет <code>Columns</code> и <code>RowCount</code> свойства, который <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемент управления использует для создания необходимых столбцов и добавьте соответствующее количество пустых строк <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.rows">Rows</a> коллекции. Добавление пустых строк необходим, чтобы элемент управления будет действовать как если бы, если он содержит все данные в таблице. Это означает, что бегунка полосы прокрутки будет иметь соответствующий размер, что пользователь сможет получить доступ к любой строки в таблице. Строки заполняются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a> обработчик событий только в том случае, если они оказались в представление.</p>
 <pre><code class="lang-csharp" name="System.Windows.Forms.DataGridView.Virtual_lazyloading#200">public class DataRetriever : IDataPageRetriever
 {
@@ -299,10 +293,7 @@ public class VirtualJustInTimeDemo : System.Windows.Forms.Form
     }
 
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="the-cache-class">Класс кэша</h2>
+</code></pre><h2 id="the-cache-class">Класс кэша</h2>
 <p>В следующем примере кода определяется <code>Cache</code> класс, который управляет двумя страницами данных, которое заполняется с помощью <code>IDataPageRetriever</code> реализации. <code>Cache</code> Класс определяет внутреннее <code>DataPage</code> структуру, которая содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.data.datatable">DataTable</a> для хранения значений в одном кэше страницы и которая вычисляет индексы строк, представляющих верхнюю и нижнюю границы страницы.</p>
 <p><code>Cache</code> Класс загружает две страницы данных во время построения. Каждый раз, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview.cellvalueneeded">CellValueNeeded</a> событий запрашивает значение, <code>Cache</code> объект определяет, если значение доступно в одной из двух его страниц и если да, то возвращает его. Если значение не доступен локально, <code>Cache</code> определяет, какой из двух страниц дальше всего от текущей строки и заменяет страницу с запрошенным значением, которое затем возвращается новый.</p>
 <p>Предположим, что количество строк на странице данных является таким же, как количество строк, которые могут отображаться на экране за один раз, эта модель позволяет пользователям, разбиение по страницам в таблице, эффективно вернуться на последнюю просмотренную страницу.</p>
@@ -461,10 +452,7 @@ public class VirtualJustInTimeDemo : System.Windows.Forms.Form
     }
 
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="additional-considerations">Дополнительные сведения</h2>
+</code></pre><h2 id="additional-considerations">Дополнительные сведения</h2>
 <p>Приведенные выше примеры кода предоставляются в качестве демонстрации загрузки данных just-in-time. Необходимо будет изменить код для ваших нужд для достижения максимальной эффективности. Как минимум необходимо будет выбрать соответствующее значение для числа строк на одной странице данных в кэше. Это значение передается в <code>Cache</code> конструктор. Количество строк на странице должно быть не меньше, чем количество строк, которые могут отображаться одновременно в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.datagridview">DataGridView</a> элемента управления.</p>
 <p>Для получения наилучших результатов необходимо провести тестирование производительности для определения требований системы и пользователей. Несколько факторов, которые необходимо принять во внимание включают в себя объем памяти в клиентских компьютеров под управлением приложения, доступная пропускная способность сетевого подключения и задержки сервера, используемого. Значения пропускной способности и задержки должно определяться во время активного использования.</p>
 <p>Для повышения быстродействия приложения, можно увеличить объем данных, хранящихся локально. Для сокращения времени запуска, однако следует загружать слишком много данных изначально. Может потребоваться изменить <code>Cache</code> класса, чтобы увеличить число страниц данных, оно может хранить. С помощью нескольких страниц данных повышает эффективность прокрутки, но вам потребуется определить оптимальное количество строк на странице данных, в зависимости от доступной пропускной способности и задержки сервера. С помощью страницы меньшего размера сервер будет осуществляться чаще, но займет меньше времени для возврата запрошенных данных. Если задержки более критичны, чем пропускная способность, можно использовать страниц данных большего размера.</p>

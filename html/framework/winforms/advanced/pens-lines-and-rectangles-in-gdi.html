@@ -73,48 +73,30 @@
 <h2 id="drawing-a-line">Рисование линии</h2>
 <p>Чтобы нарисовать линию, вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> Объект передается в качестве одного из аргументов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> метод. В следующем примере рисуется линию из точки (4, 2) в точку (&quot;12&quot;, &quot;6&quot;):</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#41">myGraphics.DrawLine(myPen, 4, 2, 12, 6);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> — перегруженный метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> класса, поэтому существует несколько способов передачи аргументов. Например, можно создать два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.point">Point</a> и передать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.point">Point</a> объектов в качестве аргументов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawline">DrawLine</a> метод:</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#42">Point myStartPoint = new Point(4, 2);
 Point myEndPoint = new Point(12, 6);
 myGraphics.DrawLine(myPen, myStartPoint, myEndPoint);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="constructing-a-pen">Создание объекта Pen</h2>
+</code></pre><h2 id="constructing-a-pen">Создание объекта Pen</h2>
 <p>Можно указать несколько атрибутов, при создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объекта. Например, один <code>Pen</code> конструктор позволяет указать цвет и ширину. В следующем примере рисуется синяя линия от ширины 2 от (0, 0) для (60, 30):</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#43">Pen myPen = new Pen(Color.Blue, 2);
 myGraphics.DrawLine(myPen, 0, 0, 60, 30);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="dashed-lines-and-line-caps">Пунктирные линии и завершения отрезков</h2>
+</code></pre><h2 id="dashed-lines-and-line-caps">Пунктирные линии и завершения отрезков</h2>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> Объект также предоставляет свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen.dashstyle">DashStyle</a>, можно использовать для указания свойства линии. В следующем примере рисуется пунктирная линия с (100, 50) к (300, 80):</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#44">myPen.DashStyle = DashStyle.Dash;
 myGraphics.DrawLine(myPen, 100, 50, 300, 80);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Можно использовать свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объекта можно задать многие атрибуты линии. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen.startcap">StartCap</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen.endcap">EndCap</a> свойства определяют внешний вид концах линии; может заканчиваться неструктурированный square, треугольником, или пользовательской фигуры. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen.linejoin">LineJoin</a> Свойство позволяет указать ли соединенных линий углом (присоединение с острые углы), скошенные, округленное или обрезается. Ниже показаны строки с использованием различных стилей завершения и соединения.</p>
 <p><img src="media/aboutgdip02-art04.gif" alt="Строки" title="Aboutgdip02_art04"></p>
 <h2 id="drawing-a-rectangle">Рисование прямоугольника</h2>
 <p>Рисование прямоугольников с GDI+ похоже на рисование линий. Чтобы нарисовать прямоугольник, вам потребуется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> объекта и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объекта. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> Предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> метод и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> объект сохраняет атрибуты, такие как толщины и цвета. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.pen">Pen</a> Объект передается в качестве одного из аргументов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> метод. В следующем примере рисуется прямоугольник с его верхнего левого угла в (100, 50), ширины 80, а высота — 40:</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#45">myGraphics.DrawRectangle(myPen, 100, 50, 80, 40);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> — перегруженный метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics">Graphics</a> класса, поэтому существует несколько способов передачи аргументов. Например, можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> и передать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.graphics.drawrectangle">DrawRectangle</a> метод в качестве аргумента:</p>
 <pre><code class="lang-csharp" name="LinesCurvesAndShapes#46">Rectangle myRectangle = new Rectangle(100, 50, 80, 40);
 myGraphics.DrawRectangle(myPen, myRectangle);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle">Rectangle</a> содержит методы и свойства для обработки и сбора сведений о прямоугольника. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle.inflate">Inflate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle.offset">Offset</a> методы изменять размер и положение прямоугольника. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle.intersectswith">IntersectsWith</a> Метод указывает, является ли прямоугольник пересекается с другим указанным прямоугольником и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.drawing.rectangle.contains">Contains</a> метод указывает, является ли заданная точка находится внутри прямоугольника.</p>
 <h2 id="see-also">См. также</h2>
 <ul>

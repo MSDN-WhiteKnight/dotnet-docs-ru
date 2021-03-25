@@ -86,10 +86,7 @@
 <p>Затем вызовите метод веб-службы и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> соответствующий элемент управления или окно, чтобы возвращенный объект. <strong>GetContent</strong> метод службы MTPS принимает ссылку на <strong>getContentRequest</strong> объекта. Таким образом в следующем примере сначала задается объект запроса:</p>
 <pre><code class="lang-csharp" name="BindToWebService#Namespace">// 1. Include the web service namespace
 using BindtoContentService.com.microsoft.msdn.services;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="BindToWebService#WebServiceCall">// 2. Set up the request object
+</code></pre><pre><code class="lang-csharp" name="BindToWebService#WebServiceCall">// 2. Set up the request object
 // To use the MSTP web service, we need to configure and send a request
 // In this example, we create a simple request that has the ID of the XmlReader.Read method page
 getContentRequest request = new getContentRequest();
@@ -101,10 +98,7 @@ ContentService proxy = new ContentService();
 // 4. Call the web service method and set the DataContext of the Window
 // (GetContent returns an object of type getContentResponse)
 this.DataContext = proxy.GetContent(request);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>После <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> задано значение, можно создать привязку к свойствам объекта, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> было присвоено. В этом примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> присваивается <strong>getContentResponse</strong> объект, возвращаемый <strong>GetContent</strong> метод. В следующем примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> привязывается к и отображает <strong>языкового стандарта</strong> значения <strong>availableVersionsAndLocales</strong> из <strong>getContentResponse</strong>.</p>
 <pre><code class="lang-xaml" name="BindToWebService#Binding">&lt;ItemsControl Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot; Margin=&quot;0,3,0,0&quot;
               ItemsSource=&quot;{Binding Path=availableVersionsAndLocales}&quot;

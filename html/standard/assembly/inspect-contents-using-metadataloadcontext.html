@@ -74,22 +74,47 @@
 <p>Чтобы использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a>, установите пакет NuGet <a href="https://www.nuget.org/packages/System.Reflection.MetadataLoadContext">System.Reflection.MetadataLoadContext</a>. Она поддерживается в любой целевой платформе, совместимой с .NET Standard 2.0, например .NET Core 2.0 или .NET Framework 4.6.1.</p>
 <h2 id="create-metadataassemblyresolver-for-metadataloadcontext">Создание MetadataAssemblyResolver для MetadataLoadContext</h2>
 <p>Создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a> требует предоставления экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataassemblyresolver">MetadataAssemblyResolver</a>. Самый простой способ указать, что он использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.pathassemblyresolver">PathAssemblyResolver</a>, который разрешает сборки из заданной коллекции строк пути сборки. Эта коллекция, помимо сборок, которые необходимо проверить напрямую, также должна включать все необходимые зависимости. Например, для чтения настраиваемого атрибута, расположенного во внешней сборке, следует включить эту сборку, иначе будет вызвано исключение. В большинстве случаев следует включать по крайней мере <em>основную сборку</em>, то есть сборку, содержащую встроенные системные типы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">System.Object</a>. В следующем коде показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.pathassemblyresolver">PathAssemblyResolver</a> с помощью коллекции, состоящей из проверенной сборки и основной сборки текущей среды выполнения:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp">var resolver = new PathAssemblyResolver(new string[] { &quot;ExampleAssembly.dll&quot;, typeof(object).Assembly.Location });
+</code></pre>
 <p>Если требуется доступ ко всем типам BCL, в коллекцию можно включить все сборки среды выполнения. В следующем коде показано, как создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.pathassemblyresolver">PathAssemblyResolver</a> с помощью коллекции, состоящей из проверенной сборки и все сборки текущей среды выполнения:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="create-metadataloadcontext">Создание MetadataLoadContext</h2>
+<pre><code class="lang-csharp">// Get the array of runtime assemblies.
+string[] runtimeAssemblies = Directory.GetFiles(RuntimeEnvironment.GetRuntimeDirectory(), &quot;*.dll&quot;);
+
+// Create the list of assembly paths consisting of runtime assemblies and the inspected assembly.
+var paths = new List&lt;string&gt;(runtimeAssemblies);
+paths.Add(&quot;ExampleAssembly.dll&quot;);
+
+// Create PathAssemblyResolver that can resolve assemblies using the created list.
+var resolver = new PathAssemblyResolver(paths);
+</code></pre><h2 id="create-metadataloadcontext">Создание MetadataLoadContext</h2>
 <p>Чтобы создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a>, вызовите его конструктор <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext.-ctor#System_Reflection_MetadataLoadContext__ctor_System_Reflection_MetadataAssemblyResolver_System_String_">MetadataLoadContext(MetadataAssemblyResolver, String)</a>, передав ранее созданный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataassemblyresolver">MetadataAssemblyResolver</a> в качестве первого параметра и основное имя сборки в качестве второго параметра. Имя основной сборки можно опустить, в этом случае конструктор попытается использовать имена по умолчанию: &quot;mscorlib&quot;, &quot;System.Runtime&quot; или &quot;netstandard&quot;.</p>
 <p>После создания контекста в него можно загрузить сборки с помощью таких методов, как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext.loadfromassemblypath">LoadFromAssemblyPath</a>. Все API отражения можно использовать в загруженных сборках, за исключением тех, которые используют выполнение кода. Метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.memberinfo.getcustomattributes">GetCustomAttributes</a> требует выполнения конструкторов, поэтому, если необходимо исследовать пользовательские атрибуты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a>, вместо этого следует использовать метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.memberinfo.getcustomattributesdata">GetCustomAttributesData</a>.</p>
 <p>Следующий пример кода создает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a>, загружает в него сборку и выводит атрибуты сборки в консоль:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="example">Пример</h2>
+<pre><code class="lang-csharp">var mlc = new MetadataLoadContext(resolver);
+
+using (mlc)
+{
+    // Load assembly into MetadataLoadContext.
+    Assembly assembly = mlc.LoadFromAssemblyPath(&quot;ExampleAssembly.dll&quot;);
+    AssemblyName name = assembly.GetName();
+
+    // Print assembly attribute information.
+    Console.WriteLine($&quot;{name.Name} has following attributes: &quot;);
+
+    foreach (CustomAttributeData attr in assembly.GetCustomAttributesData())
+    {
+        try
+        {
+            Console.WriteLine(attr.AttributeType);
+        }
+        catch (FileNotFoundException ex)
+        {
+            // We are missing the required dependency assembly.
+            Console.WriteLine($&quot;Error while getting attribute type: {ex.Message}&quot;);
+        }
+    }
+}
+</code></pre><h2 id="example">Пример</h2>
 <p>Пример полного кода см. на странице примера <a href="/samples/dotnet/samples/inspect-assembly-contents-using-metadataloadcontext/">Проверка содержимого сборки с помощью MetadataLoadContext</a>.</p>
 </article>
           </div>

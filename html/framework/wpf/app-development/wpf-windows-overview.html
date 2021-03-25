@@ -72,7 +72,7 @@
 <p>Пользователи взаимодействуют с Windows Presentation Foundation (WPF) автономных приложений с помощью windows. Основная цель окна — разместить содержимое, которое визуализирует данные и позволяет пользователям взаимодействовать с ними. Автономный WPF приложения предоставляют собственные окна с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> класса. В данном разделе представлены <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> затем освещаются основы создания и управления окнами в автономных приложениях.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Браузерные WPF приложений, включая XAML-приложения браузера (XBAP) и свободные Язык XAML страниц, не предоставляют собственных окон. Вместо этого они размещаются в окнах, предоставляемых Windows Internet Explorer. См. в разделе <a href="wpf-xaml-browser-applications-overview.html">Общие сведения о приложениях браузера WPF XAML</a>.</p>
+<p>Браузерные WPF приложений, включая XAML-приложения браузера (XBAP) и свободные XAML страниц, не предоставляют собственных окон. Вместо этого они размещаются в окнах, предоставляемых Windows Internet Explorer. См. в разделе <a href="wpf-xaml-browser-applications-overview.html">Общие сведения о приложениях браузера WPF XAML</a>.</p>
 </div>
 <p><a name="TheWindowClass"></a></p>
 <h2 id="the-window-class">Класс окна</h2>
@@ -130,10 +130,7 @@ namespace SDKSample
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Чтобы включить XAML файла разметки и файл с выделенным кодом для совместной работы, необходимо выполнение следующих условий:</p>
 <ul>
 <li><p>В разметке <code>Window</code> элемент должен включать <code>x:Class</code> атрибута. При построении приложения существование <code>x:Class</code> в разметке вызывает файл Microsoft Build Engine (MSBuild) для создания <code>partial</code> класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> и имеет имя, которое задается параметром <code>x:Class</code> атрибута. Это требует добавления параметра XML объявление пространства имен для XAML схемы ( <code>xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</code> ). Созданный <code>partial</code> класс реализует <code>InitializeComponent</code> метод, который вызывается для регистрации событий и задания свойств, реализованных в разметке.</p>
@@ -172,10 +169,7 @@ namespace SDKSample
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="ConfiguringWindowForMSBuild"></a></p>
 <h2 id="configuring-a-window-definition-for-msbuild">Настройка определения окна для MSBuild</h2>
 <p>Реализация окна определяет его конфигурацию для MSBuild. Для окна, которое определяется с помощью XAML разметки и кода:</p>
@@ -255,10 +249,7 @@ namespace SDKSample
 Window ownedWindow = new Window();
 ownedWindow.Owner = this;
 ownedWindow.Show();
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>После установки владения:</p>
 <ul>
 <li><p>Окно во владении может ссылаться на окно-владелец, проверяя значение его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.owner">Owner</a> свойство.</p>
@@ -338,10 +329,7 @@ namespace SDKSample
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Другие типы приложений могут выполнять код в фоновом режиме, когда окно деактивировано. Например, почтовый клиент может продолжать опрашивать почтовый сервер, пока пользователь работает с другими приложениями. Такие приложения часто обеспечивают другое или дополнительное поведение, когда главное окно не активно. В случае почтовой программы это может означать как добавление нового почтового элемента в папку &quot;Входящие&quot;, так и добавление значка уведомления на панель задач. Значок уведомления требуется отображать, только если почтовое окно неактивно, что можно определить, проверив <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.isactive">IsActive</a> свойство.</p>
 <p>Если фоновая задача завершается, окно может потребоваться более срочном уведомлять пользователя, вызвав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.activate">Activate</a> метод. Если пользователь взаимодействует с другое приложение активируется, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.activate">Activate</a> вызове кнопке панели задач окна мигает. Если пользователь взаимодействует с текущим приложением, вызов метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.activate">Activate</a> перенесет окно на передний план.</p>
 <div class="NOTE">
@@ -401,10 +389,7 @@ namespace SDKSample
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>При закрытии окно вызывает два события: <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closed">Closed</a>.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a> Возникает перед закрытием окна и предоставляет механизм, с помощью окно, которое может быть прервано замыкания. Одна из распространенных причин, препятствующих закрытию окна, заключается в том, что содержимое окна содержит измененные данные. В этом случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a> событие можно обработать для определения данных является &quot;грязным&quot; и, таким образом, чтобы запрашивать у пользователя, следует ли закрыть окно без сохранения данных или отменить закрытие окна. В следующем примере показано ключевые аспекты обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a>.</p>
 <pre><code class="lang-csharp" name="WindowClosingSnippets">using System; // EventArgs
@@ -451,10 +436,7 @@ namespace CSharp
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a> Обработчику события передаются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs">CancelEventArgs</a>, который реализует <code>Boolean</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.canceleventargs.cancel">Cancel</a> задание для свойства <code>true</code> для предотвращения закрытия окна.</p>
 <p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closing">Closing</a> не обрабатывается или обрабатывается, но не отменено, оно будет закрыто. Непосредственно перед фактическим закрытием окна <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.closed">Closed</a> возникает. На этом этапе невозможно предотвратить закрытие окна.</p>
 <div class="NOTE">
@@ -550,10 +532,7 @@ this.SizeToContent = SizeToContent.Height;
 
 // Automatically resize height and width relative to content
 this.SizeToContent = SizeToContent.WidthAndHeight;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="OrderOfPrecedence"></a></p>
 <h2 id="order-of-precedence-for-sizing-properties">Порядок приоритета для свойств размера</h2>
 <p>Различные свойства размеров окна объединяются для определения диапазона ширины и высоты окна изменяемого размера. Чтобы обеспечить сохранение допустимого диапазона, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a> вычисляет значения свойств размера, с использованием следующего порядка приоритета.</p>

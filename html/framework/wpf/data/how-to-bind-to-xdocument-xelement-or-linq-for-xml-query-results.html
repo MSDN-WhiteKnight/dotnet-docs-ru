@@ -90,26 +90,17 @@
 <p>Следующие вызовы кода C# <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.linq.xdocument.load">Load</a> и задает контекст данных панели стека для всех подэлементов элемента с именем <code>SolarSystemPlanets</code> в <code>http://planetsNS</code> пространство имен XML.</p>
 <pre><code class="lang-csharp" name="XLinqExample#LoadDCFromFile">planetsDoc = XDocument.Load(&quot;../../Planets.xml&quot;);
 stacky.DataContext = planetsDoc.Element(&quot;{http://planetsNS}SolarSystemPlanets&quot;).Elements();
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>XML-данные могут храниться в виде ресурсов XAML с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.objectdataprovider">ObjectDataProvider</a>. Полный пример см. в разделе <a href="/visualstudio/designers/l2dbform-xaml-source-code">исходный код L2DBForm.xaml</a>. В следующем примере показано, каким образом код может задавать контекст данных для ресурса объекта.</p>
 <pre><code class="lang-csharp" name="XLinqExample#LoadDCFromXAML">planetsDoc = (XDocument)((ObjectDataProvider)Resources[&quot;justTwoPlanets&quot;]).Data;
 stacky.DataContext = planetsDoc.Element(&quot;{http://planetsNS}SolarSystemPlanets&quot;).Elements();
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Динамические свойства, которые сопоставляются с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.linq.xcontainer.element">Element</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.xml.linq.xelement.attribute">Attribute</a> обеспечивают гибкость в XAML. Код также можно привязать к результатам запроса LINQ для XML. В этом примере он привязывается к результатам запроса, направленного значением элемента.</p>
 <pre><code class="lang-csharp" name="XLinqExample#BindToResults">stacky.DataContext =
 from c in planetsDoc.Element(&quot;{http://planetsNS}SolarSystemPlanets&quot;).Elements()
 orderby Int32.Parse(c.Element(&quot;{http://planetsNS}DiameterKM&quot;).Value)
 select c;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="binding-sources-overview.html">Общие сведения об источниках привязки</a></li>
 <li><a href="/visualstudio/designers/wpf-data-binding-with-linq-to-xml-overview">Общие сведения о привязке данных WPF с помощью LINQ to XML</a></li>

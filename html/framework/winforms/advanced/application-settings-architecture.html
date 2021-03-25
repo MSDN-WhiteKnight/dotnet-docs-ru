@@ -108,10 +108,7 @@ public class MyUserSettings : ApplicationSettingsBase
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="settings-persistence">Сохраняемость параметров</h2>
+</code></pre><h2 id="settings-persistence">Сохраняемость параметров</h2>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> Класс не сохраняемость или загрузку параметров; это выполняет поставщик параметров, а класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>. Если класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.applicationsettingsbase">ApplicationSettingsBase</a> не указывает поставщика параметров посредством <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsproviderattribute">SettingsProviderAttribute</a>, а затем поставщика по умолчанию, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a>, используется.</p>
 <p>Система конфигурации, которая была первоначально выпущена с .NET Framework, поддерживает предоставление статических данных конфигурации приложения через файл machine.config локального компьютера или в файле <code>app.</code>exe.config, развертываемого вместе с приложением. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a> Класс расширяет эту встроенную поддержку одним из следующих способов:</p>
 <ul>
@@ -193,10 +190,7 @@ public class MyUserSettings : ApplicationSettingsBase
         // Do nothing.
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Ваш производный класс также должен реализовать метод <code>Initialize</code>, который не принимает аргументы и не возвращает значения. Этот метод не определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsprovider">SettingsProvider</a>.</p>
 <p>Наконец, необходимо реализовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.iapplicationsettingsprovider">IApplicationSettingsProvider</a> на поставщика, чтобы обеспечить поддержку обновления параметров, Возврат параметров по умолчанию и обновление параметров из одной версии приложения в другой.</p>
 <p>После реализации и компиляции поставщика необходимо указать, что класс параметров должен использовать этого поставщика вместо значения по умолчанию. Для этого через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.settingsproviderattribute">SettingsProviderAttribute</a>. Если применяется ко всему классу параметров поставщик используется для каждого параметра, который определяется в классе; Если применяется к отдельным параметрам архитектура параметров приложения использует этого поставщика только для этих параметров и использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.configuration.localfilesettingsprovider">LocalFileSettingsProvider</a> для остальных. В следующем примере кода показано, как указать классу параметров, что необходимо использовать пользовательского поставщика.</p>
@@ -213,10 +207,7 @@ namespace ApplicationSettingsArchitectureCS
         // Implementation goes here.
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Поставщик можно вызывать одновременно из нескольких потоков, но он всегда будет выполнять запись данных в одно место хранения. Таким образом, архитектура параметров приложения будет всегда создавать только один экземпляр класса поставщика.</p>
 <div class="IMPORTANT">
 <h5>Important</h5>

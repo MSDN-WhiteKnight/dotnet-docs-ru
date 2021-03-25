@@ -95,7 +95,7 @@
 <h2 id="models-for-control-authoring">Модели для создания элементов управления</h2>
 <p>Модель форматированного содержимого, стили, шаблоны и триггеры уменьшают необходимость создания новых элементов управления. Тем не менее, если необходимо создать новый элемент управления, важно понимать различные модели создания элементов управления в WPF. WPF предоставляет три общих модели для создания элементов управления, каждый из которых имеет собственный набор функций и уровень гибкости. Базовыми классами для трех моделей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
 <h3 id="deriving-from-usercontrol">Создание производных классов от UserControl</h3>
-<p>Самый простой способ создания элемента управления в WPF является наследование от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>. При создании элемента управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, вы добавляете существующие компоненты к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>компонентам имя и ссылки на обработчики событий в Язык XAML. Затем можно ссылаться на именованные элементы и определять обработчики событий в коде. Эта модель разработки очень схожа с моделью, используемой для разработки приложений в WPF.</p>
+<p>Самый простой способ создания элемента управления в WPF является наследование от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>. При создании элемента управления, который наследует от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, вы добавляете существующие компоненты к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>компонентам имя и ссылки на обработчики событий в XAML. Затем можно ссылаться на именованные элементы и определять обработчики событий в коде. Эта модель разработки очень схожа с моделью, используемой для разработки приложений в WPF.</p>
 <p>При правильном, построении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> можно воспользоваться преимуществами форматированного содержимого, стилей и триггеров. Тем не менее если элемент управления наследуется из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>, люди, использующие элемент управления не будет иметь возможность использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для настройки внешнего вида.  Это необходимо для являются производными от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класс или один из его производных классов (отличное от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a>) для создания пользовательского элемента управления, поддерживающего шаблоны.</p>
 <h4 id="benefits-of-deriving-from-usercontrol">Преимущества использования производного класса от UserControl</h4>
 <p>Рассмотрите возможность наследования от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.usercontrol">UserControl</a> применимости всем следующим условиям:</p>
@@ -204,10 +204,7 @@ private static void OnValueChanged(DependencyObject obj, DependencyPropertyChang
         (decimal)args.OldValue, (decimal)args.NewValue, ValueChangedEvent);
     control.OnValueChanged(e);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Дополнительные сведения см. в разделе <a href="../advanced/custom-dependency-properties.html">Пользовательские свойства зависимостей</a>.</p>
 <h3 id="use-routed-events">Использование перенаправляемых событий</h3>
 <p>Аналогично тому, как свойства зависимостей расширяют представление свойств CLR дополнительной функциональностью, перенаправляемые события расширяют представление стандартных событий CLR. При создании нового элемента управления WPF рекомендуется также реализовывать событие как перенаправляемое, так как такие события поддерживают следующее поведение:</p>
@@ -264,10 +261,7 @@ protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs&lt;decimal&
 {
     RaiseEvent(args);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Дополнительные сведения см. в разделах <a href="../advanced/routed-events-overview.html">Общие сведения о перенаправляемых событиях</a> и <a href="../advanced/how-to-create-a-custom-routed-event.html">Создание пользовательских перенаправляемых событий</a>.</p>
 <h3 id="use-binding">Использование привязки</h3>
 <p>Для отделения пользовательского интерфейса от логики элемента управления можно использовать привязку данных. Это особенно важно в том случае, если внешний вид элемента управления с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. При использовании привязки данных можно избавиться от необходимости ссылаться на определенные части пользовательского интерфейса из кода. Рекомендуется избегать ссылок на элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> потому, что если код ссылается на элементы в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> изменяется, указанный ссылками элемент должен быть включен в новом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
@@ -280,10 +274,7 @@ protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs&lt;decimal&
 {
     valueText.Text = Value.ToString();
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Следующий пример использует привязку для достижения такого же результата.</p>
 <pre><code class="lang-xaml" name="UserControlNumericUpDown#Binding">&lt;Border BorderThickness=&quot;1&quot; BorderBrush=&quot;Gray&quot; Margin=&quot;2&quot; 
         Grid.RowSpan=&quot;2&quot; VerticalAlignment=&quot;Center&quot; HorizontalAlignment=&quot;Stretch&quot;&gt;
@@ -428,10 +419,7 @@ protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs&lt;decimal&
     DefaultStyleKeyProperty.OverrideMetadata(typeof(NumericUpDown),
                new FrameworkPropertyMetadata(typeof(NumericUpDown)));
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h5 id="defining-and-referencing-keys-for-theme-resources">Определение и создание ссылок на ключи для ресурсов тем</h5>
+</code></pre><h5 id="defining-and-referencing-keys-for-theme-resources">Определение и создание ссылок на ключи для ресурсов тем</h5>
 <p>При определении ресурса на уровне элемента можно назначить строку в качестве его ключа и получить доступ к ресурсу через эту строку. При определении ресурса на уровне темы необходимо использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.componentresourcekey">ComponentResourceKey</a> как ключ.  В следующем примере определяется ресурс в файле generic.xaml.</p>
 <pre><code class="lang-xaml" name="ThemeResourcesControlLibrary#5">&lt;LinearGradientBrush 
      x:Key=&quot;{ComponentResourceKey TypeInTargetAssembly={x:Type local:Painter}, 
@@ -462,10 +450,7 @@ protected virtual void OnValueChanged(RoutedPropertyChangedEventArgs&lt;decimal&
 <p>В следующем примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.genericdictionarylocation">GenericDictionaryLocation</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.themeinfoattribute.themedictionarylocation">ThemeDictionaryLocation</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionarylocation#System_Windows_ResourceDictionaryLocation_SourceAssembly">SourceAssembly</a>, чтобы указать, что универсальных и тематических ресурсы находятся в той же сборке, в качестве элемента управления.</p>
 <pre><code class="lang-csharp" name="CustomControlNumericUpDown#ThemesSection">[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly,
            ResourceDictionaryLocation.SourceAssembly)]
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="/visualstudio/designers/designing-xaml-in-visual-studio">Проектирование XAML в Visual Studio</a></li>
 <li><a href="../app-development/pack-uris-in-wpf.html">URI типа &quot;pack&quot; в WPF</a></li>

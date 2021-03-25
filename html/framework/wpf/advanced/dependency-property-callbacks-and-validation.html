@@ -93,10 +93,7 @@ public double CurrentReading
   get { return (double)GetValue(CurrentReadingProperty); }
   set { SetValue(CurrentReadingProperty, value); }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Обратные вызовы реализуются так, что они получают значение объекта. Они возвращают <code>true</code>, если полученное значение является допустимым для свойства. В противном случае — возвращают <code>false</code>. Предполагается, что свойство принадлежит допустимому типу (зарегистрированному в системе свойств), поэтому проверка типов в обратных вызовах обычно не выполняется. Обратные вызовы используются системой свойств в различных операциях. Сюда входят инициализация типов по значению по умолчанию, программное изменение путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue">SetValue</a>, или попытка переопределить метаданные с помощью нового значения по умолчанию. Если обратный вызов проверки совершается любой из этих операций и возвращает <code>false</code>, вызывается исключение. Программисты должны быть готовы обрабатывать эти исключения. Обычно обратные вызовы проверки используются для проверки значений перечислений или для ограничения значений целых чисел, когда это свойство задает измерения, которые должны быть больше или равны нулю.</p>
 <p>Обратные вызовы проверки специально предназначены для проверки классов, а не экземпляров классов. Параметры обратного вызова не взаимодействуют между собой определенным <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> на какой набор свойств, которые необходимо проверить. Поэтому обратные вызовы проверки не используются для принудительного применения возможных &quot;зависимостей&quot;, способных повлиять на значение свойства, где значение свойства для этого экземпляра зависит от таких факторов, как значения других свойств этого экземпляра или состояния во время выполнения.</p>
 <p>Ниже приведен пример кода для обратного вызова сценария очень простой проверки: проверка того, свойства, который типизируется как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a> -примитив не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.positiveinfinity">PositiveInfinity</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double.negativeinfinity">NegativeInfinity</a>.</p>
@@ -105,10 +102,7 @@ public double CurrentReading
     Double v = (Double)value;
     return (!v.Equals(Double.NegativeInfinity) &amp;&amp; !v.Equals(Double.PositiveInfinity));
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="Coerce_Value_Callbacks_and_Property_Changed_Events"></a></p>
 <h2 id="coerce-value-callbacks-and-property-changed-events">Обратные вызовы с привязкой к значению и события изменения свойств</h2>
 <p>Приведение значения обратных вызовов передают определенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject">DependencyObject</a> экземпляр для свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.propertychangedcallback">PropertyChangedCallback</a> реализации, которые вызываются системой свойств при каждом изменении значения свойства зависимостей. Используя сочетание этих обратных вызовов, можно создать ряд свойств элементов, где изменения значения одного свойства будут вызывать принудительное изменение или пересчет значения другого свойства.</p>
@@ -131,20 +125,14 @@ public double CurrentReading
   get { return (double)GetValue(CurrentReadingProperty); }
   set { SetValue(CurrentReadingProperty, value); }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Обратный вызов при изменении свойства текущего объекта используется для пересылки изменений в другие зависимые свойства путем явного выполнения обратных вызовов с привязкой к значению, зарегистрированных для этих свойств.</p>
 <pre><code class="lang-csharp" name="DPCallbackOverride#OnPCCurrent">private static void OnCurrentReadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 {
   d.CoerceValue(MinReadingProperty);
   d.CoerceValue(MaxReadingProperty);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>При выполнении обратных вызовов с привязкой к значению проверяются значения свойств, от которых потенциально зависит текущее свойство, и принудительно изменяется его значение при необходимости.</p>
 <pre><code class="lang-csharp" name="DPCallbackOverride#CoerceCurrent">private static object CoerceCurrentReading(DependencyObject d, object value)
 {
@@ -154,10 +142,7 @@ public double CurrentReading
   if (current &gt; g.MaxReading) current = g.MaxReading;
   return current;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Значения свойств по умолчанию не изменяются. Значение свойства равно значению по умолчанию может произойти, если значение свойства по-прежнему имеет его первоначальное значение по умолчанию, или через Очистка других значений с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.clearvalue">ClearValue</a>.</p>

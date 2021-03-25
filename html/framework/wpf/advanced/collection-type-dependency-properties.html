@@ -96,10 +96,7 @@ public class Aquarium : DependencyObject {
 
     // ...
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Однако если оставить такой код, как в примере, это значение по умолчанию одного списка будет использоваться совместно для всех экземпляров <code>Aquarium</code>. Если выполнить следующий тестовый код, предназначенный для демонстрации того, как создаются два отдельных экземпляра <code>Aquarium</code> и добавляется один отличный <code>Fish</code> для каждого из них, вы увидите странный результат.</p>
 <pre><code class="lang-csharp" name="PropertiesOvwSupport#CollectionProblemTestCode">Aquarium myAq1 = new Aquarium();
 Aquarium myAq2 = new Aquarium();
@@ -109,20 +106,14 @@ myAq1.AquariumContents.Add(f1);
 myAq2.AquariumContents.Add(f2);
 MessageBox.Show(&quot;aq1 contains &quot; + myAq1.AquariumContents.Count.ToString() + &quot; things&quot;);
 MessageBox.Show(&quot;aq2 contains &quot; + myAq2.AquariumContents.Count.ToString() + &quot; things&quot;);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Вместо того чтобы каждой коллекции назначалось число 1, каждой коллекции назначается число 2! Это происходит, поскольку каждый <code>Aquarium</code> добавил свой объект <code>Fish</code> в коллекцию значений по умолчанию, которая является результатом вызова одного конструктора в метаданных и, таким образом, совместно используется всеми экземплярами. Как правило, такая ситуация нежелательна.</p>
 <p>Чтобы устранить эту проблему, необходимо сбросить значение свойства зависимостей коллекции, задав уникальный экземпляр в составе вызова конструктора класса. Так как свойство является свойством зависимостей только для чтения, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue#System_Windows_DependencyObject_SetValue_System_Windows_DependencyPropertyKey_System_Object_">SetValue(DependencyPropertyKey, Object)</a> метод задается с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencypropertykey">DependencyPropertyKey</a> , доступна только в классе.</p>
 <pre><code class="lang-csharp" name="PropertiesOvwSupport#CollectionProblemCtor">public Aquarium() : base()
 {
     SetValue(AquariumContentsPropertyKey, new List&lt;FrameworkElement&gt;());
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Теперь, запустив тот же тестовый код еще раз, вы можете заметить, что результаты стали более ожидаемыми, то есть каждый <code>Aquarium</code> поддерживает свою собственную уникальную коллекцию.</p>
 <p>Если свойство коллекции будет доступным для чтения и записи, в этот шаблон потребуется внести небольшое изменение. В этом случае можно вызвать открытый метод доступа set из конструктора для выполнения инициализации, он по-прежнему будет вызывать сигнатура <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyobject.setvalue#System_Windows_DependencyObject_SetValue_System_Windows_DependencyProperty_System_Object_">SetValue(DependencyProperty, Object)</a> внутри обертки, с помощью общедоступного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.dependencyproperty">DependencyProperty</a> идентификатор.</p>
 <h2 id="reporting-binding-value-changes-from-collection-properties">Передача сведений об изменении значений привязки из свойств коллекции</h2>

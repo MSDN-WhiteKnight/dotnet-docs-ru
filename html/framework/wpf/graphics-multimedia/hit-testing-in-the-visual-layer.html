@@ -127,10 +127,7 @@ private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         // Perform action on hit visual object.
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="how-the-visual-tree-affects-hit-testing">Влияние визуального дерева на проверку попадания</h3>
+</code></pre><h3 id="how-the-visual-tree-affects-hit-testing">Влияние визуального дерева на проверку попадания</h3>
 <p>Начальная точка в визуальном дереве определяет, какие объекты возвращаются во время перечисления объектов проверки попадания. Если есть несколько объектов, для которых нужно выполнить проверку попадания, визуальные объект, используемый в качестве начальной точки в визуальном дереве, должен быть общим предком всех интересующих объектов. Например если нужно выполнить проверку попадания и для элемента-кнопки и для визуального объекта на следующем рисунке, необходимо установить начальную точку в визуальном дереве на их общего предка. В этом случае элемент общим предком элемента-кнопки и визуального объекта является элемент canvas.</p>
 <p><img src="media/wcpsdk-mmgraphics-visuals-overview-01.gif" alt="Схема иерархии визуального дерева" title="wcpsdk_mmgraphics_visuals_overview_01"><br>
 Иерархия визуального дерева</p>
@@ -162,10 +159,7 @@ private void OnMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         Console.WriteLine(&quot;Number of Visuals Hit: &quot; + hitResultsList.Count);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Метод обратного вызова проверки попадания определяет действия, которые выполняются при определении проверки попадания для конкретного визуального объекта в визуальном дереве. После выполнения этих действий возвращается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.hittestresultbehavior">HitTestResultBehavior</a> значение, определяющее, следует ли продолжать перечисление других визуальных объектов, или нет.</p>
 <pre><code class="lang-csharp" name="HitTestingOverview#102">// Return the result of the hit test to the callback.
 public HitTestResultBehavior MyHitTestResult(HitTestResult result)
@@ -176,10 +170,7 @@ public HitTestResultBehavior MyHitTestResult(HitTestResult result)
     // Set the behavior to return visuals at all z-order levels.
     return HitTestResultBehavior.Continue;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Порядок перечисления визуальных объектов попадания соответствует их координатам по оси Z. Первым перечисляется визуальный объект с самой большой координатой по оси Z. Остальные визуальные объекты перечисляются по убыванию значения координаты по оси Z. Этот порядок перечисления соответствует порядку отрисовки визуальных объектов.</p>
@@ -187,10 +178,7 @@ public HitTestResultBehavior MyHitTestResult(HitTestResult result)
 <p>Перечисление визуальных объектов в любое время в функции обратного вызова проверки попадания можно остановить, возвращая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.hittestresultbehavior#System_Windows_Media_HitTestResultBehavior_Stop">Stop</a>.</p>
 <pre><code class="lang-csharp" name="HitTestingOverview#103">// Set the behavior to stop enumerating visuals.
 return HitTestResultBehavior.Stop;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="using_a_hit_test_filter_callback"></a></p>
 <h2 id="using-a-hit-test-filter-callback">Использование обратного вызова фильтра проверки попадания</h2>
 <p>Можно использовать необязательный фильтр проверки попадания для ограничения объектов, которые передаются в качестве результатов проверки попадания. Это позволяет пропустить части визуального дерева, которые не нужны для обработки в результатах проверки нажатия. Чтобы реализовать фильтр проверки нажатия, определить функцию обратного вызова фильтра проверки нажатия и передайте его в качестве значения параметра, при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> метод.</p>
@@ -215,10 +203,7 @@ private void OnMouseWheel(object sender, MouseWheelEventArgs e)
         ProcessHitTestResultsList();
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Если вы не хотите предоставлять функция обратного вызова фильтра проверки попадания, передайте <code>null</code> значение в качестве параметра для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> метод.</p>
 <pre><code class="lang-csharp" name="HitTestingOverview#105">// Set up a callback to receive the hit test result enumeration,
 // but no hit test filter enumeration.
@@ -226,10 +211,7 @@ VisualTreeHelper.HitTest(myCanvas,
                   null,  // No hit test filtering.
                   new HitTestResultCallback(MyHitTestResult),
                   new PointHitTestParameters(pt));
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><img src="media/filteredvisualtree-01.png" alt="Обрезка визуального дерева с помощью фильтра проверки попадания" title="FilteredVisualTree_01"><br>
 Обрезка визуального дерева</p>
 <p>Функция обратного вызова фильтра проверки попадания позволяет перечислить все визуальные объекты, отображаемое содержимое которых содержит указанные координаты. Однако, может понадобиться пропустить отдельные части визуального дерева в функции обратного вызова результатов проверки нажатия. Возвращаемое значение функции обратного вызова фильтра проверки нажатия определяет, какой тип действия должен выполняться при перечислении визуальных объектов. Например, если возвращается значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.hittestfilterbehavior#System_Windows_Media_HitTestFilterBehavior_ContinueSkipSelfAndChildren">ContinueSkipSelfAndChildren</a>, можно удалить текущий визуальный объект и его дочерние элементы из перечисления результатов проверки попадания. Это означает, что функция обратного вызова результатов проверки попадания не увидит эти объекты в перечислении. Обрезка визуального дерева объектов позволяет уменьшить объем обработки во время перечисления результатов проверки попадания. В следующем примере кода фильтр пропускает метки и их потомков и проверяет все остальные объекты.</p>
@@ -248,10 +230,7 @@ public HitTestFilterBehavior MyHitTestFilter(DependencyObject o)
         return HitTestFilterBehavior.Continue;
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Функция обратного вызова фильтра проверки попадания иногда вызывается в случаях, когда функция обратного вызова результатов проверки попадания не вызывается.</p>
@@ -271,10 +250,7 @@ protected override HitTestResult HitTestCore(PointHitTestParameters hitTestParam
     // Return hit on bounding rectangle of visual object.
     return new PointHitTestResult(this, pt);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Иногда может понадобиться проверка попадания как для ограничивающего прямоугольника, так и для отображаемого содержимого визуального объекта. С помощью <code>PointHitTestParameters</code> значение параметра в переопределенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual.hittestcore">HitTestCore</a> метод в качестве параметра для базового метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visual.hittestcore">HitTestCore</a>, можно выполнять действия при попадании ограничивающего прямоугольника визуального объекта, а затем выполните повторную проверку попадания для к просмотру содержимого визуального объекта.</p>
 <pre><code class="lang-csharp" name="HitTestingOverview#108">// Override default hit test support in visual object.
 protected override HitTestResult HitTestCore(PointHitTestParameters hitTestParameters)
@@ -286,10 +262,7 @@ protected override HitTestResult HitTestCore(PointHitTestParameters hitTestParam
     // which only returns hit on the geometry of visual objects.
     return base.HitTestCore(hitTestParameters);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a></li>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.hittestresult">HitTestResult</a></li>

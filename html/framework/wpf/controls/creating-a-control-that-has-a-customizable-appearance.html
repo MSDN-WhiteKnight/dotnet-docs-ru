@@ -234,10 +234,7 @@ private RepeatButton UpButtonElement
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.onapplytemplate">OnApplyTemplate</a> для <code>NumericUpDown</code> элемента управления.  В примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> метод для получения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объектов из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.  Обратите внимание, что в примере предотвращаются ситуации, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.gettemplatechild">GetTemplateChild</a> находит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> с указанным именем, которое не относится к ожидаемому типу. Это также рекомендуемый способ игнорирования элементов, имеющих указанный <code>x:Name</code> , но имеет неправильный тип.</p>
 <pre><code class="lang-csharp" name="VSMCustomControl#ApplyTemplate">public override void OnApplyTemplate()
 {
@@ -247,10 +244,7 @@ private RepeatButton UpButtonElement
 
     UpdateStates(false);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Следуя рекомендациям, показанные в предыдущих примерах, убедитесь, что элемент управления будет продолжать выполняться, когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> отсутствует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a>.</p>
 <h3 id="use-the-visualstatemanager-to-manage-states">Использование VisualStateManager для управления состояниями</h3>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Отслеживает состояния элемента управления и выполняет логику, необходимую для перехода между состояниями. При добавлении <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, их следует добавить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> и добавьте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.visualstategroups">VisualStateManager.VisualStateGroups</a> вложенного свойства зависимостей, чтобы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> имеет доступ к ним.</p>
@@ -290,10 +284,7 @@ else
 {
     VisualStateManager.GoToState(this, &quot;Negative&quot;, useTransitions);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> Метод выполняет логику, необходимую для запуска и остановки раскадровки соответствующим образом. Когда элемент управления вызывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> для изменения его состояния <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> делает следующее:</p>
 <ul>
 <li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> требуется элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, раскадровки. Затем, если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> откуда элемент управления имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a>, завершения раскадровки.</p>
@@ -333,10 +324,7 @@ else
         VisualStateManager.GoToState(this, &quot;Unfocused&quot;, useTransitions);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Если передать имя состояния для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> когда элемент управления уже находится в этом состоянии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a> ничего не делает, поэтому не нужно проверить текущее состояние элемента управления.  Например если <code>Value</code> изменяется от одного отрицательного числа на другое отрицательное число, раскадровка для <code>Negative</code> состояние не прерывается, и пользователь не увидит изменений в элементе управления.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> объектов, чтобы определить, какое состояние, чтобы завершить работу при вызове <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.gotostate">GoToState</a>. Элемент управления всегда находится в одном состоянии для каждой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> , определенный в его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и покидает это состояние только при переходе в другое состояние с использованием того же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>. Например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> из <code>NumericUpDown</code> управления определяет <code>Positive</code> и <code>Negative</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов в одном <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> и <code>Focused</code> и <code>Unfocused</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты в другой. (Вы увидите <code>Focused</code> и <code>Unfocused</code><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> определенные в <a href="#complete_example">полный пример</a> в этой статье, когда элемент управления переходит из <code>Positive</code> состояние <code>Negative</code> состояние, или наоборот, элемент управления остается в либо <code>Focused</code> или <code>Unfocused</code> состояния.</p>
 <p>Существует три типичные места, где может изменить состояние элемента управления:</p>
@@ -358,10 +346,7 @@ else
 
     UpdateStates(false);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Часто требуется для обновления состояния элемента управления при изменении свойства. В следующем примере показан весь <code>ValueChangedCallback</code> метод. Так как <code>ValueChangedCallback</code> вызывается, когда <code>Value</code> изменяется, вызывается метод <code>UpdateStates</code> в случае, если <code>Value</code> изменилось с положительным, отрицательным или наоборот. Это допустимо для вызова <code>UpdateStates</code> при <code>Value</code> изменяется, но остается положительным или отрицательным, поскольку в этом случае элемент управления не изменяет состояние.</p>
 <pre><code class="lang-csharp" name="VSMCustomControl#EntireValueChangedCallback">private static void ValueChangedCallback(DependencyObject obj,
     DependencyPropertyChangedEventArgs args)
@@ -378,20 +363,14 @@ else
         new ValueChangedEventArgs(NumericUpDown.ValueChangedEvent,
             newValue));
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Может также потребоваться обновить состояния при возникновении события. В следующем примере показано, что <code>NumericUpDown</code> вызовы <code>UpdateStates</code> на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> для обработки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.gotfocus">GotFocus</a> событий.</p>
 <pre><code class="lang-csharp" name="VSMCustomControl#OnGotFocus">protected override void OnGotFocus(RoutedEventArgs e)
 {
     base.OnGotFocus(e);
     UpdateStates(true);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a> Помогает управлять состояний элемента управления. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a>, убедитесь, что элемент управления правильные переходы между состояниями.  Если вы выполните рекомендации, описанные в этом разделе, для работы с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a>, код элемента управления будет оставаться читаемым и простым в обслуживании.</p>
 <p><a name="providing_the_control_contract"></a></p>
 <h2 id="providing-the-control-contract">Предоставление контракта элемента управления</h2>
@@ -474,10 +453,7 @@ public class NumericUpDown : Control
     public TextWrapping TextWrapping { get; set; }
     public VerticalAlignment VerticalContentAlignment { get; set; }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="complete_example"></a></p>
 <h2 id="complete-example">Полный пример</h2>
 <p>Ниже приведен весь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <code>NumericUpDown</code> элемента управления.</p>
@@ -787,10 +763,7 @@ namespace VSMCustomControl
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="customizing-the-appearance-of-an-existing-control.html">Настройка внешнего вида существующего элемента управления путем создания объекта ControlTemplate</a></li>
 <li><a href="control-customization.html">Настройка элементов управления</a></li>

@@ -121,10 +121,7 @@
 <li><p>В <strong>свойства</strong> окне с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> компонент все еще выбран, щелкните <strong>события</strong> кнопки. Дважды щелкните <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> событий, чтобы создать обработчики событий. Дополнительные сведения об использовании обработчиков событий см. в разделе <a href="https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/zwwsdtbk(v=vs.100)">как: Создание обработчиков событий с помощью конструктора</a>.</p>
 </li>
 <li><p>Создайте в форме новый метод с именем <code>ComputeFibonacci</code>. Этот метод выполняет фактическую работу и делает это в фоновом режиме. Данный код демонстрирует рекурсивную реализацию алгоритма Фибоначчи — она довольно неэффективна и занимает в разы больше времени при работе с большими числами. Он приводится в иллюстративных целях, чтобы показать, что операция может значительно замедлить работу вашего приложения.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#10">// This is the method that does the actual work. For this
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#10">// This is the method that does the actual work. For this
 // example, it computes a Fibonacci number and
 // reports progress as it does its work.
 long ComputeFibonacci(int n, BackgroundWorker worker, DoWorkEventArgs e)
@@ -177,19 +174,13 @@ long ComputeFibonacci(int n, BackgroundWorker worker, DoWorkEventArgs e)
 
     return result;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> обработчик событий, добавьте вызов <code>ComputeFibonacci</code> метод. Возьмите первый параметр <code>ComputeFibonacci</code> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs.argument">Argument</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a>. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> И <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a> параметры будут использоваться позже для отчетов о ходе выполнения и отмены поддержки. Присвойте возвращаемое значение из <code>ComputeFibonacci</code> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs.result">Result</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.doworkeventargs">DoWorkEventArgs</a>. Этот результат будет доступен для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> обработчик событий.</p>
 <div class="NOTE">
 <h5>Note</h5>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> Не ссылается на обработчик событий <code>backgroundWorker1</code> переменную экземпляра напрямую, так как это может привязать этот обработчик событий для определенного экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a>. Вместо этого ссылка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> , создавший событие, берется из <code>sender</code> параметра. Это важно, если в форме размещено несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a>. Это также не следует выполнять операции все объекты пользовательского интерфейса в вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.dowork">DoWork</a> обработчик событий. Вместо этого для взаимодействия в пользовательский интерфейс, через <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> события.</p>
 </div>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#5">// This event handler is where the actual,
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#5">// This event handler is where the actual,
 // potentially time-consuming work is done.
 private void backgroundWorker1_DoWork(object sender, 
     DoWorkEventArgs e)
@@ -203,15 +194,9 @@ private void backgroundWorker1_DoWork(object sender,
     // RunWorkerCompleted eventhandler.
     e.Result = ComputeFibonacci((int)e.Argument, worker, e);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>В <code>startAsyncButton</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий, добавьте код, который запускает асинхронную операцию.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#13">private void startAsyncButton_Click(System.Object sender, 
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#13">private void startAsyncButton_Click(System.Object sender, 
     System.EventArgs e)
 {
     // Reset the text in the result label.
@@ -238,15 +223,9 @@ private void backgroundWorker1_DoWork(object sender,
     // Start the asynchronous operation.
     backgroundWorker1.RunWorkerAsync(numberToCompute);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.runworkercompleted">RunWorkerCompleted</a> обработчик событий, результат вычисления, которое необходимо присвоить <code>resultLabel</code> элемента управления.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#6">// This event handler deals with the results of the
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#6">// This event handler deals with the results of the
 // background operation.
 private void backgroundWorker1_RunWorkerCompleted(
     object sender, RunWorkerCompletedEventArgs e)
@@ -282,10 +261,7 @@ private void backgroundWorker1_RunWorkerCompleted(
     // Disable the Cancel button.
     cancelAsyncButton.Enabled = false;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 </ol>
 <h2 id="adding-progress-reporting-and-support-for-cancellation">Добавление отчетов о ходе выполнения и поддержка отмены</h2>
 <p>В случае асинхронных операций, занимающих долгое время, желательно сообщать пользователю о ходе выполнения, чтобы пользователь мог отменить операцию. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker">BackgroundWorker</a> Класс предоставляет событие, которое позволяет публиковать ход выполнения фоновой операции. Он также предоставляет флаг, позволяющий рабочему коду обнаружить вызов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.cancelasync">CancelAsync</a> и прервать свое выполнение.</p>
@@ -294,37 +270,22 @@ private void backgroundWorker1_RunWorkerCompleted(
 <li><p>В окне <strong>Свойства</strong> выберите <code>backgroundWorker1</code>. Задайте для свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.workerreportsprogress">WorkerReportsProgress</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.workersupportscancellation">WorkerSupportsCancellation</a> значение <code>true</code>.</p>
 </li>
 <li><p>Объявите две переменные в форме <code>FibonacciCalculator</code>. Они будут использоваться для отслеживания хода выполнения.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#14">private int numberToCompute = 0;
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#14">private int numberToCompute = 0;
 private int highestPercentageReached = 0;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Добавьте обработчик для события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.progresschanged">ProgressChanged</a>. В <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.backgroundworker.progresschanged">ProgressChanged</a> обработчик событий, обновите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.progressbar">ProgressBar</a> с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.progresschangedeventargs.progresspercentage">ProgressPercentage</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.componentmodel.progresschangedeventargs">ProgressChangedEventArgs</a> параметр.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#7">// This event handler updates the progress bar.
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#7">// This event handler updates the progress bar.
 private void backgroundWorker1_ProgressChanged(object sender,
     ProgressChangedEventArgs e)
 {
     this.progressBar1.Value = e.ProgressPercentage;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 </ol>
 <h4 id="to-implement-support-for-cancellation">Реализация поддержки отмены</h4>
 <ol>
 <li><p>В <code>cancelAsyncButton</code> элемента управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.forms.control.click">Click</a> обработчик событий, добавьте код, отменяющий асинхронную операцию.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#4">private void cancelAsyncButton_Click(System.Object sender, 
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#4">private void cancelAsyncButton_Click(System.Object sender, 
     System.EventArgs e)
 {   
     // Cancel the asynchronous operation.
@@ -333,25 +294,13 @@ private void backgroundWorker1_ProgressChanged(object sender,
     // Disable the Cancel button.
     cancelAsyncButton.Enabled = false;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 <li><p>Следующие фрагменты кода в методе <code>ComputeFibonacci</code> сообщают о ходе выполнения и поддерживают отмену.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#11">if (worker.CancellationPending)
+<pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#11">if (worker.CancellationPending)
 {   
     e.Cancel = true;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#12">// Report progress as a percentage of the total task.
+</code></pre><pre><code class="lang-csharp" name="System.ComponentModel.BackgroundWorker#12">// Report progress as a percentage of the total task.
 int percentComplete = 
     (int)((float)n / (float)numberToCompute * 100);
 if (percentComplete &gt; highestPercentageReached)
@@ -359,10 +308,7 @@ if (percentComplete &gt; highestPercentageReached)
     highestPercentageReached = percentComplete;
     worker.ReportProgress(percentComplete);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></li>
+</code></pre></li>
 </ol>
 <h2 id="checkpoint">Контрольная точка</h2>
 <p>На этом этапе можно скомпилировать и запустить приложение калькулятора Фибоначчи.</p>

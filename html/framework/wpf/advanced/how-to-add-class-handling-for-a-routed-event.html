@@ -83,10 +83,7 @@
     { ec.EditState = true; }
     base.OnPreviewMouseRightButtonDown(e);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Если нет виртуальных базовых классов или для этого конкретного метода, обработка класса можно добавить непосредственно с помощью служебной программы метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager">EventManager</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager.registerclasshandler">RegisterClassHandler</a>. Этот метод должен вызываться только внутри статической инициализации классов, которые используют обработку классов. В этом примере добавляется еще один обработчик для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.previewmouseleftbuttondown">PreviewMouseLeftButtonDown</a> , и в этом случае зарегистрированный класс является пользовательским классом. Напротив, при использовании виртуальных методов, зарегистрированный класс является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement">UIElement</a> базового класса. В случаях, где базовых классов и подклассов зарегистрировать обработку класса обработчики подклассов вызываются первыми. Поведение в приложении бы, что сначала этот обработчик отобразит окно сообщения, а затем будет показано визуальное изменение в обработчике виртуального метода.</p>
 <pre><code class="lang-csharp" name="ClassHandling#StaticAndRegisterClassHandler">static MyEditContainer()
 {
@@ -97,10 +94,7 @@ internal static void LocalOnMouseRightButtonDown(object sender, RoutedEventArgs 
   MessageBox.Show(&quot;this is invoked before the On* class handler on UIElement&quot;);
   //e.Handled = true; //uncommenting this would cause ONLY the subclass' class handler to respond
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventmanager">EventManager</a></li>
 <li><a href="marking-routed-events-as-handled-and-class-handling.html">Маркировка перенаправленных событий как обработанных и обработка классов</a></li>

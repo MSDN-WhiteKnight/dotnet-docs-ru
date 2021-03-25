@@ -95,10 +95,7 @@
 </ul>
 <p>В этом примере демонстрируются оба метода, поскольку пользователь получил какой метод использовать и ответил «y», если хотите использовать флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.queuestatus">QueueStatus</a> свойство. Ниже представлены подробные сведения об этих двух методах.</p>
 <p>В конечном итоге результаты предоставляются пользователю.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SurveyQueues">// Survey queue status for every queue on every print server
+<pre><code class="lang-csharp" name="PrinterStatusSurvey#SurveyQueues">// Survey queue status for every queue on every print server
 String line;
 String statusReport = &quot;\n\nAny problem states are indicated below:\n\n&quot;;
 while ((line = fileOfPrintServers.ReadLine()) != null)
@@ -127,16 +124,10 @@ Console.WriteLine(statusReport);
 Console.WriteLine(&quot;\nPress Return to continue.&quot;);
 Console.ReadLine();
 
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Чтобы проверить состояние принтера, используя флаги <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.queuestatus">QueueStatus</a> свойство, проверьте каждый соответствующий флаг включен. Обычно определить, задан ли один бит в наборе битовых флагов, позволяет логическая операция И с набором флагов в качестве одной операнды и самим флагом в качестве второй. Поскольку сам флаг имеет только один набор битов, результатом логической операции И может стать максимум установка самого бита. Чтобы определить, установлен ли этот бит, просто сравните результат логической операции И с самим флагом. Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueuestatus">PrintQueueStatus</a>, <a href="../../../csharp/language-reference/operators/and-operator.md">&amp; оператор (C# ссылку)</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.flagsattribute">FlagsAttribute</a>.</p>
 <p>Для каждого атрибута с установленным битом код добавляет уведомление в итоговый отчет, который будет представлен пользователю. (Метод <strong>ReportAvailabilityAtThisTime</strong>, вызываемый в конце кода, описывается ниже.)</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueAttributes">// Check for possible trouble states of a printer using the flags of the QueueStatus property
+<pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueAttributes">// Check for possible trouble states of a printer using the flags of the QueueStatus property
 internal static void SpotTroubleUsingQueueAttributes(ref String statusReport, PrintQueue pq)
 {
     if ((pq.QueueStatus &amp; PrintQueueStatus.PaperProblem) == PrintQueueStatus.PaperProblem)
@@ -196,15 +187,9 @@ internal static void SpotTroubleUsingQueueAttributes(ref String statusReport, Pr
     // The method below is defined in the complete example.
     ReportAvailabilityAtThisTime(ref statusReport, pq);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Чтобы проверить состояние принтера с помощью каждого свойства, просто прочтите каждое свойство и добавьте примечание, если какое-либо свойство имеет значение <code>true</code>, в итоговый отчет для пользователя. (Метод <strong>ReportAvailabilityAtThisTime</strong>, вызываемый в конце кода, описывается ниже.)</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueProperties">// Check for possible trouble states of a printer using its properties
+<pre><code class="lang-csharp" name="PrinterStatusSurvey#SpotTroubleUsingQueueProperties">// Check for possible trouble states of a printer using its properties
 internal static void SpotTroubleUsingProperties(ref String statusReport, PrintQueue pq)
 {
     if (pq.HasPaperProblem)
@@ -264,16 +249,10 @@ internal static void SpotTroubleUsingProperties(ref String statusReport, PrintQu
     // The following method is defined in the complete example.
     ReportAvailabilityAtThisTime(ref statusReport, pq);
 }//end SpotTroubleUsingProperties
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Метод <strong>ReportAvailabilityAtThisTime</strong> позволяет определить наличие очереди в текущее время суток.</p>
 <p>Метод не выполняет никаких действий при <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a> свойства одинаковы, поскольку в этом случае принтер доступен все время. Если они отличаются, метод получает текущее время, которое затем должно быть преобразовано в общее число минут после полуночи, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a> свойства являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>, которые не представляют минут после полуночи, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объекты. В конечном итоге метод проверяет, находится ли текущее время в промежутке между временем начала и окончания.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="PrinterStatusSurvey#UsingStartAndUntilTimes">private static void ReportAvailabilityAtThisTime(ref String statusReport, PrintQueue pq)
+<pre><code class="lang-csharp" name="PrinterStatusSurvey#UsingStartAndUntilTimes">private static void ReportAvailabilityAtThisTime(ref String statusReport, PrintQueue pq)
 {
     if (pq.StartTimeOfDay != pq.UntilTimeOfDay) // If the printer is not available 24 hours a day
     {
@@ -289,10 +268,7 @@ Int32 utcNowAsMinutesAfterMidnight = (utcNow.TimeOfDay.Hours * 60) + utcNow.Time
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a></li>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a></li>

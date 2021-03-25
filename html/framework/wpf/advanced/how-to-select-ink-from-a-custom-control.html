@@ -82,17 +82,11 @@ public enum InkMode
 {
     Ink, Select
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Добавьте два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> к классу: из них следует использовать, когда пользователь осуществляет рукописный ввод, из них следует использовать, когда пользователь выбирает рукописного ввода.  В конструкторе, инициализировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> и приложите оба <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.attributechanged">AttributeChanged</a> событий тот же обработчик событий. Затем установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.drawingattributes">DrawingAttributes</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> на рукописный ввод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a>.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#3">DrawingAttributes inkDA;
 DrawingAttributes selectDA;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="HowToSelectInk#4">// In the constructor.
+</code></pre><pre><code class="lang-csharp" name="HowToSelectInk#4">// In the constructor.
 // Selection drawing attributes use dark gray ink.
 selectDA = new DrawingAttributes();
 selectDA.Color = Colors.DarkGray;
@@ -104,10 +98,7 @@ inkDA.Height = 5;
 
 inkDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
 selectDA.AttributeChanged += new PropertyDataChangedEventHandler(DrawingAttributesChanged);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Добавьте свойство, которое предоставляет режим выделения. Когда пользователь изменяет режим выбора, задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.drawingattributes">DrawingAttributes</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer">DynamicRenderer</a> к соответствующему <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> объекта, а затем — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#5">// Property to indicate whether the user is inputting or
 // selecting ink.
@@ -137,10 +128,7 @@ public InkMode Mode
         presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Предоставлять <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> как свойства, чтобы приложения могли определить внешний вид рукописных штрихов и штрихов выделенного фрагмента.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#6">// Property to allow the user to change the pen's DrawingAttributes.
 public DrawingAttributes InkDrawingAttributes
@@ -159,10 +147,7 @@ public DrawingAttributes SelectDrawingAttributes
         return selectDA;
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes">DrawingAttributes</a> изменения, объекта <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> необходимо повторно подключить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.  В обработчике событий для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.drawingattributes.attributechanged">AttributeChanged</a> событий, снова присоедините <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.input.stylusplugins.dynamicrenderer.rootvisual">RootVisual</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.inkpresenter">InkPresenter</a>.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#7">void DrawingAttributesChanged(object sender, PropertyDataChangedEventArgs e)
 {
@@ -171,17 +156,11 @@ public DrawingAttributes SelectDrawingAttributes
     presenter.DetachVisuals(renderer.RootVisual);
     presenter.AttachVisuals(renderer.RootVisual, renderer.DrawingAttributes);
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="using-the-incrementallassohittester">С помощью IncrementalLassoHitTester</h2>
+</code></pre><h2 id="using-the-incrementallassohittester">С помощью IncrementalLassoHitTester</h2>
 <p>Создание и инициализация <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a> , содержащее выделенные штрихи.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#8">// StylusPointCollection that collects the stylus points from the stylus events.
 StylusPointCollection stylusPoints;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда пользователь начинает рисовать штрих, рукописного ввода или Лассо, снимите флажки для всех выделенных штрихов. Затем, если пользователь рисует лассо, создайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> путем вызова <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection.getincrementallassohittester">GetIncrementalLassoHitTester</a>, Подпишитесь на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">SelectionChanged</a> событий и вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementalhittester.addpoints">AddPoints</a>. Этот код может быть отдельный метод и вызывать из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusdown">OnStylusDown</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmousedown">OnMouseDown</a> методы.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#9">private void InitializeHitTester(StylusPointCollection collectedPoints)
 {
@@ -208,10 +187,7 @@ StylusPointCollection stylusPoints;
         selectionTester.AddPoints(collectedPoints);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Добавление точки пера, которые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a> пока пользователь рисует лассо.  Вызовите следующий метод из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusmove">OnStylusMove</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onstylusup">OnStylusUp</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmousemove">OnMouseMove</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.onmouseleftbuttonup">OnMouseLeftButtonUp</a> методы.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#10">private void AddPointsToHitTester(StylusPointCollection collectedPoints)
 {
@@ -225,10 +201,7 @@ StylusPointCollection stylusPoints;
         selectionTester.AddPoints(collectedPoints);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Обрабатывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">IncrementalLassoHitTester.SelectionChanged</a> событий, чтобы ответить, когда пользователь выбирает и отменяет выделение штрихов.  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs">LassoSelectionChangedEventArgs</a> Класс имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs.selectedstrokes">SelectedStrokes</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.lassoselectionchangedeventargs.deselectedstrokes">DeselectedStrokes</a> свойства, получающие штрихи, которые были выбраны и не выбрано, соответственно.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#11">void selectionTester_SelectionChanged(object sender,
     LassoSelectionChangedEventArgs args)
@@ -248,10 +221,7 @@ StylusPointCollection stylusPoints;
         selectedStrokes.Remove(unselectedStroke);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Когда пользователь заканчивает рисование лассо, отменить подписку на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester.selectionchanged">SelectionChanged</a> событий и вызовов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementalhittester.endhittesting">EndHitTesting</a>.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#12">if (mode == InkMode.Select &amp;&amp; lassoPath == null)
 {
@@ -264,10 +234,7 @@ StylusPointCollection stylusPoints;
                     (selectionTester_SelectionChanged);
     selectionTester.EndHitTesting();
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="putting-it-all-together">Объединение.</h2>
+</code></pre><h2 id="putting-it-all-together">Объединение.</h2>
 <p>Ниже приведен пользовательский элемент управления, позволяющий пользователю выбрать рукописный ввод с помощью лассо.</p>
 <pre><code class="lang-csharp" name="HowToSelectInk#1">using System;
 using System.Windows;
@@ -599,10 +566,7 @@ public class InkSelector : Label
         }
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.incrementallassohittester">IncrementalLassoHitTester</a></li>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.ink.strokecollection">StrokeCollection</a></li>

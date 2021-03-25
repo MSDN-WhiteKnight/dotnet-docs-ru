@@ -101,10 +101,7 @@ internal static void CreateHostHwnd(IntPtr parentHwnd)
     // Set the hwnd background color to the form's background color.
     myHwndSource.CompositionTarget.BackgroundColor = System.Windows.Media.Brushes.OldLace.Color;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsourceparameters.extendedwindowstyle">ExtendedWindowStyle</a> свойство нельзя установить значение WS_EX_TRANSPARENT. Это означает, что узел Win32 окно не может быть прозрачным. По этой причине цвет фона узла Win32 окно присваивается один и тот же цвет фона родительского окна.</p>
@@ -137,19 +134,13 @@ internal static void CreateHostHwnd(IntPtr parentHwnd)
         ((ContainerVisual)myHwndSource.RootVisual).Children.Add(myShape);
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="implementing_the_win32_message_filter"></a></p>
 <h2 id="implementing-the-win32-message-filter">Реализация фильтра сообщений Win32</h2>
 <p>Узел Win32 окно для визуальных объектов требуется процедура фильтра сообщений окна для обработки сообщений, отправленных в окно из очереди приложения. Процедура окна получает сообщения от Win32 системы. Это могут быть входные сообщения или сообщения управления окнами. Сообщение можно обработать в процедуре окна или передать системе для обработки по умолчанию.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> Объект, который вы определили в качестве родительского для визуальных объектов необходимо обращаться вами процедуру фильтра сообщений окна. При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsourceparameters.hwndsourcehook">HwndSourceHook</a> свойство для ссылки на процедуру окна.</p>
 <pre><code class="lang-csharp" name="VisualsHitTesting#102">parameters.HwndSourceHook = new HwndSourceHook(ApplicationMessageFilter);
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>В следующем примере показан код для обработки сообщений при отпускании левой и правой кнопок мыши. Значение координаты мыши была нажата содержится в значении параметра <code>lParam</code> параметр.</p>
 <pre><code class="lang-csharp" name="VisualsHitTesting#103">// Constant values from the &quot;winuser.h&quot; header file.
 internal const int WM_LBUTTONUP = 0x0202,
@@ -173,10 +164,7 @@ internal static IntPtr ApplicationMessageFilter(
 
     return IntPtr.Zero;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><a name="processing_the_win32_messages"></a></p>
 <h2 id="processing-the-win32-messages">Обработка сообщений Win32</h2>
 <p>Код в следующем примере показано, как выполняется нажатия иерархии визуальных объектов, содержащихся в окне размещения Win32 окна. Можно определить, находится ли точка в пределах визуального объекта, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.visualtreehelper.hittest">HitTest</a> метод, чтобы задать корневой визуальный объект и значение координаты для проверки нажатия. В этом случае корневой визуальный объект является значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource.rootvisual">RootVisual</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> объекта.</p>
@@ -212,10 +200,7 @@ public static void OnHitTest(System.Windows.Point pt, int msg)
         ProcessHitTestResultsList();
     }
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Дополнительные сведения о проверке нажатия для визуальных объектов, см. в разделе <a href="hit-testing-in-the-visual-layer.html">проверка нажатия на визуальном уровне</a>.</p>
 <h2 id="see-also">См. также</h2>
 <ul>

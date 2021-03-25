@@ -305,15 +305,9 @@
 <p>Предположим, требуется повернуть объект на месте, а также применить качательное движение, чтобы лучше показать объект. Можно применить к модели класс RotateTransform3D и анимировать ее ось вращения от одного вектора к другому. В следующем примере кода демонстрируется применение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.vector3danimation">Vector3DAnimation</a> к свойству Axis преобразования элемента Rotation3D, при условии, что RotateTransform3D будет одним из нескольких преобразований, применяемых к модели с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.transformgroup">TransformGroup</a>.</p>
 <pre><code class="lang-csharp" name="3doverview#3DOverview3DN1">//Define a rotation
 RotateTransform3D myRotateTransform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 1));
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="3doverview#3DOverview3DN3">Vector3DAnimation myVectorAnimation = new Vector3DAnimation(new Vector3D(-1, -1, -1), new Duration(TimeSpan.FromMilliseconds(5000)));
+</code></pre><pre><code class="lang-csharp" name="3doverview#3DOverview3DN3">Vector3DAnimation myVectorAnimation = new Vector3DAnimation(new Vector3D(-1, -1, -1), new Duration(TimeSpan.FromMilliseconds(5000)));
 myVectorAnimation.RepeatBehavior = RepeatBehavior.Forever;
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Используйте аналогичный синтаксис для других свойств преобразования, чтобы переместить или отмасштабировать объект.  Например, можно применить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.point3danimation">Point3DAnimation</a> к свойству ScaleCenter при преобразовании масштаба модели к плавной деформации ее формы.</p>
 <p>Несмотря на то, что предыдущих примерах происходило преобразование свойств <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.media3d.geometrymodel3d">GeometryModel3D</a>, можно также преобразовывать свойства других моделей сцены.  Например, применяя преобразования анимации к объектам Light, можно создать перемещение световых и теневых эффектов, которые могут значительным образом изменить внешний вид модели.</p>
 <p>Поскольку камеры также являются моделями, их свойства также могут быть преобразованы.  Хотя внешний вид сцены можно изменить путем преобразования местоположения камеры или расстояний на плоскости (т. е. преобразованием всей проекции сцены целиком), обратите внимание, что многие эффекты, созданные таким способом, не создадут такого же впечатления, как преобразования, примененные к расположению или положению моделей в сцене.</p>

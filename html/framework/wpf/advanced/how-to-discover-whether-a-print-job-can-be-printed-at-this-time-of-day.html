@@ -92,10 +92,7 @@
 </li>
 </ul>
 <p>При создании отчетов время суток, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime.toshorttimestring">ToShortTimeString</a> метод называется также в том случае, так как этот метод подавляет лет, месяцев и дней из выходных данных. Его нельзя ограничить доступность очереди печати или печати для определенного года, месяцев или дней.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability">internal static void ReportQueueAndJobAvailability(PrintSystemJobInfo theJob)
+<pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#ReportQueueAndJobAvailability">internal static void ReportQueueAndJobAvailability(PrintSystemJobInfo theJob)
 {
     if (!(ReportAvailabilityAtThisTime(theJob.HostingPrintQueue) &amp;&amp; ReportAvailabilityAtThisTime(theJob)))
     {
@@ -124,10 +121,7 @@
         }
     }//end if at least one is not available
 }//end ReportQueueAndJobAvailability
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Две перегруженные версии <strong>ReportAvailabilityAtThisTime</strong> метод идентичны, за исключением типа, переданные им, поэтому только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue">PrintQueue</a> версии представлена ниже.</p>
 <div class="NOTE">
 <h5>Note</h5>
@@ -137,10 +131,7 @@
 <p>Затем метод проверяет, если начало и «until» раз идентичны. Если Да, очередь доступна всегда, поэтому этот метод возвращает <code>true</code>.</p>
 <p>Если очередь не доступны постоянно, данный метод использует статический <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime.utcnow">UtcNow</a> свойство для получения текущего времени в формате <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объекта. (Мы не требуется местное время, поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.starttimeofday">StartTimeOfDay</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printqueue.untiltimeofday">UntilTimeOfDay</a> сами являются свойства в формате UTC.)</p>
 <p>Тем не менее, эти два свойства ничем не <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объектов. Они являются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>задающими время как количество минут после полуночи в формате UTC. Поэтому нам придется преобразовать наш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объект минут после полуночи. Когда это будет сделано, метод просто проверяет ли «сейчас» между начала очереди, а также время, устанавливает флаг в значение false, если «сейчас» не между двумя значениями времени и возвращает этот флаг «до».</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#PrintQueueStartUntil">private static Boolean ReportAvailabilityAtThisTime(PrintQueue pq)
+<pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#PrintQueueStartUntil">private static Boolean ReportAvailabilityAtThisTime(PrintQueue pq)
 {
     Boolean available = true;
     if (pq.StartTimeOfDay != pq.UntilTimeOfDay) // If the printer is not available 24 hours a day
@@ -158,15 +149,9 @@
     }
     return available;
 }//end ReportAvailabilityAtThisTime
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p><strong>TimeConverter.ConvertToLocalHumanReadableTime</strong> (представленный в следующем примере кода) метод не использует все методы, появившиеся в Microsoft .NET Framework, поэтому краткое обсуждение. Этот метод имеет задачу двойного преобразования: оно должно принимать целое число минут после полуночи в формате выражения и преобразовать его в удобное для восприятия времени, и его необходимо преобразовать в местное время. Он делает это, сначала создавая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> объект, который устанавливается значение полуночи в формате UTC, а затем использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime.addminutes">AddMinutes</a> метод, чтобы добавить минуты, которые были переданы в метод. Эта команда возвращает новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a> содержащий исходное время, который был передан в метод. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime.tolocaltime">ToLocalTime</a> Метод затем преобразует это в местное время.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#TimeConverter">class TimeConverter
+<pre><code class="lang-csharp" name="DiagnoseProblematicPrintJob#TimeConverter">class TimeConverter
 {
     // Convert time as minutes past UTC midnight into human readable time in local time zone.
     internal static DateTime ConvertToLocalHumanReadableTime(Int32 timeInMinutesAfterUTCMidnight)
@@ -186,10 +171,7 @@
         return localTime;
     }// end ConvertToLocalHumanReadableTime
 }//end TimeConverter class
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.datetime">DateTime</a></li>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.printing.printsystemjobinfo">PrintSystemJobInfo</a></li>

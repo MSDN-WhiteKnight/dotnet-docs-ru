@@ -102,10 +102,7 @@
     // the brush remains yellow.
     Button1BackgroundBrush.Color = Colors.Blue;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Приведенный выше код не выполняет никаких действий: кисть остается желтой, что является значением, предоставляемые <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a> , анимировать кисть. Значение базового свойства (базовое значение) фактически изменяется на синий. Тем не менее эффективно, или текущий, значение остается желтый поскольку <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.coloranimation">ColorAnimation</a> по-прежнему переопределяет базовое значение. Если требуется базовое значение снова становятся действительное значение, необходимо остановить влияние свойства анимации. Существует три способа это сделать с помощью анимации раскадровки:</p>
 <ul>
 <li><p>Анимации <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.fillbehavior#System_Windows_Media_Animation_FillBehavior_Stop">Stop</a></p>
@@ -145,10 +142,7 @@
     // the brush changes to blue.
     Button2BackgroundBrush.Color = Colors.Blue;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="remove-the-entire-storyboard">Удаление раскадровки</h2>
+</code></pre><h2 id="remove-the-entire-storyboard">Удаление раскадровки</h2>
 <p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.removestoryboard">RemoveStoryboard</a> триггера или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard.remove">Storyboard.Remove</a> метод, вы указываете анимаций раскадровки для остановки, влияя на их целевые свойства. Разница между этим подходом и установкой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойство является то, что можно удалить раскадровку в любое время, хотя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.timeline.fillbehavior">FillBehavior</a> свойство действует только при анимации достигает конца активного периода.</p>
 <pre><code class="lang-xaml" name="timingbehaviors_snip#GraphicsMMButton3Declaration">&lt;Button
   Name=&quot;Button3&quot;
@@ -180,10 +174,7 @@
     MyStoryboard.Remove(Button3);
     Button3BackgroundBrush.Color = Colors.Blue;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="remove-an-animation-from-an-individual-property">Удалить анимацию из отдельного свойства</h2>
+</code></pre><h2 id="remove-an-animation-from-an-individual-property">Удалить анимацию из отдельного свойства</h2>
 <p>Другим способом остановки влияния свойство анимации является использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.animatable.beginanimation#System_Windows_Media_Animation_Animatable_BeginAnimation_System_Windows_DependencyProperty_System_Windows_Media_Animation_AnimationTimeline_">BeginAnimation(DependencyProperty, AnimationTimeline)</a> метод анимируемого объекта. Укажите в качестве первого параметра анимируемое свойство и <code>null</code> как второй.</p>
 <pre><code class="lang-xaml" name="timingbehaviors_snip#GraphicsMMButton4Declaration">&lt;Button
   Name=&quot;Button4&quot;
@@ -215,10 +206,7 @@
     Button4BackgroundBrush.BeginAnimation(SolidColorBrush.ColorProperty, null);
     Button4BackgroundBrush.Color = Colors.Blue;
 }
-</code></pre><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+</code></pre>
 <p>Этот способ также подходит для анимаций без раскадровки.</p>
 <h2 id="see-also">См. также</h2>
 <ul>
