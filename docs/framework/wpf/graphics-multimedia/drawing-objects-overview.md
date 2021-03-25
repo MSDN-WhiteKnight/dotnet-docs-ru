@@ -85,7 +85,7 @@ ImageDrawing размером 100 на 100
 ## <a name="play-media-code-only"></a>Воспроизведение мультимедиа (только код)  
   
 > [!NOTE]
->  Несмотря на то, что можно объявить <xref:System.Windows.Media.VideoDrawing> в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], вы можете только загружать и воспроизводить соответствующие мультимедиа с помощью кода. Чтобы воспроизвести видео в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], используйте <xref:System.Windows.Controls.MediaElement> вместо этого.  
+>  Несмотря на то, что можно объявить <xref:System.Windows.Media.VideoDrawing> в XAML, вы можете только загружать и воспроизводить соответствующие мультимедиа с помощью кода. Чтобы воспроизвести видео в XAML, используйте <xref:System.Windows.Controls.MediaElement> вместо этого.  
   
  Для воспроизведения аудио-или видео, используйте <xref:System.Windows.Media.VideoDrawing> и <xref:System.Windows.Media.MediaPlayer>. Есть два способа загрузки и воспроизведения мультимедиа. Первый заключается в использовании <xref:System.Windows.Media.MediaPlayer> и <xref:System.Windows.Media.VideoDrawing> , а второй способ состоит в создании собственных <xref:System.Windows.Media.MediaTimeline> для использования с <xref:System.Windows.Media.MediaPlayer> и <xref:System.Windows.Media.VideoDrawing>.  
   

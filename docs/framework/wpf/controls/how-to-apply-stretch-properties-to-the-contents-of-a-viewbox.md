@@ -21,7 +21,7 @@ ms.locfileid: "59209883"
 ## <a name="example"></a>Пример  
  В этом примере показано, как изменить значение <xref:System.Windows.Controls.Viewbox.StretchDirection%2A> и <xref:System.Windows.Controls.Viewbox.Stretch%2A> свойства <xref:System.Windows.Controls.Viewbox>.  
   
- В первом примере используется [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] для определения <xref:System.Windows.Controls.Viewbox> элемент. Он назначает <xref:System.Windows.FrameworkElement.MaxWidth%2A> и <xref:System.Windows.FrameworkElement.MaxHeight%2A> 400. Примере показаны вложенные <xref:System.Windows.Controls.Image> сервисном <xref:System.Windows.Controls.Viewbox>. <xref:System.Windows.Controls.Button> элементы, соответствующие значения свойств для <xref:System.Windows.Controls.Viewbox.Stretch%2A> и <xref:System.Windows.Controls.StretchDirection> перечисления управляют растяжением вложенного <xref:System.Windows.Controls.Image>.  
+ В первом примере используется XAML для определения <xref:System.Windows.Controls.Viewbox> элемент. Он назначает <xref:System.Windows.FrameworkElement.MaxWidth%2A> и <xref:System.Windows.FrameworkElement.MaxHeight%2A> 400. Примере показаны вложенные <xref:System.Windows.Controls.Image> сервисном <xref:System.Windows.Controls.Viewbox>. <xref:System.Windows.Controls.Button> элементы, соответствующие значения свойств для <xref:System.Windows.Controls.Viewbox.Stretch%2A> и <xref:System.Windows.Controls.StretchDirection> перечисления управляют растяжением вложенного <xref:System.Windows.Controls.Image>.  
   
  [!code-xaml[viewboxStretchLayoutSamp#1](~/samples/snippets/csharp/VS_Snippets_Wpf/viewboxStretchLayoutSamp/CSharp/Window1.xaml#1)]  
   

@@ -18,7 +18,7 @@ ms.locfileid: "59204618"
 # <a name="how-to-detect-when-the-enter-key-pressed"></a>Практическое руководство. Обнаружить, когда нажата клавиша ВВОД
 В этом примере показано, как определить, когда <xref:System.Windows.Input.Key.Enter> клавиши на клавиатуре.  
   
- В этом примере состоит из [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл и файл с выделенным кодом.  
+ В этом примере состоит из XAML файл и файл с выделенным кодом.  
   
 ## <a name="example"></a>Пример  
  Когда пользователь нажимает <xref:System.Windows.Input.Key.Enter> в <xref:System.Windows.Controls.TextBox>, входные данные в текстовом поле отображается в другой области [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)].  

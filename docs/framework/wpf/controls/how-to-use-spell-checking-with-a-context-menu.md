@@ -20,7 +20,7 @@ ms.locfileid: "59192983"
 По умолчанию при включении орфографии в элементе управления редактирования, такие как <xref:System.Windows.Controls.TextBox> или <xref:System.Windows.Controls.RichTextBox>, можно выбрать варианты правописания в контекстном меню. Например, если пользователи неправильно написанное слово, щелкните правой кнопкой мыши, они получают набор вариантов правописания или возможность **пропустить все**. Тем не менее при переопределении отобразится контекстное меню по умолчанию с собственного пользовательского контекстного меню, эта функция теряется, и вам нужно написать код, чтобы включить средство проверки орфографии в контекстном меню. В следующем примере показано, как включить эту функцию для <xref:System.Windows.Controls.TextBox>.  
   
 ## <a name="example"></a>Пример  
- В следующем примере показан [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , создающий <xref:System.Windows.Controls.TextBox> с некоторые события, которые используются для реализации контекстного меню.  
+ В следующем примере показан XAML , создающий <xref:System.Windows.Controls.TextBox> с некоторые события, которые используются для реализации контекстного меню.  
   
  [!code-xaml[TextBoxMiscSnippets_snip#SpellerCustomContextMenuExampleWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBoxMiscSnippets_snip/csharp/speller_custom_context_menu.xaml#spellercustomcontextmenuexamplewholepage)]  
   

@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59162715"
 ---
 # <a name="richtextbox-overview"></a>Общие сведения о RichTextBox
-<xref:System.Windows.Controls.RichTextBox> Элемент управления позволяет отображать или изменять Подвижное содержимое, включая абзацы, изображения, таблицы и многое другое. В данном разделе представлены <xref:System.Windows.Controls.TextBox> класса и приводятся примеры его использования в оба [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и C#.  
+<xref:System.Windows.Controls.RichTextBox> Элемент управления позволяет отображать или изменять Подвижное содержимое, включая абзацы, изображения, таблицы и многое другое. В данном разделе представлены <xref:System.Windows.Controls.TextBox> класса и приводятся примеры его использования в оба XAML и C#.  
 
 <a name="textbox_or_richtextbox"></a>   
 ## <a name="textbox-or-richtextbox"></a>TextBox или RichTextBox?  

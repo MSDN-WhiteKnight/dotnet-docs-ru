@@ -27,7 +27,7 @@ ms.locfileid: "59341053"
   
 2. Сценарии печати.  
   
-    -   [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] как язык принтера.  
+    -   XAML как язык принтера.  
   
     -   [!INCLUDE[TLA#tla_mxdw](../../../../includes/tlasharptla-mxdw-md.md)].  
   

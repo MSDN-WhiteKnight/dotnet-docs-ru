@@ -331,7 +331,7 @@ ms.locfileid: "59320019"
 
  Область фокуса — это элемент контейнера, который отслеживает <xref:System.Windows.Input.FocusManager.FocusedElement%2A> внутри своей области.  Когда фокус покидает область фокуса, элемент с фокусом теряет фокус клавиатуры, но сохраняет логический фокус.  При возвращении фокуса в область фокуса элемент с логическим фокусом получит фокус клавиатуры.  Это позволяет переносить фокус клавиатуры между несколькими областями фокуса, но гарантирует, что элемент с фокусом в области фокуса останется элементом с фокусом, когда фокус вернется в эту область.
 
- Элемент может быть включен в область фокуса в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , задав <xref:System.Windows.Input.FocusManager> присоединенное свойство <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> для `true`, или в коде, установив присоединенное свойство с помощью <xref:System.Windows.Input.FocusManager.SetIsFocusScope%2A> метод.
+ Элемент может быть включен в область фокуса в XAML , задав <xref:System.Windows.Input.FocusManager> присоединенное свойство <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> для `true`, или в коде, установив присоединенное свойство с помощью <xref:System.Windows.Input.FocusManager.SetIsFocusScope%2A> метод.
 
  В нижеследующем примере <xref:System.Windows.Controls.StackPanel> в область фокуса, задав <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> вложенного свойства зависимостей.
 

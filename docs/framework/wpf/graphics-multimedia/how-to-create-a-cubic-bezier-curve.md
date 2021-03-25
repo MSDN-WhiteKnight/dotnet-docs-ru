@@ -20,7 +20,7 @@ ms.locfileid: "59115574"
 ## <a name="example"></a>Пример  
  [xaml]  
   
- В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], можно использовать сокращенный синтаксис разметки для описания пути.  
+ В XAML, можно использовать сокращенный синтаксис разметки для описания пути.  
   
  [!code-xaml[GeometrySample#53](~/samples/snippets/csharp/VS_Snippets_Wpf/GeometrySample/CS/geometryattributesyntaxexample.xaml#53)]  
   

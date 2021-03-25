@@ -12,7 +12,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59181172"
 ---
 # <a name="how-to-create-a-multiline-textbox-control"></a>Практическое руководство. Создание элемента управления для многострочных элементов TextBox
-В этом примере показано, как использовать [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] для определения <xref:System.Windows.Controls.TextBox> элемент управления, который будет автоматически расширяться, чтобы вместить несколько строк текста.  
+В этом примере показано, как использовать XAML для определения <xref:System.Windows.Controls.TextBox> элемент управления, который будет автоматически расширяться, чтобы вместить несколько строк текста.  
   
 ## <a name="example"></a>Пример  
  Параметр <xref:System.Windows.Controls.TextBox.TextWrapping%2A> атрибут **Wrap** вызовет введенного текста программы-оболочки в новую строку при границе <xref:System.Windows.Controls.TextBox> будет достигнут элемент управления, автоматически расширяя <xref:System.Windows.Controls.TextBox> элемента управления, чтобы появилось место для строки, в том случае, если обязательно.  

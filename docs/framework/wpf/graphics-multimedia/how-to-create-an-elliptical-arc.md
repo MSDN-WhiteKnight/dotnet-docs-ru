@@ -21,7 +21,7 @@ ms.locfileid: "59183655"
   
  [xaml]  
   
- В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], можно использовать синтаксис атрибута для описания пути.  
+ В XAML, можно использовать синтаксис атрибута для описания пути.  
   
  [!code-xaml[GeometrySample#56](~/samples/snippets/csharp/VS_Snippets_Wpf/GeometrySample/CS/geometryattributesyntaxexample.xaml#56)]  
   

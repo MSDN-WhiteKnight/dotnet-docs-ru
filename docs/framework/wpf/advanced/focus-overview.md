@@ -47,7 +47,7 @@ ms.locfileid: "59073888"
   
  Элемент, имеющий фокус клавиатуры, имеет логический фокус для области фокуса, которой он принадлежит.  
   
- Элемент может быть включен в область фокуса в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , задав <xref:System.Windows.Input.FocusManager> присоединенное свойство <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> для `true`.  В коде, элемент может быть включен в область фокуса путем вызова <xref:System.Windows.Input.FocusManager.SetIsFocusScope%2A>.  
+ Элемент может быть включен в область фокуса в XAML , задав <xref:System.Windows.Input.FocusManager> присоединенное свойство <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> для `true`.  В коде, элемент может быть включен в область фокуса путем вызова <xref:System.Windows.Input.FocusManager.SetIsFocusScope%2A>.  
   
  В нижеследующем примере <xref:System.Windows.Controls.StackPanel> в область фокуса, задав <xref:System.Windows.Input.FocusManager.IsFocusScope%2A> вложенного свойства зависимостей.  
   

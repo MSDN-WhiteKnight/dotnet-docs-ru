@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59082494"
 ---
 # <a name="path-markup-syntax"></a>Синтаксис разметки пути
-Путями, рассматриваются в [фигур и базовых средств рисования в WPF Обзор](shapes-and-basic-drawing-in-wpf-overview.md) и [Общие сведения о геометрии](geometry-overview.md), однако в этом разделе подробно описываются сложной и мощной мини-язык, который можно использовать для указания пути более [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
+Путями, рассматриваются в [фигур и базовых средств рисования в WPF Обзор](shapes-and-basic-drawing-in-wpf-overview.md) и [Общие сведения о геометрии](geometry-overview.md), однако в этом разделе подробно описываются сложной и мощной мини-язык, который можно использовать для указания пути более XAML.  
   
 <a name="prerequisites"></a>   
 ## <a name="prerequisites"></a>Предварительные требования  
@@ -43,13 +43,13 @@ ms.locfileid: "59082494"
  Два числа не обязательно должны быть разделены запятыми или пробелы, но это может быть выполнено, только если результирующая строка получается неоднозначной. Например `2..3` фактически представляет два числа: "2." и 3. Аналогичным образом `2-3` «2» и «-3". Пробелы до и после команд ставить необязательно.  
   
 ### <a name="syntax"></a>Синтаксис  
- [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] Атрибута синтаксис для использования <xref:System.Windows.Media.StreamGeometry> состоит из необязательного <xref:System.Windows.Media.FillRule> значение и один или несколько следующих описаний.  
+ XAML Атрибута синтаксис для использования <xref:System.Windows.Media.StreamGeometry> состоит из необязательного <xref:System.Windows.Media.FillRule> значение и один или несколько следующих описаний.  
   
 |Использование атрибута XAML на StreamGeometry|  
 |-----------------------------------------|  
 |`<` *Объект* *свойство* `="`[ `fillRule`] `figureDescription`[ `figureDescription`] * `" ... />`|  
   
- [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] Атрибута синтаксис для использования <xref:System.Windows.Media.PathFigureCollection> состоит из одного или нескольких описаний.  
+ XAML Атрибута синтаксис для использования <xref:System.Windows.Media.PathFigureCollection> состоит из одного или нескольких описаний.  
   
 |Использование атрибута XAML на PathFigureCollection|  
 |-----------------------------------------------|  

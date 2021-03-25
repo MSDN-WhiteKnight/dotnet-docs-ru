@@ -19,7 +19,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59137713"
 ---
 # <a name="resources-and-code"></a>Ресурсы и код
-Этот обзор посвящен преимущественно доступу к ресурсам Windows Presentation Foundation (WPF) и их созданию с использованием кода, а не синтаксиса [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)]. Дополнительные сведения об общем использовании ресурсов и ресурсах с точки зрения синтаксиса [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] см. в разделе [Ресурсы XAML](xaml-resources.md).  
+Этот обзор посвящен преимущественно доступу к ресурсам Windows Presentation Foundation (WPF) и их созданию с использованием кода, а не синтаксиса XAML. Дополнительные сведения об общем использовании ресурсов и ресурсах с точки зрения синтаксиса [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] см. в разделе [Ресурсы XAML](xaml-resources.md).  
 
 <a name="accessing"></a>   
 ## <a name="accessing-resources-from-code"></a>Доступ к ресурсам из кода  

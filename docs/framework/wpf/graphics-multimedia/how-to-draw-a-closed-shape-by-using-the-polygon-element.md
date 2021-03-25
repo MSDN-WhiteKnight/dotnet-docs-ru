@@ -18,7 +18,7 @@ ms.locfileid: "57360047"
 В этом примере показано, как Рисование замкнутой фигуры с помощью <xref:System.Windows.Shapes.Polygon> элемент. Чтобы Рисование замкнутой фигуры, создайте <xref:System.Windows.Shapes.Polygon> элемента и использование его <xref:System.Windows.Shapes.Polygon.Points%2A> свойство, чтобы указать вершины фигуры. Автоматически отображается линия, соединяющая точки первого и последнего. Наконец, укажите <xref:System.Windows.Shapes.Shape.Fill%2A>, <xref:System.Windows.Shapes.Shape.Stroke%2A>, или оба.  
   
 ## <a name="example"></a>Пример  
- В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], допустимым синтаксисом для точек является список с разделителями запятыми координат x и y пар.  
+ В XAML, допустимым синтаксисом для точек является список с разделителями запятыми координат x и y пар.  
   
  [!code-xaml[drawingwithshapeelements#PolygonExample1](~/samples/snippets/csharp/VS_Snippets_Wpf/DrawingWithShapeElements/CS/polygonexample.xaml#polygonexample1)]  
   

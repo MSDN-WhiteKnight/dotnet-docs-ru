@@ -18,7 +18,7 @@ ms.locfileid: "57357213"
   
  ![Настраиваемая кнопка, которая будет создан](./media/custom-button-blend-intro.jpg "custom_button_blend_Intro")  
   
- Векторная графика, составляющих внешний вид кнопки создаются с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)]. [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] — похож на HTML, но является более эффективные и расширяемые. [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] можно вводить вручную с помощью Microsoft Visual Studio или Блокнот, или можно использовать это средство визуального проектирования, таких как Microsoft Expression Blend. Expression Blend работает путем создания основного [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] кода, поэтому оба метода создают одинаковую графику.  
+ Векторная графика, составляющих внешний вид кнопки создаются с помощью XAML. [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] — похож на HTML, но является более эффективные и расширяемые. XAML можно вводить вручную с помощью Microsoft Visual Studio или Блокнот, или можно использовать это средство визуального проектирования, таких как Microsoft Expression Blend. Expression Blend работает путем создания основного [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] кода, поэтому оба метода создают одинаковую графику.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Создание кнопки с помощью Microsoft Expression Blend](walkthrough-create-a-button-by-using-microsoft-expression-blend.md)  

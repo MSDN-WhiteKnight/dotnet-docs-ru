@@ -21,7 +21,7 @@ ms.locfileid: "59195557"
  <xref:System.Windows.Media.Imaging.CroppedBitmap> используется главным образом при кодировании обрезанной версии изображения для сохранения файла. Чтобы обрезать изображение для отображения см. в целях [как: Создание области отсечения](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms746710(v=vs.90)) раздела.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] определяет ресурсы, используемые в примерах ниже.  
+ Следующие XAML определяет ресурсы, используемые в примерах ниже.  
   
  [!code-xaml[imageelementexample#CroppedXAML1](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample/CSharp/CroppedImageExample.xaml#croppedxaml1)]  
   

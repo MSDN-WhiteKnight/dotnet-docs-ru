@@ -39,7 +39,7 @@ ms.locfileid: "59296125"
 Пользователи взаимодействуют с Windows Presentation Foundation (WPF) автономных приложений с помощью windows. Основная цель окна — разместить содержимое, которое визуализирует данные и позволяет пользователям взаимодействовать с ними. Автономный WPF приложения предоставляют собственные окна с помощью <xref:System.Windows.Window> класса. В данном разделе представлены <xref:System.Windows.Window> затем освещаются основы создания и управления окнами в автономных приложениях.  
   
 > [!NOTE]
->  Браузерные WPF приложений, включая XAML-приложения браузера (XBAP) и свободные [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] страниц, не предоставляют собственных окон. Вместо этого они размещаются в окнах, предоставляемых [!INCLUDE[TLA#tla_iegeneric](../../../../includes/tlasharptla-iegeneric-md.md)]. См. в разделе [Общие сведения о приложениях браузера WPF XAML](wpf-xaml-browser-applications-overview.md).  
+>  Браузерные WPF приложений, включая XAML-приложения браузера (XBAP) и свободные XAML страниц, не предоставляют собственных окон. Вместо этого они размещаются в окнах, предоставляемых [!INCLUDE[TLA#tla_iegeneric](../../../../includes/tlasharptla-iegeneric-md.md)]. См. в разделе [Общие сведения о приложениях браузера WPF XAML](wpf-xaml-browser-applications-overview.md).  
 
 <a name="TheWindowClass"></a>   
 ## <a name="the-window-class"></a>Класс окна  
@@ -471,7 +471,7 @@ ms.locfileid: "59296125"
   
  Однако это выходит за рамки набора разрешений для приложений, запущенных из Интернета или локальной интрасети с помощью [!INCLUDE[TLA#tla_clickonce](../../../../includes/tlasharptla-clickonce-md.md)]. Следовательно, пользователи будут получать [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] предупреждение системы безопасности и должны будут повысить набор разрешений для приложения до полного доверия.  
   
- Кроме того [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)] не может отображать окна или диалоговые окна по умолчанию. Обсуждение безопасности автономных приложений, см. в разделе [стратегия безопасности WPF — безопасность платформы](../wpf-security-strategy-platform-security.md).  
+ Кроме того XBAP не может отображать окна или диалоговые окна по умолчанию. Обсуждение безопасности автономных приложений, см. в разделе [стратегия безопасности WPF — безопасность платформы](../wpf-security-strategy-platform-security.md).  
   
 <a name="Other_Types_of_Windows"></a>   
 ## <a name="other-types-of-windows"></a>Другие типы окон  

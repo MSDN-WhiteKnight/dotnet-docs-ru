@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59203552"
 ---
 # <a name="contextmenu-overview"></a>Общие сведения о ContextMenu
-<xref:System.Windows.Controls.ContextMenu> Класс представляет элемент, который предоставляет функциональные возможности с помощью контекстно зависимое <xref:System.Windows.Controls.Menu>. Как правило, предоставляется пользователю <xref:System.Windows.Controls.ContextMenu> в [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] щелкнув правой кнопкой мыши. В данном разделе представлены <xref:System.Windows.Controls.ContextMenu> элемент и приводятся примеры того, как использовать его в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и кода.  
+<xref:System.Windows.Controls.ContextMenu> Класс представляет элемент, который предоставляет функциональные возможности с помощью контекстно зависимое <xref:System.Windows.Controls.Menu>. Как правило, предоставляется пользователю <xref:System.Windows.Controls.ContextMenu> в [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] щелкнув правой кнопкой мыши. В данном разделе представлены <xref:System.Windows.Controls.ContextMenu> элемент и приводятся примеры того, как использовать его в XAML и кода.  
 
 <a name="contextmenu_control"></a>   
 ## <a name="contextmenu-control"></a>Элемент управления ContextMenu  

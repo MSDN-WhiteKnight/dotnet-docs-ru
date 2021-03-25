@@ -19,7 +19,7 @@ ms.locfileid: "59217644"
 # <a name="how-to-change-the-color-of-an-element-using-focus-events"></a>Практическое руководство. Изменение цвета элемента с помощью событий фокуса
 В этом примере показано, как изменение цвета элемента, когда он получает и теряет фокус с помощью <xref:System.Windows.UIElement.GotFocus> и <xref:System.Windows.UIElement.LostFocus> события.  
   
- В этом примере состоит из [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл и файл с выделенным кодом.  
+ В этом примере состоит из XAML файл и файл с выделенным кодом.  
   
 ## <a name="example"></a>Пример  
  Следующие [!INCLUDE[TLA2#tla_titlexaml](../../../../includes/tla2sharptla-titlexaml-md.md)] создает пользовательский интерфейс, который состоит из двух <xref:System.Windows.Controls.Button> объектов, а также присоединяет обработчики событий для <xref:System.Windows.UIElement.GotFocus> и <xref:System.Windows.UIElement.LostFocus> событий <xref:System.Windows.Controls.Button> объектов.  

@@ -20,7 +20,7 @@ ms.locfileid: "59224589"
 В этом примере показан один из способов использования <xref:System.Windows.Controls.TextBox.SelectedText%2A> свойства, чтобы получить текст, который пользователь выбрал в <xref:System.Windows.Controls.TextBox> элемента управления.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] примере показано определение <xref:System.Windows.Controls.TextBox> элемент управления, содержащий текст для выбора, и <xref:System.Windows.Controls.Button> элемента управления с указанным <xref:System.Windows.Controls.Button.OnClick%2A> метод.  
+ Следующие XAML примере показано определение <xref:System.Windows.Controls.TextBox> элемент управления, содержащий текст для выбора, и <xref:System.Windows.Controls.Button> элемента управления с указанным <xref:System.Windows.Controls.Button.OnClick%2A> метод.  
   
  В этом примере кнопка со связанным <xref:System.Windows.Controls.Primitives.ButtonBase.Click> обработчик событий используется для получения выделенный текст. Когда пользователь нажимает кнопку, <xref:System.Windows.Controls.Button.OnClick%2A> метод копирует любой выделенный текст в текстовом поле в строку. Конкретной ситуации, по которым выделенный текст извлекается (нажатие кнопки), а также действие, выполняемое с выделенным (копирование выделенного текста в строку), можно легко изменить в соответствии с самых разнообразных сценариях.  
   

@@ -18,7 +18,7 @@ ms.locfileid: "59141210"
 # <a name="how-to-change-the-cursor-type"></a>Практическое руководство. Изменение типа курсора
 В этом примере показано, как изменить <xref:System.Windows.Input.Cursor> указателя мыши для конкретного элемента, а также для приложения.  
   
- В этом примере состоит из [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл и файл кода программной части.  
+ В этом примере состоит из XAML файл и файл кода программной части.  
   
 ## <a name="example"></a>Пример  
  Создается пользовательский интерфейс, который состоит из <xref:System.Windows.Controls.ComboBox> для выбора нужного <xref:System.Windows.Input.Cursor>, пару <xref:System.Windows.Controls.RadioButton> объектов, чтобы определить, если изменение курсора применяется только к одному элементу или применяется ко всему приложению и <xref:System.Windows.Controls.Border> который является элементом, применяемый к новым курсором.  

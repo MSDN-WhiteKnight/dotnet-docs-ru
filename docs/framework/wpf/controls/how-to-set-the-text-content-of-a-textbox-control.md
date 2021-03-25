@@ -18,7 +18,7 @@ ms.locfileid: "59212197"
 # <a name="how-to-set-the-text-content-of-a-textbox-control"></a>Практическое руководство. Установка текстового содержимого для элемента управления TextBox
 В этом примере показано, как использовать <xref:System.Windows.Controls.TextBox.Text%2A> свойство для задания начального текстового содержимого элемента <xref:System.Windows.Controls.TextBox> элемента управления.  
   
- **Примечание** несмотря на то что [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] использовать версию примера `<TextBox.Text>` теги вокруг текста каждой кнопки <xref:System.Windows.Controls.TextBox> содержимого, нет необходимости поскольку <xref:System.Windows.Controls.TextBox> применяется <xref:System.Windows.Markup.ContentPropertyAttribute> для атрибута <xref:System.Windows.Controls.TextBox.Text%2A> свойство. Дополнительные сведения см. в разделе [Обзор XAML (WPF)](../advanced/xaml-overview-wpf.md).  
+ **Примечание** несмотря на то что XAML использовать версию примера `<TextBox.Text>` теги вокруг текста каждой кнопки <xref:System.Windows.Controls.TextBox> содержимого, нет необходимости поскольку <xref:System.Windows.Controls.TextBox> применяется <xref:System.Windows.Markup.ContentPropertyAttribute> для атрибута <xref:System.Windows.Controls.TextBox.Text%2A> свойство. Дополнительные сведения см. в разделе [Обзор XAML (WPF)](../advanced/xaml-overview-wpf.md).  
   
 ## <a name="example"></a>Пример  
  [!code-xaml[TextBox_MiscCode#_TextBoxSetTextXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_textboxsettextxaml)]  

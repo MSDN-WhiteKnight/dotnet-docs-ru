@@ -17,7 +17,7 @@ ms.locfileid: "59300465"
 В этом пошаговом руководстве пошагово продемонстрирует процесс создания WPF настраиваемая кнопка, с помощью Microsoft Expression Blend.  
   
 > [!IMPORTANT]
->  Microsoft Expression Blend работает путем создания [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , который затем компилируется для получения исполняемой программы. Если работать с [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] напрямую, есть другой Пошаговое руководство, которое создает то же приложение, как это, используя [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] с Visual Studio, а не в Blend. См. в разделе [Создание кнопки с помощью XAML](walkthrough-create-a-button-by-using-xaml.md) Дополнительные сведения.  
+>  Microsoft Expression Blend работает путем создания XAML , который затем компилируется для получения исполняемой программы. Если работать с XAML напрямую, есть другой Пошаговое руководство, которое создает то же приложение, как это, используя XAML с Visual Studio, а не в Blend. См. в разделе [Создание кнопки с помощью XAML](walkthrough-create-a-button-by-using-xaml.md) Дополнительные сведения.  
   
  На следующем рисунке настраиваемая кнопка вы создадите.  
   

@@ -169,7 +169,7 @@ ms.locfileid: "59180002"
  Пример см. в разделе [Создание фигуры с помощью класса StreamGeometry](how-to-create-a-shape-using-a-streamgeometry.md).  
   
 ### <a name="path-markup-syntax"></a>Синтаксис разметки пути  
- <xref:System.Windows.Media.PathGeometry> И <xref:System.Windows.Media.StreamGeometry> типы поддержки [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] синтаксис, с помощью специальных последовательностей перемещения атрибута и команд рисования. Дополнительные сведения см. в разделе [Синтаксис разметки пути](path-markup-syntax.md).  
+ <xref:System.Windows.Media.PathGeometry> И <xref:System.Windows.Media.StreamGeometry> типы поддержки XAML синтаксис, с помощью специальных последовательностей перемещения атрибута и команд рисования. Дополнительные сведения см. в разделе [Синтаксис разметки пути](path-markup-syntax.md).  
   
 <a name="wcpsdk_graphics_geometry_introduction2"></a>   
 ## <a name="composite-geometries"></a>Составные геометрические объекты  

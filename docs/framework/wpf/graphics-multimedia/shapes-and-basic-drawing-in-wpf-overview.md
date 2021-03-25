@@ -85,7 +85,7 @@ ms.locfileid: "59189138"
   
 <a name="pathdatastring"></a>   
 ### <a name="xaml-abbreviated-syntax"></a>Сокращенный синтаксис XAML  
- В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], также могут использовать специальный сокращенный синтаксис для описания <xref:System.Windows.Shapes.Path>. В следующем примере сокращенный синтаксис используется для рисования сложной фигуры.  
+ В XAML, также могут использовать специальный сокращенный синтаксис для описания <xref:System.Windows.Shapes.Path>. В следующем примере сокращенный синтаксис используется для рисования сложной фигуры.  
   
 ```xaml  
       <Path Stroke="DarkGoldenRod" StrokeThickness="3"   

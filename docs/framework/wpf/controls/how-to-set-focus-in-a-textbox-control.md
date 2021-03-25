@@ -19,7 +19,7 @@ ms.locfileid: "59115509"
 В этом примере показано, как использовать <xref:System.Windows.UIElement.Focus%2A> метод, чтобы установить фокус на <xref:System.Windows.Controls.TextBox> элемента управления.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] пример описывает простой <xref:System.Windows.Controls.TextBox> управления с именем *tbFocusMe*  
+ Следующие XAML пример описывает простой <xref:System.Windows.Controls.TextBox> управления с именем *tbFocusMe*  
   
  [!code-xaml[TextBox_MiscCode#_TextBoxFocusXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_textboxfocusxaml)]  
   

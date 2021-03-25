@@ -27,7 +27,7 @@ ms.locfileid: "57845636"
 
 [xaml]
 
-В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] можно использовать синтаксис атрибута для описания пути.
+В XAML можно использовать синтаксис атрибута для описания пути.
 
 ```xaml
 <Path Stroke="Black" StrokeThickness="1"

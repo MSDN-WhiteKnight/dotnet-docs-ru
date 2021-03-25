@@ -19,7 +19,7 @@ ms.locfileid: "57356277"
 # <a name="how-to-set-margins-of-elements-and-controls"></a>Практическое руководство. Установка полей для элементов и элементов управления
 В этом примере описывается установка <xref:System.Windows.FrameworkElement.Margin%2A> свойства, путем изменения значения любого существующего свойства для поля в коде. <xref:System.Windows.FrameworkElement.Margin%2A> Свойство является свойством <xref:System.Windows.FrameworkElement> элемент базового и таким образом будет наследоваться различные элементы управления и другие элементы.  
   
- В этом примере создается на языке [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], файл с выделенным кодом, [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] ссылается на. Код программной части показан как C# и версии Microsoft Visual Basic.  
+ В этом примере создается на языке XAML, файл с выделенным кодом, [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] ссылается на. Код программной части показан как C# и версии Microsoft Visual Basic.  
   
 ## <a name="example"></a>Пример  
  [!code-xaml[FEMarginProgrammatic#XAML](~/samples/snippets/csharp/VS_Snippets_Wpf/FEMarginProgrammatic/CSharp/default.xaml#xaml)]  

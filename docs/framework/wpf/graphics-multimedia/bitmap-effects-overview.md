@@ -43,7 +43,7 @@ ms.locfileid: "59166898"
 ## <a name="how-to-apply-an-effect"></a>Применение эффекта  
  <xref:System.Windows.Media.Effects.BitmapEffect> является свойством <xref:System.Windows.Media.Visual>. Поэтому применение эффектов к визуальным элементам, такие как <xref:System.Windows.Controls.Button>, <xref:System.Windows.Controls.Image>, <xref:System.Windows.Media.DrawingVisual>, или <xref:System.Windows.UIElement>, так же просто, как задание свойства. <xref:System.Windows.UIElement.BitmapEffect%2A> можно задать единое <xref:System.Windows.Media.Effects.BitmapEffect> объект или несколько эффектов можно объединить в цепочку с помощью <xref:System.Windows.Media.Effects.BitmapEffectGroup> объекта.  
   
- Следующий пример демонстрирует применение <xref:System.Windows.Media.Effects.BitmapEffect> в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
+ Следующий пример демонстрирует применение <xref:System.Windows.Media.Effects.BitmapEffect> в XAML.  
   
  [!code-xaml[EffectsGallery_snip#BlurSimpleExampleInline](~/samples/snippets/csharp/VS_Snippets_Wpf/EffectsGallery_snip/CSharp/blursimpleexample.xaml#blursimpleexampleinline)]  
   

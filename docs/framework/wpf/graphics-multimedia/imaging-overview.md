@@ -95,7 +95,7 @@ ms.locfileid: "59209714"
   
  [!code-xaml[ImageElementExample_snip#ImageSimpleExampleInlineMarkup](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/ImageSimpleExample.xaml#imagesimpleexampleinlinemarkup)]  
   
- Во многих примерах используется <xref:System.Windows.Media.Imaging.BitmapImage> объект для ссылки на файл изображения. <xref:System.Windows.Media.Imaging.BitmapImage> является специализированным <xref:System.Windows.Media.Imaging.BitmapSource> , оптимизированный для [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] загрузки и простой способ отображения изображений в качестве <xref:System.Windows.Controls.Image.Source%2A> из <xref:System.Windows.Controls.Image> элемента управления.  
+ Во многих примерах используется <xref:System.Windows.Media.Imaging.BitmapImage> объект для ссылки на файл изображения. <xref:System.Windows.Media.Imaging.BitmapImage> является специализированным <xref:System.Windows.Media.Imaging.BitmapSource> , оптимизированный для XAML загрузки и простой способ отображения изображений в качестве <xref:System.Windows.Controls.Image.Source%2A> из <xref:System.Windows.Controls.Image> элемента управления.  
   
  В следующем примере показано, как построить изображение шириной 200 пикселей с использованием кода.  
   

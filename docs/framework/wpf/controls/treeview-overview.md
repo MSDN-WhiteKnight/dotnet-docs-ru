@@ -26,7 +26,7 @@ ms.locfileid: "59209077"
 ## <a name="creating-a-treeview"></a>Создание элемента управления TreeView  
  <xref:System.Windows.Controls.TreeView> Управления содержит иерархию <xref:System.Windows.Controls.TreeViewItem> элементов управления. Объект <xref:System.Windows.Controls.TreeViewItem> элемент управления является <xref:System.Windows.Controls.HeaderedItemsControl> с <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> и <xref:System.Windows.Controls.ItemsControl.Items%2A> коллекции.  
   
- При определении <xref:System.Windows.Controls.TreeView> с помощью [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)], можно явно определить <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> содержимое <xref:System.Windows.Controls.TreeViewItem> управления и элементы, входящие в коллекцию. Этот способ был показан на предыдущем рисунке.  
+ При определении <xref:System.Windows.Controls.TreeView> с помощью XAML, можно явно определить <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> содержимое <xref:System.Windows.Controls.TreeViewItem> управления и элементы, входящие в коллекцию. Этот способ был показан на предыдущем рисунке.  
   
  Можно также указать <xref:System.Windows.Controls.ItemsControl.ItemsSource%2A> данных источника, а затем укажите <xref:System.Windows.Controls.HeaderedItemsControl.HeaderTemplate%2A> и <xref:System.Windows.Controls.ItemsControl.ItemTemplate%2A> для определения <xref:System.Windows.Controls.TreeViewItem> содержимого.  
   

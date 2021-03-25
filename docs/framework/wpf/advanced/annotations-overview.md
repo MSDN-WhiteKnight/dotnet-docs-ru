@@ -42,7 +42,7 @@ ms.locfileid: "59122451"
   
  ![Заметка-выделение](./media/caf-callouts.png "CAF_Callouts")  
   
- Пользователи обычно создают заметки, сначала выбирая некоторый текст или интересующий элемент, а затем щелкните правой кнопкой мыши для отображения <xref:System.Windows.Controls.ContextMenu> для параметров заметки.  В следующем примере показан [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] можно использовать для объявления <xref:System.Windows.Controls.ContextMenu> с маршрутизированных команд, доступных пользователям для создания заметок и управления ими.  
+ Пользователи обычно создают заметки, сначала выбирая некоторый текст или интересующий элемент, а затем щелкните правой кнопкой мыши для отображения <xref:System.Windows.Controls.ContextMenu> для параметров заметки.  В следующем примере показан XAML можно использовать для объявления <xref:System.Windows.Controls.ContextMenu> с маршрутизированных команд, доступных пользователям для создания заметок и управления ими.  
   
  [!code-xaml[DocViewerAnnotationsXps#CreateDeleteAnnotations](~/samples/snippets/csharp/VS_Snippets_Wpf/DocViewerAnnotationsXps/CSharp/Window1.xaml#createdeleteannotations)]  
   

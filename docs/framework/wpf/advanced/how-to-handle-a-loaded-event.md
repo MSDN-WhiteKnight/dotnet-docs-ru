@@ -20,7 +20,7 @@ ms.locfileid: "59122555"
 В этом примере демонстрируется обработка <xref:System.Windows.FrameworkElement.Loaded?displayProperty=nameWithType> событий и соответствующий скрипт для обработки этого события. Создает обработчик <xref:System.Windows.Controls.Button> при загрузке страницы.  
   
 ## <a name="example"></a>Пример  
- В следующем примере используется [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] вместе с файлом кода.  
+ В следующем примере используется XAML вместе с файлом кода.  
   
  [!code-xaml[FELoaded#XAML](~/samples/snippets/csharp/VS_Snippets_Wpf/FELoaded/CSharp/default.xaml#xaml)]  
   

@@ -21,7 +21,7 @@ ms.locfileid: "59086121"
 В этом примере показано, как извлечь содержимое <xref:System.Windows.Controls.RichTextBox> как обычный текст.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] коде описывается элемент <xref:System.Windows.Controls.RichTextBox> элемента управления с простым содержимым.  
+ Следующие XAML коде описывается элемент <xref:System.Windows.Controls.RichTextBox> элемента управления с простым содержимым.  
   
  [!code-xaml[RichTextBoxSnippets#_RTB_XAML](~/samples/snippets/csharp/VS_Snippets_Wpf/RichTextBoxSnippets/CSharp/Window1.xaml#_rtb_xaml)]  
   

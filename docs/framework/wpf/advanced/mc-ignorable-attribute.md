@@ -48,7 +48,7 @@ ms.locfileid: "59219334"
 |-|-|  
 |*ignorablePrefix, ignorablePrefix1 и т. д.*|Любая строка допустимый префикс, согласно спецификации XML 1.0.|  
 |*ignorableUri*|Любой допустимый URI для назначения пространства имен, согласно спецификации XML 1.0.|  
-|*ThisElementCanBeIgnored*|Элемент, который может обрабатываться средством [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] реализаций обработчиков, если базовый тип не может быть разрешена.|  
+|*ThisElementCanBeIgnored*|Элемент, который может обрабатываться средством XAML реализаций обработчиков, если базовый тип не может быть разрешена.|  
   
 ## <a name="remarks"></a>Примечания  
  `mc` [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] Префикс пространства имен является соглашением, рекомендуемый префикс для использования при сопоставлении [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] имен совместимости [!INCLUDE[TLA#tla_mcxmlnsv1](../../../../includes/tlasharptla-mcxmlnsv1-md.md)].  

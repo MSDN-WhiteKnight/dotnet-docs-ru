@@ -37,7 +37,7 @@ ms.locfileid: "59078028"
 >  Не используйте `Handles` синтаксиса в коде Visual Basic при указании обработчик событий для того же события в XAML. В таком случае обработчик событий вызывается дважды.  
   
 ## <a name="how-wpf-implements-handles-functionality"></a>Как в WPF реализуются функциональные возможности ключевого слова Handles  
- Когда [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] компиляции страницы промежуточный файл объявляет `Friend` `WithEvents` ссылки на страницу, содержащую каждый элемент <xref:System.Windows.FrameworkContentElement.Name%2A> набор свойств (или [директива x: Name](../../xaml-services/x-name-directive.md) объявлен). Каждый именованный экземпляр является потенциальным элементом, который можно присвоить обработчику с помощью `Handles`.  
+ Когда XAML компиляции страницы промежуточный файл объявляет `Friend` `WithEvents` ссылки на страницу, содержащую каждый элемент <xref:System.Windows.FrameworkContentElement.Name%2A> набор свойств (или [директива x: Name](../../xaml-services/x-name-directive.md) объявлен). Каждый именованный экземпляр является потенциальным элементом, который можно присвоить обработчику с помощью `Handles`.  
   
 > [!NOTE]
 >  В [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] [!INCLUDE[TLA2#tla_intellisense](../../../../includes/tla2sharptla-intellisense-md.md)] может показать варианты завершения элементами, доступными для ссылки `Handles` на странице. Но для того чтобы промежуточный файл смог заполнить все ссылки `Friends`, может потребоваться один проход компиляции.  

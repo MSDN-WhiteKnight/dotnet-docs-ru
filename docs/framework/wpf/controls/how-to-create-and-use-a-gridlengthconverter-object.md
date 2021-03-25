@@ -20,7 +20,7 @@ ms.locfileid: "59206789"
   
  В примере также определяется второй пользовательский метод с именем `changeColVal`. Этот пользовательский метод преобразует <xref:System.Windows.Controls.Primitives.RangeBase.Value%2A> из <xref:System.Windows.Controls.Slider> для <xref:System.String> и затем передает значение обратно <xref:System.Windows.Controls.ColumnDefinition> как <xref:System.Windows.Controls.ColumnDefinition.Width%2A> элемента.  
   
- Обратите внимание, что отдельный [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл определяет содержание <xref:System.Windows.Controls.ListBoxItem>.  
+ Обратите внимание, что отдельный XAML файл определяет содержание <xref:System.Windows.Controls.ListBoxItem>.  
   
  [!code-csharp[gridlengthConverterGrid#1](~/samples/snippets/csharp/VS_Snippets_Wpf/gridlengthConverterGrid/CSharp/Window1.xaml.cs#1)]
    

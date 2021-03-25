@@ -86,15 +86,15 @@ ms.locfileid: "59211066"
   
 -   автономные страницы, размещенные в веб-браузере;  
   
--   страницы, скомпилированные в приложение [!INCLUDE[TLA2#tla_xbap](../../../../includes/tla2sharptla-xbap-md.md)], которое размещается в веб-браузере;  
+-   страницы, скомпилированные в приложение XBAP, которое размещается в веб-браузере;  
   
 -   страницы, скомпилированные в автономном приложении и размещенные в окне навигации (<xref:System.Windows.Navigation.NavigationWindow>);  
   
--   страницы, размещенные во фрейме (<xref:System.Windows.Controls.Frame>), который может размещаться на отдельной странице или на странице, скомпилированной в [!INCLUDE[TLA2#tla_xbap](../../../../includes/tla2sharptla-xbap-md.md)] или в автономное приложение.  
+-   страницы, размещенные во фрейме (<xref:System.Windows.Controls.Frame>), который может размещаться на отдельной странице или на странице, скомпилированной в XBAP или в автономное приложение.  
   
  Для облегчения навигации WPF реализует следующее:  
   
--   <xref:System.Windows.Navigation.NavigationService>, совместно используемый обработчик переходов для обработки запросов перемещения, который используется службами <xref:System.Windows.Controls.Frame>, <xref:System.Windows.Navigation.NavigationWindow>, и [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)] для поддержки переходов внутри приложения.  
+-   <xref:System.Windows.Navigation.NavigationService>, совместно используемый обработчик переходов для обработки запросов перемещения, который используется службами <xref:System.Windows.Controls.Frame>, <xref:System.Windows.Navigation.NavigationWindow>, и XBAP для поддержки переходов внутри приложения.  
   
 -   методы навигации для инициирования навигации;  
   
@@ -108,7 +108,7 @@ ms.locfileid: "59211066"
   
 <a name="Hosting"></a>   
 ## <a name="hosting"></a>Размещение в обозревателях  
- [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)] можно ли поместить в [!INCLUDE[TLA#tla_ie](../../../../includes/tlasharptla-ie-md.md)] или Firefox. Каждая модель размещения имеет свой собственный набор разрешений и ограничений, которые рассматриваются в разделе [Размещение](hosting-wpf-applications.md).  
+ XBAP можно ли поместить в [!INCLUDE[TLA#tla_ie](../../../../includes/tlasharptla-ie-md.md)] или Firefox. Каждая модель размещения имеет свой собственный набор разрешений и ограничений, которые рассматриваются в разделе [Размещение](hosting-wpf-applications.md).  
   
 <a name="Build_and_Deploy"></a>   
 ## <a name="build-and-deploy"></a>Построение и Развертывание  

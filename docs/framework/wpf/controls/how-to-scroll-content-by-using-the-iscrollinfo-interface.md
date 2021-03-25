@@ -20,7 +20,7 @@ ms.locfileid: "59098550"
 В этом примере показано, как прокручивание содержимого с помощью <xref:System.Windows.Controls.Primitives.IScrollInfo> интерфейс.  
   
 ## <a name="example"></a>Пример  
- Следующий пример демонстрирует функции <xref:System.Windows.Controls.Primitives.IScrollInfo> интерфейс. В примере создается <xref:System.Windows.Controls.StackPanel> элемент в [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , вложенный в родительский элемент <xref:System.Windows.Controls.ScrollViewer>. Дочерние элементы <xref:System.Windows.Controls.StackPanel> можно прокручивать с помощью методов, определенных логически <xref:System.Windows.Controls.Primitives.IScrollInfo> интерфейс и приведение к экземпляру <xref:System.Windows.Controls.StackPanel> (`sp1`) в коде.  
+ Следующий пример демонстрирует функции <xref:System.Windows.Controls.Primitives.IScrollInfo> интерфейс. В примере создается <xref:System.Windows.Controls.StackPanel> элемент в XAML , вложенный в родительский элемент <xref:System.Windows.Controls.ScrollViewer>. Дочерние элементы <xref:System.Windows.Controls.StackPanel> можно прокручивать с помощью методов, определенных логически <xref:System.Windows.Controls.Primitives.IScrollInfo> интерфейс и приведение к экземпляру <xref:System.Windows.Controls.StackPanel> (`sp1`) в коде.  
   
  [!code-xaml[IScrollInfoMethods#2](~/samples/snippets/csharp/VS_Snippets_Wpf/IScrollInfoMethods/CSharp/Window1.xaml#2)]  
   

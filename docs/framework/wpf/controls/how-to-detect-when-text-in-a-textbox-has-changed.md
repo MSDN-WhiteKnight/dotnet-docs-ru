@@ -26,7 +26,7 @@ ms.locfileid: "59091152"
  **Примечание.** Это событие возникает, когда <xref:System.Windows.Controls.TextBox> создается и изначально была заполнена текстом элемента управления.  
   
 ## <a name="example"></a>Пример  
- В [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] , определяющий вашей <xref:System.Windows.Controls.TextBox> управления, укажите <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> атрибут со значением, которое соответствует имени метода обработчика событий.  
+ В XAML , определяющий вашей <xref:System.Windows.Controls.TextBox> управления, укажите <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> атрибут со значением, которое соответствует имени метода обработчика событий.  
   
  [!code-xaml[TextBox_MiscCode#_TextChangedXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_textchangedxaml)]  
   

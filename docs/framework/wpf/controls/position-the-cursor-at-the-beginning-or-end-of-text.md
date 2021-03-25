@@ -20,7 +20,7 @@ ms.locfileid: "59186229"
 В этом примере показано, как позиционирование курсора в начало или конец текстового содержимого <xref:System.Windows.Controls.TextBox> элемента управления.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] код описывает <xref:System.Windows.Controls.TextBox> управления и присваивает ему имя.  
+ Следующие XAML код описывает <xref:System.Windows.Controls.TextBox> управления и присваивает ему имя.  
   
  [!code-xaml[TextBox_MiscCode#_MoveCursorXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_movecursorxaml)]  
   

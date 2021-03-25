@@ -382,7 +382,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   
  [!code-xaml[PackURIOverviewSnippets#StartupUriPage](~/samples/snippets/csharp/VS_Snippets_Wpf/PackURIOverviewSnippets/CS/App.xaml#startupuripage)]  
   
- Если приложение — это автономное приложение, и страница указана с <xref:System.Windows.Application.StartupUri%2A>, WPF открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения страницы. Для [!INCLUDE[TLA2#tla_xbap#plural](../../../../includes/tla2sharptla-xbapsharpplural-md.md)], страница будет отображена в браузере основного приложения.  
+ Если приложение — это автономное приложение, и страница указана с <xref:System.Windows.Application.StartupUri%2A>, WPF открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения страницы. Для XBAP, страница будет отображена в браузере основного приложения.  
   
 <a name="Navigating_to_a_Page"></a>   
 #### <a name="navigating-to-a-page"></a>Переход на страницу  

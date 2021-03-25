@@ -27,7 +27,7 @@ ms.locfileid: "59093804"
  [!code-csharp[DataBindingLab#18](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/DateConverter.cs#18)]
    
   
- После создания преобразователь, его можно добавить как ресурс в вашей [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] файл. В следующем примере *src* соответствует пространству имен, в котором *DateConverter* определен.  
+ После создания преобразователь, его можно добавить как ресурс в вашей XAML файл. В следующем примере *src* соответствует пространству имен, в котором *DateConverter* определен.  
   
  [!code-xaml[DataBindingLab#15](~/samples/snippets/csharp/VS_Snippets_Wpf/DataBindingLab/CSharp/DataBindingLabApp.xaml#15)]  
   

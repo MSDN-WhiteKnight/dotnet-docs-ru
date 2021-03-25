@@ -13,7 +13,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59162650"
 ---
 # <a name="textbox-overview"></a>Общие сведения о TextBox
-<xref:System.Windows.Controls.TextBox> Класс позволяет отобразить или отредактировать неформатированный текст. Обычно используются <xref:System.Windows.Controls.TextBox> редактирование неформатированного текста в форме. Например, форма запроса имени пользователя, номера телефона и т.д может использовать <xref:System.Windows.Controls.TextBox> элементы управления для ввода текста. В данном разделе представлены <xref:System.Windows.Controls.TextBox> класса и приводятся примеры его использования в оба [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] и C#.  
+<xref:System.Windows.Controls.TextBox> Класс позволяет отобразить или отредактировать неформатированный текст. Обычно используются <xref:System.Windows.Controls.TextBox> редактирование неформатированного текста в форме. Например, форма запроса имени пользователя, номера телефона и т.д может использовать <xref:System.Windows.Controls.TextBox> элементы управления для ввода текста. В данном разделе представлены <xref:System.Windows.Controls.TextBox> класса и приводятся примеры его использования в оба XAML и C#.  
 
 <a name="textbox_or_richtextbox"></a>   
 ## <a name="textbox-or-richtextbox"></a>TextBox или RichTextBox?  
@@ -49,7 +49,7 @@ ms.locfileid: "59162650"
   
  [!code-xaml[TextBoxMiscSnippets_snip#BasicTextBoxExampleWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBoxMiscSnippets_snip/csharp/basictextboxexample.xaml#basictextboxexamplewholepage)]  
   
- Вы также можете создать <xref:System.Windows.Controls.TextBox> , позволяющий пользователю вводить несколько строк текста. Например, если форма запрашивает биографические сведения пользователя, то целесообразно использовать <xref:System.Windows.Controls.TextBox> , поддерживающий несколько строк текста. В следующем примере показано, как использовать [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] для определения <xref:System.Windows.Controls.TextBox> элемент управления, который автоматически расширяется, чтобы вместить несколько строк текста.  
+ Вы также можете создать <xref:System.Windows.Controls.TextBox> , позволяющий пользователю вводить несколько строк текста. Например, если форма запрашивает биографические сведения пользователя, то целесообразно использовать <xref:System.Windows.Controls.TextBox> , поддерживающий несколько строк текста. В следующем примере показано, как использовать XAML для определения <xref:System.Windows.Controls.TextBox> элемент управления, который автоматически расширяется, чтобы вместить несколько строк текста.  
   
  [!code-xaml[TextBox_MiscCode#_MultilineTextBoxXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_multilinetextboxxaml)]  
   

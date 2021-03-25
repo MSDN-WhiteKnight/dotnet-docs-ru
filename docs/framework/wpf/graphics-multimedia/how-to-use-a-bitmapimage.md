@@ -16,7 +16,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59111583"
 ---
 # <a name="how-to-use-a-bitmapimage"></a>Практическое руководство. Использование объекта BitmapImage
-В этом примере показано, как использовать <xref:System.Windows.Media.Imaging.BitmapImage> как источник <xref:System.Windows.Controls.Image> контролировать [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)].  
+В этом примере показано, как использовать <xref:System.Windows.Media.Imaging.BitmapImage> как источник <xref:System.Windows.Controls.Image> контролировать XAML.  
   
 ## <a name="example"></a>Пример  
  [!code-xaml[ImageElementExample_snip#ImageSimpleExampleInlineMarkup](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/ImageSimpleExample.xaml#imagesimpleexampleinlinemarkup)]  

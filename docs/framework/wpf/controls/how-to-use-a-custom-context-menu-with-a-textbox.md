@@ -21,7 +21,7 @@ ms.locfileid: "59129420"
 В этом примере показано, как определить и реализовать простое пользовательское контекстное меню для <xref:System.Windows.Controls.TextBox>.  
   
 ## <a name="example"></a>Пример  
- Следующие [!INCLUDE[TLA#tla_xaml](../../../../includes/tlasharptla-xaml-md.md)] примере определяется <xref:System.Windows.Controls.TextBox> элемент управления, который включает в себя пользовательского контекстного меню.  
+ Следующие XAML примере определяется <xref:System.Windows.Controls.TextBox> элемент управления, который включает в себя пользовательского контекстного меню.  
   
  В контекстном меню определяется с помощью <xref:System.Windows.Controls.ContextMenu> элемент.  Само контекстное меню состоит из ряда <xref:System.Windows.Controls.MenuItem> элементов и <xref:System.Windows.Controls.Separator> элементов.  Каждый <xref:System.Windows.Controls.MenuItem> элемент определяет команду в контекстном меню; <xref:System.Windows.Controls.HeaderedItemsControl.Header%2A> атрибут определяет отображаемый текст для команды меню и <xref:System.Windows.Controls.MenuItem.Click> атрибут задает метод обработчика для каждого пункта меню.  <xref:System.Windows.Controls.Separator> Элемент просто отображает разделяющую строку между предыдущей и последующей пунктов.  
   
