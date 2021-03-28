@@ -25,7 +25,7 @@ ms.locfileid: "57366664"
   
 -   <xref:System.Windows.Controls.Frame> С помощью <xref:System.Windows.Navigation.NavigationService>  
   
--   [!INCLUDE[TLA#tla_iegeneric](../../../../includes/tlasharptla-iegeneric-md.md)]  
+-   Windows Internet Explorer  
   
  Прежде чем можно будет перейти вперед на одну запись, сначала следует проверить, записи в журнале переходов вперед, проверяя **CanGoForward** свойство. Чтобы перейти вперед на одну запись, необходимо вызвать **GoForward** метод. Это показано в следующем примере:  
   

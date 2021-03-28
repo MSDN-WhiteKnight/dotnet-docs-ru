@@ -38,7 +38,7 @@ ms.locfileid: "59341053"
 3. Представление документов фиксированного формата, включая клиенты предыдущих версий Windows и другие вычислительные устройства.  
   
 > [!NOTE]
->  <xref:System.Windows.Documents.Glyphs> и <xref:System.Windows.Media.GlyphRun> предназначены для представления документов фиксированного формата и сценариев печати. Windows Presentation Foundation (WPF) предоставляет несколько элементов для общего макета и [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] сценариях, например <xref:System.Windows.Controls.Label> и <xref:System.Windows.Controls.TextBlock>. Дополнительные сведения о макете и сценариях UI см. в статье [Оформление в WPF](typography-in-wpf.md).  
+>  <xref:System.Windows.Documents.Glyphs> и <xref:System.Windows.Media.GlyphRun> предназначены для представления документов фиксированного формата и сценариев печати. Windows Presentation Foundation (WPF) предоставляет несколько элементов для общего макета и UI  сценариях, например <xref:System.Windows.Controls.Label> и <xref:System.Windows.Controls.TextBlock>. Дополнительные сведения о макете и сценариях UI см. в статье [Оформление в WPF](typography-in-wpf.md).  
   
 <a name="text_glyphrunovw_glyphrunobject"></a>   
 ## <a name="the-glyphrun-object"></a>Объект GlyphRun  

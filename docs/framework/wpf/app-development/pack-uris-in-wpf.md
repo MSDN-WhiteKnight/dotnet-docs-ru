@@ -19,7 +19,7 @@ ms.locfileid: "59344355"
 # <a name="pack-uris-in-wpf"></a>URI типа "pack" в WPF
 В Windows Presentation Foundation (WPF), [!INCLUDE[TLA#tla_uri#plural](../../../../includes/tlasharptla-urisharpplural-md.md)] используются для идентификации и загрузки файлов несколькими способами, включая следующие:  
   
--   Указание [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] для отображения при первом запуске приложения.  
+-   Указание UI  для отображения при первом запуске приложения.  
   
 -   Загрузка изображений.  
   

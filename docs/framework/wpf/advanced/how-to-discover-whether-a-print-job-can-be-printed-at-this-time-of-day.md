@@ -22,7 +22,7 @@ ms.locfileid: "59326870"
   
  Кроме того задания печати, сами можно задать для печати только в указанный промежуток времени.  
   
- <xref:System.Printing.PrintQueue> И <xref:System.Printing.PrintSystemJobInfo> классы представлены в [!INCLUDE[TLA#tla_api#plural](../../../../includes/tlasharptla-apisharpplural-md.md)] платформы Microsoft .NET Framework предоставляют средства для удаленной проверки, можно ли печати данного задания печати из данной очереди в настоящее время.  
+ <xref:System.Printing.PrintQueue> И <xref:System.Printing.PrintSystemJobInfo> классы представлены в API платформы Microsoft .NET Framework предоставляют средства для удаленной проверки, можно ли печати данного задания печати из данной очереди в настоящее время.  
   
 ## <a name="example"></a>Пример  
  В приведенном ниже примере приведен пример, можно диагностировать проблемы с заданием печати.  

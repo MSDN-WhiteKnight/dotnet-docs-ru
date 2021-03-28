@@ -35,7 +35,7 @@ ms.locfileid: "59170187"
  Инструкции для обнаружения во время выполнения печати свойств объекта системы и их типов.  
   
  [Печать XPS-файлов программным способом](how-to-programmatically-print-xps-files.md)  
- Инструкции для быстрой печати [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файлов без необходимости [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)].  
+ Инструкции для быстрой печати [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файлов без необходимости UI .  
   
  [Удаленный опрос состояний принтеров](how-to-remotely-survey-the-status-of-printers.md)  
  Инструкции по созданию это программа, которая будет осуществлять опрос принтеров для обнаружения объектов через застревание бумаги или другие проблемы.  

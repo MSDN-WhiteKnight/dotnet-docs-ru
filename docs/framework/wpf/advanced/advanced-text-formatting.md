@@ -17,7 +17,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59085731"
 ---
 # <a name="advanced-text-formatting"></a>Дополнительное форматирование текста
-Windows Presentation Foundation (WPF) предоставляет набор надежных [!INCLUDE[TLA#tla_api#plural](../../../../includes/tlasharptla-apisharpplural-md.md)] для включения текста в приложении. Макет и [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)][!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)], такие как <xref:System.Windows.Controls.TextBlock>, обеспечивают наиболее распространенные и общие использовать элементы для представления текста. Рисование [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)], такие как <xref:System.Windows.Media.GlyphRunDrawing> и <xref:System.Windows.Media.FormattedText>, предоставляют средства для включения форматированного текста в рисунки. На наиболее продвинутом уровне WPF предоставляет расширяемый механизм форматирования текста для управления каждым аспектом представления текста: управление хранением текста, исполнением форматирования текста и внедренными объектами.  
+Windows Presentation Foundation (WPF) предоставляет набор надежных API для включения текста в приложении. Макет и UI API, такие как <xref:System.Windows.Controls.TextBlock>, обеспечивают наиболее распространенные и общие использовать элементы для представления текста. Рисование API, такие как <xref:System.Windows.Media.GlyphRunDrawing> и <xref:System.Windows.Media.FormattedText>, предоставляют средства для включения форматированного текста в рисунки. На наиболее продвинутом уровне WPF предоставляет расширяемый механизм форматирования текста для управления каждым аспектом представления текста: управление хранением текста, исполнением форматирования текста и внедренными объектами.  
   
  В этом разделе содержатся вводные WPF форматирование текста. Этот раздел посвящен реализации клиента и использовании WPF механизм форматирования текста.  
   
@@ -26,7 +26,7 @@ Windows Presentation Foundation (WPF) предоставляет набор на
 
 <a name="prereq"></a>   
 ## <a name="prerequisites"></a>Предварительные требования  
- В этом разделе предполагается, что вы знакомы с высоким уровнем [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] используемыми для представления текста. Большинство сценариев не требует расширенного форматирования текста [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] описанных в этом разделе. Введение в другой текстовой [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)], см. в разделе [документы в WPF](documents-in-wpf.md).  
+ В этом разделе предполагается, что вы знакомы с высоким уровнем API используемыми для представления текста. Большинство сценариев не требует расширенного форматирования текста API описанных в этом разделе. Введение в другой текстовой API, см. в разделе [документы в WPF](documents-in-wpf.md).  
   
 <a name="section1"></a>   
 ## <a name="advanced-text-formatting"></a>Дополнительное форматирование текста  

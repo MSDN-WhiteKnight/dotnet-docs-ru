@@ -17,7 +17,7 @@ ms.locfileid: "59122867"
   
 -   Свободные (нескомпилированные) файлы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] (.xaml).  
   
--   [!INCLUDE[TLA#tla_xbap](../../../../includes/tlasharptla-xbap-md.md)] (.xbap).  
+-   Приложение обозревателя XAML (XBAP) (.xbap).  
   
  Для файлов этих типов узлов Windows Presentation Foundation (WPF).  
   

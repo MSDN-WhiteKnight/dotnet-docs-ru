@@ -21,11 +21,11 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59313571"
 ---
 # <a name="security-wpf"></a>Безопасность (WPF)
-<a name="introduction"></a> При разработке Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере, необходимо учитывать модель безопасности. WPF Автономные приложения выполняются с неограниченными разрешениями ( [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **FullTrust** набор разрешений), если развертываются с помощью установщика Windows (MSI), XCopy или [!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]. Развертывание автономных приложений WPF с частичным доверием с помощью ClickOnce не поддерживается. Тем не менее, полным доверием ведущего приложения можно создать с частичным доверием <xref:System.AppDomain> с помощью модели надстроек платформы .NET Framework. Дополнительные сведения см. в разделе [Общие сведения о надстройках WPF](./app-development/wpf-add-ins-overview.md).  
+<a name="introduction"></a> При разработке Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере, необходимо учитывать модель безопасности. WPF Автономные приложения выполняются с неограниченными разрешениями ( CAS **FullTrust** набор разрешений), если развертываются с помощью установщика Windows (MSI), XCopy или ClickOnce. Развертывание автономных приложений WPF с частичным доверием с помощью ClickOnce не поддерживается. Тем не менее, полным доверием ведущего приложения можно создать с частичным доверием <xref:System.AppDomain> с помощью модели надстроек платформы .NET Framework. Дополнительные сведения см. в разделе [Общие сведения о надстройках WPF](./app-development/wpf-add-ins-overview.md).  
   
- WPF Браузерные приложения [!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)] или Firefox, и может быть либо XAML-приложения браузера (XBAP) или свободными XAML документов, Дополнительные сведения см. в разделе [Обзор приложений браузера XAML WPF](./app-development/wpf-xaml-browser-applications-overview.md).  
+ WPF Браузерные приложения Windows Internet Explorer или Firefox, и может быть либо XAML-приложения браузера (XBAP) или свободными XAML документов, Дополнительные сведения см. в разделе [Обзор приложений браузера XAML WPF](./app-development/wpf-xaml-browser-applications-overview.md).  
   
- WPF Браузерные приложения выполняются в песочнице с частичным доверием, по умолчанию, который ограничен по умолчанию [!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)] **Internet** набора разрешений зоны. Это позволяет эффективно изолировать WPF Браузерные приложения от клиентского компьютера так же, что можно ожидать изолируются обычные веб-приложения. Приложение XBAP может повысить привилегии вплоть до полного доверия в зависимости от зоны безопасности URL-адреса развертывания и конфигурации безопасности клиента. Дополнительные сведения см. в разделе [Безопасность частичного доверия в WPF](wpf-partial-trust-security.md).  
+ WPF Браузерные приложения выполняются в песочнице с частичным доверием, по умолчанию, который ограничен по умолчанию CAS **Internet** набора разрешений зоны. Это позволяет эффективно изолировать WPF Браузерные приложения от клиентского компьютера так же, что можно ожидать изолируются обычные веб-приложения. Приложение XBAP может повысить привилегии вплоть до полного доверия в зависимости от зоны безопасности URL-адреса развертывания и конфигурации безопасности клиента. Дополнительные сведения см. в разделе [Безопасность частичного доверия в WPF](wpf-partial-trust-security.md).  
   
  В этом разделе рассматривается модель безопасности для Windows Presentation Foundation (WPF) автономных приложений и приложений, размещенных в веб-браузере.  
   
@@ -207,7 +207,7 @@ ms.locfileid: "59313571"
 |---------------------|  
 |FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT|  
   
- При выполнении с частичным доверием [!INCLUDE[TLA#tla_xbap](../../../includes/tlasharptla-xbap-md.md)] , включает в себя WPF <xref:System.Windows.Controls.WebBrowser> контролировать [!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)], WPF размещает элемент управления WebBrowser ActiveX в адресном пространстве процесса Internet Explorer. Поскольку элемент управления WebBrowser ActiveX размещается в [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] процесса, все элементы управления функциями для Internet Explorer также включены для элемента управления WebBrowser ActiveX.  
+ При выполнении с частичным доверием Приложение обозревателя XAML (XBAP) , включает в себя WPF <xref:System.Windows.Controls.WebBrowser> контролировать Windows Internet Explorer, WPF размещает элемент управления WebBrowser ActiveX в адресном пространстве процесса Internet Explorer. Поскольку элемент управления WebBrowser ActiveX размещается в [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] процесса, все элементы управления функциями для Internet Explorer также включены для элемента управления WebBrowser ActiveX.  
   
  XBAP-приложения, выполняющиеся в Internet Explorer, также получают более высокий уровень безопасности по сравнению с обычными автономными приложениями. — Этот повышенный уровень безопасности, так как Internet Explorer и, следовательно, элемент управления WebBrowser ActiveX выполняются в защищенном режиме по умолчанию в [!INCLUDE[TLA#tla_winvista](../../../includes/tlasharptla-winvista-md.md)] и [!INCLUDE[win7](../../../includes/win7-md.md)]. Дополнительные сведения о защищенном режиме, см. в разделе [Знакомство и работа в защищенный режим Internet Explorer](https://go.microsoft.com/fwlink/?LinkId=179393).  
   
@@ -267,8 +267,8 @@ ms.locfileid: "59313571"
 |Область|Ресурс|  
 |----------|--------------|  
 |Управляемый код|[Шаблоны и рекомендации по обеспечению безопасности приложений](https://go.microsoft.com/fwlink/?LinkId=117426)|  
-|[!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)]|[Управление доступом для кода](../misc/code-access-security.md)|  
-|[!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]|[Развертывание и безопасность технологии ClickOnce](/visualstudio/deployment/clickonce-security-and-deployment)|  
+|CAS|[Управление доступом для кода](../misc/code-access-security.md)|  
+|ClickOnce|[Развертывание и безопасность технологии ClickOnce](/visualstudio/deployment/clickonce-security-and-deployment)|  
 |WPF|[Безопасность частичного доверия в WPF](wpf-partial-trust-security.md)|  
   
 ## <a name="see-also"></a>См. также

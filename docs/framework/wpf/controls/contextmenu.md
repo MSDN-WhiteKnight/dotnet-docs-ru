@@ -16,7 +16,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57354639"
 ---
 # <a name="contextmenu"></a>ContextMenu
-<xref:System.Windows.Controls.ContextMenu> Позволяет элементу управления для отображения <xref:System.Windows.Controls.Menu> , зависящего от контекста элемента управления. Как правило <xref:System.Windows.Controls.ContextMenu> предоставляется в [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] через правой кнопкой мыши или клавиатуры кнопки меню.  
+<xref:System.Windows.Controls.ContextMenu> Позволяет элементу управления для отображения <xref:System.Windows.Controls.Menu> , зависящего от контекста элемента управления. Как правило <xref:System.Windows.Controls.ContextMenu> предоставляется в UI  через правой кнопкой мыши или клавиатуры кнопки меню.  
   
  На следующем рисунке показана <xref:System.Windows.Controls.ContextMenu> в двух разных состояниях: состояние по умолчанию и открытом состоянии. В состоянии по умолчанию элемент управления свернут. При нажатии правой кнопки мыши родительского элемента меню элемент управления развернут и отображает элементы меню.  
   

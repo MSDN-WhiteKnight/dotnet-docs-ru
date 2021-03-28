@@ -23,7 +23,7 @@ ms.locfileid: "59320656"
   
 -   [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)] развертывание.  
   
--   [!INCLUDE[TLA#tla_clickonce](../../../../includes/tlasharptla-clickonce-md.md)] развертывание.  
+-   ClickOnce развертывание.  
   
 <a name="XCopy_Deployment"></a>   
 ### <a name="xcopy-deployment"></a>Развертывание с помощью XCopy  
@@ -47,7 +47,7 @@ ms.locfileid: "59320656"
   
 <a name="ClickOnce_Deployment"></a>   
 ### <a name="clickonce-deployment"></a>развертывание ClickOnce  
- [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] позволяет веб-развертывание приложений, веб-приложений. Приложения публикуются на веб-серверах или файловых серверах и развертываются с них. Развертывание [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] поддерживает не весь набор клиентских возможностей приложений, установленных с помощью [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Поддерживаются следующие возможности:  
+ ClickOnce позволяет веб-развертывание приложений, веб-приложений. Приложения публикуются на веб-серверах или файловых серверах и развертываются с них. Развертывание ClickOnce поддерживает не весь набор клиентских возможностей приложений, установленных с помощью [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Поддерживаются следующие возможности:  
   
 -   интеграция в меню "Пуск" и элемент панели управления "Программы";  
   
@@ -59,7 +59,7 @@ ms.locfileid: "59320656"
   
 -   регистрация расширений файлов.  
   
- Дополнительные сведения о [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] см. в разделе [Развертывание и безопасность технологии ClickOnce](/visualstudio/deployment/clickonce-security-and-deployment).  
+ Дополнительные сведения о ClickOnce см. в разделе [Развертывание и безопасность технологии ClickOnce](/visualstudio/deployment/clickonce-security-and-deployment).  
   
 <a name="Deploying_WPF_Applications"></a>   
 ## <a name="deploying-wpf-applications"></a>Развертывание приложений WPF  
@@ -73,7 +73,7 @@ ms.locfileid: "59320656"
   
 <a name="Deploying_Standalone_Applications"></a>   
 ### <a name="deploying-standalone-applications"></a>Развертывание автономных приложений  
- Автономные приложения развертываются с помощью [!INCLUDE[TLA#tla_clickonce](../../../../includes/tlasharptla-clickonce-md.md)] или [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. В любом случае для запуска автономных приложений требуется полное доверие. Полное доверие автоматически предоставляется автономным приложениям, которые развертываются с помощью [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Автономные приложения, которые развертываются с помощью [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)], не получают полного доверия автоматически. Вместо этого [!INCLUDE[TLA2#tla_clickonce](../../../../includes/tla2sharptla-clickonce-md.md)] выводит диалоговое окно с предупреждением системы безопасности, которое пользователь должен подтвердить перед установкой автономного приложения. Если предупреждение принято, автономное приложение устанавливается и ему предоставляется полное доверие. В противном случае автономное приложение не устанавливается.  
+ Автономные приложения развертываются с помощью ClickOnce или [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. В любом случае для запуска автономных приложений требуется полное доверие. Полное доверие автоматически предоставляется автономным приложениям, которые развертываются с помощью [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Автономные приложения, которые развертываются с помощью ClickOnce, не получают полного доверия автоматически. Вместо этого ClickOnce выводит диалоговое окно с предупреждением системы безопасности, которое пользователь должен подтвердить перед установкой автономного приложения. Если предупреждение принято, автономное приложение устанавливается и ему предоставляется полное доверие. В противном случае автономное приложение не устанавливается.  
   
 <a name="Deploying_Markup_Only_XAML_Applications"></a>   
 ### <a name="deploying-markup-only-xaml-applications"></a>Развертывание приложений XAML, содержащих только разметку  
@@ -100,7 +100,7 @@ ms.locfileid: "59320656"
   
  Эти файлы создаются при сборке XBAP. Дополнительные сведения см. в разделе [Как Создание нового проекта приложения браузера WPF](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628663(v=vs.100)). Подобно страницам [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащим только разметку, XBAP обычно публикуются на веб-сервере и просматриваются с помощью браузера [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)].  
   
- XBAP можно развернуть для клиентов с помощью любого из методов развертывания. Однако рекомендуется использовать технологию [!INCLUDE[TLA#tla_clickonce](../../../../includes/tlasharptla-clickonce-md.md)], так как она имеет следующие возможности:  
+ XBAP можно развернуть для клиентов с помощью любого из методов развертывания. Однако рекомендуется использовать технологию ClickOnce, так как она имеет следующие возможности:  
   
 1. автоматическое обновление при публикации новой версии;  
   

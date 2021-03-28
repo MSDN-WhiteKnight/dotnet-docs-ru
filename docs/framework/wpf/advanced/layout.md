@@ -126,7 +126,7 @@ ms.locfileid: "59330497"
   
 -   По возможности используйте <xref:System.Windows.UIElement.RenderTransform%2A> вместо <xref:System.Windows.FrameworkElement.LayoutTransform%2A>.  
   
-     Объект <xref:System.Windows.FrameworkElement.LayoutTransform%2A> может быть очень полезным инструментом для определения содержимого [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. Тем не менее, если результат преобразования не влияет на положение других элементов, лучше всего использовать <xref:System.Windows.UIElement.RenderTransform%2A> вместо этого, так как <xref:System.Windows.UIElement.RenderTransform%2A> не вызывает систему макета. <xref:System.Windows.FrameworkElement.LayoutTransform%2A> применяет свое преобразование и вызывает рекурсивное обновление макета для учета нового положения затронутого элемента.  
+     Объект <xref:System.Windows.FrameworkElement.LayoutTransform%2A> может быть очень полезным инструментом для определения содержимого UI . Тем не менее, если результат преобразования не влияет на положение других элементов, лучше всего использовать <xref:System.Windows.UIElement.RenderTransform%2A> вместо этого, так как <xref:System.Windows.UIElement.RenderTransform%2A> не вызывает систему макета. <xref:System.Windows.FrameworkElement.LayoutTransform%2A> применяет свое преобразование и вызывает рекурсивное обновление макета для учета нового положения затронутого элемента.  
   
 -   Избегайте ненужных вызовов <xref:System.Windows.UIElement.UpdateLayout%2A>.  
   

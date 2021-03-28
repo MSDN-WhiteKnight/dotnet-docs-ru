@@ -52,7 +52,7 @@ ms.locfileid: "59091412"
   
  Ключ ресурса может быть любой строкой, определенные в [Грамматика XamlName](../../xaml-services/xamlname-grammar.md). Ключ ресурса также может быть других типов объектов, например <xref:System.Type>. Объект <xref:System.Type> ключ — это основа для как можно применить различные стили элементов управления темы. Дополнительные сведения см. в разделе [Общие сведения о разработке элементов управления](../controls/control-authoring-overview.md).  
   
- [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] для поиска значений ресурсов таких как <xref:System.Windows.FrameworkElement.FindResource%2A>, выполните ту же логику поиска ресурсов, используемой средой `DynamicResource`.  
+ API для поиска значений ресурсов таких как <xref:System.Windows.FrameworkElement.FindResource%2A>, выполните ту же логику поиска ресурсов, используемой средой `DynamicResource`.  
   
  Декларативные альтернативные методы ссылкой на ресурс — как [расширение разметки StaticResource](staticresource-markup-extension.md).  
   

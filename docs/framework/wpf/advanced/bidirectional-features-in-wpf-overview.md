@@ -35,7 +35,7 @@ ms.locfileid: "59079829"
     
  ![Рисунок, иллюстрирующий различными направлениями потоков.](./media/bidirectional-features-in-wpf-overview/left-right-right-left.png)  
   
- Элемент в пределах [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] дерева будут наследовать <xref:System.Windows.FrameworkElement.FlowDirection%2A> из своего контейнера. В следующем примере <xref:System.Windows.Controls.TextBlock> находится внутри <xref:System.Windows.Controls.Grid>, который находится внутри <xref:System.Windows.Window>. Установка <xref:System.Windows.FrameworkElement.FlowDirection%2A> для <xref:System.Windows.Window> это значение для <xref:System.Windows.Controls.Grid> и <xref:System.Windows.Controls.TextBlock> также.  
+ Элемент в пределах UI  дерева будут наследовать <xref:System.Windows.FrameworkElement.FlowDirection%2A> из своего контейнера. В следующем примере <xref:System.Windows.Controls.TextBlock> находится внутри <xref:System.Windows.Controls.Grid>, который находится внутри <xref:System.Windows.Window>. Установка <xref:System.Windows.FrameworkElement.FlowDirection%2A> для <xref:System.Windows.Window> это значение для <xref:System.Windows.Controls.Grid> и <xref:System.Windows.Controls.TextBlock> также.  
   
  В следующем примере показано задание <xref:System.Windows.FrameworkElement.FlowDirection%2A>.  
   
@@ -49,7 +49,7 @@ ms.locfileid: "59079829"
 
 <a name="FlowDocument"></a>   
 ## <a name="flowdocument"></a>FlowDocument  
- Многие платформы разработки, такие как [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)], [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и Java, обеспечивают специальную поддержку разработки двунаправленного содержимого. Языки разметки, такие как [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)] предоставляют авторам содержимого необходимые средства разметки для отображения текста в любом требуемом направлении, например [!INCLUDE[TLA#tla_html](../../../../includes/tlasharptla-html-md.md)] 4.0 тег, «dir», который принимает в качестве значения «rtl» или «ltr». Этот тег аналогичен <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство, но <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство работает в более сложных способов для разметки текста и может использоваться для нетекстового содержимого.  
+ Многие платформы разработки, такие как HTML, [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и Java, обеспечивают специальную поддержку разработки двунаправленного содержимого. Языки разметки, такие как HTML предоставляют авторам содержимого необходимые средства разметки для отображения текста в любом требуемом направлении, например HTML 4.0 тег, «dir», который принимает в качестве значения «rtl» или «ltr». Этот тег аналогичен <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство, но <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство работает в более сложных способов для разметки текста и может использоваться для нетекстового содержимого.  
   
  В WPF, <xref:System.Windows.Documents.FlowDocument> является универсальным UI элемент, который может содержать сочетание текста, таблиц, изображений и других элементов. Этот элемент используется в примерах, описанных ниже.  
   

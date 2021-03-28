@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59312076"
 ---
 # <a name="how-to-programmatically-print-xps-files"></a>Практическое руководство. Печать XPS-файлов программным способом
-Можно использовать перегрузку <xref:System.Printing.PrintQueue.AddJob%2A> способ печати [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файлы, не открывая <xref:System.Windows.Controls.PrintDialog> или, в принципе, все [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] вообще.  
+Можно использовать перегрузку <xref:System.Printing.PrintQueue.AddJob%2A> способ печати [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файлы, не открывая <xref:System.Windows.Controls.PrintDialog> или, в принципе, все UI  вообще.  
   
  Можно также распечатать [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] файлов с помощью многочисленных <xref:System.Windows.Xps.XpsDocumentWriter.Write%2A> и <xref:System.Windows.Xps.XpsDocumentWriter.WriteAsync%2A> методы <xref:System.Windows.Xps.XpsDocumentWriter>. Дополнительные сведения см. в разделе [Печать документа XPS](https://docs.microsoft.com/previous-versions/dotnet/netframework-3.5/ms771525(v=vs.90)).  
   
@@ -33,7 +33,7 @@ ms.locfileid: "59312076"
   
 4. Вызовите метод, указав имя задания, файл для печати и <xref:System.Boolean> флаг, указывающий, будет ли принтер принтером XPSDrv.  
   
- В приведенном ниже примере показано, как выполнить пакетную печать всех файлов [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] в каталоге. Несмотря на то, что приложение предлагает пользователю указать каталог, с тремя параметрами <xref:System.Printing.PrintQueue.AddJob%28System.String%2CSystem.String%2CSystem.Boolean%29> метод не требует [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)]. Его можно использовать в любом пути кода при условии, что вы знаете имя файла [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] и путь, который вы можете ему передать.  
+ В приведенном ниже примере показано, как выполнить пакетную печать всех файлов [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] в каталоге. Несмотря на то, что приложение предлагает пользователю указать каталог, с тремя параметрами <xref:System.Printing.PrintQueue.AddJob%28System.String%2CSystem.String%2CSystem.Boolean%29> метод не требует UI . Его можно использовать в любом пути кода при условии, что вы знаете имя файла [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] и путь, который вы можете ему передать.  
   
  С тремя параметрами <xref:System.Printing.PrintQueue.AddJob%28System.String%2CSystem.String%2CSystem.Boolean%29> перегрузки <xref:System.Printing.PrintQueue.AddJob%2A> должна выполняться в однопотоковом подразделении всякий раз, когда <xref:System.Boolean> параметр `false`, который он должен быть, если используется принтер XPSDrv. Однако по умолчанию состояние подразделения для [!INCLUDE[TLA#tla_net](../../../../includes/tlasharptla-net-md.md)] многопотоковое. Данное значение по умолчанию должно быть обращено, поскольку в этом примере предполагается, что принтер не является принтером XPSDrv.  
   

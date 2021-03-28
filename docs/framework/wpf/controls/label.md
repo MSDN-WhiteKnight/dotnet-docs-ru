@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57376173"
 ---
 # <a name="label"></a>Метка
-<xref:System.Windows.Controls.Label> элементы управления обычно предоставляют информацию в [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)].  Исторически сложилось так, что <xref:System.Windows.Controls.Label> содержал только текст, но поскольку <xref:System.Windows.Controls.Label> , поставляемый в комплекте с Windows Presentation Foundation (WPF) — <xref:System.Windows.Controls.ContentControl>, он может содержать текст или <xref:System.Windows.UIElement>.  
+<xref:System.Windows.Controls.Label> элементы управления обычно предоставляют информацию в UI .  Исторически сложилось так, что <xref:System.Windows.Controls.Label> содержал только текст, но поскольку <xref:System.Windows.Controls.Label> , поставляемый в комплекте с Windows Presentation Foundation (WPF) — <xref:System.Windows.Controls.ContentControl>, он может содержать текст или <xref:System.Windows.UIElement>.  
   
  Объект <xref:System.Windows.Controls.Label> обеспечивает функциональную и визуальную поддержку клавиш доступа. Он часто используется для включения быстрый доступ к элементам управления, такие как <xref:System.Windows.Controls.TextBox>. Чтобы назначить <xref:System.Windows.Controls.Label> для <xref:System.Windows.Controls.Control>, задайте <xref:System.Windows.Controls.Label.Target%2A?displayProperty=nameWithType> свойство к элементу управления, который должен получить фокус, когда пользователь нажимает клавишу доступа.  
   

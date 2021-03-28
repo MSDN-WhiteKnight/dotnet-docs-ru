@@ -61,7 +61,7 @@ ms.locfileid: "59084171"
 
 <a name="design_intl_ui_with_xaml"></a>
 ## <a name="designing-an-international-user-interface-with-xaml"></a>Проектирование международного интерфейса пользователя с XAML
- В этом разделе описываются [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] функций, которые следует учитывать при написании приложения.
+ В этом разделе описываются UI  функций, которые следует учитывать при написании приложения.
 
 <a name="intl_text"></a>
 ### <a name="international-text"></a>Международный текст

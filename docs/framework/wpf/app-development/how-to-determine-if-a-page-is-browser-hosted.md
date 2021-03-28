@@ -19,7 +19,7 @@ ms.locfileid: "59107150"
 В этом примере показано, как определить, если <xref:System.Windows.Controls.Page> размещается в браузере.  
   
 ## <a name="example"></a>Пример  
- Объект <xref:System.Windows.Controls.Page> может размещаться независимо и, следовательно, может быть загружена в несколько различных типов узлов, включая <xref:System.Windows.Controls.Frame>, <xref:System.Windows.Navigation.NavigationWindow>, или другой браузер. Это может произойти, если у вас есть библиотечная сборка, содержащий одну или несколько страниц, на который ссылаются несколько автономных и отображаемых в обозревателе ([!INCLUDE[TLA#tla_xbap](../../../../includes/tlasharptla-xbap-md.md)]) размещения приложений.  
+ Объект <xref:System.Windows.Controls.Page> может размещаться независимо и, следовательно, может быть загружена в несколько различных типов узлов, включая <xref:System.Windows.Controls.Frame>, <xref:System.Windows.Navigation.NavigationWindow>, или другой браузер. Это может произойти, если у вас есть библиотечная сборка, содержащий одну или несколько страниц, на который ссылаются несколько автономных и отображаемых в обозревателе (Приложение обозревателя XAML (XBAP)) размещения приложений.  
   
  Следующий пример демонстрирует, как использовать <xref:System.Windows.Interop.BrowserInteropHelper.IsBrowserHosted%2A?displayProperty=nameWithType> на предмет <xref:System.Windows.Controls.Page> размещается в браузере.  
   

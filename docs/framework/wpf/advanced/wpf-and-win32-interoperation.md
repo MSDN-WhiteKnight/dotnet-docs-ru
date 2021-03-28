@@ -29,7 +29,7 @@ ms.locfileid: "59314416"
   
 <a name="projects"></a>   
 ## <a name="wpf-interoperation-projects"></a>Проекты взаимодействия WPF  
- WPF [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] are managed code, but most existing [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sявляются управляемым кодом, но большинство существующих [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы создаются в виде неуправляемого [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].enНевозможно вызвать WPF [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] из подлинной неуправляемой программы.nОднако используя параметр `/clr` с компилятором [!INCLUDE[TLA#tla_visualcpp](../../../../includes/tlasharptla-visualcpp-md.md)], можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)].  
+ WPF API are managed code, but most existing [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sявляются управляемым кодом, но большинство существующих [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы создаются в виде неуправляемого [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].enНевозможно вызвать WPF API из подлинной неуправляемой программы.nОднако используя параметр `/clr` с компилятором [!INCLUDE[TLA#tla_visualcpp](../../../../includes/tlasharptla-visualcpp-md.md)], можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)].  
   
  Существует одна сложность на уровне проекта, которая заключается в том, что нельзя скомпилировать файлы XAML в проект [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].  Имеется несколько методов разделения проектов для решения данной проблемы.  
   
@@ -56,7 +56,7 @@ ms.locfileid: "59314416"
   
 <a name="hosting_a_wpf_page"></a>   
 ## <a name="hosting-wpf-content-in-a-microsoft-win32-window"></a>Размещение содержимого WPF в окне Microsoft Win32  
- Ключом к размещению WPF на [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно <xref:System.Windows.Interop.HwndSource> класса. Этот класс заключает содержимое WPF в окно [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] таким образом, что содержимое WPF может быть включено в [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] в качестве дочернего окна. Следующий подход объединяет [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] и WPF в одном приложении.  
+ Ключом к размещению WPF на [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно <xref:System.Windows.Interop.HwndSource> класса. Этот класс заключает содержимое WPF в окно [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] таким образом, что содержимое WPF может быть включено в UI  в качестве дочернего окна. Следующий подход объединяет [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] и WPF в одном приложении.  
   
 1. Реализуйте содержимое WPF (содержимое корневого элемента) в виде управляемого класса. Как правило, класс наследуется от одного из классов, которые может содержать несколько дочерних элементов или использоваться в качестве корневого элемента, например <xref:System.Windows.Controls.DockPanel> или <xref:System.Windows.Controls.Page>. В последующих шагах этот класс называется классом содержимого WPF, а его экземпляры называются объектами содержимого WPF.  
   
@@ -89,7 +89,7 @@ ms.locfileid: "59314416"
   
 <a name="hosting_an_hwnd"></a>   
 ## <a name="hosting-a-microsoft-win32-window-in-wpf"></a>Размещение окна Microsoft Win32 в WPF  
- Ключом к размещению [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно в другие WPF содержимое <xref:System.Windows.Interop.HwndHost> класса. Он заключает окно в элемент WPF, который можно добавить в дерево элементов WPF. <xref:System.Windows.Interop.HwndHost> также поддерживает [!INCLUDE[TLA2#tla_api#plural](../../../../includes/tla2sharptla-apisharpplural-md.md)] , которые позволяют выполнять такие задачи, как обработка сообщений для размещенного окна. Ниже описываются основные действия.  
+ Ключом к размещению [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окно в другие WPF содержимое <xref:System.Windows.Interop.HwndHost> класса. Он заключает окно в элемент WPF, который можно добавить в дерево элементов WPF. <xref:System.Windows.Interop.HwndHost> также поддерживает API , которые позволяют выполнять такие задачи, как обработка сообщений для размещенного окна. Ниже описываются основные действия.  
   
 1. Создайте дерево элементов для приложения WPF (посредством кода или разметки). Найдите соответствующую и допустимую точку в дереве элементов, где <xref:System.Windows.Interop.HwndHost> реализация может быть добавлен как дочерний элемент. В оставшихся действиях процедуры этот элемент называется элементом резервирования.  
   

@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57366248"
 ---
 # <a name="panel-how-to-topics"></a>Разделы руководства по Panel
-В этом разделе описываются способы использования <xref:System.Windows.Controls.Panel> элемент и связанные [!INCLUDE[TLA#tla_api#plural](../../../../includes/tlasharptla-apisharpplural-md.md)].  
+В этом разделе описываются способы использования <xref:System.Windows.Controls.Panel> элемент и связанные API.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Создание пользовательского элемента панели](how-to-create-a-custom-panel-element.md)  

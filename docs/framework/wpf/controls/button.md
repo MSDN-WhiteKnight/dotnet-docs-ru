@@ -15,7 +15,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57362725"
 ---
 # <a name="button"></a>Кнопка
-Объект <xref:System.Windows.Controls.Button> элемент управления реагирует на ввод данных пользователем от мыши, клавиатуры, пера или другого устройства ввода и создает событие <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий. Объект <xref:System.Windows.Controls.Button> представляет собой простую [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] компонент, который может содержать простым содержимым, такие как текст и может также содержать сложного содержимого, такие как изображения и <xref:System.Windows.Controls.Panel> элементов управления.  
+Объект <xref:System.Windows.Controls.Button> элемент управления реагирует на ввод данных пользователем от мыши, клавиатуры, пера или другого устройства ввода и создает событие <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий. Объект <xref:System.Windows.Controls.Button> представляет собой простую UI  компонент, который может содержать простым содержимым, такие как текст и может также содержать сложного содержимого, такие как изображения и <xref:System.Windows.Controls.Panel> элементов управления.  
   
  ![Кнопка состояний](./media/ss-ctl-buttons.bmp "SS_CTL_buttons")  
   

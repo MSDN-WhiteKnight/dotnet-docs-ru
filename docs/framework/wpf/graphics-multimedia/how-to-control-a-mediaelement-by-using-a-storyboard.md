@@ -26,7 +26,7 @@ ms.locfileid: "59100318"
   
  В этом примере демонстрируется создание простого мультимедийного проигрывателя, использующий <xref:System.Windows.Media.MediaTimeline> для управления воспроизведением. Проигрыватель мультимедиа включает воспроизведения, приостановки, возобновления и остановки кнопок. Проигрыватель также имеет <xref:System.Windows.Controls.Slider> элемент управления, который выступает в качестве индикатор хода выполнения.  
   
- В следующем примере создается [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] для проигрывателя.  
+ В следующем примере создается UI  для проигрывателя.  
   
  [!code-xaml[MediaGallery_snip#MediaTimelineExampleWholePage](~/samples/snippets/visualbasic/VS_Snippets_Wpf/MediaGallery_snip/VB/MediaTimelineExample.xaml#mediatimelineexamplewholepage)]  
   

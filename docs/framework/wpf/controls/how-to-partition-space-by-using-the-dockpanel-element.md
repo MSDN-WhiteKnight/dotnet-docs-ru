@@ -18,7 +18,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59158890"
 ---
 # <a name="how-to-partition-space-by-using-the-dockpanel-element"></a>Практическое руководство. Разделение пространства с помощью элемента DockPanel
-В следующем примере создается простой [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] framework с помощью <xref:System.Windows.Controls.DockPanel> элемент. <xref:System.Windows.Controls.DockPanel> Разделяет доступное пространство между его дочерних элементов.  
+В следующем примере создается простой UI  framework с помощью <xref:System.Windows.Controls.DockPanel> элемент. <xref:System.Windows.Controls.DockPanel> Разделяет доступное пространство между его дочерних элементов.  
   
 ## <a name="example"></a>Пример  
  В этом примере используется <xref:System.Windows.Controls.DockPanel.Dock%2A> свойство, которое является присоединенным свойством, чтобы прикрепить два идентичных <xref:System.Windows.Controls.Border> элементы <xref:System.Windows.Controls.Dock.Top> разделенного пространства. Третий <xref:System.Windows.Controls.Border> прикреплен данный элемент <xref:System.Windows.Controls.Dock.Left>, шириной 200 пикселей. Четвертый <xref:System.Windows.Controls.Border> закреплены <xref:System.Windows.Controls.Dock.Bottom> экрана. Последний <xref:System.Windows.Controls.Border> элемент автоматически заполняет оставшееся пространство.  

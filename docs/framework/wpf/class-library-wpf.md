@@ -13,7 +13,7 @@ ms.lasthandoff: 05/04/2018
 ms.locfileid: "33550970"
 ---
 # <a name="class-library-wpf"></a>Библиотека классов (WPF)
-Следующие ссылки указывают на пространства имен, содержащие Windows Presentation Foundation (WPF) [!INCLUDE[TLA#tla_api#plural](../../../includes/tlasharptla-apisharpplural-md.md)].  
+Следующие ссылки указывают на пространства имен, содержащие Windows Presentation Foundation (WPF) API.  
   
 ## <a name="in-this-section"></a>В этом разделе  
   
@@ -124,7 +124,7 @@ ms.locfileid: "33550970"
 -   <xref:UIAutomationClientsideProviders>  
   
 ## <a name="xaml-support-in-net-4"></a>Поддержка XAML в .NET Framework 4  
- Следующие пространства имен содержат типы из сборки System.Xaml. System.Xaml предоставляет поддержку общего языка XAML для платформ, таких как WPF, построенные на [!INCLUDE[net_v40_long](../../../includes/net-v40-long-md.md)].  
+ Следующие пространства имен содержат типы из сборки System.Xaml. System.Xaml предоставляет поддержку общего языка XAML для платформ, таких как WPF, построенные на .NET Framework 4.  
   
 -   <xref:System.Windows.Markup> (общий)  
   

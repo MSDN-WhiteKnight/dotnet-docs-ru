@@ -19,7 +19,7 @@ ms.locfileid: "59107319"
 # <a name="how-to-make-an-object-follow-the-mouse-pointer"></a>Практическое руководство. Создание объекта, следующего за указателем мыши
 В этом примере показано, как изменить размеры объекта, при перемещении указателя мыши на экране.  
   
- В примере XAML файл, который создает [!INCLUDE[TLA#tla_ui](../../../../includes/tlasharptla-ui-md.md)] и файл кода, который создает обработчик событий.  
+ В примере XAML файл, который создает UI  и файл кода, который создает обработчик событий.  
   
 ## <a name="example"></a>Пример  
  Следующие [!INCLUDE[TLA2#tla_titlexaml](../../../../includes/tla2sharptla-titlexaml-md.md)] создает UI, который состоит из <xref:System.Windows.Shapes.Ellipse> внутри <xref:System.Windows.Controls.StackPanel>и присоединяет обработчик событий для <xref:System.Windows.UIElement.MouseMove> событий.  
