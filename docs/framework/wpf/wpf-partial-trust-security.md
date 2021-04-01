@@ -52,7 +52,7 @@ ms.locfileid: "59218385"
   
  Эта таблица охватывает WPF функции на высоком уровне. Более подробные сведения, [!INCLUDE[TLA#tla_lhsdk](../../../includes/tlasharptla-lhsdk-md.md)] задокументированы разрешения, необходимые каждому элементу в WPF. Кроме того, следующие функции содержат более подробные сведения, касающиеся выполнения при частичном доверии, включая некоторые особые аспекты.  
   
--   [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] (см. в разделе [Обзор XAML (WPF)](./advanced/xaml-overview-wpf.md)).  
+-   XAML (см. в разделе [Обзор XAML (WPF)](./advanced/xaml-overview-wpf.md)).  
   
 -   Всплывающие окна (см. в разделе <xref:System.Windows.Controls.Primitives.Popup?displayProperty=nameWithType>).  
   

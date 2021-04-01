@@ -150,7 +150,7 @@ mc:Ignorable="PresentationOptions"
   
 -   В начале любого [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] , считывает элементы данных не свойство зависимости, вызовите <xref:System.Windows.Freezable.ReadPreamble%2A> метод.  
   
--   В начале любого API, который записывает элементы данных не свойство зависимости, вызовите <xref:System.Windows.Freezable.WritePreamble%2A> метод. (После вызова <xref:System.Windows.Freezable.WritePreamble%2A> в [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)], не требуется дополнительный вызов к <xref:System.Windows.Freezable.ReadPreamble%2A> также считывать элементы данных не свойство зависимости.)  
+-   В начале любого API, который записывает элементы данных не свойство зависимости, вызовите <xref:System.Windows.Freezable.WritePreamble%2A> метод. (После вызова <xref:System.Windows.Freezable.WritePreamble%2A> в API, не требуется дополнительный вызов к <xref:System.Windows.Freezable.ReadPreamble%2A> также считывать элементы данных не свойство зависимости.)  
   
 -   Вызовите <xref:System.Windows.Freezable.WritePostscript%2A> метод перед выходом из методов, которые записывают на данные-члены не свойство зависимости.  
   

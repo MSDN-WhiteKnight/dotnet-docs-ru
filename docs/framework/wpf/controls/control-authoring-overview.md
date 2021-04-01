@@ -128,7 +128,7 @@ ms.locfileid: "59340026"
   
 -   Перенаправленные события могут использоваться в <xref:System.Windows.EventSetter>, что позволяет разработчикам приложений указать обработчик события в стиле.  
   
--   Перенаправленные события могут использоваться в <xref:System.Windows.EventTrigger>, что удобно для анимации свойств с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. Более подробную информацию см. в разделе [Общие сведения об эффектах анимации](../graphics-multimedia/animation-overview.md).  
+-   Перенаправленные события могут использоваться в <xref:System.Windows.EventTrigger>, что удобно для анимации свойств с помощью XAML. Более подробную информацию см. в разделе [Общие сведения об эффектах анимации](../graphics-multimedia/animation-overview.md).  
   
  Следующий пример определяет перенаправляемое событие:  
   
@@ -210,9 +210,9 @@ ms.locfileid: "59340026"
   
  [!code-xaml[SharedResources#1](~/samples/snippets/csharp/VS_Snippets_Wpf/SharedResources/CS/Dictionary1.xaml#1)]  
   
- После определения словаря необходимо его объединить со словарем ресурсов элемента управления.  Это можно сделать с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] или кода.  
+ После определения словаря необходимо его объединить со словарем ресурсов элемента управления.  Это можно сделать с помощью XAML или кода.  
   
- Следующий пример объединяет словарь ресурса с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ Следующий пример объединяет словарь ресурса с помощью XAML.  
   
  [!code-xaml[SharedResources#2](~/samples/snippets/csharp/VS_Snippets_Wpf/SharedResources/CS/ShapeResizer.xaml#2)]  
   
@@ -222,7 +222,7 @@ ms.locfileid: "59340026"
   
  [!code-csharp[SharedResources#3](~/samples/snippets/csharp/VS_Snippets_Wpf/SharedResources/CS/SharedDictionaryManager.cs#3)]  
   
- В следующем примере общий ресурс объединяется с ресурсами пользовательского элемента управления в конструкторе элемента управления, прежде чем он вызывает `InitializeComponent`.  Так как `SharedDictionaryManager.SharedDictionary` является статическим свойством, <xref:System.Windows.ResourceDictionary> создается только один раз. Поскольку словарь ресурсов был объединен до вызова `InitializeComponent`, ресурсы доступны для элемента управления в его файле [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ В следующем примере общий ресурс объединяется с ресурсами пользовательского элемента управления в конструкторе элемента управления, прежде чем он вызывает `InitializeComponent`.  Так как `SharedDictionaryManager.SharedDictionary` является статическим свойством, <xref:System.Windows.ResourceDictionary> создается только один раз. Поскольку словарь ресурсов был объединен до вызова `InitializeComponent`, ресурсы доступны для элемента управления в его файле XAML.  
   
  [!code-csharp[SharedResources#4](~/samples/snippets/csharp/VS_Snippets_Wpf/SharedResources/CS/ShapeResizer.xaml.cs#4)]  
   

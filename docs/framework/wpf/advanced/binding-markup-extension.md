@@ -112,7 +112,7 @@ ms.locfileid: "59170317"
  Описание привязки данных на базовом уровне не рассматривается в этом разделе. См. в разделе [Общие сведения о привязке данных](../data/data-binding-overview.md).  
   
 > [!NOTE]
->  <xref:System.Windows.Data.MultiBinding> и <xref:System.Windows.Data.PriorityBinding> не поддерживают [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] синтаксиса расширения. Можно использовать свойства элементов. См. в разделе справочные разделы по <xref:System.Windows.Data.MultiBinding> и <xref:System.Windows.Data.PriorityBinding>.  
+>  <xref:System.Windows.Data.MultiBinding> и <xref:System.Windows.Data.PriorityBinding> не поддерживают XAML синтаксиса расширения. Можно использовать свойства элементов. См. в разделе справочные разделы по <xref:System.Windows.Data.MultiBinding> и <xref:System.Windows.Data.PriorityBinding>.  
   
  Логические значения для XAML учитывается регистр. Например можно указать либо `{Binding NotifyOnValidationError=true}` или `{Binding NotifyOnValidationError=True}`.  
   

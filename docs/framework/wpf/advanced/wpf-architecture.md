@@ -62,7 +62,7 @@ ms.locfileid: "59199431"
   
 <a name="System_Windows_Media_Visual"></a>   
 ## <a name="systemwindowsmediavisual"></a>System.Windows.Media.Visual  
- После определения системы следующим шагом является рисование пикселей на экране. <xref:System.Windows.Media.Visual> Предоставляет класс для построения дерева визуальных объектов, которые дополнительно включают инструкции по рисованию и метаданные по способу визуализации этих инструкций (обрезки, преобразования, и т.д.). <xref:System.Windows.Media.Visual> разработан максимально облегченным и гибким, так что большинство функций без общего [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] раскрытия и сильно зависит от защищенных функций обратного вызова.  
+ После определения системы следующим шагом является рисование пикселей на экране. <xref:System.Windows.Media.Visual> Предоставляет класс для построения дерева визуальных объектов, которые дополнительно включают инструкции по рисованию и метаданные по способу визуализации этих инструкций (обрезки, преобразования, и т.д.). <xref:System.Windows.Media.Visual> разработан максимально облегченным и гибким, так что большинство функций без общего API раскрытия и сильно зависит от защищенных функций обратного вызова.  
   
  <xref:System.Windows.Media.Visual> действительно является точкой входа для WPF систему композиции. <xref:System.Windows.Media.Visual> представляет собой точку соединения между этими двумя подсистемами: управляемым [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] и неуправляемым компонентом milcore.  
   
@@ -112,7 +112,7 @@ ms.locfileid: "59199431"
   
  Основная политика, представленная с <xref:System.Windows.FrameworkElement> макет приложения. <xref:System.Windows.FrameworkElement> основан на базового контракта макета представленные <xref:System.Windows.UIElement> и добавляет понятие "ячейки «макета», упрощает для авторов макета создание согласованного набора управляемых свойствами семантик макета. Свойства, такие как <xref:System.Windows.FrameworkElement.HorizontalAlignment%2A>, <xref:System.Windows.FrameworkElement.VerticalAlignment%2A>, <xref:System.Windows.FrameworkElement.MinWidth%2A>, и <xref:System.Windows.FrameworkElement.Margin%2A> (по) обеспечивают всем компонентам, производным от <xref:System.Windows.FrameworkElement> согласованное поведение внутри контейнеров макета.  
   
- <xref:System.Windows.FrameworkElement> упрощает также [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] представление о многих функциях см. в на уровне ядра WPF. Например <xref:System.Windows.FrameworkElement> обеспечивает прямой доступ к анимации с помощью <xref:System.Windows.FrameworkElement.BeginStoryboard%2A> метод. Объект <xref:System.Windows.Media.Animation.Storyboard> предоставляет способ создания скриптов нескольких анимаций на основе набора свойств.  
+ <xref:System.Windows.FrameworkElement> упрощает также API представление о многих функциях см. в на уровне ядра WPF. Например <xref:System.Windows.FrameworkElement> обеспечивает прямой доступ к анимации с помощью <xref:System.Windows.FrameworkElement.BeginStoryboard%2A> метод. Объект <xref:System.Windows.Media.Animation.Storyboard> предоставляет способ создания скриптов нескольких анимаций на основе набора свойств.  
   
  Две наиболее важные вещи, <xref:System.Windows.FrameworkElement> вводит являются привязка данных и стили.  
   

@@ -38,7 +38,7 @@ ms.locfileid: "57845636"
 
 (Обратите внимание, что этот синтаксис атрибута фактически создает <xref:System.Windows.Media.StreamGeometry>, облегченные версии <xref:System.Windows.Media.PathGeometry>. Дополнительные сведения см. на странице [Синтаксис разметки пути](path-markup-syntax.md).)
 
-В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] сегмент линии можно также начертить с использованием синтаксиса элемента объекта. Следующий пример эквивалентен предыдущему примеру [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].
+В XAML сегмент линии можно также начертить с использованием синтаксиса элемента объекта. Следующий пример эквивалентен предыдущему примеру XAML.
 
 ```xaml
 <Path Stroke="Black" StrokeThickness="1">

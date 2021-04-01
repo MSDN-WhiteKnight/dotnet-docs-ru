@@ -27,7 +27,7 @@ HRESULT GetCustomUI( [out] BSTR* pwzProgressAssemblyName, [out] BSTR* pwzProgres
   
  `pwzProgressClassName`  
   
- [out] Имя класса, пользовательском интерфейсе ход выполнения, предоставляемую узла предпочтительно [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)] файл с <xref:System.Windows.Controls.Page> является его элемент верхнего уровня. Этот класс находится в сборке, который задается параметром `pwzProgressAssemblyName`.  
+ [out] Имя класса, пользовательском интерфейсе ход выполнения, предоставляемую узла предпочтительно XAML файл с <xref:System.Windows.Controls.Page> является его элемент верхнего уровня. Этот класс находится в сборке, который задается параметром `pwzProgressAssemblyName`.  
   
  `pwzErrorAssemblyName`  
   

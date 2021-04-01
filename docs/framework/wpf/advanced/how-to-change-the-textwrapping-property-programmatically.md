@@ -19,7 +19,7 @@ ms.locfileid: "59095845"
 ## <a name="example"></a>Пример  
  В следующем примере кода показано, как изменить значение <xref:System.Windows.Controls.TextBlock.TextWrapping%2A> свойства программным способом.  
   
- Три <xref:System.Windows.Controls.Button> элементы помещаются в <xref:System.Windows.Controls.StackPanel> элемент [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. Каждый <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событие для <xref:System.Windows.Controls.Button> соответствующий обработчик событий в коде. Обработчики событий используют то же имя, что <xref:System.Windows.Controls.TextBlock.TextWrapping%2A> значения, они будут применены к `txt2` при нажатии кнопки. Кроме того, текст в `txt1` ( <xref:System.Windows.Controls.TextBlock> не отображаются в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]) обновляется в соответствии с изменениями в свойстве.  
+ Три <xref:System.Windows.Controls.Button> элементы помещаются в <xref:System.Windows.Controls.StackPanel> элемент XAML. Каждый <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событие для <xref:System.Windows.Controls.Button> соответствующий обработчик событий в коде. Обработчики событий используют то же имя, что <xref:System.Windows.Controls.TextBlock.TextWrapping%2A> значения, они будут применены к `txt2` при нажатии кнопки. Кроме того, текст в `txt1` ( <xref:System.Windows.Controls.TextBlock> не отображаются в XAML) обновляется в соответствии с изменениями в свойстве.  
   
  [!code-xaml[TextWrapProperty#1](~/samples/snippets/visualbasic/VS_Snippets_Wpf/TextWrapProperty/VisualBasic/Pane1.xaml#1)]  
   

@@ -55,7 +55,7 @@ ms.locfileid: "59124843"
 ## <a name="how-to-apply-animations-with-a-storyboard"></a>Применение анимации с помощью раскадровки  
  Чтобы использовать <xref:System.Windows.Media.Animation.Storyboard> для создания и применения анимаций, можно добавить анимации в качестве дочерних временных шкал объекта <xref:System.Windows.Media.Animation.Storyboard>. <xref:System.Windows.Media.Animation.Storyboard> Класс предоставляет <xref:System.Windows.Media.Animation.Storyboard.TargetName%2A?displayProperty=nameWithType> и <xref:System.Windows.Media.Animation.Storyboard.TargetProperty?displayProperty=nameWithType> присоединенных свойств. Эти свойства используются для указания целевого объекта и целевого свойства анимации.  
   
- Чтобы применить анимацию к целевым объектам, началом <xref:System.Windows.Media.Animation.Storyboard> с помощью действия триггера или метода. В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], использовании <xref:System.Windows.Media.Animation.BeginStoryboard> со <xref:System.Windows.EventTrigger>, <xref:System.Windows.Trigger>, или <xref:System.Windows.DataTrigger>. В коде, можно также использовать <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> метод.  
+ Чтобы применить анимацию к целевым объектам, началом <xref:System.Windows.Media.Animation.Storyboard> с помощью действия триггера или метода. В XAML, использовании <xref:System.Windows.Media.Animation.BeginStoryboard> со <xref:System.Windows.EventTrigger>, <xref:System.Windows.Trigger>, или <xref:System.Windows.DataTrigger>. В коде, можно также использовать <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> метод.  
   
  В следующей таблице показаны различные где каждого <xref:System.Windows.Media.Animation.Storyboard> начать прием поддерживается: для каждого экземпляра, стиль, шаблон элемента управления и шаблон данных. Применение к конкретным экземплярам подразумевает применение анимации или раскадровки непосредственно к экземплярам объектов, а не в стилях, шаблонах элементов управления или шаблонах данных.  
   
@@ -78,11 +78,11 @@ ms.locfileid: "59124843"
 ## <a name="targeting-framework-elements-framework-content-elements-and-freezables"></a>Элементы целевой платформы, элементы содержимого платформы и объекты Freezable  
  В предыдущем разделе упоминалось, что для поиска целевого объекта анимации необходимо знать имя целевого объекта и анимируемое свойство. Указание свойства для анимации выполняется очень легко: просто задайте <xref:System.Windows.Media.Animation.Storyboard.TargetProperty?displayProperty=nameWithType> именем анимируемое свойство.  Укажите имя объекта, свойство которого вы хотите анимировать, установив <xref:System.Windows.Media.Animation.Storyboard.TargetName%2A?displayProperty=nameWithType> свойство анимации.  
   
- Для <xref:System.Windows.Setter.TargetName%2A> работы свойства целевого объекта должен иметь имя. Назначение имени для <xref:System.Windows.FrameworkElement> или <xref:System.Windows.FrameworkContentElement> в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] отличается от присваивания имени <xref:System.Windows.Freezable> объекта.  
+ Для <xref:System.Windows.Setter.TargetName%2A> работы свойства целевого объекта должен иметь имя. Назначение имени для <xref:System.Windows.FrameworkElement> или <xref:System.Windows.FrameworkContentElement> в XAML отличается от присваивания имени <xref:System.Windows.Freezable> объекта.  
   
  Элементами платформы являются классы, наследующие от <xref:System.Windows.FrameworkElement> класса. Примеры элементов платформы включают <xref:System.Windows.Window>, <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Button>, и <xref:System.Windows.Shapes.Rectangle>. По существу все окна, панели и элементы управления являются элементами. Элементами содержимого платформы являются классы, наследующие от <xref:System.Windows.FrameworkContentElement> класса. Примеры элементов содержимого платформы включают <xref:System.Windows.Documents.FlowDocument> и <xref:System.Windows.Documents.Paragraph>. Если вы не уверены, что этот элемент является элементом платформы или элементом содержимого платформы, проверьте, есть ли у этого элемента свойство Name. Если есть, скорее всего, это элемент платформы или элемент содержимого платформы. Чтобы убедиться в этом, обратитесь к разделу "Иерархия наследования" на странице типа элемента.  
   
- Чтобы включить целевые элементом платформы или элемента содержимого платформы в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], можно задать его <xref:System.Windows.FrameworkElement.Name%2A> свойство. В коде, необходимо также использовать <xref:System.Windows.NameScope.RegisterName%2A> метод, чтобы зарегистрировать имя элемента в элементе, для которого вы создали <xref:System.Windows.NameScope>.  
+ Чтобы включить целевые элементом платформы или элемента содержимого платформы в XAML, можно задать его <xref:System.Windows.FrameworkElement.Name%2A> свойство. В коде, необходимо также использовать <xref:System.Windows.NameScope.RegisterName%2A> метод, чтобы зарегистрировать имя элемента в элементе, для которого вы создали <xref:System.Windows.NameScope>.  
   
  В следующем примере, взятом из предыдущего примера, назначает имя `MyRectangle` <xref:System.Windows.Shapes.Rectangle>, тип <xref:System.Windows.FrameworkElement>.  
   
@@ -98,7 +98,7 @@ ms.locfileid: "59124843"
   
  <xref:System.Windows.Freezable> типы являются классы, наследующие от <xref:System.Windows.Freezable> класса. Примеры <xref:System.Windows.Freezable> включают <xref:System.Windows.Media.SolidColorBrush>, <xref:System.Windows.Media.RotateTransform>, и <xref:System.Windows.Media.GradientStop>.  
   
- Чтобы включить целевые <xref:System.Windows.Freezable> с помощью анимации в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], использовании [директива x: Name](../../xaml-services/x-name-directive.md) присвоить имя. В коде используйте <xref:System.Windows.NameScope.RegisterName%2A> метод для регистрации имени элемента, для которого вы создали <xref:System.Windows.NameScope>.  
+ Чтобы включить целевые <xref:System.Windows.Freezable> с помощью анимации в XAML, использовании [директива x: Name](../../xaml-services/x-name-directive.md) присвоить имя. В коде используйте <xref:System.Windows.NameScope.RegisterName%2A> метод для регистрации имени элемента, для которого вы создали <xref:System.Windows.NameScope>.  
   
  В следующем примере назначается имя, <xref:System.Windows.Freezable> объекта.  
   
@@ -132,7 +132,7 @@ ms.locfileid: "59124843"
   
 <a name="xamlsyntaxchangeableproperty"></a>   
 ### <a name="indirectly-targeting-a-property-of-a-freezable-in-xaml"></a>Косвенное обращение к свойству объекта Freezable в XAML  
- Чтобы обратиться к свойству объекта freezable в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], используйте следующий синтаксис.  
+ Чтобы обратиться к свойству объекта freezable в XAML, используйте следующий синтаксис.  
   
 | |  
 |-|  
@@ -278,7 +278,7 @@ ms.locfileid: "59124843"
   
 -   Нельзя использовать динамический ресурс ссылки или выражения привязки данных для задания <xref:System.Windows.Media.Animation.Storyboard> или значений свойств анимации. Это потому, что весь код внутри <xref:System.Windows.Style> должен быть поточно ориентированными, и система управления должна <xref:System.Windows.Freezable.Freeze%2A><xref:System.Windows.Media.Animation.Storyboard> объектов, чтобы сделать их потокобезопасными. Объект <xref:System.Windows.Media.Animation.Storyboard> нельзя зафиксировать, если его или ее дочерние временные шкалы содержат динамические ресурсы ссылки или выражения привязки данных. Дополнительные сведения о фиксации и других <xref:System.Windows.Freezable> функции, см. в разделе [Freezable Общие сведения об объектах](../advanced/freezable-objects-overview.md).  
   
--   В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], нельзя объявлять обработчики событий для <xref:System.Windows.Media.Animation.Storyboard> или событий анимации.  
+-   В XAML, нельзя объявлять обработчики событий для <xref:System.Windows.Media.Animation.Storyboard> или событий анимации.  
   
  Пример, показывающий, как определить раскадровку в стиле, см. в разделе [анимация с использованием стилей](how-to-animate-in-a-style.md) пример.  
   
@@ -292,7 +292,7 @@ ms.locfileid: "59124843"
   
 -   Нельзя использовать динамический ресурс ссылки или выражения привязки данных для задания <xref:System.Windows.Media.Animation.Storyboard> или значений свойств анимации. Это потому, что весь код внутри <xref:System.Windows.Controls.ControlTemplate> должен быть поточно ориентированными, и система управления должна <xref:System.Windows.Freezable.Freeze%2A><xref:System.Windows.Media.Animation.Storyboard> объектов, чтобы сделать их потокобезопасными. Объект <xref:System.Windows.Media.Animation.Storyboard> нельзя зафиксировать, если его или ее дочерние временные шкалы содержат динамические ресурсы ссылки или выражения привязки данных. Дополнительные сведения о фиксации и других <xref:System.Windows.Freezable> функции, см. в разделе [Freezable Общие сведения об объектах](../advanced/freezable-objects-overview.md).  
   
--   В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], нельзя объявлять обработчики событий для <xref:System.Windows.Media.Animation.Storyboard> или событий анимации.  
+-   В XAML, нельзя объявлять обработчики событий для <xref:System.Windows.Media.Animation.Storyboard> или событий анимации.  
   
  Пример, показывающий, как определить раскадровку в <xref:System.Windows.Controls.ControlTemplate>, см. в разделе [анимация в ControlTemplate](how-to-animate-in-a-controltemplate.md) пример.  
   

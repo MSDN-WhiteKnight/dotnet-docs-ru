@@ -16,9 +16,9 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59203474"
 ---
 # <a name="textblock-overview"></a>Общие сведения о TextBlock
-<xref:System.Windows.Controls.TextBlock> Управления обеспечивает гибкую поддержку текста для WPF приложений. Элемент в основном предназначен для базовых сценариев UI, которые не требуют более одного абзаца текста. Он поддерживает ряд свойств, которые обеспечивают точный контроль представления, такие как <xref:System.Windows.Controls.TextBlock.FontFamily%2A>, <xref:System.Windows.Controls.TextBlock.FontSize%2A>, <xref:System.Windows.Controls.TextBlock.FontWeight%2A>, <xref:System.Windows.Controls.TextBlock.TextEffects%2A>, и <xref:System.Windows.Controls.TextBlock.TextWrapping%2A>. Текстовое содержимое можно добавить с помощью <xref:System.Windows.Controls.TextBlock.Text%2A> свойство. При использовании в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] содержимое между открывающим и закрывающим тегами неявно добавляется в качестве текста элемента.  
+<xref:System.Windows.Controls.TextBlock> Управления обеспечивает гибкую поддержку текста для WPF приложений. Элемент в основном предназначен для базовых сценариев UI, которые не требуют более одного абзаца текста. Он поддерживает ряд свойств, которые обеспечивают точный контроль представления, такие как <xref:System.Windows.Controls.TextBlock.FontFamily%2A>, <xref:System.Windows.Controls.TextBlock.FontSize%2A>, <xref:System.Windows.Controls.TextBlock.FontWeight%2A>, <xref:System.Windows.Controls.TextBlock.TextEffects%2A>, и <xref:System.Windows.Controls.TextBlock.TextWrapping%2A>. Текстовое содержимое можно добавить с помощью <xref:System.Windows.Controls.TextBlock.Text%2A> свойство. При использовании в XAML содержимое между открывающим и закрывающим тегами неявно добавляется в качестве текста элемента.  
   
- Объект <xref:System.Windows.Controls.TextBlock> элемент могут создаваться очень просто с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ Объект <xref:System.Windows.Controls.TextBlock> элемент могут создаваться очень просто с помощью XAML.  
   
  [!code-xaml[TextBlockSnip_XAML#2](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBlockSnip_XAML/CS/default.xaml#2)]  
   

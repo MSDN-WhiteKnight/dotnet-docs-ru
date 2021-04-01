@@ -18,7 +18,7 @@ ms.locfileid: "59147339"
 > [!NOTE]
 >  Динамические ресурсы имеют ключевое слово *ключ* добавляется к имени свойства.  
   
- В приведенном ниже примере показано, как получить доступ к ресурсам динамических параметров системы и использовать их для создания стиля или настройки кнопки. Это [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] примере размеры кнопки путем назначения <xref:System.Windows.SystemParameters> значения ширины и высоты кнопки.  
+ В приведенном ниже примере показано, как получить доступ к ресурсам динамических параметров системы и использовать их для создания стиля или настройки кнопки. Это XAML примере размеры кнопки путем назначения <xref:System.Windows.SystemParameters> значения ширины и высоты кнопки.  
   
 ## <a name="example"></a>Пример  
  [!code-xaml[SystemRes_snip#ParameterDynamicResources](~/samples/snippets/csharp/VS_Snippets_Wpf/SystemRes_snip/CSharp/MyApp.xaml#parameterdynamicresources)]  

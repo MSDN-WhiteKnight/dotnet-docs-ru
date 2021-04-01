@@ -20,7 +20,7 @@ ms.locfileid: "59219139"
 В этом примере показано, как вызов функции страницы из XAML страницы.  
   
 ## <a name="example"></a>Пример  
- Вы можете перейти к функции страницы с помощью [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)], так же как при переходе на страницу. Эти действия показаны в следующем примере.  
+ Вы можете перейти к функции страницы с помощью URI, так же как при переходе на страницу. Эти действия показаны в следующем примере.  
   
  [!code-csharp[HOWTOPageFunctionSnippets#NavigateToAPageFunctionLikeAPageCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTOPageFunctionSnippets/CSharp/CallingPage.xaml.cs#navigatetoapagefunctionlikeapagecodebehind)]
    

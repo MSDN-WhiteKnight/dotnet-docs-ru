@@ -179,7 +179,7 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
  [!code-xaml[WpfHostingWindowsFormsControl#101](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml#101)]
 [!code-xaml[WpfHostingWindowsFormsControl#102](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml#102)]
 
- `xmlns` Атрибут сопоставления пространства имен создает ссылку на `MyControls` пространство имен, содержащее размещенного элемента управления. Это сопоставление позволяет представить `MyControl1` в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] как `<mcl:MyControl1>`.
+ `xmlns` Атрибут сопоставления пространства имен создает ссылку на `MyControls` пространство имен, содержащее размещенного элемента управления. Это сопоставление позволяет представить `MyControl1` в XAML как `<mcl:MyControl1>`.
 
  Два элемента в коде XAML обрабатывают размещение:
 
@@ -204,7 +204,7 @@ Windows Presentation Foundation (WPF) предоставляет среду с �
  [!code-csharp[WpfHostingWindowsFormsControl#11](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfHostingWindowsFormsControl/CSharp/WpfHost/Page1.xaml.cs#11)]
  
 
- Так как [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] описанные ранее добавленный `MyControl1` для <xref:System.Windows.Forms.Integration.WindowsFormsHost> коллекцию дочерних элементов элемента, можно привести <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента <xref:System.Windows.Forms.Integration.WindowsFormsHost.Child%2A> для получения ссылки на `MyControl1`. Затем можно использовать эту ссылку для присоединения обработчика событий к `OnButtonClick`.
+ Так как XAML описанные ранее добавленный `MyControl1` для <xref:System.Windows.Forms.Integration.WindowsFormsHost> коллекцию дочерних элементов элемента, можно привести <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента <xref:System.Windows.Forms.Integration.WindowsFormsHost.Child%2A> для получения ссылки на `MyControl1`. Затем можно использовать эту ссылку для присоединения обработчика событий к `OnButtonClick`.
 
  Помимо предоставления ссылки на элемент управления, <xref:System.Windows.Forms.Integration.WindowsFormsHost> предоставляет ряд свойств элемента управления, которыми можно управлять из приложения. Код инициализации назначает эти значения закрытым глобальным переменным для последующего использования в приложении.
 

@@ -20,11 +20,11 @@ Windows Presentation Foundation (WPF) содержит большинство р
 
 <a name="creating_an_instance_of_a_control"></a>   
 ## <a name="creating-an-instance-of-a-control"></a>Создание экземпляра элемента управления  
-Элемент управления можно добавить в приложение с помощью XAML или кода. В следующем примере показано, как создать простое приложение, которое запрашивает у пользователя имя и фамилию. В этом примере создается шесть элементов управления: две метки, два текстовых поля и две кнопки в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. Все элементы управления могут быть созданы аналогичным образом. 
+Элемент управления можно добавить в приложение с помощью XAML или кода. В следующем примере показано, как создать простое приложение, которое запрашивает у пользователя имя и фамилию. В этом примере создается шесть элементов управления: две метки, два текстовых поля и две кнопки в XAML. Все элементы управления могут быть созданы аналогичным образом. 
   
  [!code-xaml[ControlsOverview#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/Window1.xaml#1)]  
   
- В следующем примере создается такое же приложение в коде. Для краткости создание <xref:System.Windows.Controls.Grid>, `grid1`, было исключено из примера. `grid1` имеет те же определения столбцов и строк, как показано в предыдущем примере [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ В следующем примере создается такое же приложение в коде. Для краткости создание <xref:System.Windows.Controls.Grid>, `grid1`, было исключено из примера. `grid1` имеет те же определения столбцов и строк, как показано в предыдущем примере XAML.  
   
  [!code-csharp[ControlsOverview#2](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml.cs#2)]
    
@@ -40,7 +40,7 @@ Windows Presentation Foundation (WPF) содержит большинство р
 -   Создать новый <xref:System.Windows.Controls.ControlTemplate> для элемента управления.  
   
 ### <a name="changing-a-controls-property-value"></a>Изменение значения свойства элемента управления  
- Многие элементы управления имеют свойства, которые позволяют изменять внешний вид элемента управления, например <xref:System.Windows.Controls.Control.Background%2A> у <xref:System.Windows.Controls.Button>. Можно задать значение свойства как в  [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], так и в коде. В следующем примере задаются свойства <xref:System.Windows.Controls.Control.Background%2A>, <xref:System.Windows.Controls.Control.FontSize%2A> и <xref:System.Windows.Controls.Control.FontWeight%2A> у <xref:System.Windows.Controls.Button> в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ Многие элементы управления имеют свойства, которые позволяют изменять внешний вид элемента управления, например <xref:System.Windows.Controls.Control.Background%2A> у <xref:System.Windows.Controls.Button>. Можно задать значение свойства как в  XAML, так и в коде. В следующем примере задаются свойства <xref:System.Windows.Controls.Control.Background%2A>, <xref:System.Windows.Controls.Control.FontSize%2A> и <xref:System.Windows.Controls.Control.FontWeight%2A> у <xref:System.Windows.Controls.Button> в XAML.  
   
  [!code-xaml[ControlsOverview#3](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml#3)]  
   
@@ -50,7 +50,7 @@ Windows Presentation Foundation (WPF) содержит большинство р
    
   
 ### <a name="creating-a-style-for-a-control"></a>Создание стиля для элемента управления  
- WPF дает возможность группового определения внешнего вида элементов управления путем создания <xref:System.Windows.Style> вместо установки свойств для каждого экземпляра в приложении. В следующем примере создается <xref:System.Windows.Style>, который применяется к каждому элементу <xref:System.Windows.Controls.Button> в приложении. Определения <xref:System.Windows.Style> обычно размещаются в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] в <xref:System.Windows.ResourceDictionary>, например в свойстве <xref:System.Windows.FrameworkElement.Resources%2A> объекта <xref:System.Windows.FrameworkElement>. 
+ WPF дает возможность группового определения внешнего вида элементов управления путем создания <xref:System.Windows.Style> вместо установки свойств для каждого экземпляра в приложении. В следующем примере создается <xref:System.Windows.Style>, который применяется к каждому элементу <xref:System.Windows.Controls.Button> в приложении. Определения <xref:System.Windows.Style> обычно размещаются в XAML в <xref:System.Windows.ResourceDictionary>, например в свойстве <xref:System.Windows.FrameworkElement.Resources%2A> объекта <xref:System.Windows.FrameworkElement>. 
   
  [!code-xaml[ControlsOverview#5](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/AppInCode.xaml#5)]  
   
@@ -71,7 +71,7 @@ Windows Presentation Foundation (WPF) содержит большинство р
   
 <a name="subscribing_to_events"></a>   
 ## <a name="subscribing-to-events"></a>Подписка на события  
- Можно подписаться на событие элемента управления с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] или кода, но обработать событие можно только в коде.  В следующем примере показано, как подписаться на событие `Click` элемента управления <xref:System.Windows.Controls.Button>.  
+ Можно подписаться на событие элемента управления с помощью XAML или кода, но обработать событие можно только в коде.  В следующем примере показано, как подписаться на событие `Click` элемента управления <xref:System.Windows.Controls.Button>.  
   
  [!code-xaml[ControlsOverview#10](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlsOverview/CSharp/Window1.xaml#10)]  
   

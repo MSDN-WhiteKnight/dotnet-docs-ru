@@ -19,7 +19,7 @@ ms.locfileid: "59091152"
 # <a name="how-to-detect-when-text-in-a-textbox-has-changed"></a>Практическое руководство. Определение изменения текста в TextBox
 В этом примере показан один из способов использования <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> событий для выполнения метода всякий раз, когда текст в <xref:System.Windows.Controls.TextBox> элемент управления был изменен.  
   
- В классе фонового кода для [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] , содержащий <xref:System.Windows.Controls.TextBox> элемент управления, который вы хотите отслеживать изменения, вставить метод, вызываемый каждый раз, когда <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> вызывает событие.  Этот метод должен иметь сигнатуру, которая соответствует ожидаемых <xref:System.Windows.Controls.TextChangedEventHandler> делегировать.  
+ В классе фонового кода для XAML , содержащий <xref:System.Windows.Controls.TextBox> элемент управления, который вы хотите отслеживать изменения, вставить метод, вызываемый каждый раз, когда <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> вызывает событие.  Этот метод должен иметь сигнатуру, которая соответствует ожидаемых <xref:System.Windows.Controls.TextChangedEventHandler> делегировать.  
   
  Обработчик событий вызывается всякий раз, когда содержимое <xref:System.Windows.Controls.TextBox> управления изменяются, либо пользователем, либо программным способом.  
   
@@ -31,7 +31,7 @@ ms.locfileid: "59091152"
  [!code-xaml[TextBox_MiscCode#_TextChangedXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml#_textchangedxaml)]  
   
 ## <a name="example"></a>Пример  
- В классе фонового кода для [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] , содержащий <xref:System.Windows.Controls.TextBox> элемент управления, который вы хотите отслеживать изменения, вставить метод, вызываемый каждый раз, когда <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> вызывает событие.  Этот метод должен иметь сигнатуру, которая соответствует ожидаемых <xref:System.Windows.Controls.TextChangedEventHandler> делегировать.  
+ В классе фонового кода для XAML , содержащий <xref:System.Windows.Controls.TextBox> элемент управления, который вы хотите отслеживать изменения, вставить метод, вызываемый каждый раз, когда <xref:System.Windows.Controls.Primitives.TextBoxBase.TextChanged> вызывает событие.  Этот метод должен иметь сигнатуру, которая соответствует ожидаемых <xref:System.Windows.Controls.TextChangedEventHandler> делегировать.  
   
  [!code-csharp[TextBox_MiscCode#_TextChangedEventHandler](~/samples/snippets/csharp/VS_Snippets_Wpf/TextBox_MiscCode/CSharp/Window1.xaml.cs#_textchangedeventhandler)]
    

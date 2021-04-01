@@ -33,9 +33,9 @@ ms.locfileid: "59209714"
 
 <a name="_wpfImaging"></a>   
 ## <a name="wpf-imaging-component"></a>Компонент обработки изображений WPF  
- [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] предоставляет значительные усовершенствования возможностей обработки изображений в [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)]. Возможности обработки изображений, например вывод растрового изображения или использование изображения на общем элементе управления были ранее реализованы с помощью библиотек [!INCLUDE[TLA#tla_gdi](../../../../includes/tlasharptla-gdi-md.md)] и [!INCLUDE[TLA#tla_gdiplus](../../../../includes/tlasharptla-gdiplus-md.md)]. Эти библиотеки [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] обеспечивают базовые функции обработки изображений, но в них отсутствуют такие возможности, как поддержка расширяемости кодеков и изображений высокого качества. [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] предназначен для преодоления недостатков [!INCLUDE[TLA2#tla_gdi](../../../../includes/tla2sharptla-gdi-md.md)] и [!INCLUDE[TLA2#tla_gdiplus](../../../../includes/tla2sharptla-gdiplus-md.md)] и предоставляет новый набор [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] для отображения и использования изображений в приложениях.  
+ [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] предоставляет значительные усовершенствования возможностей обработки изображений в [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)]. Возможности обработки изображений, например вывод растрового изображения или использование изображения на общем элементе управления были ранее реализованы с помощью библиотек [!INCLUDE[TLA#tla_gdi](../../../../includes/tlasharptla-gdi-md.md)] и [!INCLUDE[TLA#tla_gdiplus](../../../../includes/tlasharptla-gdiplus-md.md)]. Эти библиотеки API обеспечивают базовые функции обработки изображений, но в них отсутствуют такие возможности, как поддержка расширяемости кодеков и изображений высокого качества. [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] предназначен для преодоления недостатков [!INCLUDE[TLA2#tla_gdi](../../../../includes/tla2sharptla-gdi-md.md)] и [!INCLUDE[TLA2#tla_gdiplus](../../../../includes/tla2sharptla-gdiplus-md.md)] и предоставляет новый набор API для отображения и использования изображений в приложениях.  
   
- Существует два способа доступа к [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] — управляемый компонент и неуправляемый компонент. Неуправляемый компонент предоставляет следующие возможности.  
+ Существует два способа доступа к [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] API — управляемый компонент и неуправляемый компонент. Неуправляемый компонент предоставляет следующие возможности.  
   
 -   Модель расширяемости для новых или собственных форматов изображений.  
   
@@ -51,9 +51,9 @@ ms.locfileid: "59209714"
   
 -   Управляемый компонент использует неуправляемую инфраструктуру для обеспечения плавной интеграции изображений с другими функциями WPF, такими как UI , анимация и графика. Управляемый компонент также использует преимущества Windows Presentation Foundation (WPF) работы с образами модели расширяемости кодека которая позволяет автоматически распознавать новые форматы изображений в WPF приложений.  
   
- Большинство управляемых [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] находятся в <xref:System.Windows.Media.Imaging?displayProperty=nameWithType> пространства имен, хотя несколько важных типов, таких как <xref:System.Windows.Media.ImageBrush> и <xref:System.Windows.Media.ImageDrawing> находятся в <xref:System.Windows.Media?displayProperty=nameWithType> пространства имен и <xref:System.Windows.Controls.Image> находится в <xref:System.Windows.Controls?displayProperty=nameWithType> пространства имен.  
+ Большинство управляемых [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] API находятся в <xref:System.Windows.Media.Imaging?displayProperty=nameWithType> пространства имен, хотя несколько важных типов, таких как <xref:System.Windows.Media.ImageBrush> и <xref:System.Windows.Media.ImageDrawing> находятся в <xref:System.Windows.Media?displayProperty=nameWithType> пространства имен и <xref:System.Windows.Controls.Image> находится в <xref:System.Windows.Controls?displayProperty=nameWithType> пространства имен.  
   
- В этом разделе содержатся дополнительные сведения об управляемом компоненте. Дополнительные сведения о неуправляемом компоненте [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] см. в документации по [неуправляемому компоненту обработки изображений WPF](/windows/desktop/wic/-wic-lh).  
+ В этом разделе содержатся дополнительные сведения об управляемом компоненте. Дополнительные сведения о неуправляемом компоненте API см. в документации по [неуправляемому компоненту обработки изображений WPF](/windows/desktop/wic/-wic-lh).  
   
 <a name="_imageformats"></a>   
 ## <a name="wpf-image-formats"></a>Форматы изображений в WPF  
@@ -91,7 +91,7 @@ ms.locfileid: "59209714"
  Существует несколько способов отображения изображений в приложении Windows Presentation Foundation (WPF). Изображения могут отображаться с помощью <xref:System.Windows.Controls.Image> элемента управления, нарисованный в визуального элемента с помощью <xref:System.Windows.Media.ImageBrush>, или отображаются с помощью <xref:System.Windows.Media.ImageDrawing>.  
   
 ### <a name="using-the-image-control"></a>Использование элемента управления Image  
- <xref:System.Windows.Controls.Image> — Это элемент платформы и основной способ отображения изображений в приложениях. В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], <xref:System.Windows.Controls.Image> можно использовать в двух способов; синтаксис атрибутов или синтаксис свойств. В следующем примере показано, как можно отобразить изображение размером 200 пикселей в ширину, используя синтаксис атрибута и синтаксис тега свойства. Дополнительные сведения о синтаксисе атрибутов и синтаксисе свойств см. в разделе [Общие сведения о свойствах зависимостей](../advanced/dependency-properties-overview.md).  
+ <xref:System.Windows.Controls.Image> — Это элемент платформы и основной способ отображения изображений в приложениях. В XAML, <xref:System.Windows.Controls.Image> можно использовать в двух способов; синтаксис атрибутов или синтаксис свойств. В следующем примере показано, как можно отобразить изображение размером 200 пикселей в ширину, используя синтаксис атрибута и синтаксис тега свойства. Дополнительные сведения о синтаксисе атрибутов и синтаксисе свойств см. в разделе [Общие сведения о свойствах зависимостей](../advanced/dependency-properties-overview.md).  
   
  [!code-xaml[ImageElementExample_snip#ImageSimpleExampleInlineMarkup](~/samples/snippets/csharp/VS_Snippets_Wpf/ImageElementExample_snip/CSharp/ImageSimpleExample.xaml#imagesimpleexampleinlinemarkup)]  
   
@@ -183,7 +183,7 @@ ms.locfileid: "59209714"
 ## <a name="codec-extensibility"></a>Расширяемость кодеков  
  Основной особенностью [!INCLUDE[TLA2#tla_wic](../../../../includes/tla2sharptla-wic-md.md)] является модель расширяемости для новых кодеков изображений. Эти неуправляемые интерфейсы позволяют разработчикам кодеков интегрировать кодеки в WPF. Благодаря этому новые форматы изображений могут автоматически использоваться приложениями WPF.  
   
- Пример расширяемости [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] см. в разделе [Пример кодека Win32](https://go.microsoft.com/fwlink/?LinkID=160052). В этом примере показано создание декодера и кодировщика для пользовательского формата изображения.  
+ Пример расширяемости API см. в разделе [Пример кодека Win32](https://go.microsoft.com/fwlink/?LinkID=160052). В этом примере показано создание декодера и кодировщика для пользовательского формата изображения.  
   
 > [!NOTE]
 >  Чтобы система могла распознать кодек, он должен иметь цифровую подпись.  

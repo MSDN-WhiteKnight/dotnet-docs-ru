@@ -30,7 +30,7 @@ ms.locfileid: "58412218"
 
 ![Снимок экрана, показывающий стекла фреймом, расширенный за адресной строки обозревателя IE7.](./media/extend-glass-frame-into-a-wpf-application/internet-explorer-glass-frame-extended-address-bar.png)
 
-Чтобы расширить стеклянную рамку в приложении WPF, требуется доступ к неуправляемому [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)]. В следующем примере кода выполняется платформенный вызов (pinvoke) для двух [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)], необходимых для расширения рамки на клиентскую область. Каждый из этих [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)] объявляется в классе с именем **NonClientRegionAPI**.
+Чтобы расширить стеклянную рамку в приложении WPF, требуется доступ к неуправляемому [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)]. В следующем примере кода выполняется платформенный вызов (pinvoke) для двух API, необходимых для расширения рамки на клиентскую область. Каждый из этих API объявляется в классе с именем **NonClientRegionAPI**.
 
 ```csharp
 [StructLayout(LayoutKind.Sequential)]

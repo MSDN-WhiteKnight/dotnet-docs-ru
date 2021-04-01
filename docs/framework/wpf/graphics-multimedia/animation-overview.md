@@ -141,7 +141,7 @@ Windows Presentation Foundation (WPF) предоставляет мощный н
   
 <a name="opacity_animation_step3"></a>   
 ### <a name="part-3-xaml-associate-the-storyboard-with-a-trigger"></a>Часть 3 (XAML). Связать раскадровки с триггером  
- Самый простой способ применить и запустить <xref:System.Windows.Media.Animation.Storyboard> в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] является использование триггера событий. В этом разделе показано, как связать <xref:System.Windows.Media.Animation.Storyboard> с триггером в XAML.  
+ Самый простой способ применить и запустить <xref:System.Windows.Media.Animation.Storyboard> в XAML является использование триггера событий. В этом разделе показано, как связать <xref:System.Windows.Media.Animation.Storyboard> с триггером в XAML.  
   
 1. Создание <xref:System.Windows.Media.Animation.BeginStoryboard> и свяжите с ним раскадровки. Объект <xref:System.Windows.Media.Animation.BeginStoryboard> — это разновидность <xref:System.Windows.TriggerAction> , применения и запуска <xref:System.Windows.Media.Animation.Storyboard>.  
   
@@ -266,12 +266,12 @@ Windows Presentation Foundation (WPF) предоставляет мощный н
   
 -   Чтобы сделать <xref:System.Windows.FrameworkElement> целевого объекта анимации, присвойте его имя, задав его <xref:System.Windows.FrameworkElement.Name%2A> свойство. В коде, необходимо также использовать <xref:System.Windows.FrameworkElement.RegisterName%2A> метод для регистрации имени элемента на странице, к которой он принадлежит.  
   
--   Чтобы сделать <xref:System.Windows.Freezable> объект целевого объекта анимации в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], использовании [директива x: Name](../../xaml-services/x-name-directive.md) присвоить имя. В коде, можно просто использовать <xref:System.Windows.FrameworkElement.RegisterName%2A> метод для регистрации объекта на странице, к которой он принадлежит.  
+-   Чтобы сделать <xref:System.Windows.Freezable> объект целевого объекта анимации в XAML, использовании [директива x: Name](../../xaml-services/x-name-directive.md) присвоить имя. В коде, можно просто использовать <xref:System.Windows.FrameworkElement.RegisterName%2A> метод для регистрации объекта на странице, к которой он принадлежит.  
   
- В последующих разделах приводится пример присваивания имени элементу в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] и кода. Более подробные сведения об именовании и определение целевых объектов см. в разделе [Общие сведения о раскадровках](storyboards-overview.md).  
+ В последующих разделах приводится пример присваивания имени элементу в XAML и кода. Более подробные сведения об именовании и определение целевых объектов см. в разделе [Общие сведения о раскадровках](storyboards-overview.md).  
   
 ### <a name="applying-and-starting-storyboards"></a>Применение и запуск раскадровки  
- Чтобы запустить раскадровку [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], необходимо связать его с <xref:System.Windows.EventTrigger>. <xref:System.Windows.EventTrigger> Является объектом, описывающим, какие действия следует предпринять при возникновении указанного события. Одно из этих действий может быть <xref:System.Windows.Media.Animation.BeginStoryboard> действие, которое используется для запуска раскадровки. Триггеры событий по концепции аналогичны обработчикам событий, так как они позволяют задать реакцию приложения на конкретное событие. В отличие от обработчиков событий триггеры событий могут быть полностью описаны в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]; никакой другой код является обязательным.  
+ Чтобы запустить раскадровку XAML, необходимо связать его с <xref:System.Windows.EventTrigger>. <xref:System.Windows.EventTrigger> Является объектом, описывающим, какие действия следует предпринять при возникновении указанного события. Одно из этих действий может быть <xref:System.Windows.Media.Animation.BeginStoryboard> действие, которое используется для запуска раскадровки. Триггеры событий по концепции аналогичны обработчикам событий, так как они позволяют задать реакцию приложения на конкретное событие. В отличие от обработчиков событий триггеры событий могут быть полностью описаны в XAML; никакой другой код является обязательным.  
   
  Чтобы запустить <xref:System.Windows.Media.Animation.Storyboard> в коде, можно использовать <xref:System.Windows.EventTrigger> или использовать <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> метод <xref:System.Windows.Media.Animation.Storyboard> класса.  
   

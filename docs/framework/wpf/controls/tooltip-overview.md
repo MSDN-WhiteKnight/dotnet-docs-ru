@@ -36,7 +36,7 @@ ms.locfileid: "59170109"
   
  [!code-xaml[GroupBoxSnippet#ToolTipString](~/samples/snippets/csharp/VS_Snippets_Wpf/GroupBoxSnippet/CS/Window1.xaml#tooltipstring)]  
   
- Можно также определить подсказку как <xref:System.Windows.Controls.ToolTip> объекта. В следующем примере используется [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] для указания <xref:System.Windows.Controls.ToolTip> объект как подсказку <xref:System.Windows.Controls.TextBox> элемент. Обратите внимание, что в примере указывается <xref:System.Windows.Controls.ToolTip> , задав <xref:System.Windows.FrameworkElement.ToolTip%2A?displayProperty=nameWithType> свойство.  
+ Можно также определить подсказку как <xref:System.Windows.Controls.ToolTip> объекта. В следующем примере используется XAML для указания <xref:System.Windows.Controls.ToolTip> объект как подсказку <xref:System.Windows.Controls.TextBox> элемент. Обратите внимание, что в примере указывается <xref:System.Windows.Controls.ToolTip> , задав <xref:System.Windows.FrameworkElement.ToolTip%2A?displayProperty=nameWithType> свойство.  
   
  [!code-xaml[ToolTipSimple#ToolTip](~/samples/snippets/csharp/VS_Snippets_Wpf/ToolTipSimple/CSharp/Pane1.xaml#tooltip)]  
   

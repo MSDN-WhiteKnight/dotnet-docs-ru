@@ -25,7 +25,7 @@ ms.locfileid: "59148308"
   
 <a name="solidcolorinxaml"></a>   
 ### <a name="using-a-solidcolorbrush-in-xaml"></a>Использование SolidColorBrush в XAML  
- Чтобы закрасить область сплошным цветом в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], используйте один из следующих вариантов.  
+ Чтобы закрасить область сплошным цветом в XAML, используйте один из следующих вариантов.  
   
 -   Выберите стандартную сплошную цветную кисть по имени.  Например, можно задать кнопки <xref:System.Windows.Controls.Control.Background%2A> «Red» или «MediumBlue».  Список других стандартных кистей сплошного цвета, см. в разделе статические свойства класса <xref:System.Windows.Media.Brushes> класса. Пример.  
   
@@ -81,7 +81,7 @@ ms.locfileid: "59148308"
   
  <xref:System.Windows.Media.GradientStop> Основной строительный блок градиентной кисти.  Ограничение градиента задает <xref:System.Windows.Media.GradientStop.Color%2A> в <xref:System.Windows.Media.GradientStop.Offset%2A> вдоль оси градиента.  
   
--   Ступень градиента <xref:System.Windows.Media.GradientStop.Color%2A> свойство задает цвет градиента. Можно установить цвет с помощью стандартного цвета (предоставляемые <xref:System.Windows.Media.Colors> класс) или путем указания значений ScRGB или ARGB. В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] для описания цвета можно также использовать шестнадцатеричный формат. Дополнительные сведения см. в разделе <xref:System.Windows.Media.Color> структуры.  
+-   Ступень градиента <xref:System.Windows.Media.GradientStop.Color%2A> свойство задает цвет градиента. Можно установить цвет с помощью стандартного цвета (предоставляемые <xref:System.Windows.Media.Colors> класс) или путем указания значений ScRGB или ARGB. В XAML для описания цвета можно также использовать шестнадцатеричный формат. Дополнительные сведения см. в разделе <xref:System.Windows.Media.Color> структуры.  
   
 -   Ступень градиента <xref:System.Windows.Media.GradientStop.Offset%2A> свойство определяет положение цвета ограничения градиента на оси градиента. Значением offset является <xref:System.Double> , в диапазоне от 0 до 1. Чем ближе значение смещения ограничения градиента к 0, тем ближе цвет находится к началу градиента. Чем ближе значение смещения градиента к 1, тем ближе цвет находится к окончанию градиента.  
   
@@ -142,11 +142,11 @@ ms.locfileid: "59148308"
   
 <a name="specifyinggradientcolors"></a>   
 ## <a name="specifying-transparent-or-partially-transparent-gradient-stops"></a>Задание прозрачных и частично прозрачных ограничений градиента  
- Поскольку градиента не предусмотрено свойство непрозрачности, необходимо указать альфа-канал цветов с помощью [!INCLUDE[TLA#tla_argb](../../../../includes/tlasharptla-argb-md.md)] шестнадцатеричного формата в разметке или использовать <xref:System.Windows.Media.Color.FromScRgb%2A?displayProperty=nameWithType> метод для создания градиента, которые являются прозрачным или полупрозрачным. Ниже описаны процедуры по созданию частично прозрачных ограничений градиента в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] и код.  
+ Поскольку градиента не предусмотрено свойство непрозрачности, необходимо указать альфа-канал цветов с помощью [!INCLUDE[TLA#tla_argb](../../../../includes/tlasharptla-argb-md.md)] шестнадцатеричного формата в разметке или использовать <xref:System.Windows.Media.Color.FromScRgb%2A?displayProperty=nameWithType> метод для создания градиента, которые являются прозрачным или полупрозрачным. Ниже описаны процедуры по созданию частично прозрачных ограничений градиента в XAML и код.  
   
 <a name="argbsyntax"></a>   
 ### <a name="specifying-color-opacity-in-xaml"></a>Задание непрозрачности цвета в XAML  
- В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] можно использовать шестнадцатеричный формат [!INCLUDE[TLA2#tla_argb](../../../../includes/tla2sharptla-argb-md.md)] для указания непрозрачности отдельных цветов. [!INCLUDE[TLA2#tla_argb](../../../../includes/tla2sharptla-argb-md.md)] шестнадцатеричное представление использует следующий синтаксис:  
+ В XAML можно использовать шестнадцатеричный формат [!INCLUDE[TLA2#tla_argb](../../../../includes/tla2sharptla-argb-md.md)] для указания непрозрачности отдельных цветов. [!INCLUDE[TLA2#tla_argb](../../../../includes/tla2sharptla-argb-md.md)] шестнадцатеричное представление использует следующий синтаксис:  
   
  `#` **AA** *вида rrggbb*  
   

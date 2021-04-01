@@ -66,7 +66,7 @@ ms.locfileid: "59317666"
 > [!NOTE]
 >  <xref:System.Windows.Documents.Table> аналогичен <xref:System.Windows.Controls.Grid> элемент но имеет больше возможностей и, следовательно, требует больше ресурсов.  
   
- В следующем примере определяется Простая таблица 2 x 3 с помощью [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)].  
+ В следующем примере определяется Простая таблица 2 x 3 с помощью XAML.  
   
  [!code-xaml[TableSnippets2#_Table_BasicLayout](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml#_table_basiclayout)]  
   
@@ -96,7 +96,7 @@ ms.locfileid: "59317666"
 ### <a name="row-groupings"></a>Группирование строк  
  <xref:System.Windows.Documents.TableRowGroup> Элемент предоставляет способ произвольного группирования строк в таблице; каждая строка таблицы должна принадлежать группе строк.  Строки в группе часто имеют общее назначение и могут быть стилизованы в виде группы.  Обычно группирование строк используется для отделения строк специального назначения, например строк названия, заголовка и нижнего колонтитула, от основного содержимого, находящегося в таблице.  
   
- В следующем примере используется [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)] для определения таблицы с примененным стилем заголовка и нижнего колонтитула.  
+ В следующем примере используется XAML для определения таблицы с примененным стилем заголовка и нижнего колонтитула.  
   
  [!code-xaml[TableSnippets2#_Table_RowGroups](~/samples/snippets/csharp/VS_Snippets_Wpf/TableSnippets2/CSharp/Window1.xaml#_table_rowgroups)]  
   

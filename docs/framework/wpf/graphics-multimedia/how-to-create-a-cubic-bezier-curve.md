@@ -26,7 +26,7 @@ ms.locfileid: "59115574"
   
  [xaml]  
   
- В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], также можно рисовать кривую Безье третьего порядка, с помощью тегов объектов. Следующий пример эквивалентен предыдущему примеру [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ В XAML, также можно рисовать кривую Безье третьего порядка, с помощью тегов объектов. Следующий пример эквивалентен предыдущему примеру XAML.  
   
  [!code-xaml[GeometrySample#33](~/samples/snippets/csharp/VS_Snippets_Wpf/GeometrySample/CS/pathgeometryexample.xaml#33)]  
   

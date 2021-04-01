@@ -15,7 +15,7 @@ ms.locfileid: "59079829"
 # <a name="bidirectional-features-in-wpf-overview"></a>Общие сведения о двусторонних возможностях в WPF
 В отличие от других платформ разработки WPF имеет множество функций, поддерживающих быструю разработку двунаправленного содержимого, например, направленного как слева направо и справа налево в одном документе. В то же время WPF имеет превосходный интерфейс для пользователей, которым необходимы двунаправленные возможности, такие как арабский и иврит, пользователям, говорящим.  
   
- В следующих разделах описаны различные возможности двунаправленного письма с примерами, иллюстрирующими способы достижения наилучшего отображения двунаправленного содержимого на экране. В большинстве примеров используется [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)], хотя вы можете легко применить концепции, чтобы C# или Microsoft Visual Basic.  
+ В следующих разделах описаны различные возможности двунаправленного письма с примерами, иллюстрирующими способы достижения наилучшего отображения двунаправленного содержимого на экране. В большинстве примеров используется XAML, хотя вы можете легко применить концепции, чтобы C# или Microsoft Visual Basic.  
 
 <a name="FlowDirection"></a>   
 ## <a name="flowdirection"></a>FlowDirection  
@@ -124,7 +124,7 @@ ms.locfileid: "59079829"
   
  **Изображение**  
   
- <xref:System.Windows.Controls.Image> Представляет элемент управления, отображающий изображение. В [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)] он может использоваться с <xref:System.Windows.Controls.Image.Source%2A> свойство, определяющее [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] из <xref:System.Windows.Controls.Image> для отображения.  
+ <xref:System.Windows.Controls.Image> Представляет элемент управления, отображающий изображение. В XAML он может использоваться с <xref:System.Windows.Controls.Image.Source%2A> свойство, определяющее URI из <xref:System.Windows.Controls.Image> для отображения.  
   
  В отличие от других UI элементов, <xref:System.Windows.Controls.Image> не наследует <xref:System.Windows.FlowDirection> из контейнера. Тем не менее если <xref:System.Windows.FlowDirection> явно присвоено <xref:System.Windows.FlowDirection.RightToLeft>, <xref:System.Windows.Controls.Image> отображается перевернутым по горизонтали. Это сделано для удобства разработчиков двунаправленного содержимого. В некоторых случаях горизонтальным отражением достигается требуемый эффект.  
   
@@ -231,7 +231,7 @@ text1.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalizat
 
  <xref:System.Globalization.CultureInfo.CurrentCulture%2A?displayProperty=nameWithType> представляет текущий язык и региональные параметры, используемые текущим потоком во время выполнения.  
   
- Окончательный [!INCLUDE[TLA#tla_titlexaml](../../../../includes/tlasharptla-titlexaml-md.md)] пример должен быть аналогично приведенному ниже.  
+ Окончательный XAML пример должен быть аналогично приведенному ниже.  
   
  [!code-xaml[Numbers2#Numbers2](~/samples/snippets/csharp/VS_Snippets_Wpf/Numbers2/CS/Window1.xaml#numbers2)]  
   

@@ -46,11 +46,11 @@ ms.locfileid: "59341053"
   
  <xref:System.Windows.Media.GlyphRun> включает детали шрифта, такие как глиф <xref:System.Windows.Documents.Glyphs.Indices%2A> и отдельные позиции глифов. Он также включает в себя исходный [!INCLUDE[TLA#tla_unicode](../../../../includes/tlasharptla-unicode-md.md)] кодовые точки, был произведен запуск из сведения о сопоставлении смещения буфера символ — глиф и флаги каждого символа и глифа.  
   
- <xref:System.Windows.Media.GlyphRun> имеет соответствующий высокоуровневый <xref:System.Windows.FrameworkElement>, <xref:System.Windows.Documents.Glyphs>. <xref:System.Windows.Documents.Glyphs> может использоваться в дереве элементов и в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметку, представляющую <xref:System.Windows.Media.GlyphRun> выходных данных.  
+ <xref:System.Windows.Media.GlyphRun> имеет соответствующий высокоуровневый <xref:System.Windows.FrameworkElement>, <xref:System.Windows.Documents.Glyphs>. <xref:System.Windows.Documents.Glyphs> может использоваться в дереве элементов и в XAML разметку, представляющую <xref:System.Windows.Media.GlyphRun> выходных данных.  
   
 <a name="text_glyphrunovw_glyphselement"></a>   
 ## <a name="the-glyphs-element"></a>Элемент Glyphs  
- <xref:System.Windows.Documents.Glyphs> Элемент представляет выходные данные <xref:System.Windows.Media.GlyphRun> в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. Следующий синтаксис разметки используется для описания <xref:System.Windows.Documents.Glyphs> элемент.  
+ <xref:System.Windows.Documents.Glyphs> Элемент представляет выходные данные <xref:System.Windows.Media.GlyphRun> в XAML. Следующий синтаксис разметки используется для описания <xref:System.Windows.Documents.Glyphs> элемент.  
   
  [!code-xaml[GlyphsOvwSample1#1](~/samples/snippets/csharp/VS_Snippets_Wpf/GlyphsOvwSample1/CS/default.xaml#1)]  
   
@@ -58,7 +58,7 @@ ms.locfileid: "59341053"
   
 |Свойство|Описание|  
 |--------------|-----------------|  
-|<xref:System.Windows.Documents.Glyphs.FontUri%2A>|Указывает идентификатор ресурса: имя файла, [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)], или ссылку на ресурс в файле .exe или приложения контейнера.|  
+|<xref:System.Windows.Documents.Glyphs.FontUri%2A>|Указывает идентификатор ресурса: имя файла, URI, или ссылку на ресурс в файле .exe или приложения контейнера.|  
 |<xref:System.Windows.Documents.Glyphs.FontRenderingEmSize%2A>|Указывает размер шрифта в единицах графической поверхности (по умолчанию — 0,96 дюйма).|  
 |<xref:System.Windows.Documents.Glyphs.StyleSimulations%2A>|Задает флаги для полужирного шрифта и курсива.|  
 |<xref:System.Windows.Documents.Glyphs.BidiLevel%2A>|Задает уровень двунаправленного макета. Четные и нулевые значения подразумевают макет слева направо; нечетные значения подразумевают макет справа налево.|  
@@ -89,7 +89,7 @@ ms.locfileid: "59341053"
   
 <a name="text_glyphrunovw_glyphsmarkup"></a>   
 ## <a name="glyphs-markup"></a>Разметка глифа  
- В следующем примере кода показано, как использовать различные свойства <xref:System.Windows.Documents.Glyphs> элемент [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ В следующем примере кода показано, как использовать различные свойства <xref:System.Windows.Documents.Glyphs> элемент XAML.  
   
  [!code-xaml[GlyphsOvwSamp2#1](~/samples/snippets/csharp/VS_Snippets_Wpf/GlyphsOvwSamp2/CS/default.xaml#1)]  
   

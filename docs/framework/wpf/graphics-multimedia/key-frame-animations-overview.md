@@ -215,7 +215,7 @@ ms.locfileid: "59316743"
  [!code-xaml[keyframes_ovw_snippet#TimeSpanKeyTimeExample](~/samples/snippets/csharp/VS_Snippets_Wpf/keyframes_ovw_snippet/CS/KeyTimesExample.xaml#timespankeytimeexample)]  
   
 ### <a name="percentage-values"></a>Значения в процентах  
- Процентное значение указывает, что окончания опорного кадра в определенный процент анимации <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] значение в процентах указывается как число, за которым следует символ `%`. В коде используйте <xref:System.Windows.Media.Animation.KeyTime.FromPercent%2A> метод и передать его <xref:System.Double> в процентах. Значение должно быть больше или равно 0 и меньше или равно 100 %. В следующем примере показана анимация длительностью 10 секунд с четырьмя ключевыми кадрами, время которых указывается в виде значений в процентах.  
+ Процентное значение указывает, что окончания опорного кадра в определенный процент анимации <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. В XAML значение в процентах указывается как число, за которым следует символ `%`. В коде используйте <xref:System.Windows.Media.Animation.KeyTime.FromPercent%2A> метод и передать его <xref:System.Double> в процентах. Значение должно быть больше или равно 0 и меньше или равно 100 %. В следующем примере показана анимация длительностью 10 секунд с четырьмя ключевыми кадрами, время которых указывается в виде значений в процентах.  
   
 -   Первый ключевой кадр выполняет анимацию от базового значения до 100 в течение первых 3 секунд и заканчивает в момент времени = 0:0:3.  
   

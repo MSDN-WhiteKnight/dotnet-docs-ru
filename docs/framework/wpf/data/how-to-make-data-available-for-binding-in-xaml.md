@@ -19,11 +19,11 @@ ms.locfileid: "59145370"
 В этом разделе рассматриваются различные способы, которые можно сделать данные доступными для привязки в XAML, в зависимости от потребностей приложения.  
   
 ## <a name="example"></a>Пример  
- Если у вас есть [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] объекта, вы бы хотели привязки из [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], один из способов, вы можете сделать объект доступным для привязки является определение его как ресурс и присвойте ему `x:Key`. В следующем примере имеется `Person` объект с строковое свойство с именем `PersonName`. `Person` Объекта (в строке, выделено, содержащий `<src>` элемент) определен в пространстве имен `SDKSample`.  
+ Если у вас есть [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] объекта, вы бы хотели привязки из XAML, один из способов, вы можете сделать объект доступным для привязки является определение его как ресурс и присвойте ему `x:Key`. В следующем примере имеется `Person` объект с строковое свойство с именем `PersonName`. `Person` Объекта (в строке, выделено, содержащий `<src>` элемент) определен в пространстве имен `SDKSample`.  
   
  [!code-xaml[SimpleBinding#Instantiation](~/samples/snippets/csharp/VS_Snippets_Wpf/SimpleBinding/CSharp/Page1.xaml?highlight=9,37)]  
   
- Затем можно привязать <xref:System.Windows.Controls.TextBlock> управления к объекту в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], как выделенная строка содержит `<TextBlock>` показан элемент. 
+ Затем можно привязать <xref:System.Windows.Controls.TextBlock> управления к объекту в XAML, как выделенная строка содержит `<TextBlock>` показан элемент. 
   
  Кроме того, можно использовать <xref:System.Windows.Data.ObjectDataProvider> класса, как показано в следующем примере:  
   

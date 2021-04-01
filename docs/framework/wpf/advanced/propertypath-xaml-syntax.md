@@ -13,7 +13,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59122919"
 ---
 # <a name="propertypath-xaml-syntax"></a>Синтаксис PropertyPath XAML
-<xref:System.Windows.PropertyPath> Поддерживает сложный встроенный объект [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] синтаксиса для настройки различных свойств, которые принимают <xref:System.Windows.PropertyPath> тип в качестве значения. Этом разделе описана <xref:System.Windows.PropertyPath> синтаксис применительно к привязки и анимации.  
+<xref:System.Windows.PropertyPath> Поддерживает сложный встроенный объект XAML синтаксиса для настройки различных свойств, которые принимают <xref:System.Windows.PropertyPath> тип в качестве значения. Этом разделе описана <xref:System.Windows.PropertyPath> синтаксис применительно к привязки и анимации.  
 
 <a name="where"></a>   
 ## <a name="where-propertypath-is-used"></a>Где используется PropertyPath  
@@ -21,7 +21,7 @@ ms.locfileid: "59122919"
   
  В основном WPF использует <xref:System.Windows.PropertyPath> для описания путей объектной модели для нахождения свойств источника данных и для описания конечного пути для целевой анимации.  
   
- Некоторые свойства стиля и шаблона, такие как <xref:System.Windows.Setter.Property%2A?displayProperty=nameWithType> принимают имя полное свойство, которое внешне напоминает <xref:System.Windows.PropertyPath>. Но это не подлинный <xref:System.Windows.PropertyPath>; вместо этого это *owner.property* строка для использования формата обеспечивается WPF [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] процессора в сочетании с преобразователем типов для <xref:System.Windows.DependencyProperty>.  
+ Некоторые свойства стиля и шаблона, такие как <xref:System.Windows.Setter.Property%2A?displayProperty=nameWithType> принимают имя полное свойство, которое внешне напоминает <xref:System.Windows.PropertyPath>. Но это не подлинный <xref:System.Windows.PropertyPath>; вместо этого это *owner.property* строка для использования формата обеспечивается WPF XAML процессора в сочетании с преобразователем типов для <xref:System.Windows.DependencyProperty>.  
   
 <a name="databinding_s"></a>   
 ## <a name="propertypath-for-objects-in-data-binding"></a>PropertyPath для объектов в привязке данных  
@@ -67,9 +67,9 @@ ms.locfileid: "59122919"
 <object property="(ownerType.propertyName)" .../>  
 ```  
   
- Скобки означают, что это свойство в <xref:System.Windows.PropertyPath> должно быть создано с использованием частичной квалификации. Может использоваться пространство имен XML для поиска типа с соответствующим сопоставлением. `ownerType` Выполняет поиск типов, [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] обработчик имеет доступ к, до <xref:System.Windows.Markup.XmlnsDefinitionAttribute> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!INCLUDE[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен.  `propertyName` должно разрешаться как имя свойства, существующего в `ownerType`. Этот синтаксис обычно используется в одном из следующих случаев.  
+ Скобки означают, что это свойство в <xref:System.Windows.PropertyPath> должно быть создано с использованием частичной квалификации. Может использоваться пространство имен XML для поиска типа с соответствующим сопоставлением. `ownerType` Выполняет поиск типов, XAML обработчик имеет доступ к, до <xref:System.Windows.Markup.XmlnsDefinitionAttribute> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!INCLUDE[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен.  `propertyName` должно разрешаться как имя свойства, существующего в `ownerType`. Этот синтаксис обычно используется в одном из следующих случаев.  
   
--   Путь, указанный в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], который находится в стиле или шаблоне, не имеющем указанного целевого типа. Использование полных имен обычно недействительно для иных случаев, поскольку в отличие от стилей и шаблонов свойство существует в экземпляре, а не в типе.  
+-   Путь, указанный в XAML, который находится в стиле или шаблоне, не имеющем указанного целевого типа. Использование полных имен обычно недействительно для иных случаев, поскольку в отличие от стилей и шаблонов свойство существует в экземпляре, а не в типе.  
   
 -   Свойство является присоединенным свойством.  
   
@@ -178,7 +178,7 @@ or
 <animation Storyboard.TargetProperty="(ownerType.propertyName)" .../>  
 ```  
   
- Скобки означают, что это свойство в <xref:System.Windows.PropertyPath> должно быть создано с использованием частичной квалификации. Для поиска типа может использоваться пространство имен XML. `ownerType` Выполняет поиск типов, [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] обработчик имеет доступ к, до <xref:System.Windows.Markup.XmlnsDefinitionAttribute> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!INCLUDE[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен. `propertyName` должно разрешаться как имя свойства, существующего в `ownerType`. Свойство, указанное как `propertyName` должно быть <xref:System.Windows.DependencyProperty>. (Все присоединенные свойства WPF реализуются как свойства взаимозависимостей, поэтому эта проблема возникает только для настраиваемых присоединенных свойств.)  
+ Скобки означают, что это свойство в <xref:System.Windows.PropertyPath> должно быть создано с использованием частичной квалификации. Для поиска типа может использоваться пространство имен XML. `ownerType` Выполняет поиск типов, XAML обработчик имеет доступ к, до <xref:System.Windows.Markup.XmlnsDefinitionAttribute> объявления в каждой сборке. В большинстве приложений есть пространство имен XML по умолчанию, сопоставленное пространству имен [!INCLUDE[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)], поэтому префикс обычно требуется только для настраиваемых типов или типов вне этого пространства имен. `propertyName` должно разрешаться как имя свойства, существующего в `ownerType`. Свойство, указанное как `propertyName` должно быть <xref:System.Windows.DependencyProperty>. (Все присоединенные свойства WPF реализуются как свойства взаимозависимостей, поэтому эта проблема возникает только для настраиваемых присоединенных свойств.)  
   
 <a name="indexanim"></a>   
 ### <a name="indexers"></a>Индексаторы  

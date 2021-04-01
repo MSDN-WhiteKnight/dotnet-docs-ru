@@ -48,13 +48,13 @@ XAML-приложения браузера (XBAP) Запустите в изол
 
      `-debugSecurityZoneURL`  *URL-адрес*
 
-     *URL-адрес* значение **- debugSecurityZoneURL** параметр [!INCLUDE[TLA#tla_url](../../../../includes/tlasharptla-url-md.md)] расположения, которое требуется имитировать как узлу вашего приложения.
+     *URL-адрес* значение **- debugSecurityZoneURL** параметр URL расположения, которое требуется имитировать как узлу вашего приложения.
 
- Например, рассмотрим Приложение обозревателя XAML (XBAP) , использует веб-службы со следующими [!INCLUDE[TLA2#tla_url](../../../../includes/tla2sharptla-url-md.md)]:
+ Например, рассмотрим Приложение обозревателя XAML (XBAP) , использует веб-службы со следующими URL:
 
  `http://services.msdn.microsoft.com/ContentServices/ContentService.asmx`
 
- Исходный узел [!INCLUDE[TLA2#tla_url](../../../../includes/tla2sharptla-url-md.md)] для этого веб-служба является:
+ Исходный узел URL для этого веб-служба является:
 
  `http://services.msdn.microsoft.com`
 

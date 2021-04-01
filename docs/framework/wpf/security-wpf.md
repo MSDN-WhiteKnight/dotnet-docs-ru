@@ -55,7 +55,7 @@ ms.locfileid: "59313571"
   
 <a name="Application_Navigation_Security"></a>   
 ### <a name="application-navigation-security"></a>Безопасность навигации в приложениях  
- Навигация в приложении считается безопасным, если его можно с помощью пакета [!INCLUDE[TLA2#tla_uri](../../../includes/tla2sharptla-uri-md.md)], который поддерживает четыре типа содержимого:  
+ Навигация в приложении считается безопасным, если его можно с помощью пакета URI, который поддерживает четыре типа содержимого:  
   
 |Тип содержимого|Описание|Пример URI|  
 |------------------|-----------------|-----------------|  
@@ -65,7 +65,7 @@ ms.locfileid: "59313571"
 |Код приложения|Ресурсы XAML, имеющие скомпилированный код программной части.<br /><br /> -или-<br /><br /> Файлы XAML, которые добавляются в проект с типом сборки **страницы**.|`pack://application:,,,/MyResourceFile` `.xaml`|  
   
 > [!NOTE]
->  Дополнительные сведения о файлах данных приложения и пакет [!INCLUDE[TLA2#tla_uri#plural](../../../includes/tla2sharptla-urisharpplural-md.md)], см. в разделе [ресурса приложения WPF, содержимое и файлы данных](./app-development/wpf-application-resource-content-and-data-files.md).  
+>  Дополнительные сведения о файлах данных приложения и пакет URI, см. в разделе [ресурса приложения WPF, содержимое и файлы данных](./app-development/wpf-application-resource-content-and-data-files.md).  
   
  Файлы этих типов содержимого поддерживают навигацию, выполняемую пользователем или программно.  
   
@@ -122,7 +122,7 @@ ms.locfileid: "59313571"
   
  Начиная с [!INCLUDE[TLA#tla_ie7](../../../includes/tlasharptla-ie7-md.md)], включены следующие параметры безопасности специально для .NET Framework:  
   
--   **Свободный XAML**. Элементы управления ли [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] можно переходить к и свободный [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файлов. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
+-   **Свободный XAML**. Элементы управления ли [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] можно переходить к и свободный XAML файлов. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
   
 -   **XAML-приложения браузера**. Элементы управления ли [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] можно перейти и запустить XBAP. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
   
@@ -245,11 +245,11 @@ ms.locfileid: "59313571"
   
 <a name="LooseContentSandboxing"></a>   
 ## <a name="sandbox-behavior-for-loose-xaml-files"></a>Режим песочницы для свободных файлов XAML  
- Свободные [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файлы имеют только разметку XAML, не зависят от любого кода, обработчик событий или сборки приложения. Когда переход к свободным [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файлов осуществляется непосредственно из браузера, они загружаются в изолированной среде безопасности, в соответствии с набором разрешений зоны Интернета по умолчанию.  
+ Свободные XAML файлы имеют только разметку XAML, не зависят от любого кода, обработчик событий или сборки приложения. Когда переход к свободным XAML файлов осуществляется непосредственно из браузера, они загружаются в изолированной среде безопасности, в соответствии с набором разрешений зоны Интернета по умолчанию.  
   
- Тем не менее поведение безопасности отличается при свободные [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файлов осуществляется либо из <xref:System.Windows.Navigation.NavigationWindow> или <xref:System.Windows.Controls.Frame> в автономном приложении.  
+ Тем не менее поведение безопасности отличается при свободные XAML файлов осуществляется либо из <xref:System.Windows.Navigation.NavigationWindow> или <xref:System.Windows.Controls.Frame> в автономном приложении.  
   
- В обоих случаях свободный [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файла, к которому осуществляется переход, наследует разрешения от ведущего приложения. Тем не менее, это поведение может быть нежелательным с точки зрения безопасности, особенно в том случае, если свободный [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файл был создан небезопасной или неизвестной сущностью. Этот тип содержимого известен как *внешнее содержимое*и оба <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow> можно настроить, чтобы изолировать его при переходе. Изоляция достигается путем установки **SandboxExternalContent** значение true, как показано в следующих примерах для <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow>:  
+ В обоих случаях свободный XAML файла, к которому осуществляется переход, наследует разрешения от ведущего приложения. Тем не менее, это поведение может быть нежелательным с точки зрения безопасности, особенно в том случае, если свободный XAML файл был создан небезопасной или неизвестной сущностью. Этот тип содержимого известен как *внешнее содержимое*и оба <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow> можно настроить, чтобы изолировать его при переходе. Изоляция достигается путем установки **SandboxExternalContent** значение true, как показано в следующих примерах для <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow>:  
   
  [!code-xaml[SecurityOverviewSnippets#FrameMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/SecurityOverviewSnippets/CS/Window2.xaml#framemarkup)]  
   
@@ -258,7 +258,7 @@ ms.locfileid: "59313571"
  Этот параметр позволяет загружать внешнее содержимое в процесс, который отделен от процесса, содержащего приложение. Этот процесс ограничен набором разрешений зоны Интернета по умолчанию, что эффективно изолирует его от ведущего приложения и клиентского компьютера.  
   
 > [!NOTE]
->  Несмотря на то что переход к свободным [!INCLUDE[TLA2#tla_xaml](../../../includes/tla2sharptla-xaml-md.md)] файлов из любого <xref:System.Windows.Navigation.NavigationWindow> или <xref:System.Windows.Controls.Frame> в автономном приложении реализован на основе браузера WPF размещения инфраструктуры, включающей процесс PresentationHost, уровень безопасности, немного меньше, чем при загрузке содержимого непосредственно в Internet Explorer на [!INCLUDE[wiprlhext](../../../includes/wiprlhext-md.md)] и [!INCLUDE[win7](../../../includes/win7-md.md)] (которая все равно выполняется через процесс PresentationHost). Это обусловлено тем, что автономное приложение WPF, использующее веб-браузер, не предоставляет дополнительную функцию безопасности "Защищенный режим" Internet Explorer.  
+>  Несмотря на то что переход к свободным XAML файлов из любого <xref:System.Windows.Navigation.NavigationWindow> или <xref:System.Windows.Controls.Frame> в автономном приложении реализован на основе браузера WPF размещения инфраструктуры, включающей процесс PresentationHost, уровень безопасности, немного меньше, чем при загрузке содержимого непосредственно в Internet Explorer на [!INCLUDE[wiprlhext](../../../includes/wiprlhext-md.md)] и [!INCLUDE[win7](../../../includes/win7-md.md)] (которая все равно выполняется через процесс PresentationHost). Это обусловлено тем, что автономное приложение WPF, использующее веб-браузер, не предоставляет дополнительную функцию безопасности "Защищенный режим" Internet Explorer.  
   
 <a name="BestPractices"></a>   
 ## <a name="resources-for-developing-wpf-applications-that-promote-security"></a>Ресурсы для разработки приложений WPF, обеспечивающих безопасность  

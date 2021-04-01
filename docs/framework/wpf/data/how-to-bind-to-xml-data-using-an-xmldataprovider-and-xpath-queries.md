@@ -22,7 +22,7 @@ ms.locfileid: "59097230"
  В следующем примере данные внедряются непосредственно как [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] *острова данных* в <xref:System.Windows.FrameworkElement.Resources%2A> разделе. Остров данных [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] должен быть заключен в теги `<x:XData>` и всегда иметь один корневой узел, который в этом примере является *Инвентаризацией*.  
   
 > [!NOTE]
->  Корневой узел данных [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] имеет атрибут **xmlns**, который задает для пространства имен [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] пустую строку. Это обязательное требование для выполнения запросов XPath к островам данных, встроенным в страницу [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. В данном случае [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], и таким образом, остров данных наследует <xref:System.Windows> пространства имен. По этой причине необходимо задать пространство имен пустым, чтобы запретить определять запросы XPath с пространством <xref:System.Windows> пространства имен, которое неправильно направляло бы запросы.  
+>  Корневой узел данных [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] имеет атрибут **xmlns**, который задает для пространства имен [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] пустую строку. Это обязательное требование для выполнения запросов XPath к островам данных, встроенным в страницу XAML. В данном случае XAML, и таким образом, остров данных наследует <xref:System.Windows> пространства имен. По этой причине необходимо задать пространство имен пустым, чтобы запретить определять запросы XPath с пространством <xref:System.Windows> пространства имен, которое неправильно направляло бы запросы.  
   
  [!code-xaml[XMLDataSource#1](~/samples/snippets/csharp/VS_Snippets_Wpf/XmlDataSource/CS/Window1.xaml#1)]  
   
@@ -48,11 +48,11 @@ ms.locfileid: "59097230"
   
  [!code-xaml[XmlDataSourceVariation#XmlNodePath](~/samples/snippets/csharp/VS_Snippets_Wpf/XmlDataSourceVariation/CS/Page1.xaml#xmlnodepath)]  
   
- В некоторых приложениях внедрение [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] в качестве острова данных в источник [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] страницы может быть нецелесообразным, поскольку точное содержимое данных должно быть известно во время компиляции. Поэтому также поддерживается получение данных из внешнего [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] файла, как показано в следующем примере:  
+ В некоторых приложениях внедрение [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] в качестве острова данных в источник XAML страницы может быть нецелесообразным, поскольку точное содержимое данных должно быть известно во время компиляции. Поэтому также поддерживается получение данных из внешнего [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] файла, как показано в следующем примере:  
   
  [!code-xaml[XMLDataSource2#XmlFileExample](~/samples/snippets/csharp/VS_Snippets_Wpf/XmlDataSource2/CS/Window1.xaml#xmlfileexample)]  
   
- Если [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данные находятся в удаленном [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] файл, можно будет определить доступ к данным путем назначения соответствующих [!INCLUDE[TLA2#tla_url](../../../../includes/tla2sharptla-url-md.md)] для <xref:System.Windows.Data.XmlDataProvider.Source%2A> следующим образом:  
+ Если [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данные находятся в удаленном [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] файл, можно будет определить доступ к данным путем назначения соответствующих URL для <xref:System.Windows.Data.XmlDataProvider.Source%2A> следующим образом:  
   
 ```xml  
 <XmlDataProvider x:Key="BookData" Source="http://MyUrl" XPath="Books"/>  

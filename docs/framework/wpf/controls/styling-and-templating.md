@@ -25,7 +25,7 @@ ms.locfileid: "59132303"
 # <a name="styling-and-templating"></a>Стилизация и использование шаблонов
 Windows Presentation Foundation (WPF) Стилизация и использование шаблонов относятся к набору возможностей (стили, шаблоны, триггеры и раскадровки), которые позволяют разработчикам и дизайнерам создавать визуально привлекательные эффекты и создавать согласованный внешний вид своего продукта. Несмотря на то что разработчики и дизайнеры могут создавать внешний вид отдельно для каждого приложения, надежная модель стилизации и использования шаблонов необходима для поддержки и совместного использования внешнего вида как внутри одного приложения, так и в ряде приложений. Windows Presentation Foundation (WPF) предоставляет такую модель.  
   
- Еще одной возможностью модели стилизации WPF является разделение представления и логики. Это означает, что дизайнеры могут создавать внешний вид приложения только с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] в то же самое время, когда разработчики работают над логикой программы, используя языки C# или Visual Basic.  
+ Еще одной возможностью модели стилизации WPF является разделение представления и логики. Это означает, что дизайнеры могут создавать внешний вид приложения только с помощью XAML в то же самое время, когда разработчики работают над логикой программы, используя языки C# или Visual Basic.  
   
  В этом обзоре основное внимание уделяется аспектам стилизации и использования шаблонов приложения и не рассматриваются концепции привязки данных. Подробнее о привязке данных см. в разделе [Общие сведения о привязке данных](../data/data-binding-overview.md).  
   
@@ -47,7 +47,7 @@ Windows Presentation Foundation (WPF) Стилизация и использов
   
  ![Снимок экрана стилей](./media/stylingintro-textblocksbefore.PNG "StylingIntro_TextBlocksBefore")  
   
- Можно изменить внешний вид по умолчанию, задав свойства, такие как <xref:System.Windows.Controls.Control.FontSize%2A> и <xref:System.Windows.Controls.Control.FontFamily%2A>, на каждом <xref:System.Windows.Controls.TextBlock> напрямую. Тем не менее если вы хотите, чтобы ваши <xref:System.Windows.Controls.TextBlock> элементов совместно использовать некоторые свойства, можно создать <xref:System.Windows.Style> в `Resources` части вашей [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] файл, как показано ниже:  
+ Можно изменить внешний вид по умолчанию, задав свойства, такие как <xref:System.Windows.Controls.Control.FontSize%2A> и <xref:System.Windows.Controls.Control.FontFamily%2A>, на каждом <xref:System.Windows.Controls.TextBlock> напрямую. Тем не менее если вы хотите, чтобы ваши <xref:System.Windows.Controls.TextBlock> элементов совместно использовать некоторые свойства, можно создать <xref:System.Windows.Style> в `Resources` части вашей XAML файл, как показано ниже:  
   
  [!code-xaml[StylingIntroSnippet#Resources](~/samples/snippets/csharp/VS_Snippets_Wpf/StylingIntroSnippet/CS/window1.xaml#resources)]  
 [!code-xaml[StylingIntroSnippet#tb1](~/samples/snippets/csharp/VS_Snippets_Wpf/StylingIntroSnippet/CS/window1.xaml#tb1)]  
@@ -86,7 +86,7 @@ Windows Presentation Foundation (WPF) Стилизация и использов
  Также обратите внимание, что многие элементы управления WPF являются сочетанием других элементов управления WPF. Если создать стиль, который применяется ко всем элементам управления типа, можно получить непредвиденные результаты. Например, если создать стиль, предназначенный <xref:System.Windows.Controls.TextBlock> введите в <xref:System.Windows.Window>, стиль применяется ко всем <xref:System.Windows.Controls.TextBlock> элементов управления в окне, даже если <xref:System.Windows.Controls.TextBlock> является частью другого элемента управления, такие как <xref:System.Windows.Controls.ListBox>.  
   
 ### <a name="styles-and-resources"></a>Стили и ресурсы  
- Можно использовать стиль для любого элемента, который является производным от <xref:System.Windows.FrameworkElement> или <xref:System.Windows.FrameworkContentElement>. Наиболее распространенный способ объявления стиля — это его объявление в качестве ресурса в разделе `Resources` файла [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], как было показано в предыдущих примерах. Так как стили являются ресурсами, для них действуют те же правила области видимости, которые применяются ко всем ресурсам. Область, в которой объявлен стиль, влияет на область применения стиля. Например, если объявить стиль в корневом элементе файла [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] определения приложения, стиль может использоваться в любом месте приложения. Если вы создаете приложение навигации и объявляете стиль в одном из файлов [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] приложения, стиль можно будет использовать только в этом файле [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)]. Подробнее о правилах видимости ресурсов см. в разделе [Ресурсы XAML](../advanced/xaml-resources.md).  
+ Можно использовать стиль для любого элемента, который является производным от <xref:System.Windows.FrameworkElement> или <xref:System.Windows.FrameworkContentElement>. Наиболее распространенный способ объявления стиля — это его объявление в качестве ресурса в разделе `Resources` файла XAML, как было показано в предыдущих примерах. Так как стили являются ресурсами, для них действуют те же правила области видимости, которые применяются ко всем ресурсам. Область, в которой объявлен стиль, влияет на область применения стиля. Например, если объявить стиль в корневом элементе файла XAML определения приложения, стиль может использоваться в любом месте приложения. Если вы создаете приложение навигации и объявляете стиль в одном из файлов XAML приложения, стиль можно будет использовать только в этом файле XAML. Подробнее о правилах видимости ресурсов см. в разделе [Ресурсы XAML](../advanced/xaml-resources.md).  
   
  Кроме того, дополнительные сведения о стилях и ресурсах можно найти в разделе [Совместно используемые ресурсы и темы](#styling_themes) данного обзора.  
   
@@ -182,11 +182,11 @@ Windows Presentation Foundation (WPF) Стилизация и использов
   
  Словари ресурсов, оформленные в виде отдельных файлов, позволяют повторно использовать тему в нескольких приложениях. Также можно создать изменяемые темы, определив несколько словарей ресурсов, которые обеспечивают одни и те же типы ресурсов, но с разными значениями. Переопределение этих стилей или других ресурсов на уровне приложения является рекомендуемым способом смены тем приложения.  
   
- Для совместного использования набора ресурсов, включая стили и шаблоны в приложениях, можно создать [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] файл и определить <xref:System.Windows.ResourceDictionary>. Например, посмотрите на следующую иллюстрацию — часть [примера "Стилизация с помощью ControlTemplate"](https://github.com/Microsoft/WPF-Samples/tree/master/Styles%20&%20Templates/IntroToStylingAndTemplating):
+ Для совместного использования набора ресурсов, включая стили и шаблоны в приложениях, можно создать XAML файл и определить <xref:System.Windows.ResourceDictionary>. Например, посмотрите на следующую иллюстрацию — часть [примера "Стилизация с помощью ControlTemplate"](https://github.com/Microsoft/WPF-Samples/tree/master/Styles%20&%20Templates/IntroToStylingAndTemplating):
 
 ![Примеры шаблонов элементов управления](./media/stylingintro-controltemplateexamples.png "StylingIntro_ControlTemplateExamples")  
   
- Если взглянуть на файлы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] в примере, можно заметить, что все файлы имеют следующий код:  
+ Если взглянуть на файлы XAML в примере, можно заметить, что все файлы имеют следующий код:  
   
  [!code-xaml[ControlTemplateExamples#MergedDictionaries](~/samples/snippets/csharp/VS_Snippets_Wpf/ControlTemplateExamples/CS/resources/button.xaml#mergeddictionaries)]  
   

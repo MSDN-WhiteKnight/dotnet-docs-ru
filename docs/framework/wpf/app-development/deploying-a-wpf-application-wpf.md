@@ -67,7 +67,7 @@ ms.locfileid: "59320656"
   
 -   автономные приложения;  
   
--   приложения, полностью состоящие из кода [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки;  
+-   приложения, полностью состоящие из кода XAML разметки;  
   
 -   XAML-приложения браузера (XBAP).  
   
@@ -77,11 +77,11 @@ ms.locfileid: "59320656"
   
 <a name="Deploying_Markup_Only_XAML_Applications"></a>   
 ### <a name="deploying-markup-only-xaml-applications"></a>Развертывание приложений XAML, содержащих только разметку  
- Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, обычно публикуются на веб-серверах, как и страницы [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)], и их можно просматривать с помощью [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)]. Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, запускаются в изолированной среде (в режиме безопасности с частичным доверием) с ограничениями, которые определяются набором разрешений зоны Интернета. Это обеспечивает эквивалентный уровень безопасности для веб-приложений [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)].  
+ Страницы XAML, содержащие только разметку, обычно публикуются на веб-серверах, как и страницы [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)], и их можно просматривать с помощью [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)]. Страницы XAML, содержащие только разметку, запускаются в изолированной среде (в режиме безопасности с частичным доверием) с ограничениями, которые определяются набором разрешений зоны Интернета. Это обеспечивает эквивалентный уровень безопасности для веб-приложений [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)].  
   
  Дополнительные сведения о безопасности приложений WPF см. в разделе [Безопасность](../security-wpf.md).  
   
- Страницы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащие только разметку, можно устанавливать в локальной файловой системе с помощью XCopy или [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Эти страницы можно просматривать при помощи [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)] или проводника Windows.  
+ Страницы XAML, содержащие только разметку, можно устанавливать в локальной файловой системе с помощью XCopy или [!INCLUDE[TLA2#tla_wininstall](../../../../includes/tla2sharptla-wininstall-md.md)]. Эти страницы можно просматривать при помощи [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)] или проводника Windows.  
   
  Дополнительные сведения о XAML см. в разделе [Общие сведения о языке XAML](../advanced/xaml-overview-wpf.md).  
   
@@ -98,7 +98,7 @@ ms.locfileid: "59320656"
 > [!NOTE]
 >  Дополнительные сведения о манифестах развертывания и приложений см. в разделе [Построение приложения WPF](building-a-wpf-application-wpf.md).  
   
- Эти файлы создаются при сборке XBAP. Дополнительные сведения см. в разделе [Как Создание нового проекта приложения браузера WPF](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628663(v=vs.100)). Подобно страницам [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], содержащим только разметку, XBAP обычно публикуются на веб-сервере и просматриваются с помощью браузера [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)].  
+ Эти файлы создаются при сборке XBAP. Дополнительные сведения см. в разделе [Как Создание нового проекта приложения браузера WPF](https://docs.microsoft.com/previous-versions/visualstudio/visual-studio-2010/bb628663(v=vs.100)). Подобно страницам XAML, содержащим только разметку, XBAP обычно публикуются на веб-сервере и просматриваются с помощью браузера [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)].  
   
  XBAP можно развернуть для клиентов с помощью любого из методов развертывания. Однако рекомендуется использовать технологию ClickOnce, так как она имеет следующие возможности:  
   
@@ -112,11 +112,11 @@ ms.locfileid: "59320656"
   
 <a name="Installing__NET_Framework_3_0"></a>   
 ## <a name="installing-the-net-framework"></a>Установка .NET Framework  
- Для запуска WPF приложения на клиентском компьютере необходимо установить Microsoft .NET Framework. [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] автоматически определяет, установлены ли клиенты с .NET Framework при WPF просматриваемых Браузерные приложения. Если не установлена платформа .NET Framework, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] предлагает пользователю установить его.  
+ Для запуска WPF приложения на клиентском компьютере необходимо установить Microsoft .NET Framework. Internet Explorer автоматически определяет, установлены ли клиенты с .NET Framework при WPF просматриваемых Браузерные приложения. Если не установлена платформа .NET Framework, Internet Explorer предлагает пользователю установить его.  
   
- Чтобы проверка наличия установленной платформы .NET Framework, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] включает в себя приложение начальной загрузки, который зарегистрирован в качестве резервного [!INCLUDE[TLA#tla_mime](../../../../includes/tlasharptla-mime-md.md)] обработчик содержимого файлов со следующими расширениями: .xaml, XPS, .xbap и .application. При переходе на эти типы файлов и .NET Framework не установлена на клиенте, приложение начальной загрузки запрашивает разрешение на его установку. Если разрешение не предоставляется, ни .NET Framework, ни приложение будет установлено.  
+ Чтобы проверка наличия установленной платформы .NET Framework, Internet Explorer включает в себя приложение начальной загрузки, который зарегистрирован в качестве резервного [!INCLUDE[TLA#tla_mime](../../../../includes/tlasharptla-mime-md.md)] обработчик содержимого файлов со следующими расширениями: .xaml, XPS, .xbap и .application. При переходе на эти типы файлов и .NET Framework не установлена на клиенте, приложение начальной загрузки запрашивает разрешение на его установку. Если разрешение не предоставляется, ни .NET Framework, ни приложение будет установлено.  
   
- Если разрешение предоставлено, [!INCLUDE[TLA2#tla_ie](../../../../includes/tla2sharptla-ie-md.md)] загрузит и установит .NET Framework с помощью [!INCLUDE[TLA#tla_bits](../../../../includes/tlasharptla-bits-md.md)]. После успешной установки платформы .NET Framework изначально запрошенный файл открывается в новом окне браузера.  
+ Если разрешение предоставлено, Internet Explorer загрузит и установит .NET Framework с помощью [!INCLUDE[TLA#tla_bits](../../../../includes/tlasharptla-bits-md.md)]. После успешной установки платформы .NET Framework изначально запрошенный файл открывается в новом окне браузера.  
   
  Автоматическое обнаружение .NET framework можно найти в [!INCLUDE[TLA#tla_longhorn](../../../../includes/tlasharptla-longhorn-md.md)], [!INCLUDE[TLA#tla_winxpsp2](../../../../includes/tlasharptla-winxpsp2-md.md)], и [!INCLUDE[TLA#tla_winnetsvrfamsp1](../../../../includes/tlasharptla-winnetsvrfamsp1-md.md)] клиентов, имеющих [!INCLUDE[TLA2#tla_ie7](../../../../includes/tla2sharptla-ie7-md.md)] или более поздней версии.  
   

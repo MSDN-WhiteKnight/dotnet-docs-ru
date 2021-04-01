@@ -21,7 +21,7 @@ ms.locfileid: "57373560"
 В этом примере показано, как получение и задание главного окна приложения.  
   
 ## <a name="example"></a>Пример  
- Первый <xref:System.Windows.Window> , созданный в Windows Presentation Foundation (WPF) приложение автоматически задается службой <xref:System.Windows.Application> как главное окно приложения. Первый <xref:System.Windows.Window> быть вероятнее всего экземпляра будет окон, который указан как на начальный [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] (см. в разделе <xref:System.Windows.Application.StartupUri%2A>).  
+ Первый <xref:System.Windows.Window> , созданный в Windows Presentation Foundation (WPF) приложение автоматически задается службой <xref:System.Windows.Application> как главное окно приложения. Первый <xref:System.Windows.Window> быть вероятнее всего экземпляра будет окон, который указан как на начальный URI (см. в разделе <xref:System.Windows.Application.StartupUri%2A>).  
   
  Первый <xref:System.Windows.Window> также могут создаваться с помощью кода. Одним из примеров является открытие окна во время запуска приложения, следующим образом:  
   

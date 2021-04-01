@@ -35,9 +35,9 @@ ms.locfileid: "59182472"
  [!code-csharp[PathAnimationGallery_procedural_snip#MatrixAnimationUsingPathDoesRotateWithTangentWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/PathAnimationGallery_procedural_snip/CSharp/MatrixAnimationUsingPathDoesRotateWithTangentExample.cs#matrixanimationusingpathdoesrotatewithtangentwholepage)]
    
   
- Дополнительные сведения о синтаксисе пути, который используется в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] пример, см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор. Полный пример см. в разделе [Пример анимации вдоль пути](https://go.microsoft.com/fwlink/?LinkID=160028).  
+ Дополнительные сведения о синтаксисе пути, который используется в XAML пример, см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор. Полный пример см. в разделе [Пример анимации вдоль пути](https://go.microsoft.com/fwlink/?LinkID=160028).  
   
- Можно применить анимацию к свойству с помощью <xref:System.Windows.Media.Animation.Storyboard> в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] и коде или с помощью <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> метод в коде. Анимацию по контуру можно также использовать для создания <xref:System.Windows.Media.Animation.AnimationClock> и применить его к одному или нескольким свойствам. Дополнительные сведения о различных способах применения анимации см. в разделе [Общие сведения о методах анимации свойств](property-animation-techniques-overview.md).  
+ Можно применить анимацию к свойству с помощью <xref:System.Windows.Media.Animation.Storyboard> в XAML и коде или с помощью <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> метод в коде. Анимацию по контуру можно также использовать для создания <xref:System.Windows.Media.Animation.AnimationClock> и применить его к одному или нескольким свойствам. Дополнительные сведения о различных способах применения анимации см. в разделе [Общие сведения о методах анимации свойств](property-animation-techniques-overview.md).  
   
 <a name="animation_types"></a>   
 ## <a name="path-animation-types"></a>Типы анимаций по контуру  
@@ -85,9 +85,9 @@ ms.locfileid: "59182472"
   
  Дополнительные сведения о <xref:System.Windows.Media.PathGeometry> объектов, см. в разделе [Общие сведения о геометрии](geometry-overview.md).  
   
- В [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], также можно использовать специальный сокращенный синтаксис для задания <xref:System.Windows.Media.PathGeometry.Figures%2A> свойство <xref:System.Windows.Media.PathGeometry>. Дополнительные сведения см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор.  
+ В XAML, также можно использовать специальный сокращенный синтаксис для задания <xref:System.Windows.Media.PathGeometry.Figures%2A> свойство <xref:System.Windows.Media.PathGeometry>. Дополнительные сведения см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор.  
   
- Дополнительные сведения о синтаксисе пути, который используется в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] пример, см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор.  
+ Дополнительные сведения о синтаксисе пути, который используется в XAML пример, см. в разделе [синтаксис разметки пути](path-markup-syntax.md) Обзор.  
   
 ## <a name="see-also"></a>См. также
 

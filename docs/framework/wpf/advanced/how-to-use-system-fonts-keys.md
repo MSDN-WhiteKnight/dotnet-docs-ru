@@ -19,7 +19,7 @@ ms.locfileid: "59148932"
 > [!NOTE]
 >  Динамические ресурсы имеют ключевое слово *ключ* добавляется к имени свойства.  
   
- В приведенном ниже примере показано, как получить доступ к ресурсам динамических системных шрифтов и использовать их для создания стиля или настройки кнопки. Это [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] примере создается стиль кнопки, который назначает <xref:System.Windows.SystemFonts> значения к кнопке.  
+ В приведенном ниже примере показано, как получить доступ к ресурсам динамических системных шрифтов и использовать их для создания стиля или настройки кнопки. Это XAML примере создается стиль кнопки, который назначает <xref:System.Windows.SystemFonts> значения к кнопке.  
   
 ## <a name="example"></a>Пример  
  [!code-xaml[SystemRes_snip#FontDynamicResources](~/samples/snippets/csharp/VS_Snippets_Wpf/SystemRes_snip/CSharp/MyApp.xaml#fontdynamicresources)]  

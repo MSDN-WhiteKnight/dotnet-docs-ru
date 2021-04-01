@@ -27,7 +27,7 @@ ms.locfileid: "59315690"
   
 <a name="multiple_sets"></a>   
 ## <a name="dependency-properties-might-be-set-in-multiple-places"></a>Свойства зависимостей могут быть "установлены" в нескольких расположениях  
- Ниже приведен пример [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] где то же свойство (<xref:System.Windows.Controls.Control.Background%2A>) имеет три разных «set» операции, которые могут повлиять на значение.  
+ Ниже приведен пример XAML где то же свойство (<xref:System.Windows.Controls.Control.Background%2A>) имеет три разных «set» операции, которые могут повлиять на значение.  
   
  [!code-xaml[PropertiesOvwSupport#DPPrecedence](~/samples/snippets/csharp/VS_Snippets_Wpf/PropertiesOvwSupport/CSharp/page4.xaml#dpprecedence)]  
   
@@ -43,13 +43,13 @@ ms.locfileid: "59315690"
   
 2. **Активные анимации или анимации с поведением Hold.** Анимация свойства имеет практический эффект только в том случае, если она может иметь приоритет над базовым (неанимированным) значением, даже если это значение было задано локально. Дополнительные сведения см. в теме [Приведение, анимация и базовое значение](#animations) далее в этом разделе.  
   
-3. **Локальное значение.** Локальное значение может устанавливаться с помощью «оболочки» свойства, которое приравнивается к настройке атрибут или свойство в качестве элемента [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], или с помощью вызова <xref:System.Windows.DependencyObject.SetValue%2A> [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] с помощью свойства конкретного экземпляра. Если задано локальное значение с помощью привязки или ресурса, каждый из них функционирует в таком приоритете, как если бы было задано прямое значение.  
+3. **Локальное значение.** Локальное значение может устанавливаться с помощью «оболочки» свойства, которое приравнивается к настройке атрибут или свойство в качестве элемента XAML, или с помощью вызова <xref:System.Windows.DependencyObject.SetValue%2A> [!INCLUDE[TLA#tla_api](../../../../includes/tlasharptla-api-md.md)] с помощью свойства конкретного экземпляра. Если задано локальное значение с помощью привязки или ресурса, каждый из них функционирует в таком приоритете, как если бы было задано прямое значение.  
   
 4. **Свойства шаблона TemplatedParent.** Элемент имеет <xref:System.Windows.FrameworkElement.TemplatedParent%2A> если она была создана как часть шаблона ( <xref:System.Windows.Controls.ControlTemplate> или <xref:System.Windows.DataTemplate>). Дополнительные сведения о случаях его применения см. в теме [TemplatedParent](#templatedparent) далее в этом разделе. В шаблоне действует следующий приоритет:  
   
     1.  Триггеры — с <xref:System.Windows.FrameworkElement.TemplatedParent%2A> шаблона.  
   
-    2.  Наборы свойств (обычно через [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] атрибуты) в <xref:System.Windows.FrameworkElement.TemplatedParent%2A> шаблона.  
+    2.  Наборы свойств (обычно через XAML атрибуты) в <xref:System.Windows.FrameworkElement.TemplatedParent%2A> шаблона.  
   
 5. **Неявный стиль.** Применяется только к свойству `Style`. Свойство `Style` заполняется любым ресурсом стиля с ключом, соответствующим типу этого элемента. Ресурс стиля должен существовать либо на странице, либо в приложении; поиск ресурса неявного стиля в темах не выполняется.  
   

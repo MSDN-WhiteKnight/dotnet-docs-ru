@@ -29,17 +29,17 @@ ms.locfileid: "59314416"
   
 <a name="projects"></a>   
 ## <a name="wpf-interoperation-projects"></a>Проекты взаимодействия WPF  
- WPF API are managed code, but most existing [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sявляются управляемым кодом, но большинство существующих [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы создаются в виде неуправляемого [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].enНевозможно вызвать WPF API из подлинной неуправляемой программы.nОднако используя параметр `/clr` с компилятором [!INCLUDE[TLA#tla_visualcpp](../../../../includes/tlasharptla-visualcpp-md.md)], можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы [!INCLUDE[TLA2#tla_api](../../../../includes/tla2sharptla-api-md.md)].  
+ WPF API are managed code, but most existing [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sявляются управляемым кодом, но большинство существующих [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы создаются в виде неуправляемого [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].enНевозможно вызвать WPF API из подлинной неуправляемой программы.nОднако используя параметр `/clr` с компилятором [!INCLUDE[TLA#tla_visualcpp](../../../../includes/tlasharptla-visualcpp-md.md)], можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы API.  
   
  Существует одна сложность на уровне проекта, которая заключается в том, что нельзя скомпилировать файлы XAML в проект [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)].  Имеется несколько методов разделения проектов для решения данной проблемы.  
   
--   Создать библиотеку DLL C#, содержащий все вашей [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] страницы в форме скомпилированной сборки, а затем вашей [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)] включите в исполняемый файл [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] как ссылку.  
+-   Создать библиотеку DLL C#, содержащий все вашей XAML страницы в форме скомпилированной сборки, а затем вашей [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)] включите в исполняемый файл [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] как ссылку.  
   
 -   Создайте на C# исполняемый файл для WPF содержимого и его ссылаться [!INCLUDE[TLA2#tla_cpp](../../../../includes/tla2sharptla-cpp-md.md)] [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] , содержащий [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] содержимого.  
   
--   Используйте <xref:System.Windows.Markup.XamlReader.Load%2A> загружать все [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] во время выполнения вместо компиляции вашей [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+-   Используйте <xref:System.Windows.Markup.XamlReader.Load%2A> загружать все XAML во время выполнения вместо компиляции вашей XAML.  
   
--   Не используйте [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] вообще и записать все ваши WPF в коде, создавая дерево элементов из <xref:System.Windows.Application>.  
+-   Не используйте XAML вообще и записать все ваши WPF в коде, создавая дерево элементов из <xref:System.Windows.Application>.  
   
  Используйте любой наиболее подходящий способ.  
   
@@ -83,7 +83,7 @@ ms.locfileid: "59314416"
 8. Для взаимодействия с объектом содержимого WPF используйте ссылку, которую сохранили в статическом поле, чтобы задать свойства, методы вызова и т. д.  
   
 > [!NOTE]
->  Определить класс содержимого WPF для шага 1 можно частично или полностью в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] с помощью разделяемого класса по умолчанию класса содержимого. Для этого нужно создать отдельную сборку и сослаться на нее. Несмотря на то, что обычно содержат <xref:System.Windows.Application> объекта в процессе компиляции [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] в сборку, вы не доходят до использования его <xref:System.Windows.Application> как часть взаимодействие, просто используйте один или несколько корневых классов для [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] файлов называется Чтобы для приложения и ссылаться на их разделяемые классы. Оставшаяся часть процедуры практически аналогична описанной выше.  
+>  Определить класс содержимого WPF для шага 1 можно частично или полностью в XAML с помощью разделяемого класса по умолчанию класса содержимого. Для этого нужно создать отдельную сборку и сослаться на нее. Несмотря на то, что обычно содержат <xref:System.Windows.Application> объекта в процессе компиляции XAML в сборку, вы не доходят до использования его <xref:System.Windows.Application> как часть взаимодействие, просто используйте один или несколько корневых классов для XAML файлов называется Чтобы для приложения и ссылаться на их разделяемые классы. Оставшаяся часть процедуры практически аналогична описанной выше.  
 >   
 >  Каждое из этих действий будет показано в коде в разделе [Пошаговое руководство: Размещение содержимого WPF в Win32](walkthrough-hosting-wpf-content-in-win32.md).  
   

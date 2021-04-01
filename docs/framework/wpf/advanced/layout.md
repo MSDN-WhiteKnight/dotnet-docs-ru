@@ -43,7 +43,7 @@ ms.locfileid: "59330497"
   
  ![Снимок экрана, показывающий обычная сетка, без обрамляющего прямоугольника.](./media/layout/grid-no-bounding-box-superimpose.png)  
   
- Этот макет можно получить с помощью приведенного ниже кода [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)].  
+ Этот макет можно получить с помощью приведенного ниже кода XAML.  
   
  [!code-xaml[LayoutInformation#1](~/samples/snippets/csharp/VS_Snippets_Wpf/LayoutInformation/CSharp/Window1.xaml#1)]  
   

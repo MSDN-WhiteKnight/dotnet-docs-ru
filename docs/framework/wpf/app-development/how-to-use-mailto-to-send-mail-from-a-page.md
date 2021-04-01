@@ -14,10 +14,10 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59090840"
 ---
 # <a name="how-to-use-mailto-to-send-mail-from-a-page"></a>Практическое руководство. Использование ссылки mailto: для отправки электронной почты со страницы
-В этом примере показано, как использовать <xref:System.Windows.Documents.Hyperlink> в сочетании с **mailto:**[!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)].  
+В этом примере показано, как использовать <xref:System.Windows.Documents.Hyperlink> в сочетании с **mailto:**URI.  
   
 ## <a name="example"></a>Пример  
- Ниже показано, как использовать **mailto:** [!INCLUDE[TLA#tla_uri](../../../../includes/tlasharptla-uri-md.md)] откройте новое окно электронной почты, содержащего адрес электронной почты и адрес электронной почты и темы и адрес электронной почты, тема и текст сообщения.  
+ Ниже показано, как использовать **mailto:** URI откройте новое окно электронной почты, содержащего адрес электронной почты и адрес электронной почты и темы и адрес электронной почты, тема и текст сообщения.  
   
  [!code-xaml[HOWTONavigationMailToSnippet#MailToMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/HOWTONavigationMailToSnippet/CS/HomePage.xaml#mailtomarkup)]  
   

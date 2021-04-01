@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59091438"
 ---
 # <a name="inline-styles-and-templates"></a>Встроенные стили и шаблоны
-Windows Presentation Foundation (WPF) предоставляет <xref:System.Windows.Style> объекты и объекты шаблона (<xref:System.Windows.FrameworkTemplate> подклассы) как способ определения внешнего вида элемента в ресурсах, так что они могут использоваться несколько раз. По этой причине атрибуты в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] , которые принимают типы <xref:System.Windows.Style> и <xref:System.Windows.FrameworkTemplate> почти всегда ссылки на ресурсы в существующие стили и шаблоны, а не определения новых.  
+Windows Presentation Foundation (WPF) предоставляет <xref:System.Windows.Style> объекты и объекты шаблона (<xref:System.Windows.FrameworkTemplate> подклассы) как способ определения внешнего вида элемента в ресурсах, так что они могут использоваться несколько раз. По этой причине атрибуты в XAML , которые принимают типы <xref:System.Windows.Style> и <xref:System.Windows.FrameworkTemplate> почти всегда ссылки на ресурсы в существующие стили и шаблоны, а не определения новых.  
   
 ## <a name="limitations-of-inline-styles-and-templates"></a>Ограничения встроенные стили и шаблоны  
  В XAML, свойства стиля и шаблона с технической точки зрения можно задать одним из двух способов. Можно использовать синтаксис атрибутов для ссылки на стиль, который был определен в ресурсе, например `<` *объект*`Style="{StaticResource`*myResourceKey*`}" .../>`. Или можно использовать синтаксис элемента свойства для определения встроенный стиль, например:  

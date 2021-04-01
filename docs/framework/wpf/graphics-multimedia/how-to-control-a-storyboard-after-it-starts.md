@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59161490"
 ---
 # <a name="how-to-control-a-storyboard-after-it-starts"></a>Практическое руководство. Управление раскадровкой после ее запуска
-В этом примере показано, как использовать код для управления <xref:System.Windows.Media.Animation.Storyboard> после ее запуска. Управление раскадровкой в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], использовать <xref:System.Windows.Trigger> и <xref:System.Windows.TriggerAction> объектов; например, см. в разделе [использование триггеров событий для управления раскадровкой после ее запуска](how-to-use-event-triggers-to-control-a-storyboard-after-it-starts.md).  
+В этом примере показано, как использовать код для управления <xref:System.Windows.Media.Animation.Storyboard> после ее запуска. Управление раскадровкой в XAML, использовать <xref:System.Windows.Trigger> и <xref:System.Windows.TriggerAction> объектов; например, см. в разделе [использование триггеров событий для управления раскадровкой после ее запуска](how-to-use-event-triggers-to-control-a-storyboard-after-it-starts.md).  
   
  Чтобы запустить раскадровку, используйте его <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> метод, который распределяет анимации раскадровки в свойства и запускает раскадровку.  
   
@@ -37,7 +37,7 @@ ms.locfileid: "59161490"
   
  В следующем примере несколько методов используются для интерактивного управления раскадровкой.  
   
- **Примечание.** Чтобы ознакомиться с примером раскадровкой с помощью триггеров с [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], см. в разделе [использование триггеров событий для управления раскадровкой после ее запуска](how-to-use-event-triggers-to-control-a-storyboard-after-it-starts.md).  
+ **Примечание.** Чтобы ознакомиться с примером раскадровкой с помощью триггеров с XAML, см. в разделе [использование триггеров событий для управления раскадровкой после ее запуска](how-to-use-event-triggers-to-control-a-storyboard-after-it-starts.md).  
   
 ## <a name="example"></a>Пример  
  [!code-csharp[timingbehaviors_procedural_snip#ControlStoryboardExampleUsingWholePage](~/samples/snippets/csharp/VS_Snippets_Wpf/timingbehaviors_procedural_snip/CSharp/ControlStoryboardExample.cs#controlstoryboardexampleusingwholepage)]

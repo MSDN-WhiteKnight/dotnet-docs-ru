@@ -77,18 +77,18 @@ ms.locfileid: "59296125"
   
 <a name="DefiningAWindow"></a>   
 ## <a name="implementing-a-window"></a>Реализация окна  
- Реализация типичного окна включает внешний вид и поведение, где *внешний вид* определяет, как окно отображается для пользователей и *поведение* определяет функционирование окна при взаимодействии пользователей с ним. В WPF, вы можете реализовать внешний вид и поведение окна с помощью кода, либо или [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки.  
+ Реализация типичного окна включает внешний вид и поведение, где *внешний вид* определяет, как окно отображается для пользователей и *поведение* определяет функционирование окна при взаимодействии пользователей с ним. В WPF, вы можете реализовать внешний вид и поведение окна с помощью кода, либо или XAML разметки.  
   
- Как правило, тем не менее, внешний вид окна реализуется с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки, а его поведение реализуется с помощью кода программной части, как показано в следующем примере.  
+ Как правило, тем не менее, внешний вид окна реализуется с помощью XAML разметки, а его поведение реализуется с помощью кода программной части, как показано в следующем примере.  
   
  [!code-xaml[WindowsOverviewSnippets#MarkupAndCodeBehindWindowMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsOverviewSnippets/CSharp/MarkupAndCodeBehindWindow.xaml#markupandcodebehindwindowmarkup)]  
   
  [!code-csharp[WindowsOverviewSnippets#MarkupAndCodeBehindWindowCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsOverviewSnippets/CSharp/MarkupAndCodeBehindWindow.xaml.cs#markupandcodebehindwindowcodebehind)]
    
   
- Чтобы включить [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] файла разметки и файл с выделенным кодом для совместной работы, необходимо выполнение следующих условий:  
+ Чтобы включить XAML файла разметки и файл с выделенным кодом для совместной работы, необходимо выполнение следующих условий:  
   
--   В разметке `Window` элемент должен включать `x:Class` атрибута. При построении приложения существование `x:Class` в разметке вызывает файл [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] для создания `partial` класс, производный от <xref:System.Windows.Window> и имеет имя, которое задается параметром `x:Class` атрибута. Это требует добавления параметра [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] объявление пространства имен для [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] схемы ( `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"` ). Созданный `partial` класс реализует `InitializeComponent` метод, который вызывается для регистрации событий и задания свойств, реализованных в разметке.  
+-   В разметке `Window` элемент должен включать `x:Class` атрибута. При построении приложения существование `x:Class` в разметке вызывает файл [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] для создания `partial` класс, производный от <xref:System.Windows.Window> и имеет имя, которое задается параметром `x:Class` атрибута. Это требует добавления параметра [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] объявление пространства имен для XAML схемы ( `xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"` ). Созданный `partial` класс реализует `InitializeComponent` метод, который вызывается для регистрации событий и задания свойств, реализованных в разметке.  
   
 -   В коде программной части класс должен быть `partial` класс с тем же именем, который задается параметром `x:Class` атрибут в разметке и он должен быть производным от <xref:System.Windows.Window>. Это позволяет файл кода должно быть связано с `partial` класса, созданного для файла разметки при построении приложения (см. в разделе [построение приложения WPF](building-a-wpf-application-wpf.md)).  
   
@@ -97,7 +97,7 @@ ms.locfileid: "59296125"
 > [!NOTE]
 >  При добавлении нового <xref:System.Windows.Window> в проект с помощью [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)], <xref:System.Windows.Window> реализуется с помощью разметки и кода и включает необходимую конфигурацию для создания связи между файлами разметки и кода как описанные здесь.  
   
- При такой конфигурации можно сосредоточиться на определении внешнего вида окна в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки и реализации его поведения в коде. В следующем примере показано окно с кнопкой, реализованной в [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки и обработчик событий для кнопки <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий, реализован в коде.  
+ При такой конфигурации можно сосредоточиться на определении внешнего вида окна в XAML разметки и реализации его поведения в коде. В следующем примере показано окно с кнопкой, реализованной в XAML разметки и обработчик событий для кнопки <xref:System.Windows.Controls.Primitives.ButtonBase.Click> событий, реализован в коде.  
   
  [!code-xaml[WindowsOverviewWindowWithButtonSnippets#MarkupAndCodeBehindWindowMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsOverviewWindowWithButtonSnippets/CSharp/MarkupAndCodeBehindWindow.xaml#markupandcodebehindwindowmarkup)]  
   
@@ -106,9 +106,9 @@ ms.locfileid: "59296125"
   
 <a name="ConfiguringWindowForMSBuild"></a>   
 ## <a name="configuring-a-window-definition-for-msbuild"></a>Настройка определения окна для MSBuild  
- Реализация окна определяет его конфигурацию для [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]. Для окна, которое определяется с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки и кода:  
+ Реализация окна определяет его конфигурацию для [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]. Для окна, которое определяется с помощью XAML разметки и кода:  
   
--   [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] файлы разметки настраиваются как [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Page` элементов.  
+-   XAML файлы разметки настраиваются как [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Page` элементов.  
   
 -   Файлы кода программной части настраиваются как [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`Compile` элементов.  
   
@@ -413,7 +413,7 @@ ms.locfileid: "59296125"
   
 -   <xref:System.Windows.ResizeMode.CanResizeWithGrip>  
   
- Как и в <xref:System.Windows.Window.WindowStyle%2A>, режим изменения размера окна редко изменяется во время существования, это означает, что вы скорее установим его из [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки.  
+ Как и в <xref:System.Windows.Window.WindowStyle%2A>, режим изменения размера окна редко изменяется во время существования, это означает, что вы скорее установим его из XAML разметки.  
   
  [!code-xaml[WindowsOverviewSnippets#ResizeModeWindowMARKUP1](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsOverviewSnippets/CSharp/ResizeModeWindow.xaml#resizemodewindowmarkup1)]  
   
@@ -437,7 +437,7 @@ ms.locfileid: "59296125"
   
  ![Иллюстрация стили границ окна.](./media/wpf-windows-overview/window-border-styles.png)  
   
- Можно задать <xref:System.Windows.Window.WindowStyle%2A> одним [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки или кода; так как это редко изменяется во время существования окна, то скорее задать его с помощью [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] разметки.  
+ Можно задать <xref:System.Windows.Window.WindowStyle%2A> одним XAML разметки или кода; так как это редко изменяется во время существования окна, то скорее задать его с помощью XAML разметки.  
   
  [!code-xaml[WindowsOverviewSnippets#WindowStyleWindowMARKUP1](~/samples/snippets/csharp/VS_Snippets_Wpf/WindowsOverviewSnippets/CSharp/WindowStyleWindow.xaml#windowstylewindowmarkup1)]  
   

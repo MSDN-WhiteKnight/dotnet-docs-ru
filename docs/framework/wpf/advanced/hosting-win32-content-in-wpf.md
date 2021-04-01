@@ -333,7 +333,7 @@ virtual bool OnMnemonic(System::Windows::Interop::MSG% msg, ModifierKeys modifie
 
 ### <a name="instantiate-the-hwndhost-derived-class"></a>Создать экземпляр производного класса HwndHost
 
-Наконец, после того, вся поддержка ключа и вкладку на месте, можно поместить в <xref:System.Windows.Interop.HwndHost> в большее WPF приложения. Если основное приложение создается на языке [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)], чтобы поместить его в нужном месте проще всего оставить пустым <xref:System.Windows.Controls.Border> элемент, где необходимо поместить <xref:System.Windows.Interop.HwndHost>. Вы создадите <xref:System.Windows.Controls.Border> с именем `insertHwndHostHere`:
+Наконец, после того, вся поддержка ключа и вкладку на месте, можно поместить в <xref:System.Windows.Interop.HwndHost> в большее WPF приложения. Если основное приложение создается на языке XAML, чтобы поместить его в нужном месте проще всего оставить пустым <xref:System.Windows.Controls.Border> элемент, где необходимо поместить <xref:System.Windows.Interop.HwndHost>. Вы создадите <xref:System.Windows.Controls.Border> с именем `insertHwndHostHere`:
 
 ```xaml
 <Window x:Class="WPFApplication1.Window1"

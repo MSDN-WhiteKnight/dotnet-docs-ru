@@ -15,7 +15,7 @@ ms.locfileid: "59122867"
 # <a name="wpf-host-presentationhostexe"></a>Ведущее приложение WPF (PresentationHost.exe)
 Ведущее приложение Windows Presentation Foundation (WPF) (PresentationHost.exe) — это приложение, которое позволяет WPF приложений, размещенных в совместимых браузерах (включая [!INCLUDE[TLA#tla_ie6](../../../../includes/tlasharptla-ie6-md.md)] и более поздних версий). По умолчанию узел Windows Presentation Foundation (WPF) регистрируется как оболочка и [!INCLUDE[TLA2#tla_mime](../../../../includes/tla2sharptla-mime-md.md)] обработчик для Браузерные WPF содержимое, которое включает в себя:  
   
--   Свободные (нескомпилированные) файлы [!INCLUDE[TLA2#tla_xaml](../../../../includes/tla2sharptla-xaml-md.md)] (.xaml).  
+-   Свободные (нескомпилированные) файлы XAML (.xaml).  
   
 -   Приложение обозревателя XAML (XBAP) (.xbap).  
   
@@ -36,9 +36,9 @@ ms.locfileid: "59122867"
   
 |Параметр|Описание|  
 |---------------|-----------------|  
-|filename|Путь к файлу, который нужно активировать. Также может быть [!INCLUDE[TLA2#tla_uri](../../../../includes/tla2sharptla-uri-md.md)].|  
+|filename|Путь к файлу, который нужно активировать. Также может быть URI.|  
 |-debug|При активации приложения не фиксирует его в хранилище и не запускает из хранилища. Работает только при активации локального файла.|  
-|-debugSecurityZoneURL \<url>|Используется со значением [!INCLUDE[TLA2#tla_url](../../../../includes/tla2sharptla-url-md.md)] для указания необходимости отладки PresentationHost.exe, как при развертывании из указанного [!INCLUDE[TLA2#tla_url](../../../../includes/tla2sharptla-url-md.md)]. Это определяет как зону развертывания, так и исходный узел.|  
+|-debugSecurityZoneURL \<url>|Используется со значением URL для указания необходимости отладки PresentationHost.exe, как при развертывании из указанного URL. Это определяет как зону развертывания, так и исходный узел.|  
 |-embedding|Требуется для OLE. Если указан параметр `-event` или `-debug`, то не обязательно указывать параметр `-embedding`, поскольку он устанавливается внутренне.|  
 |-event \<eventname>|Открывает событие с указанным именем и сигнализирует ему при инициализации PresentationHost.exe и готовности к размещению содержимого WPF. Работа PresentationHost.exe будет прервана в случае ошибки при открытии события, например, если оно еще не создано.|  
 |-launchApplication \<url>|Запускает автономное приложение [!INCLUDE[ndptecclick](../../../../includes/ndptecclick-md.md)] с указанного URL-адреса. [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)] и применяются политики безопасности WinINet приложений .NET.|  
