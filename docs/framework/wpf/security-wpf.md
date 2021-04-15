@@ -89,7 +89,7 @@ ms.locfileid: "59313571"
 ## <a name="web-browsing-software-security-settings"></a>Параметры безопасности программного обеспечения для просмотра веб-страниц  
  Параметры безопасности компьютера определяют уровень доступа, который предоставляется программному обеспечению для просмотра веб-страниц. Веб-обозревателя включает любое приложение или компонент, который использует [WinINet](https://go.microsoft.com/fwlink/?LinkId=179379) или [UrlMon](https://go.microsoft.com/fwlink/?LinkId=179383) API, включая Internet Explorer и PresentationHost.exe.  
   
- [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] предоставляет механизм, по которому можно настроить функции, которые разрешены для выполнения в [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)], включая следующие:  
+ Internet Explorer предоставляет механизм, по которому можно настроить функции, которые разрешены для выполнения в Internet Explorer, включая следующие:  
   
 -   Всему компоненты .NET  
   
@@ -122,9 +122,9 @@ ms.locfileid: "59313571"
   
  Начиная с [!INCLUDE[TLA#tla_ie7](../../../includes/tlasharptla-ie7-md.md)], включены следующие параметры безопасности специально для .NET Framework:  
   
--   **Свободный XAML**. Элементы управления ли [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] можно переходить к и свободный XAML файлов. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
+-   **Свободный XAML**. Элементы управления ли Internet Explorer можно переходить к и свободный XAML файлов. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
   
--   **XAML-приложения браузера**. Элементы управления ли [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] можно перейти и запустить XBAP. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
+-   **XAML-приложения браузера**. Элементы управления ли Internet Explorer можно перейти и запустить XBAP. (Варианты: "Включить", "Отключить" и "Запрашивать".)  
   
  По умолчанию эти параметры включены для **Internet**, **Местная интрасеть**, и **надежные сайты** зоны и отключен для **Ограниченные узлы**  зоны.  
   
@@ -207,7 +207,7 @@ ms.locfileid: "59313571"
 |---------------------|  
 |FEATURE_ENABLE_SCRIPT_PASTE_URLACTION_IF_PROMPT|  
   
- При выполнении с частичным доверием Приложение обозревателя XAML (XBAP) , включает в себя WPF <xref:System.Windows.Controls.WebBrowser> контролировать Windows Internet Explorer, WPF размещает элемент управления WebBrowser ActiveX в адресном пространстве процесса Internet Explorer. Поскольку элемент управления WebBrowser ActiveX размещается в [!INCLUDE[TLA2#tla_iegeneric](../../../includes/tla2sharptla-iegeneric-md.md)] процесса, все элементы управления функциями для Internet Explorer также включены для элемента управления WebBrowser ActiveX.  
+ При выполнении с частичным доверием Приложение обозревателя XAML (XBAP) , включает в себя WPF <xref:System.Windows.Controls.WebBrowser> контролировать Windows Internet Explorer, WPF размещает элемент управления WebBrowser ActiveX в адресном пространстве процесса Internet Explorer. Поскольку элемент управления WebBrowser ActiveX размещается в Internet Explorer процесса, все элементы управления функциями для Internet Explorer также включены для элемента управления WebBrowser ActiveX.  
   
  XBAP-приложения, выполняющиеся в Internet Explorer, также получают более высокий уровень безопасности по сравнению с обычными автономными приложениями. — Этот повышенный уровень безопасности, так как Internet Explorer и, следовательно, элемент управления WebBrowser ActiveX выполняются в защищенном режиме по умолчанию в [!INCLUDE[TLA#tla_winvista](../../../includes/tlasharptla-winvista-md.md)] и [!INCLUDE[win7](../../../includes/win7-md.md)]. Дополнительные сведения о защищенном режиме, см. в разделе [Знакомство и работа в защищенный режим Internet Explorer](https://go.microsoft.com/fwlink/?LinkId=179393).  
   

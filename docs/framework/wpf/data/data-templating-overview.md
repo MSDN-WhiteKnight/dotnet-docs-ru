@@ -54,7 +54,7 @@ ms.locfileid: "59097555"
   
  ![Снимок экрана шаблонов данных](./media/datatemplatingintro-fig2.png "DataTemplatingIntro_fig2")  
   
- Тем не менее это характеризуется ограниченностью и негибкостью. Кроме того, если выполняется привязка к данным[!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)], невозможно переопределить `ToString`.  
+ Тем не менее это характеризуется ограниченностью и негибкостью. Кроме того, если выполняется привязка к даннымXML, невозможно переопределить `ToString`.  
   
 <a name="defining_simple_datatemplate"></a>   
 ### <a name="defining-a-simple-datatemplate"></a>Определение простого шаблона DataTemplate  
@@ -62,7 +62,7 @@ ms.locfileid: "59097555"
   
  [!code-xaml[DataTemplatingIntro_snip#Inline](~/samples/snippets/csharp/VS_Snippets_Wpf/DataTemplatingIntro_snip/CSharp/Window1.xaml#inline)]  
   
- Базовые данные в примерах этого раздела — это совокупность объектов [!INCLUDE[TLA2#tla_clr](../../../../includes/tla2sharptla-clr-md.md)]. Если выполнить привязку к данным [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)], основные понятия схожи, но есть незначительные синтаксические различия. Например, вместо того, `Path=TaskName`, необходимо установить <xref:System.Windows.Data.Binding.XPath%2A> для `@TaskName` (если `TaskName` является атрибутом вашего [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] узла).  
+ Базовые данные в примерах этого раздела — это совокупность объектов CLR. Если выполнить привязку к данным XML, основные понятия схожи, но есть незначительные синтаксические различия. Например, вместо того, `Path=TaskName`, необходимо установить <xref:System.Windows.Data.Binding.XPath%2A> для `@TaskName` (если `TaskName` является атрибутом вашего XML узла).  
   
  Теперь наши <xref:System.Windows.Controls.ListBox> выглядит следующим образом:  
   

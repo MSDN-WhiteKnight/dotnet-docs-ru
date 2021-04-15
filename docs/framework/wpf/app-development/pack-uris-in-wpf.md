@@ -151,7 +151,7 @@ ms.locfileid: "59344355"
  `pack://application:,,,/Subfolder/ContentFile.xaml`  
   
 > [!NOTE]
->  [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)] файлы содержимого не может перемещаться. URI Схема поддерживает переход только к [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)] файлы, расположенные на исходном узле.  
+>  HTML файлы содержимого не может перемещаться. URI Схема поддерживает переход только к HTML файлы, расположенные на исходном узле.  
   
 <a name="The_siteoforigin_____Authority"></a>   
 ## <a name="site-of-origin-pack-uris"></a>URI типа "pack" исходного узла  

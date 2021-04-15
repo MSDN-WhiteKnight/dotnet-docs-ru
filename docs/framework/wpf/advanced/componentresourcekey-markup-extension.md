@@ -46,7 +46,7 @@ ms.locfileid: "59169758"
   
 |||  
 |-|-|  
-|`targetTypeName`|Имя открытого [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] тип, определенный в сборке ресурсов.|  
+|`targetTypeName`|Имя открытого CLR тип, определенный в сборке ресурсов.|  
 |`targetID`|Ключ ресурса. Когда ресурсы ищутся, `targetID` будут аналогичны [директивы x: Key](../../xaml-services/x-key-directive.md) ресурса.|  
   
 ## <a name="remarks"></a>Примечания  

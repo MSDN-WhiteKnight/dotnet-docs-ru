@@ -85,7 +85,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                      int       nCmdShow)
 ```
 
-Этот атрибут сообщает [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] , когда он инициализирует [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], его следует использовать модель однопотокового подразделения (STA), который необходим для WPF (и [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]).
+Этот атрибут сообщает CLR , когда он инициализирует [!INCLUDE[TLA#tla_com](../../../../includes/tlasharptla-com-md.md)], его следует использовать модель однопотокового подразделения (STA), который необходим для WPF (и [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]).
 
 ## <a name="create-a-windows-presentation-framework-page"></a>Создание страницы WPF
 

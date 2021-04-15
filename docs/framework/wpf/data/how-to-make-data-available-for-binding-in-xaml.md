@@ -19,7 +19,7 @@ ms.locfileid: "59145370"
 В этом разделе рассматриваются различные способы, которые можно сделать данные доступными для привязки в XAML, в зависимости от потребностей приложения.  
   
 ## <a name="example"></a>Пример  
- Если у вас есть [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] объекта, вы бы хотели привязки из XAML, один из способов, вы можете сделать объект доступным для привязки является определение его как ресурс и присвойте ему `x:Key`. В следующем примере имеется `Person` объект с строковое свойство с именем `PersonName`. `Person` Объекта (в строке, выделено, содержащий `<src>` элемент) определен в пространстве имен `SDKSample`.  
+ Если у вас есть CLR объекта, вы бы хотели привязки из XAML, один из способов, вы можете сделать объект доступным для привязки является определение его как ресурс и присвойте ему `x:Key`. В следующем примере имеется `Person` объект с строковое свойство с именем `PersonName`. `Person` Объекта (в строке, выделено, содержащий `<src>` элемент) определен в пространстве имен `SDKSample`.  
   
  [!code-xaml[SimpleBinding#Instantiation](~/samples/snippets/csharp/VS_Snippets_Wpf/SimpleBinding/CSharp/Page1.xaml?highlight=9,37)]  
   
@@ -38,9 +38,9 @@ ms.locfileid: "59145370"
  [!code-csharp[ADODataSet#1](~/samples/snippets/csharp/VS_Snippets_Wpf/ADODataSet/CSharp/Window1.xaml.cs#1)]
    
   
- Чтобы получить доступ к [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данные с помощью привязки <xref:System.Windows.Data.XmlDataProvider> , представлена в разделе [привязка к данным XML с помощью XMLDataProvider и запросов XPath](how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries.md). Чтобы получить доступ к [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данные с помощью привязки <xref:System.Windows.Data.ObjectDataProvider> , представлена в разделе [привязка к XDocument, XElement или LINQ для результатов запросов XML](how-to-bind-to-xdocument-xelement-or-linq-for-xml-query-results.md).  
+ Чтобы получить доступ к XML данные с помощью привязки <xref:System.Windows.Data.XmlDataProvider> , представлена в разделе [привязка к данным XML с помощью XMLDataProvider и запросов XPath](how-to-bind-to-xml-data-using-an-xmldataprovider-and-xpath-queries.md). Чтобы получить доступ к XML данные с помощью привязки <xref:System.Windows.Data.ObjectDataProvider> , представлена в разделе [привязка к XDocument, XElement или LINQ для результатов запросов XML](how-to-bind-to-xdocument-xelement-or-linq-for-xml-query-results.md).  
   
- Сведения о многом, можно указать данные, при привязке к, см. в разделе [Указание источника привязки](how-to-specify-the-binding-source.md). Сведения о типы данных можно привязать к или как реализовать собственные [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] объекты для привязки, см. в разделе [Общие сведения об источниках привязки](binding-sources-overview.md).  
+ Сведения о многом, можно указать данные, при привязке к, см. в разделе [Указание источника привязки](how-to-specify-the-binding-source.md). Сведения о типы данных можно привязать к или как реализовать собственные CLR объекты для привязки, см. в разделе [Общие сведения об источниках привязки](binding-sources-overview.md).  
   
 ## <a name="see-also"></a>См. также
 

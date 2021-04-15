@@ -21,9 +21,9 @@ ms.locfileid: "59122867"
   
  Для файлов этих типов узлов Windows Presentation Foundation (WPF).  
   
--   Запускает зарегистрированный [!INCLUDE[TLA2#tla_html](../../../../includes/tla2sharptla-html-md.md)] обработчик для размещения содержимого Windows Presentation Foundation (WPF).  
+-   Запускает зарегистрированный HTML обработчик для размещения содержимого Windows Presentation Foundation (WPF).  
   
--   Загружает правильные версии требуемых [!INCLUDE[TLA#tla_clr](../../../../includes/tlasharptla-clr-md.md)] и сборок Windows Presentation Foundation (WPF).  
+-   Загружает правильные версии требуемых CLR и сборок Windows Presentation Foundation (WPF).  
   
 -   Обеспечивает наличие соответствующих уровней разрешений для зоны развертывания.  
   
@@ -41,7 +41,7 @@ ms.locfileid: "59122867"
 |-debugSecurityZoneURL \<url>|Используется со значением URL для указания необходимости отладки PresentationHost.exe, как при развертывании из указанного URL. Это определяет как зону развертывания, так и исходный узел.|  
 |-embedding|Требуется для OLE. Если указан параметр `-event` или `-debug`, то не обязательно указывать параметр `-embedding`, поскольку он устанавливается внутренне.|  
 |-event \<eventname>|Открывает событие с указанным именем и сигнализирует ему при инициализации PresentationHost.exe и готовности к размещению содержимого WPF. Работа PresentationHost.exe будет прервана в случае ошибки при открытии события, например, если оно еще не создано.|  
-|-launchApplication \<url>|Запускает автономное приложение [!INCLUDE[ndptecclick](../../../../includes/ndptecclick-md.md)] с указанного URL-адреса. [!INCLUDE[TLA2#tla_iegeneric](../../../../includes/tla2sharptla-iegeneric-md.md)] и применяются политики безопасности WinINet приложений .NET.|  
+|-launchApplication \<url>|Запускает автономное приложение [!INCLUDE[ndptecclick](../../../../includes/ndptecclick-md.md)] с указанного URL-адреса. Internet Explorer и применяются политики безопасности WinINet приложений .NET.|  
   
 ## <a name="scenarios"></a>Сценарии  
   

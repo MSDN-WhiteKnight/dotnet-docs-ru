@@ -19,7 +19,7 @@ ms.locfileid: "59089190"
 В этом примере показано, как для поиска элементов, создаваемых <xref:System.Windows.DataTemplate>.  
   
 ## <a name="example"></a>Пример  
- В этом примере имеется <xref:System.Windows.Controls.ListBox> , привязанный к некоторым [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данных:  
+ В этом примере имеется <xref:System.Windows.Controls.ListBox> , привязанный к некоторым XML данных:  
   
  [!code-xaml[FindGeneratedItems#LB](~/samples/snippets/csharp/VS_Snippets_Wpf/FindGeneratedItems/CSharp/Window1.xaml#lb)]  
   

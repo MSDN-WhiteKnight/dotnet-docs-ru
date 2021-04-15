@@ -13,10 +13,10 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59086264"
 ---
 # <a name="how-to-use-the-master-detail-pattern-with-hierarchical-xml-data"></a>Практическое руководство. Использование шаблона "Основной/подробности" с иерархическими XML-данными
-В этом примере показано, как реализовать сценарий "основной / подробности" с [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данных.  
+В этом примере показано, как реализовать сценарий "основной / подробности" с XML данных.  
   
 ## <a name="example"></a>Пример  
- Данный пример является [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] версию данных в примере, рассмотренном в [использование шаблона «основной-подробности» с иерархическими данными](how-to-use-the-master-detail-pattern-with-hierarchical-data.md). В этом примере данные берутся из файла `League.xml`. Обратите внимание как третий <xref:System.Windows.Controls.ListBox> управления отслеживает изменения выделения во втором <xref:System.Windows.Controls.ListBox> путем привязки к его <xref:System.Windows.Controls.Primitives.Selector.SelectedValue%2A> свойство.  
+ Данный пример является XML версию данных в примере, рассмотренном в [использование шаблона «основной-подробности» с иерархическими данными](how-to-use-the-master-detail-pattern-with-hierarchical-data.md). В этом примере данные берутся из файла `League.xml`. Обратите внимание как третий <xref:System.Windows.Controls.ListBox> управления отслеживает изменения выделения во втором <xref:System.Windows.Controls.ListBox> путем привязки к его <xref:System.Windows.Controls.Primitives.Selector.SelectedValue%2A> свойство.  
   
  [!code-xaml[MasterDetailXml#HowTo1](~/samples/snippets/csharp/VS_Snippets_Wpf/MasterDetailXml/CS/Window1.xaml#howto1)]  
 [!code-xaml[MasterDetailXml#HowTo2](~/samples/snippets/csharp/VS_Snippets_Wpf/MasterDetailXml/CS/Window1.xaml#howto2)]  

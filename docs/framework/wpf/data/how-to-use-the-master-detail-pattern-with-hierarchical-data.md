@@ -31,7 +31,7 @@ ms.locfileid: "59346188"
   
 2. Необходимо задать <xref:System.Windows.Controls.Primitives.Selector.IsSynchronizedWithCurrentItem%2A> свойства `true` на <xref:System.Windows.Controls.ListBox> элементов управления, из которых осуществляется отслеживание выбора. Задание этого свойства гарантирует, что выбранный элемент всегда задается как <xref:System.Windows.Controls.ItemCollection.CurrentItem%2A>. Кроме того Если <xref:System.Windows.Controls.ListBox> получает данные от <xref:System.Windows.Data.CollectionViewSource>, он автоматически синхронизирует Выбор и денежные единицы.  
   
- Метод немного отличается при использовании [!INCLUDE[TLA2#tla_xml](../../../../includes/tla2sharptla-xml-md.md)] данных. Например, см. в разделе [использование шаблона «основной-подробности» с иерархическими данными XML](how-to-use-the-master-detail-pattern-with-hierarchical-xml-data.md).  
+ Метод немного отличается при использовании XML данных. Например, см. в разделе [использование шаблона «основной-подробности» с иерархическими данными XML](how-to-use-the-master-detail-pattern-with-hierarchical-xml-data.md).  
   
 ## <a name="see-also"></a>См. также
 
