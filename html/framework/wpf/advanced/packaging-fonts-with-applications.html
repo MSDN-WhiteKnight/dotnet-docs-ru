@@ -129,12 +129,12 @@
   Aegean Sea
 &lt;/TextBlock&gt;
 </code></pre><h3 id="referencing-font-resource-items-from-code">Ссылка на элементы ресурсов шрифтов из кода</h3>
-<p>Чтобы ссылаться на элементы ресурсов шрифтов из кода, необходимо указать ссылку на ресурс шрифта двух частей: базовый универсальный идентификатор ресурса (URI); и ссылку на расположение шрифта. Эти значения используются в качестве параметров для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily.-ctor">FontFamily</a> метод. В следующем примере кода показано, как ссылаться на ресурсы шрифтов приложения в подкаталоге проекта с именем <code>resources</code>.</p>
+<p>Чтобы ссылаться на элементы ресурсов шрифтов из кода, необходимо указать ссылку на ресурс шрифта двух частей: базовый URI; и ссылку на расположение шрифта. Эти значения используются в качестве параметров для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily.-ctor">FontFamily</a> метод. В следующем примере кода показано, как ссылаться на ресурсы шрифтов приложения в подкаталоге проекта с именем <code>resources</code>.</p>
 <pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet2">// The font resource reference includes the base URI reference (application directory level),
 // and a relative URI reference.
 myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&quot;), &quot;./resources/#Pericles Light&quot;);
 </code></pre>
-<p>Базовый универсальный идентификатор ресурса (URI) может включать подкаталог приложения, где находится ресурс шрифта. В этом случае ссылка на расположение шрифта не нужно указать каталог, но пришлось бы включить в начале префикс &quot;<code>./</code>«, указывает, что ресурс шрифта находится в том же каталоге, который указан с помощью базового универсальный идентификатор ресурса (URI). В следующем примере кода показан другой способ ссылки на элемент ресурса шрифта — он эквивалентен предыдущему примеру кода.</p>
+<p>Базовый URI может включать подкаталог приложения, где находится ресурс шрифта. В этом случае ссылка на расположение шрифта не нужно указать каталог, но пришлось бы включить в начале префикс &quot;<code>./</code>«, указывает, что ресурс шрифта находится в том же каталоге, который указан с помощью базового URI. В следующем примере кода показан другой способ ссылки на элемент ресурса шрифта — он эквивалентен предыдущему примеру кода.</p>
 <pre><code class="lang-csharp" name="FontSnippets#FontPackageSnippet5">// The base URI reference can include an application subdirectory.
 myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/resources/&quot;), &quot;./#Pericles Light&quot;);
 </code></pre><h3 id="referencing-fonts-from-the-same-application-subdirectory">Ссылка на шрифты из одного подкаталога приложения</h3>
@@ -197,9 +197,9 @@ myTextBlock.FontFamily = new FontFamily(new Uri(&quot;pack://application:,,,/&qu
 <ul>
 <li><p><strong>Биты разрешений на внедрение шрифтов:</strong> WPF приложения не проверяют и не применяют принудительно никакие биты разрешений на внедрение шрифтов. См. в разделе <a href="#introduction_to_packaging_fonts">ntroduction_to_packing Fonts</a> Дополнительные сведения.</p>
 </li>
-<li><p><strong>Сайт исходных шрифтов:</strong> WPF приложения не разрешают ссылка на шрифт для http или ftp универсальный идентификатор ресурса (URI).</p>
+<li><p><strong>Сайт исходных шрифтов:</strong> WPF приложения не разрешают ссылка на шрифт для http или ftp URI.</p>
 </li>
-<li><p><strong>Абсолютный URI, с помощью пакета: нотации:</strong> WPF приложения не разрешают создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a> программным способом с помощью «pack:» как часть абсолютное универсальный идентификатор ресурса (URI) ссылки на шрифт. Например <code>&quot;pack://application:,,,/resources/#Pericles Light&quot;</code> является недопустимой ссылкой на шрифт.</p>
+<li><p><strong>Абсолютный URI, с помощью пакета: нотации:</strong> WPF приложения не разрешают создавать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.fontfamily">FontFamily</a> программным способом с помощью «pack:» как часть абсолютное URI ссылки на шрифт. Например <code>&quot;pack://application:,,,/resources/#Pericles Light&quot;</code> является недопустимой ссылкой на шрифт.</p>
 </li>
 <li><p><strong>Автоматическое внедрение шрифтов.</strong> Во время разработки не поддерживается поиск шрифтов, используемых приложением, и автоматическое внедрение шрифтов в ресурсы приложения.</p>
 </li>

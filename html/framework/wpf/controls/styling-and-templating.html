@@ -81,42 +81,49 @@
 <p><a name="styling_basics"></a></p>
 <h2 id="style-basics">Основы стилей</h2>
 <p>Можно представить себе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> как удобный способ применения набора значений свойств к более чем одного элемента. Например, рассмотрим следующие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов и их внешний вид по умолчанию:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSample_snippet#TextBlocks">&lt;TextBlock&gt;My Pictures&lt;/TextBlock&gt;
+&lt;TextBlock&gt;Check out my new pictures!&lt;/TextBlock&gt;
+</code></pre>
 <p><img src="media/stylingintro-textblocksbefore.PNG" alt="Снимок экрана стилей" title="StylingIntro_TextBlocksBefore"></p>
 <p>Можно изменить внешний вид по умолчанию, задав свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontfamily">FontFamily</a>, на каждом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> напрямую. Тем не менее если вы хотите, чтобы ваши <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов совместно использовать некоторые свойства, можно создать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> в <code>Resources</code> части вашей XAML файл, как показано ниже:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSnippet#Resources">&lt;Window.Resources&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#tb1">&lt;!--A Style that affects all TextBlocks--&gt;
+&lt;Style TargetType=&quot;TextBlock&quot;&gt;
+  &lt;Setter Property=&quot;HorizontalAlignment&quot; Value=&quot;Center&quot; /&gt;
+  &lt;Setter Property=&quot;FontFamily&quot; Value=&quot;Comic Sans MS&quot;/&gt;
+  &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;
+&lt;/Style&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#Resources2">&lt;/Window.Resources&gt;
+</code></pre>
 <p>При задании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> стиля <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> , стиль применяется ко всем <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы в окне.</p>
 <p>Теперь <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов будет выглядеть следующим образом:</p>
 <p><img src="media/stylingintro-textblocksbasestyle.PNG" alt="Снимок экрана стилей" title="StylingIntro_TextBlocksBaseStyle"></p>
 <h3 id="extending-styles">Расширение стилей</h3>
 <p>Возможно, вам необходимо два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементы, чтобы совместно использовать некоторые свойства, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontfamily">FontFamily</a> и выровнять по центру <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a>, и при этом текст «Мои рисунки» обладал некоторыми дополнительными свойствами. Это можно сделать, создав новый стиль на основе первого стиля, как показано ниже:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSnippet#Resources">&lt;Window.Resources&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#tb2">&lt;!--A Style that extends the previous TextBlock Style--&gt;
+&lt;!--This is a &quot;named style&quot; with an x:Key of TitleText--&gt;
+&lt;Style BasedOn=&quot;{StaticResource {x:Type TextBlock}}&quot;
+       TargetType=&quot;TextBlock&quot;
+       x:Key=&quot;TitleText&quot;&gt;
+  &lt;Setter Property=&quot;FontSize&quot; Value=&quot;26&quot;/&gt;
+  &lt;Setter Property=&quot;Foreground&quot;&gt;
+  &lt;Setter.Value&gt;
+      &lt;LinearGradientBrush StartPoint=&quot;0.5,0&quot; EndPoint=&quot;0.5,1&quot;&gt;
+        &lt;LinearGradientBrush.GradientStops&gt;
+          &lt;GradientStop Offset=&quot;0.0&quot; Color=&quot;#90DDDD&quot; /&gt;
+          &lt;GradientStop Offset=&quot;1.0&quot; Color=&quot;#5BFFFF&quot; /&gt;
+        &lt;/LinearGradientBrush.GradientStops&gt;
+      &lt;/LinearGradientBrush&gt;
+    &lt;/Setter.Value&gt;
+  &lt;/Setter&gt;
+&lt;/Style&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#Resources2">&lt;/Window.Resources&gt;
+</code></pre>
 <p>Обратите внимание, что предыдущий стиль получил атрибут <code>x:Key</code>. Чтобы применить стиль, вы установите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство вашей <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> для <code>x:Key</code> значение, как показано ниже:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSnippet#UIText">&lt;TextBlock Style=&quot;{StaticResource TitleText}&quot; Name=&quot;textblock1&quot;&gt;My Pictures&lt;/TextBlock&gt;
+&lt;TextBlock&gt;Check out my new pictures!&lt;/TextBlock&gt;
+</code></pre>
 <p>Это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> теперь имеет стиль <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">HorizontalAlignment</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.horizontalalignment#System_Windows_HorizontalAlignment_Center">Center</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.fontfamily">FontFamily</a> значение <code>Comic Sans MS</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.fontsize">FontSize</a> значение 26 и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.foreground">Foreground</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.lineargradientbrush">LinearGradientBrush</a> показано в примере. Обратите внимание, что этот параметр переопределяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a> значение базового стиля. Если имеется более одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> одного свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.setter">Setter</a> то есть объявленный последнего имеет больший приоритет.</p>
 <p>Ниже показано <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> элементов будет выглядеть так:</p>
 <p><img src="media/stylingintro-textblocks.png" alt="Стилизированный TextBlocks" title="StylingIntro_TextBlocks"></p>
@@ -130,10 +137,8 @@
 <p>Кроме того, дополнительные сведения о стилях и ресурсах можно найти в разделе <a href="#styling_themes">Совместно используемые ресурсы и темы</a> данного обзора.</p>
 <h3 id="setting-styles-programmatically">Программная установка стилей</h3>
 <p>Чтобы программным способом назначить именованный стиль элементу, Возьмите этот стиль из коллекции ресурсов и его назначение этого элемента <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство. Обратите внимание, что элементы в коллекции ресурсов имеют тип <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a>. Таким образом, необходимо привести полученный стиль для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a> перед назначением его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.style">Style</a> свойство. Например, чтобы задать определенный <code>TitleText</code> стиль над <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a> с именем <code>textblock1</code>, выполните следующие действия:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="StylingIntroSample_snippet#Code">textblock1.Style = (Style)(this.Resources[&quot;TitleText&quot;]);
+</code></pre>
 <p>Обратите внимание, что после применения стиля он фиксируется и не может быть изменен. Если необходимо динамически изменить стиль, который уже был применен, нужно создать новый стиль для замены существующего. Дополнительные сведения см. в описании свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.issealed">IsSealed</a>.</p>
 <p>Можно создать объект, который выбирает стиль, который нужно применить, основываясь на собственной логике. Например, см. пример для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.styleselector">StyleSelector</a> класса.</p>
 <p><a name="styling_binding_dynamicresource"></a></p>
@@ -143,25 +148,24 @@
 <p><a name="styling_datatemplates"></a></p>
 <h2 id="data-templates">Шаблоны данных</h2>
 <p>В этом примере приложения есть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> элемента управления, привязанный к списку фотографий:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSnippet#UIListBox">&lt;ListBox ItemsSource=&quot;{Binding Source={StaticResource MyPhotos}}&quot;
+         Background=&quot;Silver&quot; Width=&quot;600&quot; Margin=&quot;10&quot; SelectedIndex=&quot;0&quot;/&gt;
+</code></pre>
 <p>Это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> в данный момент выглядит следующим образом:</p>
 <p><img src="media/stylingintro-listboxbefore.png" alt="ListBox до применения шаблона" title="StylingIntro_ListBoxBefore"></p>
 <p>Большинство элементов управления имеют некое содержимое, и это содержимое часто поступает из данных, к которым осуществляется привязка. В этом примере такими данными является список фотографий. В WPF, использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> для определения визуального представления данных. По сути, что вы поместите в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> определяет вид данных в отображаемом приложении.</p>
 <p>В нашем примере приложения каждый пользовательский объект <code>Photo</code> имеет свойство <code>Source</code> строкового типа, которое задает путь к файлу изображения. Сейчас объекты фотографий отображаются как пути к файлам.</p>
 <p>Чтобы фотографии отображались как изображения, создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> как ресурс:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSnippet#Resources">&lt;Window.Resources&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#DataTemplate">&lt;!--DataTemplate to display Photos as images
+    instead of text strings of Paths--&gt;
+&lt;DataTemplate DataType=&quot;{x:Type local:Photo}&quot;&gt;
+  &lt;Border Margin=&quot;3&quot;&gt;
+    &lt;Image Source=&quot;{Binding Source}&quot;/&gt;
+  &lt;/Border&gt;
+&lt;/DataTemplate&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSnippet#Resources2">&lt;/Window.Resources&gt;
+</code></pre>
 <p>Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate.datatype">DataType</a> очень похоже на свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style.targettype">TargetType</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Если ваш <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> находится в разделе ресурсов, при указании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate.datatype">DataType</a> свойство с типом и не назначаете ему <code>x:Key</code>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> будет применяться при каждом отображении этого типа. У вас всегда есть возможность назначения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> с <code>x:Key</code> и затем задать его в качестве <code>StaticResource</code> для свойства, принимающие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> типы, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.itemtemplate">ItemTemplate</a> свойство или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.contenttemplate">ContentTemplate</a> свойство.</p>
 <p>По сути <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a> в приведенном выше примере определяет, что при имеется <code>Photo</code> объекта, он должен быть <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.image">Image</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>. С этим <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.datatemplate">DataTemplate</a>, наше приложение теперь выглядит следующим образом:</p>
 <p><img src="media/stylingintro-photosasimages.png" alt="Фотоизображение" title="StylingIntro_PhotosAsImages"></p>
@@ -175,22 +179,46 @@
 <h3 id="property-triggers">Триггеры свойств</h3>
 <p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> , задает значения свойств или активирует действия на основе значения свойства, называется триггером свойства.</p>
 <p>Чтобы продемонстрировать использование триггеров свойств, вы можете сделать каждую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a> частично прозрачным, если он выбран. Следующий стиль устанавливает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a> для <code>0.5</code>. Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem.isselected">IsSelected</a> свойство <code>true</code>, но при этом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.uielement.opacity">Opacity</a> присваивается <code>1.0</code>:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSample_snippet#Triggers">&lt;Style TargetType=&quot;ListBoxItem&quot;&gt;
+  &lt;Setter Property=&quot;Opacity&quot; Value=&quot;0.5&quot; /&gt;
+  &lt;Setter Property=&quot;MaxHeight&quot; Value=&quot;75&quot; /&gt;
+  &lt;Style.Triggers&gt;
+    &lt;Trigger Property=&quot;IsSelected&quot; Value=&quot;True&quot;&gt;
+        &lt;Setter Property=&quot;Opacity&quot; Value=&quot;1.0&quot; /&gt;
+    &lt;/Trigger&gt;
+</code></pre><pre><code class="lang-xaml" name="StylingIntroSample_snippet#EndTriggers">  &lt;/Style.Triggers&gt;
+&lt;/Style&gt;
+</code></pre>
 <p>В этом примере используется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> для задания значения свойства, но Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.trigger">Trigger</a> класс также имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.triggerbase.enteractions">EnterActions</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.triggerbase.exitactions">ExitActions</a> свойства, позволяющие триггера для выполнения действия.</p>
 <p>Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.maxheight">MaxHeight</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a> присваивается <code>75</code>. На следующем рисунке третий элемент является выбранным:</p>
 <p><img src="media/stylingintro-triggers.png" alt="Стилизированный ListView" title="StylingIntro_triggers"></p>
 <h3 id="eventtriggers-and-storyboards">Объекты EventTrigger и раскадровки</h3>
 <p>Другой тип триггера — <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a>, которая запускает набор действий в зависимости от возникновения события. Например, следующая <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.eventtrigger">EventTrigger</a> объекта задают, когда указатель мыши попадает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listboxitem">ListBoxItem</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.maxheight">MaxHeight</a> анимирует свойство в значение <code>90</code> через <code>0.2</code> второй период. Когда указатель мыши перемещается за пределы этого элемента, свойство возвращается к исходному значению в течение <code>1</code> сек. Обратите внимание на то, как это не требуется указывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.doubleanimation.to">To</a> значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.contentelement.mouseleave">MouseLeave</a> анимации. Анимация сама может отслеживать исходное значение.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="StylingIntroSample_snippet#EventTriggers">&lt;EventTrigger RoutedEvent=&quot;Mouse.MouseEnter&quot;&gt;
+  &lt;EventTrigger.Actions&gt;
+    &lt;BeginStoryboard&gt;
+      &lt;Storyboard&gt;
+        &lt;DoubleAnimation
+          Duration=&quot;0:0:0.2&quot;
+          Storyboard.TargetProperty=&quot;MaxHeight&quot;
+          To=&quot;90&quot;  /&gt;
+      &lt;/Storyboard&gt;
+    &lt;/BeginStoryboard&gt;
+  &lt;/EventTrigger.Actions&gt;
+&lt;/EventTrigger&gt;
+&lt;EventTrigger RoutedEvent=&quot;Mouse.MouseLeave&quot;&gt;
+  &lt;EventTrigger.Actions&gt;
+    &lt;BeginStoryboard&gt;
+      &lt;Storyboard&gt;
+        &lt;DoubleAnimation
+          Duration=&quot;0:0:1&quot;
+          Storyboard.TargetProperty=&quot;MaxHeight&quot;  /&gt;
+      &lt;/Storyboard&gt;
+    &lt;/BeginStoryboard&gt;
+  &lt;/EventTrigger.Actions&gt;
+&lt;/EventTrigger&gt;
+
+</code></pre>
 <p>Подробнее см. в разделе <a href="../graphics-multimedia/storyboards-overview.html">Общие сведения о раскадровках</a>.</p>
 <p>На следующем рисунке указатель мыши указывает на третий элемент:</p>
 <p><img src="media/stylingintro-eventtriggers.png" alt="Снимок экрана стилей" title="StylingIntro_EventTriggers"></p>

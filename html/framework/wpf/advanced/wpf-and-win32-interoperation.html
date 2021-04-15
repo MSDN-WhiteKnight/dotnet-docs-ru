@@ -82,7 +82,7 @@
 <p>Каждый из этих способов детально представлен в этом разделе. Для иллюстрации, Дополнительные примеры кода, на котором размещается WPF в Win32, см. в разделе <a href="walkthrough-hosting-wpf-content-in-win32.html">Пошаговое руководство: Размещение содержимого WPF в Win32</a>. Для иллюстрации, Дополнительные примеры кода, на котором размещается Win32 в WPF, см. в разделе <a href="walkthrough-hosting-a-win32-control-in-wpf.html">Пошаговое руководство: Размещение элемента управления Win32 в WPF</a>.</p>
 <p><a name="projects"></a></p>
 <h2 id="wpf-interoperation-projects">Проекты взаимодействия WPF</h2>
-<p>WPF API - интерфейсы are managed code, but most existing [!include[TLA2#tla_win32](../../../../includes/tla2sявляются)] программы создаются в виде неуправляемого C++.enНевозможно вызвать WPF API - интерфейсы из подлинной неуправляемой программы.nОднако используя параметр <code>/clr</code> с компилятором Microsoft Visual C++, можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы API.</p>
+<p>WPF API are managed code, but most existing [!include[TLA2#tla_win32](../../../../includes/tla2sявляются)] программы создаются в виде неуправляемого C++.enНевозможно вызвать WPF API из подлинной неуправляемой программы.nОднако используя параметр <code>/clr</code> с компилятором Microsoft Visual C++, можно создать смешанную управляемую-неуправляемую программу, где могут равномерно смешиваться управляемые и неуправляемые вызовы API.</p>
 <p>Существует одна сложность на уровне проекта, которая заключается в том, что нельзя скомпилировать файлы XAML в проект C++.  Имеется несколько методов разделения проектов для решения данной проблемы.</p>
 <ul>
 <li><p>Создать библиотеку DLL C#, содержащий все вашей XAML страницы в форме скомпилированной сборки, а затем вашей C++ включите в исполняемый файл DLL как ссылку.</p>
@@ -106,7 +106,7 @@
 <p>С HWND связано понятие прозрачности внутри и между каждым дескриптором HWND. Оно также рассматривается в разделе <a href="technology-regions-overview.html">Общие сведения об областях применения технологий</a>.</p>
 <p><a name="hosting_a_wpf_page"></a></p>
 <h2 id="hosting-wpf-content-in-a-microsoft-win32-window">Размещение содержимого WPF в окне Microsoft Win32</h2>
-<p>Ключом к размещению WPF на Win32 окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> класса. Этот класс заключает содержимое WPF в окно Win32 таким образом, что содержимое WPF может быть включено в пользовательский интерфейс в качестве дочернего окна. Следующий подход объединяет Win32 и WPF в одном приложении.</p>
+<p>Ключом к размещению WPF на Win32 окно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndsource">HwndSource</a> класса. Этот класс заключает содержимое WPF в окно Win32 таким образом, что содержимое WPF может быть включено в UI  в качестве дочернего окна. Следующий подход объединяет Win32 и WPF в одном приложении.</p>
 <ol>
 <li><p>Реализуйте содержимое WPF (содержимое корневого элемента) в виде управляемого класса. Как правило, класс наследуется от одного из классов, которые может содержать несколько дочерних элементов или использоваться в качестве корневого элемента, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. В последующих шагах этот класс называется классом содержимого WPF, а его экземпляры называются объектами содержимого WPF.</p>
 </li>
@@ -142,7 +142,7 @@
 </div>
 <p><a name="hosting_an_hwnd"></a></p>
 <h2 id="hosting-a-microsoft-win32-window-in-wpf">Размещение окна Microsoft Win32 в WPF</h2>
-<p>Ключом к размещению Win32 окно в другие WPF содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класса. Он заключает окно в элемент WPF, который можно добавить в дерево элементов WPF. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> также поддерживает API - интерфейсы , которые позволяют выполнять такие задачи, как обработка сообщений для размещенного окна. Ниже описываются основные действия.</p>
+<p>Ключом к размещению Win32 окно в другие WPF содержимое <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> класса. Он заключает окно в элемент WPF, который можно добавить в дерево элементов WPF. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> также поддерживает API , которые позволяют выполнять такие задачи, как обработка сообщений для размещенного окна. Ниже описываются основные действия.</p>
 <ol>
 <li><p>Создайте дерево элементов для приложения WPF (посредством кода или разметки). Найдите соответствующую и допустимую точку в дереве элементов, где <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.interop.hwndhost">HwndHost</a> реализация может быть добавлен как дочерний элемент. В оставшихся действиях процедуры этот элемент называется элементом резервирования.</p>
 </li>

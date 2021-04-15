@@ -104,16 +104,46 @@
 <li><p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> , отображающий содержимое кнопки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> Позволяет любой тип объекта для отображения.</p>
 </li>
 </ul>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="preserving-the-functionality-of-a-controls-properties-by-using-templatebinding">Сохранение функциональности свойств элемента управления с помощью TemplateBinding</h3>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#BasicTemplate">&lt;ControlTemplate TargetType=&quot;Button&quot;&gt;
+  &lt;Border Name=&quot;RootElement&quot;&gt;
+
+    &lt;!--Create the SolidColorBrush for the Background 
+        as an object elemment and give it a name so 
+        it can be referred to elsewhere in the
+        control template.--&gt;
+    &lt;Border.Background&gt;
+      &lt;SolidColorBrush x:Name=&quot;BorderBrush&quot; Color=&quot;Black&quot;/&gt;
+    &lt;/Border.Background&gt;
+
+    &lt;!--Create a border that has a different color
+        by adding smaller grid. The background of 
+        this grid is specificied by the button's 
+        Background property.--&gt;
+    &lt;Grid Margin=&quot;4&quot; Background=&quot;{TemplateBinding Background}&quot;&gt;
+
+      &lt;!--Use a ContentPresenter to display the Content of
+          the Button.--&gt;
+      &lt;ContentPresenter
+        HorizontalAlignment=&quot;{TemplateBinding HorizontalContentAlignment}&quot;
+        VerticalAlignment=&quot;{TemplateBinding VerticalContentAlignment}&quot;
+        Margin=&quot;4,5,4,4&quot; /&gt;
+    &lt;/Grid&gt;
+
+  &lt;/Border&gt;
+&lt;/ControlTemplate&gt;
+</code></pre><h3 id="preserving-the-functionality-of-a-controls-properties-by-using-templatebinding">Сохранение функциональности свойств элемента управления с помощью TemplateBinding</h3>
 <p>При создании нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, по-прежнему может потребоваться использовать общие свойства для изменения внешнего вида элемента управления. <a href="../advanced/templatebinding-markup-extension.html">TemplateBinding</a> расширение разметки привязывает свойство элемента, который находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> на открытое свойство, которое определяется элементом управления. Использование расширения <a href="../advanced/templatebinding-markup-extension.html">TemplateBinding</a> позволяет свойствам элемента управления действовать в качестве параметров шаблона. Это означает, что при задании свойства элемента управления соответствующее значение передается в элемент, который содержит <a href="../advanced/templatebinding-markup-extension.html">TemplateBinding</a>.</p>
 <p>В следующем примере повторяется часть предыдущего примера, который использует <a href="../advanced/templatebinding-markup-extension.html">TemplateBinding</a> расширение разметки для привязки свойств элементов, которые находятся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> к общим свойствам, которые определены на кнопке.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#TemplateBinding">&lt;Grid Margin=&quot;4&quot; Background=&quot;{TemplateBinding Background}&quot;&gt;
+
+  &lt;!--Use a ContentPresenter to display the Content of
+      the Button.--&gt;
+  &lt;ContentPresenter
+    HorizontalAlignment=&quot;{TemplateBinding HorizontalContentAlignment}&quot;
+    VerticalAlignment=&quot;{TemplateBinding VerticalContentAlignment}&quot;
+    Margin=&quot;4,5,4,4&quot; /&gt;
+&lt;/Grid&gt;
+</code></pre>
 <p>В этом примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.grid">Grid</a> имеет его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.background">Panel.Background</a> шаблон свойство привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Control.Background</a>. Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.panel.background">Panel.Background</a> будет привязано к шаблону, можно создать несколько кнопок, используйте тот же <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и задайте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Control.Background</a> в разные значения для каждой кнопки. Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Control.Background</a> шаблон не был привязан к свойству элемента в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, задание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Control.Background</a> кнопки бы не оказывают влияния на внешний вид кнопки.</p>
 <p>Следует отметить, что не требуется, чтобы имена этих двух свойств совпадали. В приведенном выше примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.horizontalcontentalignment">Control.HorizontalContentAlignment</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> привязано к шаблону <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">FrameworkElement.HorizontalAlignment</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a>. Это позволяет располагать содержимое кнопки горизонтально. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> не поддерживает свойство с именем <code>HorizontalContentAlignment</code>, но <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.horizontalcontentalignment">Control.HorizontalContentAlignment</a> могут быть привязаны к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.horizontalalignment">FrameworkElement.HorizontalAlignment</a>. Перед привязкой свойства к шаблону следует убедиться, что целевое и исходное свойства имеют один и тот же тип.</p>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> Класс определяет несколько свойств, которые должны использоваться шаблон элемента управления, чтобы оказывать влияние на элемент управления, если они находятся. Каким образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> использует свойство зависит от свойства. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> Необходимо использовать свойство одним из следующих способов:</p>
@@ -181,10 +211,16 @@
 <p>В таблице перечислены только визуальные свойства, наследуемые от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control">Control</a> класса. Кроме свойств, приведенных в таблице, элемент управления может также наследовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.language">Language</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock.textdecorations">TextDecorations</a> свойства из родительского элемента структуры.</p>
 <p>Кроме того Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentpresenter">ContentPresenter</a> будет автоматически привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.contenttemplate">ContentTemplate</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol.content">Content</a> свойства. Аналогичным образом <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemspresenter">ItemsPresenter</a> , который находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a> будет автоматически привязан к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol.items">Items</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemspresenter">ItemsPresenter</a> свойства.</p>
 <p>В следующем примере создается две кнопки, использующих <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> определенный в предыдущем примере. В примере задается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a>, и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a> свойства для каждой из кнопок. Установка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> свойство оказывает влияние, поскольку это привязано к шаблону <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.foreground">Foreground</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.fontsize">FontSize</a> свойства не привязано к шаблону, их настройке оказывает влияние, поскольку их значения являются наследуемыми.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#ButtonDeclaration">&lt;StackPanel&gt;
+  &lt;Button Style=&quot;{StaticResource newTemplate}&quot; 
+          Background=&quot;Navy&quot; Foreground=&quot;White&quot; FontSize=&quot;14&quot;
+          Content=&quot;Button1&quot;/&gt;
+
+  &lt;Button Style=&quot;{StaticResource newTemplate}&quot; 
+          Background=&quot;Purple&quot; Foreground=&quot;White&quot; FontSize=&quot;14&quot;
+          Content=&quot;Button2&quot; HorizontalContentAlignment=&quot;Left&quot;/&gt;
+&lt;/StackPanel&gt;
+</code></pre>
 <p>В предыдущем примере получался результат, аналогичный показанному на следующем рисунке.</p>
 <p><img src="media/ndp-buttontwo.png" alt="Две кнопки, одна синяя, а другая — фиолетовая. " title="NDP_ButtonTwo"><br>
 Две кнопки с различными цветами фона</p>
@@ -193,10 +229,17 @@
 <p>Разница между кнопкой с внешним видом по умолчанию и кнопкой из предыдущего примера состоит в том, что кнопка по умолчанию слегка изменяется при переходе в другое состояние. Например, внешний вид кнопки по умолчанию изменяется при нажатии этой кнопки или при наведении на нее указателя мыши. Несмотря на то что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> изменяет функциональность элемента управления, это приводит к изменению визуальное поведение элемента управления. Визуальное поведение описывает внешний вид элемента управления в определенных состояниях. Чтобы лучше понять разницу между функциональностью и визуальным поведением элемента управления, рассмотрим пример с кнопкой. Функциональность кнопки должно инициировать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a> событие при ее нажатии, а визуальное поведение кнопки состоит в том, чтобы изменять внешний вид при нажатии или на которые указывают.</p>
 <p>Использовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты для указания вида элемента управления, когда он находится в определенном состоянии. Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> изменяет внешний вид элементов, которые находятся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Нет необходимости писать код, чтобы это происходило, поскольку логика элемента управления изменяет состояние с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager">VisualStateManager</a>. Когда элемент управления переходит в состояние, которое определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate.name">VisualState.Name</a> свойства <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> начинается. Когда элемент управления выходит из состояния, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> останавливается.</p>
 <p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> , изменяет внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> когда указатель мыши находится над ней. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> Изменяет цвет границы кнопки, изменив цвет <code>BorderBrush</code>. При ссылке на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> пример в начале этого раздела, можно увидеть, что <code>BorderBrush</code> имя <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.solidcolorbrush">SolidColorBrush</a> , назначенный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border.background">Background</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.border">Border</a>.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#4">&lt;!--Change the border of the button to red when the
+    mouse is over the button.--&gt;
+&lt;VisualState x:Name=&quot;MouseOver&quot;&gt;
+  &lt;Storyboard&gt;
+    &lt;ColorAnimation Storyboard.TargetName=&quot;BorderBrush&quot;     
+                    Storyboard.TargetProperty=&quot;Color&quot;
+                    To=&quot;Red&quot; /&gt;
+
+  &lt;/Storyboard&gt;
+&lt;/VisualState&gt;
+</code></pre>
 <p>Элемент управления отвечает за определение состояний как часть своего контракта, что подробно рассматривается в подразделе <a href="#customizing_other_controls_by_understanding_the_control_contract">Настройка других элементов управления через понимание контракта элемента управления</a> далее в этом разделе. В следующей таблице перечислены состояния, которые указаны для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
 <table>
 <thead>
@@ -245,10 +288,57 @@
 <h5>Note</h5>
 <p>Не забудьте задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstatemanager.visualstategroups">VisualStateManager.VisualStateGroups</a> присоединенного свойства в корне <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
 </div>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#VisualStates">&lt;ControlTemplate TargetType=&quot;Button&quot;&gt;
+  &lt;Border Name=&quot;RootElement&quot;&gt;
+
+    &lt;VisualStateManager.VisualStateGroups&gt;
+
+      &lt;!--Define the states and transitions for the common states.
+          The states in the VisualStateGroup are mutually exclusive to
+          each other.--&gt;
+      &lt;VisualStateGroup Name=&quot;CommonStates&quot;&gt;
+
+        &lt;!--The Normal state is the state the button is in
+            when it is not in another state from this VisualStateGroup.--&gt;
+        &lt;VisualState Name=&quot;Normal&quot; /&gt;
+
+        &lt;!--Change the SolidColorBrush, BorderBrush, to red when the
+            mouse is over the button.--&gt;
+        &lt;VisualState Name=&quot;MouseOver&quot;&gt;
+          &lt;Storyboard&gt;
+            &lt;ColorAnimation Storyboard.TargetName=&quot;BorderBrush&quot; 
+                            Storyboard.TargetProperty=&quot;Color&quot; 
+                            To=&quot;Red&quot; /&gt;
+          &lt;/Storyboard&gt;
+        &lt;/VisualState&gt;
+
+        &lt;!--Change the SolidColorBrush, BorderBrush, to Transparent when the
+            button is pressed.--&gt;
+        &lt;VisualState Name=&quot;Pressed&quot;&gt;
+          &lt;Storyboard&gt;
+            &lt;ColorAnimation Storyboard.TargetName=&quot;BorderBrush&quot; 
+                            Storyboard.TargetProperty=&quot;Color&quot;
+                            To=&quot;Transparent&quot;/&gt;
+          &lt;/Storyboard&gt;
+        &lt;/VisualState&gt;
+
+        &lt;!--The Disabled state is omitted for brevity.--&gt;
+      &lt;/VisualStateGroup&gt;
+    &lt;/VisualStateManager.VisualStateGroups&gt;
+
+    &lt;Border.Background&gt;
+      &lt;SolidColorBrush x:Name=&quot;BorderBrush&quot; Color=&quot;Black&quot;/&gt;
+    &lt;/Border.Background&gt;
+
+    &lt;Grid Background=&quot;{TemplateBinding Background}&quot; Margin=&quot;4&quot;&gt;
+      &lt;ContentPresenter
+        HorizontalAlignment=&quot;{TemplateBinding HorizontalContentAlignment}&quot;
+        VerticalAlignment=&quot;{TemplateBinding VerticalContentAlignment}&quot;
+        Margin=&quot;4,5,4,4&quot; /&gt;
+    &lt;/Grid&gt;
+  &lt;/Border&gt;
+&lt;/ControlTemplate&gt;
+</code></pre>
 <p>В предыдущем примере получался результат, аналогичный показанному на следующих рисунках.</p>
 <p><img src="media/ndp-buttonnormal.png" alt="Кнопка с пользовательским шаблоном элемента управления. " title="NDP_ButtonNormal"><br>
 Кнопка, использующая пользовательский шаблон элемента управления в нормальном состоянии</p>
@@ -271,15 +361,38 @@
 </ul>
 <h3 id="specifying-the-duration-of-a-transition">Задание продолжительности перехода</h3>
 <p>Можно указать, сколько времени занимает переход, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.generatedduration">GeneratedDuration</a> свойство. В предыдущем примере имеется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> , указывающий, что граница кнопки становится прозрачной при нажатии кнопки, но анимация продолжается слишком долго, чтобы быть заметной при быстро нажата и отпущена кнопка. Можно использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> для задания периода времени занимает элемент управления переходить в нажатом состоянии. В следующем примере задается, что переход элемента управления в нажатое состояние занимает одну сотую секунды.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="specifying-changes-to-the-controls-appearance-during-a-transition">Задание изменений внешнего вида элемента управления во время перехода</h3>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#PressedTransition">&lt;!--Take one hundredth of a second to transition to the
+    Pressed state.--&gt;
+&lt;VisualTransition To=&quot;Pressed&quot; 
+                  GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+</code></pre><h3 id="specifying-changes-to-the-controls-appearance-during-a-transition">Задание изменений внешнего вида элемента управления во время перехода</h3>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> Содержит <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.animation.storyboard">Storyboard</a> , начинается, когда элемент управления переходит между состояниями. Например, можно указать, что определенная анимация происходит при переходе элемента управления из состояния <code>MouseOver</code> в состояние <code>Normal</code>. В следующем примере создается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> , указывающий, что когда пользователь перемещает указатель мыши за пределы кнопки, граница кнопки изменяет цвет на синий, а затем на желтый и затем на черный в течение полутора секунд.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="specifying-when-a-visualtransition-is-applied">Указание места применения VisualTransition</h3>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#8">&lt;!--Take one and a half seconds to transition from the
+    MouseOver state to the Normal state. 
+    Have the SolidColorBrush, BorderBrush, fade to blue, 
+    then to yellow, and then to black in that time.--&gt;
+&lt;VisualTransition From=&quot;MouseOver&quot; To=&quot;Normal&quot; 
+                      GeneratedDuration=&quot;0:0:1.5&quot;&gt;
+  &lt;Storyboard&gt;
+    &lt;ColorAnimationUsingKeyFrames
+      Storyboard.TargetProperty=&quot;Color&quot;
+      Storyboard.TargetName=&quot;BorderBrush&quot;
+      FillBehavior=&quot;HoldEnd&quot; &gt;
+
+      &lt;ColorAnimationUsingKeyFrames.KeyFrames&gt;
+
+        &lt;LinearColorKeyFrame Value=&quot;Blue&quot; 
+          KeyTime=&quot;0:0:0.5&quot; /&gt;
+        &lt;LinearColorKeyFrame Value=&quot;Yellow&quot; 
+          KeyTime=&quot;0:0:1&quot; /&gt;
+        &lt;LinearColorKeyFrame Value=&quot;Black&quot; 
+          KeyTime=&quot;0:0:1.5&quot; /&gt;
+
+      &lt;/ColorAnimationUsingKeyFrames.KeyFrames&gt;
+    &lt;/ColorAnimationUsingKeyFrames&gt;
+  &lt;/Storyboard&gt;
+&lt;/VisualTransition&gt;
+</code></pre><h3 id="specifying-when-a-visualtransition-is-applied">Указание места применения VisualTransition</h3>
 <p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> можно ограничить только определенными состояниями, или его можно применять в любое время переходы между состояниями элемента управления. В приведенном выше примере <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> применяется, когда элемент управления переходит из <code>MouseOver</code> состояние <code>Normal</code> состоянии; в примере перед ним, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> применяется, когда элемент управления переходит в <code>Pressed</code> состояние. Ограничивается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> применяется, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.to">To</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.from">From</a> свойства. В таблице ниже приведено описание уровней ограничений от наибольшего до наименьшего.</p>
 <table>
 <thead>
@@ -313,10 +426,15 @@
 </tbody>
 </table>
 <p>Может иметь несколько <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> , ссылающиеся на том же состоянии, но они будут использоваться в порядке, в предыдущей таблице. В следующем примере есть два <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> объектов. Когда элемент управления переходит из <code>Pressed</code> состояние <code>MouseOver</code> состояние, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> , содержащую одновременно <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.from">From</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.to">To</a> используется набор. Когда элемент управления переходит из состояния, отличного от <code>Pressed</code>, в состояние <code>MouseOver</code>, используется другой объект.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#7">&lt;!--Take one half second to trasition to the MouseOver state.--&gt;
+&lt;VisualTransition To=&quot;MouseOver&quot; 
+                  GeneratedDuration=&quot;0:0:0.5&quot; /&gt;
+
+&lt;!--Take one hundredth of a second to transition from the
+    Pressed state to the MouseOver state.--&gt;
+&lt;VisualTransition From=&quot;Pressed&quot; To=&quot;MouseOver&quot; 
+                  GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> Имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup.transitions">Transitions</a> свойство, содержащее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> объектов, которые применяются к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>. Как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> автор, вы можете свободно включать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> требуется. Тем не менее если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.to">To</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition.from">From</a> свойствам присваиваются имена состояний, не включенных в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> учитывается.</p>
 <p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a> для <code>CommonStates</code>. В примере определяется <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualtransition">VisualTransition</a> для каждого из следующих кнопки перехода.</p>
 <ul>
@@ -329,10 +447,83 @@
 <li><p>из состояния <code>MouseOver</code> в состояние <code>Normal</code>.</p>
 </li>
 </ul>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#VisualTransitions">&lt;VisualStateGroup Name=&quot;CommonStates&quot;&gt;
+
+  &lt;!--Define the VisualTransitions that
+      can be used when the control transitions 
+      between VisualStates that are defined in the
+      VisualStatGroup.--&gt;
+  &lt;VisualStateGroup.Transitions&gt;
+
+    &lt;!--Take one hundredth of a second to 
+        transition to the Pressed state.--&gt;
+    &lt;VisualTransition To=&quot;Pressed&quot; 
+                      GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+
+    &lt;!--Take one half second to trasition 
+        to the MouseOver state.--&gt;
+    &lt;VisualTransition To=&quot;MouseOver&quot; 
+                      GeneratedDuration=&quot;0:0:0.5&quot; /&gt;
+
+    &lt;!--Take one hundredth of a second to transition from the
+        Pressed state to the MouseOver state.--&gt;
+    &lt;VisualTransition From=&quot;Pressed&quot; To=&quot;MouseOver&quot; 
+                      GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+
+    &lt;!--Take one and a half seconds to transition from the
+        MouseOver state to the Normal state. 
+        Have the SolidColorBrush, BorderBrush, fade to blue, 
+        then to yellow, and then to black in that time.--&gt;
+    &lt;VisualTransition From=&quot;MouseOver&quot; To=&quot;Normal&quot; 
+                      GeneratedDuration=&quot;0:0:1.5&quot;&gt;
+      &lt;Storyboard&gt;
+        &lt;ColorAnimationUsingKeyFrames
+          Storyboard.TargetProperty=&quot;Color&quot;
+          Storyboard.TargetName=&quot;BorderBrush&quot;
+          FillBehavior=&quot;HoldEnd&quot; &gt;
+
+          &lt;ColorAnimationUsingKeyFrames.KeyFrames&gt;
+            &lt;LinearColorKeyFrame Value=&quot;Blue&quot; 
+              KeyTime=&quot;0:0:0.5&quot; /&gt;
+            &lt;LinearColorKeyFrame Value=&quot;Yellow&quot; 
+              KeyTime=&quot;0:0:1&quot; /&gt;
+            &lt;LinearColorKeyFrame Value=&quot;Black&quot; 
+              KeyTime=&quot;0:0:1.5&quot; /&gt;
+
+          &lt;/ColorAnimationUsingKeyFrames.KeyFrames&gt;
+        &lt;/ColorAnimationUsingKeyFrames&gt;
+      &lt;/Storyboard&gt;
+    &lt;/VisualTransition&gt;
+  &lt;/VisualStateGroup.Transitions&gt;
+
+  &lt;!--The remainder of the VisualStateGroup is the
+      same as the previous example.--&gt;
+
+  &lt;VisualState Name=&quot;Normal&quot; /&gt;
+
+  &lt;VisualState Name=&quot;MouseOver&quot;&gt;
+    &lt;Storyboard&gt;
+      &lt;ColorAnimation 
+        Storyboard.TargetName=&quot;BorderBrush&quot; 
+        Storyboard.TargetProperty=&quot;Color&quot; 
+        To=&quot;Red&quot; /&gt;
+
+    &lt;/Storyboard&gt;
+  &lt;/VisualState&gt;
+
+  &lt;VisualState Name=&quot;Pressed&quot;&gt;
+    &lt;Storyboard&gt;
+      &lt;ColorAnimation 
+        Storyboard.TargetName=&quot;BorderBrush&quot; 
+        Storyboard.TargetProperty=&quot;Color&quot; 
+        To=&quot;Transparent&quot;/&gt;
+    &lt;/Storyboard&gt;
+  &lt;/VisualState&gt;
+
+  &lt;!--The Disabled state is omitted for brevity.--&gt;
+
+&lt;/VisualStateGroup&gt;
+</code></pre>
 <p><a name="customizing_other_controls_by_understanding_the_control_contract"></a></p>
 <h2 id="customizing-other-controls-by-understanding-the-control-contract">Настройка других элементов управления через понимание контракта элемента управления</h2>
 <p>Элемент управления, который использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для задания визуальной структуры (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> объекты) и визуального поведения (с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объекты) использует модель частей элемента управления. Множество элементов управления, имеющихся в WPF 4, используют эту модель. Части, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> автор необходимо учитывать, взаимодействуют с помощью контракта элемента управления. Поняв части контракта элемента управления, можно настроить внешний вид любого элемента управления, использующего модель частей элемента управления.</p>
@@ -348,24 +539,106 @@
 <h3 id="visual-elements-in-the-control-contract">Визуальные элементы в контракте элемента управления</h3>
 <p>Иногда логика элемента управления взаимодействует с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> , который находится в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Например, элемент управления может обрабатывать событие одного из своих элементов. Когда элемент управления ожидает найти конкретный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, он должен передать эти сведения для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> автора. Элемент управления использует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatepartattribute">TemplatePartAttribute</a> для передачи типа элемента, ожидается, что и имя элемента, которое должно быть. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> Имеет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement">FrameworkElement</a> части в контракте элемента управления, но другие элементы управления, такие как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a>, сделать.</p>
 <p>В следующем примере показан <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatepartattribute">TemplatePartAttribute</a> объекты, которые определены на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> класса. Логика <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> ожидает найти <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textbox">TextBox</a> с именем <code>PART_EditableTextBox</code> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.popup">Popup</a> с именем <code>PART_Popup</code> в его <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="VSMButtonTemplate#ComboBoxContract">[TemplatePartAttribute(Name = &quot;PART_EditableTextBox&quot;, Type = typeof(TextBox))]
+[TemplatePartAttribute(Name = &quot;PART_Popup&quot;, Type = typeof(Popup))]
+public class ComboBox : ItemsControl
+{
+}
+</code></pre>
 <p>В следующем примере показано упрощенное <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> , включающий элементы, которые определяются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatepartattribute">TemplatePartAttribute</a> объектов на <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.combobox">ComboBox</a> класса.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h3 id="states-in-the-control-contract">Состояния в контракте элемента управления</h3>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#ComboBoxTemplate">&lt;ControlTemplate TargetType=&quot;ComboBox&quot;&gt;
+  &lt;Grid&gt;
+    &lt;ToggleButton x:Name=&quot;DropDownToggle&quot;
+      HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot;  
+      Margin=&quot;-1&quot; HorizontalContentAlignment=&quot;Right&quot;
+      IsChecked=&quot;{Binding Path=IsDropDownOpen,Mode=TwoWay,
+                  RelativeSource={RelativeSource TemplatedParent}}&quot;&gt;
+      &lt;Path x:Name=&quot;BtnArrow&quot; Height=&quot;4&quot; Width=&quot;8&quot; 
+        Stretch=&quot;Uniform&quot; Margin=&quot;0,0,6,0&quot;  Fill=&quot;Black&quot;
+        Data=&quot;F1 M 300,-190L 310,-190L 305,-183L 301,-190 Z &quot; /&gt;
+    &lt;/ToggleButton&gt;
+    &lt;ContentPresenter x:Name=&quot;ContentPresenter&quot; Margin=&quot;6,2,25,2&quot;
+      Content=&quot;{TemplateBinding SelectionBoxItem}&quot;
+      ContentTemplate=&quot;{TemplateBinding SelectionBoxItemTemplate}&quot;
+      ContentTemplateSelector=&quot;{TemplateBinding ItemTemplateSelector}&quot;&gt;
+    &lt;/ContentPresenter&gt;
+    &lt;TextBox x:Name=&quot;PART_EditableTextBox&quot;
+      Style=&quot;{x:Null}&quot;
+      Focusable=&quot;False&quot;
+      Background=&quot;{TemplateBinding Background}&quot;
+      HorizontalAlignment=&quot;Left&quot; 
+      VerticalAlignment=&quot;Center&quot; 
+      Margin=&quot;3,3,23,3&quot;
+      Visibility=&quot;Hidden&quot;
+      IsReadOnly=&quot;{TemplateBinding IsReadOnly}&quot;/&gt;
+
+    &lt;Popup x:Name=&quot;PART_Popup&quot;
+      IsOpen=&quot;{TemplateBinding IsDropDownOpen}&quot;&gt;
+      &lt;Border x:Name=&quot;PopupBorder&quot; 
+        HorizontalAlignment=&quot;Stretch&quot; Height=&quot;Auto&quot; 
+        MinWidth=&quot;{TemplateBinding ActualWidth}&quot;
+        MaxHeight=&quot;{TemplateBinding MaxDropDownHeight}&quot;
+        BorderThickness=&quot;{TemplateBinding BorderThickness}&quot; 
+        BorderBrush=&quot;Black&quot; Background=&quot;White&quot; CornerRadius=&quot;3&quot;&gt;
+        &lt;ScrollViewer x:Name=&quot;ScrollViewer&quot; BorderThickness=&quot;0&quot; Padding=&quot;1&quot;&gt;
+          &lt;ItemsPresenter/&gt;
+        &lt;/ScrollViewer&gt;
+      &lt;/Border&gt;
+    &lt;/Popup&gt;
+
+  &lt;/Grid&gt;
+&lt;/ControlTemplate&gt;
+</code></pre><h3 id="states-in-the-control-contract">Состояния в контракте элемента управления</h3>
 <p>Состояния элемента управления также являются частью контракта элемента управления. Пример создания <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> показано, как задавать внешний вид <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> зависимости от его состояния. Создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> для каждого указанного состояния и помещения всех <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstate">VisualState</a> объектов данной общей папки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatevisualstateattribute.groupname">GroupName</a> в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.visualstategroup">VisualStateGroup</a>, как описано в разделе <a href="#changing_the_appearance_of_a_control_depending_on_its_state">изменение внешнего вида элемента управления в зависимости от его состояния</a> ранее в этом раздел. Сторонние элементы управления должны указывать состояния с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.templatevisualstateattribute">TemplateVisualStateAttribute</a>, который позволяет средствам разработки, таким как Expression Blend, чтобы предоставить состояния элемента управления для создания шаблонов элементов управления.</p>
 <p>Контракты элементов управления, включенных в WPF, в разделе <a href="control-styles-and-templates.html">Стили и шаблоны элемента Control</a>.</p>
 <h3 id="properties-in-the-control-contract">Свойства в контракте элемента управления</h3>
 <p>Общие свойства, визуально влияющие на элемент управления, также включаются в контракт элемента управления. Можно задать эти свойства, чтобы изменить внешний вид элемента управления без создания нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>. Можно также использовать <a href="../advanced/templatebinding-markup-extension.html">TemplateBinding</a> расширение разметки для привязки свойств элементов, которые находятся в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> к общим свойствам, которые определяются <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a>.</p>
 <p>В следующем примере показан контракт элемента управления &quot;Кнопка&quot;.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="VSMButtonTemplate#ButtonContract">[TemplateVisualState(Name = &quot;Normal&quot;, GroupName = &quot;CommonStates&quot;)]
+[TemplateVisualState(Name = &quot;MouseOver&quot;, GroupName = &quot;CommonStates&quot;)]
+[TemplateVisualState(Name = &quot;Pressed&quot;, GroupName = &quot;CommonStates&quot;)]
+[TemplateVisualState(Name = &quot;Disabled&quot;, GroupName = &quot;CommonStates&quot;)]
+[TemplateVisualState(Name = &quot;Unfocused&quot;, GroupName = &quot;FocusStates&quot;)]
+[TemplateVisualState(Name = &quot;Focused&quot;, GroupName = &quot;FocusStates&quot;)]
+public class Button : ButtonBase
+{
+    public static readonly DependencyProperty BackgroundProperty;
+    public static readonly DependencyProperty BorderBrushProperty;
+    public static readonly DependencyProperty BorderThicknessProperty;
+    public static readonly DependencyProperty ContentProperty;
+    public static readonly DependencyProperty ContentTemplateProperty;
+    public static readonly DependencyProperty FontFamilyProperty;
+    public static readonly DependencyProperty FontSizeProperty;
+    public static readonly DependencyProperty FontStretchProperty;
+    public static readonly DependencyProperty FontStyleProperty;
+    public static readonly DependencyProperty FontWeightProperty;
+    public static readonly DependencyProperty ForegroundProperty;
+    public static readonly DependencyProperty HorizontalContentAlignmentProperty;
+    public static readonly DependencyProperty PaddingProperty;
+    public static readonly DependencyProperty TextAlignmentProperty;
+    public static readonly DependencyProperty TextDecorationsProperty;
+    public static readonly DependencyProperty TextWrappingProperty;
+    public static readonly DependencyProperty VerticalContentAlignmentProperty;
+
+    public Brush Background { get; set; }
+    public Brush BorderBrush { get; set; }
+    public Thickness BorderThickness { get; set; }
+    public object Content { get; set; }
+    public DataTemplate ContentTemplate { get; set; }
+    public FontFamily FontFamily { get; set; }
+    public double FontSize { get; set; }
+    public FontStretch FontStretch { get; set; }
+    public FontStyle FontStyle { get; set; }
+    public FontWeight FontWeight { get; set; }
+    public Brush Foreground { get; set; }
+    public HorizontalAlignment HorizontalContentAlignment { get; set; }
+    public Thickness Padding { get; set; }
+    public TextAlignment TextAlignment { get; set; }
+    public TextDecorationCollection TextDecorations { get; set; }
+    public TextWrapping TextWrapping { get; set; }
+    public VerticalAlignment VerticalContentAlignment { get; set; }
+}
+</code></pre>
 <p>При создании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>, часто бывает проще начать с существующего <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> и внести в него изменения. Можно выполнить одно из следующих действий, чтобы изменить существующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a>:</p>
 <ul>
 <li><p>Воспользоваться конструктором, таким как Expression Blend, который предоставляет графический пользовательский интерфейс для создания шаблонов элементов управления. Дополнительные сведения см. в статье <a href="https://go.microsoft.com/fwlink/?LinkId=161153">Настройка стиля элемента управления, поддерживающего шаблон</a>.</p>
@@ -376,10 +649,205 @@
 <p><a name="complete_example"></a></p>
 <h2 id="complete-example">Полный пример</h2>
 <p>В следующем примере показан полный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> , рассматривается в этом разделе.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div><h2 id="see-also">См. также</h2>
+<pre><code class="lang-xaml" name="VSMButtonTemplate#3">&lt;StackPanel&gt;
+  &lt;StackPanel.Resources&gt;
+    &lt;Style TargetType=&quot;Button&quot; x:Key=&quot;newTemplate&quot;&gt;
+      &lt;!--Set the Background, Foreground, FontSize, Width, 
+                  Height, Margin, and Template properties for
+                  the Button.--&gt;
+      &lt;Setter Property=&quot;Background&quot; Value=&quot;Navy&quot;/&gt;
+      &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;
+      &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;
+      &lt;Setter Property=&quot;Width&quot; Value=&quot;100&quot;/&gt;
+      &lt;Setter Property=&quot;Height&quot; Value=&quot;40&quot;/&gt;
+      &lt;Setter Property=&quot;Margin&quot; Value=&quot;10&quot;/&gt;
+      &lt;Setter Property=&quot;HorizontalContentAlignment&quot; Value=&quot;Center&quot;/&gt;
+      &lt;Setter Property=&quot;VerticalContentAlignment&quot; Value=&quot;Center&quot;/&gt;
+      &lt;Setter Property=&quot;Template&quot;&gt;
+        &lt;Setter.Value&gt;
+          &lt;ControlTemplate TargetType=&quot;Button&quot;&gt;
+            &lt;Border x:Name=&quot;RootElement&quot;&gt;
+              &lt;VisualStateManager.VisualStateGroups&gt;
+
+                &lt;!--Define the states and transitions for the common states.
+                    The states in the VisualStateGroup are mutually exclusive to
+                    each other.--&gt;
+                &lt;VisualStateGroup Name=&quot;CommonStates&quot;&gt;
+
+                  &lt;!--Define the VisualTransitions that can be used when the control
+                      transitions between VisualStates that are defined in the
+                      VisualStatGroup.--&gt;
+                  &lt;VisualStateGroup.Transitions&gt;
+
+                    &lt;!--Take one hundredth of a second to transition to the
+                        Pressed state.--&gt;
+                    &lt;VisualTransition To=&quot;Pressed&quot; 
+                                      GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+
+                    &lt;!--Take one half second to trasition to the MouseOver state.--&gt;
+                    &lt;VisualTransition To=&quot;MouseOver&quot; 
+                                      GeneratedDuration=&quot;0:0:0.5&quot; /&gt;
+
+                    &lt;!--Take one hundredth of a second to transition from the
+                        Pressed state to the MouseOver state.--&gt;
+                    &lt;VisualTransition From=&quot;Pressed&quot; To=&quot;MouseOver&quot; 
+                                      GeneratedDuration=&quot;0:0:0.01&quot; /&gt;
+
+                    &lt;!--Take one and a half seconds to transition from the
+                        MouseOver state to the Normal state. 
+                        Have the SolidColorBrush, BorderBrush, fade to blue, 
+                        then to yellow, and then to black in that time.--&gt;
+                    &lt;VisualTransition From=&quot;MouseOver&quot; To=&quot;Normal&quot; 
+                                          GeneratedDuration=&quot;0:0:1.5&quot;&gt;
+                      &lt;Storyboard&gt;
+                        &lt;ColorAnimationUsingKeyFrames
+                          Storyboard.TargetProperty=&quot;Color&quot;
+                          Storyboard.TargetName=&quot;BorderBrush&quot;
+                          FillBehavior=&quot;HoldEnd&quot; &gt;
+
+                          &lt;ColorAnimationUsingKeyFrames.KeyFrames&gt;
+
+                            &lt;LinearColorKeyFrame Value=&quot;Blue&quot; 
+                              KeyTime=&quot;0:0:0.5&quot; /&gt;
+                            &lt;LinearColorKeyFrame Value=&quot;Yellow&quot; 
+                              KeyTime=&quot;0:0:1&quot; /&gt;
+                            &lt;LinearColorKeyFrame Value=&quot;Black&quot; 
+                              KeyTime=&quot;0:0:1.5&quot; /&gt;
+
+                          &lt;/ColorAnimationUsingKeyFrames.KeyFrames&gt;
+                        &lt;/ColorAnimationUsingKeyFrames&gt;
+                      &lt;/Storyboard&gt;
+                    &lt;/VisualTransition&gt;
+                  &lt;/VisualStateGroup.Transitions&gt;
+
+                  &lt;!--The Normal state is the state the button is in
+                      when it is not in another state from this VisualStateGroup.
+                      There is no special visual behavior for this state, but
+                      the VisualState must be defined in order for the button
+                      to return to its initial state.--&gt;
+                  &lt;VisualState x:Name=&quot;Normal&quot; /&gt;
+
+                  &lt;!--Change the border of the button to red when the
+                      mouse is over the button.--&gt;
+                  &lt;VisualState x:Name=&quot;MouseOver&quot;&gt;
+                    &lt;Storyboard&gt;
+                      &lt;ColorAnimation Storyboard.TargetName=&quot;BorderBrush&quot;     
+                                      Storyboard.TargetProperty=&quot;Color&quot;
+                                      To=&quot;Red&quot; /&gt;
+
+                    &lt;/Storyboard&gt;
+                  &lt;/VisualState&gt;
+
+                  &lt;!--Change the border of the button to Transparent when the
+                      button is pressed.--&gt;
+                  &lt;VisualState x:Name=&quot;Pressed&quot;&gt;
+                    &lt;Storyboard &gt;
+                      &lt;ColorAnimation Storyboard.TargetName=&quot;BorderBrush&quot; 
+                                      Storyboard.TargetProperty=&quot;Color&quot; 
+                                      To=&quot;Transparent&quot; 
+                                      /&gt;
+                    &lt;/Storyboard&gt;
+                  &lt;/VisualState&gt;
+
+                  &lt;!--Show the DisabledRect when the IsEnabled property on
+                      the button is false.--&gt;
+                  &lt;VisualState x:Name=&quot;Disabled&quot;&gt;
+                    &lt;Storyboard&gt;
+                      &lt;DoubleAnimation Storyboard.TargetName=&quot;DisabledRect&quot; 
+                                       Storyboard.TargetProperty=&quot;Opacity&quot;
+                                       To=&quot;1&quot; Duration=&quot;0&quot; /&gt;
+                    &lt;/Storyboard&gt;
+                  &lt;/VisualState&gt;
+                &lt;/VisualStateGroup&gt;
+
+                &lt;!--Define the states and transitions for the focus states.
+                    The states in the VisualStateGroup are mutually exclusive to
+                    each other.--&gt;
+                &lt;VisualStateGroup x:Name=&quot;FocusStates&quot;&gt;
+
+                  &lt;!--Define the VisualStates in this VistualStateGroup.--&gt;
+                  &lt;VisualState x:Name=&quot;Focused&quot;&gt;
+                    &lt;Storyboard&gt;
+                      &lt;ObjectAnimationUsingKeyFrames 
+                        Storyboard.TargetName=&quot;FocusVisual&quot; 
+                        Storyboard.TargetProperty=&quot;Visibility&quot; Duration
+                        =&quot;0&quot;&gt;
+                        
+                        &lt;DiscreteObjectKeyFrame KeyTime=&quot;0&quot;&gt;
+                          &lt;DiscreteObjectKeyFrame.Value&gt;
+                            &lt;Visibility&gt;Visible&lt;/Visibility&gt;
+                          &lt;/DiscreteObjectKeyFrame.Value&gt;
+                        &lt;/DiscreteObjectKeyFrame&gt;
+                      &lt;/ObjectAnimationUsingKeyFrames&gt;
+                    &lt;/Storyboard&gt;
+                  &lt;/VisualState&gt;
+                  &lt;VisualState x:Name=&quot;Unfocused&quot;&gt;
+                    &lt;Storyboard&gt;
+                      &lt;ObjectAnimationUsingKeyFrames 
+                        Storyboard.TargetName=&quot;FocusVisual&quot; 
+                        Storyboard.TargetProperty=&quot;Visibility&quot;
+                        Duration=&quot;0&quot;&gt;
+                        
+                        &lt;DiscreteObjectKeyFrame KeyTime=&quot;0&quot;&gt;
+                          &lt;DiscreteObjectKeyFrame.Value&gt;
+                            &lt;Visibility&gt;Collapsed&lt;/Visibility&gt;
+                          &lt;/DiscreteObjectKeyFrame.Value&gt;
+                        &lt;/DiscreteObjectKeyFrame&gt;
+                      &lt;/ObjectAnimationUsingKeyFrames&gt;
+                    &lt;/Storyboard&gt;
+                  &lt;/VisualState&gt;
+                &lt;/VisualStateGroup&gt;
+              &lt;/VisualStateManager.VisualStateGroups&gt;
+
+              &lt;!--Create the SolidColorBrush for the Background 
+                  as an object elemment and give it a name so 
+                  it can be referred to elsewhere in the control template.--&gt;
+              &lt;Border.Background&gt;
+                &lt;SolidColorBrush x:Name=&quot;BorderBrush&quot; Color=&quot;Black&quot;/&gt;
+              &lt;/Border.Background&gt;
+
+              &lt;!--Create a border that has a different color by adding smaller grid.
+                  The background of this grid is specified by the button's Background
+                  property.--&gt;
+              &lt;Grid Background=&quot;{TemplateBinding Background}&quot; Margin=&quot;4&quot;&gt;
+
+                &lt;!--Create a Rectangle that indicates that the
+                    Button has focus.--&gt;
+                &lt;Rectangle Name=&quot;FocusVisual&quot; 
+                           Visibility=&quot;Collapsed&quot; Margin=&quot;2&quot; 
+                           Stroke=&quot;{TemplateBinding Foreground}&quot; 
+                           StrokeThickness=&quot;1&quot; 
+                           StrokeDashArray=&quot;1.5 1.5&quot;/&gt;
+
+                &lt;!--Use a ContentPresenter to display the Content of
+                    the Button.--&gt;
+                &lt;ContentPresenter
+                  HorizontalAlignment=&quot;{TemplateBinding HorizontalContentAlignment}&quot;
+                  VerticalAlignment=&quot;{TemplateBinding VerticalContentAlignment}&quot;
+                  Margin=&quot;4,5,4,4&quot; /&gt;
+
+                &lt;!--Create a rectangle that causes the button to appear
+                    grayed out when it is disabled.--&gt;
+                &lt;Rectangle x:Name=&quot;DisabledRect&quot; 
+                         Fill=&quot;#A5FFFFFF&quot;
+                         Opacity=&quot;0&quot; IsHitTestVisible=&quot;false&quot; /&gt;
+              &lt;/Grid&gt;
+            &lt;/Border&gt;
+          &lt;/ControlTemplate&gt;
+        &lt;/Setter.Value&gt;
+      &lt;/Setter&gt;
+    &lt;/Style&gt;
+
+  &lt;/StackPanel.Resources&gt;
+
+  &lt;Button Style=&quot;{StaticResource newTemplate}&quot; 
+          Content=&quot;Button1&quot;/&gt;
+
+  &lt;Button Style=&quot;{StaticResource newTemplate}&quot;
+          Background=&quot;Purple&quot; 
+          Content=&quot;Button2&quot; /&gt;
+&lt;/StackPanel&gt;
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="styling-and-templating.html">Стилизация и использование шаблонов</a></li>
 </ul>

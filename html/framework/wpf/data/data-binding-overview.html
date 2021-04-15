@@ -69,7 +69,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="data-binding-overview">Общие сведения о привязке данных</h1>
 
-<p>Windows Presentation Foundation (WPF) Привязка данных обеспечивает простой и последовательный способ представления и взаимодействия с данными приложениях. Можно связывать элементы с данными из различных источников данных в виде объектов среда CLR и XML. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a> у встроенной возможностью включения гибких стилей для отдельных элементов данных и коллекций элементов данных. Представления сортировки, фильтрации и группировки могут быть организованы поверх данных.</p>
+<p>Windows Presentation Foundation (WPF) Привязка данных обеспечивает простой и последовательный способ представления и взаимодействия с данными приложениях. Можно связывать элементы с данными из различных источников данных в виде объектов CLR и XML. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.contentcontrol">ContentControl</a>например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.itemscontrol">ItemsControl</a>, например <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listbox">ListBox</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.listview">ListView</a> у встроенной возможностью включения гибких стилей для отдельных элементов данных и коллекций элементов данных. Представления сортировки, фильтрации и группировки могут быть организованы поверх данных.</p>
 <p>Функции привязки данных в WPF имеют несколько преимуществ перед традиционными моделями, включая широкий диапазон свойств, которые внутренне поддерживают привязку данных, гибкое представление данных UI и четкое разделение бизнес-логики и UI.</p>
 <p>В этом разделе сначала будут рассмотрены основные для понятия WPF привязки данных, а затем — использование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> класс и других возможностей привязки данных.</p>
 <p><a name="what_is_data_binding"></a></p>
@@ -167,10 +167,20 @@
 <h2 id="creating-a-binding">Создание привязки</h2>
 <p>Подводя итог некоторым понятиям, описанным в предыдущих разделах, установить привязку с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> объекта и каждая привязка обычно состоит из четырех компонентов: привязка целевой, свойство цели, источник привязки и путь к используемому значению источника. Этот раздел описывает установку привязки.</p>
 <p>Рассмотрим следующий пример, в котором объектом источника привязки является класс с именем <em>MyData</em>, определенный в пространстве имен <em>SDKSample</em>. В качестве демонстрационного примера класс <em>MyData</em> имеет строковое свойство с именем <em>ColorName</em> со значением Red. Таким образом, в этом примере создается кнопка с красным фоном.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="BindNonTextProperty#1">&lt;DockPanel
+  xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+  xmlns:c=&quot;clr-namespace:SDKSample&quot;&gt;
+  &lt;DockPanel.Resources&gt;
+    &lt;c:MyData x:Key=&quot;myDataSource&quot;/&gt;
+  &lt;/DockPanel.Resources&gt;
+  &lt;DockPanel.DataContext&gt;
+    &lt;Binding Source=&quot;{StaticResource myDataSource}&quot;/&gt;
+  &lt;/DockPanel.DataContext&gt;
+  &lt;Button Background=&quot;{Binding Path=ColorName}&quot;
+          Width=&quot;150&quot; Height=&quot;30&quot;&gt;I am bound to be RED!&lt;/Button&gt;
+&lt;/DockPanel&gt;
+</code></pre>
 <p>Дополнительные сведения о синтаксисе объявления привязки и примеры настройки привязки в коде см. в разделе <a href="binding-declarations-overview.html">Общие сведения об объявлении привязок</a>.</p>
 <p>Если применить этот пример к основной диаграмме, полученное изображение будет выглядеть следующим образом. Это <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязке, так как свойство Background поддерживает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.bindingmode#System_Windows_Data_BindingMode_OneWay">OneWay</a> привязки по умолчанию.</p>
 <p><img src="media/data-binding-overview/data-binding-button-background-example.png" alt="Схема, показывающая свойства Background привязки данных."></p>
@@ -179,10 +189,13 @@
 <h3 id="specifying-the-binding-source">Указание источника привязки</h3>
 <p>Обратите внимание на то, что в предыдущем примере источник привязки определялся установкой <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a> элемент. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button">Button</a> Затем наследует <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> значение из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.dockpanel">DockPanel</a>, который является его родительским элементом. Повторим, что объект источника привязки является одним из четырех необходимых компонентов привязки. Таким образом, без указания объекта источника привязки эта привязка не имела бы смысла.</p>
 <p>Есть несколько способов для указания объекта источника привязки. С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> на родительский элемент может быть удобно при привязке нескольких свойств к одному источнику. Однако иногда удобнее указывать источник привязки в отдельных объявлениях привязки. Для предыдущего примера, вместо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство, можно указать источник привязки, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> свойства непосредственно в объявлении привязки кнопки, как показано в следующем примере:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-xaml" name="BindNonTextProperty#BackgroundBindingCompact">&lt;DockPanel.Resources&gt;
+  &lt;c:MyData x:Key=&quot;myDataSource&quot;/&gt;
+&lt;/DockPanel.Resources&gt;
+&lt;Button Width=&quot;150&quot; Height=&quot;30&quot;
+        Background=&quot;{Binding Source={StaticResource myDataSource},
+                             Path=ColorName}&quot;&gt;I am bound to be RED!&lt;/Button&gt;
+</code></pre>
 <p>Кроме установки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> свойство на элементе напрямую, наследование <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.frameworkelement.datacontext">DataContext</a> от предка (например, кнопки в первом примере) и явного указания источника привязки, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.source">Source</a> свойство <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding">Binding</a> (например, кнопки в последнем примере), можно также использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a> свойство или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> свойство, чтобы указать источник привязки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.elementname">ElementName</a> Свойство полезно, если при привязке к другим элементам в приложении, например при использовании ползунка для настройки ширины кнопки. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.binding.relativesource">RelativeSource</a> Свойство полезно, если привязка задается в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.controltemplate">ControlTemplate</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.style">Style</a>. Дополнительные сведения см. в разделе <a href="how-to-specify-the-binding-source.html">Указание источника привязки</a>.</p>
 <p><a name="specifying_the_path_to_the_value"></a></p>
 <h3 id="specifying-the-path-to-the-value">Указание пути к значению</h3>
@@ -220,10 +233,21 @@ myText.SetBinding(TextBlock.TextProperty, myBinding);
 <p>Если добавить эти сведения в рисунок из раздела <a href="#creating_a_binding">Создание привязки</a>, схема будет выглядеть следующим образом.</p>
 <p><img src="media/data-binding-overview/data-binding-button-default-conversion.png" alt="Схема, показывающая свойство привязки данных по умолчанию."></p>
 <p>Однако, что делать, если вместо свойства строкового типа объект источника привязки имеет <em>цвет</em> свойство типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.media.color">Color</a>? В этом случае в порядке для создания привязки необходимо включить первый <em>цвет</em> значение свойства в нечто, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.control.background">Background</a> значение свойства. Необходимо создать пользовательский преобразователь, реализовав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.ivalueconverter">IValueConverter</a> интерфейс, как показано в следующем примере:</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>It looks like the sample you are looking for does not exist.</p>
-</div>
+<pre><code class="lang-csharp" name="ColorPicker_snip#16">[ValueConversion(typeof(Color), typeof(SolidColorBrush))]
+public class ColorBrushConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    {
+        Color color = (Color)value;
+        return new SolidColorBrush(color);
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    {
+        return null;
+    }
+}
+</code></pre>
 <p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.data.ivalueconverter">IValueConverter</a> Справочной странице предоставляет дополнительные сведения.</p>
 <p>Теперь пользовательский преобразователь используется вместо преобразования по умолчанию и схема выглядит следующим образом.</p>
 <p><img src="media/data-binding-overview/data-binding-converter-color-example.png" alt="Схема, показывающая пользовательский преобразователь привязки данных."></p>
