@@ -10,6 +10,8 @@ namespace DocsScripts
 {
     class Program
     {
+        static int replacements = 0;
+
         public static void ReplaceText(string file, string match_begin, string match_end, string replace_to)
         {
             string txt = File.ReadAllText(file);
@@ -32,28 +34,30 @@ namespace DocsScripts
 
                 txt = txt.Replace(s,replace_to);
                 write = true;
+                replacements++;
 
                 index = next_index + 1 + replace_to.Length;
             }
 
             //if done at least one replace, write text back to file
-            if(write) File.WriteAllText(file, txt);
+            if (write)
+            {
+                Console.WriteLine("file: " + file);
+                File.WriteAllText(file, txt);
+            }
         }
 
         public static void ReplaceTextDir(string dir, string match_begin, string match_end, string replace_to) 
         {
-            Console.WriteLine("dir: "+dir);
-            Console.WriteLine();
+            /*Console.WriteLine("dir: "+dir);
+            Console.WriteLine();*/
 
             string[] files=Directory.GetFiles(dir,"*.md");
 
             for (int i = 0; i < files.Length; i++) 
             {
-                Console.WriteLine("file: " + files[i]);
                 ReplaceText(files[i], match_begin, match_end, replace_to);
             }
-
-            Console.WriteLine();
 
             string[] dirs = Directory.GetDirectories(dir);
 
@@ -97,21 +101,11 @@ namespace DocsScripts
                 String.Empty);
         }
 
-        static void ReplaceIncludes()
+        const string wpfpath = @"..\..\..\..\docs\framework\wpf\";
+        const string winformspath = @"..\..\..\..\docs\framework\winforms\";
+
+        static void ReplaceIncludes(string path)
         {
-            //[!INCLUDE[TLA2#tla_winclient](../../../../includes/tla2sharptla-winclient-md.md)] -> WPF
-            //[!INCLUDE[TLA#tla_winclient](../../../../includes/tlasharptla-winclient-md.md)] -> Windows Presentation Foundation (WPF)
-            //[!INCLUDE[TLA#tla_mswin](../../../../includes/tlasharptla-mswin-md.md)] -> Windows
-            //[!INCLUDE[TLA#tla_xbap#plural](../../../../includes/tlasharptla-xbapsharpplural-md.md)] -> XAML-приложения браузера (XBAP)
-            //[!INCLUDE[TLA2#tla_wpf](../../../../includes/tla2sharptla-wpf-md.md)] -> WPF
-            //[!INCLUDE[TLA2#tla_ui](../../../../includes/tla2sharptla-ui-md.md)] -> UI
-            //[!INCLUDE[TLA#tla_xaml](../../../includes/tlasharptla-xaml-md.md)] -> XAML
-            //[!INCLUDE[TLA2#tla_xbap](../../../includes/tla2sharptla-xbap-md.md)] -> XBAP
-            //[!INCLUDE[TLA2#tla_xbap#plural](../../../includes/tla2sharptla-xbapsharpplural-md.md)] -> XBAP
-
-            const string wpfpath = @"..\..\..\..\docs\framework\wpf\";
-            const string winformspath = @"..\..\..\..\docs\framework\winforms\";
-
             ReplaceTextDir(
                 wpfpath,
                 @"[!INCLUDE[TLA2#tla_winclient](",
@@ -171,20 +165,292 @@ namespace DocsScripts
                 @"[!INCLUDE[TLA2#tla_xbap#plural](",
                 "includes/tla2sharptla-xbapsharpplural-md.md)]",
                 "XBAP");
-                        
-            //[!INCLUDE[TLA#tla_api#plural](../../../includes/tlasharptla-apisharpplural-md.md)]
-            //[!INCLUDE[net_v40_long](../../../includes/net-v40-long-md.md)]
-            //[!INCLUDE[TLA2#tla_cas](../../../includes/tla2sharptla-cas-md.md)]
-            //[!INCLUDE[TLA2#tla_clickonce](../../../includes/tla2sharptla-clickonce-md.md)]
-            //[!INCLUDE[TLA#tla_iegeneric](../../../includes/tlasharptla-iegeneric-md.md)]
-            //[!INCLUDE[TLA2#tla_uri](../../../includes/tla2sharptla-uri-md.md)]                        
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_xbap](",
+                "includes/tlasharptla-xbap-md.md)]",
+                "Приложение обозревателя XAML (XBAP)");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_wpfbrowserappproj](",
+                "includes/tlasharptla-wpfbrowserappproj-md.md)]",
+                "Приложение браузера XAML (WPF)");
+
+            ReplaceTextDir(
+                wpfpath,
+                @"[!INCLUDE[TLA#tla_iegeneric](",
+                "includes/tlasharptla-iegeneric-md.md)]",
+                "Windows Internet Explorer");
+            
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_api#plural](",
+                "includes/tlasharptla-apisharpplural-md.md)]",
+                "API");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[net_v40_long](",
+                "includes/net-v40-long-md.md)]",
+                ".NET Framework 4");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_cas](",
+                "includes/tla2sharptla-cas-md.md)]",
+                "CAS");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_clickonce](",
+                "includes/tla2sharptla-clickonce-md.md)]",
+                "ClickOnce");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_html](",
+                "includes/tlasharptla-html-md.md)]",
+                "HTML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_api#plural](",
+                "includes/tla2sharptla-apisharpplural-md.md)]",
+                "API");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_ui](",
+                "includes/tlasharptla-ui-md.md)]",
+                "UI ");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_cas](",
+                "includes/tlasharptla-cas-md.md)]",
+                "CAS (Code Access Security — безопасность доступа кода)");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_clickonce](",
+                "includes/tlasharptla-clickonce-md.md)]",
+                "ClickOnce");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_uri](",
+                "includes/tla2sharptla-uri-md.md)]",
+                "URI");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_url](",
+                "includes/tlasharptla-url-md.md)]",
+                "URL");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_url](",
+                "includes/tla2sharptla-url-md.md)]",
+                "URL");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_uri](",
+                "includes/tlasharptla-uri-md.md)]",
+                "URI");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_uri#plural](",
+                "includes/tla2sharptla-urisharpplural-md.md)]",
+                "URI");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_ie](",
+                "includes/tla2sharptla-ie-md.md)]",
+                "Internet Explorer");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_xaml](",
+                "includes/tla2sharptla-xaml-md.md)]",
+                "XAML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_titlexaml](",
+                "includes/tlasharptla-titlexaml-md.md)]",
+                "XAML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_api](",
+                "includes/tla2sharptla-api-md.md)]",
+                "API");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_html](",
+                "includes/tla2sharptla-html-md.md)]",
+                "HTML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_iegeneric](",
+                "includes/tla2sharptla-iegeneric-md.md)]",
+                "Internet Explorer");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_wininstall](",
+                "includes/tla2sharptla-wininstall-md.md)]",
+                "Windows Installer");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_unc](",
+                "includes/tla2sharptla-unc-md.md)]",
+                "UNC");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_xml](",
+                "includes/tla2sharptla-xml-md.md)]",
+                "XML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_clr](",
+                "includes/tlasharptla-clr-md.md)]",
+                "CLR");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_xml](",
+                "includes/tlasharptla-xml-md.md)]",
+                "XML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_xaml#initcap](",
+                "includes/tlasharptla-xamlsharpinitcap-md.md)]",
+                "XAML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_clr](",
+                "includes/tla2sharptla-clr-md.md)]",
+                "CLR");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_ie](",
+                "includes/tlasharptla-ie-md.md)]",
+                "Microsoft Internet Explorer");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_visualstu](",
+                "includes/tlasharptla-visualstu-md.md)]",
+                "Microsoft Visual Studio");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_msbuild](",
+                "includes/tlasharptla-msbuild-md.md)]",
+                "Microsoft Build Engine (MSBuild)");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_msbuild](",
+                "includes/tla2sharptla-msbuild-md.md)]",
+                "MSBuild");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_sdk](",
+                "includes/tla2sharptla-sdk-md.md)]",
+                "SDK");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[ndptecclick](",
+                "includes/ndptecclick-md.md)]",
+                "ClickOnce");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_winvista](",
+                "includes/tlasharptla-winvista-md.md)]",
+                "Windows Vista");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[win7](",
+                "includes/win7-md.md)]",
+                "Windows 7");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_winvista](",
+                "includes/tla2sharptla-winvista-md.md)]",
+                "Windows Vista");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[wiprlhext](",
+                "includes/wiprlhext-md.md)]",
+                "Windows Vista");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_winfxwebapp#plural](",
+                "includes/tlasharptla-winfxwebappsharpplural-md.md)]",
+                "XAML-приложения браузера (XBAP)");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TL A#tla_xml](",
+                "includes/tlasharptla-xml-md.md)]",
+                "XML");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA#tla_unicode](",
+                "includes/tlasharptla-unicode-md.md)]",
+                "Unicode");
+
+            ReplaceTextDir(
+                path,
+                @"[!INCLUDE[TLA2#tla_xps](",
+                "includes/tla2sharptla-xps-md.md)]",
+                "XPS");
+
+
+            //[!INCLUDE[TLA#tla_w3c](../../../../includes/tlasharptla-w3c-md.md)]                        
+            //[!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)]            
+            //[!INCLUDE[TLA#tla_winnetsvrfam](../../../../includes/tlasharptla-winnetsvrfam-md.md)]
+            //[!INCLUDE[TLA#tla_wpfxmlnsv1](../../../../includes/tlasharptla-wpfxmlnsv1-md.md)]
+            //[!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)]
+            //[!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)]
+            //[!INCLUDE[TLA2#tla_intellisense](../../../../includes/tla2sharptla-intellisense-md.md)]
+            //[!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)]
+            //[!INCLUDE[TLA#tla_ie7](../../../includes/tlasharptla-ie7-md.md)]
+            //[!INCLUDE[TLA#tla_ie6sp2](../../../includes/tlasharptla-ie6sp2-md.md)]
+            
         }
 
         static void Main(string[] args)
         {
-            ReplaceIncludes();
+            ReplaceIncludes(wpfpath);
+            ReplaceIncludes(winformspath);
 
-            Console.WriteLine("End");
+            Console.WriteLine("Replaced items: "+replacements.ToString());
             Console.ReadKey();
         }
     }
