@@ -225,13 +225,431 @@ if (result == true)
 </li>
 </ul>
 <p>Следующий код демонстрирует такую конфигурацию.</p>
-<pre><code class="lang-xaml" name="DialogBoxSample#MarginsDialogBoxMainBitsMARKUP1"></code></pre><pre><code class="lang-xaml" name="DialogBoxSample#MarginsDialogBoxMainBitsMARKUP2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxMainBitsCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxMainBitsCODEBEHIND2"></code></pre>
+<pre><code class="lang-xaml" name="DialogBoxSample#MarginsDialogBoxMainBitsMARKUP1">&lt;Window 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.MarginsDialogBox&quot;
+    xmlns:local=&quot;clr-namespace:SDKSample&quot;
+    Title=&quot;Margins&quot;
+    Height=&quot;190&quot;
+    Width=&quot;300&quot;
+    MinHeight=&quot;10&quot;
+    MinWidth=&quot;300&quot;
+    ResizeMode=&quot;CanResizeWithGrip&quot;
+    ShowInTaskbar=&quot;False&quot;
+    WindowStartupLocation=&quot;CenterOwner&quot; 
+    FocusManager.FocusedElement=&quot;{Binding ElementName=leftMarginTextBox}&quot;&gt;
+
+  &lt;Grid&gt;
+    &lt;Grid.Resources&gt;
+      &lt;Style TargetType=&quot;{x:Type Grid}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;10&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Label}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,3,5,5&quot; /&gt;
+        &lt;Setter Property=&quot;Padding&quot; Value=&quot;0,0,0,5&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type TextBox}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,0,0,5&quot; /&gt;
+        &lt;Style.Triggers&gt;
+          &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;true&quot;&gt;
+            &lt;Setter Property=&quot;ToolTip&quot; Value=&quot;{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+          &lt;/Trigger&gt;
+        &lt;/Style.Triggers&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type StackPanel}&quot;&gt;
+        &lt;Setter Property=&quot;Orientation&quot; Value=&quot;Horizontal&quot; /&gt;
+        &lt;Setter Property=&quot;HorizontalAlignment&quot; Value=&quot;Right&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Button}&quot;&gt;
+        &lt;Setter Property=&quot;Width&quot; Value=&quot;70&quot; /&gt;
+        &lt;Setter Property=&quot;Height&quot; Value=&quot;25&quot; /&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;5,0,0,0&quot; /&gt;
+      &lt;/Style&gt;
+    &lt;/Grid.Resources&gt;
+
+    &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+      &lt;ColumnDefinition /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;!-- Left Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot;&gt;Left Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;leftMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Left&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Top Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;1&quot;&gt;Top Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;topMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Top&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Right Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;2&quot;&gt;Right Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;rightMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Right&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Bottom Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;3&quot;&gt;Bottom Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;bottomMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;3&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Bottom&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Accept or Cancel --&gt;
+    &lt;StackPanel Grid.Column=&quot;0&quot; Grid.ColumnSpan=&quot;2&quot; Grid.Row=&quot;4&quot;&gt;
+      &lt;Button Name=&quot;okButton&quot; Click=&quot;okButton_Click&quot; IsDefault=&quot;True&quot;&gt;OK&lt;/Button&gt;
+      &lt;Button Name=&quot;cancelButton&quot; IsCancel=&quot;True&quot;&gt;Cancel&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+  &lt;/Grid &gt;
+&lt;/Window&gt;
+</code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxMainBitsCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace SDKSample
+{
+    public partial class MarginsDialogBox : Window
+    {
+        public MarginsDialogBox()
+        {
+            InitializeComponent();
+        }
+
+        public Thickness DocumentMargin
+        {
+            get { return (Thickness)this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Dialog box canceled
+            this.DialogResult = false;
+        }
+
+        void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Don't accept the dialog box if there is invalid data
+            if (!IsValid(this)) return;
+
+            // Dialog box accepted
+            this.DialogResult = true;
+        }
+
+        // Validate all dependency objects in a window
+        bool IsValid(DependencyObject node)
+        {
+            // Check if dependency object was passed
+            if (node != null)
+            {
+                // Check if dependency object is valid.
+                // NOTE: Validation.GetHasError works for controls that have validation rules attached
+                bool isValid = !Validation.GetHasError(node);
+                if (!isValid)
+                {
+                    // If the dependency object is invalid, and it can receive the focus,
+                    // set the focus
+                    if (node is IInputElement) Keyboard.Focus((IInputElement)node);
+                    return false;
+                }
+            }
+
+            // If this dependency object is valid, check all child dependency objects
+            foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+            {
+                if (subnode is DependencyObject)
+                {
+                    // If a child dependency object is invalid, return false immediately,
+                    // otherwise keep checking
+                    if (IsValid((DependencyObject)subnode) == false) return false;
+                }
+            }
+
+            // All dependency objects are valid
+            return true;
+        }
+    }
+}
+</code></pre>
 <p>Пользовательский интерфейс для диалогового окна также распространяется на строку меню окна, открывающего диалоговое окно. Если пункт меню вызывает функцию, которая перед продолжением выполнения требует взаимодействия с пользователем посредством диалогового окна, то в названии этого пункта меню должно быть многоточие, как показано ниже.</p>
-<pre><code class="lang-xaml" name="DialogBoxSample#MainWindowMarginsDialogBoxMenuItemMARKUP1"></code></pre><pre><code class="lang-xaml" name="DialogBoxSample#MainWindowMarginsDialogBoxMenuItemMARKUP2"></code></pre>
+<pre><code class="lang-xaml" name="DialogBoxSample#MainWindowMarginsDialogBoxMenuItemMARKUP1">&lt;Window 
+    x:Class=&quot;SDKSample.MainWindow&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Document Window&quot; 
+    Height=&quot;300&quot; 
+    Width=&quot;350&quot;
+    ResizeMode=&quot;CanResizeWithGrip&quot;
+    Closing=&quot;mainWindow_Closing&quot;
+    &gt;
+  &lt;DockPanel&gt;
+    &lt;Menu DockPanel.Dock=&quot;Top&quot;&gt;
+      &lt;MenuItem Header=&quot;_File&quot;&gt;
+        &lt;MenuItem Header=&quot;_Open&quot; Click=&quot;fileOpen_Click&quot; /&gt;
+        &lt;MenuItem Header=&quot;_Save&quot; Click=&quot;fileSave_Click&quot; /&gt;
+        &lt;MenuItem Header=&quot;_Print&quot; Click=&quot;filePrint_Click&quot; /&gt;
+        &lt;Separator /&gt;
+        &lt;MenuItem Header=&quot;_Exit&quot; Click=&quot;fileExit_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+      &lt;MenuItem Header=&quot;_Edit&quot;&gt;
+        &lt;!--Main Window--&gt;
+        &lt;MenuItem Name=&quot;editFindMenuItem&quot; Header=&quot;_Find&quot; InputGestureText=&quot;Ctrl+F&quot; Click=&quot;editFindMenuItem_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+      &lt;MenuItem Header=&quot;F_ormat&quot;&gt;
+        &lt;MenuItem Name=&quot;formatFontMenuItem&quot; Header=&quot;_Font...&quot; Click=&quot;formatFontMenuItem_Click&quot; /&gt;
+        &lt;!--Main Window--&gt;
+        &lt;MenuItem Name=&quot;formatMarginsMenuItem&quot; Header=&quot;_Margins...&quot; Click=&quot;formatMarginsMenuItem_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+    &lt;/Menu&gt;
+
+    &lt;TextBox
+      Name=&quot;documentTextBox&quot;
+      TextChanged=&quot;documentTextBox_TextChanged&quot; 
+      ScrollViewer.CanContentScroll=&quot;True&quot; 
+      ScrollViewer.HorizontalScrollBarVisibility=&quot;Visible&quot; 
+      ScrollViewer.VerticalScrollBarVisibility=&quot;Visible&quot; 
+      AcceptsReturn=&quot;True&quot; 
+      AcceptsTab=&quot;True&quot; 
+      BorderThickness=&quot;0&quot; &gt;
+      The quick brown fox jumps over the lazy old brown dog.
+    &lt;/TextBox&gt;
+  &lt;/DockPanel&gt;
+&lt;/Window&gt;
+</code></pre>
 <p>Если пункт меню вызывает функцию, которая отображает диалоговое окно, не требующее взаимодействия с пользователем, например диалоговое окно &quot;О программе&quot;, многоточие не требуется.</p>
 <h4 id="opening-a-modal-dialog-box">Открытие модального диалогового окна</h4>
 <p>Диалоговое окно обычно отображается в результате выбора пользователем пункта меню для выполнения функции предметной области, такой как установка полей документа в текстовом редакторе. Отображение диалогового окна похоже на отображение обычного окна, хотя для диалогового окна требуется дополнительная настройка. Весь процесс создания, настройки и открытия диалогового окна показан в следующем коде.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogCODEBEHIND3"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogCODEBEHIND4"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogCODEBEHIND1">using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using Microsoft.Win32;
+
+namespace SDKSample
+{
+    public partial class MainWindow : Window
+    {
+        bool needsToBeSaved;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        // Closing
+        void mainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            // If the document needs to be saved
+            if (this.needsToBeSaved)
+            {
+                // Configure the message box
+                string messageBoxText = &quot;This document needs to be saved. Click Yes to save and exit, No to exit without saving, or Cancel to not exit.&quot;;
+                string caption = &quot;Word Processor&quot;;
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult messageBoxResult = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (messageBoxResult)
+                {
+                    case MessageBoxResult.Yes: // Save document and exit
+                        SaveDocument();
+                        break;
+                    case MessageBoxResult.No: // Exit without saving
+                        break;
+                    case MessageBoxResult.Cancel: // Don't exit
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        void fileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDocument();
+        }
+        void fileSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDocument();
+        }
+        void filePrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDocument();
+        }
+        void fileExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        void editFindMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FindDialogBox dlg = new FindDialogBox(this.documentTextBox);
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.TextFound += new TextFoundEventHandler(dlg_TextFound);
+
+            // Open the dialog box modally
+            dlg.Show();
+        }
+
+        void formatMarginsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            MarginsDialogBox dlg = new MarginsDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.DocumentMargin = this.documentTextBox.Margin;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.Margin = dlg.DocumentMargin;
+            }
+        }
+
+        void formatFontMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FontDialogBox dlg = new FontDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.FontFamily = this.documentTextBox.FontFamily;
+            dlg.FontSize = this.documentTextBox.FontSize;
+            dlg.FontWeight = this.documentTextBox.FontWeight;
+            dlg.FontStyle = this.documentTextBox.FontStyle;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.FontFamily = dlg.FontFamily;
+                this.documentTextBox.FontSize = dlg.FontSize;
+                this.documentTextBox.FontWeight = dlg.FontWeight;
+                this.documentTextBox.FontStyle = dlg.FontStyle;
+            }
+        }
+
+        // Detect when document has been altered
+        void documentTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.needsToBeSaved = true;
+        }
+
+        void OpenDocument()
+        {
+            // Instantiate the dialog box
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // Configure open file dialog box
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Open the dialog box modally
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+            }
+        }
+        void SaveDocument()
+        {
+            // Configure save file dialog
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+        }
+        void PrintDocument()
+        {
+            // Configure printer dialog
+            PrintDialog dlg = new PrintDialog();
+            dlg.PageRangeSelection = PageRangeSelection.AllPages;
+            dlg.UserPageRangeEnabled = true;
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Print document
+            }
+        }
+
+        void dlg_TextFound(object sender, EventArgs e)
+        {
+            // Get the find dialog box that raised the event
+            FindDialogBox dlg = (FindDialogBox)sender;
+
+            // Get find results and select found text
+            this.documentTextBox.Select(dlg.Index, dlg.Length);
+            this.documentTextBox.Focus();
+        }
+    }
+}
+</code></pre>
 <p>Здесь код передает в диалоговое окно сведения по умолчанию (о текущих полях). Он также присваивает свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.owner">Window.Owner</a> ссылку на окно, которое отображает диалоговое окно. Как правило, следует всегда устанавливать владельца для диалогового окна, чтобы задать поведения, связанные с состоянием окна, которые являются общими для всех диалоговых окон (подробнее см. в разделе <a href="wpf-windows-overview.html">Общие сведения об окнах WPF</a>).</p>
 <div class="NOTE">
 <h5>Note</h5>
@@ -254,26 +672,649 @@ if (result == true)
 <pre><code class="lang-csharp" name="DialogBoxSample#MarginValidationRuleCODE"></code></pre>
 <p>В этом коде логика правила проверки реализована путем переопределения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationrule.validate">Validate</a>, который проверяет данные и возвращает соответствующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validationresult">ValidationResult</a>.</p>
 <p>Чтобы сопоставить это правило проверки со связанным элементом управления, используется следующая разметка.</p>
-<pre><code class="lang-xaml" name="DialogBoxSample#MarginsValidationMARKUP1"></code></pre><pre><code class="lang-xaml" name="DialogBoxSample#MarginsValidationMARKUP2"></code></pre><pre><code class="lang-xaml" name="DialogBoxSample#MarginsValidationMARKUP3"></code></pre>
+<pre><code class="lang-xaml" name="DialogBoxSample#MarginsValidationMARKUP1">&lt;Window 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.MarginsDialogBox&quot;
+    xmlns:local=&quot;clr-namespace:SDKSample&quot;
+    Title=&quot;Margins&quot;
+    Height=&quot;190&quot;
+    Width=&quot;300&quot;
+    MinHeight=&quot;10&quot;
+    MinWidth=&quot;300&quot;
+    ResizeMode=&quot;CanResizeWithGrip&quot;
+    ShowInTaskbar=&quot;False&quot;
+    WindowStartupLocation=&quot;CenterOwner&quot; 
+    FocusManager.FocusedElement=&quot;{Binding ElementName=leftMarginTextBox}&quot;&gt;
+
+  &lt;Grid&gt;
+    &lt;Grid.Resources&gt;
+      &lt;Style TargetType=&quot;{x:Type Grid}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;10&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Label}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,3,5,5&quot; /&gt;
+        &lt;Setter Property=&quot;Padding&quot; Value=&quot;0,0,0,5&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type TextBox}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,0,0,5&quot; /&gt;
+        &lt;Style.Triggers&gt;
+          &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;true&quot;&gt;
+            &lt;Setter Property=&quot;ToolTip&quot; Value=&quot;{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+          &lt;/Trigger&gt;
+        &lt;/Style.Triggers&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type StackPanel}&quot;&gt;
+        &lt;Setter Property=&quot;Orientation&quot; Value=&quot;Horizontal&quot; /&gt;
+        &lt;Setter Property=&quot;HorizontalAlignment&quot; Value=&quot;Right&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Button}&quot;&gt;
+        &lt;Setter Property=&quot;Width&quot; Value=&quot;70&quot; /&gt;
+        &lt;Setter Property=&quot;Height&quot; Value=&quot;25&quot; /&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;5,0,0,0&quot; /&gt;
+      &lt;/Style&gt;
+    &lt;/Grid.Resources&gt;
+
+    &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+      &lt;ColumnDefinition /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;!-- Left Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot;&gt;Left Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;leftMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Left&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Top Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;1&quot;&gt;Top Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;topMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Top&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Right Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;2&quot;&gt;Right Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;rightMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Right&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Bottom Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;3&quot;&gt;Bottom Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;bottomMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;3&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Bottom&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Accept or Cancel --&gt;
+    &lt;StackPanel Grid.Column=&quot;0&quot; Grid.ColumnSpan=&quot;2&quot; Grid.Row=&quot;4&quot;&gt;
+      &lt;Button Name=&quot;okButton&quot; Click=&quot;okButton_Click&quot; IsDefault=&quot;True&quot;&gt;OK&lt;/Button&gt;
+      &lt;Button Name=&quot;cancelButton&quot; IsCancel=&quot;True&quot;&gt;Cancel&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+  &lt;/Grid &gt;
+&lt;/Window&gt;
+</code></pre>
 <p>После связывания, правила проверки WPF автоматически применяются при вводе данных в связанном элементе управления. Если элемент управления содержит недопустимые данные, WPF отобразит красные границы вокруг недопустимого элемента, как показано на рисунке ниже.</p>
 <p><img src="media/dialog-boxes-overview/invalid-left-margin-dialog.png" alt="Диалоговое окно поля с красной границей вокруг недопустимого значения левого поля."></p>
 <p>WPF не ограничивает переход пользователя из элемента управления с недопустимым значением, пока не будут введены допустимые данные. Это правильное поведение диалогового окна; пользователь должен иметь возможность свободно перемещаться по элементам управления в диалоговом окне, независимо от того, правильны ли введенные данные. Тем не менее, это означает, что пользователь может ввести недопустимые данные и нажать кнопку <strong>ОК</strong>. По этой причине код также должен проверить все элементы управления в диалоговом окне при нажатии <strong>ОК</strong> путем обработки события <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxValidationCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxValidationCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxValidationCODEBEHIND3"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxValidationCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace SDKSample
+{
+    public partial class MarginsDialogBox : Window
+    {
+        public MarginsDialogBox()
+        {
+            InitializeComponent();
+        }
+
+        public Thickness DocumentMargin
+        {
+            get { return (Thickness)this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Dialog box canceled
+            this.DialogResult = false;
+        }
+
+        void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Don't accept the dialog box if there is invalid data
+            if (!IsValid(this)) return;
+
+            // Dialog box accepted
+            this.DialogResult = true;
+        }
+
+        // Validate all dependency objects in a window
+        bool IsValid(DependencyObject node)
+        {
+            // Check if dependency object was passed
+            if (node != null)
+            {
+                // Check if dependency object is valid.
+                // NOTE: Validation.GetHasError works for controls that have validation rules attached
+                bool isValid = !Validation.GetHasError(node);
+                if (!isValid)
+                {
+                    // If the dependency object is invalid, and it can receive the focus,
+                    // set the focus
+                    if (node is IInputElement) Keyboard.Focus((IInputElement)node);
+                    return false;
+                }
+            }
+
+            // If this dependency object is valid, check all child dependency objects
+            foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+            {
+                if (subnode is DependencyObject)
+                {
+                    // If a child dependency object is invalid, return false immediately,
+                    // otherwise keep checking
+                    if (IsValid((DependencyObject)subnode) == false) return false;
+                }
+            }
+
+            // All dependency objects are valid
+            return true;
+        }
+    }
+}
+</code></pre>
 <p>Этот код перечисляет все объекты зависимости в окне, и, если какой-либо имеет недопустимое значение (возвращается <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.validation.gethaserror">GetHasError</a>), этот элемент управления получает фокус, <code>IsValid</code> возвращает <code>false</code>, и окно считается недопустимым.</p>
 <p>Если диалоговое окно является допустимым, оно может быть безопасно закрыто и выполнен возврат. В рамках процесса возврата необходимо возвращать результат в вызывающую функцию.</p>
 <h4 id="setting-the-modal-dialog-result">Установка результата модального диалогового окна</h4>
 <p>Открытие диалогового окна при помощи <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a>, по сути, аналогично вызову метода: код, открывающий диалоговое окно с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a> ожидает возвращаемое значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a>. Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a> возвращает управление, код, который его вызвал, должен решить, продолжать обработку или прекратить ее, в зависимости от того, была ли нажата клавиша <strong>ОК</strong> или <strong>Отмена</strong>. Для облегчения принятия этого решения, диалоговое окно должно возвращать выбор пользователя в виде значения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a>, возвращаемого из <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a>.</p>
 <p>При нажатии <strong>ОК</strong>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a> должен возвращать <code>true</code>. Это достигается путем установки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a> при нажатии кнопки <strong>ОК</strong>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxOKResultSetCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxOKResultSetCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxOKResultSetCODEBEHIND3"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxOKResultSetCODEBEHIND4"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxOKResultSetCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace SDKSample
+{
+    public partial class MarginsDialogBox : Window
+    {
+        public MarginsDialogBox()
+        {
+            InitializeComponent();
+        }
+
+        public Thickness DocumentMargin
+        {
+            get { return (Thickness)this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Dialog box canceled
+            this.DialogResult = false;
+        }
+
+        void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Don't accept the dialog box if there is invalid data
+            if (!IsValid(this)) return;
+
+            // Dialog box accepted
+            this.DialogResult = true;
+        }
+
+        // Validate all dependency objects in a window
+        bool IsValid(DependencyObject node)
+        {
+            // Check if dependency object was passed
+            if (node != null)
+            {
+                // Check if dependency object is valid.
+                // NOTE: Validation.GetHasError works for controls that have validation rules attached
+                bool isValid = !Validation.GetHasError(node);
+                if (!isValid)
+                {
+                    // If the dependency object is invalid, and it can receive the focus,
+                    // set the focus
+                    if (node is IInputElement) Keyboard.Focus((IInputElement)node);
+                    return false;
+                }
+            }
+
+            // If this dependency object is valid, check all child dependency objects
+            foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+            {
+                if (subnode is DependencyObject)
+                {
+                    // If a child dependency object is invalid, return false immediately,
+                    // otherwise keep checking
+                    if (IsValid((DependencyObject)subnode) == false) return false;
+                }
+            }
+
+            // All dependency objects are valid
+            return true;
+        }
+    }
+}
+</code></pre>
 <p>Обратите внимание, что <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a> также вызывает автоматическое закрытие окна, что устраняет необходимость явно вызывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.close">Close</a>.</p>
 <p>При нажатии <strong>Отмена</strong>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a> должен возвращать <code>false</code>, что также требует установки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxCancelResultSetCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxCancelResultSetCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxCancelResultSetCODEBEHIND3"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#MarginsDialogBoxCancelResultSetCODEBEHIND1">using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace SDKSample
+{
+    public partial class MarginsDialogBox : Window
+    {
+        public MarginsDialogBox()
+        {
+            InitializeComponent();
+        }
+
+        public Thickness DocumentMargin
+        {
+            get { return (Thickness)this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Dialog box canceled
+            this.DialogResult = false;
+        }
+
+        void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Don't accept the dialog box if there is invalid data
+            if (!IsValid(this)) return;
+
+            // Dialog box accepted
+            this.DialogResult = true;
+        }
+
+        // Validate all dependency objects in a window
+        bool IsValid(DependencyObject node)
+        {
+            // Check if dependency object was passed
+            if (node != null)
+            {
+                // Check if dependency object is valid.
+                // NOTE: Validation.GetHasError works for controls that have validation rules attached
+                bool isValid = !Validation.GetHasError(node);
+                if (!isValid)
+                {
+                    // If the dependency object is invalid, and it can receive the focus,
+                    // set the focus
+                    if (node is IInputElement) Keyboard.Focus((IInputElement)node);
+                    return false;
+                }
+            }
+
+            // If this dependency object is valid, check all child dependency objects
+            foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+            {
+                if (subnode is DependencyObject)
+                {
+                    // If a child dependency object is invalid, return false immediately,
+                    // otherwise keep checking
+                    if (IsValid((DependencyObject)subnode) == false) return false;
+                }
+            }
+
+            // All dependency objects are valid
+            return true;
+        }
+    }
+}
+</code></pre>
 <p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.button.iscancel">IsCancel</a> равно <code>true</code> и пользователь нажимает кнопку <strong>Отмена</strong> или клавишу ESC, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a> автоматически присваивается <code>false</code>. Следующая разметка действует так же, как предыдущий код, без необходимости обрабатывать событие <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.primitives.buttonbase.click">Click</a>.</p>
-<pre><code class="lang-xaml" name="DialogBoxSample#MarginsDialogDefaultCancelMARKUP"></code></pre>
+<pre><code class="lang-xaml" name="DialogBoxSample#MarginsDialogDefaultCancelMARKUP">&lt;Window 
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    x:Class=&quot;SDKSample.MarginsDialogBox&quot;
+    xmlns:local=&quot;clr-namespace:SDKSample&quot;
+    Title=&quot;Margins&quot;
+    Height=&quot;190&quot;
+    Width=&quot;300&quot;
+    MinHeight=&quot;10&quot;
+    MinWidth=&quot;300&quot;
+    ResizeMode=&quot;CanResizeWithGrip&quot;
+    ShowInTaskbar=&quot;False&quot;
+    WindowStartupLocation=&quot;CenterOwner&quot; 
+    FocusManager.FocusedElement=&quot;{Binding ElementName=leftMarginTextBox}&quot;&gt;
+
+  &lt;Grid&gt;
+    &lt;Grid.Resources&gt;
+      &lt;Style TargetType=&quot;{x:Type Grid}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;10&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Label}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,3,5,5&quot; /&gt;
+        &lt;Setter Property=&quot;Padding&quot; Value=&quot;0,0,0,5&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type TextBox}&quot;&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;0,0,0,5&quot; /&gt;
+        &lt;Style.Triggers&gt;
+          &lt;Trigger Property=&quot;Validation.HasError&quot; Value=&quot;true&quot;&gt;
+            &lt;Setter Property=&quot;ToolTip&quot; Value=&quot;{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}&quot;/&gt;
+          &lt;/Trigger&gt;
+        &lt;/Style.Triggers&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type StackPanel}&quot;&gt;
+        &lt;Setter Property=&quot;Orientation&quot; Value=&quot;Horizontal&quot; /&gt;
+        &lt;Setter Property=&quot;HorizontalAlignment&quot; Value=&quot;Right&quot; /&gt;
+      &lt;/Style&gt;
+      &lt;Style TargetType=&quot;{x:Type Button}&quot;&gt;
+        &lt;Setter Property=&quot;Width&quot; Value=&quot;70&quot; /&gt;
+        &lt;Setter Property=&quot;Height&quot; Value=&quot;25&quot; /&gt;
+        &lt;Setter Property=&quot;Margin&quot; Value=&quot;5,0,0,0&quot; /&gt;
+      &lt;/Style&gt;
+    &lt;/Grid.Resources&gt;
+
+    &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+      &lt;ColumnDefinition /&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition Height=&quot;Auto&quot; /&gt;
+      &lt;RowDefinition /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+
+    &lt;!-- Left Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot;&gt;Left Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;leftMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Left&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Top Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;1&quot;&gt;Top Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;topMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Top&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Right Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;2&quot;&gt;Right Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;rightMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Right&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Bottom Margin --&gt;
+    &lt;Label Grid.Column=&quot;0&quot; Grid.Row=&quot;3&quot;&gt;Bottom Margin:&lt;/Label&gt;
+    &lt;TextBox Name=&quot;bottomMarginTextBox&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;3&quot;&gt;
+      &lt;TextBox.Text&gt;
+        &lt;Binding Path=&quot;Bottom&quot; UpdateSourceTrigger=&quot;PropertyChanged&quot;&gt;
+          &lt;Binding.ValidationRules&gt;
+            &lt;local:MarginValidationRule MinMargin=&quot;0&quot; MaxMargin=&quot;10&quot; /&gt;
+          &lt;/Binding.ValidationRules&gt;
+        &lt;/Binding&gt;
+      &lt;/TextBox.Text&gt;
+    &lt;/TextBox&gt;
+
+    &lt;!-- Accept or Cancel --&gt;
+    &lt;StackPanel Grid.Column=&quot;0&quot; Grid.ColumnSpan=&quot;2&quot; Grid.Row=&quot;4&quot;&gt;
+      &lt;Button Name=&quot;okButton&quot; Click=&quot;okButton_Click&quot; IsDefault=&quot;True&quot;&gt;OK&lt;/Button&gt;
+      &lt;Button Name=&quot;cancelButton&quot; IsCancel=&quot;True&quot;&gt;Cancel&lt;/Button&gt;
+    &lt;/StackPanel&gt;
+  &lt;/Grid &gt;
+&lt;/Window&gt;
+</code></pre>
 <p>Диалоговое окно автоматически возвращает <code>false</code>, когда пользователь нажимает кнопку <strong>Закрыть</strong> в строке заголовка или выбирает <strong>Закрыть</strong> в <strong>системном</strong> меню.</p>
 <h4 id="processing-data-returned-from-a-modal-dialog-box">Обработка данных, возвращенных из модального диалогового окна</h4>
 <p>Когда <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a> устанавливается диалоговым окном, функция, которая его открыла, может получить результат диалогового окна, проверив значение  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a>, которое возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogProcessReturnCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogProcessReturnCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogProcessReturnCODEBEHIND3"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogProcessReturnCODEBEHIND4"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#OpenMarginsDialogProcessReturnCODEBEHIND1">using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using Microsoft.Win32;
+
+namespace SDKSample
+{
+    public partial class MainWindow : Window
+    {
+        bool needsToBeSaved;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        // Closing
+        void mainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            // If the document needs to be saved
+            if (this.needsToBeSaved)
+            {
+                // Configure the message box
+                string messageBoxText = &quot;This document needs to be saved. Click Yes to save and exit, No to exit without saving, or Cancel to not exit.&quot;;
+                string caption = &quot;Word Processor&quot;;
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult messageBoxResult = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (messageBoxResult)
+                {
+                    case MessageBoxResult.Yes: // Save document and exit
+                        SaveDocument();
+                        break;
+                    case MessageBoxResult.No: // Exit without saving
+                        break;
+                    case MessageBoxResult.Cancel: // Don't exit
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        void fileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDocument();
+        }
+        void fileSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDocument();
+        }
+        void filePrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDocument();
+        }
+        void fileExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        void editFindMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FindDialogBox dlg = new FindDialogBox(this.documentTextBox);
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.TextFound += new TextFoundEventHandler(dlg_TextFound);
+
+            // Open the dialog box modally
+            dlg.Show();
+        }
+
+        void formatMarginsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            MarginsDialogBox dlg = new MarginsDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.DocumentMargin = this.documentTextBox.Margin;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.Margin = dlg.DocumentMargin;
+            }
+        }
+
+        void formatFontMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FontDialogBox dlg = new FontDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.FontFamily = this.documentTextBox.FontFamily;
+            dlg.FontSize = this.documentTextBox.FontSize;
+            dlg.FontWeight = this.documentTextBox.FontWeight;
+            dlg.FontStyle = this.documentTextBox.FontStyle;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.FontFamily = dlg.FontFamily;
+                this.documentTextBox.FontSize = dlg.FontSize;
+                this.documentTextBox.FontWeight = dlg.FontWeight;
+                this.documentTextBox.FontStyle = dlg.FontStyle;
+            }
+        }
+
+        // Detect when document has been altered
+        void documentTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.needsToBeSaved = true;
+        }
+
+        void OpenDocument()
+        {
+            // Instantiate the dialog box
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // Configure open file dialog box
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Open the dialog box modally
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+            }
+        }
+        void SaveDocument()
+        {
+            // Configure save file dialog
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+        }
+        void PrintDocument()
+        {
+            // Configure printer dialog
+            PrintDialog dlg = new PrintDialog();
+            dlg.PageRangeSelection = PageRangeSelection.AllPages;
+            dlg.UserPageRangeEnabled = true;
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Print document
+            }
+        }
+
+        void dlg_TextFound(object sender, EventArgs e)
+        {
+            // Get the find dialog box that raised the event
+            FindDialogBox dlg = (FindDialogBox)sender;
+
+            // Get find results and select found text
+            this.documentTextBox.Select(dlg.Index, dlg.Length);
+            this.documentTextBox.Focus();
+        }
+    }
+}
+</code></pre>
 <p>Если результатом диалогового окна является <code>true</code>, функция использует его в качестве указания, что нужно получить и обработать данные, предоставленные пользователем.</p>
 <div class="NOTE">
 <h5>Note</h5>
@@ -287,17 +1328,708 @@ if (result == true)
 <p>Однако поведение несколько отличается, как показано в следующих разделах.</p>
 <h4 id="opening-a-modeless-dialog-box">Открытие немодального диалогового окна</h4>
 <p>Немодальное диалоговое окно открывается путем вызова метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.show">Show</a>.</p>
-<pre><code class="lang-xaml" name="DialogBoxSample#OpenFindDialogMARKUP1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogCODEBEHIND3"></code></pre>
+<pre><code class="lang-xaml" name="DialogBoxSample#OpenFindDialogMARKUP1">&lt;Window 
+    x:Class=&quot;SDKSample.MainWindow&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    Title=&quot;Document Window&quot; 
+    Height=&quot;300&quot; 
+    Width=&quot;350&quot;
+    ResizeMode=&quot;CanResizeWithGrip&quot;
+    Closing=&quot;mainWindow_Closing&quot;
+    &gt;
+  &lt;DockPanel&gt;
+    &lt;Menu DockPanel.Dock=&quot;Top&quot;&gt;
+      &lt;MenuItem Header=&quot;_File&quot;&gt;
+        &lt;MenuItem Header=&quot;_Open&quot; Click=&quot;fileOpen_Click&quot; /&gt;
+        &lt;MenuItem Header=&quot;_Save&quot; Click=&quot;fileSave_Click&quot; /&gt;
+        &lt;MenuItem Header=&quot;_Print&quot; Click=&quot;filePrint_Click&quot; /&gt;
+        &lt;Separator /&gt;
+        &lt;MenuItem Header=&quot;_Exit&quot; Click=&quot;fileExit_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+      &lt;MenuItem Header=&quot;_Edit&quot;&gt;
+        &lt;!--Main Window--&gt;
+        &lt;MenuItem Name=&quot;editFindMenuItem&quot; Header=&quot;_Find&quot; InputGestureText=&quot;Ctrl+F&quot; Click=&quot;editFindMenuItem_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+      &lt;MenuItem Header=&quot;F_ormat&quot;&gt;
+        &lt;MenuItem Name=&quot;formatFontMenuItem&quot; Header=&quot;_Font...&quot; Click=&quot;formatFontMenuItem_Click&quot; /&gt;
+        &lt;!--Main Window--&gt;
+        &lt;MenuItem Name=&quot;formatMarginsMenuItem&quot; Header=&quot;_Margins...&quot; Click=&quot;formatMarginsMenuItem_Click&quot; /&gt;
+      &lt;/MenuItem&gt;
+    &lt;/Menu&gt;
+
+    &lt;TextBox
+      Name=&quot;documentTextBox&quot;
+      TextChanged=&quot;documentTextBox_TextChanged&quot; 
+      ScrollViewer.CanContentScroll=&quot;True&quot; 
+      ScrollViewer.HorizontalScrollBarVisibility=&quot;Visible&quot; 
+      ScrollViewer.VerticalScrollBarVisibility=&quot;Visible&quot; 
+      AcceptsReturn=&quot;True&quot; 
+      AcceptsTab=&quot;True&quot; 
+      BorderThickness=&quot;0&quot; &gt;
+      The quick brown fox jumps over the lazy old brown dog.
+    &lt;/TextBox&gt;
+  &lt;/DockPanel&gt;
+&lt;/Window&gt;
+</code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogCODEBEHIND1">using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using Microsoft.Win32;
+
+namespace SDKSample
+{
+    public partial class MainWindow : Window
+    {
+        bool needsToBeSaved;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        // Closing
+        void mainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            // If the document needs to be saved
+            if (this.needsToBeSaved)
+            {
+                // Configure the message box
+                string messageBoxText = &quot;This document needs to be saved. Click Yes to save and exit, No to exit without saving, or Cancel to not exit.&quot;;
+                string caption = &quot;Word Processor&quot;;
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult messageBoxResult = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (messageBoxResult)
+                {
+                    case MessageBoxResult.Yes: // Save document and exit
+                        SaveDocument();
+                        break;
+                    case MessageBoxResult.No: // Exit without saving
+                        break;
+                    case MessageBoxResult.Cancel: // Don't exit
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        void fileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDocument();
+        }
+        void fileSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDocument();
+        }
+        void filePrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDocument();
+        }
+        void fileExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        void editFindMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FindDialogBox dlg = new FindDialogBox(this.documentTextBox);
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.TextFound += new TextFoundEventHandler(dlg_TextFound);
+
+            // Open the dialog box modally
+            dlg.Show();
+        }
+
+        void formatMarginsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            MarginsDialogBox dlg = new MarginsDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.DocumentMargin = this.documentTextBox.Margin;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.Margin = dlg.DocumentMargin;
+            }
+        }
+
+        void formatFontMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FontDialogBox dlg = new FontDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.FontFamily = this.documentTextBox.FontFamily;
+            dlg.FontSize = this.documentTextBox.FontSize;
+            dlg.FontWeight = this.documentTextBox.FontWeight;
+            dlg.FontStyle = this.documentTextBox.FontStyle;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.FontFamily = dlg.FontFamily;
+                this.documentTextBox.FontSize = dlg.FontSize;
+                this.documentTextBox.FontWeight = dlg.FontWeight;
+                this.documentTextBox.FontStyle = dlg.FontStyle;
+            }
+        }
+
+        // Detect when document has been altered
+        void documentTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.needsToBeSaved = true;
+        }
+
+        void OpenDocument()
+        {
+            // Instantiate the dialog box
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // Configure open file dialog box
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Open the dialog box modally
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+            }
+        }
+        void SaveDocument()
+        {
+            // Configure save file dialog
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+        }
+        void PrintDocument()
+        {
+            // Configure printer dialog
+            PrintDialog dlg = new PrintDialog();
+            dlg.PageRangeSelection = PageRangeSelection.AllPages;
+            dlg.UserPageRangeEnabled = true;
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Print document
+            }
+        }
+
+        void dlg_TextFound(object sender, EventArgs e)
+        {
+            // Get the find dialog box that raised the event
+            FindDialogBox dlg = (FindDialogBox)sender;
+
+            // Get find results and select found text
+            this.documentTextBox.Select(dlg.Index, dlg.Length);
+            this.documentTextBox.Focus();
+        }
+    }
+}
+</code></pre>
 <p>В отличие от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.showdialog">ShowDialog</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.show">Show</a> возвращает немедленно. Следовательно, вызывающее окно не может определить, когда немодальное диалоговое окно закрывается, и поэтому не знает, когда следует проверить результат диалогового окна или получить данные из диалогового окна для дальнейшей обработки. Поэтому диалоговому окну необходимо создать альтернативный способ возврата данных в вызывающее окно для обработки.</p>
 <h4 id="processing-data-returned-from-a-modeless-dialog-box">Обработка данных, возвращенных из немодального диалогового окна</h4>
 <p>В этом примере <code>FindDialogBox</code> может возвращать один или несколько результатов в главное окно в зависимости от искомого текста. Как и в случае с модальным диалоговым окном, немодальное диалоговое окно может возвращать результаты с помощью свойств. Однако окну, которому принадлежит данное диалоговое окно, нужно знать, когда следует проверять эти свойства. Один из способов сделать это — реализовать для диалогового окна событие, которое возникает всякий раз, когда текст найден. <code>FindDialogBox</code> реализует для этой цели <code>TextFoundEvent</code>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventHandlerCODE"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventHandlerCODE">using System;
+
+namespace SDKSample
+{
+    public delegate void TextFoundEventHandler(object sender, EventArgs e);
+}
+</code></pre>
 <p>С помощью делегата <code>TextFoundEventHandler</code>, <code>FindDialogBox</code> реализует <code>TextFoundEvent</code>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventCODEBEHIND2"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventCODEBEHIND1">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Text.RegularExpressions;
+
+namespace SDKSample
+{
+    public partial class FindDialogBox : Window
+    {
+        public event TextFoundEventHandler TextFound;
+
+        protected virtual void OnTextFound()
+        {
+            TextFoundEventHandler textFound = this.TextFound;
+            if (textFound != null) textFound(this, EventArgs.Empty);
+        }
+
+        public FindDialogBox(TextBox textBoxToSearch)
+        {
+            InitializeComponent();
+
+            this.textBoxToSearch = textBoxToSearch;
+
+            // If text box that's being searched is changed, reset search
+            this.textBoxToSearch.TextChanged += textBoxToSearch_TextChanged;
+        }
+
+        // Text to search
+        TextBox textBoxToSearch;
+
+        // Find results
+        MatchCollection matches;
+        int matchIndex = 0;
+
+        // Search results
+        int index = 0;
+        int length = 0;
+
+        public int Index
+        {
+            get { return this.index; }
+            set { this.index = value; }
+        }
+
+        public int Length
+        {
+            get { return this.length; }
+            set { this.length = value; }
+        }
+
+        void findNextButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Find matches
+            if (this.matches == null)
+            {
+                string pattern = this.findWhatTextBox.Text;
+
+                // Match whole word?
+                if ((bool)this.matchWholeWordCheckBox.IsChecked) pattern = @&quot;(?&lt;=\W{0,1})&quot; + pattern + @&quot;(?=\W)&quot;;
+
+                // Case sensitive
+                if (!(bool)this.caseSensitiveCheckBox.IsChecked) pattern = &quot;(?i)&quot; + pattern;
+
+                // Find matches
+                this.matches = Regex.Matches(this.textBoxToSearch.Text, pattern);
+                this.matchIndex = 0;
+
+                // Word not found?
+                if (this.matches.Count == 0)
+                {
+                    MessageBox.Show(&quot;'&quot; + this.findWhatTextBox.Text + &quot;' not found.&quot;, &quot;Find&quot;);
+                    this.matches = null;
+                    return;
+                }
+            }
+
+            // Start at beginning of matches if the last find selected the last match
+            if (this.matchIndex == this.matches.Count)
+            {
+                MessageBoxResult result = MessageBox.Show(&quot;Nmore matches found. Start at beginning?&quot;, &quot;Find&quot;, MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No) return;
+
+                // Reset
+                this.matchIndex = 0;
+            }
+
+            // Return match details to client so it can select the text
+            Match match = this.matches[this.matchIndex];
+            if (TextFound != null)
+            {
+                // Text found
+                this.index = match.Index;
+                this.length = match.Length;
+                OnTextFound();
+            }
+            this.matchIndex++;
+        }
+
+        void textBoxToSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void findWhatTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void criteria_Click(object sender, RoutedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void ResetFind()
+        {
+            this.findNextButton.IsEnabled = true;
+            this.matches = null;
+        }
+
+        void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Close dialog box
+            this.Close();
+        }
+    }
+}
+</code></pre>
 <p>Следовательно, <code>Find</code> может создать событие, когда найден результат поиска.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND2"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND3"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND4"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND5"></code></pre>
+<pre><code class="lang-csharp" name="DialogBoxSample#TextFoundEventRaiseCODEBEHIND1">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Text.RegularExpressions;
+
+namespace SDKSample
+{
+    public partial class FindDialogBox : Window
+    {
+        public event TextFoundEventHandler TextFound;
+
+        protected virtual void OnTextFound()
+        {
+            TextFoundEventHandler textFound = this.TextFound;
+            if (textFound != null) textFound(this, EventArgs.Empty);
+        }
+
+        public FindDialogBox(TextBox textBoxToSearch)
+        {
+            InitializeComponent();
+
+            this.textBoxToSearch = textBoxToSearch;
+
+            // If text box that's being searched is changed, reset search
+            this.textBoxToSearch.TextChanged += textBoxToSearch_TextChanged;
+        }
+
+        // Text to search
+        TextBox textBoxToSearch;
+
+        // Find results
+        MatchCollection matches;
+        int matchIndex = 0;
+
+        // Search results
+        int index = 0;
+        int length = 0;
+
+        public int Index
+        {
+            get { return this.index; }
+            set { this.index = value; }
+        }
+
+        public int Length
+        {
+            get { return this.length; }
+            set { this.length = value; }
+        }
+
+        void findNextButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Find matches
+            if (this.matches == null)
+            {
+                string pattern = this.findWhatTextBox.Text;
+
+                // Match whole word?
+                if ((bool)this.matchWholeWordCheckBox.IsChecked) pattern = @&quot;(?&lt;=\W{0,1})&quot; + pattern + @&quot;(?=\W)&quot;;
+
+                // Case sensitive
+                if (!(bool)this.caseSensitiveCheckBox.IsChecked) pattern = &quot;(?i)&quot; + pattern;
+
+                // Find matches
+                this.matches = Regex.Matches(this.textBoxToSearch.Text, pattern);
+                this.matchIndex = 0;
+
+                // Word not found?
+                if (this.matches.Count == 0)
+                {
+                    MessageBox.Show(&quot;'&quot; + this.findWhatTextBox.Text + &quot;' not found.&quot;, &quot;Find&quot;);
+                    this.matches = null;
+                    return;
+                }
+            }
+
+            // Start at beginning of matches if the last find selected the last match
+            if (this.matchIndex == this.matches.Count)
+            {
+                MessageBoxResult result = MessageBox.Show(&quot;Nmore matches found. Start at beginning?&quot;, &quot;Find&quot;, MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No) return;
+
+                // Reset
+                this.matchIndex = 0;
+            }
+
+            // Return match details to client so it can select the text
+            Match match = this.matches[this.matchIndex];
+            if (TextFound != null)
+            {
+                // Text found
+                this.index = match.Index;
+                this.length = match.Length;
+                OnTextFound();
+            }
+            this.matchIndex++;
+        }
+
+        void textBoxToSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void findWhatTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void criteria_Click(object sender, RoutedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void ResetFind()
+        {
+            this.findNextButton.IsEnabled = true;
+            this.matches = null;
+        }
+
+        void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Close dialog box
+            this.Close();
+        }
+    }
+}
+</code></pre>
 <p>Затем окну-владельцу нужно зарегистрировать и обработать это событие.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogResultCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#OpenFindDialogResultCODEBEHIND2"></code></pre><h4 id="closing-a-modeless-dialog-box">Закрытие немодального диалогового окна</h4>
+<pre><code class="lang-csharp" name="DialogBoxSample">using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using Microsoft.Win32;
+
+namespace SDKSample
+{
+    public partial class MainWindow : Window
+    {
+        bool needsToBeSaved;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        // Closing
+        void mainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            // If the document needs to be saved
+            if (this.needsToBeSaved)
+            {
+                // Configure the message box
+                string messageBoxText = &quot;This document needs to be saved. Click Yes to save and exit, No to exit without saving, or Cancel to not exit.&quot;;
+                string caption = &quot;Word Processor&quot;;
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+
+                // Display message box
+                MessageBoxResult messageBoxResult = MessageBox.Show(messageBoxText, caption, button, icon);
+
+                // Process message box results
+                switch (messageBoxResult)
+                {
+                    case MessageBoxResult.Yes: // Save document and exit
+                        SaveDocument();
+                        break;
+                    case MessageBoxResult.No: // Exit without saving
+                        break;
+                    case MessageBoxResult.Cancel: // Don't exit
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        void fileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDocument();
+        }
+        void fileSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDocument();
+        }
+        void filePrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDocument();
+        }
+        void fileExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        void editFindMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FindDialogBox dlg = new FindDialogBox(this.documentTextBox);
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.TextFound += new TextFoundEventHandler(dlg_TextFound);
+
+            // Open the dialog box modally
+            dlg.Show();
+        }
+
+        void formatMarginsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            MarginsDialogBox dlg = new MarginsDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.DocumentMargin = this.documentTextBox.Margin;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.Margin = dlg.DocumentMargin;
+            }
+        }
+
+        void formatFontMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Instantiate the dialog box
+            FontDialogBox dlg = new FontDialogBox();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.FontFamily = this.documentTextBox.FontFamily;
+            dlg.FontSize = this.documentTextBox.FontSize;
+            dlg.FontWeight = this.documentTextBox.FontWeight;
+            dlg.FontStyle = this.documentTextBox.FontStyle;
+
+            // Open the dialog box modally
+            dlg.ShowDialog();
+
+            // Process data entered by user if dialog box is accepted
+            if (dlg.DialogResult == true)
+            {
+                // Update fonts
+                this.documentTextBox.FontFamily = dlg.FontFamily;
+                this.documentTextBox.FontSize = dlg.FontSize;
+                this.documentTextBox.FontWeight = dlg.FontWeight;
+                this.documentTextBox.FontStyle = dlg.FontStyle;
+            }
+        }
+
+        // Detect when document has been altered
+        void documentTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.needsToBeSaved = true;
+        }
+
+        void OpenDocument()
+        {
+            // Instantiate the dialog box
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // Configure open file dialog box
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Open the dialog box modally
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+            }
+        }
+        void SaveDocument()
+        {
+            // Configure save file dialog
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = &quot;Document&quot;; // Default file name
+            dlg.DefaultExt = &quot;.wpf&quot;; // Default file extension
+            dlg.Filter = &quot;Word Processor Files (.wpf)|*.wpf&quot;; // Filter files by extension
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Save document
+                string filename = dlg.FileName;
+            }
+        }
+        void PrintDocument()
+        {
+            // Configure printer dialog
+            PrintDialog dlg = new PrintDialog();
+            dlg.PageRangeSelection = PageRangeSelection.AllPages;
+            dlg.UserPageRangeEnabled = true;
+
+            // Show save file dialog
+            Nullable&lt;bool&gt; result = dlg.ShowDialog();
+
+            // Process save file dialog results
+            if (result == true)
+            {
+                // Print document
+            }
+        }
+
+        void dlg_TextFound(object sender, EventArgs e)
+        {
+            // Get the find dialog box that raised the event
+            FindDialogBox dlg = (FindDialogBox)sender;
+
+            // Get find results and select found text
+            this.documentTextBox.Select(dlg.Index, dlg.Length);
+            this.documentTextBox.Focus();
+        }
+    }
+}
+</code></pre><h4 id="closing-a-modeless-dialog-box">Закрытие немодального диалогового окна</h4>
 <p>Так как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.dialogresult">DialogResult</a> устанавливать не требуется, немодальное диалоговое окно можно закрыть с помощью предоставляемых системой механизмов, включая следующие:</p>
 <ul>
 <li><p>Щелкнув кнопку <strong>Закрыть</strong> в заголовке окна.</p>
@@ -308,7 +2040,133 @@ if (result == true)
 </li>
 </ul>
 <p>Кроме того, код может вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.close">Close</a> при нажатии кнопки <strong>Закрыть</strong>.</p>
-<pre><code class="lang-csharp" name="DialogBoxSample#FindDialogCloseCODEBEHIND1"></code></pre><pre><code class="lang-csharp" name="DialogBoxSample#FindDialogCloseCODEBEHIND2"></code></pre><h2 id="see-also">См. также</h2>
+<pre><code class="lang-csharp" name="DialogBoxSample">using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Text.RegularExpressions;
+
+namespace SDKSample
+{
+    public partial class FindDialogBox : Window
+    {
+        public event TextFoundEventHandler TextFound;
+
+        protected virtual void OnTextFound()
+        {
+            TextFoundEventHandler textFound = this.TextFound;
+            if (textFound != null) textFound(this, EventArgs.Empty);
+        }
+
+        public FindDialogBox(TextBox textBoxToSearch)
+        {
+            InitializeComponent();
+
+            this.textBoxToSearch = textBoxToSearch;
+
+            // If text box that's being searched is changed, reset search
+            this.textBoxToSearch.TextChanged += textBoxToSearch_TextChanged;
+        }
+
+        // Text to search
+        TextBox textBoxToSearch;
+
+        // Find results
+        MatchCollection matches;
+        int matchIndex = 0;
+
+        // Search results
+        int index = 0;
+        int length = 0;
+
+        public int Index
+        {
+            get { return this.index; }
+            set { this.index = value; }
+        }
+
+        public int Length
+        {
+            get { return this.length; }
+            set { this.length = value; }
+        }
+
+        void findNextButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Find matches
+            if (this.matches == null)
+            {
+                string pattern = this.findWhatTextBox.Text;
+
+                // Match whole word?
+                if ((bool)this.matchWholeWordCheckBox.IsChecked) pattern = @&quot;(?&lt;=\W{0,1})&quot; + pattern + @&quot;(?=\W)&quot;;
+
+                // Case sensitive
+                if (!(bool)this.caseSensitiveCheckBox.IsChecked) pattern = &quot;(?i)&quot; + pattern;
+
+                // Find matches
+                this.matches = Regex.Matches(this.textBoxToSearch.Text, pattern);
+                this.matchIndex = 0;
+
+                // Word not found?
+                if (this.matches.Count == 0)
+                {
+                    MessageBox.Show(&quot;'&quot; + this.findWhatTextBox.Text + &quot;' not found.&quot;, &quot;Find&quot;);
+                    this.matches = null;
+                    return;
+                }
+            }
+
+            // Start at beginning of matches if the last find selected the last match
+            if (this.matchIndex == this.matches.Count)
+            {
+                MessageBoxResult result = MessageBox.Show(&quot;Nmore matches found. Start at beginning?&quot;, &quot;Find&quot;, MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No) return;
+
+                // Reset
+                this.matchIndex = 0;
+            }
+
+            // Return match details to client so it can select the text
+            Match match = this.matches[this.matchIndex];
+            if (TextFound != null)
+            {
+                // Text found
+                this.index = match.Index;
+                this.length = match.Length;
+                OnTextFound();
+            }
+            this.matchIndex++;
+        }
+
+        void textBoxToSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void findWhatTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void criteria_Click(object sender, RoutedEventArgs e)
+        {
+            ResetFind();
+        }
+
+        void ResetFind()
+        {
+            this.findNextButton.IsEnabled = true;
+            this.matches = null;
+        }
+
+        void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Close dialog box
+            this.Close();
+        }
+    }
+}
+</code></pre><h2 id="see-also">См. также</h2>
 <ul>
 <li><a href="../controls/popup-overview.html">Общие сведения о контекстном меню</a></li>
 <li><a href="https://go.microsoft.com/fwlink/?LinkID=159984">Примеры диалоговых окон</a></li>

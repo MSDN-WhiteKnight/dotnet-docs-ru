@@ -69,17 +69,17 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="navigation-overview">Общие сведения о переходах</h1>
 
-<p>Windows Presentation Foundation (WPF) поддерживает навигацию в стиле браузера, можно использовать в приложениях двух типов: автономных приложениях и XAML-приложения браузера (XBAP). Чтобы упаковать содержимое для навигации WPF предоставляет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> класса. Можно переходить от одного <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в другой декларативно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, или программно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. WPF использует журнал, чтобы запоминать страницы, на которые был осуществлен переход и для перехода к ним.</p>
-<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>, и журнал образуют основу для поддержки навигации, предлагаемой WPF. В этом обзоре рассматриваются эти возможности подробно перед описанием расширенной поддержки переходов, включающий переход к свободным XAML файлы, HTML файлы и объекты.</p>
+<p>Windows Presentation Foundation (WPF) поддерживает навигацию в стиле браузера, которую можно использовать в приложениях двух типов: автономных приложениях и XAML-приложениях браузера (XBAP). Чтобы упаковать содержимое для навигации WPF предоставляет класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Можно переходить от одной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> к другой декларативно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, или программно, с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. WPF использует журнал, чтобы запоминать страницы, на которые был осуществлен переход и позволяет возвращаться к ним.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.hyperlink">Hyperlink</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнал образуют основу для поддержки навигации, предлагаемой WPF. В этом обзоре подробно рассматриваются эти возможности, а также расширенная поддержка переходов, включающая переход к свободным XAML файлам, HTML и произвольным объектам.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В этом разделе термин «браузер» относится только к браузерам, которые можно разместить WPF приложений, которые в настоящее время включает в себя Microsoft Internet Explorer и Firefox. Когда специфические WPF функции, поддерживаемые только одним определенным браузером, версия браузера.</p>
+<p>В этом разделе термин «браузер» относится только к браузерам, в которых можно разместить WPF-приложения, т.е. Internet Explorer и Firefox.</p>
 </div>
 <h2 id="navigation-in-wpf-applications">Переходы в приложениях WPF</h2>
-<p>В этом разделе содержится обзор основных возможностей перехода в WPF. Эти возможности доступны для автономных приложениях и XBAP, несмотря на то, что в этом разделе они представлены в контексте XBAP.</p>
+<p>В этом разделе содержится обзор основных возможностей перехода в WPF. Эти возможности доступны для автономных приложений и XBAP, но в этом разделе они представлены в контексте XBAP.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В этом разделе не обсуждаются построение и развертывание XBAP. Дополнительные сведения о XBAP, см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a>.</p>
+<p>В этом разделе не обсуждаются построение и развертывание XBAP. Дополнительные сведения о XBAP см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a>.</p>
 </div>
 <p>В этом разделе объясняются и демонстрируются следующие аспекты переходов.</p>
 <ul>
@@ -112,11 +112,11 @@
 </ul>
 <p><a name="CreatingAXAMLPage"></a></p>
 <h3 id="implementing-a-page">Реализация страницы</h3>
-<p>В WPF, вы можете перейти к нескольким типам содержимого, включают объекты .NET Framework, пользовательских объектов, значений перечисления, пользовательские элементы управления, XAML файлы, и HTML файлы. Тем не менее, обнаружится, что наиболее распространенным и удобным способом упаковки содержимого является с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Кроме того <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализует особые возможности перехода в целях улучшения их внешнего вида и упрощения разработки.</p>
-<p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, можно декларативно реализовать доступную для перехода страницу XAML содержимого с помощью разметки, как показано ниже.</p>
+<p>В WPF вы можете перейти к нескольким типам содержимого, включая объекты .NET Framework, пользовательские объекты, значения перечисления, пользовательские элементы управления, XAML файлы и HTML файлы. Тем не менее наиболее распространенным и удобным способом упаковки содержимого является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Кроме того, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализует особые возможности перехода в целях улучшения внешнего вида приложений и упрощения их разработки.</p>
+<p>С помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> можно декларативно реализовать доступную для перехода страницу XAML содержимого с помощью разметки, как показано ниже.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page1XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; /&gt;
 </code></pre>
-<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , реализованный в XAML имеет разметки <code>Page</code> качестве корневого элемента и требует WPFXML объявление пространства имен. <code>Page</code> Элемент содержит содержимое, которое вы хотите перейти и отобразить. Добавления содержимого задается <code>Page.Content</code> элемента свойства, как показано в следующем примере разметки.</p>
+<p>Объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, реализованный в XAML, имеет корневой элемент разметки <code>Page</code> и требует объявление XML-пространства имен WPF. Элемент <code>Page</code> содержит содержимое, к которому необходимо осуществить переход. Для добавления содержимого задается свойство <code>Page.Content</code>, как показано в следующем примере разметки.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page2XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
   &lt;Page.Content&gt;
     &lt;!-- Page Content --&gt;
@@ -124,15 +124,15 @@
   &lt;/Page.Content&gt;
 &lt;/Page&gt;
 </code></pre>
-<p><code>Page.Content</code> может содержать только один дочерний элемент; в предыдущем примере, содержимым является отдельная строка «Hello, Page!» На практике обычно используется элемент управления макета как дочерний элемент (см. в разделе <a href="../advanced/layout.html">макета</a>) для создания и хранения вашего содержимого.</p>
-<p>Дочерние элементы <code>Page</code> считаются содержимым класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и, следовательно, не нужно использовать явное <code>Page.Content</code> объявления. Следующая разметка является декларативным эквивалентом предыдущего примера.</p>
+<p><code>Page.Content</code> может содержать только один дочерний элемент; в предыдущем примере, содержимым является отдельная строка «Hello, Page!». На практике обычно как дочерний элемент для создания и хранения содержимого используется элемент управления макетом (см. в разделе <a href="../advanced/layout.html">макет</a>).</p>
+<p>Дочерний элемент <code>Page</code> считаются содержимым класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и, следовательно, не нужно использовать явное присвоение <code>Page.Content</code>. Следующая разметка является декларативным эквивалентом предыдущего примера.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#Page3XAML">&lt;Page xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
   &lt;!-- Page Content --&gt;
   Hello, Page!
 &lt;/Page&gt;
 </code></pre>
-<p>В этом случае <code>Page.Content</code> автоматически задается вместе с дочерними элементами элемента <code>Page</code> элемент. Дополнительные сведения см. в разделе <a href="../controls/wpf-content-model.html">Модель содержимого WPF</a>.</p>
-<p>Только для разметки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> полезно для отображения содержимого. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> также может отображать элементы управления, позволяющие пользователям взаимодействовать со страницей, и он может отвечать на действия пользователя, выполняя обработку событий и вызывая логику приложения. Интерактивная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью комбинации разметки и кода программной части, как показано в следующем примере.</p>
+<p>В этом случае <code>Page.Content</code> автоматически задается дочерним элементом <code>Page</code>. Дополнительные сведения см. в разделе <a href="../controls/wpf-content-model.html">Модель содержимого WPF</a>.</p>
+<p>Определение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> только в разметке полезно для отображения содержимого. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> также может отображать элементы управления, позволяющие пользователям взаимодействовать со страницей, и он может отвечать на действия пользователя, выполняя обработку событий и вызывая логику приложения. Интерактивная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью комбинации разметки и кода программной части, как показано в следующем примере.</p>
 <pre><code class="lang-xaml" name="XBAPAppDefSnippets#HomePageMARKUP">&lt;Page
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
@@ -154,22 +154,22 @@ namespace SDKSample
 </code></pre>
 <p>Чтобы разрешить совместную работу файла разметки и файла кода программной части, требуется следующая конфигурация.</p>
 <ul>
-<li><p>В разметке <code>Page</code> элемент должен включать <code>x:Class</code> атрибута. При построении приложения существование <code>x:Class</code> в разметке вызывает файл Microsoft Build Engine (MSBuild) для создания <code>partial</code> класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и имеет имя, которое задается параметром <code>x:Class</code> атрибута. Это требует добавления параметра XML объявление пространства имен для XAML схемы ( <code>xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</code> ). Созданный <code>partial</code> класс реализует <code>InitializeComponent</code>, который вызывается для регистрации событий и задания свойств, реализованных в разметке.</p>
+<li><p>В разметке <code>Page</code> элемент должен включать атрибут <code>x:Class</code>. При построении приложения существование <code>x:Class</code> в разметке указывает Microsoft Build Engine (MSBuild) создать <code>partial</code> класс, производный от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и имеющий имя, заданное параметром атрибута <code>x:Class</code>. Это требует добавления в XML объявления пространства имен для схемы XAML ( <code>xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;</code> ). Созданный <code>partial</code> класс реализует <code>InitializeComponent</code>, который вызывается для регистрации событий и задания свойств, реализованных в разметке.</p>
 </li>
-<li><p>В коде программной части класс должен быть <code>partial</code> класс с тем же именем, который задается параметром <code>x:Class</code> атрибут в разметке и он должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Это позволяет файл кода должно быть связано с <code>partial</code> класса, созданного для файла разметки при построении приложения (см. в разделе <a href="building-a-wpf-application-wpf.html">построение приложения WPF</a>).</p>
+<li><p>В коде программной части должен быть <code>partial</code> класс с тем же именем, который был задан параметром атрибута <code>x:Class</code> в разметке и он должен быть производным от <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>. Это позволяет связать файл кода с <code>partial</code> классом, созданным для файла разметки при построении приложения (см. в разделе <a href="building-a-wpf-application-wpf.html">построение приложения WPF</a>).</p>
 </li>
-<li><p>В коде программной части <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> класс должен реализовывать конструктор, который вызывает <code>InitializeComponent</code> метод. <code>InitializeComponent</code> реализуется разметки созданным файлом <code>partial</code> класс для регистрации событий и задания свойств, которые определены в разметке.</p>
+<li><p>В коде программной части класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> должен реализовывать конструктор, который вызывает <code>InitializeComponent</code>. Метод <code>InitializeComponent</code> реализуется в <code>partial</code> классе, созданном на основе реазметки, для регистрации событий и задания свойств, которые определены в разметке.</p>
 </li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>При добавлении нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в проект, использующий Microsoft Visual Studio, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью разметки и кода программной части и включает необходимую конфигурацию для создания связи между файлами разметки и кода как описанные здесь.</p>
+<p>При добавлении нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> в проект, использующий Microsoft Visual Studio, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> реализуется с помощью разметки и кода программной части и включает необходимую конфигурацию для создания связи между файлами разметки и кода, как было описано здесь.</p>
 </div>
-<p>При наличии <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, можно перейти к нему. Чтобы указать первый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> переходит приложение, необходимо настроить начальную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+<p>Имея созданную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, можно осуществить переход к ней. Чтобы указать первую <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, к которой приложение переходит, необходимо настроить начальную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
 <p><a name="Configuring_a_Start_Page"></a></p>
 <h3 id="configuring-a-start-page">Настройка начальной страницы</h3>
-<p>XBAP требуется определенная инфраструктура приложений, размещенных в браузере. В WPF, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класс является частью определения приложения, которое устанавливает необходимую инфраструктуру приложений (см. в разделе <a href="application-management-overview.html">Общие сведения об управлении приложением</a>).</p>
-<p>Определение приложения обычно реализуется с помощью разметки и кода программной части с файл разметки настраивается как MSBuild<code>ApplicationDefinition</code> элемента. Ниже приведен определение приложения для XBAP.</p>
+<p>XBAP требуется определенная инфраструктура для размещения в обозревателе. В WPF класс <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> является частью определения приложения, которое устанавливает необходимую инфраструктуру приложения (см. в разделе <a href="application-management-overview.html">Общие сведения об управлении приложением</a>).</p>
+<p>Определение приложения обычно реализуется с помощью разметки и кода программной части, с файлом разметки, настроенным как элемент <code>ApplicationDefinition</code>  MSBuild. Ниже приведен определение приложения для XBAP.</p>
 <pre><code class="lang-xaml" name="XBAPAppDefSnippets#XBAPApplicationDefinitionMARKUP">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
@@ -181,10 +181,10 @@ namespace SDKSample
     public partial class App : Application { }
 }
 </code></pre>
-<p>XBAP Можно использовать определение приложения, чтобы указать начальный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, который является <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> , автоматически загружаемый при XBAP запускается. Это можно сделать, задав <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> свойство с URI для нужной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
+<p>Можно использовать определение приложения XBAP, чтобы указать начальную <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, которая автоматически открывается при запуске приложения. Это можно сделать, присвоив свойству <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> URI нужной <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В большинстве случаев <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> скомпилированный или развертываются вместе с приложением. В этих случаях URI , идентифицирующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> — это пакет URI, который является URI соответствует <em>пакет</em> схемы. Пакет URI рассматриваются далее в <a href="pack-uris-in-wpf.html">URI типа Pack в WPF</a>. Для перехода к содержимому можно также использовать схему HTTP, которая рассматривается далее.</p>
+<p>В большинстве случаев <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> компилируется и развертывается вместе с приложением. В этих случаях URI, идентифицирующий <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> — это pack URI, который соответствует схеме <em>pack</em>. Pack URI рассматриваются далее в разделе <a href="pack-uris-in-wpf.html">URI типа Pack в WPF</a>. Для перехода к содержимому можно также использовать схему HTTP, которая рассматривается далее.</p>
 </div>
 <p>Можно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> декларативно в разметке, как показано в следующем примере.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#XBAPApplicationDefinitionMARKUP">&lt;Application
@@ -193,11 +193,11 @@ namespace SDKSample
     x:Class=&quot;SDKSample.App&quot;
     StartupUri=&quot;PageWithHyperlink.xaml&quot; /&gt;
 </code></pre>
-<p>В этом примере <code>StartupUri</code> относительный пакет установлен атрибут URI , определяющим HomePage.xaml. Когда XBAP является запуске HomePage.xaml автоматически переход и отображаются. Это показано на следующем рисунке, показывающий XBAP , запущенное с веб-сервера.</p>
-<p><img src="media/navigation-overview/xbap-launched-from-a-web-server.png" alt="XBAP-страница" title="это показывает, приложение XBAP, запускаемых из веб-сервера."></p>
+<p>В этом примере <code>StartupUri</code> присваивается относительный pack URI файла <code>HomePage.xaml</code>. При запуске XBAP будет автоматически осуществлен переход к HomePage.xaml. Это показано на следующем рисунке, показывающем XBAP, запущенное с веб-сервера.</p>
+<p><img src="media/navigation-overview/xbap-launched-from-a-web-server.png" alt="XBAP-страница" title="показывает, приложение XBAP, запускаемое с веб-сервера"></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Дополнительные сведения о разработке и развертывании XBAP, см. в разделе <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a> и <a href="deploying-a-wpf-application-wpf.html">развертывание приложений WPF</a>.</p>
+<p>Дополнительные сведения о разработке и развертывании XBAP, см. в разделах <a href="wpf-xaml-browser-applications-overview.html">Обзор приложений браузера XAML WPF</a> и <a href="deploying-a-wpf-application-wpf.html">развертывание приложений WPF</a>.</p>
 </div>
 <p><a name="ConfiguringAXAMLPage"></a></p>
 <h3 id="configuring-the-host-windows-title-width-and-height">Настройка заголовка, ширины и высоты основного окна</h3>
