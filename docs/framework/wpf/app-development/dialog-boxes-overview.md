@@ -215,7 +215,7 @@ ms.lasthandoff: 04/08/2019
   
  Когда <xref:System.Windows.Controls.Button.IsCancel%2A> равно `true` и пользователь нажимает кнопку **Отмена** или клавишу ESC, <xref:System.Windows.Window.DialogResult%2A> автоматически присваивается `false`. Следующая разметка действует так же, как предыдущий код, без необходимости обрабатывать событие <xref:System.Windows.Controls.Primitives.ButtonBase.Click>.  
   
- [!code-xaml[DialogBoxSample#MarginsDialogDefaultCancelMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/MarginsDialogBox.xaml#marginsdialogdefaultcancelmarkup)]  
+ [!code-xaml[DialogBoxSample#MarginsDialogDefaultCancelMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/MarginsDialogBox.xaml)]  
   
  Диалоговое окно автоматически возвращает `false`, когда пользователь нажимает кнопку **Закрыть** в строке заголовка или выбирает **Закрыть** в **системном** меню.
   
@@ -242,7 +242,7 @@ ms.lasthandoff: 04/08/2019
 #### <a name="opening-a-modeless-dialog-box"></a>Открытие немодального диалогового окна  
  Немодальное диалоговое окно открывается путем вызова метода <xref:System.Windows.Window.Show%2A>.
   
- [!code-xaml[DialogBoxSample#OpenFindDialogMARKUP1](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/MainWindow.xaml#openfinddialogmarkup1)]  
+ [!code-xaml[DialogBoxSample#OpenFindDialogMARKUP1](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/MainWindow.xaml)]  
   
  [!code-csharp[DialogBoxSample#OpenFindDialogCODEBEHIND1](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/MainWindow.xaml.cs)]
   
@@ -251,7 +251,7 @@ ms.lasthandoff: 04/08/2019
 #### <a name="processing-data-returned-from-a-modeless-dialog-box"></a>Обработка данных, возвращенных из немодального диалогового окна  
  В этом примере `FindDialogBox` может возвращать один или несколько результатов в главное окно в зависимости от искомого текста. Как и в случае с модальным диалоговым окном, немодальное диалоговое окно может возвращать результаты с помощью свойств. Однако окну, которому принадлежит данное диалоговое окно, нужно знать, когда следует проверять эти свойства. Один из способов сделать это — реализовать для диалогового окна событие, которое возникает всякий раз, когда текст найден. `FindDialogBox` реализует для этой цели `TextFoundEvent`.  
   
- [!code-csharp[DialogBoxSample#TextFoundEventHandlerCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/TextFoundEventHandler.cs#textfoundeventhandlercode)]
+ [!code-csharp[DialogBoxSample#TextFoundEventHandlerCODE](~/samples/snippets/csharp/VS_Snippets_Wpf/DialogBoxSample/CSharp/TextFoundEventHandler.cs)]
    
   
  С помощью делегата `TextFoundEventHandler`, `FindDialogBox` реализует `TextFoundEvent`.
