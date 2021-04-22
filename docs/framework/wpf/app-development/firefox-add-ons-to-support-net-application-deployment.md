@@ -15,7 +15,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59111739"
 ---
 # <a name="firefox-add-ons-to-support-net-application-deployment"></a>Надстройки Firefox для поддержки развертывания приложений .NET
-Включить Windows Presentation Foundation (WPF) подключаемого модуля для Firefox и .NET Framework Assistant для Firefox [!INCLUDE[TLA#tla_winfxwebapp#plural](../../../../includes/tlasharptla-winfxwebappsharpplural-md.md)], свободные XAMLи приложений ClickOnce для работы с браузером Mozilla Firefox.  
+Включить Windows Presentation Foundation (WPF) подключаемого модуля для Firefox и .NET Framework Assistant для Firefox XAML-приложения браузера (XBAP), свободные XAMLи приложений ClickOnce для работы с браузером Mozilla Firefox.  
   
 ## <a name="wpf-plug-in-for-firefox"></a>Подключаемого модуля WPF для Firefox  
  Включение подключаемого модуля WPF для Firefox XBAP и свободные XAML файлы, чтобы перейти и запустить на верхнем уровне или в IFRAME HTML в браузере Firefox. XBAP Является WPF приложения, опубликованные на веб-сервере и запустить в поддерживаемых браузеров. Свободные XAML является файлом только для XAML, который можно перейти и в поддерживаемых браузерах, как XML-файл.  

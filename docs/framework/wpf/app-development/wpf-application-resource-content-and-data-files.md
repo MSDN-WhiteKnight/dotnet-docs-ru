@@ -55,7 +55,7 @@ ms.locfileid: "59211931"
 >  Файлы ресурсов, описанные в этом разделе, отличаются от файлов ресурсов, описанных в [ресурсы XAML](../advanced/xaml-resources.md) и отличаются от внедренных или связанных ресурсов, описанных в [управление ресурсами приложения (.NET) ](/visualstudio/ide/managing-application-resources-dotnet).  
   
 ### <a name="configuring-resource-files"></a>Настройка файлов ресурсов  
- В WPF, файл ресурсов — это файл, который включен в [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] проект в качестве `Resource` элемента.  
+ В WPF, файл ресурсов — это файл, который включен в Microsoft Build Engine (MSBuild) проект в качестве `Resource` элемента.  
   
 ```xml  
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -68,9 +68,9 @@ ms.locfileid: "59211931"
 ```  
   
 > [!NOTE]
->  В [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)], создайте файл ресурсов путем добавления файла в проект и присвоения его `Build Action` для `Resource`.  
+>  В Microsoft Visual Studio, создайте файл ресурсов путем добавления файла в проект и присвоения его `Build Action` для `Resource`.  
   
- Когда проект будет собран, [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] компилирует ресурс в сборку.  
+ Когда проект будет собран, MSBuild компилирует ресурс в сборку.  
   
 ### <a name="using-resource-files"></a>Использование файлов ресурсов  
  Чтобы загрузить файл ресурсов, можно вызвать <xref:System.Windows.Application.GetResourceStream%2A> метод <xref:System.Windows.Application> класса, передавая им в пакете URI , определяющий нужный файл ресурсов. <xref:System.Windows.Application.GetResourceStream%2A> Возвращает <xref:System.Windows.Resources.StreamResourceInfo> объект, который предоставляет файл ресурсов как <xref:System.IO.Stream> и описывает его тип содержимого.  
@@ -96,7 +96,7 @@ ms.locfileid: "59211931"
   
  [!code-xaml[WPFAssemblyResourcesSnippets#SetApplicationStartupURI](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFAssemblyResourcesSnippets/CSharp/ResourcesSample/App.xaml#setapplicationstartupuri)]  
   
- Вы можете это сделать, если XAML файл включен в [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] проект в качестве `Page` элемента.  
+ Вы можете это сделать, если XAML файл включен в Microsoft Build Engine (MSBuild) проект в качестве `Page` элемента.  
   
 ```xml  
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -123,7 +123,7 @@ ms.locfileid: "59211931"
  Файлы содержимого необходимо использовать, если приложению требуется определенный набор файлов данных приложения, которые нужно обновлять без повторной компиляции использующей их сборки.  
   
 ### <a name="configuring-content-files"></a>Настройка файлов содержимого  
- Чтобы добавить файл содержимого в проект, файл данных приложения должен быть включен как `Content` элемента. Кроме того, так как файл содержимого не компилируется непосредственно в сборку, необходимо задать [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`CopyToOutputDirectory` элемента метаданных, чтобы указать, что файл содержимого копируется в расположение относительно сборки построения. Если требуется ресурс копируются в выходную папку сборки при каждом построении проекта, задать `CopyToOutputDirectory` элемента метаданных `Always` значение. В противном случае убедитесь, что только новая версия ресурса копируется в выходную папку построения с помощью `PreserveNewest` значение.  
+ Чтобы добавить файл содержимого в проект, файл данных приложения должен быть включен как `Content` элемента. Кроме того, так как файл содержимого не компилируется непосредственно в сборку, необходимо задать MSBuild`CopyToOutputDirectory` элемента метаданных, чтобы указать, что файл содержимого копируется в расположение относительно сборки построения. Если требуется ресурс копируются в выходную папку сборки при каждом построении проекта, задать `CopyToOutputDirectory` элемента метаданных `Always` значение. В противном случае убедитесь, что только новая версия ресурса копируется в выходную папку построения с помощью `PreserveNewest` значение.  
   
  Ниже показан файл, настроенный как файл содержимого, который копируется в папку выходных данных построения только при добавлении новой версии ресурса в проект.  
   
@@ -197,7 +197,7 @@ ms.locfileid: "59211931"
 ### <a name="configuring-site-of-origin-files"></a>Настройка файлов исходного узла  
  Если файлы исходного узла не существуют или неизвестны во время компиляции, необходимо использовать традиционные механизмы обеспечения необходимые файлы доступны во время выполнения, включая использование либо `XCopy` программы командной строки или [!INCLUDE[TLA#tla_wininstall](../../../../includes/tlasharptla-wininstall-md.md)].  
   
- Если во время компиляции известны файлы, которые должны быть расположены на исходном узле, но все еще требуется избежать явных зависимостей, можно добавить эти файлы в [!INCLUDE[TLA#tla_msbuild](../../../../includes/tlasharptla-msbuild-md.md)] проект в качестве `None` элемента. Как и для файлов содержимого, необходимо задать [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]`CopyToOutputDirectory` атрибут, чтобы указать, что файл исходного узла копируется в расположение относительно сборки построения, указывая либо `Always` значение или `PreserveNewest` значение.  
+ Если во время компиляции известны файлы, которые должны быть расположены на исходном узле, но все еще требуется избежать явных зависимостей, можно добавить эти файлы в Microsoft Build Engine (MSBuild) проект в качестве `None` элемента. Как и для файлов содержимого, необходимо задать MSBuild`CopyToOutputDirectory` атрибут, чтобы указать, что файл исходного узла копируется в расположение относительно сборки построения, указывая либо `Always` значение или `PreserveNewest` значение.  
   
 ```xml  
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -212,7 +212,7 @@ ms.locfileid: "59211931"
 > [!NOTE]
 >  В [!INCLUDE[TLA2#tla_visualstu](../../../../includes/tla2sharptla-visualstu-md.md)], создайте файл исходного узла путем добавления файла в проект и присвоения его `Build Action` для `None`.  
   
- Когда проект будет собран, [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] копирует указанные файлы в выходной папке сборки.  
+ Когда проект будет собран, MSBuild копирует указанные файлы в выходной папке сборки.  
   
 ### <a name="using-site-of-origin-files"></a>Использование файлов исходного узла  
  Чтобы загрузить файл исходного узла, можно вызвать <xref:System.Windows.Application.GetRemoteStream%2A> метод <xref:System.Windows.Application> класса, передавая им в пакете URI , определяющий нужный файл исходного узла. <xref:System.Windows.Application.GetRemoteStream%2A> Возвращает <xref:System.Windows.Resources.StreamResourceInfo> объект, который предоставляет файл исходного как узла <xref:System.IO.Stream> и описывает его тип содержимого.  

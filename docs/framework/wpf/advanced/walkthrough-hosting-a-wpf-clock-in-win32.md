@@ -31,15 +31,15 @@ ms.locfileid: "57494952"
 
 ![Диалоговое окно "Свойства даты и времени"](./media/interoparch06.PNG "InteropArch06")
 
-Это диалоговое окно можно воссоздать, создав C++ [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] в проекте [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)]и использование редактора диалоговых окон для создания следующих:
+Это диалоговое окно можно воссоздать, создав C++ [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] в проекте Microsoft Visual Studioи использование редактора диалоговых окон для создания следующих:
 
 ![Диалоговое окно "Свойства даты и времени"](./media/interoparch07.PNG "InteropArch07")
 
-(Необходимо использовать [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] использовать <xref:System.Windows.Interop.HwndSource>, и вам не нужно использовать C++ для написания [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы, но это является весьма распространенный способ сделать это и хорошо подходит для пошагового объяснения в учебнике).
+(Необходимо использовать Microsoft Visual Studio использовать <xref:System.Windows.Interop.HwndSource>, и вам не нужно использовать C++ для написания [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] программы, но это является весьма распространенный способ сделать это и хорошо подходит для пошагового объяснения в учебнике).
 
 Вам необходимо выполнить пять вложенных шагов, чтобы поставить WPF часов в диалоговое окно:
 
-1. Включение вашего [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проект, чтобы вызывать управляемый код (**/CLR**), изменив параметры проекта в [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)].
+1. Включение вашего [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] проект, чтобы вызывать управляемый код (**/CLR**), изменив параметры проекта в Microsoft Visual Studio.
 
 2. Создание WPF <xref:System.Windows.Controls.Page> в отдельной библиотеке DLL.
 
@@ -183,7 +183,7 @@ return (HWND) source->Handle.ToPointer();
 
 ## <a name="positioning-the-hwnd"></a>Размещение класса HWND
 
-Теперь, когда создан HWND, содержащий WPF часы, необходимо поместить этот HWND в [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] диалоговое окно. Если известно, где разместить HWND, было бы просто передать размер и расположение для `GetHwnd` функцию, определенную ранее. Однако для определения диалогового окна вы использовали файл ресурсов, поэтому вы не совсем уверены, где размещаются HWND. Можно использовать [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] редактор диалоговых окон, чтобы поместить [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] СТАТИЧЕСКОГО элемента управления, где требуется часов («вставить часы здесь») и использовать его для размещения WPF часов.
+Теперь, когда создан HWND, содержащий WPF часы, необходимо поместить этот HWND в [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] диалоговое окно. Если известно, где разместить HWND, было бы просто передать размер и расположение для `GetHwnd` функцию, определенную ранее. Однако для определения диалогового окна вы использовали файл ресурсов, поэтому вы не совсем уверены, где размещаются HWND. Можно использовать Microsoft Visual Studio редактор диалоговых окон, чтобы поместить [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] СТАТИЧЕСКОГО элемента управления, где требуется часов («вставить часы здесь») и использовать его для размещения WPF часов.
 
 Месте обработки WM_INITDIALOG можно использовать `GetDlgItem` Чтобы получить HWND для местозаполнителя STATIC:
 

@@ -78,7 +78,7 @@ ms.locfileid: "59197390"
   
 |Функция|Примечания|  
 |-------------|-----------|  
-|Трехмерное сглаживание|Трехмерное сглаживание поддерживается только в операционных системах, поддерживающих Windows Display Driver Model (WDDM), например [!INCLUDE[TLA2#tla_winvista](../../../../includes/tla2sharptla-winvista-md.md)] и [!INCLUDE[win7](../../../../includes/win7-md.md)].|  
+|Трехмерное сглаживание|Трехмерное сглаживание поддерживается только в операционных системах, поддерживающих Windows Display Driver Model (WDDM), например Windows Vista и Windows 7.|  
   
  Следующие функции и возможности **не** обеспечиваются аппаратным ускорением.  
   
@@ -89,7 +89,7 @@ ms.locfileid: "59197390"
 |Мозаичное содержимое, использующее <xref:System.Windows.Media.TileBrush>|Любое Мозаичное содержимое, в котором <xref:System.Windows.Media.TileBrush.TileMode%2A> свойство <xref:System.Windows.Media.TileBrush> присваивается <xref:System.Windows.Media.TileMode.Tile>.|  
 |Поверхности, которые превышают максимальный размер текстуры графического оборудования|Для большинства графических устройств большие поверхности имеют размер 2048 x 2048 или 4096 x 4096 пикселей.|  
 |Любая операция, требования к видеопамяти которой превышают объем памяти графического оборудования|Можно отслеживать использование видеопамяти приложения, используя средство Perforator, включенное в [WPF Performance Suite](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/aa969767(v=vs.100)) в комплекте SDK Windows.|  
-|Многослойные окна|Многослойные окна позволяют приложениям WPF отображать содержимое на экране в непрямоугольных окнах. В операционных системах, поддерживающих Windows Display Driver Model (WDDM), например [!INCLUDE[TLA2#tla_winvista](../../../../includes/tla2sharptla-winvista-md.md)] и [!INCLUDE[win7](../../../../includes/win7-md.md)], многослойные окна реализованы с аппаратным ускорением. В других системах, таких как [!INCLUDE[winxp](../../../../includes/winxp-md.md)], многоуровневые окна отрисовываются программным обеспечением без аппаратного ускорения.<br /><br /> Вы можете включить многослойные окна в WPF , задав следующие <xref:System.Windows.Window> свойства:<br /><br /> -   <xref:System.Windows.Window.WindowStyle%2A> = <xref:System.Windows.WindowStyle.None><br />-   <xref:System.Windows.Window.AllowsTransparency%2A> = `true`<br />-   <xref:System.Windows.Controls.Control.Background%2A> = <xref:System.Windows.Media.Brushes.Transparent%2A>|  
+|Многослойные окна|Многослойные окна позволяют приложениям WPF отображать содержимое на экране в непрямоугольных окнах. В операционных системах, поддерживающих Windows Display Driver Model (WDDM), например Windows Vista и Windows 7, многослойные окна реализованы с аппаратным ускорением. В других системах, таких как [!INCLUDE[winxp](../../../../includes/winxp-md.md)], многоуровневые окна отрисовываются программным обеспечением без аппаратного ускорения.<br /><br /> Вы можете включить многослойные окна в WPF , задав следующие <xref:System.Windows.Window> свойства:<br /><br /> -   <xref:System.Windows.Window.WindowStyle%2A> = <xref:System.Windows.WindowStyle.None><br />-   <xref:System.Windows.Window.AllowsTransparency%2A> = `true`<br />-   <xref:System.Windows.Controls.Control.Background%2A> = <xref:System.Windows.Media.Brushes.Transparent%2A>|  
   
 <a name="other_resources"></a>   
 ## <a name="other-resources"></a>Другие ресурсы  

@@ -22,7 +22,7 @@ ms.locfileid: "59304991"
 ## <a name="example"></a>Пример  
  В этом примере используется [службы содержимого MSDN или TechNet Publishing System (MTPS)](https://go.microsoft.com/fwlink/?LinkId=95677) для получения списка языков, поддерживаемых указанного документа.  
   
- Перед вызовом метода веб-службы, необходимо создать ссылку на него. Для создания веб-ссылки MTPS службе, используя [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)], выполните следующие действия:  
+ Перед вызовом метода веб-службы, необходимо создать ссылку на него. Для создания веб-ссылки MTPS службе, используя Microsoft Visual Studio, выполните следующие действия:  
   
 1. Откройте проект в [!INCLUDE[TLA2#tla_visualstu](../../../../includes/tla2sharptla-visualstu-md.md)].  
   

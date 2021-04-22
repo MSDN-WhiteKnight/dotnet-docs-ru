@@ -32,7 +32,7 @@ ms.lasthandoff: 04/09/2019
   
 <a name="Pre_Build_Initializations"></a>   
 ### <a name="pre-build-initializations"></a>Инициализации перед сборкой  
- Перед сборкой [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] определяет расположение важных инструментов и библиотек, включая следующие.  
+ Перед сборкой MSBuild определяет расположение важных инструментов и библиотек, включая следующие.  
 
 -   .NET Framework.
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 04/09/2019
 
 -   Свойство для путей поиска сборки.
 
- В первую очередь [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)] ищет сборки в каталоге ссылочных сборок (%ProgramFiles%\Reference Assemblies\Microsoft\Framework\v3.0\\). На этом шаге процесс сборки также инициализирует различные свойства и группы элементов и выполняет все необходимые действия по очистке.  
+ В первую очередь MSBuild ищет сборки в каталоге ссылочных сборок (%ProgramFiles%\Reference Assemblies\Microsoft\Framework\v3.0\\). На этом шаге процесс сборки также инициализирует различные свойства и группы элементов и выполняет все необходимые действия по очистке.  
   
 <a name="Resolving_references"></a>   
 ### <a name="resolving-references"></a>Разрешение ссылок  
@@ -94,7 +94,7 @@ Public Sub InitializeComponent() _
 End Sub  
 ```  
 
- По умолчанию компиляция разметки выполняется в том же <xref:System.AppDomain>, как и ядро [!INCLUDE[TLA2#tla_msbuild](../../../../includes/tla2sharptla-msbuild-md.md)]. Это обеспечивает значительный выигрыш в производительности. Это поведение можно переключать с помощью свойства `AlwaysCompileMarkupFilesInSeparateDomain`. Это дает следующее преимущество: при выгрузке отдельного <xref:System.AppDomain> выгружаются загруженные в него ссылочные сборки.
+ По умолчанию компиляция разметки выполняется в том же <xref:System.AppDomain>, как и ядро MSBuild. Это обеспечивает значительный выигрыш в производительности. Это поведение можно переключать с помощью свойства `AlwaysCompileMarkupFilesInSeparateDomain`. Это дает следующее преимущество: при выгрузке отдельного <xref:System.AppDomain> выгружаются загруженные в него ссылочные сборки.
   
 <a name="Pass_2_of_Markup_Compilation"></a>   
 ### <a name="markup-compilationpass-2"></a>Компиляция разметки — шаг 2  

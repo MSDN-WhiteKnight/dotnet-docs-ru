@@ -44,7 +44,7 @@ ms.locfileid: "59341053"
 ## <a name="the-glyphrun-object"></a>Объект GlyphRun  
  <xref:System.Windows.Media.GlyphRun> Объект представляет последовательность глифов из одной грани одного шрифта одного размера и с одним стилем отрисовки.  
   
- <xref:System.Windows.Media.GlyphRun> включает детали шрифта, такие как глиф <xref:System.Windows.Documents.Glyphs.Indices%2A> и отдельные позиции глифов. Он также включает в себя исходный [!INCLUDE[TLA#tla_unicode](../../../../includes/tlasharptla-unicode-md.md)] кодовые точки, был произведен запуск из сведения о сопоставлении смещения буфера символ — глиф и флаги каждого символа и глифа.  
+ <xref:System.Windows.Media.GlyphRun> включает детали шрифта, такие как глиф <xref:System.Windows.Documents.Glyphs.Indices%2A> и отдельные позиции глифов. Он также включает в себя исходный Unicode кодовые точки, был произведен запуск из сведения о сопоставлении смещения буфера символ — глиф и флаги каждого символа и глифа.  
   
  <xref:System.Windows.Media.GlyphRun> имеет соответствующий высокоуровневый <xref:System.Windows.FrameworkElement>, <xref:System.Windows.Documents.Glyphs>. <xref:System.Windows.Documents.Glyphs> может использоваться в дереве элементов и в XAML разметку, представляющую <xref:System.Windows.Media.GlyphRun> выходных данных.  
   

@@ -41,7 +41,7 @@ ms.locfileid: "59122867"
 |-debugSecurityZoneURL \<url>|Используется со значением URL для указания необходимости отладки PresentationHost.exe, как при развертывании из указанного URL. Это определяет как зону развертывания, так и исходный узел.|  
 |-embedding|Требуется для OLE. Если указан параметр `-event` или `-debug`, то не обязательно указывать параметр `-embedding`, поскольку он устанавливается внутренне.|  
 |-event \<eventname>|Открывает событие с указанным именем и сигнализирует ему при инициализации PresentationHost.exe и готовности к размещению содержимого WPF. Работа PresentationHost.exe будет прервана в случае ошибки при открытии события, например, если оно еще не создано.|  
-|-launchApplication \<url>|Запускает автономное приложение [!INCLUDE[ndptecclick](../../../../includes/ndptecclick-md.md)] с указанного URL-адреса. Internet Explorer и применяются политики безопасности WinINet приложений .NET.|  
+|-launchApplication \<url>|Запускает автономное приложение ClickOnce с указанного URL-адреса. Internet Explorer и применяются политики безопасности WinINet приложений .NET.|  
   
 ## <a name="scenarios"></a>Сценарии  
   

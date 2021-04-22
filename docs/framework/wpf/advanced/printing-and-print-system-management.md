@@ -13,7 +13,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59181757"
 ---
 # <a name="printing-and-print-system-management"></a>Печать и управление печатью
-[!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)] и Microsoft .NET Framework представить новый способ печати — альтернативы [!INCLUDE[TLA#tla_gdi](../../../../includes/tlasharptla-gdi-md.md)] печати и значительно расширенный набор управления системы печати API.  
+Windows Vista и Microsoft .NET Framework представить новый способ печати — альтернативы [!INCLUDE[TLA#tla_gdi](../../../../includes/tlasharptla-gdi-md.md)] печати и значительно расширенный набор управления системы печати API.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Общие сведения о печати](printing-overview.md)  

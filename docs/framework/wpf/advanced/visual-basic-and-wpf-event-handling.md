@@ -40,7 +40,7 @@ ms.locfileid: "59078028"
  Когда XAML компиляции страницы промежуточный файл объявляет `Friend` `WithEvents` ссылки на страницу, содержащую каждый элемент <xref:System.Windows.FrameworkContentElement.Name%2A> набор свойств (или [директива x: Name](../../xaml-services/x-name-directive.md) объявлен). Каждый именованный экземпляр является потенциальным элементом, который можно присвоить обработчику с помощью `Handles`.  
   
 > [!NOTE]
->  В [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] [!INCLUDE[TLA2#tla_intellisense](../../../../includes/tla2sharptla-intellisense-md.md)] может показать варианты завершения элементами, доступными для ссылки `Handles` на странице. Но для того чтобы промежуточный файл смог заполнить все ссылки `Friends`, может потребоваться один проход компиляции.  
+>  В Microsoft Visual Studio [!INCLUDE[TLA2#tla_intellisense](../../../../includes/tla2sharptla-intellisense-md.md)] может показать варианты завершения элементами, доступными для ссылки `Handles` на странице. Но для того чтобы промежуточный файл смог заполнить все ссылки `Friends`, может потребоваться один проход компиляции.  
   
 ## <a name="see-also"></a>См. также
 

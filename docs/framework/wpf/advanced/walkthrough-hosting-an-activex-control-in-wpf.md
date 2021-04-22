@@ -60,7 +60,7 @@ ms.locfileid: "59311505"
 9. Если в ответ на приглашение переименовать все ссылки, нажмите кнопку **Да**.
 
 ## <a name="creating-the-activex-control"></a>Создание элемента управления ActiveX
- [!INCLUDE[TLA#tla_visualstu](../../../../includes/tlasharptla-visualstu-md.md)] автоматически создает <xref:System.Windows.Forms.AxHost> класс-оболочку для [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] управления, когда элемент управления добавляется в рабочую область конструирования. В следующей процедуре создается управляемая сборка с именем AxInterop.WMPLib.dll.
+ Microsoft Visual Studio автоматически создает <xref:System.Windows.Forms.AxHost> класс-оболочку для [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] управления, когда элемент управления добавляется в рабочую область конструирования. В следующей процедуре создается управляемая сборка с именем AxInterop.WMPLib.dll.
 
 #### <a name="to-create-the-activex-control"></a>Чтобы создать элемент управления ActiveX
 

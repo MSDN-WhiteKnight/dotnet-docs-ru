@@ -61,13 +61,13 @@ Windows Presentation Foundation (WPF) предлагает широкий диа
   
  Архитектура пакета WPF лежит в основе ряда ключевых технологий:  
   
--   [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] документы, удовлетворяющие [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)].  
+-   XPS документы, удовлетворяющие [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)].  
   
 -   Документы открытого XML-формата Microsoft Office "12" (.docx).  
   
 -   Пользовательские форматы хранения для собственного приложения.  
   
- В зависимости от API упаковки, <xref:System.Windows.Xps.Packaging.XpsDocument> разработан специально для хранения WPF документов с фиксированным содержимым. <xref:System.Windows.Xps.Packaging.XpsDocument> Является полностью автономным документом, который можно открыть в средстве просмотра, отображаются в <xref:System.Windows.Controls.DocumentViewer> элемента управления, направляться в очередь печати или вывести непосредственно на [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)]-совместимого принтера.  
+ В зависимости от API упаковки, <xref:System.Windows.Xps.Packaging.XpsDocument> разработан специально для хранения WPF документов с фиксированным содержимым. <xref:System.Windows.Xps.Packaging.XpsDocument> Является полностью автономным документом, который можно открыть в средстве просмотра, отображаются в <xref:System.Windows.Controls.DocumentViewer> элемента управления, направляться в очередь печати или вывести непосредственно на XPS-совместимого принтера.  
   
  Следующие разделы содержат дополнительные сведения о <xref:System.IO.Packaging.Package> и <xref:System.Windows.Xps.Packaging.XpsDocument> API в состав WPF.  
   
@@ -123,15 +123,15 @@ Windows Presentation Foundation (WPF) предлагает широкий диа
   
 <a name="XPS_Documents"></a>   
 ## <a name="xps-documents"></a>XPS-документы  
- [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] документ является пакет, содержащий один или несколько фиксированных документов и все ресурсы и сведения, необходимые для подготовки к просмотру.  [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] также является собственным [!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)] формат файла очереди печати.  <xref:System.Windows.Xps.Packaging.XpsDocument> Хранится в стандартном наборе данных ZIP и может включать комбинацию XML и двоичных компонентов, таких как файлы изображений и шрифтов. [PackageRelationships](#PackageRelationships) используются для определения зависимостей между содержимым и ресурсами, необходимыми для полного отображения документа.  <xref:System.Windows.Xps.Packaging.XpsDocument> Подход обеспечивает единый, высококачественный документ решение, которое поддерживает многократного использования:  
+ [!INCLUDE[TLA#tla_xps](../../../../includes/tlasharptla-xps-md.md)] документ является пакет, содержащий один или несколько фиксированных документов и все ресурсы и сведения, необходимые для подготовки к просмотру.  XPS также является собственным Windows Vista формат файла очереди печати.  <xref:System.Windows.Xps.Packaging.XpsDocument> Хранится в стандартном наборе данных ZIP и может включать комбинацию XML и двоичных компонентов, таких как файлы изображений и шрифтов. [PackageRelationships](#PackageRelationships) используются для определения зависимостей между содержимым и ресурсами, необходимыми для полного отображения документа.  <xref:System.Windows.Xps.Packaging.XpsDocument> Подход обеспечивает единый, высококачественный документ решение, которое поддерживает многократного использования:  
   
 -   Чтение, запись и хранение содержимого и ресурсов документов фиксированного формата в одном портативном документе с возможностью удобного распространения.  
   
--   Отображение документов в приложении средства просмотра [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)].  
+-   Отображение документов в приложении средства просмотра XPS.  
   
--   Вывод документов в собственном формате вывода в очередь на печать [!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)].  
+-   Вывод документов в собственном формате вывода в очередь на печать Windows Vista.  
   
--   Перенаправление документов непосредственно на совместимый с [!INCLUDE[TLA2#tla_xps](../../../../includes/tla2sharptla-xps-md.md)] принтер.  
+-   Перенаправление документов непосредственно на совместимый с XPS принтер.  
   
 ## <a name="see-also"></a>См. также
 

@@ -19,10 +19,10 @@ ms.locfileid: "58412218"
 ---
 # <a name="extend-glass-frame-into-a-wpf-application"></a>Использование стеклянной рамки в приложении WPF
 
-В этом разделе показано, как расширить [!INCLUDE[TLA#tla_winvista](../../../../includes/tlasharptla-winvista-md.md)] стеклянную рамку на клиентскую область приложения Windows Presentation Foundation (WPF).
+В этом разделе показано, как расширить Windows Vista стеклянную рамку на клиентскую область приложения Windows Presentation Foundation (WPF).
 
 > [!NOTE]
-> Этот пример будет работать только на компьютере под управлением [!INCLUDE[TLA2#tla_winvista](../../../../includes/tla2sharptla-winvista-md.md)], где работает диспетчер окон рабочего стола (DWM) с включенным эффектом прозрачного стекла. [!INCLUDE[TLA2#tla_winvista](../../../../includes/tla2sharptla-winvista-md.md)] Home Basic edition не поддерживает эффект прозрачного стекла. Области, которые обычно отображаются с эффектом прозрачного стекла, в других выпусках [!INCLUDE[TLA2#tla_winvista](../../../../includes/tla2sharptla-winvista-md.md)] отображаются непрозрачными.
+> Этот пример будет работать только на компьютере под управлением Windows Vista, где работает диспетчер окон рабочего стола (DWM) с включенным эффектом прозрачного стекла. Windows Vista Home Basic edition не поддерживает эффект прозрачного стекла. Области, которые обычно отображаются с эффектом прозрачного стекла, в других выпусках Windows Vista отображаются непрозрачными.
 
 ## <a name="example"></a>Пример
 

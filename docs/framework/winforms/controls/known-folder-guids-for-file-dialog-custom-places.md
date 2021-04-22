@@ -14,13 +14,13 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59140235"
 ---
 # <a name="known-folder-guids-for-file-dialog-custom-places"></a>Известные GUID папок для пользовательских размещений, отображаемых в диалоговом окне открытия или сохранения файла
-Использовании <xref:System.Guid> для указания [!INCLUDE[wiprlhext](../../../../includes/wiprlhext-md.md)] известную папку при добавлении папок в <xref:System.Windows.Forms.FileDialog.CustomPlaces%2A> коллекции. Известные GUID папок не учитывается регистр и определены в файле KnownFolders.h в [!INCLUDE[winSDK](../../../../includes/winsdk-md.md)].  
+Использовании <xref:System.Guid> для указания Windows Vista известную папку при добавлении папок в <xref:System.Windows.Forms.FileDialog.CustomPlaces%2A> коллекции. Известные GUID папок не учитывается регистр и определены в файле KnownFolders.h в [!INCLUDE[winSDK](../../../../includes/winsdk-md.md)].  
   
 > [!NOTE]
 >  В некоторых случаях известную папку добавляемого <xref:System.Windows.Forms.FileDialogCustomPlacesCollection> не будет отображаться в **Избранные ссылки** области. Например если указанная известная папка отсутствует на компьютере, на котором выполняется приложение, известную папку не указывается.  
   
 ## <a name="list-of-guids"></a>Список идентификаторов GUID  
- В следующей таблице перечислены [!INCLUDE[wiprlhext](../../../../includes/wiprlhext-md.md)] известных папок и связанные с ними <xref:System.Guid>.  
+ В следующей таблице перечислены Windows Vista известных папок и связанные с ними <xref:System.Guid>.  
   
  AddNewPrograms  
  DE61D971-5EBC-4F02-A3A9-6C82895E5C04  

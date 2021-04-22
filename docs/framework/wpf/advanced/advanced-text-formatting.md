@@ -59,7 +59,7 @@ Windows Presentation Foundation (WPF) предоставляет набор на
   
 -   Суммарная ширина фрагментов текста превышает ширину строк, указанную в вызове для создания модуля форматирования текста или вызов модуля форматирования текста <xref:System.Windows.Media.TextFormatting.TextFormatter.FormatLine%2A> метод.  
   
--   Объект [!INCLUDE[TLA#tla_unicode](../../../../includes/tlasharptla-unicode-md.md)] возвращается последовательность новой строки, например «CF», «LF» или «CRLF,».  
+-   Объект Unicode возвращается последовательность новой строки, например «CF», «LF» или «CRLF,».  
   
 <a name="section4"></a>   
 ## <a name="providing-text-runs"></a>Предоставление фрагментов текста  
