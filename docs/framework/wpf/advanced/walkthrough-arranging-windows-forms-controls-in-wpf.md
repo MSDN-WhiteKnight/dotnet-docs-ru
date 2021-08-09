@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59338778"
 ---
 # <a name="walkthrough-arranging-windows-forms-controls-in-wpf"></a>Пошаговое руководство. Упорядочение элементов управления Windows Forms в WPF
-В этом пошаговом руководстве показано, как использовать WPF функции макета для размещения [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления в гибридном приложении.  
+В этом пошаговом руководстве показано, как использовать WPF функции макета для размещения Windows Forms элементов управления в гибридном приложении.  
   
  В данном пошаговом руководстве представлены следующие задачи.  
   
@@ -50,7 +50,7 @@ ms.locfileid: "59338778"
   
  Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [упорядочение Windows Forms в WPF образец](https://go.microsoft.com/fwlink/?LinkID=159971).  
   
- Когда вы закончите, вы получите представление о [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] возможности разметки в WPF-приложений на основе.  
+ Когда вы закончите, вы получите представление о Windows Forms возможности разметки в WPF-приложений на основе.  
   
 ## <a name="prerequisites"></a>Предварительные требования  
 
@@ -72,7 +72,7 @@ ms.locfileid: "59338778"
   
 3. Дважды щелкните файл MainWindow.xaml, чтобы открыть его в представлении XAML.  
   
-4. В <xref:System.Windows.Window> элемента, добавьте следующий [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] сопоставление пространства имен.  
+4. В <xref:System.Windows.Window> элемента, добавьте следующий Windows Forms сопоставление пространства имен.  
   
     ```xaml  
     xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
@@ -83,7 +83,7 @@ ms.locfileid: "59338778"
      [!code-xaml[WpfLayoutHostingWfWithXaml#2](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#2)]  
   
 ## <a name="using-default-layout-settings"></a>Использование параметров макета по умолчанию  
- По умолчанию <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент обрабатывает макет для размещаемого [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.  
+ По умолчанию <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент обрабатывает макет для размещаемого Windows Forms элемента управления.  
   
 #### <a name="to-use-default-layout-settings"></a>Использование параметров макета по умолчанию  
   
@@ -91,7 +91,7 @@ ms.locfileid: "59338778"
   
      [!code-xaml[WpfLayoutHostingWfWithXaml#3](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#3)]  
   
-2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]<xref:System.Windows.Forms.Button?displayProperty=nameWithType> Появился на <xref:System.Windows.Controls.Canvas>. Размещаемый элемент управления имеет размер в зависимости от содержимого и <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента изменяются, чтобы вместить размещаемый элемент управления.  
+2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Windows Forms<xref:System.Windows.Forms.Button?displayProperty=nameWithType> Появился на <xref:System.Windows.Controls.Canvas>. Размещаемый элемент управления имеет размер в зависимости от содержимого и <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента изменяются, чтобы вместить размещаемый элемент управления.  
   
 ## <a name="sizing-to-content"></a>Изменение размеров в зависимости от содержимого  
  <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент гарантирует, что размещенного элемента управления изменяется в соответствии с правильного отображения его содержимого.  
@@ -124,7 +124,7 @@ ms.locfileid: "59338778"
   
      [!code-xaml[WpfLayoutHostingWfWithXaml#6](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#6)]  
   
-2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент имеет значение размером 50 пикселей в ширину и 70 пикселей в высоту, которая меньше, чем параметры макета по умолчанию. Содержание [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] управления упорядочивается соответствующим образом.  
+2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент имеет значение размером 50 пикселей в ширину и 70 пикселей в высоту, которая меньше, чем параметры макета по умолчанию. Содержание Windows Forms управления упорядочивается соответствующим образом.  
   
 ## <a name="setting-layout-properties"></a>Установка свойств макета  
  Всегда значение связанные с макетом свойств размещаемого элемента управления с помощью свойства <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента. При установке свойств макета непосредственно для размещаемого элемента управления результат не будет соответствовать ожидаемому.  
@@ -169,7 +169,7 @@ ms.locfileid: "59338778"
 2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. <xref:System.Windows.Forms.Integration.WindowsFormsHost> Элемент закреплен на правой стороне <xref:System.Windows.Controls.DockPanel> элемент.
 
 ## <a name="setting-visibility"></a>Задание видимости
- Можно сделать ваши [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] управления невидимым или свернуть его, задав <xref:System.Windows.UIElement.Visibility%2A> свойство <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент. Если элемент управления невидим, он не отображается, но при этом занимает пространство разметки. Если элемент управления свернут, он не отображается и не занимает пространство разметки.
+ Можно сделать ваши Windows Forms управления невидимым или свернуть его, задав <xref:System.Windows.UIElement.Visibility%2A> свойство <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент. Если элемент управления невидим, он не отображается, но при этом занимает пространство разметки. Если элемент управления свернут, он не отображается и не занимает пространство разметки.
 
 #### <a name="to-set-the-visibility-of-a-hosted-control"></a>Задание видимости размещаемого элемента управления
 
@@ -186,10 +186,10 @@ ms.locfileid: "59338778"
 
 4. Нажмите кнопку **щелкните, чтобы сделать невидимыми** кнопку, чтобы <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент невидимым.
 
-5. Нажмите кнопку **щелкните, чтобы свернуть** кнопку, чтобы скрыть <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента из макета полностью. Когда [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемент управления свернут, соседние элементы переупорядочиваются, чтобы занять его место.
+5. Нажмите кнопку **щелкните, чтобы свернуть** кнопку, чтобы скрыть <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемента из макета полностью. Когда Windows Forms элемент управления свернут, соседние элементы переупорядочиваются, чтобы занять его место.
 
 ## <a name="hosting-a-control-that-does-not-stretch"></a>Размещение нерастягиваемых элементов управления
- Некоторые [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементы управления имеют фиксированный размер и не растягиваются для заполнения доступного пространства в макете. Например <xref:System.Windows.Forms.MonthCalendar> элемент управления отображает месяц в фиксированном пространстве.
+ Некоторые Windows Forms элементы управления имеют фиксированный размер и не растягиваются для заполнения доступного пространства в макете. Например <xref:System.Windows.Forms.MonthCalendar> элемент управления отображает месяц в фиксированном пространстве.
 
 #### <a name="to-host-a-control-that-does-not-stretch"></a>Размещение нерастягиваемого элемента управления
 
@@ -224,7 +224,7 @@ ms.locfileid: "59338778"
 2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Размещаемый элемент управления не повернут, но его соседние элементы повернуты на угол в 180 градусов. Для отображения элементов может потребоваться изменить размер окна.
 
 ## <a name="setting-padding-and-margins"></a>Задание отбивки и внутренних полей
- Отступы и рамки в WPF макета похожи на свои аналоги в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]. Просто задайте <xref:System.Windows.Controls.Control.Padding%2A> и <xref:System.Windows.FrameworkElement.Margin%2A> свойства <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент.
+ Отступы и рамки в WPF макета похожи на свои аналоги в Windows Forms. Просто задайте <xref:System.Windows.Controls.Control.Padding%2A> и <xref:System.Windows.FrameworkElement.Margin%2A> свойства <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент.
 
 #### <a name="to-set-padding-and-margins-for-a-hosted-control"></a>Задание отбивки и внутренних полей размещаемого элемента управления
 
@@ -233,10 +233,10 @@ ms.locfileid: "59338778"
      [!code-xaml[WpfLayoutHostingWfWithXaml#14](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#14)]
     [!code-xaml[WpfLayoutHostingWfWithXaml#15](~/samples/snippets/csharp/VS_Snippets_Wpf/WpfLayoutHostingWfWithXaml/CSharp/Window1.xaml#15)]
 
-2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Параметры Отбивки и внутренних полей будут применены к размещаемым [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления таким же образом, они будут применяться в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)].
+2. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его. Параметры Отбивки и внутренних полей будут применены к размещаемым Windows Forms элементов управления таким же образом, они будут применяться в Windows Forms.
 
 ## <a name="using-dynamic-layout-containers"></a>Использование динамических контейнеров макета
- [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] предоставляет два динамических контейнера макета, <xref:System.Windows.Forms.FlowLayoutPanel> и <xref:System.Windows.Forms.TableLayoutPanel>. Можно также использовать эти контейнеры в WPF макетов.
+ Windows Forms предоставляет два динамических контейнера макета, <xref:System.Windows.Forms.FlowLayoutPanel> и <xref:System.Windows.Forms.TableLayoutPanel>. Можно также использовать эти контейнеры в WPF макетов.
 
 #### <a name="to-use-a-dynamic-layout-container"></a>Использование динамических контейнеров макета
 

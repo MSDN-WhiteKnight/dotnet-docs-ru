@@ -14,11 +14,11 @@ ms.locfileid: "59329301"
 ---
 # <a name="walkthrough-localizing-a-hybrid-application"></a>Пошаговое руководство. Локализация гибридного приложения
 
-В этом пошаговом руководстве показано, как локализовать WPF элементов в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]-гибридные приложения на основе.
+В этом пошаговом руководстве показано, как локализовать WPF элементов в Windows Forms-гибридные приложения на основе.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
--   Создание [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] узла проекта.
+-   Создание Windows Forms узла проекта.
 
 -   Добавление локализуемого содержимого.
 
@@ -40,7 +40,7 @@ ms.locfileid: "59329301"
 
 ## <a name="creating-the-windows-forms-host-project"></a>Создание ведущего проекта Windows Forms
 
-Первым шагом является создание [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] приложения проекта и добавьте WPF элемент содержимого, которое будет локализовано.
+Первым шагом является создание Windows Forms приложения проекта и добавьте WPF элемент содержимого, которое будет локализовано.
 
 ### <a name="to-create-the-host-project"></a>Создание ведущего проекта
 
@@ -52,7 +52,7 @@ ms.locfileid: "59329301"
 
 ## <a name="adding-localizable-content"></a>Добавление локализуемого содержимого
 
-Далее вы добавите [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] метки элемента управления и задайте WPF содержимое элемента Локализованная строка.
+Далее вы добавите Windows Forms метки элемента управления и задайте WPF содержимое элемента Локализованная строка.
 
 ### <a name="to-add-localizable-content"></a>Добавление локализуемого содержимого
 

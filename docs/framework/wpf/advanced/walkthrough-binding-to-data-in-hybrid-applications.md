@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59300870"
 ---
 # <a name="walkthrough-binding-to-data-in-hybrid-applications"></a>Пошаговое руководство. Привязка к данным в гибридных приложениях
-Привязка источника данных к элементу управления необходима для предоставления пользователям доступа к базовым данным независимо от используемой [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] или WPF. В этом пошаговом руководстве показано, как можно использовать привязку данных в гибридных приложениях, которые включают [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] и WPF элементов управления.  
+Привязка источника данных к элементу управления необходима для предоставления пользователям доступа к базовым данным независимо от используемой Windows Forms или WPF. В этом пошаговом руководстве показано, как можно использовать привязку данных в гибридных приложениях, которые включают Windows Forms и WPF элементов управления.  
   
  В данном пошаговом руководстве представлены следующие задачи.  
   
@@ -59,7 +59,7 @@ ms.locfileid: "59300870"
   
 3. Откройте файл MainWindow.xaml в [!INCLUDE[wpfdesigner_current_short](../../../../includes/wpfdesigner-current-short-md.md)].  
   
-4. В <xref:System.Windows.Window> элемента, добавьте следующий [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] сопоставление пространств имен.  
+4. В <xref:System.Windows.Window> элемента, добавьте следующий Windows Forms сопоставление пространств имен.  
   
     ```xaml  
     xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
@@ -107,7 +107,7 @@ ms.locfileid: "59300870"
      [!code-xaml[WPFWithWFAndDatabinding#6](~/samples/snippets/csharp/VS_Snippets_Wpf/WPFWithWFAndDatabinding/CSharp/WPFWithWFAndDatabinding/Window1.xaml#6)]  
   
 ## <a name="displaying-data-by-using-interoperation"></a>Отображение данных с помощью взаимодействия  
- Заказы, соответствующие выбранному клиенту, отображаются в <xref:System.Windows.Forms.DataGridView?displayProperty=nameWithType> управления с именем `dataGridView1`. `dataGridView1` Привязке элемента управления к источнику данных в файле кода. Объект <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент управления является родительский элемент данного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.  
+ Заказы, соответствующие выбранному клиенту, отображаются в <xref:System.Windows.Forms.DataGridView?displayProperty=nameWithType> управления с именем `dataGridView1`. `dataGridView1` Привязке элемента управления к источнику данных в файле кода. Объект <xref:System.Windows.Forms.Integration.WindowsFormsHost> элемент управления является родительский элемент данного Windows Forms элемента управления.  
   
 #### <a name="to-display-data-in-the-datagridview-control"></a>Чтобы отобразить данные в элементе управления DataGridView, выполните следующие действия.  
   

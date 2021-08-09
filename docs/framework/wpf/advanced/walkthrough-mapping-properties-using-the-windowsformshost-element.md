@@ -17,7 +17,7 @@ ms.locfileid: "59296528"
 ---
 # <a name="walkthrough-mapping-properties-using-the-windowsformshost-element"></a>Пошаговое руководство. Сопоставление свойств с помощью элемента WindowsFormsHost
 
-В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.WindowsFormsHost.PropertyMap%2A> свойства для сопоставления WPF свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.WindowsFormsHost.PropertyMap%2A> свойства для сопоставления WPF свойств с соответствующими свойствами вложенного Windows Forms элемента управления.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -35,7 +35,7 @@ ms.locfileid: "59296528"
 
 Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [сопоставления свойств с помощью образец элемента WindowsFormsHost](https://go.microsoft.com/fwlink/?LinkID=160019).
 
-Когда вы закончите, можно сопоставить WPF свойств с соответствующими свойствами вложенного [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+Когда вы закончите, можно сопоставить WPF свойств с соответствующими свойствами вложенного Windows Forms элемента управления.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -53,7 +53,7 @@ ms.locfileid: "59296528"
 
 ## <a name="defining-the-application-layout"></a>Определение макета приложения
 
-WPF-Основе приложением <xref:System.Windows.Forms.Integration.WindowsFormsHost> для размещения элемента [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления.
+WPF-Основе приложением <xref:System.Windows.Forms.Integration.WindowsFormsHost> для размещения элемента Windows Forms элемента управления.
 
 ### <a name="to-define-the-application-layout"></a>Определение макета приложения
 
@@ -83,7 +83,7 @@ WPF-Основе приложением <xref:System.Windows.Forms.Integration.W
 
      `AddClipMapping` Метод добавляет новое сопоставление для <xref:System.Windows.UIElement.Clip%2A> свойство.
 
-     `OnClipChange` Метод преобразует <xref:System.Windows.UIElement.Clip%2A> свойства [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]<xref:System.Windows.Forms.Control.Region%2A> свойство.
+     `OnClipChange` Метод преобразует <xref:System.Windows.UIElement.Clip%2A> свойства Windows Forms<xref:System.Windows.Forms.Control.Region%2A> свойство.
 
      `Window1_SizeChanged` Метод обрабатывает окна <xref:System.Windows.FrameworkElement.SizeChanged> событий и изменяет размер отсеченной области по размеру окна приложения.
 
@@ -113,7 +113,7 @@ WPF-Основе приложением <xref:System.Windows.Forms.Integration.W
 
      `ReplaceFlowDirectionMapping` Метод заменяет сопоставление по умолчанию для <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойство.
 
-     `OnFlowDirectionChange` Метод преобразует <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойства [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]<xref:System.Windows.Forms.Control.RightToLeft%2A> свойство.
+     `OnFlowDirectionChange` Метод преобразует <xref:System.Windows.FrameworkElement.FlowDirection%2A> свойства Windows Forms<xref:System.Windows.Forms.Control.RightToLeft%2A> свойство.
 
      `cb_CheckedChanged` Метод обрабатывает <xref:System.Windows.Forms.CheckBox.CheckedChanged> событий на <xref:System.Windows.Forms.CheckBox> элемента управления. Он назначает <xref:System.Windows.FrameworkElement.FlowDirection%2A> значение в зависимости от значения <xref:System.Windows.Forms.CheckBox.CheckState%2A> свойство
 
@@ -145,7 +145,7 @@ WPF-Основе приложением <xref:System.Windows.Forms.Integration.W
 
      `WindowLoaded` Метод обрабатывает <xref:System.Windows.FrameworkElement.Loaded> событий и выполнения следующей инициализации.
 
-    -   Создает [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]<xref:System.Windows.Forms.CheckBox> элемента управления.
+    -   Создает Windows Forms<xref:System.Windows.Forms.CheckBox> элемента управления.
 
     -   Вызывает методы, ранее определенные в руководстве, для настройки сопоставлений свойств.
 

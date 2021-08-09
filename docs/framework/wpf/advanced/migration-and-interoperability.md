@@ -32,10 +32,10 @@ ms.locfileid: "57366625"
   
 |Термин|Определение|  
 |----------|----------------|  
-|<xref:System.Windows.Forms.Integration.WindowsFormsHost>|Элемент, который можно использовать для размещения [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] управления как элемент WPF страницы.|  
-|<xref:System.Windows.Forms.Integration.ElementHost>|Объект [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления, который можно использовать для размещения Windows Presentation Foundation (WPF) элемента управления.|  
-|<xref:System.Windows.Interop.HwndSource>|Узлы WPF регионом в пределах [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] приложения.|  
-|<xref:System.Windows.Interop.HwndHost>|Базовый класс для <xref:System.Windows.Forms.Integration.WindowsFormsHost>, определяет базовые возможности, все технологии на основе HWND использовать, если они размещаются в WPF приложения. Подкласс это для размещения [!INCLUDE[TLA2#tla_win32](../../../../includes/tla2sharptla-win32-md.md)] окна WPF приложения.|  
+|<xref:System.Windows.Forms.Integration.WindowsFormsHost>|Элемент, который можно использовать для размещения Windows Forms управления как элемент WPF страницы.|  
+|<xref:System.Windows.Forms.Integration.ElementHost>|Объект Windows Forms элемента управления, который можно использовать для размещения Windows Presentation Foundation (WPF) элемента управления.|  
+|<xref:System.Windows.Interop.HwndSource>|Узлы WPF регионом в пределах Win32 приложения.|  
+|<xref:System.Windows.Interop.HwndHost>|Базовый класс для <xref:System.Windows.Forms.Integration.WindowsFormsHost>, определяет базовые возможности, все технологии на основе HWND использовать, если они размещаются в WPF приложения. Подкласс это для размещения Win32 окна WPF приложения.|  
 |<xref:System.Windows.Interop.BrowserInteropHelper>|Вспомогательный класс для условий отчетности среды браузера для WPF приложения, размещенного в браузере.|  
   
 ## <a name="related-sections"></a>Связанные разделы

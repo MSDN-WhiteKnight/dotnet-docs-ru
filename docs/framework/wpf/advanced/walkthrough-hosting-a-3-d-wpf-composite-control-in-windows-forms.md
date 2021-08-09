@@ -17,9 +17,9 @@ ms.locfileid: "59330172"
 ---
 # <a name="walkthrough-hosting-a-3-d-wpf-composite-control-in-windows-forms"></a>Пошаговое руководство. Размещение составного трехмерного элемента управления WPF в форме Windows Forms
 
-В этом пошаговом руководстве показано, как создать WPF составного элемента управления и его размещения в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления и форм с помощью <xref:System.Windows.Forms.Integration.ElementHost> элемента управления.
+В этом пошаговом руководстве показано, как создать WPF составного элемента управления и его размещения в Windows Forms элементов управления и форм с помощью <xref:System.Windows.Forms.Integration.ElementHost> элемента управления.
 
-В этом пошаговом руководстве будет реализовано WPF <xref:System.Windows.Controls.UserControl> , содержащий два дочерних элемента управления. <xref:System.Windows.Controls.UserControl> Отображает трехмерного конуса (трехмерная). Отрисовка трехмерных объектов стал гораздо проще благодаря WPF чем с [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)]. Таким образом, имеет смысл для размещения WPF <xref:System.Windows.Controls.UserControl> класса для создания трехмерной графики в [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)].
+В этом пошаговом руководстве будет реализовано WPF <xref:System.Windows.Controls.UserControl> , содержащий два дочерних элемента управления. <xref:System.Windows.Controls.UserControl> Отображает трехмерного конуса (трехмерная). Отрисовка трехмерных объектов стал гораздо проще благодаря WPF чем с Windows Forms. Таким образом, имеет смысл для размещения WPF <xref:System.Windows.Controls.UserControl> класса для создания трехмерной графики в Windows Forms.
 
 В данном пошаговом руководстве представлены следующие задачи.
 

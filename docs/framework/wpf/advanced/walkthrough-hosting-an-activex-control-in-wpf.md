@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59311505"
 ---
 # <a name="walkthrough-hosting-an-activex-control-in-wpf"></a>Пошаговое руководство. Размещение элемента управления ActiveX в приложении WPF
-Для улучшенного взаимодействия с браузерами, можно использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей WPF-приложения на основе. В этом пошаговом руководстве показано, как разместить [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] как элемент управления на WPF страницы.
+Для улучшенного взаимодействия с браузерами, можно использовать Microsoft ActiveX элементов управления в вашей WPF-приложения на основе. В этом пошаговом руководстве показано, как разместить [!INCLUDE[TLA#tla_wmp](../../../../includes/tlasharptla-wmp-md.md)] как элемент управления на WPF страницы.
 
  В данном пошаговом руководстве представлены следующие задачи.
 
@@ -26,7 +26,7 @@ ms.locfileid: "59311505"
 
 -   Размещение элемента управления ActiveX на странице WPF.
 
- После завершения этого пошагового руководства вы узнаете, как использовать [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] элементов управления в вашей WPF-приложения на основе.
+ После завершения этого пошагового руководства вы узнаете, как использовать Microsoft ActiveX элементов управления в вашей WPF-приложения на основе.
 
 ## <a name="prerequisites"></a>Предварительные требования
  Ниже приведены компоненты, необходимые для выполнения данного пошагового руководства.
@@ -60,7 +60,7 @@ ms.locfileid: "59311505"
 9. Если в ответ на приглашение переименовать все ссылки, нажмите кнопку **Да**.
 
 ## <a name="creating-the-activex-control"></a>Создание элемента управления ActiveX
- Microsoft Visual Studio автоматически создает <xref:System.Windows.Forms.AxHost> класс-оболочку для [!INCLUDE[TLA#tla_actx](../../../../includes/tlasharptla-actx-md.md)] управления, когда элемент управления добавляется в рабочую область конструирования. В следующей процедуре создается управляемая сборка с именем AxInterop.WMPLib.dll.
+ Microsoft Visual Studio автоматически создает <xref:System.Windows.Forms.AxHost> класс-оболочку для Microsoft ActiveX управления, когда элемент управления добавляется в рабочую область конструирования. В следующей процедуре создается управляемая сборка с именем AxInterop.WMPLib.dll.
 
 #### <a name="to-create-the-activex-control"></a>Чтобы создать элемент управления ActiveX
 
@@ -82,7 +82,7 @@ ms.locfileid: "59311505"
 
 2. Добавьте ссылку на сборку WindowsFormsIntegration с именем WindowsFormsIntegration.dll.
 
-3. Добавьте ссылку на [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] сборку, которая называется System.Windows.Forms.dll.
+3. Добавьте ссылку на Windows Forms сборку, которая называется System.Windows.Forms.dll.
 
 4. Откройте файл MainWindow.xaml в конструкторе WPF.
 

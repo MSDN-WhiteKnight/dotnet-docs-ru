@@ -16,9 +16,9 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59323607"
 ---
 # <a name="how-to-enable-visual-styles-in-a-hybrid-application"></a>Практическое руководство. Включение визуальных стилей в гибридном приложении
-В этом разделе показано, как включить [!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)] визуальные стили на [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] размещение элементов управления в WPF-приложения на основе.  
+В этом разделе показано, как включить Microsoft Windows XP визуальные стили на Windows Forms размещение элементов управления в WPF-приложения на основе.  
   
- Если приложение вызывает <xref:System.Windows.Forms.Application.EnableVisualStyles%2A> метод, большая часть вашей [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементы управления будут автоматически использовать визуальные стили, если приложение запускается на компьютере [!INCLUDE[TLA#tla_winxp](../../../../includes/tlasharptla-winxp-md.md)]. Дополнительные сведения см. в разделе [отображение элементов управления с использованием стилей оформления](../../winforms/controls/rendering-controls-with-visual-styles.md).  
+ Если приложение вызывает <xref:System.Windows.Forms.Application.EnableVisualStyles%2A> метод, большая часть вашей Windows Forms элементы управления будут автоматически использовать визуальные стили, если приложение запускается на компьютере Microsoft Windows XP. Дополнительные сведения см. в разделе [отображение элементов управления с использованием стилей оформления](../../winforms/controls/rendering-controls-with-visual-styles.md).  
   
  Полный пример кода для задач, приведенных в этом разделе, см. в разделе [включения визуальных стилей в пример гибридного приложения](https://go.microsoft.com/fwlink/?LinkID=159986).  
   
@@ -51,7 +51,7 @@ ms.locfileid: "59323607"
   
 9. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его.  
   
-     [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] Элемент управления отрисовывается с использованием стилей оформления.  
+     Windows Forms Элемент управления отрисовывается с использованием стилей оформления.  
   
 ## <a name="disabling-windows-forms-visual-styles"></a>Отключение визуальных стилей Windows Forms  
  Чтобы отключить визуальные стили, просто удалите вызов <xref:System.Windows.Forms.Application.EnableVisualStyles%2A> метод.  
@@ -64,7 +64,7 @@ ms.locfileid: "59323607"
   
 3. Нажмите клавишу F5, чтобы выполнить сборку приложения и запустить его.  
   
-     [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] Элемент управления отрисовывается с системным стилем по умолчанию.  
+     Windows Forms Элемент управления отрисовывается с системным стилем по умолчанию.  
   
 ## <a name="see-also"></a>См. также
 

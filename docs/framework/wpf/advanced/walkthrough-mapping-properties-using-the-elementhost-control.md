@@ -17,7 +17,7 @@ ms.locfileid: "59300922"
 ---
 # <a name="walkthrough-mapping-properties-using-the-elementhost-control"></a>Пошаговое руководство. Сопоставление свойств с помощью элемента управления ElementHost
 
-В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.ElementHost.PropertyMap%2A> свойства для сопоставления [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими свойствами вложенного WPF элемент.
+В этом пошаговом руководстве показано, как использовать <xref:System.Windows.Forms.Integration.ElementHost.PropertyMap%2A> свойства для сопоставления Windows Forms свойств с соответствующими свойствами вложенного WPF элемент.
 
 В данном пошаговом руководстве представлены следующие задачи.
 
@@ -31,7 +31,7 @@ ms.locfileid: "59300922"
 
 Полный пример кода для задач, приведенных в этом пошаговом руководстве, см. в разделе [сопоставления свойств с помощью пример элемента управления ElementHost](https://go.microsoft.com/fwlink/?LinkID=160018).
 
-Когда вы закончите, можно сопоставить [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] свойств с соответствующими WPF свойства элемента.
+Когда вы закончите, можно сопоставить Windows Forms свойств с соответствующими WPF свойства элемента.
 
 ## <a name="prerequisites"></a>Предварительные требования
 

@@ -16,9 +16,9 @@ ms.locfileid: "59311920"
 ---
 # <a name="walkthrough-hosting-a-windows-forms-control-in-wpf"></a>Пошаговое руководство. Размещение элементов управления Windows Forms в WPF
 
-WPF предоставляет множество элементов управления с богатым набором функций. Тем не менее, иногда можно использовать [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления в вашей WPF страниц. Например, может получить значительные преимущества в существующих [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элементов управления, или имеете [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] элемента управления, предоставляющий уникальную функциональность.
+WPF предоставляет множество элементов управления с богатым набором функций. Тем не менее, иногда можно использовать Windows Forms элементов управления в вашей WPF страниц. Например, может получить значительные преимущества в существующих Windows Forms элементов управления, или имеете Windows Forms элемента управления, предоставляющий уникальную функциональность.
 
-В этом пошаговом руководстве показано, как разместить [!INCLUDE[TLA#tla_winforms](../../../../includes/tlasharptla-winforms-md.md)] <xref:System.Windows.Forms.MaskedTextBox?displayProperty=nameWithType> управления WPF страницы с помощью кода.
+В этом пошаговом руководстве показано, как разместить Windows Forms <xref:System.Windows.Forms.MaskedTextBox?displayProperty=nameWithType> управления WPF страницы с помощью кода.
 
 Полный пример кода для задач, демонстрируемых в этом пошаговом руководстве, см. в разделе [размещение элемента управления Windows Forms в WPF](https://go.microsoft.com/fwlink/?LinkID=160057).
 
