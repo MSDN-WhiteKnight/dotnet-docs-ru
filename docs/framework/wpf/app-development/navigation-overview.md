@@ -140,9 +140,9 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
 
 <a name="ConfiguringAXAMLPage"></a>   
 ### <a name="configuring-the-host-windows-title-width-and-height"></a>Настройка заголовка, ширины и высоты основного окна  
- Одно дело, вы могли заметить в предыдущем примере — что заголовком как браузера, так и панели вкладок является URI для XBAP. Заголовок не только длинный, но также не является ни привлекательным, ни информативным. По этой причине <xref:System.Windows.Controls.Page> предлагает способ для изменения заголовка, задав <xref:System.Windows.Controls.Page.WindowTitle%2A> свойство. Кроме того, можно настроить ширину и высоту окна браузера, задав <xref:System.Windows.Controls.Page.WindowWidth%2A> и <xref:System.Windows.Controls.Page.WindowHeight%2A>, соответственно.  
+ Одна деталь, которую вы могли заметить в предыдущем примере — то, что заголовком как браузера, так и панели вкладок является URI XBAP. Этот заголовок не только слишком длинный, но также он не является ни привлекательным, ни информативным. По этой причине <xref:System.Windows.Controls.Page> предлагает способ для изменения заголовка заданием свойства <xref:System.Windows.Controls.Page.WindowTitle%2A>. Кроме того, можно настроить ширину и высоту окна браузера, задав свойства <xref:System.Windows.Controls.Page.WindowWidth%2A> и <xref:System.Windows.Controls.Page.WindowHeight%2A>, соответственно.  
   
- <xref:System.Windows.Controls.Page.WindowTitle%2A>, <xref:System.Windows.Controls.Page.WindowWidth%2A>, и <xref:System.Windows.Controls.Page.WindowHeight%2A> можно задать декларативно в разметке, как показано в следующем примере.  
+ Свойства <xref:System.Windows.Controls.Page.WindowTitle%2A>, <xref:System.Windows.Controls.Page.WindowWidth%2A>, и <xref:System.Windows.Controls.Page.WindowHeight%2A> можно задать декларативно в разметке, как показано в следующем примере.  
   
  [!code-xaml[NavigationOverviewSnippets#HomePageMARKUP](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/HomePage.xaml#homepagemarkup)]  
   
@@ -152,74 +152,74 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
   
 <a name="NavigatingBetweenXAMLPages"></a>   
 ### <a name="hyperlink-navigation"></a>Переход по гиперссылке  
- Типичный XBAP состоит из нескольких страниц. Самый простой способ перехода от одной страницы к другой — для использования <xref:System.Windows.Documents.Hyperlink>. Можно декларативно добавить <xref:System.Windows.Documents.Hyperlink> для <xref:System.Windows.Controls.Page> с помощью `Hyperlink` элемент, который показан в следующем примере разметки.  
+ Типичный XBAP состоит из нескольких страниц. Самый простой способ перехода от одной страницы к другой — использование <xref:System.Windows.Documents.Hyperlink>. Можно декларативно добавить <xref:System.Windows.Documents.Hyperlink> на <xref:System.Windows.Controls.Page> с помощью элемента `Hyperlink`, который показан в следующем примере разметки.  
   
  [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml1)]  
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml2)]  
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML3](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml3)]  
   
- Объект `Hyperlink` элемент требует следующего:  
+ Объект `Hyperlink` требует следующего:  
   
--   Пакет URI из <xref:System.Windows.Controls.Page> для перехода, определяемом параметрами `NavigateUri` атрибута.  
+-   Pack URI <xref:System.Windows.Controls.Page> для перехода, определяемый атрибутом `NavigateUri`.  
   
--   Содержимого, что пользователь может щелкнуть для инициации перехода, например текст и изображения (для содержимого, `Hyperlink` элемент может содержать, см. в разделе <xref:System.Windows.Documents.Hyperlink>).  
+-   Содержимого, которое пользователь может щелкнуть для осуществления перехода, например текст и изображения (перечень содержимого, которое может содержать `Hyperlink`, см. в разделе <xref:System.Windows.Documents.Hyperlink>).
   
- На следующем рисунке показан XBAP с <xref:System.Windows.Controls.Page> с <xref:System.Windows.Documents.Hyperlink>.  
+ На следующем рисунке показан XBAP с <xref:System.Windows.Controls.Page>, на которую добавлен <xref:System.Windows.Documents.Hyperlink>.  
   
  ![Страница с гиперссылкой](./media/navigation-overview/xbap-with-a-page-with-a-hyperlink.png "это показывает, приложение XBAP, страница с гиперссылкой.")  
   
- Как и следовало ожидать, щелкнув <xref:System.Windows.Documents.Hyperlink> вызывает XBAP для перехода к <xref:System.Windows.Controls.Page> , определяемому `NavigateUri` атрибута. Кроме того XBAP добавляет запись для предыдущего <xref:System.Windows.Controls.Page> в список последних страниц в Internet Explorer. Это показано на следующем рисунке.  
+ Как и следовало ожидать, щелчок по <xref:System.Windows.Documents.Hyperlink> вызывает в XBAP переход к <xref:System.Windows.Controls.Page>, определяемому атрибутом `NavigateUri`. Кроме того, XBAP добавляет запись для предыдущего <xref:System.Windows.Controls.Page> в список последних страниц в Internet Explorer. Это показано на следующем рисунке.  
   
- !["И" Назад кнопки](./media/navigation-overview/back-and-forward-navigation.png "Навигация с помощью кнопок Назад и вперед.")  
+ ![Кнопка Назад в Internet Explorer](./media/navigation-overview/back-and-forward-navigation.png "Навигация с помощью кнопок Назад и вперед.")  
   
- Помимо поддержки перехода от одного <xref:System.Windows.Controls.Page> в другую, <xref:System.Windows.Documents.Hyperlink> также поддерживает переход к фрагменту.  
+ Помимо поддержки перехода от одного <xref:System.Windows.Controls.Page> к другой, <xref:System.Windows.Documents.Hyperlink> также поддерживает переход к фрагменту.  
   
 <a name="FragmentNavigation"></a>   
 ### <a name="fragment-navigation"></a>Переход к фрагменту  
- *Переход к фрагменту* — это переход к фрагменту содержимого в любом текущего <xref:System.Windows.Controls.Page> или другой <xref:System.Windows.Controls.Page>. В WPF, фрагмент содержимого представляет собой данные, содержащиеся в именованном элементе. Именованный элемент — элемент, имеющий его `Name` набором атрибутов. В следующей разметке показан именованный `TextBlock` элемент, содержащий фрагмент содержимого.  
+ *Переход к фрагменту* — это переход к фрагменту содержимого на текущей или другой <xref:System.Windows.Controls.Page>. В WPF, фрагмент содержимого представляет собой данные, содержащиеся в именованном элементе. Именованный элемент — это элемент, имеющий атрибут `Name`. В следующей разметке показан именованный `TextBlock`, содержащий фрагмент содержимого.  
   
  [!code-xaml[NavigationOverviewSnippets#PageWithContentFragmentsMARKUP1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithFragments.xaml#pagewithcontentfragmentsmarkup1)]  
 [!code-xaml[NavigationOverviewSnippets#PageWithContentFragmentsMARKUP2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithFragments.xaml#pagewithcontentfragmentsmarkup2)]  
 [!code-xaml[NavigationOverviewSnippets#PageWithContentFragmentsMARKUP3](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithFragments.xaml#pagewithcontentfragmentsmarkup3)]  
   
- Для <xref:System.Windows.Documents.Hyperlink> для перехода к фрагменту содержимого `NavigateUri` атрибут должен содержать следующее:  
+ Для перехода к фрагменту атрибут `NavigateUri` элемента <xref:System.Windows.Documents.Hyperlink> должен содержать следующее:  
   
--   URI Из <xref:System.Windows.Controls.Page> с для перехода к фрагменту содержимого.  
+-   URI <xref:System.Windows.Controls.Page>, к фрагменту содержимого которой нужно перейти.  
   
 -   Символ "#".  
   
--   Имя элемента на <xref:System.Windows.Controls.Page> , включающего фрагмент содержимого.  
+-   Имя элемента на <xref:System.Windows.Controls.Page>, включающего фрагмент содержимого.  
   
  Фрагмент URI имеет следующий формат.  
   
  *URI_страницы* `#` *имя_элемента*.  
   
- Ниже приведен пример `Hyperlink` , настроенной на переход к фрагменту содержимого.  
+ Ниже приведен пример `Hyperlink`, настроенной на переход к фрагменту содержимого.  
   
  [!code-xaml[NavigationOverviewSnippets#PageThatNavigatesXAML1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageThatNavigatesToFragment.xaml#pagethatnavigatesxaml1)]  
 [!code-xaml[NavigationOverviewSnippets#PageThatNavigatesXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageThatNavigatesToFragment.xaml#pagethatnavigatesxaml2)]  
 [!code-xaml[NavigationOverviewSnippets#PageThatNavigatesXAML3](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageThatNavigatesToFragment.xaml#pagethatnavigatesxaml3)]  
   
 > [!NOTE]
->  В этом разделе описывается реализация переходов фрагмента по умолчанию в WPF. WPF Кроме того, позволяет реализовать собственную схему переходов фрагмента, которая отчасти требует обработки <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=nameWithType> событий.  
+>  В этом разделе описывается реализация переходов фрагмента по умолчанию в WPF. WPF, кроме того, позволяет реализовать собственную схему переходов фрагмента, которая, в частности,  требует обработки событий <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=nameWithType>.  
   
 > [!IMPORTANT]
->  Вы можете перейти к фрагментам на свободных XAML страниц (только для разметки XAML файлы с `Page` как корневой элемент) только в том случае, если страницы можно просмотреть с помощью [!INCLUDE[TLA2#tla_http](../../../../includes/tla2sharptla-http-md.md)].  
->   
->  Тем не менее свободный XAML страницу можно перейти к своим собственным фрагментам.  
+>  Вы можете перейти к фрагментам на свободных XAML-страницах (только для разметки XAML с корневым элементом `Page`) только в том случае, если эти страницы доступны через [!INCLUDE[TLA2#tla_http](../../../../includes/tla2sharptla-http-md.md)].  
+>  
+>  Тем не менее, свободная XAML-страница может переходить к своим собственным фрагментам.
   
 <a name="NavigationService"></a>   
 ### <a name="navigation-service"></a>Служба переходов  
- Хотя <xref:System.Windows.Documents.Hyperlink> позволяет пользователю инициировать переход к конкретному <xref:System.Windows.Controls.Page>, работа по поиску и загрузке страницы выполняется с <xref:System.Windows.Navigation.NavigationService> класса. По сути <xref:System.Windows.Navigation.NavigationService> предоставляет возможность обработки запроса перехода со стороны клиентского кода, такие как <xref:System.Windows.Documents.Hyperlink>. Кроме того <xref:System.Windows.Navigation.NavigationService> реализует поддержку более высокого уровня для отслеживания и влияние на запроса перехода.  
+ Хотя <xref:System.Windows.Documents.Hyperlink> позволяет пользователю осуществить переход к конкретному <xref:System.Windows.Controls.Page>, работа по поиску и загрузке страницы выполняется с помощью класса <xref:System.Windows.Navigation.NavigationService>. По сути, <xref:System.Windows.Navigation.NavigationService> предоставляет возможность обработки запроса перехода со стороны клиентского кода, например от элемента <xref:System.Windows.Documents.Hyperlink>. Кроме того, <xref:System.Windows.Navigation.NavigationService> реализует поддержку более высокого уровня для отслеживания и влияния на запросы перехода.
   
- Когда <xref:System.Windows.Documents.Hyperlink> нажатии WPF вызовы <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType> для обнаружения и загрузки <xref:System.Windows.Controls.Page> в указанный пакет URI. Скачанный <xref:System.Windows.Controls.Page> преобразуется в дерево объектов, корневой объект которого является экземпляром Скачанный <xref:System.Windows.Controls.Page>. Ссылка на корневой <xref:System.Windows.Controls.Page> объект хранится в <xref:System.Windows.Navigation.NavigationService.Content%2A?displayProperty=nameWithType> свойство. Пакет URI для содержимого, к которому был осуществлен переход, сохраняется в <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=nameWithType> свойство, хотя <xref:System.Windows.Navigation.NavigationService.CurrentSource%2A?displayProperty=nameWithType> сохраняет пакет URI для последней страницы, к которому был осуществлен переход.  
+ При нажатии <xref:System.Windows.Documents.Hyperlink>, WPF вызывает <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType> для обнаружения и загрузки <xref:System.Windows.Controls.Page> по указанному Pack URI. Загруженный <xref:System.Windows.Controls.Page> преобразуется в дерево объектов, корневым объектом которого является загруженный экземпляр <xref:System.Windows.Controls.Page>. Ссылка на корневой объект <xref:System.Windows.Controls.Page> хранится в свойстве  <xref:System.Windows.Navigation.NavigationService.Content%2A?displayProperty=nameWithType>. Pack URI для содержимого, к которому был осуществлен переход, сохраняется в свойстве <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=nameWithType>, при этом свойство <xref:System.Windows.Navigation.NavigationService.CurrentSource%2A?displayProperty=nameWithType> сохраняет Pack URI для последней страницы, к которой был осуществлен переход.  
   
 > [!NOTE]
->  Существует возможность WPF приложению требуется более одного активного <xref:System.Windows.Navigation.NavigationService>. Дополнительные сведения см. в разделе [узлы переходов](#Navigation_Hosts) далее в этом разделе.  
+>  WPF приложение может иметь более одного активного <xref:System.Windows.Navigation.NavigationService>. Дополнительные сведения см. в разделе [узлы переходов](#Navigation_Hosts) далее в этой статье.
   
 <a name="Programmatic_Navigation_with_the_Navigation_Service"></a>   
 ### <a name="programmatic-navigation-with-the-navigation-service"></a>Программный переход с помощью службы переходов  
- Не нужно знать о <xref:System.Windows.Navigation.NavigationService> Если переход реализован декларативно в разметке с помощью <xref:System.Windows.Documents.Hyperlink>, так как <xref:System.Windows.Documents.Hyperlink> использует <xref:System.Windows.Navigation.NavigationService> от вашего имени. Это означает, что пока прямой или непрямой родитель объекта <xref:System.Windows.Documents.Hyperlink> является узлом перехода (см. в разделе [узлы переходов](#Navigation_Hosts)), <xref:System.Windows.Documents.Hyperlink> будут иметь возможность находить и использовать службу переходов этого узла для обработки запрос навигации.  
+ Вам не нужно знать о <xref:System.Windows.Navigation.NavigationService>, если переход реализован декларативно в разметке с помощью <xref:System.Windows.Documents.Hyperlink>, так как <xref:System.Windows.Documents.Hyperlink> использует <xref:System.Windows.Navigation.NavigationService> за вас. Это означает, что пока прямой или непрямой родитель объекта <xref:System.Windows.Documents.Hyperlink> является узлом перехода (см. в разделе [узлы переходов](#Navigation_Hosts)), <xref:System.Windows.Documents.Hyperlink> будут иметь возможность находить и использовать службу переходов этого узла для обработки запросов навигации.
   
  Тем не менее, существуют ситуации, когда необходимо использовать <xref:System.Windows.Navigation.NavigationService> напрямую, включая следующие:  
   
@@ -227,45 +227,45 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
   
 -   Если вам нужно задать свойства <xref:System.Windows.Controls.Page> перед переходом к нему.  
   
--   Когда <xref:System.Windows.Controls.Page> что необходимо осуществлять переходы можно определить только во время выполнения.  
+-   Когда <xref:System.Windows.Controls.Page>, к которой необходимо осуществлять переход, можно определить только во время выполнения.  
   
- В этих случаях необходимо написать код для программной инициации перехода посредством вызова <xref:System.Windows.Navigation.NavigationService.Navigate%2A> метод <xref:System.Windows.Navigation.NavigationService> объекта. Для этого требуется получить ссылку на <xref:System.Windows.Navigation.NavigationService>.  
+ В этих случаях необходимо написать код для программного осуществления перехода посредством вызова метода <xref:System.Windows.Navigation.NavigationService.Navigate%2A> у объекта <xref:System.Windows.Navigation.NavigationService>. Для этого требуется получить ссылку на <xref:System.Windows.Navigation.NavigationService>.  
   
 #### <a name="getting-a-reference-to-the-navigationservice"></a>Получение ссылки на службу переходов  
- По причинам, охваченных [узлы переходов](#Navigation_Hosts) разделе WPF приложение может иметь более одного <xref:System.Windows.Navigation.NavigationService>. Это означает, что в коде необходимо предусмотреть способ поиска <xref:System.Windows.Navigation.NavigationService>, который обычно является <xref:System.Windows.Navigation.NavigationService> , приводящую к текущему <xref:System.Windows.Controls.Page>. Можно получить ссылку на <xref:System.Windows.Navigation.NavigationService> путем вызова `static`<xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=nameWithType> метод. Чтобы получить <xref:System.Windows.Navigation.NavigationService> , переход к конкретному <xref:System.Windows.Controls.Page>, передать ссылку на <xref:System.Windows.Controls.Page> в качестве аргумента <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A> метод. Следующий код показывает способ получения <xref:System.Windows.Navigation.NavigationService> для текущего <xref:System.Windows.Controls.Page>.  
+ По причинам, описанным в разделе [узлы переходов](#Navigation_Hosts), WPF приложение может иметь более одного <xref:System.Windows.Navigation.NavigationService>. Это означает, что в коде необходимо предусмотреть способ поиска нужного <xref:System.Windows.Navigation.NavigationService>, который обычно является тем <xref:System.Windows.Navigation.NavigationService>, который привел к текущей <xref:System.Windows.Controls.Page>. Можно получить ссылку на <xref:System.Windows.Navigation.NavigationService> путем вызова статического метода <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=nameWithType>. Чтобы получить <xref:System.Windows.Navigation.NavigationService>, который привел к конкретной <xref:System.Windows.Controls.Page>, передайте ссылку на <xref:System.Windows.Controls.Page> в качестве аргумента <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A>. Следующий код показывает способ получения <xref:System.Windows.Navigation.NavigationService> для текущей <xref:System.Windows.Controls.Page>.
   
- [!code-csharp[NavigationOverviewSnippets#GetNSCODEBEHIND1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/GetNSPage.xaml.cs#getnscodebehind1)]  
+[!code-csharp[NavigationOverviewSnippets#GetNSCODEBEHIND1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/GetNSPage.xaml.cs#getnscodebehind1)]  
 [!code-csharp[NavigationOverviewSnippets#GetNSCODEBEHIND2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/GetNSPage.xaml.cs#getnscodebehind2)]
   
   
- Как быстро найти <xref:System.Windows.Navigation.NavigationService> для <xref:System.Windows.Controls.Page>, <xref:System.Windows.Controls.Page> реализует <xref:System.Windows.Controls.Page.NavigationService%2A> свойство. Эти действия показаны в следующем примере.  
+ Для быстрого поиска <xref:System.Windows.Navigation.NavigationService>, <xref:System.Windows.Controls.Page> реализует свойство <xref:System.Windows.Controls.Page.NavigationService%2A>. Его использование показано в следующем примере.
   
  [!code-csharp[NavigationOverviewSnippets#GetNSShortcutCODEBEHIND1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/GetNSPageShortCut.xaml.cs#getnsshortcutcodebehind1)]  
 [!code-csharp[NavigationOverviewSnippets#GetNSShortcutCODEBEHIND2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/GetNSPageShortCut.xaml.cs#getnsshortcutcodebehind2)]
   
   
 > [!NOTE]
->  Объект <xref:System.Windows.Controls.Page> может получить только ссылку на его <xref:System.Windows.Navigation.NavigationService> при <xref:System.Windows.Controls.Page> вызывает <xref:System.Windows.FrameworkElement.Loaded> событий.  
+>  Объект <xref:System.Windows.Controls.Page> может получить только ссылку на его <xref:System.Windows.Navigation.NavigationService> только после срабатывания события <xref:System.Windows.FrameworkElement.Loaded>.
   
 #### <a name="programmatic-navigation-to-a-page-object"></a>Программный переход к объекту страницы  
- В следующем примере показано, как использовать <xref:System.Windows.Navigation.NavigationService> осуществить программный переход к <xref:System.Windows.Controls.Page>. Программный переход является обязательным, поскольку <xref:System.Windows.Controls.Page> то есть, куда выполняется переход могут быть созданы только с помощью конструктора, единый, не по умолчанию. <xref:System.Windows.Controls.Page> С нестандартным конструктором показан в следующей разметке и коде.  
+ В следующем примере показано, как использовать <xref:System.Windows.Navigation.NavigationService> для программного перехода к <xref:System.Windows.Controls.Page>. Программный переход является обязательным, поскольку <xref:System.Windows.Controls.Page>, к которой выполняется переход, может быть создана только с помощью конструктора не по умолчанию с параметрами. Элемент <xref:System.Windows.Controls.Page> с нестандартным конструктором показан в следующей разметке и коде.  
   
  [!code-xaml[NavigationOverviewSnippets#PageWithNonDefaultConstructorXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithNonDefaultConstructor.xaml#pagewithnondefaultconstructorxaml)]  
   
  [!code-csharp[NavigationOverviewSnippets#PageWithNonDefaultConstructorCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithNonDefaultConstructor.xaml.cs#pagewithnondefaultconstructorcodebehind)]
    
   
- <xref:System.Windows.Controls.Page> , Осуществляющий переход к <xref:System.Windows.Controls.Page> с нестандартным конструктором показан в следующей разметке и коде.  
+ <xref:System.Windows.Controls.Page>, которая осуществляет переход к <xref:System.Windows.Controls.Page> с нестандартным конструктором, показана в следующей разметке и коде.  
   
  [!code-xaml[NavigationOverviewSnippets#NSNavigationPageXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/NSNavigationPage.xaml#nsnavigationpagexaml)]  
   
  [!code-csharp[NavigationOverviewSnippets#NSNavigationPageCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/NSNavigationPage.xaml.cs#nsnavigationpagecodebehind)]
    
   
- При <xref:System.Windows.Documents.Hyperlink> об этом <xref:System.Windows.Controls.Page> является щелчке, запускается переход путем создания экземпляра <xref:System.Windows.Controls.Page> перейдите к с помощью конструктора не по умолчанию и вызвав <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType> метод. <xref:System.Windows.Navigation.NavigationService.Navigate%2A> принимает ссылку на объект, <xref:System.Windows.Navigation.NavigationService> производится переход, типа pack URI.  
+ При щелчке по <xref:System.Windows.Documents.Hyperlink> на этой <xref:System.Windows.Controls.Page> запускается переход путем создания экземпляра <xref:System.Windows.Controls.Page> с помощью конструктора не по умолчанию и вызова метода <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType>. Метод <xref:System.Windows.Navigation.NavigationService.Navigate%2A> принимает ссылку на объект для перехода, а не pack URI.
   
 #### <a name="programmatic-navigation-with-a-pack-uri"></a>Программный переход с URI типа pack  
- Если вам необходимо создать в пакете URI программным образом (если только определения пакета URI во время выполнения, например), можно использовать <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType> метод. Эти действия показаны в следующем примере.  
+ Если вам необходимо сформировать pack URI программно (например, если  pack URI можно определить только во время выполнения), можно использовать метод <xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=nameWithType>. Его использование показано в следующем примере.
   
  [!code-xaml[NavigationOverviewSnippets#NSUriNavigationPageXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/NSUriNavigationPage.xaml#nsurinavigationpagexaml)]  
   
@@ -273,7 +273,7 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
    
   
 #### <a name="refreshing-the-current-page"></a>Обновление текущей страницы  
- Объект <xref:System.Windows.Controls.Page> не загружается, если он имеет тот же пакет URI пакета URI , хранящееся в <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=nameWithType> свойство. Чтобы принудительно WPF попытку загрузить текущую страницу, можно последовательно вызвать методы <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=nameWithType> метод, как показано в следующем примере.  
+ Объект <xref:System.Windows.Controls.Page> не загружается, если он имеет тот же pack URI, что и URI, хранящий в свойстве <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=nameWithType>. Чтобы WPF принудительно загрузил текущую страницу, можно вызвать метод <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=nameWithType>, как показано в следующем примере.
   
  [!code-xaml[NavigationOverviewSnippets#NSRefreshNavigationPageXAML1](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/NSRefreshNavigationPage.xaml#nsrefreshnavigationpagexaml1)]  
   
@@ -284,21 +284,21 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
   
 <a name="Navigation_Lifetime"></a>   
 ### <a name="navigation-lifetime"></a>Время существования перехода  
- Как вы уже видели, существует множество способов инициации перехода. Когда переход инициирован и навигации во время выполнения, можно отслеживать и повлиять на него с помощью следующих событий, которые реализуются <xref:System.Windows.Navigation.NavigationService>:  
+ Как вы уже видели, существует множество способов осуществления перехода. При вызове перехода и во время его осуществления, можно отслеживать и влиять на него с помощью следующих событий, которые реализуются <xref:System.Windows.Navigation.NavigationService>:  
   
--   <xref:System.Windows.Navigation.NavigationService.Navigating>. Появляется, когда запрошен новый переход. Можно использовать для отмены перехода.  
+-   <xref:System.Windows.Navigation.NavigationService.Navigating>. Происходит, когда запрошен новый переход. Можно использовать для отмены перехода.  
   
 -   <xref:System.Windows.Navigation.NavigationService.NavigationProgress>. Происходит периодически во время загрузки, тем самым предоставляя информацию о ходе процесса навигации.  
   
--   <xref:System.Windows.Navigation.NavigationService.Navigated>. Появляется, когда страница найдена и загружена.  
+-   <xref:System.Windows.Navigation.NavigationService.Navigated>. Происходит, когда страница найдена и загружена.  
   
 -   <xref:System.Windows.Navigation.NavigationService.NavigationStopped>. Происходит, когда переход остановлен (путем вызова <xref:System.Windows.Navigation.NavigationService.StopLoading%2A>), или при запросе нового перехода во время выполнения текущего перехода.  
   
--   <xref:System.Windows.Navigation.NavigationService.NavigationFailed>. Появляется при возникновении ошибки во время перехода к запрошенному содержимому.  
+-   <xref:System.Windows.Navigation.NavigationService.NavigationFailed>. Происходит при возникновении ошибки во время перехода к запрошенному содержимому.  
   
--   <xref:System.Windows.Navigation.NavigationService.LoadCompleted>. Появляется, когда содержимое, к которому был осуществлен переход, загружено и проанализировано и начинается его отрисовка.  
+-   <xref:System.Windows.Navigation.NavigationService.LoadCompleted>. Происходит, когда содержимое, к которому был осуществлен переход, загружено и проанализировано и начинается его отрисовка.  
   
--   <xref:System.Windows.Navigation.NavigationService.FragmentNavigation>. Появляется в начале перехода к фрагменту содержимого, который происходит:  
+-   <xref:System.Windows.Navigation.NavigationService.FragmentNavigation>. Происходит в начале перехода к фрагменту содержимого:  
   
     -   немедленно, если нужный фрагмент находится в текущем содержимом;  
   
@@ -308,7 +308,7 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
   
  ![Таблица потока навигации страницы](./media/navigation-overview/order-of-navigation-events.png "блок-схема событий навигации страницы")  
   
- В общем случае <xref:System.Windows.Controls.Page> не связан с этими событиями. Более вероятно, что приложение связано с ними, и по этой причине эти события также вызываются с помощью <xref:System.Windows.Application> класса:  
+ В общем случае <xref:System.Windows.Controls.Page> не связан с этими событиями. Более вероятно, что они связаны с приложением, и по этой причине эти события также вызываются с помощью класса <xref:System.Windows.Application>:  
   
 -   <xref:System.Windows.Application.Navigating?displayProperty=nameWithType>  
   
@@ -324,17 +324,17 @@ Windows Presentation Foundation (WPF) поддерживает навигаци�
   
 -   <xref:System.Windows.Application.FragmentNavigation?displayProperty=nameWithType>  
   
- Каждый раз <xref:System.Windows.Navigation.NavigationService> возникает событие <xref:System.Windows.Application> класс вызывает соответствующее событие. <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow> обеспечивают те же события, для обнаружения переходов в соответствующих областях.  
+ Каждый раз, когда возникает событие <xref:System.Windows.Navigation.NavigationService>, вызывается соответствующее событие <xref:System.Windows.Application>. Элементы <xref:System.Windows.Controls.Frame> и <xref:System.Windows.Navigation.NavigationWindow> обеспечивают те же события, для обнаружения переходов в соответствующих областях.  
   
- В некоторых случаях <xref:System.Windows.Controls.Page> могут заинтересовать эти события. Например <xref:System.Windows.Controls.Page> может обрабатывать <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=nameWithType> событие, чтобы определить необходимость отмены перехода. Эти действия показаны в следующем примере.  
+ В некоторых случаях <xref:System.Windows.Controls.Page> могут заинтересовать эти события. Например <xref:System.Windows.Controls.Page> может обрабатывать событие <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=nameWithType>, чтобы определить необходимость отмены перехода. Эти действия показаны в следующем примере.
   
  [!code-xaml[NavigationOverviewSnippets#CancelNavigationPageXAML](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/CancelNavigationPage.xaml#cancelnavigationpagexaml)]  
   
  [!code-csharp[NavigationOverviewSnippets#CancelNavigationPageCODEBEHIND](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/CancelNavigationPage.xaml.cs#cancelnavigationpagecodebehind)]
    
   
- Если регистрируется обработчик с событием перехода из <xref:System.Windows.Controls.Page>, как предыдущий пример, необходимо также отменить регистрацию обработчика событий. Если этого не сделать, могут возникнуть побочные эффекты, как WPF запоминает переходы <xref:System.Windows.Controls.Page> с помощью журнала.  
-  
+ Если вы регистрируете обработчик с событием перехода из <xref:System.Windows.Controls.Page>, как в предыдущем примере, необходимо также впоследствии отменить регистрацию обработчика событий. Если этого не сделать, могут возникнуть побочные эффекты относительно того, как WPF запоминает переходы <xref:System.Windows.Controls.Page> с помощью журнала.
+
 <a name="NavigationHistory"></a>   
 ### <a name="remembering-navigation-with-the-journal"></a>Запоминание перехода в журнале  
  WPF использует два стека для запоминания страниц, на которые был осуществлен переход: стек переходов назад и вперед. При переходе из текущего <xref:System.Windows.Controls.Page> в новый <xref:System.Windows.Controls.Page> или вперед к существующему <xref:System.Windows.Controls.Page>, текущий <xref:System.Windows.Controls.Page> добавляется *стек переходов назад*. При переходе из текущего <xref:System.Windows.Controls.Page> вернитесь к предыдущему <xref:System.Windows.Controls.Page>, текущий <xref:System.Windows.Controls.Page> добавляется *вперед*. Стек "Назад", стек "Вперед" и функциональные возможности для управления ими в совокупности называются журналом. Каждый элемент в стеке переходов назад и вперед — это экземпляр <xref:System.Windows.Navigation.JournalEntry> класса и называется *записи журнала*.  
