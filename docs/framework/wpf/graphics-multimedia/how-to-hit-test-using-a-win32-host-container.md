@@ -17,7 +17,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59081467"
 ---
 # <a name="how-to-hit-test-using-a-win32-host-container"></a>Практическое руководство. Проверка попадания с использованием контейнера узла Win32
-Можно создать визуальные объекты в пределах [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] окно путем предоставления контейнера окна для визуальных объектов. Чтобы обрабатывать события для содержащихся визуальных объектов, выполняется обработка сообщений, переданных в цикл фильтрации сообщений контейнера окна. Ссылаться на [руководства: По размещению визуальных объектов в приложении Win32](tutorial-hosting-visual-objects-in-a-win32-application.md) Дополнительные сведения о способах размещения визуальных объектов в Win32 окна.  
+Можно создать визуальные объекты в пределах Win32 окно путем предоставления контейнера окна для визуальных объектов. Чтобы обрабатывать события для содержащихся визуальных объектов, выполняется обработка сообщений, переданных в цикл фильтрации сообщений контейнера окна. Ссылаться на [руководства: По размещению визуальных объектов в приложении Win32](tutorial-hosting-visual-objects-in-a-win32-application.md) Дополнительные сведения о способах размещения визуальных объектов в Win32 окна.  
   
 ## <a name="example"></a>Пример  
  Ниже показано, как настроить обработчики событий мыши для Win32 окно, которое используется как контейнер для визуальных объектов.  
@@ -30,7 +30,7 @@ ms.locfileid: "59081467"
  [!code-csharp[VisualsHitTesting#104](~/samples/snippets/csharp/VS_Snippets_Wpf/VisualsHitTesting/CSharp/MyCircle.cs#104)]
    
   
- <xref:System.Windows.Interop.HwndSource> Объект представляет Windows Presentation Foundation (WPF) содержимого в пределах [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] окна. Значение <xref:System.Windows.Interop.HwndSource.RootVisual%2A> свойство <xref:System.Windows.Interop.HwndSource> представляет верхний узел в иерархии визуального дерева.  
+ <xref:System.Windows.Interop.HwndSource> Объект представляет Windows Presentation Foundation (WPF) содержимого в пределах Win32 окна. Значение <xref:System.Windows.Interop.HwndSource.RootVisual%2A> свойство <xref:System.Windows.Interop.HwndSource> представляет верхний узел в иерархии визуального дерева.  
   
  Полный пример проверки попадания объектов с помощью контейнера Win32 см. в разделе [проверка нажатия с помощью примера взаимодействия Win32](https://go.microsoft.com/fwlink/?LinkID=159995).  
   

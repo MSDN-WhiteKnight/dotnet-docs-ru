@@ -23,7 +23,7 @@ ms.locfileid: "59055083"
 
 Для повторного использования Win32 содержимое внутри WPF приложения, используют <xref:System.Windows.Interop.HwndHost>, который является элементом управления, который заставляет HWND выглядеть WPF содержимого. Как <xref:System.Windows.Interop.HwndSource>, <xref:System.Windows.Interop.HwndHost> проста в использовании: являются производными от <xref:System.Windows.Interop.HwndHost> и реализовать `BuildWindowCore` и `DestroyWindowCore` методы, затем экземпляр вашего <xref:System.Windows.Interop.HwndHost> производного класса и поместите его внутри вашей WPF приложение.
 
-Если ваш Win32 логики уже упакован как элемент управления, то `BuildWindowCore` реализации нечто большее, чем вызов `CreateWindow`. Например, чтобы создать Win32 управления LISTBOX в [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)]:
+Если ваш Win32 логики уже упакован как элемент управления, то `BuildWindowCore` реализации нечто большее, чем вызов `CreateWindow`. Например, чтобы создать Win32 управления LISTBOX в C++:
 
 ```cpp
 virtual HandleRef BuildWindowCore(HandleRef hwndParent) override {
@@ -46,9 +46,9 @@ virtual void DestroyWindowCore(HandleRef hwnd) override {
 }
 ```
 
-Но предположим, что Win32 код не столь автономно? Если таким образом, можно создать Win32 диалоговое окно и внедрить его содержимое в одно крупное WPF приложения. В этом примере это в Microsoft Visual Studio и [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)], несмотря на то, что это также можно сделать на другом языке или из командной строки.
+Но предположим, что Win32 код не столь автономно? Если таким образом, можно создать Win32 диалоговое окно и внедрить его содержимое в одно крупное WPF приложения. В этом примере это в Microsoft Visual Studio и C++, несмотря на то, что это также можно сделать на другом языке или из командной строки.
 
-Начните с простого диалога, который компилируется в [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)] [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] проекта.
+Начните с простого диалога, который компилируется в C++ [!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)] проекта.
 
 Затем поместим диалог в большее WPF приложения:
 
@@ -193,7 +193,7 @@ bool initialized = false;
         }
 ```
 
-Это много кода, поэтому она может использовать более подробные пояснения. Во-первых, код, используя [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)] и [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)] макросы; вы должны знать, что уже макрос с именем `TranslateAccelerator`, который определен в winuser.h:
+Это много кода, поэтому она может использовать более подробные пояснения. Во-первых, код, используя C++ и C++ макросы; вы должны знать, что уже макрос с именем `TranslateAccelerator`, который определен в winuser.h:
 
 ```cpp
 #define TranslateAccelerator  TranslateAcceleratorW
@@ -201,7 +201,7 @@ bool initialized = false;
 
 Поэтому убедитесь, что определение `TranslateAccelerator` метода и не `TranslateAcceleratorW` метод.
 
-Таким же образом есть неуправляемый код winuser.h MSG и управляемое `Microsoft::Win32::MSG` структуры. Чтобы устранить неоднозначность между ними с помощью [!INCLUDE[TLA#tla_cpp](../../../../includes/tlasharptla-cpp-md.md)] `::` оператор.
+Таким же образом есть неуправляемый код winuser.h MSG и управляемое `Microsoft::Win32::MSG` структуры. Чтобы устранить неоднозначность между ними с помощью C++ `::` оператор.
 
 ```cpp
 virtual bool TranslateAccelerator(System::Windows::Interop::MSG% msg,

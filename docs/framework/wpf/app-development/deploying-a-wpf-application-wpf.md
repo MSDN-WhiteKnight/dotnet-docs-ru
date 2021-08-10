@@ -115,7 +115,7 @@ ms.lasthandoff: 04/09/2019
   
  Если разрешение предоставлено, Internet Explorer загрузит и установит .NET Framework с помощью [!INCLUDE[TLA#tla_bits](../../../../includes/tlasharptla-bits-md.md)]. После успешной установки платформы .NET Framework изначально запрошенный файл открывается в новом окне браузера.  
   
- Автоматическое обнаружение .NET Framework поддерживается в [!INCLUDE[TLA#tla_longhorn](../../../../includes/tlasharptla-longhorn-md.md)], [!INCLUDE[TLA#tla_winxpsp2](../../../../includes/tlasharptla-winxpsp2-md.md)], и [!INCLUDE[TLA#tla_winnetsvrfamsp1](../../../../includes/tlasharptla-winnetsvrfamsp1-md.md)], при наличии [!INCLUDE[TLA2#tla_ie7](../../../../includes/tla2sharptla-ie7-md.md)] или более поздней версии.
+ Автоматическое обнаружение .NET Framework поддерживается в Windows Vista, Microsoft Windows XP SP2, и Microsoft Windows Server 2003 SP1, при наличии Internet Explorer 7 или более поздней версии.
   
  Дополнительные сведения см. в разделе [Развертывание .NET Framework и приложений](../../deployment/index.md).  
   

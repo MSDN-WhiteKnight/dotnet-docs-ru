@@ -177,7 +177,7 @@ Windows Presentation Foundation (WPF) призвана помочь разраб
   
  `GetWeatherAsync` использовать один из методов, описанных выше, таких как создание фонового потока, для работы в асинхронном режиме, не блокируя вызывающий поток.  
   
- Одна из наиболее важных частей этого шаблона является вызов *имя_метода* `Completed` метод в том же потоке, который вызвал *имя_метода* `Async` метод начинается с. Это можно сделать с помощью WPF довольно просто, сохранив <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>, но затем неграфический компонент может использоваться только в WPF приложений, не в Windows Forms или [!INCLUDE[TLA#tla_aspnet](../../../../includes/tlasharptla-aspnet-md.md)] программы.  
+ Одна из наиболее важных частей этого шаблона является вызов *имя_метода* `Completed` метод в том же потоке, который вызвал *имя_метода* `Async` метод начинается с. Это можно сделать с помощью WPF довольно просто, сохранив <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>, но затем неграфический компонент может использоваться только в WPF приложений, не в Windows Forms или ASP.NET программы.  
   
  <xref:System.Windows.Threading.DispatcherSynchronizationContext> Класс адреса этой задачи — представляйте его упрощенную версию <xref:System.Windows.Threading.Dispatcher> , работает с другими UI также платформ.  
   

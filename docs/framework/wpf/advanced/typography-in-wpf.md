@@ -59,7 +59,7 @@ ms.locfileid: "59111414"
   
 -   Поведение шрифта зависит от глобальных настроек, таких как язык системы.  
   
--   Отдельные <xref:System.Windows.FontWeight>, <xref:System.Windows.FontStretch>, и <xref:System.Windows.FontStyle> типов для определения <xref:System.Windows.Media.FontFamily>. Это обеспечивает большую гибкость, чем в программировании [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в котором логические сочетания курсивного и полужирного шрифта используются для определения семейства шрифтов.  
+-   Отдельные <xref:System.Windows.FontWeight>, <xref:System.Windows.FontStretch>, и <xref:System.Windows.FontStyle> типов для определения <xref:System.Windows.Media.FontFamily>. Это обеспечивает большую гибкость, чем в программировании Win32, в котором логические сочетания курсивного и полужирного шрифта используются для определения семейства шрифтов.  
   
 -   Направление письма (горизонтальное или вертикальное) обрабатывается в зависимости от имени шрифта.  
   

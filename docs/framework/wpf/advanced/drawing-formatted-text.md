@@ -26,7 +26,7 @@ ms.locfileid: "59129094"
  ![Отображенный текст с использованием объекта FormattedText](./media/typography-in-wpf/text-formatted-linear-gradient.jpg)  
   
 > [!NOTE]
->  Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице из раздела [Миграция Win32](#win32_migration) перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в Windows Presentation Foundation (WPF).  
+>  Для разработчиков, осуществляющих переход с API Win32, в таблице из раздела [Миграция Win32](#win32_migration) перечислены флаги DrawText Win32 и примерный эквивалент в Windows Presentation Foundation (WPF).  
   
 ### <a name="reasons-for-using-formatted-text"></a>Причины использования форматированного текста  
  WPF содержит несколько элементов управления для рисования текста на экране. Каждый элемент управления предназначен для своего сценария и имеет собственный список функций и ограничений. В общем случае <xref:System.Windows.Controls.TextBlock> элемент должен использоваться при необходимости, например короткого предложения в ограниченная поддержка текста UI . <xref:System.Windows.Controls.Label> может использоваться, если требуется Минимальная текстовая поддержка. Дополнительные сведения см. в разделе [Документы в WPF](documents-in-wpf.md).  
@@ -50,7 +50,7 @@ ms.locfileid: "59129094"
    
   
 ### <a name="font-size-unit-of-measure"></a>Единица измерения "Размер шрифта"  
- Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
+ Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений Win32 используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
   
  [!code-csharp[FormattedTextSnippets#FormattedTextSnippets2](~/samples/snippets/csharp/VS_Snippets_Wpf/FormattedTextSnippets/CSharp/Window1.xaml.cs#formattedtextsnippets2)]
    
@@ -86,15 +86,15 @@ ms.locfileid: "59129094"
   
 <a name="win32_migration"></a>   
 ## <a name="win32-migration"></a>Миграция Win32  
- Возможности <xref:System.Windows.Media.FormattedText> для рисования текста похожи на возможности [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] функции DrawText. Для разработчиков, осуществляющих переход с API [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)], в таблице перечислены флаги DrawText [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] и примерный эквивалент в Windows Presentation Foundation (WPF).  
+ Возможности <xref:System.Windows.Media.FormattedText> для рисования текста похожи на возможности Win32 функции DrawText. Для разработчиков, осуществляющих переход с API Win32, в таблице перечислены флаги DrawText Win32 и примерный эквивалент в Windows Presentation Foundation (WPF).  
   
 |Флаг DrawText|Эквивалент WPF|Примечания|  
 |-------------------|--------------------|-----------|  
-|DT_BOTTOM|<xref:System.Windows.Media.FormattedText.Height%2A>|Используйте <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] позиции DrawText «y».|  
+|DT_BOTTOM|<xref:System.Windows.Media.FormattedText.Height%2A>|Используйте <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей Win32 позиции DrawText «y».|  
 |DT_CALCRECT|<xref:System.Windows.Media.FormattedText.Height%2A>, <xref:System.Windows.Media.FormattedText.Width%2A>|Используйте <xref:System.Windows.Media.FormattedText.Height%2A> и <xref:System.Windows.Media.FormattedText.Width%2A> для вычисления выходного прямоугольника.|  
 |DT_CENTER|<xref:System.Windows.Media.FormattedText.TextAlignment%2A>|Используйте <xref:System.Windows.Media.FormattedText.TextAlignment%2A> свойство со значением, равным <xref:System.Windows.TextAlignment.Center>.|  
 |DT_EDITCONTROL|Нет|Не требуется. Ширина пробелов и отрисовка последней строки соответствуют этим параметрам в элементе управления редактированием среды.|  
-|DT_END_ELLIPSIS|<xref:System.Windows.Media.FormattedText.Trimming%2A>|Используйте <xref:System.Windows.Media.FormattedText.Trimming%2A> свойством со значением <xref:System.Windows.TextTrimming.CharacterEllipsis>.<br /><br /> Используйте <xref:System.Windows.TextTrimming.WordEllipsis> для получения [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] DT_END_ELLIPSIS с конечным многоточием — в этом случае символ многоточия происходит только по словам, которые не помещаются на одной строке.|  
+|DT_END_ELLIPSIS|<xref:System.Windows.Media.FormattedText.Trimming%2A>|Используйте <xref:System.Windows.Media.FormattedText.Trimming%2A> свойством со значением <xref:System.Windows.TextTrimming.CharacterEllipsis>.<br /><br /> Используйте <xref:System.Windows.TextTrimming.WordEllipsis> для получения Win32 DT_END_ELLIPSIS с конечным многоточием — в этом случае символ многоточия происходит только по словам, которые не помещаются на одной строке.|  
 |DT_EXPAND_TABS|Нет|Не требуется. Символы табуляции автоматически расширяются до точек каждые 4 размера максимального пробела (это примерно соответствует ширине 8 независимых от языка символов).|  
 |DT_EXTERNALLEADING|Нет|Не требуется. Внешнее ведение всегда включается в междустрочный интервал. Используйте <xref:System.Windows.Media.FormattedText.LineHeight%2A> свойство для создания определяемого пользователем междустрочного интервала.|  
 |DT_HIDEPREFIX|Нет|Не поддерживается. Удалите знак «&» из строки перед созданием <xref:System.Windows.Media.FormattedText> объекта.|  
@@ -110,8 +110,8 @@ ms.locfileid: "59129094"
 |DT_RTLREADING|<xref:System.Windows.Media.FormattedText.FlowDirection%2A>|Задайте для свойства <xref:System.Windows.Media.FormattedText.FlowDirection%2A> значение <xref:System.Windows.FlowDirection.RightToLeft>.|  
 |DT_SINGLELINE|Нет|Не требуется. <xref:System.Windows.Media.FormattedText> объекты ведут себя как Однострочные элементы управления, если не либо <xref:System.Windows.Media.FormattedText.MaxTextWidth%2A> свойству или текст не содержит возврата каретки и перевода строки (CR/LF).|  
 |DT_TABSTOP|Нет|Отсутствует поддержка пользовательских позиций табуляции.|  
-|DT_TOP|<xref:System.Windows.Media.FormattedText.Height%2A>|Не требуется. По умолчанию используется выравнивание по верхнему краю. Другие значения вертикального позиционирования можно определить с помощью <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] позиции DrawText «y».|  
-|DT_VCENTER|<xref:System.Windows.Media.FormattedText.Height%2A>|Используйте <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей [!INCLUDE[TLA#tla_win32](../../../../includes/tlasharptla-win32-md.md)] позиции DrawText «y».|  
+|DT_TOP|<xref:System.Windows.Media.FormattedText.Height%2A>|Не требуется. По умолчанию используется выравнивание по верхнему краю. Другие значения вертикального позиционирования можно определить с помощью <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей Win32 позиции DrawText «y».|  
+|DT_VCENTER|<xref:System.Windows.Media.FormattedText.Height%2A>|Используйте <xref:System.Windows.Media.FormattedText.Height%2A> свойство для вычисления соответствующей Win32 позиции DrawText «y».|  
 |DT_WORDBREAK|Нет|Не требуется. Перенос слов выполняется автоматически с <xref:System.Windows.Media.FormattedText> объектов. Его нельзя отключить.|  
 |DT_WORD_ELLIPSIS|<xref:System.Windows.Media.FormattedText.Trimming%2A>|Используйте <xref:System.Windows.Media.FormattedText.Trimming%2A> свойством со значением <xref:System.Windows.TextTrimming.WordEllipsis>.|  
   
