@@ -18,7 +18,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59301156"
 ---
 # <a name="how-to-validate-and-merge-printtickets"></a>Практическое руководство. Проверка и слияние PrintTickets
-[!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] [Print Schema](https://go.microsoft.com/fwlink/?LinkId=186397) включает гибкой и расширяемой <xref:System.Printing.PrintCapabilities> и <xref:System.Printing.PrintTicket> элементы. Первый элемент перечисляет возможности устройства печати, а второй указывает, как устройство должно использовать эти возможности по отношению к определенной последовательности документов, отдельному документу или отдельной страницы.  
+Microsoft Windows [Print Schema](https://go.microsoft.com/fwlink/?LinkId=186397) включает гибкой и расширяемой <xref:System.Printing.PrintCapabilities> и <xref:System.Printing.PrintTicket> элементы. Первый элемент перечисляет возможности устройства печати, а второй указывает, как устройство должно использовать эти возможности по отношению к определенной последовательности документов, отдельному документу или отдельной страницы.  
   
  Типичная последовательность задач для приложения, которое поддерживает печать будет выглядеть следующим образом.  
   

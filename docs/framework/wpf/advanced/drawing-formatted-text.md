@@ -50,7 +50,7 @@ ms.locfileid: "59129094"
    
   
 ### <a name="font-size-unit-of-measure"></a>Единица измерения "Размер шрифта"  
- Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений Win32 используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать [!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)] в точки. В следующем примере кода показано выполнение этого преобразования.  
+ Как и в случае с другими текстовыми объектами в Windows Presentation Foundation (WPF) приложений, <xref:System.Windows.Media.FormattedText> объект использует аппаратно независимые пиксели в качестве единицы измерения. Однако большинство приложений Win32 используют в качестве единицы измерения точки. Если требуется использовать отображаемый текст в приложениях Windows Presentation Foundation (WPF) в единицах точек, необходимо преобразовать аппаратно-независимые единицы (1/96 дюйма на единицу) в точки. В следующем примере кода показано выполнение этого преобразования.  
   
  [!code-csharp[FormattedTextSnippets#FormattedTextSnippets2](~/samples/snippets/csharp/VS_Snippets_Wpf/FormattedTextSnippets/CSharp/Window1.xaml.cs#formattedtextsnippets2)]
    

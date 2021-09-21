@@ -41,7 +41,7 @@ ms.locfileid: "59115756"
   
 <a name="AddInView"></a>   
 ## <a name="implementing-the-add-in-view-pipeline-segment"></a>Реализация сегмента конвейера представления надстройки  
- Поскольку надстройка реализует [!INCLUDE[TLA2#tla_ui#plural](../../../../includes/tla2sharptla-uisharpplural-md.md)] предоставляет в качестве подклассов <xref:System.Windows.FrameworkElement>, метод представления надстройки, которое связано с `IWPFAddInView.GetAddInUI` должен возвращать значение типа <xref:System.Windows.FrameworkElement>. В следующем коде показано представление надстройки контракта, реализованное как интерфейс.  
+ Поскольку надстройка реализует UI предоставляет в качестве подклассов <xref:System.Windows.FrameworkElement>, метод представления надстройки, которое связано с `IWPFAddInView.GetAddInUI` должен возвращать значение типа <xref:System.Windows.FrameworkElement>. В следующем коде показано представление надстройки контракта, реализованное как интерфейс.  
   
  [!code-csharp[SimpleAddInReturnsAUISample#AddInViewCode](~/samples/snippets/csharp/VS_Snippets_Wpf/SimpleAddInReturnsAUISample/CSharp/AddInViews/IWPFAddInView.cs#addinviewcode)]
    

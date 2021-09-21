@@ -15,7 +15,7 @@ ms.locfileid: "57376017"
 Приложения, размещающие Windows Presentation Foundation (WPF) содержимым при помощи PresentationHost.exe Реализуйте этот интерфейс для предоставления точки интеграции между узлом и PresentationHost.exe.  
   
 ## <a name="remarks"></a>Примечания  
- Win32 можно размещать приложения, такие как веб-браузеры [!INCLUDE[TLA#tla_titlewinclient](../../../../includes/tlasharptla-titlewinclient-md.md)] содержимого, включая XAML-приложения браузера (XBAP) и Свободный XAML. Узел [!INCLUDE[TLA#tla_titlewinclient](../../../../includes/tlasharptla-titlewinclient-md.md)] содержимое, Win32 приложения создают экземпляр [элемент управления WebBrowser](https://go.microsoft.com/fwlink/?LinkId=97911). Для размещения [!INCLUDE[TLA#tla_titlewinclient](../../../../includes/tlasharptla-titlewinclient-md.md)] создает экземпляр класса PresentationHost.exe, который предоставляет размещаемый [!INCLUDE[TLA#tla_titlewinclient](../../../../includes/tlasharptla-titlewinclient-md.md)] содержимого на узле для отображения в [элемент управления WebBrowser](https://go.microsoft.com/fwlink/?LinkId=97911).  
+ Win32 можно размещать приложения, такие как веб-браузеры WPF содержимого, включая XAML-приложения браузера (XBAP) и Свободный XAML. Узел WPF содержимое, Win32 приложения создают экземпляр [элемент управления WebBrowser](https://go.microsoft.com/fwlink/?LinkId=97911). Для размещения WPF создает экземпляр класса PresentationHost.exe, который предоставляет размещаемый WPF содержимого на узле для отображения в [элемент управления WebBrowser](https://go.microsoft.com/fwlink/?LinkId=97911).  
   
  Интеграция включаемые `IWpfHostSupport` позволяет PresentationHost.exe для:  
   

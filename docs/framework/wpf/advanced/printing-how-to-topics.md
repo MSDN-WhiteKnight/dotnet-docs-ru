@@ -17,7 +17,7 @@ ms.locfileid: "59170187"
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Вызов диалогового окна печати](how-to-invoke-a-print-dialog.md)  
- Инструкции по разметке XAML для объявления [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] Печать объекта диалогового окна и использование кода для вызова диалогового окна из приложения Windows Presentation Foundation (WPF).  
+ Инструкции по разметке XAML для объявления Microsoft Windows Печать объекта диалогового окна и использование кода для вызова диалогового окна из приложения Windows Presentation Foundation (WPF).  
   
  [Клонирование принтера](how-to-clone-a-printer.md)  
  Инструкции по установке второй очереди печати с теми же свойствами, что и у существующей очереди печати.  

@@ -250,7 +250,7 @@ ms.locfileid: "59157876"
   
  <xref:System.Windows.Controls.DockPanel>, <xref:System.Windows.Controls.Grid>, и <xref:System.Windows.Controls.StackPanel> — это хороший выбор для локализуемых UI. <xref:System.Windows.Controls.Canvas> Тем не менее, является не лучшим выбором, так как он размещает содержимое абсолютно, что затрудняет локализацию.  
   
- Дополнительные сведения о создании приложений WPF с локализуемыми [!INCLUDE[TLA#tla_ui#plural](../../../../includes/tlasharptla-uisharpplural-md.md)] см. в разделе [Обзор использования автоматической разметки](../advanced/use-automatic-layout-overview.md).  
+ Дополнительные сведения о создании приложений WPF с локализуемыми UI см. в разделе [Обзор использования автоматической разметки](../advanced/use-automatic-layout-overview.md).  
   
 ## <a name="see-also"></a>См. также
 

@@ -21,7 +21,7 @@ ms.lasthandoff: 03/05/2019
 ms.locfileid: "57366625"
 ---
 # <a name="migration-and-interoperability"></a>Миграция и взаимодействие систем
-Эта страница содержит ссылки на документы, посвященные реализации взаимодействия между Windows Presentation Foundation (WPF) приложений и другие виды [!INCLUDE[TLA#tla_win](../../../../includes/tlasharptla-win-md.md)] приложений.  
+Эта страница содержит ссылки на документы, посвященные реализации взаимодействия между Windows Presentation Foundation (WPF) приложений и другие виды Microsoft Windows приложений.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Взаимодействие WPF и Windows Forms](wpf-and-windows-forms-interoperation.md)  
