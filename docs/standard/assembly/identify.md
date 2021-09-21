@@ -1,18 +1,10 @@
 ---
 title: Практическое руководство. Определение того, является ли файл сборкой
 description: В этой статье показано, как вручную или программным способом определить, является ли файл сборкой .NET.
-ms.date: 08/19/2019
-ms.assetid: ea5186bb-5bff-4dcb-bde9-d6ba4e2edd00
-dev_langs:
-- csharp
-- vb
-ms.openlocfilehash: b78acaad31996f8fc2b965f51f541e99aeceb111
 ms.sourcegitcommit: d8020797a6657d0fbbdff362b80300815f682f94
-ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95731505"
 ---
+
 # <a name="how-to-determine-if-a-file-is-an-assembly"></a>Практическое руководство. Определение того, является ли файл сборкой
 
 Файл является сборкой только в том случае, если он является управляемым и содержит запись сборки в своих метаданных. Дополнительные сведения о сборках и метаданных см. в разделе [Манифест сборки](manifest.md).  
@@ -21,13 +13,15 @@ ms.locfileid: "95731505"
   
 1. Запустите [Ildasm.exe (дизассемблер IL)](../../framework/tools/ildasm-exe-il-disassembler.md).  
   
-2. Загрузите файл, который нужно протестировать.  
+2. Загрузите файл, который нужно проверить.  
   
 3. Если программа **ILDASM** сообщает, что файл не является переносимым исполняемым файлом (PE), то он не является сборкой. Дополнительные сведения см. в разделе [Практическое руководство. Просмотр содержимого сборки](view-contents.md).  
   
-## <a name="how-to-programmatically-determine-if-a-file-is-an-assembly"></a>Как программно определить, является ли файл сборкой  
+## <a name="how-to-programmatically-determine-if-a-file-is-an-assembly"></a>Как программно определить, является ли файл сборкой
+
+### С использованием класса AssemblyName
   
-1. Вызовите метод <xref:System.Reflection.AssemblyName.GetAssemblyName%2A?displayProperty=nameWithType>, указав полный путь к файлу и имя файла, который вы тестируете.  
+1. Вызовите метод <xref:System.Reflection.AssemblyName.GetAssemblyName%2A?displayProperty=nameWithType>, указав полный путь к файлу и имя файла, который вы хотите проверить.  
   
 2. Если возникает исключение <xref:System.BadImageFormatException>, значит файл не является сборкой.  
   
@@ -35,64 +29,30 @@ ms.locfileid: "95731505"
 
 Этот пример кода проверяет, является ли библиотека DLL сборкой.  
 
-```csharp
-class TestAssembly  
-{  
-    static void Main()  
-    {  
-  
-        try  
-        {  
-            System.Reflection.AssemblyName testAssembly =  
-                System.Reflection.AssemblyName.GetAssemblyName(@"C:\Windows\Microsoft.NET\Framework\v3.5\System.Net.dll");  
-  
-            System.Console.WriteLine("Yes, the file is an assembly.");  
-        }  
-  
-        catch (System.IO.FileNotFoundException)  
-        {  
-            System.Console.WriteLine("The file cannot be found.");  
-        }  
-  
-        catch (System.BadImageFormatException)  
-        {  
-            System.Console.WriteLine("The file is not an assembly.");  
-        }  
-  
-        catch (System.IO.FileLoadException)  
-        {  
-            System.Console.WriteLine("The assembly has already been loaded.");  
-        }  
-    }  
-}  
-/* Output (with .NET Framework 3.5 installed):  
-    Yes, the file is an assembly.  
-*/  
-```  
-
-```vb  
-Module Module1  
-    Sub Main()  
-        Try  
-            Dim testAssembly As Reflection.AssemblyName =  
-                                Reflection.AssemblyName.GetAssemblyName("C:\Windows\Microsoft.NET\Framework\v3.5\System.Net.dll")  
-            Console.WriteLine("Yes, the file is an Assembly.")  
-        Catch ex As System.IO.FileNotFoundException  
-            Console.WriteLine("The file cannot be found.")  
-        Catch ex As System.BadImageFormatException  
-            Console.WriteLine("The file is not an Assembly.")  
-        Catch ex As System.IO.FileLoadException  
-            Console.WriteLine("The Assembly has already been loaded.")  
-        End Try  
-        Console.ReadLine()  
-    End Sub  
-End Module  
-' Output (with .NET Framework 3.5 installed):  
-'        Yes, the file is an Assembly.  
-```
+[!code-csharp[](snippets/identify/csharp/ExampleAssemblyName.cs#AssemblyName)]
 
 Метод <xref:System.Reflection.AssemblyName.GetAssemblyName%2A> загружает тестовый файл и освобождает его после того, как информация будет прочитана.  
-  
+
+### С использованием класса PEReader
+
+1. Установите NuGet пакет [System.Reflection.Metadata](https://www.nuget.org/packages/System.Reflection.Metadata/).
+
+2. Создайте экземпляр <xref:System.IO.FileStream?displayProperty=nameWithType> для чтения данных из файла, который вы хотите проверить.
+
+3. Создайте экземпляр <xref:System.Reflection.PortableExecutable.PEReader?displayProperty=nameWithType>, передав созданный на предыдущем шаге файловый поток в его конструктор.
+
+4. Проверьте значение свойства <xref:System.Reflection.PortableExecutable.PEReader.HasMetadata>. Если оно равно `false`, файл не является сборкой.
+
+5. Вызовите метод <xref:System.Reflection.Metadata.PEReaderExtensions.GetMetadataReader%2A> на экземпляре `PEReader` для создания `MetadataReader`.
+
+6. Проверьте значение свойства <xref:System.Reflection.Metadata.MetadataReader.IsAssembly>. Если оно равно `true`, файл является сборкой.
+
+В отличие от <xref:System.Reflection.AssemblyName.GetAssemblyName%2A>, класс <xref:System.Reflection.PortableExecutable.PEReader> не создает исключение при попытке чтения неуправляемых исполняемых файлов. Это позволяет избежать потерь производительности на генерацию исключений, если вам нужно проверять такие файлы. Исключения все равно нужно обрабатывать, на случай, если файл не существует или не является исполняемым файлом.
+
+Этот пример кода показывает, является ли файл сборкой, используя <xref:System.Reflection.PortableExecutable.PEReader>.
+
+[!code-csharp[](snippets/identify/csharp/ExamplePeReader.cs#PeReader)]
+
 ## <a name="see-also"></a>См. также
 
 - <xref:System.Reflection.AssemblyName>
