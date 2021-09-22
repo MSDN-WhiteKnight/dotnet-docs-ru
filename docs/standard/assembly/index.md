@@ -1,25 +1,10 @@
 ---
 title: Сборки в .NET
 description: Сборки — это базовые элементы развертывания, управления версиями, повторного использования, назначения областей активации и прав доступа для приложений на основе платформы .NET.
-ms.date: 08/15/2019
-ms.assetid: 149f5ca5-5b34-4746-9542-1ae43b2d0256
-helpviewer_keywords:
-- dynamic assemblies
-- security [.NET Framework], boundaries
-- boundaries of assemblies
-- assemblies [.NET Framework], about
-- assemblies [.NET Framework], boundaries
-- reference scope boundaries
-- assemblies [.NET Framework]
-- version boundaries
-- type boundaries
-ms.openlocfilehash: f5703377782977bb69815255d04cf1ee5a274c18
 ms.sourcegitcommit: 0bb8074d524e0dcf165430b744bb143461f17026
-ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103477221"
 ---
+
 # <a name="assemblies-in-net"></a>Сборки в .NET
 
 Сборки представляют собой базовые элементы развертывания, управления версиями, повторного использования, назначения областей активации и прав доступа для приложений на основе платформы .NET. Сборка представляет собой коллекцию типов и ресурсов, собранных для совместной работы и образующих логическую функциональную единицу. Сборки создаются в виде исполняемого файла (*EXE*) или файла библиотеки динамической компоновки (*DLL*) и являются стандартными блоками приложений .NET. Они предоставляют сведения для среды CLR, которые нужны для распознавания реализаций типов.
@@ -114,6 +99,7 @@ ms.locfileid: "103477221"
 - [Формат файла сборки .NET](file-format.md)
 - [Дружественные сборки](friend.md)
 - [Ссылочные сборки](reference-assemblies.md)
+- [Использование библиотеки System.Reflection.Metadata](using-srm.md)
 - [Практическое руководство. Загрузка и выгрузка сборок](load-unload.md)
 - [Практическое руководство. Использование и отладка сборок с возможностью выгрузки в .NET Core](unloadability.md)
 - [Практическое руководство. Определение того, является ли файл сборкой](identify.md)
