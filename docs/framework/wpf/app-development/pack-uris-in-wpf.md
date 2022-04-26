@@ -2,9 +2,9 @@
 title: URI типа "pack" в WPF
 ms.date: 03/30/2017
 ms.sourcegitcommit: 558d78d2a68acd4c95ef23231c8b4e4c7bac3902
-ms.translationtype: MT
 ms.contentlocale: ru-RU
 ---
+
 # <a name="pack-uris-in-wpf"></a>URI типа "pack" в WPF
 В Windows Presentation Foundation (WPF), [!INCLUDE[TLA#tla_uri#plural](../../../../includes/tlasharptla-urisharpplural-md.md)] используются для идентификации и загрузки файлов несколькими способами, включая следующие:  
   
@@ -267,9 +267,9 @@ ms.contentlocale: ru-RU
   
  `<element attribute="pack://application:,,,/File.xaml" />`  
   
- Таблица 1 демонстрирует различные абсолютный Pack URI , можно указывать в разметке.  
+ Таблица 1 демонстрирует различные абсолютне Pack URI, которые можно указывать в разметке.  
   
- Таблица 1. Абсолютный Pack URI типа в разметке  
+ Таблица 1. Абсолютные Pack URI в разметке  
   
 |Файл|Абсолютный Pack URI|  
 |----------|-------------------------------------------------------------------------------------------------------------------------|  
@@ -283,9 +283,9 @@ ms.contentlocale: ru-RU
 |Файл исходного узла|`"pack://siteoforigin:,,,/SOOFile.xaml"`|  
 |Файл исходного узла в подпапке|`"pack://siteoforigin:,,,/Subfolder/SOOFile.xaml"`|  
   
- Таблица 2 демонстрирует различные относительные pack URI , можно указывать в разметке.  
+ Таблица 2 демонстрирует различные относительные pack URI, которые можно указывать в разметке.  
   
- Таблица 2. Относительный Pack URI типа в разметке  
+ Таблица 2. Относительные Pack URI в разметке  
   
 |Файл|Относительный Pack URI|  
 |----------|-------------------------------------------------------------------------------------------------------------------------|  
@@ -298,20 +298,20 @@ ms.contentlocale: ru-RU
   
 <a name="Using_Pack_URIs_in_Code"></a>   
 ### <a name="using-pack-uris-in-code"></a>Использование URI типа "pack" в коде  
- Укажите пакет URI в коде путем создания экземпляра <xref:System.Uri> класса и передачи URI в качестве параметра конструктора. Это показано в следующем примере.  
+ Pack URI можно использовать в коде путем создания экземпляра класса <xref:System.Uri> и передачи URI в качестве параметра конструктора. Это показано в следующем примере.  
   
 ```csharp  
 Uri uri = new Uri("pack://application:,,,/File.xaml");  
 ```  
   
- По умолчанию <xref:System.Uri> класс считает, что пакет URI абсолютным. Следовательно, возникает исключение при создании экземпляра класса <xref:System.Uri> класс создается с помощью относительных Pack URI.  
+ По умолчанию <xref:System.Uri> класс считает, что указываемый Pack URI является абсолютным. Следовательно, при создании экземпляра класса <xref:System.Uri> с указанием относительного Pack URI возникает исключение.  
   
 ```csharp  
 Uri uri = new Uri("/File.xaml");  
 ```  
   
- К счастью <xref:System.Uri.%23ctor%28System.String%2CSystem.UriKind%29> перегрузки <xref:System.Uri> конструктор классов принимает параметр типа <xref:System.UriKind> чтобы можно было указать ли пакет URI является абсолютным или относительным.  
-  
+ К счастью перегрузка <xref:System.Uri.%23ctor%28System.String%2CSystem.UriKind%29> конструктора <xref:System.Uri> принимает параметр типа <xref:System.UriKind>, чтобы можно было указать,  является ли Pack URI абсолютным или относительным.
+
 ```csharp  
 // Absolute URI (default)  
 Uri absoluteUri = new Uri("pack://application:,,,/File.xaml", UriKind.Absolute);  
@@ -320,17 +320,17 @@ Uri relativeUri = new Uri("/File.xaml",
                         UriKind.Relative);  
 ```  
   
- Следует указать только <xref:System.UriKind.Absolute> или <xref:System.UriKind.Relative> когда вы будете уверены, что указанный Pack URI — одно из них. Если вы не знаете тип пакета URI , например, если пользователь вводит пакет, используемый URI во время выполнения, используйте <xref:System.UriKind.RelativeOrAbsolute> вместо этого.  
-  
+ Следует указывать <xref:System.UriKind.Absolute> или <xref:System.UriKind.Relative> только когда вы уверены, что указанный Pack URI действительно имеет такой тип. Если вы не знаете тип Pack URI, например, если пользователь вводит его во время выполнения, используйте вместо этого <xref:System.UriKind.RelativeOrAbsolute>.
+
 ```csharp  
 // Relative or Absolute URI provided by user via a text box  
 TextBox userProvidedUriTextBox = new TextBox();  
 Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);  
 ```  
+
+ Таблице 3 показаны различные относительные pack URI, которые можно указать в коде с помощью <xref:System.Uri?displayProperty=nameWithType>.  
   
- Таблице 3 показаны различные относительные pack URI , можно указать в коде с помощью <xref:System.Uri?displayProperty=nameWithType>.  
-  
- Таблица 3. Абсолютный Pack URI типа в коде  
+ Таблица 3. Абсолютные Pack URI в коде  
   
 |Файл|Абсолютный Pack URI|  
 |----------|-------------------------------------------------------------------------------------------------------------------------|  
@@ -344,9 +344,9 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 |Файл исходного узла|`Uri uri = new Uri("pack://siteoforigin:,,,/SOOFile.xaml", UriKind.Absolute);`|  
 |Файл исходного узла в подпапке|`Uri uri = new Uri("pack://siteoforigin:,,,/Subfolder/SOOFile.xaml", UriKind.Absolute);`|  
   
- Таблица 4 демонстрирует различные относительные pack URI , можно указать в коде с помощью <xref:System.Uri?displayProperty=nameWithType>.  
+ Таблица 4 демонстрирует различные относительные pack URI, которые можно указать в коде с помощью <xref:System.Uri?displayProperty=nameWithType>.
   
- Таблица 4. Относительный Pack URI типа в коде  
+ Таблица 4. Относительные Pack URI в коде  
   
 |Файл|Относительный Pack URI|  
 |----------|-------------------------------------------------------------------------------------------------------------------------|  
@@ -358,20 +358,20 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 |Файл содержимого в подпапке|`Uri uri = new Uri("/Subfolder/ContentFile.xaml", UriKind.Relative);`|  
   
 <a name="Common_Pack_URI_Scenarios"></a>   
-### <a name="common-pack-uri-scenarios"></a>Типичные сценарии URI типа "pack"  
- Предыдущих разделах обсуждались способы создания пакета URI для идентификации ресурсов, содержимого и файлы исходного узла. В WPF, эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.  
+### <a name="common-pack-uri-scenarios"></a>Типичные сценарии использования URI типа "pack"  
+ Предыдущих разделах обсуждались способы создания Pack URI для идентификации ресурсов, содержимого и файлов исходного узла. В WPF эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.
   
 <a name="Specifying_the_UI_to_Show_when_an_Application_Starts"></a>   
 #### <a name="specifying-the-ui-to-show-when-an-application-starts"></a>Указание пользовательского интерфейса для отображения при запуске приложения  
- <xref:System.Windows.Application.StartupUri%2A> Указывает первый UI должна отображаться при WPF приложение запускается. Для автономных приложений UI может быть окном, как показано в следующем примере.  
+ <xref:System.Windows.Application.StartupUri%2A> указывает первоначальный UI, который должен отображаться при запуске приложения WPF. Для автономных приложений UI может быть окном, как показано в следующем примере.
   
  [!code-xaml[PackURIOverviewSnippets#StartupUriWindow](~/samples/snippets/csharp/VS_Snippets_Wpf/PackURIOverviewSnippets/CS/Copy of App.xaml#startupuriwindow)]  
   
- Автономные приложения и XAML-приложения браузера (XBAP) можно также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.  
+ Автономные приложения и XAML-приложения браузера (XBAP) могут также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.  
   
  [!code-xaml[PackURIOverviewSnippets#StartupUriPage](~/samples/snippets/csharp/VS_Snippets_Wpf/PackURIOverviewSnippets/CS/App.xaml#startupuripage)]  
   
- Если приложение — это автономное приложение, и страница указана с <xref:System.Windows.Application.StartupUri%2A>, WPF открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения страницы. Для XBAP, страница будет отображена в браузере основного приложения.  
+ Если приложение — это автономное приложение, и в качестве <xref:System.Windows.Application.StartupUri%2A> указана страница, WPF открывает <xref:System.Windows.Navigation.NavigationWindow> для размещения этой страницы. В случае XBAP, страница будет отображена в браузере основного приложения.
   
 <a name="Navigating_to_a_Page"></a>   
 #### <a name="navigating-to-a-page"></a>Переход на страницу  
@@ -381,7 +381,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML2](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml2)]  
 [!code-xaml[NavigationOverviewSnippets#HyperlinkXAML3](~/samples/snippets/csharp/VS_Snippets_Wpf/NavigationOverviewSnippets/CSharp/PageWithHyperlink.xaml#hyperlinkxaml3)]  
   
- Дополнительные сведения о различных способах перехода в WPF, см. в разделе [Общие сведения о переходах](navigation-overview.md).  
+ Дополнительные сведения о различных способах перехода в WPF см. в разделе [Общие сведения о переходах](navigation-overview.md).  
   
 <a name="Specifying_a_Window_Icon"></a>   
 #### <a name="specifying-a-window-icon"></a>Указание значка окна  
@@ -392,8 +392,8 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
  Дополнительные сведения см. в разделе <xref:System.Windows.Window.Icon%2A>.  
   
 <a name="Loading_Image__Audio__and_Video_Files"></a>   
-#### <a name="loading-image-audio-and-video-files"></a>Загрузка файлов изображения, аудио и видео файлов  
- WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью пакета URI, как показано в следующих примерах.  
+#### <a name="loading-image-audio-and-video-files"></a>Загрузка файлов изображения, аудио и видео файлов
+ WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью Pack URI, как показано в следующих примерах.  
   
  [!code-xaml[MediaPlayerVideoSample#VideoPackURIAtSOO](~/samples/snippets/csharp/VS_Snippets_Wpf/MediaPlayerVideoSample/CS/HomePage.xaml#videopackuriatsoo)]  
   
@@ -405,12 +405,12 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   
 <a name="Loading_a_Resource_Dictionary_from_the_Site_of_Origin"></a>   
 #### <a name="loading-a-resource-dictionary-from-the-site-of-origin"></a>Загрузка словаря ресурсов с исходного узла  
- Словари ресурсов (<xref:System.Windows.ResourceDictionary>) можно использовать для поддержки тем приложения. Одним из способов создания тем и управления ими является создание нескольких тем в качестве словарей ресурсов, расположенных в исходном узле приложения. Это позволяет добавлять и обновлять темы без повторной компиляции и развертывания приложения. Словари ресурсов можно определить и загрузить с помощью пакета URI, как показано в следующем примере.  
+ Словари ресурсов (<xref:System.Windows.ResourceDictionary>) можно использовать для поддержки тем приложения. Одним из способов создания тем и управления ими является создание нескольких тем в качестве словарей ресурсов, расположенных в исходном узле приложения. Это позволяет добавлять и обновлять темы без повторной компиляции и развертывания приложения. Словари ресурсов можно определить и загрузить с помощью Pack URI, как показано в следующем примере.  
   
  [!code-xaml[ResourceDictionarySnippets#ResourceDictionaryPackURI](~/samples/snippets/csharp/VS_Snippets_Wpf/ResourceDictionarySnippets/CS/App.xaml#resourcedictionarypackuri)]  
   
- Обзор тем в WPF, см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
+ Обзор тем в WPF см. в разделе [Стилизация и использование шаблонов](../controls/styling-and-templating.md).  
   
 ## <a name="see-also"></a>См. также
 
-- [Ресурсы, Содержимое и Файлы данных WPF-приложения](wpf-application-resource-content-and-data-files.md)
+- [Ресурсы, содержимое и файлы данных WPF-приложения](wpf-application-resource-content-and-data-files.md)
