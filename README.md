@@ -7,6 +7,11 @@
 - [Windows Forms](docs/framework/winforms/)
 - [WPF](docs/framework/wpf/)
 
+## См. также
+
+- [CIL Tools](https://github.com/MSDN-WhiteKnight/CilTools)
+- [CIL Browser](https://gitflic.ru/project/smallsoft/cilbrowser)
+
 ---
 
 Основано на материалах из репозитория https://github.com/dotnet/docs.ru-ru (сайт: [Документация по .NET](https://docs.microsoft.com/ru-ru/dotnet/)), лицензия **Creative Commons Attribution 4.0 International** для текста, **MIT** для кода. Изменения в исходных материалах включают улучшение качества перевода, правки грамматики и пунктуации, изменения URL ссылок, удаление некоторых фрагментов кода, а также добавление и удаление некоторых статей или их фрагментов.
