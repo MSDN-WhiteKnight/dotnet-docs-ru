@@ -822,18 +822,18 @@ dlg.ShowDialog();
 </code></pre>
 <p><a name="Navigation_Hosts"></a></p>
 <h2 id="navigation-hosts">Узлы переходов</h2>
-<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> являются классами, которые известны как узлы переходов. Объект <em>узла навигации</em> является классом, который может перейти к содержимому и отобразить. В этой ситуации каждом узле переходов используются собственная <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала. На следующем рисунке показана основная структура узла переходов.</p>
+<p>Классы <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> называют узлами переходов. <em>Узел переходов</em> — это класс, который может осуществлять переход к содержимому и его отображение. В каждом узле переходов используются собственный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнал. На следующем рисунке показана основная структура узла переходов.</p>
 <p><img src="media/navigation-overview/navigation-host-construction.png" alt="Схемы перехода" title="основная структура узла переходов"></p>
-<p>По сути, это позволяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> обеспечить такую же поддержку переходов, XBAP предоставляет при размещении в браузере.</p>
-<p>Помимо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала, узлы переходов реализуют те же члены, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> реализует. Это показано на следующем рисунке.</p>
+<p>По сути, это позволяет <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> обеспечить такую же поддержку переходов, какую XBAP предоставляет при размещении в браузере.</p>
+<p>Помимо использования <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a> и журнала, узлы переходов реализуют те же члены, что и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationservice">NavigationService</a>. Это показано на следующем рисунке.</p>
 <p><img src="media/navigation-overview/navigation-window-and-frame.png" alt="Журнал во фрейме и в NavigationWindow" title="окно навигации и кадра"></p>
-<p>Это позволяет программировать поддержку переходов непосредственно с ними. Это можно использовать, если необходимо предоставить навигации UI для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , размещенного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>. Кроме того, оба типа реализуют дополнительные, связанных с навигацией члены, включая <code>BackStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.backstack">NavigationWindow.BackStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.backstack">Frame.BackStack</a>) и <code>ForwardStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.forwardstack">NavigationWindow.ForwardStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.forwardstack">Frame.ForwardStack</a>), которые позволяют перебирать записи журнала в серверной части стек и переслать стека, соответственно.</p>
+<p>Это позволяет программировать поддержку переходов непосредственно с ними. Это можно использовать, если необходимо предоставить UI навигации для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, размещенного в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>. Кроме того, оба типа реализуют дополнительные, связанные с навигацией члены, включая <code>BackStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.backstack">NavigationWindow.BackStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.backstack">Frame.BackStack</a>) и <code>ForwardStack</code> (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.forwardstack">NavigationWindow.ForwardStack</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame.forwardstack">Frame.ForwardStack</a>), которые позволяют перебирать записи журнала в стеке переходов назад и вперед, соответственно.</p>
 <p>Как упоминалось ранее, в приложении может существовать несколько журналов. На следующем рисунке показано пример, когда это возможно.</p>
 <p><img src="media/navigation-overview/multiple-journals-in-one-application.png" alt="Несколько журналов в одном приложении" title="это пример более одного журнала в приложении."></p>
 <p><a name="Navigating_to_Content_Other_than_Pages"></a></p>
 <h2 id="navigating-to-content-other-than-xaml-pages">Переход к содержимому, отличному от страниц XAML</h2>
-<p>В этом разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и пакет XBAP использовался для демонстрируют различные возможности переходов WPF. Тем не менее <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> то есть скомпилированный в приложение не является единственным типом содержимого, к которому можно осуществить переход и пакет XBAP — не единственный способ определения содержимого.</p>
-<p>Как показано в этом разделе, можно также осуществлять переходы к свободным XAML файлы, HTML файлы и объекты.</p>
+<p>В этом разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и XBAP использовался для демонстрирации различных возможностей переходов WPF. Тем не менее, скомпилированный в составе приложения <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> не является единственным типом содержимого, к которому можно осуществить переход и XBAP — не единственный способ определения содержимого.</p>
+<p>Как показано в этом разделе, можно также осуществлять переходы к свободным XAML файлам, HTML файлам и объектам.</p>
 <p><a name="Navigating_to_Loose_XAML_Files"></a></p>
 <h3 id="navigating-to-loose-xaml-files">Переход к свободным файлам XAML</h3>
 <p>Свободный XAML файл является файлом со следующими характеристиками:</p>
@@ -845,7 +845,7 @@ dlg.ShowDialog();
 <li><p>имя файла имеет расширение XAML.</p>
 </li>
 </ul>
-<p>Например, рассмотрим следующее содержимое, сохраненное как свободный XAML файле Person.xaml.</p>
+<p>Например, рассмотрим следующее содержимое, сохраненное как свободный XAML файл Person.xaml.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#LooseXAML">&lt;!-- Person.xaml --&gt;
 &lt;TextBlock xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&gt;
   &lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Name:&lt;/TextBlock&gt;
@@ -857,11 +857,11 @@ dlg.ShowDialog();
 </code></pre>
 <p>Если дважды щелкнуть файл, браузер откроется, выполнит переход к содержимому и отобразит его. Это показано на следующем рисунке.</p>
 <p><img src="media/navigation-overview/contents-of-person-xaml-file.png" alt="Отображение содержимого в файле Person.XAML" title="показано содержимое файла Person.XAML."></p>
-<p>Можно отобразить свободный XAML файл из следующего:</p>
+<p>Можно отобразить свободный XAML файл, расположенный в следующих источниках:</p>
 <ul>
 <li><p>веб-узел на локальном компьютере, в интрасети или Интернете;</p>
 </li>
-<li><p>Объект Формат UNC (Universal Naming Convention) общую папку.</p>
+<li><p>общая папка Формат UNC (Universal Naming Convention).</p>
 </li>
 <li><p>локальный диск.</p>
 </li>
@@ -871,21 +871,21 @@ dlg.ShowDialog();
 <h5>Note</h5>
 <p>Дополнительные сведения о публикации и запуске свободных XAML страниц, см. в разделе <a href="deploying-a-wpf-application-wpf.html">развертывание приложений WPF</a>.</p>
 </div>
-<p>Единственным ограничением в отношении свободных XAML является возможность размещения только содержимое, которое безопасно для запуска в режиме частичного доверия. Например <code>Window</code> не может быть корневым элементом свободного XAML файл. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p>Единственным ограничением в отношении свободного XAML является возможность размещения только содержимого, которое безопасно для запуска в режиме частичного доверия. Например <code>Window</code> не может быть корневым элементом свободного XAML-файла. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
 <p><a name="Navigating_to_HTML_Files_Using_Frame"></a></p>
-<h3 id="navigating-to-html-files-by-using-frame">Переход к файлам HTML элемента управления Frame</h3>
-<p>Как можно догадаться, можно также перейти к HTML. Необходимо просто предоставить URI , используется схема http. Например, следующая XAML показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> , осуществляющий переход к HTML страницы.</p>
+<h3 id="navigating-to-html-files-by-using-frame">Переход к файлам HTML с помощью элемента управления Frame</h3>
+<p>Как можно догадаться, можно также перейти к HTML-страницам. Для этого необходимо просто предоставить URI, использующий схему <code>http://</code>. Например, следующий XAML показывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, осуществляющий переход к HTML-странице.</p>
 <pre><code class="lang-xaml" name="NavigationOverviewSnippets#FrameHtmlNavMARKUP">&lt;Frame Source=&quot;http://www.microsoft.com/default.aspx&quot; /&gt;
 </code></pre>
-<p>Переход к HTML требуются специальные разрешения. Например, нельзя перейти из XBAP , запущенного в песочнице безопасности частичного доверия для зоны Интернета. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p>Переход к HTML требует специальных разрешений. Например, к нему нельзя перейти из XBAP, запущенного в песочнице безопасности частичного доверия для зоны Интернета. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
 <p><a name="Navigating_to_HTML_Files_Using_WebBrowser"></a></p>
 <h3 id="navigating-to-html-files-by-using-the-webbrowser-control">Переход к файлам HTML с помощью элемента управления WebBrowser</h3>
-<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> Управления поддерживает HTML размещение документов, навигации и скриптов и управляемого кода взаимодействия. Подробные сведения о <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> управления, см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a>.</p>
-<p>Как и <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, переходе по адресу HTML с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> требуются специальные разрешения. Например, из приложений с частичным доверием можно перейти только к HTML расположенный на исходном узле. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
+<p>Элемент управления <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> поддерживает размещение HTML документов, навигации, скриптов и управляемого кода взаимодействия. Подробные сведения о <code>WebBrowser</code> см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a>.</p>
+<p>Как и в случае <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a>, переход по адресу HTML с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.webbrowser">WebBrowser</a> требует специальных разрешений. Например, из приложений с частичным доверием можно перейти только к HTML, расположенному на исходном узле. Дополнительные сведения см. в разделе <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия в WPF</a>.</p>
 <p><a name="Navigating_to_Objects"></a></p>
 <h3 id="navigating-to-custom-objects">Переход к пользовательским объектам</h3>
-<p>Если у вас есть данные, которые хранятся в виде пользовательских объектов, один из способов отображения этих данных является создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с содержимым, привязанным к таким объектам (см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>). Если не требуется создание всей страницы только для отображения объектов, то можно перейти непосредственно к ним.</p>
-<p>Рассмотрите возможность <code>Person</code> класс, который реализуется в следующем коде.</p>
+<p>Если у вас есть данные, которые хранятся в виде пользовательских объектов, один из способов отображения этих данных является создание <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> с содержимым, привязанным к таким объектам (см. в разделе <a href="../data/data-binding-overview.html">Общие сведения о привязке данных</a>). Если не требуется создание целой страницы только для отображения объектов, то можно перейти непосредственно к ним.</p>
+<p>Рассмотрим класс <code>Person</code>, который реализуется в следующем коде.</p>
 <pre><code class="lang-csharp" name="NavigateToObjectSnippets#PersonClassCODE">using System.Windows.Media;
 
 namespace SDKSample
@@ -916,7 +916,7 @@ namespace SDKSample
     }
 }
 </code></pre>
-<p>Для перехода к нему вызовите <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.navigate">NavigationWindow.Navigate</a> метод, как показано в следующем примере кода.</p>
+<p>Для перехода к нему вызовите метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow.navigate">NavigationWindow.Navigate</a>, как показано в следующем примере кода.</p>
 <pre><code class="lang-xaml" name="NavigateToObjectSnippets#PageThatNavsToObject1">&lt;Page 
   xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
   xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
@@ -949,7 +949,7 @@ namespace SDKSample
 </code></pre>
 <p>На рисунке ниже показан результат.</p>
 <p><img src="media/navigation-overview/page-navigates-to-an-object.png" alt="Страница, осуществляющая переход в класс" title="ниже приведен пример страницы, который осуществляет переход к объекту."></p>
-<p>Из этого рисунка можно видеть, что ничего полезного не отобразилось. На самом деле, возвращаемое значение — это значение, которое отображается <code>ToString</code> метод <strong>Person</strong> объекта; по умолчанию это единственное значение, которое WPF можно использовать для представления объекта. Можно переопределить <code>ToString</code> метод для возврата более значимой информации, несмотря на то, что он будет по-прежнему быть только строковым значением. Один из методов, воспользуйтесь преимуществами возможностей представления WPF является использование шаблона данных. Можно реализовать шаблон данных, WPF можно связать с объектом определенного типа. В следующем коде показано шаблон данных для <code>Person</code> объекта.</p>
+<p>Из этого рисунка можно видеть, что ничего полезного не отобразилось. На самом деле, отображаемое значение — это значение, которое возвращает метод <code>ToString</code> объекта <strong>Person</strong>; по умолчанию это единственное значение, которое WPF может использовать для представления объекта. Можно переопределить метод <code>ToString</code> для возврата более значимой информации, хотя это по-прежнему будет всего лишь строковое значение. Одним из методов, использующих преимущества возможностей представления WPF, является использование шаблона данных. Можно реализовать шаблон данных и связать его с объектом определенного типа. В следующем коде показан шаблон данных для объекта <code>Person</code>.</p>
 <pre><code class="lang-xaml" name="NavigateToObjectSnippets#DataTemplateMARKUP">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
@@ -974,13 +974,13 @@ namespace SDKSample
 
 &lt;/Application&gt;
 </code></pre>
-<p>Здесь шаблон данных связан с <code>Person</code> типа с помощью <code>x:Type</code> расширение разметки в <code>DataType</code> атрибута. Затем шаблон данных привязывает <code>TextBlock</code> элементов (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>) к свойствам <code>Person</code> класса. На следующем рисунке показан обновленный внешний вид <code>Person</code> объекта.</p>
+<p>Здесь шаблон данных связан с типом <code>Person</code> с помощью расширения разметки <code>x:Type</code> в атрибуте <code>DataType</code>. Затем шаблон данных привязывает элемент <code>TextBlock</code> (см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.textblock">TextBlock</a>) к свойствам класса <code>Person</code>. На следующем рисунке показан обновленный внешний вид объекта <code>Person</code>.</p>
 <p><img src="media/navigation-overview/navigating-to-a-class.png" alt="Переход к классу с шаблоном данных" title="переход к классу, который содержит шаблон данных."></p>
 <p>Преимуществом этого способа является связность, которая обеспечивается возможностью повторного использования шаблона данных для согласованного отображения объектов в любом месте приложения.</p>
 <p>Дополнительные сведения о шаблонах данных см. в разделе <a href="../data/data-templating-overview.html">Общие сведения о шаблонах данных</a>.</p>
 <p><a name="Security"></a></p>
 <h2 id="security">Безопасность</h2>
-<p>WPF Поддержка навигации позволяет XBAP осуществлять переходы через Интернет, а также позволяет приложениям сторонних размещения содержимого. Для защиты приложений и пользователей от опасных WPF предоставляет широкий набор функций безопасности, которые рассматриваются в <a href="../security-wpf.html">безопасности</a> и <a href="../wpf-partial-trust-security.html">Безопасность частичного доверия WPF</a>.</p>
+<p>Поддержка навигации WPF позволяет XBAP осуществлять переходы через Интернет, а также позволяет приложениям размещать стороннее содержимое. Для защиты приложений и пользователей WPF предоставляет широкий набор функций безопасности, которые рассматриваются в разделах <a href="../security-wpf.html">безопасность WPF</a> и <a href="../wpf-partial-trust-security.html">безопасность частичного доверия WPF</a>.</p>
 <h2 id="see-also">См. также</h2>
 <ul>
 <li><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.setcookie">SetCookie</a></li>

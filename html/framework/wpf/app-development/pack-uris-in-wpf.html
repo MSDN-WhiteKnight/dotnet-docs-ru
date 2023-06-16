@@ -71,7 +71,7 @@
 
 <p>В Windows Presentation Foundation (WPF), универсальные идентификаторы ресурсов (URI) используются для идентификации и загрузки файлов несколькими способами, включая следующие:</p>
 <ul>
-<li><p>Указание UI  для отображения при первом запуске приложения.</p>
+<li><p>Указание UI для отображения при первом запуске приложения.</p>
 </li>
 <li><p>Загрузка изображений.</p>
 </li>
@@ -84,24 +84,24 @@
 <ul>
 <li><p>Текущая сборка.</p>
 </li>
-<li><p>Указанная ссылками сборка.</p>
+<li><p>Сборка, на которую добавлена ссылка.</p>
 </li>
 <li><p>Расположение, связанное со сборкой.</p>
 </li>
 <li><p>Исходный узел приложения.</p>
 </li>
 </ul>
-<p>Для обеспечения согласованного механизма идентификации и загрузки этих типов файлов из этих расположений, WPF использует расширяемость <em>схема URI упаковки</em>. В этом разделе представлен обзор схемы, описывается формирование пакета URI для разнообразных сценариев, рассматриваются абсолютное и относительное URI и URI разрешение как использовать пакет URI из обоих разметки и код.</p>
+<p>Для обеспечения согласованного механизма идентификации и загрузки этих типов файлов из этих расположений, WPF использует расширяемую схему <em>pack URI</em>. В этом разделе представлен обзор схемы, описывается формирование pack URI для разнообразных сценариев, рассматриваются абсолютное и относительное URI, разрешение URI, а также использование pack URI из разметки и кода.</p>
 <p><a name="The_Pack_URI_Scheme"></a></p>
 <h2 id="the-pack-uri-scheme">Схема URI типа &quot;pack&quot;</h2>
-<p>Пакет URI используется схема <a href="https://go.microsoft.com/fwlink/?LinkID=71255">спецификации Open Packaging Conventions</a> спецификации (OPC), которая описывает модель для организации и идентификации содержимого. Основными элементами этой модели являются пакеты и элементы, где <em>пакета</em> — это логический контейнер для одного или более логическими <em>частей</em>. Эта структура показана на следующем рисунке.</p>
+<p>Схема pack URI используется <a href="https://go.microsoft.com/fwlink/?LinkID=71255">спецификацией Open Packaging Conventions</a> (OPC), которая описывает модель для организации и идентификации содержимого. Основными элементами этой модели являются пакеты и части, где <em>пакет</em> — это логический контейнер для одной или более логических <em>частей</em>. Эта структура показана на следующем рисунке.</p>
 <p><img src="media/pack-uris-in-wpf/wpf-package-parts-diagram.png" alt="Схема пакета и частей"></p>
-<p>Для определения частей, спецификации OPC используется расширяемость RFC 2396 (универсальных кодов ресурса (URI): Общий синтаксис) для определения в пакете URI схемы.</p>
-<p>Схемы, который задается параметром URI определяется его префиксом; http, ftp и file, известных примеров. Пакет URI схема использует «pack» в качестве схемы и содержит два компонента: центр и путь. Ниже приведен формат для пакета URI.</p>
-<p>пакет: / /<em>центра</em>/<em>путь</em></p>
-<p><em>Центра</em> указывает тип пакета, которое находится элемент, пока <em>путь</em> указывает расположение части внутри пакета.</p>
+<p>Для определения частей спецификация OPC использует расширяемый синтаксис RFC 2396 (Универсальные коды ресурса (URI): Общий синтаксис) для определения схемы pack URI.</p>
+<p>Схема URI определяется его префиксом; известные примеры: http, ftp и file. Pack URI использует «pack» в качестве схемы и содержит два компонента: центр и путь. Ниже приведен формат pack URI.</p>
+<p>пакет: // <em>центр</em>/<em>путь</em></p>
+<p><em>Центр</em> указывает тип пакета, в котором находится часть, а <em>путь</em> указывает расположение части внутри пакета.</p>
 <p>Эта концепция показана на следующей схеме:</p>
-<p><img src="media/pack-uris-in-wpf/wpf-relationship-diagram.png" alt="Отношение между пакетом, сертификацией и путем"></p>
+<p><img src="media/pack-uris-in-wpf/wpf-relationship-diagram.png" alt="Отношение между пакетом, центром и путем"></p>
 <p>Пакеты и элементы аналогичны приложениям и файлам. Приложение (пакет) может содержать один или несколько файлов (элементов), в том числе:</p>
 <ul>
 <li><p>Файлы ресурсов, скомпилированные в локальную сборку.</p>
@@ -115,39 +115,39 @@
 <li><p>Файлы исходного узла.</p>
 </li>
 </ul>
-<p>Для доступа к этим типам файлов, WPF поддерживает два центра: application: / / / и siteoforigin: / / /. Центр application:/// определяет файлы данных приложения, известные во время компиляции, включая файлы ресурсов и файлы содержимого. Центр siteoforigin:/// определяет файлы исходного узла. На следующем рисунке показана область каждого центра.</p>
+<p>Для доступа к этим типам файлов, WPF поддерживает два центра: <code>application:///</code> и <code>siteoforigin:///</code>. <code>Центр application:///</code> определяет файлы данных приложения, известные во время компиляции, включая файлы ресурсов и файлы содержимого. Центр <code>siteoforigin:///</code> определяет файлы исходного узла. На следующем рисунке показана область каждого центра.</p>
 <p><img src="media/pack-uris-in-wpf/wpf-pack-uri-scheme.png" alt="Схема URI типа “pack”"></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Компонент центра пакета URI является встроенным URI , указывающий на пакет и должен соответствовать стандарту RFC 2396. Кроме того, символ &quot;/&quot; необходимо заменить символом &quot;,&quot;, и необходимо обособлять escape-символами такие зарезервированные символы, как &quot;%&quot; и &quot;?&quot;. Подробные сведения см. в OPC.</p>
+<p>Компонент центра pack URI является встроенным URI, указывающим на пакет, и должен соответствовать стандарту RFC 2396. Кроме того, символ &quot;/&quot; необходимо заменить символом &quot;,&quot;, и необходимо экранировать такие зарезервированные символы, как &quot;%&quot; и &quot;?&quot;. Подробные сведения см. в OPC.</p>
 </div>
-<p>В следующих разделах рассматривается построение пакета URI с использованием этих двух центров с соответствующими путями для идентификации ресурсов, содержимого и файлы исходного узла.</p>
+<p>В следующих разделах рассматривается построение pack URI с использованием этих двух центров с соответствующими путями для идентификации ресурсов, содержимого и файлов исходного узла.</p>
 <p><a name="Resource_File_Pack_URIs___Local_Assembly"></a></p>
 <h2 id="resource-file-pack-uris">URI типа &quot;pack&quot; для файла ресурсов</h2>
-<p>Файлы ресурсов настраиваются как MSBuild<code>Resource</code> элементы и компилируются в сборки. WPF поддерживает формирование пакета URI может использоваться для идентификации файлов ресурсов, которые компилируются в локальную сборку или компилируется в сборку, на который ссылается локальная сборка.</p>
+<p>Файлы ресурсов настраиваются как элемент MSBuild <code>Resource</code> и компилируются в сборки. WPF поддерживает формирование pack URI, используемых для идентификации файлов ресурсов, которые компилируются либо в локальную сборку, либо в сборку, на которую ссылается локальная сборка.</p>
 <p><a name="Local_Assembly_Resource_File"></a></p>
 <h3 id="local-assembly-resource-file">Файл ресурсов локальной сборки</h3>
-<p>Пакет URI для ресурса файла, который компилируется в локальную сборку использует следующие центр и путь:</p>
+<p>Pack URI для файла ресурсов, который компилируется в локальную сборку использует следующие центр и путь:</p>
 <ul>
-<li><p><strong>Центр</strong>: application:///.</p>
+<li><p><strong>Центр</strong>: <code>application:///</code>.</p>
 </li>
 <li><p><strong>Путь</strong>: Имя файла ресурсов, включая его путь относительно корневой папки проекта локальной сборки.</p>
 </li>
 </ul>
-<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в корневой папке проекта локальной сборки.</p>
+<p>В следующем примере показан pack URI для XAML файла ресурсов, который находится в корневой папке проекта локальной сборки.</p>
 <p><code>pack://application:,,,/ResourceFile.xaml</code></p>
-<p>В следующем примере показано пакете URI для XAML файла ресурсов, который находится во вложенной папке проекта локальной сборки.</p>
+<p>В следующем примере показан pack URI для XAML файла ресурсов, который находится во вложенной папке проекта локальной сборки.</p>
 <p><code>pack://application:,,,/Subfolder/ResourceFile.xaml</code></p>
 <p><a name="Resource_File_Pack_URIs___Referenced_Assembly"></a></p>
-<h3 id="referenced-assembly-resource-file">Файл ресурсов указанной ссылками сборки</h3>
-<p>Пакет URI для ресурса файла, который компилируется в сборку использует следующие центр и путь:</p>
+<h3 id="referenced-assembly-resource-file">Файл ресурсов в сборке, на которую добавлена ссылка</h3>
+<p>Pack URI для файла ресурсов в сборке по ссылке использует следующие центр и путь:</p>
 <ul>
 <li><p><strong>Центр</strong>: application:///.</p>
 </li>
 <li><p><strong>Путь</strong>: Имя файла ресурсов, который компилируется в сборку. Путь должен соответствовать следующему формату:</p>
 <p><em>AssemblyShortName</em>{<em>; Версия</em>] {<em>; Открытый ключ</em>]; component /<em>путь</em></p>
 <ul>
-<li><p><strong>AssemblyShortName</strong> — краткое имя для указанной ссылками сборки.</p>
+<li><p><strong>AssemblyShortName</strong> — краткое имя для сборки по ссылке.</p>
 </li>
 <li><p><strong>;Version</strong> [необязательно] — версия указанной ссылками сборки, которая содержит файл ресурсов. Используется при загрузке двух или более указанных ссылками сборок с одинаковым кратким именем.</p>
 </li>
@@ -160,48 +160,48 @@
 </ul>
 </li>
 </ul>
-<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в корневой папке проекта указанной ссылками сборки.</p>
+<p>В следующем примере показан Pack URI для XAML файла ресурсов, который находится в корневой папке проекта указанной ссылками сборки.</p>
 <p><code>pack://application:,,,/ReferencedAssembly;component/ResourceFile.xaml</code></p>
-<p>В следующем примере показано пакете URI для XAML файла ресурсов, который находится во вложенной папке проекта указанной ссылками сборки.</p>
+<p>В следующем примере показан Pack URI для XAML файла ресурсов, который находится во вложенной папке проекта указанной ссылками сборки.</p>
 <p><code>pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml</code></p>
-<p>В следующем примере показано пакете URI для XAML файл ресурсов, который находится в папке корневой папки проекта ссылочной сборки конкретной версии.</p>
+<p>В следующем примере показан Pack URI для XAML файл ресурсов, который находится в корневой папке проекта конкретной версии сборки, указанной ссылкой.</p>
 <p><code>pack://application:,,,/ReferencedAssembly;v1.0.0.1;component/ResourceFile.xaml</code></p>
-<p>Обратите внимание, что пакет URI синтаксис для файлов ресурсов указанной ссылками сборки может использоваться только вместе с приложением: / / / центра. Например, следующее не поддерживается в WPF.</p>
+<p>Обратите внимание, что пакет URI синтаксис для файлов ресурсов указанной ссылками сборки может использоваться только вместе с центром application:///. Например, следующее не поддерживается в WPF.</p>
 <p><code>pack://siteoforigin:,,,/SomeAssembly;component/ResourceFile.xaml</code></p>
 <p><a name="Content_File_Pack_URIs"></a></p>
 <h2 id="content-file-pack-uris">URI типа &quot;pack&quot; для файла содержимого</h2>
-<p>Пакет URI для файла содержимого использует следующие центр и путь:</p>
+<p>Pack URI для файла содержимого использует следующие центр и путь:</p>
 <ul>
 <li><p><strong>Центр</strong>: application:///.</p>
 </li>
-<li><p><strong>Путь</strong>: Имя файла содержимого, включая его путь относительно расположения файла системы основной исполняемой сборки приложения.</p>
+<li><p><strong>Путь</strong>: Имя файла содержимого, включая его путь относительно расположения файла основной исполняемой сборки приложения.</p>
 </li>
 </ul>
-<p>В следующем примере показано пакете URI для XAML содержимого файла, расположенного в той же папке, что и исполняемая сборка.</p>
+<p>В следующем примере показано Pack URI для XAML файла содержимого, расположенного в той же папке, что и исполняемая сборка.</p>
 <p><code>pack://application:,,,/ContentFile.xaml</code></p>
-<p>В следующем примере показано пакете URI для XAML содержимого файла, расположенного во вложенной папке относительно исполняемой сборки приложения.</p>
+<p>В следующем примере показано Pack URI для XAML файла содержимого, расположенного во вложенной папке относительно исполняемой сборки приложения.</p>
 <p><code>pack://application:,,,/Subfolder/ContentFile.xaml</code></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>HTML файлы содержимого не может перемещаться. URI Схема поддерживает переход только к HTML файлы, расположенные на исходном узле.</p>
+<p>К HTML файлам содержимого невозможно осуществлять переход. Схема URI поддерживает переход только к HTML файлам, расположенным на исходном узле.</p>
 </div>
 <p><a name="The_siteoforigin_____Authority"></a></p>
 <h2 id="site-of-origin-pack-uris">URI типа &quot;pack&quot; исходного узла</h2>
-<p>Пакет URI для исходного узла файла использует следующие центр и путь:</p>
+<p>Pack URI для исходного узла файла использует следующие центр и путь:</p>
 <ul>
 <li><p><strong>Центр</strong>: siteoforigin:///.</p>
 </li>
 <li><p><strong>Путь</strong>: Имя узла исходного файла, включая его путь относительно расположения, из которого была запущена исполняемая сборка.</p>
 </li>
 </ul>
-<p>В следующем примере показано пакете URI для XAML сайта из исходного файла, хранящегося в расположении, из которого запускается исполняемая сборка.</p>
+<p>В следующем примере показан Pack URI для XAML файла исходного узла, хранящегося в расположении, из которого запускается исполняемая сборка.</p>
 <p><code>pack://siteoforigin:,,,/SiteOfOriginFile.xaml</code></p>
-<p>В следующем примере показано пакете URI для XAML сайта из исходного файла, хранящегося во вложенной папке относительно расположения, из которого запускается исполняемая сборка приложения.</p>
+<p>В следующем примере показано Pack URI для XAML файла исходного узла, хранящегося во вложенной папке относительно расположения, из которого запускается исполняемая сборка приложения.</p>
 <p><code>pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml</code></p>
 <p><a name="Page_Files"></a></p>
-<h2 id="page-files">Файлы подкачки</h2>
-<p>XAML файлы, которые настроены как MSBuild<code>Page</code> элементы компилируются в сборки таким же образом, как файлы ресурсов. Следовательно MSBuild<code>Page</code> элементов можно идентифицировать с помощью пакета URI для файлов ресурсов.</p>
-<p>Типы XAML файлы, которые обычно настраиваются как MSBuild<code>Page</code> элементы имеют одно из следующих корневых элементов:</p>
+<h2 id="page-files">Файлы страниц</h2>
+<p>XAML файлы, которые настроены как элемент MSBuild <code>Page</code>, компилируются в сборки так же, как и файлы ресурсов. Следовательно, элемент MSBuild <code>Page</code> можно идентифицировать с помощью Pack URI для файлов ресурсов.</p>
+<p>Типы XAML файлы, которые обычно настраиваются как элемент MSBuild <code>Page</code>, имеют один из следующих корневых элементов:</p>
 <ul>
 <li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">System.Windows.Window</a></p>
 </li>
@@ -218,57 +218,57 @@
 </ul>
 <p><a name="Absolute_vs_Relative_Pack_URIs"></a></p>
 <h2 id="absolute-vs-relative-pack-uris">Абсолютные и относительные URI типа &quot;pack&quot;</h2>
-<p>Полный пакет URI включает в себя схему, центр и путь, и он считается абсолютным пакет URI. Для разработчиков, упрощения XAML элементы обычно допускают настройку соответствующих атрибутов в относительный пакет URI, который включает только путь.</p>
-<p>Например, рассмотрим следующий абсолютный пакет URI для файла ресурсов в локальной сборке.</p>
+<p>Полный Pack URI включает в себя схему, центр и путь, и он считается абсолютным Pack URI. Для упрощения разработки XAML элементы обычно допускают настройку соответствующих атрибутов с использованием отноительного Pack URI, который включает только путь.</p>
+<p>Например, рассмотрим следующий абсолютный Pack URI для файла ресурсов в локальной сборке.</p>
 <p><code>pack://application:,,,/ResourceFile.xaml</code></p>
-<p>Относительный пакет URI , ссылающийся на этот ресурс файла будет следующим.</p>
+<p>Относительный Pack URI, ссылающийся на этот файл будет следующим.</p>
 <p><code>/ResourceFile.xaml</code></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Поскольку файлы исходного узла не связаны со сборками, они могут ссылаться только на абсолютный пакет URI.</p>
+<p>Поскольку файлы исходного узла не связаны со сборками, на них можно ссылаться только по абсолютному URI.</p>
 </div>
-<p>По умолчанию относительный пакет URI считается относительно расположения разметки или кода, содержащий ссылку. Если используется предварительная обратная косая черта, однако относительный пакет для URI рассматривается относительно корня приложения. Например, рассмотрим следующую структуру проекта.</p>
+<p>По умолчанию относительный Pack URI считается относительно расположения разметки или кода, содержащего ссылку. Но если используется обратная косая черта в начале, относительный Pack URI отсчитывается относительно корня приложения. Например, рассмотрим следующую структуру проекта.</p>
 <p><code>App.xaml</code></p>
 <p><code>Page2.xaml</code></p>
 <p><code>\SubFolder</code></p>
 <p><code>+ Page1.xaml</code></p>
 <p><code>+ Page2.xaml</code></p>
-<p>Если Page1.xaml содержит URI , ссылающийся на <em>корневой</em>\SubFolder\Page2.xaml, ссылка может использовать следующий относительный пакет URI.</p>
+<p>Если Page1.xaml содержит URI , ссылающийся на <em>корень</em>\SubFolder\Page2.xaml, ссылка может использовать следующий относительный Pack URI.</p>
 <p><code>Page2.xaml</code></p>
-<p>Если Page1.xaml содержит URI , ссылающийся на <em>корневой</em>\Page2.xaml, ссылка может использовать следующий относительный пакет URI.</p>
+<p>Если Page1.xaml содержит URI , ссылающийся на <em>корень</em>\Page2.xaml, ссылка может использовать следующий относительный Pack URI.</p>
 <p><code>/Page2.xaml</code></p>
 <p><a name="Pack_URI_Resolution"></a></p>
 <h2 id="pack-uri-resolution">Разрешение URI типа &quot;pack&quot;</h2>
-<p>Формат пакета URI делает возможным для пакета URI для различных типов файлов может выглядеть одинаково. Например, рассмотрим следующий абсолютный пакет URI.</p>
+<p>Формат Pack URI делает возможным для Pack URI различных типов файлов может выглядеть одинаково. Например, рассмотрим следующий абсолютный Pack URI.</p>
 <p><code>pack://application:,,,/ResourceOrContentFile.xaml</code></p>
-<p>Этот абсолютный пакет URI может ссылаться на файлы ресурсов в локальной сборке или файл содержимого. То же самое верно для следующего относительного URI.</p>
+<p>Этот абсолютный Pack URI может ссылаться на файлы ресурсов в локальной сборке или файл содержимого. То же самое верно для следующего относительного URI.</p>
 <p><code>/ResourceOrContentFile.xaml</code></p>
-<p>Чтобы определить тип файла, типа pack URI ссылается на, WPF разрешает URI для файлов ресурсов в локальных сборках и файлы содержимого с помощью следующих эвристических методов:</p>
+<p>Чтобы определить тип файла, на который ссылается pack URI, WPF разрешает URI для файлов ресурсов в локальных сборках и файлов содержимого с помощью следующих эвристических методов:</p>
 <ol>
-<li><p>Проверка метаданных сборки для <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> атрибут, соответствующий пакет URI.</p>
+<li><p>Проверка метаданных сборки на наличие атрибута <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a>, соответствующего Pack URI.</p>
 </li>
-<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> обнаружении атрибута путь пакета URI ссылается на файл содержимого.</p>
+<li><p>Если обнаружен <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a>, путь Pack URI ссылается на файл содержимого.</p>
 </li>
-<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> атрибут не найден, проверки файлы ресурсов набора, которые компилируются в локальную сборку.</p>
+<li><p>Если <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> не обнаружен, проверить файлы ресурсов, которые компилируются в локальную сборку.</p>
 </li>
-<li><p>Если файл ресурсов, которое соответствует пути пакета URI найден, путь пакета URI ссылается на файл ресурсов.</p>
+<li><p>Если файл ресурсов, который соответствует пути Pack URI, найден, путь Pack URI ссылается на файл ресурсов.</p>
 </li>
 <li><p>Если ресурс не найден, то созданный <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> является недопустимым.</p>
 </li>
 </ol>
-<p>URI разрешения не применяется для URI , со следующими разделами:</p>
+<p>Разрешение URI не применяется для URI, указывающих на следующее:</p>
 <ul>
-<li><p>Файлы содержимого в связанные сборки: не поддерживаются следующие типы файлов WPF.</p>
+<li><p>Файлы содержимого в сборках, указанных ссылками, не поддерживаются WPF.</p>
 </li>
-<li><p>Внедренные файлы в указанных ссылками сборках: URI , которые идентифицируют их являются уникальными, поскольку они включают в себя имя сборки, на которые имеются ссылки и <code>;component</code> суффикс.</p>
+<li><p>Внедренные файлы в указанных ссылками сборках: URI, которые их идентифицируют, являются уникальными, поскольку они включают в себя имя сборки, на которые имеются ссылки, и суффикс <code>;component</code>.</p>
 </li>
-<li><p>Файлы исходного узла: URI , которые идентифицируют их являются уникальными, поскольку они являются только такие файлы, которые могут быть идентифицированы пакетом URI , содержащего центр siteoforigin: / / / центра.</p>
+<li><p>Файлы исходного узла: URI, которые их идентифицируют, являются уникальными, поскольку они являются единственными файлами, которые могут быть идентифицированы pack URI siteoforigin:///.</p>
 </li>
 </ul>
-<p>Единственное упрощение, которое пакет URI поддерживает разрешение для кода в некоторой степени зависеть от расположения файлов ресурсов и содержимого. Например, если у вас есть файл ресурсов в локальной сборке, который перенастроен в файл содержимого, пакет URI для ресурса останется таким же, как и код, который использует пакет URI.</p>
+<p>Единственное упрощение, которое поддерживается pack URI - разрешение URI в некоторой степени независимо от расположения файлов ресурсов и содержимого. Например, если у вас есть файл ресурсов в локальной сборке, который вы затем перенастраиваете в файл содержимого, pack URI для него останется таким же, как и код, который использует этот pack URI.</p>
 <p><a name="Programming_with_Pack_URIs"></a></p>
 <h2 id="programming-with-pack-uris">Программирование с использованием URI типа &quot;pack&quot;</h2>
-<p>Многие WPF классы реализуют свойства, которые могут быть заданы с помощью пакета URI, в том числе:</p>
+<p>Многие классы WPF реализуют свойства, которые могут быть заданы с помощью pack URI, в том числе:</p>
 <ul>
 <li><p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">Application.StartupUri</a></p>
 </li>
@@ -286,15 +286,15 @@
 <p>Эти свойства можно задать из разметки и кода. В этом разделе демонстрируются основные конструкции для разметки и кода, а также приводятся примеры наиболее распространенных сценариев.</p>
 <p><a name="Using_Pack_URIs_in_Markup"></a></p>
 <h3 id="using-pack-uris-in-markup">Использование URI типа &quot;pack&quot; в разметке</h3>
-<p>Пакет URI задается в разметке путем настройки элемента атрибута с помощью пакета URI. Пример:</p>
+<p>Pack URI задается в разметке путем настройки элемента атрибута с помощью pack URI. Пример:</p>
 <p><code>&lt;element attribute=&quot;pack://application:,,,/File.xaml&quot; /&gt;</code></p>
-<p>Таблица 1 демонстрирует различные абсолютный пакет URI , можно указывать в разметке.</p>
-<p>Таблица 1. Абсолютный пакет URI типа в разметке</p>
+<p>Таблица 1 демонстрирует различные абсолютне Pack URI, которые можно указывать в разметке.</p>
+<p>Таблица 1. Абсолютные Pack URI в разметке</p>
 <table>
 <thead>
 <tr>
 <th>Файл</th>
-<th>Абсолютный пакет URI</th>
+<th>Абсолютный Pack URI</th>
 </tr>
 </thead>
 <tbody>
@@ -336,13 +336,13 @@
 </tr>
 </tbody>
 </table>
-<p>Таблица 2 демонстрирует различные относительные pack URI , можно указывать в разметке.</p>
-<p>Таблица 2. Относительный пакет URI типа в разметке</p>
+<p>Таблица 2 демонстрирует различные относительные pack URI, которые можно указывать в разметке.</p>
+<p>Таблица 2. Относительные Pack URI в разметке</p>
 <table>
 <thead>
 <tr>
 <th>Файл</th>
-<th>Относительный пакет URI</th>
+<th>Относительный Pack URI</th>
 </tr>
 </thead>
 <tbody>
@@ -374,31 +374,31 @@
 </table>
 <p><a name="Using_Pack_URIs_in_Code"></a></p>
 <h3 id="using-pack-uris-in-code">Использование URI типа &quot;pack&quot; в коде</h3>
-<p>Укажите пакет URI в коде путем создания экземпляра <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класса и передачи URI в качестве параметра конструктора. Это показано в следующем примере.</p>
+<p>Pack URI можно использовать в коде путем создания экземпляра класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> и передачи URI в качестве параметра конструктора. Это показано в следующем примере.</p>
 <pre><code class="lang-csharp">Uri uri = new Uri(&quot;pack://application:,,,/File.xaml&quot;);  
 </code></pre>
-<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класс считает, что пакет URI абсолютным. Следовательно, возникает исключение при создании экземпляра класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класс создается с помощью относительных пакета URI.</p>
+<p>По умолчанию <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> класс считает, что указываемый Pack URI является абсолютным. Следовательно, при создании экземпляра класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> с указанием относительного Pack URI возникает исключение.</p>
 <pre><code class="lang-csharp">Uri uri = new Uri(&quot;/File.xaml&quot;);  
 </code></pre>
-<p>К счастью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri.-ctor#System_Uri__ctor_System_String_System_UriKind_">Uri(String, UriKind)</a> перегрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> конструктор классов принимает параметр типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind">UriKind</a> чтобы можно было указать ли пакет URI является абсолютным или относительным.</p>
+<p>К счастью перегрузка <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri.-ctor#System_Uri__ctor_System_String_System_UriKind_">Uri(String, UriKind)</a> конструктора <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">Uri</a> принимает параметр типа <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind">UriKind</a>, чтобы можно было указать,  является ли Pack URI абсолютным или относительным.</p>
 <pre><code class="lang-csharp">// Absolute URI (default)  
 Uri absoluteUri = new Uri(&quot;pack://application:,,,/File.xaml&quot;, UriKind.Absolute);  
 // Relative URI  
 Uri relativeUri = new Uri(&quot;/File.xaml&quot;,   
                         UriKind.Relative);  
 </code></pre>
-<p>Следует указать только <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Absolute">Absolute</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Relative">Relative</a> когда вы будете уверены, что указанный пакет URI — одно из них. Если вы не знаете тип пакета URI , например, если пользователь вводит пакет, используемый URI во время выполнения, используйте <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_RelativeOrAbsolute">RelativeOrAbsolute</a> вместо этого.</p>
+<p>Следует указывать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Absolute">Absolute</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_Relative">Relative</a> только когда вы уверены, что указанный Pack URI действительно имеет такой тип. Если вы не знаете тип Pack URI, например, если пользователь вводит его во время выполнения, используйте вместо этого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.urikind#System_UriKind_RelativeOrAbsolute">RelativeOrAbsolute</a>.</p>
 <pre><code class="lang-csharp">// Relative or Absolute URI provided by user via a text box  
 TextBox userProvidedUriTextBox = new TextBox();  
 Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);  
 </code></pre>
-<p>Таблице 3 показаны различные относительные pack URI , можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
-<p>Таблица 3. Абсолютный пакет URI типа в коде</p>
+<p>Таблице 3 показаны различные относительные pack URI, которые можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
+<p>Таблица 3. Абсолютные Pack URI в коде</p>
 <table>
 <thead>
 <tr>
 <th>Файл</th>
-<th>Абсолютный пакет URI</th>
+<th>Абсолютный Pack URI</th>
 </tr>
 </thead>
 <tbody>
@@ -440,13 +440,13 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 </tr>
 </tbody>
 </table>
-<p>Таблица 4 демонстрирует различные относительные pack URI , можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
-<p>Таблица 4. Относительный пакет URI типа в коде</p>
+<p>Таблица 4 демонстрирует различные относительные pack URI, которые можно указать в коде с помощью <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uri">System.Uri</a>.</p>
+<p>Таблица 4. Относительные Pack URI в коде</p>
 <table>
 <thead>
 <tr>
 <th>Файл</th>
-<th>Относительный пакет URI</th>
+<th>Относительный Pack URI</th>
 </tr>
 </thead>
 <tbody>
@@ -477,21 +477,21 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 </tbody>
 </table>
 <p><a name="Common_Pack_URI_Scenarios"></a></p>
-<h3 id="common-pack-uri-scenarios">Типичные сценарии URI типа &quot;pack&quot;</h3>
-<p>Предыдущих разделах обсуждались способы создания пакета URI для идентификации ресурсов, содержимого и файлы исходного узла. В WPF, эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.</p>
+<h3 id="common-pack-uri-scenarios">Типичные сценарии использования URI типа &quot;pack&quot;</h3>
+<p>Предыдущих разделах обсуждались способы создания Pack URI для идентификации ресурсов, содержимого и файлов исходного узла. В WPF эти конструкции используются различными способами, и в следующих разделах описаны некоторые общие способы использования.</p>
 <p><a name="Specifying_the_UI_to_Show_when_an_Application_Starts"></a></p>
 <h4 id="specifying-the-ui-to-show-when-an-application-starts">Указание пользовательского интерфейса для отображения при запуске приложения</h4>
-<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> Указывает первый UI должна отображаться при WPF приложение запускается. Для автономных приложений UI может быть окном, как показано в следующем примере.</p>
+<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> указывает первоначальный UI, который должен отображаться при запуске приложения WPF. Для автономных приложений UI может быть окном, как показано в следующем примере.</p>
 <pre><code class="lang-xaml" name="PackURIOverviewSnippets#StartupUriWindow">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     StartupUri=&quot;MainWindow.xaml&quot; /&gt;
 </code></pre>
-<p>Автономные приложения и XAML-приложения браузера (XBAP) можно также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.</p>
+<p>Автономные приложения и XAML-приложения браузера (XBAP) могут также указать страницу в качестве начального пользовательского интерфейса, как показано в следующем примере.</p>
 <pre><code class="lang-xaml" name="PackURIOverviewSnippets#StartupUriPage">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     StartupUri=&quot;HomePage.xaml&quot; /&gt;
 </code></pre>
-<p>Если приложение — это автономное приложение, и страница указана с <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a>, WPF открывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> для размещения страницы. Для XBAP, страница будет отображена в браузере основного приложения.</p>
+<p>Если приложение — это автономное приложение, и в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">StartupUri</a> указана страница, WPF открывает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a> для размещения этой страницы. В случае XBAP, страница будет отображена в браузере основного приложения.</p>
 <p><a name="Navigating_to_a_Page"></a></p>
 <h4 id="navigating-to-a-page">Переход на страницу</h4>
 <p>В следующем примере показано, как перейти на какую-либо страницу.</p>
@@ -505,7 +505,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 &lt;/Hyperlink&gt;
 </code></pre><pre><code class="lang-xaml" name="NavigationOverviewSnippets#HyperlinkXAML3">&lt;/Page&gt;
 </code></pre>
-<p>Дополнительные сведения о различных способах перехода в WPF, см. в разделе <a href="navigation-overview.html">Общие сведения о переходах</a>.</p>
+<p>Дополнительные сведения о различных способах перехода в WPF см. в разделе <a href="navigation-overview.html">Общие сведения о переходах</a>.</p>
 <p><a name="Specifying_a_Window_Icon"></a></p>
 <h4 id="specifying-a-window-icon">Указание значка окна</h4>
 <p>В следующем примере показано использование URI для указания значка окна.</p>
@@ -519,7 +519,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 <p>Дополнительные сведения см. в разделе <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window.icon">Icon</a>.</p>
 <p><a name="Loading_Image__Audio__and_Video_Files"></a></p>
 <h4 id="loading-image-audio-and-video-files">Загрузка файлов изображения, аудио и видео файлов</h4>
-<p>WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью пакета URI, как показано в следующих примерах.</p>
+<p>WPF позволяет приложениям использовать разнообразные типы носителей, все из которых можно определить и загрузить с помощью Pack URI, как показано в следующих примерах.</p>
 <pre><code class="lang-xaml" name="MediaPlayerVideoSample#VideoPackURIAtSOO">&lt;MediaElement Stretch=&quot;Fill&quot; LoadedBehavior=&quot;Play&quot; Source=&quot;pack://siteoforigin:,,,/Media/bee.wmv&quot; /&gt;
 </code></pre><pre><code class="lang-xaml" name="MediaPlayerAudioSample#AudioPackURIAtSOO">&lt;MediaElement Stretch=&quot;Fill&quot; LoadedBehavior=&quot;Play&quot; Source=&quot;pack://siteoforigin:,,,/Media/ringin.wav&quot; /&gt;
 </code></pre><pre><code class="lang-xaml" name="ImageSample#ImagePackURIContent">&lt;Image Source=&quot;Images/Watermark.png&quot; /&gt;
@@ -527,7 +527,7 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
 <p>Дополнительные сведения о работе с мультимедийным содержимым см. в разделе <a href="../graphics-multimedia/index.html">графика и мультимедиа</a>.</p>
 <p><a name="Loading_a_Resource_Dictionary_from_the_Site_of_Origin"></a></p>
 <h4 id="loading-a-resource-dictionary-from-the-site-of-origin">Загрузка словаря ресурсов с исходного узла</h4>
-<p>Словари ресурсов (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>) можно использовать для поддержки тем приложения. Одним из способов создания тем и управления ими является создание нескольких тем в качестве словарей ресурсов, расположенных в исходном узле приложения. Это позволяет добавлять и обновлять темы без повторной компиляции и развертывания приложения. Словари ресурсов можно определить и загрузить с помощью пакета URI, как показано в следующем примере.</p>
+<p>Словари ресурсов (<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a>) можно использовать для поддержки тем приложения. Одним из способов создания тем и управления ими является создание нескольких тем в качестве словарей ресурсов, расположенных в исходном узле приложения. Это позволяет добавлять и обновлять темы без повторной компиляции и развертывания приложения. Словари ресурсов можно определить и загрузить с помощью Pack URI, как показано в следующем примере.</p>
 <pre><code class="lang-xaml" name="ResourceDictionarySnippets#ResourceDictionaryPackURI">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     StartupUri=&quot;HomePage.xaml&quot;&gt;
@@ -536,10 +536,10 @@ Uri uri = new Uri(userProvidedUriTextBox.Text, UriKind.RelativeOrAbsolute);
   &lt;/Application.Resources&gt;
 &lt;/Application&gt;
 </code></pre>
-<p>Обзор тем в WPF, см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
+<p>Обзор тем в WPF см. в разделе <a href="../controls/styling-and-templating.html">Стилизация и использование шаблонов</a>.</p>
 <h2 id="see-also">См. также</h2>
 <ul>
-<li><a href="wpf-application-resource-content-and-data-files.html">Ресурсы, Содержимое и Файлы данных WPF-приложения</a></li>
+<li><a href="wpf-application-resource-content-and-data-files.html">Ресурсы, содержимое и файлы данных WPF-приложения</a></li>
 </ul>
 </article>
           </div>

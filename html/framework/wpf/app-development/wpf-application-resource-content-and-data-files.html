@@ -69,36 +69,36 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="wpf-application-resource-content-and-data-files">Ресурсы, Содержимое и Файлы данных WPF-приложения</h1>
 
-<p>Microsoft Windows приложения часто зависят от файлов, которые содержат неисполняемые данные, такие как XAML, изображения, видео и аудио. Windows Presentation Foundation (WPF) предоставляет специальную поддержку при настройке, распознавании и использовании этих типов файлов данных, которые называются файлы данных приложения. Эта поддержка относится к определенному набору типов файлов данных приложения, включая следующие:</p>
+<p>Приложения Microsoft Windows часто используют файлы, которые содержат неисполняемые данные, такие как XAML, изображения, видео и аудио. Windows Presentation Foundation (WPF) предоставляет специальную поддержку для настройки, распознавания и использовании этих типов файлов данных, которые называются файлами данных приложения. Эта поддержка относится к определенному набору типов файлов данных приложения, включая следующие:</p>
 <ul>
-<li><p><strong>Файлы ресурсов</strong>: Файлы данных, которые компилируются в исполняемый файл или библиотека WPF сборки.</p>
+<li><p><strong>Файлы ресурсов</strong>: Файлы данных, которые компилируются в исполняемый файл или библиотеку WPF.</p>
 </li>
-<li><p><strong>Файлы содержимого</strong>: Автономные файлы данных, имеющие явную связь с исполняемой WPF сборки.</p>
+<li><p><strong>Файлы содержимого</strong>: Автономные файлы данных, имеющие явную связь с исполняемой сборкой WPF.</p>
 </li>
-<li><p><strong>Файлы исходного узла</strong>: Автономные файлы данных, которые не имеют никакой связи с исполняемой WPF сборки.</p>
+<li><p><strong>Файлы исходного узла</strong>: Автономные файлы данных, которые не имеют никакой связи с исполняемой сборкой WPF.</p>
 </li>
 </ul>
-<p>Важным отличием между этими тремя типами файлов является то, что файлы ресурсов и файлы содержимого известны во время построения. Сборка содержит информацию о них. Для файлов исходного узла, тем не менее, сборка может вообще не знает о них, или содержать неявные сведения через пакетную URI ссылки; в последнем случае регистр нет никакой гарантии, что указанный файл исходного узла действительно существует.</p>
-<p>Чтобы сослаться на файлы данных приложения, Windows Presentation Foundation (WPF) использует пакет URI схему, которая подробно описана <a href="pack-uris-in-wpf.html">URI типа Pack в WPF</a>).</p>
+<p>Важным отличием между этими тремя типами файлов является то, что файлы ресурсов и файлы содержимого известны во время построения. Сборка содержит информацию о них. В случае файлов исходного узла, напротив, сборка может вообще не знать о них, или содержать неявные сведения через ссылки pack URI; в последнем случае нет никакой гарантии, что указанный файл исходного узла действительно существует.</p>
+<p>Чтобы ссылаться на файлы данных приложения, Windows Presentation Foundation (WPF) использует схему pack URI, которая подробно описана в статье <a href="pack-uris-in-wpf.html">URI типа Pack в WPF</a>).</p>
 <p>В этом разделе описывается настройка и использование файлов данных приложения.</p>
 <p><a name="Resource_Files"></a></p>
 <h2 id="resource-files">Файлы ресурсов</h2>
-<p>Если файл данных приложения всегда должен быть доступен для приложения, то единственный способ гарантировать доступность — скомпилировать его в главную исполняемую сборку приложения или в одну из его указанных ссылками сборок. Этот тип файлов данных приложения называется <em>файл ресурсов</em>.</p>
-<p>Нужно использовать файлы ресурсов, если:</p>
+<p>Если файл данных приложения всегда должен быть доступен для приложения, то единственный способ гарантировать доступность — скомпилировать его в главную исполняемую сборку приложения или в одну сборок, на которые она ссылается. Этот тип файлов данных приложения называется <em>файл ресурсов</em>.</p>
+<p>Используйте файлы ресурсов, если:</p>
 <ul>
-<li><p>Не нужно обновлять содержимое файла ресурсов после его компиляции в сборку.</p>
+<li><p>Не требуется обновлять содержимое файла ресурсов после его компиляции в сборку.</p>
 </li>
 <li><p>Необходимо упростить распространение приложения за счет уменьшения количества зависимостей между файлами.</p>
 </li>
-<li><p>Файлы данных приложения должны быть локализуемыми (см. в разделе <a href="../advanced/wpf-globalization-and-localization-overview.html">Обзор локализации и глобализации WPF</a>).</p>
+<li><p>Файлы данных приложения должны быть локализуемыми (см. раздел <a href="../advanced/wpf-globalization-and-localization-overview.html">Обзор локализации и глобализации WPF</a>).</p>
 </li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Файлы ресурсов, описанные в этом разделе, отличаются от файлов ресурсов, описанных в <a href="../advanced/xaml-resources.html">ресурсы XAML</a> и отличаются от внедренных или связанных ресурсов, описанных в <a href="/visualstudio/ide/managing-application-resources-dotnet">управление ресурсами приложения (.NET) </a>.</p>
+<p>Файлы ресурсов, описанные в этом разделе, отличаются от файлов ресурсов, описанных в разделе <a href="../advanced/xaml-resources.html">ресурсы XAML</a>, а также от внедренных или связанных ресурсов, описанных в разделе <a href="/visualstudio/ide/managing-application-resources-dotnet">управление ресурсами приложения (.NET) </a>.</p>
 </div>
 <h3 id="configuring-resource-files">Настройка файлов ресурсов</h3>
-<p>В WPF, файл ресурсов — это файл, который включен в Microsoft Build Engine (MSBuild) проект в качестве <code>Resource</code> элемента.</p>
+<p>В WPF, файл ресурсов — это файл, который включен в проект Microsoft Build Engine (MSBuild) в качестве элемента <code>Resource</code>.</p>
 <pre><code class="lang-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;  
   ...  
   &lt;ItemGroup&gt;  
@@ -109,12 +109,12 @@
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В Microsoft Visual Studio, создайте файл ресурсов путем добавления файла в проект и присвоения его <code>Build Action</code> для <code>Resource</code>.</p>
+<p>В Microsoft Visual Studio, файл ресурсов создается путем добавления файла в проект и присвоения его свойству <code>Build Action</code> значения <code>Resource</code>.</p>
 </div>
-<p>Когда проект будет собран, MSBuild компилирует ресурс в сборку.</p>
+<p>При сборке проекта MSBuild компилирует ресурс в сборку.</p>
 <h3 id="using-resource-files">Использование файлов ресурсов</h3>
-<p>Чтобы загрузить файл ресурсов, можно вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класса, передавая им в пакете URI , определяющий нужный файл ресурсов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> Возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a> объект, который предоставляет файл ресурсов как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает его тип содержимого.</p>
-<p>Например, приведенный ниже показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> ресурсов файла и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>):</p>
+<p>Чтобы загрузить файл ресурсов, можно вызвать метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>, передавая ему pack URI, определяющий нужный файл ресурсов. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a>, который предоставляет файл ресурсов как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает тип его содержимого.</p>
+<p>В приведенном ниже примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> для загрузки из файла ресурсов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>):</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadAPageResourceFileManuallyCODE">// Navigate to xaml page
 Uri uri = new Uri(&quot;/PageResourceFile.xaml&quot;, UriKind.Relative);
 StreamResourceInfo info = Application.GetResourceStream(uri);
@@ -122,20 +122,20 @@ System.Windows.Markup.XamlReader reader = new System.Windows.Markup.XamlReader()
 Page page = (Page)reader.LoadAsync(info.Stream);
 this.pageFrame.Content = page;
 </code></pre>
-<p>Во время вызова методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> вы получаете доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.</p>
+<p>Во время вызова методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getresourcestream">GetResourceStream</a> вы получаете доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>. Для преобразования его в тип свойства, с которым можно работать, могут понадобиться дополнительные действия. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, загрузив файл ресурсов непосредственно в свойство определенного типа.</p>
 <p>В следующем примере показано, как загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> непосредственно в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>) с помощью кода.</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadPageResourceFileFromCODE">Uri pageUri = new Uri(&quot;/PageResourceFile.xaml&quot;, UriKind.Relative);
 this.pageFrame.Source = pageUri;
 </code></pre>
-<p>В следующем примере показан эквивалент разметки предыдущего примера.</p>
+<p>В следующем примере показан эквивалент предыдущего примера, реализованный в коде.</p>
 <pre><code class="lang-xaml" name="WPFAssemblyResourcesSnippets#LoadPageResourceFileFromXAML">&lt;Frame Name=&quot;pageFrame&quot; Source=&quot;PageResourceFile.xaml&quot; /&gt;
 </code></pre><h3 id="application-code-files-as-resource-files">Файлы кода приложения как файлы ресурсов</h3>
-<p>На специальный набор WPF файлы кода приложения можно ссылаться с помощью пакета URI, включая windows, страницы, документы нефиксированного формата и словари ресурсов. Например, можно задать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">Application.StartupUri</a> свойства с помощью пакета URI , ссылающийся на окно или страницу, который вы хотите загрузить при запуске приложения.</p>
+<p>С помощью pack URI можно ссылаться на определенный набор файлов кода WPF, включая окна, страницы, документы нефиксированного формата и словари ресурсов. Например, можно задать свойство  <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.startupuri">Application.StartupUri</a> с помощью pack URI, ссылающегося на окно или страницу, который вы хотите загрузить при запуске приложения.</p>
 <pre><code class="lang-xaml" name="WPFAssemblyResourcesSnippets#SetApplicationStartupURI">&lt;Application
     xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
     StartupUri=&quot;SOOPage.xaml&quot; /&gt;
 </code></pre>
-<p>Вы можете это сделать, если XAML файл включен в Microsoft Build Engine (MSBuild) проект в качестве <code>Page</code> элемента.</p>
+<p>Вы можете это сделать, если файл XAML включен в проект MSBuild в качестве элемента <code>Page</code>.</p>
 <pre><code class="lang-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;  
   ...  
   &lt;ItemGroup&gt;  
@@ -146,19 +146,19 @@ this.pageFrame.Source = pageUri;
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В Visual Studio, добавляется новый <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a>, или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> в проект, <code>Build Action</code> для разметки по умолчанию файл <code>Page</code>.</p>
+<p>В Visual Studio при добавлении нового <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.window">Window</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.navigation.navigationwindow">NavigationWindow</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a>, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.documents.flowdocument">FlowDocument</a> или <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resourcedictionary">ResourceDictionary</a> в проект, значением по умолчанию свойства <code>Build Action</code> для файла разметки будет <code>Page</code>.</p>
 </div>
 <p>При создании проекта с <code>Page</code> элементы компилируется, XAML элементы преобразуются в двоичный формат и компилируются в связанную сборку. Следовательно, эти файлы можно использовать таким же образом, как и обычные файлы ресурсов.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Если XAML файл настроен как <code>Resource</code> элемент и не содержит файл с выделенным кодом, необработанный XAML компилируется в сборку, а не в двоичную версию необработанного XAML.</p>
+<p>Если XAML файл настроен как элемент <code>Resource</code> и не содержит файл кода, XAML компилируется в сборку необработанным, а не преобразуется в двоичную версию XAML.</p>
 </div>
 <p><a name="Content_Files"></a></p>
 <h2 id="content-files">Файлы с содержимым</h2>
-<p>Объект <em>содержимого файла</em> распространяется как свободный файл исполняемой сборкой. Несмотря на то, что они не компилируются в сборку, сборки компилируются с метаданными, которые устанавливают связь с каждым файлом содержимого.</p>
-<p>Файлы содержимого необходимо использовать, если приложению требуется определенный набор файлов данных приложения, которые нужно обновлять без повторной компиляции использующей их сборки.</p>
+<p><em>Файл содержимого</em> распространяется как свободный файл вместе с исполняемой сборкой. Несмотря на то, что они не компилируются в сборку, в сборку компилируются метаданные, которые устанавливают связь с каждым файлом содержимого.</p>
+<p>Файлы содержимого следует использовать, если приложению требуется определенный набор файлов данных приложения, которые нужно обновлять без перекомпиляции использующей их сборки.</p>
 <h3 id="configuring-content-files">Настройка файлов содержимого</h3>
-<p>Чтобы добавить файл содержимого в проект, файл данных приложения должен быть включен как <code>Content</code> элемента. Кроме того, так как файл содержимого не компилируется непосредственно в сборку, необходимо задать MSBuild<code>CopyToOutputDirectory</code> элемента метаданных, чтобы указать, что файл содержимого копируется в расположение относительно сборки построения. Если требуется ресурс копируются в выходную папку сборки при каждом построении проекта, задать <code>CopyToOutputDirectory</code> элемента метаданных <code>Always</code> значение. В противном случае убедитесь, что только новая версия ресурса копируется в выходную папку построения с помощью <code>PreserveNewest</code> значение.</p>
+<p>Чтобы добавить файл содержимого в проект, файл данных приложения должен быть включен как элемент <code>Content</code>. Кроме того, так как файл содержимого не компилируется непосредственно в сборку, необходимо задать элемент метаданных MSBuild <code>CopyToOutputDirectory</code>, чтобы указать, что файл содержимого копируется в расположение собираемой сборки. Если требуется копировать ресурс в выходную папку сборки при каждом построении проекта, задайте <code>CopyToOutputDirectory</code> равным <code>Always</code>. В противном случае убедитесь, обеспечьте копирование только обновленной версии файла  установкой значения <code>PreserveNewest</code>.</p>
 <p>Ниже показан файл, настроенный как файл содержимого, который копируется в папку выходных данных построения только при добавлении новой версии ресурса в проект.</p>
 <pre><code class="lang-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;  
   ...  
@@ -172,16 +172,16 @@ this.pageFrame.Source = pageUri;
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В Visual Studio, создать файл содержимого путем добавления файла в проект и присвоения его <code>Build Action</code> для <code>Content</code>и задайте его <code>Copy to Output Directory</code> для <code>Copy always</code> (то же, что <code>Always</code>) и <code>Copy if newer</code> (то же, что <code>PreserveNewest</code>).</p>
+<p>В Visual Studio файл содержимого создается путем добавления файла в проект и присвоения его свойства <code>Build Action</code> равным <code>Content</code> и установкой <code>Copy to Output Directory</code> в <code>Copy always</code> (то же, что <code>Always</code>) или <code>Copy if newer</code> (то же, что <code>PreserveNewest</code>).</p>
 </div>
-<p>Когда проект будет собран, <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> атрибут компилируется в метаданные сборки для каждого файла содержимого.</p>
+<p>Когда проект будет собран, атрибут <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> скомпилируется в метаданные сборки для каждого файла содержимого.</p>
 <p><code>[assembly: AssemblyAssociatedContentFile(&quot;ContentFile.xaml&quot;)]</code></p>
-<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> указывает путь к файлу содержимого относительно его положения в проекте. Например, если файл содержимого был расположен во вложенной папке проекта, Дополнительные сведения о пути были бы включены в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> значение.</p>
+<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> указывает путь к файлу содержимого относительно его положения в проекте. Например, если файл содержимого был расположен во вложенной папке проекта, дополнительные сведения о пути были бы включены в значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a>.</p>
 <p><code>[assembly: AssemblyAssociatedContentFile(&quot;Resources/ContentFile.xaml&quot;)]</code></p>
-<p><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> Значение также является значением пути к файлу содержимого в выходной папке сборки.</p>
+<p>Значение <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute">AssemblyAssociatedContentFileAttribute</a> также является путем к файлу содержимого в выходной папке сборки.</p>
 <h3 id="using-content-files">Использование файлов содержимого</h3>
-<p>Чтобы загрузить файл содержимого, можно вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класса, передавая им в пакете URI , определяющий нужный файл содержимого. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> Возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a> объект, который представляет файл содержимого в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает его тип содержимого.</p>
-<p>Например, приведенный ниже показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> содержимого файла и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>).</p>
+<p>Чтобы загрузить файл содержимого, можно вызвать метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>, передавая им pack URI, определяющий нужный файл содержимого. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a>, который представляет файл содержимого в качестве <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает тип его содержимого.</p>
+<p>В приведенном ниже примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> для загрузки <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> из файла и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>).</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadAPageContentFileManuallyCODE">// Navigate to xaml page
 Uri uri = new Uri(&quot;/PageContentFile.xaml&quot;, UriKind.Relative);
 StreamResourceInfo info = Application.GetContentStream(uri);
@@ -189,12 +189,12 @@ System.Windows.Markup.XamlReader reader = new System.Windows.Markup.XamlReader()
 Page page = (Page)reader.LoadAsync(info.Stream);
 this.pageFrame.Content = page;
 </code></pre>
-<p>Во время вызова методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> вы получаете доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.</p>
+<p>Во время вызова методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getcontentstream">GetContentStream</a> вы получаете доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>. Для преобразования его в тип свойства, которое нужно установить, могут потребоваться дополнительные действия. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, загрузив файл ресурсов непосредственно в свойство типа.</p>
 <p>В следующем примере показано, как загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> непосредственно в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>) с помощью кода.</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadPageContentFileFromCODE">Uri pageUri = new Uri(&quot;/PageContentFile.xaml&quot;, UriKind.Relative);
 this.pageFrame.Source = pageUri;
 </code></pre>
-<p>В следующем примере показан эквивалент разметки предыдущего примера.</p>
+<p>В следующем примере показан эквивалент предыдущего примера, реализованный с помощью разметки.</p>
 <pre><code class="lang-xaml" name="WPFAssemblyResourcesSnippets#LoadPageContentFileFromXAML">&lt;Frame Name=&quot;pageFrame&quot; Source=&quot;PageContentFile.xaml&quot; /&gt;
 </code></pre>
 <p><a name="Site_of_Origin_Files"></a></p>
@@ -210,19 +210,19 @@ this.pageFrame.Source = pageUri;
 <li><p>Приложение использует большие файлы данных, такие как аудио и видео, и необходимо, чтобы пользователи могли их загружать только при необходимости.</p>
 </li>
 </ul>
-<p>Можно загрузить эти типы файлов с помощью традиционных URI схем, таких как file:/// и http://.</p>
+<p>Можно загрузить эти типы файлов с помощью традиционных схем URI, таких как file:/// и http://.</p>
 <pre><code class="lang-xaml" name="WPFAssemblyResourcesSnippets#AbsolutePackUriFileHttpReferenceXAML">&lt;Image Source=&quot;file:///C:/DataFile.bmp&quot; /&gt;
 &lt;Image Source=&quot;http://www.datafilewebsite.com/DataFile.bmp&quot; /&gt;
 </code></pre>
-<p>Однако схемы file:/// и http:// требуют полного доверия приложения. Если приложение является Приложение обозревателя XAML (XBAP) было запущено из Интернета или интрасети, и он запрашивает только набор разрешений, которые разрешены для приложений, запускаемых из этих местоположений, свободные файлы могут быть загружены только из узла приложения (источника место запуска). Такие файлы называются <em>исходного узла</em> файлов.</p>
-<p>Файлы исходного узла являются единственным вариантом для приложений с частичным доверием, хотя и не ограничиваются такими приложениями. Приложениям с полным доверием, возможно, все равно придется загружать файлы данных приложений, о которых они не знают во время построения. Хотя приложения с полным доверием могут использовать схему file:///, вероятнее всего, файлы данных приложения будут установлены в одну папку или вложенную папку со сборкой приложения. В этом случае использовать ссылки на исходный узел проще, чем использовать file:///, так как последнее требует разработки полного пути к файлу.</p>
+<p>Однако схемы file:/// и http:// требуют полного доверия приложения. Если приложение является приложением обозревателя XAML (XBAP), запущенным из Интернета или интрасети, и запрашивает только обычный набор разрешений для этих местоположений, свободные файлы могут быть загружены только из узла приложения (исходного места запуска - Site of Origin). Такие файлы называются файлами <em>исходного узла</em>.</p>
+<p>Файлы исходного узла являются единственным вариантом для приложений с частичным доверием, хотя и не ограничиваются такими приложениями. Приложениям с полным доверием, возможно, все равно придется загружать файлы данных приложений, о которых они не знают во время построения. Хотя приложения с полным доверием могут использовать схему file:///, вероятнее всего, файлы данных приложения будут установлены в одну папку или вложенную папку со сборкой приложения. В этом случае использовать ссылки на исходный узел проще, чем использовать file:///, так как последнее требует указания полного пути к файлу.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Файлы, не кэшируются с исходного узла Приложение обозревателя XAML (XBAP) на клиентском компьютере, в отличие от файлов содержимого. Следовательно, они загружаются только по специальному запросу. Если Приложение обозревателя XAML (XBAP) приложения содержит большие мультимедийные файлы, их настройка в качестве файлов исходного узла означает, что первоначальный запуск приложения выполняется гораздо быстрее, а файлы загружаются только по запросу.</p>
+<p>Файлы, исходного узла XBAP не кэшируются на клиентском компьютере, в отличие от файлов содержимого. Следовательно, они загружаются только по специальному запросу. Если приложение обозревателя содержит большие мультимедийные файлы, их настройка в качестве файлов исходного узла означает, что первоначальный запуск приложения выполняется гораздо быстрее, а файлы загружаются только по запросу.</p>
 </div>
 <h3 id="configuring-site-of-origin-files">Настройка файлов исходного узла</h3>
-<p>Если файлы исходного узла не существуют или неизвестны во время компиляции, необходимо использовать традиционные механизмы обеспечения необходимые файлы доступны во время выполнения, включая использование либо <code>XCopy</code> программы командной строки или Установщик Microsoft Windows.</p>
-<p>Если во время компиляции известны файлы, которые должны быть расположены на исходном узле, но все еще требуется избежать явных зависимостей, можно добавить эти файлы в Microsoft Build Engine (MSBuild) проект в качестве <code>None</code> элемента. Как и для файлов содержимого, необходимо задать MSBuild<code>CopyToOutputDirectory</code> атрибут, чтобы указать, что файл исходного узла копируется в расположение относительно сборки построения, указывая либо <code>Always</code> значение или <code>PreserveNewest</code> значение.</p>
+<p>Если файлы исходного узла не существуют или неизвестны во время компиляции, необходимо использовать традиционные механизмы обеспечения их доступности во время выполнения, включая использование либо программы командной строки <code>XCopy</code> или Установщик Microsoft Windows.</p>
+<p>Если во время компиляции известны файлы, которые должны быть расположены на исходном узле, но все еще требуется избежать явных зависимостей, можно добавить эти файлы в проект MSBuild в качестве элемента <code>None</code>. Как и для файлов содержимого, необходимо задать атрибут <code>CopyToOutputDirectory</code>, чтобы указать, что файл исходного узла копируется в расположение относительно сборки построения, указывая значение <code>Always</code> или <code>PreserveNewest</code>.</p>
 <pre><code class="lang-xml">&lt;Project xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot; ... &gt;  
   ...  
   &lt;None Include=&quot;PageSiteOfOriginFile.xaml&quot;&gt;  
@@ -233,12 +233,12 @@ this.pageFrame.Source = pageUri;
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>В Visual Studio, создайте файл исходного узла путем добавления файла в проект и присвоения его <code>Build Action</code> для <code>None</code>.</p>
+<p>В Visual Studio, файл исходного узла создается путем добавления файла в проект и присвоения его свойству <code>Build Action</code> значения <code>None</code>.</p>
 </div>
-<p>Когда проект будет собран, MSBuild копирует указанные файлы в выходной папке сборки.</p>
+<p>Когда проект будет собран, MSBuild скопирует указанные файлы в выходную папку сборки.</p>
 <h3 id="using-site-of-origin-files">Использование файлов исходного узла</h3>
-<p>Чтобы загрузить файл исходного узла, можно вызвать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a> класса, передавая им в пакете URI , определяющий нужный файл исходного узла. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> Возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a> объект, который предоставляет файл исходного как узла <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает его тип содержимого.</p>
-<p>Например, приведенный ниже показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> исходного узла файла и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>).</p>
+<p>Чтобы загрузить файл исходного узла, можно вызвать метод <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> класса <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application">Application</a>, передавая ему pack URI, определяющий нужный файл исходного узла. <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> возвращает <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.resources.streamresourceinfo">StreamResourceInfo</a>, который предоставляет файл исходного узла как <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> и описывает тип его содержимого.</p>
+<p>В приведенном ниже примере показано, как использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> для загрузки файла исходного узла <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> и задать его в качестве содержимого <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>).</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadAPageSOOFileManuallyCODE">// Navigate to xaml page
 Uri uri = new Uri(&quot;/SiteOfOriginFile.xaml&quot;, UriKind.Relative);
 StreamResourceInfo info = Application.GetRemoteStream(uri);
@@ -246,12 +246,12 @@ System.Windows.Markup.XamlReader reader = new System.Windows.Markup.XamlReader()
 Page page = (Page)reader.LoadAsync(info.Stream);
 this.pageFrame.Content = page;
 </code></pre>
-<p>Во время вызова методов <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> вы получаете доступ к <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, необходимо выполнить дополнительные действия преобразования его в тип свойства, которое будет настраиваться с помощью. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a> , загрузив файл ресурсов непосредственно в свойство типа, с помощью кода.</p>
+<p>При вызове метода <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.application.getremotestream">GetRemoteStream</a> вы получаете объект <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>. Для преобразования его в тип свойства, которое нужно установить, могут потребоваться дополнительные действия. Вместо этого можно позволить WPF позаботиться об открытии и преобразовании <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.io.stream">Stream</a>, загрузив файл ресурсов непосредственно в свойство типа.</p>
 <p>В следующем примере показано, как загрузить <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.page">Page</a> непосредственно в <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.windows.controls.frame">Frame</a> (<code>pageFrame</code>) с помощью кода.</p>
 <pre><code class="lang-csharp" name="WPFAssemblyResourcesSnippets#LoadPageSOOFileFromCODE">Uri pageUri = new Uri(&quot;pack://siteoforigin:,,,/SiteOfOriginFile.xaml&quot;, UriKind.Absolute);
 this.pageFrame.Source = pageUri;
 </code></pre>
-<p>В следующем примере показан эквивалент разметки предыдущего примера.</p>
+<p>В следующем примере показан эквивалент предыдущего примера, реализованный в разметке.</p>
 <pre><code class="lang-xaml" name="WPFAssemblyResourcesSnippets#LoadPageSOOFileFromXAML">&lt;Frame Name=&quot;pageFrame&quot; Source=&quot;pack://siteoforigin:,,,/SiteOfOriginFile.xaml&quot; /&gt;
 </code></pre>
 <p><a name="Rebuilding_after_Changing_Build_Type"></a></p>

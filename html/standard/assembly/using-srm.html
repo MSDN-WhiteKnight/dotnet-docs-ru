@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1073;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1080; System.Reflection.Metadata | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#1048;&#1089;&#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077; &#1073;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1080; System.Reflection.Metadata | &#1053;&#1077;&#1086;&#1092;&#1080;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1086;&#1082;&#1091;&#1084;&#1077;&#1085;&#1090;&#1072;&#1094;&#1080;&#1103; .NET ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="использование-библиотеки-systemreflectionmetadata">Использование библиотеки System.Reflection.Metadata</h1>
+
+<p>В .NET для программной обработки сборок обычно используется отражение (reflection). Однако, отражение может работать только со сборками, загруженными в текущий контекст выполнения, поэтому оно имеет определенные ограничения: можно прочитать только сборки для той же целевой платформы, что и выполняемое приложение, все зависимости считываемой сборки должны быть доступны и др. Кроме того, отражение является довольно тяжелым и медленным механизмом. Компиляторам и утилитам для статического анализа нужен более быстрый низкоуровневый инструмент. Таким инструментом является библиотека <strong>System.Reflection.Metadata</strong>, созданная командой разработчиков .NET. Эта библиотека собирается из исходников в репозитории <a href="https://github.com/dotnet/runtime">.NET Runtime</a>, но не входит непосредственно в поставку .NET Runtime Shared Framework. Для ее использования необходимо подключить пакет NuGet <a href="https://www.nuget.org/packages/System.Reflection.Metadata">System.Reflection.Metadata</a>.</p>
+<p>Эта библиотека является низкоуровневой и оперирует таблицами и кучами, составляющими формат метаданных CLI. Этот формат определен стандартом ECMA-335, подробнее см. <a href="http://www.ecma-international.org/publications/standards/Ecma-335.htm">Standard ECMA-335 - Common Language Infrastructure (CLI)</a> на сайте ECMA. System.Reflection.Metadata рекомендуется к использованию разработчикам компиляторов и различных библиотек для работы со сборками. Тем, кому нужен более высокоуровневый инструмент, работающий по аналогии с отражением, лучше использовать <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.metadataloadcontext">MetadataLoadContext</a>.</p>
+<h2 id="класс-metadatareader">Класс MetadataReader</h2>
+<p>Для чтения содержимого метаданных сборок используется класс <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.metadatareader">MetadataReader</a>. Для создания объекта этого класса можно использовать конструктор, например  <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.metadatareader.-ctor#system-reflection-metadata-metadatareader-ctor(system-byte*-system-int32)">MetadataReader(Byte*, Int32)</a> создает <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.metadatareader">MetadataReader</a> на основе данных в указанном участке памяти. Для считывания метаданных из файла сборки формата Portable Executable, создайте экземпляр <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.reflection.portableexecutable.pereader">PEReader</a> и используйте метод расширения  <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.pereaderextensions.getmetadatareader#system-reflection-metadata-pereaderextensions-getmetadatareader(system-reflection-portableexecutable-pereader)">GetMetadataReader(PEReader)</a>.</p>
+<p>Следующий пример показывает, как создать <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.metadatareader">MetadataReader</a> для сборки и считать из него все определения типов:</p>
+<pre><code>using var fs = new FileStream(&quot;Example.dll&quot;, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+using var peReader = new PEReader(fs);
+
+MetadataReader mr = peReader.GetMetadataReader();
+
+foreach (TypeDefinitionHandle tdefh in mr.TypeDefinitions)
+{
+    TypeDefinition tdef = mr.GetTypeDefinition(tdefh);
+
+    string ns = mr.GetString(tdef.Namespace);
+    string name = mr.GetString(tdef.Name);
+    Console.WriteLine($&quot;{ns}.{name}&quot;);
+}
+</code></pre>
+<h2 id="класс-methodbodyblock">Класс MethodBodyBlock</h2>
+<p>Тело метода в сборке .NET содержит инструкции Common Intermediate Language (CIL), которые определяют логику метода, а также информацию о его локальных переменных и блоках обработки исключений. Класс <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.methodbodyblock">MethodBodyBlock</a> предназначен для считывания этой информации. Для получения экземпляра <code>MethodBodyBlock</code> конкретного метода используется метод <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.pereaderextensions.getmethodbody">GetMethodBody</a>.</p>
+<p>Следующий пример показывает, как получить тела всех методов в указанном определении типа и отобразить информацию о них:</p>
+<pre><code>static void PrintMethods(PEReader reader, MetadataReader mr, TypeDefinition tdef)
+{
+    MethodDefinitionHandleCollection methods = tdef.GetMethods();
+
+    foreach (MethodDefinitionHandle mdefh in methods)
+    {
+        MethodDefinition mdef = mr.GetMethodDefinition(mdefh);
+        string mname = mr.GetString(mdef.Name);
+        Console.WriteLine($&quot;Method: {mname}&quot;);
+
+        // Get the relative address of the method body in the executable
+        int rva = mdef.RelativeVirtualAddress;
+
+        if (rva == 0)
+        {
+            Console.WriteLine(&quot;Method body not found&quot;);
+            Console.WriteLine();
+            continue;
+        }
+
+        // Get method body information
+        MethodBodyBlock mb = reader.GetMethodBody(rva);
+        Console.WriteLine($&quot;  Maximum stack size: {mb.MaxStack}&quot;);
+        Console.WriteLine($&quot;  Local variables initialized: {mb.LocalVariablesInitialized}&quot;);
+
+        byte[] il = mb.GetILBytes();
+        Console.WriteLine($&quot;  Method body size: {il.Length}&quot;);
+        Console.WriteLine($&quot;  Exception regions: {mb.ExceptionRegions.Length}&quot;);
+        Console.WriteLine();
+
+        foreach (var region in mb.ExceptionRegions)
+        {
+            Console.WriteLine(region.Kind.ToString());
+            Console.WriteLine($&quot;  Try block offset: {region.TryOffset}&quot;);
+            Console.WriteLine($&quot;  Try block length: {region.TryLength}&quot;);
+            Console.WriteLine($&quot;  Handler offset: {region.HandlerOffset}&quot;);
+            Console.WriteLine($&quot;  Handler length: {region.HandlerLength}&quot;);
+            Console.WriteLine();
+        }
+    }
+}
+</code></pre>
+<h2 id="класс-metadatabuilder">Класс MetadataBuilder</h2>
+<p>Класс <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.ecma335.metadatabuilder">MetadataBuilder</a> позволяет программно генерировать сборки .NET. Эти сборки можно сохранить в файл, в отличие от динамических сборок, сгенерированных с помощью класса <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.emit.assemblybuilder">AssemblyBuilder</a>, который не поддерживает сохранение сборок в файл в .NET 5+ и .NET Core.
+API <code>MetadataBuilder</code> оперирует низкоуровневыми структурами метаданных, например, таблицами или бинарными объектами BLOB. Если вам нужен более простой способ динамической генерации сборок с использованием C#, см. <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.csharp.csharpcompilation">CSharpCompilation</a> в Roslyn API.</p>
+<p>Следующий пример показывает, как создать <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata.ecma335.metadatabuilder">MetadataBuilder</a>:</p>
+<pre><code>var peStream = new FileStream(
+    &quot;ConsoleApplication.dll&quot;, FileMode.OpenOrCreate, FileAccess.ReadWrite
+);
+
+using (peStream)
+{
+    var ilBuilder = new BlobBuilder();
+    var metadataBuilder = new MetadataBuilder();
+}
+</code></pre>
+<p>Следующий пример показывает, как добавить определение модуля и сборки в <code>MetadataBuilder</code>:</p>
+<pre><code>Guid guid = new Guid(&quot;17D5DBE1-1143-3FAD-AAB3-1002F92068E7&quot;);
+
+metadataBuilder.AddModule(
+    0,
+    metadataBuilder.GetOrAddString(&quot;ConsoleApplication.dll&quot;),
+    metadataBuilder.GetOrAddGuid(guid),
+    default(GuidHandle),
+    default(GuidHandle));
+
+metadataBuilder.AddAssembly(
+    metadataBuilder.GetOrAddString(&quot;ConsoleApplication&quot;),
+    version: new Version(1, 0, 0, 0),
+    culture: default(StringHandle),
+    publicKey: default(BlobHandle),
+    flags: 0,
+    hashAlgorithm: AssemblyHashAlgorithm.None);
+    
+</code></pre>
+<p>Более подробный пример создания сборки см. на GitHub: <a href="https://github.com/MSDN-WhiteKnight/CodeSamples/tree/master/System.Reflection.Metadata/MetadataBuilder">Generate .NET Core assembly using MetadataBuilder</a>.</p>
+<h2 id="см-также">См. также</h2>
+<ul>
+<li><a href="index.html">Сборки в .NET</a></li>
+<li><a href="manifest.html">Манифест сборки</a></li>
+<li><a href="https://docs.microsoft.com/dotnet/framework/reflection-and-codedom/reflection">Отражение</a></li>
+<li><a href="inspect-contents-using-metadataloadcontext.html">Практическое руководство. Проверка содержимого сборки с помощью MetadataLoadContext</a></li>
+<li><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.reflection.metadata">System.Reflection.Metadata</a></li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <span><a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru">Неофициальная документация по .NET на русском языке</a>. Лицензия: <a href="https://github.com/MSDN-WhiteKnight/dotnet-docs-ru/blob/main/LICENSE">CC-BY 4.0</a>. Основано на <a href="https://docs.microsoft.com/ru-ru/dotnet/">документации по .NET с Microsoft Docs</a><br>Generated by <strong>DocFX</strong></span><script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");ym(65150713, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true});</script><noscript><div><img src="https://mc.yandex.ru/watch/65150713" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
