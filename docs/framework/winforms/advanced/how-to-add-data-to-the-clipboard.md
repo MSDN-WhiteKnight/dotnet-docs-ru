@@ -1,50 +1,39 @@
 ---
 title: Практическое руководство. Добавление данных в буфер обмена
 ms.date: 03/30/2017
-dev_langs:
-- csharp
-- vb
-helpviewer_keywords:
-- Clipboard [Windows Forms], copying data to
-- data [Windows Forms], copying to Clipboard
-ms.assetid: 25152454-0e78-40a9-8a9e-a2a5a274e517
-ms.openlocfilehash: 03d3a0c6026761fcdbc45472f2bbb7ac593f4394
 ms.sourcegitcommit: 558d78d2a68acd4c95ef23231c8b4e4c7bac3902
-ms.translationtype: MT
-ms.contentlocale: ru-RU
 ms.lasthandoff: 04/09/2019
-ms.locfileid: "59325687"
 ---
 # <a name="how-to-add-data-to-the-clipboard"></a>Практическое руководство. Добавление данных в буфер обмена
-<xref:System.Windows.Forms.Clipboard> Класс предоставляет методы, которые можно использовать для взаимодействия с функцией буфер обмена операционной системы Windows. Многие приложения используют буфер обмена в качестве временного хранилища данных. Например текстовые редакторы использовать буфер обмена во время операций вырезания и вставки. Буфер обмена также полезен для передачи данных из одного приложения в другое.  
+Класс <xref:System.Windows.Forms.Clipboard> предоставляет методы, которые можно использовать для взаимодействия с буфером обмена операционной системы Windows. Многие приложения используют буфер обмена в качестве временного хранилища данных. Например текстовые редакторы используют буфер обмена во время операций вырезания и вставки. Буфер обмена также полезен для передачи данных из одного приложения в другое.  
   
- При добавлении данных в буфер обмена, можно указать формат данных, таким образом другие приложения может распознать данные, если они могут использовать этот формат. Можно также добавить данные в буфер обмена в нескольких различных форматах, чтобы увеличить число других приложений, которые потенциально могут использовать данные.  
+ При добавлении данных в буфер обмена, можно указать формат данных, таким образом другие приложения могут распознать данные, если они поддерживают этот формат. Можно также добавить данные в буфер обмена в нескольких различных форматах, чтобы увеличить число приложений, которые потенциально могут использовать эти данные.  
   
- Формат буфера обмена является строкой, которая определяет формат, чтобы приложение, использующее этот формат можно получить связанные данные. <xref:System.Windows.Forms.DataFormats> Класс предоставляет имена стандартных форматов для использования. Можно также использовать собственные имена форматов или использовать тип объекта в качестве его формата.  
+ *Формат буфера обмена* — это строка, которая определяет имя формата данных, с помощью которой приложения могут получить данные нужного формата из буфера обмена. Класс <xref:System.Windows.Forms.DataFormats> предоставляет имена стандартных форматов. Можно также использовать собственные имена форматов или использовать тип объекта в качестве его формата.  
   
- Чтобы добавить данные в буфер обмена в одном или нескольких форматах, используйте <xref:System.Windows.Forms.Clipboard.SetDataObject%2A> метод. Этот метод можно передать любой объект, но для добавления данных в нескольких форматах, необходимо добавить данные отдельный объект, предназначенный для работы с несколькими форматами. Как правило, вы добавите данные <xref:System.Windows.Forms.DataObject>, но вы можете использовать любой тип, реализующий <xref:System.Windows.Forms.IDataObject> интерфейс.  
+ Чтобы добавить данные в буфер обмена в одном или нескольких форматах, используйте метод <xref:System.Windows.Forms.Clipboard.SetDataObject%2A>. В этот метод можно передать любой сериализуемый объект, но для добавления данных в нескольких форматах, необходимо поместить данные в объект, предназначенный для работы с несколькими форматами. Как правило, для этого используется тип <xref:System.Windows.Forms.DataObject>, но вы можете использовать любой тип, реализующий интерфейс <xref:System.Windows.Forms.IDataObject>.  
   
- В [!INCLUDE[dnprdnext](../../../../includes/dnprdnext-md.md)], можно добавить данные непосредственно в буфер обмена с помощью новых методов, позволяющих упростить основные задачи в буфер обмена. Эти методы можно используйте при работе с данными в виде единого, такие как текст.  
+Для добавления данных в одном из стандартных форматов можно использовать метод, соответствующий этому формату. Например, для текста это <xref:System.Windows.Forms.Clipboard.SetText%2A>.
   
 > [!NOTE]
->  Все приложения Windows используют буфер обмена. Таким образом содержимое могут меняться при переходе в другое приложение.  
+>  Все приложения Windows используют буфер обмена. Таким образом, его содержимое может меняться при переходе в другое приложение.  
 >   
->  <xref:System.Windows.Forms.Clipboard> Класс может использоваться только в потоках в однопотоковое подразделение (STA) режиме. Чтобы использовать этот класс, убедитесь, что ваш `Main` метод помечен атрибутом <xref:System.STAThreadAttribute> атрибута.  
->   
->  Объект должен поддерживать сериализацию для помещения в буфер обмена. Чтобы сделать тип сериализуемым, отметить его атрибутом <xref:System.SerializableAttribute> атрибута. Если методу буфера обмена передается несериализуемый объект, метод завершится с ошибкой без выдачи исключения. Дополнительные сведения о сериализации см. в разделе <xref:System.Runtime.Serialization>.  
+>  Класс <xref:System.Windows.Forms.Clipboard> может использоваться только в однопотоковом режиме (STA). Чтобы использовать этот класс, убедитесь, что ваш метод `Main` помечен атрибутом <xref:System.STAThreadAttribute>.
+> 
+>  Объект должен поддерживать сериализацию для помещения в буфер обмена. Чтобы сделать тип сериализуемым, необходимо отметить его атрибутом <xref:System.SerializableAttribute>. Если методу буфера обмена передается несериализуемый объект, метод завершится с ошибкой без выдачи исключения. Дополнительные сведения о сериализации см. в разделе <xref:System.Runtime.Serialization>.
   
-### <a name="to-add-data-to-the-clipboard-in-a-single-common-format"></a>Для добавления данных в буфер обмена в одном общем формате  
+### <a name="to-add-data-to-the-clipboard-in-a-single-common-format"></a>Для добавления данных в буфер обмена в одном стандартном формате  
   
-1. Используйте <xref:System.Windows.Forms.Clipboard.SetAudio%2A>, <xref:System.Windows.Forms.Clipboard.SetFileDropList%2A>, <xref:System.Windows.Forms.Clipboard.SetImage%2A>, или <xref:System.Windows.Forms.Clipboard.SetText%2A> метод. Эти методы доступны только в [!INCLUDE[dnprdnext](../../../../includes/dnprdnext-md.md)].  
+1. Используйте методы <xref:System.Windows.Forms.Clipboard.SetAudio%2A>, <xref:System.Windows.Forms.Clipboard.SetFileDropList%2A>, <xref:System.Windows.Forms.Clipboard.SetImage%2A>, или <xref:System.Windows.Forms.Clipboard.SetText%2A>.
   
      [!code-csharp[System.Windows.Forms.Clipboard#2](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#2)]
        
   
 ### <a name="to-add-data-to-the-clipboard-in-a-custom-format"></a>Для добавления данных в буфер обмена в пользовательском формате  
   
-1. Используйте <xref:System.Windows.Forms.Clipboard.SetData%2A> метод с именем пользовательского формата. Этот метод доступен только в [!INCLUDE[dnprdnext](../../../../includes/dnprdnext-md.md)].  
+1. Используйте метод <xref:System.Windows.Forms.Clipboard.SetData%2A>, передавая в него имя пользовательского формата.
   
-     Можно также использовать имена стандартных форматов с <xref:System.Windows.Forms.Clipboard.SetData%2A> метод. Дополнительные сведения см. в разделе <xref:System.Windows.Forms.DataFormats>.  
+     В метод <xref:System.Windows.Forms.Clipboard.SetData%2A> можно также передавать имена стандартных форматов. Дополнительные сведения см. в разделе <xref:System.Windows.Forms.DataFormats>.  
   
      [!code-csharp[System.Windows.Forms.Clipboard#3](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#3)]
        
@@ -53,7 +42,7 @@ ms.locfileid: "59325687"
   
 ### <a name="to-add-data-to-the-clipboard-in-multiple-formats"></a>Для добавления данных в буфер обмена в нескольких форматах  
   
-1. Используйте <xref:System.Windows.Forms.Clipboard.SetDataObject%2A> метод и передать <xref:System.Windows.Forms.DataObject> , содержащий нужные данные. Этот метод следует использовать для добавления данных в буфер обмена для версий более ранних, чем [!INCLUDE[dnprdnlong](../../../../includes/dnprdnlong-md.md)].  
+1. Используйте метод <xref:System.Windows.Forms.Clipboard.SetDataObject%2A> и передайте в него <xref:System.Windows.Forms.DataObject>, содержащий нужные данные.
   
      [!code-csharp[System.Windows.Forms.Clipboard#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.Clipboard/CS/form1.cs#4)]
        
