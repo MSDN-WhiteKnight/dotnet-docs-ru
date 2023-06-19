@@ -24,14 +24,14 @@ ms.locfileid: "59124745"
 Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_gif](../../../../includes/tlasharptla-gif-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.GifBitmapDecoder> и <xref:System.Windows.Media.Imaging.GifBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
- В этом примере показано, как декодировать [!INCLUDE[TLA2#tla_gif](../../../../includes/tla2sharptla-gif-md.md)] изображений с помощью <xref:System.Windows.Media.Imaging.GifBitmapDecoder> из <xref:System.IO.FileStream>.  
+ В этом примере показано, как декодировать GIF изображений с помощью <xref:System.Windows.Media.Imaging.GifBitmapDecoder> из <xref:System.IO.FileStream>.  
   
  
  [!code-csharp[GifBitmapDecoderEncoder#1](~/samples/snippets/csharp/VS_Snippets_Wpf/GifBitmapDecoderEncoder/CSharp/GifEncoderDecoder.cs#1)]
    
   
 ## <a name="example"></a>Пример  
- В этом примере показаны способы кодирования <xref:System.Windows.Media.Imaging.BitmapSource> в [!INCLUDE[TLA2#tla_gif](../../../../includes/tla2sharptla-gif-md.md)] изображений с помощью <xref:System.Windows.Media.Imaging.GifBitmapEncoder>.  
+ В этом примере показаны способы кодирования <xref:System.Windows.Media.Imaging.BitmapSource> в GIF изображений с помощью <xref:System.Windows.Media.Imaging.GifBitmapEncoder>.  
   
  
  [!code-csharp[GifBitmapDecoderEncoder#4](~/samples/snippets/csharp/VS_Snippets_Wpf/GifBitmapDecoderEncoder/CSharp/GifEncoderDecoder.cs#4)]

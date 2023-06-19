@@ -275,17 +275,39 @@ namespace DocsScripts
             ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_win32](", "includes/tlasharptla-win32-md.md)]", "Win32");
             ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_winxp](", "includes/tla2sharptla-winxp-md.md)]", "Microsoft Windows XP");
 
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_titlewinclient](", "includes/tlasharptla-titlewinclient-md.md)]", "WPF");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_dll](", "includes/tla2sharptla-dll-md.md)]", "DLL");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_dx](", "includes/tla2sharptla-dx-md.md)]", "DirectX");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_gdi](", "includes/tla2sharptla-gdi-md.md)]", "GDI");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_dipixel#plural](", "includes/tlasharptla-dipixelsharpplural-md.md)]", "аппаратно-независимые единицы (1/96 дюйма на единицу)");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_bits](", "includes/tlasharptla-bits-md.md)]", "Фоновая интеллектуальная служба передачи (BITS)");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_win_update](", "includes/tlasharptla-win-update-md.md)]", "Центр обновления Windows");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_ui#plural](", "includes/tla2sharptla-uisharpplural-md.md)]", "UI");
 
-            //[!INCLUDE[TLA#tla_titlewinclient](../../../../includes/tlasharptla-titlewinclient-md.md)]
-            //[!INCLUDE[TLA2#tla_dll](../../../../includes/tla2sharptla-dll-md.md)]
-            //[!INCLUDE[TLA2#tla_dx](../../../../includes/tla2sharptla-dx-md.md)]
-            //[!INCLUDE[TLA2#tla_gdi](../../../../includes/tla2sharptla-gdi-md.md)]
-            //[!INCLUDE[TLA#tla_dipixel#plural](../../../../includes/tlasharptla-dipixelsharpplural-md.md)]
-                        
-            //[!INCLUDE[TLA#tla_bits](../../../../includes/tlasharptla-bits-md.md)]            
-                        
-            //[!INCLUDE[TLA#tla_win_update](../../../includes/tlasharptla-win-update-md.md)]
-            
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_dx](", "includes/tlasharptla-dx-md.md)]", "Microsoft DirectX");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_gdi](", "includes/tlasharptla-gdi-md.md)]", "Windows GDI");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_ui#plural](", "includes/tlasharptla-uisharpplural-md.md)]", "UI");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_dll](", "includes/tlasharptla-dll-md.md)]", "DLL");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_gdiplus](", "includes/tla2sharptla-gdiplus-md.md)]", "GDI+");
+
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_gdiplus](", "includes/tlasharptla-gdiplus-md.md)]", "Microsoft Windows GDI+");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_win](", "includes/tlasharptla-win-md.md)]", "Microsoft Windows");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA2#tla_wic](", "includes/tla2sharptla-wic-md.md)]", "Обработка изображений в WPF");
+            ReplaceTextDir(path, @"[!INCLUDE[TLA#tla_ms](", "includes/tlasharptla-ms-md.md)]", "Microsoft");
+
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_wic](", "includes/tlasharptla-wic-md.md)]", "Компонент обработки изображений WPF");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_mime](", "includes/tlasharptla-mime-md.md)]", "MIME");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_netframewk](", "includes/tla2sharptla-netframewk-md.md)]", "Платформа ");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_metro](", "includes/tla2sharptla-metro-md.md)]", "XPS");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_emf](", "includes/tlasharptla-emf-md.md)]", "EMF (расширенный метафайл)");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_bmp](", "includes/tla2sharptla-bmp-md.md)]", "BMP");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_jpeg](", "includes/tla2sharptla-jpeg-md.md)]", "JPEG");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_png](", "includes/tla2sharptla-png-md.md)]", "PNG");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_tiff](", "includes/tla2sharptla-tiff-md.md)]", "TIFF");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_wdp](", "includes/tla2sharptla-wdp-md.md)]", "Windows Media Photo");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_gif](", "includes/tla2sharptla-gif-md.md)]", "GIF");
+            ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_ct](", "includes/tla2sharptla-ct-md.md)]", "ClearType");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_opentype](", "includes/tlasharptla-opentype-md.md)]", "OpenType");
         }
 
         static void Main(string[] args)

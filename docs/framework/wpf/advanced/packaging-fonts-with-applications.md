@@ -27,7 +27,7 @@ ms.locfileid: "59123802"
 ## <a name="introduction-to-packaging-fonts"></a>Общие сведения об упаковке шрифтов  
  Можно легко упаковать шрифты в качестве ресурсов в вашей WPF приложения для отображения текста пользовательского интерфейса и других типов текста на основе содержимого. Шрифты могут быть отдельными от файлов сборки приложения или включенными в них. Можно также создать библиотеку шрифтов только для ресурсов, на которую может ссылаться приложение.  
   
- [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] и [!INCLUDE[TLA#tla_truetype](../../../../includes/tlasharptla-truetype-md.md)] шрифты содержат флаг типа fsType, указывающее, права лицензирования на встраивание шрифта для шрифта. Однако этот флаг типа относится только к внедренным шрифтам, хранящимся в документе; он не относится к шрифтам, внедренным в приложении. Вы можете получить права для шрифта на внедрение путем создания <xref:System.Windows.Media.GlyphTypeface> и ссылки на его <xref:System.Windows.Media.GlyphTypeface.EmbeddingRights%2A> свойство. См. в разделе «OS/2 и Windows метрики» [спецификация OpenType](https://www.microsoft.com/typography/otspec/os2.htm) Дополнительные сведения о флаге fstype см.  
+ OpenType и [!INCLUDE[TLA#tla_truetype](../../../../includes/tlasharptla-truetype-md.md)] шрифты содержат флаг типа fsType, указывающее, права лицензирования на встраивание шрифта для шрифта. Однако этот флаг типа относится только к внедренным шрифтам, хранящимся в документе; он не относится к шрифтам, внедренным в приложении. Вы можете получить права для шрифта на внедрение путем создания <xref:System.Windows.Media.GlyphTypeface> и ссылки на его <xref:System.Windows.Media.GlyphTypeface.EmbeddingRights%2A> свойство. См. в разделе «OS/2 и Windows метрики» [спецификация OpenType](https://www.microsoft.com/typography/otspec/os2.htm) Дополнительные сведения о флаге fstype см.  
   
  [Microsoft Typography](https://docs.microsoft.com/typography/) веб-узел содержит контактную информацию, которая может помочь вам найти поставщика определенного шрифта или поставщика шрифтов для пользовательских рабочих.  
   
@@ -152,7 +152,7 @@ ms.locfileid: "59123802"
  [!code-xaml[OpenTypeFontsSample#OpenTypeFontsSample1](~/samples/snippets/csharp/VS_Snippets_Wpf/OpenTypeFontsSample/CS/Kootenay.xaml#opentypefontssample1)]  
   
 > [!NOTE]
->  Этот пакет SDK содержит набор образцов [!INCLUDE[TLA#tla_opentype](../../../../includes/tlasharptla-opentype-md.md)] шрифты, которые можно использовать с WPF приложений. Эти шрифты определяются в библиотеке ресурсов. Дополнительные сведения см. в разделе [Пакет образцов шрифтов OpenType](sample-opentype-font-pack.md).  
+>  Этот пакет SDK содержит набор образцов OpenType шрифты, которые можно использовать с WPF приложений. Эти шрифты определяются в библиотеке ресурсов. Дополнительные сведения см. в разделе [Пакет образцов шрифтов OpenType](sample-opentype-font-pack.md).  
   
 <a name="limitations_on_font_usage"></a>   
 ## <a name="limitations-on-font-usage"></a>Ограничения в использовании шрифтов  
