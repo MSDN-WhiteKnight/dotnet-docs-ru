@@ -12,7 +12,7 @@ ms.lasthandoff: 03/09/2019
 ms.locfileid: "57721909"
 ---
 # <a name="using-the-managed-html-document-object-model"></a>Использование управляемой объектной модели HTML-документов
-Управляемый HTML объектная модель документов (DOM) предоставляет оболочку на основе [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] для классов HTML, предоставленных Internet Explorer. Эти классы используются для управления HTML-страницами в <xref:System.Windows.Forms.WebBrowser> элемента управления, или создавать новые страницы с самого начала.  
+Управляемый HTML объектная модель документов (DOM) предоставляет оболочку на основе .NET Framework для классов HTML, предоставленных Internet Explorer. Эти классы используются для управления HTML-страницами в <xref:System.Windows.Forms.WebBrowser> элемента управления, или создавать новые страницы с самого начала.  
   
 ## <a name="in-this-section"></a>В этом разделе  
  [Практическое руководство. Доступ к объектной модели управляемого HTML-документ](how-to-access-the-managed-html-document-object-model.md)  

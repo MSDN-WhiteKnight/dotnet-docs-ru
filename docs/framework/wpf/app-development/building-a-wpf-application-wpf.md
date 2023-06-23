@@ -12,7 +12,7 @@ ms.lasthandoff: 04/09/2019
 ---
 
 # <a name="building-a-wpf-application-wpf"></a>Построение приложения WPF
-Приложения Windows Presentation Foundation (WPF) могут быть собраны как исполняемые файлы [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] (.exe), библиотеки (.dll) или как сочетание этих двух типов файлов. В этом разделе даются вводные сведения для построения приложений WPF и описываются основные шаги процесса построения.
+Приложения Windows Presentation Foundation (WPF) могут быть собраны как исполняемые файлы .NET Framework (.exe), библиотеки (.dll) или как сочетание этих двух типов файлов. В этом разделе даются вводные сведения для построения приложений WPF и описываются основные шаги процесса построения.
 
 <a name="Building_a_WPF_Application_using_Command_Line"></a>   
 ## <a name="building-a-wpf-application"></a>Построение приложения WPF  

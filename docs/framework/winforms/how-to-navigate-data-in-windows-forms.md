@@ -26,7 +26,7 @@ ms.locfileid: "59345005"
 1. Задайте <xref:System.Windows.Forms.BindingSource.Position%2A> свойство <xref:System.Windows.Forms.BindingSource> связанных данных в позиции записи, чтобы перейти к. В следующем примере демонстрируется использование <xref:System.Windows.Forms.BindingSource.MoveNext%2A> метод <xref:System.Windows.Forms.BindingSource> для увеличения значения <xref:System.Windows.Forms.BindingSource.Position%2A> свойство при `nextButton` нажатии. <xref:System.Windows.Forms.BindingSource> Связан с `Customers` набора данных `Northwind`.  
   
     > [!NOTE]
-    >  Установка <xref:System.Windows.Forms.BindingSource.Position%2A> значение за пределами первой или последней записи не приведет к ошибке, как [!INCLUDE[dnprdnshort](../../../includes/dnprdnshort-md.md)] не позволит вам задать положение значения, выходящего за границы списка. Если важно знать, достигнута ли первой или последней записи приложения, добавьте логику для проверки превышения количества элементов данных.  
+    >  Установка <xref:System.Windows.Forms.BindingSource.Position%2A> значение за пределами первой или последней записи не приведет к ошибке, как .NET Framework не позволит вам задать положение значения, выходящего за границы списка. Если важно знать, достигнута ли первой или последней записи приложения, добавьте логику для проверки превышения количества элементов данных.  
   
      [!code-csharp[System.Windows.Forms.NavigatingData#4](~/samples/snippets/csharp/VS_Snippets_Winforms/System.Windows.Forms.NavigatingData/CS/Form1.cs#4)]
        

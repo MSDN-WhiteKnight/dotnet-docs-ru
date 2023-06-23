@@ -308,6 +308,19 @@ namespace DocsScripts
             ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_gif](", "includes/tla2sharptla-gif-md.md)]", "GIF");
             ReplaceTextDir(path, "[!INCLUDE[TLA2#tla_ct](", "includes/tla2sharptla-ct-md.md)]", "ClearType");
             ReplaceTextDir(path, "[!INCLUDE[TLA#tla_opentype](", "includes/tlasharptla-opentype-md.md)]", "OpenType");
+
+            ReplaceTextDir(path, "[!INCLUDE[dnprdnshort](", "includes/dnprdnshort-md.md)]", ".NET Framework");
+            ReplaceTextDir(path, "[!INCLUDE[net_v40_short](", "includes/net-v40-short-md.md)]", ".NET Framework 4");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_3d](", "includes/tlasharptla-3d-md.md)]", "3D");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_bmp](", "includes/tlasharptla-bmp-md.md)]", "Формат BMP (Точечный рисунок)");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_jpegorg](", "includes/tlasharptla-jpegorg-md.md)]", "Формат JPEG (Joint Photographics Experts Group)");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_png](", "includes/tlasharptla-png-md.md)]", "Формат PNG (Portable Network Graphics)");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_tiff](", "includes/tlasharptla-tiff-md.md)]", "Формат TIFF (Tagged Image File Format)");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_wdp](", "includes/tlasharptla-wdp-md.md)]", "Microsoft Windows Media Photo");
+            ReplaceTextDir(path, "[!INCLUDE[TLA#tla_gif](", "includes/tlasharptla-gif-md.md)]", "Формат GIF (Graphics Interchange Format)");
+
+            //[!INCLUDE[net_v35_short](../../../../includes/net-v35-short-md.md)]
+            //[!INCLUDE[net_v35SP1_short](../../../../includes/net-v35sp1-short-md.md)]
         }
 
         static void Main(string[] args)

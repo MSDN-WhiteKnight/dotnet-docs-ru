@@ -21,7 +21,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59090858"
 ---
 # <a name="how-to-encode-and-decode-a-png-image"></a>Практическое руководство. Кодирование и декодирование изображения в формате PNG
-Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_png](../../../../includes/tlasharptla-png-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.PngBitmapDecoder> и <xref:System.Windows.Media.Imaging.PngBitmapEncoder> объектов.  
+Следующие примеры показывают, как декодировать и кодировать Формат PNG (Portable Network Graphics) изображений, используя заданный <xref:System.Windows.Media.Imaging.PngBitmapDecoder> и <xref:System.Windows.Media.Imaging.PngBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
  В этом примере показано, как декодировать PNG изображений с помощью <xref:System.Windows.Media.Imaging.PngBitmapDecoder> из <xref:System.IO.FileStream>.  

@@ -16,7 +16,7 @@ ms.locfileid: "57705029"
 # <a name="about-gdi-managed-code"></a>Управляемый код GDI+
 [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] — это часть операционной системы Windows, предоставляющая возможности создания векторных изображений, рисования и оформления. [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] улучшает [!INCLUDE[ndptecgdi](../../../../includes/ndptecgdi-md.md)] (интерфейс графических устройств, входящий в состав более ранних версий Windows) путем добавления новых возможностей и оптимизации существующих.  
   
- Интерфейс классов управляемого кода [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] (набор оболочек) является частью [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] — среды для сборки, развертывания и запуска веб-служб XML и других приложений.  
+ Интерфейс классов управляемого кода [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] (набор оболочек) является частью .NET Framework — среды для сборки, развертывания и запуска веб-служб XML и других приложений.  
   
  Этот раздел содержит сведения об API-интерфейсе [!INCLUDE[ndptecgdiplus](../../../../includes/ndptecgdiplus-md.md)] для программистов, использующих управляемый код.  
   

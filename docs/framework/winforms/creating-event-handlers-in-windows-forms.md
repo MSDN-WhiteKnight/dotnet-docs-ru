@@ -39,7 +39,7 @@ ms.locfileid: "57716878"
   
 ## <a name="related-sections"></a>Связанные разделы  
  [События](../../standard/events/index.md)  
- Содержит ссылки на разделы по обработке и порождению событий с помощью [!INCLUDE[dnprdnshort](../../../includes/dnprdnshort-md.md)].  
+ Содержит ссылки на разделы по обработке и порождению событий с помощью .NET Framework.  
   
  [Устранение неполадок, связанных с унаследованными обработчиками событий, в Visual Basic](~/docs/visual-basic/programming-guide/language-features/events/troubleshooting-inherited-event-handlers.md)  
  Представляет распространенные проблемы, возникающие у обработчиков событий в наследуемых компонентах.

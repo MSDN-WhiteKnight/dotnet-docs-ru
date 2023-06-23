@@ -21,7 +21,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59124745"
 ---
 # <a name="how-to-encode-and-decode-a-gif-image"></a>Практическое руководство. Кодирование и декодирование изображения в формате GIF
-Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_gif](../../../../includes/tlasharptla-gif-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.GifBitmapDecoder> и <xref:System.Windows.Media.Imaging.GifBitmapEncoder> объектов.  
+Следующие примеры показывают, как декодировать и кодировать Формат GIF (Graphics Interchange Format) изображений, используя заданный <xref:System.Windows.Media.Imaging.GifBitmapDecoder> и <xref:System.Windows.Media.Imaging.GifBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
  В этом примере показано, как декодировать GIF изображений с помощью <xref:System.Windows.Media.Imaging.GifBitmapDecoder> из <xref:System.IO.FileStream>.  

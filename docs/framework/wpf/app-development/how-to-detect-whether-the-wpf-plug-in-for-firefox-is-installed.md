@@ -20,7 +20,7 @@ ms.locfileid: "57469317"
 Позволяет Windows Presentation Foundation (WPF) подключаемого модуля для Firefox XAML-приложения браузера (XBAP) и свободных файлов XAML для выполнения в браузере Mozilla Firefox. В этом разделе содержится скрипт, написанный на языках HTML и JavaScript, который администраторы могут использовать, чтобы определить, установлен ли подключаемый модуль WPF для Firefox.
 
 > [!NOTE]
-> Дополнительные сведения об установке, развертывании и обнаружении [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)], см. в разделе [установка .NET Framework для разработчиков](../../install/guide-for-developers.md).
+> Дополнительные сведения об установке, развертывании и обнаружении .NET Framework, см. в разделе [установка .NET Framework для разработчиков](../../install/guide-for-developers.md).
 
 ## <a name="example"></a>Пример
 

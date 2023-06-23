@@ -21,7 +21,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59153365"
 ---
 # <a name="how-to-encode-and-decode-a-wdp-image"></a>Практическое руководство. Кодирование и декодирование изображения в формате WDP
-Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_wdp](../../../../includes/tlasharptla-wdp-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.WmpBitmapDecoder> и <xref:System.Windows.Media.Imaging.WmpBitmapEncoder> объектов.  
+Следующие примеры показывают, как декодировать и кодировать Microsoft Windows Media Photo изображений, используя заданный <xref:System.Windows.Media.Imaging.WmpBitmapDecoder> и <xref:System.Windows.Media.Imaging.WmpBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
  В этом примере показано, как декодировать Windows Media Photo изображений с помощью <xref:System.Windows.Media.Imaging.WmpBitmapDecoder> из <xref:System.Uri>.  

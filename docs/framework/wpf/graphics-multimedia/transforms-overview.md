@@ -61,7 +61,7 @@ ms.locfileid: "59162208"
 |<xref:System.Windows.Media.TransformGroup>|Группирует несколько <xref:System.Windows.Media.TransformGroup> объекты в единую <xref:System.Windows.Media.Transform> , затем можно применить для преобразования свойств.|[Применение нескольких преобразований к объекту](how-to-apply-multiple-transforms-to-an-object.md)|  
 |<xref:System.Windows.Media.MatrixTransform>|Создает пользовательские преобразования, которые не предоставляются с использованием других <xref:System.Windows.Media.Transform> классы. При использовании <xref:System.Windows.Media.MatrixTransform>, напрямую управлять матрицу.|[Использование MatrixTransform для создания пользовательских преобразований](how-to-use-a-matrixtransform-to-create-custom-transforms.md)|  
   
- Windows Presentation Foundation (WPF) также предоставляет [!INCLUDE[TLA#tla_3d](../../../../includes/tlasharptla-3d-md.md)] преобразования. Дополнительные сведения см. в описании класса <xref:System.Windows.Media.Media3D.Transform3D>.  
+ Windows Presentation Foundation (WPF) также предоставляет 3D преобразования. Дополнительные сведения см. в описании класса <xref:System.Windows.Media.Media3D.Transform3D>.  
   
 <a name="transformationproperties"></a>   
 ## <a name="common-transformation-properties"></a>Общие свойства преобразования  

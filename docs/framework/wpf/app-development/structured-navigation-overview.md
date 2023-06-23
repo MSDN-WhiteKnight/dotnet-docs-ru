@@ -70,7 +70,7 @@ ms.locfileid: "59320075"
   
  Объявление <xref:System.Windows.Navigation.PageFunction%601> похоже на объявление <xref:System.Windows.Controls.Page> с добавлением аргументов типа. Как видно из примера кода, аргументы типа указаны и в разметке XAML с помощью атрибута `x:TypeArguments`, и в коде программной части с помощью стандартного синтаксиса аргумента универсального типа.  
   
- Не нужно использовать только классы [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] в качестве аргументов типа. Объект <xref:System.Windows.Navigation.PageFunction%601> может быть вызван для сбора данных отдельного домена, которые абстрагированы как пользовательский тип. Ниже показано, как использовать пользовательский тип в качестве аргумента типа для <xref:System.Windows.Navigation.PageFunction%601>.  
+ Не нужно использовать только классы .NET Framework в качестве аргументов типа. Объект <xref:System.Windows.Navigation.PageFunction%601> может быть вызван для сбора данных отдельного домена, которые абстрагированы как пользовательский тип. Ниже показано, как использовать пользовательский тип в качестве аргумента типа для <xref:System.Windows.Navigation.PageFunction%601>.  
   
  [!code-csharp[CustomTypePageFunctionSnippets#CustomTypeCODE1](~/samples/snippets/csharp/VS_Snippets_Wpf/CustomTypePageFunctionSnippets/CSharp/CustomType.cs#customtypecode1)]
    

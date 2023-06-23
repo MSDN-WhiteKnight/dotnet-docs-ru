@@ -44,7 +44,7 @@ ms.locfileid: "59312570"
 ## <a name="settings-persistence"></a>Сохраняемость параметров  
  <xref:System.Configuration.ApplicationSettingsBase> Класс не сохраняемость или загрузку параметров; это выполняет поставщик параметров, а класс, производный от <xref:System.Configuration.SettingsProvider>. Если класс, производный от <xref:System.Configuration.ApplicationSettingsBase> не указывает поставщика параметров посредством <xref:System.Configuration.SettingsProviderAttribute>, а затем поставщика по умолчанию, <xref:System.Configuration.LocalFileSettingsProvider>, используется.  
   
- Система конфигурации, которая была первоначально выпущена с [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)], поддерживает предоставление статических данных конфигурации приложения через файл machine.config локального компьютера или в файле `app.`exe.config, развертываемого вместе с приложением. <xref:System.Configuration.LocalFileSettingsProvider> Класс расширяет эту встроенную поддержку одним из следующих способов:  
+ Система конфигурации, которая была первоначально выпущена с .NET Framework, поддерживает предоставление статических данных конфигурации приложения через файл machine.config локального компьютера или в файле `app.`exe.config, развертываемого вместе с приложением. <xref:System.Configuration.LocalFileSettingsProvider> Класс расширяет эту встроенную поддержку одним из следующих способов:  
   
 -   Параметры области приложения могут храниться в файле machine.config или `app.`exe.config. Файл machine.config всегда предназначен только для чтения, тогда как `app`.exe.config для большинства приложений рекомендуется использовать только для чтения с точки зрения безопасности.  
   

@@ -14,7 +14,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59090905"
 ---
 # <a name="how-to-animate-material-properties-in-a-3-d-scene"></a>Практическое руководство. Анимация свойств материалов в трехмерной сцене
-В этом примере демонстрируется анимация <xref:System.Windows.Media.Brush.Opacity%2A> свойство <xref:System.Windows.Media.Media3D.Material> применяется к [!INCLUDE[TLA#tla_3d](../../../../includes/tlasharptla-3d-md.md)] модели.  
+В этом примере демонстрируется анимация <xref:System.Windows.Media.Brush.Opacity%2A> свойство <xref:System.Windows.Media.Media3D.Material> применяется к 3D модели.  
   
  В следующем примере кода определяется <xref:System.Windows.Media.LinearGradientBrush> используется в качестве <xref:System.Windows.Media.Media3D.Material> трехмерного объекта.  
   

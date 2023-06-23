@@ -39,7 +39,7 @@ ms.locfileid: "59209714"
   
 -   Модель расширяемости для новых или собственных форматов изображений.  
   
--   Повышение производительности и безопасности при работе с собственными форматами изображений, включая [!INCLUDE[TLA#tla_bmp](../../../../includes/tlasharptla-bmp-md.md)], [!INCLUDE[TLA#tla_jpegorg](../../../../includes/tlasharptla-jpegorg-md.md)], [!INCLUDE[TLA#tla_png](../../../../includes/tlasharptla-png-md.md)], [!INCLUDE[TLA#tla_tiff](../../../../includes/tlasharptla-tiff-md.md)], [!INCLUDE[TLA#tla_wdp](../../../../includes/tlasharptla-wdp-md.md)], [!INCLUDE[TLA#tla_gif](../../../../includes/tlasharptla-gif-md.md)] и формат значка (ICO).  
+-   Повышение производительности и безопасности при работе с собственными форматами изображений, включая Формат BMP (Точечный рисунок), Формат JPEG (Joint Photographics Experts Group), Формат PNG (Portable Network Graphics), Формат TIFF (Tagged Image File Format), Microsoft Windows Media Photo, Формат GIF (Graphics Interchange Format) и формат значка (ICO).  
   
 -   Сохранение изображений с большой глубиной цвета — до 8 бит на канал (32 бита на пиксель).  
   

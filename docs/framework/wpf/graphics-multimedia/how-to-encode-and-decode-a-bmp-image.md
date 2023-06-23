@@ -21,7 +21,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59121905"
 ---
 # <a name="how-to-encode-and-decode-a-bmp-image"></a>Практическое руководство. Кодирование и декодирование изображения в формате BMP
-Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_bmp](../../../../includes/tlasharptla-bmp-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.BmpBitmapDecoder> и <xref:System.Windows.Media.Imaging.BmpBitmapEncoder> объектов.  
+Следующие примеры показывают, как декодировать и кодировать Формат BMP (Точечный рисунок) изображений, используя заданный <xref:System.Windows.Media.Imaging.BmpBitmapDecoder> и <xref:System.Windows.Media.Imaging.BmpBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
  В этом примере показано, как декодировать BMP изображений с помощью <xref:System.Windows.Media.Imaging.BmpBitmapDecoder> из <xref:System.Uri>.  

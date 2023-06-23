@@ -13,7 +13,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59168276"
 ---
 # <a name="how-to-animate-3-d-translations"></a>Практическое руководство. Анимация трехмерных преобразований
-В этом разделе показано, как анимировать преобразования перевода на [!INCLUDE[TLA#tla_3d](../../../../includes/tlasharptla-3d-md.md)] модели.  
+В этом разделе показано, как анимировать преобразования перевода на 3D модели.  
   
  В приведенном ниже коде показано применение <xref:System.Windows.Media.Media3D.TranslateTransform3D> объект <xref:System.Windows.Media.Media3D.Model3D.Transform%2A> свойство <xref:System.Windows.Media.Media3D.GeometryModel3D>.  
   

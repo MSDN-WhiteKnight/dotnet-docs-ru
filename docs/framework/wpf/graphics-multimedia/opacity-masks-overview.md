@@ -88,7 +88,7 @@ ms.locfileid: "59080089"
  ![Объект с маской непрозрачности ImageBrush](./media/wcpsdk-graphicsmm-imageasopacitymask.png "wcpsdk_graphicsmm_imageasopacitymask")  
 Пример использования маски непрозрачности  
   
- Чтобы использовать изображение в качестве маски непрозрачности, используйте <xref:System.Windows.Media.ImageBrush> для размещения изображения. При создании изображения для использования в качестве маски непрозрачности сохраните рисунок в формате, поддерживающем несколько уровней прозрачности, например [!INCLUDE[TLA#tla_png](../../../../includes/tlasharptla-png-md.md)]. В следующем примере показан код, используемый для создания предыдущей иллюстрации.  
+ Чтобы использовать изображение в качестве маски непрозрачности, используйте <xref:System.Windows.Media.ImageBrush> для размещения изображения. При создании изображения для использования в качестве маски непрозрачности сохраните рисунок в формате, поддерживающем несколько уровней прозрачности, например Формат PNG (Portable Network Graphics). В следующем примере показан код, используемый для создания предыдущей иллюстрации.  
   
  [!code-xaml[OpacityMasksSnippet#UIElementOpacityMask](~/samples/snippets/csharp/VS_Snippets_Wpf/OpacityMasksSnippet/CS/ImageBrushExample.xaml#uielementopacitymask)]  
   

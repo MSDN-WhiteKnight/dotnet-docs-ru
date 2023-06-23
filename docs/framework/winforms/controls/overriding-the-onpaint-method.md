@@ -16,7 +16,7 @@ ms.lasthandoff: 04/09/2019
 ms.locfileid: "59302209"
 ---
 # <a name="overriding-the-onpaint-method"></a>Переопределение метода OnPaint
-Основные шаги для переопределения любого события, определенные в [!INCLUDE[dnprdnshort](../../../../includes/dnprdnshort-md.md)] идентичны и обобщены в следующем списке.  
+Основные шаги для переопределения любого события, определенные в .NET Framework идентичны и обобщены в следующем списке.  
   
 #### <a name="to-override-an-inherited-event"></a>Чтобы переопределить наследуемое событие  
   

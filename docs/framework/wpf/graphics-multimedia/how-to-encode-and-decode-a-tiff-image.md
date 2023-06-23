@@ -21,7 +21,7 @@ ms.lasthandoff: 04/08/2019
 ms.locfileid: "59107436"
 ---
 # <a name="how-to-encode-and-decode-a-tiff-image"></a>Практическое руководство. Кодирование и декодирование изображения в формате TIFF
-Следующие примеры показывают, как декодировать и кодировать [!INCLUDE[TLA#tla_tiff](../../../../includes/tlasharptla-tiff-md.md)] изображений, используя заданный <xref:System.Windows.Media.Imaging.TiffBitmapDecoder> и <xref:System.Windows.Media.Imaging.TiffBitmapEncoder> объектов.  
+Следующие примеры показывают, как декодировать и кодировать Формат TIFF (Tagged Image File Format) изображений, используя заданный <xref:System.Windows.Media.Imaging.TiffBitmapDecoder> и <xref:System.Windows.Media.Imaging.TiffBitmapEncoder> объектов.  
   
 ## <a name="example"></a>Пример  
  В этом примере показано, как декодировать TIFF изображений с помощью <xref:System.Windows.Media.Imaging.TiffBitmapDecoder> из <xref:System.Uri>.  
